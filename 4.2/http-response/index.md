@@ -19,7 +19,7 @@ version: "4.2"
  - Status code and reason phrase
  - Headers
  - Message body
-
+ 
 :::info[NOTE]
 In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
 :::
@@ -33,34 +33,35 @@ use Phalcon\Http\Message\Stream;
 $response = new Response();
 
 $payload = [
-'code'   => 2000,
-'status' => 'success',
-'payload' => [
-    'id'   => 12345,
-    'name' => 'John Doe',
-]
+    'code'   => 2000,
+    'status' => 'success',
+    'payload' => [
+        'id'   => 12345,
+        'name' => 'John Doe',
+    ]
 ];
 
 $stream = new Stream('php://memory', 'wb');
 $stream->write(json_encode($payload));
-
+            
 $response = $response
-->withHeader('Content-Type', 'application/json')
-->withBody($stream)
-->withStatus(200)
+    ->withHeader('Content-Type', 'application/json')
+    ->withBody($stream)
+    ->withStatus(200)
 ;
 
 $result = $httpClient->send($response);
 
+
 $payload = 'The above copyright notice and this permission '
-     . 'notice shall be included in all copies or '
-     . 'substantial portions of the Software.'
+         . 'notice shall be included in all copies or '
+         . 'substantial portions of the Software.'
 ;
 
 $response = $response
-->withHeader('Content-Type', 'text/html')
-->withBody($payload)
-->withStatus(200)
+    ->withHeader('Content-Type', 'text/html')
+    ->withBody($payload)
+    ->withStatus(200)
 ;
 
 $result = $httpClient->send($response);
@@ -76,20 +77,21 @@ The above example can be implemented by only using the constructor parameters:
 use Phalcon\Http\Message\Response;
 
 $payload = [
-'code'   => 2000,
-'status' => 'success',
-'payload' => [
-    'id'   => 12345,
-    'name' => 'John Doe',
-]
+    'code'   => 2000,
+    'status' => 'success',
+    'payload' => [
+        'id'   => 12345,
+        'name' => 'John Doe',
+    ]
 ];
 
+
 $request = new Response(
-json_encode($payload),
-200,
-[
-    'Content-Type'  => 'application/json',
-]
+    json_encode($payload),
+    200,
+    [
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 $result = $httpClient->send($request);
@@ -101,9 +103,9 @@ The [Response][http-message-response] object created is immutable, meaning it wi
 
 ```php
 public function __construct(
-[mixed $body = "php://temp" 
-[, int $code = 200 
-[, array $headers = [] ]]]
+    [mixed $body = "php://temp" 
+    [, int $code = 200 
+    [, array $headers = [] ]]]
 )
 ```
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the body, status code as well as the headers. All parameters are optional.
@@ -130,6 +132,7 @@ $stream   = new Stream($fileName, 'rb');
 $response = new Response($stream);
 
 echo $response->getBody(); // '/assets/stream/mit.txt'
+
 
 $response->getBody()->write('additional content goes here');
 ```
@@ -167,11 +170,11 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-200,
-[
-    'Content-Type'  => 'application/json',
-]
+    $stream,
+    200,
+    [
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $response->getHeader('content-Type'); // ['application/json']
@@ -192,14 +195,14 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-200,
-[
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    $stream,
+    200,
+    [
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 echo $response->getHeaderLine('content-Type'); // 'application/json,application/html'
@@ -219,18 +222,18 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-200,
-[
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    $stream,
+    200,
+    [
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 var_dump(
-$response->getHeaders()
+    $response->getHeaders()
 );
 // [
 //     'Content-Type'  => [
@@ -247,6 +250,7 @@ Returns the protocol version as as string (default `1.1`)
 ```php
 <?php
 
+
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
@@ -254,12 +258,13 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-200,
-[
-    'Content-Type'  => 'application/json',
-]
+    $stream,
+    200,
+    [
+        'Content-Type'  => 'application/json',
+    ]
 );
+
 
 echo $response->getProtocolVersion(); // '1.1'
 ```
@@ -271,6 +276,7 @@ Returns the response reason phrase associated with the status code. Because a re
 ```php
 <?php
 
+
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
@@ -278,12 +284,13 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-203,
-[
-    'Content-Type'  => 'application/json',
-]
+    $stream,
+    203,
+    [
+        'Content-Type'  => 'application/json',
+    ]
 );
+
 
 echo $response->getReasonPhrase(); // 'Non-Authoritative Information'
 ```
@@ -302,12 +309,13 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-203,
-[
-    'Content-Type'  => 'application/json',
-]
+    $stream,
+    203,
+    [
+        'Content-Type'  => 'application/json',
+    ]
 );
+
 
 echo $response->getStatusCode(); // 203
 ```
@@ -326,11 +334,11 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-200,
-[
-    'Content-Type'  => 'application/json',
-]
+    $stream,
+    200,
+    [
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 $response = $response->withUri('https://api.phalcon.io/companies/1');
@@ -354,14 +362,14 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
-$stream,
-200,
-[
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    $stream,
+    200,
+    [
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 echo $response->hasHeader('content-type'); // true
@@ -385,18 +393,18 @@ $stream   = new Stream($fileName, 'rb');
 
 $jwtToken = 'abc.def.ghi';
 $response = new Response(
-$stream,
-200,
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-    ],
-]
+    $stream,
+    200,
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+        ],
+    ]
 );
 
 var_dump(
-$response->getHeaders()
+    $response->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -408,7 +416,7 @@ $response->getHeaders()
 $clone = $response->withAddedHeader('Content-Type', ['application/html']);
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -434,12 +442,12 @@ $stream   = new Stream($fileName, 'rb');
 
 $jwtToken = 'abc.def.ghi';
 $response = new Response(
-null,
-200,
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    null,
+    200,
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 $clone = $response->withBody($stream);
@@ -458,29 +466,29 @@ use Phalcon\Http\Message\Response;
 
 $jwtToken = 'abc.def.ghi';
 $response = new Response(
-null,
-200,
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-]
+    null,
+    200,
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+    ]
 );
 
 var_dump(
-$response->getHeaders()
+    $response->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 
 $clone = $response->withAddedHeader(
-'Content-Type',
-[
-    'application/html',
-]
+    'Content-Type',
+    [
+        'application/html',
+    ]
 );
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -564,18 +572,18 @@ use Phalcon\Http\Message\Response;
 $jwtToken = 'abc.def.ghi';
 
 $response = new Response(
-null,
-200,
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-    ],
-]
+    null,
+    200,
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+        ],
+    ]
 );
 
 var_dump(
-$response->getHeaders()
+    $response->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -587,7 +595,7 @@ $response->getHeaders()
 $clone = $response->withoutHeader('Content-Type');
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',

@@ -23,35 +23,36 @@ serializing.
 
 // Using a standard foreach
 $robots = Robots::find(
-[
-    "type = 'virtual'",
-    "order" => "name",
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
 );
 
 foreach ($robots as robot) {
-echo robot->name, "\n";
+    echo robot->name, "\n";
 }
 
 // Using a while
 $robots = Robots::find(
-[
-    "type = 'virtual'",
-    "order" => "name",
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
 );
 
 $robots->rewind();
 
 while ($robots->valid()) {
-$robot = $robots->current();
+    $robot = $robots->current();
 
-echo $robot->name, "\n";
+    echo $robot->name, "\n";
 
-$robots->next();
+    $robots->next();
 }
 
 ```
+
 
 ## Constants
 *integer* **TYPE_RESULT_FULL**
@@ -69,90 +70,134 @@ public  **__construct** ([Phalcon\Db\ResultInterface](/3.4/api/phalcon_db/) | *f
 
 Phalcon\Mvc\Model\Resultset constructor
 
+
+
 public  **next** ()
 
 Moves cursor to next row in the resultset
+
+
 
 public  **valid** ()
 
 Check whether internal resource has rows to fetch
 
+
+
 public  **key** ()
 
 Gets pointer number of active row in the resultset
 
+
+
 final public  **rewind** ()
 
 Rewinds resultset to its beginning
+
+
 
 final public  **seek** (*mixed* $position)
 
 Changes internal pointer to a specific position in the resultset
 Set new position if required and set this->_row
 
+
+
 final public  **count** ()
 
 Counts how many rows are in the resultset
+
+
 
 public  **offsetExists** (*mixed* $index)
 
 Checks whether offset exists in the resultset
 
+
+
 public  **offsetGet** (*mixed* $index)
 
 Gets row in a specific position of the resultset
+
+
 
 public  **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/3.4/api/phalcon_mvc_model/) $value)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
+
+
 public  **offsetUnset** (*mixed* $offset)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
 
 public  **getType** ()
 
 Returns the internal type of data retrieval that the resultset is using
 
+
+
 public  **getFirst** ()
 
 Get first row in the resultset
+
+
 
 public  **getLast** ()
 
 Get last row in the resultset
 
+
+
 public  **setIsFresh** (*mixed* $isFresh)
 
 Set if the resultset is fresh or an old one cached
+
+
 
 public  **isFresh** ()
 
 Tell if the resultset if fresh or an old one cached
 
+
+
 public  **setHydrateMode** (*mixed* $hydrateMode)
 
 Sets the hydration mode in the resultset
+
+
 
 public  **getHydrateMode** ()
 
 Returns the current hydration mode
 
+
+
 public  **getCache** ()
 
 Returns the associated cache for the resultset
+
+
 
 public  **getMessages** ()
 
 Returns the error messages produced by a batch operation
 
+
+
 public *boolean* **update** (*array* $data, [[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback])
 
 Updates every record in the resultset
 
+
+
 public  **delete** ([[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback])
 
 Deletes every record in the resultset
+
+
 
 public [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) **filter** (*callback* $filter)
 
@@ -162,14 +207,16 @@ Filters a resultset returning only those the developer requires
 <?php
 
 $filtered = $robots->filter(
-function ($robot) {
-    if ($robot->id < 3) {
-        return $robot;
+    function ($robot) {
+        if ($robot->id < 3) {
+            return $robot;
+        }
     }
-}
 );
 
 ```
+
+
 
 public *array* **jsonSerialize** ()
 
@@ -184,21 +231,28 @@ echo json_encode($robots);
 
 ```
 
+
+
 abstract public  **toArray** () inherited from [Phalcon\Mvc\Model\ResultsetInterface](/3.4/api/phalcon_mvc_model_resultset/)
 
 ...
+
 
 abstract public  **current** () inherited from [Iterator](https://php.net/manual/en/class.iterator.php)
 
 ...
 
+
 abstract public  **serialize** () inherited from [Serializable](https://php.net/manual/en/class.serializable.php)
 
 ...
 
+
 abstract public  **unserialize** (*mixed* $serialized) inherited from [Serializable](https://php.net/manual/en/class.serializable.php)
 
 ...
+
+
 
 <hr />
 
@@ -212,6 +266,7 @@ abstract public  **unserialize** (*mixed* $serialized) inherited from [Serializa
 
 Complex resultsets may include complete objects and scalar values.
 This class builds every complex row as it is required
+
 
 ## Constants
 *integer* **TYPE_RESULT_FULL**
@@ -229,107 +284,159 @@ public  **__construct** (*array* $columnTypes, [[Phalcon\Db\ResultInterface](/3.
 
 Phalcon\Mvc\Model\Resultset\Complex constructor
 
+
+
 final public  **current** ()
 
 Returns current row in the resultset
+
+
 
 public  **toArray** ()
 
 Returns a complete resultset as an array, if the resultset has a big number of rows
 it could consume more memory than currently it does.
 
+
+
 public  **serialize** ()
 
 Serializing a resultset will dump all related rows into a big array
+
+
 
 public  **unserialize** (*mixed* $data)
 
 Unserializing a resultset will allow to only works on the rows present in the saved state
 
+
+
 public  **next** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Moves cursor to next row in the resultset
+
+
 
 public  **valid** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Check whether internal resource has rows to fetch
 
+
+
 public  **key** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Gets pointer number of active row in the resultset
 
+
+
 final public  **rewind** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Rewinds resultset to its beginning
+
+
 
 final public  **seek** (*mixed* $position) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Changes internal pointer to a specific position in the resultset
 Set new position if required and set this->_row
 
+
+
 final public  **count** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Counts how many rows are in the resultset
+
+
 
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Checks whether offset exists in the resultset
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Gets row in a specific position of the resultset
+
+
 
 public  **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/3.4/api/phalcon_mvc_model/) $value) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
+
+
 public  **offsetUnset** (*mixed* $offset) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
 
 public  **getType** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the internal type of data retrieval that the resultset is using
 
+
+
 public  **getFirst** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Get first row in the resultset
+
+
 
 public  **getLast** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Get last row in the resultset
 
+
+
 public  **setIsFresh** (*mixed* $isFresh) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Set if the resultset is fresh or an old one cached
+
+
 
 public  **isFresh** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Tell if the resultset if fresh or an old one cached
 
+
+
 public  **setHydrateMode** (*mixed* $hydrateMode) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Sets the hydration mode in the resultset
+
+
 
 public  **getHydrateMode** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the current hydration mode
 
+
+
 public  **getCache** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the associated cache for the resultset
+
+
 
 public  **getMessages** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the error messages produced by a batch operation
 
+
+
 public *boolean* **update** (*array* $data, [[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback]) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Updates every record in the resultset
 
+
+
 public  **delete** ([[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback]) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Deletes every record in the resultset
+
+
 
 public [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) **filter** (*callback* $filter) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
@@ -339,14 +446,16 @@ Filters a resultset returning only those the developer requires
 <?php
 
 $filtered = $robots->filter(
-function ($robot) {
-    if ($robot->id < 3) {
-        return $robot;
+    function ($robot) {
+        if ($robot->id < 3) {
+            return $robot;
+        }
     }
-}
 );
 
 ```
+
+
 
 public *array* **jsonSerialize** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
@@ -361,6 +470,9 @@ echo json_encode($robots);
 
 ```
 
+
+
+
 <hr />
 
 # Class **Phalcon\Mvc\Model\Resultset\Simple**
@@ -373,6 +485,7 @@ echo json_encode($robots);
 
 Simple resultsets only contains a complete objects
 This class builds every complete object as it is required
+
 
 ## Constants
 *integer* **TYPE_RESULT_FULL**
@@ -390,9 +503,13 @@ public  **__construct** (*array* $columnMap, [Phalcon\Mvc\ModelInterface](/3.4/a
 
 Phalcon\Mvc\Model\Resultset\Simple constructor
 
+
+
 final public  **current** ()
 
 Returns current row in the resultset
+
+
 
 public  **toArray** ([*mixed* $renameColumns])
 
@@ -400,98 +517,146 @@ Returns a complete resultset as an array, if the resultset has a big number of r
 it could consume more memory than currently it does. Export the resultset to an array
 couldn't be faster with a large number of records
 
+
+
 public  **serialize** ()
 
 Serializing a resultset will dump all related rows into a big array
+
+
 
 public  **unserialize** (*mixed* $data)
 
 Unserializing a resultset will allow to only works on the rows present in the saved state
 
+
+
 public  **next** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Moves cursor to next row in the resultset
+
+
 
 public  **valid** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Check whether internal resource has rows to fetch
 
+
+
 public  **key** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Gets pointer number of active row in the resultset
 
+
+
 final public  **rewind** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Rewinds resultset to its beginning
+
+
 
 final public  **seek** (*mixed* $position) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Changes the internal pointer to a specific position in the resultset. 
 Set the new position if required, and then set this->_row
 
+
+
 final public  **count** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Counts how many rows are in the resultset
+
+
 
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Checks whether offset exists in the resultset
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Gets row in a specific position of the resultset
+
+
 
 public  **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](/3.4/api/phalcon_mvc_model/) $value) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
+
+
 public  **offsetUnset** (*mixed* $offset) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+
 
 public  **getType** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the internal type of data retrieval that the resultset is using
 
+
+
 public  **getFirst** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Get first row in the resultset
+
+
 
 public  **getLast** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Get last row in the resultset
 
+
+
 public  **setIsFresh** (*mixed* $isFresh) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Set if the resultset is fresh or an old one cached
+
+
 
 public  **isFresh** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Tell if the resultset if fresh or an old one cached
 
+
+
 public  **setHydrateMode** (*mixed* $hydrateMode) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Sets the hydration mode in the resultset
+
+
 
 public  **getHydrateMode** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the current hydration mode
 
+
+
 public  **getCache** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the associated cache for the resultset
+
+
 
 public  **getMessages** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Returns the error messages produced by a batch operation
 
+
+
 public *boolean* **update** (*array* $data, [[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback]) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Updates every record in the resultset
 
+
+
 public  **delete** ([[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback]) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
 Deletes every record in the resultset
+
+
 
 public [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) **filter** (*callback* $filter) inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
@@ -501,14 +666,16 @@ Filters a resultset returning only those the developer requires
 <?php
 
 $filtered = $robots->filter(
-function ($robot) {
-    if ($robot->id < 3) {
-        return $robot;
+    function ($robot) {
+        if ($robot->id < 3) {
+            return $robot;
+        }
     }
-}
 );
 
 ```
+
+
 
 public *array* **jsonSerialize** () inherited from [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/)
 
@@ -523,6 +690,9 @@ echo json_encode($robots);
 
 ```
 
+
+
+
 <hr />
 
 # Interface **Phalcon\Mvc\Model\ResultsetInterface**
@@ -534,25 +704,31 @@ abstract public  **getType** ()
 
 ...
 
+
 abstract public  **getFirst** ()
 
 ...
+
 
 abstract public  **getLast** ()
 
 ...
 
+
 abstract public  **setIsFresh** (*mixed* $isFresh)
 
 ...
+
 
 abstract public  **isFresh** ()
 
 ...
 
+
 abstract public  **getCache** ()
 
 ...
+
 
 abstract public  **toArray** ()
 

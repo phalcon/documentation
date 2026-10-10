@@ -40,8 +40,8 @@ $serializerFactory = new SerializerFactory();
 $adapterFactory    = new AdapterFactory($serializerFactory);
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200
 ];
 
 $adapter = $adapterFactory->newInstance('apcu', $options);
@@ -62,7 +62,7 @@ $value = $cache->get('my-key', 'default');
 ```
 
 If you wish to retrieve more than one key with one call, you can call `getMultiple()`, passing an array with the keys needed. The method will return an array of `key` => `value` pairs. Cache keys that do not exist or have expired will have `defaultValue` as a value (default `null`).
-
+ 
 ```php
 $value = $cache->getMultiple(['my-key1', 'my-key2']);
 
@@ -87,11 +87,11 @@ If you wish to store more than one element with one call, you can call `setMulti
 
 ```php
 $value = $cache->setMultiple(
-[
-    'my-key1' => $data1, 
-    'my-key2' => $data2,
-],
-9600
+    [
+        'my-key1' => $data1, 
+        'my-key2' => $data2,
+    ],
+    9600
 );
 ```
 
@@ -124,14 +124,14 @@ use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
 ];
 
 $serializerFactory = new SerializerFactory();
 $adapterFactory    = new AdapterFactory(
-$serializerFactory,
-$options
+    $serializerFactory,
+    $options
 );
 
 $cacheFactory = new CacheFactory($adapterFactory);
@@ -150,23 +150,23 @@ use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
 ];
 
 $serializerFactory = new SerializerFactory();
 $adapterFactory    = new AdapterFactory(
-$serializerFactory,
-$options
+    $serializerFactory,
+    $options
 );
 
 $cacheFactory = new CacheFactory($adapterFactory);
 
 $cacheOptions = [
-'adapter' => 'apcu',
-'options' => [
-    'prefix' => 'my-prefix',
-],
+    'adapter' => 'apcu',
+    'options' => [
+        'prefix' => 'my-prefix',
+    ],
 ];
 
 $cache = $cacheFactory->load($cacheOptions);
@@ -183,17 +183,18 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        // Get some configuration values
-        $this->cache->get('some-key');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            // Get some configuration values
+            $this->cache->get('some-key');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 }
-}
 ```
+
 
 ## Serializers
 The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable][serializable] interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
@@ -209,7 +210,7 @@ This serializer uses the `base64_encode` and `base64_decode` methods to serializ
 
 ### `Igbinary`
 The `igbinary` serializes relies on the `igbinary_serialize` and `igbinary_unserialize` methods. Those methods are exposed via the [igbinary][igbinary] PHP extension, which has to be installed and loaded on the target system.
-
+  
 ### `Json`
 The `JSON` serializer uses `json_encode` and `json_decode`. The target system must have JSON support available for PHP.
 
@@ -234,52 +235,52 @@ use Phalcon\Storage\SerializerInterface;
 
 class Garble implements SerializerInterface
 {
-/**
- * Data storage
- * 
- * @var string
- */
-private $data = '';
+    /**
+     * Data storage
+     * 
+     * @var string
+     */
+    private $data = '';
+    
+    /**
+     * Return the stored data
+     * 
+     * @return string
+     */
+    public function getData(): string
+    {
+        return $this->data;
+    }       
 
-/**
- * Return the stored data
- * 
- * @return string
- */
-public function getData(): string
-{
-    return $this->data;
-}       
+    /**
+    * Serializes data
+    */
+    public function serialize(): string
+    {
+        return rot13($this->data);
+    }
 
-/**
-* Serializes data
-*/
-public function serialize(): string
-{
-    return rot13($this->data);
-}
+    /**
+     * Set the data
+     * 
+     * @var Garble
+     *
+     * @return Garble
+     */
+    public function setData($data): Garble
+    {
+        $this->data = (string) $data;
+        
+        return $this;
+    }       
 
-/**
- * Set the data
- * 
- * @var Garble
- *
- * @return Garble
- */
-public function setData($data): Garble
-{
-    $this->data = (string) $data;
-
-    return $this;
-}       
-
-/**
- * Unserializes data
- */
-public function unserialize($data): void
-{
-    $this->data = str_rot13($data);
-}
+    /**
+     * Unserializes data
+     */
+    public function unserialize($data): void
+    {
+        $this->data = str_rot13($data);
+    }
 }
 ```
 Using it:
@@ -294,8 +295,8 @@ $data = 'I came, I saw, I conquered.';
 $garble = new Garble();
 
 $garble
-->setData($data)
-->serialize()  
+    ->setData($data)
+    ->serialize()  
 ;
 
 echo $garble->getData(); // "V pnzr, V fnj, V pbadhrerq."
@@ -331,6 +332,7 @@ The parameters you can use for the factory are:
 * `msgpack` for [Phalcon\Storage\Serializer\Msgpack][storage-serializer-msgpack]
 * `none` for [Phalcon\Storage\Serializer\None][storage-serializer-none]
 * `php` for [Phalcon\Storage\Serializer\Php][storage-serializer-php]
+
 
 ## Adapters
 The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface][cache-adapter-adapterinterface] interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code. 
@@ -379,8 +381,8 @@ use Phalcon\Storage\SerializerFactory;
 $serializerFactory = new SerializerFactory();
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
 ];
 
 $adapter = new Apcu($serializerFactory, $options);
@@ -422,20 +424,20 @@ use Phalcon\Storage\SerializerFactory;
 $serializerFactory = new SerializerFactory();
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
-'servers'           => [
-    0 => [
-        'host'   => '10.4.13.100',
-        'port'   => 11211,
-        'weight' => 1,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
+    'servers'           => [
+        0 => [
+            'host'   => '10.4.13.100',
+            'port'   => 11211,
+            'weight' => 1,
+        ],
+        1 => [
+            'host'   => '10.4.13.110',
+            'port'   => 11211,
+            'weight' => 5,
+        ],
     ],
-    1 => [
-        'host'   => '10.4.13.110',
-        'port'   => 11211,
-        'weight' => 5,
-    ],
-],
 ];
 
 $adapter = new Libmemcached($serializerFactory, $options);
@@ -476,8 +478,8 @@ use Phalcon\Storage\SerializerFactory;
 $serializerFactory = new SerializerFactory();
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
 ];
 
 $adapter = new Memory($serializerFactory, $options);
@@ -514,11 +516,11 @@ use Phalcon\Storage\SerializerFactory;
 $serializerFactory = new SerializerFactory();
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
-'host'              => '10.4.13.100',
-'port'              => 6379,
-'index'             => 1,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
+    'host'              => '10.4.13.100',
+    'port'              => 6379,
+    'index'             => 1,
 ];
 
 $adapter = new Redis($serializerFactory, $options);
@@ -587,9 +589,9 @@ use Phalcon\Storage\SerializerFactory;
 $serializerFactory = new SerializerFactory();
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
-'storageDir'        => '/data/storage/cache',
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
+    'storageDir'        => '/data/storage/cache',
 ];
 
 $adapter = new Stream($serializerFactory, $options);
@@ -609,87 +611,87 @@ use Phalcon\Cache\Adapter\AdapterInterface;
 
 class Custom implements AdapterInterface
 {
-/**
- * Flushes/clears the cache
- */
-public function clear(): bool
-{
-    // Custom implementation
-}
+    /**
+     * Flushes/clears the cache
+     */
+    public function clear(): bool
+    {
+        // Custom implementation
+    }
 
-/**
- * Decrements a stored number
- */
-public function decrement(string $key, int $value = 1)
-{
-    // Custom implementation
-}
+    /**
+     * Decrements a stored number
+     */
+    public function decrement(string $key, int $value = 1)
+    {
+        // Custom implementation
+    }
 
-/**
- * Deletes data from the adapter
- */
-public function delete(string $key): bool
-{
-    // Custom implementation
-}
+    /**
+     * Deletes data from the adapter
+     */
+    public function delete(string $key): bool
+    {
+        // Custom implementation
+    }
 
-/**
- * Reads data from the adapter
- */
-public function get(string $key)
-{
-    // Custom implementation
-}
+    /**
+     * Reads data from the adapter
+     */
+    public function get(string $key)
+    {
+        // Custom implementation
+    }
 
-/**
- * Returns the already connected adapter or connects to the backend
- * server(s)
- */
-public function getAdapter()
-{
-    // Custom implementation
-}
+    /**
+     * Returns the already connected adapter or connects to the backend
+     * server(s)
+     */
+    public function getAdapter()
+    {
+        // Custom implementation
+    }
 
-/**
- * Returns all the keys stored. If a filter has been passed the keys that 
- * match the filter will be returned 
- */
-public function getKeys(string $prefix = ""): array
-{
-    // Custom implementation
-}
+    /**
+     * Returns all the keys stored. If a filter has been passed the keys that 
+     * match the filter will be returned 
+     */
+    public function getKeys(string $prefix = ""): array
+    {
+        // Custom implementation
+    }
 
-/**
- * Returns the prefix for the keys
- */
-public function getPrefix(): string
-{
-    // Custom implementation
-}
+    /**
+     * Returns the prefix for the keys
+     */
+    public function getPrefix(): string
+    {
+        // Custom implementation
+    }
 
-/**
- * Checks if an element exists in the cache
- */
-public function has(string $key): bool
-{
-    // Custom implementation
-}
+    /**
+     * Checks if an element exists in the cache
+     */
+    public function has(string $key): bool
+    {
+        // Custom implementation
+    }
 
-/**
- * Increments a stored number
- */
-public function increment(string $key, int $value = 1)
-{
-    // Custom implementation
-}
+    /**
+     * Increments a stored number
+     */
+    public function increment(string $key, int $value = 1)
+    {
+        // Custom implementation
+    }
 
-/**
- * Stores data in the adapter
- */
-public function set(string $key, $value, $ttl = null): bool
-{
-    // Custom implementation
-}
+    /**
+     * Stores data in the adapter
+     */
+    public function set(string $key, $value, $ttl = null): bool
+    {
+        // Custom implementation
+    }
 }
 ```
 Using it:
@@ -718,9 +720,9 @@ use Phalcon\Storage\Serializer\Json;
 $jsonSerializer = new Json();
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
-'serializer'        => $jsonSerializer,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
+    'serializer'        => $jsonSerializer,
 ];
 
 $adapter = new Apcu(null, $options);
@@ -736,8 +738,8 @@ $serializerFactory = new SerializerFactory();
 $adapterFactory    = new AdapterFactory($serializerFactory);
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200,
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200,
 ];
 
 $adapter = $adapterFactory->newInstance('apcu', $options);

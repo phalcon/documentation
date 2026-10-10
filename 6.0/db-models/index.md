@@ -53,17 +53,17 @@ $invoice->inv_created_at  = '2019-12-25 01:02:03';
 $result = $invoice->save();
 
 if (false === $result) {
+    
+    echo 'Error saving Invoice: ';
 
-echo 'Error saving Invoice: ';
+    $messages = $invoice->getMessages();
 
-$messages = $invoice->getMessages();
-
-foreach ($messages as $message) {
-    echo $message . PHP_EOL;
-}
+    foreach ($messages as $message) {
+        echo $message . PHP_EOL;
+    }
 } else {
 
-echo 'Record Saved';
+    echo 'Record Saved';
 
 }
 ```
@@ -89,9 +89,9 @@ For information on how to create a model please check the [Creating Models][crea
 
 ```php
 final public function __construct(
-mixed $data = null, 
-DiInterface $container = null,
-ManagerInterface $modelsManager = null
+    mixed $data = null, 
+    DiInterface $container = null,
+    ManagerInterface $modelsManager = null
 )
 ```
 
@@ -105,8 +105,8 @@ Handles method calls when a method is not implemented. Throws [Phalcon\Mvc\Model
 
 ```php
 public static function __callStatic(
-string $method, 
-array $arguments
+    string $method, 
+    array $arguments
 ): mixed
 ```
 
@@ -132,7 +132,7 @@ Magic method to assign values to the model
 
 ```php
 public function addBehavior(
-BehaviorInterface $behavior
+    BehaviorInterface $behavior
 ): void
 ```
 
@@ -148,25 +148,25 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->addBehavior(
-        new Timestampable(
-            [
-                'onCreate' => [
-                    'field'  => 'inv_created_at',
-                    'format' => 'Y-m-d H:i:s',
-                ],
-            ]
-        )
-    );
-}
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    'onCreate' => [
+                        'field'  => 'inv_created_at',
+                        'format' => 'Y-m-d H:i:s',
+                    ],
+                ]
+            )
+        );
+    }
 }
 ```
 
 ```php
 public function appendMessage(
-MessageInterface $message
+    MessageInterface $message
 ): ModelInterface
 ```
 
@@ -182,24 +182,24 @@ use Phalcon\Messages\Message as Message;
 
 class Invoices extends Model
 {
-public function beforeSave()
-{
-    if (0 === $this->inv_status_flag) {
-        $message = new Message(
-            'Sorry, an invoice cannot be unpaid'
-        );
+    public function beforeSave()
+    {
+        if (0 === $this->inv_status_flag) {
+            $message = new Message(
+                'Sorry, an invoice cannot be unpaid'
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
+        }
     }
-}
 }
 ```
 
 ```php
 public function assign(
-mixed $data, 
-array $whiteList = null, 
-array $dataColumnMap = null
+    mixed $data, 
+    array $whiteList = null, 
+    array $dataColumnMap = null
 ): ModelInterface
 ```
 
@@ -211,13 +211,13 @@ Assign values to a model from an array
 <?php
 
 $invoice->assign(
-[
-    'inv_cst_id'      => 1,
-    'inv_status_flag' => 1,
-    'inv_title'       => 'Invoice for ACME Inc.',
-    'inv_total'       => 100,
-    'inv_created_at'  => '2019-12-25 01:02:03',
-]
+    [
+        'inv_cst_id'      => 1,
+        'inv_status_flag' => 1,
+        'inv_title'       => 'Invoice for ACME Inc.',
+        'inv_total'       => 100,
+        'inv_created_at'  => '2019-12-25 01:02:03',
+    ]
 );
 ```
 
@@ -227,14 +227,14 @@ $invoice->assign(
 <?php
 
 $invoice->assign(
-$row,
-null,
-[
-    'inv_cst_id'      => 'customerId',
-    'inv_status_flag' => 'status',
-    'inv_title'       => 'title',
-    'inv_total'       => 'total',
-]
+    $row,
+    null,
+    [
+        'inv_cst_id'      => 'customerId',
+        'inv_status_flag' => 'status',
+        'inv_title'       => 'title',
+        'inv_total'       => 'total',
+    ]
 );
 ```
 
@@ -244,12 +244,12 @@ Update only the `inv_status_flag`, `inv_title`, `inv_total` fields.
 <?php
 
 $invoice->assign(
-$_POST,
-[
-    'inv_status_flag',
-    'inv_title',
-    'inv_total',
-]
+    $_POST,
+    [
+        'inv_status_flag',
+        'inv_title',
+        'inv_total',
+    ]
 );
 ```
 
@@ -263,19 +263,19 @@ ini_set('phalcon.orm.disable_assign_setters', true);
 <?php
 
 $invoice->assign(
-$_POST,
-null,
-[
-    'inv_status_flag',
-    'inv_title',
-    'inv_total',
-]
+    $_POST,
+    null,
+    [
+        'inv_status_flag',
+        'inv_title',
+        'inv_total',
+    ]
 );
 ```
 
 ```php
 public static function average(
-mixed $parameters = null
+    mixed $parameters = null
 ): float
 ```
 
@@ -287,18 +287,18 @@ Returns the average value on a column for a result-set of rows matching the spec
 use MyApp\Models\Invoices;
 
 $average = Invoices::average(
-[
-    'column' => 'inv_total',
-]
+    [
+        'column' => 'inv_total',
+    ]
 );
 
 echo 'AVG: ', $average, PHP_EOL;
 
 $average = Invoices::average(
-[
-    'inv_cst_id = 1',
-    'column' => 'inv_total',
-]
+    [
+        'inv_cst_id = 1',
+        'column' => 'inv_total',
+    ]
 );
 
 echo 'AVG [Customer: 1] ', $average, PHP_EOL;
@@ -306,9 +306,9 @@ echo 'AVG [Customer: 1] ', $average, PHP_EOL;
 
 ```php
 public static function cloneResult(
-ModelInterface $base, 
-array $data, 
-int $dirtyState = 0
+    ModelInterface $base, 
+    array $data, 
+    int $dirtyState = 0
 ): ModelInterface
 ```
 
@@ -320,24 +320,24 @@ Assigns values to a model from an array returning a new model
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::cloneResult(
- new Invoices(),
-[
-    'inv_cst_id'      => 1,
-    'inv_status_flag' => 0,
-    'inv_title'       => 'Invoice for ACME Inc. #2',
-    'inv_total'       => 400,
-    'inv_created_at'  => '2019-12-25 01:02:03',
-]
+     new Invoices(),
+    [
+        'inv_cst_id'      => 1,
+        'inv_status_flag' => 0,
+        'inv_title'       => 'Invoice for ACME Inc. #2',
+        'inv_total'       => 400,
+        'inv_created_at'  => '2019-12-25 01:02:03',
+    ]
  );
 ```
 
 ```php
 public static function cloneResultMap(
-mixed $base, 
-array $data, 
-array $columnMap, 
-int $dirtyState = 0, 
-bool $keepSnapshots = null
+    mixed $base, 
+    array $data, 
+    array $columnMap, 
+    int $dirtyState = 0, 
+    bool $keepSnapshots = null
 ): ModelInterface
 ```
 
@@ -349,22 +349,22 @@ Assign values to a model from an array, returning a new model, using the column 
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::cloneResultMap(
- new Invoices(),
- [
-    'customerId' => 1,
-    'status'     => 0,
-    'title'      => 'Invoice for ACME Inc. #2',
-    'total'      => 400,
-    'created'    => '2019-12-25 01:02:03',
- ]
+     new Invoices(),
+     [
+        'customerId' => 1,
+        'status'     => 0,
+        'title'      => 'Invoice for ACME Inc. #2',
+        'total'      => 400,
+        'created'    => '2019-12-25 01:02:03',
+     ]
 );
 ```
 
 ```php
 public static function cloneResultMapHydrate(
-array $data, 
-array $columnMap, 
-int $hydrationMode
+    array $data, 
+    array $columnMap, 
+    int $hydrationMode
 ): mixed
 ```
 
@@ -372,7 +372,7 @@ Returns a hydrated result based on the data and the column map
 
 ```php
 public static function count(
-mixed $parameters = null
+    mixed $parameters = null
 ): int
 ```
 
@@ -388,7 +388,7 @@ $average = Invoices::count();
 echo 'COUNT: ', $average, PHP_EOL;
 
 $average = Invoices::count(
-'inv_cst_id = 1'
+    'inv_cst_id = 1'
 );
 
 echo 'COUNT [Customer: 1] ', $average, PHP_EOL;
@@ -407,13 +407,13 @@ use MyApp\Models\Invoices;
 
 $invoice = new Invoices();
 $invoice->assign(
-[
-    'inv_cst_id'      => 1,
-    'inv_status_flag' => 1,
-    'inv_title'       => 'Invoice for ACME Inc.',
-    'inv_total'       => 100,
-    'inv_created_at'  => '2019-12-25 01:02:03',
-]
+    [
+        'inv_cst_id'      => 1,
+        'inv_status_flag' => 1,
+        'inv_title'       => 'Invoice for ACME Inc.',
+        'inv_total'       => 100,
+        'inv_created_at'  => '2019-12-25 01:02:03',
+    ]
 );
 
 $result = $invoice->create();
@@ -434,16 +434,16 @@ $invoice = Invoices::findFirst('inv_id = 4');
 $result  = $invoice->delete();
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 1,
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 1,
+        ]
     ]
-]
 );
 
 foreach ($invoices as $invoice) {
-$invoice->delete();
+    $invoice->delete();
 }
 ```
 
@@ -461,13 +461,13 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst('inv_id = 4');
 
 var_dump(
-$invoice->dump()
+    $invoice->dump()
 );
 ```
 
 ```php
 public static function find(
-mixed $parameters = null
+    mixed $parameters = null
 ): ResultsetInterface
 ```
 
@@ -483,7 +483,7 @@ $invoice = Invoices::find();
 
 ```php
 public static function findFirst(
-mixed $parameters = null
+    mixed $parameters = null
 ): ModelInterface | null
 ```
 
@@ -527,7 +527,7 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst();
 
 print_r(
-$invoice->getChangedFields()
+    $invoice->getChangedFields()
 ); 
 // []
 
@@ -536,7 +536,7 @@ $invoice->inv_total = 120;;
 $invoice->getChangedFields();
 
 print_r(
-$invoice->getChangedFields()
+    $invoice->getChangedFields()
 );
 // ['inv_total']
 ```
@@ -549,7 +549,7 @@ Returns one of the `DIRTY_STATE_*` constants telling if the record exists in the
 
 ```php
 public function getMessages(
-mixed $filter = null
+    mixed $filter = null
 ): MessageInterface[]
 ```
 
@@ -571,17 +571,17 @@ $invoice->inv_created_at  = '2019-12-25 01:02:03';
 $result = $invoice->save();
 
 if (false === $result) {
+    
+    echo 'Error saving Invoice: ';
 
-echo 'Error saving Invoice: ';
+    $messages = $invoice->getMessages();
 
-$messages = $invoice->getMessages();
-
-foreach ($messages as $message) {
-    echo $message . PHP_EOL;
-}
+    foreach ($messages as $message) {
+        echo $message . PHP_EOL;
+    }
 } else {
 
-echo 'Record Saved';
+    echo 'Record Saved';
 
 }
 ```
@@ -628,8 +628,8 @@ Returns the DependencyInjection connection service name used to read data relate
 
 ```php
 public function getRelated(
-string $alias, 
-mixed $arguments = null
+    string $alias, 
+    mixed $arguments = null
 ): Phalcon\Mvc\Model\Resultset\Simple | null
 ```
 
@@ -650,7 +650,7 @@ $invoices = $customer->getRelated('invoices');
 
 ```php
 public function isRelationshipLoaded(
-string $relationshipAlias
+    string $relationshipAlias
 ): bool
 ```
 
@@ -700,7 +700,7 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst();
 
 print_r(
-$invoice->getChangedFields()
+    $invoice->getChangedFields()
 ); 
 // []
 
@@ -709,19 +709,19 @@ $invoice->inv_total = 120;;
 $invoice->getChangedFields();
 
 print_r(
-$invoice->getChangedFields()
+    $invoice->getChangedFields()
 );
 // ['inv_total']
 
 $invoice->save();
 
 print_r(
-$invoice->getChangedFields()
+    $invoice->getChangedFields()
 );
 // []
 
 print_r(
-$invoice->getUpdatedFields()
+    $invoice->getUpdatedFields()
 );
 // ['inv_total']
 ```
@@ -740,8 +740,8 @@ Returns the DependencyInjection connection service name used to write data relat
 
 ```php
 public function hasChanged(
-string | array $fieldName = null, 
-bool $allFields = false
+    string | array $fieldName = null, 
+    bool $allFields = false
 ): bool
 ```
 
@@ -767,17 +767,17 @@ $invoice->inv_total = 120;
 $hasChanged = $invoice->hasChanged('inv_title');
 // false
 $hasChanged = $invoice->hasChanged(
-[
-    'inv_total',
-]
+    [
+        'inv_total',
+    ]
 );
 // true
 $hasChanged = $invoice->hasChanged(
-[
-    'inv_title', 
-    'inv_total'
-], 
-true
+    [
+        'inv_title', 
+        'inv_total'
+    ], 
+    true
 );
 // false
 ```
@@ -790,8 +790,8 @@ Check if the object has internal snapshot data
 
 ```php
 public function hasUpdated(
-string | array $fieldName = null, 
-bool $allFields = false
+    string | array $fieldName = null, 
+    bool $allFields = false
 ): bool
 ```
 
@@ -809,7 +809,7 @@ echo json_encode($invoice);
 
 ```php
 public static function maximum(
-mixed $parameters = null
+    mixed $parameters = null
 ): mixed
 ```
 
@@ -821,18 +821,18 @@ Returns the maximum value of a column for a result-set of rows that match the sp
 use MyApp\Models\Invoices;
 
 $id = Invoices::maximum(
-[
-    'column' => 'inv_id',
-]
+    [
+        'column' => 'inv_id',
+    ]
 );
 
 echo 'MAX: ', $id, PHP_EOL;
 
 $max = Invoices::maximum(
-[
-    'inv_cst_id = 1',
-    'column' => 'inv_total',
-]
+    [
+        'inv_cst_id = 1',
+        'column' => 'inv_total',
+    ]
 );
 
 echo 'MAX [Customer: 1] ', $max, PHP_EOL;
@@ -840,7 +840,7 @@ echo 'MAX [Customer: 1] ', $max, PHP_EOL;
 
 ```php
 public static function minimum(
-mixed parameters = null
+    mixed parameters = null
 ): mixed 
 ```
 
@@ -852,18 +852,18 @@ Returns the minimum value of a column for a result-set of rows that match the sp
 use MyApp\Models\Invoices;
 
 $id = Invoices::minimum(
-[
-    'column' => 'inv_id',
-]
+    [
+        'column' => 'inv_id',
+    ]
 );
 
 echo 'MIN: ', $id, PHP_EOL;
 
 $max = Invoices::minimum(
-[
-    'inv_cst_id = 1',
-    'column' => 'inv_total',
-]
+    [
+        'inv_cst_id = 1',
+        'column' => 'inv_total',
+    ]
 );
 
 echo 'MIN [Customer: 1] ', $max, PHP_EOL;
@@ -871,7 +871,7 @@ echo 'MIN [Customer: 1] ', $max, PHP_EOL;
 
 ```php
 public static function query(
-DiInterface $container = null
+    DiInterface $container = null
 ): CriteriaInterface
 ```
 
@@ -879,7 +879,7 @@ Create criteria for a specific model
 
 ```php
 public function readAttribute(
-string $attribute
+    string $attribute
 ): mixed | null
 ```
 
@@ -941,7 +941,7 @@ Unserializes the object from a serialized string
 
 ```php
 final public function setConnectionService(
-string $connectionService
+    string $connectionService
 ): void
 ```
 
@@ -949,7 +949,7 @@ Sets the DependencyInjection connection service name
 
 ```php
 public function setDirtyState(
-int $dirtyState
+    int $dirtyState
 ): ModelInterface | bool
 ```
 
@@ -957,7 +957,7 @@ Sets the dirty state of the object using one of the `DIRTY_STATE_*` constants
 
 ```php
 public function setEventsManager(
-EventsManagerInterface $eventsManager
+    EventsManagerInterface $eventsManager
 )
 ```
 
@@ -965,7 +965,7 @@ Sets a custom events manager
 
 ```php
 final public function setReadConnectionService(
-string $connectionService
+    string $connectionService
 ): void
 ```
 
@@ -973,8 +973,8 @@ Sets the DependencyInjection connection service name used to read data
 
 ```php
 public function setOldSnapshotData(
-array $data, 
-array $columnMap = null
+    array $data, 
+    array $columnMap = null
 )
 ```
 
@@ -982,8 +982,8 @@ Sets the record's old snapshot data. This method is used internally to set old s
 
 ```php
 public function setRelated(
-string $alias, 
-mixed $records
+    string $alias, 
+    mixed $records
 ): ModelInterface
 ```
 
@@ -991,8 +991,8 @@ Stores related records in the relation cache, so that a subsequent `getRelated()
 
 ```php
 public function setSnapshotData(
-array $data, 
-array $columnMap = null
+    array $data, 
+    array $columnMap = null
 ): void
 ```
 
@@ -1000,7 +1000,7 @@ Sets the record's snapshot data. This method is used internally to set snapshot 
 
 ```php
 public function setTransaction(
-TransactionInterface $transaction
+    TransactionInterface $transaction
 ): ModelInterface
 ```
 
@@ -1015,40 +1015,40 @@ use Phalcon\Mvc\Model\Transaction\Manager;
 use Phalcon\Mvc\Model\Transaction\Failed;
 
 try {
-$txManager   = new Manager();
-$transaction = $txManager->get();
+    $txManager   = new Manager();
+    $transaction = $txManager->get();
+    
+    $customer = new Customers();
+    $customer->setTransaction($transaction);
+    $customer->cst_name_last  = 'Vader';
+    $customer->cst_name_first = 'Darth';
 
-$customer = new Customers();
-$customer->setTransaction($transaction);
-$customer->cst_name_last  = 'Vader';
-$customer->cst_name_first = 'Darth';
+    if (false === $customer->save()) {
+        $transaction->rollback('Cannot save Customer');
+    }
 
-if (false === $customer->save()) {
-    $transaction->rollback('Cannot save Customer');
-}
+    $invoice = new Invoices();
+    $invoice->setTransaction($transaction);
 
-$invoice = new Invoices();
-$invoice->setTransaction($transaction);
+    $invoice->inv_cst_id      = $customer->cst_id;
+    $invoice->inv_status_flag = 1;
+    $invoice->inv_title       = 'Invoice for ACME Inc.';
+    $invoice->inv_total       = 100;
+    $invoice->inv_created_at  = '2019-12-25 01:02:03';
 
-$invoice->inv_cst_id      = $customer->cst_id;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
+    if (false === $invoice->save()) {
+        $transaction->rollback('Cannot save record');
+    }
 
-if (false === $invoice->save()) {
-    $transaction->rollback('Cannot save record');
-}
-
-$transaction->commit();
+    $transaction->commit();
 } catch (Failed $ex) {
-echo 'ERROR: ', $ex->getMessage();
+    echo 'ERROR: ', $ex->getMessage();
 }
 ```
 
 ```php
 public static function setup(
-array $options
+    array $options
 ): void
 ```
 
@@ -1056,7 +1056,7 @@ Enables/disables options in the ORM such as events, column renaming, etc.
 
 ```php
 final public function setWriteConnectionService(
-string $connectionService
+    string $connectionService
 ): void
 ```
 
@@ -1070,7 +1070,7 @@ Skips the current operation forcing a success state
 
 ```php
 public static function sum(
-array $parameters = null
+    array $parameters = null
 ): float
 ```
 
@@ -1082,18 +1082,18 @@ Calculates the sum on a column for a result-set of rows that match the specified
 use MyApp\Models\Invoices;
 
 $total = Invoices::sum(
-[
-    'column' => 'inv_total',
-]
+    [
+        'column' => 'inv_total',
+    ]
 );
 
 echo 'SUM: ', $total, PHP_EOL;
 
 $total = Invoices::sum(
-[
-    'inv_cst_id = 1',
-    'column' => 'inv_total',
-]
+    [
+        'inv_cst_id = 1',
+        'column' => 'inv_total',
+    ]
 );
 
 echo 'SUM [Customer: 1] ', $total, PHP_EOL;
@@ -1101,8 +1101,8 @@ echo 'SUM [Customer: 1] ', $total, PHP_EOL;
 
 ```php
 public function toArray(
-array $columns = null,
-bool $useGetters = true
+    array $columns = null,
+    bool $useGetters = true
 ): array
 ```
 
@@ -1116,7 +1116,7 @@ use MyApp\Models\Invoices;
 $invoice = Invoices::findFirst('inv_id = 4');
 
 print_r(
-$invoice->toArray()
+    $invoice->toArray()
 );
 
 //  [
@@ -1129,13 +1129,13 @@ $invoice->toArray()
 //  ]
 
 print_r(
-$invoice->toArray(
-    [
-        'inv_status_flag',
-        'inv_title',
-        'inv_total',
-    ]
-)
+    $invoice->toArray(
+        [
+            'inv_status_flag',
+            'inv_title',
+            'inv_total',
+        ]
+    )
 );
 
 //  [
@@ -1156,19 +1156,20 @@ use MyApp\Models\InvoicesGetters;
 $invoice = InvoicesGetters::findFirst('inv_id = 4');
 
 print_r(
-$invoice->inv_title
+    $invoice->inv_title
 );
 
 // 'Invoice for ACME Inc.'
 
+
 print_r(
-$invoice->getInvTitle()
+    $invoice->getInvTitle()
 );
 
 // 'Invoice for ACME Inc. - Status 1'
 
 print_r(
-$invoice->toArray()
+    $invoice->toArray()
 );
 
 //  [
@@ -1181,11 +1182,12 @@ $invoice->toArray()
 //  ]
 
 print_r(
-$invoice->toArray(
-    null,
-    false
-)
+    $invoice->toArray(
+        null,
+        false
+    )
 );
+
 
 //  [
 //      'inv_id'          => 4,
@@ -1221,8 +1223,8 @@ When retrieving the record with `findFirst()`, you need to get the full object b
 
 ```php
 public function writeAttribute(
-string $attribute, 
-mixed $value
+    string $attribute, 
+    mixed $value
 ): void
 ```
 
@@ -1234,7 +1236,7 @@ $invoice->writeAttribute('inv_total', 120);
 
 ```php
 protected function allowEmptyStringValues(
-array $attributes
+    array $attributes
 ): void
 ```
 
@@ -1247,23 +1249,23 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->allowEmptyStringValues(
-        [
-            'inv_created_at',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->allowEmptyStringValues(
+            [
+                'inv_created_at',
+            ]
+        );
+    }
 }
 ```
 
 ```php
 protected function belongsTo(
-string | array $fields, 
-string $referenceModel, 
-string | array $referencedFields, 
-array options = null
+    string | array $fields, 
+    string $referenceModel, 
+    string | array $referencedFields, 
+    array options = null
 ): Relation
 ```
 
@@ -1278,23 +1280,23 @@ use Phalcon\Mvc\Model;
 
 class InvoicesXProducts extends Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        'ixp_inv_id',
-        Invoices::class,
-        'inv_id'
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id'
+        );
+    }
 }
 ```
 
 ```php
 protected function hasMany(
-string | array $fields, 
-string $referenceModel, 
-string | array $referencedFields, 
-array options = null
+    string | array $fields, 
+    string $referenceModel, 
+    string | array $referencedFields, 
+    array options = null
 ): Relation
 ```
 
@@ -1309,26 +1311,26 @@ use Phalcon\Mvc\Model;
 
 class Customers extends Model
 {
-public function initialize()
-{
-    $this->hasMany(
-        'cst_id',
-        Invoices::class,
-        'inv_cst_id'
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            'cst_id',
+            Invoices::class,
+            'inv_cst_id'
+        );
+    }
 }
 ```
 
 ```php
 protected function hasManyToMany(
-string | array $fields,
-string $intermediateModel, 
-string | array $intermediateFields,
-string | array $intermediateReferencedFields,
-string $referenceModel, 
-string | array $referencedFields,
-array $options = null
+    string | array $fields,
+    string $intermediateModel, 
+    string | array $intermediateFields,
+    string | array $intermediateReferencedFields,
+    string $referenceModel, 
+    string | array $referencedFields,
+    array $options = null
 ): Relation
 ```
 
@@ -1343,26 +1345,26 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesXProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id'
-    );
-}
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesXProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id'
+        );
+    }
 }
 ```
 
 ```php
 protected function hasOne(
-string | array $fields, 
-string $referenceModel, 
-string | array $referencedFields, 
-array options = null
+    string | array $fields, 
+    string $referenceModel, 
+    string | array $referencedFields, 
+    array options = null
 ): Relation
 ```
 
@@ -1377,20 +1379,20 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->hasOne(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id'
-    );
-}
+    public function initialize()
+    {
+        $this->hasOne(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id'
+        );
+    }
 }
 ```
 
 ```php
 protected function keepSnapshots(
-bool $keepSnapshot
+    bool $keepSnapshot
 ): void
 ```
 
@@ -1405,16 +1407,16 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->keepSnapshots(true);
-}
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 ```
 
 ```php
 final protected function setSchema(
-string $schema
+    string $schema
 ): ModelInterface
 ```
 
@@ -1422,7 +1424,7 @@ Sets schema name where the mapped table is located
 
 ```php
 final protected function setSource(
-string $source
+    string $source
 ): ModelInterface
 ```
 
@@ -1443,20 +1445,20 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->skipAttributes(
-        [
-            'inv_created_at',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributes(
+            [
+                'inv_created_at',
+            ]
+        );
+    }
 }
 ```
 
 ```php
 protected function skipAttributesOnCreate(
-array $attributes
+    array $attributes
 ): void
 ```
 
@@ -1471,20 +1473,20 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->skipAttributesOnCreate(
-        [
-            'inv_created_at',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributesOnCreate(
+            [
+                'inv_created_at',
+            ]
+        );
+    }
 }
 ```
 
 ```php
 protected function skipAttributesOnUpdate(
-array $attributes
+    array $attributes
 ): void
 ```
 
@@ -1499,20 +1501,20 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->skipAttributesOnUpdate(
-        [
-            'inv_modified_at',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributesOnUpdate(
+            [
+                'inv_modified_at',
+            ]
+        );
+    }
 }
 ```
 
 ```php
 protected function useDynamicUpdate(
-bool dynamicUpdate
+    bool dynamicUpdate
 ): void
 ```
 
@@ -1527,16 +1529,16 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->useDynamicUpdate(true);
-}
+    public function initialize()
+    {
+        $this->useDynamicUpdate(true);
+    }
 }
 ```
 
 ```php
 protected function validate(
-ValidationInterface $validator
+    ValidationInterface $validator
 ): bool
 ```
 
@@ -1553,24 +1555,24 @@ use Phalcon\Validation\Validator\ExclusionIn;
 
 class Invoices extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'inv_status_flag',
-        new ExclusionIn(
-            [
-                'domain' => [
-                    0,
-                    1,
-                ],
-            ]
-        )
-    );
+        $validator->add(
+            'inv_status_flag',
+            new ExclusionIn(
+                [
+                    'domain' => [
+                        0,
+                        1,
+                    ],
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -1608,10 +1610,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->setSource('co_invoices');
-}
+    public function initialize()
+    {
+        $this->setSource('co_invoices');
+    }
 }
 ```
 
@@ -1628,10 +1630,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function onConstruct()
-{
-    // ...
-}
+    public function onConstruct()
+    {
+        // ...
+    }
 }
 ```
 
@@ -1654,12 +1656,12 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 }
 ```
 
@@ -1679,83 +1681,83 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-protected $inv_id;
-protected $inv_cst_id;
-protected $inv_status_flag;
-protected $inv_title;
-protected $inv_total;
-protected $inv_created_at;
+    protected $inv_id;
+    protected $inv_cst_id;
+    protected $inv_status_flag;
+    protected $inv_title;
+    protected $inv_total;
+    protected $inv_created_at;
 
-public function getId(): int
-{
-    return (int) $this->inv_id;
-}
-
-public function getCustomerId(): int
-{
-    return (int) $this->inv_cst_id;
-}
-
-public function getStatus(): int
-{
-    return (int) $this->inv_status_flag;
-}
-
-public function getTitle(): string
-{
-    return (string) $this->inv_title;
-}
-
-public function getTotal(): float
-{
-    return (float) $this->inv_total;
-}
-
-public function getCreatedAt(): string
-{
-    return (string) $this->inv_created_at;
-}
-
-public function setCustomerId(int $customerId): Invoices
-{
-    $this->inv_cst_id = $customerId;
-
-    return $this;
-}
-
-public function setStatus(int $status): Invoices
-{
-    $this->inv_status_flag = $status;
-
-    return $this;
-}
-
-public function setTitle(string $title): Invoices
-{
-    $this->inv_title = $title;
-
-    return $this;
-}
-
-public function setTotal(float $total): Invoices
-{
-    if ($total < 0) {
-        throw new InvalidArgumentException(
-            'Incorrect total'
-        );
+    public function getId(): int
+    {
+        return (int) $this->inv_id;
     }
 
-    $this->inv_total = $total;
+    public function getCustomerId(): int
+    {
+        return (int) $this->inv_cst_id;
+    }
+    
+    public function getStatus(): int
+    {
+        return (int) $this->inv_status_flag;
+    }
+    
+    public function getTitle(): string
+    {
+        return (string) $this->inv_title;
+    }
+    
+    public function getTotal(): float
+    {
+        return (float) $this->inv_total;
+    }
+    
+    public function getCreatedAt(): string
+    {
+        return (string) $this->inv_created_at;
+    }
 
-    return $this;
-}
+    public function setCustomerId(int $customerId): Invoices
+    {
+        $this->inv_cst_id = $customerId;
+        
+        return $this;
+    }
+    
+    public function setStatus(int $status): Invoices
+    {
+        $this->inv_status_flag = $status;
+        
+        return $this;
+    }
+    
+    public function setTitle(string $title): Invoices
+    {
+        $this->inv_title = $title;
+        
+        return $this;
+    }
+    
+    public function setTotal(float $total): Invoices
+    {
+        if ($total < 0) {
+            throw new InvalidArgumentException(
+                'Incorrect total'
+            );
+        }
 
-public function setCreatedAt(string $date): Invoices
-{
-    $this->inv_created_at = $date;
-
-    return $this;
-}
+        $this->inv_total = $total;
+        
+        return $this;
+    }
+    
+    public function setCreatedAt(string $date): Invoices
+    {
+        $this->inv_created_at = $date;
+    
+        return $this;
+    }
 }
 ```
 
@@ -1804,12 +1806,12 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_title;
+    public $inv_title;
 
-public function setInvTitle(?string $title): void
-{
-    $this->inv_title = strtoupper((string) $title);
-}
+    public function setInvTitle(?string $title): void
+    {
+        $this->inv_title = strtoupper((string) $title);
+    }
 }
 ```
 
@@ -1903,9 +1905,9 @@ The most flexible syntax is to pass an array with different parameters:
 use MyApp\Models\Customers;
 
 $invoice = Invoices::findFirst(
-[
-    'inv_id = 3',
-]
+    [
+        'inv_id = 3',
+    ]
 );
 ```
 
@@ -1953,16 +1955,16 @@ If the primary key of the table is not numeric, use condition. See examples belo
 ```php
 $uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
 $invoice = Invoices::findFirst([
-'uuid = ?0',
-'bind' => [$uuid],
+    'uuid = ?0',
+    'bind' => [$uuid],
 ]);
 
 // OR
 
 $uuid = '5741bfd7-6870-40b7-adf6-cbacb515b9a9';
 $invoice = Invoices::findFirst([
-'uuid = :primary:',
-'bind' => ['primary' => $uuid],
+    'uuid = :primary:',
+    'bind' => ['primary' => $uuid],
 ]);
 ```
 
@@ -1972,6 +1974,7 @@ If you do not use bound parameters in your conditions, PHQL will create a new pl
 
 ```php
 <?php
+
 
 use MyApp\Models\Invoices;
 
@@ -1992,10 +1995,10 @@ Both `find()` and `findFirst()` methods accept an associative array specifying t
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'inv_cst_id = 3',
-    'order' => 'inv_total desc'
-]
+    [
+        'inv_cst_id = 3',
+        'order' => 'inv_total desc'
+    ]
 );
 ```
 
@@ -2007,13 +2010,13 @@ You can (and should) use the `conditions` and `bind` array elements which bind p
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'order'      => 'inv_total desc',
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'order'      => 'inv_total desc',
+    ]
 );
 ```
 
@@ -2029,12 +2032,12 @@ Bind is used together with `conditions`, by replacing placeholders and escaping 
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :inv_id:',
-    'bind'       => [
-        'inv_id' => 3,
-    ],
-]
+    [
+        'conditions' => 'inv_id = :inv_id:',
+        'bind'       => [
+            'inv_id' => 3,
+        ],
+    ]
 );
 ```
 
@@ -2049,15 +2052,15 @@ use MyApp\Models\Invoices;
 use Phalcon\Mvc\Model\Column;
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :inv_id:',
-    'bind'       => [
-        'inv_id' => 3,
-    ],
-    'bindTypes'  => [
-        Column::BIND_PARAM_INT,
-    ],
-]
+    [
+        'conditions' => 'inv_id = :inv_id:',
+        'bind'       => [
+            'inv_id' => 3,
+        ],
+        'bindTypes'  => [
+            Column::BIND_PARAM_INT,
+        ],
+    ]
 );
 ```
 
@@ -2071,17 +2074,17 @@ Cache the resultset, reducing the continuous access to the relational system.
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'cache'      => [
-        'key'      => 'customer.3',
-        'lifetime' => 84600,
-    ],
-    'order'      => 'inv_total desc',
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'cache'      => [
+            'key'      => 'customer.3',
+            'lifetime' => 84600,
+        ],
+        'order'      => 'inv_total desc',
+    ]
 );
 ```
 
@@ -2099,16 +2102,16 @@ When using this option an incomplete object is returned, and therefore you canno
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'columns'    => [
-        'inv_id',
-        'total' => 'inv_total'
-    ],
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-]
+    [
+        'columns'    => [
+            'inv_id',
+            'total' => 'inv_total'
+        ],
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+    ]
 );
 ```
 
@@ -2124,12 +2127,12 @@ Search conditions for the find operation. Is used to extract only those records 
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+    ]
 );
 ```
 
@@ -2143,17 +2146,17 @@ Pre-loads the named relations, so that accessing them on the returned records is
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_total > :total:',
-    'bind'       => [
-        'total' => 100,
-    ],
-    'eager'      => ['customer'],
-]
+    [
+        'conditions' => 'inv_total > :total:',
+        'bind'       => [
+            'total' => 100,
+        ],
+        'eager'      => ['customer'],
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->customer->cst_name_last;
+    echo $invoice->customer->cst_name_last;
 }
 ```
 
@@ -2167,13 +2170,13 @@ With this option, [Phalcon\Mvc\Model][mvc-model] reads the latest available data
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'for_update' => true,
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'for_update' => true,
+    ]
 );
 ```
 
@@ -2187,13 +2190,13 @@ Allows to collect data across multiple records and group the results by one or m
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'group'      => 'inv_status_flag',
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'group'      => 'inv_status_flag',
+    ]
 );
 ```
 
@@ -2208,13 +2211,13 @@ use MyApp\Models\Invoices;
 use Phalcon\Mvc\Model\Resultset;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'hydration' => Resultset::HYDRATE_OBJECTS,
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'hydration' => Resultset::HYDRATE_OBJECTS,
+    ]
 );
 ```
 
@@ -2228,13 +2231,13 @@ Limit the results of the query to results to certain range
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'limit'      => 10,
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'limit'      => 10,
+    ]
 );
 ```
 
@@ -2248,14 +2251,14 @@ Offset the results of the query by a certain amount
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'limit'      => 10,
-    'offset'     => 100,
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'limit'      => 10,
+        'offset'     => 100,
+    ]
 );
 ```
 
@@ -2269,13 +2272,13 @@ Is used to sort the resultset. Use one or more fields separated by commas.
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 3,
-    ],
-    'order'      => 'inv_status_flag, inv_total desc',
-]
+    [
+        'conditions' => 'inv_cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 3,
+        ],
+        'order'      => 'inv_status_flag, inv_total desc',
+    ]
 );
 ```
 
@@ -2289,13 +2292,13 @@ With this option, [Phalcon\Mvc\Model][mvc-model] reads the latest available data
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_cst_id = :cst_id:',
-    'bind'        => [
-        'cst_id' => 3,
-    ],
-    'shared_lock' => true,
-]
+    [
+        'conditions'  => 'inv_cst_id = :cst_id:',
+        'bind'        => [
+            'cst_id' => 3,
+        ],
+        'shared_lock' => true,
+    ]
 );
 ```
 
@@ -2309,16 +2312,16 @@ If you prefer, there is also available a way to create queries in an object-orie
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::query()
-->where('inv_cst_id = :cst_id:')
-->andWhere('inv_total > :total:')
-->bind(
-    [
-        'cst_id' => 3,
-        'total'  => 1000,
-    ]
-)
-->orderBy('inv_status_flag, inv_total desc')
-->execute()
+    ->where('inv_cst_id = :cst_id:')
+    ->andWhere('inv_total > :total:')
+    ->bind(
+        [
+            'cst_id' => 3,
+            'total'  => 1000,
+        ]
+    )
+    ->orderBy('inv_status_flag, inv_total desc')
+    ->execute()
 ;
 ```
 
@@ -2341,11 +2344,11 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_cst_id;
-public $inv_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_created_at;
+    public $inv_cst_id;
+    public $inv_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_created_at;
 }
 ```
 
@@ -2357,12 +2360,12 @@ We have the properties `inv_cst_id`, `inv_id`, `inv_status_flag`, `inv_title`, `
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_total = :total:',
-    'bind'        => [
-        'total' => 100,
-    ],
-]
+    [
+        'conditions'  => 'inv_total = :total:',
+        'bind'        => [
+            'total' => 100,
+        ],
+    ]
 );
 ```
 
@@ -2388,10 +2391,10 @@ You can also pass parameters in an array as the second parameter. These paramete
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::findByInvTotal(
-100,
-[
-    'order' => `inv_cst_id, inv_created_at`
-]
+    100,
+    [
+        'order' => `inv_cst_id, inv_created_at`
+    ]
 );
 ```
 
@@ -2414,10 +2417,10 @@ use Phalcon\Mvc\Model;
 
 class Guestbook extends Model
 {
-public $id;
-public $email;
-public $name;
-public $text;
+    public $id;
+    public $email;
+    public $name;
+    public $text;
 }
 ```
 
@@ -2429,12 +2432,12 @@ We have the properties `id`, `email`, `name`, and `text`. If we want to find the
 use MyApp\Models\Guestbook;
 
 $guest = Guestbook::findFirst(
-[
-    'conditions'  => 'name = :name:',
-    'bind'        => [
-        'name' => 'Darth Vader',
-    ],
-]
+    [
+        'conditions'  => 'name = :name:',
+        'bind'        => [
+            'name' => 'Darth Vader',
+        ],
+    ]
 );
 ```
 
@@ -2470,17 +2473,17 @@ $invoices = Invoices::find();
 
 // foreach
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title, PHP_EOL;
+    echo $invoice->inv_title, PHP_EOL;
 }
 
 // while
 $invoices->rewind();
 while ($invoices->valid()) {
-$invoice = $invoices->current();
+    $invoice = $invoices->current();
 
-echo $invoice->inv_title, PHP_EOL;
+    echo $invoice->inv_title, PHP_EOL;
 
-$invoices->next();
+    $invoices->next();
 }
 
 // count
@@ -2546,16 +2549,16 @@ use MyApp\Models\Invoices;
 $invoices = Invoices::find();
 
 file_put_contents(
-'invoices.cache',
-serialize($invoices)
+    'invoices.cache',
+    serialize($invoices)
 );
 
 $invoices = unserialize(
-file_get_contents('invoices.cache')
+    file_get_contents('invoices.cache')
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title;
+    echo $invoice->inv_title;
 }
 ```
 
@@ -2576,9 +2579,9 @@ use \Phalcon\Mvc\Model\Resultset\Simple;
 
 class Custom extends Simple
 {
-public function calculate() {
-    // ....
-}
+    public function calculate() {
+        // ....
+    }
 }
 ```
 
@@ -2594,15 +2597,15 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->setSource('co_invoices');
-}
-
-public function getResultsetClass()
-{
-    return Custom::class;
-}
+    public function initialize()
+    {
+        $this->setSource('co_invoices');
+    }
+    
+    public function getResultsetClass()
+    {
+        return Custom::class;
+    }
 }
 ```
 
@@ -2614,12 +2617,12 @@ and finally, in your code, you will have something like this:
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_cst_id = :cst_id:',
-    'bind'        => [
-        'cst_id' => 3,
-    ],
-]
+    [
+        'conditions'  => 'inv_cst_id = :cst_id:',
+        'bind'        => [
+            'cst_id' => 3,
+        ],
+    ]
 );
 
 $calculated = $invoices->calculate();
@@ -2642,10 +2645,10 @@ use Phalcon\Mvc\Model\Row;
 
 class InvoiceRow extends Row
 {
-public function getFormattedTotal(): string
-{
-    return number_format((float) $this->readAttribute('inv_total'), 2);
-}
+    public function getFormattedTotal(): string
+    {
+        return number_format((float) $this->readAttribute('inv_total'), 2);
+    }
 }
 ```
 
@@ -2665,7 +2668,7 @@ $query->setResultsetRowClass(InvoiceRow::class);
 $rows = $query->execute();
 
 foreach ($rows as $row) {
-echo $row->getFormattedTotal();
+    echo $row->getFormattedTotal();
 }
 ```
 
@@ -2681,13 +2684,13 @@ use MyApp\Models\Invoices;
 $builder = $this->modelsManager->createBuilder();
 
 $builder
-->columns([Customers::class . '.*', Invoices::class . '.*'])
-->from(Customers::class)
-->join(
-    Invoices::class,
-    Invoices::class . '.inv_cst_id = ' . Customers::class . '.cst_id'
-)
-->setResultsetRowClass(InvoiceRow::class)
+    ->columns([Customers::class . '.*', Invoices::class . '.*'])
+    ->from(Customers::class)
+    ->join(
+        Invoices::class,
+        Invoices::class . '.inv_cst_id = ' . Customers::class . '.cst_id'
+    )
+    ->setResultsetRowClass(InvoiceRow::class)
 ;
 
 $rows = $builder->getQuery()->execute();
@@ -2709,23 +2712,23 @@ use Phalcon\Paginator\Adapter\QueryBuilder;
 $builder = $this->modelsManager->createBuilder();
 
 $builder
-->columns('inv_id, inv_total')
-->from(Invoices::class)
-->setResultsetRowClass(InvoiceRow::class)
+    ->columns('inv_id, inv_total')
+    ->from(Invoices::class)
+    ->setResultsetRowClass(InvoiceRow::class)
 ;
 
 $paginator = new QueryBuilder(
-[
-    'builder' => $builder,
-    'limit'   => 20,
-    'page'    => 1,
-]
+    [
+        'builder' => $builder,
+        'limit'   => 20,
+        'page'    => 1,
+    ]
 );
 
 $page = $paginator->paginate();
 
 foreach ($page->getItems() as $row) {
-echo $row->getFormattedTotal();
+    echo $row->getFormattedTotal();
 }
 ```
 
@@ -2739,11 +2742,11 @@ The most efficient way to filter data is by setting some search criteria, databa
 $invoices = Invoices::find();
 
 $invoices = $invoices->filter(
-function ($invoice) {
-    if (1 === $invoice->inv_status_flag) {
-        return $invoice;
+    function ($invoice) {
+        if (1 === $invoice->inv_status_flag) {
+            return $invoice;
+        }
     }
-}
 );
 ```
 
@@ -2765,36 +2768,36 @@ Some examples:
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_title LIKE :title: AND ' .
-                     'inv_total > :total:',
-    'bind'        => [
-        'title' => '%ACME%',
-        'total' => 1000,
-    ],
-]
+    [
+        'conditions'  => 'inv_title LIKE :title: AND ' .
+                         'inv_total > :total:',
+        'bind'        => [
+            'title' => '%ACME%',
+            'total' => 1000,
+        ],
+    ]
 );
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_title LIKE ?0 = ?0 AND ' .
-                     'inv_total > ?1',
-    'bind'        => [
-        0 => '%ACME%',
-        1 => 1000,
-    ],
-]
+    [
+        'conditions'  => 'inv_title LIKE ?0 = ?0 AND ' .
+                         'inv_total > ?1',
+        'bind'        => [
+            0 => '%ACME%',
+            1 => 1000,
+        ],
+    ]
 );
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_title = ?0 AND ' .
-                     'inv_total > :total:',
-    'bind'        => [
-        0       => '%ACME%',
-        'total' => 1000,
-    ],
-]
+    [
+        'conditions'  => 'inv_title = ?0 AND ' .
+                         'inv_total > :total:',
+        'bind'        => [
+            0       => '%ACME%',
+            'total' => 1000,
+        ],
+    ]
 );
 ```
 
@@ -2809,22 +2812,22 @@ use MyApp\Models\Invoices;
 use Phalcon\Db\Column;
 
 $parameters = [
-'title' => '%ACME%',
-'total' => 1000,
+    'title' => '%ACME%',
+    'total' => 1000,
 ];
 
 $types = [
-'title' => Column::BIND_PARAM_STR,
-'total' => Column::BIND_PARAM_INT,
+    'title' => Column::BIND_PARAM_STR,
+    'total' => Column::BIND_PARAM_INT,
 ];
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_title LIKE :title: AND ' .
-                     'inv_total > :total:',
-    'bind'        => $parameters,
-    'bindTypes'   => $types,
-]
+    [
+        'conditions'  => 'inv_title LIKE :title: AND ' .
+                         'inv_total > :total:',
+        'bind'        => $parameters,
+        'bindTypes'   => $types,
+    ]
 );
 ```
 
@@ -2846,12 +2849,12 @@ use MyApp\Models\Invoices;
 $customerIds = [1, 3, 4]; // $array: [[0] => 1, [1] => 2, [2] => 4]
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_cst_id IN ({customerId:array})',
-    'bind'        => [
-        'customerId' => $customerIds,
-    ],
-]
+    [
+        'conditions'  => 'inv_cst_id IN ({customerId:array})',
+        'bind'        => [
+            'customerId' => $customerIds,
+        ],
+    ]
 );
 
 unset($customerIds[1]);  // $array: [[0] => 1, [2] => 4]
@@ -2859,12 +2862,12 @@ unset($customerIds[1]);  // $array: [[0] => 1, [2] => 4]
 $customerIds = array_values($customerIds);  // $array: [[0] => 1, [1] => 4]
 
 $invoices = Invoices::find(
-[
-    'conditions'  => 'inv_cst_id IN ({customerId:array})',
-    'bind'        => [
-        'customerId' => $customerIds,
-    ],
-]
+    [
+        'conditions'  => 'inv_cst_id IN ({customerId:array})',
+        'bind'        => [
+            'customerId' => $customerIds,
+        ],
+    ]
 );
 ```
 
@@ -2880,10 +2883,10 @@ If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-'inv_total > ?0',
-'bind'        => [
-    1000,
-]
+    'inv_total > ?0',
+    'bind'        => [
+        1000,
+    ]
 );
 
 $invoices = Invoices::findByInvTotal(1000);
@@ -2904,26 +2907,26 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_total;
-public $status;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_total;
+    public $status;
 
-public function beforeSave()
-{
-    $this->status = join(',', $this->status);
-}
+    public function beforeSave()
+    {
+        $this->status = join(',', $this->status);
+    }
 
-public function afterFetch()
-{
-    $this->status = explode(',', $this->status);
-}
-
-public function afterSave()
-{
-    $this->status = explode(',', $this->status);
-}
+    public function afterFetch()
+    {
+        $this->status = explode(',', $this->status);
+    }
+    
+    public function afterSave()
+    {
+        $this->status = explode(',', $this->status);
+    }
 }
 ```
 
@@ -2940,16 +2943,16 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_total;
-public $status;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_total;
+    public $status;
 
-public function getStatus()
-{
-    return explode(',', $this->status);
-}
+    public function getStatus()
+    {
+        return explode(',', $this->status);
+    }
 }
 ```
 
@@ -2966,12 +2969,12 @@ $rowcount = Invoices::count();
 
 // inv_cst_id = 3
 $rowcount = Invoices::count(
-[
-    'inv_cst_id = ?0',
-    'bind'        => [
-        3,
-    ],
-]
+    [
+        'inv_cst_id = ?0',
+        'bind'        => [
+            3,
+        ],
+    ]
 );
 ```
 
@@ -2981,19 +2984,19 @@ We can also use the `group` parameter to group our results. The count results ap
 <?php
 
 $group = Invoices::count(
-[
-    'group' => 'inv_cst_id',
-]
+    [
+        'group' => 'inv_cst_id',
+    ]
 );
 foreach ($group as $row) {
    echo 'Count: ', $row->rowcount, ' - Customer: ', $row->inv_cst_id;
 }
 
 $group = Invoices::count(
-[
-    'group' => 'inv_cst_id',
-    'order' => 'rowcount',
-]
+    [
+        'group' => 'inv_cst_id',
+        'order' => 'rowcount',
+    ]
 );
 ```
 
@@ -3003,19 +3006,19 @@ $group = Invoices::count(
 <?php
 
 $total = Invoices::sum(
-[
-    'column' => 'inv_total',
-]
+    [
+        'column' => 'inv_total',
+    ]
 );
 
 $total = Invoices::sum(
-[
-    'column'     => 'total',
-    'conditions' => 'inv_cst_id = ?0',
-    'bind'       => [
-        3
+    [
+        'column'     => 'total',
+        'conditions' => 'inv_cst_id = ?0',
+        'bind'       => [
+            3
+        ]
     ]
-]
 );
 ```
 
@@ -3025,10 +3028,10 @@ You can also group results. The count results appear in the `sumatory` property 
 <?php
 
 $group = Invoices::sum(
-[
-    'column' => 'inv_total',
-    'group'  => 'inv_cst_id',
-]
+    [
+        'column' => 'inv_total',
+        'group'  => 'inv_cst_id',
+    ]
 );
 
 foreach ($group as $row) {
@@ -3036,11 +3039,11 @@ foreach ($group as $row) {
 }
 
 $group = Invoices::sum(
-[
-    'column' => 'inv_total',
-    'group'  => 'inv_cst_id',
-    'order'  => 'sumatory DESC',
-]
+    [
+        'column' => 'inv_total',
+        'group'  => 'inv_cst_id',
+        'order'  => 'sumatory DESC',
+    ]
 );
 ```
 
@@ -3050,19 +3053,19 @@ $group = Invoices::sum(
 <?php
 
 $average = Invoices::average(
-[
-    'column' => 'inv_total',
-]
+    [
+        'column' => 'inv_total',
+    ]
 );
 
 $average = Invoices::average(
-[
-    'column'     => 'inv_total',
-    'conditions' => 'inv_status_flag = ?0',
-    'bind'       => [
-        0
+    [
+        'column'     => 'inv_total',
+        'conditions' => 'inv_status_flag = ?0',
+        'bind'       => [
+            0
+        ]
     ]
-]
 );
 ```
 
@@ -3076,35 +3079,35 @@ For a non-grouped query, `sum()` and `average()` always return a `float`. When n
 <?php
 
 $max = Invoices::maximum(
-[
-    'column' => 'inv_total',
-]
+    [
+        'column' => 'inv_total',
+    ]
 );
 
 $max = Invoices::maximum(
-[
-    'column'     => 'inv_total',
-    'conditions' => 'inv_status_flag = ?0',
-    'bind'       => [
-        0
-    ],
-]
+    [
+        'column'     => 'inv_total',
+        'conditions' => 'inv_status_flag = ?0',
+        'bind'       => [
+            0
+        ],
+    ]
 );
 
 $min = Invoices::minimum(
-[
-    'column' => 'inv_total',
-]
+    [
+        'column' => 'inv_total',
+    ]
 );
 
 $min = Invoices::minimum(
-[
-    'column'     => 'inv_total',
-    'conditions' => 'inv_status_flag = ?0',
-    'bind'       => [
-        0
-    ],
-]
+    [
+        'column'     => 'inv_total',
+        'conditions' => 'inv_status_flag = ?0',
+        'bind'       => [
+            0
+        ],
+    ]
 );
 ```
 
@@ -3130,17 +3133,17 @@ $invoice->inv_created_at  = '2019-12-25 01:02:03';
 $result = $invoice->save();
 
 if (false === $result) {
+    
+    echo 'Error saving Invoice: ';
 
-echo 'Error saving Invoice: ';
+    $messages = $invoice->getMessages();
 
-$messages = $invoice->getMessages();
-
-foreach ($messages as $message) {
-    echo $message . PHP_EOL;
-}
+    foreach ($messages as $message) {
+        echo $message . PHP_EOL;
+    }
 } else {
 
-echo 'Record Saved';
+    echo 'Record Saved';
 }
 ```
 
@@ -3154,13 +3157,13 @@ use MyApp\Models\Invoices;
 $invoice = new Invoices();
 
 $invoice->assign(
-[
-    'inv_cst_id'      => 1,
-    'inv_status_flag' => 1,
-    'inv_title'       => 'Invoice for ACME Inc.',
-    'inv_total'       => 100,
-    'inv_created_at'  => '2019-12-25 01:02:03',
-]
+    [
+        'inv_cst_id'      => 1,
+        'inv_status_flag' => 1,
+        'inv_title'       => 'Invoice for ACME Inc.',
+        'inv_total'       => 100,
+        'inv_created_at'  => '2019-12-25 01:02:03',
+    ]
 );
 
 $result = $invoice->save();
@@ -3194,13 +3197,13 @@ use MyApp\Models\Invoices;
 $invoice = new Invoices();
 
 $invoice->assign(
-$_POST,
-[
-    'inv_cst_id',
-    'inv_status_flag',
-    'inv_title',
-    'inv_total',
-]
+    $_POST,
+    [
+        'inv_cst_id',
+        'inv_status_flag',
+        'inv_title',
+        'inv_total',
+    ]
 );
 
 $result = $invoice->save();
@@ -3227,17 +3230,17 @@ $invoice->inv_created_at  = '2019-12-25 01:02:03';
 $result = $invoice->update();
 
 if (false === $result) {
+    
+    echo 'Error saving Invoice: ';
 
-echo 'Error saving Invoice: ';
+    $messages = $invoice->getMessages();
 
-$messages = $invoice->getMessages();
-
-foreach ($messages as $message) {
-    echo $message . PHP_EOL;
-}
+    foreach ($messages as $message) {
+        echo $message . PHP_EOL;
+    }
 } else {
 
-echo 'Record Updated';
+    echo 'Record Updated';
 
 }
 ```
@@ -3254,25 +3257,25 @@ The `delete()` method allows you to delete a record. It returns a boolean signif
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :id:',
-    'bind'       => [
-        'id' => 4,
+    [
+        'conditions' => 'inv_id = :id:',
+        'bind'       => [
+            'id' => 4,
+        ]
     ]
-]
 );
 
 if (false !== $invoice) {
-if (false === $invoice->delete()) {
-    $messages = $invoice->getMessages();
+    if (false === $invoice->delete()) {
+        $messages = $invoice->getMessages();
+    
+        foreach ($messages as $message) {
+            echo $message . PHP_EOL;
+        }
+    } else {
 
-    foreach ($messages as $message) {
-        echo $message . PHP_EOL;
+        echo 'Record Deleted';
     }
-} else {
-
-    echo 'Record Deleted';
-}
 }
 ```
 
@@ -3284,25 +3287,25 @@ You can also delete many records by traversing a resultset with a `foreach`:
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::find(
-[
-    'conditions' => 'inv_cst_id = :id:',
-    'bind'       => [
-        'id' => 3,
+    [
+        'conditions' => 'inv_cst_id = :id:',
+        'bind'       => [
+            'id' => 3,
+        ]
     ]
-]
 );
 
 foreach ($invoices as $invoice) {
-if (false === $invoice->delete()) {
-    $messages = $invoice->getMessages();
+    if (false === $invoice->delete()) {
+        $messages = $invoice->getMessages();
+    
+        foreach ($messages as $message) {
+            echo $message . PHP_EOL;
+        }
+    } else {
 
-    foreach ($messages as $message) {
-        echo $message . PHP_EOL;
+        echo 'Record Deleted';
     }
-} else {
-
-    echo 'Record Deleted';
-}
 }
 ```
 
@@ -3333,39 +3336,39 @@ use MyApp\Models\Invoices;
 use Phalcon\Mvc\Model\Resultset;
 
 $invoices = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :id:',
-    'bind'       => [
-        'id' => 4,
+    [
+        'conditions' => 'inv_id = :id:',
+        'bind'       => [
+            'id' => 4,
+        ]
     ]
-]
 );
 
 // Array
 $invoices->setHydrateMode(
-Resultset::HYDRATE_ARRAYS
+    Resultset::HYDRATE_ARRAYS
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice['inv_total'], PHP_EOL;
+    echo $invoice['inv_total'], PHP_EOL;
 }
 
 // \stdClass
 $invoices->setHydrateMode(
-Resultset::HYDRATE_OBJECTS
+    Resultset::HYDRATE_OBJECTS
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_total, PHP_EOL;
+    echo $invoice->inv_total, PHP_EOL;
 }
 
 // Invoices
 $invoices->setHydrateMode(
-Resultset::HYDRATE_RECORDS
+    Resultset::HYDRATE_RECORDS
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_total, PHP_EOL;
+    echo $invoice->inv_total, PHP_EOL;
 }
 ```
 
@@ -3378,17 +3381,17 @@ use MyApp\Models\Invoices;
 use Phalcon\Mvc\Model\Resultset;
 
 $invoices = Invoices::findFirst(
-[
-    'hydration'  => Resultset::HYDRATE_ARRAYS,
-    'conditions' => 'inv_id = :id:',
-    'bind'       => [
-        'id' => 4,
-    ],
-]
+    [
+        'hydration'  => Resultset::HYDRATE_ARRAYS,
+        'conditions' => 'inv_id = :id:',
+        'bind'       => [
+            'id' => 4,
+        ],
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice['inv_total'], PHP_EOL;
+    echo $invoice['inv_total'], PHP_EOL;
 }
 ```
 
@@ -3443,10 +3446,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function getSequenceName()
-{
-    return 'invoices_sequence_name';
-}
+    public function getSequenceName()
+    {
+        return 'invoices_sequence_name';
+    }
 }
 ```
 
@@ -3456,8 +3459,8 @@ Depending on how you implement business rules or model rules in your database, c
 
 ```php
 CREATE TABLE co_invoices (
-// ...
-inv_created_at datetime DEFAULT CURRENT_TIMESTAMP
+    // ...
+    inv_created_at datetime DEFAULT CURRENT_TIMESTAMP
 )
 ```
 
@@ -3476,27 +3479,27 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->skipAttributes(
-        [
-            'inv_total',
-            'inv_created_at',
-        ]
-    );
+    public function initialize()
+    {
+        $this->skipAttributes(
+            [
+                'inv_total',
+                'inv_created_at',
+            ]
+        );
 
-    $this->skipAttributesOnCreate(
-        [
-            'inv_created_at',
-        ]
-    );
+        $this->skipAttributesOnCreate(
+            [
+                'inv_created_at',
+            ]
+        );
 
-    $this->skipAttributesOnUpdate(
-        [
-            'inv_modified_at',
-        ]
-    );
-}
+        $this->skipAttributesOnUpdate(
+            [
+                'inv_modified_at',
+            ]
+        );
+    }
 }
 ```
 
@@ -3531,10 +3534,10 @@ use Phalcon\Db\RawValue;
 
 class Invoices extends Model
 {
-public function beforeCreate()
-{
-    $this->inv_created_at = new RawValue('default');
-}
+    public function beforeCreate()
+    {
+        $this->inv_created_at = new RawValue('default');
+    }
 }
 ```
 
@@ -3561,10 +3564,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->useDynamicUpdate(true);
-}
+    public function initialize()
+    {
+        $this->useDynamicUpdate(true);
+    }
 }
 ```
 
@@ -3581,24 +3584,24 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function columnMap()
-{
-    return [
-        'inv_id'          => 'id',
-        'inv_cst_id'      => 'customerId',
-        'inv_status_flag' => 'status',
-        'inv_title'       => 'title',
-        'inv_total'       => 'total',
-        'inv_created_at'  => 'createdAt',
-    ];
-}
+    public function columnMap()
+    {
+        return [
+            'inv_id'          => 'id',
+            'inv_cst_id'      => 'customerId',
+            'inv_status_flag' => 'status',
+            'inv_title'       => 'title',
+            'inv_total'       => 'total',
+            'inv_created_at'  => 'createdAt',
+        ];
+    }
 }
 ```
 
@@ -3614,28 +3617,28 @@ Now we can use those _virtual_ fields (or column maps) in your code:
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :id:',
-    'bind'       => [
-        'id' => 4,
+    [
+        'conditions' => 'inv_id = :id:',
+        'bind'       => [
+            'id' => 4,
+        ]
     ]
-]
 );
 
-echo $invoice->customerId, PHP_EOL,
- $invoice->total, PHP_EOL,
- $invoice->createdAt, PHP_EOL;
-
-$invoices = Invoices::find(
-[
-    'order' => 'createdAt DESC',
-]
-);
-
-foreach ($invoices as $invoice) {
 echo $invoice->customerId, PHP_EOL,
      $invoice->total, PHP_EOL,
      $invoice->createdAt, PHP_EOL;
+
+$invoices = Invoices::find(
+    [
+        'order' => 'createdAt DESC',
+    ]
+);
+
+foreach ($invoices as $invoice) {
+    echo $invoice->customerId, PHP_EOL,
+         $invoice->total, PHP_EOL,
+         $invoice->createdAt, PHP_EOL;
 }
 
 $invoice = new Invoices();
@@ -3675,10 +3678,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->keepSnapshots(true);
-}
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 ```
 
@@ -3708,9 +3711,9 @@ You can disable this functionality by using:
 <?php
 
 Phalcon\Mvc\Model::setup(
-[
-    'updateSnapshotOnSave' => false,
-]
+    [
+        'updateSnapshotOnSave' => false,
+    ]
 );
 ``` 
 
@@ -3731,17 +3734,17 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->keepSnapshots(true);
-}
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 
 $invoice = new Invoices();
@@ -3756,19 +3759,19 @@ $invoice->inv_created_at  = '2019-12-25 01:02:03';
 $invoice->create();
 
 var_dump(
-$invoice->getChangedFields() // []
+    $invoice->getChangedFields() // []
 );
 
 $invoice->inv_total = 120;
 
 var_dump(
-$invoice->getChangedFields() // ['inv_total']
+    $invoice->getChangedFields() // ['inv_total']
 );
 
 $invoice->update();
 
 var_dump(
-$invoice->getChangedFields() // []
+    $invoice->getChangedFields() // []
 );
 ```
 
@@ -3811,16 +3814,16 @@ use Phalcon\Messages\Message as Message;
 
 class Invoices extends Model
 {
-public function beforeSave()
-{
-    if (0 === $this->inv_status_flag) {
-        $message = new Message(
-            'Sorry, an invoice cannot be unpaid'
-        );
+    public function beforeSave()
+    {
+        if (0 === $this->inv_status_flag) {
+            $message = new Message(
+                'Sorry, an invoice cannot be unpaid'
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
+        }
     }
-}
 }
 ```
 
@@ -3837,34 +3840,34 @@ use Phalcon\Mvc\Model\Transaction\Manager;
 use Phalcon\Mvc\Model\Transaction\Failed;
 
 try {
-$txManager   = new Manager();
-$transaction = $txManager->get();
+    $txManager   = new Manager();
+    $transaction = $txManager->get();
+    
+    $customer = new Customers();
+    $customer->setTransaction($transaction);
+    $customer->cst_name_last  = 'Vader';
+    $customer->cst_name_first = 'Darth';
 
-$customer = new Customers();
-$customer->setTransaction($transaction);
-$customer->cst_name_last  = 'Vader';
-$customer->cst_name_first = 'Darth';
+    if (false === $customer->save()) {
+        $transaction->rollback('Cannot save Customer');
+    }
 
-if (false === $customer->save()) {
-    $transaction->rollback('Cannot save Customer');
-}
+    $invoice = new Invoices();
+    $invoice->setTransaction($transaction);
 
-$invoice = new Invoices();
-$invoice->setTransaction($transaction);
+    $invoice->inv_cst_id      = $customer->cst_id;
+    $invoice->inv_status_flag = 1;
+    $invoice->inv_title       = 'Invoice for ACME Inc.';
+    $invoice->inv_total       = 100;
+    $invoice->inv_created_at  = '2019-12-25 01:02:03';
 
-$invoice->inv_cst_id      = $customer->cst_id;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
+    if (false === $invoice->save()) {
+        $transaction->rollback('Cannot save record');
+    }
 
-if (false === $invoice->save()) {
-    $transaction->rollback('Cannot save record');
-}
-
-$transaction->commit();
+    $transaction->commit();
 } catch (Failed $ex) {
-echo 'ERROR: ', $ex->getMessage();
+    echo 'ERROR: ', $ex->getMessage();
 }
 ```
 
@@ -3879,45 +3882,45 @@ use Phalcon\Mvc\Model\Transaction\Manager;
 use Phalcon\Mvc\Model\Transaction\Failed;
 
 try {
-$txManager   = new Manager();
-$transaction = $txManager->get();
+    $txManager   = new Manager();
+    $transaction = $txManager->get();
+    
+    $customer = new Customers();
+    $customer->setTransaction($transaction);
+    $customer->cst_name_last  = 'Vader';
+    $customer->cst_name_first = 'Darth';
 
-$customer = new Customers();
-$customer->setTransaction($transaction);
-$customer->cst_name_last  = 'Vader';
-$customer->cst_name_first = 'Darth';
+    if (false === $customer->save()) {
+        $transaction->rollback('Cannot save Customer');
+    }
+    
+    $average = Invoices::average(
+        [
+            Model::TRANSACTION_INDEX => $transaction,
+            'column'     => 'inv_total',
+            'conditions' => 'inv_cst_id = :customerId:',
+            'bind'       => [
+                'customerId' => 3,
+            ],
+        ]
+    );
 
-if (false === $customer->save()) {
-    $transaction->rollback('Cannot save Customer');
-}
+    $invoice = new Invoices();
+    $invoice->setTransaction($transaction);
 
-$average = Invoices::average(
-    [
-        Model::TRANSACTION_INDEX => $transaction,
-        'column'     => 'inv_total',
-        'conditions' => 'inv_cst_id = :customerId:',
-        'bind'       => [
-            'customerId' => 3,
-        ],
-    ]
-);
+    $invoice->inv_cst_id      = $customer->cst_id;
+    $invoice->inv_status_flag = 1;
+    $invoice->inv_title       = 'Invoice for ACME Inc.';
+    $invoice->inv_total       = 100 + $average;
+    $invoice->inv_created_at  = '2019-12-25 01:02:03';
 
-$invoice = new Invoices();
-$invoice->setTransaction($transaction);
+    if (false === $invoice->save()) {
+        $transaction->rollback('Cannot save record');
+    }
 
-$invoice->inv_cst_id      = $customer->cst_id;
-$invoice->inv_status_flag = 1;
-$invoice->inv_title       = 'Invoice for ACME Inc.';
-$invoice->inv_total       = 100 + $average;
-$invoice->inv_created_at  = '2019-12-25 01:02:03';
-
-if (false === $invoice->save()) {
-    $transaction->rollback('Cannot save record');
-}
-
-$transaction->commit();
+    $transaction->commit();
 } catch (Failed $ex) {
-echo 'ERROR: ', $ex->getMessage();
+    echo 'ERROR: ', $ex->getMessage();
 }
 ```
 
@@ -3934,10 +3937,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->setSchema('invoices');
-}
+    public function initialize()
+    {
+        $this->setSchema('invoices');
+    }
 }
 ```
 
@@ -3958,33 +3961,33 @@ $container = new FactoryDefault();
 
 // MySQL
 $container->set(
-'dbMysql',
-function () {
-    return new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-},
-true
+    'dbMysql',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    },
+    true
 );
 
 // PostgreSQL
 $container->set(
-'dbPostgres',
-function () {
-    return new PostgreSQL(
-        [
-            'host'     => 'localhost',
-            'username' => 'postgres',
-            'password' => '',
-            'dbname'   => 'tutorial',
-        ]
-    );
-}
+    'dbPostgres',
+    function () {
+        return new PostgreSQL(
+            [
+                'host'     => 'localhost',
+                'username' => 'postgres',
+                'password' => '',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
 );
 ```
 
@@ -3999,10 +4002,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->setConnectionService('dbPostgres');
-}
+    public function initialize()
+    {
+        $this->setConnectionService('dbPostgres');
+    }
 }
 ```
 
@@ -4021,34 +4024,34 @@ $container = new FactoryDefault();
 
 // MySQL - read
 $container->set(
-'mysqlRead',
-function () {
-    return new Mysql(
-        [
-            'host'     => '10.0.4.100',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-},
-true
+    'mysqlRead',
+    function () {
+        return new Mysql(
+            [
+                'host'     => '10.0.4.100',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    },
+    true
 );
 
 // MySQL - write
 $container->set(
-'mysqlWrite',
-function () {
-    return new Mysql(
-        [
-            'host'     => '10.0.4.200',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-},
-true
+    'mysqlWrite',
+    function () {
+        return new Mysql(
+            [
+                'host'     => '10.0.4.200',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    },
+    true
 );
 ```
 
@@ -4063,12 +4066,12 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->setReadConnectionService('mysqlRead');
+    public function initialize()
+    {
+        $this->setReadConnectionService('mysqlRead');
 
-    $this->setWriteConnectionService('mysqlWrite');
-}
+        $this->setWriteConnectionService('mysqlWrite');
+    }
 }
 ```
 
@@ -4083,38 +4086,38 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-/**
- * Dynamically selects a shard
- *
- * @param array $intermediate
- * @param array $bindParams
- * @param array $bindTypes
- *
- * @return Phalcon\Db\Adapter\AdapterInterface
- */
-public function selectReadConnection(
-    array $intermediate, 
-    array $bindParams, 
-    array $bindTypes
-) {
-    if (true === isset($intermediate['where'])) {
-        $conditions = $intermediate['where'];
+    /**
+     * Dynamically selects a shard
+     *
+     * @param array $intermediate
+     * @param array $bindParams
+     * @param array $bindTypes
+     *
+     * @return Phalcon\Db\Adapter\AdapterInterface
+     */
+    public function selectReadConnection(
+        array $intermediate, 
+        array $bindParams, 
+        array $bindTypes
+    ) {
+        if (true === isset($intermediate['where'])) {
+            $conditions = $intermediate['where'];
 
-        if ($conditions['left']['name'] === 'id') {
-            $id = $conditions['right']['value'];
+            if ($conditions['left']['name'] === 'id') {
+                $id = $conditions['right']['value'];
 
-            if ($id > 0 && $id < 10000) {
-                return $this->getDI()->get('dbShard1');
-            }
+                if ($id > 0 && $id < 10000) {
+                    return $this->getDI()->get('dbShard1');
+                }
 
-            if ($id > 10000) {
-                return $this->getDI()->get('dbShard2');
+                if ($id > 10000) {
+                    return $this->getDI()->get('dbShard2');
+                }
             }
         }
-    }
 
-    return $this->getDI()->get('dbShard0');
-}
+        return $this->getDI()->get('dbShard0');
+    }
 }
 ```
 
@@ -4186,15 +4189,15 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function notSaved()
-{
-    $flash    = $this->getDI()->getFlash();
-    $messages = $this->getMessages();
+    public function notSaved()
+    {
+        $flash    = $this->getDI()->getFlash();
+        $messages = $this->getMessages();
 
-    foreach ($messages as $message) {
-        $flash->error($message);
+        foreach ($messages as $message) {
+            $flash->error($message);
+        }
     }
-}
 }
 ```
 
@@ -4215,10 +4218,10 @@ or by using the `Model`:
 use Phalcon\Mvc\Model;
 
 Model::setup(
-[
-    'columnRenaming' => false,
-    'events'         => false,
-]
+    [
+        'columnRenaming' => false,
+        'events'         => false,
+    ]
 );
 ```
 
@@ -4312,9 +4315,9 @@ If you want to get integer values back from `int` related database fields, you w
 use Phalcon\Mvc\Model;
 
 Model::setup(
-[
-    'castOnHydrate' => true,
-]
+    [
+        'castOnHydrate' => true,
+    ]
 );
 ```
 
@@ -4323,8 +4326,8 @@ Model::setup(
 
 ```php
 [
-PDO::ATTR_EMULATE_PREPARES  => false,
-PDO::ATTR_STRINGIFY_FETCHES => false,
+    PDO::ATTR_EMULATE_PREPARES  => false,
+    PDO::ATTR_STRINGIFY_FETCHES => false,
 ]
 ```
 
@@ -4341,25 +4344,25 @@ $parameters = [
 $eventsManager = $container->getShared('eventsManager');
 
 $container->setShared(
-'db',
-function () use ($eventsManager, $parameters) {
-    $options = [
-        'host'     => $parameters['host'] ?? 'localhost',
-        'dbname'   => $parameters['dbname'] ?? 'phalcon',
-        'username' => $parameters['user'] ?? 'root',
-        'password' => $parameters['pass'] ?? 'secret',
-        'encoding' => $parameters['encoding'] ?? 'utf8',
-        'options'  => [
-            PDO::ATTR_EMULATE_PREPARES  => false,
-            PDO::ATTR_STRINGIFY_FETCHES => false,
-        ]
-    ];
+    'db',
+    function () use ($eventsManager, $parameters) {
+        $options = [
+            'host'     => $parameters['host'] ?? 'localhost',
+            'dbname'   => $parameters['dbname'] ?? 'phalcon',
+            'username' => $parameters['user'] ?? 'root',
+            'password' => $parameters['pass'] ?? 'secret',
+            'encoding' => $parameters['encoding'] ?? 'utf8',
+            'options'  => [
+                PDO::ATTR_EMULATE_PREPARES  => false,
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+            ]
+        ];
 
-    $connection = new Mysql($options);
-    $connection->setEventsManager($eventsManager);
+        $connection = new Mysql($options);
+        $connection->setEventsManager($eventsManager);
 
-    return $connection;
-}
+        return $connection;
+    }
 );
 ```
 
@@ -4379,9 +4382,9 @@ With casting disabled, the attribute keeps the raw database value. A value that 
 use Phalcon\Mvc\Model;
 
 Model::setup(
-[
-    'castOnHydrate' => true,
-]
+    [
+        'castOnHydrate' => true,
+    ]
 );
 
 $place = Places::findFirst("id = 1");
@@ -4422,23 +4425,24 @@ use Phalcon\Mvc\Model\Metadata\Memory;
 $container = new Di();
 
 $container->set(
-'db',
-new Sqlite(
-    [
-        'dbname' => 'sample.db',
-    ]
-)
+    'db',
+    new Sqlite(
+        [
+            'dbname' => 'sample.db',
+        ]
+    )
 );
 
 $container->set(
-'modelsManager',
-new Manager()
+    'modelsManager',
+    new Manager()
 );
 
 $container->set(
-'modelsMetadata',
-new Memory()
+    'modelsMetadata',
+    new Memory()
 );
+
 
 class Invoices extends Model
 {

@@ -1,1 +1,0 @@
-import{t as e}from"./prefetch.Cv77WYI1.js";e();

@@ -29,6 +29,7 @@ The default controller (when no controller has been specified in the UR)L is **I
 
 You can find more information about modules in the [application][application] document. For an application that does not have any modules, the default routes are:
 
+
 ```bash
 /:controller/:action/:parameter1/:parameter2
 ```
@@ -61,15 +62,15 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function listAction(int $page = 1, int $perPage = 25)
-{
+    public function listAction(int $page = 1, int $perPage = 25)
+    {
 
-}
+    }
 }
 ```
 
@@ -87,15 +88,15 @@ use Phalcon\Tag;
  */
 class InvoicesController extends Controller
 {
-public function initialize()
-{
-    $this->tag->title()->set('Invoices Management');
-}
+    public function initialize()
+    {
+        $this->tag->title()->set('Invoices Management');
+    }
 
-public function listAction(int $page = 1, int $perPage = 25)
-{
+    public function listAction(int $page = 1, int $perPage = 25)
+    {
 
-}
+    }
 }
 ```
 
@@ -116,10 +117,10 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function onConstruct()
-{
-    // ...
-}
+    public function onConstruct()
+    {
+        // ...
+    }
 }
 ```
 
@@ -145,25 +146,25 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function showAction($year, $postTitle)
-{
-    $this->flash->error(
-        "You do not have permission to access this area"
-    );
+    public function showAction($year, $postTitle)
+    {
+        $this->flash->error(
+            "You do not have permission to access this area"
+        );
 
-    // Forward flow to another action
-    $this->dispatcher->forward(
-        [
-            'controller' => 'users',
-            'action'     => 'login',
-        ]
-    );
-}
+        // Forward flow to another action
+        $this->dispatcher->forward(
+            [
+                'controller' => 'users',
+                'action'     => 'login',
+            ]
+        );
+    }
 }
 ```
 
@@ -176,15 +177,15 @@ use Phalcon\Mvc\Controller;
 
 class UsersController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function loginAction()
-{
+    public function loginAction()
+    {
 
-}
+    }
 }
 ```
 
@@ -202,15 +203,15 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function listAction(int $page = 1, int $perPage = 25)
-{
+    public function listAction(int $page = 1, int $perPage = 25)
+    {
 
-}
+    }
 
-public function other()
-{
+    public function other()
+    {
 
-}
+    }
 }
 ```
 
@@ -240,15 +241,15 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function listAction(int $page = 1, int $perPage = 25)
-{
+    public function listAction(int $page = 1, int $perPage = 25)
+    {
 
-}
+    }
 }
 ```
 
@@ -275,16 +276,16 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function listAction($page = 1, $perPage = 25)
-{
-    $page    = (int) $page;
-    $perPage = (int) $perPage;
-}
+    public function listAction($page = 1, $perPage = 25)
+    {
+        $page    = (int) $page;
+        $perPage = (int) $perPage;
+    }
 }
 ```
 
@@ -301,16 +302,16 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function listAction()
-{
-    $year      = $this->dispatcher->getParam('year');
-    $postTitle = $this->dispatcher->getParam('postTitle');
-}
+    public function listAction()
+    {
+        $year      = $this->dispatcher->getParam('year');
+        $postTitle = $this->dispatcher->getParam('postTitle');
+    }
 }
 ```
 
@@ -332,29 +333,29 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function beforeExecuteRoute($dispatcher)
-{
-    // This is executed before every found action
-    if ($dispatcher->getActionName() === 'save') {
-        $this->flash->error(
-            "You do not have permission to save invoices"
-        );
+    public function beforeExecuteRoute($dispatcher)
+    {
+        // This is executed before every found action
+        if ($dispatcher->getActionName() === 'save') {
+            $this->flash->error(
+                "You do not have permission to save invoices"
+            );
 
-        $this->dispatcher->forward(
-            [
-                'controller' => 'home',
-                'action'     => 'index',
-            ]
-        );
+            $this->dispatcher->forward(
+                [
+                    'controller' => 'home',
+                    'action'     => 'index',
+                ]
+            );
 
-        return false;
+            return false;
+        }
     }
-}
 
-public function afterExecuteRoute($dispatcher)
-{
-    // Executed after every found action
-}
+    public function afterExecuteRoute($dispatcher)
+    {
+        // Executed after every found action
+    }
 }
 ```
 
@@ -378,24 +379,24 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
-
-public function listAction()
-{
-    if (true === $this->request->isPost()) {
-        $page   = $this
-            ->request
-            ->getPost('page', 'int', 1)
-        ;
-        $perPage = $this
-            ->request
-            ->getPost('perPage', 'int', 25)
-        ;
     }
-}
+
+    public function listAction()
+    {
+        if (true === $this->request->isPost()) {
+            $page   = $this
+                ->request
+                ->getPost('page', 'int', 1)
+            ;
+            $perPage = $this
+                ->request
+                ->getPost('perPage', 'int', 25)
+            ;
+        }
+    }
 }
 ```
 
@@ -421,34 +422,34 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
-
-public function listAction()
-{
-    if (true === $this->request->isPost()) {
-        $page   = $this
-            ->request
-            ->getPost('page', 'int', 1)
-        ;
-        $perPage = $this
-            ->request
-            ->getPost('perPage', 'int', 25)
-        ;
-
-        // ......
-
-        $data = $records->toArray();
-
-        $this
-            ->response
-            ->setStatusCode(200, 'OK')
-            ->setJsonContent($data)
-        ;
     }
-}
+
+    public function listAction()
+    {
+        if (true === $this->request->isPost()) {
+            $page   = $this
+                ->request
+                ->getPost('page', 'int', 1)
+            ;
+            $perPage = $this
+                ->request
+                ->getPost('perPage', 'int', 25)
+            ;
+            
+            // ......
+            
+            $data = $records->toArray();
+            
+            $this
+                ->response
+                ->setStatusCode(200, 'OK')
+                ->setJsonContent($data)
+            ;
+        }
+    }
 }
 ```
 
@@ -469,45 +470,45 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
-
-public function listAction()
-{
-    if (true === $this->request->isPost()) {
-        $page   = $this
-            ->request
-            ->getPost('page', 'int', 1)
-        ;
-        $perPage = $this
-            ->request
-            ->getPost('perPage', 'int', 25)
-        ;
-
-        // ......
-
-        return $records->toArray();
     }
-}
 
-public function afterExecuteRoute($dispatcher)
-{
-    $this->view->disable();
-    $this->response->setContentType('application/json', 'UTF-8');
-    $this->response->setHeader('Cache-Control', 'no-store');
-
-    /** @var array $data */
-    $data = $dispatcher->getReturnedValue();
-    $dispatcher->setReturnedValue([]);
-
-    if (true !== $this->response->isSent()) {
-        $this->response->setJsonContent($data);
-
-        return $this->response->send();
+    public function listAction()
+    {
+        if (true === $this->request->isPost()) {
+            $page   = $this
+                ->request
+                ->getPost('page', 'int', 1)
+            ;
+            $perPage = $this
+                ->request
+                ->getPost('perPage', 'int', 25)
+            ;
+            
+            // ......
+            
+            return $records->toArray();
+        }
     }
-}
+
+    public function afterExecuteRoute($dispatcher)
+    {
+        $this->view->disable();
+        $this->response->setContentType('application/json', 'UTF-8');
+        $this->response->setHeader('Cache-Control', 'no-store');
+        
+        /** @var array $data */
+        $data = $dispatcher->getReturnedValue();
+        $dispatcher->setReturnedValue([]);
+
+        if (true !== $this->response->isSent()) {
+            $this->response->setJsonContent($data);
+
+            return $this->response->send();
+        }
+    }
 }
 ```
 
@@ -527,15 +528,15 @@ use Phalcon\Session\Bag;
  */
 class UserController extends Controller
 {
-public function indexAction()
-{
-    $this->persistent->name = 'Darth';
-}
+    public function indexAction()
+    {
+        $this->persistent->name = 'Darth';
+    }
 
-public function welcomeAction()
-{
-    echo 'Welcome, ', $this->persistent->name;
-}
+    public function welcomeAction()
+    {
+        echo 'Welcome, ', $this->persistent->name;
+    }
 }
 ```
 
@@ -561,45 +562,45 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
-
-public function listAction()
-{
-    if (true === $this->request->isPost()) {
-        $page   = $this
-            ->request
-            ->getPost('page', 'int', 1)
-        ;
-        $perPage = $this
-            ->request
-            ->getPost('perPage', 'int', 25)
-        ;
-
-        // ......
-
-        return $records->toArray();
     }
-}
 
-public function afterExecuteRoute($dispatcher)
-{
-    $this->view->disable();
-    $this->response->setContentType('application/json', 'UTF-8');
-    $this->response->setHeader('Cache-Control', 'no-store');
-
-    /** @var array $data */
-    $data = $dispatcher->getReturnedValue();
-    $dispatcher->setReturnedValue([]);
-
-    if (true !== $this->response->isSent()) {
-        $this->response->setJsonContent($data);
-
-        return $this->response->send();
+    public function listAction()
+    {
+        if (true === $this->request->isPost()) {
+            $page   = $this
+                ->request
+                ->getPost('page', 'int', 1)
+            ;
+            $perPage = $this
+                ->request
+                ->getPost('perPage', 'int', 25)
+            ;
+            
+            // ......
+            
+            return $records->toArray();
+        }
     }
-}
+
+    public function afterExecuteRoute($dispatcher)
+    {
+        $this->view->disable();
+        $this->response->setContentType('application/json', 'UTF-8');
+        $this->response->setHeader('Cache-Control', 'no-store');
+        
+        /** @var array $data */
+        $data = $dispatcher->getReturnedValue();
+        $dispatcher->setReturnedValue([]);
+
+        if (true !== $this->response->isSent()) {
+            $this->response->setJsonContent($data);
+
+            return $this->response->send();
+        }
+    }
 }
 ```
 
@@ -615,10 +616,10 @@ use MyApp\Controllers\InvoicesController;
 use MyApp\Components\AlternativeInvoice;
 
 $container->set(
-InvoicesController::class,
-function () {
-    return new AlternativeInvoice();
-}
+    InvoicesController::class,
+    function () {
+        return new AlternativeInvoice();
+    }
 );
 ```
 [mvc-controller]: /5.7/api/phalcon_mvc/#mvccontroller--

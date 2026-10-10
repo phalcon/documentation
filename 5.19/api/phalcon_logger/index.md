@@ -35,11 +35,12 @@ files (see Phalcon\Config\Config object).
 <div class="api-tree">
 
 - **`Phalcon\Logger\AbstractLogger`**
-- [`Phalcon\Logger\Logger`](#loggerlogger)
+    - [`Phalcon\Logger\Logger`](#loggerlogger)
 
 </div>
 
 __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Exceptions\AdapterNotFound` · `Phalcon\Logger\Exceptions\NoAdaptersConfigured` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+
 
 ### Method Summary
 
@@ -234,10 +235,10 @@ __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Logger\Adapter\AdapterInterfa
 
 ```php
 public function __construct(
-string $name,
-array $adapters = [],
-DateTimeZone|null $timezone = null,
-ClockInterface|null $clock = null
+    string $name,
+    array $adapters = [],
+    DateTimeZone|null $timezone = null,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -247,8 +248,8 @@ Constructor.
 
 ```php
 public function addAdapter(
-string $name,
-AdapterInterface $adapter
+    string $name,
+    AdapterInterface $adapter
 ): static;
 ```
 
@@ -352,9 +353,9 @@ between DEBUG and TRACE in the ordering, so the threshold becomes
 
 ```php
 protected function addMessage(
-int $level,
-string $message,
-array $context = []
+    int $level,
+    string $message,
+    array $context = []
 ): bool;
 ```
 
@@ -376,6 +377,7 @@ protected function getLevels(): array;
 
 Returns an array of log levels with integer to string conversion
 
+
 ## Logger\AdapterFactory
 
 <span class="badge badge--class">Class</span>
@@ -386,12 +388,13 @@ Factory used to create adapters used for Logging
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.19/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.19/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Logger\AdapterFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.19/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Logger\AdapterFactory`**
 
 </div>
 
 __Uses__ `Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Adapter\Stream` · `Phalcon\Logger\Adapter\Syslog` · `Throwable`
+
 
 ### Method Summary
 
@@ -436,9 +439,9 @@ AdapterFactory constructor.
 
 ```php
 public function newInstance(
-string $name,
-string $fileName,
-array $options = []
+    string $name,
+    string $fileName,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -460,6 +463,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Logger\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
@@ -470,13 +474,14 @@ Class AbstractAdapter
 <div class="api-tree">
 
 - **`Phalcon\Logger\Adapter\AbstractAdapter`** - implements [`Phalcon\Logger\Adapter\AdapterInterface`](#loggeradapteradapterinterface)
-- [`Phalcon\Logger\Adapter\Noop`](#loggeradapternoop)
-- [`Phalcon\Logger\Adapter\Stream`](#loggeradapterstream)
-- [`Phalcon\Logger\Adapter\Syslog`](#loggeradaptersyslog)
+    - [`Phalcon\Logger\Adapter\Noop`](#loggeradapternoop)
+    - [`Phalcon\Logger\Adapter\Stream`](#loggeradapterstream)
+    - [`Phalcon\Logger\Adapter\Syslog`](#loggeradaptersyslog)
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exceptions\DeserializationFailed` · `Phalcon\Logger\Exceptions\SerializationFailed` · `Phalcon\Logger\Exceptions\TransactionAlreadyActive` · `Phalcon\Logger\Exceptions\TransactionNotActive` · `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Formatter\Line` · `Phalcon\Logger\Item`
+
 
 ### Method Summary
 
@@ -740,6 +745,7 @@ protected function getFormattedItem( Item $item ): string;
 
 Returns the formatted item
 
+
 ## Logger\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -752,11 +758,13 @@ Interface for Phalcon\Logger adapters
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Logger\Adapter\Adapter`](/5.19/api/phalcon_contracts/#contractsloggeradapteradapter)
-- **`Phalcon\Logger\Adapter\AdapterInterface`**
+    - **`Phalcon\Logger\Adapter\AdapterInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
+
+
 
 ## Logger\Adapter\Exceptions\FileOpenFailed
 
@@ -766,12 +774,13 @@ __Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Adapter\Exceptions\FileOpenFailed`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Adapter\Exceptions\FileOpenFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -790,10 +799,11 @@ __Uses__ `Phalcon\Logger\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $mode
+    string $name,
+    string $mode
 );
 ```
+
 
 ## Logger\Adapter\Exceptions\InvalidStreamMode
 
@@ -803,12 +813,13 @@ string $mode
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -829,6 +840,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct();
 ```
 
+
 ## Logger\Adapter\Exceptions\SyslogOpenFailed
 
 <span class="badge badge--class">Class</span>
@@ -837,12 +849,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -861,10 +874,11 @@ __Uses__ `Phalcon\Logger\Exception`
 
 ```php
 public function __construct(
-string $name,
-int $facility
+    string $name,
+    int $facility
 );
 ```
+
 
 ## Logger\Adapter\Noop
 
@@ -878,11 +892,12 @@ Class Noop
 <div class="api-tree">
 
 - [`Phalcon\Logger\Adapter\AbstractAdapter`](#loggeradapterabstractadapter)
-- **`Phalcon\Logger\Adapter\Noop`**
+    - **`Phalcon\Logger\Adapter\Noop`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Item`
+
 
 ### Method Summary
 
@@ -921,6 +936,7 @@ public function process( Item $item ): void;
 
 Processes the message i.e. writes it to the file
 
+
 ## Logger\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
@@ -947,11 +963,12 @@ $logger->close();
 <div class="api-tree">
 
 - [`Phalcon\Logger\Adapter\AbstractAdapter`](#loggeradapterabstractadapter)
-- **`Phalcon\Logger\Adapter\Stream`**
+    - **`Phalcon\Logger\Adapter\Stream`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode` · `Phalcon\Logger\Exception` · `Phalcon\Logger\Item` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -1012,8 +1029,8 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\FileOpenFailed` · `Phalcon\Logger\A
 
 ```php
 public function __construct(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 );
 ```
 
@@ -1043,6 +1060,7 @@ public function process( Item $item ): void;
 
 Processes the message i.e. writes it to the file
 
+
 ## Logger\Adapter\Syslog
 
 <span class="badge badge--class">Class</span>
@@ -1059,11 +1077,12 @@ Class Syslog
 <div class="api-tree">
 
 - [`Phalcon\Logger\Adapter\AbstractAdapter`](#loggeradapterabstractadapter)
-- **`Phalcon\Logger\Adapter\Syslog`**
+    - **`Phalcon\Logger\Adapter\Syslog`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`
+
 
 ### Method Summary
 
@@ -1126,8 +1145,8 @@ __Uses__ `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger
 
 ```php
 public function __construct(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 );
 ```
 
@@ -1155,13 +1174,14 @@ Processes the message i.e. writes it to the syslog
 
 ```php
 protected function openlog(
-string $ident,
-int $option,
-int $facility
+    string $ident,
+    int $option,
+    int $facility
 ): bool;
 ```
 
 Open connection to system logger
+
 
 ## Logger\Enum
 
@@ -1222,6 +1242,7 @@ Log Level Enum constants
 </div>
 </div>
 
+
 ## Logger\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1234,18 +1255,19 @@ Exceptions thrown in Phalcon\Logger will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Logger\Exception`**
-- [`Phalcon\Logger\Adapter\Exceptions\FileOpenFailed`](#loggeradapterexceptionsfileopenfailed)
-- [`Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode`](#loggeradapterexceptionsinvalidstreammode)
-- [`Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`](#loggeradapterexceptionssyslogopenfailed)
-- [`Phalcon\Logger\Exceptions\AdapterNotFound`](#loggerexceptionsadapternotfound)
-- [`Phalcon\Logger\Exceptions\DeserializationFailed`](#loggerexceptionsdeserializationfailed)
-- [`Phalcon\Logger\Exceptions\NoAdaptersConfigured`](#loggerexceptionsnoadaptersconfigured)
-- [`Phalcon\Logger\Exceptions\SerializationFailed`](#loggerexceptionsserializationfailed)
-- [`Phalcon\Logger\Exceptions\TransactionAlreadyActive`](#loggerexceptionstransactionalreadyactive)
-- [`Phalcon\Logger\Exceptions\TransactionNotActive`](#loggerexceptionstransactionnotactive)
+    - **`Phalcon\Logger\Exception`**
+        - [`Phalcon\Logger\Adapter\Exceptions\FileOpenFailed`](#loggeradapterexceptionsfileopenfailed)
+        - [`Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode`](#loggeradapterexceptionsinvalidstreammode)
+        - [`Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed`](#loggeradapterexceptionssyslogopenfailed)
+        - [`Phalcon\Logger\Exceptions\AdapterNotFound`](#loggerexceptionsadapternotfound)
+        - [`Phalcon\Logger\Exceptions\DeserializationFailed`](#loggerexceptionsdeserializationfailed)
+        - [`Phalcon\Logger\Exceptions\NoAdaptersConfigured`](#loggerexceptionsnoadaptersconfigured)
+        - [`Phalcon\Logger\Exceptions\SerializationFailed`](#loggerexceptionsserializationfailed)
+        - [`Phalcon\Logger\Exceptions\TransactionAlreadyActive`](#loggerexceptionstransactionalreadyactive)
+        - [`Phalcon\Logger\Exceptions\TransactionNotActive`](#loggerexceptionstransactionnotactive)
 
 </div>
+
 
 ## Logger\Exceptions\AdapterNotFound
 
@@ -1255,12 +1277,13 @@ Exceptions thrown in Phalcon\Logger will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Exceptions\AdapterNotFound`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Exceptions\AdapterNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -1281,6 +1304,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Logger\Exceptions\DeserializationFailed
 
 <span class="badge badge--class">Class</span>
@@ -1289,12 +1313,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Exceptions\DeserializationFailed`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Exceptions\DeserializationFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -1315,6 +1340,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct();
 ```
 
+
 ## Logger\Exceptions\NoAdaptersConfigured
 
 <span class="badge badge--class">Class</span>
@@ -1323,12 +1349,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Exceptions\NoAdaptersConfigured`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Exceptions\NoAdaptersConfigured`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -1349,6 +1376,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct();
 ```
 
+
 ## Logger\Exceptions\SerializationFailed
 
 <span class="badge badge--class">Class</span>
@@ -1357,12 +1385,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Exceptions\SerializationFailed`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Exceptions\SerializationFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -1383,6 +1412,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct();
 ```
 
+
 ## Logger\Exceptions\TransactionAlreadyActive
 
 <span class="badge badge--class">Class</span>
@@ -1391,12 +1421,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Exceptions\TransactionAlreadyActive`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Exceptions\TransactionAlreadyActive`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -1417,6 +1448,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct();
 ```
 
+
 ## Logger\Exceptions\TransactionNotActive
 
 <span class="badge badge--class">Class</span>
@@ -1425,12 +1457,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Logger\Exception`](#loggerexception)
-- **`Phalcon\Logger\Exceptions\TransactionNotActive`**
+    - [`Phalcon\Logger\Exception`](#loggerexception)
+        - **`Phalcon\Logger\Exceptions\TransactionNotActive`**
 
 </div>
 
 __Uses__ `Phalcon\Logger\Exception`
+
 
 ### Method Summary
 
@@ -1451,6 +1484,7 @@ __Uses__ `Phalcon\Logger\Exception`
 public function __construct();
 ```
 
+
 ## Logger\Formatter\AbstractFormatter
 
 <span class="badge badge--abstract">Abstract</span>
@@ -1461,12 +1495,13 @@ Class AbstractFormatter
 <div class="api-tree">
 
 - **`Phalcon\Logger\Formatter\AbstractFormatter`** - implements [`Phalcon\Logger\Formatter\FormatterInterface`](#loggerformatterformatterinterface)
-- [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
-- [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
+    - [`Phalcon\Logger\Formatter\Json`](#loggerformatterjson)
+    - [`Phalcon\Logger\Formatter\Line`](#loggerformatterline)
 
 </div>
 
 __Uses__ `DateTimeImmutable` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+
 
 ### Method Summary
 
@@ -1546,12 +1581,13 @@ Returns the date formatted for the logger.
 
 ```php
 protected function getInterpolatedMessage(
-Item $item,
-string $message
+    Item $item,
+    string $message
 ): string;
 ```
 
 Returns the interpolated message, replacing context placeholders.
+
 
 ## Logger\Formatter\FormatterInterface
 
@@ -1565,11 +1601,13 @@ This interface must be implemented by formatters in Phalcon\Logger
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Logger\Formatter\Formatter`](/5.19/api/phalcon_contracts/#contractsloggerformatterformatter)
-- **`Phalcon\Logger\Formatter\FormatterInterface`**
+    - **`Phalcon\Logger\Formatter\FormatterInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Logger\Formatter\Formatter`
+
+
 
 ## Logger\Formatter\Json
 
@@ -1581,11 +1619,12 @@ Formats messages using JSON encoding
 <div class="api-tree">
 
 - [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
-- **`Phalcon\Logger\Formatter\Json`**
+    - **`Phalcon\Logger\Formatter\Json`**
 
 </div>
 
 __Uses__ `JsonException` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
+
 
 ### Method Summary
 
@@ -1611,9 +1650,9 @@ __Uses__ `JsonException` · `Phalcon\Logger\Item` · `Phalcon\Traits\Support\Hel
 
 ```php
 public function __construct(
-string $dateFormat = "c",
-string $interpolatorLeft = "%",
-string $interpolatorRight = "%"
+    string $dateFormat = "c",
+    string $interpolatorLeft = "%",
+    string $interpolatorRight = "%"
 );
 ```
 
@@ -1627,6 +1666,7 @@ public function format( Item $item ): string;
 
 Applies a format to a message before sent it to the internal log
 
+
 ## Logger\Formatter\Line
 
 <span class="badge badge--class">Class</span>
@@ -1637,11 +1677,12 @@ Class Line
 <div class="api-tree">
 
 - [`Phalcon\Logger\Formatter\AbstractFormatter`](#loggerformatterabstractformatter)
-- **`Phalcon\Logger\Formatter\Line`**
+    - **`Phalcon\Logger\Formatter\Line`**
 
 </div>
 
 __Uses__ `Exception` · `Phalcon\Logger\Item`
+
 
 ### Method Summary
 
@@ -1690,10 +1731,10 @@ __Uses__ `Exception` · `Phalcon\Logger\Item`
 
 ```php
 public function __construct(
-string $format = "[%date%][%level%] %message%",
-string $dateFormat = "c",
-string $interpolatorLeft = "%",
-string $interpolatorRight = "%"
+    string $format = "[%date%][%level%] %message%",
+    string $dateFormat = "c",
+    string $interpolatorLeft = "%",
+    string $interpolatorRight = "%"
 );
 ```
 
@@ -1723,6 +1764,7 @@ public function setFormat( string $format ): static;
 
 Set the format applied to each message
 
+
 ## Logger\Item
 
 <span class="badge badge--class">Class</span>
@@ -1739,6 +1781,7 @@ Represents each item in a logging transaction
 </div>
 
 __Uses__ `DateTimeImmutable`
+
 
 ### Method Summary
 
@@ -1813,11 +1856,11 @@ __Uses__ `DateTimeImmutable`
 
 ```php
 public function __construct(
-string $message,
-string $levelName,
-int $level,
-DateTimeImmutable $dateTime,
-array $context = []
+    string $message,
+    string $levelName,
+    int $level,
+    DateTimeImmutable $dateTime,
+    array $context = []
 );
 ```
 
@@ -1853,6 +1896,7 @@ public function getLevelName(): string;
 public function getMessage(): string;
 ```
 
+
 ## Logger\Logger
 
 <span class="badge badge--class">Class</span>
@@ -1869,7 +1913,7 @@ from config files (see Phalcon\Config\Config object).
 <div class="api-tree">
 
 - [`Phalcon\Logger\AbstractLogger`](#loggerabstractlogger)
-- **`Phalcon\Logger\Logger`** - implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
+    - **`Phalcon\Logger\Logger`** - implements [`Phalcon\Logger\LoggerInterface`](#loggerloggerinterface)
 
 </div>
 
@@ -1946,8 +1990,8 @@ from config files (see Phalcon\Config\Config object).
 
 ```php
 public function alert(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1960,8 +2004,8 @@ trigger the SMS alerts and wake you up.
 
 ```php
 public function critical(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1973,8 +2017,8 @@ Example: Application component unavailable, unexpected exception.
 
 ```php
 public function debug(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1984,8 +2028,8 @@ Detailed debug information.
 
 ```php
 public function emergency(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1995,8 +2039,8 @@ System is unusable.
 
 ```php
 public function error(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2007,8 +2051,8 @@ be logged and monitored.
 
 ```php
 public function info(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2020,9 +2064,9 @@ Example: User logs in, SQL logs.
 
 ```php
 public function log(
-mixed $level,
-string $message,
-array $context = []
+    mixed $level,
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2035,8 +2079,8 @@ to the CUSTOM level and is logged, rather than raising an exception.
 
 ```php
 public function notice(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2046,8 +2090,8 @@ Normal but significant events.
 
 ```php
 public function trace(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2061,8 +2105,8 @@ for DEBUG.
 
 ```php
 public function warning(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2070,6 +2114,7 @@ Exceptional occurrences that are not errors.
 
 Example: Use of deprecated APIs, poor use of an API, undesirable things
 that are not necessarily wrong.
+
 
 ## Logger\LoggerFactory
 
@@ -2081,11 +2126,12 @@ Factory creating logger objects
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.19/api/phalcon_factory/#factoryabstractconfigfactory)
-- **`Phalcon\Logger\LoggerFactory`**
+    - **`Phalcon\Logger\LoggerFactory`**
 
 </div>
 
 __Uses__ `DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Throwable`
+
 
 ### Method Summary
 
@@ -2138,9 +2184,9 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-array $adapters = [],
-DateTimeZone|null $timezone = null
+    string $name,
+    array $adapters = [],
+    DateTimeZone|null $timezone = null
 ): Logger;
 ```
 
@@ -2154,6 +2200,7 @@ Returns a Logger object
 protected function getExceptionClass(): string;
 ```
 
+
 ## Logger\LoggerInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -2164,7 +2211,7 @@ Interface for Phalcon based logger objects.
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Logger\Logger`](/5.19/api/phalcon_contracts/#contractsloggerlogger)
-- **`Phalcon\Logger\LoggerInterface`**
+    - **`Phalcon\Logger\LoggerInterface`**
 
 </div>
 

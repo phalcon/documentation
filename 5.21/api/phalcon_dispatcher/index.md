@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Dispatcher\AbstractDispatcher
 
 Abstract
@@ -49,192 +50,150 @@ channels. For any given point they run in this order:
 @todo fix the returnValue type in v7
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.21/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](/5.21/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cli\Dispatcher`](/5.21/api/phalcon_cli/#clidispatcher)
-- [`Phalcon\Mvc\Dispatcher`](/5.21/api/phalcon_mvc/#mvcdispatcher)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.21/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Dispatcher\AbstractDispatcher`** - implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](/5.21/api/phalcon_events/#eventseventsawareinterface)
+      - [`Phalcon\Cli\Dispatcher`](/5.21/api/phalcon_cli/#clidispatcher)
+      - [`Phalcon\Mvc\Dispatcher`](/5.21/api/phalcon_mvc/#mvcdispatcher)
 
 `Exception` · `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
-<ApiItem href="#dispatcherabstractdispatcher-callactionmethod" visibility="public" name="callActionMethod" returnType="" params={[{"type":"mixed","name":"handler","default":null},{"type":"string","name":"actionMethod","default":null},{"type":"array","name":"params","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-dispatch" visibility="public" name="dispatch" returnType="mixed|bool" params={[]}>
-Process the results of the router by calling into the appropriate
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-forward" visibility="public" name="forward" returnType="void" params={[{"type":"array","name":"forward","default":null}]}>
-Forwards the execution flow to another controller/action.
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
-Gets the latest dispatched action name
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getactionsuffix" visibility="public" name="getActionSuffix" returnType="string" params={[]}>
-Gets the default action suffix
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getactivemethod" visibility="public" name="getActiveMethod" returnType="string" params={[]}>
-Returns the current method to be/executed in the dispatcher
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getboundmodels" visibility="public" name="getBoundModels" returnType="array" params={[]}>
-Returns bound models from binder instance
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getdefaultnamespace" visibility="public" name="getDefaultNamespace" returnType="string" params={[]}>
-Returns the default namespace
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-gethandlerclass" visibility="public" name="getHandlerClass" returnType="string" params={[]}>
-Possible class name that will be located to dispatch the request
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-gethandlersuffix" visibility="public" name="getHandlerSuffix" returnType="string" params={[]}>
-Gets the default handler suffix
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getmodelbinder" visibility="public" name="getModelBinder" returnType="BinderInterface|null" params={[]}>
-Gets model binder
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getmodulename" visibility="public" name="getModuleName" returnType="string|null" params={[]}>
-Gets the module where the controller class is
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getnamespacename" visibility="public" name="getNamespaceName" returnType="string" params={[]}>
-Gets a namespace to be prepended to the current handler name
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getparam" visibility="public" name="getParam" returnType="mixed" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Gets a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"filters","default":"null"},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Gets a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getparameters" visibility="public" name="getParameters" returnType="array" params={[]}>
-Gets action params
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
-Gets action params
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getpreviousactionname" visibility="public" name="getPreviousActionName" returnType="string" params={[]}>
-Gets previous dispatched action name
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getprevioushandlername" visibility="public" name="getPreviousHandlerName" returnType="string" params={[]}>
-Gets previous dispatched handler name
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getpreviousnamespacename" visibility="public" name="getPreviousNamespaceName" returnType="string" params={[]}>
-Gets previous dispatched namespace name
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-getreturnedvalue" visibility="public" name="getReturnedValue" returnType="mixed" params={[]}>
-Returns value returned by the latest dispatched action
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-hasparam" visibility="public" name="hasParam" returnType="bool" params={[{"type":"mixed","name":"param","default":null}]}>
-Check if a param exists
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-hasparameter" visibility="public" name="hasParameter" returnType="bool" params={[{"type":"mixed","name":"param","default":null}]}>
-Check if a param exists
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-isfinished" visibility="public" name="isFinished" returnType="bool" params={[]}>
-Checks if the dispatch loop is finished or has more pendent
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setactionname" visibility="public" name="setActionName" returnType="void" params={[{"type":"string","name":"actionName","default":null}]}>
-Sets the action name to be dispatched
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setactionsuffix" visibility="public" name="setActionSuffix" returnType="void" params={[{"type":"string","name":"actionSuffix","default":null}]}>
-Sets the default action suffix
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"string","name":"actionName","default":null}]}>
-Sets the default action name
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setdefaultnamespace" visibility="public" name="setDefaultNamespace" returnType="void" params={[{"type":"string","name":"defaultNamespace","default":null}]}>
-Sets the default namespace
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-sethandlersuffix" visibility="public" name="setHandlerSuffix" returnType="void" params={[{"type":"string","name":"handlerSuffix","default":null}]}>
-Sets the default suffix for the handler
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setmodelbinder" visibility="public" name="setModelBinder" returnType="DispatcherInterface" params={[{"type":"BinderInterface","name":"modelBinder","default":null},{"type":"mixed","name":"cache","default":"null"}]}>
-Enable model binding during dispatch
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setmodulename" visibility="public" name="setModuleName" returnType="void" params={[{"type":"string|null","name":"moduleName","default":"null"}]}>
-Sets the module where the controller is (only informative)
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setnamespacename" visibility="public" name="setNamespaceName" returnType="void" params={[{"type":"string","name":"namespaceName","default":null}]}>
-Sets the namespace where the controller class is
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setparam" visibility="public" name="setParam" returnType="void" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setparameter" visibility="public" name="setParameter" returnType="void" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setparameters" visibility="public" name="setParameters" returnType="void" params={[{"type":"array","name":"params","default":null}]}>
-Sets action params to be dispatched
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setparams" visibility="public" name="setParams" returnType="void" params={[{"type":"array","name":"params","default":null}]}>
-Sets action params to be dispatched
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-setreturnedvalue" visibility="public" name="setReturnedValue" returnType="void" params={[{"type":"mixed","name":"value","default":null}]}>
-Sets the latest returned value by an action manually
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-wasforwarded" visibility="public" name="wasForwarded" returnType="bool" params={[]}>
-Check if the current executed action was forwarded by another one
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-handleexception" visibility="protected" name="handleException" returnType="" params={[{"type":"\\Exception","name":"exception","default":null}]}>
-Handles a user exception triggered inside the dispatch loop.
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-resolveemptyproperties" visibility="protected" name="resolveEmptyProperties" returnType="void" params={[]}>
-Set empty properties to their defaults (where defaults are available)
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-throwdispatchexception" visibility="protected" name="throwDispatchException" returnType="" params={[{"type":"string","name":"message","default":null},{"type":"int","name":"exceptionCode","default":"0"}]}>
-Throws an internal dispatch exception.
-</ApiItem>
-<ApiItem href="#dispatcherabstractdispatcher-tocamelcase" visibility="protected" name="toCamelCase" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public callActionMethod(mixed $handler, string $actionMethod, array $params = [])`
+
+- `public dispatch(): mixed|bool` — Process the results of the router by calling into the appropriate
+
+- `public forward(array $forward): void` — Forwards the execution flow to another controller/action.
+
+- `public getActionName(): string` — Gets the latest dispatched action name
+
+- `public getActionSuffix(): string` — Gets the default action suffix
+
+- `public getActiveMethod(): string` — Returns the current method to be/executed in the dispatcher
+
+- `public getBoundModels(): array` — Returns bound models from binder instance
+
+- `public getDefaultNamespace(): string` — Returns the default namespace
+
+- `public getHandlerClass(): string` — Possible class name that will be located to dispatch the request
+
+- `public getHandlerSuffix(): string` — Gets the default handler suffix
+
+- `public getModelBinder(): BinderInterface|null` — Gets model binder
+
+- `public getModuleName(): string|null` — Gets the module where the controller class is
+
+- `public getNamespaceName(): string` — Gets a namespace to be prepended to the current handler name
+
+- `public getParam(mixed $param, mixed $filters = null, mixed $defaultValue = null): mixed` — Gets a param by its name or numeric index
+
+- `public getParameter(mixed $param, mixed $filters = null, mixed $defaultValue = null): mixed` — Gets a param by its name or numeric index
+
+- `public getParameters(): array` — Gets action params
+
+- `public getParams(): array` — Gets action params
+
+- `public getPreviousActionName(): string` — Gets previous dispatched action name
+
+- `public getPreviousHandlerName(): string` — Gets previous dispatched handler name
+
+- `public getPreviousNamespaceName(): string` — Gets previous dispatched namespace name
+
+- `public getReturnedValue(): mixed` — Returns value returned by the latest dispatched action
+
+- `public hasParam(mixed $param): bool` — Check if a param exists
+
+- `public hasParameter(mixed $param): bool` — Check if a param exists
+
+- `public isFinished(): bool` — Checks if the dispatch loop is finished or has more pendent
+
+- `public setActionName(string $actionName): void` — Sets the action name to be dispatched
+
+- `public setActionSuffix(string $actionSuffix): void` — Sets the default action suffix
+
+- `public setDefaultAction(string $actionName): void` — Sets the default action name
+
+- `public setDefaultNamespace(string $defaultNamespace): void` — Sets the default namespace
+
+- `public setHandlerSuffix(string $handlerSuffix): void` — Sets the default suffix for the handler
+
+- `public setModelBinder(BinderInterface $modelBinder, mixed $cache = null): DispatcherInterface` — Enable model binding during dispatch
+
+- `public setModuleName(string|null $moduleName = null): void` — Sets the module where the controller is (only informative)
+
+- `public setNamespaceName(string $namespaceName): void` — Sets the namespace where the controller class is
+
+- `public setParam(mixed $param, mixed $value): void` — Set a param by its name or numeric index
+
+- `public setParameter(mixed $param, mixed $value): void` — Set a param by its name or numeric index
+
+- `public setParameters(array $params): void` — Sets action params to be dispatched
+
+- `public setParams(array $params): void` — Sets action params to be dispatched
+
+- `public setReturnedValue(mixed $value): void` — Sets the latest returned value by an action manually
+
+- `public wasForwarded(): bool` — Check if the current executed action was forwarded by another one
+
+- `protected handleException(\Exception $exception)` — Handles a user exception triggered inside the dispatch loop.
+
+- `protected resolveEmptyProperties(): void` — Set empty properties to their defaults (where defaults are available)
+
+- `protected throwDispatchException(string $message, int $exceptionCode = 0)` — Throws an internal dispatch exception.
+
+- `protected toCamelCase(string $input): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="actionName" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="actionSuffix" type="string" default="&quot;Action&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeHandler" type="object|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeMethodMap" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="camelCaseMap" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultAction" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultHandler" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultNamespace" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="finished" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="forwarded" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlerHashes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlerHookCache" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlerName" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlerSuffix" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isControllerInitialize" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lastHandler" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelBinder" type="BinderInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelBinding" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="moduleName" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="namespaceName" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="params" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="previousActionName" type="string|null" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="previousHandlerName" type="string|null" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="previousNamespaceName" type="string|null" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="returnedValue" type="string|null" default="null">
-</ApiItem>
+- `protected string $actionName = ""`
+
+- `protected string $actionSuffix = "Action"`
+
+- `protected object|null $activeHandler = null`
+
+- `protected array $activeMethodMap = []`
+
+- `protected array $camelCaseMap = []`
+
+- `protected string $defaultAction = ""`
+
+- `protected string $defaultHandler = ""`
+
+- `protected string $defaultNamespace = ""`
+
+- `protected bool $finished = false`
+
+- `protected bool $forwarded = false`
+
+- `protected array $handlerHashes = []`
+
+- `protected array $handlerHookCache = []`
+
+- `protected string $handlerName = ""`
+
+- `protected string $handlerSuffix = ""`
+
+- `protected bool $isControllerInitialize = false`
+
+- `protected mixed $lastHandler = null`
+
+- `protected BinderInterface|null $modelBinder = null`
+
+- `protected bool $modelBinding = false`
+
+- `protected string $moduleName = ""`
+
+- `protected string $namespaceName = ""`
+
+- `protected array $params = []`
+
+- `protected string|null $previousActionName = ""`
+
+- `protected string|null $previousHandlerName = ""`
+
+- `protected string|null $previousNamespaceName = ""`
+
+- `protected string|null $returnedValue = null`
 
 ### Methods
 
@@ -242,9 +201,9 @@ Throws an internal dispatch exception.
 
 ```php
 public function callActionMethod(
-mixed $handler,
-string $actionMethod,
-array $params = []
+    mixed $handler,
+    string $actionMethod,
+    array $params = []
 );
 ```
 
@@ -267,10 +226,10 @@ Forwards the execution flow to another controller/action.
 
 ```php
 $this->dispatcher->forward(
-[
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 ```
 
@@ -309,11 +268,11 @@ Returns bound models from binder instance
 ```php
 class UserController extends Controller
 {
-public function showAction(User $user)
-{
-    // return array with $user
-    $boundModels = $this->dispatcher->getBoundModels();
-}
+    public function showAction(User $user)
+    {
+        // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels();
+    }
 }
 ```
 
@@ -369,9 +328,9 @@ Gets a namespace to be prepended to the current handler name
 
 ```php
 public function getParam(
-mixed $param,
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $param,
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -387,9 +346,9 @@ major version.
 
 ```php
 public function getParameter(
-mixed $param,
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $param,
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -512,8 +471,8 @@ Sets the default suffix for the handler
 
 ```php
 public function setModelBinder(
-BinderInterface $modelBinder,
-mixed $cache = null
+    BinderInterface $modelBinder,
+    mixed $cache = null
 ): DispatcherInterface;
 ```
 
@@ -521,17 +480,17 @@ Enable model binding during dispatch
 
 ```php
 $di->set(
-'dispatcher',
-function() {
-    $dispatcher = new Dispatcher();
+    'dispatcher',
+    function() {
+        $dispatcher = new Dispatcher();
 
-    $dispatcher->setModelBinder(
-        new Binder(),
-        'cache'
-    );
+        $dispatcher->setModelBinder(
+            new Binder(),
+            'cache'
+        );
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -555,8 +514,8 @@ Sets the namespace where the controller class is
 
 ```php
 public function setParam(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -566,8 +525,8 @@ Set a param by its name or numeric index
 
 ```php
 public function setParameter(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -629,8 +588,8 @@ Set empty properties to their defaults (where defaults are available)
 
 ```php
 abstract protected function throwDispatchException(
-string $message,
-int $exceptionCode = 0
+    string $message,
+    int $exceptionCode = 0
 );
 ```
 
@@ -645,6 +604,7 @@ handleException() before throwing it when it was not handled.
 protected function toCamelCase( string $input ): string;
 ```
 
+
 ## Dispatcher\DispatcherInterface
 
 Interface
@@ -652,9 +612,10 @@ Interface
 Interface for Phalcon\Dispatcher\AbstractDispatcher
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](/5.21/api/phalcon_contracts/#contractsdispatcherdispatcher)
-- **`Phalcon\Dispatcher\DispatcherInterface`**
+  - **`Phalcon\Dispatcher\DispatcherInterface`**
 
 `Phalcon\Contracts\Dispatcher\Dispatcher`
+
 
 ## Dispatcher\Exception
 
@@ -663,40 +624,39 @@ Class
 Exceptions thrown in Phalcon\Dispatcher/* will use this class
 
 - `\Exception`
-- **`Phalcon\Dispatcher\Exception`**
-- [`Phalcon\Cli\Dispatcher\Exception`](/5.21/api/phalcon_cli/#clidispatcherexception)
-- [`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`](#dispatcherexceptionsforwardininitializeforbidden)
-- [`Phalcon\Mvc\Dispatcher\Exception`](/5.21/api/phalcon_mvc/#mvcdispatcherexception)
+  - **`Phalcon\Dispatcher\Exception`**
+    - [`Phalcon\Cli\Dispatcher\Exception`](/5.21/api/phalcon_cli/#clidispatcherexception)
+    - [`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`](#dispatcherexceptionsforwardininitializeforbidden)
+    - [`Phalcon\Mvc\Dispatcher\Exception`](/5.21/api/phalcon_mvc/#mvcdispatcherexception)
 
 ### Constants
 
-<ApiItem kind="constant" name="EXCEPTION_ACTION_NOT_FOUND" type="int" default="5">
-</ApiItem>
-<ApiItem kind="constant" name="EXCEPTION_CYCLIC_ROUTING" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="EXCEPTION_HANDLER_NOT_FOUND" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="EXCEPTION_INVALID_HANDLER" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="EXCEPTION_INVALID_PARAMS" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="EXCEPTION_NO_DI" type="int" default="0">
-</ApiItem>
+- `const int EXCEPTION_ACTION_NOT_FOUND = 5`
+
+- `const int EXCEPTION_CYCLIC_ROUTING = 1`
+
+- `const int EXCEPTION_HANDLER_NOT_FOUND = 2`
+
+- `const int EXCEPTION_INVALID_HANDLER = 3`
+
+- `const int EXCEPTION_INVALID_PARAMS = 4`
+
+- `const int EXCEPTION_NO_DI = 0`
+
 
 ## Dispatcher\Exceptions\ForwardInInitializeForbidden
 
 Class
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](#dispatcherexception)
-- **`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`**
+  - [`Phalcon\Dispatcher\Exception`](#dispatcherexception)
+    - **`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`**
 
 `Phalcon\Dispatcher\Exception`
 
 ### Method Summary
 
-<ApiItem href="#dispatcherexceptionsforwardininitializeforbidden-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 

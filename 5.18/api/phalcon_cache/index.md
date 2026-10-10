@@ -32,11 +32,12 @@ multi-key `cache:*Multiple` events).
 <div class="api-tree">
 
 - **`Phalcon\Cache\AbstractCache`** - implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](/5.18/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cache\Cache`](#cachecache)
+    - [`Phalcon\Cache\Cache`](#cachecache)
 
 </div>
 
 __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Exception\InvalidArgumentException` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Traversable`
+
 
 ### Method Summary
 
@@ -182,8 +183,8 @@ Constructor.
 
 ```php
 abstract public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 );
 ```
 
@@ -209,9 +210,9 @@ Get the event manager
 
 ```php
 abstract public function set(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -272,8 +273,8 @@ Deletes multiple cache items in a single operation.
 
 ```php
 protected function doGet(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -283,8 +284,8 @@ Fetches a value from the cache.
 
 ```php
 protected function doGetMultiple(
-mixed $keys,
-mixed $defaultValue = null
+    mixed $keys,
+    mixed $defaultValue = null
 ): array;
 ```
 
@@ -302,9 +303,9 @@ Determines whether an item is present in the cache.
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -315,8 +316,8 @@ expiration TTL time.
 
 ```php
 protected function doSetMultiple(
-mixed $values,
-mixed $ttl = null
+    mixed $values,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -326,8 +327,8 @@ Persists a set of key => value pairs in the cache, with an optional TTL.
 
 ```php
 protected function fire(
-string $eventName,
-mixed $keys
+    string $eventName,
+    mixed $keys
 ): void;
 ```
 
@@ -341,6 +342,7 @@ abstract protected function getExceptionClass(): string;
 
 Returns the exception class that will be used for exceptions thrown
 
+
 ## Cache\AdapterFactory
 
 <span class="badge badge--class">Class</span>
@@ -351,12 +353,13 @@ Factory to create Cache adapters
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.18/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.18/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Cache\AdapterFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.18/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Cache\AdapterFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu` · `Phalcon\Cache\Adapter\Libmemcached` · `Phalcon\Cache\Adapter\Memory` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Cache\Adapter\RedisCluster` · `Phalcon\Cache\Adapter\Stream` · `Phalcon\Cache\Adapter\Weak` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\SerializerFactory`
+
 
 ### Method Summary
 
@@ -403,8 +406,8 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Apcu
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $services = []
+    SerializerFactory $factory,
+    array $services = []
 );
 ```
 
@@ -414,8 +417,8 @@ AdapterFactory constructor.
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -437,6 +440,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Cache\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -447,11 +451,13 @@ Interface for Phalcon\Cache adapters
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AdapterInterface`](/5.18/api/phalcon_storage/#storageadapteradapterinterface)
-- **`Phalcon\Cache\Adapter\AdapterInterface`**
+    - **`Phalcon\Cache\Adapter\AdapterInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Adapter\AdapterInterface`
+
+
 
 ## Cache\Adapter\Apcu
 
@@ -463,12 +469,13 @@ Apcu adapter
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Apcu`](/5.18/api/phalcon_storage/#storageadapterapcu)
-- **`Phalcon\Cache\Adapter\Apcu`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Apcu`](/5.18/api/phalcon_storage/#storageadapterapcu)
+        - **`Phalcon\Cache\Adapter\Apcu`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Apcu`
+
 
 ### Properties
 
@@ -479,6 +486,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Ap
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
 </div>
 </div>
+
 
 ## Cache\Adapter\Libmemcached
 
@@ -490,12 +498,13 @@ Libmemcached adapter
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Libmemcached`](/5.18/api/phalcon_storage/#storageadapterlibmemcached)
-- **`Phalcon\Cache\Adapter\Libmemcached`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Libmemcached`](/5.18/api/phalcon_storage/#storageadapterlibmemcached)
+        - **`Phalcon\Cache\Adapter\Libmemcached`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Libmemcached`
+
 
 ### Properties
 
@@ -506,6 +515,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Li
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
 </div>
 </div>
+
 
 ## Cache\Adapter\Memory
 
@@ -517,12 +527,13 @@ Memory adapter
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Memory`](/5.18/api/phalcon_storage/#storageadaptermemory)
-- **`Phalcon\Cache\Adapter\Memory`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Memory`](/5.18/api/phalcon_storage/#storageadaptermemory)
+        - **`Phalcon\Cache\Adapter\Memory`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Memory`
+
 
 ### Properties
 
@@ -533,6 +544,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Me
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
 </div>
 </div>
+
 
 ## Cache\Adapter\Redis
 
@@ -544,12 +556,13 @@ Redis adapter
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Redis`](/5.18/api/phalcon_storage/#storageadapterredis)
-- **`Phalcon\Cache\Adapter\Redis`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Redis`](/5.18/api/phalcon_storage/#storageadapterredis)
+        - **`Phalcon\Cache\Adapter\Redis`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Redis`
+
 
 ### Properties
 
@@ -560,6 +573,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
 </div>
 </div>
+
 
 ## Cache\Adapter\RedisCluster
 
@@ -571,13 +585,14 @@ RedisCluster adapter
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Redis`](/5.18/api/phalcon_storage/#storageadapterredis)
-- [`Phalcon\Storage\Adapter\RedisCluster`](/5.18/api/phalcon_storage/#storageadapterrediscluster)
-- **`Phalcon\Cache\Adapter\RedisCluster`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Redis`](/5.18/api/phalcon_storage/#storageadapterredis)
+        - [`Phalcon\Storage\Adapter\RedisCluster`](/5.18/api/phalcon_storage/#storageadapterrediscluster)
+            - **`Phalcon\Cache\Adapter\RedisCluster`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\RedisCluster`
+
 
 ### Properties
 
@@ -588,6 +603,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Re
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
 </div>
 </div>
+
 
 ## Cache\Adapter\Stream
 
@@ -599,12 +615,13 @@ Stream adapter
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Stream`](/5.18/api/phalcon_storage/#storageadapterstream)
-- **`Phalcon\Cache\Adapter\Stream`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Stream`](/5.18/api/phalcon_storage/#storageadapterstream)
+        - **`Phalcon\Cache\Adapter\Stream`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Stream`
+
 
 ### Properties
 
@@ -615,6 +632,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\St
 <code class="sig"><span class="sv">$eventType</span><span class="sm"> = &quot;cache&quot;</span></code>
 </div>
 </div>
+
 
 ## Cache\Adapter\Weak
 
@@ -626,12 +644,13 @@ WeakCache implementation based on WeakReference
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Weak`](/5.18/api/phalcon_storage/#storageadapterweak)
-- **`Phalcon\Cache\Adapter\Weak`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
+    - [`Phalcon\Storage\Adapter\Weak`](/5.18/api/phalcon_storage/#storageadapterweak)
+        - **`Phalcon\Cache\Adapter\Weak`** - implements [`Phalcon\Cache\Adapter\AdapterInterface`](#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\Weak`
+
 
 ### Properties
 
@@ -643,6 +662,7 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Storage\Adapter\We
 </div>
 </div>
 
+
 ## Cache\Cache
 
 <span class="badge badge--class">Class</span>
@@ -653,11 +673,12 @@ This component offers caching capabilities for your application.
 <div class="api-tree">
 
 - [`Phalcon\Cache\AbstractCache`](#cacheabstractcache)
-- **`Phalcon\Cache\Cache`**
+    - **`Phalcon\Cache\Cache`**
 
 </div>
 
 __Uses__ `DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Exception\InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -748,8 +769,8 @@ Deletes multiple cache items in a single operation.
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 );
 ```
 
@@ -759,8 +780,8 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-mixed $keys,
-mixed $defaultValue = null
+    mixed $keys,
+    mixed $defaultValue = null
 );
 ```
 
@@ -778,9 +799,9 @@ Determines whether an item is present in the cache.
 
 ```php
 public function set(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -791,8 +812,8 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-mixed $values,
-mixed $ttl = null
+    mixed $values,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -808,6 +829,7 @@ protected function getExceptionClass(): string;
 
 Returns the exception class that will be used for exceptions thrown
 
+
 ## Cache\CacheFactory
 
 <span class="badge badge--class">Class</span>
@@ -818,11 +840,12 @@ Creates a new Cache class
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.18/api/phalcon_factory/#factoryabstractconfigfactory)
-- **`Phalcon\Cache\CacheFactory`**
+    - **`Phalcon\Cache\CacheFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Cache` · `Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractConfigFactory`
+
 
 ### Method Summary
 
@@ -885,8 +908,8 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): CacheInterface;
 ```
 
@@ -900,6 +923,7 @@ Constructs a new Cache instance.
 protected function getExceptionClass(): string;
 ```
 
+
 ## Cache\CacheInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -910,11 +934,13 @@ Interface for Phalcon\Cache\Cache
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Cache\Cache`](/5.18/api/phalcon_contracts/#contractscachecache)
-- **`Phalcon\Cache\CacheInterface`**
+    - **`Phalcon\Cache\CacheInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Cache\Cache`
+
+
 
 ## Cache\Exception\Exception
 
@@ -926,9 +952,10 @@ Exceptions thrown in Phalcon\Cache will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Cache\Exception\Exception`**
+    - **`Phalcon\Cache\Exception\Exception`**
 
 </div>
+
 
 ## Cache\Exception\InvalidArgumentException
 
@@ -940,7 +967,7 @@ Exceptions thrown in Phalcon\Cache will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Cache\Exception\InvalidArgumentException`**
+    - **`Phalcon\Cache\Exception\InvalidArgumentException`**
 
 </div>
 

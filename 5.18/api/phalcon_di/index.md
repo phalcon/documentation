@@ -23,23 +23,24 @@ This abstract class offers common access to the DI in a class
 <div class="api-tree">
 
 - `stdClass`
-- **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
-- [`Phalcon\Assets\Manager`](/5.18/api/phalcon_assets/#assetsmanager)
-- [`Phalcon\Cli\Router`](/5.18/api/phalcon_cli/#clirouter)
-- [`Phalcon\Dispatcher\AbstractDispatcher`](/5.18/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
-- [`Phalcon\Encryption\Security`](/5.18/api/phalcon_encryption/#encryptionsecurity)
-- [`Phalcon\Flash\AbstractFlash`](/5.18/api/phalcon_flash/#flashabstractflash)
-- [`Phalcon\Http\Cookie`](/5.18/api/phalcon_http/#httpcookie)
-- [`Phalcon\Http\Request`](/5.18/api/phalcon_http/#httprequest)
-- [`Phalcon\Http\Response\Cookies`](/5.18/api/phalcon_http/#httpresponsecookies)
-- [`Phalcon\Mvc\Model`](/5.18/api/phalcon_mvc/#mvcmodel)
-- [`Phalcon\Mvc\Router`](/5.18/api/phalcon_mvc/#mvcrouter)
-- [`Phalcon\Mvc\Url`](/5.18/api/phalcon_mvc/#mvcurl)
-- [`Phalcon\Session\Manager`](/5.18/api/phalcon_session/#sessionmanager)
+    - **`Phalcon\Di\AbstractInjectionAware`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
+        - [`Phalcon\Assets\Manager`](/5.18/api/phalcon_assets/#assetsmanager)
+        - [`Phalcon\Cli\Router`](/5.18/api/phalcon_cli/#clirouter)
+        - [`Phalcon\Dispatcher\AbstractDispatcher`](/5.18/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
+        - [`Phalcon\Encryption\Security`](/5.18/api/phalcon_encryption/#encryptionsecurity)
+        - [`Phalcon\Flash\AbstractFlash`](/5.18/api/phalcon_flash/#flashabstractflash)
+        - [`Phalcon\Http\Cookie`](/5.18/api/phalcon_http/#httpcookie)
+        - [`Phalcon\Http\Request`](/5.18/api/phalcon_http/#httprequest)
+        - [`Phalcon\Http\Response\Cookies`](/5.18/api/phalcon_http/#httpresponsecookies)
+        - [`Phalcon\Mvc\Model`](/5.18/api/phalcon_mvc/#mvcmodel)
+        - [`Phalcon\Mvc\Router`](/5.18/api/phalcon_mvc/#mvcrouter)
+        - [`Phalcon\Mvc\Url`](/5.18/api/phalcon_mvc/#mvcurl)
+        - [`Phalcon\Session\Manager`](/5.18/api/phalcon_session/#sessionmanager)
 
 </div>
 
 __Uses__ `stdClass`
+
 
 ### Method Summary
 
@@ -89,6 +90,7 @@ public function setDI( DiInterface $container ): void;
 
 Sets the dependency injector
 
+
 ## Di\Di
 
 <span class="badge badge--class">Class</span>
@@ -122,10 +124,10 @@ $di->set("request", Request::class, true);
 
 // Using an anonymous function
 $di->setShared(
-"request",
-function () {
-    return new Request();
-}
+    "request",
+    function () {
+        return new Request();
+    }
 );
 
 $request = $di->getRequest();
@@ -134,11 +136,12 @@ $request = $di->getRequest();
 <div class="api-tree">
 
 - **`Phalcon\Di\Di`** - implements [`Phalcon\Di\DiInterface`](#didiinterface)
-- [`Phalcon\Di\FactoryDefault`](#difactorydefault)
+    - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 
 </div>
 
 __Uses__ `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Di\InitializationAwareInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Di\Service` · `Phalcon\Di\ServiceInterface` · `Phalcon\Di\ServiceProviderInterface` · `Phalcon\Events\ManagerInterface`
+
 
 ### Method Summary
 
@@ -366,8 +369,8 @@ __Uses__ `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalc
 
 ```php
 public function __call(
-string $method,
-array $arguments = []
+    string $method,
+    array $arguments = []
 ): mixed|null;
 ```
 
@@ -385,9 +388,9 @@ Phalcon\Di\Di constructor
 
 ```php
 public function attempt(
-string $name,
-mixed $definition,
-bool $shared = false
+    string $name,
+    mixed $definition,
+    bool $shared = false
 ): ServiceInterface|bool;
 ```
 
@@ -399,8 +402,8 @@ with the same name
 
 ```php
 public function get(
-string $name,
-mixed $parameters = null
+    string $name,
+    mixed $parameters = null
 ): mixed;
 ```
 
@@ -459,8 +462,8 @@ Return the services registered in the DI
 
 ```php
 public function getShared(
-string $name,
-mixed $parameters = null
+    string $name,
+    mixed $parameters = null
 ): mixed;
 ```
 
@@ -503,22 +506,22 @@ And the services can be specified in the file as:
 
 ```php
 return [
- 'myComponent' => [
-     'className' => '\Acme\Components\MyComponent',
-     'shared' => true,
- ],
- 'group' => [
-     'className' => '\Acme\Group',
-     'arguments' => [
-         [
-             'type' => 'service',
-             'service' => 'myComponent',
+     'myComponent' => [
+         'className' => '\Acme\Components\MyComponent',
+         'shared' => true,
+     ],
+     'group' => [
+         'className' => '\Acme\Group',
+         'arguments' => [
+             [
+                 'type' => 'service',
+                 'service' => 'myComponent',
+             ],
          ],
      ],
- ],
- 'user' => [
-     'className' => '\Acme\User',
- ],
+     'user' => [
+         'className' => '\Acme\User',
+     ],
 ];
 ```
 
@@ -528,8 +531,8 @@ return [
 
 ```php
 public function loadFromYaml(
-string $filePath,
-array $callbacks = null
+    string $filePath,
+    array $callbacks = null
 ): void;
 ```
 
@@ -537,12 +540,12 @@ Loads services from a yaml file.
 
 ```php
 $di->loadFromYaml(
-"path/services.yaml",
-[
-    "!approot" => function ($value) {
-        return dirname(__DIR__) . $value;
-    }
-]
+    "path/services.yaml",
+    [
+        "!approot" => function ($value) {
+            return dirname(__DIR__) . $value;
+        }
+    ]
 );
 ```
 
@@ -550,14 +553,14 @@ And the services can be specified in the file as:
 
 ```php
 myComponent:
-className: \Acme\Components\MyComponent
-shared: true
+    className: \Acme\Components\MyComponent
+    shared: true
 
 group:
-className: \Acme\Group
-arguments:
-    - type: service
-      name: myComponent
+    className: \Acme\Group
+    arguments:
+        - type: service
+          name: myComponent
 
 user:
    className: \Acme\User
@@ -589,8 +592,8 @@ var_dump($di["request"]);
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -622,15 +625,15 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di)
-{
-    $di->setShared(
-        'service',
-        function () {
-            // ...
-        }
-    );
-}
+    public function register(DiInterface $di)
+    {
+        $di->setShared(
+            'service',
+            function () {
+                // ...
+            }
+        );
+    }
 }
 ```
 
@@ -664,9 +667,9 @@ Resets the internal default DI
 
 ```php
 public function set(
-string $name,
-mixed $definition,
-bool $shared = false
+    string $name,
+    mixed $definition,
+    bool $shared = false
 ): ServiceInterface;
 ```
 
@@ -676,8 +679,8 @@ Registers a service in the services container
 
 ```php
 public function setAlias(
-string $name,
-mixed $aliases
+    string $name,
+    mixed $aliases
 ): self;
 ```
 
@@ -704,8 +707,8 @@ Sets the internal event manager
 
 ```php
 public function setService(
-string $name,
-ServiceInterface $rawDefinition
+    string $name,
+    ServiceInterface $rawDefinition
 ): ServiceInterface;
 ```
 
@@ -715,8 +718,8 @@ Sets a service using a raw Phalcon\Di\Service definition
 
 ```php
 public function setShared(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): ServiceInterface;
 ```
 
@@ -732,6 +735,7 @@ protected function loadFromConfig( ConfigInterface $config ): void;
 
 Loads services from a Config object.
 
+
 ## Di\DiInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -742,11 +746,12 @@ Interface for Phalcon\Di\Di
 <div class="api-tree">
 
 - `ArrayAccess`
-- **`Phalcon\Di\DiInterface`**
+    - **`Phalcon\Di\DiInterface`**
 
 </div>
 
 __Uses__ `ArrayAccess`
+
 
 ### Method Summary
 
@@ -857,9 +862,9 @@ __Uses__ `ArrayAccess`
 
 ```php
 public function attempt(
-string $name,
-mixed $definition,
-bool $shared = false
+    string $name,
+    mixed $definition,
+    bool $shared = false
 ): ServiceInterface|bool;
 ```
 
@@ -871,8 +876,8 @@ with the same name
 
 ```php
 public function get(
-string $name,
-mixed $parameters = null
+    string $name,
+    mixed $parameters = null
 ): mixed;
 ```
 
@@ -914,8 +919,8 @@ Return the services registered in the DI
 
 ```php
 public function getShared(
-string $name,
-mixed $parameters = null
+    string $name,
+    mixed $parameters = null
 ): mixed;
 ```
 
@@ -975,9 +980,9 @@ Resets the internal default DI
 
 ```php
 public function set(
-string $name,
-mixed $definition,
-bool $shared = false
+    string $name,
+    mixed $definition,
+    bool $shared = false
 ): ServiceInterface;
 ```
 
@@ -996,8 +1001,8 @@ methods
 
 ```php
 public function setService(
-string $name,
-ServiceInterface $rawDefinition
+    string $name,
+    ServiceInterface $rawDefinition
 ): ServiceInterface;
 ```
 
@@ -1007,12 +1012,13 @@ Sets a service using a raw Phalcon\Di\Service definition
 
 ```php
 public function setShared(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): ServiceInterface;
 ```
 
 Registers an "always shared" service in the services container
+
 
 ## Di\Exception
 
@@ -1024,28 +1030,28 @@ Exceptions thrown in Phalcon\Di will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Di\Exception`**
-- [`Phalcon\Di\Exception\ServiceResolutionException`](#diexceptionserviceresolutionexception)
-- [`Phalcon\Di\Exceptions\AliasAlreadyInUse`](#diexceptionsaliasalreadyinuse)
-- [`Phalcon\Di\Exceptions\AliasNameMustBeString`](#diexceptionsaliasnamemustbestring)
-- [`Phalcon\Di\Exceptions\ArgumentTypeRequired`](#diexceptionsargumenttyperequired)
-- [`Phalcon\Di\Exceptions\CallArgumentsMustBeArray`](#diexceptionscallargumentsmustbearray)
-- [`Phalcon\Di\Exceptions\CircularAliasReference`](#diexceptionscircularaliasreference)
-- [`Phalcon\Di\Exceptions\ContainerRequired`](#diexceptionscontainerrequired)
-- [`Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead`](#diexceptionsdefinitionmustbearrayforread)
-- [`Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate`](#diexceptionsdefinitionmustbearrayforupdate)
-- [`Phalcon\Di\Exceptions\MethodCallMustBeArray`](#diexceptionsmethodcallmustbearray)
-- [`Phalcon\Di\Exceptions\MethodNameRequired`](#diexceptionsmethodnamerequired)
-- [`Phalcon\Di\Exceptions\MissingClassNameParameter`](#diexceptionsmissingclassnameparameter)
-- [`Phalcon\Di\Exceptions\MissingParameterKey`](#diexceptionsmissingparameterkey)
-- [`Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance`](#diexceptionspropertyinjectionrequiresinstance)
-- [`Phalcon\Di\Exceptions\PropertyMustBeArray`](#diexceptionspropertymustbearray)
-- [`Phalcon\Di\Exceptions\PropertyNameRequired`](#diexceptionspropertynamerequired)
-- [`Phalcon\Di\Exceptions\PropertyValueRequired`](#diexceptionspropertyvaluerequired)
-- [`Phalcon\Di\Exceptions\ServiceCannotBeResolved`](#diexceptionsservicecannotberesolved)
-- [`Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`](#diexceptionssetterinjectionrequiresinstance)
-- [`Phalcon\Di\Exceptions\SetterParametersMustBeArray`](#diexceptionssetterparametersmustbearray)
-- [`Phalcon\Di\Exceptions\UnknownServiceType`](#diexceptionsunknownservicetype)
+    - **`Phalcon\Di\Exception`**
+        - [`Phalcon\Di\Exception\ServiceResolutionException`](#diexceptionserviceresolutionexception)
+        - [`Phalcon\Di\Exceptions\AliasAlreadyInUse`](#diexceptionsaliasalreadyinuse)
+        - [`Phalcon\Di\Exceptions\AliasNameMustBeString`](#diexceptionsaliasnamemustbestring)
+        - [`Phalcon\Di\Exceptions\ArgumentTypeRequired`](#diexceptionsargumenttyperequired)
+        - [`Phalcon\Di\Exceptions\CallArgumentsMustBeArray`](#diexceptionscallargumentsmustbearray)
+        - [`Phalcon\Di\Exceptions\CircularAliasReference`](#diexceptionscircularaliasreference)
+        - [`Phalcon\Di\Exceptions\ContainerRequired`](#diexceptionscontainerrequired)
+        - [`Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead`](#diexceptionsdefinitionmustbearrayforread)
+        - [`Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate`](#diexceptionsdefinitionmustbearrayforupdate)
+        - [`Phalcon\Di\Exceptions\MethodCallMustBeArray`](#diexceptionsmethodcallmustbearray)
+        - [`Phalcon\Di\Exceptions\MethodNameRequired`](#diexceptionsmethodnamerequired)
+        - [`Phalcon\Di\Exceptions\MissingClassNameParameter`](#diexceptionsmissingclassnameparameter)
+        - [`Phalcon\Di\Exceptions\MissingParameterKey`](#diexceptionsmissingparameterkey)
+        - [`Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance`](#diexceptionspropertyinjectionrequiresinstance)
+        - [`Phalcon\Di\Exceptions\PropertyMustBeArray`](#diexceptionspropertymustbearray)
+        - [`Phalcon\Di\Exceptions\PropertyNameRequired`](#diexceptionspropertynamerequired)
+        - [`Phalcon\Di\Exceptions\PropertyValueRequired`](#diexceptionspropertyvaluerequired)
+        - [`Phalcon\Di\Exceptions\ServiceCannotBeResolved`](#diexceptionsservicecannotberesolved)
+        - [`Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`](#diexceptionssetterinjectionrequiresinstance)
+        - [`Phalcon\Di\Exceptions\SetterParametersMustBeArray`](#diexceptionssetterparametersmustbearray)
+        - [`Phalcon\Di\Exceptions\UnknownServiceType`](#diexceptionsunknownservicetype)
 
 </div>
 
@@ -1102,6 +1108,7 @@ public static function undefinedMethod( string $method ): Exception;
 public static function unknownServiceInParameter( int $position ): Exception;
 ```
 
+
 ## Di\Exception\ServiceResolutionException
 
 <span class="badge badge--class">Class</span>
@@ -1112,10 +1119,11 @@ Phalcon\Di\Exception\ServiceResolutionException
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exception\ServiceResolutionException`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exception\ServiceResolutionException`**
 
 </div>
+
 
 ## Di\Exceptions\AliasAlreadyInUse
 
@@ -1125,12 +1133,13 @@ Phalcon\Di\Exception\ServiceResolutionException
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\AliasAlreadyInUse`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\AliasAlreadyInUse`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1151,6 +1160,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( string $alias );
 ```
 
+
 ## Di\Exceptions\AliasNameMustBeString
 
 <span class="badge badge--class">Class</span>
@@ -1159,12 +1169,13 @@ public function __construct( string $alias );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\AliasNameMustBeString`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\AliasNameMustBeString`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1185,6 +1196,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\ArgumentTypeRequired
 
 <span class="badge badge--class">Class</span>
@@ -1193,12 +1205,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\ArgumentTypeRequired`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\ArgumentTypeRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1219,6 +1232,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\CallArgumentsMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -1227,12 +1241,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\CallArgumentsMustBeArray`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\CallArgumentsMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1253,6 +1268,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\CircularAliasReference
 
 <span class="badge badge--class">Class</span>
@@ -1261,12 +1277,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\CircularAliasReference`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\CircularAliasReference`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1287,6 +1304,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Di\Exceptions\ContainerRequired
 
 <span class="badge badge--class">Class</span>
@@ -1295,12 +1313,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\ContainerRequired`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\ContainerRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1321,6 +1340,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\DefinitionMustBeArrayForRead
 
 <span class="badge badge--class">Class</span>
@@ -1329,12 +1349,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1355,6 +1376,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\DefinitionMustBeArrayForUpdate
 
 <span class="badge badge--class">Class</span>
@@ -1363,12 +1385,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1389,6 +1412,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\MethodCallMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -1397,12 +1421,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\MethodCallMustBeArray`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\MethodCallMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1423,6 +1448,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\MethodNameRequired
 
 <span class="badge badge--class">Class</span>
@@ -1431,12 +1457,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\MethodNameRequired`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\MethodNameRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1457,6 +1484,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\MissingClassNameParameter
 
 <span class="badge badge--class">Class</span>
@@ -1465,12 +1493,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\MissingClassNameParameter`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\MissingClassNameParameter`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1491,6 +1520,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\MissingParameterKey
 
 <span class="badge badge--class">Class</span>
@@ -1499,12 +1529,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\MissingParameterKey`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\MissingParameterKey`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1523,10 +1554,11 @@ __Uses__ `Phalcon\Di\Exception`
 
 ```php
 public function __construct(
-string $key,
-int $position
+    string $key,
+    int $position
 );
 ```
+
 
 ## Di\Exceptions\PropertyInjectionRequiresInstance
 
@@ -1536,12 +1568,13 @@ int $position
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1562,6 +1595,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\PropertyMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -1570,12 +1604,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\PropertyMustBeArray`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\PropertyMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1596,6 +1631,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\PropertyNameRequired
 
 <span class="badge badge--class">Class</span>
@@ -1604,12 +1640,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\PropertyNameRequired`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\PropertyNameRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1630,6 +1667,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\PropertyValueRequired
 
 <span class="badge badge--class">Class</span>
@@ -1638,12 +1676,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\PropertyValueRequired`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\PropertyValueRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1664,6 +1703,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\Exceptions\ServiceCannotBeResolved
 
 <span class="badge badge--class">Class</span>
@@ -1672,12 +1712,13 @@ public function __construct( int $position );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\ServiceCannotBeResolved`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\ServiceCannotBeResolved`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1698,6 +1739,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Di\Exceptions\SetterInjectionRequiresInstance
 
 <span class="badge badge--class">Class</span>
@@ -1706,12 +1748,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\SetterInjectionRequiresInstance`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1732,6 +1775,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\SetterParametersMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -1740,12 +1784,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\SetterParametersMustBeArray`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\SetterParametersMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1766,6 +1811,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct();
 ```
 
+
 ## Di\Exceptions\UnknownServiceType
 
 <span class="badge badge--class">Class</span>
@@ -1774,12 +1820,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Di\Exception`](#diexception)
-- **`Phalcon\Di\Exceptions\UnknownServiceType`**
+    - [`Phalcon\Di\Exception`](#diexception)
+        - **`Phalcon\Di\Exceptions\UnknownServiceType`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Exception`
+
 
 ### Method Summary
 
@@ -1800,6 +1847,7 @@ __Uses__ `Phalcon\Di\Exception`
 public function __construct( int $position );
 ```
 
+
 ## Di\FactoryDefault
 
 <span class="badge badge--class">Class</span>
@@ -1813,12 +1861,13 @@ full stack framework
 <div class="api-tree">
 
 - [`Phalcon\Di\Di`](#didi)
-- **`Phalcon\Di\FactoryDefault`**
-- [`Phalcon\Di\FactoryDefault\Cli`](#difactorydefaultcli)
+    - **`Phalcon\Di\FactoryDefault`**
+        - [`Phalcon\Di\FactoryDefault\Cli`](#difactorydefaultcli)
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -1842,6 +1891,7 @@ public function __construct();
 
 Phalcon\Di\FactoryDefault constructor
 
+
 ## Di\FactoryDefault\Cli
 
 <span class="badge badge--class">Class</span>
@@ -1857,12 +1907,13 @@ This class is specially suitable for CLI applications
 <div class="api-tree">
 
 - [`Phalcon\Di\Di`](#didi)
-- [`Phalcon\Di\FactoryDefault`](#difactorydefault)
-- **`Phalcon\Di\FactoryDefault\Cli`**
+    - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
+        - **`Phalcon\Di\FactoryDefault\Cli`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -1885,6 +1936,7 @@ public function __construct();
 ```
 
 Phalcon\Di\FactoryDefault\Cli constructor
+
 
 ## Di\InitializationAwareInterface
 
@@ -1918,6 +1970,7 @@ Interface for components that have `initialize()`
 ```php
 public function initialize(): void;
 ```
+
 
 ## Di\Injectable
 
@@ -1956,20 +2009,21 @@ accessing a public property with the same name of a registered service
 <div class="api-tree">
 
 - `stdClass`
-- **`Phalcon\Di\Injectable`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
-- [`Phalcon\Application\AbstractApplication`](/5.18/api/phalcon_application/#applicationabstractapplication)
-- [`Phalcon\Cli\Task`](/5.18/api/phalcon_cli/#clitask)
-- [`Phalcon\Filter\Validation`](/5.18/api/phalcon_filter/#filtervalidation)
-- [`Phalcon\Forms\Form`](/5.18/api/phalcon_forms/#formsform)
-- [`Phalcon\Mvc\Controller`](/5.18/api/phalcon_mvc/#mvccontroller)
-- [`Phalcon\Mvc\Micro`](/5.18/api/phalcon_mvc/#mvcmicro)
-- [`Phalcon\Mvc\View`](/5.18/api/phalcon_mvc/#mvcview)
-- [`Phalcon\Mvc\View\Engine\AbstractEngine`](/5.18/api/phalcon_mvc/#mvcviewengineabstractengine)
-- [`Phalcon\Mvc\View\Simple`](/5.18/api/phalcon_mvc/#mvcviewsimple)
+    - **`Phalcon\Di\Injectable`** - implements [`Phalcon\Di\InjectionAwareInterface`](#diinjectionawareinterface)
+        - [`Phalcon\Application\AbstractApplication`](/5.18/api/phalcon_application/#applicationabstractapplication)
+        - [`Phalcon\Cli\Task`](/5.18/api/phalcon_cli/#clitask)
+        - [`Phalcon\Filter\Validation`](/5.18/api/phalcon_filter/#filtervalidation)
+        - [`Phalcon\Forms\Form`](/5.18/api/phalcon_forms/#formsform)
+        - [`Phalcon\Mvc\Controller`](/5.18/api/phalcon_mvc/#mvccontroller)
+        - [`Phalcon\Mvc\Micro`](/5.18/api/phalcon_mvc/#mvcmicro)
+        - [`Phalcon\Mvc\View`](/5.18/api/phalcon_mvc/#mvcview)
+        - [`Phalcon\Mvc\View\Engine\AbstractEngine`](/5.18/api/phalcon_mvc/#mvcviewengineabstractengine)
+        - [`Phalcon\Mvc\View\Simple`](/5.18/api/phalcon_mvc/#mvcviewsimple)
 
 </div>
 
 __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\Exceptions\ContainerRequired` · `Phalcon\Session\BagInterface` · `stdClass`
+
 
 ### Method Summary
 
@@ -2047,6 +2101,7 @@ public function setDI( DiInterface $container ): void;
 
 Sets the dependency injector
 
+
 ## Di\InjectionAwareInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -2098,6 +2153,7 @@ public function setDI( DiInterface $container ): void;
 
 Sets the dependency injector
 
+
 ## Di\Service
 
 <span class="badge badge--class">Class</span>
@@ -2107,8 +2163,8 @@ Represents individually a service in the services container
 
 ```php
 $service = new \Phalcon\Di\Service(
-"request",
-\Phalcon\Http\Request::class
+    "request",
+    \Phalcon\Http\Request::class
 );
 
 $request = service->resolve();
@@ -2121,6 +2177,7 @@ $request = service->resolve();
 </div>
 
 __Uses__ `Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
+
 
 ### Method Summary
 
@@ -2218,8 +2275,8 @@ __Uses__ `Closure` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phal
 
 ```php
 final public function __construct(
-mixed $definition,
-bool $shared = false
+    mixed $definition,
+    bool $shared = false
 );
 ```
 
@@ -2261,8 +2318,8 @@ Check whether the service is shared or not
 
 ```php
 public function resolve(
-mixed $parameters = null,
-DiInterface $container = null
+    mixed $parameters = null,
+    DiInterface $container = null
 ): mixed;
 ```
 
@@ -2280,8 +2337,8 @@ Set the service definition
 
 ```php
 public function setParameter(
-int $position,
-array $parameter
+    int $position,
+    array $parameter
 ): ServiceInterface;
 ```
 
@@ -2302,6 +2359,7 @@ public function setSharedInstance( mixed $sharedInstance ): void;
 ```
 
 Sets/Resets the shared instance related to the service
+
 
 ## Di\ServiceInterface
 
@@ -2406,8 +2464,8 @@ Check whether the service is shared or not
 
 ```php
 public function resolve(
-mixed $parameters = null,
-DiInterface $container = null
+    mixed $parameters = null,
+    DiInterface $container = null
 ): mixed;
 ```
 
@@ -2425,8 +2483,8 @@ Set the service definition
 
 ```php
 public function setParameter(
-int $position,
-array $parameter
+    int $position,
+    array $parameter
 ): ServiceInterface;
 ```
 
@@ -2439,6 +2497,7 @@ public function setShared( bool $shared );
 ```
 
 Sets if the service is shared or not
+
 
 ## Di\ServiceProviderInterface
 
@@ -2456,15 +2515,15 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di)
-{
-    $di->setShared(
-        'service',
-        function () {
-            // ...
-        }
-    );
-}
+    public function register(DiInterface $di)
+    {
+        $di->setShared(
+            'service',
+            function () {
+                // ...
+            }
+        );
+    }
 }
 ```
 
@@ -2497,6 +2556,7 @@ public function register( DiInterface $di ): void;
 
 Registers a service provider.
 
+
 ## Di\Service\Builder
 
 <span class="badge badge--class">Class</span>
@@ -2513,6 +2573,7 @@ This class builds instances based on complex definitions
 </div>
 
 __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
+
 
 ### Method Summary
 
@@ -2532,9 +2593,9 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Excep
 
 ```php
 public function build(
-DiInterface $container,
-array $definition,
-mixed $parameters = null
+    DiInterface $container,
+    array $definition,
+    mixed $parameters = null
 );
 ```
 

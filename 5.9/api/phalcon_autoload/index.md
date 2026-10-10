@@ -17,41 +17,49 @@ All classes are prefixed with `Phalcon`
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Exception.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Autoload`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
+    
 
 Exceptions thrown in Phalcon\Autoload will use this class
+
+
 
 ## Autoload\Loader 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Autoload/Loader.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Autoload`
 
 -   __Uses__
-
+    
     - `Phalcon\Events\AbstractEventsAware`
 
 -   __Extends__
-
+    
     `AbstractEventsAware`
 
 -   __Implements__
+    
 
 The Phalcon Autoloader provides an easy way to automatically load classes
 (namespaced or not) as well as files. It also features extension loading,
 allowing the user to autoload files with different extensions than .php.
+
 
 ### Properties
 ```php
@@ -119,105 +127,127 @@ public function __construct( bool $isDebug = bool );
 ```
 Loader constructor.
 
+
 ```php
 public function addClass( string $name, string $file ): Loader;
 ```
 Adds a class to the internal collection for the mapping
+
 
 ```php
 public function addDirectory( string $directory ): Loader;
 ```
 Adds a directory for the loaded files
 
+
 ```php
 public function addExtension( string $extension ): Loader;
 ```
 Adds an extension for the loaded files
+
 
 ```php
 public function addFile( string $file ): Loader;
 ```
 Adds a file to be added to the loader
 
+
 ```php
 public function addNamespace( string $name, mixed $directories, bool $prepend = bool ): Loader;
 ```
+
+
 
 ```php
 public function autoload( string $className ): bool;
 ```
 Autoloads the registered classes
 
+
 ```php
 public function getCheckedPath(): string | null;
 ```
 Get the path the loader is checking for a path
+
 
 ```php
 public function getClasses(): array;
 ```
 Returns the class-map currently registered in the autoloader
 
+
 ```php
 public function getDebug(): array;
 ```
 Returns debug information collected
+
 
 ```php
 public function getDirectories(): array;
 ```
 Returns the directories currently registered in the autoloader
 
+
 ```php
 public function getExtensions(): array;
 ```
 Returns the file extensions registered in the loader
+
 
 ```php
 public function getFiles(): array;
 ```
 Returns the files currently registered in the autoloader
 
+
 ```php
 public function getFoundPath(): string | null;
 ```
 Get the path when a class was found
+
 
 ```php
 public function getNamespaces(): array;
 ```
 Returns the namespaces currently registered in the autoloader
 
+
 ```php
 public function isRegistered(): bool;
 ```
 returns isRegister
+
 
 ```php
 public function loadFiles(): void;
 ```
 Checks if a file exists and then adds the file by doing virtual require
 
+
 ```php
 public function register( bool $prepend = bool ): Loader;
 ```
 Register the autoload method
+
 
 ```php
 public function setClasses( array $classes, bool $merge = bool ): Loader;
 ```
 Register classes and their locations
 
+
 ```php
 public function setDirectories( array $directories, bool $merge = bool ): Loader;
 ```
 Register directories in which "not found" classes could be found
+
 
 ```php
 public function setExtensions( array $extensions, bool $merge = bool ): Loader;
 ```
 Sets an array of file extensions that the loader must try in each attempt
 to locate the file
+
 
 ```php
 public function setFileCheckingCallback( mixed $method = null ): Loader;
@@ -236,21 +266,25 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
+
 ```php
 public function setFiles( array $files, bool $merge = bool ): Loader;
 ```
 Registers files that are "non-classes" hence need a "require". This is
 very useful for including files that only have functions
 
+
 ```php
 public function setNamespaces( array $namespaces, bool $merge = bool ): Loader;
 ```
 Register namespaces and their related directories
 
+
 ```php
 public function unregister(): Loader;
 ```
 Unregister the autoload method
+
 
 ```php
 protected function requireFile( string $file ): bool;

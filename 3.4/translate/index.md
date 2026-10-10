@@ -11,12 +11,14 @@ version: "3.4"
 
 The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
+
 ## Adapters
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
 | Adapter                                 | Description                                                                             |
 |-----------------------------------------|-----------------------------------------------------------------------------------------|
 | [Phalcon\Translate\Adapter\NativeArray](/3.4/api/phalcon_translate/) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
+
 
 ### Factory
 Loads Translate Adapter class using `adapter` option
@@ -27,15 +29,16 @@ Loads Translate Adapter class using `adapter` option
 use Phalcon\Translate\Factory;
 
 $options = [
-'locale'        => 'de_DE.UTF-8',
-'defaultDomain' => 'translations',
-'directory'     => '/path/to/application/locales',
-'category'      => LC_MESSAGES,
-'adapter'       => 'gettext',
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
+    'adapter'       => 'gettext',
 ];
 
 $translate = Factory::load($options);
 ```
+ 
 
 ## Component Usage
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
@@ -54,10 +57,10 @@ Each file contains an array of the translations in a key/value manner. For each 
 
 // app/messages/en.php
 $messages = [
-'hi'      => 'Hello',
-'bye'     => 'Good Bye',
-'hi-name' => 'Hello %name%',
-'song'    => 'This song is %song%',
+    'hi'      => 'Hello',
+    'bye'     => 'Good Bye',
+    'hi-name' => 'Hello %name%',
+    'song'    => 'This song is %song%',
 ];
 ```
 
@@ -66,10 +69,10 @@ $messages = [
 
 // app/messages/fr.php
 $messages = [
-'hi'      => 'Bonjour',
-'bye'     => 'Au revoir',
-'hi-name' => 'Bonjour %name%',
-'song'    => 'La chanson est %song%',
+    'hi'      => 'Bonjour',
+    'bye'     => 'Au revoir',
+    'hi-name' => 'Bonjour %name%',
+    'song'    => 'La chanson est %song%',
 ];
 ```
 
@@ -85,36 +88,36 @@ use Phalcon\Translate\Adapter\NativeArray;
 
 class UserController extends Controller
 {
-protected function getTranslation()
-{
-    // Ask browser what is the best language
-    $language = $this->request->getBestLanguage();
-    $messages = [];
+    protected function getTranslation()
+    {
+        // Ask browser what is the best language
+        $language = $this->request->getBestLanguage();
+        $messages = [];
+        
+        $translationFile = 'app/messages/' . $language . '.php';
 
-    $translationFile = 'app/messages/' . $language . '.php';
+        // Check if we have a translation file for that lang
+        if (file_exists($translationFile)) {
+            require $translationFile;
+        } else {
+            // Fallback to some default
+            require 'app/messages/en.php';
+        }
 
-    // Check if we have a translation file for that lang
-    if (file_exists($translationFile)) {
-        require $translationFile;
-    } else {
-        // Fallback to some default
-        require 'app/messages/en.php';
+        // Return a translation object $messages comes from the require
+        // statement above
+        return new NativeArray(
+            [
+                'content' => $messages,
+            ]
+        );
     }
 
-    // Return a translation object $messages comes from the require
-    // statement above
-    return new NativeArray(
-        [
-            'content' => $messages,
-        ]
-    );
-}
-
-public function indexAction()
-{
-    $this->view->name = 'Mike';
-    $this->view->t    = $this->getTranslation();
-}
+    public function indexAction()
+    {
+        $this->view->name = 'Mike';
+        $this->view->t    = $this->getTranslation();
+    }
 }
 ```
 
@@ -139,7 +142,7 @@ calculated data i.e. `Hello %name%`. These placeholders can be replaced with pas
 Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/3.4/routing/).
 
 The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
-
+ 
 You can always wrap this functionality in its own class and register that class in the DI container:
 
 ```php
@@ -150,28 +153,28 @@ use Phalcon\Translate\Adapter\NativeArray;
 
 class Locale extends Component
 {
-public function getTranslator()
-{
-    // Ask browser what is the best language
-    $language = $this->request->getBestLanguage();
+    public function getTranslator()
+    {
+        // Ask browser what is the best language
+        $language = $this->request->getBestLanguage();
 
-    /**
-     * We are using JSON based files for storing translations. 
-     * You will need to check if the file exists! 
-     */
-    $translations = json_decode(
-        file_get_contents('app/messages/' . $language . '.json'),
-        true
-    );
+        /**
+         * We are using JSON based files for storing translations. 
+         * You will need to check if the file exists! 
+         */
+        $translations = json_decode(
+            file_get_contents('app/messages/' . $language . '.json'),
+            true
+        );
 
-    // Return a translation object $messages comes from the require
-    // statement above
-    return new NativeArray(
-        [
-            'content' => $translations,
-        ]
-    );
-}
+        // Return a translation object $messages comes from the require
+        // statement above
+        return new NativeArray(
+            [
+                'content' => $translations,
+            ]
+        );
+    }
 }
 ``` 
 
@@ -184,13 +187,13 @@ use Phalcon\Mvc\Controller;
 
 class MyController extends Controller
 {
-public function indexAction()
-{
-    $name = 'Mike';
-    $text = $this->locale->_('hi-name', ['name' => $name]);
-
-    $this->view->text = $text;
-}
+    public function indexAction()
+    {
+        $name = 'Mike';
+        $text = $this->locale->_('hi-name', ['name' => $name]);
+        
+        $this->view->text = $text;
+    }
 }
 ```
 
@@ -199,6 +202,7 @@ or in a view directly
 ```php
 <?php echo $locale->_('hi-name', ['name' => 'Mike']);
 ```
+
 
 ## Implementing your own adapters
 The [Phalcon\Translate\AdapterInterface](/3.4/api/phalcon_translate/) interface must be implemented in order to create your own translate adapters or extend the existing ones:
@@ -210,45 +214,45 @@ use Phalcon\Translate\AdapterInterface;
 
 class MyTranslateAdapter implements AdapterInterface
 {
-/**
- * Adapter constructor
- *
- * @param array $options
- */
-public function __construct(array $options);
+    /**
+     * Adapter constructor
+     *
+     * @param array $options
+     */
+    public function __construct(array $options);
 
-/**
- * @param  string     $translateKey
- * @param  array|null $placeholders
- * @return string
- */
-public function t($translateKey, $placeholders = null);
+    /**
+     * @param  string     $translateKey
+     * @param  array|null $placeholders
+     * @return string
+     */
+    public function t($translateKey, $placeholders = null);
+    
+    /**
+     * Returns the translation string of the given key
+     *
+     * @param   string $translateKey
+     * @param   array $placeholders
+     * @return  string
+     */
+    public function _(string $translateKey, $placeholders = null): string;
 
-/**
- * Returns the translation string of the given key
- *
- * @param   string $translateKey
- * @param   array $placeholders
- * @return  string
- */
-public function _(string $translateKey, $placeholders = null): string;
+    /**
+     * Returns the translation related to the given key
+     *
+     * @param   string $index
+     * @param   array $placeholders
+     * @return  string
+     */
+    public function query(string $index, $placeholders = null): string;
 
-/**
- * Returns the translation related to the given key
- *
- * @param   string $index
- * @param   array $placeholders
- * @return  string
- */
-public function query(string $index, $placeholders = null): string;
-
-/**
- * Check whether is defined a translation key in the internal array
- *
- * @param   string $index
- * @return  bool
- */
-public function exists(string $index): bool;
+    /**
+     * Check whether is defined a translation key in the internal array
+     *
+     * @param   string $index
+     * @return  bool
+     */
+    public function exists(string $index): bool;
 }
 ```
 

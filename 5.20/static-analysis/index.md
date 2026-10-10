@@ -25,7 +25,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
   "require-dev": {
-"vimeo/psalm": "^4.7"
+    "vimeo/psalm": "^4.7"
   }
 }
 ```
@@ -46,7 +46,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
   "require-dev": {
-"phalcon/ide-stubs": ",^v5.0"
+    "phalcon/ide-stubs": ",^v5.0"
   }
 }
 ```
@@ -67,43 +67,43 @@ the full path to their location in the `ide-stubs` package.
 ```xml
 <?xml version="1.0"?>
 <psalm
-    name="Phalcon - Psalm Config"
-    totallyTyped="true"
-    errorLevel="3"
-    resolveFromConfigFile="true"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="https://getpsalm.org/schema/config"
-    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        name="Phalcon - Psalm Config"
+        totallyTyped="true"
+        errorLevel="3"
+        resolveFromConfigFile="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
-<stubs>
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Di/Injectable.php" />
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Di/AbstractInjectionAware.php"/>
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Controller.php"/>
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Model.php"/>
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Validation.php"/>
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Http/Response.php"/>
-    <file name="vendor/phalcon/ide-stubs/src/Phalcon/Http/Request.php"/>
-</stubs>
-<projectFiles>
-    <directory name="app" />
-    <directory name="src" />
-    <ignoreFiles>
-        <directory name="vendor" />
-        <directory name="public" />
-    </ignoreFiles>
-</projectFiles>
-<issueHandlers>
-    <PropertyNotSetInConstructor>
-        <errorLevel type="suppress">
-            <directory name="src"/>
-        </errorLevel>
-    </PropertyNotSetInConstructor>
-    <MissingConstructor>
-        <errorLevel type="suppress">
-            <directory name="src/Controller"/>
-        </errorLevel>
-    </MissingConstructor>
-</issueHandlers>
+    <stubs>
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Di/Injectable.php" />
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Di/AbstractInjectionAware.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Controller.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Mvc/Model.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Validation.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Http/Response.php"/>
+        <file name="vendor/phalcon/ide-stubs/src/Phalcon/Http/Request.php"/>
+    </stubs>
+    <projectFiles>
+        <directory name="app" />
+        <directory name="src" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="public" />
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <directory name="src"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Controller"/>
+            </errorLevel>
+        </MissingConstructor>
+    </issueHandlers>
 </psalm>
 ```
 

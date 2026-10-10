@@ -22,10 +22,10 @@ The [Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] is a value ob
 use Phalcon\Http\Message\UploadedFile;
 
 $file = new UploadedFile(
-'php://memory',
-0,
-UPLOAD_ERR_OK,
-'phalcon.txt'
+    'php://memory',
+    0,
+    UPLOAD_ERR_OK,
+    'phalcon.txt'
 );
 
 echo $file->getClientFilename(); // 'phalcon.txt'
@@ -37,11 +37,11 @@ We are creating a new [Phalcon\Http\Message\UploadedFile][http-message-uploadedf
 
 ```php
 public function __construct(
-StreamInterface | string | null $stream 
-[, int $size = null 
-[, int error = 0
-[, string clientFilename = null
-[, string clientMediaType = null ]]]] 
+    StreamInterface | string | null $stream 
+    [, int $size = null 
+    [, int error = 0
+    [, string clientFilename = null
+    [, string clientMediaType = null ]]]] 
 )
 ```
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the stream, the size of the file, if any error occurred during the upload, the client file name as well as the client media type.
@@ -57,17 +57,17 @@ The constructor accepts parameters allowing you to create the object with certai
 ### `getClientFilename()`
 
 Returns the filename sent by the client. You should not trust the value returned by this method. The client could very well send a malicious filename with the intent to corrupt or hack your application. The value returned is the value stored in the `name` key in the `$_FILES` array.
-
+     
 ```php
 <?php
 
 use Phalcon\Http\Message\UploadedFile;
 
 $file = new UploadedFile(
-'php://memory',
-0,
-UPLOAD_ERR_OK,
-'phalcon.txt'
+    'php://memory',
+    0,
+    UPLOAD_ERR_OK,
+    'phalcon.txt'
 );
 
 echo $file->getClientFilename(); // 'phalcon.txt'
@@ -76,18 +76,18 @@ echo $file->getClientFilename(); // 'phalcon.txt'
 ### `getClientMediaType()`
 
 Returns the media type sent by the client. You should not trust the value returned by this method. The client could very well send a malicious filename with the intent to corrupt or hack your application. The value returned is the value stored in the `type` key in the `$_FILES` array.
-
+     
 ```php
 <?php
 
 use Phalcon\Http\Message\UploadedFile;
 
 $file = new UploadedFile(
-'php://memory',
-0,
-UPLOAD_ERR_OK,
-'phalcon.txt',
-'application/text'
+    'php://memory',
+    0,
+    UPLOAD_ERR_OK,
+    'phalcon.txt',
+    'application/text'
 );
 
 echo $file->getClientMediaType(); // 'application/text'
@@ -96,18 +96,18 @@ echo $file->getClientMediaType(); // 'application/text'
 ### `getError()`
 
  Returns the error associated with the uploaded file. The value is PHP's `UPLOAD_ERR_*` [constants][upload-errors]. If the file was uploaded successfully, the method will return `UPLOAD_ERR_OK`. The value returned is the value stored in the `error` key in the `$_FILES` array.
-
+     
 ```php
 <?php
 
 use Phalcon\Http\Message\UploadedFile;
 
 $file = new UploadedFile(
-'php://memory',
-0,
-UPLOAD_ERR_OK,
-'phalcon.txt',
-'application/text'
+    'php://memory',
+    0,
+    UPLOAD_ERR_OK,
+    'phalcon.txt',
+    'application/text'
 );
 
 echo $file->getError(); // UPLOAD_ERR_OK
@@ -116,17 +116,17 @@ echo $file->getError(); // UPLOAD_ERR_OK
 ### `getSize()`
 
 Returns the size of the uploaded file. The value returned is the value stored in the `size` key in the `$_FILES` array if available.
-
+     
 ```php
 <?php
 
 use Phalcon\Http\Message\UploadedFile;
 
 $file = new UploadedFile(
-'php://memory',
-1234,
-UPLOAD_ERR_OK,
-'phalcon.txt'
+    'php://memory',
+    1234,
+    UPLOAD_ERR_OK,
+    'phalcon.txt'
 );
 
 echo $file->getSize(); // 1234
@@ -137,7 +137,7 @@ echo $file->getSize(); // 1234
 Returns the stream representing the uploaded file. The method returns a `StreamInterface` instance. The purpose of this method is to allow utilizing native PHP stream functionality to manipulate the file upload, such as [stream_copy_to_stream()][stream-copy-to-stream] (though the result will need to be decorated in a native PHP stream wrapper to work with such functions).
 
 If the `moveTo()` method has been called previously, a [Phalcon\Http\Message\Exception\InvalidArgumentException][http-message-exception-invalidargumentexception] exception will be thrown.
-
+     
 ```php
 <?php
 
@@ -148,10 +148,10 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $file = new UploadedFile(
-$stream,
-1234,
-UPLOAD_ERR_OK,
-'phalcon.txt'
+    $stream,
+    1234,
+    UPLOAD_ERR_OK,
+    'phalcon.txt'
 );
 
 echo $file->getStream(); // '/assets/stream/mit.txt'
@@ -174,10 +174,10 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $file = new UploadedFile(
-$stream,
-1234,
-UPLOAD_ERR_OK,
-'phalcon.txt'
+    $stream,
+    1234,
+    UPLOAD_ERR_OK,
+    'phalcon.txt'
 );
 
 $file->moveTo('/storage/files/');

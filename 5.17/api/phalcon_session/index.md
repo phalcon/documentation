@@ -21,12 +21,13 @@ All classes are prefixed with `Phalcon`
 <div class="api-tree">
 
 - **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
-- [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
-- [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
+    - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
+    - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
 </div>
 
 __Uses__ `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+
 
 ### Method Summary
 
@@ -123,8 +124,8 @@ Garbage Collector
 
 ```php
 public function open(
-mixed $path,
-mixed $name
+    mixed $path,
+    mixed $name
 ): bool;
 ```
 
@@ -142,8 +143,8 @@ Read
 
 ```php
 public function updateTimestamp(
-mixed $id,
-mixed $data
+    mixed $id,
+    mixed $data
 ): bool;
 ```
 
@@ -161,12 +162,13 @@ Validate the session id (used when strict mode is enabled)
 
 ```php
 public function write(
-mixed $id,
-mixed $data
+    mixed $id,
+    mixed $data
 ): bool;
 ```
 
 Write
+
 
 ## Session\Adapter\Exceptions\AdapterRuntimeError
 
@@ -176,12 +178,14 @@ Write
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
+
 
 ## Session\Adapter\Exceptions\InvalidSavePath
 
@@ -191,12 +195,13 @@ __Uses__ `Phalcon\Session\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -217,6 +222,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct();
 ```
 
+
 ## Session\Adapter\Exceptions\SavePathUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -225,12 +231,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -251,6 +258,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Session\Adapter\Libmemcached
 
 <span class="badge badge--class">Class</span>
@@ -261,11 +269,12 @@ Phalcon\Session\Adapter\Libmemcached
 <div class="api-tree">
 
 - [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
-- **`Phalcon\Session\Adapter\Libmemcached`**
+    - **`Phalcon\Session\Adapter\Libmemcached`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\AdapterFactory`
+
 
 ### Method Summary
 
@@ -285,21 +294,22 @@ __Uses__ `Phalcon\Storage\AdapterFactory`
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
 Libmemcached constructor.
 
-        ]
-    ],
-    'defaultSerializer' => 'Php',
-    'lifetime' => 3600,
-    'serializer' => null,
-    'prefix' => 'sess-memc-',
-    'stripPrefix' => false
 ]
+],
+'defaultSerializer' => 'Php',
+'lifetime' => 3600,
+'serializer' => null,
+'prefix' => 'sess-memc-',
+'stripPrefix' => false
+]
+
 
 ## Session\Adapter\Noop
 
@@ -324,11 +334,12 @@ $session->setAdapter(new Noop());
 <div class="api-tree">
 
 - **`Phalcon\Session\Adapter\Noop`** - implements `SessionHandlerInterface`, `SessionUpdateTimestampHandlerInterface`
-- [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
+    - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
 </div>
 
 __Uses__ `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+
 
 ### Method Summary
 
@@ -415,8 +426,8 @@ Garbage Collector
 
 ```php
 public function open(
-mixed $path,
-mixed $name
+    mixed $path,
+    mixed $name
 ): bool;
 ```
 
@@ -434,8 +445,8 @@ Read
 
 ```php
 public function updateTimestamp(
-mixed $id,
-mixed $data
+    mixed $id,
+    mixed $data
 ): bool;
 ```
 
@@ -453,12 +464,13 @@ Validate the session id (used when strict mode is enabled)
 
 ```php
 public function write(
-mixed $id,
-mixed $data
+    mixed $id,
+    mixed $data
 ): bool;
 ```
 
 Write
+
 
 ## Session\Adapter\Redis
 
@@ -470,11 +482,12 @@ Phalcon\Session\Adapter\Redis
 <div class="api-tree">
 
 - [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
-- **`Phalcon\Session\Adapter\Redis`**
+    - **`Phalcon\Session\Adapter\Redis`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory`
+
 
 ### Method Summary
 
@@ -570,8 +583,8 @@ __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\St
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
@@ -620,6 +633,7 @@ protected function releaseLock(): void;
 
 Releases the session lock - only when this instance still owns it
 
+
 ## Session\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
@@ -637,9 +651,9 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session->setAdapter($files);
 ```
@@ -651,11 +665,12 @@ $session->setAdapter($files);
 <div class="api-tree">
 
 - [`Phalcon\Session\Adapter\Noop`](#sessionadapternoop)
-- **`Phalcon\Session\Adapter\Stream`**
+    - **`Phalcon\Session\Adapter\Stream`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+
 
 ### Method Summary
 
@@ -766,8 +781,8 @@ Garbage Collector
 
 ```php
 public function open(
-mixed $path,
-mixed $name
+    mixed $path,
+    mixed $name
 ): bool;
 ```
 
@@ -785,8 +800,8 @@ Reads data from the adapter
 
 ```php
 public function updateTimestamp(
-mixed $id,
-mixed $data
+    mixed $id,
+    mixed $data
 ): bool;
 ```
 
@@ -804,8 +819,8 @@ Validate the session id (used when strict mode is enabled)
 
 ```php
 public function write(
-mixed $id,
-mixed $data
+    mixed $id,
+    mixed $data
 ): bool;
 ```
 
@@ -826,6 +841,7 @@ protected function getPrefixedName( mixed $name ): string;
 ```
 
 Helper method to get the name prefixed
+
 
 ## Session\Bag
 
@@ -852,11 +868,12 @@ $user->age  = 22;
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.17/api/phalcon_support/#supportcollection)
-- **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](/5.17/api/phalcon_di/#diinjectionawareinterface)
+    - **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](/5.17/api/phalcon_di/#diinjectionawareinterface)
 
 </div>
 
 __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Collection`
+
 
 ### Method Summary
 
@@ -911,8 +928,8 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwa
 
 ```php
 public function __construct(
-ManagerInterface $session,
-string $name
+    ManagerInterface $session,
+    string $name
 );
 ```
 
@@ -952,8 +969,8 @@ Removes a property from the internal bag
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -966,6 +983,7 @@ public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
+
 
 ## Session\BagInterface
 
@@ -1057,8 +1075,8 @@ public function __isset( string $element ): bool;
 
 ```php
 public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -1078,9 +1096,9 @@ public function clear(): void;
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string $cast = null
 ): mixed;
 ```
 
@@ -1106,10 +1124,11 @@ public function remove( string $element ): void;
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
+
 
 ## Session\Exception
 
@@ -1123,17 +1142,18 @@ Exceptions thrown in Phalcon\Session will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Session\Exception`**
-- [`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`](#sessionadapterexceptionsadapterruntimeerror)
-- [`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`](#sessionadapterexceptionsinvalidsavepath)
-- [`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`](#sessionadapterexceptionssavepathunavailable)
-- [`Phalcon\Session\Exceptions\InvalidSessionAdapter`](#sessionexceptionsinvalidsessionadapter)
-- [`Phalcon\Session\Exceptions\InvalidSessionId`](#sessionexceptionsinvalidsessionid)
-- [`Phalcon\Session\Exceptions\InvalidSessionName`](#sessionexceptionsinvalidsessionname)
-- [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
-- [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
+    - **`Phalcon\Session\Exception`**
+        - [`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`](#sessionadapterexceptionsadapterruntimeerror)
+        - [`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`](#sessionadapterexceptionsinvalidsavepath)
+        - [`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`](#sessionadapterexceptionssavepathunavailable)
+        - [`Phalcon\Session\Exceptions\InvalidSessionAdapter`](#sessionexceptionsinvalidsessionadapter)
+        - [`Phalcon\Session\Exceptions\InvalidSessionId`](#sessionexceptionsinvalidsessionid)
+        - [`Phalcon\Session\Exceptions\InvalidSessionName`](#sessionexceptionsinvalidsessionname)
+        - [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
+        - [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
 
 </div>
+
 
 ## Session\Exceptions\InvalidSessionAdapter
 
@@ -1143,12 +1163,13 @@ Exceptions thrown in Phalcon\Session will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\InvalidSessionAdapter`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\InvalidSessionAdapter`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -1169,6 +1190,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct();
 ```
 
+
 ## Session\Exceptions\InvalidSessionId
 
 <span class="badge badge--class">Class</span>
@@ -1177,12 +1199,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\InvalidSessionId`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\InvalidSessionId`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -1203,6 +1226,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct();
 ```
 
+
 ## Session\Exceptions\InvalidSessionName
 
 <span class="badge badge--class">Class</span>
@@ -1211,12 +1235,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\InvalidSessionName`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\InvalidSessionName`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -1237,6 +1262,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct();
 ```
 
+
 ## Session\Exceptions\SessionAlreadyStarted
 
 <span class="badge badge--class">Class</span>
@@ -1245,12 +1271,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\SessionAlreadyStarted`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\SessionAlreadyStarted`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -1271,6 +1298,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct();
 ```
 
+
 ## Session\Exceptions\SessionModificationDenied
 
 <span class="badge badge--class">Class</span>
@@ -1279,12 +1307,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\SessionModificationDenied`**
+    - [`Phalcon\Session\Exception`](#sessionexception)
+        - **`Phalcon\Session\Exceptions\SessionModificationDenied`**
 
 </div>
 
 __Uses__ `Phalcon\Session\Exception`
+
 
 ### Method Summary
 
@@ -1305,6 +1334,7 @@ __Uses__ `Phalcon\Session\Exception`
 public function __construct();
 ```
 
+
 ## Session\Manager
 
 <span class="badge badge--class">Class</span>
@@ -1318,12 +1348,13 @@ public function __construct();
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.17/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.17/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
+
 
 ### Method Summary
 
@@ -1493,8 +1524,8 @@ Alias: Check whether a session variable is set in an application context
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1528,9 +1559,9 @@ Check whether the session has been started
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null,
-bool $remove = false
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
 ): mixed;
 ```
 
@@ -1598,8 +1629,8 @@ Removes a session variable from an application context
 
 ```php
 public function set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1655,6 +1686,7 @@ public function status(): int;
 
 Returns the status of the current session.
 
+
 ## Session\ManagerInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -1671,6 +1703,7 @@ Interface for the Phalcon\Session\Manager
 </div>
 
 __Uses__ `InvalidArgumentException` · `SessionHandlerInterface`
+
 
 ### Method Summary
 
@@ -1844,8 +1877,8 @@ Alias: Check whether a session variable is set in an application context
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1879,9 +1912,9 @@ Check whether the session has been started
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null,
-bool $remove = false
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
 ): mixed;
 ```
 
@@ -1947,8 +1980,8 @@ Removes a session variable from an application context
 
 ```php
 public function set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 

@@ -17,6 +17,7 @@ version: "3.4"
 
 This component allows to create CLI applications using Phalcon
 
+
 ## Methods
 public  **addModules** (*array* $modules)
 
@@ -26,35 +27,47 @@ Merge modules with the existing ones
 <?php
 
 $application->addModules(
-[
-    "admin" => [
-        "className" => "Multiple\Admin\Module",
-        "path"      => "../apps/admin/Module.php",
-    ],
-]
+    [
+        "admin" => [
+            "className" => "Multiple\Admin\Module",
+            "path"      => "../apps/admin/Module.php",
+        ],
+    ]
 );
 
 ```
+
+
 
 public  **handle** ([*array* $arguments])
 
 Handle the whole command-line tasks
 
+
+
 public  **setArgument** ([*array* $arguments], [*mixed* $str], [*mixed* $shift])
 
 Set an specific argument
+
+
 
 public  **__construct** ([[Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector]) inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Phalcon\Application
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Sets the events manager
 
+
+
 public  **getEventsManager** () inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Returns the internal event manager
+
+
 
 public  **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
@@ -64,47 +77,64 @@ Register an array of modules present in the application
 <?php
 
 $this->registerModules(
-[
-    "frontend" => [
-        "className" => "Multiple\Frontend\Module",
-        "path"      => "../apps/frontend/Module.php",
-    ],
-    "backend" => [
-        "className" => "Multiple\Backend\Module",
-        "path"      => "../apps/backend/Module.php",
-    ],
-]
+    [
+        "frontend" => [
+            "className" => "Multiple\Frontend\Module",
+            "path"      => "../apps/frontend/Module.php",
+        ],
+        "backend" => [
+            "className" => "Multiple\Backend\Module",
+            "path"      => "../apps/backend/Module.php",
+        ],
+    ]
 );
 
 ```
+
+
 
 public  **getModules** () inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Return the modules registered in the application
 
+
+
 public  **getModule** (*mixed* $name) inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Gets the module definition registered in the application via module name
+
+
 
 public  **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Sets the module name to be used if the router doesn't return a valid module
 
+
+
 public  **getDefaultModule** () inherited from [Phalcon\Application](/3.4/api/phalcon_application/)
 
 Returns the default module name
+
+
 
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the dependency injector
 
+
+
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
 
+
+
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Magic method __get
+
+
+
 
 <hr />
 
@@ -121,45 +151,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -193,6 +245,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
+
 ## Constants
 *integer* **EXCEPTION_NO_DI**
 
@@ -211,149 +264,223 @@ public  **setTaskSuffix** (*mixed* $taskSuffix)
 
 Sets the default task suffix
 
+
+
 public  **setDefaultTask** (*mixed* $taskName)
 
 Sets the default task name
+
+
 
 public  **setTaskName** (*mixed* $taskName)
 
 Sets the task name to be dispatched
 
+
+
 public  **getTaskName** ()
 
 Gets last dispatched task name
+
+
 
 protected  **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
 Throws an internal exception
 
+
+
 protected  **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
 Handles a user exception
+
+
 
 public  **getLastTask** ()
 
 Returns the latest dispatched controller
 
+
+
 public  **getActiveTask** ()
 
 Returns the active task in the dispatcher
+
+
 
 public  **setOptions** (*array* $options)
 
 Set the options to be dispatched
 
+
+
 public  **getOptions** ()
 
 Get dispatched options
+
+
 
 public  **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
 Gets an option by its name or numeric index
 
+
+
 public  **hasOption** (*mixed* $option)
 
 Check if an option exists
+
+
 
 public  **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
 Calls the action method.
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the dependency injector
+
+
 
 public  **getDI** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the events manager
+
+
 
 public  **getEventsManager** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the default action suffix
+
+
 
 public  **getActionSuffix** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets the default action suffix
 
+
+
 public  **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the module where the controller is (only informative)
+
+
 
 public  **getModuleName** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets the module where the controller class is
 
+
+
 public  **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the namespace where the controller class is
+
+
 
 public  **getNamespaceName** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets a namespace to be prepended to the current handler name
 
+
+
 public  **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the default namespace
+
+
 
 public  **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Returns the default namespace
 
+
+
 public  **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the default action name
+
+
 
 public  **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the action name to be dispatched
 
+
+
 public  **getActionName** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets the latest dispatched action name
+
+
 
 public  **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets action params to be dispatched
 
+
+
 public  **getParams** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets action params
+
+
 
 public  **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Set a param by its name or numeric index
 
+
+
 public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets a param by its name or numeric index
+
+
 
 public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Check if a param exists
 
+
+
 public  **getActiveMethod** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Returns the current method to be/executed in the dispatcher
+
+
 
 public  **isFinished** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
+
+
 public  **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Sets the latest returned value by an action manually
 
+
+
 public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Returns value returned by the latest dispatched action
+
+
 
 public  **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
@@ -363,13 +490,15 @@ Enable/Disable model binding during dispatch
 <?php
 
 $di->set('dispatcher', function() {
-$dispatcher = new Dispatcher();
+    $dispatcher = new Dispatcher();
 
-$dispatcher->setModelBinding(true, 'cache');
-return $dispatcher;
+    $dispatcher->setModelBinding(true, 'cache');
+    return $dispatcher;
 });
 
 ```
+
+
 
 public  **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](/3.4/api/phalcon_mvc_model_binder/) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
@@ -379,25 +508,33 @@ Enable model binding during dispatch
 <?php
 
 $di->set('dispatcher', function() {
-$dispatcher = new Dispatcher();
+    $dispatcher = new Dispatcher();
 
-$dispatcher->setModelBinder(new Binder(), 'cache');
-return $dispatcher;
+    $dispatcher->setModelBinder(new Binder(), 'cache');
+    return $dispatcher;
 });
 
 ```
+
+
 
 public  **getModelBinder** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Gets model binder
 
+
+
 public *object* **dispatch** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Dispatches a handle action taking into account the routing parameters
 
+
+
 protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Dispatches a handle action taking into account the routing parameters
+
+
 
 public  **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
@@ -407,21 +544,27 @@ Forwards the execution flow to another controller/action.
 <?php
 
 $this->dispatcher->forward(
-[
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 
 ```
+
+
 
 public  **wasForwarded** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Check if the current executed action was forwarded by another one
 
+
+
 public  **getHandlerClass** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Possible class name that will be located to dispatch the request
+
+
 
 public  **getBoundModels** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
@@ -432,17 +575,22 @@ Returns bound models from binder instance
 
 class UserController extends Controller
 {
-public function showAction(User $user)
-{
-    $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
-}
+    public function showAction(User $user)
+    {
+        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+    }
 }
 
 ```
 
+
+
 protected  **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](/3.4/api/phalcon_di/)
 
 Set empty properties to their defaults (where defaults are available)
+
+
+
 
 <hr />
 
@@ -459,45 +607,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -512,93 +682,117 @@ abstract public  **setTaskSuffix** (*mixed* $taskSuffix)
 
 ...
 
+
 abstract public  **setDefaultTask** (*mixed* $taskName)
 
 ...
+
 
 abstract public  **setTaskName** (*mixed* $taskName)
 
 ...
 
+
 abstract public  **getTaskName** ()
 
 ...
+
 
 abstract public  **getLastTask** ()
 
 ...
 
+
 abstract public  **getActiveTask** ()
 
 ...
+
 
 abstract public  **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **getActionSuffix** () inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **setDefaultNamespace** (*mixed* $defaultNamespace) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **setActionName** (*mixed* $actionName) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **getActionName** () inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **setParams** (*mixed* $params) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **getParams** () inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **getParam** (*mixed* $param, [*mixed* $filters]) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **hasParam** (*mixed* $param) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **isFinished** () inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
 
 abstract public  **getReturnedValue** () inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **dispatch** () inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
 
+
 abstract public  **forward** (*mixed* $forward) inherited from [Phalcon\DispatcherInterface](/3.4/api/phalcon_di/)
 
 ...
+
+
 
 <hr />
 
@@ -619,41 +813,54 @@ action of that task should receive the request
 $router = new \Phalcon\Cli\Router();
 
 $router->handle(
-[
-    "module" => "main",
-    "task"   => "videos",
-    "action" => "process",
-]
+    [
+        "module" => "main",
+        "task"   => "videos",
+        "action" => "process",
+    ]
 );
 
 echo $router->getTaskName();
 
 ```
 
+
 ## Methods
 public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\Cli\Router constructor
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 Sets the dependency injector
+
+
 
 public  **getDI** ()
 
 Returns the internal dependency injector
 
+
+
 public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
+
+
 
 public  **setDefaultTask** (*mixed* $taskName)
 
 Sets the default controller name
 
+
+
 public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
+
+
 
 public  **setDefaults** (*array* $defaults)
 
@@ -664,17 +871,21 @@ This method must not be used to set a 404 route
 <?php
 
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 
 ```
 
+
+
 public  **handle** ([*array* $arguments])
 
 Handles routing information received from command-line arguments
+
+
 
 public [Phalcon\Cli\Router\Route](/3.4/api/phalcon_cli/) **add** (*string* $pattern, [*string/array* $paths])
 
@@ -687,45 +898,68 @@ $router->add("/about", "About::main");
 
 ```
 
+
+
 public  **getModuleName** ()
 
 Returns processed module name
+
+
 
 public  **getTaskName** ()
 
 Returns processed task name
 
+
+
 public  **getActionName** ()
 
 Returns processed action name
+
+
 
 public *array* **getParams** ()
 
 Returns processed extra params
 
+
+
 public  **getMatchedRoute** ()
 
 Returns the route that matches the handled URI
+
+
 
 public *array* **getMatches** ()
 
 Returns the sub expressions in the regular expression matched
 
+
+
 public  **wasMatched** ()
 
 Checks if the router matches any of the defined routes
+
+
 
 public  **getRoutes** ()
 
 Returns all the routes defined in the router
 
+
+
 public [Phalcon\Cli\Router\Route](/3.4/api/phalcon_cli/) **getRouteById** (*int* $id)
 
 Returns a route object by its id
 
+
+
 public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
+
+
+
 
 <hr />
 
@@ -742,45 +976,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -790,6 +1046,7 @@ String representation of the exception
 
 This class represents every route added to the router
 
+
 ## Constants
 *string* **DEFAULT_DELIMITER**
 
@@ -798,21 +1055,31 @@ public  **__construct** (*string* $pattern, [*array* $paths])
 
 Phalcon\Cli\Router\Route constructor
 
+
+
 public  **compilePattern** (*mixed* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
+
+
 
 public *array* | *boolean* **extractNamedParams** (*string* $pattern)
 
 Extracts parameters from a string
 
+
+
 public  **reConfigure** (*string* $pattern, [*array* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 
+
+
 public  **getName** ()
 
 Returns the route's name
+
+
 
 public  **setName** (*mixed* $name)
 
@@ -822,13 +1089,15 @@ Sets the route's name
 <?php
 
 $router->add(
-"/about",
-[
-    "controller" => "about",
-]
+    "/about",
+    [
+        "controller" => "about",
+    ]
 )->setName("about");
 
 ```
+
+
 
 public [Phalcon\Cli\Router\Route](/3.4/api/phalcon_cli/) **beforeMatch** (*callback* $callback)
 
@@ -836,49 +1105,74 @@ Sets a callback that is called if the route is matched.
 The developer can implement any arbitrary conditions here
 If the callback returns false the route is treated as not matched
 
+
+
 public *mixed* **getBeforeMatch** ()
 
 Returns the 'before match' callback if any
+
+
 
 public  **getRouteId** ()
 
 Returns the route's id
 
+
+
 public  **getPattern** ()
 
 Returns the route's pattern
+
+
 
 public  **getCompiledPattern** ()
 
 Returns the route's compiled pattern
 
+
+
 public  **getPaths** ()
 
 Returns the paths
+
+
 
 public  **getReversedPaths** ()
 
 Returns the paths using positions as keys and names as values
 
+
+
 public [Phalcon\Cli\Router\Route](/3.4/api/phalcon_cli/) **convert** (*string* $name, *callable* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
+
+
 
 public  **getConverters** ()
 
 Returns the router converter
 
+
+
 public static  **reset** ()
 
 Resets the internal route id generator
+
+
 
 public static  **delimiter** ([*mixed* $delimiter])
 
 Set the routing delimiter
 
+
+
 public static  **getDelimiter** ()
 
 Get routing delimiter
+
+
+
 
 <hr />
 
@@ -891,41 +1185,52 @@ abstract public  **compilePattern** (*mixed* $pattern)
 
 ...
 
+
 abstract public  **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **getName** ()
 
 ...
 
+
 abstract public  **setName** (*mixed* $name)
 
 ...
+
 
 abstract public  **getRouteId** ()
 
 ...
 
+
 abstract public  **getPattern** ()
 
 ...
+
 
 abstract public  **getCompiledPattern** ()
 
 ...
 
+
 abstract public  **getPaths** ()
 
 ...
+
 
 abstract public  **getReversedPaths** ()
 
 ...
 
+
 abstract public static  **reset** ()
 
 ...
+
+
 
 <hr />
 
@@ -938,65 +1243,82 @@ abstract public  **setDefaultModule** (*mixed* $moduleName)
 
 ...
 
+
 abstract public  **setDefaultTask** (*mixed* $taskName)
 
 ...
+
 
 abstract public  **setDefaultAction** (*mixed* $actionName)
 
 ...
 
+
 abstract public  **setDefaults** (*array* $defaults)
 
 ...
+
 
 abstract public  **handle** ([*mixed* $arguments])
 
 ...
 
+
 abstract public  **add** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **getModuleName** ()
 
 ...
 
+
 abstract public  **getTaskName** ()
 
 ...
+
 
 abstract public  **getActionName** ()
 
 ...
 
+
 abstract public  **getParams** ()
 
 ...
+
 
 abstract public  **getMatchedRoute** ()
 
 ...
 
+
 abstract public  **getMatches** ()
 
 ...
+
 
 abstract public  **wasMatched** ()
 
 ...
 
+
 abstract public  **getRoutes** ()
 
 ...
+
 
 abstract public  **getRouteById** (*mixed* $id)
 
 ...
 
+
 abstract public  **getRouteByName** (*mixed* $name)
 
 ...
+
+
 
 <hr />
 
@@ -1018,44 +1340,58 @@ The Task class should at least have a "mainAction" method
 
 class HelloTask extends \Phalcon\Cli\Task
 {
-// This action will be executed by default
-public function mainAction()
-{
+    // This action will be executed by default
+    public function mainAction()
+    {
 
-}
+    }
 
-public function findAction()
-{
+    public function findAction()
+    {
 
-}
+    }
 }
 
 ```
+
 
 ## Methods
 final public  **__construct** ()
 
 Phalcon\Cli\Task constructor
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the dependency injector
+
+
 
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the event manager
+
+
 
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Magic method __get
+
+
+
 
 <hr />
 

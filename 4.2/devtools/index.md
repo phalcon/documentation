@@ -136,10 +136,10 @@ declare(strict_types=1);
 class TestController extends \Phalcon\Mvc\Controller
 {
 
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
 }
 
@@ -161,27 +161,27 @@ defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirn
 defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
 return new \Phalcon\Config([
-'database' => [
-    'adapter'     => 'Mysql',
-    'options' => [
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'test',
-        'charset'     => 'utf8',
+    'database' => [
+        'adapter'     => 'Mysql',
+        'options' => [
+            'host'        => 'localhost',
+            'username'    => 'root',
+            'password'    => '',
+            'dbname'      => 'test',
+            'charset'     => 'utf8',
+        ],
     ],
-],
-'application' => [
-    'appDir'         => APP_PATH . '/',
-    'controllersDir' => APP_PATH . '/controllers/',
-    'modelsDir'      => APP_PATH . '/models/',
-    'migrationsDir'  => APP_PATH . '/migrations/',
-    'viewsDir'       => APP_PATH . '/views/',
-    'pluginsDir'     => APP_PATH . '/plugins/',
-    'libraryDir'     => APP_PATH . '/library/',
-    'cacheDir'       => BASE_PATH . '/cache/',
-    'baseUri'        => '/',
-]
+    'application' => [
+        'appDir'         => APP_PATH . '/',
+        'controllersDir' => APP_PATH . '/controllers/',
+        'modelsDir'      => APP_PATH . '/models/',
+        'migrationsDir'  => APP_PATH . '/migrations/',
+        'viewsDir'       => APP_PATH . '/views/',
+        'pluginsDir'     => APP_PATH . '/plugins/',
+        'libraryDir'     => APP_PATH . '/library/',
+        'cacheDir'       => BASE_PATH . '/cache/',
+        'baseUri'        => '/',
+    ]
 ]);
 ```
 
@@ -242,88 +242,88 @@ use Phalcon\Validation\Validator\Email as EmailValidator;
 class Users extends \Phalcon\Mvc\Model
 {
 
-/**
- *
- * @var integer
- */
-public $id;
+    /**
+     *
+     * @var integer
+     */
+    public $id;
 
-/**
- *
- * @var string
- */
-public $name;
+    /**
+     *
+     * @var string
+     */
+    public $name;
 
-/**
- *
- * @var string
- */
-public $email;
+    /**
+     *
+     * @var string
+     */
+    public $email;
 
-/**
- *
- * @var string
- */
-public $password;
+    /**
+     *
+     * @var string
+     */
+    public $password;
 
-/**
- *
- * @var string
- */
-public $active;
+    /**
+     *
+     * @var string
+     */
+    public $active;
 
-/**
- * Validations and business logic
- *
- * @return boolean
- */
-public function validation()
-{
-    $validator = new Validation();
+    /**
+     * Validations and business logic
+     *
+     * @return boolean
+     */
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'email',
-        new EmailValidator(
-            [
-                'model'   => $this,
-                'message' => 'Please enter a correct email address',
-            ]
-        )
-    );
+        $validator->add(
+            'email',
+            new EmailValidator(
+                [
+                    'model'   => $this,
+                    'message' => 'Please enter a correct email address',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 
-/**
- * Initialize method for model.
- */
-public function initialize()
-{
-    $this->setSchema("test");
-    $this->setSource("users");
-}
+    /**
+     * Initialize method for model.
+     */
+    public function initialize()
+    {
+        $this->setSchema("test");
+        $this->setSource("users");
+    }
 
-/**
- * Allows to query a set of records that match the specified conditions
- *
- * @param mixed $parameters
- * @return Users[]|Users|\Phalcon\Mvc\Model\ResultSetInterface
- */
-public static function find($parameters = null): \Phalcon\Mvc\Model\ResultsetInterface
-{
-    return parent::find($parameters);
-}
+    /**
+     * Allows to query a set of records that match the specified conditions
+     *
+     * @param mixed $parameters
+     * @return Users[]|Users|\Phalcon\Mvc\Model\ResultSetInterface
+     */
+    public static function find($parameters = null): \Phalcon\Mvc\Model\ResultsetInterface
+    {
+        return parent::find($parameters);
+    }
 
-/**
- * Allows to query the first record that match the specified conditions
- *
- * @param mixed $parameters
- * @return Users|\Phalcon\Mvc\Model\ResultInterface
- */
-public static function findFirst($parameters = null)
-{
-    return parent::findFirst($parameters);
-}
+    /**
+     * Allows to query the first record that match the specified conditions
+     *
+     * @param mixed $parameters
+     * @return Users|\Phalcon\Mvc\Model\ResultInterface
+     */
+    public static function findFirst($parameters = null)
+    {
+        return parent::findFirst($parameters);
+    }
 
 }
 ```

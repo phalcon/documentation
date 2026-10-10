@@ -1,0 +1,1 @@
+import{t as e}from"./nav-sidebar-C8UwYqMW.CpSvOf4J.js";function t(e){let t=e.querySelectorAll(`ol`);return t.forEach(e=>e.setAttribute(`role`,`list`)),()=>{t.forEach(e=>e.removeAttribute(`role`))}}e(`[data-steps]`,t);

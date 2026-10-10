@@ -28,8 +28,8 @@ The error responder chooses the HTTP status by mapping the exception's class to 
 
 ```php
 [
-MyApp\Exception\Forbidden::class     => Status::NOT_AUTHORIZED,   // 403
-MyApp\Exception\Unprocessable::class => Status::NOT_VALID,        // 422
+    MyApp\Exception\Forbidden::class     => Status::NOT_AUTHORIZED,   // 403
+    MyApp\Exception\Unprocessable::class => Status::NOT_VALID,        // 422
 ]
 ```
 
@@ -53,10 +53,10 @@ The error responder takes four constructor arguments, all with defaults so it wo
 
 ```php
 public function __construct(
-Phalcon\Contracts\ADR\Responder\Responder $chain,   // how the error payload is rendered
-Phalcon\Contracts\Logger\Logger $logger,            // where the diagnostic is logged
-bool $debug = false,                                // expose detail in the response?
-array $exceptionMap = []                            // your exception => status entries
+    Phalcon\Contracts\ADR\Responder\Responder $chain,   // how the error payload is rendered
+    Phalcon\Contracts\Logger\Logger $logger,            // where the diagnostic is logged
+    bool $debug = false,                                // expose detail in the response?
+    array $exceptionMap = []                            // your exception => status entries
 );
 ```
 

@@ -23,17 +23,17 @@ This class can be instantiated using a PHP array directly or by reading configur
 use Phalcon\Config\Config;
 
 $config = new Config(
-[
-    'app' => [
-        'baseUri'  => getenv('APP_BASE_URI'),
-        'env'      => getenv('APP_ENV'),
-        'name'     => getenv('APP_NAME'),
-        'timezone' => getenv('APP_TIMEZONE'),
-        'url'      => getenv('APP_URL'),
-        'version'  => getenv('VERSION'),
-        'time'     => microtime(true),
-    ],
-]
+    [
+        'app' => [
+            'baseUri'  => getenv('APP_BASE_URI'),
+            'env'      => getenv('APP_ENV'),
+            'name'     => getenv('APP_NAME'),
+            'timezone' => getenv('APP_TIMEZONE'),
+            'url'      => getenv('APP_URL'),
+            'version'  => getenv('VERSION'),
+            'time'     => microtime(true),
+        ],
+    ]
 );
 
 echo $config->get('app')->get('name');  // PHALCON
@@ -65,15 +65,15 @@ Given a PHP configuration file `/app/storage/config.php`
 <?php
 
 return [
-'app' => [
-    'baseUri'  => getenv('APP_BASE_URI'),
-    'env'      => getenv('APP_ENV'),
-    'name'     => getenv('APP_NAME'),
-    'timezone' => getenv('APP_TIMEZONE'),
-    'url'      => getenv('APP_URL'),
-    'version'  => getenv('VERSION'),
-    'time'     => microtime(true),
-],
+    'app' => [
+        'baseUri'  => getenv('APP_BASE_URI'),
+        'env'      => getenv('APP_ENV'),
+        'name'     => getenv('APP_NAME'),
+        'timezone' => getenv('APP_TIMEZONE'),
+        'url'      => getenv('APP_URL'),
+        'version'  => getenv('VERSION'),
+        'time'     => microtime(true),
+    ],
 ];
 ```
 
@@ -137,6 +137,7 @@ Any exceptions thrown in the [Phalcon\Config\Config][config] component will be o
 
 php
 
+
 ```php
 <?php
 
@@ -145,15 +146,15 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        // Get some configuration values
-        $this->config->database->dbname;
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            // Get some configuration values
+            $this->config->database->dbname;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -166,17 +167,17 @@ The [Phalcon\Config\Config][config] component accepts a PHP array in the constru
 use Phalcon\Config\Config;
 
 $config = new Config(
-[
-    'app' => [
-        'baseUri'  => getenv('APP_BASE_URI'),  // '/'
-        'env'      => getenv('APP_ENV'),       // 3
-        'name'     => getenv('APP_NAME'),      // 'PHALCON'
-        'timezone' => getenv('APP_TIMEZONE'),  // 'UTC'
-        'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
-        'version'  => getenv('VERSION'),       // '0.1'
-        'time'     => microtime(true),         // 
-    ],
-]
+    [
+        'app' => [
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'PHALCON'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'UTC'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         // 
+        ],
+    ]
 );
 ```
 
@@ -199,8 +200,8 @@ Use the `get()` method and chain it to traverse nested objects:
 <?php
 
 echo $config
-    ->get('app')
-    ->get('name');  // PHALCON
+        ->get('app')
+        ->get('name');  // PHALCON
 ```
 
 Since [Phalcon\Config\Config][config] extends [Phalcon\Support\Collection][collection], you can also pass a second parameter in `get()` that will act as the default value returned if the config element is not defined.
@@ -240,17 +241,17 @@ use Phalcon\Config\Config;
  * @return mixed|Config
  */
 function config() {
-$args = func_get_args();
-$config = Di::getDefault()->getShared('config');
+    $args = func_get_args();
+    $config = Di::getDefault()->getShared('config');
 
-if (empty($args)) {
-   return $config;
-}
+    if (empty($args)) {
+       return $config;
+    }
 
-return call_user_func_array(
-    [$config, 'path'],
-    $args
-);
+    return call_user_func_array(
+        [$config, 'path'],
+        $args
+    );
 }
 ```
 
@@ -280,53 +281,54 @@ use Phalcon\Config\Config;
 use josegonzalez\Dotenv\Loader;
 
 $baseConfig = new Config(
-[
-    'app' => [
-        'baseUri'  => '/',
-        'env'      => 3,
-        'name'     => 'PHALCON',
-        'timezone' => 'UTC',
-        'url'      => 'http://127.0.0.1',
-        'version'  => '0.1',
-    ],
-]
+    [
+        'app' => [
+            'baseUri'  => '/',
+            'env'      => 3,
+            'name'     => 'PHALCON',
+            'timezone' => 'UTC',
+            'url'      => 'http://127.0.0.1',
+            'version'  => '0.1',
+        ],
+    ]
 );
+
 
 // .env
 // APP_NAME='MYAPP'
 // APP_TIMEZONE='America/New_York'
 
 $loader = (new josegonzalez\Dotenv\Loader('/app/.env'))
-->parse()
-->toEnv()
+    ->parse()
+    ->toEnv()
 ;
 
 $envConfig= new Config(
-[
-    'app'     => [
-        'baseUri'  => getenv('APP_BASE_URI'),  // '/'
-        'env'      => getenv('APP_ENV'),       // 3
-        'name'     => getenv('APP_NAME'),      // 'MYAPP'
-        'timezone' => getenv('APP_TIMEZONE'),  // 'America/New_York'
-        'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
-        'version'  => getenv('VERSION'),       // '0.1'
-        'time'     => microtime(true),         //
-    ],
-    'logging' => true,
-]
+    [
+        'app'     => [
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'MYAPP'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'America/New_York'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         //
+        ],
+        'logging' => true,
+    ]
 );
 
 $baseConfig->merge($envConfig);
 
 echo $baseConfig
-    ->get('app')
-    ->get('name');  // MYAPP
+        ->get('app')
+        ->get('name');  // MYAPP
 echo $baseConfig
-    ->get('app')
-    ->get('timezone');  // America/New_York
+        ->get('app')
+        ->get('timezone');  // America/New_York
 echo $baseConfig
-    ->get('app')
-    ->get('time');  // 1562909409.6162
+        ->get('app')
+        ->get('time');  // 1562909409.6162
 ```
 
 The merged object will be:
@@ -334,17 +336,17 @@ The merged object will be:
 ```bash
 Phalcon\Config Object
 (
-[app] => Phalcon\Config Object
-    (
-        [baseUri]  => '/',
-        [env]      => 3,
-        [name]     => 'MYAPP',
-        [timezone] => 'America/New_York',
-        [url]      => 'http://127.0.0.1',
-        [version]  => '0.1',
-        [time]     => microtime(true),
-    )
-[logging] => true
+    [app] => Phalcon\Config Object
+        (
+            [baseUri]  => '/',
+            [env]      => 3,
+            [name]     => 'MYAPP',
+            [timezone] => 'America/New_York',
+            [url]      => 'http://127.0.0.1',
+            [version]  => '0.1',
+            [time]     => microtime(true),
+        )
+    [logging] => true
 )
 ``` 
 
@@ -391,19 +393,19 @@ Constructor parameters for the multidimensional array include:
 use Phalcon\Config\Adapter\Grouped;
 
 $options = [
-[
-    'adapter'  => 'php',
-    'filePath' => '/apps/storage/config.php',
-],
-[
-    'adapter'  => 'ini',
-    'filePath' => '/apps/storage/database.ini',
-    'mode'     => INI_SCANNER_NORMAL,
-],
-[
-    'adapter'  => 'json',
-    'filePath' => '/apps/storage/override.json',
-],
+    [
+        'adapter'  => 'php',
+        'filePath' => '/apps/storage/config.php',
+    ],
+    [
+        'adapter'  => 'ini',
+        'filePath' => '/apps/storage/database.ini',
+        'mode'     => INI_SCANNER_NORMAL,
+    ],
+    [
+        'adapter'  => 'json',
+        'filePath' => '/apps/storage/override.json',
+    ],
 ];
 
 $config = new Grouped($options);
@@ -419,23 +421,23 @@ You can also use `array` as the adapter value. If you choose to do so, you will 
 use Phalcon\Config\Adapter\Grouped;
 
 $options = [
-[
-    'adapter'  => 'php',
-    'filePath' => '/apps/storage/config.php',
-],
-[
-    'adapter'  => 'array',
-    'config'   => [
-        'app' => [
-            'baseUri'  => '/',
-            'env'      => 3,
-            'name'     => 'PHALCON',
-            'timezone' => 'UTC',
-            'url'      => 'http://127.0.0.1',
-            'version'  => '0.1',
+    [
+        'adapter'  => 'php',
+        'filePath' => '/apps/storage/config.php',
+    ],
+    [
+        'adapter'  => 'array',
+        'config'   => [
+            'app' => [
+                'baseUri'  => '/',
+                'env'      => 3,
+                'name'     => 'PHALCON',
+                'timezone' => 'UTC',
+                'url'      => 'http://127.0.0.1',
+                'version'  => '0.1',
+            ],
         ],
     ],
-],
 ];
 
 $config = new Grouped($options);
@@ -450,27 +452,27 @@ use Phalcon\Config\Config;
 use Phalcon\Config\Adapter\Grouped;
 
 $baseConfig = new Config(
-[
-    'app' => [
-        'baseUri'  => '/',
-        'env'      => 3,
-        'name'     => 'PHALCON',
-    ],
-]
+    [
+        'app' => [
+            'baseUri'  => '/',
+            'env'      => 3,
+            'name'     => 'PHALCON',
+        ],
+    ]
 );
 
 $options = [
-$baseConfig,
-[
-    'adapter'  => 'array',
-    'config'   => [
-        'app' => [
-            'timezone' => 'UTC',
-            'url'      => 'http://127.0.0.1',
-            'version'  => '0.1',
+    $baseConfig,
+    [
+        'adapter'  => 'array',
+        'config'   => [
+            'app' => [
+                'timezone' => 'UTC',
+                'url'      => 'http://127.0.0.1',
+                'version'  => '0.1',
+            ],
         ],
     ],
-],
 ];
 
 $config = new Grouped($options);
@@ -511,12 +513,12 @@ $mode     =  INI_SCANNER_NORMAL;
 $config   = new Ini($fileName, $mode);
 
 echo $config
-    ->get('database')
-    ->get('host');       // localhost
+        ->get('database')
+        ->get('host');       // localhost
 echo $config
-    ->get('models')
-    ->get('metadata')
-    ->get('adapter');    // Memory
+        ->get('models')
+        ->get('metadata')
+        ->get('adapter');    // Memory
 ```
 
 When using [Phalcon\Config\ConfigFactory][config-configfactory], set the mode as a parameter:
@@ -530,9 +532,9 @@ $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
 
 $options = [
-'adapter'  => 'ini',
-'filePath' => $fileName,
-'mode'     => INI_SCANNER_NORMAL, 
+    'adapter'  => 'ini',
+    'filePath' => $fileName,
+    'mode'     => INI_SCANNER_NORMAL, 
 ];
 
 $config = $factory->load($options);
@@ -549,7 +551,7 @@ $fileName = '/app/storage/config.ini';
 $factory  = new ConfigFactory();
 
 $params = [
-'mode' => INI_SCANNER_NORMAL, 
+    'mode' => INI_SCANNER_NORMAL, 
 ];
 
 $config = $factory->newinstance('ini', $fileName, $params);
@@ -568,16 +570,16 @@ Example JSON file:
 ```json
 {
   "database": {
-"adapter": "Mysql",
-"host": "localhost",
-"username": "scott",
-"password": "cheetah",
-"dbname": "test_db"
+    "adapter": "Mysql",
+    "host": "localhost",
+    "username": "scott",
+    "password": "cheetah",
+    "dbname": "test_db"
   },
   "models": {
-"metadata": {
-  "adapter": "Memory"
-}
+    "metadata": {
+      "adapter": "Memory"
+    }
   }
 }
 ```
@@ -593,12 +595,12 @@ $fileName = '/apps/storage/config.json';
 $config   = new Json($fileName);
 
 echo $config
-    ->get('database')
-    ->get('host');       // localhost
+        ->get('database')
+        ->get('host');       // localhost
 echo $config
-    ->get('models')
-    ->get('metadata')
-    ->get('adapter');    // Memory
+        ->get('models')
+        ->get('metadata')
+        ->get('adapter');    // Memory
 ```
 
 For [Phalcon\Config\ConfigFactory][config-configfactory], pass the file name:
@@ -612,8 +614,8 @@ $fileName = '/app/storage/config.json';
 $factory  = new ConfigFactory();
 
 $options = [
-'adapter'  => 'json',
-'filePath' => $fileName,
+    'adapter'  => 'json',
+    'filePath' => $fileName,
 ];
 
 $config = $factory->load($options);
@@ -642,18 +644,18 @@ Example PHP file:
 <?php
 
 return [ 
-'database' => [
-    'adapter'  => 'Mysql',
-    'host'     => 'localhost',
-    'username' => 'scott',
-    'password' => 'cheetah',
-    'dbname'   => 'test_db',  
-],
-'models'   => [
-    'metadata' => [
-        'adapter' => 'Memory',
+    'database' => [
+        'adapter'  => 'Mysql',
+        'host'     => 'localhost',
+        'username' => 'scott',
+        'password' => 'cheetah',
+        'dbname'   => 'test_db',  
     ],
-],
+    'models'   => [
+        'metadata' => [
+            'adapter' => 'Memory',
+        ],
+    ],
 ];
 ```
 
@@ -668,12 +670,12 @@ $fileName = '/apps/storage/config.php';
 $config   = new Php($fileName);
 
 echo $config
-    ->get('database')
-    ->get('host');       // localhost
+        ->get('database')
+        ->get('host');       // localhost
 echo $config
-    ->get('models')
-    ->get('metadata')
-    ->get('adapter');    // Memory
+        ->get('models')
+        ->get('metadata')
+        ->get('adapter');    // Memory
 ```
 
 For [Phalcon\Config\ConfigFactory][config-configfactory], pass the file name:
@@ -687,8 +689,8 @@ $fileName = '/app/storage/config.php';
 $factory  = new ConfigFactory();
 
 $options = [
-'adapter'  => 'php',
-'filePath' => $fileName,
+    'adapter'  => 'php',
+    'filePath' => $fileName,
 ];
 
 $config = $factory->load($options);
@@ -728,13 +730,13 @@ app:
   time: 1562960897.712697
 models:
   metadata:
-adapter: Memory
+    adapter: Memory
 loggers:
   handlers:
-0:
-  name: stream
-1:
-  name: redis
+    0:
+      name: stream
+    1:
+      name: redis
 ```
 
 Usage:
@@ -748,19 +750,19 @@ define("APPROOT", dirname(__DIR__));
 
 $fileName  = '/apps/storage/config.yml';
 $callbacks = [
-"!approot" => function($value) {
-    return APPROOT . $value;
-},
+    "!approot" => function($value) {
+        return APPROOT . $value;
+    },
 ];
 $config    = new Yaml($fileName, $callbacks);
 
 echo $config
-    ->get('database')
-    ->get('host');       // localhost
+        ->get('database')
+        ->get('host');       // localhost
 echo $config
-    ->get('models')
-    ->get('metadata')
-    ->get('adapter');    // Memory
+        ->get('models')
+        ->get('metadata')
+        ->get('adapter');    // Memory
 ```
 
 For [Phalcon\Config\ConfigFactory][config-configfactory], set the mode as a parameter:
@@ -775,13 +777,13 @@ define("APPROOT", dirname(__DIR__));
 $fileName = '/apps/storage/config.yml';
 $factory  = new ConfigFactory();
 $options  = [
-'adapter'  => 'yaml',
-'filePath'  => $fileName,
-'callbacks' => [
-    "!approot" => function($value) {
-        return APPROOT . $value;
-    },
-],
+    'adapter'  => 'yaml',
+    'filePath'  => $fileName,
+    'callbacks' => [
+        "!approot" => function($value) {
+            return APPROOT . $value;
+        },
+    ],
 ];
 
 $config = $factory->load($options);
@@ -799,9 +801,9 @@ define("APPROOT", dirname(__DIR__));
 $fileName  = '/app/storage/config.yaml';
 $factory   = new ConfigFactory();
 $callbacks = [
-"!approot" => function($value) {
-    return APPROOT . $value;
-},
+    "!approot" => function($value) {
+        return APPROOT . $value;
+    },
 ];
 
 $config = $factory->newinstance('yaml', $fileName, $callbacks);
@@ -826,12 +828,12 @@ use Phalcon\Config\Config;
 $container = new FactoryDefault();
 
 $container->set(
-'config',
-function () {
-    $configData = require 'config/config.php';
+    'config',
+    function () {
+        $configData = require 'config/config.php';
 
-    return new Config($configData);
-}
+        return new Config($configData);
+    }
 );
 ```
 
@@ -848,10 +850,10 @@ use Phalcon\Config\Config;
  */
 class MyController extends Controller
 {
-private function getDatabaseName()
-{
-    return $this->config->database->dbname;
-}
+    private function getDatabaseName()
+    {
+        return $this->config->database->dbname;
+    }
 }
 ```
 

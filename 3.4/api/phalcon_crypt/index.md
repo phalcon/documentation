@@ -29,6 +29,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 ```
 
+
 ## Constants
 *integer* **PADDING_ANSI_X_923**
 
@@ -74,6 +75,8 @@ public **__construct**(*string* $cipher = "aes-256-cfb", *boolean* $useSigning =
 
 Class constructor. Allows the user to set the algorithm used to calculate a digest of the message (signing) and to force signing or not.
 
+
+
 public **decrypt** (*mixed* $text [, *mixed* $key = null]): *string*
 
 Decrypts an encrypted text
@@ -84,17 +87,21 @@ Throws [Phalcon\Crypt\Mismatch](/3.4/api/phalcon_crypt/)
 <?php
 
 $encrypted = $crypt->decrypt(
-$encrypted,
-"T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    $encrypted,
+    "T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 
 ```
+
+
 
 public **decryptBase64** (*string* $text [,*mixed* $key = null [,*boolean* $safe = false]]): *string*
 
 Decrypt a text that is coded as a base64 string
 
 Throws [Phalcon\Crypt\Mismatch](/3.4/api/phalcon_crypt/)
+
+
 
 public **encrypt** (*mixed* $text [, *mixed* $key = null]): *string*
 
@@ -104,34 +111,48 @@ Encrypts a text
 <?php
 
 $encrypted = $crypt->encrypt(
-"Top secret",
-"T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    "Top secret",
+    "T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
+
+
 
 public **encryptBase64** (*string* $text [,*mixed* $key = null [,*boolean* $safe = false]]): *string*
 
 Encrypts a text returning the result as a base64 string
 
+
+
 public **getAvailableCiphers** (): *array*
 
 Returns a list of available ciphers
+
+
 
 public **getAvailableHashAlgos** (): *array*
 
 Return a list of registered hashing algorithms suitable for [hash_hmac](https://secure.php.net/manual/en/function.hash-hmac.php).
 
+
+
 public **getCipher** ()
 
 Returns the current cipher
+
+
 
 public **getHashAlgo** (): *string*
 
 Return the name of hashing algorithm.
 
+
+
 public **getKey** (): *string*
 
 Returns the encryption key
+
+
 
 public **setCipher** (*mixed* $cipher): *[Phalcon\Crypt](/3.4/api/phalcon_crypt/)*
 
@@ -139,9 +160,13 @@ Sets the cipher algorithm for data encryption and decryption. The `aes-256-gcm` 
 
 Throws: [Phalcon\Crypt\Exception](/3.4/api/phalcon_crypt/)
 
+
+
 public **setHashAlgo** (*string* $hashAlgo): *[Phalcon\Crypt](/3.4/api/phalcon_crypt/)*
 
 Set the name of hashing algorithm to calculate the message digest. Throws [Phalcon\Crypt\Exception](/3.4/api/phalcon_crypt/) if the algorithm is not supported by the system
+
+
 
 public **setKey** (*mixed* $key): *[Phalcon\Crypt](/3.4/api/phalcon_crypt/)*
 
@@ -155,13 +180,19 @@ Good key: `T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3`
 
 See also: : [Phalcon\Security\Random](/3.4/api/phalcon_security/)
 
+
+
 public **setPadding** (*mixed* $scheme): *[Phalcon\Crypt](/3.4/api/phalcon_crypt/)*
 
 Changes the padding scheme used
 
+
+
 public **useSigning** (*boolean* $useSigning): *[Phalcon\Crypt](/3.4/api/phalcon_crypt/)*
 
 Sets if the calculating message digest must used (signing). **NOTE**: This feature will be enabled by default in Phalcon 4.0.0 or greater
+
+
 
 ### Protected
 protected  **_cryptPadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize, *mixed* $paddingType)
@@ -169,6 +200,8 @@ protected  **_cryptPadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize, 
 Pads texts before encryption.
 
 See: [https://www.di-mgt.com.au/cryptopad.html](https://www.di-mgt.com.au/cryptopad.html)
+
+
 
 protected  **_cryptUnpadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize, *mixed* $paddingType)
 
@@ -181,11 +214,15 @@ Removes a padding from a text. If the function detects that the text was not pad
 | int    | $blockSize   | Cipher block size                                             |
 | int    | $paddingType | Padding scheme                                                |
 
+
+
 protected **assertCipherIsAvailable** (*string* $cipher)
 
 Assert the cipher is available.
 
 Throws [Phalcon\Crypt\Exception](/3.4/api/phalcon_crypt/)
+
+
 
 protected **assertHashAlgorithmAvailable** (*string* $hashAlgo)
 
@@ -193,11 +230,15 @@ Assert the hash algorithm is available.
 
 Throws [Phalcon\Crypt\Exception](/3.4/api/phalcon_crypt/)
 
+
+
 protected **getIvLength** (*string* $cipher): *int*
 
 Initialize available cipher algorithms.
 
 Throws [Phalcon\Crypt\Exception](/3.4/api/phalcon_crypt/)
+
+
 
 protected **initializeAvailableCiphers** ()
 
@@ -220,45 +261,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -275,45 +338,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -326,33 +411,41 @@ abstract public  **setCipher** (*mixed* $cipher)
 
 ...
 
+
 abstract public  **getCipher** ()
 
 ...
+
 
 abstract public  **setKey** (*mixed* $key)
 
 ...
 
+
 abstract public  **getKey** ()
 
 ...
+
 
 abstract public  **encrypt** (*mixed* $text, [*mixed* $key])
 
 ...
 
+
 abstract public  **decrypt** (*mixed* $text, [*mixed* $key])
 
 ...
+
 
 abstract public  **encryptBase64** (*mixed* $text, [*mixed* $key])
 
 ...
 
+
 abstract public  **decryptBase64** (*mixed* $text, [*mixed* $key])
 
 ...
+
 
 abstract public  **getAvailableCiphers** ()
 

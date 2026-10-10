@@ -52,15 +52,15 @@ $passphrase = 'QcMpZ&b&mo3TPsPk668J6QH8JA$&U&m2';
 
 // Setup
 $builder
-->setAudience('https://target.phalcon.io')  // aud
-->setContentType('application/json')        // cty - header
-->setExpirationTime($expires)               // exp 
-->setId('abcd123456789')                    // JTI id 
-->setIssuedAt($issued)                      // iat 
-->setIssuer('https://phalcon.io')           // iss 
-->setNotBefore($notBefore)                  // nbf
-->setSubject('my subject for this claim')   // sub
-->setPassphrase($passphrase)                // password 
+    ->setAudience('https://target.phalcon.io')  // aud
+    ->setContentType('application/json')        // cty - header
+    ->setExpirationTime($expires)               // exp 
+    ->setId('abcd123456789')                    // JTI id 
+    ->setIssuedAt($issued)                      // iat 
+    ->setIssuer('https://phalcon.io')           // iss 
+    ->setNotBefore($notBefore)                  // nbf
+    ->setSubject('my subject for this claim')   // sub
+    ->setPassphrase($passphrase)                // password 
 ;
 
 // Phalcon\Encryption\Security\JWT\Token\Token
@@ -103,13 +103,13 @@ $validator = new Validator($tokenObject, 100); // Allow for a time shift of 100
 
 # Run the validators
 $validator
-->validateAudience($audience)
-->validateExpiration($expires)
-->validateId($id)
-->validateIssuedAt($issued)
-->validateIssuer($issuer)
-->validateNotBefore($notBefore)
-->validateSignature($signer, $passphrase)
+    ->validateAudience($audience)
+    ->validateExpiration($expires)
+    ->validateId($id)
+    ->validateIssuedAt($issued)
+    ->validateIssuer($issuer)
+    ->validateNotBefore($notBefore)
+    ->validateSignature($signer, $passphrase)
 ;
 
 # Errors printed out (if any)
@@ -135,23 +135,23 @@ equivalents.
 
 class Enum
 {
-/**
- * Headers
- */
-const TYPE         = "typ";
-const ALGO         = "alg";
-const CONTENT_TYPE = "cty";
+    /**
+     * Headers
+     */
+    const TYPE         = "typ";
+    const ALGO         = "alg";
+    const CONTENT_TYPE = "cty";
 
-/**
- * Claims
- */
-const AUDIENCE        = "aud";
-const EXPIRATION_TIME = "exp";
-const ID              = "jti";
-const ISSUED_AT       = "iat";
-const ISSUER          = "iss";
-const NOT_BEFORE      = "nbf";
-const SUBJECT         = "sub";
+    /**
+     * Claims
+     */
+    const AUDIENCE        = "aud";
+    const EXPIRATION_TIME = "exp";
+    const ID              = "jti";
+    const ISSUED_AT       = "iat";
+    const ISSUER          = "iss";
+    const NOT_BEFORE      = "nbf";
+    const SUBJECT         = "sub";
 }
 ```
 
@@ -508,15 +508,15 @@ $expires    = $now->modify('+1 day')->getTimestamp();
 $passphrase = 'QcMpZ&b&mo3TPsPk668J6QH8JA$&U&m2';
 
 $builder
-->setAudience('https://target.phalcon.io')  // aud
-->setContentType('application/json')        // cty - header
-->setExpirationTime($expires)               // exp 
-->setId('abcd123456789')                    // JTI id 
-->setIssuedAt($issued)                      // iat 
-->setIssuer('https://phalcon.io')           // iss 
-->setNotBefore($notBefore)                  // nbf
-->setSubject('my subject for this claim')   // sub
-->setPassphrase($passphrase)                // password 
+    ->setAudience('https://target.phalcon.io')  // aud
+    ->setContentType('application/json')        // cty - header
+    ->setExpirationTime($expires)               // exp 
+    ->setId('abcd123456789')                    // JTI id 
+    ->setIssuedAt($issued)                      // iat 
+    ->setIssuer('https://phalcon.io')           // iss 
+    ->setNotBefore($notBefore)                  // nbf
+    ->setSubject('my subject for this claim')   // sub
+    ->setPassphrase($passphrase)                // password 
 ;
 
 // Phalcon\Encryption\Security\JWT\Token\Token 
@@ -604,9 +604,9 @@ In a validator example chain, include one custom claim check, e.g.:
 
 ```php
 $validator
-->validateAudience($audience)
-->validateIssuer($issuer)
-->validateClaim("tenantId", "acme")
+    ->validateAudience($audience)
+    ->validateIssuer($issuer)
+    ->validateClaim("tenantId", "acme")
 ;
 ```
 
@@ -697,13 +697,13 @@ $tokenObject = $parser->parse($tokenReceived);
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 
 $validator
-->validateAudience($audience)
-->validateExpiration($expires)
-->validateId($id)
-->validateIssuedAt($issued)
-->validateIssuer($issuer)
-->validateNotBefore($notBefore)
-->validateSignature($signer, $passphrase)
+    ->validateAudience($audience)
+    ->validateExpiration($expires)
+    ->validateId($id)
+    ->validateIssuedAt($issued)
+    ->validateIssuer($issuer)
+    ->validateNotBefore($notBefore)
+    ->validateSignature($signer, $passphrase)
 ;
 
 var_dump($validator->getErrors());
@@ -780,13 +780,13 @@ $tokenObject = $parser->parse($tokenReceived);
 $validator = new Validator($tokenObject, 100); // allow for a time shift of 100
 
 $validator
-->set(Enum::AUDIENCE, $audience)
-->set(Enum::EXPIRATION_TIME, $expires)
-->set(Enum::ISSUER, $issuer)
-->set(Enum::ISSUED_AT, $issued)
-->set(Enum::ID, $id)
-->set(Enum::NOT_BEFORE, $notBefore)
-->set(Enum::SUBJECT, $subject)
+    ->set(Enum::AUDIENCE, $audience)
+    ->set(Enum::EXPIRATION_TIME, $expires)
+    ->set(Enum::ISSUER, $issuer)
+    ->set(Enum::ISSUED_AT, $issued)
+    ->set(Enum::ID, $id)
+    ->set(Enum::NOT_BEFORE, $notBefore)
+    ->set(Enum::SUBJECT, $subject)
 ;
 
 $tokenObject->verify($signer, $passphrase);
@@ -812,7 +812,7 @@ use Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer;
 
 function signerAlgorithm(Signer $signer): string
 {
-return $signer->getAlgorithm();
+    return $signer->getAlgorithm();
 }
 ```
 
@@ -838,34 +838,34 @@ use Phalcon\Encryption\Security\JWT\Validator;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $signer     = new Hmac();
-        $builder    = new Builder($signer);
-        $expires    = strtotime('+1 day');
-        $issued     = strtotime('now') + 100;
-        $notBefore  = strtotime('-1 day');
-        $passphrase = '&vsJBETaizP3A3VX&TPMJUqi48fJEgN7';
-
-        return $builder
-            ->setAudience('my-audience')
-            ->setExpirationTime($expires)
-            ->setIssuer('Phalcon JWT')
-            ->setIssuedAt($issued)
-            ->setId('PH-JWT')
-            ->setNotBefore($notBefore)
-            ->setSubject('Mary had a little lamb')
-            ->setPassphrase($passphrase)
-            ->getToken()
-        ;
-
-        $validator = new Validator($token);
-        $validator->validateAudience("unknown");
-    } catch (Exception $ex) {
-        echo $ex->getMessage(); // Validation: audience not allowed
+    public function index()
+    {
+        try {
+            $signer     = new Hmac();
+            $builder    = new Builder($signer);
+            $expires    = strtotime('+1 day');
+            $issued     = strtotime('now') + 100;
+            $notBefore  = strtotime('-1 day');
+            $passphrase = '&vsJBETaizP3A3VX&TPMJUqi48fJEgN7';
+            
+            return $builder
+                ->setAudience('my-audience')
+                ->setExpirationTime($expires)
+                ->setIssuer('Phalcon JWT')
+                ->setIssuedAt($issued)
+                ->setId('PH-JWT')
+                ->setNotBefore($notBefore)
+                ->setSubject('Mary had a little lamb')
+                ->setPassphrase($passphrase)
+                ->getToken()
+            ;
+            
+            $validator = new Validator($token);
+            $validator->validateAudience("unknown");
+        } catch (Exception $ex) {
+            echo $ex->getMessage(); // Validation: audience not allowed
+        }
     }
-}
 }
 ```
 

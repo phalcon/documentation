@@ -132,6 +132,7 @@ As with the aforementioned opcache, make sure, the amount of RAM available suits
 Alternatives to APCu would be [Redis][redis] or [Memcached][memcached] - although they need extra processes running
 on your server or another machine.
 
+
 ## Slow Tasks
 Based on the requirements of your application, there may be times that you will need to perform long-running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents, etc. These tasks should be processed using background jobs. The usual process is:
 - The application initiates a task by sending a message to a queue service

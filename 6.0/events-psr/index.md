@@ -29,10 +29,10 @@ $eventsManager = new EventsManager();
 
 // Listen for a specific event class
 $eventsManager->attach(
-AfterCreateEvent::class,
-function (AfterCreateEvent $event) {
-    echo 'Record created: ' . $event->model->getId();
-}
+    AfterCreateEvent::class,
+    function (AfterCreateEvent $event) {
+        echo 'Record created: ' . $event->model->getId();
+    }
 );
 ```
 
@@ -63,9 +63,9 @@ The `dispatch()` method is the PSR-14 compatible way to fire events. It accepts 
 
 ```php
 public function dispatch(
-object $event,
-string|array|null $name = null,
-?object $source = null
+    object $event,
+    string|array|null $name = null,
+    ?object $source = null
 ): mixed
 ```
 
@@ -89,10 +89,10 @@ $eventsManager = new EventsManager();
 
 // Register listener for the event class
 $eventsManager->attach(
-AfterCreateEvent::class,
-function (AfterCreateEvent $event) {
-    echo 'Created: ' . get_class($event->model);
-}
+    AfterCreateEvent::class,
+    function (AfterCreateEvent $event) {
+        echo 'Created: ' . get_class($event->model);
+    }
 );
 
 // Dispatch - listeners attached to AfterCreateEvent::class will fire
@@ -113,16 +113,16 @@ use MyApp\Models\Invoices;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-'invoices:afterCreate',
-function (AfterCreateEvent $event) {
-    echo 'Invoice created';
-}
+    'invoices:afterCreate',
+    function (AfterCreateEvent $event) {
+        echo 'Invoice created';
+    }
 );
 
 $invoice = new Invoices();
 $eventsManager->dispatch(
-new AfterCreateEvent($invoice),
-'invoices:afterCreate'
+    new AfterCreateEvent($invoice),
+    'invoices:afterCreate'
 );
 ```
 
@@ -139,16 +139,16 @@ use MyApp\Models\Invoices;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-'MyApp\Models\Invoices:afterCreate',
-function (AfterCreateEvent $event) {
-    echo 'Invoice created';
-}
+    'MyApp\Models\Invoices:afterCreate',
+    function (AfterCreateEvent $event) {
+        echo 'Invoice created';
+    }
 );
 
 $invoice = new Invoices();
 $eventsManager->dispatch(
-new AfterCreateEvent($invoice),
-name: [Invoices::class, 'afterCreate']
+    new AfterCreateEvent($invoice),
+    name: [Invoices::class, 'afterCreate']
 );
 ```
 
@@ -176,11 +176,11 @@ use Phalcon\Events\PsrEventInterface;
 
 class OrderShippedEvent implements PsrEventInterface
 {
-public function __construct(
-    public readonly int $orderId,
-    public readonly string $trackingNumber,
-) {
-}
+    public function __construct(
+        public readonly int $orderId,
+        public readonly string $trackingNumber,
+    ) {
+    }
 }
 ```
 
@@ -197,11 +197,11 @@ use Phalcon\Events\PsrEventInterface;
 
 class UserRegisteredEvent implements PsrEventInterface
 {
-public function __construct(
-    public readonly int $userId,
-    public readonly string $email,
-) {
-}
+    public function __construct(
+        public readonly int $userId,
+        public readonly string $email,
+    ) {
+    }
 }
 ```
 
@@ -218,9 +218,9 @@ use Phalcon\Mvc\Model;
 
 abstract class AbstractModelEvent implements PsrEventInterface
 {
-public function __construct(public Model $model)
-{
-}
+    public function __construct(public Model $model)
+    {
+    }
 }
 ```
 
@@ -256,12 +256,12 @@ use Phalcon\Db\Event\AfterCreateEvent;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-AfterCreateEvent::class,
-function (AfterCreateEvent $event) {
-    // Access the model directly from the typed event
-    $model = $event->model;
-    echo 'New record ID: ' . $model->getId();
-}
+    AfterCreateEvent::class,
+    function (AfterCreateEvent $event) {
+        // Access the model directly from the typed event
+        $model = $event->model;
+        echo 'New record ID: ' . $model->getId();
+    }
 );
 ```
 
@@ -277,12 +277,12 @@ use Phalcon\Db\Event\AfterCreateEvent;
 
 class AuditCreateListener
 {
-public function __invoke(AfterCreateEvent $event): void
-{
-    $model = $event->model;
-    // Log the creation to an audit table
-    error_log('Created: ' . get_class($model) . '#' . $model->getId());
-}
+    public function __invoke(AfterCreateEvent $event): void
+    {
+        $model = $event->model;
+        // Log the creation to an audit table
+        error_log('Created: ' . get_class($model) . '#' . $model->getId());
+    }
 }
 ```
 
@@ -296,8 +296,8 @@ use MyApp\Listeners\AuditCreateListener;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-AfterCreateEvent::class,
-new AuditCreateListener()
+    AfterCreateEvent::class,
+    new AuditCreateListener()
 );
 ```
 
@@ -314,15 +314,15 @@ use Phalcon\Db\Event\AfterDeleteEvent;
 
 class ModelLifecycleListener
 {
-public function afterCreate(AfterCreateEvent $event): void
-{
-    error_log('Model created: ' . get_class($event->model));
-}
+    public function afterCreate(AfterCreateEvent $event): void
+    {
+        error_log('Model created: ' . get_class($event->model));
+    }
 
-public function afterDelete(AfterDeleteEvent $event): void
-{
-    error_log('Model deleted: ' . get_class($event->model));
-}
+    public function afterDelete(AfterDeleteEvent $event): void
+    {
+        error_log('Model deleted: ' . get_class($event->model));
+    }
 }
 ```
 
@@ -331,8 +331,8 @@ Components that use the `Phalcon\Events\Traits\EventsAwareTrait` gain access to 
 
 ```php
 protected function firePsrEvent(
-PsrEventInterface $event,
-?string $name = null
+    PsrEventInterface $event,
+    ?string $name = null
 ): mixed
 ```
 
@@ -350,20 +350,20 @@ use Phalcon\Events\Traits\EventsAwareTrait;
 
 class PaymentProcessor implements EventsAwareInterface
 {
-use EventsAwareTrait;
+    use EventsAwareTrait;
 
-public function processPayment(Order $order): void
-{
-    $this->firePsrEvent(
-        new PaymentStartedEvent($order)
-    );
+    public function processPayment(Order $order): void
+    {
+        $this->firePsrEvent(
+            new PaymentStartedEvent($order)
+        );
 
-    // ... process payment ...
+        // ... process payment ...
 
-    $this->firePsrEvent(
-        new PaymentCompletedEvent($order, $transactionId)
-    );
-}
+        $this->firePsrEvent(
+            new PaymentCompletedEvent($order, $transactionId)
+        );
+    }
 }
 ```
 
@@ -381,20 +381,20 @@ $eventsManager->enablePriorities(true);
 
 // This runs first (higher priority)
 $eventsManager->attach(
-AfterCreateEvent::class,
-function (AfterCreateEvent $event) {
-    echo 'High priority listener';
-},
-200
+    AfterCreateEvent::class,
+    function (AfterCreateEvent $event) {
+        echo 'High priority listener';
+    },
+    200
 );
 
 // This runs second (lower priority)
 $eventsManager->attach(
-AfterCreateEvent::class,
-function (AfterCreateEvent $event) {
-    echo 'Normal priority listener';
-},
-100
+    AfterCreateEvent::class,
+    function (AfterCreateEvent $event) {
+        echo 'Normal priority listener';
+    },
+    100
 );
 ```
 
@@ -415,18 +415,18 @@ $eventsManager = new EventsManager();
 
 // Old-style listener - still works
 $eventsManager->attach(
-'model:afterCreate',
-function (Event $event, $model) {
-    echo 'Legacy listener fired';
-}
+    'model:afterCreate',
+    function (Event $event, $model) {
+        echo 'Legacy listener fired';
+    }
 );
 
 // New-style listener on the same event name
 $eventsManager->attach(
-'model:afterCreate',
-function ($event) {
-    echo 'PSR-14 listener fired';
-}
+    'model:afterCreate',
+    function ($event) {
+        echo 'PSR-14 listener fired';
+    }
 );
 
 // Both listeners fire with the old method
@@ -459,11 +459,11 @@ use Phalcon\Events\PsrEventInterface;
 
 class BeforeSendNotificationEvent implements PsrEventInterface
 {
-public function __construct(
-    public readonly array $recipients,
-    public readonly string $message,
-) {
-}
+    public function __construct(
+        public readonly array $recipients,
+        public readonly string $message,
+    ) {
+    }
 }
 ```
 
@@ -483,10 +483,10 @@ Change listeners to accept the typed event object:
 
 // After (PSR-14):
 $eventsManager->attach(
-BeforeSendNotificationEvent::class,
-function (BeforeSendNotificationEvent $event) {
-    $recipients = $event->recipients;
-}
+    BeforeSendNotificationEvent::class,
+    function (BeforeSendNotificationEvent $event) {
+        $recipients = $event->recipients;
+    }
 );
 ```
 
@@ -501,10 +501,10 @@ Replace `fire()` calls with `dispatch()`:
 
 // After (PSR-14):
 $this->eventsManager->dispatch(
-new BeforeSendNotificationEvent(
-    recipients: $recipients,
-    message: $message,
-)
+    new BeforeSendNotificationEvent(
+        recipients: $recipients,
+        message: $message,
+    )
 );
 ```
 
@@ -515,10 +515,10 @@ Or use the `firePsrEvent()` helper if your class uses `EventsAwareTrait`:
 
 // Using the trait helper:
 $this->firePsrEvent(
-new BeforeSendNotificationEvent(
-    recipients: $recipients,
-    message: $message,
-)
+    new BeforeSendNotificationEvent(
+        recipients: $recipients,
+        message: $message,
+    )
 );
 ```
 
@@ -542,16 +542,16 @@ $eventsManager = new EventsManager();
 
 // Listen to ALL events on the Invoices model (wildcard -- keyed by class name only)
 $eventsManager->attach(
-\MyApp\Models\Invoices::class,
-new SomeEventHandler()
+    \MyApp\Models\Invoices::class,
+    new SomeEventHandler()
 );
 
 // Listen to a specific event on the Invoices model (keyed by class name + event name)
 $eventsManager->attach(
-[\MyApp\Models\Invoices::class, 'prepareSave'],
-function (PrepareSaveEvent $event) {
-    echo 'Preparing to save invoice: ' . $event->model->inv_number;
-}
+    [\MyApp\Models\Invoices::class, 'prepareSave'],
+    function (PrepareSaveEvent $event) {
+        echo 'Preparing to save invoice: ' . $event->model->inv_number;
+    }
 );
 ```
 
@@ -570,23 +570,23 @@ Define an interface:
 
 interface AuditableInterface
 {
-public function getFieldsToAudit(): ?array;
+    public function getFieldsToAudit(): ?array;
 }
 
 class Invoices extends \Phalcon\Mvc\Model implements AuditableInterface
 {
-public function getFieldsToAudit(): ?array
-{
-    return ['inv_total', 'inv_title'];
-}
+    public function getFieldsToAudit(): ?array
+    {
+        return ['inv_total', 'inv_title'];
+    }
 }
 
 class Users extends \Phalcon\Mvc\Model implements AuditableInterface
 {
-public function getFieldsToAudit(): ?array
-{
-    return ['email', 'is_active'];
-}
+    public function getFieldsToAudit(): ?array
+    {
+        return ['email', 'is_active'];
+    }
 }
 ```
 
@@ -602,14 +602,14 @@ $eventsManager = new EventsManager();
 
 // This fires for BOTH Invoices and Users -- and any future AuditableInterface implementor
 $eventsManager->attach(
-[AuditableInterface::class, 'afterSave'],
-function (AfterSaveEvent $event) {
-    $model = $event->model;
-    if ($model instanceof AuditableInterface) {
-        $fields = $model->getFieldsToAudit();
-        // Record audit log for changed fields...
+    [AuditableInterface::class, 'afterSave'],
+    function (AfterSaveEvent $event) {
+        $model = $event->model;
+        if ($model instanceof AuditableInterface) {
+            $fields = $model->getFieldsToAudit();
+            // Record audit log for changed fields...
+        }
     }
-}
 );
 ```
 
@@ -626,20 +626,20 @@ use Phalcon\Events\Traits\EventsAwareTrait;
 
 class PaymentGateway implements EventsAwareInterface
 {
-use EventsAwareTrait;
+    use EventsAwareTrait;
 
-public function charge(Order $order): void
-{
-    $event = new PaymentChargedEvent($order);
+    public function charge(Order $order): void
+    {
+        $event = new PaymentChargedEvent($order);
 
-    if ($em = $this->getEventsManager()) {
-        // Walk the hierarchy so listeners on interfaces/parents also fire
-        foreach ([static::class, ...class_parents($this), ...class_implements($this)] as $className) {
-            $em->dispatch($event, name: $className, source: $this);
-            $em->dispatch($event, name: [$className, 'charge'], source: $this);
+        if ($em = $this->getEventsManager()) {
+            // Walk the hierarchy so listeners on interfaces/parents also fire
+            foreach ([static::class, ...class_parents($this), ...class_implements($this)] as $className) {
+                $em->dispatch($event, name: $className, source: $this);
+                $em->dispatch($event, name: [$className, 'charge'], source: $this);
+            }
         }
     }
-}
 }
 ```
 

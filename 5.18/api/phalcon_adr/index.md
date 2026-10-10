@@ -34,6 +34,7 @@ parameters need to be declared via `define()`.
 
 __Uses__ `Closure` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Container\Container` · `Phalcon\Container\ContainerFactory` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -153,8 +154,8 @@ public function __construct( Container $container = null );
 
 ```php
 public function bind(
-string $interfaceName,
-string $concrete
+    string $interfaceName,
+    string $concrete
 ): static;
 ```
 
@@ -164,8 +165,8 @@ Bind an interface to a concrete class.
 
 ```php
 public function define(
-string $className,
-array $parameters = []
+    string $className,
+    array $parameters = []
 ): static;
 ```
 
@@ -178,8 +179,8 @@ parameters. Type-hinted dependencies autowire; only the supplied
 
 ```php
 public function extend(
-string $name,
-Closure $extender
+    string $name,
+    Closure $extender
 ): static;
 ```
 
@@ -189,8 +190,8 @@ Register a post-build extender (decorator) for a service.
 
 ```php
 public function factory(
-string $name,
-Closure $factory
+    string $name,
+    Closure $factory
 ): static;
 ```
 
@@ -219,8 +220,8 @@ so nothing escapes uncaught.
 
 ```php
 public function secureWith(
-string $guard,
-string $prefix
+    string $guard,
+    string $prefix
 ): static;
 ```
 
@@ -230,8 +231,8 @@ Attach a guard (middleware) to every Action under a namespace prefix.
 
 ```php
 public function set(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): static;
 ```
 
@@ -261,6 +262,7 @@ public function setWordSeparator( string $wordSeparator ): static;
 
 Set the single delimiter between words in a path segment.
 
+
 ## ADR\Container\AdrProvider
 
 <span class="badge badge--class">Class</span>
@@ -279,6 +281,7 @@ binds the ADR contracts behind them.
 </div>
 
 __Uses__ `Phalcon\ADR\Dispatcher` · `Phalcon\ADR\Emitter\SapiEmitter` · `Phalcon\ADR\Responder\JsonResponder` · `Phalcon\ADR\Router\AttributeFilter` · `Phalcon\ADR\Router\Router` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Events\Manager` · `Phalcon\Html\Escaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Logger`
+
 
 ### Method Summary
 
@@ -300,6 +303,7 @@ __Uses__ `Phalcon\ADR\Dispatcher` · `Phalcon\ADR\Emitter\SapiEmitter` · `Phalc
 public function provide( Collection $services ): void;
 ```
 
+
 ## ADR\Dispatcher
 
 <span class="badge badge--final">Final</span>
@@ -320,6 +324,7 @@ adapter. Everything else is constructor-injected.
 </div>
 
 __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -378,9 +383,9 @@ __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `
 
 ```php
 public function __construct(
-IocContainer $container,
-Manager $events,
-array $globalMiddleware = []
+    IocContainer $container,
+    Manager $events,
+    array $globalMiddleware = []
 );
 ```
 
@@ -388,9 +393,9 @@ array $globalMiddleware = []
 
 ```php
 public function dispatch(
-string $actionClass,
-AttributeRequest $request,
-array $routeMiddleware = []
+    string $actionClass,
+    AttributeRequest $request,
+    array $routeMiddleware = []
 ): ResponseInterface;
 ```
 
@@ -408,6 +413,7 @@ protected function resolveAll( array $classes ): array;
 protected function resolveGlobal(): array;
 ```
 
+
 ## ADR\Emitter\SapiEmitter
 
 <span class="badge badge--class">Class</span>
@@ -423,6 +429,7 @@ Refuses to emit once headers have already been sent.
 </div>
 
 __Uses__ `Phalcon\ADR\Exceptions\HeadersAlreadySent` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -444,6 +451,7 @@ __Uses__ `Phalcon\ADR\Exceptions\HeadersAlreadySent` · `Phalcon\Contracts\ADR\E
 public function emit( ResponseInterface $response ): void;
 ```
 
+
 ## ADR\ErrorResponder
 
 <span class="badge badge--final">Final</span>
@@ -464,6 +472,7 @@ ancestor chain, so map ordering never matters.
 </div>
 
 __Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Throwable`
+
 
 ### Method Summary
 
@@ -533,10 +542,10 @@ __Uses__ `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\Ro
 
 ```php
 public function __construct(
-Responder $chain,
-Logger $logger,
-bool $debug = false,
-array $exceptionMap = []
+    Responder $chain,
+    Logger $logger,
+    bool $debug = false,
+    array $exceptionMap = []
 );
 ```
 
@@ -544,9 +553,9 @@ array $exceptionMap = []
 
 ```php
 public function handle(
-RequestInterface $request,
-ResponseInterface $response,
-Throwable $exception
+    RequestInterface $request,
+    ResponseInterface $response,
+    Throwable $exception
 ): ResponseInterface;
 ```
 
@@ -568,9 +577,9 @@ protected function defaultMap(): array;
 
 ```php
 protected function details(
-Throwable $exception,
-string $ref,
-string $status = Status::ERROR
+    Throwable $exception,
+    string $ref,
+    string $status = Status::ERROR
 ): array;
 ```
 
@@ -582,6 +591,7 @@ protected function reason( string $status ): string;
 
 The message that goes with the status. Reporting `Internal Server Error`
 next to a `404` tells the client the opposite of what happened.
+
 
 ## ADR\EventfulHandler
 
@@ -598,6 +608,7 @@ Action's execution.
 </div>
 
 __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -636,8 +647,8 @@ __Uses__ `Phalcon\ADR\Events\Event` · `Phalcon\Contracts\ADR\Action` · `Phalco
 
 ```php
 public function __construct(
-Action $action,
-Manager $events
+    Action $action,
+    Manager $events
 );
 ```
 
@@ -646,6 +657,7 @@ Manager $events
 ```php
 public function __invoke( AttributeRequest $request ): ResponseInterface;
 ```
+
 
 ## ADR\Events\Event
 
@@ -689,6 +701,7 @@ The ADR event vocabulary, fired through the native events manager.
 </div>
 </div>
 
+
 ## ADR\Exceptions\ActionDirectoryNotSet
 
 <span class="badge badge--class">Class</span>
@@ -700,8 +713,8 @@ convention cannot resolve sub-namespaces without one.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`**
+    - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+        - **`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`**
 
 </div>
 
@@ -724,6 +737,7 @@ convention cannot resolve sub-namespaces without one.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\Exception
 
 <span class="badge badge--class">Class</span>
@@ -735,17 +749,19 @@ exception.
 <div class="api-tree">
 
 - `BaseException`
-- **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](/5.18/api/phalcon_contracts/#contractsadrexceptionsadrthrowable)
-- [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
-- [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
-- [`Phalcon\ADR\Exceptions\MethodNotAllowed`](#adrexceptionsmethodnotallowed)
-- [`Phalcon\ADR\Exceptions\NotAnAction`](#adrexceptionsnotanaction)
-- [`Phalcon\ADR\Exceptions\OutputAlreadySent`](#adrexceptionsoutputalreadysent)
-- [`Phalcon\ADR\Exceptions\RouteNotFound`](#adrexceptionsroutenotfound)
+    - **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](/5.18/api/phalcon_contracts/#contractsadrexceptionsadrthrowable)
+        - [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
+        - [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
+        - [`Phalcon\ADR\Exceptions\MethodNotAllowed`](#adrexceptionsmethodnotallowed)
+        - [`Phalcon\ADR\Exceptions\NotAnAction`](#adrexceptionsnotanaction)
+        - [`Phalcon\ADR\Exceptions\OutputAlreadySent`](#adrexceptionsoutputalreadysent)
+        - [`Phalcon\ADR\Exceptions\RouteNotFound`](#adrexceptionsroutenotfound)
 
 </div>
 
 __Uses__ `Exception` · `Phalcon\Contracts\ADR\Exceptions\ADRThrowable`
+
+
 
 ## ADR\Exceptions\HeadersAlreadySent
 
@@ -758,8 +774,8 @@ already been sent.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\HeadersAlreadySent`**
+    - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+        - **`Phalcon\ADR\Exceptions\HeadersAlreadySent`**
 
 </div>
 
@@ -782,6 +798,7 @@ already been sent.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\MethodNotAllowed
 
 <span class="badge badge--class">Class</span>
@@ -792,8 +809,8 @@ Thrown when a route matches the path but not the request method.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\MethodNotAllowed`**
+    - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+        - **`Phalcon\ADR\Exceptions\MethodNotAllowed`**
 
 </div>
 
@@ -816,6 +833,7 @@ Thrown when a route matches the path but not the request method.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\NotAnAction
 
 <span class="badge badge--class">Class</span>
@@ -826,8 +844,8 @@ Thrown when the dispatcher resolves a class that is not an ADR Action.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\NotAnAction`**
+    - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+        - **`Phalcon\ADR\Exceptions\NotAnAction`**
 
 </div>
 
@@ -850,6 +868,7 @@ Thrown when the dispatcher resolves a class that is not an ADR Action.
 public function __construct( string $className = "" );
 ```
 
+
 ## ADR\Exceptions\OutputAlreadySent
 
 <span class="badge badge--class">Class</span>
@@ -861,8 +880,8 @@ been sent.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\OutputAlreadySent`**
+    - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+        - **`Phalcon\ADR\Exceptions\OutputAlreadySent`**
 
 </div>
 
@@ -885,6 +904,7 @@ been sent.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\RouteNotFound
 
 <span class="badge badge--class">Class</span>
@@ -895,8 +915,8 @@ Thrown when no route matches the request.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\RouteNotFound`**
+    - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+        - **`Phalcon\ADR\Exceptions\RouteNotFound`**
 
 </div>
 
@@ -919,6 +939,7 @@ Thrown when no route matches the request.
 public function __construct();
 ```
 
+
 ## ADR\Front\AbstractHttpFront
 
 <span class="badge badge--abstract">Abstract</span>
@@ -932,11 +953,12 @@ response. Userland front controllers override `loadEnvironment()`,
 <div class="api-tree">
 
 - **`Phalcon\ADR\Front\AbstractHttpFront`** - implements [`Phalcon\Contracts\Front\FrontController`](/5.18/api/phalcon_contracts/#contractsfrontfrontcontroller)
-- [`Phalcon\ADR\Front\HttpFront`](#adrfronthttpfront)
+    - [`Phalcon\ADR\Front\HttpFront`](#adrfronthttpfront)
 
 </div>
 
 __Uses__ `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest`
+
 
 ### Method Summary
 
@@ -1062,6 +1084,7 @@ protected function loadEnvironment( Container $container ): void;
 protected function registerProviders( Container $container ): void;
 ```
 
+
 ## ADR\Front\HttpFront
 
 <span class="badge badge--class">Class</span>
@@ -1074,9 +1097,10 @@ application with the framework defaults; subclass to override
 <div class="api-tree">
 
 - [`Phalcon\ADR\Front\AbstractHttpFront`](#adrfrontabstracthttpfront)
-- **`Phalcon\ADR\Front\HttpFront`**
+    - **`Phalcon\ADR\Front\HttpFront`**
 
 </div>
+
 
 ## ADR\Input\Input
 
@@ -1097,6 +1121,7 @@ input value object: the factories use late static binding, so a subclass's
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag`
+
 
 ### Method Summary
 
@@ -1168,8 +1193,8 @@ public static function fromRequest( AttributeRequest $request ): static;
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -1184,6 +1209,7 @@ public function has( string $key ): bool;
 ```php
 public function toArray(): array;
 ```
+
 
 ## ADR\Middleware\CorsMiddleware
 
@@ -1202,6 +1228,7 @@ a wildcard origin. Preflight `OPTIONS` requests are answered directly.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Response` · `Phalcon\Http\ResponseInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+
 
 ### Method Summary
 
@@ -1271,8 +1298,8 @@ public function __construct( array $config = [] );
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
 
@@ -1282,8 +1309,8 @@ Handler $next
 
 ```php
 protected function applyHeaders(
-ResponseInterface $response,
-string $origin
+    ResponseInterface $response,
+    string $origin
 ): void;
 ```
 
@@ -1292,6 +1319,7 @@ string $origin
 ```php
 protected function isAllowed( string $origin ): bool;
 ```
+
 
 ## ADR\Middleware\MethodOverrideMiddleware
 
@@ -1313,6 +1341,7 @@ method.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -1342,10 +1371,11 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` �
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## ADR\Middleware\RequestIdMiddleware
 
@@ -1362,6 +1392,7 @@ generating it, exposing it on the request attributes and the response.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -1381,10 +1412,11 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` �
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## ADR\Middleware\TimingMiddleware
 
@@ -1401,6 +1433,7 @@ took to produce the response.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -1420,10 +1453,11 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\ADR\Middleware` �
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## ADR\Payload\Payload
 
@@ -1443,6 +1477,7 @@ commonly used statuses.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Throwable`
+
 
 ### Method Summary
 
@@ -1924,6 +1959,7 @@ public function withStatus( mixed $status ): PayloadContract;
 
 Returns a copy of the payload with the given status.
 
+
 ## ADR\Payload\PayloadFactory
 
 <span class="badge badge--class">Class</span>
@@ -1942,6 +1978,7 @@ directly.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload`
+
 
 ### Method Summary
 
@@ -2218,6 +2255,7 @@ public function valid( mixed $result = null ): PayloadInterface;
 
 Creates a payload with the `VALID` status.
 
+
 ## ADR\Payload\Status
 
 <span class="badge badge--class">Class</span>
@@ -2331,6 +2369,7 @@ lineage:
 </div>
 </div>
 
+
 ## ADR\Pipeline
 
 <span class="badge badge--final">Final</span>
@@ -2349,6 +2388,7 @@ When the middleware is exhausted it invokes the terminal handler (the Action).
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -2392,9 +2432,9 @@ __Uses__ `Phalcon\Contracts\ADR\Handler` · `Phalcon\Contracts\Http\AttributeReq
 
 ```php
 public function __construct(
-array $middleware,
-Handler $terminal,
-int $index = 0
+    array $middleware,
+    Handler $terminal,
+    int $index = 0
 );
 ```
 
@@ -2403,6 +2443,7 @@ int $index = 0
 ```php
 public function __invoke( AttributeRequest $request ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\AbstractFormattedResponder
 
@@ -2415,9 +2456,9 @@ responders into a chain. Subclasses bind the formatter(s).
 <div class="api-tree">
 
 - [`Phalcon\ADR\Responder\ChainResponder`](#adrresponderchainresponder)
-- **`Phalcon\ADR\Responder\AbstractFormattedResponder`**
-- [`Phalcon\ADR\Responder\JsonResponder`](#adrresponderjsonresponder)
-- [`Phalcon\ADR\Responder\TextResponder`](#adrrespondertextresponder)
+    - **`Phalcon\ADR\Responder\AbstractFormattedResponder`**
+        - [`Phalcon\ADR\Responder\JsonResponder`](#adrresponderjsonresponder)
+        - [`Phalcon\ADR\Responder\TextResponder`](#adrrespondertextresponder)
 
 </div>
 
@@ -2440,6 +2481,7 @@ responders into a chain. Subclasses bind the formatter(s).
 public function __construct( array $formatters = [] );
 ```
 
+
 ## ADR\Responder\ChainResponder
 
 <span class="badge badge--class">Class</span>
@@ -2451,11 +2493,12 @@ response threaded so far, and the payload, and returns the response.
 <div class="api-tree">
 
 - **`Phalcon\ADR\Responder\ChainResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.18/api/phalcon_contracts/#contractsadrresponderresponder)
-- [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
+    - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -2500,9 +2543,9 @@ public function __construct( array $links = [] );
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
 
@@ -2511,6 +2554,7 @@ Payload $payload
 ```php
 public function with( Responder $link ): ChainResponder;
 ```
+
 
 ## ADR\Responder\FormatResponder
 
@@ -2530,6 +2574,7 @@ formatter, so the content type and body are never left unset.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -2569,11 +2614,12 @@ public function __construct( array $formatters = [] );
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\Formatter\JsonFormatter
 
@@ -2589,6 +2635,7 @@ Renders a payload as JSON.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter`
+
 
 ### Method Summary
 
@@ -2632,6 +2679,7 @@ public function contentType(): string;
 public function format( Payload $payload ): string;
 ```
 
+
 ## ADR\Responder\Formatter\TextFormatter
 
 <span class="badge badge--class">Class</span>
@@ -2646,6 +2694,7 @@ Renders a payload as plain text.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Formatter\Formatter`
+
 
 ### Method Summary
 
@@ -2689,6 +2738,7 @@ public function contentType(): string;
 public function format( Payload $payload ): string;
 ```
 
+
 ## ADR\Responder\JsonResponder
 
 <span class="badge badge--class">Class</span>
@@ -2699,12 +2749,13 @@ A formatted responder bound to the JSON formatter.
 <div class="api-tree">
 
 - [`Phalcon\ADR\Responder\ChainResponder`](#adrresponderchainresponder)
-- [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
-- **`Phalcon\ADR\Responder\JsonResponder`**
+    - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
+        - **`Phalcon\ADR\Responder\JsonResponder`**
 
 </div>
 
 __Uses__ `Phalcon\ADR\Responder\Formatter\JsonFormatter`
+
 
 ### Method Summary
 
@@ -2724,6 +2775,7 @@ __Uses__ `Phalcon\ADR\Responder\Formatter\JsonFormatter`
 ```php
 public function __construct();
 ```
+
 
 ## ADR\Responder\Redirect
 
@@ -2796,8 +2848,8 @@ RedirectResponder turns it into a `Location` header and status code.
 
 ```php
 public function __construct(
-string $url,
-int $status = 302
+    string $url,
+    int $status = 302
 );
 ```
 
@@ -2831,6 +2883,7 @@ public static function temporary( string $url ): Redirect;
 public function url(): string;
 ```
 
+
 ## ADR\Responder\RedirectResponder
 
 <span class="badge badge--class">Class</span>
@@ -2847,6 +2900,7 @@ redirect.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -2866,11 +2920,12 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\StatusMapper
 
@@ -2890,6 +2945,7 @@ silent 200. Every entry can be overridden through the constructor.
 </div>
 
 __Uses__ `Phalcon\ADR\Payload\Status`
+
 
 ### Method Summary
 
@@ -2936,6 +2992,7 @@ Returns the HTTP status code for the given domain status.
 
 An unmapped status resolves to 500 (server error), never a silent 200.
 
+
 ## ADR\Responder\StatusResponder
 
 <span class="badge badge--class">Class</span>
@@ -2950,6 +3007,7 @@ Sets the response HTTP status code from the payload status, via StatusMapper.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -2989,11 +3047,12 @@ public function __construct( StatusMapper $mapper = null );
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\TextResponder
 
@@ -3005,12 +3064,13 @@ A formatted responder bound to the text formatter.
 <div class="api-tree">
 
 - [`Phalcon\ADR\Responder\ChainResponder`](#adrresponderchainresponder)
-- [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
-- **`Phalcon\ADR\Responder\TextResponder`**
+    - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
+        - **`Phalcon\ADR\Responder\TextResponder`**
 
 </div>
 
 __Uses__ `Phalcon\ADR\Responder\Formatter\TextFormatter`
+
 
 ### Method Summary
 
@@ -3031,6 +3091,7 @@ __Uses__ `Phalcon\ADR\Responder\Formatter\TextFormatter`
 public function __construct();
 ```
 
+
 ## ADR\Responder\ViewResponder
 
 <span class="badge badge--final">Final</span>
@@ -3050,6 +3111,7 @@ MVC view.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -3105,9 +3167,9 @@ __Uses__ `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Respo
 
 ```php
 public function __construct(
-Renderer $renderer,
-StatusMapper $statusMapper,
-string $template = ""
+    Renderer $renderer,
+    StatusMapper $statusMapper,
+    string $template = ""
 );
 ```
 
@@ -3115,9 +3177,9 @@ string $template = ""
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
 
@@ -3142,6 +3204,7 @@ Flattens the payload into the variables handed to the template. The
 extras travel as they are, so an action can hand the view whatever the
 result should not carry.
 
+
 ## ADR\Router\AttributeFilter
 
 <span class="badge badge--final">Final</span>
@@ -3161,6 +3224,7 @@ segments pass through under their positional keys. An Action without
 </div>
 
 __Uses__ `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\Router\AttributeFilter`
+
 
 ### Method Summary
 
@@ -3184,8 +3248,8 @@ __Uses__ `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\Router
 
 ```php
 public function filter(
-string $actionClass,
-array $attributes
+    string $actionClass,
+    array $attributes
 ): array;
 ```
 
@@ -3195,10 +3259,11 @@ array $attributes
 
 ```php
 protected function cast(
-string $value,
-string $type
+    string $value,
+    string $type
 );
 ```
+
 
 ## ADR\Router\Router
 
@@ -3215,11 +3280,11 @@ pipeline. No route table.
 Every static path segment is a namespace segment, and the class name is the
 verb followed by all of those segments concatenated:
 
-    GET  /                      -> Get
-    GET  /profiles              -> Profiles\GetProfiles
-    GET  /company/all           -> Company\All\GetCompanyAll
-    GET  /company/all/7         -> Company\All\GetCompanyAll  with ["7"]
-    POST /session/forgot-password -> Session\ForgotPassword\PostSessionForgotPassword
+GET  /                      -> Get
+GET  /profiles              -> Profiles\GetProfiles
+GET  /company/all           -> Company\All\GetCompanyAll
+GET  /company/all/7         -> Company\All\GetCompanyAll  with \["7"]
+POST /session/forgot-password -> Session\ForgotPassword\PostSessionForgotPassword
 
 ## Guarantees
 
@@ -3261,6 +3326,7 @@ RFC 9110 both leave path structure entirely to the origin server.
 </div>
 
 __Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface`
+
 
 ### Method Summary
 
@@ -3396,8 +3462,8 @@ __Uses__ `Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptio
 
 ```php
 public function candidatesFor(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array;
 ```
 
@@ -3410,8 +3476,8 @@ action directory.
 
 ```php
 public function classFor(
-string $method,
-string $path
+    string $method,
+    string $path
 ): string;
 ```
 
@@ -3501,8 +3567,8 @@ protected function decamelize( string $part ): string;
 
 ```php
 protected function deriveCandidates(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array;
 ```
 
@@ -3528,8 +3594,8 @@ protected function hasSubNamespace( string $subNamespace ): bool;
 
 ```php
 protected function locate(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array|null;
 ```
 
@@ -3563,6 +3629,7 @@ protected function verbs(): array;
 
 The HTTP verbs the convention recognises, in class-name form.
 
+
 ## ADR\Router\RouterMatch
 
 <span class="badge badge--final">Final</span>
@@ -3577,6 +3644,7 @@ Immutable result of a successful route match.
 </div>
 
 __Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
+
 
 ### Method Summary
 
@@ -3640,10 +3708,10 @@ __Uses__ `Phalcon\Contracts\ADR\Router\RouterMatch`
 
 ```php
 public function __construct(
-string $action,
-array $attributes = [],
-array $middleware = [],
-string $name = null
+    string $action,
+    array $attributes = [],
+    array $middleware = [],
+    string $name = null
 );
 ```
 

@@ -17,111 +17,163 @@ version: "3.4"
 
 Allows to validate data using custom or built-in validators
 
+
 ## Methods
 public  **getData** ()
 
 ...
 
+
 public  **setValidators** (*mixed* $validators)
 
 ...
+
 
 public  **__construct** ([*array* $validators])
 
 Phalcon\Validation constructor
 
+
+
 public [Phalcon\Validation\Message\Group](/3.4/api/phalcon_validation/) **validate** ([*array* | *object* $data], [*object* $entity])
 
 Validate a set of data according to a set of rules
+
+
 
 public  **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/api/phalcon_validation/) $validator)
 
 Adds a validator to a field
 
+
+
 public  **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/api/phalcon_validation/) $validator)
 
 Alias of `add` method
+
+
 
 public  **rules** (*mixed* $field, *array* $validators)
 
 Adds the validators to a field
 
+
+
 public [Phalcon\Validation](/3.4/api/phalcon_validation/) **setFilters** (*string* $field, *array* | *string* $filters)
 
 Adds filters to the field
+
+
 
 public *mixed* **getFilters** ([*string* $field])
 
 Returns all the filters or a specific one
 
+
+
 public  **getValidators** ()
 
 Returns the validators added to the validation
+
+
 
 public  **setEntity** (*object* $entity)
 
 Sets the bound entity
 
+
+
 public *object* **getEntity** ()
 
 Returns the bound entity
+
+
 
 public  **setDefaultMessages** ([*array* $messages])
 
 Adds default messages to validators
 
+
+
 public  **getDefaultMessage** (*mixed* $type)
 
 Get default message for validator type
+
+
 
 public  **getMessages** ()
 
 Returns the registered validators
 
+
+
 public  **setLabels** (*array* $labels)
 
 Adds labels for fields
+
+
 
 public *string* **getLabel** (*string* $field)
 
 Get label for field
 
+
+
 public  **appendMessage** ([Phalcon\Validation\MessageInterface](/3.4/api/phalcon_validation/) $message)
 
 Appends a message to the messages list
+
+
 
 public [Phalcon\Validation](/3.4/api/phalcon_validation/) **bind** (*object* $entity, *array* | *object* $data)
 
 Assigns the data to an entity
 The entity is used to obtain the validation values
 
+
+
 public *mixed* **getValue** (*string* $field)
 
 Gets the a value to validate in the array/object data source
+
+
 
 protected  **preChecking** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/api/phalcon_validation/) $validator)
 
 Internal validations, if it returns true, then skip the current validator
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the dependency injector
+
+
 
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the event manager
+
+
 
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Magic method __get
+
+
+
 
 <hr />
 
@@ -138,38 +190,57 @@ public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\
 
 Phalcon\Validation\Validator constructor
 
+
+
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 abstract public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $attribute) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Executes the validation
 
+
+
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
+
+
 
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -186,45 +257,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -236,50 +329,74 @@ String representation of the exception
 
 Encapsulates validation info generated in the validation process
 
+
 ## Methods
 public  **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type], [*mixed* $code])
 
 Phalcon\Validation\Message constructor
 
+
+
 public  **setType** (*mixed* $type)
 
 Sets message type
+
+
 
 public  **getType** ()
 
 Returns message type
 
+
+
 public  **setMessage** (*mixed* $message)
 
 Sets verbose message
+
+
 
 public  **getMessage** ()
 
 Returns verbose message
 
+
+
 public  **setField** (*mixed* $field)
 
 Sets field name related to message
+
+
 
 public *mixed* **getField** ()
 
 Returns field name related to message
 
+
+
 public  **setCode** (*mixed* $code)
 
 Sets code for the message
+
+
 
 public  **getCode** ()
 
 Returns the message code
 
+
+
 public  **__toString** ()
 
 Magic __toString method returns verbose message
 
+
+
 public static  **__set_state** (*array* $message)
 
 Magic __set_state helps to recover messages from serialization
+
+
+
 
 <hr />
 
@@ -291,10 +408,13 @@ Magic __set_state helps to recover messages from serialization
 
 Represents a group of validation messages
 
+
 ## Methods
 public  **__construct** ([*array* $messages])
 
 Phalcon\Validation\Message\Group constructor
+
+
 
 public [Phalcon\Validation\Message](/3.4/api/phalcon_validation/) **offsetGet** (*int* $index)
 
@@ -304,10 +424,12 @@ Gets an attribute a message using the array syntax
 <?php
 
 print_r(
-$messages[0]
+    $messages[0]
 );
 
 ```
+
+
 
 public  **offsetSet** (*int* $index, [Phalcon\Validation\Message](/3.4/api/phalcon_validation/) $message)
 
@@ -320,6 +442,8 @@ $messages[0] = new \Phalcon\Validation\Message("This is a message");
 
 ```
 
+
+
 public *boolean* **offsetExists** (*int* $index)
 
 Checks if an index exists
@@ -328,10 +452,12 @@ Checks if an index exists
 <?php
 
 var_dump(
-isset($message["database"])
+    isset($message["database"])
 );
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index)
 
@@ -344,6 +470,8 @@ unset($message["database"]);
 
 ```
 
+
+
 public  **appendMessage** ([Phalcon\Validation\MessageInterface](/3.4/api/phalcon_validation/) $message)
 
 Appends a message to the group
@@ -352,10 +480,12 @@ Appends a message to the group
 <?php
 
 $messages->appendMessage(
-new \Phalcon\Validation\Message("This is a message")
+    new \Phalcon\Validation\Message("This is a message")
 );
 
 ```
+
+
 
 public  **appendMessages** ([Phalcon\Validation\MessageInterface](/3.4/api/phalcon_validation/) $messages)
 
@@ -368,37 +498,56 @@ $messages->appendMessages($messagesArray);
 
 ```
 
+
+
 public *array* **filter** (*string* $fieldName)
 
 Filters the message group by field name
+
+
 
 public  **count** ()
 
 Returns the number of messages in the list
 
+
+
 public  **rewind** ()
 
 Rewinds the internal iterator
+
+
 
 public  **current** ()
 
 Returns the current message in the iterator
 
+
+
 public  **key** ()
 
 Returns the current position/key in the iterator
+
+
 
 public  **next** ()
 
 Moves the internal iteration pointer to the next position
 
+
+
 public  **valid** ()
 
 Check if the current message in the iterator is valid
 
+
+
 public static [Phalcon\Validation\Message\Group](/3.4/api/phalcon_validation/) **__set_state** (*array* $group)
 
 Magic __set_state helps to re-build messages variable when exporting
+
+
+
 
 <hr />
 
@@ -411,33 +560,42 @@ abstract public  **setType** (*mixed* $type)
 
 ...
 
+
 abstract public  **getType** ()
 
 ...
+
 
 abstract public  **setMessage** (*mixed* $message)
 
 ...
 
+
 abstract public  **getMessage** ()
 
 ...
+
 
 abstract public  **setField** (*mixed* $field)
 
 ...
 
+
 abstract public  **getField** ()
 
 ...
+
 
 abstract public  **__toString** ()
 
 ...
 
+
 abstract public static  **__set_state** (*array* $message)
 
 ...
+
+
 
 <hr />
 
@@ -449,43 +607,63 @@ abstract public static  **__set_state** (*array* $message)
 
 This is a base class for validators
 
+
 ## Methods
 public  **__construct** ([*array* $options])
 
 Phalcon\Validation\Validator constructor
 
+
+
 public  **isSetOption** (*mixed* $key)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value)
 
 Sets an option in the validator
+
+
 
 abstract public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $attribute)
 
 Executes the validation
 
+
+
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Prepares a label for the field.
+
+
 
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option])
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -508,68 +686,88 @@ use Phalcon\Validation\Validator\Alnum as AlnumValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new AlnumValidator(
-    [
-        "message" => ":field must contain only alphanumeric characters",
-    ]
-)
+    "username",
+    new AlnumValidator(
+        [
+            "message" => ":field must contain only alphanumeric characters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new AlnumValidator(
     [
-        "message" => [
-            "username" => "username must contain only alphanumeric characters",
-            "name"     => "name must contain only alphanumeric characters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new AlnumValidator(
+        [
+            "message" => [
+                "username" => "username must contain only alphanumeric characters",
+                "name"     => "name must contain only alphanumeric characters",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -592,68 +790,88 @@ use Phalcon\Validation\Validator\Alpha as AlphaValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new AlphaValidator(
-    [
-        "message" => ":field must contain only letters",
-    ]
-)
+    "username",
+    new AlphaValidator(
+        [
+            "message" => ":field must contain only letters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new AlphaValidator(
     [
-        "message" => [
-            "username" => "username must contain only letters",
-            "name"     => "name must contain only letters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new AlphaValidator(
+        [
+            "message" => [
+                "username" => "username must contain only letters",
+                "name"     => "name must contain only letters",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -677,78 +895,98 @@ use Phalcon\Validation\Validator\Between;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Between(
-    [
-        "minimum" => 0,
-        "maximum" => 100,
-        "message" => "The price must be between 0 and 100",
-    ]
-)
+    "price",
+    new Between(
+        [
+            "minimum" => 0,
+            "maximum" => 100,
+            "message" => "The price must be between 0 and 100",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Between(
     [
-        "minimum" => [
-            "price"  => 0,
-            "amount" => 0,
-        ],
-        "maximum" => [
-            "price"  => 100,
-            "amount" => 50,
-        ],
-        "message" => [
-            "price"  => "The price must be between 0 and 100",
-            "amount" => "The amount must be between 0 and 50",
-        ],
-    ]
-)
+        "price",
+        "amount",
+    ],
+    new Between(
+        [
+            "minimum" => [
+                "price"  => 0,
+                "amount" => 0,
+            ],
+            "maximum" => [
+                "price"  => 100,
+                "amount" => 50,
+            ],
+            "message" => [
+                "price"  => "The price must be between 0 and 100",
+                "amount" => "The amount must be between 0 and 50",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -772,77 +1010,97 @@ use Phalcon\Validation\Validator\Numericality as NumericalityValidator;
 $validator = new Validation();
 
 $validator->add(
-["user", "admin"],
-new CallbackValidator(
-    [
-        "message" => "There must be only an user or admin set",
-        "callback" => function($data) {
-            if (!empty($data->getUser()) && !empty($data->getAdmin())) {
-                return false;
-            }
+    ["user", "admin"],
+    new CallbackValidator(
+        [
+            "message" => "There must be only an user or admin set",
+            "callback" => function($data) {
+                if (!empty($data->getUser()) && !empty($data->getAdmin())) {
+                    return false;
+                }
 
-            return true;
-        }
-    ]
-)
+                return true;
+            }
+        ]
+    )
 );
 
 $validator->add(
-"amount",
-new CallbackValidator(
-    [
-        "callback" => function($data) {
-            if (!empty($data->getProduct())) {
-                return new NumericalityValidator(
-                    [
-                        "message" => "Amount must be a number."
-                    ]
-                );
+    "amount",
+    new CallbackValidator(
+        [
+            "callback" => function($data) {
+                if (!empty($data->getProduct())) {
+                    return new NumericalityValidator(
+                        [
+                            "message" => "Amount must be a number."
+                        ]
+                    );
+                }
             }
-        }
-    ]
-)
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -865,77 +1123,99 @@ use Phalcon\Validation\Validator\Confirmation;
 $validator = new Validation();
 
 $validator->add(
-"password",
-new Confirmation(
-    [
-        "message" => "Password doesn't match confirmation",
-        "with"    => "confirmPassword",
-    ]
-)
+    "password",
+    new Confirmation(
+        [
+            "message" => "Password doesn't match confirmation",
+            "with"    => "confirmPassword",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "password",
-    "email",
-],
-new Confirmation(
     [
-        "message" => [
-            "password" => "Password doesn't match confirmation",
-            "email"    => "Email doesn't match confirmation",
-        ],
-        "with" => [
-            "password" => "confirmPassword",
-            "email"    => "confirmEmail",
-        ],
-    ]
-)
+        "password",
+        "email",
+    ],
+    new Confirmation(
+        [
+            "message" => [
+                "password" => "Password doesn't match confirmation",
+                "email"    => "Email doesn't match confirmation",
+            ],
+            "with" => [
+                "password" => "confirmPassword",
+                "email"    => "confirmEmail",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 final protected  **compare** (*mixed* $a, *mixed* $b)
 
 Compare strings
+
+
 
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
 
+
+
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -958,72 +1238,94 @@ use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
 $validator = new Validation();
 
 $validator->add(
-"creditCard",
-new CreditCardValidator(
-    [
-        "message" => "The credit card number is not valid",
-    ]
-)
+    "creditCard",
+    new CreditCardValidator(
+        [
+            "message" => "The credit card number is not valid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "creditCard",
-    "secondCreditCard",
-],
-new CreditCardValidator(
     [
-        "message" => [
-            "creditCard"       => "The credit card number is not valid",
-            "secondCreditCard" => "The second credit card number is not valid",
-        ],
-    ]
-)
+        "creditCard",
+        "secondCreditCard",
+    ],
+    new CreditCardValidator(
+        [
+            "message" => [
+                "creditCard"       => "The credit card number is not valid",
+                "secondCreditCard" => "The second credit card number is not valid",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 private *boolean* **verifyByLuhnAlgorithm** (*string* $number)
 
 is a simple checksum formula used to validate a variety of identification numbers
+
+
 
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
 
+
+
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1046,77 +1348,98 @@ use Phalcon\Validation\Validator\Date as DateValidator;
 $validator = new Validation();
 
 $validator->add(
-"date",
-new DateValidator(
-    [
-        "format"  => "d-m-Y",
-        "message" => "The date is invalid",
-    ]
-)
+    "date",
+    new DateValidator(
+        [
+            "format"  => "d-m-Y",
+            "message" => "The date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "date",
-    "anotherDate",
-],
-new DateValidator(
     [
-        "format" => [
-            "date"        => "d-m-Y",
-            "anotherDate" => "Y-m-d",
-        ],
-        "message" => [
-            "date"        => "The date is invalid",
-            "anotherDate" => "The another date is invalid",
-        ],
-    ]
-)
+        "date",
+        "anotherDate",
+    ],
+    new DateValidator(
+        [
+            "format" => [
+                "date"        => "d-m-Y",
+                "anotherDate" => "Y-m-d",
+            ],
+            "message" => [
+                "date"        => "The date is invalid",
+                "anotherDate" => "The another date is invalid",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 private  **checkDate** (*mixed* $value, *mixed* $format)
 
 ...
+
 
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
 
+
+
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1139,68 +1462,88 @@ use Phalcon\Validation\Validator\Digit as DigitValidator;
 $validator = new Validation();
 
 $validator->add(
-"height",
-new DigitValidator(
-    [
-        "message" => ":field must be numeric",
-    ]
-)
+    "height",
+    new DigitValidator(
+        [
+            "message" => ":field must be numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "height",
-    "width",
-],
-new DigitValidator(
     [
-        "message" => [
-            "height" => "height must be numeric",
-            "width"  => "width must be numeric",
-        ],
-    ]
-)
+        "height",
+        "width",
+    ],
+    new DigitValidator(
+        [
+            "message" => [
+                "height" => "height must be numeric",
+                "width"  => "width must be numeric",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1223,68 +1566,88 @@ use Phalcon\Validation\Validator\Email as EmailValidator;
 $validator = new Validation();
 
 $validator->add(
-"email",
-new EmailValidator(
-    [
-        "message" => "The e-mail is not valid",
-    ]
-)
+    "email",
+    new EmailValidator(
+        [
+            "message" => "The e-mail is not valid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "email",
-    "anotherEmail",
-],
-new EmailValidator(
     [
-        "message" => [
-            "email"        => "The e-mail is not valid",
-            "anotherEmail" => "The another e-mail is not valid",
-        ],
-    ]
-)
+        "email",
+        "anotherEmail",
+    ],
+    new EmailValidator(
+        [
+            "message" => [
+                "email"        => "The e-mail is not valid",
+                "anotherEmail" => "The another e-mail is not valid",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1301,45 +1664,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -1362,79 +1747,99 @@ use Phalcon\Validation\Validator\ExclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new ExclusionIn(
-    [
-        "message" => "The status must not be A or B",
-        "domain"  => [
-            "A",
-            "B",
-        ],
-    ]
-)
-);
-
-$validator->add(
-[
     "status",
-    "type",
-],
-new ExclusionIn(
-    [
-        "message" => [
-            "status" => "The status must not be A or B",
-            "type"   => "The type must not be 1 or "
-        ],
-        "domain" => [
-            "status" => [
+    new ExclusionIn(
+        [
+            "message" => "The status must not be A or B",
+            "domain"  => [
                 "A",
                 "B",
             ],
-            "type"   => [1, 2],
-        ],
-    ]
-)
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "status",
+        "type",
+    ],
+    new ExclusionIn(
+        [
+            "message" => [
+                "status" => "The status must not be A or B",
+                "type"   => "The type must not be 1 or "
+            ],
+            "domain" => [
+                "status" => [
+                    "A",
+                    "B",
+                ],
+                "type"   => [1, 2],
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1457,105 +1862,127 @@ use Phalcon\Validation\Validator\File as FileValidator;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new FileValidator(
-    [
-        "maxSize"              => "2M",
-        "messageSize"          => ":field exceeds the max filesize (:max)",
-        "allowedTypes"         => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "messageType"          => "Allowed file types are :types",
-        "maxResolution"        => "800x600",
-        "messageMaxResolution" => "Max resolution of :field is :max",
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new FileValidator(
-    [
-        "maxSize" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "messageSize" => [
-            "file"        => "file exceeds the max filesize 2M",
-            "anotherFile" => "anotherFile exceeds the max filesize 4M",
-        "allowedTypes" => [
-            "file"        => [
+    new FileValidator(
+        [
+            "maxSize"              => "2M",
+            "messageSize"          => ":field exceeds the max filesize (:max)",
+            "allowedTypes"         => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
+            "messageType"          => "Allowed file types are :types",
+            "maxResolution"        => "800x600",
+            "messageMaxResolution" => "Max resolution of :field is :max",
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new FileValidator(
+        [
+            "maxSize" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
             ],
-        ],
-        "messageType" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
-        ],
-        "maxResolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "messageMaxResolution" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+            "messageSize" => [
+                "file"        => "file exceeds the max filesize 2M",
+                "anotherFile" => "anotherFile exceeds the max filesize 4M",
+            "allowedTypes" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "messageType" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ],
+            "maxResolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "messageMaxResolution" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **isAllowEmpty** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Check on empty
+
+
 
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
 
+
+
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1578,73 +2005,93 @@ use Phalcon\Validation\Validator\Identical;
 $validator = new Validation();
 
 $validator->add(
-"terms",
-new Identical(
-    [
-        "accepted" => "yes",
-        "message" => "Terms and conditions must be accepted",
-    ]
-)
+    "terms",
+    new Identical(
+        [
+            "accepted" => "yes",
+            "message" => "Terms and conditions must be accepted",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "terms",
-    "anotherTerms",
-],
-new Identical(
     [
-        "accepted" => [
-            "terms"        => "yes",
-            "anotherTerms" => "yes",
-        ],
-        "message" => [
-            "terms"        => "Terms and conditions must be accepted",
-            "anotherTerms" => "Another terms  must be accepted",
-        ],
-    ]
-)
+        "terms",
+        "anotherTerms",
+    ],
+    new Identical(
+        [
+            "accepted" => [
+                "terms"        => "yes",
+                "anotherTerms" => "yes",
+            ],
+            "message" => [
+                "terms"        => "Terms and conditions must be accepted",
+                "anotherTerms" => "Another terms  must be accepted",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1667,73 +2114,93 @@ use Phalcon\Validation\Validator\InclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new InclusionIn(
-    [
-        "message" => "The status must be A or B",
-        "domain"  => ["A", "B"],
-    ]
-)
+    "status",
+    new InclusionIn(
+        [
+            "message" => "The status must be A or B",
+            "domain"  => ["A", "B"],
+        ]
+    )
 );
 
 $validator->add(
-[
-    "status",
-    "type",
-],
-new InclusionIn(
     [
-        "message" => [
-            "status" => "The status must be A or B",
-            "type"   => "The status must be 1 or 2",
-        ],
-        "domain" => [
-            "status" => ["A", "B"],
-            "type"   => [1, 2],
+        "status",
+        "type",
+    ],
+    new InclusionIn(
+        [
+            "message" => [
+                "status" => "The status must be A or B",
+                "type"   => "The status must be 1 or 2",
+            ],
+            "domain" => [
+                "status" => ["A", "B"],
+                "type"   => [1, 2],
+            ]
         ]
-    ]
-)
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1756,68 +2223,88 @@ use Phalcon\Validation\Validator\Numericality;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Numericality(
-    [
-        "message" => ":field is not numeric",
-    ]
-)
+    "price",
+    new Numericality(
+        [
+            "message" => ":field is not numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Numericality(
     [
-        "message" => [
-            "price"  => "price is not numeric",
-            "amount" => "amount is not numeric",
+        "price",
+        "amount",
+    ],
+    new Numericality(
+        [
+            "message" => [
+                "price"  => "price is not numeric",
+                "amount" => "amount is not numeric",
+            ]
         ]
-    ]
-)
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1840,68 +2327,88 @@ use Phalcon\Validation\Validator\PresenceOf;
 $validator = new Validation();
 
 $validator->add(
-"name",
-new PresenceOf(
-    [
-        "message" => "The name is required",
-    ]
-)
+    "name",
+    new PresenceOf(
+        [
+            "message" => "The name is required",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "name",
-    "email",
-],
-new PresenceOf(
     [
-        "message" => [
-            "name"  => "The name is required",
-            "email" => "The email is required",
-        ],
-    ]
-)
+        "name",
+        "email",
+    ],
+    new PresenceOf(
+        [
+            "message" => [
+                "name"  => "The name is required",
+                "email" => "The email is required",
+            ],
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -1924,73 +2431,93 @@ use Phalcon\Validation\Validator\Regex as RegexValidator;
 $validator = new Validation();
 
 $validator->add(
-"created_at",
-new RegexValidator(
-    [
-        "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-        "message" => "The creation date is invalid",
-    ]
-)
+    "created_at",
+    new RegexValidator(
+        [
+            "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+            "message" => "The creation date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "created_at",
-    "name",
-],
-new RegexValidator(
     [
-        "pattern" => [
-            "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-            "name"       => "/^[a-z]$/",
-        ],
-        "message" => [
-            "created_at" => "The creation date is invalid",
-            "name"       => "The name is invalid",
+        "created_at",
+        "name",
+    ],
+    new RegexValidator(
+        [
+            "pattern" => [
+                "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+                "name"       => "/^[a-z]$/",
+            ],
+            "message" => [
+                "created_at" => "The creation date is invalid",
+                "name"       => "The name is invalid",
+            ]
         ]
-    ]
-)
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -2015,83 +2542,103 @@ use Phalcon\Validation\Validator\StringLength as StringLength;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new StringLength(
-    [
-        "max"            => 50,
-        "min"            => 2,
-        "messageMaximum" => "We don't like really long names",
-        "messageMinimum" => "We want more than just their initials",
-    ]
-)
+    "name_last",
+    new StringLength(
+        [
+            "max"            => 50,
+            "min"            => 2,
+            "messageMaximum" => "We don't like really long names",
+            "messageMinimum" => "We want more than just their initials",
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new StringLength(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "messageMaximum" => [
-            "name_last"  => "We don't like really long last names",
-            "name_first" => "We don't like really long first names",
-        ],
-        "messageMinimum" => [
-            "name_last"  => "We don't like too short last names",
-            "name_first" => "We don't like too short first names",
+        "name_last",
+        "name_first",
+    ],
+    new StringLength(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "messageMaximum" => [
+                "name_last"  => "We don't like really long last names",
+                "name_first" => "We don't like really long first names",
+            ],
+            "messageMinimum" => [
+                "name_last"  => "We don't like too short last names",
+                "name_first" => "We don't like too short first names",
+            ]
         ]
-    ]
-)
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -2114,13 +2661,13 @@ use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "model"   => new Users(),
-        "message" => ":field must be unique",
-    ]
-)
+    "username",
+    new UniquenessValidator(
+        [
+            "model"   => new Users(),
+            "message" => ":field must be unique",
+        ]
+    )
 );
 
 ```
@@ -2131,13 +2678,13 @@ Different attribute from the field:
 <?php
 
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "model"     => new Users(),
-        "attribute" => "nick",
-    ]
-)
+    "username",
+    new UniquenessValidator(
+        [
+            "model"     => new Users(),
+            "attribute" => "nick",
+        ]
+    )
 );
 
 ```
@@ -2148,8 +2695,8 @@ In model:
 <?php
 
 $validator->add(
-"username",
-new UniquenessValidator()
+    "username",
+    new UniquenessValidator()
 );
 
 ```
@@ -2160,11 +2707,11 @@ Combination of fields in model:
 <?php
 
 $validator->add(
-[
-    "firstName",
-    "lastName",
-],
-new UniquenessValidator()
+    [
+        "firstName",
+        "lastName",
+    ],
+    new UniquenessValidator()
 );
 
 ```
@@ -2176,73 +2723,100 @@ situations where values need to be converted to do the database lookup:
 <?php
 
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "convert" => function (array $values) {
-            $values["username"] = strtolower($values["username"]);
+    "username",
+    new UniquenessValidator(
+        [
+            "convert" => function (array $values) {
+                $values["username"] = strtolower($values["username"]);
 
-            return $values;
-        }
-    ]
-)
+                return $values;
+            }
+        ]
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 protected  **isUniqueness** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 ...
+
 
 protected  **getColumnNameReal** (*mixed* $record, *mixed* $field)
 
 The column map is used in the case to get real column name
 
+
+
 protected  **isUniquenessModel** (*mixed* $record, *array* $field, *array* $values)
 
 Uniqueness method used for model
+
+
 
 protected  **isUniquenessCollection** (*mixed* $record, *array* $field, *array* $values)
 
 Uniqueness method used for collection
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -2265,68 +2839,88 @@ use Phalcon\Validation\Validator\Url as UrlValidator;
 $validator = new Validation();
 
 $validator->add(
-"url",
-new UrlValidator(
-    [
-        "message" => ":field must be a url",
-    ]
-)
+    "url",
+    new UrlValidator(
+        [
+            "message" => ":field must be a url",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "url",
-    "homepage",
-],
-new UrlValidator(
     [
-        "message" => [
-            "url"      => "url must be a url",
-            "homepage" => "homepage must be a url",
+        "url",
+        "homepage",
+    ],
+    new UrlValidator(
+        [
+            "message" => [
+                "url"      => "url must be a url",
+                "homepage" => "homepage must be a url",
+            ]
         ]
-    ]
-)
+    )
 );
 
 ```
+
 
 ## Methods
 public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field)
 
 Executes the validation
 
+
+
 public  **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Phalcon\Validation\Validator constructor
+
+
 
 public  **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option has been defined
 
+
+
 public  **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Checks if an option is defined
+
+
 
 public  **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
+
+
 public  **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Sets an option in the validator
+
+
 
 protected  **prepareLabel** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a label for the field.
 
+
+
 protected  **prepareMessage** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation message.
 
+
+
 protected  **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](/3.4/api/phalcon_validation/)
 
 Prepares a validation code.
+
+
+
 
 <hr />
 
@@ -2339,13 +2933,17 @@ abstract public  **hasOption** (*mixed* $key)
 
 ...
 
+
 abstract public  **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
 ...
 
+
 abstract public  **validate** ([Phalcon\Validation](/3.4/api/phalcon_validation/) $validation, *mixed* $attribute)
 
 ...
+
+
 
 <hr />
 
@@ -2358,61 +2956,76 @@ abstract public  **validate** ([*mixed* $data], [*mixed* $entity])
 
 ...
 
+
 abstract public  **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/api/phalcon_validation/) $validator)
 
 ...
+
 
 abstract public  **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](/3.4/api/phalcon_validation/) $validator)
 
 ...
 
+
 abstract public  **rules** (*mixed* $field, *array* $validators)
 
 ...
+
 
 abstract public  **setFilters** (*mixed* $field, *mixed* $filters)
 
 ...
 
+
 abstract public  **getFilters** ([*mixed* $field])
 
 ...
+
 
 abstract public  **getValidators** ()
 
 ...
 
+
 abstract public  **getEntity** ()
 
 ...
+
 
 abstract public  **setDefaultMessages** ([*array* $messages])
 
 ...
 
+
 abstract public  **getDefaultMessage** (*mixed* $type)
 
 ...
+
 
 abstract public  **getMessages** ()
 
 ...
 
+
 abstract public  **setLabels** (*array* $labels)
 
 ...
+
 
 abstract public  **getLabel** (*mixed* $field)
 
 ...
 
+
 abstract public  **appendMessage** ([Phalcon\Validation\MessageInterface](/3.4/api/phalcon_validation/) $message)
 
 ...
 
+
 abstract public  **bind** (*mixed* $entity, *mixed* $data)
 
 ...
+
 
 abstract public  **getValue** (*mixed* $field)
 

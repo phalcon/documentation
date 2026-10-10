@@ -32,7 +32,7 @@ The [Uri][http-message-uri] object created is immutable, meaning it will never c
 
 ```php
 public function __construct(
-[string $uri = ''] 
+    [string $uri = ''] 
 )
 ```
 The constructor accepts an optional string, representing the URI. If specified, the URI will be processed and split into the necessary parts internally. 

@@ -13,6 +13,7 @@ version: "5.22"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Queue\AdapterFactory
 
 Class
@@ -21,25 +22,20 @@ Maps an adapter name to its ConnectionFactory. Mirrors
 Phalcon\Storage\AdapterFactory.
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Queue\AdapterFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Queue\AdapterFactory`**
 
 `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-AdapterFactory constructor.
-</ApiItem>
-<ApiItem href="#queueadapterfactory-newinstance" visibility="public" name="newInstance" returnType="ConnectionFactoryInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Creates a new ConnectionFactory for the named adapter.
-</ApiItem>
-<ApiItem href="#queueadapterfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-Returns the exception class for the factory
-</ApiItem>
-<ApiItem href="#queueadapterfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters.
-</ApiItem>
+- `public __construct(array $services = [])` — AdapterFactory constructor.
+
+- `public newInstance(string $name, array $options = []): ConnectionFactoryInterface` — Creates a new ConnectionFactory for the named adapter.
+
+- `protected getExceptionClass(): string` — Returns the exception class for the factory
+
+- `protected getServices(): array` — Returns the available adapters.
 
 ### Methods
 
@@ -55,8 +51,8 @@ AdapterFactory constructor.
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): ConnectionFactoryInterface;
 ```
 
@@ -78,6 +74,7 @@ protected function getServices(): array;
 
 Returns the available adapters.
 
+
 ## Queue\Adapter\AbstractConsumer
 
 Abstract
@@ -90,42 +87,32 @@ Transports with a native blocking receive (Redis BRPOP, Beanstalk reserve)
 override `receive()` instead of polling.
 
 - **`Phalcon\Queue\Adapter\AbstractConsumer`** - implements [`Phalcon\Contracts\Queue\Consumer`](/5.22/api/phalcon_contracts/#contractsqueueconsumer)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`](#queueadapterbeanstalkbeanstalkconsumer)
-- [`Phalcon\Queue\Adapter\Memory\MemoryConsumer`](#queueadaptermemorymemoryconsumer)
-- [`Phalcon\Queue\Adapter\Redis\RedisConsumer`](#queueadapterredisredisconsumer)
-- [`Phalcon\Queue\Adapter\Stream\StreamConsumer`](#queueadapterstreamstreamconsumer)
+  - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`](#queueadapterbeanstalkbeanstalkconsumer)
+  - [`Phalcon\Queue\Adapter\Memory\MemoryConsumer`](#queueadaptermemorymemoryconsumer)
+  - [`Phalcon\Queue\Adapter\Redis\RedisConsumer`](#queueadapterredisredisconsumer)
+  - [`Phalcon\Queue\Adapter\Stream\StreamConsumer`](#queueadapterstreamstreamconsumer)
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterabstractconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Acknowledges the message; the transport may then discard it.
-</ApiItem>
-<ApiItem href="#queueadapterabstractconsumer-getqueue" visibility="public" name="getQueue" returnType="QueueInterface" params={[]}>
-Returns the queue this consumer reads from.
-</ApiItem>
-<ApiItem href="#queueadapterabstractconsumer-receive" visibility="public" name="receive" returnType="MessageInterface|null" params={[{"type":"int","name":"timeout","default":"0"}]}>
-Receives a message, blocking up to timeout milliseconds (0 = block
-</ApiItem>
-<ApiItem href="#queueadapterabstractconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="MessageInterface|null" params={[]}>
-Receives a message without blocking, or null when none is ready.
-</ApiItem>
-<ApiItem href="#queueadapterabstractconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
-Rejects the message. When requeue is true the transport redelivers it.
-</ApiItem>
-<ApiItem href="#queueadapterabstractconsumer-setpollinterval" visibility="public" name="setPollInterval" returnType="void" params={[{"type":"int","name":"pollInterval","default":null}]}>
-Sets the poll interval (in milliseconds) used by `receive()`.
-</ApiItem>
+- `public acknowledge(MessageInterface $message): void` — Acknowledges the message; the transport may then discard it.
+
+- `public getQueue(): QueueInterface` — Returns the queue this consumer reads from.
+
+- `public receive(int $timeout = 0): MessageInterface|null` — Receives a message, blocking up to timeout milliseconds (0 = block
+
+- `public receiveNoWait(): MessageInterface|null` — Receives a message without blocking, or null when none is ready.
+
+- `public reject(MessageInterface $message, bool $requeue = false): void` — Rejects the message. When requeue is true the transport redelivers it.
+
+- `public setPollInterval(int $pollInterval): void` — Sets the poll interval (in milliseconds) used by `receive()`.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="pollInterval" type="int" default="200">
-Milliseconds slept between poll attempts.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="queue" type="QueueInterface" default="">
-The queue this consumer reads from.
-</ApiItem>
+- `protected int $pollInterval = 200` — Milliseconds slept between poll attempts.
+
+- `protected QueueInterface $queue` — The queue this consumer reads from.
 
 ### Methods
 
@@ -167,8 +154,8 @@ Receives a message without blocking, or null when none is ready.
 
 ```php
 abstract public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
 
@@ -182,6 +169,7 @@ public function setPollInterval( int $pollInterval ): void;
 
 Sets the poll interval (in milliseconds) used by `receive()`.
 
+
 ## Queue\Adapter\AbstractContext
 
 Abstract
@@ -193,24 +181,20 @@ implement the transport-specific factories (consumer, producer, message,
 subscription consumer) and the storage operations.
 
 - **`Phalcon\Queue\Adapter\AbstractContext`** - implements [`Phalcon\Contracts\Queue\Context`](/5.22/api/phalcon_contracts/#contractsqueuecontext)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`](#queueadapterbeanstalkbeanstalkcontext)
-- [`Phalcon\Queue\Adapter\Memory\MemoryContext`](#queueadaptermemorymemorycontext)
-- [`Phalcon\Queue\Adapter\Redis\RedisContext`](#queueadapterredisrediscontext)
-- [`Phalcon\Queue\Adapter\Stream\StreamContext`](#queueadapterstreamstreamcontext)
+  - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`](#queueadapterbeanstalkbeanstalkcontext)
+  - [`Phalcon\Queue\Adapter\Memory\MemoryContext`](#queueadaptermemorymemorycontext)
+  - [`Phalcon\Queue\Adapter\Redis\RedisContext`](#queueadapterredisrediscontext)
+  - [`Phalcon\Queue\Adapter\Stream\StreamContext`](#queueadapterstreamstreamcontext)
 
 `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\Topic`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterabstractcontext-createqueue" visibility="public" name="createQueue" returnType="QueueInterface" params={[{"type":"string","name":"queueName","default":null}]}>
-Creates a queue destination by name.
-</ApiItem>
-<ApiItem href="#queueadapterabstractcontext-createtemporaryqueue" visibility="public" name="createTemporaryQueue" returnType="QueueInterface" params={[]}>
-Creates a uniquely named temporary queue.
-</ApiItem>
-<ApiItem href="#queueadapterabstractcontext-createtopic" visibility="public" name="createTopic" returnType="TopicInterface" params={[{"type":"string","name":"topicName","default":null}]}>
-Creates a topic destination by name.
-</ApiItem>
+- `public createQueue(string $queueName): QueueInterface` — Creates a queue destination by name.
+
+- `public createTemporaryQueue(): QueueInterface` — Creates a uniquely named temporary queue.
+
+- `public createTopic(string $topicName): TopicInterface` — Creates a topic destination by name.
 
 ### Methods
 
@@ -238,6 +222,7 @@ public function createTopic( string $topicName ): TopicInterface;
 
 Creates a topic destination by name.
 
+
 ## Queue\Adapter\AbstractMessage
 
 Abstract
@@ -248,12 +233,13 @@ Shared base for the concrete adapter messages.
 Phalcon\Queue\Adapter\Traits\MessageTrait directly instead of extending this.
 
 - **`Phalcon\Queue\Adapter\AbstractMessage`** - implements [`Phalcon\Contracts\Queue\Message`](/5.22/api/phalcon_contracts/#contractsqueuemessage)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`](#queueadapterbeanstalkbeanstalkmessage)
-- [`Phalcon\Queue\Adapter\Memory\MemoryMessage`](#queueadaptermemorymemorymessage)
-- [`Phalcon\Queue\Adapter\Redis\RedisMessage`](#queueadapterredisredismessage)
-- [`Phalcon\Queue\Adapter\Stream\StreamMessage`](#queueadapterstreamstreammessage)
+  - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`](#queueadapterbeanstalkbeanstalkmessage)
+  - [`Phalcon\Queue\Adapter\Memory\MemoryMessage`](#queueadaptermemorymemorymessage)
+  - [`Phalcon\Queue\Adapter\Redis\RedisMessage`](#queueadapterredisredismessage)
+  - [`Phalcon\Queue\Adapter\Stream\StreamMessage`](#queueadapterstreamstreammessage)
 
 `Phalcon\Contracts\Queue\Message` · `Phalcon\Queue\Adapter\Traits\MessageTrait`
+
 
 ## Queue\Adapter\AbstractProducer
 
@@ -266,29 +252,28 @@ producer overrides only the capabilities its transport actually supports,
 and implements `send()`.
 
 - **`Phalcon\Queue\Adapter\AbstractProducer`** - implements [`Phalcon\Contracts\Queue\Producer`](/5.22/api/phalcon_contracts/#contractsqueueproducer)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`](#queueadapterbeanstalkbeanstalkproducer)
-- [`Phalcon\Queue\Adapter\Memory\MemoryProducer`](#queueadaptermemorymemoryproducer)
-- [`Phalcon\Queue\Adapter\Redis\RedisProducer`](#queueadapterredisredisproducer)
-- [`Phalcon\Queue\Adapter\Stream\StreamProducer`](#queueadapterstreamstreamproducer)
+  - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`](#queueadapterbeanstalkbeanstalkproducer)
+  - [`Phalcon\Queue\Adapter\Memory\MemoryProducer`](#queueadaptermemorymemoryproducer)
+  - [`Phalcon\Queue\Adapter\Redis\RedisProducer`](#queueadapterredisredisproducer)
+  - [`Phalcon\Queue\Adapter\Stream\StreamProducer`](#queueadapterstreamstreamproducer)
 
 `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException` · `Phalcon\Queue\Exceptions\PriorityNotSupportedException` · `Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterabstractproducer-getdeliverydelay" visibility="public" name="getDeliveryDelay" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterabstractproducer-getpriority" visibility="public" name="getPriority" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterabstractproducer-gettimetolive" visibility="public" name="getTimeToLive" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterabstractproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"DestinationInterface","name":"destination","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterabstractproducer-setdeliverydelay" visibility="public" name="setDeliveryDelay" returnType="ProducerInterface" params={[{"type":"mixed","name":"deliveryDelay","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterabstractproducer-setpriority" visibility="public" name="setPriority" returnType="ProducerInterface" params={[{"type":"mixed","name":"priority","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterabstractproducer-settimetolive" visibility="public" name="setTimeToLive" returnType="ProducerInterface" params={[{"type":"mixed","name":"timeToLive","default":"null"}]}>
-</ApiItem>
+- `public getDeliveryDelay(): int|null`
+
+- `public getPriority(): int|null`
+
+- `public getTimeToLive(): int|null`
+
+- `public send(DestinationInterface $destination, MessageInterface $message): void`
+
+- `public setDeliveryDelay(mixed $deliveryDelay = null): ProducerInterface`
+
+- `public setPriority(mixed $priority = null): ProducerInterface`
+
+- `public setTimeToLive(mixed $timeToLive = null): ProducerInterface`
 
 ### Methods
 
@@ -314,8 +299,8 @@ public function getTimeToLive(): int|null;
 
 ```php
 abstract public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
 
@@ -337,6 +322,7 @@ public function setPriority( mixed $priority = null ): ProducerInterface;
 public function setTimeToLive( mixed $timeToLive = null ): ProducerInterface;
 ```
 
+
 ## Queue\Adapter\AbstractSubscriptionConsumer
 
 Abstract
@@ -348,12 +334,13 @@ Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait directly instead of
 extending this.
 
 - **`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`** - implements [`Phalcon\Contracts\Queue\SubscriptionConsumer`](/5.22/api/phalcon_contracts/#contractsqueuesubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`](#queueadapterbeanstalkbeanstalksubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`](#queueadaptermemorymemorysubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`](#queueadapterredisredissubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`](#queueadapterstreamstreamsubscriptionconsumer)
+  - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`](#queueadapterbeanstalkbeanstalksubscriptionconsumer)
+  - [`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`](#queueadaptermemorymemorysubscriptionconsumer)
+  - [`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`](#queueadapterredisredissubscriptionconsumer)
+  - [`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`](#queueadapterstreamstreamsubscriptionconsumer)
 
 `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait`
+
 
 ## Queue\Adapter\Beanstalk\BeanstalkConnection
 
@@ -370,72 +357,52 @@ from the original Phalcon\Queue\Beanstalk transport.
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"host","default":"\"127.0.0.1\""},{"type":"int","name":"port","default":"11300"},{"type":"bool","name":"persistent","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-buryjob" visibility="public" name="buryJob" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"int","name":"priority","default":null}]}>
-Puts a reserved job into the "buried" state.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-connect" visibility="public" name="connect" returnType="resource" params={[]}>
-Opens the socket connection to the Beanstalkd server.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-deletejob" visibility="public" name="deleteJob" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Removes a job from the server entirely.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-disconnect" visibility="public" name="disconnect" returnType="bool" params={[]}>
-Closes the connection to the server.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-ignoretube" visibility="public" name="ignoreTube" returnType="bool" params={[{"type":"string","name":"tube","default":null}]}>
-Removes the named tube from the watch list for the connection.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-put" visibility="public" name="put" returnType="false|int" params={[{"type":"string","name":"data","default":null},{"type":"int","name":"priority","default":null},{"type":"int","name":"delay","default":null},{"type":"int","name":"ttr","default":null}]}>
-Puts a job on the queue using the currently used tube. Returns the new
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-read" visibility="public" name="read" returnType="false|string" params={[{"type":"int","name":"length","default":"0"}]}>
-Reads a packet from the socket. Verifies the connection is available
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-readstatus" visibility="public" name="readStatus" returnType="array" params={[]}>
-Reads the latest status line and splits it into tokens.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-releasejob" visibility="public" name="releaseJob" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"int","name":"priority","default":null},{"type":"int","name":"delay","default":null}]}>
-Puts a reserved job back into the ready queue.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-reserve" visibility="public" name="reserve" returnType="array|null" params={[{"type":"mixed","name":"timeout","default":"null"}]}>
-Reserves a ready job from a watched tube. A null timeout blocks until a
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-statstube" visibility="public" name="statsTube" returnType="array|false" params={[{"type":"string","name":"tube","default":null}]}>
-Returns the Beanstalkd statistics for a tube as an associative array, or
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-touchjob" visibility="public" name="touchJob" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Extends the time-to-run of a reserved job.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-usetube" visibility="public" name="useTube" returnType="bool" params={[{"type":"string","name":"tube","default":null}]}>
-Changes the tube new jobs are put on. By default this is "default".
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-watchtube" visibility="public" name="watchTube" returnType="bool" params={[{"type":"string","name":"tube","default":null}]}>
-Adds the named tube to the watch list for the connection.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-write" visibility="public" name="write" returnType="false|int" params={[{"type":"string","name":"data","default":null}]}>
-Writes data to the socket, connecting first when needed.
-</ApiItem>
+- `public __construct(string $host = "127.0.0.1", int $port = 11300, bool $persistent = false)`
+
+- `public buryJob(string $id, int $priority): bool` — Puts a reserved job into the "buried" state.
+
+- `public connect(): resource` — Opens the socket connection to the Beanstalkd server.
+
+- `public deleteJob(string $id): bool` — Removes a job from the server entirely.
+
+- `public disconnect(): bool` — Closes the connection to the server.
+
+- `public ignoreTube(string $tube): bool` — Removes the named tube from the watch list for the connection.
+
+- `public put(string $data, int $priority, int $delay, int $ttr): false|int` — Puts a job on the queue using the currently used tube. Returns the new
+
+- `public read(int $length = 0): false|string` — Reads a packet from the socket. Verifies the connection is available
+
+- `public readStatus(): array` — Reads the latest status line and splits it into tokens.
+
+- `public releaseJob(string $id, int $priority, int $delay): bool` — Puts a reserved job back into the ready queue.
+
+- `public reserve(mixed $timeout = null): array|null` — Reserves a ready job from a watched tube. A null timeout blocks until a
+
+- `public statsTube(string $tube): array|false` — Returns the Beanstalkd statistics for a tube as an associative array, or
+
+- `public touchJob(string $id): bool` — Extends the time-to-run of a reserved job.
+
+- `public useTube(string $tube): bool` — Changes the tube new jobs are put on. By default this is "default".
+
+- `public watchTube(string $tube): bool` — Adds the named tube to the watch list for the connection.
+
+- `public write(string $data): false|int` — Writes data to the socket, connecting first when needed.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="connection" type="resource|null" default="null">
-Connection resource.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="host" type="string" default="&quot;127.0.0.1&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="persistent" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="port" type="int" default="11300">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="usedTube" type="string" default="&quot;default&quot;">
-Tube currently selected with `use`. A fresh connection uses "default".
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="watchedTubes" type="array&lt;string, bool&gt;" default="[]">
-Tubes currently on the watch list, keyed by tube name. A fresh
-connection watches "default".
-</ApiItem>
+- `protected resource|null $connection = null` — Connection resource.
+
+- `protected string $host = "127.0.0.1"`
+
+- `protected bool $persistent = false`
+
+- `protected int $port = 11300`
+
+- `protected string $usedTube = "default"` — Tube currently selected with `use`. A fresh connection uses "default".
+
+- `protected array<string, bool> $watchedTubes = []` — Tubes currently on the watch list, keyed by tube name. A fresh
+  connection watches "default".
 
 ### Methods
 
@@ -443,9 +410,9 @@ connection watches "default".
 
 ```php
 public function __construct(
-string $host = "127.0.0.1",
-int $port = 11300,
-bool $persistent = false
+    string $host = "127.0.0.1",
+    int $port = 11300,
+    bool $persistent = false
 );
 ```
 
@@ -453,8 +420,8 @@ bool $persistent = false
 
 ```php
 public function buryJob(
-string $id,
-int $priority
+    string $id,
+    int $priority
 ): bool;
 ```
 
@@ -496,10 +463,10 @@ Removes the named tube from the watch list for the connection.
 
 ```php
 public function put(
-string $data,
-int $priority,
-int $delay,
-int $ttr
+    string $data,
+    int $priority,
+    int $delay,
+    int $ttr
 ): false|int;
 ```
 
@@ -527,9 +494,9 @@ Reads the latest status line and splits it into tokens.
 
 ```php
 public function releaseJob(
-string $id,
-int $priority,
-int $delay
+    string $id,
+    int $priority,
+    int $delay
 ): bool;
 ```
 
@@ -586,6 +553,7 @@ public function write( string $data ): false|int;
 
 Writes data to the socket, connecting first when needed.
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkConnectionFactory
 
 Class
@@ -605,15 +573,13 @@ Options:
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnectionfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnectionfactory-createcontext" visibility="public" name="createContext" returnType="ContextInterface" params={[]}>
-</ApiItem>
+- `public __construct(array $options = [])`
+
+- `public createContext(): ContextInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
+- `protected array $options = []`
 
 ### Methods
 
@@ -629,6 +595,7 @@ public function __construct( array $options = [] );
 public function createContext(): ContextInterface;
 ```
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkConsumer
 
 Class
@@ -640,36 +607,31 @@ extends; acknowledging deletes the job, rejecting releases it (requeue) or
 buries it.
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`** - implements [`Phalcon\Contracts\Queue\VisibilityAware`](/5.22/api/phalcon_contracts/#contractsqueuevisibilityaware)
+  - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`** - implements [`Phalcon\Contracts\Queue\VisibilityAware`](/5.22/api/phalcon_contracts/#contractsqueuevisibilityaware)
 
 `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\VisibilityAware` · `Phalcon\Queue\Adapter\AbstractConsumer` · `Phalcon\Queue\Adapter\MessageEnvelope`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalkconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"BeanstalkConnection","name":"connection","default":null},{"type":"QueueInterface","name":"queue","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconsumer-receive" visibility="public" name="receive" returnType="MessageInterface|null" params={[{"type":"int","name":"timeout","default":"0"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="MessageInterface|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconsumer-touch" visibility="public" name="touch" returnType="bool" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Extends the time-to-run window of a reserved job (VisibilityAware).
-</ApiItem>
+- `public __construct(BeanstalkConnection $connection, QueueInterface $queue)`
+
+- `public acknowledge(MessageInterface $message): void`
+
+- `public receive(int $timeout = 0): MessageInterface|null`
+
+- `public receiveNoWait(): MessageInterface|null`
+
+- `public reject(MessageInterface $message, bool $requeue = false): void`
+
+- `public touch(MessageInterface $message): bool` — Extends the time-to-run window of a reserved job (VisibilityAware).
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_PRIORITY" type="int" default="100">
-Default Beanstalkd priority used when releasing or burying.
-</ApiItem>
+- `const int DEFAULT_PRIORITY = 100` — Default Beanstalkd priority used when releasing or burying.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="connection" type="BeanstalkConnection" default="">
-</ApiItem>
+- `protected BeanstalkConnection $connection`
 
 ### Methods
 
@@ -677,8 +639,8 @@ Default Beanstalkd priority used when releasing or burying.
 
 ```php
 public function __construct(
-BeanstalkConnection $connection,
-QueueInterface $queue
+    BeanstalkConnection $connection,
+    QueueInterface $queue
 );
 ```
 
@@ -704,8 +666,8 @@ public function receiveNoWait(): MessageInterface|null;
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
 
@@ -716,6 +678,7 @@ public function touch( MessageInterface $message ): bool;
 ```
 
 Extends the time-to-run window of a reserved job (VisibilityAware).
+
 
 ## Queue\Adapter\Beanstalk\BeanstalkContext
 
@@ -728,51 +691,45 @@ release, bury or touch a job. The destination factories come from
 AbstractContext.
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`** - implements [`Phalcon\Contracts\Queue\Inspectable`](/5.22/api/phalcon_contracts/#contractsqueueinspectable)
+  - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`** - implements [`Phalcon\Contracts\Queue\Inspectable`](/5.22/api/phalcon_contracts/#contractsqueueinspectable)
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Inspectable` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"host","default":null},{"type":"int","name":"port","default":null},{"type":"bool","name":"persistent","default":"false"},{"type":"int","name":"ttr","default":"86400"},{"type":"int","name":"pollInterval","default":"200"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-close" visibility="public" name="close" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-createconsumer" visibility="public" name="createConsumer" returnType="ConsumerInterface" params={[{"type":"DestinationInterface","name":"destination","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-createmessage" visibility="public" name="createMessage" returnType="MessageInterface" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-createproducer" visibility="public" name="createProducer" returnType="ProducerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-createsubscriptionconsumer" visibility="public" name="createSubscriptionConsumer" returnType="SubscriptionConsumerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-getstats" visibility="public" name="getStats" returnType="array" params={[{"type":"QueueInterface","name":"queue","default":null}]}>
-Returns the Beanstalkd `stats-tube` fields for the queue's tube as an
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-getttr" visibility="public" name="getTtr" returnType="int" params={[]}>
-Default time-to-run (seconds) for new jobs. Used by BeanstalkProducer.
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-purgequeue" visibility="public" name="purgeQueue" returnType="void" params={[{"type":"QueueInterface","name":"queue","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkcontext-putmessage" visibility="public" name="putMessage" returnType="void" params={[{"type":"string","name":"tube","default":null},{"type":"string","name":"payload","default":null},{"type":"int","name":"priority","default":null},{"type":"int","name":"delay","default":null},{"type":"int","name":"ttr","default":null}]}>
-Puts a serialized payload on a tube via the shared connection.
-</ApiItem>
+- `public __construct(string $host, int $port, bool $persistent = false, int $ttr = 86400, int $pollInterval = 200)`
+
+- `public close(): void`
+
+- `public createConsumer(DestinationInterface $destination): ConsumerInterface`
+
+- `public createMessage(string $body = "", array $properties = [], array $headers = []): MessageInterface`
+
+- `public createProducer(): ProducerInterface`
+
+- `public createSubscriptionConsumer(): SubscriptionConsumerInterface`
+
+- `public getStats(QueueInterface $queue): array` — Returns the Beanstalkd `stats-tube` fields for the queue's tube as an
+
+- `public getTtr(): int` — Default time-to-run (seconds) for new jobs. Used by BeanstalkProducer.
+
+- `public purgeQueue(QueueInterface $queue): void`
+
+- `public putMessage(string $tube, string $payload, int $priority, int $delay, int $ttr): void` — Puts a serialized payload on a tube via the shared connection.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="connection" type="BeanstalkConnection|null" default="null">
-Shared connection used by producers and purges.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="host" type="string" default="&quot;127.0.0.1&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="persistent" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pollInterval" type="int" default="200">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="port" type="int" default="11300">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="ttr" type="int" default="86400">
-</ApiItem>
+- `protected BeanstalkConnection|null $connection = null` — Shared connection used by producers and purges.
+
+- `protected string $host = "127.0.0.1"`
+
+- `protected bool $persistent = false`
+
+- `protected int $pollInterval = 200`
+
+- `protected int $port = 11300`
+
+- `protected int $ttr = 86400`
 
 ### Methods
 
@@ -780,11 +737,11 @@ Shared connection used by producers and purges.
 
 ```php
 public function __construct(
-string $host,
-int $port,
-bool $persistent = false,
-int $ttr = 86400,
-int $pollInterval = 200
+    string $host,
+    int $port,
+    bool $persistent = false,
+    int $ttr = 86400,
+    int $pollInterval = 200
 );
 ```
 
@@ -804,9 +761,9 @@ public function createConsumer( DestinationInterface $destination ): ConsumerInt
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -858,16 +815,17 @@ public function purgeQueue( QueueInterface $queue ): void;
 
 ```php
 public function putMessage(
-string $tube,
-string $payload,
-int $priority,
-int $delay,
-int $ttr
+    string $tube,
+    string $payload,
+    int $priority,
+    int $delay,
+    int $ttr
 ): void;
 ```
 
 Puts a serialized payload on a tube via the shared connection.
 Internal transport API used by BeanstalkProducer.
+
 
 ## Queue\Adapter\Beanstalk\BeanstalkMessage
 
@@ -878,22 +836,19 @@ delete, release, bury or touch it; all other behavior comes from
 MessageTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`**
+  - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`**
 
 `Phalcon\Queue\Adapter\AbstractMessage`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalkmessage-getjobid" visibility="public" name="getJobId" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkmessage-setjobid" visibility="public" name="setJobId" returnType="void" params={[{"type":"string","name":"jobId","default":null}]}>
-</ApiItem>
+- `public getJobId(): string|null`
+
+- `public setJobId(string $jobId): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="jobId" type="string|null" default="null">
-The reserved Beanstalkd job id, or null before it is reserved.
-</ApiItem>
+- `protected string|null $jobId = null` — The reserved Beanstalkd job id, or null before it is reserved.
 
 ### Methods
 
@@ -909,6 +864,7 @@ public function getJobId(): string|null;
 public function setJobId( string $jobId ): void;
 ```
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkProducer
 
 Class
@@ -919,41 +875,35 @@ message expiry, so time to live is not (the default from AbstractProducer
 rejects it).
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`**
+  - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`**
 
 `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalkproducer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"BeanstalkContext","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkproducer-getdeliverydelay" visibility="public" name="getDeliveryDelay" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkproducer-getpriority" visibility="public" name="getPriority" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"DestinationInterface","name":"destination","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkproducer-setdeliverydelay" visibility="public" name="setDeliveryDelay" returnType="ProducerInterface" params={[{"type":"mixed","name":"deliveryDelay","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkproducer-setpriority" visibility="public" name="setPriority" returnType="ProducerInterface" params={[{"type":"mixed","name":"priority","default":"null"}]}>
-</ApiItem>
+- `public __construct(BeanstalkContext $context)`
+
+- `public getDeliveryDelay(): int|null`
+
+- `public getPriority(): int|null`
+
+- `public send(DestinationInterface $destination, MessageInterface $message): void`
+
+- `public setDeliveryDelay(mixed $deliveryDelay = null): ProducerInterface`
+
+- `public setPriority(mixed $priority = null): ProducerInterface`
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_PRIORITY" type="int" default="100">
-Default Beanstalkd priority (0 = most urgent).
-</ApiItem>
+- `const int DEFAULT_PRIORITY = 100` — Default Beanstalkd priority (0 = most urgent).
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="BeanstalkContext" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="deliveryDelay" type="int|null" default="null">
-Delivery delay in milliseconds, or null when not set.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="priority" type="int|null" default="null">
-Job priority, or null when not set.
-</ApiItem>
+- `protected BeanstalkContext $context`
+
+- `protected int|null $deliveryDelay = null` — Delivery delay in milliseconds, or null when not set.
+
+- `protected int|null $priority = null` — Job priority, or null when not set.
 
 ### Methods
 
@@ -979,8 +929,8 @@ public function getPriority(): int|null;
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
 
@@ -996,6 +946,7 @@ public function setDeliveryDelay( mixed $deliveryDelay = null ): ProducerInterfa
 public function setPriority( mixed $priority = null ): ProducerInterface;
 ```
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer
 
 Class
@@ -1004,20 +955,17 @@ Consumes from several Beanstalkd tubes at once. The round-robin poll loop
 lives in SubscriptionConsumerTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`**
+  - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`**
 
 `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterbeanstalkbeanstalksubscriptionconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"BeanstalkContext","name":"context","default":null},{"type":"int","name":"pollInterval","default":"200"}]}>
-The context is retained for transports that may later need it for a
-</ApiItem>
+- `public __construct(BeanstalkContext $context, int $pollInterval = 200)` — The context is retained for transports that may later need it for a
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="BeanstalkContext" default="">
-</ApiItem>
+- `protected BeanstalkContext $context`
 
 ### Methods
 
@@ -1025,13 +973,14 @@ The context is retained for transports that may later need it for a
 
 ```php
 public function __construct(
-BeanstalkContext $context,
-int $pollInterval = 200
+    BeanstalkContext $context,
+    int $pollInterval = 200
 );
 ```
 
 The context is retained for transports that may later need it for a
 native multi-queue receive; the shared poll loop does not use it.
+
 
 ## Queue\Adapter\GenericQueue
 
@@ -1047,17 +996,13 @@ specific subclass.
 
 ### Method Summary
 
-<ApiItem href="#queueadaptergenericqueue-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"queueName","default":null}]}>
-GenericQueue constructor.
-</ApiItem>
-<ApiItem href="#queueadaptergenericqueue-getqueuename" visibility="public" name="getQueueName" returnType="string" params={[]}>
-Returns the queue name.
-</ApiItem>
+- `public __construct(string $queueName)` — GenericQueue constructor.
+
+- `public getQueueName(): string` — Returns the queue name.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="queueName" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $queueName = ""`
 
 ### Methods
 
@@ -1077,6 +1022,7 @@ public function getQueueName(): string;
 
 Returns the queue name.
 
+
 ## Queue\Adapter\GenericTopic
 
 Class
@@ -1091,17 +1037,13 @@ specific subclass.
 
 ### Method Summary
 
-<ApiItem href="#queueadaptergenerictopic-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"topicName","default":null}]}>
-GenericTopic constructor.
-</ApiItem>
-<ApiItem href="#queueadaptergenerictopic-gettopicname" visibility="public" name="getTopicName" returnType="string" params={[]}>
-Returns the topic name.
-</ApiItem>
+- `public __construct(string $topicName)` — GenericTopic constructor.
+
+- `public getTopicName(): string` — Returns the topic name.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="topicName" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $topicName = ""`
 
 ### Methods
 
@@ -1121,6 +1063,7 @@ public function getTopicName(): string;
 
 Returns the topic name.
 
+
 ## Queue\Adapter\Memory\MemoryConnectionFactory
 
 Class
@@ -1133,17 +1076,13 @@ Builds a MemoryContext. The Memory transport takes no options.
 
 ### Method Summary
 
-<ApiItem href="#queueadaptermemorymemoryconnectionfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-MemoryConnectionFactory constructor.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemoryconnectionfactory-createcontext" visibility="public" name="createContext" returnType="ContextInterface" params={[]}>
-Creates a new in-process context.
-</ApiItem>
+- `public __construct(array $options = [])` — MemoryConnectionFactory constructor.
+
+- `public createContext(): ContextInterface` — Creates a new in-process context.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
+- `protected array $options = []`
 
 ### Methods
 
@@ -1163,6 +1102,7 @@ public function createContext(): ContextInterface;
 
 Creates a new in-process context.
 
+
 ## Queue\Adapter\Memory\MemoryConsumer
 
 Class
@@ -1171,29 +1111,23 @@ Receives messages from a single in-process queue. `receive()` is the
 polling loop inherited from AbstractConsumer.
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Memory\MemoryConsumer`**
+  - **`Phalcon\Queue\Adapter\Memory\MemoryConsumer`**
 
 `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Adapter\AbstractConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadaptermemorymemoryconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"MemoryContext","name":"context","default":null},{"type":"QueueInterface","name":"queue","default":null}]}>
-MemoryConsumer constructor.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemoryconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-No-op: a received message has already been removed from the queue.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemoryconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="MessageInterface|null" params={[]}>
-Removes and returns the next message, or null when the queue is empty.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemoryconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
-Rejects the message. When requeue is true it is put back on the queue.
-</ApiItem>
+- `public __construct(MemoryContext $context, QueueInterface $queue)` — MemoryConsumer constructor.
+
+- `public acknowledge(MessageInterface $message): void` — No-op: a received message has already been removed from the queue.
+
+- `public receiveNoWait(): MessageInterface|null` — Removes and returns the next message, or null when the queue is empty.
+
+- `public reject(MessageInterface $message, bool $requeue = false): void` — Rejects the message. When requeue is true it is put back on the queue.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="MemoryContext" default="">
-</ApiItem>
+- `protected MemoryContext $context`
 
 ### Methods
 
@@ -1201,8 +1135,8 @@ Rejects the message. When requeue is true it is put back on the queue.
 
 ```php
 public function __construct(
-MemoryContext $context,
-QueueInterface $queue
+    MemoryContext $context,
+    QueueInterface $queue
 );
 ```
 
@@ -1228,12 +1162,13 @@ Removes and returns the next message, or null when the queue is empty.
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
 
 Rejects the message. When requeue is true it is put back on the queue.
+
 
 ## Queue\Adapter\Memory\MemoryContext
 
@@ -1244,42 +1179,31 @@ producers and consumers share. The destination factories (createQueue /
 createTopic / createTemporaryQueue) come from AbstractContext.
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Memory\MemoryContext`**
+  - **`Phalcon\Queue\Adapter\Memory\MemoryContext`**
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
 ### Method Summary
 
-<ApiItem href="#queueadaptermemorymemorycontext-close" visibility="public" name="close" returnType="void" params={[]}>
-Closes the context and drops every stored message.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-createconsumer" visibility="public" name="createConsumer" returnType="ConsumerInterface" params={[{"type":"DestinationInterface","name":"destination","default":null}]}>
-Creates a consumer for the given queue destination.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-createmessage" visibility="public" name="createMessage" returnType="MessageInterface" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
-Creates a message.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-createproducer" visibility="public" name="createProducer" returnType="ProducerInterface" params={[]}>
-Creates a producer.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-createsubscriptionconsumer" visibility="public" name="createSubscriptionConsumer" returnType="SubscriptionConsumerInterface" params={[]}>
-Creates a subscription consumer.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-popmessage" visibility="public" name="popMessage" returnType="MessageInterface|null" params={[{"type":"string","name":"queueName","default":null}]}>
-Removes the front message from a queue, or null when it is empty.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-purgequeue" visibility="public" name="purgeQueue" returnType="void" params={[{"type":"QueueInterface","name":"queue","default":null}]}>
-Removes all messages from the given queue.
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemorycontext-pushmessage" visibility="public" name="pushMessage" returnType="void" params={[{"type":"string","name":"queueName","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the back of a queue.
-</ApiItem>
+- `public close(): void` — Closes the context and drops every stored message.
+
+- `public createConsumer(DestinationInterface $destination): ConsumerInterface` — Creates a consumer for the given queue destination.
+
+- `public createMessage(string $body = "", array $properties = [], array $headers = []): MessageInterface` — Creates a message.
+
+- `public createProducer(): ProducerInterface` — Creates a producer.
+
+- `public createSubscriptionConsumer(): SubscriptionConsumerInterface` — Creates a subscription consumer.
+
+- `public popMessage(string $queueName): MessageInterface|null` — Removes the front message from a queue, or null when it is empty.
+
+- `public purgeQueue(QueueInterface $queue): void` — Removes all messages from the given queue.
+
+- `public pushMessage(string $queueName, MessageInterface $message): void` — Appends a message to the back of a queue.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="queues" type="array&lt;string, list&lt;MessageInterface&gt;&gt;" default="[]">
-Named queues: queue name => list of messages (FIFO).
-</ApiItem>
+- `protected array<string, list<MessageInterface>> $queues = []` — Named queues: queue name => list of messages (FIFO).
 
 ### Methods
 
@@ -1303,9 +1227,9 @@ Creates a consumer for the given queue destination.
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -1348,13 +1272,14 @@ Removes all messages from the given queue.
 
 ```php
 public function pushMessage(
-string $queueName,
-MessageInterface $message
+    string $queueName,
+    MessageInterface $message
 ): void;
 ```
 
 Appends a message to the back of a queue.
 Internal transport API used by MemoryProducer.
+
 
 ## Queue\Adapter\Memory\MemoryMessage
 
@@ -1363,9 +1288,10 @@ Class
 In-process message. All behavior comes from MessageTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Memory\MemoryMessage`**
+  - **`Phalcon\Queue\Adapter\Memory\MemoryMessage`**
 
 `Phalcon\Queue\Adapter\AbstractMessage`
+
 
 ## Queue\Adapter\Memory\MemoryProducer
 
@@ -1376,21 +1302,19 @@ immediately and in-process, so delivery delay, priority and time to live are
 not supported (the defaults from AbstractProducer reject them).
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Memory\MemoryProducer`**
+  - **`Phalcon\Queue\Adapter\Memory\MemoryProducer`**
 
 `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
 ### Method Summary
 
-<ApiItem href="#queueadaptermemorymemoryproducer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"MemoryContext","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadaptermemorymemoryproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"DestinationInterface","name":"destination","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-</ApiItem>
+- `public __construct(MemoryContext $context)`
+
+- `public send(DestinationInterface $destination, MessageInterface $message): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="MemoryContext" default="">
-</ApiItem>
+- `protected MemoryContext $context`
 
 ### Methods
 
@@ -1404,10 +1328,11 @@ public function __construct( MemoryContext $context );
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
+
 
 ## Queue\Adapter\Memory\MemorySubscriptionConsumer
 
@@ -1417,20 +1342,17 @@ Consumes from several in-process queues at once. The round-robin poll loop
 lives in SubscriptionConsumerTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`**
+  - **`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`**
 
 `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadaptermemorymemorysubscriptionconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"MemoryContext","name":"context","default":null}]}>
-The context is retained for transports that may later need it for a
-</ApiItem>
+- `public __construct(MemoryContext $context)` — The context is retained for transports that may later need it for a
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="MemoryContext" default="">
-</ApiItem>
+- `protected MemoryContext $context`
 
 ### Methods
 
@@ -1442,6 +1364,7 @@ public function __construct( MemoryContext $context );
 
 The context is retained for transports that may later need it for a
 native multi-queue receive; the shared poll loop does not use it.
+
 
 ## Queue\Adapter\MessageEnvelope
 
@@ -1459,12 +1382,9 @@ adapter only supplies its own concrete message factory around `decode()`.
 
 ### Method Summary
 
-<ApiItem href="#queueadaptermessageenvelope-decode" visibility="public" name="decode" returnType="array|null" params={[{"type":"string","name":"payload","default":null}]}>
-Decodes a serialized payload into a normalized \{body, properties,
-</ApiItem>
-<ApiItem href="#queueadaptermessageenvelope-encode" visibility="public" name="encode" returnType="string" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Serializes a message into its wire envelope.
-</ApiItem>
+- `public decode(string $payload): array|null` — Decodes a serialized payload into a normalized \{body, properties,
+
+- `public encode(MessageInterface $message): string` — Serializes a message into its wire envelope.
 
 ### Methods
 
@@ -1485,6 +1405,7 @@ public static function encode( MessageInterface $message ): string;
 
 Serializes a message into its wire envelope.
 
+
 ## Queue\Adapter\QueueDestinationGuard
 
 Class
@@ -1500,9 +1421,7 @@ exception; this keeps that single rule in one place. The `action` verb
 
 ### Method Summary
 
-<ApiItem href="#queueadapterqueuedestinationguard-assertqueue" visibility="public" name="assertQueue" returnType="void" params={[{"type":"DestinationInterface","name":"destination","default":null},{"type":"string","name":"action","default":null}]}>
-Throws InvalidDestinationException unless the destination is a queue.
-</ApiItem>
+- `public assertQueue(DestinationInterface $destination, string $action): void` — Throws InvalidDestinationException unless the destination is a queue.
 
 ### Methods
 
@@ -1510,12 +1429,13 @@ Throws InvalidDestinationException unless the destination is a queue.
 
 ```php
 public static function assertQueue(
-DestinationInterface $destination,
-string $action
+    DestinationInterface $destination,
+    string $action
 ): void;
 ```
 
 Throws InvalidDestinationException unless the destination is a queue.
+
 
 ## Queue\Adapter\Redis\RedisConnectionFactory
 
@@ -1543,15 +1463,13 @@ Options:
 
 ### Method Summary
 
-<ApiItem href="#queueadapterredisredisconnectionfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisconnectionfactory-createcontext" visibility="public" name="createContext" returnType="ContextInterface" params={[]}>
-</ApiItem>
+- `public __construct(array $options = [])`
+
+- `public createContext(): ContextInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
+- `protected array $options = []`
 
 ### Methods
 
@@ -1567,6 +1485,7 @@ public function __construct( array $options = [] );
 public function createContext(): ContextInterface;
 ```
 
+
 ## Queue\Adapter\Redis\RedisConsumer
 
 Class
@@ -1576,28 +1495,25 @@ use the native blocking BRPOP (in one-second chunks, so due delayed
 messages keep getting promoted) instead of the inherited polling loop.
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Redis\RedisConsumer`**
+  - **`Phalcon\Queue\Adapter\Redis\RedisConsumer`**
 
 `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Adapter\AbstractConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterredisredisconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"RedisContext","name":"context","default":null},{"type":"QueueInterface","name":"queue","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-No-op: a received message has already been removed from the queue.
-</ApiItem>
-<ApiItem href="#queueadapterredisredisconsumer-receive" visibility="public" name="receive" returnType="MessageInterface|null" params={[{"type":"int","name":"timeout","default":"0"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="MessageInterface|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
-</ApiItem>
+- `public __construct(RedisContext $context, QueueInterface $queue)`
+
+- `public acknowledge(MessageInterface $message): void` — No-op: a received message has already been removed from the queue.
+
+- `public receive(int $timeout = 0): MessageInterface|null`
+
+- `public receiveNoWait(): MessageInterface|null`
+
+- `public reject(MessageInterface $message, bool $requeue = false): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="RedisContext" default="">
-</ApiItem>
+- `protected RedisContext $context`
 
 ### Methods
 
@@ -1605,8 +1521,8 @@ No-op: a received message has already been removed from the queue.
 
 ```php
 public function __construct(
-RedisContext $context,
-QueueInterface $queue
+    RedisContext $context,
+    QueueInterface $queue
 );
 ```
 
@@ -1634,10 +1550,11 @@ public function receiveNoWait(): MessageInterface|null;
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
+
 
 ## Queue\Adapter\Redis\RedisContext
 
@@ -1650,44 +1567,39 @@ their due time in milliseconds, and are promoted into the list once due. The
 destination factories come from AbstractContext.
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Redis\RedisContext`**
+  - **`Phalcon\Queue\Adapter\Redis\RedisContext`**
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard` · `Redis`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterredisrediscontext-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"RedisService","name":"redis","default":null},{"type":"string","name":"prefix","default":"\"phalcon_queue:\""},{"type":"int","name":"pollInterval","default":"200"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-blockingpop" visibility="public" name="blockingPop" returnType="MessageInterface|null" params={[{"type":"string","name":"queueName","default":null},{"type":"int","name":"timeout","default":null}]}>
-Blocking pop from the back of a queue list. Promotes any due delayed
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-close" visibility="public" name="close" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-createconsumer" visibility="public" name="createConsumer" returnType="ConsumerInterface" params={[{"type":"DestinationInterface","name":"destination","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-createmessage" visibility="public" name="createMessage" returnType="MessageInterface" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-createproducer" visibility="public" name="createProducer" returnType="ProducerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-createsubscriptionconsumer" visibility="public" name="createSubscriptionConsumer" returnType="SubscriptionConsumerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-popmessage" visibility="public" name="popMessage" returnType="MessageInterface|null" params={[{"type":"string","name":"queueName","default":null}]}>
-Non-blocking pop from the back of a queue list, or null when empty.
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-purgequeue" visibility="public" name="purgeQueue" returnType="void" params={[{"type":"QueueInterface","name":"queue","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisrediscontext-pushmessage" visibility="public" name="pushMessage" returnType="void" params={[{"type":"string","name":"queueName","default":null},{"type":"MessageInterface","name":"message","default":null},{"type":"int","name":"delay","default":"0"}]}>
-Sends a message to a queue. With a positive delay (milliseconds) the
-</ApiItem>
+- `public __construct(RedisService $redis, string $prefix = "phalcon_queue:", int $pollInterval = 200)`
+
+- `public blockingPop(string $queueName, int $timeout): MessageInterface|null` — Blocking pop from the back of a queue list. Promotes any due delayed
+
+- `public close(): void`
+
+- `public createConsumer(DestinationInterface $destination): ConsumerInterface`
+
+- `public createMessage(string $body = "", array $properties = [], array $headers = []): MessageInterface`
+
+- `public createProducer(): ProducerInterface`
+
+- `public createSubscriptionConsumer(): SubscriptionConsumerInterface`
+
+- `public popMessage(string $queueName): MessageInterface|null` — Non-blocking pop from the back of a queue list, or null when empty.
+
+- `public purgeQueue(QueueInterface $queue): void`
+
+- `public pushMessage(string $queueName, MessageInterface $message, int $delay = 0): void` — Sends a message to a queue. With a positive delay (milliseconds) the
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="pollInterval" type="int" default="200">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;phalcon_queue:&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="redis" type="RedisService" default="">
-</ApiItem>
+- `protected int $pollInterval = 200`
+
+- `protected string $prefix = "phalcon_queue:"`
+
+- `protected RedisService $redis`
 
 ### Methods
 
@@ -1695,9 +1607,9 @@ Sends a message to a queue. With a positive delay (milliseconds) the
 
 ```php
 public function __construct(
-RedisService $redis,
-string $prefix = "phalcon_queue:",
-int $pollInterval = 200
+    RedisService $redis,
+    string $prefix = "phalcon_queue:",
+    int $pollInterval = 200
 );
 ```
 
@@ -1705,8 +1617,8 @@ int $pollInterval = 200
 
 ```php
 public function blockingPop(
-string $queueName,
-int $timeout
+    string $queueName,
+    int $timeout
 ): MessageInterface|null;
 ```
 
@@ -1730,9 +1642,9 @@ public function createConsumer( DestinationInterface $destination ): ConsumerInt
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -1768,15 +1680,16 @@ public function purgeQueue( QueueInterface $queue ): void;
 
 ```php
 public function pushMessage(
-string $queueName,
-MessageInterface $message,
-int $delay = 0
+    string $queueName,
+    MessageInterface $message,
+    int $delay = 0
 ): void;
 ```
 
 Sends a message to a queue. With a positive delay (milliseconds) the
 message is parked in the delayed set; otherwise it is pushed onto the
 front of the list. Internal transport API used by RedisProducer.
+
 
 ## Queue\Adapter\Redis\RedisMessage
 
@@ -1785,9 +1698,10 @@ Class
 Redis-backed message. All behavior comes from MessageTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Redis\RedisMessage`**
+  - **`Phalcon\Queue\Adapter\Redis\RedisMessage`**
 
 `Phalcon\Queue\Adapter\AbstractMessage`
+
 
 ## Queue\Adapter\Redis\RedisProducer
 
@@ -1798,28 +1712,25 @@ delayed sorted set); priority and time to live are not (the defaults from
 AbstractProducer reject them).
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Redis\RedisProducer`**
+  - **`Phalcon\Queue\Adapter\Redis\RedisProducer`**
 
 `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterredisredisproducer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"RedisContext","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisproducer-getdeliverydelay" visibility="public" name="getDeliveryDelay" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"DestinationInterface","name":"destination","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterredisredisproducer-setdeliverydelay" visibility="public" name="setDeliveryDelay" returnType="ProducerInterface" params={[{"type":"mixed","name":"deliveryDelay","default":"null"}]}>
-</ApiItem>
+- `public __construct(RedisContext $context)`
+
+- `public getDeliveryDelay(): int|null`
+
+- `public send(DestinationInterface $destination, MessageInterface $message): void`
+
+- `public setDeliveryDelay(mixed $deliveryDelay = null): ProducerInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="RedisContext" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="deliveryDelay" type="int|null" default="null">
-Delivery delay in milliseconds, or null when not set.
-</ApiItem>
+- `protected RedisContext $context`
+
+- `protected int|null $deliveryDelay = null` — Delivery delay in milliseconds, or null when not set.
 
 ### Methods
 
@@ -1839,8 +1750,8 @@ public function getDeliveryDelay(): int|null;
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
 
@@ -1850,6 +1761,7 @@ MessageInterface $message
 public function setDeliveryDelay( mixed $deliveryDelay = null ): ProducerInterface;
 ```
 
+
 ## Queue\Adapter\Redis\RedisSubscriptionConsumer
 
 Class
@@ -1858,20 +1770,17 @@ Consumes from several Redis queues at once. The round-robin poll loop lives
 in SubscriptionConsumerTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`**
+  - **`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`**
 
 `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterredisredissubscriptionconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"RedisContext","name":"context","default":null},{"type":"int","name":"pollInterval","default":"200"}]}>
-The context is retained for transports that may later need it for a
-</ApiItem>
+- `public __construct(RedisContext $context, int $pollInterval = 200)` — The context is retained for transports that may later need it for a
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="RedisContext" default="">
-</ApiItem>
+- `protected RedisContext $context`
 
 ### Methods
 
@@ -1879,13 +1788,14 @@ The context is retained for transports that may later need it for a
 
 ```php
 public function __construct(
-RedisContext $context,
-int $pollInterval = 200
+    RedisContext $context,
+    int $pollInterval = 200
 );
 ```
 
 The context is retained for transports that may later need it for a
 native multi-queue receive; the shared poll loop does not use it.
+
 
 ## Queue\Adapter\Stream\StreamConnectionFactory
 
@@ -1904,15 +1814,13 @@ Options:
 
 ### Method Summary
 
-<ApiItem href="#queueadapterstreamstreamconnectionfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamconnectionfactory-createcontext" visibility="public" name="createContext" returnType="ContextInterface" params={[]}>
-</ApiItem>
+- `public __construct(array $options = [])`
+
+- `public createContext(): ContextInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
+- `protected array $options = []`
 
 ### Methods
 
@@ -1928,6 +1836,7 @@ public function __construct( array $options = [] );
 public function createContext(): ContextInterface;
 ```
 
+
 ## Queue\Adapter\Stream\StreamConsumer
 
 Class
@@ -1936,26 +1845,23 @@ Receives messages from a single filesystem queue. `receive()` is the
 polling loop inherited from AbstractConsumer.
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Stream\StreamConsumer`**
+  - **`Phalcon\Queue\Adapter\Stream\StreamConsumer`**
 
 `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Adapter\AbstractConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterstreamstreamconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"StreamContext","name":"context","default":null},{"type":"QueueInterface","name":"queue","default":null},{"type":"int","name":"pollInterval","default":"200"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-No-op: a received message has already been removed from the queue file.
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="MessageInterface|null" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
-</ApiItem>
+- `public __construct(StreamContext $context, QueueInterface $queue, int $pollInterval = 200)`
+
+- `public acknowledge(MessageInterface $message): void` — No-op: a received message has already been removed from the queue file.
+
+- `public receiveNoWait(): MessageInterface|null`
+
+- `public reject(MessageInterface $message, bool $requeue = false): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="StreamContext" default="">
-</ApiItem>
+- `protected StreamContext $context`
 
 ### Methods
 
@@ -1963,9 +1869,9 @@ No-op: a received message has already been removed from the queue file.
 
 ```php
 public function __construct(
-StreamContext $context,
-QueueInterface $queue,
-int $pollInterval = 200
+    StreamContext $context,
+    QueueInterface $queue,
+    int $pollInterval = 200
 );
 ```
 
@@ -1987,10 +1893,11 @@ public function receiveNoWait(): MessageInterface|null;
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
+
 
 ## Queue\Adapter\Stream\StreamContext
 
@@ -2002,41 +1909,35 @@ per line, stored as base64(serialize([...])) so bodies with newlines are
 safe. The destination factories come from AbstractContext.
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Stream\StreamContext`**
+  - **`Phalcon\Queue\Adapter\Stream\StreamContext`**
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterstreamstreamcontext-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"storageDir","default":null},{"type":"int","name":"pollInterval","default":"200"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-close" visibility="public" name="close" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-createconsumer" visibility="public" name="createConsumer" returnType="ConsumerInterface" params={[{"type":"DestinationInterface","name":"destination","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-createmessage" visibility="public" name="createMessage" returnType="MessageInterface" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-createproducer" visibility="public" name="createProducer" returnType="ProducerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-createsubscriptionconsumer" visibility="public" name="createSubscriptionConsumer" returnType="SubscriptionConsumerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-popmessage" visibility="public" name="popMessage" returnType="MessageInterface|null" params={[{"type":"string","name":"queueName","default":null}]}>
-Removes the front message from a queue file, or null when it is empty.
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-purgequeue" visibility="public" name="purgeQueue" returnType="void" params={[{"type":"QueueInterface","name":"queue","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamcontext-pushmessage" visibility="public" name="pushMessage" returnType="void" params={[{"type":"string","name":"queueName","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the back of a queue file.
-</ApiItem>
+- `public __construct(string $storageDir, int $pollInterval = 200)`
+
+- `public close(): void`
+
+- `public createConsumer(DestinationInterface $destination): ConsumerInterface`
+
+- `public createMessage(string $body = "", array $properties = [], array $headers = []): MessageInterface`
+
+- `public createProducer(): ProducerInterface`
+
+- `public createSubscriptionConsumer(): SubscriptionConsumerInterface`
+
+- `public popMessage(string $queueName): MessageInterface|null` — Removes the front message from a queue file, or null when it is empty.
+
+- `public purgeQueue(QueueInterface $queue): void`
+
+- `public pushMessage(string $queueName, MessageInterface $message): void` — Appends a message to the back of a queue file.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="pollInterval" type="int" default="200">
-Milliseconds slept between poll attempts by consumers.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="storageDir" type="string" default="&quot;&quot;">
-Directory (with trailing separator) that holds the queue files.
-</ApiItem>
+- `protected int $pollInterval = 200` — Milliseconds slept between poll attempts by consumers.
+
+- `protected string $storageDir = ""` — Directory (with trailing separator) that holds the queue files.
 
 ### Methods
 
@@ -2044,8 +1945,8 @@ Directory (with trailing separator) that holds the queue files.
 
 ```php
 public function __construct(
-string $storageDir,
-int $pollInterval = 200
+    string $storageDir,
+    int $pollInterval = 200
 );
 ```
 
@@ -2065,9 +1966,9 @@ public function createConsumer( DestinationInterface $destination ): ConsumerInt
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -2102,13 +2003,14 @@ public function purgeQueue( QueueInterface $queue ): void;
 
 ```php
 public function pushMessage(
-string $queueName,
-MessageInterface $message
+    string $queueName,
+    MessageInterface $message
 ): void;
 ```
 
 Appends a message to the back of a queue file.
 Internal transport API used by StreamProducer.
+
 
 ## Queue\Adapter\Stream\StreamMessage
 
@@ -2117,9 +2019,10 @@ Class
 Filesystem-backed message. All behavior comes from MessageTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Stream\StreamMessage`**
+  - **`Phalcon\Queue\Adapter\Stream\StreamMessage`**
 
 `Phalcon\Queue\Adapter\AbstractMessage`
+
 
 ## Queue\Adapter\Stream\StreamProducer
 
@@ -2130,21 +2033,19 @@ insertion order with no scheduling, so delivery delay, priority and time to
 live are not supported (the defaults from AbstractProducer reject them).
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Stream\StreamProducer`**
+  - **`Phalcon\Queue\Adapter\Stream\StreamProducer`**
 
 `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterstreamstreamproducer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"StreamContext","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueadapterstreamstreamproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"DestinationInterface","name":"destination","default":null},{"type":"MessageInterface","name":"message","default":null}]}>
-</ApiItem>
+- `public __construct(StreamContext $context)`
+
+- `public send(DestinationInterface $destination, MessageInterface $message): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="StreamContext" default="">
-</ApiItem>
+- `protected StreamContext $context`
 
 ### Methods
 
@@ -2158,10 +2059,11 @@ public function __construct( StreamContext $context );
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
+
 
 ## Queue\Adapter\Stream\StreamSubscriptionConsumer
 
@@ -2171,20 +2073,17 @@ Consumes from several filesystem queues at once. The round-robin poll loop
 lives in SubscriptionConsumerTrait.
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`**
+  - **`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`**
 
 `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ### Method Summary
 
-<ApiItem href="#queueadapterstreamstreamsubscriptionconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"StreamContext","name":"context","default":null},{"type":"int","name":"pollInterval","default":"200"}]}>
-The context is retained for transports that may later need it for a
-</ApiItem>
+- `public __construct(StreamContext $context, int $pollInterval = 200)` — The context is retained for transports that may later need it for a
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="context" type="StreamContext" default="">
-</ApiItem>
+- `protected StreamContext $context`
 
 ### Methods
 
@@ -2192,13 +2091,14 @@ The context is retained for transports that may later need it for a
 
 ```php
 public function __construct(
-StreamContext $context,
-int $pollInterval = 200
+    StreamContext $context,
+    int $pollInterval = 200
 );
 ```
 
 The context is retained for transports that may later need it for a
 native multi-queue receive; the shared poll loop does not use it.
+
 
 ## Queue\Adapter\Traits\MessageTrait
 
@@ -2219,80 +2119,57 @@ for binary compatibility with the wider interop ecosystem.
 
 ### Method Summary
 
-<ApiItem href="#queueadaptertraitsmessagetrait-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
-Message constructor.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getbody" visibility="public" name="getBody" returnType="string" params={[]}>
-Returns the message body.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getcorrelationid" visibility="public" name="getCorrelationId" returnType="string|null" params={[]}>
-Returns the correlation id used to correlate request/reply messages.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getheader" visibility="public" name="getHeader" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns a single header value, or the default when it is not set.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getheaders" visibility="public" name="getHeaders" returnType="array" params={[]}>
-Returns all transport headers.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getmessageid" visibility="public" name="getMessageId" returnType="string|null" params={[]}>
-Returns the message id.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getproperties" visibility="public" name="getProperties" returnType="array" params={[]}>
-Returns all application properties.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getproperty" visibility="public" name="getProperty" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns a single property value, or the default when it is not set.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-getreplyto" visibility="public" name="getReplyTo" returnType="string|null" params={[]}>
-Returns the reply-to destination name.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-gettimestamp" visibility="public" name="getTimestamp" returnType="int|null" params={[]}>
-Returns the timestamp (in milliseconds) or null when it is not set.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-isredelivered" visibility="public" name="isRedelivered" returnType="bool" params={[]}>
-Whether the message has been redelivered.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setbody" visibility="public" name="setBody" returnType="void" params={[{"type":"string","name":"body","default":null}]}>
-Sets the message body.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setcorrelationid" visibility="public" name="setCorrelationId" returnType="void" params={[{"type":"string","name":"correlationId","default":null}]}>
-Sets the correlation id.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setheader" visibility="public" name="setHeader" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a single transport header.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setheaders" visibility="public" name="setHeaders" returnType="void" params={[{"type":"array","name":"headers","default":null}]}>
-Replaces all transport headers.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setmessageid" visibility="public" name="setMessageId" returnType="void" params={[{"type":"string","name":"messageId","default":null}]}>
-Sets the message id.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setproperties" visibility="public" name="setProperties" returnType="void" params={[{"type":"array","name":"properties","default":null}]}>
-Replaces all application properties.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setproperty" visibility="public" name="setProperty" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a single application property.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setredelivered" visibility="public" name="setRedelivered" returnType="void" params={[{"type":"bool","name":"redelivered","default":null}]}>
-Marks the message as redelivered.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-setreplyto" visibility="public" name="setReplyTo" returnType="void" params={[{"type":"string","name":"replyTo","default":null}]}>
-Sets the reply-to destination name.
-</ApiItem>
-<ApiItem href="#queueadaptertraitsmessagetrait-settimestamp" visibility="public" name="setTimestamp" returnType="void" params={[{"type":"int","name":"timestamp","default":null}]}>
-Sets the timestamp (in milliseconds).
-</ApiItem>
+- `public __construct(string $body = "", array $properties = [], array $headers = [])` — Message constructor.
+
+- `public getBody(): string` — Returns the message body.
+
+- `public getCorrelationId(): string|null` — Returns the correlation id used to correlate request/reply messages.
+
+- `public getHeader(string $name, mixed $defaultValue = null): mixed` — Returns a single header value, or the default when it is not set.
+
+- `public getHeaders(): array` — Returns all transport headers.
+
+- `public getMessageId(): string|null` — Returns the message id.
+
+- `public getProperties(): array` — Returns all application properties.
+
+- `public getProperty(string $name, mixed $defaultValue = null): mixed` — Returns a single property value, or the default when it is not set.
+
+- `public getReplyTo(): string|null` — Returns the reply-to destination name.
+
+- `public getTimestamp(): int|null` — Returns the timestamp (in milliseconds) or null when it is not set.
+
+- `public isRedelivered(): bool` — Whether the message has been redelivered.
+
+- `public setBody(string $body): void` — Sets the message body.
+
+- `public setCorrelationId(string $correlationId): void` — Sets the correlation id.
+
+- `public setHeader(string $name, mixed $value): void` — Sets a single transport header.
+
+- `public setHeaders(array $headers): void` — Replaces all transport headers.
+
+- `public setMessageId(string $messageId): void` — Sets the message id.
+
+- `public setProperties(array $properties): void` — Replaces all application properties.
+
+- `public setProperty(string $name, mixed $value): void` — Sets a single application property.
+
+- `public setRedelivered(bool $redelivered): void` — Marks the message as redelivered.
+
+- `public setReplyTo(string $replyTo): void` — Sets the reply-to destination name.
+
+- `public setTimestamp(int $timestamp): void` — Sets the timestamp (in milliseconds).
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="body" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="headers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="properties" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="redelivered" type="bool" default="false">
-</ApiItem>
+- `protected string $body = ""`
+
+- `protected array $headers = []`
+
+- `protected array $properties = []`
+
+- `protected bool $redelivered = false`
 
 ### Methods
 
@@ -2300,9 +2177,9 @@ Sets the timestamp (in milliseconds).
 
 ```php
 public function __construct(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 );
 ```
 
@@ -2328,8 +2205,8 @@ Returns the correlation id used to correlate request/reply messages.
 
 ```php
 public function getHeader(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2363,8 +2240,8 @@ Returns all application properties.
 
 ```php
 public function getProperty(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2414,8 +2291,8 @@ Sets the correlation id.
 
 ```php
 public function setHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -2449,8 +2326,8 @@ Replaces all application properties.
 
 ```php
 public function setProperty(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -2480,6 +2357,7 @@ public function setTimestamp( int $timestamp ): void;
 
 Sets the timestamp (in milliseconds).
 
+
 ## Queue\Adapter\Traits\SubscriptionConsumerTrait
 
 Trait
@@ -2498,27 +2376,19 @@ keep just the constructor that captures their context and poll interval.
 
 ### Method Summary
 
-<ApiItem href="#queueadaptertraitssubscriptionconsumertrait-consume" visibility="public" name="consume" returnType="void" params={[{"type":"int","name":"timeout","default":"0"}]}>
-Polls every subscription, dispatching each message to its callback,
-</ApiItem>
-<ApiItem href="#queueadaptertraitssubscriptionconsumertrait-subscribe" visibility="public" name="subscribe" returnType="void" params={[{"type":"\\Phalcon\\Contracts\\Queue\\Consumer","name":"consumer","default":null},{"type":"callable","name":"callback","default":null}]}>
-Subscribes a consumer; the callback receives each delivered message.
-</ApiItem>
-<ApiItem href="#queueadaptertraitssubscriptionconsumertrait-unsubscribe" visibility="public" name="unsubscribe" returnType="void" params={[{"type":"\\Phalcon\\Contracts\\Queue\\Consumer","name":"consumer","default":null}]}>
-Removes a previously subscribed consumer.
-</ApiItem>
-<ApiItem href="#queueadaptertraitssubscriptionconsumertrait-unsubscribeall" visibility="public" name="unsubscribeAll" returnType="void" params={[]}>
-Removes every subscribed consumer.
-</ApiItem>
+- `public consume(int $timeout = 0): void` — Polls every subscription, dispatching each message to its callback,
+
+- `public subscribe(\Phalcon\Contracts\Queue\Consumer $consumer, callable $callback): void` — Subscribes a consumer; the callback receives each delivered message.
+
+- `public unsubscribe(\Phalcon\Contracts\Queue\Consumer $consumer): void` — Removes a previously subscribed consumer.
+
+- `public unsubscribeAll(): void` — Removes every subscribed consumer.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="pollInterval" type="int" default="200">
-Milliseconds slept between poll passes.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="subscriptions" type="array" default="[]">
-Subscriptions keyed by queue name: [consumer, callback].
-</ApiItem>
+- `protected int $pollInterval = 200` — Milliseconds slept between poll passes.
+
+- `protected array $subscriptions = []` — Subscriptions keyed by queue name: \[consumer, callback].
 
 ### Methods
 
@@ -2536,8 +2406,8 @@ returns false).
 
 ```php
 public function subscribe(
-\Phalcon\Contracts\Queue\Consumer $consumer,
-callable $callback
+    \Phalcon\Contracts\Queue\Consumer $consumer,
+    callable $callback
 ): void;
 ```
 
@@ -2559,6 +2429,7 @@ public function unsubscribeAll(): void;
 
 Removes every subscribed consumer.
 
+
 ## Queue\Cli\ConsumerTask
 
 Class
@@ -2578,16 +2449,15 @@ Register it in your own Phalcon\Cli\Console; it is not auto-wired into
 FactoryDefault.
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- [`Phalcon\Cli\Task`](/5.22/api/phalcon_cli/#clitask)
-- **`Phalcon\Queue\Cli\ConsumerTask`**
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - [`Phalcon\Cli\Task`](/5.22/api/phalcon_cli/#clitask)
+      - **`Phalcon\Queue\Cli\ConsumerTask`**
 
 `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Task` · `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions` · `Phalcon\Queue\QueueFactory`
 
 ### Method Summary
 
-<ApiItem href="#queuecliconsumertask-mainaction" visibility="public" name="mainAction" returnType="int" params={[]}>
-</ApiItem>
+- `public mainAction(): int`
 
 ### Methods
 
@@ -2596,6 +2466,7 @@ FactoryDefault.
 ```php
 public function mainAction(): int;
 ```
+
 
 ## Queue\Consumer\BoundProcessor
 
@@ -2609,23 +2480,21 @@ Binds a processor to a queue, together with the consumer that reads it.
 
 ### Method Summary
 
-<ApiItem href="#queueconsumerboundprocessor-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"QueueInterface","name":"queue","default":null},{"type":"ProcessorInterface","name":"processor","default":null},{"type":"ConsumerInterface","name":"consumer","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueconsumerboundprocessor-getconsumer" visibility="public" name="getConsumer" returnType="ConsumerInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueconsumerboundprocessor-getprocessor" visibility="public" name="getProcessor" returnType="ProcessorInterface" params={[]}>
-</ApiItem>
-<ApiItem href="#queueconsumerboundprocessor-getqueue" visibility="public" name="getQueue" returnType="QueueInterface" params={[]}>
-</ApiItem>
+- `public __construct(QueueInterface $queue, ProcessorInterface $processor, ConsumerInterface $consumer)`
+
+- `public getConsumer(): ConsumerInterface`
+
+- `public getProcessor(): ProcessorInterface`
+
+- `public getQueue(): QueueInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="consumer" type="ConsumerInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="processor" type="ProcessorInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="queue" type="QueueInterface" default="">
-</ApiItem>
+- `protected ConsumerInterface $consumer`
+
+- `protected ProcessorInterface $processor`
+
+- `protected QueueInterface $queue`
 
 ### Methods
 
@@ -2633,9 +2502,9 @@ Binds a processor to a queue, together with the consumer that reads it.
 
 ```php
 public function __construct(
-QueueInterface $queue,
-ProcessorInterface $processor,
-ConsumerInterface $consumer
+    QueueInterface $queue,
+    ProcessorInterface $processor,
+    ConsumerInterface $consumer
 );
 ```
 
@@ -2657,6 +2526,7 @@ public function getProcessor(): ProcessorInterface;
 public function getQueue(): QueueInterface;
 ```
 
+
 ## Queue\Consumer\Events
 
 Class
@@ -2668,20 +2538,20 @@ Phalcon\Events\Manager. One public constant per event.
 
 ### Constants
 
-<ApiItem kind="constant" name="AFTER_END" type="string" default="&quot;queue:afterEnd&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_PROCESS" type="string" default="&quot;queue:afterProcess&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_RECEIVE" type="string" default="&quot;queue:afterReceive&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_PROCESS" type="string" default="&quot;queue:beforeProcess&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_RECEIVE" type="string" default="&quot;queue:beforeReceive&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_START" type="string" default="&quot;queue:beforeStart&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROCESSOR_EXCEPTION" type="string" default="&quot;queue:processorException&quot;">
-</ApiItem>
+- `const string AFTER_END = "queue:afterEnd"`
+
+- `const string AFTER_PROCESS = "queue:afterProcess"`
+
+- `const string AFTER_RECEIVE = "queue:afterReceive"`
+
+- `const string BEFORE_PROCESS = "queue:beforeProcess"`
+
+- `const string BEFORE_RECEIVE = "queue:beforeReceive"`
+
+- `const string BEFORE_START = "queue:beforeStart"`
+
+- `const string PROCESSOR_EXCEPTION = "queue:processorException"`
+
 
 ## Queue\Consumer\QueueConsumer
 
@@ -2695,51 +2565,39 @@ manager. The long-running operational shell (lifetime, signals) lives in
 stop signal through `stop()` / `isStopRequested()`.
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.22/api/phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Queue\Consumer\QueueConsumer`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+  - **`Phalcon\Queue\Consumer\QueueConsumer`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
 `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#queueconsumerqueueconsumer-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ContextInterface","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-bind" visibility="public" name="bind" returnType="QueueConsumer" params={[{"type":"QueueInterface","name":"queue","default":null},{"type":"ProcessorInterface","name":"processor","default":null}]}>
-Binds a processor to a queue. Returns self for chaining.
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-consume" visibility="public" name="consume" returnType="void" params={[{"type":"int","name":"timeout","default":"0"}]}>
-Runs the consumption loop, blocking up to timeout milliseconds (0 =
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-consumeonce" visibility="public" name="consumeOnce" returnType="int" params={[]}>
-Polls every bound queue once, dispatching any messages found. Returns
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-end" visibility="public" name="end" returnType="void" params={[]}>
-Fires the `queue:afterEnd` event. Called once the loop exits.
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-isstoprequested" visibility="public" name="isStopRequested" returnType="bool" params={[]}>
-Whether a stop has been requested (by a signal, `stop()`, or an
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-setpollinterval" visibility="public" name="setPollInterval" returnType="void" params={[{"type":"int","name":"pollInterval","default":null}]}>
-Sets the poll interval (in milliseconds).
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-start" visibility="public" name="start" returnType="bool" params={[]}>
-Resets the stop flag and fires `queue:beforeStart`. Returns false when a
-</ApiItem>
-<ApiItem href="#queueconsumerqueueconsumer-stop" visibility="public" name="stop" returnType="void" params={[]}>
-Requests the consumption loop to stop after the current message.
-</ApiItem>
+- `public __construct(ContextInterface $context)`
+
+- `public bind(QueueInterface $queue, ProcessorInterface $processor): QueueConsumer` — Binds a processor to a queue. Returns self for chaining.
+
+- `public consume(int $timeout = 0): void` — Runs the consumption loop, blocking up to timeout milliseconds (0 =
+
+- `public consumeOnce(): int` — Polls every bound queue once, dispatching any messages found. Returns
+
+- `public end(): void` — Fires the `queue:afterEnd` event. Called once the loop exits.
+
+- `public isStopRequested(): bool` — Whether a stop has been requested (by a signal, `stop()`, or an
+
+- `public setPollInterval(int $pollInterval): void` — Sets the poll interval (in milliseconds).
+
+- `public start(): bool` — Resets the stop flag and fires `queue:beforeStart`. Returns false when a
+
+- `public stop(): void` — Requests the consumption loop to stop after the current message.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="bindings" type="array&lt;string, BoundProcessor&gt;" default="[]">
-Bound processors keyed by queue name.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="context" type="ContextInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pollInterval" type="int" default="200">
-Milliseconds slept between poll passes when nothing was received.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="shouldStop" type="bool" default="false">
-</ApiItem>
+- `protected array<string, BoundProcessor> $bindings = []` — Bound processors keyed by queue name.
+
+- `protected ContextInterface $context`
+
+- `protected int $pollInterval = 200` — Milliseconds slept between poll passes when nothing was received.
+
+- `protected bool $shouldStop = false`
 
 ### Methods
 
@@ -2753,8 +2611,8 @@ public function __construct( ContextInterface $context );
 
 ```php
 public function bind(
-QueueInterface $queue,
-ProcessorInterface $processor
+    QueueInterface $queue,
+    ProcessorInterface $processor
 ): QueueConsumer;
 ```
 
@@ -2821,6 +2679,7 @@ public function stop(): void;
 
 Requests the consumption loop to stop after the current message.
 
+
 ## Queue\Consumer\Worker
 
 Class
@@ -2837,21 +2696,17 @@ guillotine), because the stop flag is only checked between iterations.
 
 ### Method Summary
 
-<ApiItem href="#queueconsumerworker-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"QueueConsumer","name":"consumer","default":null},{"type":"WorkerOptions|null","name":"options","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#queueconsumerworker-handlesignal" visibility="public" name="handleSignal" returnType="void" params={[{"type":"int","name":"signal","default":null}]}>
-Signal handler: requests a graceful stop.
-</ApiItem>
-<ApiItem href="#queueconsumerworker-run" visibility="public" name="run" returnType="int" params={[]}>
-Runs the worker until a lifetime bound trips or a stop is requested.
-</ApiItem>
+- `public __construct(QueueConsumer $consumer, WorkerOptions|null $options = null)`
+
+- `public handleSignal(int $signal): void` — Signal handler: requests a graceful stop.
+
+- `public run(): int` — Runs the worker until a lifetime bound trips or a stop is requested.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="consumer" type="QueueConsumer" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="WorkerOptions" default="">
-</ApiItem>
+- `protected QueueConsumer $consumer`
+
+- `protected WorkerOptions $options`
 
 ### Methods
 
@@ -2859,8 +2714,8 @@ Runs the worker until a lifetime bound trips or a stop is requested.
 
 ```php
 public function __construct(
-QueueConsumer $consumer,
-WorkerOptions|null $options = null
+    QueueConsumer $consumer,
+    WorkerOptions|null $options = null
 );
 ```
 
@@ -2881,6 +2736,7 @@ public function run(): int;
 Runs the worker until a lifetime bound trips or a stop is requested.
 Returns the number of messages processed.
 
+
 ## Queue\Consumer\WorkerOptions
 
 Class
@@ -2892,32 +2748,26 @@ The worker stops on whichever bound trips first.
 
 ### Method Summary
 
-<ApiItem href="#queueconsumerworkeroptions-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"maxMessages","default":"0"},{"type":"int","name":"maxSeconds","default":"0"},{"type":"int","name":"maxMemory","default":"0"},{"type":"int","name":"jitter","default":"0"}]}>
-</ApiItem>
-<ApiItem href="#queueconsumerworkeroptions-getjitter" visibility="public" name="getJitter" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#queueconsumerworkeroptions-getmaxmemory" visibility="public" name="getMaxMemory" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#queueconsumerworkeroptions-getmaxmessages" visibility="public" name="getMaxMessages" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#queueconsumerworkeroptions-getmaxseconds" visibility="public" name="getMaxSeconds" returnType="int" params={[]}>
-</ApiItem>
+- `public __construct(int $maxMessages = 0, int $maxSeconds = 0, int $maxMemory = 0, int $jitter = 0)`
+
+- `public getJitter(): int`
+
+- `public getMaxMemory(): int`
+
+- `public getMaxMessages(): int`
+
+- `public getMaxSeconds(): int`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="jitter" type="int" default="0">
-Seconds added to maxSeconds (randomised per worker) so a pool does not
-restart in lockstep.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="maxMemory" type="int" default="0">
-Memory ceiling in megabytes.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="maxMessages" type="int" default="0">
-Maximum number of messages to process.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="maxSeconds" type="int" default="0">
-Maximum run time in seconds.
-</ApiItem>
+- `protected int $jitter = 0` — Seconds added to maxSeconds (randomised per worker) so a pool does not
+  restart in lockstep.
+
+- `protected int $maxMemory = 0` — Memory ceiling in megabytes.
+
+- `protected int $maxMessages = 0` — Maximum number of messages to process.
+
+- `protected int $maxSeconds = 0` — Maximum run time in seconds.
 
 ### Methods
 
@@ -2925,10 +2775,10 @@ Maximum run time in seconds.
 
 ```php
 public function __construct(
-int $maxMessages = 0,
-int $maxSeconds = 0,
-int $maxMemory = 0,
-int $jitter = 0
+    int $maxMessages = 0,
+    int $maxSeconds = 0,
+    int $maxMemory = 0,
+    int $jitter = 0
 );
 ```
 
@@ -2956,6 +2806,7 @@ public function getMaxMessages(): int;
 public function getMaxSeconds(): int;
 ```
 
+
 ## Queue\Exceptions\DeliveryDelayNotSupportedException
 
 Class
@@ -2963,13 +2814,12 @@ Class
 Thrown when the transport does not support a delivery delay.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionsdeliverydelaynotsupportedexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2979,6 +2829,7 @@ Thrown when the transport does not support a delivery delay.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\Exception
 
 Class
@@ -2987,17 +2838,18 @@ Generic exception for the Queue component, and the base for every typed
 queue exception.
 
 - `\Exception`
-- **`Phalcon\Queue\Exceptions\Exception`** - implements [`Phalcon\Queue\Exceptions\QueueThrowable`](#queueexceptionsqueuethrowable)
-- [`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`](#queueexceptionsdeliverydelaynotsupportedexception)
-- [`Phalcon\Queue\Exceptions\InvalidDestinationException`](#queueexceptionsinvaliddestinationexception)
-- [`Phalcon\Queue\Exceptions\InvalidMessageException`](#queueexceptionsinvalidmessageexception)
-- [`Phalcon\Queue\Exceptions\PriorityNotSupportedException`](#queueexceptionsprioritynotsupportedexception)
-- [`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`](#queueexceptionspurgequeuenotsupportedexception)
-- [`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`](#queueexceptionssubscriptionconsumernotsupportedexception)
-- [`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`](#queueexceptionstemporaryqueuenotsupportedexception)
-- [`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`](#queueexceptionstimetolivenotsupportedexception)
+  - **`Phalcon\Queue\Exceptions\Exception`** - implements [`Phalcon\Queue\Exceptions\QueueThrowable`](#queueexceptionsqueuethrowable)
+    - [`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`](#queueexceptionsdeliverydelaynotsupportedexception)
+    - [`Phalcon\Queue\Exceptions\InvalidDestinationException`](#queueexceptionsinvaliddestinationexception)
+    - [`Phalcon\Queue\Exceptions\InvalidMessageException`](#queueexceptionsinvalidmessageexception)
+    - [`Phalcon\Queue\Exceptions\PriorityNotSupportedException`](#queueexceptionsprioritynotsupportedexception)
+    - [`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`](#queueexceptionspurgequeuenotsupportedexception)
+    - [`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`](#queueexceptionssubscriptionconsumernotsupportedexception)
+    - [`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`](#queueexceptionstemporaryqueuenotsupportedexception)
+    - [`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`](#queueexceptionstimetolivenotsupportedexception)
 
 `Exception`
+
 
 ## Queue\Exceptions\InvalidDestinationException
 
@@ -3008,13 +2860,12 @@ Topic passed where a Queue is required. The action verb ("send to",
 "consume from") tailors the message to the failing operation.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\InvalidDestinationException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\InvalidDestinationException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionsinvaliddestinationexception-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"action","default":null}]}>
-</ApiItem>
+- `public __construct(string $action)`
 
 ### Methods
 
@@ -3024,6 +2875,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 public function __construct( string $action );
 ```
 
+
 ## Queue\Exceptions\InvalidMessageException
 
 Class
@@ -3031,13 +2883,12 @@ Class
 Thrown when a message is not valid for the operation.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\InvalidMessageException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\InvalidMessageException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionsinvalidmessageexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3047,6 +2898,7 @@ Thrown when a message is not valid for the operation.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\PriorityNotSupportedException
 
 Class
@@ -3054,13 +2906,12 @@ Class
 Thrown when the transport does not support message priority.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\PriorityNotSupportedException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\PriorityNotSupportedException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionsprioritynotsupportedexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3070,6 +2921,7 @@ Thrown when the transport does not support message priority.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\PurgeQueueNotSupportedException
 
 Class
@@ -3077,13 +2929,12 @@ Class
 Thrown when the transport does not support purging a queue.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionspurgequeuenotsupportedexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3093,6 +2944,7 @@ Thrown when the transport does not support purging a queue.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\QueueThrowable
 
 Interface
@@ -3101,9 +2953,10 @@ Base throwable contract for the Queue component. Every queue exception
 implements it, so callers can catch all queue errors with a single type.
 
 - `\Throwable`
-- **`Phalcon\Queue\Exceptions\QueueThrowable`**
+  - **`Phalcon\Queue\Exceptions\QueueThrowable`**
 
 `Throwable`
+
 
 ## Queue\Exceptions\SubscriptionConsumerNotSupportedException
 
@@ -3112,13 +2965,12 @@ Class
 Thrown when the transport does not support subscription consumers.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionssubscriptionconsumernotsupportedexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3128,6 +2980,7 @@ Thrown when the transport does not support subscription consumers.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\TemporaryQueueNotSupportedException
 
 Class
@@ -3135,13 +2988,12 @@ Class
 Thrown when the transport does not support temporary queues.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionstemporaryqueuenotsupportedexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3151,6 +3003,7 @@ Thrown when the transport does not support temporary queues.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\TimeToLiveNotSupportedException
 
 Class
@@ -3158,13 +3011,12 @@ Class
 Thrown when the transport does not support a message time to live.
 
 - `\Exception`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`**
+  - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+    - **`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`**
 
 ### Method Summary
 
-<ApiItem href="#queueexceptionstimetolivenotsupportedexception-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3174,6 +3026,7 @@ Thrown when the transport does not support a message time to live.
 public function __construct();
 ```
 
+
 ## Queue\QueueFactory
 
 Class
@@ -3182,29 +3035,23 @@ Builds a queue Context from the standard Phalcon config shape. Mirrors
 Phalcon\Cache\CacheFactory.
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
-- **`Phalcon\Queue\QueueFactory`**
+  - **`Phalcon\Queue\QueueFactory`**
 
 `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`
 
 ### Method Summary
 
-<ApiItem href="#queuequeuefactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory|null","name":"factory","default":"null"}]}>
-A default AdapterFactory is created when none is supplied, so the
-</ApiItem>
-<ApiItem href="#queuequeuefactory-load" visibility="public" name="load" returnType="ContextInterface" params={[{"type":"mixed","name":"config","default":null}]}>
-Builds a Context from a config array/object.
-</ApiItem>
-<ApiItem href="#queuequeuefactory-newinstance" visibility="public" name="newInstance" returnType="ContextInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Builds a Context for the named adapter.
-</ApiItem>
-<ApiItem href="#queuequeuefactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-Returns the exception class for the factory
-</ApiItem>
+- `public __construct(AdapterFactory|null $factory = null)` — A default AdapterFactory is created when none is supplied, so the
+
+- `public load(mixed $config): ContextInterface` — Builds a Context from a config array/object.
+
+- `public newInstance(string $name, array $options = []): ContextInterface` — Builds a Context for the named adapter.
+
+- `protected getExceptionClass(): string` — Returns the exception class for the factory
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="adapterFactory" type="AdapterFactory" default="">
-</ApiItem>
+- `protected AdapterFactory $adapterFactory`
 
 ### Methods
 
@@ -3229,8 +3076,8 @@ Builds a Context from a config array/object.
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): ContextInterface;
 ```
 

@@ -38,38 +38,39 @@ use Phalcon\Db\Exception;
 use Phalcon\Db\Adapter\Pdo\Mysql as MysqlConnection;
 
 try {
-$connection = new MysqlConnection(
-    [
-        "host"     => "192.168.0.11",
-        "username" => "sigma",
-        "password" => "secret",
-        "dbname"   => "blog",
-        "port"     => "3306",
-    ]
-);
+    $connection = new MysqlConnection(
+        [
+            "host"     => "192.168.0.11",
+            "username" => "sigma",
+            "password" => "secret",
+            "dbname"   => "blog",
+            "port"     => "3306",
+        ]
+    );
 
-$result = $connection->query(
-    "SELECT * FROM co_invoices LIMIT 5"
-);
+    $result = $connection->query(
+        "SELECT * FROM co_invoices LIMIT 5"
+    );
 
-$result->setFetchMode(Enum::FETCH_NUM);
+    $result->setFetchMode(Enum::FETCH_NUM);
 
-while ($invoice = $result->fetch()) {
-    print_r($invoice);
-}
+    while ($invoice = $result->fetch()) {
+        print_r($invoice);
+    }
 } catch (Exception $e) {
-echo $e->getMessage(), PHP_EOL;
+    echo $e->getMessage(), PHP_EOL;
 }
 ```
 
 <div class="api-tree">
 
 - **`Phalcon\Db\Adapter\AbstractAdapter`** — implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.15/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
+    - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 
 </div>
 
 __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -573,9 +574,9 @@ process. See `setup()`.
 
 ```php
 public function addCheck(
-string $tableName,
-string $schemaName,
-CheckInterface $check
+    string $tableName,
+    string $schemaName,
+    CheckInterface $check
 ): bool;
 ```
 
@@ -586,9 +587,9 @@ issue `ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`; SQLite throws.
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): bool;
 ```
 
@@ -598,9 +599,9 @@ Adds a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): bool;
 ```
 
@@ -610,9 +611,9 @@ Adds a foreign key to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): bool;
 ```
 
@@ -622,9 +623,9 @@ Adds an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): bool;
 ```
 
@@ -634,9 +635,9 @@ Adds a primary key to a table
 
 ```php
 public function createMaterializedView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): bool;
 ```
 
@@ -655,9 +656,9 @@ Creates a new savepoint
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): bool;
 ```
 
@@ -667,9 +668,9 @@ Creates a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): bool;
 ```
 
@@ -679,10 +680,10 @@ Creates a view
 
 ```php
 public function delete(
-mixed $table,
-string $whereCondition = null,
-array $placeholders = [],
-array $dataTypes = []
+    mixed $table,
+    string $whereCondition = null,
+    array $placeholders = [],
+    array $dataTypes = []
 ): bool;
 ```
 
@@ -691,8 +692,8 @@ Deletes data from a table using custom RBDM SQL syntax
 ```php
 // Deleting existing robot
 $success = $connection->delete(
-"robots",
-"id = 101"
+    "robots",
+    "id = 101"
 );
 
 // Next SQL sentence is generated
@@ -705,8 +706,8 @@ Warning! If $whereCondition is string it not escaped.
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): IndexInterface[];
 ```
 
@@ -714,7 +715,7 @@ Lists table indexes
 
 ```php
 print_r(
-$connection->describeIndexes("robots_parts")
+    $connection->describeIndexes("robots_parts")
 );
 ```
 
@@ -729,8 +730,8 @@ override it.
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ReferenceInterface[];
 ```
 
@@ -738,7 +739,7 @@ Lists table references
 
 ```php
 print_r(
-$connection->describeReferences("robots_parts")
+    $connection->describeReferences("robots_parts")
 );
 ```
 
@@ -755,9 +756,9 @@ in-tree caller and effectively assumes the PostgreSQL row shape.
 
 ```php
 public function dropCheck(
-string $tableName,
-string $schemaName,
-string $checkName
+    string $tableName,
+    string $schemaName,
+    string $checkName
 ): bool;
 ```
 
@@ -767,9 +768,9 @@ Drops a CHECK constraint from a table. SQLite throws.
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): bool;
 ```
 
@@ -779,9 +780,9 @@ Drops a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): bool;
 ```
 
@@ -791,9 +792,9 @@ Drops a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-mixed $indexName
+    string $tableName,
+    string $schemaName,
+    mixed $indexName
 ): bool;
 ```
 
@@ -803,9 +804,9 @@ Drop an index from a table
 
 ```php
 public function dropMaterializedView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -815,8 +816,8 @@ Drops a materialized view (PostgreSQL only).
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): bool;
 ```
 
@@ -826,9 +827,9 @@ Drops a table's primary key
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName = null,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -838,9 +839,9 @@ Drops a table from a schema/database
 
 ```php
 public function dropView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -856,14 +857,14 @@ Escapes a column/table/schema name
 
 ```php
 $escapedTable = $connection->escapeIdentifier(
-"robots"
+    "robots"
 );
 
 $escapedTable = $connection->escapeIdentifier(
-[
-    "store",
-    "robots",
-]
+    [
+        "store",
+        "robots",
+    ]
 );
 ```
 
@@ -871,10 +872,10 @@ $escapedTable = $connection->escapeIdentifier(
 
 ```php
 public function fetchAll(
-string $sqlQuery,
-int $fetchMode = Enum::FETCH_ASSOC,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlQuery,
+    int $fetchMode = Enum::FETCH_ASSOC,
+    array $bindParams = [],
+    array $bindTypes = []
 ): array;
 ```
 
@@ -883,24 +884,24 @@ Dumps the complete result of a query into an array
 ```php
 // Getting all robots with associative indexes only
 $robots = $connection->fetchAll(
-"SELECT * FROM robots",
-\Phalcon\Db\Enum::FETCH_ASSOC
+    "SELECT * FROM robots",
+    \Phalcon\Db\Enum::FETCH_ASSOC
 );
 
 foreach ($robots as $robot) {
-print_r($robot);
+    print_r($robot);
 }
 
  // Getting all robots that contains word "robot" withing the name
 $robots = $connection->fetchAll(
-"SELECT * FROM robots WHERE name LIKE :name",
-\Phalcon\Db\Enum::FETCH_ASSOC,
-[
-    "name" => "%robot%",
-]
+    "SELECT * FROM robots WHERE name LIKE :name",
+    \Phalcon\Db\Enum::FETCH_ASSOC,
+    [
+        "name" => "%robot%",
+    ]
 );
 foreach($robots as $robot) {
-print_r($robot);
+    print_r($robot);
 }
 ```
 
@@ -908,9 +909,9 @@ print_r($robot);
 
 ```php
 public function fetchColumn(
-string $sqlQuery,
-array $placeholders = [],
-mixed $column = 0
+    string $sqlQuery,
+    array $placeholders = [],
+    mixed $column = 0
 ): string|bool;
 ```
 
@@ -923,8 +924,8 @@ print_r($robotsCount);
 
 // Getting name of last edited robot
 $robot = $connection->fetchColumn(
-"SELECT id, name FROM robots ORDER BY modified DESC",
-1
+    "SELECT id, name FROM robots ORDER BY modified DESC",
+    1
 );
 print_r($robot);
 ```
@@ -933,10 +934,10 @@ print_r($robot);
 
 ```php
 public function fetchOne(
-string $sqlQuery,
-mixed $fetchMode = Enum::FETCH_ASSOC,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlQuery,
+    mixed $fetchMode = Enum::FETCH_ASSOC,
+    array $bindParams = [],
+    array $bindTypes = []
 ): array;
 ```
 
@@ -949,8 +950,8 @@ print_r($robot);
 
 // Getting first robot with associative indexes only
 $robot = $connection->fetchOne(
-"SELECT * FROM robots",
-\Phalcon\Db\Enum::FETCH_ASSOC
+    "SELECT * FROM robots",
+    \Phalcon\Db\Enum::FETCH_ASSOC
 );
 print_r($robot);
 ```
@@ -959,8 +960,8 @@ print_r($robot);
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -1003,17 +1004,17 @@ Returns the default identity value to be inserted in an identity column
 ```php
 // Inserting a new robot with a valid default value for the column 'id'
 $success = $connection->insert(
-"robots",
-[
-    $connection->getDefaultIdValue(),
-    "Astro Boy",
-    1952,
-],
-[
-    "id",
-    "name",
-    "year",
-]
+    "robots",
+    [
+        $connection->getDefaultIdValue(),
+        "Astro Boy",
+        1952,
+    ],
+    [
+        "id",
+        "name",
+        "year",
+    ]
 );
 ```
 
@@ -1029,15 +1030,15 @@ in the table definition
 ```php
 // Inserting a new robot with a valid default value for the column 'year'
 $success = $connection->insert(
-"robots",
-[
-    "Astro Boy",
-    $connection->getDefaultValue()
-],
-[
-    "name",
-    "year",
-]
+    "robots",
+    [
+        "Astro Boy",
+        $connection->getDefaultValue()
+    ],
+    [
+        "name",
+        "year",
+    ]
 );
 ```
 
@@ -1127,10 +1128,10 @@ Type of database system the adapter is used for
 
 ```php
 public function insert(
-string $table,
-array $values,
-mixed $fields = null,
-mixed $dataTypes = null
+    string $table,
+    array $values,
+    mixed $fields = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -1139,9 +1140,9 @@ Inserts data into a table using custom RDBMS SQL syntax
 ```php
 // Inserting a new robot
 $success = $connection->insert(
-"robots",
-["Astro Boy", 1952],
-["name", "year"]
+    "robots",
+    ["Astro Boy", 1952],
+    ["name", "year"]
 );
 
 // Next SQL sentence is sent to the database system
@@ -1152,9 +1153,9 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```php
 public function insertAsDict(
-string $table,
-mixed $data,
-mixed $dataTypes = null
+    string $table,
+    mixed $data,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -1163,11 +1164,11 @@ Inserts data into a table using custom RBDM SQL syntax
 ```php
 // Inserting a new robot
 $success = $connection->insertAsDict(
-"robots",
-[
-    "name" => "Astro Boy",
-    "year" => 1952,
-]
+    "robots",
+    [
+        "name" => "Astro Boy",
+        "year" => 1952,
+    ]
 );
 
 // Next SQL sentence is sent to the database system
@@ -1186,8 +1187,8 @@ Returns if nested transactions should use savepoints
 
 ```php
 public function limit(
-string $sqlQuery,
-mixed $number
+    string $sqlQuery,
+    mixed $number
 ): string;
 ```
 
@@ -1207,7 +1208,7 @@ List all tables on a database
 
 ```php
 print_r(
-$connection->listTables("blog")
+    $connection->listTables("blog")
 );
 ```
 
@@ -1221,7 +1222,7 @@ List all views on a database
 
 ```php
 print_r(
-$connection->listViews("blog")
+    $connection->listViews("blog")
 );
 ```
 
@@ -1229,10 +1230,10 @@ $connection->listViews("blog")
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): bool;
 ```
 
@@ -1242,9 +1243,9 @@ Modifies a table column based on a definition
 
 ```php
 public function onConflictUpdate(
-string $sqlQuery,
-array $conflictColumns,
-array $updateColumns
+    string $sqlQuery,
+    array $conflictColumns,
+    array $updateColumns
 ): string;
 ```
 
@@ -1256,9 +1257,9 @@ PostgreSQL and SQLite 3.24+; MySQL throws.
 
 ```php
 public function refreshMaterializedView(
-string $viewName,
-string $schemaName = null,
-bool $concurrent = false
+    string $viewName,
+    string $schemaName = null,
+    bool $concurrent = false
 ): bool;
 ```
 
@@ -1277,8 +1278,8 @@ Releases given savepoint
 
 ```php
 public function returning(
-string $sqlQuery,
-array $columns
+    string $sqlQuery,
+    array $columns
 ): string;
 ```
 
@@ -1338,8 +1339,8 @@ already-configured connection generates.
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -1369,8 +1370,8 @@ keyword (SQLite does not support it)
 
 ```php
 public function tableExists(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): bool;
 ```
 
@@ -1378,7 +1379,7 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 var_dump(
-$connection->tableExists("blog", "posts")
+    $connection->tableExists("blog", "posts")
 );
 ```
 
@@ -1386,8 +1387,8 @@ $connection->tableExists("blog", "posts")
 
 ```php
 public function tableOptions(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): array;
 ```
 
@@ -1395,7 +1396,7 @@ Gets creation options from a table
 
 ```php
 print_r(
-$connection->tableOptions("robots")
+    $connection->tableOptions("robots")
 );
 ```
 
@@ -1403,11 +1404,11 @@ $connection->tableOptions("robots")
 
 ```php
 public function update(
-string $table,
-mixed $fields,
-mixed $values,
-mixed $whereCondition = null,
-mixed $dataTypes = null
+    string $table,
+    mixed $fields,
+    mixed $values,
+    mixed $whereCondition = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -1416,10 +1417,10 @@ Updates data on a table using custom RBDM SQL syntax
 ```php
 // Updating existing robot
 $success = $connection->update(
-"robots",
-["name"],
-["New Astro Boy"],
-"id = 101"
+    "robots",
+    ["name"],
+    ["New Astro Boy"],
+    "id = 101"
 );
 
 // Next SQL sentence is sent to the database system
@@ -1427,17 +1428,17 @@ UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 // Updating existing robot with array condition and $dataTypes
 $success = $connection->update(
-"robots",
-["name"],
-["New Astro Boy"],
-[
-    "conditions" => "id = ?",
-    "bind"       => [$some_unsafe_id],
-    "bindTypes"  => [PDO::PARAM_INT], // use only if you use $dataTypes param
-],
-[
-    PDO::PARAM_STR
-]
+    "robots",
+    ["name"],
+    ["New Astro Boy"],
+    [
+        "conditions" => "id = ?",
+        "bind"       => [$some_unsafe_id],
+        "bindTypes"  => [PDO::PARAM_INT], // use only if you use $dataTypes param
+    ],
+    [
+        PDO::PARAM_STR
+    ]
 );
 
 ```
@@ -1448,10 +1449,10 @@ Warning! If $whereCondition is string it not escaped.
 
 ```php
 public function updateAsDict(
-string $table,
-mixed $data,
-mixed $whereCondition = null,
-mixed $dataTypes = null
+    string $table,
+    mixed $data,
+    mixed $whereCondition = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -1461,11 +1462,11 @@ Another, more convenient syntax
 ```php
 // Updating existing robot
 $success = $connection->updateAsDict(
-"robots",
-[
-    "name" => "New Astro Boy",
-],
-"id = 101"
+    "robots",
+    [
+        "name" => "New Astro Boy",
+    ],
+    "id = 101"
 );
 
 // Next SQL sentence is sent to the database system
@@ -1485,8 +1486,8 @@ columns
 
 ```php
 public function viewExists(
-string $viewName,
-string $schemaName = null
+    string $viewName,
+    string $schemaName = null
 ): bool;
 ```
 
@@ -1494,9 +1495,10 @@ Generates SQL checking for the existence of a schema.view
 
 ```php
 var_dump(
-$connection->viewExists("active_users", "posts")
+    $connection->viewExists("active_users", "posts")
 );
 ```
+
 
 ## Db\Adapter\AdapterInterface
 
@@ -1508,11 +1510,13 @@ Phalcon\Db\Adapter\AdapterInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Adapter\Adapter`](/5.15/api/phalcon_contracts/#contractsdbadapteradapter)
-- **`Phalcon\Db\Adapter\AdapterInterface`**
+    - **`Phalcon\Db\Adapter\AdapterInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Adapter\Adapter`
+
+
 
 ## Db\Adapter\PdoFactory
 
@@ -1522,12 +1526,13 @@ __Uses__ `Phalcon\Contracts\Db\Adapter\Adapter`
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.15/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.15/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Db\Adapter\PdoFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.15/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Db\Adapter\PdoFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
+
 
 ### Method Summary
 
@@ -1586,8 +1591,8 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -1609,6 +1614,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Db\Adapter\Pdo\AbstractPdo
 
 <span class="badge badge--abstract">Abstract</span>
@@ -1621,11 +1627,11 @@ to a database
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $config = [
-"host"     => "localhost",
-"dbname"   => "blog",
-"port"     => 3306,
-"username" => "sigma",
-"password" => "secret",
+    "host"     => "localhost",
+    "dbname"   => "blog",
+    "port"     => 3306,
+    "username" => "sigma",
+    "password" => "secret",
 ];
 
 $connection = new Mysql($config);
@@ -1634,14 +1640,15 @@ $connection = new Mysql($config);
 <div class="api-tree">
 
 - [`Phalcon\Db\Adapter\AbstractAdapter`](#dbadapterabstractadapter)
-- **`Phalcon\Db\Adapter\Pdo\AbstractPdo`**
-- [`Phalcon\Db\Adapter\Pdo\Mysql`](#dbadapterpdomysql)
-- [`Phalcon\Db\Adapter\Pdo\Postgresql`](#dbadapterpdopostgresql)
-- [`Phalcon\Db\Adapter\Pdo\Sqlite`](#dbadapterpdosqlite)
+    - **`Phalcon\Db\Adapter\Pdo\AbstractPdo`**
+        - [`Phalcon\Db\Adapter\Pdo\Mysql`](#dbadapterpdomysql)
+        - [`Phalcon\Db\Adapter\Pdo\Postgresql`](#dbadapterpdopostgresql)
+        - [`Phalcon\Db\Adapter\Pdo\Sqlite`](#dbadapterpdosqlite)
 
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -1816,7 +1823,7 @@ executed in the database system
 
 ```php
 $connection->execute(
-"DELETE FROM robots"
+    "DELETE FROM robots"
 );
 
 echo $connection->affectedRows(), " were deleted";
@@ -1863,13 +1870,13 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 
 // Make a connection
 $connection = new Mysql(
-[
-    "host"     => "localhost",
-    "username" => "sigma",
-    "password" => "secret",
-    "dbname"   => "blog",
-    "port"     => 3306,
-]
+    [
+        "host"     => "localhost",
+        "username" => "sigma",
+        "password" => "secret",
+        "dbname"   => "blog",
+        "port"     => 3306,
+    ]
 );
 
 // Reconnect
@@ -1880,8 +1887,8 @@ $connection->connect();
 
 ```php
 public function convertBoundParams(
-string $sql,
-array $params = []
+    string $sql,
+    array $params = []
 ): array;
 ```
 
@@ -1889,12 +1896,12 @@ Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 ```php
 print_r(
-$connection->convertBoundParams(
-    "SELECT * FROM robots WHERE name = :name:",
-    [
-        "Bender",
-    ]
-)
+    $connection->convertBoundParams(
+        "SELECT * FROM robots WHERE name = :name:",
+        [
+            "Bender",
+        ]
+    )
 );
 ```
 
@@ -1915,9 +1922,9 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 ```php
 public function execute(
-string $sqlStatement,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlStatement,
+    array $bindParams = [],
+    array $bindTypes = []
 ): bool;
 ```
 
@@ -1928,15 +1935,15 @@ return any rows
 ```php
 // Inserting data
 $success = $connection->execute(
-"INSERT INTO robots VALUES (1, 'Astro Boy')"
+    "INSERT INTO robots VALUES (1, 'Astro Boy')"
 );
 
 $success = $connection->execute(
-"INSERT INTO robots VALUES (?, ?)",
-[
-    1,
-    "Astro Boy",
-]
+    "INSERT INTO robots VALUES (?, ?)",
+    [
+        1,
+        "Astro Boy",
+    ]
 );
 ```
 
@@ -1944,9 +1951,9 @@ $success = $connection->execute(
 
 ```php
 public function executePrepared(
-\PDOStatement $statement,
-array $placeholders,
-array $dataTypes = []
+    \PDOStatement $statement,
+    array $placeholders,
+    array $dataTypes = []
 ): \PDOStatement;
 ```
 
@@ -1957,17 +1964,17 @@ starting from zero
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-"SELECT * FROM robots WHERE name = :name"
+    "SELECT * FROM robots WHERE name = :name"
 );
 
 $result = $connection->executePrepared(
-$statement,
-[
-    "name" => "Voltron",
-],
-[
-    "name" => Column::BIND_PARAM_STR,
-]
+    $statement,
+    [
+        "name" => "Voltron",
+    ],
+    [
+        "name" => Column::BIND_PARAM_STR,
+    ]
 );
 ```
 
@@ -2008,7 +2015,7 @@ $connection->begin();
 
 // true
 var_dump(
-$connection->isUnderTransaction()
+    $connection->isUnderTransaction()
 );
 ```
 
@@ -2024,15 +2031,15 @@ the latest executed SQL statement
 ```php
 // Inserting a new robot
 $success = $connection->insert(
-"robots",
-[
-    "Astro Boy",
-    1952,
-],
-[
-    "name",
-    "year",
-]
+    "robots",
+    [
+        "Astro Boy",
+        1952,
+    ],
+    [
+        "name",
+        "year",
+    ]
 );
 
 // Getting the generated id
@@ -2051,17 +2058,17 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 use Phalcon\Db\Column;
 
 $statement = $db->prepare(
-"SELECT * FROM robots WHERE name = :name"
+    "SELECT * FROM robots WHERE name = :name"
 );
 
 $result = $connection->executePrepared(
-$statement,
-[
-    "name" => "Voltron",
-],
-[
-    "name" => Column::BIND_PARAM_INT,
-]
+    $statement,
+    [
+        "name" => "Voltron",
+    ],
+    [
+        "name" => Column::BIND_PARAM_INT,
+    ]
 );
 ```
 
@@ -2069,9 +2076,9 @@ $statement,
 
 ```php
 public function query(
-string $sqlStatement,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlStatement,
+    array $bindParams = [],
+    array $bindTypes = []
 ): ResultInterface|bool;
 ```
 
@@ -2082,14 +2089,14 @@ returning rows
 ```php
 // Querying data
 $resultset = $connection->query(
-"SELECT * FROM robots WHERE type = 'mechanical'"
+    "SELECT * FROM robots WHERE type = 'mechanical'"
 );
 
 $resultset = $connection->query(
-"SELECT * FROM robots WHERE type = ?",
-[
-    "mechanical",
-]
+    "SELECT * FROM robots WHERE type = ?",
+    [
+        "mechanical",
+    ]
 );
 ```
 
@@ -2115,14 +2122,15 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 ```php
 protected function prepareRealSql(
-string $statement,
-array $parameters
+    string $statement,
+    array $parameters
 ): void;
 ```
 
 Constructs the SQL statement (with parameters)
 
 @see https://stackoverflow.com/a/8403150
+
 
 ## Db\Adapter\Pdo\Mysql
 
@@ -2135,11 +2143,11 @@ Specific functions for the MySQL database system
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $config = [
-"host"     => "localhost",
-"dbname"   => "blog",
-"port"     => 3306,
-"username" => "sigma",
-"password" => "secret",
+    "host"     => "localhost",
+    "dbname"   => "blog",
+    "port"     => 3306,
+    "username" => "sigma",
+    "password" => "secret",
 ];
 
 $connection = new Mysql($config);
@@ -2148,12 +2156,13 @@ $connection = new Mysql($config);
 <div class="api-tree">
 
 - [`Phalcon\Db\Adapter\AbstractAdapter`](#dbadapterabstractadapter)
-- [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
-- **`Phalcon\Db\Adapter\Pdo\Mysql`**
+    - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
+        - **`Phalcon\Db\Adapter\Pdo\Mysql`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+
 
 ### Method Summary
 
@@ -2213,9 +2222,9 @@ __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): bool;
 ```
 
@@ -2225,8 +2234,8 @@ Adds a foreign key to a table
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ColumnInterface[];
 ```
 
@@ -2234,7 +2243,7 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 print_r(
-$connection->describeColumns("posts")
+    $connection->describeColumns("posts")
 );
 ```
 
@@ -2242,8 +2251,8 @@ $connection->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): IndexInterface[];
 ```
 
@@ -2251,7 +2260,7 @@ Lists table indexes
 
 ```php
 print_r(
-$connection->describeIndexes("robots_parts")
+    $connection->describeIndexes("robots_parts")
 );
 ```
 
@@ -2259,8 +2268,8 @@ $connection->describeIndexes("robots_parts")
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ReferenceInterface[];
 ```
 
@@ -2268,7 +2277,7 @@ Lists table references
 
 ```php
 print_r(
-$connection->describeReferences("robots_parts")
+    $connection->describeReferences("robots_parts")
 );
 ```
 
@@ -2282,6 +2291,7 @@ protected function getDsnDefaults(): array;
 
 Returns PDO adapter DSN defaults as a key-value map.
 
+
 ## Db\Adapter\Pdo\Postgresql
 
 <span class="badge badge--class">Class</span>
@@ -2293,11 +2303,11 @@ Specific functions for the PostgreSQL database system
 use Phalcon\Db\Adapter\Pdo\Postgresql;
 
 $config = [
-"host"     => "localhost",
-"dbname"   => "blog",
-"port"     => 5432,
-"username" => "postgres",
-"password" => "secret",
+    "host"     => "localhost",
+    "dbname"   => "blog",
+    "port"     => 5432,
+    "username" => "postgres",
+    "password" => "secret",
 ];
 
 $connection = new Postgresql($config);
@@ -2306,12 +2316,13 @@ $connection = new Postgresql($config);
 <div class="api-tree">
 
 - [`Phalcon\Db\Adapter\AbstractAdapter`](#dbadapterabstractadapter)
-- [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
-- **`Phalcon\Db\Adapter\Pdo\Postgresql`**
+    - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
+        - **`Phalcon\Db\Adapter\Pdo\Postgresql`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+
 
 ### Method Summary
 
@@ -2417,9 +2428,9 @@ constructor. Call it when you need to restore a database connection.
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): bool;
 ```
 
@@ -2429,8 +2440,8 @@ Creates a table
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ColumnInterface[];
 ```
 
@@ -2438,7 +2449,7 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 print_r(
-$connection->describeColumns("posts")
+    $connection->describeColumns("posts")
 );
 ```
 
@@ -2446,8 +2457,8 @@ $connection->describeColumns("posts")
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ReferenceInterface[];
 ```
 
@@ -2455,7 +2466,7 @@ Lists table references
 
 ```php
 print_r(
-$connection->describeReferences("robots_parts")
+    $connection->describeReferences("robots_parts")
 );
 ```
 
@@ -2470,17 +2481,17 @@ Returns the default identity value to be inserted in an identity column
 ```php
 // Inserting a new robot with a valid default value for the column 'id'
 $success = $connection->insert(
-"robots",
-[
-    $connection->getDefaultIdValue(),
-    "Astro Boy",
-    1952,
-],
-[
-    "id",
-    "name",
-    "year",
-]
+    "robots",
+    [
+        $connection->getDefaultIdValue(),
+        "Astro Boy",
+        1952,
+    ],
+    [
+        "id",
+        "name",
+        "year",
+    ]
 );
 ```
 
@@ -2488,10 +2499,10 @@ $success = $connection->insert(
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): bool;
 ```
 
@@ -2525,6 +2536,7 @@ protected function getDsnDefaults(): array;
 
 Returns PDO adapter DSN defaults as a key-value map.
 
+
 ## Db\Adapter\Pdo\Sqlite
 
 <span class="badge badge--class">Class</span>
@@ -2536,21 +2548,22 @@ Specific functions for the SQLite database system
 use Phalcon\Db\Adapter\Pdo\Sqlite;
 
 $connection = new Sqlite(
-[
-    "dbname" => "/tmp/test.sqlite",
-]
+    [
+        "dbname" => "/tmp/test.sqlite",
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Db\Adapter\AbstractAdapter`](#dbadapterabstractadapter)
-- [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
-- **`Phalcon\Db\Adapter\Pdo\Sqlite`**
+    - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
+        - **`Phalcon\Db\Adapter\Pdo\Sqlite`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+
 
 ### Method Summary
 
@@ -2650,8 +2663,8 @@ constructor. Call it when you need to restore a database connection.
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ColumnInterface[];
 ```
 
@@ -2659,7 +2672,7 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 print_r(
-$connection->describeColumns("posts")
+    $connection->describeColumns("posts")
 );
 ```
 
@@ -2667,8 +2680,8 @@ $connection->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): IndexInterface[];
 ```
 
@@ -2676,7 +2689,7 @@ Lists table indexes
 
 ```php
 print_r(
-$connection->describeIndexes("robots_parts")
+    $connection->describeIndexes("robots_parts")
 );
 ```
 
@@ -2684,8 +2697,8 @@ $connection->describeIndexes("robots_parts")
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ReferenceInterface[];
 ```
 
@@ -2703,15 +2716,15 @@ in the table definition
 ```php
 // Inserting a new robot with a valid default value for the column 'year'
 $success = $connection->insert(
-"robots",
-[
-    "Astro Boy",
-    $connection->getDefaultValue(),
-],
-[
-    "name",
-    "year",
-]
+    "robots",
+    [
+        "Astro Boy",
+        $connection->getDefaultValue(),
+    ],
+    [
+        "name",
+        "year",
+    ]
 );
 ```
 
@@ -2742,6 +2755,7 @@ protected function getDsnDefaults(): array;
 
 Returns PDO adapter DSN defaults as a key-value map.
 
+
 ## Db\Check
 
 <span class="badge badge--class">Class</span>
@@ -2755,20 +2769,20 @@ predicate are rejected at INSERT/UPDATE time.
 use Phalcon\Db\Check;
 
 $positivePrice = new Check(
-"chk_price_positive",
-[
-    "expression" => "price > 0",
-]
+    "chk_price_positive",
+    [
+        "expression" => "price > 0",
+    ]
 );
 
 // Used inside a createTable() definition
 $connection->createTable(
-"products",
-null,
-[
-    "columns" => [ ... ],
-    "checks"  => [$positivePrice],
-]
+    "products",
+    null,
+    [
+        "columns" => [ ... ],
+        "checks"  => [$positivePrice],
+    ]
 );
 
 // Or added to an existing table (MySQL 8.0.16+ and PostgreSQL).
@@ -2783,6 +2797,7 @@ $connection->addCheck("products", null, $positivePrice);
 </div>
 
 __Uses__ `Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptions\InvalidCheckExpression`
+
 
 ### Method Summary
 
@@ -2831,8 +2846,8 @@ __Uses__ `Phalcon\Db\Exceptions\CheckExpressionRequired` · `Phalcon\Db\Exceptio
 
 ```php
 public function __construct(
-string $name,
-array $definition
+    string $name,
+    array $definition
 );
 ```
 
@@ -2854,6 +2869,7 @@ public function getName(): string;
 
 Returns the constraint name (may be an empty string for unnamed)
 
+
 ## Db\CheckInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -2864,11 +2880,13 @@ Phalcon\Db\CheckInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Check`](/5.15/api/phalcon_contracts/#contractsdbcheck)
-- **`Phalcon\Db\CheckInterface`**
+    - **`Phalcon\Db\CheckInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Check`
+
+
 
 ## Db\Column
 
@@ -2882,16 +2900,16 @@ use Phalcon\Db\Column as Column;
 
 // Column definition
 $column = new Column(
-"id",
-[
-    "type"          => Column::TYPE_INTEGER,
-    "size"          => 10,
-    "unsigned"      => true,
-    "notNull"       => true,
-    "autoIncrement" => true,
-    "first"         => true,
-    "comment"       => "",
-]
+    "id",
+    [
+        "type"          => Column::TYPE_INTEGER,
+        "size"          => 10,
+        "unsigned"      => true,
+        "notNull"       => true,
+        "autoIncrement" => true,
+        "first"         => true,
+        "comment"       => "",
+    ]
 );
 
 // Add column to existing table
@@ -2905,6 +2923,7 @@ $connection->addColumn("robots", null, $column);
 </div>
 
 __Uses__ `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`
+
 
 ### Method Summary
 
@@ -3461,8 +3480,8 @@ __Uses__ `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\E
 
 ```php
 public function __construct(
-string $name,
-array $definition
+    string $name,
+    array $definition
 );
 ```
 
@@ -3651,6 +3670,7 @@ public function isUnsigned(): bool;
 
 Returns true if number column is unsigned
 
+
 ## Db\ColumnInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -3661,11 +3681,13 @@ Phalcon\Db\ColumnInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Column`](/5.15/api/phalcon_contracts/#contractsdbcolumn)
-- **`Phalcon\Db\ColumnInterface`**
+    - **`Phalcon\Db\ColumnInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Column`
+
+
 
 ## Db\Dialect
 
@@ -3678,13 +3700,14 @@ common methods to transform intermediate code into its RDBMS related syntax
 <div class="api-tree">
 
 - **`Phalcon\Db\Dialect`** — implements [`Phalcon\Db\DialectInterface`](#dbdialectinterface)
-- [`Phalcon\Db\Dialect\Mysql`](#dbdialectmysql)
-- [`Phalcon\Db\Dialect\Postgresql`](#dbdialectpostgresql)
-- [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
+    - [`Phalcon\Db\Dialect\Mysql`](#dbdialectmysql)
+    - [`Phalcon\Db\Dialect\Postgresql`](#dbdialectpostgresql)
+    - [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
 
 </div>
 
 __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -4044,9 +4067,9 @@ __Uses__ `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exc
 
 ```php
 public function createMaterializedView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): string;
 ```
 
@@ -4066,9 +4089,9 @@ Generate SQL to create a new savepoint
 
 ```php
 public function dropMaterializedView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -4078,8 +4101,8 @@ Generates SQL to drop a materialized view. Supported by PostgreSQL.
 
 ```php
 final public function escape(
-string $str,
-string $escapeChar = null
+    string $str,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4089,8 +4112,8 @@ Escape identifiers
 
 ```php
 final public function escapeSchema(
-string $str,
-string $escapeChar = null
+    string $str,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4100,8 +4123,8 @@ Escape Schema
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -4113,14 +4136,14 @@ $sql = $dialect->forUpdate("SELECT * FROM robots");
 echo $sql; // SELECT * FROM robots FOR UPDATE
 
 $sql = $dialect->forUpdate(
-"SELECT * FROM robots",
-Dialect::LOCK_NOWAIT
+    "SELECT * FROM robots",
+    Dialect::LOCK_NOWAIT
 );
 echo $sql; // SELECT * FROM robots FOR UPDATE NOWAIT
 
 $sql = $dialect->forUpdate(
-"SELECT * FROM robots",
-Dialect::LOCK_SKIP_LOCKED
+    "SELECT * FROM robots",
+    Dialect::LOCK_SKIP_LOCKED
 );
 echo $sql; // SELECT * FROM robots FOR UPDATE SKIP LOCKED
 ```
@@ -4129,9 +4152,9 @@ echo $sql; // SELECT * FROM robots FOR UPDATE SKIP LOCKED
 
 ```php
 final public function getColumnList(
-array $columnList,
-string $escapeChar = null,
-array $bindCounts = []
+    array $columnList,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4139,10 +4162,10 @@ Gets a list of columns with escaped identifiers
 
 ```php
 echo $dialect->getColumnList(
-[
-    "column1",
-    "column",
-]
+    [
+        "column1",
+        "column",
+    ]
 );
 ```
 
@@ -4158,9 +4181,9 @@ Returns registered functions
 
 ```php
 final public function getSqlColumn(
-mixed $column,
-string $escapeChar = null,
-array $bindCounts = []
+    mixed $column,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4170,9 +4193,9 @@ Resolve Column expressions
 
 ```php
 public function getSqlExpression(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4182,8 +4205,8 @@ Transforms an intermediate representation for an expression into a database syst
 
 ```php
 final public function getSqlTable(
-mixed $table,
-string $escapeChar = null
+    mixed $table,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4194,8 +4217,8 @@ database system valid expression
 
 ```php
 public function limit(
-string $sqlQuery,
-mixed $number
+    string $sqlQuery,
+    mixed $number
 ): string;
 ```
 
@@ -4204,14 +4227,14 @@ Generates the SQL for LIMIT clause
 ```php
 // SELECT * FROM robots LIMIT 10
 echo $dialect->limit(
-"SELECT * FROM robots",
-10
+    "SELECT * FROM robots",
+    10
 );
 
 // SELECT * FROM robots LIMIT 10 OFFSET 50
 echo $dialect->limit(
-"SELECT * FROM robots",
-[10, 50]
+    "SELECT * FROM robots",
+    [10, 50]
 );
 ```
 
@@ -4219,9 +4242,9 @@ echo $dialect->limit(
 
 ```php
 public function onConflictUpdate(
-string $sqlQuery,
-array $conflictColumns,
-array $updateColumns
+    string $sqlQuery,
+    array $conflictColumns,
+    array $updateColumns
 ): string;
 ```
 
@@ -4235,9 +4258,9 @@ UPDATE` has a different shape (deferred to parser item #23).
 
 ```php
 public function refreshMaterializedView(
-string $viewName,
-string $schemaName = null,
-bool $concurrent = false
+    string $viewName,
+    string $schemaName = null,
+    bool $concurrent = false
 ): string;
 ```
 
@@ -4250,8 +4273,8 @@ the view to have a unique index).
 
 ```php
 public function registerCustomFunction(
-string $name,
-callable $customFunction
+    string $name,
+    callable $customFunction
 ): static;
 ```
 
@@ -4269,8 +4292,8 @@ Generate SQL to release a savepoint
 
 ```php
 public function returning(
-string $sqlQuery,
-array $columns
+    string $sqlQuery,
+    array $columns
 ): string;
 ```
 
@@ -4373,8 +4396,8 @@ Checks the column type and returns the updated SQL statement
 
 ```php
 protected function getCheckClause(
-CheckInterface $check,
-string $escapeChar = "`"
+    CheckInterface $check,
+    string $escapeChar = "`"
 ): string;
 ```
 
@@ -4404,8 +4427,8 @@ Returns the column size and scale enclosed in parentheses
 
 ```php
 protected function getGeneratedClause(
-ColumnInterface $column,
-bool $forceStored = false
+    ColumnInterface $column,
+    bool $forceStored = false
 ): string;
 ```
 
@@ -4419,8 +4442,8 @@ PostgreSQL uses this since it only supports stored generated columns.
 
 ```php
 protected function getIndexColumnList(
-IndexInterface $index,
-bool $wrapExpressions = true
+    IndexInterface $index,
+    bool $wrapExpressions = true
 ): string;
 ```
 
@@ -4435,8 +4458,8 @@ absent from the directions array default to `ASC`.
 
 ```php
 final protected function getSqlExpressionAll(
-array $expression,
-string $escapeChar = null
+    array $expression,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4446,9 +4469,9 @@ Resolve *
 
 ```php
 final protected function getSqlExpressionBinaryOperations(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4458,9 +4481,9 @@ Resolve binary operations expressions
 
 ```php
 final protected function getSqlExpressionCase(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4470,9 +4493,9 @@ Resolve CASE expressions
 
 ```php
 final protected function getSqlExpressionCastValue(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4482,9 +4505,9 @@ Resolve CAST of values
 
 ```php
 final protected function getSqlExpressionConvertValue(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4494,8 +4517,8 @@ Resolve CONVERT of values encodings
 
 ```php
 final protected function getSqlExpressionFrom(
-mixed $expression,
-string $escapeChar = null
+    mixed $expression,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4505,9 +4528,9 @@ Resolve a FROM clause
 
 ```php
 final protected function getSqlExpressionFunctionCall(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4517,9 +4540,9 @@ Resolve function calls
 
 ```php
 final protected function getSqlExpressionGroupBy(
-mixed $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    mixed $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4529,9 +4552,9 @@ Resolve a GROUP BY clause
 
 ```php
 final protected function getSqlExpressionHaving(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4541,9 +4564,9 @@ Resolve a HAVING clause
 
 ```php
 final protected function getSqlExpressionJoins(
-mixed $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    mixed $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4553,9 +4576,9 @@ Resolve a JOINs clause
 
 ```php
 final protected function getSqlExpressionLimit(
-mixed $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    mixed $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4565,9 +4588,9 @@ Resolve a LIMIT clause
 
 ```php
 final protected function getSqlExpressionList(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4577,9 +4600,9 @@ Resolve Lists
 
 ```php
 final protected function getSqlExpressionObject(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4589,9 +4612,9 @@ Resolve object expressions
 
 ```php
 final protected function getSqlExpressionOrderBy(
-mixed $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    mixed $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4601,8 +4624,8 @@ Resolve an ORDER BY clause
 
 ```php
 final protected function getSqlExpressionQualified(
-array $expression,
-string $escapeChar = null
+    array $expression,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4612,9 +4635,9 @@ Resolve qualified expressions
 
 ```php
 final protected function getSqlExpressionScalar(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4624,9 +4647,9 @@ Resolve Column expressions
 
 ```php
 final protected function getSqlExpressionUnaryOperations(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4636,9 +4659,9 @@ Resolve unary operations expressions
 
 ```php
 final protected function getSqlExpressionWhere(
-mixed $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    mixed $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4648,9 +4671,9 @@ Resolve a WHERE clause
 
 ```php
 protected function prepareColumnAlias(
-string $qualified,
-string $alias = null,
-string $escapeChar = null
+    string $qualified,
+    string $alias = null,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4660,9 +4683,9 @@ Prepares column for this RDBMS
 
 ```php
 protected function prepareQualified(
-string $column,
-string $domain = null,
-string $escapeChar = null
+    string $column,
+    string $domain = null,
+    string $escapeChar = null
 ): string;
 ```
 
@@ -4672,14 +4695,15 @@ Prepares qualified for this RDBMS
 
 ```php
 protected function prepareTable(
-string $table,
-string $schema = null,
-string $alias = null,
-string $escapeChar = null
+    string $table,
+    string $schema = null,
+    string $alias = null,
+    string $escapeChar = null
 ): string;
 ```
 
 Prepares table for this RDBMS
+
 
 ## Db\DialectInterface
 
@@ -4691,11 +4715,13 @@ Phalcon\Db\DialectInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Dialect`](/5.15/api/phalcon_contracts/#contractsdbdialect)
-- **`Phalcon\Db\DialectInterface`**
+    - **`Phalcon\Db\DialectInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Dialect`
+
+
 
 ## Db\Dialect\Mysql
 
@@ -4707,11 +4733,12 @@ Generates database specific SQL for the MySQL RDBMS
 <div class="api-tree">
 
 - [`Phalcon\Db\Dialect`](#dbdialect)
-- **`Phalcon\Db\Dialect\Mysql`**
+    - **`Phalcon\Db\Dialect\Mysql`**
 
 </div>
 
 __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+
 
 ### Method Summary
 
@@ -4921,9 +4948,9 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 
 ```php
 public function addCheck(
-string $tableName,
-string $schemaName,
-CheckInterface $check
+    string $tableName,
+    string $schemaName,
+    CheckInterface $check
 ): string;
 ```
 
@@ -4934,9 +4961,9 @@ Enforced by MySQL 8.0.16+.
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): string;
 ```
 
@@ -4946,9 +4973,9 @@ Generates SQL to add a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): string;
 ```
 
@@ -4958,9 +4985,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -4970,9 +4997,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -4982,9 +5009,9 @@ Generates SQL to add the primary key to a table
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): string;
 ```
 
@@ -4994,9 +5021,9 @@ Generates SQL to create a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5006,8 +5033,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5015,7 +5042,7 @@ Generates SQL describing a table
 
 ```php
 print_r(
-$dialect->describeColumns("posts")
+    $dialect->describeColumns("posts")
 );
 ```
 
@@ -5023,8 +5050,8 @@ $dialect->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5034,8 +5061,8 @@ Generates SQL to query indexes on a table
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5045,9 +5072,9 @@ Generates SQL to query foreign keys on a table
 
 ```php
 public function dropCheck(
-string $tableName,
-string $schemaName,
-string $checkName
+    string $tableName,
+    string $schemaName,
+    string $checkName
 ): string;
 ```
 
@@ -5057,9 +5084,9 @@ Generates SQL to delete a CHECK constraint from a table
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): string;
 ```
 
@@ -5069,9 +5096,9 @@ Generates SQL to delete a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): string;
 ```
 
@@ -5081,9 +5108,9 @@ Generates SQL to delete a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): string;
 ```
 
@@ -5093,8 +5120,8 @@ Generates SQL to delete an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -5104,9 +5131,9 @@ Generates SQL to delete primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName = null,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5116,9 +5143,9 @@ Generates SQL to drop a table
 
 ```php
 public function dropView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5150,7 +5177,7 @@ List all tables in database
 
 ```php
 print_r(
-$dialect->listTables("blog")
+    $dialect->listTables("blog")
 );
 ```
 
@@ -5166,10 +5193,10 @@ Generates the SQL to list all views of a schema or user
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): string;
 ```
 
@@ -5179,9 +5206,9 @@ Generates SQL to modify a column in a table
 
 ```php
 public function onConflictUpdate(
-string $sqlQuery,
-array $conflictColumns,
-array $updateColumns
+    string $sqlQuery,
+    array $conflictColumns,
+    array $updateColumns
 ): string;
 ```
 
@@ -5195,8 +5222,8 @@ SQL on MySQL connections.
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -5225,8 +5252,8 @@ upsert clause; `onConflictUpdate()` throws.
 
 ```php
 public function tableExists(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5242,8 +5269,8 @@ echo $dialect->tableExists("posts");
 
 ```php
 public function tableOptions(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5253,8 +5280,8 @@ Generates the SQL to describe the table creation options
 
 ```php
 public function truncateTable(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -5264,8 +5291,8 @@ Generates SQL to truncate a table
 
 ```php
 public function viewExists(
-string $viewName,
-string $schemaName = null
+    string $viewName,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5281,6 +5308,7 @@ protected function getTableOptions( array $definition ): string;
 
 Generates SQL to add the table creation options
 
+
 ## Db\Dialect\Postgresql
 
 <span class="badge badge--class">Class</span>
@@ -5291,11 +5319,12 @@ Generates database specific SQL for the PostgreSQL RDBMS
 <div class="api-tree">
 
 - [`Phalcon\Db\Dialect`](#dbdialect)
-- **`Phalcon\Db\Dialect\Postgresql`**
+    - **`Phalcon\Db\Dialect\Postgresql`**
 
 </div>
 
 __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+
 
 ### Method Summary
 
@@ -5527,9 +5556,9 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 
 ```php
 public function addCheck(
-string $tableName,
-string $schemaName,
-CheckInterface $check
+    string $tableName,
+    string $schemaName,
+    CheckInterface $check
 ): string;
 ```
 
@@ -5539,9 +5568,9 @@ Generates SQL to add a CHECK constraint to an existing table.
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): string;
 ```
 
@@ -5551,9 +5580,9 @@ Generates SQL to add a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): string;
 ```
 
@@ -5563,9 +5592,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -5575,9 +5604,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -5587,9 +5616,9 @@ Generates SQL to add the primary key to a table
 
 ```php
 public function createMaterializedView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5599,9 +5628,9 @@ Generates SQL to create a materialized view.
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): string;
 ```
 
@@ -5611,9 +5640,9 @@ Generates SQL to create a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5623,8 +5652,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5632,7 +5661,7 @@ Generates SQL describing a table
 
 ```php
 print_r(
-$dialect->describeColumns("posts")
+    $dialect->describeColumns("posts")
 );
 ```
 
@@ -5640,8 +5669,8 @@ $dialect->describeColumns("posts")
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5651,8 +5680,8 @@ Generates SQL to query indexes on a table
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5662,9 +5691,9 @@ Generates SQL to query foreign keys on a table
 
 ```php
 public function dropCheck(
-string $tableName,
-string $schemaName,
-string $checkName
+    string $tableName,
+    string $schemaName,
+    string $checkName
 ): string;
 ```
 
@@ -5674,9 +5703,9 @@ Generates SQL to delete a CHECK constraint from a table
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): string;
 ```
 
@@ -5686,9 +5715,9 @@ Generates SQL to delete a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): string;
 ```
 
@@ -5698,9 +5727,9 @@ Generates SQL to delete a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): string;
 ```
 
@@ -5710,9 +5739,9 @@ Generates SQL to delete an index from a table
 
 ```php
 public function dropMaterializedView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5722,8 +5751,8 @@ Generates SQL to drop a materialized view.
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -5733,9 +5762,9 @@ Generates SQL to delete primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName = null,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5745,9 +5774,9 @@ Generates SQL to drop a table
 
 ```php
 public function dropView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5771,7 +5800,7 @@ List all tables in database
 
 ```php
 print_r(
-$dialect->listTables("blog")
+    $dialect->listTables("blog")
 );
 ```
 
@@ -5787,10 +5816,10 @@ Generates the SQL to list all views of a schema or user
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): string;
 ```
 
@@ -5800,9 +5829,9 @@ Generates SQL to modify a column in a table
 
 ```php
 public function refreshMaterializedView(
-string $viewName,
-string $schemaName = null,
-bool $concurrent = false
+    string $viewName,
+    string $schemaName = null,
+    bool $concurrent = false
 ): string;
 ```
 
@@ -5814,8 +5843,8 @@ blocking concurrent SELECTs; requires a unique index on the view).
 
 ```php
 public function returning(
-string $sqlQuery,
-array $columns
+    string $sqlQuery,
+    array $columns
 ): string;
 ```
 
@@ -5826,8 +5855,8 @@ statement. Pass `["*"]` for `RETURNING *`, or a list of column names.
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -5841,8 +5870,8 @@ echo $dialect->sharedLock("SELECT * FROM robots");
 // SELECT * FROM robots FOR SHARE
 
 echo $dialect->sharedLock(
-"SELECT * FROM robots",
-Dialect::LOCK_NOWAIT
+    "SELECT * FROM robots",
+    Dialect::LOCK_NOWAIT
 );
 // SELECT * FROM robots FOR SHARE NOWAIT
 ```
@@ -5867,8 +5896,8 @@ PostgreSQL supports the `RETURNING` clause.
 
 ```php
 public function tableExists(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5884,8 +5913,8 @@ echo $dialect->tableExists("posts");
 
 ```php
 public function tableOptions(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5895,8 +5924,8 @@ Generates the SQL to describe the table creation options
 
 ```php
 public function truncateTable(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -5906,8 +5935,8 @@ Generates SQL to truncate a table
 
 ```php
 public function viewExists(
-string $viewName,
-string $schemaName = null
+    string $viewName,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5927,6 +5956,7 @@ protected function castDefault( ColumnInterface $column ): string;
 protected function getTableOptions( array $definition ): string;
 ```
 
+
 ## Db\Dialect\Sqlite
 
 <span class="badge badge--class">Class</span>
@@ -5937,11 +5967,12 @@ Generates database specific SQL for the SQLite RDBMS
 <div class="api-tree">
 
 - [`Phalcon\Db\Dialect`](#dbdialect)
-- **`Phalcon\Db\Dialect\Sqlite`**
+    - **`Phalcon\Db\Dialect\Sqlite`**
 
 </div>
 
 __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+
 
 ### Method Summary
 
@@ -6163,9 +6194,9 @@ __Uses__ `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Colum
 
 ```php
 public function addCheck(
-string $tableName,
-string $schemaName,
-CheckInterface $check
+    string $tableName,
+    string $schemaName,
+    CheckInterface $check
 ): string;
 ```
 
@@ -6176,9 +6207,9 @@ the constraint must be declared at CREATE TABLE time.
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): string;
 ```
 
@@ -6188,9 +6219,9 @@ Generates SQL to add a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): string;
 ```
 
@@ -6200,9 +6231,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -6212,9 +6243,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -6224,9 +6255,9 @@ Generates SQL to add the primary key to a table
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): string;
 ```
 
@@ -6236,9 +6267,9 @@ Generates SQL to create a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): string;
 ```
 
@@ -6248,8 +6279,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -6257,7 +6288,7 @@ Generates SQL describing a table
 
 ```php
 print_r(
-$dialect->describeColumns("posts")
+    $dialect->describeColumns("posts")
 );
 ```
 
@@ -6273,8 +6304,8 @@ Generates SQL to query indexes detail on a table
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -6284,8 +6315,8 @@ Generates SQL to query indexes on a table
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -6295,9 +6326,9 @@ Generates SQL to query foreign keys on a table
 
 ```php
 public function dropCheck(
-string $tableName,
-string $schemaName,
-string $checkName
+    string $tableName,
+    string $schemaName,
+    string $checkName
 ): string;
 ```
 
@@ -6307,9 +6338,9 @@ SQLite cannot DROP a CHECK constraint from an existing table.
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): string;
 ```
 
@@ -6324,9 +6355,9 @@ callers on 3.35+ can use the feature.
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): string;
 ```
 
@@ -6336,9 +6367,9 @@ Generates SQL to delete a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): string;
 ```
 
@@ -6348,8 +6379,8 @@ Generates SQL to delete an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -6359,9 +6390,9 @@ Generates SQL to delete primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName = null,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -6371,9 +6402,9 @@ Generates SQL to drop a table
 
 ```php
 public function dropView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -6383,8 +6414,8 @@ Generates SQL to drop a view
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -6405,9 +6436,9 @@ Gets the column name in SQLite
 
 ```php
 public function listIndexesSql(
-string $table,
-string $schema = null,
-string $keyName = null
+    string $table,
+    string $schema = null,
+    string $keyName = null
 ): string;
 ```
 
@@ -6415,7 +6446,7 @@ Generates the SQL to get query list of indexes
 
 ```php
 print_r(
-$dialect->listIndexesSql("blog")
+    $dialect->listIndexesSql("blog")
 );
 ```
 
@@ -6429,7 +6460,7 @@ List all tables in database
 
 ```php
 print_r(
-$dialect->listTables("blog")
+    $dialect->listTables("blog")
 );
 ```
 
@@ -6445,10 +6476,10 @@ Generates the SQL to list all views of a schema or user
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): string;
 ```
 
@@ -6458,8 +6489,8 @@ Generates SQL to modify a column in a table
 
 ```php
 public function returning(
-string $sqlQuery,
-array $columns
+    string $sqlQuery,
+    array $columns
 ): string;
 ```
 
@@ -6471,8 +6502,8 @@ or a list of column names.
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -6501,8 +6532,8 @@ SQLite (3.35+) supports the `RETURNING` clause.
 
 ```php
 public function tableExists(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): string;
 ```
 
@@ -6518,8 +6549,8 @@ echo $dialect->tableExists("posts");
 
 ```php
 public function tableOptions(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -6529,8 +6560,8 @@ Generates the SQL to describe the table creation options
 
 ```php
 public function truncateTable(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -6540,12 +6571,13 @@ Generates SQL to truncate a table
 
 ```php
 public function viewExists(
-string $viewName,
-string $schemaName = null
+    string $viewName,
+    string $schemaName = null
 ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
+
 
 ## Db\Enum
 
@@ -6641,6 +6673,7 @@ Constants for Phalcon\Db
 </div>
 </div>
 
+
 ## Db\Exception
 
 <span class="badge badge--class">Class</span>
@@ -6651,61 +6684,62 @@ Exceptions thrown in Phalcon\Db will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Db\Exception`**
-- [`Phalcon\Db\Exceptions\CannotInsertWithoutData`](#dbexceptionscannotinsertwithoutdata)
-- [`Phalcon\Db\Exceptions\CannotPrepareStatement`](#dbexceptionscannotpreparestatement)
-- [`Phalcon\Db\Exceptions\CheckExpressionRequired`](#dbexceptionscheckexpressionrequired)
-- [`Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement`](#dbexceptionscolumntyperejectsautoincrement)
-- [`Phalcon\Db\Exceptions\ColumnTypeRejectsScale`](#dbexceptionscolumntyperejectsscale)
-- [`Phalcon\Db\Exceptions\ColumnTypeRequired`](#dbexceptionscolumntyperequired)
-- [`Phalcon\Db\Exceptions\ConflictTargetColumnRequired`](#dbexceptionsconflicttargetcolumnrequired)
-- [`Phalcon\Db\Exceptions\ConflictUpdateColumnRequired`](#dbexceptionsconflictupdatecolumnrequired)
-- [`Phalcon\Db\Exceptions\ForeignKeyColumnsRequired`](#dbexceptionsforeignkeycolumnsrequired)
-- [`Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict`](#dbexceptionsgeneratedautoincrementconflict)
-- [`Phalcon\Db\Exceptions\GeneratedDefaultConflict`](#dbexceptionsgenerateddefaultconflict)
-- [`Phalcon\Db\Exceptions\IncompleteBindTypes`](#dbexceptionsincompletebindtypes)
-- [`Phalcon\Db\Exceptions\InvalidBindParameter`](#dbexceptionsinvalidbindparameter)
-- [`Phalcon\Db\Exceptions\InvalidCheckExpression`](#dbexceptionsinvalidcheckexpression)
-- [`Phalcon\Db\Exceptions\InvalidDialectClass`](#dbexceptionsinvaliddialectclass)
-- [`Phalcon\Db\Exceptions\InvalidGenerationExpression`](#dbexceptionsinvalidgenerationexpression)
-- [`Phalcon\Db\Exceptions\InvalidGroupByExpression`](#dbexceptionsinvalidgroupbyexpression)
-- [`Phalcon\Db\Exceptions\InvalidIndexColumns`](#dbexceptionsinvalidindexcolumns)
-- [`Phalcon\Db\Exceptions\InvalidIndexDirections`](#dbexceptionsinvalidindexdirections)
-- [`Phalcon\Db\Exceptions\InvalidIndexWhere`](#dbexceptionsinvalidindexwhere)
-- [`Phalcon\Db\Exceptions\InvalidListExpression`](#dbexceptionsinvalidlistexpression)
-- [`Phalcon\Db\Exceptions\InvalidOrderByExpression`](#dbexceptionsinvalidorderbyexpression)
-- [`Phalcon\Db\Exceptions\InvalidSqlExpression`](#dbexceptionsinvalidsqlexpression)
-- [`Phalcon\Db\Exceptions\InvalidSqlExpressionType`](#dbexceptionsinvalidsqlexpressiontype)
-- [`Phalcon\Db\Exceptions\InvalidUnaryExpression`](#dbexceptionsinvalidunaryexpression)
-- [`Phalcon\Db\Exceptions\InvalidWhereConditions`](#dbexceptionsinvalidwhereconditions)
-- [`Phalcon\Db\Exceptions\InvalidWkb`](#dbexceptionsinvalidwkb)
-- [`Phalcon\Db\Exceptions\MatchedParameterNotFound`](#dbexceptionsmatchedparameternotfound)
-- [`Phalcon\Db\Exceptions\MaterializedViewsNotSupported`](#dbexceptionsmaterializedviewsnotsupported)
-- [`Phalcon\Db\Exceptions\MissingDefinitionKey`](#dbexceptionsmissingdefinitionkey)
-- [`Phalcon\Db\Exceptions\MissingForeignKeyChecks`](#dbexceptionsmissingforeignkeychecks)
-- [`Phalcon\Db\Exceptions\MissingSqliteDatabase`](#dbexceptionsmissingsqlitedatabase)
-- [`Phalcon\Db\Exceptions\MysqlOnConflictNotSupported`](#dbexceptionsmysqlonconflictnotsupported)
-- [`Phalcon\Db\Exceptions\NestedTransactionChangeBlocked`](#dbexceptionsnestedtransactionchangeblocked)
-- [`Phalcon\Db\Exceptions\NoActiveTransaction`](#dbexceptionsnoactivetransaction)
-- [`Phalcon\Db\Exceptions\ReferencedColumnCountMismatch`](#dbexceptionsreferencedcolumncountmismatch)
-- [`Phalcon\Db\Exceptions\ReferencedColumnsRequired`](#dbexceptionsreferencedcolumnsrequired)
-- [`Phalcon\Db\Exceptions\ReferencedTableRequired`](#dbexceptionsreferencedtablerequired)
-- [`Phalcon\Db\Exceptions\ReturningNotSupported`](#dbexceptionsreturningnotsupported)
-- [`Phalcon\Db\Exceptions\ReturningRequiresColumn`](#dbexceptionsreturningrequirescolumn)
-- [`Phalcon\Db\Exceptions\SavepointsNotSupported`](#dbexceptionssavepointsnotsupported)
-- [`Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported`](#dbexceptionssqlitealterchecknotsupported)
-- [`Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported`](#dbexceptionssqlitealtercolumnnotsupported)
-- [`Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported`](#dbexceptionssqlitealterforeignkeynotsupported)
-- [`Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported`](#dbexceptionssqlitealterprimarykeynotsupported)
-- [`Phalcon\Db\Exceptions\SqliteDropCheckNotSupported`](#dbexceptionssqlitedropchecknotsupported)
-- [`Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported`](#dbexceptionssqlitedropforeignkeynotsupported)
-- [`Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported`](#dbexceptionssqlitedropprimarykeynotsupported)
-- [`Phalcon\Db\Exceptions\TableMustHaveColumn`](#dbexceptionstablemusthavecolumn)
-- [`Phalcon\Db\Exceptions\UnrecognizedDataType`](#dbexceptionsunrecognizeddatatype)
-- [`Phalcon\Db\Exceptions\UnsupportedOperator`](#dbexceptionsunsupportedoperator)
-- [`Phalcon\Db\Exceptions\UpdateFieldCountMismatch`](#dbexceptionsupdatefieldcountmismatch)
+    - **`Phalcon\Db\Exception`**
+        - [`Phalcon\Db\Exceptions\CannotInsertWithoutData`](#dbexceptionscannotinsertwithoutdata)
+        - [`Phalcon\Db\Exceptions\CannotPrepareStatement`](#dbexceptionscannotpreparestatement)
+        - [`Phalcon\Db\Exceptions\CheckExpressionRequired`](#dbexceptionscheckexpressionrequired)
+        - [`Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement`](#dbexceptionscolumntyperejectsautoincrement)
+        - [`Phalcon\Db\Exceptions\ColumnTypeRejectsScale`](#dbexceptionscolumntyperejectsscale)
+        - [`Phalcon\Db\Exceptions\ColumnTypeRequired`](#dbexceptionscolumntyperequired)
+        - [`Phalcon\Db\Exceptions\ConflictTargetColumnRequired`](#dbexceptionsconflicttargetcolumnrequired)
+        - [`Phalcon\Db\Exceptions\ConflictUpdateColumnRequired`](#dbexceptionsconflictupdatecolumnrequired)
+        - [`Phalcon\Db\Exceptions\ForeignKeyColumnsRequired`](#dbexceptionsforeignkeycolumnsrequired)
+        - [`Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict`](#dbexceptionsgeneratedautoincrementconflict)
+        - [`Phalcon\Db\Exceptions\GeneratedDefaultConflict`](#dbexceptionsgenerateddefaultconflict)
+        - [`Phalcon\Db\Exceptions\IncompleteBindTypes`](#dbexceptionsincompletebindtypes)
+        - [`Phalcon\Db\Exceptions\InvalidBindParameter`](#dbexceptionsinvalidbindparameter)
+        - [`Phalcon\Db\Exceptions\InvalidCheckExpression`](#dbexceptionsinvalidcheckexpression)
+        - [`Phalcon\Db\Exceptions\InvalidDialectClass`](#dbexceptionsinvaliddialectclass)
+        - [`Phalcon\Db\Exceptions\InvalidGenerationExpression`](#dbexceptionsinvalidgenerationexpression)
+        - [`Phalcon\Db\Exceptions\InvalidGroupByExpression`](#dbexceptionsinvalidgroupbyexpression)
+        - [`Phalcon\Db\Exceptions\InvalidIndexColumns`](#dbexceptionsinvalidindexcolumns)
+        - [`Phalcon\Db\Exceptions\InvalidIndexDirections`](#dbexceptionsinvalidindexdirections)
+        - [`Phalcon\Db\Exceptions\InvalidIndexWhere`](#dbexceptionsinvalidindexwhere)
+        - [`Phalcon\Db\Exceptions\InvalidListExpression`](#dbexceptionsinvalidlistexpression)
+        - [`Phalcon\Db\Exceptions\InvalidOrderByExpression`](#dbexceptionsinvalidorderbyexpression)
+        - [`Phalcon\Db\Exceptions\InvalidSqlExpression`](#dbexceptionsinvalidsqlexpression)
+        - [`Phalcon\Db\Exceptions\InvalidSqlExpressionType`](#dbexceptionsinvalidsqlexpressiontype)
+        - [`Phalcon\Db\Exceptions\InvalidUnaryExpression`](#dbexceptionsinvalidunaryexpression)
+        - [`Phalcon\Db\Exceptions\InvalidWhereConditions`](#dbexceptionsinvalidwhereconditions)
+        - [`Phalcon\Db\Exceptions\InvalidWkb`](#dbexceptionsinvalidwkb)
+        - [`Phalcon\Db\Exceptions\MatchedParameterNotFound`](#dbexceptionsmatchedparameternotfound)
+        - [`Phalcon\Db\Exceptions\MaterializedViewsNotSupported`](#dbexceptionsmaterializedviewsnotsupported)
+        - [`Phalcon\Db\Exceptions\MissingDefinitionKey`](#dbexceptionsmissingdefinitionkey)
+        - [`Phalcon\Db\Exceptions\MissingForeignKeyChecks`](#dbexceptionsmissingforeignkeychecks)
+        - [`Phalcon\Db\Exceptions\MissingSqliteDatabase`](#dbexceptionsmissingsqlitedatabase)
+        - [`Phalcon\Db\Exceptions\MysqlOnConflictNotSupported`](#dbexceptionsmysqlonconflictnotsupported)
+        - [`Phalcon\Db\Exceptions\NestedTransactionChangeBlocked`](#dbexceptionsnestedtransactionchangeblocked)
+        - [`Phalcon\Db\Exceptions\NoActiveTransaction`](#dbexceptionsnoactivetransaction)
+        - [`Phalcon\Db\Exceptions\ReferencedColumnCountMismatch`](#dbexceptionsreferencedcolumncountmismatch)
+        - [`Phalcon\Db\Exceptions\ReferencedColumnsRequired`](#dbexceptionsreferencedcolumnsrequired)
+        - [`Phalcon\Db\Exceptions\ReferencedTableRequired`](#dbexceptionsreferencedtablerequired)
+        - [`Phalcon\Db\Exceptions\ReturningNotSupported`](#dbexceptionsreturningnotsupported)
+        - [`Phalcon\Db\Exceptions\ReturningRequiresColumn`](#dbexceptionsreturningrequirescolumn)
+        - [`Phalcon\Db\Exceptions\SavepointsNotSupported`](#dbexceptionssavepointsnotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported`](#dbexceptionssqlitealterchecknotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported`](#dbexceptionssqlitealtercolumnnotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported`](#dbexceptionssqlitealterforeignkeynotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported`](#dbexceptionssqlitealterprimarykeynotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteDropCheckNotSupported`](#dbexceptionssqlitedropchecknotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported`](#dbexceptionssqlitedropforeignkeynotsupported)
+        - [`Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported`](#dbexceptionssqlitedropprimarykeynotsupported)
+        - [`Phalcon\Db\Exceptions\TableMustHaveColumn`](#dbexceptionstablemusthavecolumn)
+        - [`Phalcon\Db\Exceptions\UnrecognizedDataType`](#dbexceptionsunrecognizeddatatype)
+        - [`Phalcon\Db\Exceptions\UnsupportedOperator`](#dbexceptionsunsupportedoperator)
+        - [`Phalcon\Db\Exceptions\UpdateFieldCountMismatch`](#dbexceptionsupdatefieldcountmismatch)
 
 </div>
+
 
 ## Db\Exceptions\CannotInsertWithoutData
 
@@ -6715,12 +6749,13 @@ Exceptions thrown in Phalcon\Db will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\CannotInsertWithoutData`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\CannotInsertWithoutData`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6741,6 +6776,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct( string $table );
 ```
 
+
 ## Db\Exceptions\CannotPrepareStatement
 
 <span class="badge badge--class">Class</span>
@@ -6749,12 +6785,13 @@ public function __construct( string $table );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\CannotPrepareStatement`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\CannotPrepareStatement`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6775,6 +6812,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\CheckExpressionRequired
 
 <span class="badge badge--class">Class</span>
@@ -6783,12 +6821,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\CheckExpressionRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\CheckExpressionRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6809,6 +6848,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ColumnTypeRejectsAutoIncrement
 
 <span class="badge badge--class">Class</span>
@@ -6817,12 +6857,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6843,6 +6884,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ColumnTypeRejectsScale
 
 <span class="badge badge--class">Class</span>
@@ -6851,12 +6893,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ColumnTypeRejectsScale`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ColumnTypeRejectsScale`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6877,6 +6920,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ColumnTypeRequired
 
 <span class="badge badge--class">Class</span>
@@ -6885,12 +6929,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ColumnTypeRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ColumnTypeRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6911,6 +6956,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ConflictTargetColumnRequired
 
 <span class="badge badge--class">Class</span>
@@ -6919,12 +6965,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ConflictTargetColumnRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ConflictTargetColumnRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6945,6 +6992,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ConflictUpdateColumnRequired
 
 <span class="badge badge--class">Class</span>
@@ -6953,12 +7001,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ConflictUpdateColumnRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ConflictUpdateColumnRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -6979,6 +7028,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ForeignKeyColumnsRequired
 
 <span class="badge badge--class">Class</span>
@@ -6987,12 +7037,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ForeignKeyColumnsRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ForeignKeyColumnsRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7013,6 +7064,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\GeneratedAutoIncrementConflict
 
 <span class="badge badge--class">Class</span>
@@ -7021,12 +7073,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7047,6 +7100,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\GeneratedDefaultConflict
 
 <span class="badge badge--class">Class</span>
@@ -7055,12 +7109,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\GeneratedDefaultConflict`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\GeneratedDefaultConflict`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7081,6 +7136,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\IncompleteBindTypes
 
 <span class="badge badge--class">Class</span>
@@ -7089,12 +7145,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\IncompleteBindTypes`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\IncompleteBindTypes`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7115,6 +7172,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidBindParameter
 
 <span class="badge badge--class">Class</span>
@@ -7123,12 +7181,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidBindParameter`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidBindParameter`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7149,6 +7208,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidCheckExpression
 
 <span class="badge badge--class">Class</span>
@@ -7157,12 +7217,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidCheckExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidCheckExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7183,6 +7244,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidDialectClass
 
 <span class="badge badge--class">Class</span>
@@ -7191,12 +7253,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidDialectClass`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidDialectClass`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7217,6 +7280,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Db\Exceptions\InvalidGenerationExpression
 
 <span class="badge badge--class">Class</span>
@@ -7225,12 +7289,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidGenerationExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidGenerationExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7251,6 +7316,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidGroupByExpression
 
 <span class="badge badge--class">Class</span>
@@ -7259,12 +7325,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidGroupByExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidGroupByExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7285,6 +7352,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidIndexColumns
 
 <span class="badge badge--class">Class</span>
@@ -7293,12 +7361,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidIndexColumns`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidIndexColumns`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7319,6 +7388,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidIndexDirections
 
 <span class="badge badge--class">Class</span>
@@ -7327,12 +7397,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidIndexDirections`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidIndexDirections`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7353,6 +7424,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidIndexWhere
 
 <span class="badge badge--class">Class</span>
@@ -7361,12 +7433,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidIndexWhere`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidIndexWhere`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7387,6 +7460,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidListExpression
 
 <span class="badge badge--class">Class</span>
@@ -7395,12 +7469,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidListExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidListExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7421,6 +7496,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidOrderByExpression
 
 <span class="badge badge--class">Class</span>
@@ -7429,12 +7505,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidOrderByExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidOrderByExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7455,6 +7532,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidSqlExpression
 
 <span class="badge badge--class">Class</span>
@@ -7463,12 +7541,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidSqlExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidSqlExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7489,6 +7568,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidSqlExpressionType
 
 <span class="badge badge--class">Class</span>
@@ -7497,12 +7577,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidSqlExpressionType`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidSqlExpressionType`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7523,6 +7604,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Db\Exceptions\InvalidUnaryExpression
 
 <span class="badge badge--class">Class</span>
@@ -7531,12 +7613,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidUnaryExpression`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidUnaryExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7557,6 +7640,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidWhereConditions
 
 <span class="badge badge--class">Class</span>
@@ -7565,12 +7649,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidWhereConditions`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidWhereConditions`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7591,6 +7676,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\InvalidWkb
 
 <span class="badge badge--class">Class</span>
@@ -7599,12 +7685,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\InvalidWkb`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\InvalidWkb`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7625,6 +7712,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct( string $reason );
 ```
 
+
 ## Db\Exceptions\MatchedParameterNotFound
 
 <span class="badge badge--class">Class</span>
@@ -7633,12 +7721,13 @@ public function __construct( string $reason );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\MatchedParameterNotFound`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\MatchedParameterNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7659,6 +7748,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\MaterializedViewsNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -7667,12 +7757,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\MaterializedViewsNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\MaterializedViewsNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7693,6 +7784,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\MissingDefinitionKey
 
 <span class="badge badge--class">Class</span>
@@ -7701,12 +7793,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\MissingDefinitionKey`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\MissingDefinitionKey`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7727,6 +7820,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct( string $key );
 ```
 
+
 ## Db\Exceptions\MissingForeignKeyChecks
 
 <span class="badge badge--class">Class</span>
@@ -7735,12 +7829,13 @@ public function __construct( string $key );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\MissingForeignKeyChecks`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\MissingForeignKeyChecks`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7761,6 +7856,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\MissingSqliteDatabase
 
 <span class="badge badge--class">Class</span>
@@ -7769,12 +7865,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\MissingSqliteDatabase`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\MissingSqliteDatabase`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7795,6 +7892,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\MysqlOnConflictNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -7803,12 +7901,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\MysqlOnConflictNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\MysqlOnConflictNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7829,6 +7928,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\NestedTransactionChangeBlocked
 
 <span class="badge badge--class">Class</span>
@@ -7837,12 +7937,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\NestedTransactionChangeBlocked`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\NestedTransactionChangeBlocked`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7863,6 +7964,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\NoActiveTransaction
 
 <span class="badge badge--class">Class</span>
@@ -7871,12 +7973,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\NoActiveTransaction`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\NoActiveTransaction`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7897,6 +8000,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ReferencedColumnCountMismatch
 
 <span class="badge badge--class">Class</span>
@@ -7905,12 +8009,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ReferencedColumnCountMismatch`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ReferencedColumnCountMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7931,6 +8036,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ReferencedColumnsRequired
 
 <span class="badge badge--class">Class</span>
@@ -7939,12 +8045,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ReferencedColumnsRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ReferencedColumnsRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7965,6 +8072,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ReferencedTableRequired
 
 <span class="badge badge--class">Class</span>
@@ -7973,12 +8081,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ReferencedTableRequired`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ReferencedTableRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -7999,6 +8108,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ReturningNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8007,12 +8117,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ReturningNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ReturningNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8033,6 +8144,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\ReturningRequiresColumn
 
 <span class="badge badge--class">Class</span>
@@ -8041,12 +8153,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\ReturningRequiresColumn`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\ReturningRequiresColumn`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8067,6 +8180,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SavepointsNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8075,12 +8189,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SavepointsNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SavepointsNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8101,6 +8216,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteAlterCheckNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8109,12 +8225,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8135,6 +8252,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteAlterColumnNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8143,12 +8261,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8169,6 +8288,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteAlterForeignKeyNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8177,12 +8297,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8203,6 +8324,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteAlterPrimaryKeyNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8211,12 +8333,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8237,6 +8360,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteDropCheckNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8245,12 +8369,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteDropCheckNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteDropCheckNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8271,6 +8396,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteDropForeignKeyNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8279,12 +8405,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8305,6 +8432,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\SqliteDropPrimaryKeyNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -8313,12 +8441,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8339,6 +8468,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\TableMustHaveColumn
 
 <span class="badge badge--class">Class</span>
@@ -8347,12 +8477,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\TableMustHaveColumn`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\TableMustHaveColumn`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8373,6 +8504,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Exceptions\UnrecognizedDataType
 
 <span class="badge badge--class">Class</span>
@@ -8381,12 +8513,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\UnrecognizedDataType`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\UnrecognizedDataType`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8405,10 +8538,11 @@ __Uses__ `Phalcon\Db\Exception`
 
 ```php
 public function __construct(
-string $dialect,
-string $column
+    string $dialect,
+    string $column
 );
 ```
+
 
 ## Db\Exceptions\UnsupportedOperator
 
@@ -8418,12 +8552,13 @@ string $column
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\UnsupportedOperator`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\UnsupportedOperator`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8444,6 +8579,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct( string $operator );
 ```
 
+
 ## Db\Exceptions\UpdateFieldCountMismatch
 
 <span class="badge badge--class">Class</span>
@@ -8452,12 +8588,13 @@ public function __construct( string $operator );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Db\Exception`](#dbexception)
-- **`Phalcon\Db\Exceptions\UpdateFieldCountMismatch`**
+    - [`Phalcon\Db\Exception`](#dbexception)
+        - **`Phalcon\Db\Exceptions\UpdateFieldCountMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Exception`
+
 
 ### Method Summary
 
@@ -8478,6 +8615,7 @@ __Uses__ `Phalcon\Db\Exception`
 public function __construct();
 ```
 
+
 ## Db\Geometry\AbstractGeometry
 
 <span class="badge badge--abstract">Abstract</span>
@@ -8486,13 +8624,13 @@ public function __construct();
 <div class="api-tree">
 
 - **`Phalcon\Db\Geometry\AbstractGeometry`** — implements [`Phalcon\Db\Geometry\GeometryInterface`](#dbgeometrygeometryinterface)
-- [`Phalcon\Db\Geometry\GeometryCollection`](#dbgeometrygeometrycollection)
-- [`Phalcon\Db\Geometry\LineString`](#dbgeometrylinestring)
-- [`Phalcon\Db\Geometry\MultiLineString`](#dbgeometrymultilinestring)
-- [`Phalcon\Db\Geometry\MultiPoint`](#dbgeometrymultipoint)
-- [`Phalcon\Db\Geometry\MultiPolygon`](#dbgeometrymultipolygon)
-- [`Phalcon\Db\Geometry\Point`](#dbgeometrypoint)
-- [`Phalcon\Db\Geometry\Polygon`](#dbgeometrypolygon)
+    - [`Phalcon\Db\Geometry\GeometryCollection`](#dbgeometrygeometrycollection)
+    - [`Phalcon\Db\Geometry\LineString`](#dbgeometrylinestring)
+    - [`Phalcon\Db\Geometry\MultiLineString`](#dbgeometrymultilinestring)
+    - [`Phalcon\Db\Geometry\MultiPoint`](#dbgeometrymultipoint)
+    - [`Phalcon\Db\Geometry\MultiPolygon`](#dbgeometrymultipolygon)
+    - [`Phalcon\Db\Geometry\Point`](#dbgeometrypoint)
+    - [`Phalcon\Db\Geometry\Polygon`](#dbgeometrypolygon)
 
 </div>
 
@@ -8559,6 +8697,7 @@ abstract public function getType(): int;
 abstract public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\GeometryCollection
 
 <span class="badge badge--class">Class</span>
@@ -8567,11 +8706,12 @@ abstract public function toWkt(): string;
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\GeometryCollection`**
+    - **`Phalcon\Db\Geometry\GeometryCollection`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -8615,8 +8755,8 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-array $geometries,
-int $srid = 0
+    array $geometries,
+    int $srid = 0
 );
 ```
 
@@ -8638,6 +8778,7 @@ public function getType(): int;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\GeometryInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -8648,11 +8789,13 @@ Phalcon\Db\Geometry\GeometryInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Geometry\Geometry`](/5.15/api/phalcon_contracts/#contractsdbgeometrygeometry)
-- **`Phalcon\Db\Geometry\GeometryInterface`**
+    - **`Phalcon\Db\Geometry\GeometryInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Geometry\Geometry`
+
+
 
 ## Db\Geometry\LineString
 
@@ -8662,11 +8805,12 @@ __Uses__ `Phalcon\Contracts\Db\Geometry\Geometry`
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\LineString`**
+    - **`Phalcon\Db\Geometry\LineString`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -8715,8 +8859,8 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-array $points,
-int $srid = 0
+    array $points,
+    int $srid = 0
 );
 ```
 
@@ -8744,6 +8888,7 @@ public function pointsWkt(): string;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\MultiLineString
 
 <span class="badge badge--class">Class</span>
@@ -8752,11 +8897,12 @@ public function toWkt(): string;
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\MultiLineString`**
+    - **`Phalcon\Db\Geometry\MultiLineString`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -8800,8 +8946,8 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-array $lineStrings,
-int $srid = 0
+    array $lineStrings,
+    int $srid = 0
 );
 ```
 
@@ -8823,6 +8969,7 @@ public function getType(): int;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\MultiPoint
 
 <span class="badge badge--class">Class</span>
@@ -8831,11 +8978,12 @@ public function toWkt(): string;
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\MultiPoint`**
+    - **`Phalcon\Db\Geometry\MultiPoint`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -8879,8 +9027,8 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-array $points,
-int $srid = 0
+    array $points,
+    int $srid = 0
 );
 ```
 
@@ -8902,6 +9050,7 @@ public function getType(): int;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\MultiPolygon
 
 <span class="badge badge--class">Class</span>
@@ -8910,11 +9059,12 @@ public function toWkt(): string;
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\MultiPolygon`**
+    - **`Phalcon\Db\Geometry\MultiPolygon`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -8958,8 +9108,8 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-array $polygons,
-int $srid = 0
+    array $polygons,
+    int $srid = 0
 );
 ```
 
@@ -8981,6 +9131,7 @@ public function getType(): int;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\Point
 
 <span class="badge badge--class">Class</span>
@@ -8989,11 +9140,12 @@ public function toWkt(): string;
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\Point`**
+    - **`Phalcon\Db\Geometry\Point`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -9052,9 +9204,9 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-double $x,
-double $y,
-int $srid = 0
+    double $x,
+    double $y,
+    int $srid = 0
 );
 ```
 
@@ -9088,6 +9240,7 @@ public function getY(): double;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\Polygon
 
 <span class="badge badge--class">Class</span>
@@ -9096,11 +9249,12 @@ public function toWkt(): string;
 <div class="api-tree">
 
 - [`Phalcon\Db\Geometry\AbstractGeometry`](#dbgeometryabstractgeometry)
-- **`Phalcon\Db\Geometry\Polygon`**
+    - **`Phalcon\Db\Geometry\Polygon`**
 
 </div>
 
 __Uses__ `Phalcon\Db\Column`
+
 
 ### Method Summary
 
@@ -9149,8 +9303,8 @@ __Uses__ `Phalcon\Db\Column`
 
 ```php
 public function __construct(
-array $rings,
-int $srid = 0
+    array $rings,
+    int $srid = 0
 );
 ```
 
@@ -9178,6 +9332,7 @@ public function ringsWkt(): string;
 public function toWkt(): string;
 ```
 
+
 ## Db\Geometry\WkbParser
 
 <span class="badge badge--class">Class</span>
@@ -9196,6 +9351,7 @@ any Z/M ordinates are read past and discarded.
 </div>
 
 __Uses__ `Phalcon\Db\Exceptions\InvalidWkb`
+
 
 ### Method Summary
 
@@ -9301,10 +9457,10 @@ protected function readGeometry( int $outerSrid ): GeometryInterface;
 
 ```php
 protected function readPoint(
-bool $little,
-bool $hasZ,
-bool $hasM,
-int $srid
+    bool $little,
+    bool $hasZ,
+    bool $hasM,
+    int $srid
 ): Point;
 ```
 
@@ -9312,9 +9468,9 @@ int $srid
 
 ```php
 protected function readPointList(
-bool $little,
-bool $hasZ,
-bool $hasM
+    bool $little,
+    bool $hasZ,
+    bool $hasM
 ): array;
 ```
 
@@ -9322,9 +9478,9 @@ bool $hasM
 
 ```php
 protected function readRingList(
-bool $little,
-bool $hasZ,
-bool $hasM
+    bool $little,
+    bool $hasZ,
+    bool $hasM
 ): array;
 ```
 
@@ -9338,11 +9494,12 @@ protected function readUint32( bool $little ): int;
 
 ```php
 protected function skipExtraOrdinates(
-bool $little,
-bool $hasZ,
-bool $hasM
+    bool $little,
+    bool $hasZ,
+    bool $hasM
 ): void;
 ```
+
 
 ## Db\Index
 
@@ -9362,28 +9519,28 @@ will extend.
 ```php
 // Legacy positional form
 $unique = new \Phalcon\Db\Index(
-'column_UNIQUE',
-[
-    'column',
-],
-'UNIQUE'
+    'column_UNIQUE',
+    [
+        'column',
+    ],
+    'UNIQUE'
 );
 
 $primary = new \Phalcon\Db\Index(
-'PRIMARY',
-[
-    'column',
-]
+    'PRIMARY',
+    [
+        'column',
+    ]
 );
 
 // Definition-array form (MySQL 8.0+ invisible index)
 $hidden = new \Phalcon\Db\Index(
-'idx_hidden',
-[
-    'columns'   => ['col1'],
-    'type'      => '',
-    'invisible' => true,
-]
+    'idx_hidden',
+    [
+        'columns'   => ['col1'],
+        'type'      => '',
+        'invisible' => true,
+    ]
 );
 
 $connection->addIndex("robots", null, $unique);
@@ -9398,6 +9555,7 @@ $connection->addIndex("robots", null, $hidden);
 </div>
 
 __Uses__ `Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\InvalidIndexDirections` · `Phalcon\Db\Exceptions\InvalidIndexWhere`
+
 
 ### Method Summary
 
@@ -9506,9 +9664,9 @@ __Uses__ `Phalcon\Db\Exceptions\InvalidIndexColumns` · `Phalcon\Db\Exceptions\I
 
 ```php
 public function __construct(
-string $name,
-array $columnsOrDefinition,
-string $type = ""
+    string $name,
+    array $columnsOrDefinition,
+    string $type = ""
 );
 ```
 
@@ -9585,6 +9743,7 @@ Whether the index is declared `INVISIBLE` (MySQL 8.0+). Invisible
 indexes are ignored by the optimizer but still maintained, so they
 can be flipped back to visible without a rebuild.
 
+
 ## Db\IndexInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -9595,11 +9754,13 @@ Phalcon\Db\IndexInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Index`](/5.15/api/phalcon_contracts/#contractsdbindex)
-- **`Phalcon\Db\IndexInterface`**
+    - **`Phalcon\Db\IndexInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Index`
+
+
 
 ## Db\Profiler
 
@@ -9620,20 +9781,20 @@ $profiler = new Profiler();
 $eventsManager = new Manager();
 
 $eventsManager->attach(
-"db",
-function (Event $event, $connection) use ($profiler) {
-    if ($event->getType() === "beforeQuery") {
-        $sql = $connection->getSQLStatement();
+    "db",
+    function (Event $event, $connection) use ($profiler) {
+        if ($event->getType() === "beforeQuery") {
+            $sql = $connection->getSQLStatement();
 
-        // Start a profile with the active connection
-        $profiler->startProfile($sql);
-    }
+            // Start a profile with the active connection
+            $profiler->startProfile($sql);
+        }
 
-    if ($event->getType() === "afterQuery") {
-        // Stop the active profile
-        $profiler->stopProfile();
+        if ($event->getType() === "afterQuery") {
+            // Stop the active profile
+            $profiler->stopProfile();
+        }
     }
-}
 );
 
 // Set the event manager on the connection
@@ -9662,6 +9823,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 </div>
 
 __Uses__ `Phalcon\Db\Profiler\Item`
+
 
 ### Method Summary
 
@@ -9845,9 +10007,9 @@ Sets the maximum number of retained profiles. 0 disables the cap
 
 ```php
 public function startProfile(
-string $sqlStatement,
-array $sqlVariables = [],
-array $sqlBindTypes = []
+    string $sqlStatement,
+    array $sqlVariables = [],
+    array $sqlBindTypes = []
 ): static;
 ```
 
@@ -9860,6 +10022,7 @@ public function stopProfile(): static;
 ```
 
 Stops the active profile
+
 
 ## Db\Profiler\Item
 
@@ -10100,6 +10263,7 @@ public function setSqlVariables( array $sqlVariables ): static;
 
 Return the SQL variables related to the profile
 
+
 ## Db\RawValue
 
 <span class="badge badge--class">Class</span>
@@ -10179,6 +10343,7 @@ public function __toString(): string;
 public function getValue(): string;
 ```
 
+
 ## Db\Reference
 
 <span class="badge badge--class">Class</span>
@@ -10188,19 +10353,19 @@ Allows to define reference constraints on tables
 
 ```php
 $reference = new \Phalcon\Db\Reference(
-"field_fk",
-[
-    "referencedSchema"  => "invoicing",
-    "referencedTable"   => "products",
-    "columns"           => [
-        "producttype",
-        "product_code",
-    ],
-    "referencedColumns" => [
-        "type",
-        "code",
-    ],
-]
+    "field_fk",
+    [
+        "referencedSchema"  => "invoicing",
+        "referencedTable"   => "products",
+        "columns"           => [
+            "producttype",
+            "product_code",
+        ],
+        "referencedColumns" => [
+            "type",
+            "code",
+        ],
+    ]
 );
 ```
 
@@ -10211,6 +10376,7 @@ $reference = new \Phalcon\Db\Reference(
 </div>
 
 __Uses__ `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`
+
 
 ### Method Summary
 
@@ -10331,8 +10497,8 @@ __Uses__ `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Except
 
 ```php
 public function __construct(
-string $name,
-array $definition
+    string $name,
+    array $definition
 );
 ```
 
@@ -10402,6 +10568,7 @@ public function getSchemaName(): string|null;
 
 Schema name
 
+
 ## Db\ReferenceInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -10412,11 +10579,13 @@ Phalcon\Db\ReferenceInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Reference`](/5.15/api/phalcon_contracts/#contractsdbreference)
-- **`Phalcon\Db\ReferenceInterface`**
+    - **`Phalcon\Db\ReferenceInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Reference`
+
+
 
 ## Db\ResultInterface
 
@@ -10428,11 +10597,13 @@ Phalcon\Db\ResultInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Db\Result`](/5.15/api/phalcon_contracts/#contractsdbresult)
-- **`Phalcon\Db\ResultInterface`**
+    - **`Phalcon\Db\ResultInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Db\Result`
+
+
 
 ## Db\Result\PdoResult
 
@@ -10445,11 +10616,11 @@ Encapsulates the resultset internals
 $result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
-\Phalcon\Db\Enum::FETCH_NUM
+    \Phalcon\Db\Enum::FETCH_NUM
 );
 
 while ($robot = $result->fetchArray()) {
-print_r($robot);
+    print_r($robot);
 }
 ```
 
@@ -10460,6 +10631,7 @@ print_r($robot);
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`
+
 
 ### Method Summary
 
@@ -10572,11 +10744,11 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\
 
 ```php
 public function __construct(
-AdapterInterface $connection,
-\PDOStatement $result,
-mixed $sqlStatement = null,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    AdapterInterface $connection,
+    \PDOStatement $result,
+    mixed $sqlStatement = null,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 );
 ```
 
@@ -10593,7 +10765,7 @@ certain row
 
 ```php
 $result = $connection->query(
-"SELECT * FROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 // Move to third row on result
@@ -10617,9 +10789,9 @@ execute the cursor again to fetch rows from the beginning
 
 ```php
 public function fetch(
-int $fetchStyle = null,
-int $cursorOrientation = Enum::FETCH_ORI_NEXT,
-int $cursorOffset = 0
+    int $fetchStyle = null,
+    int $cursorOrientation = Enum::FETCH_ORI_NEXT,
+    int $cursorOffset = 0
 );
 ```
 
@@ -10631,11 +10803,11 @@ fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 $result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
-\Phalcon\Enum::FETCH_OBJ
+    \Phalcon\Enum::FETCH_OBJ
 );
 
 while ($robot = $result->fetch()) {
-echo $robot->name;
+    echo $robot->name;
 }
 ```
 
@@ -10643,9 +10815,9 @@ echo $robot->name;
 
 ```php
 public function fetchAll(
-int $mode = Enum::FETCH_DEFAULT,
-mixed $fetchArgument = Enum::FETCH_ORI_NEXT,
-mixed $constructorArgs = null
+    int $mode = Enum::FETCH_DEFAULT,
+    mixed $fetchArgument = Enum::FETCH_ORI_NEXT,
+    mixed $constructorArgs = null
 ): array;
 ```
 
@@ -10655,7 +10827,7 @@ This method is affected by the active fetch flag set using
 
 ```php
 $result = $connection->query(
-"SELECT * FROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 $robots = $result->fetchAll();
@@ -10675,11 +10847,11 @@ flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
 $result = $connection->query("SELECT * FROM robots ORDER BY name");
 
 $result->setFetchMode(
-\Phalcon\Enum::FETCH_NUM
+    \Phalcon\Enum::FETCH_NUM
 );
 
 while ($robot = result->fetchArray()) {
-print_r($robot);
+    print_r($robot);
 }
 ```
 
@@ -10701,7 +10873,7 @@ Gets number of rows returned by a resultset
 
 ```php
 $result = $connection->query(
-"SELECT * FROM robots ORDER BY name"
+    "SELECT * FROM robots ORDER BY name"
 );
 
 echo "There are ", $result->numRows(), " rows in the resultset";
@@ -10711,9 +10883,9 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 
 ```php
 public function setFetchMode(
-int $fetchMode,
-mixed $colNoOrClassNameOrObject = null,
-mixed $ctorargs = null
+    int $fetchMode,
+    mixed $colNoOrClassNameOrObject = null,
+    mixed $ctorargs = null
 ): bool;
 ```
 
@@ -10722,22 +10894,22 @@ Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 ```php
 // Return array with integer indexes
 $result->setFetchMode(
-\Phalcon\Enum::FETCH_NUM
+    \Phalcon\Enum::FETCH_NUM
 );
 
 // Return associative array without integer indexes
 $result->setFetchMode(
-\Phalcon\Enum::FETCH_ASSOC
+    \Phalcon\Enum::FETCH_ASSOC
 );
 
 // Return associative array together with integer indexes
 $result->setFetchMode(
-\Phalcon\Enum::FETCH_BOTH
+    \Phalcon\Enum::FETCH_BOTH
 );
 
 // Return an object
 $result->setFetchMode(
-\Phalcon\Enum::FETCH_OBJ
+    \Phalcon\Enum::FETCH_OBJ
 );
 ```
 

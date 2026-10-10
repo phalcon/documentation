@@ -38,9 +38,9 @@ use Phalcon\Http\Response;
 
 // Getting a response instance
 $response = new Response(
-"Sorry, the page doesn't exist",
-404, 
-'Not Found'
+    "Sorry, the page doesn't exist",
+    404, 
+    'Not Found'
 );
 
 $response->send();
@@ -57,13 +57,13 @@ use Phalcon\Http\Response;
 
 // Getting a response instance
 $response = new Response(
-"Sorry, the page doesn't exist",
-404, 
-'Not Found'
+    "Sorry, the page doesn't exist",
+    404, 
+    'Not Found'
 );
 
 if (true !== $response->isSent()) {
-$response->send();
+    $response->send();
 }
 ```
 
@@ -76,6 +76,7 @@ The [Phalcon\Http\Response][http-response] offers several getters, allowing you 
 | `getHeaders(): HeadersInterface`      | Returns the headers object, containing headers set by the user.                                                                              |
 | `getReasonPhrase(): string|null` | Returns the reason phrase (e.g. `Not Found`). The text returned is the one specified in the [IANA HTTP Status Codes][status-codes] document. |
 | `getStatusCode(): int|null`      | Returns the status code (e.g. `200`).                                                                                                        |
+
 
 ## Content
 There are a number of methods available that allow you to set the content or body of the response. `setContent()` is the most frequently used method.
@@ -111,13 +112,13 @@ $response = new Response();
 $contents = file_get_contents('/app/storage/files/invoice.pdf');
 
 $response
-->setContent($contents)
-->setContentType('application/pdf')
-->setHeader(
-    'Content-Disposition', 
-    "attachment; filename='downloaded.pdf'"
-)
-->send()
+    ->setContent($contents)
+    ->setContentType('application/pdf')
+    ->setHeader(
+        'Content-Disposition', 
+        "attachment; filename='downloaded.pdf'"
+    )
+    ->send()
 ;
 ```
 
@@ -130,17 +131,17 @@ use Phalcon\Http\Response;
 
 $response = new Response();
 $contents = [
-'invoice' => [
-    'id'    => 12345,
-    'name'  => 'invoice.pdf',
-    'date'  => '2019-01-01 01:02:03',
-    'owner' => 'admin',
-]   
+    'invoice' => [
+        'id'    => 12345,
+        'name'  => 'invoice.pdf',
+        'date'  => '2019-01-01 01:02:03',
+        'owner' => 'admin',
+    ]   
 ];
 
 $response
-->setJsonContent($contents)
-->send();
+    ->setJsonContent($contents)
+    ->send();
 ```
 
 Note that in the above JSON example we used the `setJsonContent()` instead of the `setContent()`. `setJsonContent()` allows us to send a payload to the method, and it will automatically set the content type header to `application/json` and call `json_encode` on the payload. You can also pass options and depth as the last two parameters of the method, which will be used by [json_encode][json-encode] internally:
@@ -152,17 +153,17 @@ use Phalcon\Http\Response;
 
 $response = new Response();
 $contents = [
-'invoice' => [
-    'id'    => 12345,
-    'name'  => 'invoice.pdf',
-    'date'  => '2019-01-01 01:02:03',
-    'owner' => 'admin',
-]   
+    'invoice' => [
+        'id'    => 12345,
+        'name'  => 'invoice.pdf',
+        'date'  => '2019-01-01 01:02:03',
+        'owner' => 'admin',
+    ]   
 ];
 
 $response
-->setJsonContent($contents, JSON_PRETTY_PRINT, 512)
-->send();
+    ->setJsonContent($contents, JSON_PRETTY_PRINT, 512)
+    ->send();
 ```
 
 For applications that need to add content to the response based on certain criteria (various `if` statements for instance), you can use the `appendContent()` method, which will just add the new content to the existing one stored in the component.
@@ -180,14 +181,14 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 $response
-->setHeader(
-    'Content-Type', 
-    'application/pdf'
-)
-->setHeader(
-    'Content-Disposition', 
-    "attachment; filename='downloaded.pdf'"
-)
+    ->setHeader(
+        'Content-Type', 
+        'application/pdf'
+    )
+    ->setHeader(
+        'Content-Disposition', 
+        "attachment; filename='downloaded.pdf'"
+    )
 ;
 
 $response->setRawHeader('HTTP/1.1 200 OK');
@@ -205,12 +206,12 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 $response->setHeader(
-'Content-Type', 
-'application/pdf'
+    'Content-Type', 
+    'application/pdf'
 );
 
 if (true === $response->hasHeader('Content-Type')) {
-$response->removeHeader('Content-Type');
+    $response->removeHeader('Content-Type');
 }
 
 $response->resetHeaders();
@@ -226,8 +227,8 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 $response->setHeader(
-'Content-Type', 
-'application/pdf'
+    'Content-Type', 
+    'application/pdf'
 );
 
 $response->sendHeaders();
@@ -245,14 +246,14 @@ $response = new Response();
 $headers  = new Headers();
 
 $headers
-->set(
-    'Content-Type', 
-    'application/pdf'
-)
-->set(
-    'Content-Disposition', 
-    "attachment; filename='downloaded.pdf'"
-)
+    ->set(
+        'Content-Type', 
+        'application/pdf'
+    )
+    ->set(
+        'Content-Disposition', 
+        "attachment; filename='downloaded.pdf'"
+    )
 ;
 
 $response->setHeaders($headers);
@@ -316,16 +317,16 @@ If you are using PHP 7.3, or later you can set the `SameSite` as an element to t
 use Phalcon\Http\Cookie;
 
 $cookie  = new Cookie(
-'my-cookie',                   // name
-1234,                          // value
-time() + 86400,                // expires
-"/",                           // path
-true,                          // secure
-".phalcon.io",                 // domain
-true,                          // httponly
-[                              // options
-    "samesite" => "Strict",    // 
-]                              // 
+    'my-cookie',                   // name
+    1234,                          // value
+    time() + 86400,                // expires
+    "/",                           // path
+    true,                          // secure
+    ".phalcon.io",                 // domain
+    true,                          // httponly
+    [                              // options
+        "samesite" => "Strict",    // 
+    ]                              // 
 );
 ```
 
@@ -406,7 +407,7 @@ There are several methods available to help you retrieve data from the component
 | `bool $secure = null`    | Whether the cookie is secure or not |
 | `string $domain = null`  | The domain of the cookie            |
 | `bool $httpOnly = false` | Whether to set http only or not     |
-
+ 
 ```php
 <?php
 
@@ -417,13 +418,13 @@ $tomorrow = $now->modify('tomorrow');
 
 $cookies = new Cookies();
 $cookies->set(
-'remember-me',
-json_encode(
-    [
-        'user_id' => 1,
-    ]
-),
-(int) $tomorrow->format('U')
+    'remember-me',
+    json_encode(
+        [
+            'user_id' => 1,
+        ]
+    ),
+    (int) $tomorrow->format('U')
 );
 ```
 
@@ -447,12 +448,12 @@ $response = new Response();
 $contents = file_get_contents();
 
 $response
-->setFileToSend(
-    '/app/storage/files/invoice.pdf',
-    'downloaded.pdf',
-    true
-)
-->send()
+    ->setFileToSend(
+        '/app/storage/files/invoice.pdf',
+        'downloaded.pdf',
+        true
+    )
+    ->send()
 ;
 ```
 
@@ -528,11 +529,11 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 return $response->redirect(
-[
-    'for'        => 'index-lang',
-    'lang'       => 'jp',
-    'controller' => 'index',
-]
+    [
+        'for'        => 'index-lang',
+        'lang'       => 'jp',
+        'controller' => 'index',
+    ]
 );
 ```
 
@@ -603,8 +604,8 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 $response->setHeader(
-'Cache-Control', 
-'max-age=86400'
+    'Cache-Control', 
+    'max-age=86400'
 );
 ```
 
@@ -631,8 +632,8 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 $response->setHeader(
-'Cache-Control', 
-'private, max-age=0, must-revalidate'
+    'Cache-Control', 
+    'private, max-age=0, must-revalidate'
 );
 ```
 
@@ -679,9 +680,9 @@ use Phalcon\Http\Response;
 $response = new Response();
 
 $mostRecentDate = Invoices::maximum(
-[
-    'column' => 'inv_created_date',
-]
+    [
+        'column' => 'inv_created_date',
+    ]
 );
 
 $eTag = sha1($mostRecentDate);
@@ -691,6 +692,7 @@ $response->setHeader('E-Tag', $eTag);
 
 ### Not Modified - `304`
 Generating a `not-modified` response also helps with caching, by instructing the browser that the contents have not been modified, and therefore the locally cached copy of the data on the browser should be used.
+
 
 ```php
 <?php
@@ -706,6 +708,7 @@ $response->setNotModified();
 ## Dependency Injection
 The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
+
 If you have used the [Phalcon\Di\FactoryDefault][di-factorydefault] DI container for your application, the service is already registered for you. You can access it using the `response` name. The example below shows the usage in a controller
 
 ```php
@@ -719,19 +722,20 @@ use Phalcon\Mvc\Controller;
  */
 class PostsController extends Controller
 {
-public function uploadAction()
-{
-    return $this
-        ->response
-        ->setStatusCode(404, 'Not Found')
-        ->setContent("Sorry, the page does not exist")
-        ->send();
-}
+    public function uploadAction()
+    {
+        return $this
+            ->response
+            ->setStatusCode(404, 'Not Found')
+            ->setContent("Sorry, the page does not exist")
+            ->send();
+    }
 }
 ```
 
 ## Events
  The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
+
 
 | Event               | Description                             | Can stop operation |
 |---------------------|-----------------------------------------|:------------------:|

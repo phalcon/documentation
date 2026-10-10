@@ -23,11 +23,12 @@ Canonical contract for Phalcon\Acl adapters
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Acl\Adapter\Adapter`**
-- [`Phalcon\Acl\Adapter\AdapterInterface`](/5.17/api/phalcon_acl/#acladapteradapterinterface)
+    - [`Phalcon\Acl\Adapter\AdapterInterface`](/5.17/api/phalcon_acl/#acladapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface`
+
 
 ### Method Summary
 
@@ -162,8 +163,8 @@ __Uses__ `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface`
 
 ```php
 public function addComponent(
-mixed $componentValue,
-mixed $accessList
+    mixed $componentValue,
+    mixed $accessList
 ): bool;
 ```
 
@@ -176,8 +177,8 @@ search, update, delete, etc. or a list of them
 
 ```php
 public function addComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): bool;
 ```
 
@@ -187,8 +188,8 @@ Adds access to components
 
 ```php
 public function addInherit(
-string $roleName,
-mixed $roleToInherits
+    string $roleName,
+    mixed $roleToInherits
 ): bool;
 ```
 
@@ -198,8 +199,8 @@ Do a role inherit from another existing role
 
 ```php
 public function addRole(
-mixed $role,
-mixed $accessInherits = null
+    mixed $role,
+    mixed $accessInherits = null
 ): bool;
 ```
 
@@ -210,10 +211,10 @@ from other existing role
 
 ```php
 public function allow(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -223,10 +224,10 @@ Allow access to a role on a component
 
 ```php
 public function deny(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -236,8 +237,8 @@ Deny access to a role on a component
 
 ```php
 public function dropComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): void;
 ```
 
@@ -316,10 +317,10 @@ Return an array with every role registered in the list
 
 ```php
 public function isAllowed(
-mixed $roleName,
-mixed $componentName,
-string $access,
-array $parameters = null
+    mixed $roleName,
+    mixed $componentName,
+    string $access,
+    array $parameters = null
 ): bool;
 ```
 
@@ -358,6 +359,7 @@ public function setNoArgumentsDefaultAction( int $defaultAccess ): void;
 Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 for no arguments provided in isAllowed action if there exists func for
 accessKey
+
 
 ## Contracts\Acl\Adapter\Persistable
 
@@ -415,6 +417,7 @@ public function save(): bool;
 
 Persists the current policy snapshot to the backing store.
 
+
 ## Contracts\Acl\Component
 
 <span class="badge badge--interface">Interface</span>
@@ -425,7 +428,7 @@ Canonical contract for an ACL component entity.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Acl\Component`**
-- [`Phalcon\Acl\ComponentInterface`](/5.17/api/phalcon_acl/#aclcomponentinterface)
+    - [`Phalcon\Acl\ComponentInterface`](/5.17/api/phalcon_acl/#aclcomponentinterface)
 
 </div>
 
@@ -480,6 +483,7 @@ public function getName(): string;
 
 Returns the component name
 
+
 ## Contracts\Acl\ComponentAware
 
 <span class="badge badge--interface">Interface</span>
@@ -490,7 +494,7 @@ Canonical contract for ACL component-aware objects.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Acl\ComponentAware`**
-- [`Phalcon\Acl\ComponentAwareInterface`](/5.17/api/phalcon_acl/#aclcomponentawareinterface)
+    - [`Phalcon\Acl\ComponentAwareInterface`](/5.17/api/phalcon_acl/#aclcomponentawareinterface)
 
 </div>
 
@@ -517,6 +521,7 @@ public function getComponentName(): string;
 
 Returns component name
 
+
 ## Contracts\Acl\Role
 
 <span class="badge badge--interface">Interface</span>
@@ -527,7 +532,7 @@ Canonical contract for an ACL role entity.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Acl\Role`**
-- [`Phalcon\Acl\RoleInterface`](/5.17/api/phalcon_acl/#aclroleinterface)
+    - [`Phalcon\Acl\RoleInterface`](/5.17/api/phalcon_acl/#aclroleinterface)
 
 </div>
 
@@ -582,6 +587,7 @@ public function getName(): string;
 
 Returns the role name
 
+
 ## Contracts\Acl\RoleAware
 
 <span class="badge badge--interface">Interface</span>
@@ -592,7 +598,7 @@ Canonical contract for ACL role-aware objects.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Acl\RoleAware`**
-- [`Phalcon\Acl\RoleAwareInterface`](/5.17/api/phalcon_acl/#aclroleawareinterface)
+    - [`Phalcon\Acl\RoleAwareInterface`](/5.17/api/phalcon_acl/#aclroleawareinterface)
 
 </div>
 
@@ -619,6 +625,7 @@ public function getRoleName(): string;
 
 Returns role name
 
+
 ## Contracts\Assets\Asset
 
 <span class="badge badge--interface">Interface</span>
@@ -633,7 +640,7 @@ requires the concrete Phalcon\Assets\Asset class.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Assets\Asset`**
-- [`Phalcon\Assets\AssetInterface`](/5.17/api/phalcon_assets/#assetsassetinterface)
+    - [`Phalcon\Assets\AssetInterface`](/5.17/api/phalcon_assets/#assetsassetinterface)
 
 </div>
 
@@ -744,6 +751,7 @@ public function setType( string $type ): Asset;
 
 Sets the asset's type.
 
+
 ## Contracts\Assets\Filter
 
 <span class="badge badge--interface">Interface</span>
@@ -755,7 +763,7 @@ custom user filters).
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Assets\Filter`**
-- [`Phalcon\Assets\FilterInterface`](/5.17/api/phalcon_assets/#assetsfilterinterface)
+    - [`Phalcon\Assets\FilterInterface`](/5.17/api/phalcon_assets/#assetsfilterinterface)
 
 </div>
 
@@ -782,6 +790,7 @@ public function filter( string $content ): string;
 
 Filters the content returning a string with the filtered content
 
+
 ## Contracts\Auth\Access\Access
 
 <span class="badge badge--interface">Interface</span>
@@ -799,6 +808,7 @@ reference to the auth manager.
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
+
 
 ### Method Summary
 
@@ -858,9 +868,9 @@ public function getOnlyActions(): array;
 
 ```php
 public function isAllowed(
-Guard $guard,
-string $actionName,
-array $context = []
+    Guard $guard,
+    string $actionName,
+    array $context = []
 ): bool;
 ```
 
@@ -900,6 +910,7 @@ base condition holds. The two gate families will be aligned in the next
 major version; until then, choose the gate family deliberately, because
 for an unlisted action they return opposite answers to the same call.
 
+
 ## Contracts\Auth\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -916,11 +927,12 @@ consumed only by validateCredentials().
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Auth\Adapter\Adapter`**
-- [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](#contractsauthadapterrememberadapter)
+    - [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](#contractsauthadapterrememberadapter)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+
 
 ### Method Summary
 
@@ -959,8 +971,8 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Secu
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -990,14 +1002,15 @@ Find a user by their unique identifier.
 
 ```php
 public function validateCredentials(
-AuthUser $user,
-array $credentials
+    AuthUser $user,
+    array $credentials
 ): bool;
 ```
 
 Validate the provided credentials against the given user.
 Implementations typically verify the password hash held under the
 'password' key.
+
 
 ## Contracts\Auth\Adapter\AdapterConfig
 
@@ -1039,6 +1052,7 @@ public function getModel(): string|null;
 
 Returns the user-model class name to hydrate, if configured.
 
+
 ## Contracts\Auth\Adapter\RememberAdapter
 
 <span class="badge badge--interface">Interface</span>
@@ -1049,11 +1063,12 @@ Capability extension implemented by adapters that support remember-me.
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Auth\Adapter\Adapter`](#contractsauthadapteradapter)
-- **`Phalcon\Contracts\Auth\Adapter\RememberAdapter`**
+    - **`Phalcon\Contracts\Auth\Adapter\RememberAdapter`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken`
+
 
 ### Method Summary
 
@@ -1088,13 +1103,14 @@ Create and persist a new remember token for the user.
 
 ```php
 public function retrieveByToken(
-mixed $id,
-string $token,
-string $userAgent = null
+    mixed $id,
+    string $token,
+    string $userAgent = null
 ): AuthUser|null;
 ```
 
 Retrieve a user by the remember-me cookie payload.
+
 
 ## Contracts\Auth\AuthRemember
 
@@ -1136,8 +1152,8 @@ not support remember-me are not forced to implement it.
 
 ```php
 public function createRememberToken(
-string $token,
-string $userAgent = null
+    string $token,
+    string $userAgent = null
 ): RememberToken;
 ```
 
@@ -1151,6 +1167,7 @@ public function getRememberToken( string $token ): RememberToken|null;
 
 Returns the remember token entry matching the given token value,
 or null if not found.
+
 
 ## Contracts\Auth\AuthUser
 
@@ -1205,6 +1222,7 @@ public function getAuthPassword(): string;
 
 Returns the hashed password for the authenticatable user.
 
+
 ## Contracts\Auth\Guard\BasicAuth
 
 <span class="badge badge--interface">Interface</span>
@@ -1217,6 +1235,7 @@ Returns the hashed password for the authenticatable user.
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\AuthUser`
+
 
 ### Method Summary
 
@@ -1243,8 +1262,8 @@ __Uses__ `Phalcon\Contracts\Auth\AuthUser`
 
 ```php
 public function basic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): bool;
 ```
 
@@ -1254,13 +1273,14 @@ Authenticate against HTTP Basic credentials. Returns true on success.
 
 ```php
 public function onceBasic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): false|AuthUser;
 ```
 
 Like basic() but does not persist; returns the resolved user on success
 or false on failure.
+
 
 ## Contracts\Auth\Guard\Guard
 
@@ -1274,6 +1294,7 @@ or false on failure.
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface`
+
 
 ### Method Summary
 
@@ -1350,9 +1371,9 @@ Whether the current request is authenticated.
 
 ```php
 public static function fromOptions(
-Adapter $adapter,
-mixed $container,
-array $options
+    Adapter $adapter,
+    mixed $container,
+    array $options
 ): static;
 ```
 
@@ -1423,6 +1444,7 @@ public function validate( array $credentials = [] ): bool;
 
 Validates the given credentials without logging in.
 
+
 ## Contracts\Auth\Guard\GuardConfig
 
 <span class="badge badge--interface">Interface</span>
@@ -1441,6 +1463,7 @@ AbstractGuard can accept any guard config uniformly.
 
 </div>
 
+
 ## Contracts\Auth\Guard\GuardStateful
 
 <span class="badge badge--interface">Interface</span>
@@ -1455,6 +1478,7 @@ Implemented by guards backed by persistent state (sessions/cookies).
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser`
+
 
 ### Method Summary
 
@@ -1496,8 +1520,8 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -1508,8 +1532,8 @@ success, persists the resulting state on the guard.
 
 ```php
 public function login(
-AuthUser $user,
-bool $remember = false
+    AuthUser $user,
+    bool $remember = false
 ): void;
 ```
 
@@ -1517,8 +1541,8 @@ bool $remember = false
 
 ```php
 public function loginById(
-mixed $id,
-bool $remember = false
+    mixed $id,
+    bool $remember = false
 ): false|AuthUser;
 ```
 
@@ -1537,6 +1561,7 @@ public function logout(): void;
 public function viaRemember(): bool;
 ```
 
+
 ## Contracts\Auth\Manager
 
 <span class="badge badge--interface">Interface</span>
@@ -1549,6 +1574,7 @@ public function viaRemember(): bool;
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard`
+
 
 ### Method Summary
 
@@ -1684,9 +1710,9 @@ public function addAccessList( array $accessList ): self;
 
 ```php
 public function addGuard(
-string $nameGuard,
-Guard $guard,
-bool $isDefault = false
+    string $nameGuard,
+    Guard $guard,
+    bool $isDefault = false
 ): self;
 ```
 
@@ -1694,8 +1720,8 @@ bool $isDefault = false
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -1804,6 +1830,7 @@ public function validate( array $credentials = [] ): bool;
 Validates the given credentials against the default guard without
 logging in.
 
+
 ## Contracts\Auth\RememberToken
 
 <span class="badge badge--interface">Interface</span>
@@ -1868,6 +1895,7 @@ public function getUserAgent(): string|null;
 
 Returns the user agent associated with this token, if any.
 
+
 ## Contracts\Cache\Cache
 
 <span class="badge badge--interface">Interface</span>
@@ -1878,11 +1906,12 @@ Canonical contract for Phalcon\Cache\Cache.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Cache\Cache`**
-- [`Phalcon\Cache\CacheInterface`](/5.17/api/phalcon_cache/#cachecacheinterface)
+    - [`Phalcon\Cache\CacheInterface`](/5.17/api/phalcon_cache/#cachecacheinterface)
 
 </div>
 
 __Uses__ `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -1967,8 +1996,8 @@ Deletes multiple cache items in a single operation.
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 );
 ```
 
@@ -1978,8 +2007,8 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-mixed $keys,
-mixed $defaultValue = null
+    mixed $keys,
+    mixed $defaultValue = null
 );
 ```
 
@@ -1997,9 +2026,9 @@ Determines whether an item is present in the cache.
 
 ```php
 public function set(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -2010,12 +2039,13 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-mixed $values,
-mixed $ttl = null
+    mixed $values,
+    mixed $ttl = null
 ): bool;
 ```
 
 Persists a set of key => value pairs in the cache, with an optional TTL.
+
 
 ## Contracts\Cli\Dispatcher
 
@@ -2027,12 +2057,13 @@ Canonical contract for Phalcon\Cli\Dispatcher.
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
-- **`Phalcon\Contracts\Cli\Dispatcher`**
-- [`Phalcon\Cli\DispatcherInterface`](/5.17/api/phalcon_cli/#clidispatcherinterface)
+    - **`Phalcon\Contracts\Cli\Dispatcher`**
+        - [`Phalcon\Cli\DispatcherInterface`](/5.17/api/phalcon_cli/#clidispatcherinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher`
+
 
 ### Method Summary
 
@@ -2169,6 +2200,7 @@ public function setTaskSuffix( string $taskSuffix ): void;
 
 Sets the default task suffix
 
+
 ## Contracts\Container\Ioc\IocContainer
 
 <span class="badge badge--interface">Interface</span>
@@ -2178,14 +2210,14 @@ Sets the default task suffix
 
 - Notes:
 
-- **This interface does not afford service management.** The container
+    - **This interface does not afford service management.** The container
       will need to obtain services somehow, e.g. from a [Service-Interop][]
       implementation.
 
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Container\Ioc\IocContainer`**
-- [`Phalcon\Contracts\Container\Service\Collection`](#contractscontainerservicecollection)
+    - [`Phalcon\Contracts\Container\Service\Collection`](#contractscontainerservicecollection)
 
 </div>
 
@@ -2225,11 +2257,11 @@ Returns an instance of the `$serviceName`.
 
 - Notes:
 
-- **The logic for this method is expressly unspecified.** Retrieval
+    - **The logic for this method is expressly unspecified.** Retrieval
       may be accomplished via a service management subsystem, or by some
       other means.
 
-- **The returned instance may be new or shared.** The retrieval
+    - **The returned instance may be new or shared.** The retrieval
       logic defines the service lifetime, not the container (per se) and
       not the caller requesting the service.
 
@@ -2243,9 +2275,10 @@ Is the container able to return an instance of the `$serviceName`?
 
 - Notes:
 
-- **The logic for this method is expressly unspecified.** The ability
+    - **The logic for this method is expressly unspecified.** The ability
       check may be accomplished by querying a service management subsystem,
       or by some other means.
+
 
 ## Contracts\Container\Ioc\IocContainerFactory
 
@@ -2264,12 +2297,19 @@ Is the container able to return an instance of the `$serviceName`?
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#contractscontaineriocioccontainerfactory-newcontainer">
+
 <code class="vis vis-public">public</code>
+
 <code class="ret">IocContainer</code>
+
 <code class="sig"><span class="sf">newContainer</span>()</code>
+
 <span class="desc">Returns a new instance of [_IocContainer_][].</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -2286,11 +2326,12 @@ Returns a new instance of [_IocContainer_][].
 
 - Notes:
 
-- **Container instantiation logic is not specified.** Implementations
+    - **Container instantiation logic is not specified.** Implementations
       might use providers, configuration files, attribute or annotation
       collection, or some other means to create and populate a container.
       Implementations might also choose to return a compiled or otherwise
       reconstituted container.
+
 
 ## Contracts\Container\Ioc\IocThrowable
 
@@ -2305,12 +2346,14 @@ It adds no class members.
 <div class="api-tree">
 
 - `Throwable`
-- **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
-- [`Phalcon\Container\Exceptions\ContainerThrowable`](/5.17/api/phalcon_container/#containerexceptionscontainerthrowable)
+    - **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
+        - [`Phalcon\Container\Exceptions\ContainerThrowable`](/5.17/api/phalcon_container/#containerexceptionscontainerthrowable)
 
 </div>
 
 __Uses__ `Throwable`
+
+
 
 ## Contracts\Container\Ioc\IocTypeAliases
 
@@ -2322,6 +2365,7 @@ __Uses__ `Throwable`
 - **`Phalcon\Contracts\Container\Ioc\IocTypeAliases`**
 
 </div>
+
 
 ## Contracts\Container\Resolver\ReflectionMethodResolver
 
@@ -2335,6 +2379,7 @@ __Uses__ `Throwable`
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod`
+
 
 ### Method Summary
 
@@ -2354,11 +2399,12 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod`
 
 ```php
 public function resolveMethod(
-IocContainer $ioc,
-ReflectionMethod $method,
-object $instance
+    IocContainer $ioc,
+    ReflectionMethod $method,
+    object $instance
 ): void;
 ```
+
 
 ## Contracts\Container\Resolver\ReflectionParameterResolver
 
@@ -2368,11 +2414,12 @@ object $instance
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Container\Resolver\ReflectionParameterResolver`**
-- [`Phalcon\Contracts\Container\Resolver\ResolverService`](#contractscontainerresolverresolverservice)
+    - [`Phalcon\Contracts\Container\Resolver\ResolverService`](#contractscontainerresolverresolverservice)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionParameter`
+
 
 ### Method Summary
 
@@ -2392,10 +2439,11 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionParameter`
 
 ```php
 public function resolveParameter(
-IocContainer $ioc,
-ReflectionParameter $parameter
+    IocContainer $ioc,
+    ReflectionParameter $parameter
 ): mixed;
 ```
+
 
 ## Contracts\Container\Resolver\Resolvable
 
@@ -2409,6 +2457,7 @@ ReflectionParameter $parameter
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
+
 
 ### Method Summary
 
@@ -2430,6 +2479,7 @@ __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
 public function resolve( IocContainer $ioc ): mixed;
 ```
 
+
 ## Contracts\Container\Resolver\ResolverService
 
 <span class="badge badge--interface">Interface</span>
@@ -2438,11 +2488,12 @@ public function resolve( IocContainer $ioc ): mixed;
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Container\Resolver\ReflectionParameterResolver`](#contractscontainerresolverreflectionparameterresolver)
-- **`Phalcon\Contracts\Container\Resolver\ResolverService`**
+    - **`Phalcon\Contracts\Container\Resolver\ResolverService`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` · `ReflectionParameter` · `ReflectionType`
+
 
 ### Method Summary
 
@@ -2493,9 +2544,9 @@ public function isResolvableClass( string $className ): bool;
 
 ```php
 public function resolveCall(
-IocContainer $ioc,
-callable $callableObject,
-array $arguments
+    IocContainer $ioc,
+    callable $callableObject,
+    array $arguments
 ): mixed;
 ```
 
@@ -2503,9 +2554,9 @@ array $arguments
 
 ```php
 public function resolveClass(
-IocContainer $ioc,
-string $className,
-array $arguments
+    IocContainer $ioc,
+    string $className,
+    array $arguments
 ): object;
 ```
 
@@ -2513,9 +2564,9 @@ array $arguments
 
 ```php
 public function resolveMethod(
-IocContainer $ioc,
-ReflectionMethod $method,
-object $instance
+    IocContainer $ioc,
+    ReflectionMethod $method,
+    object $instance
 ): void;
 ```
 
@@ -2523,9 +2574,9 @@ object $instance
 
 ```php
 public function resolveParameters(
-IocContainer $ioc,
-array $parameters,
-array $arguments
+    IocContainer $ioc,
+    array $parameters,
+    array $arguments
 ): array;
 ```
 
@@ -2533,10 +2584,11 @@ array $arguments
 
 ```php
 public function resolveType(
-IocContainer $ioc,
-ReflectionType $type
+    IocContainer $ioc,
+    ReflectionType $type
 ): mixed;
 ```
+
 
 ## Contracts\Container\Resolver\ResolverThrowable
 
@@ -2546,11 +2598,13 @@ ReflectionType $type
 <div class="api-tree">
 
 - `Throwable`
-- **`Phalcon\Contracts\Container\Resolver\ResolverThrowable`**
+    - **`Phalcon\Contracts\Container\Resolver\ResolverThrowable`**
 
 </div>
 
 __Uses__ `Throwable`
+
+
 
 ## Contracts\Container\Service\Collection
 
@@ -2560,11 +2614,12 @@ __Uses__ `Throwable`
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Container\Ioc\IocContainer`](#contractscontaineriocioccontainer)
-- **`Phalcon\Contracts\Container\Service\Collection`**
+    - **`Phalcon\Contracts\Container\Service\Collection`**
 
 </div>
 
 __Uses__ `Closure` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Ioc\IocContainer`
+
 
 ### Method Summary
 
@@ -2729,8 +2784,8 @@ __Uses__ `Closure` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalc
 
 ```php
 public function bind(
-string $interfaceName,
-string $concrete
+    string $interfaceName,
+    string $concrete
 ): ServiceDefinition;
 ```
 
@@ -2750,8 +2805,8 @@ public function callableNew( string $name ): Closure;
 
 ```php
 public function extend(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): void;
 ```
 
@@ -2849,8 +2904,8 @@ public function newDefinition( string $name ): ServiceDefinition;
 
 ```php
 public function set(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): ServiceDefinition;
 ```
 
@@ -2858,8 +2913,8 @@ mixed $definition
 
 ```php
 public function setAlias(
-string $name,
-string $alias
+    string $name,
+    string $alias
 ): static;
 ```
 
@@ -2873,8 +2928,8 @@ public function setAutowire( bool $enabled ): static;
 
 ```php
 public function setDefinition(
-string $name,
-ServiceDefinition $definition
+    string $name,
+    ServiceDefinition $definition
 ): static;
 ```
 
@@ -2882,9 +2937,9 @@ ServiceDefinition $definition
 
 ```php
 public function setInstance(
-string $name,
-object $instance,
-string $lifetime
+    string $name,
+    object $instance,
+    string $lifetime
 ): static;
 ```
 
@@ -2892,8 +2947,8 @@ string $lifetime
 
 ```php
 public function setParameter(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -2927,6 +2982,7 @@ public function unsetInstances( string $lifetime ): void;
 public function unsetParameter( string $name ): void;
 ```
 
+
 ## Contracts\Container\Service\Definition
 
 <span class="badge badge--interface">Interface</span>
@@ -2939,6 +2995,7 @@ public function unsetParameter( string $name ): void;
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainer`
+
 
 ### Method Summary
 
@@ -3136,6 +3193,7 @@ public function unsetExtenders(): static;
 public function unsetFactory(): static;
 ```
 
+
 ## Contracts\Container\Service\Provider
 
 <span class="badge badge--interface">Interface</span>
@@ -3167,6 +3225,7 @@ public function unsetFactory(): static;
 public function provide( Collection $services ): void;
 ```
 
+
 ## Contracts\Container\Service\Throwable
 
 <span class="badge badge--interface">Interface</span>
@@ -3175,11 +3234,13 @@ public function provide( Collection $services ): void;
 <div class="api-tree">
 
 - `PhpThrowable`
-- **`Phalcon\Contracts\Container\Service\Throwable`**
+    - **`Phalcon\Contracts\Container\Service\Throwable`**
 
 </div>
 
 __Uses__ `Throwable`
+
+
 
 ## Contracts\Db\Adapter\Adapter
 
@@ -3189,24 +3250,25 @@ __Uses__ `Throwable`
 Canonical contract for Phalcon\Db adapters.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - addCheck()                : bool
-             - createMaterializedView()  : bool
-             - dropCheck()               : bool
-             - dropMaterializedView()    : bool
-             - onConflictUpdate()        : string
-             - refreshMaterializedView() : bool
-             - returning()               : string
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- addCheck()                : bool
+- createMaterializedView()  : bool
+- dropCheck()               : bool
+- dropMaterializedView()    : bool
+- onConflictUpdate()        : string
+- refreshMaterializedView() : bool
+- returning()               : string
 
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Adapter\Adapter`**
-- [`Phalcon\Db\Adapter\AdapterInterface`](/5.17/api/phalcon_db/#dbadapteradapterinterface)
+    - [`Phalcon\Db\Adapter\AdapterInterface`](/5.17/api/phalcon_db/#dbadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
+
 
 ### Method Summary
 
@@ -3623,9 +3685,9 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalc
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): bool;
 ```
 
@@ -3635,9 +3697,9 @@ Adds a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): bool;
 ```
 
@@ -3647,9 +3709,9 @@ Adds a foreign key to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): bool;
 ```
 
@@ -3659,9 +3721,9 @@ Adds an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): bool;
 ```
 
@@ -3722,9 +3784,9 @@ Creates a new savepoint
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): bool;
 ```
 
@@ -3734,9 +3796,9 @@ Creates a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): bool;
 ```
 
@@ -3746,10 +3808,10 @@ Creates a view
 
 ```php
 public function delete(
-mixed $table,
-string $whereCondition = null,
-array $placeholders = [],
-array $dataTypes = []
+    mixed $table,
+    string $whereCondition = null,
+    array $placeholders = [],
+    array $dataTypes = []
 ): bool;
 ```
 
@@ -3759,8 +3821,8 @@ Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ColumnInterface[];
 ```
 
@@ -3770,8 +3832,8 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): IndexInterface[];
 ```
 
@@ -3781,8 +3843,8 @@ Lists table indexes
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): ReferenceInterface[];
 ```
 
@@ -3792,9 +3854,9 @@ Lists table references
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): bool;
 ```
 
@@ -3804,9 +3866,9 @@ Drops a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): bool;
 ```
 
@@ -3816,9 +3878,9 @@ Drops a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): bool;
 ```
 
@@ -3828,8 +3890,8 @@ Drop an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): bool;
 ```
 
@@ -3839,9 +3901,9 @@ Drops primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName = null,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -3851,9 +3913,9 @@ Drops a table from a schema/database
 
 ```php
 public function dropView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -3879,9 +3941,9 @@ Escapes a value to avoid SQL injections
 
 ```php
 public function execute(
-string $sqlStatement,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlStatement,
+    array $bindParams = [],
+    array $bindTypes = []
 ): bool;
 ```
 
@@ -3893,10 +3955,10 @@ return any rows
 
 ```php
 public function fetchAll(
-string $sqlQuery,
-int $fetchMode = 2,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlQuery,
+    int $fetchMode = 2,
+    array $bindParams = [],
+    array $bindTypes = []
 ): array;
 ```
 
@@ -3906,9 +3968,9 @@ Dumps the complete result of a query into an array
 
 ```php
 public function fetchColumn(
-string $sqlQuery,
-array $placeholders = [],
-mixed $column = 0
+    string $sqlQuery,
+    array $placeholders = [],
+    mixed $column = 0
 ): string|bool;
 ```
 
@@ -3921,8 +3983,8 @@ print_r($invoicesCount);
 
 // Getting the title of the last created invoice
 $invoice = $connection->fetchColumn(
-"SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
-1
+    "SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
+    1
 );
 print_r($invoice);
 ```
@@ -3931,10 +3993,10 @@ print_r($invoice);
 
 ```php
 public function fetchOne(
-string $sqlQuery,
-int $fetchMode = 2,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlQuery,
+    int $fetchMode = 2,
+    array $bindParams = [],
+    array $bindTypes = []
 ): array;
 ```
 
@@ -3944,8 +4006,8 @@ Returns the first row in a SQL query result
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -3997,15 +4059,15 @@ in the table definition
 ```php
 // Inserting a new invoice with a valid default value for the column 'inv_total'
 $success = $connection->insert(
-"co_invoices",
-[
-    "Test Invoice",
-    $connection->getDefaultValue()
-],
-[
-    "inv_title",
-    "inv_total",
-]
+    "co_invoices",
+    [
+        "Test Invoice",
+        $connection->getDefaultValue()
+    ],
+    [
+        "inv_title",
+        "inv_total",
+    ]
 );
 ```
 
@@ -4095,10 +4157,10 @@ Returns type of database system the adapter is used for
 
 ```php
 public function insert(
-string $table,
-array $values,
-mixed $fields = null,
-mixed $dataTypes = null
+    string $table,
+    array $values,
+    mixed $fields = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4108,9 +4170,9 @@ Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 public function insertAsDict(
-string $table,
-mixed $data,
-mixed $dataTypes = null
+    string $table,
+    mixed $data,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4119,11 +4181,11 @@ Inserts data into a table using custom RBDM SQL syntax
 ```php
 // Inserting a new invoice
 $success = $connection->insertAsDict(
-"co_invoices",
-[
-    "inv_title" => "Test Invoice",
-    "inv_total" => 100,
-]
+    "co_invoices",
+    [
+        "inv_title" => "Test Invoice",
+        "inv_total" => 100,
+    ]
 );
 
 // Next SQL sentence is sent to the database system
@@ -4159,8 +4221,8 @@ statement
 
 ```php
 public function limit(
-string $sqlQuery,
-mixed $number
+    string $sqlQuery,
+    mixed $number
 ): string;
 ```
 
@@ -4186,10 +4248,10 @@ List all views on a database
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): bool;
 ```
 
@@ -4199,9 +4261,9 @@ Modifies a table column based on a definition
 
 ```php
 public function query(
-string $sqlStatement,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlStatement,
+    array $bindParams = [],
+    array $bindTypes = []
 ): ResultInterface|bool;
 ```
 
@@ -4245,8 +4307,8 @@ Set if nested transactions should use savepoints
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -4276,8 +4338,8 @@ SQLite does not support the DEFAULT keyword
 
 ```php
 public function tableExists(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): bool;
 ```
 
@@ -4287,8 +4349,8 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 public function tableOptions(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): array;
 ```
 
@@ -4298,11 +4360,11 @@ Gets creation options from a table
 
 ```php
 public function update(
-string $table,
-mixed $fields,
-mixed $values,
-mixed $whereCondition = null,
-mixed $dataTypes = null
+    string $table,
+    mixed $fields,
+    mixed $values,
+    mixed $whereCondition = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4312,10 +4374,10 @@ Updates data on a table using custom RDBMS SQL syntax
 
 ```php
 public function updateAsDict(
-string $table,
-mixed $data,
-mixed $whereCondition = null,
-mixed $dataTypes = null
+    string $table,
+    mixed $data,
+    mixed $whereCondition = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4325,11 +4387,11 @@ Another, more convenient syntax
 ```php
 // Updating existing invoice
 $success = $connection->updateAsDict(
-"co_invoices",
-[
-    "inv_title" => "New Test Invoice",
-],
-"inv_id = 101"
+    "co_invoices",
+    [
+        "inv_title" => "New Test Invoice",
+    ],
+    "inv_id = 101"
 );
 
 // Next SQL sentence is sent to the database system
@@ -4349,12 +4411,13 @@ columns
 
 ```php
 public function viewExists(
-string $viewName,
-string $schemaName = null
+    string $viewName,
+    string $schemaName = null
 ): bool;
 ```
 
 Generates SQL checking for the existence of a schema.view
+
 
 ## Contracts\Db\Check
 
@@ -4366,7 +4429,7 @@ Canonical contract for Phalcon\Db\Check.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Check`**
-- [`Phalcon\Db\CheckInterface`](/5.17/api/phalcon_db/#dbcheckinterface)
+    - [`Phalcon\Db\CheckInterface`](/5.17/api/phalcon_db/#dbcheckinterface)
 
 </div>
 
@@ -4409,6 +4472,7 @@ Gets the constraint name. An empty string indicates an unnamed CHECK
 constraint - the dialect will emit the clause without a `CONSTRAINT`
 prefix in that case.
 
+
 ## Contracts\Db\Column
 
 <span class="badge badge--interface">Interface</span>
@@ -4417,18 +4481,18 @@ prefix in that case.
 Canonical contract for Phalcon\Db\Column.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - getGenerationExpression() : string | null
-             - isArray()                 : bool
-             - isGenerated()             : bool
-             - isGenerationStored()      : bool
-             - isInvisible()             : bool
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- getGenerationExpression() : string | null
+- isArray()                 : bool
+- isGenerated()             : bool
+- isGenerationStored()      : bool
+- isInvisible()             : bool
 
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Column`**
-- [`Phalcon\Db\ColumnInterface`](/5.17/api/phalcon_db/#dbcolumninterface)
+    - [`Phalcon\Db\ColumnInterface`](/5.17/api/phalcon_db/#dbcolumninterface)
 
 </div>
 
@@ -4665,6 +4729,7 @@ public function isUnsigned(): bool;
 
 Returns true if number column is unsigned
 
+
 ## Contracts\Db\Dialect
 
 <span class="badge badge--interface">Interface</span>
@@ -4673,24 +4738,25 @@ Returns true if number column is unsigned
 Canonical contract for Phalcon\Db dialects.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - addCheck()                : string
-             - createMaterializedView()  : string
-             - dropCheck()               : string
-             - dropMaterializedView()    : string
-             - onConflictUpdate()        : string
-             - refreshMaterializedView() : string
-             - returning()               : string
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- addCheck()                : string
+- createMaterializedView()  : string
+- dropCheck()               : string
+- dropMaterializedView()    : string
+- onConflictUpdate()        : string
+- refreshMaterializedView() : string
+- returning()               : string
 
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Dialect`**
-- [`Phalcon\Db\DialectInterface`](/5.17/api/phalcon_db/#dbdialectinterface)
+    - [`Phalcon\Db\DialectInterface`](/5.17/api/phalcon_db/#dbdialectinterface)
 
 </div>
 
 __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+
 
 ### Method Summary
 
@@ -4929,9 +4995,9 @@ __Uses__ `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): string;
 ```
 
@@ -4941,9 +5007,9 @@ Generates SQL to add a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): string;
 ```
 
@@ -4953,9 +5019,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -4965,9 +5031,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -4985,9 +5051,9 @@ Generate SQL to create a new savepoint
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): string;
 ```
 
@@ -4997,9 +5063,9 @@ Generates SQL to create a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string $schemaName = null
+    string $viewName,
+    array $definition,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5009,8 +5075,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5020,8 +5086,8 @@ Generates SQL to describe a table
 
 ```php
 public function describeIndexes(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5035,8 +5101,8 @@ column name.
 
 ```php
 public function describeReferences(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5051,9 +5117,9 @@ referenced column.
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): string;
 ```
 
@@ -5063,9 +5129,9 @@ Generates SQL to delete a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): string;
 ```
 
@@ -5075,9 +5141,9 @@ Generates SQL to delete a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): string;
 ```
 
@@ -5087,8 +5153,8 @@ Generates SQL to delete an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -5098,9 +5164,9 @@ Generates SQL to delete primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5110,9 +5176,9 @@ Generates SQL to drop a table
 
 ```php
 public function dropView(
-string $viewName,
-string $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -5122,8 +5188,8 @@ Generates SQL to drop a view
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -5159,9 +5225,9 @@ Returns registered functions
 
 ```php
 public function getSqlExpression(
-array $expression,
-string $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -5172,8 +5238,8 @@ database system valid expression
 
 ```php
 public function limit(
-string $sqlQuery,
-mixed $number
+    string $sqlQuery,
+    mixed $number
 ): string;
 ```
 
@@ -5191,10 +5257,10 @@ List all tables in database
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface $currentColumn = null
 ): string;
 ```
 
@@ -5204,8 +5270,8 @@ Generates SQL to modify a column in a table
 
 ```php
 public function registerCustomFunction(
-string $name,
-callable $customFunction
+    string $name,
+    callable $customFunction
 ): \Phalcon\Db\Dialect;
 ```
 
@@ -5239,8 +5305,8 @@ Builds a SELECT statement
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -5271,8 +5337,8 @@ Checks whether the platform supports savepoints
 
 ```php
 public function tableExists(
-string $tableName,
-string $schemaName = null
+    string $tableName,
+    string $schemaName = null
 ): string;
 ```
 
@@ -5282,8 +5348,8 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 public function tableOptions(
-string $table,
-string $schema = null
+    string $table,
+    string $schema = null
 ): string;
 ```
 
@@ -5293,12 +5359,13 @@ Generates the SQL to describe the table creation options
 
 ```php
 public function viewExists(
-string $viewName,
-string $schemaName = null
+    string $viewName,
+    string $schemaName = null
 ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
+
 
 ## Contracts\Db\Geometry\Geometry
 
@@ -5310,7 +5377,7 @@ Canonical contract for Phalcon\Db\Geometry value objects.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Geometry\Geometry`**
-- [`Phalcon\Db\Geometry\GeometryInterface`](/5.17/api/phalcon_db/#dbgeometrygeometryinterface)
+    - [`Phalcon\Db\Geometry\GeometryInterface`](/5.17/api/phalcon_db/#dbgeometrygeometryinterface)
 
 </div>
 
@@ -5365,6 +5432,7 @@ public function toWkt(): string;
 
 Renders the geometry as a Well-Known Text (WKT) string.
 
+
 ## Contracts\Db\Index
 
 <span class="badge badge--interface">Interface</span>
@@ -5373,17 +5441,17 @@ Renders the geometry as a Well-Known Text (WKT) string.
 Canonical contract for Phalcon\Db\Index.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - getDirections() : array
-             - getWhere()      : string
-             - isConcurrent()  : bool
-             - isInvisible()   : bool
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- getDirections() : array
+- getWhere()      : string
+- isConcurrent()  : bool
+- isInvisible()   : bool
 
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Index`**
-- [`Phalcon\Db\IndexInterface`](/5.17/api/phalcon_db/#dbindexinterface)
+    - [`Phalcon\Db\IndexInterface`](/5.17/api/phalcon_db/#dbindexinterface)
 
 </div>
 
@@ -5438,6 +5506,7 @@ public function getType(): string;
 
 Gets the index type
 
+
 ## Contracts\Db\Reference
 
 <span class="badge badge--interface">Interface</span>
@@ -5448,7 +5517,7 @@ Canonical contract for Phalcon\Db\Reference.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Reference`**
-- [`Phalcon\Db\ReferenceInterface`](/5.17/api/phalcon_db/#dbreferenceinterface)
+    - [`Phalcon\Db\ReferenceInterface`](/5.17/api/phalcon_db/#dbreferenceinterface)
 
 </div>
 
@@ -5573,6 +5642,7 @@ public function getSchemaName(): string|null;
 
 Gets the schema where referenced table is
 
+
 ## Contracts\Db\Result
 
 <span class="badge badge--interface">Interface</span>
@@ -5583,7 +5653,7 @@ Canonical contract for Phalcon\Db result objects.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Db\Result`**
-- [`Phalcon\Db\ResultInterface`](/5.17/api/phalcon_db/#dbresultinterface)
+    - [`Phalcon\Db\ResultInterface`](/5.17/api/phalcon_db/#dbresultinterface)
 
 </div>
 
@@ -5716,6 +5786,7 @@ public function setFetchMode( int $fetchMode ): bool;
 
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
+
 ## Contracts\Dispatcher\Dispatcher
 
 <span class="badge badge--interface">Interface</span>
@@ -5731,9 +5802,9 @@ are scheduled to be removed in the next major version in favor of their
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Dispatcher\Dispatcher`**
-- [`Phalcon\Contracts\Cli\Dispatcher`](#contractsclidispatcher)
-- [`Phalcon\Contracts\Mvc\Dispatcher`](#contractsmvcdispatcher)
-- [`Phalcon\Dispatcher\DispatcherInterface`](/5.17/api/phalcon_dispatcher/#dispatcherdispatcherinterface)
+    - [`Phalcon\Contracts\Cli\Dispatcher`](#contractsclidispatcher)
+    - [`Phalcon\Contracts\Mvc\Dispatcher`](#contractsmvcdispatcher)
+    - [`Phalcon\Dispatcher\DispatcherInterface`](/5.17/api/phalcon_dispatcher/#dispatcherdispatcherinterface)
 
 </div>
 
@@ -5916,8 +5987,8 @@ Gets the default handler suffix
 
 ```php
 public function getParam(
-mixed $param,
-mixed $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -5930,8 +6001,8 @@ accepts; the two will be aligned in the next major version.
 
 ```php
 public function getParameter(
-mixed $param,
-mixed $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -6038,8 +6109,8 @@ Sets the namespace which the controller belongs to
 
 ```php
 public function setParam(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -6052,6 +6123,7 @@ public function setParams( array $params ): void;
 ```
 
 Sets action params to be dispatched
+
 
 ## Contracts\Domain\Payload\Payload
 
@@ -6074,9 +6146,10 @@ capability it needs, even though the concrete payload implements both.
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable)
-- **`Phalcon\Contracts\Domain\Payload\Payload`** - extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
+    - **`Phalcon\Contracts\Domain\Payload\Payload`** - extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
 
 </div>
+
 
 ## Contracts\Domain\Payload\Readable
 
@@ -6092,12 +6165,13 @@ boundary.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Domain\Payload\Readable`**
-- [`Phalcon\Contracts\Domain\Payload\Payload`](#contractsdomainpayloadpayload)
-- [`Phalcon\Domain\Payload\ReadableInterface`](/5.17/api/phalcon_domain/#domainpayloadreadableinterface)
+    - [`Phalcon\Contracts\Domain\Payload\Payload`](#contractsdomainpayloadpayload)
+    - [`Phalcon\Domain\Payload\ReadableInterface`](/5.17/api/phalcon_domain/#domainpayloadreadableinterface)
 
 </div>
 
 __Uses__ `Throwable`
+
 
 ### Method Summary
 
@@ -6196,6 +6270,7 @@ Status values are drawn from the `Status` vocabulary.
 
 @see \Phalcon\Domain\Payload\Status
 
+
 ## Contracts\Domain\Payload\Writeable
 
 <span class="badge badge--interface">Interface</span>
@@ -6210,11 +6285,12 @@ boundary.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Domain\Payload\Writeable`**
-- [`Phalcon\Domain\Payload\WriteableInterface`](/5.17/api/phalcon_domain/#domainpayloadwriteableinterface)
+    - [`Phalcon\Domain\Payload\WriteableInterface`](/5.17/api/phalcon_domain/#domainpayloadwriteableinterface)
 
 </div>
 
 __Uses__ `Throwable`
+
 
 ### Method Summary
 
@@ -6313,6 +6389,7 @@ Status values are drawn from the `Status` vocabulary.
 
 @see \Phalcon\Domain\Payload\Status
 
+
 ## Contracts\Encryption\Crypt\Crypt
 
 <span class="badge badge--interface">Interface</span>
@@ -6322,7 +6399,7 @@ Canonical contract for Phalcon\Encryption\Crypt.
 
 The encrypted payload produced by `encrypt()` uses the wire format:
 
-    iv ‖ hmac ‖ ciphertext ‖ tag
+iv ‖ hmac ‖ ciphertext ‖ tag
 
 where `hmac` is present only when signing is enabled (`useSigning(true)`,
 the default) and `tag` is present only for AEAD ciphers (`gcm`/`ccm`).
@@ -6336,7 +6413,7 @@ operations.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Crypt\Crypt`**
-- [`Phalcon\Encryption\Crypt\CryptInterface`](/5.17/api/phalcon_encryption/#encryptioncryptcryptinterface)
+    - [`Phalcon\Encryption\Crypt\CryptInterface`](/5.17/api/phalcon_encryption/#encryptioncryptcryptinterface)
 
 </div>
 
@@ -6455,8 +6532,8 @@ operations.
 
 ```php
 public function decrypt(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -6466,8 +6543,8 @@ Decrypts a text
 
 ```php
 public function decryptBase64(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -6477,8 +6554,8 @@ Decrypt a text that is coded as a base64 string
 
 ```php
 public function encrypt(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -6488,8 +6565,8 @@ Encrypts a text
 
 ```php
 public function encryptBase64(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -6599,6 +6676,7 @@ public function useSigning( bool $useSigning ): Crypt;
 
 Sets if the calculating message digest must be used.
 
+
 ## Contracts\Encryption\Crypt\Padding\Pad
 
 <span class="badge badge--interface">Interface</span>
@@ -6616,7 +6694,7 @@ sequences.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`**
-- [`Phalcon\Encryption\Crypt\Padding\PadInterface`](/5.17/api/phalcon_encryption/#encryptioncryptpaddingpadinterface)
+    - [`Phalcon\Encryption\Crypt\Padding\PadInterface`](/5.17/api/phalcon_encryption/#encryptioncryptpaddingpadinterface)
 
 </div>
 
@@ -6649,10 +6727,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Contracts\Encryption\Security\CryptoUtils
 
@@ -6662,11 +6741,12 @@ int $blockSize
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Security\CryptoUtils`**
-- [`Phalcon\Contracts\Encryption\Security\Security`](#contractsencryptionsecuritysecurity)
+    - [`Phalcon\Contracts\Encryption\Security\Security`](#contractsencryptionsecuritysecurity)
 
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\Random`
+
 
 ### Method Summary
 
@@ -6706,10 +6786,10 @@ __Uses__ `Phalcon\Encryption\Security\Random`
 
 ```php
 public function computeHmac(
-string $data,
-string $key,
-string $algorithm,
-bool $raw = false
+    string $data,
+    string $key,
+    string $algorithm,
+    bool $raw = false
 ): string;
 ```
 
@@ -6736,6 +6816,7 @@ public function getSaltBytes( int $numberBytes = 0 ): string;
 ```php
 public function setRandomBytes( int $randomBytes ): Security;
 ```
+
 
 ## Contracts\Encryption\Security\CsrfProtection
 
@@ -6791,9 +6872,9 @@ public function setRandomBytes( int $randomBytes ): Security;
 
 ```php
 public function checkToken(
-string $tokenKey = null,
-mixed $tokenValue = null,
-bool $destroyIfValid = true
+    string $tokenKey = null,
+    mixed $tokenValue = null,
+    bool $destroyIfValid = true
 ): bool;
 ```
 
@@ -6827,6 +6908,7 @@ public function getToken(): string|null;
 public function getTokenKey(): string|null;
 ```
 
+
 ## Contracts\Encryption\Security\JWT\Signer\Signer
 
 <span class="badge badge--interface">Interface</span>
@@ -6837,7 +6919,7 @@ Canonical contract for JWT Signer classes
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`**
-- [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
+    - [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
 
 </div>
 
@@ -6894,8 +6976,8 @@ Return the algorithm used
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -6905,13 +6987,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Contracts\Encryption\Security\PasswordSecurity
 
@@ -6977,9 +7060,9 @@ Verify a passed source with a payload and passphrase
 
 ```php
 public function checkHash(
-string $password,
-string $passwordHash,
-int $maxPassLength = 0
+    string $password,
+    string $passwordHash,
+    int $maxPassLength = 0
 ): bool;
 ```
 
@@ -7005,8 +7088,8 @@ public function getWorkFactor(): int;
 
 ```php
 public function hash(
-string $password,
-array $options = []
+    string $password,
+    array $options = []
 ): string;
 ```
 
@@ -7028,6 +7111,7 @@ public function setDefaultHash( int $defaultHash ): Security;
 public function setWorkFactor( int $workFactor ): Security;
 ```
 
+
 ## Contracts\Encryption\Security\Security
 
 <span class="badge badge--interface">Interface</span>
@@ -7036,9 +7120,10 @@ public function setWorkFactor( int $workFactor ): Security;
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils)
-- **`Phalcon\Contracts\Encryption\Security\Security`** - extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
+    - **`Phalcon\Contracts\Encryption\Security\Security`** - extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
 
 </div>
+
 
 ## Contracts\Encryption\Security\Uuid\NodeProvider
 
@@ -7048,7 +7133,7 @@ public function setWorkFactor( int $workFactor ): Security;
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`**
-- [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
+    - [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
 
 </div>
 
@@ -7072,6 +7157,7 @@ public function setWorkFactor( int $workFactor ): Security;
 public function getNode(): string;
 ```
 
+
 ## Contracts\Encryption\Security\Uuid\TimeBasedUuid
 
 <span class="badge badge--interface">Interface</span>
@@ -7080,7 +7166,7 @@ public function getNode(): string;
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`**
-- [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
+    - [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
 
 </div>
 
@@ -7115,6 +7201,7 @@ public function getDateTime(): \DateTimeImmutable;
 public function getNode(): string;
 ```
 
+
 ## Contracts\Encryption\Security\Uuid\Uuid
 
 <span class="badge badge--interface">Interface</span>
@@ -7127,7 +7214,7 @@ Also carries the standard RFC 4122 namespace UUIDs as constants.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`**
-- [`Phalcon\Encryption\Security\Uuid\UuidInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityuuiduuidinterface)
+    - [`Phalcon\Encryption\Security\Uuid\UuidInterface`](/5.17/api/phalcon_encryption/#encryptionsecurityuuiduuidinterface)
 
 </div>
 
@@ -7152,6 +7239,7 @@ Also carries the standard RFC 4122 namespace UUIDs as constants.
 </div>
 </div>
 
+
 ## Contracts\Events\Event
 
 <span class="badge badge--interface">Interface</span>
@@ -7162,7 +7250,7 @@ Canonical contract for Phalcon\Events\Event.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Events\Event`**
-- [`Phalcon\Events\EventInterface`](/5.17/api/phalcon_events/#eventseventinterface)
+    - [`Phalcon\Events\EventInterface`](/5.17/api/phalcon_events/#eventseventinterface)
 
 </div>
 
@@ -7273,6 +7361,7 @@ public function stop(): Event;
 
 Stops the event preventing propagation
 
+
 ## Contracts\Events\EventsAware
 
 <span class="badge badge--interface">Interface</span>
@@ -7289,11 +7378,12 @@ this remains type-compatible with any code that needs the canonical surface.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Events\EventsAware`**
-- [`Phalcon\Events\EventsAwareInterface`](/5.17/api/phalcon_events/#eventseventsawareinterface)
+    - [`Phalcon\Events\EventsAwareInterface`](/5.17/api/phalcon_events/#eventseventsawareinterface)
 
 </div>
 
 __Uses__ `Phalcon\Events\ManagerInterface`
+
 
 ### Method Summary
 
@@ -7332,6 +7422,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the events manager
 
+
 ## Contracts\Events\Manager
 
 <span class="badge badge--interface">Interface</span>
@@ -7342,7 +7433,7 @@ Canonical contract for Phalcon\Events\Manager.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Events\Manager`**
-- [`Phalcon\Events\ManagerInterface`](/5.17/api/phalcon_events/#eventsmanagerinterface)
+    - [`Phalcon\Events\ManagerInterface`](/5.17/api/phalcon_events/#eventsmanagerinterface)
 
 </div>
 
@@ -7481,9 +7572,9 @@ Returns whether priority ordering is currently enabled.
 
 ```php
 public function attach(
-string $eventType,
-mixed $handler,
-int $priority = self::DEFAULT_PRIORITY
+    string $eventType,
+    mixed $handler,
+    int $priority = self::DEFAULT_PRIORITY
 ): void;
 ```
 
@@ -7510,8 +7601,8 @@ Toggle response collection on/off.
 
 ```php
 public function detach(
-string $eventType,
-mixed $handler
+    string $eventType,
+    mixed $handler
 ): void;
 ```
 
@@ -7537,10 +7628,10 @@ Toggle priority ordering on/off.
 
 ```php
 public function fire(
-string $eventType,
-object $source,
-mixed $data = null,
-bool $cancelable = true
+    string $eventType,
+    object $source,
+    mixed $data = null,
+    bool $cancelable = true
 );
 ```
 
@@ -7603,6 +7694,7 @@ public function removeSubscriber( Subscriber $subscriber ): void;
 Removes a previously registered subscriber. Detaches every listener the
 subscriber declared via getSubscribedEvents(). Idempotent.
 
+
 ## Contracts\Events\Stoppable
 
 <span class="badge badge--interface">Interface</span>
@@ -7642,6 +7734,7 @@ public function isPropagationStopped(): bool;
 
 Returns true when the event must stop propagating to subsequent
 listeners.
+
 
 ## Contracts\Events\Subscriber
 
@@ -7700,6 +7793,7 @@ public static function getSubscribedEvents(): array;
 Returns a map of event name => listener config. Called once per
 Manager::addSubscriber() / removeSubscriber() call.
 
+
 ## Contracts\Filter\Sanitizer
 
 <span class="badge badge--interface">Interface</span>
@@ -7728,6 +7822,7 @@ Phalcon\Filter\Filter::sanitize(), not of the sanitizer.
 
 </div>
 
+
 ## Contracts\Flash\Flash
 
 <span class="badge badge--interface">Interface</span>
@@ -7742,7 +7837,7 @@ the next major version.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Flash\Flash`**
-- [`Phalcon\Flash\FlashInterface`](/5.17/api/phalcon_flash/#flashflashinterface)
+    - [`Phalcon\Flash\FlashInterface`](/5.17/api/phalcon_flash/#flashflashinterface)
 
 </div>
 
@@ -7797,8 +7892,8 @@ Shows a HTML error message
 
 ```php
 public function message(
-string $type,
-string $message
+    string $type,
+    string $message
 ): string|null;
 ```
 
@@ -7834,6 +7929,7 @@ public function warning( string $message ): string|null;
 ```
 
 Shows a HTML warning message
+
 
 ## Contracts\Forms\Schema
 
@@ -7884,6 +7980,7 @@ public function load(): array;
 ```
 
 Returns an ordered list of normalized element definitions.
+
 
 ## Contracts\Html\Helper\Input\SelectData
 
@@ -7939,6 +8036,7 @@ ordering, or rendering is performed here.
 public function getOptions(): array;
 ```
 
+
 ## Contracts\Logger\Adapter\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -7949,11 +8047,12 @@ Canonical contract for Phalcon\Logger adapters.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Logger\Adapter\Adapter`**
-- [`Phalcon\Logger\Adapter\AdapterInterface`](/5.17/api/phalcon_logger/#loggeradapteradapterinterface)
+    - [`Phalcon\Logger\Adapter\AdapterInterface`](/5.17/api/phalcon_logger/#loggeradapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
+
 
 ### Method Summary
 
@@ -8091,6 +8190,7 @@ public function setFormatter( FormatterInterface $formatter ): Adapter;
 
 Sets the message formatter
 
+
 ## Contracts\Logger\Formatter\Formatter
 
 <span class="badge badge--interface">Interface</span>
@@ -8101,11 +8201,12 @@ Canonical contract for Phalcon\Logger formatters.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Logger\Formatter\Formatter`**
-- [`Phalcon\Logger\Formatter\FormatterInterface`](/5.17/api/phalcon_logger/#loggerformatterformatterinterface)
+    - [`Phalcon\Logger\Formatter\FormatterInterface`](/5.17/api/phalcon_logger/#loggerformatterformatterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Logger\Item`
+
 
 ### Method Summary
 
@@ -8130,6 +8231,7 @@ public function format( Item $item ): string;
 
 Applies a format to an item
 
+
 ## Contracts\Logger\Logger
 
 <span class="badge badge--interface">Interface</span>
@@ -8140,11 +8242,12 @@ Canonical contract for Phalcon\Logger\Logger.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Logger\Logger`**
-- [`Phalcon\Logger\LoggerInterface`](/5.17/api/phalcon_logger/#loggerloggerinterface)
+    - [`Phalcon\Logger\LoggerInterface`](/5.17/api/phalcon_logger/#loggerloggerinterface)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
+
 
 ### Method Summary
 
@@ -8243,8 +8346,8 @@ __Uses__ `Phalcon\Contracts\Logger\Adapter\Adapter`
 
 ```php
 public function alert(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8257,8 +8360,8 @@ trigger the SMS alerts and wake you up.
 
 ```php
 public function critical(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8270,8 +8373,8 @@ Example: Application component unavailable, unexpected exception.
 
 ```php
 public function debug(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8281,8 +8384,8 @@ Detailed debug information.
 
 ```php
 public function emergency(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8292,8 +8395,8 @@ System is unusable.
 
 ```php
 public function error(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8336,8 +8439,8 @@ Returns the name of the logger
 
 ```php
 public function info(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8349,9 +8452,9 @@ Example: User logs in, SQL logs.
 
 ```php
 public function log(
-mixed $level,
-string $message,
-array $context = []
+    mixed $level,
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8364,8 +8467,8 @@ to the CUSTOM level and is logged, rather than raising an exception.
 
 ```php
 public function notice(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8375,8 +8478,8 @@ Normal but significant events.
 
 ```php
 public function trace(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8386,8 +8489,8 @@ Extra-verbose diagnostic output.
 
 ```php
 public function warning(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -8395,6 +8498,7 @@ Exceptional occurrences that are not errors.
 
 Example: Use of deprecated APIs, poor use of an API, undesirable things
 that are not necessarily wrong.
+
 
 ## Contracts\Messages\Messages
 
@@ -8411,11 +8515,12 @@ during iteration (`foreach`), which walks the integer sequence only.
 <div class="api-tree">
 
 - `ArrayAccess`
-- **`Phalcon\Contracts\Messages\Messages`** - extends `ArrayAccess`, `Countable`, `Iterator`
+    - **`Phalcon\Contracts\Messages\Messages`** - extends `ArrayAccess`, `Countable`, `Iterator`
 
 </div>
 
 __Uses__ `ArrayAccess` · `Countable` · `Iterator` · `Phalcon\Messages\MessageInterface`
+
 
 ### Method Summary
 
@@ -8467,6 +8572,7 @@ public function filter( string $fieldName ): array;
 
 Filters the message collection by field name
 
+
 ## Contracts\Mvc\Dispatcher
 
 <span class="badge badge--interface">Interface</span>
@@ -8477,12 +8583,13 @@ Canonical contract for Phalcon\Mvc\Dispatcher.
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
-- **`Phalcon\Contracts\Mvc\Dispatcher`**
-- [`Phalcon\Mvc\DispatcherInterface`](/5.17/api/phalcon_mvc/#mvcdispatcherinterface)
+    - **`Phalcon\Contracts\Mvc\Dispatcher`**
+        - [`Phalcon\Mvc\DispatcherInterface`](/5.17/api/phalcon_mvc/#mvcdispatcherinterface)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Dispatcher\Dispatcher` · `Phalcon\Mvc\ControllerInterface`
+
 
 ### Method Summary
 
@@ -8577,6 +8684,7 @@ public function setDefaultController( string $controllerName ): DispatcherContra
 
 Sets the default controller name
 
+
 ## Contracts\Mvc\Model\Relation\CacheKeyProvider
 
 <span class="badge badge--interface">Interface</span>
@@ -8618,6 +8726,7 @@ public function getUniqueKey(): string;
 Returns a string that uniquely identifies this model instance for
 use as the key in the reusable records cache.
 
+
 ## Contracts\Paginator\Adapter
 
 <span class="badge badge--interface">Interface</span>
@@ -8628,7 +8737,7 @@ Interface for Phalcon\Paginator adapters
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Paginator\Adapter`**
-- [`Phalcon\Paginator\Adapter\AdapterInterface`](/5.17/api/phalcon_paginator/#paginatoradapteradapterinterface)
+    - [`Phalcon\Paginator\Adapter\AdapterInterface`](/5.17/api/phalcon_paginator/#paginatoradapteradapterinterface)
 
 </div>
 
@@ -8697,6 +8806,7 @@ public function setLimit( int $limit ): Adapter;
 
 Set current rows limit
 
+
 ## Contracts\Paginator\Repository
 
 <span class="badge badge--interface">Interface</span>
@@ -8717,7 +8827,7 @@ Two adapter dialects fill this repository:
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Paginator\Repository`**
-- [`Phalcon\Paginator\RepositoryInterface`](/5.17/api/phalcon_paginator/#paginatorrepositoryinterface)
+    - [`Phalcon\Paginator\RepositoryInterface`](/5.17/api/phalcon_paginator/#paginatorrepositoryinterface)
 
 </div>
 
@@ -8933,6 +9043,7 @@ public function setProperties( array $properties ): Repository;
 
 Sets values for properties of the repository
 
+
 ## Contracts\Queue\ConnectionFactory
 
 <span class="badge badge--interface">Interface</span>
@@ -8968,6 +9079,7 @@ public function createContext(): Context;
 ```
 
 Creates a context (a session/connection to the transport).
+
 
 ## Contracts\Queue\Consumer
 
@@ -9058,12 +9170,13 @@ Receives a message without blocking, or null when none is ready.
 
 ```php
 public function reject(
-Message $message,
-bool $requeue = false
+    Message $message,
+    bool $requeue = false
 ): void;
 ```
 
 Rejects the message. When requeue is true the transport redelivers it.
+
 
 ## Contracts\Queue\Context
 
@@ -9162,9 +9275,9 @@ Creates a consumer for the given destination.
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): Message;
 ```
 
@@ -9218,6 +9331,7 @@ public function purgeQueue( Queue $queue ): void;
 
 Removes all messages from the given queue.
 
+
 ## Contracts\Queue\Destination
 
 <span class="badge badge--interface">Interface</span>
@@ -9228,10 +9342,11 @@ Marker interface for a message destination: a Queue or a Topic.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Queue\Destination`**
-- [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
-- [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
+    - [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
+    - [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
 
 </div>
+
 
 ## Contracts\Queue\Inspectable
 
@@ -9275,6 +9390,7 @@ public function getStats( Queue $queue ): array;
 ```
 
 Returns statistics for the given queue.
+
 
 ## Contracts\Queue\Message
 
@@ -9439,8 +9555,8 @@ Returns the correlation id used to correlate request/reply messages.
 
 ```php
 public function getHeader(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -9474,8 +9590,8 @@ Returns all application properties.
 
 ```php
 public function getProperty(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -9525,8 +9641,8 @@ Sets the correlation id.
 
 ```php
 public function setHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -9560,8 +9676,8 @@ Replaces all application properties.
 
 ```php
 public function setProperty(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -9590,6 +9706,7 @@ public function setTimestamp( int $timestamp ): void;
 ```
 
 Sets the timestamp (in milliseconds).
+
 
 ## Contracts\Queue\Processor
 
@@ -9644,13 +9761,14 @@ ecosystem.
 
 ```php
 public function process(
-Message $message,
-Context $context
+    Message $message,
+    Context $context
 ): string|object;
 ```
 
 Processes the message and returns one of the ACK / REJECT / REQUEUE
 constants, or an object whose string form is one of those values.
+
 
 ## Contracts\Queue\Producer
 
@@ -9744,8 +9862,8 @@ Returns the time to live (in milliseconds) or null when not set.
 
 ```php
 public function send(
-Destination $destination,
-Message $message
+    Destination $destination,
+    Message $message
 ): void;
 ```
 
@@ -9775,6 +9893,7 @@ public function setTimeToLive( mixed $timeToLive = null ): Producer;
 
 Sets the time to live (in milliseconds). Null clears it.
 
+
 ## Contracts\Queue\Queue
 
 <span class="badge badge--interface">Interface</span>
@@ -9785,7 +9904,7 @@ A queue destination (point-to-point).
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
-- **`Phalcon\Contracts\Queue\Queue`**
+    - **`Phalcon\Contracts\Queue\Queue`**
 
 </div>
 
@@ -9811,6 +9930,7 @@ public function getQueueName(): string;
 ```
 
 Returns the queue name.
+
 
 ## Contracts\Queue\SubscriptionConsumer
 
@@ -9872,8 +9992,8 @@ until a message is available).
 
 ```php
 public function subscribe(
-Consumer $consumer,
-callable $callback
+    Consumer $consumer,
+    callable $callback
 ): void;
 ```
 
@@ -9895,6 +10015,7 @@ public function unsubscribeAll(): void;
 
 Removes every subscribed consumer.
 
+
 ## Contracts\Queue\Topic
 
 <span class="badge badge--interface">Interface</span>
@@ -9905,7 +10026,7 @@ A topic destination (publish/subscribe).
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
-- **`Phalcon\Contracts\Queue\Topic`**
+    - **`Phalcon\Contracts\Queue\Topic`**
 
 </div>
 
@@ -9932,6 +10053,7 @@ public function getTopicName(): string;
 
 Returns the topic name.
 
+
 ## Contracts\Queue\VisibilityAware
 
 <span class="badge badge--interface">Interface</span>
@@ -9948,6 +10070,7 @@ shape.
 
 </div>
 
+
 ## Contracts\Support\Collection
 
 <span class="badge badge--interface">Interface</span>
@@ -9961,12 +10084,13 @@ Canonical contract for Phalcon\Support\Collection.
 <div class="api-tree">
 
 - `ArrayAccess`
-- **`Phalcon\Contracts\Support\Collection`** - extends `ArrayAccess`, `IteratorAggregate`
-- [`Phalcon\Support\Collection\CollectionInterface`](/5.17/api/phalcon_support/#supportcollectioncollectioninterface)
+    - **`Phalcon\Contracts\Support\Collection`** - extends `ArrayAccess`, `IteratorAggregate`
+        - [`Phalcon\Support\Collection\CollectionInterface`](/5.17/api/phalcon_support/#supportcollectioncollectioninterface)
 
 </div>
 
 __Uses__ `ArrayAccess` · `IteratorAggregate`
+
 
 ### Method Summary
 
@@ -10157,8 +10281,8 @@ public function __isset( string $element ): bool;
 
 ```php
 public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -10213,9 +10337,9 @@ Returns the first value in the collection or null when empty.
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string $cast = null
 ): mixed;
 ```
 
@@ -10297,8 +10421,8 @@ Returns a new collection with the callback applied to every value.
 
 ```php
 public function reduce(
-callable $callback,
-mixed $initial = null
+    callable $callback,
+    mixed $initial = null
 ): mixed;
 ```
 
@@ -10324,8 +10448,8 @@ Replaces the collection data with a new array, clearing first.
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -10335,8 +10459,8 @@ Stores an element in the collection.
 
 ```php
 public function sort(
-callable $callback = null,
-int $order = 4
+    callable $callback = null,
+    int $order = 4
 ): static;
 ```
 
@@ -10370,13 +10494,14 @@ Returns the values of the internal array.
 
 ```php
 public function where(
-string $propertyOrMethod,
-mixed $value
+    string $propertyOrMethod,
+    mixed $value
 ): static;
 ```
 
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
+
 
 ## Contracts\Support\Debug\Renderer
 
@@ -10389,11 +10514,12 @@ ExceptionReport into output.
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Support\Debug\TemplateAware`](#contractssupportdebugtemplateaware)
-- **`Phalcon\Contracts\Support\Debug\Renderer`**
+    - **`Phalcon\Contracts\Support\Debug\Renderer`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Debug\Report\ExceptionReport`
+
 
 ### Method Summary
 
@@ -10460,6 +10586,7 @@ public function render( ExceptionReport $report ): string;
 
 Renders the report.
 
+
 ## Contracts\Support\Debug\TemplateAware
 
 <span class="badge badge--interface">Interface</span>
@@ -10471,7 +10598,7 @@ template strings.
 <div class="api-tree">
 
 - **`Phalcon\Contracts\Support\Debug\TemplateAware`**
-- [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
+    - [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
 
 </div>
 
@@ -10509,8 +10636,8 @@ otherwise).
 
 ```php
 public function setTemplate(
-string $name,
-string $template
+    string $name,
+    string $template
 ): static;
 ```
 

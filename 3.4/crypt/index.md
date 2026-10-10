@@ -85,6 +85,7 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
+
 You can use the same instance to encrypt/decrypt several times:
 
 ```php
@@ -99,16 +100,16 @@ $crypt->setCipher('aes-256-ctr');
 
 // Use your own keys!
 $texts = [
-"T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c" => 'This is a secret text',
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3" => 'This is a very secret',
+    "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c" => 'This is a secret text',
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3" => 'This is a very secret',
 ];
 
 foreach ($texts as $key => $text) {
-// Perform the encryption
-$encrypted = $crypt->encrypt($text, $key);
+    // Perform the encryption
+    $encrypted = $crypt->encrypt($text, $key);
 
-// Now decrypt
-echo $crypt->decrypt($encrypted, $key);
+    // Now decrypt
+    echo $crypt->decrypt($encrypted, $key);
 }
 ```
 
@@ -139,6 +140,7 @@ $encrypted = $crypt->encrypt($text, $key);
 // Now decrypt
 echo $crypt->decrypt($encrypted, $key);
 ```
+
 
 ## Encryption Options
 The following options are available to change the encryption behavior:
@@ -204,6 +206,7 @@ $encrypt = $crypt->encryptBase64($text, $key);
 echo $crypt->decryptBase64($encrypt, $key);
 ```
 
+
 ## Setting up an Encryption service
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -213,18 +216,18 @@ You can set up the encryption component in the services container in order to us
 use Phalcon\Crypt;
 
 $di->set(
-'crypt',
-function () {
-    $crypt = new Crypt();
+    'crypt',
+    function () {
+        $crypt = new Crypt();
 
-    // Set a global encryption key
-    $crypt->setKey(
-        "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
-    );
+        // Set a global encryption key
+        $crypt->setKey(
+            "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+        );
 
-    return $crypt;
-},
-true
+        return $crypt;
+    },
+    true
 );
 ```
 
@@ -237,22 +240,23 @@ use Phalcon\Mvc\Controller;
 
 class SecretsController extends Controller
 {
-public function saveAction()
-{
-    $secret = new Secrets();
+    public function saveAction()
+    {
+        $secret = new Secrets();
 
-    $text = $this->request->getPost('text');
+        $text = $this->request->getPost('text');
 
-    $secret->content = $this->crypt->encrypt($text);
+        $secret->content = $this->crypt->encrypt($text);
 
-    if ($secret->save()) {
-        $this->flash->success(
-            'Secret was successfully created!'
-        );
+        if ($secret->save()) {
+            $this->flash->success(
+                'Secret was successfully created!'
+            );
+        }
     }
 }
-}
 ```
+
 
 ## Links
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)

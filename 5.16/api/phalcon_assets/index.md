@@ -27,12 +27,13 @@ $asset = new \Phalcon\Assets\Asset("js", "js/jquery.js");
 <div class="api-tree">
 
 - **`Phalcon\Assets\Asset`** — implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
-- [`Phalcon\Assets\Asset\Css`](#assetsassetcss)
-- [`Phalcon\Assets\Asset\Js`](#assetsassetjs)
+    - [`Phalcon\Assets\Asset\Css`](#assetsassetcss)
+    - [`Phalcon\Assets\Asset\Js`](#assetsassetjs)
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
+
 
 ### Method Summary
 
@@ -261,13 +262,13 @@ __Uses__ `Phalcon\Assets\Exceptions\CannotReadAsset`
 
 ```php
 public function __construct(
-string $type,
-string $path,
-bool $isLocal = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $isAutoVersion = false
+    string $type,
+    string $path,
+    bool $isLocal = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $isAutoVersion = false
 );
 ```
 
@@ -476,6 +477,7 @@ protected function phpFileExists( string $filename ): bool;
 protected function phpFileGetContents( string $filename );
 ```
 
+
 ## Assets\AssetInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -486,11 +488,13 @@ Phalcon\Assets\AssetInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Assets\Asset`](/5.16/api/phalcon_contracts/#contractsassetsasset)
-- **`Phalcon\Assets\AssetInterface`**
+    - **`Phalcon\Assets\AssetInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Assets\Asset`
+
+
 
 ## Assets\Asset\Css
 
@@ -502,11 +506,12 @@ Represents CSS assets
 <div class="api-tree">
 
 - [`Phalcon\Assets\Asset`](#assetsasset)
-- **`Phalcon\Assets\Asset\Css`**
+    - **`Phalcon\Assets\Asset\Css`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Asset`
+
 
 ### Method Summary
 
@@ -526,16 +531,17 @@ __Uses__ `Phalcon\Assets\Asset`
 
 ```php
 public function __construct(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 );
 ```
 
 Phalcon\Assets\Asset\Css constructor
+
 
 ## Assets\Asset\Js
 
@@ -547,11 +553,12 @@ Represents JavaScript assets
 <div class="api-tree">
 
 - [`Phalcon\Assets\Asset`](#assetsasset)
-- **`Phalcon\Assets\Asset\Js`**
+    - **`Phalcon\Assets\Asset\Js`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Asset`
+
 
 ### Method Summary
 
@@ -571,16 +578,17 @@ __Uses__ `Phalcon\Assets\Asset`
 
 ```php
 public function __construct(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 );
 ```
 
 Phalcon\Assets\Asset\Js constructor
+
 
 ## Assets\Collection
 
@@ -596,6 +604,7 @@ Collection of asset objects
 </div>
 
 __Uses__ `ArrayIterator` · `Countable` · `IteratorAggregate`
+
 
 ### Method Summary
 
@@ -892,12 +901,12 @@ Adds an asset to the collection
 
 ```php
 public function addCss(
-string $path,
-mixed $isLocal = null,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    mixed $isLocal = null,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): static;
 ```
 
@@ -923,9 +932,9 @@ Adds an inline code to the collection
 
 ```php
 public function addInlineCss(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): static;
 ```
 
@@ -935,9 +944,9 @@ Adds an inline CSS to the collection
 
 ```php
 public function addInlineJs(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): static;
 ```
 
@@ -947,12 +956,12 @@ Adds an inline JavaScript to the collection
 
 ```php
 public function addJs(
-string $path,
-mixed $isLocal = null,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    mixed $isLocal = null,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): static;
 ```
 
@@ -1184,6 +1193,7 @@ final protected function addAsset( AssetInterface $asset ): bool;
 
 Adds an asset or inline-code to the collection
 
+
 ## Assets\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1194,17 +1204,18 @@ Exceptions thrown in Phalcon\Assets will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Assets\Exception`**
-- [`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`](#assetsexceptionsassetsourcetargetcollision)
-- [`Phalcon\Assets\Exceptions\CannotReadAsset`](#assetsexceptionscannotreadasset)
-- [`Phalcon\Assets\Exceptions\CollectionNotFound`](#assetsexceptionscollectionnotfound)
-- [`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`](#assetsexceptionsinvalidassetsourcepath)
-- [`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`](#assetsexceptionsinvalidassettargetpath)
-- [`Phalcon\Assets\Exceptions\InvalidFilter`](#assetsexceptionsinvalidfilter)
-- [`Phalcon\Assets\Exceptions\InvalidTargetPath`](#assetsexceptionsinvalidtargetpath)
-- [`Phalcon\Assets\Exceptions\TargetPathIsDirectory`](#assetsexceptionstargetpathisdirectory)
+    - **`Phalcon\Assets\Exception`**
+        - [`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`](#assetsexceptionsassetsourcetargetcollision)
+        - [`Phalcon\Assets\Exceptions\CannotReadAsset`](#assetsexceptionscannotreadasset)
+        - [`Phalcon\Assets\Exceptions\CollectionNotFound`](#assetsexceptionscollectionnotfound)
+        - [`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`](#assetsexceptionsinvalidassetsourcepath)
+        - [`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`](#assetsexceptionsinvalidassettargetpath)
+        - [`Phalcon\Assets\Exceptions\InvalidFilter`](#assetsexceptionsinvalidfilter)
+        - [`Phalcon\Assets\Exceptions\InvalidTargetPath`](#assetsexceptionsinvalidtargetpath)
+        - [`Phalcon\Assets\Exceptions\TargetPathIsDirectory`](#assetsexceptionstargetpathisdirectory)
 
 </div>
+
 
 ## Assets\Exceptions\AssetSourceTargetCollision
 
@@ -1214,12 +1225,13 @@ Exceptions thrown in Phalcon\Assets will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\AssetSourceTargetCollision`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1240,6 +1252,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Assets\Exceptions\CannotReadAsset
 
 <span class="badge badge--class">Class</span>
@@ -1248,12 +1261,13 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\CannotReadAsset`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\CannotReadAsset`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1274,6 +1288,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Assets\Exceptions\CollectionNotFound
 
 <span class="badge badge--class">Class</span>
@@ -1282,12 +1297,13 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\CollectionNotFound`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\CollectionNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1308,6 +1324,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $name = "" );
 ```
 
+
 ## Assets\Exceptions\InvalidAssetSourcePath
 
 <span class="badge badge--class">Class</span>
@@ -1316,12 +1333,13 @@ public function __construct( string $name = "" );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\InvalidAssetSourcePath`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1342,6 +1360,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Assets\Exceptions\InvalidAssetTargetPath
 
 <span class="badge badge--class">Class</span>
@@ -1350,12 +1369,13 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\InvalidAssetTargetPath`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1376,6 +1396,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Assets\Exceptions\InvalidFilter
 
 <span class="badge badge--class">Class</span>
@@ -1384,12 +1405,13 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\InvalidFilter`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\InvalidFilter`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1410,6 +1432,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct();
 ```
 
+
 ## Assets\Exceptions\InvalidTargetPath
 
 <span class="badge badge--class">Class</span>
@@ -1418,12 +1441,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\InvalidTargetPath`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\InvalidTargetPath`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1444,6 +1468,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Assets\Exceptions\TargetPathIsDirectory
 
 <span class="badge badge--class">Class</span>
@@ -1452,12 +1477,13 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Assets\Exception`](#assetsexception)
-- **`Phalcon\Assets\Exceptions\TargetPathIsDirectory`**
+    - [`Phalcon\Assets\Exception`](#assetsexception)
+        - **`Phalcon\Assets\Exceptions\TargetPathIsDirectory`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Exception`
+
 
 ### Method Summary
 
@@ -1478,6 +1504,7 @@ __Uses__ `Phalcon\Assets\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Assets\FilterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -1488,11 +1515,13 @@ Phalcon\Assets\FilterInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Assets\Filter`](/5.16/api/phalcon_contracts/#contractsassetsfilter)
-- **`Phalcon\Assets\FilterInterface`**
+    - **`Phalcon\Assets\FilterInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Assets\Filter`
+
+
 
 ## Assets\Filters\Cssmin
 
@@ -1513,6 +1542,7 @@ feeds, and drop the last semicolon of the last property).
 </div>
 
 __Uses__ `Phalcon\Assets\FilterInterface`
+
 
 ### Method Summary
 
@@ -1537,6 +1567,7 @@ public function filter( string $content ): string;
 
 Filters the content using CSSMIN
 
+
 ## Assets\Filters\Jsmin
 
 <span class="badge badge--class">Class</span>
@@ -1557,6 +1588,7 @@ and most spaces and linefeeds).
 </div>
 
 __Uses__ `Phalcon\Assets\FilterInterface`
+
 
 ### Method Summary
 
@@ -1581,6 +1613,7 @@ public function filter( string $content ): string;
 
 Filters the content using JSMIN
 
+
 ## Assets\Filters\None
 
 <span class="badge badge--class">Class</span>
@@ -1595,6 +1628,7 @@ Returns the content without make any modification to the original source
 </div>
 
 __Uses__ `Phalcon\Assets\FilterInterface`
+
 
 ### Method Summary
 
@@ -1619,6 +1653,7 @@ public function filter( string $content ): string;
 
 Returns the content as is
 
+
 ## Assets\Inline
 
 <span class="badge badge--class">Class</span>
@@ -1633,8 +1668,8 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 <div class="api-tree">
 
 - **`Phalcon\Assets\Inline`** — implements [`Phalcon\Assets\AssetInterface`](#assetsassetinterface)
-- [`Phalcon\Assets\Inline\Css`](#assetsinlinecss)
-- [`Phalcon\Assets\Inline\Js`](#assetsinlinejs)
+    - [`Phalcon\Assets\Inline\Css`](#assetsinlinecss)
+    - [`Phalcon\Assets\Inline\Js`](#assetsinlinejs)
 
 </div>
 
@@ -1725,10 +1760,10 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```php
 public function __construct(
-string $type,
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $type,
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 );
 ```
 
@@ -1790,6 +1825,7 @@ public function setType( string $type ): AssetInterface;
 
 Sets the inline's type
 
+
 ## Assets\Inline\Css
 
 <span class="badge badge--class">Class</span>
@@ -1800,11 +1836,12 @@ Represents an inlined CSS
 <div class="api-tree">
 
 - [`Phalcon\Assets\Inline`](#assetsinline)
-- **`Phalcon\Assets\Inline\Css`**
+    - **`Phalcon\Assets\Inline\Css`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Inline`
+
 
 ### Method Summary
 
@@ -1824,13 +1861,14 @@ __Uses__ `Phalcon\Assets\Inline`
 
 ```php
 public function __construct(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 );
 ```
 
 Phalcon\Assets\Inline\Css constructor
+
 
 ## Assets\Inline\Js
 
@@ -1842,11 +1880,12 @@ Represents an inline JavaScript
 <div class="api-tree">
 
 - [`Phalcon\Assets\Inline`](#assetsinline)
-- **`Phalcon\Assets\Inline\Js`**
+    - **`Phalcon\Assets\Inline\Js`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Inline`
+
 
 ### Method Summary
 
@@ -1866,13 +1905,14 @@ __Uses__ `Phalcon\Assets\Inline`
 
 ```php
 public function __construct(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 );
 ```
 
 Phalcon\Assets\Inline\Js constructor
+
 
 ## Assets\Manager
 
@@ -1884,12 +1924,13 @@ Manages collections of CSS/JavaScript assets
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.16/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Assets\Manager`**
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.16/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Assets\Manager`**
 
 </div>
 
 __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Assets\Exceptions\AssetSourceTargetCollision` · `Phalcon\Assets\Exceptions\CollectionNotFound` · `Phalcon\Assets\Exceptions\InvalidAssetSourcePath` · `Phalcon\Assets\Exceptions\InvalidAssetTargetPath` · `Phalcon\Assets\Exceptions\InvalidFilter` · `Phalcon\Assets\Exceptions\InvalidTargetPath` · `Phalcon\Assets\Exceptions\TargetPathIsDirectory` · `Phalcon\Assets\Inline\Css` · `Phalcon\Assets\Inline\Js` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\TagFactory`
+
 
 ### Method Summary
 
@@ -2090,8 +2131,8 @@ __Uses__ `Phalcon\Assets\Asset\Css` · `Phalcon\Assets\Asset\Js` · `Phalcon\Ass
 
 ```php
 public function __construct(
-TagFactory $tagFactory,
-array $options = []
+    TagFactory $tagFactory,
+    array $options = []
 );
 ```
 
@@ -2109,8 +2150,8 @@ Adds a raw asset to the manager
 
 ```php
 public function addAssetByType(
-string $type,
-Asset $asset
+    string $type,
+    Asset $asset
 ): static;
 ```
 
@@ -2120,12 +2161,12 @@ Adds a asset by its type
 
 ```php
 public function addCss(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): static;
 ```
 
@@ -2143,8 +2184,8 @@ Adds a raw inline code to the manager
 
 ```php
 public function addInlineCodeByType(
-string $type,
-Inline $code
+    string $type,
+    Inline $code
 ): static;
 ```
 
@@ -2154,9 +2195,9 @@ Adds an inline code by its type
 
 ```php
 public function addInlineCss(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): static;
 ```
 
@@ -2166,9 +2207,9 @@ Adds an inline CSS to the 'css' collection
 
 ```php
 public function addInlineJs(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): static;
 ```
 
@@ -2178,12 +2219,12 @@ Adds an inline JavaScript to the 'js' collection
 
 ```php
 public function addJs(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): static;
 ```
 
@@ -2206,8 +2247,8 @@ Creates/Returns a collection of assets
 
 ```php
 public function collectionAssetsByType(
-array $assets,
-string $type
+    array $assets,
+    string $type
 ): array;
 ```
 
@@ -2223,8 +2264,8 @@ Returns true or false if collection exists.
 
 ```php
 if ($manager->exists("jsHeader")) {
-// \Phalcon\Assets\Collection
-$collection = $manager->get("jsHeader");
+    // \Phalcon\Assets\Collection
+    $collection = $manager->get("jsHeader");
 }
 ```
 
@@ -2282,8 +2323,8 @@ Returns true or false if collection exists.
 
 ```php
 if ($manager->has("jsHeader")) {
-// \Phalcon\Assets\Collection
-$collection = $manager->get("jsHeader");
+    // \Phalcon\Assets\Collection
+    $collection = $manager->get("jsHeader");
 }
 ```
 
@@ -2291,8 +2332,8 @@ $collection = $manager->get("jsHeader");
 
 ```php
 public function output(
-Collection $collection,
-string $type
+    Collection $collection,
+    string $type
 ): string|null;
 ```
 
@@ -2310,8 +2351,8 @@ Prints the HTML for CSS assets
 
 ```php
 public function outputInline(
-Collection $collection,
-mixed $type
+    Collection $collection,
+    mixed $type
 ): string;
 ```
 
@@ -2345,8 +2386,8 @@ Prints the HTML for JS assets
 
 ```php
 public function set(
-string $name,
-Collection $collection
+    string $name,
+    Collection $collection
 ): static;
 ```
 

@@ -66,10 +66,10 @@ Reads an element from an array by key. When the key is not present, the supplied
 
 ```php
 protected function getArrVal(
-array $collection,
-mixed $index,
-mixed $defaultValue = null,
-?string $cast = null
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    ?string $cast = null
 ): mixed
 ```
 
@@ -93,19 +93,19 @@ use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 class MyAdapter
 {
-use GetTrait;
+    use GetTrait;
 
-public function __construct(array $options = [])
-{
-    // 'sess-' is returned when 'prefix' is not supplied
-    $prefix = $this->getArrVal($options, 'prefix', 'sess-');
+    public function __construct(array $options = [])
+    {
+        // 'sess-' is returned when 'prefix' is not supplied
+        $prefix = $this->getArrVal($options, 'prefix', 'sess-');
 
-    // the looked up value is cast to an int
-    $lifetime = $this->getArrVal($options, 'lifetime', 3600, 'int');
+        // the looked up value is cast to an int
+        $lifetime = $this->getArrVal($options, 'lifetime', 3600, 'int');
 
-    // cast to bool
-    $persistent = $this->getArrVal($options, 'persistent', false, 'bool');
-}
+        // cast to bool
+        $persistent = $this->getArrVal($options, 'persistent', false, 'bool');
+    }
 }
 ```
 
@@ -123,8 +123,8 @@ Filters a collection using PHP's [array_filter()][array_filter] with an optional
 
 ```php
 protected function toFilter(
-array $collection,
-callable|null $method = null
+    array $collection,
+    callable|null $method = null
 ): array
 ```
 
@@ -146,17 +146,17 @@ use Phalcon\Traits\Support\Helper\Arr\FilterTrait;
 
 class MyCollection
 {
-use FilterTrait;
+    use FilterTrait;
 
-public function positives(array $numbers): array
-{
-    return $this->toFilter(
-        $numbers,
-        function ($value) {
-            return $value > 0;
-        }
-    );
-}
+    public function positives(array $numbers): array
+    {
+        return $this->toFilter(
+            $numbers,
+            function ($value) {
+                return $value > 0;
+            }
+        );
+    }
 }
 ```
 
@@ -174,9 +174,9 @@ Encodes data using PHP's [json_encode()][json_encode]. On failure it throws the 
 
 ```php
 protected static function toEncode(
-mixed $data,
-int $options = 79,
-int $depth = 512
+    mixed $data,
+    int $options = 79,
+    int $depth = 512
 ): string
 ```
 
@@ -199,12 +199,12 @@ use Phalcon\Traits\Support\Helper\Json\EncodeTrait;
 
 class MyEncoder
 {
-use EncodeTrait;
+    use EncodeTrait;
 
-public function toJson(array $data): string
-{
-    return $this->toEncode($data);
-}
+    public function toJson(array $data): string
+    {
+        return $this->toEncode($data);
+    }
 }
 ```
 
@@ -222,10 +222,10 @@ Decodes a string using PHP's [json_decode()][json_decode]. On failure it throws 
 
 ```php
 protected static function toDecode(
-string $data,
-bool $associative = false,
-int $depth = 512,
-int $options = 79
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 79
 ): mixed
 ```
 
@@ -249,12 +249,12 @@ use Phalcon\Traits\Support\Helper\Json\DecodeTrait;
 
 class MyDecoder
 {
-use DecodeTrait;
+    use DecodeTrait;
 
-public function fromJson(string $json): array
-{
-    return $this->toDecode($json, true);
-}
+    public function fromJson(string $json): array
+    {
+        return $this->toDecode($json, true);
+    }
 }
 ```
 
@@ -272,8 +272,8 @@ Turns a file name into a calculated nested directory path, so a large number of 
 
 ```php
 protected function toDirFromFile(
-string $file,
-bool $filesystemSafe = false
+    string $file,
+    bool $filesystemSafe = false
 ): string
 ```
 
@@ -295,13 +295,13 @@ use Phalcon\Traits\Support\Helper\Str\DirFromFileTrait;
 
 class MyCache
 {
-use DirFromFileTrait;
+    use DirFromFileTrait;
 
-public function pathFor(string $key): string
-{
-    // nested two-character segments; $filesystemSafe blocks "../" traversal
-    return $this->toDirFromFile($key, true);
-}
+    public function pathFor(string $key): string
+    {
+        // nested two-character segments; $filesystemSafe blocks "../" traversal
+        return $this->toDirFromFile($key, true);
+    }
 }
 ```
 
@@ -338,13 +338,13 @@ use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
 
 class MyLoader
 {
-use DirSeparatorTrait;
+    use DirSeparatorTrait;
 
-public function pathFor(string $dir, string $file): string
-{
-    // "/base/" + "view.phtml" regardless of trailing slashes on $dir
-    return $this->toDirSeparator($dir) . $file;
-}
+    public function pathFor(string $dir, string $file): string
+    {
+        // "/base/" + "view.phtml" regardless of trailing slashes on $dir
+        return $this->toDirSeparator($dir) . $file;
+    }
 }
 ```
 
@@ -362,9 +362,9 @@ Reports whether a string ends with a given substring. The comparison is case-ins
 
 ```php
 protected function toEndsWith(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool
 ```
 
@@ -387,13 +387,13 @@ use Phalcon\Traits\Support\Helper\Str\EndsWithTrait;
 
 class MyValidator
 {
-use EndsWithTrait;
+    use EndsWithTrait;
 
-public function isImage(string $file): bool
-{
-    return $this->toEndsWith($file, ".png")
-        || $this->toEndsWith($file, ".jpg");
-}
+    public function isImage(string $file): bool
+    {
+        return $this->toEndsWith($file, ".png")
+            || $this->toEndsWith($file, ".jpg");
+    }
 }
 ```
 
@@ -411,9 +411,9 @@ Reports whether a string starts with a given substring. The comparison is case-i
 
 ```php
 protected function toStartsWith(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool
 ```
 
@@ -436,12 +436,12 @@ use Phalcon\Traits\Support\Helper\Str\StartsWithTrait;
 
 class MyRequest
 {
-use StartsWithTrait;
+    use StartsWithTrait;
 
-public function isBearer(string $header): bool
-{
-    return $this->toStartsWith($header, "Bearer ", false);
-}
+    public function isBearer(string $header): bool
+    {
+        return $this->toStartsWith($header, "Bearer ", false);
+    }
 }
 ```
 
@@ -459,10 +459,10 @@ Substitutes values from a `context` array into placeholder tokens in a string - 
 
 ```php
 protected function toInterpolate(
-string $input,
-array $context = [],
-string $left = "%",
-string $right = "%"
+    string $input,
+    array $context = [],
+    string $left = "%",
+    string $right = "%"
 ): string
 ```
 
@@ -486,13 +486,13 @@ use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
 
 class MyLogger
 {
-use InterpolateTrait;
+    use InterpolateTrait;
 
-public function render(string $message, array $context): string
-{
-    // "User 42 logged in" from "User %id% logged in" + ["id" => 42]
-    return $this->toInterpolate($message, $context);
-}
+    public function render(string $message, array $context): string
+    {
+        // "User 42 logged in" from "User %id% logged in" + ["id" => 42]
+        return $this->toInterpolate($message, $context);
+    }
 }
 ```
 
@@ -510,9 +510,9 @@ Converts a delimited string into camel case - for example `camel_case` → `Came
 
 ```php
 public function toCamelize(
-string $text,
-string $delimiters = "-_",
-bool $lowerFirst = false
+    string $text,
+    string $delimiters = "-_",
+    bool $lowerFirst = false
 ): string
 ```
 
@@ -535,13 +535,13 @@ use Phalcon\Traits\Support\Helper\Str\CamelizeTrait;
 
 class MyResolver
 {
-use CamelizeTrait;
+    use CamelizeTrait;
 
-public function toClassName(string $name): string
-{
-    // "gilmore_girls" -> "GilmoreGirls"
-    return $this->toCamelize($name);
-}
+    public function toClassName(string $name): string
+    {
+        // "gilmore_girls" -> "GilmoreGirls"
+        return $this->toCamelize($name);
+    }
 }
 ```
 
@@ -559,8 +559,8 @@ Converts a camel-cased string into a lower-cased, delimited one - for example `C
 
 ```php
 protected function toUncamelize(
-string $text,
-string $delimiter = "_"
+    string $text,
+    string $delimiter = "_"
 ): string
 ```
 
@@ -582,13 +582,13 @@ use Phalcon\Traits\Support\Helper\Str\UncamelizeTrait;
 
 class MyResolver
 {
-use UncamelizeTrait;
+    use UncamelizeTrait;
 
-public function toColumn(string $property): string
-{
-    // "firstName" -> "first_name"
-    return $this->toUncamelize($property);
-}
+    public function toColumn(string $property): string
+    {
+        // "firstName" -> "first_name"
+        return $this->toUncamelize($property);
+    }
 }
 ```
 
@@ -606,8 +606,8 @@ Lowercases a string in a multibyte-safe way using `mb_convert_case()` with `MB_C
 
 ```php
 protected function toLower(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string
 ```
 
@@ -629,13 +629,13 @@ use Phalcon\Traits\Support\Helper\Str\LowerTrait;
 
 class MyNormalizer
 {
-use LowerTrait;
+    use LowerTrait;
 
-public function key(string $value): string
-{
-    // "CAFÉ" -> "café"
-    return $this->toLower($value);
-}
+    public function key(string $value): string
+    {
+        // "CAFÉ" -> "café"
+        return $this->toLower($value);
+    }
 }
 ```
 
@@ -653,8 +653,8 @@ Uppercases a string in a multibyte-safe way using `mb_convert_case()` with `MB_C
 
 ```php
 protected function toUpper(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string
 ```
 
@@ -676,13 +676,13 @@ use Phalcon\Traits\Support\Helper\Str\UpperTrait;
 
 class MyNormalizer
 {
-use UpperTrait;
+    use UpperTrait;
 
-public function code(string $value): string
-{
-    // "café" -> "CAFÉ"
-    return $this->toUpper($value);
-}
+    public function code(string $value): string
+    {
+        // "café" -> "CAFÉ"
+        return $this->toUpper($value);
+    }
 }
 ```
 
@@ -723,14 +723,14 @@ use Phalcon\Traits\Php\ApcuTrait;
 
 class MyStore
 {
-use ApcuTrait;
+    use ApcuTrait;
 
-public function remember(string $key, mixed $value): void
-{
-    if (false === $this->phpApcuExists($key)) {
-        $this->phpApcuStore($key, $value, 3600);
+    public function remember(string $key, mixed $value): void
+    {
+        if (false === $this->phpApcuExists($key)) {
+            $this->phpApcuStore($key, $value, 3600);
+        }
     }
-}
 }
 ```
 
@@ -767,23 +767,23 @@ use Phalcon\Traits\Php\FileTrait;
 
 class MyStore
 {
-use FileTrait;
+    use FileTrait;
 
-public function save(string $file, string $data): bool
-{
-    return false !== $this->phpFilePutContents($file, $data);
-}
-
-public function load(string $file): string
-{
-    if (false === $this->phpFileExists($file)) {
-        return "";
+    public function save(string $file, string $data): bool
+    {
+        return false !== $this->phpFilePutContents($file, $data);
     }
 
-    $contents = $this->phpFileGetContents($file);
+    public function load(string $file): string
+    {
+        if (false === $this->phpFileExists($file)) {
+            return "";
+        }
 
-    return false === $contents ? "" : $contents;
-}
+        $contents = $this->phpFileGetContents($file);
+
+        return false === $contents ? "" : $contents;
+    }
 }
 ```
 
@@ -812,17 +812,17 @@ use Phalcon\Traits\Php\HeaderTrait;
 
 class MySession
 {
-use HeaderTrait;
+    use HeaderTrait;
 
-public function start(): bool
-{
-    if (true === $this->phpHeadersSent()) {
-        return false;
+    public function start(): bool
+    {
+        if (true === $this->phpHeadersSent()) {
+            return false;
+        }
+
+        // ... start the session ...
+        return true;
     }
-
-    // ... start the session ...
-    return true;
-}
 }
 ```
 
@@ -854,19 +854,19 @@ use Phalcon\Traits\Php\IniTrait;
 
 class MyComponent
 {
-use IniTrait;
+    use IniTrait;
 
-public function __construct()
-{
-    // instance context
-    $path = $this->phpIniGet('session.save_path', '/tmp');
-}
+    public function __construct()
+    {
+        // instance context
+        $path = $this->phpIniGet('session.save_path', '/tmp');
+    }
 
-public static function isEnabled(): bool
-{
-    // static context - no $this available
-    return self::staticPhpIniGetBool('my.feature.enabled');
-}
+    public static function isEnabled(): bool
+    {
+        // static context - no $this available
+        return self::staticPhpIniGetBool('my.feature.enabled');
+    }
 }
 ```
 
@@ -896,16 +896,16 @@ use Phalcon\Traits\Php\InfoTrait;
 
 class MyComponent
 {
-use InfoTrait;
+    use InfoTrait;
 
-public function encode(string $value): string
-{
-    if (false === $this->phpFunctionExists('mb_convert_case')) {
-        return strtoupper($value);
+    public function encode(string $value): string
+    {
+        if (false === $this->phpFunctionExists('mb_convert_case')) {
+            return strtoupper($value);
+        }
+
+        return mb_convert_case($value, MB_CASE_UPPER);
     }
-
-    return mb_convert_case($value, MB_CASE_UPPER);
-}
 }
 ```
 
@@ -935,14 +935,14 @@ use Phalcon\Traits\Php\OpensslTrait;
 
 class MyCipher
 {
-use OpensslTrait;
+    use OpensslTrait;
 
-public function newIv(string $cipher): string
-{
-    $length = (int) $this->phpOpensslCipherIvLength($cipher);
+    public function newIv(string $cipher): string
+    {
+        $length = (int) $this->phpOpensslCipherIvLength($cipher);
 
-    return $this->phpOpensslRandomPseudoBytes($length);
-}
+        return $this->phpOpensslRandomPseudoBytes($length);
+    }
 }
 ```
 
@@ -960,9 +960,9 @@ Provides an overridable wrapper around PHP's `yaml_parse_file()`, so YAML file p
 
 ```php
 protected function phpYamlParseFile(
-string $filename,
-int $pos = 0,
-array $callbacks = []
+    string $filename,
+    int $pos = 0,
+    array $callbacks = []
 ): mixed
 ```
 
@@ -985,14 +985,14 @@ use Phalcon\Traits\Php\YamlTrait;
 
 class MyConfig
 {
-use YamlTrait;
+    use YamlTrait;
 
-public function load(string $file): array
-{
-    $data = $this->phpYamlParseFile($file);
+    public function load(string $file): array
+    {
+        $data = $this->phpYamlParseFile($file);
 
-    return is_array($data) ? $data : [];
-}
+        return is_array($data) ? $data : [];
+    }
 }
 ```
 
@@ -1022,12 +1022,12 @@ use Phalcon\Traits\Php\Base64Trait;
 
 class MyToken
 {
-use Base64Trait;
+    use Base64Trait;
 
-public function segment(string $json): string
-{
-    return $this->doEncodeUrl($json); // URL-safe, unpadded
-}
+    public function segment(string $json): string
+    {
+        return $this->doEncodeUrl($json); // URL-safe, unpadded
+    }
 }
 ```
 

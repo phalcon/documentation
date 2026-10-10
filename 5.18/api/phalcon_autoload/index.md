@@ -23,11 +23,12 @@ Exceptions thrown in Phalcon\Autoload will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Autoload\Exception`**
-- [`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`](#autoloadexceptionsloaderdirectoriesnotarray)
-- [`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`](#autoloadexceptionsloadermethodnotcallable)
+    - **`Phalcon\Autoload\Exception`**
+        - [`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`](#autoloadexceptionsloaderdirectoriesnotarray)
+        - [`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`](#autoloadexceptionsloadermethodnotcallable)
 
 </div>
+
 
 ## Autoload\Exceptions\LoaderDirectoriesNotArray
 
@@ -37,12 +38,13 @@ Exceptions thrown in Phalcon\Autoload will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Autoload\Exception`](#autoloadexception)
-- **`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`**
+    - [`Phalcon\Autoload\Exception`](#autoloadexception)
+        - **`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`**
 
 </div>
 
 __Uses__ `Phalcon\Autoload\Exception`
+
 
 ### Method Summary
 
@@ -63,6 +65,7 @@ __Uses__ `Phalcon\Autoload\Exception`
 public function __construct( string $name = "" );
 ```
 
+
 ## Autoload\Exceptions\LoaderMethodNotCallable
 
 <span class="badge badge--class">Class</span>
@@ -71,12 +74,13 @@ public function __construct( string $name = "" );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Autoload\Exception`](#autoloadexception)
-- **`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`**
+    - [`Phalcon\Autoload\Exception`](#autoloadexception)
+        - **`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Autoload\Exception`
+
 
 ### Method Summary
 
@@ -97,6 +101,7 @@ __Uses__ `Phalcon\Autoload\Exception`
 public function __construct();
 ```
 
+
 ## Autoload\Loader
 
 <span class="badge badge--class">Class</span>
@@ -109,11 +114,12 @@ allowing the user to autoload files with different extensions than .php.
 <div class="api-tree">
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.18/api/phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Autoload\Loader`**
+    - **`Phalcon\Autoload\Loader`**
 
 </div>
 
 __Uses__ `Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Events\AbstractEventsAware`
+
 
 ### Method Summary
 
@@ -355,8 +361,8 @@ Loader constructor.
 
 ```php
 public function addClass(
-string $name,
-string $file
+    string $name,
+    string $file
 ): static;
 ```
 
@@ -390,9 +396,9 @@ Adds a file to be added to the loader
 
 ```php
 public function addNamespace(
-string $name,
-mixed $directories,
-bool $prepend = false
+    string $name,
+    mixed $directories,
+    bool $prepend = false
 ): static;
 ```
 
@@ -496,8 +502,8 @@ Register the autoload method
 
 ```php
 public function setClasses(
-array $classes,
-bool $merge = false
+    array $classes,
+    bool $merge = false
 ): static;
 ```
 
@@ -507,8 +513,8 @@ Register classes and their locations
 
 ```php
 public function setDirectories(
-array $directories,
-bool $merge = false
+    array $directories,
+    bool $merge = false
 ): static;
 ```
 
@@ -518,8 +524,8 @@ Register directories in which "not found" classes could be found
 
 ```php
 public function setExtensions(
-array $extensions,
-bool $merge = false
+    array $extensions,
+    bool $merge = false
 ): static;
 ```
 
@@ -550,8 +556,8 @@ $loader->setFileCheckingCallback(null);
 
 ```php
 public function setFiles(
-array $files,
-bool $merge = false
+    array $files,
+    bool $merge = false
 ): static;
 ```
 
@@ -562,8 +568,8 @@ very useful for including files that only have functions
 
 ```php
 public function setNamespaces(
-array $namespaces,
-bool $merge = false
+    array $namespaces,
+    bool $merge = false
 ): static;
 ```
 

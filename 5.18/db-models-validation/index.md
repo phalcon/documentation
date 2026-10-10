@@ -24,21 +24,21 @@ use Phalcon\Filter\Validation\Validator\Uniqueness;
 
 class Customers extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'cst_email',
-        new Uniqueness(
-            [
-                'message' => 'The customer email must be unique',
-            ]
-        )
-    );
+        $validator->add(
+            'cst_email',
+            new Uniqueness(
+                [
+                    'message' => 'The customer email must be unique',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -60,35 +60,35 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 class Invoices extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'inv_status_flag',
-        new InclusionIn(
-            [
-                'domain'  => [
-                    'Paid',
-                    'Unpaid',
-                ],
-                'message' => 'The invoice must be ' .
-                             'either paid or unpaid',
-            ]
-        )
-    );
+        $validator->add(
+            'inv_status_flag',
+            new InclusionIn(
+                [
+                    'domain'  => [
+                        'Paid',
+                        'Unpaid',
+                    ],
+                    'message' => 'The invoice must be ' .
+                                 'either paid or unpaid',
+                ]
+            )
+        );
 
-    $validator->add(
-        'inv_number',
-        new Uniqueness(
-            [
-                'message' => 'The invoice number must be unique',
-            ]
-        )
-    );
+        $validator->add(
+            'inv_number',
+            new Uniqueness(
+                [
+                    'message' => 'The invoice number must be unique',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -108,13 +108,13 @@ Each message is an instance of [Phalcon\Messages\Message][messages-message] and 
 <?php
 
 if (false === $invoice->save()) {
-$messages = $invoice->getMessages();
+    $messages = $invoice->getMessages();
 
-foreach ($messages as $message) {
-    echo 'Message: ', $message->getMessage();
-    echo 'Field: ', $message->getField();
-    echo 'Type: ', $message->getType();
-}
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage();
+        echo 'Field: ', $message->getField();
+        echo 'Type: ', $message->getType();
+    }
 }
 ```
 
@@ -139,32 +139,32 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function getMessages()
-{
-    $messages = [];
+    public function getMessages()
+    {
+        $messages = [];
 
-    foreach (parent::getMessages() as $message) {
-        switch ($message->getType()) {
-            case 'InvalidCreateAttempt':
-                $messages[] = 'The record cannot be created '
-                            . 'because it already exists';
-                break;
+        foreach (parent::getMessages() as $message) {
+            switch ($message->getType()) {
+                case 'InvalidCreateAttempt':
+                    $messages[] = 'The record cannot be created '
+                                . 'because it already exists';
+                    break;
 
-            case 'InvalidUpdateAttempt':
-                $messages[] = 'The record cannot be updated '
-                            . 'because it does not exist';
-                break;
+                case 'InvalidUpdateAttempt':
+                    $messages[] = 'The record cannot be updated '
+                                . 'because it does not exist';
+                    break;
 
-            case 'PresenceOf':
-                $messages[] = 'The field ' 
-                            . $message->getField() 
-                            . ' is mandatory';
-                break;
+                case 'PresenceOf':
+                    $messages[] = 'The field ' 
+                                . $message->getField() 
+                                . ' is mandatory';
+                    break;
+            }
         }
-    }
 
-    return $messages;
-}
+        return $messages;
+    }
 }
 ```
 
@@ -183,7 +183,7 @@ $messages->appendMessage(new Message('Visited during iteration'));
 $messages['summary'] = new Message('Reachable by offset only');
 
 foreach ($messages as $message) {
-echo $message->getMessage(), "\n"; // "Visited during iteration"
+    echo $message->getMessage(), "\n"; // "Visited during iteration"
 }
 ```
 
@@ -212,22 +212,22 @@ use Phalcon\Messages\Message;
 
 class Invoices extends Model
 {
-public function validation()
-{
-    if ('Unpaid' === $this->inv_type_flag) {
-        $message = new Message(
-            'Unpaid invoices are not allowed',
-            'inv_type_flag',
-            'UnpaidInvoiceType'
-        );
+    public function validation()
+    {
+        if ('Unpaid' === $this->inv_type_flag) {
+            $message = new Message(
+                'Unpaid invoices are not allowed',
+                'inv_type_flag',
+                'UnpaidInvoiceType'
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 }
 ```
 

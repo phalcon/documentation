@@ -23,13 +23,14 @@ This is the base class for Phalcon\Annotations adapters
 <div class="api-tree">
 
 - **`Phalcon\Annotations\Adapter\AbstractAdapter`** — implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
-- [`Phalcon\Annotations\Adapter\Apcu`](#annotationsadapterapcu)
-- [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
-- [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
+    - [`Phalcon\Annotations\Adapter\Apcu`](#annotationsadapterapcu)
+    - [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
+    - [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
+
 
 ### Method Summary
 
@@ -146,8 +147,8 @@ See setAnnotationsLimit().
 
 ```php
 public function getConstant(
-string $className,
-string $constantName
+    string $className,
+    string $constantName
 ): Collection;
 ```
 
@@ -165,8 +166,8 @@ Returns the annotations found in all the class' constants
 
 ```php
 public function getMethod(
-string $className,
-string $methodName
+    string $className,
+    string $methodName
 ): Collection;
 ```
 
@@ -192,8 +193,8 @@ Returns the annotations found in all the class' properties
 
 ```php
 public function getProperty(
-string $className,
-string $propertyName
+    string $className,
+    string $propertyName
 ): Collection;
 ```
 
@@ -226,6 +227,7 @@ public function setReader( ReaderInterface $reader );
 
 Sets the annotations parser
 
+
 ## Annotations\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -240,6 +242,7 @@ This interface must be implemented by adapters in Phalcon\Annotations
 </div>
 
 __Uses__ `Phalcon\Annotations\Collection` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
+
 
 ### Method Summary
 
@@ -315,8 +318,8 @@ Parses or retrieves all the annotations found in a class
 
 ```php
 public function getConstant(
-string $className,
-string $constantName
+    string $className,
+    string $constantName
 ): Collection;
 ```
 
@@ -334,8 +337,8 @@ Returns the annotations found in all the class' constants
 
 ```php
 public function getMethod(
-string $className,
-string $methodName
+    string $className,
+    string $methodName
 ): Collection;
 ```
 
@@ -361,8 +364,8 @@ Returns the annotations found in all the class' methods
 
 ```php
 public function getProperty(
-string $className,
-string $propertyName
+    string $className,
+    string $propertyName
 ): Collection;
 ```
 
@@ -384,6 +387,7 @@ public function setReader( ReaderInterface $reader );
 
 Sets the annotations parser
 
+
 ## Annotations\Adapter\Apcu
 
 <span class="badge badge--class">Class</span>
@@ -400,11 +404,12 @@ $annotations = new Apcu();
 <div class="api-tree">
 
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
-- **`Phalcon\Annotations\Adapter\Apcu`**
+    - **`Phalcon\Annotations\Adapter\Apcu`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Reflection`
+
 
 ### Method Summary
 
@@ -467,12 +472,13 @@ Reads parsed annotations from APCu
 
 ```php
 public function write(
-string $key,
-Reflection $data
+    string $key,
+    Reflection $data
 ): bool;
 ```
 
 Writes parsed annotations to APCu
+
 
 ## Annotations\Adapter\Memory
 
@@ -485,11 +491,12 @@ development/testing
 <div class="api-tree">
 
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
-- **`Phalcon\Annotations\Adapter\Memory`**
+    - **`Phalcon\Annotations\Adapter\Memory`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Reflection`
+
 
 ### Method Summary
 
@@ -544,12 +551,13 @@ Reads parsed annotations from memory
 
 ```php
 public function write(
-string $key,
-Reflection $data
+    string $key,
+    Reflection $data
 ): void;
 ```
 
 Writes parsed annotations to memory
+
 
 ## Annotations\Adapter\Stream
 
@@ -562,20 +570,21 @@ Stores the parsed annotations in files. This adapter is suitable for production
 use Phalcon\Annotations\Adapter\Stream;
 
 $annotations = new Stream(
-[
-    "annotationsDir" => "app/cache/annotations/",
-]
+    [
+        "annotationsDir" => "app/cache/annotations/",
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
-- **`Phalcon\Annotations\Adapter\Stream`**
+    - **`Phalcon\Annotations\Adapter\Stream`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `RuntimeException`
+
 
 ### Method Summary
 
@@ -633,12 +642,13 @@ Reads parsed annotations from files
 
 ```php
 public function write(
-string $key,
-Reflection $data
+    string $key,
+    Reflection $data
 ): void;
 ```
 
 Writes parsed annotations to files
+
 
 ## Annotations\Annotation
 
@@ -654,6 +664,7 @@ Represents a single annotation in an annotations collection
 </div>
 
 __Uses__ `Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`
+
 
 ### Method Summary
 
@@ -826,6 +837,7 @@ public function numberArguments(): int;
 
 Returns the number of arguments that the annotation has
 
+
 ## Annotations\AnnotationsFactory
 
 <span class="badge badge--class">Class</span>
@@ -836,12 +848,13 @@ Factory to create annotations components
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.14/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Annotations\AnnotationsFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Annotations\AnnotationsFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
+
 
 ### Method Summary
 
@@ -900,8 +913,8 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -923,6 +936,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Annotations\Collection
 
 <span class="badge badge--class">Class</span>
@@ -934,7 +948,7 @@ of annotations easily
 ```php
 // Traverse annotations
 foreach ($classAnnotations as $annotation) {
-echo "Name=", $annotation->getName(), PHP_EOL;
+    echo "Name=", $annotation->getName(), PHP_EOL;
 }
 
 // Check if the annotations has a specific
@@ -951,6 +965,7 @@ $annotation = $classAnnotations->get("Cacheable");
 </div>
 
 __Uses__ `Countable` · `Iterator` · `Phalcon\Annotations\Exceptions\AnnotationNotFound`
+
 
 ### Method Summary
 
@@ -1129,6 +1144,7 @@ public function valid(): bool;
 
 Check if the current annotation in the iterator is valid
 
+
 ## Annotations\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1139,12 +1155,13 @@ Class for exceptions thrown by Phalcon\Annotations
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Annotations\Exception`**
-- [`Phalcon\Annotations\Exceptions\AnnotationNotFound`](#annotationsexceptionsannotationnotfound)
-- [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
-- [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
+    - **`Phalcon\Annotations\Exception`**
+        - [`Phalcon\Annotations\Exceptions\AnnotationNotFound`](#annotationsexceptionsannotationnotfound)
+        - [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
+        - [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
 
 </div>
+
 
 ## Annotations\Exceptions\AnnotationNotFound
 
@@ -1161,12 +1178,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Annotations\Exception`](#annotationsexception)
-- **`Phalcon\Annotations\Exceptions\AnnotationNotFound`**
+    - [`Phalcon\Annotations\Exception`](#annotationsexception)
+        - **`Phalcon\Annotations\Exceptions\AnnotationNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Exception`
+
 
 ### Method Summary
 
@@ -1187,6 +1205,7 @@ __Uses__ `Phalcon\Annotations\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Annotations\Exceptions\AnnotationsDirectoryNotWritable
 
 <span class="badge badge--class">Class</span>
@@ -1202,12 +1221,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Annotations\Exception`](#annotationsexception)
-- **`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`**
+    - [`Phalcon\Annotations\Exception`](#annotationsexception)
+        - **`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Exception`
+
 
 ### Method Summary
 
@@ -1228,6 +1248,7 @@ __Uses__ `Phalcon\Annotations\Exception`
 public function __construct();
 ```
 
+
 ## Annotations\Exceptions\CannotReadAnnotationData
 
 <span class="badge badge--class">Class</span>
@@ -1243,11 +1264,12 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `RuntimeException`
-- **`Phalcon\Annotations\Exceptions\CannotReadAnnotationData`**
+    - **`Phalcon\Annotations\Exceptions\CannotReadAnnotationData`**
 
 </div>
 
 __Uses__ `RuntimeException`
+
 
 ### Method Summary
 
@@ -1268,6 +1290,7 @@ __Uses__ `RuntimeException`
 public function __construct();
 ```
 
+
 ## Annotations\Exceptions\UnknownAnnotationExpression
 
 <span class="badge badge--class">Class</span>
@@ -1283,12 +1306,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Annotations\Exception`](#annotationsexception)
-- **`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`**
+    - [`Phalcon\Annotations\Exception`](#annotationsexception)
+        - **`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Exception`
+
 
 ### Method Summary
 
@@ -1309,6 +1333,7 @@ __Uses__ `Phalcon\Annotations\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Annotations\Reader
 
 <span class="badge badge--class">Class</span>
@@ -1323,6 +1348,7 @@ Parses docblocks returning an array with the found annotations
 </div>
 
 __Uses__ `ReflectionClass`
+
 
 ### Method Summary
 
@@ -1357,13 +1383,14 @@ Reads annotations from the class docblocks, its methods and/or properties
 
 ```php
 public static function parseDocBlock(
-string $docBlock,
-mixed $file = null,
-mixed $line = null
+    string $docBlock,
+    mixed $file = null,
+    mixed $line = null
 ): array;
 ```
 
 Parses a raw doc block returning the annotations found
+
 
 ## Annotations\ReaderInterface
 
@@ -1411,13 +1438,14 @@ Reads annotations from the class docblocks, its constants, properties and method
 
 ```php
 public static function parseDocBlock(
-string $docBlock,
-mixed $file = null,
-mixed $line = null
+    string $docBlock,
+    mixed $file = null,
+    mixed $line = null
 ): array;
 ```
 
 Parses a raw docblock returning the annotations found
+
 
 ## Annotations\Reflection
 

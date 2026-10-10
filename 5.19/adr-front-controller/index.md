@@ -67,7 +67,7 @@ The front does not resolve the application from the container. It builds one thr
 ```php
 protected function getApplication(Container $container): ApplicationInterface
 {
-return new Application($container);
+    return new Application($container);
 }
 ```
 
@@ -101,24 +101,24 @@ use Phalcon\Contracts\ADR\Application as ApplicationInterface;
 
 final class AppFront extends AbstractHttpFront
 {
-protected function loadEnvironment(Container $container): void
-{
-    // load configuration, .env, and so on
-}
+    protected function loadEnvironment(Container $container): void
+    {
+        // load configuration, .env, and so on
+    }
 
-protected function registerProviders(Container $container): void
-{
-    parent::registerProviders($container);   // registers the ADR seams
+    protected function registerProviders(Container $container): void
+    {
+        parent::registerProviders($container);   // registers the ADR seams
 
-    $container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
-}
+        $container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
+    }
 
-protected function getApplication(Container $container): ApplicationInterface
-{
-    return (new Application($container))
-        ->setBaseNamespace('MyApp\\Action')
-        ->secureWith(AuthGuard::class, '\\Admin');
-}
+    protected function getApplication(Container $container): ApplicationInterface
+    {
+        return (new Application($container))
+            ->setBaseNamespace('MyApp\\Action')
+            ->secureWith(AuthGuard::class, '\\Admin');
+    }
 }
 ```
 

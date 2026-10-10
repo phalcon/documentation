@@ -19,6 +19,7 @@ This component makes use of adapters to define the behavior of the messages afte
 | Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](/3.4/api/phalcon_flash/)  |
 | Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](/3.4/api/phalcon_flash/) |
 
+
 ## Usage
 Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](/3.4/api/phalcon_di/) then [Phalcon\Flash\Direct](/3.4/api/phalcon_flash/) is automatically registered as `flash` service and [Phalcon\Flash\Session](/3.4/api/phalcon_flash/) is automatically registered as `flashSession` service. You can also manually register it:
 
@@ -30,18 +31,18 @@ use Phalcon\Flash\Session as FlashSession;
 
 // Set up the flash service
 $di->set(
-'flash',
-function () {
-    return new FlashDirect();
-}
+    'flash',
+    function () {
+        return new FlashDirect();
+    }
 );
 
 // Set up the flash session service
 $di->set(
-'flashSession',
-function () {
-    return new FlashSession();
-}
+    'flashSession',
+    function () {
+        return new FlashSession();
+    }
 );
 ```
 
@@ -54,15 +55,15 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    $this->flash->success('The post was correctly saved!');
-}
+    public function saveAction()
+    {
+        $this->flash->success('The post was correctly saved!');
+    }
 }
 ```
 
@@ -88,6 +89,7 @@ You can also add messages with your own types using the `message()` method:
 $this->flash->message('debug', "this is debug message, you don't say");
 ```
 
+
 ## Printing Messages
 Messages sent to the flash service are automatically formatted with HTML:
 
@@ -110,19 +112,19 @@ use Phalcon\Flash\Direct as FlashDirect;
 
 // Register the flash service with custom CSS classes
 $di->set(
-'flash',
-function () {
-    $flash = new FlashDirect(
-        [
-            'error'   => 'alert alert-danger',
-            'success' => 'alert alert-success',
-            'notice'  => 'alert alert-info',
-            'warning' => 'alert alert-warning',
-        ]
-    );
+    'flash',
+    function () {
+        $flash = new FlashDirect(
+            [
+                'error'   => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice'  => 'alert alert-info',
+                'warning' => 'alert alert-warning',
+            ]
+        );
 
-    return $flash;
-}
+        return $flash;
+    }
 );
 ```
 
@@ -138,6 +140,7 @@ Then the messages would be printed as follows:
 <div class='alert alert-warning'>best check yo self, you're not looking too good.</div>
 ```
 
+
 ## Implicit Flush vs. Session
 Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later. When should you use each? That usually depends on the type of redirection you do after sending the messages. For example, if you make a `forward` is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
 
@@ -148,25 +151,25 @@ use Phalcon\Mvc\Controller;
 
 class ContactController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Store the post
+    public function saveAction()
+    {
+        // Store the post
 
-    // Using direct flash
-    $this->flash->success('Your information was stored correctly!');
+        // Using direct flash
+        $this->flash->success('Your information was stored correctly!');
 
-    // Forward to the index action
-    return $this->dispatcher->forward(
-        [
-            'action' => 'index'
-        ]
-    );
-}
+        // Forward to the index action
+        return $this->dispatcher->forward(
+            [
+                'action' => 'index'
+            ]
+        );
+    }
 }
 ```
 
@@ -179,21 +182,21 @@ use Phalcon\Mvc\Controller;
 
 class ContactController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Store the post
+    public function saveAction()
+    {
+        // Store the post
 
-    // Using session flash
-    $this->flashSession->success('Your information was stored correctly!');
+        // Using session flash
+        $this->flashSession->success('Your information was stored correctly!');
 
-    // Make a full HTTP redirection
-    return $this->response->redirect('contact/index');
-}
+        // Make a full HTTP redirection
+        return $this->response->redirect('contact/index');
+    }
 }
 ```
 

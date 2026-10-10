@@ -45,9 +45,9 @@ use Throwable;
 
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp' => 'src/',
-]
+    [
+        'MyApp' => 'src/',
+    ]
 );
 $loader->register();
 
@@ -58,33 +58,33 @@ $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 
 $container->setShared('config', function () {
-return include 'app/config/config.php';
+    return include 'app/config/config.php';
 });
 
 $console = new Console($container);
 
 $arguments = [];
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 
 try {
-$console->handle($arguments);
+    $console->handle($arguments);
 } catch (PhalconException $e) {
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 Let's look at the code above in more detail.
@@ -96,9 +96,9 @@ First, we need to create all the necessary services for our CLI application. We 
 ```php
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp' => 'src/',
-]
+    [
+        'MyApp' => 'src/',
+    ]
 );
 $loader->register();
 ```
@@ -129,10 +129,10 @@ CLI applications need a specific dispatcher. `Phalcon\Cli\Dispatcher` offers the
 
 ```php
 $container->setShared(
-'config', 
-function () {
-    return include 'app/config/config.php';
-}
+    'config', 
+    function () {
+        return include 'app/config/config.php';
+    }
 );
 ```
 The above snippet is optional but will allow you to access any configuration settings you have set up.
@@ -158,13 +158,13 @@ The first argument relates to the task to be executed. The second is the action,
 ```php
 $arguments = [];
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 ```
 As you can see in the above, we use the `$argv` to receive what has been passed through the command line, and we split those arguments accordingly to understand what task and action need to be invoked and with what parameters.
@@ -180,16 +180,16 @@ Our application will invoke the `UsersTask`, call the `recalculate` action and p
 
 ```php
 try {
-$console->handle($arguments);
+    $console->handle($arguments);
 } catch (PhalconException $e) {
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 In the code above, we use our console object and call `handle` with the calculated parameters. The CLI application will do the necessary routing and dispatch the task and action requested. If an exception is thrown, it will be caught by the `catch` statements, and errors will be displayed on the screen accordingly.
@@ -213,11 +213,11 @@ use Phalcon\Cli\Task;
 
 class MainTask extends Task
 {
-public function mainAction()
-{
-    // This is the default task and the default action
-    echo '000000' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        // This is the default task and the default action
+        echo '000000' . PHP_EOL;
+    }
 }
 ```
 You can implement your tasks by either extending the supplied `Phalcon\Cli\Task` or writing your own class implementing the `Phalcon\Cli\TaskInterface`.
@@ -236,17 +236,17 @@ use Phalcon\Cli\Task;
 
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    // This is the default task and the default action
-    echo '000000' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        // This is the default task and the default action
+        echo '000000' . PHP_EOL;
+    }
 
-public function regenerateAction(int $count = 0)
-{
-    // This is the regenerate action
-    echo '111111' . PHP_EOL;
-}
+    public function regenerateAction(int $count = 0)
+    {
+        // This is the regenerate action
+        echo '111111' . PHP_EOL;
+    }
 }
 ```
 We can then call the `main` action (default action):
@@ -274,15 +274,15 @@ use Phalcon\Cli\Task;
 
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    echo '000000' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        echo '000000' . PHP_EOL;
+    }
 
-public function addAction(int $first, int $second)
-{
-    echo $first + $second . PHP_EOL;
-}
+    public function addAction(int $first, int $second)
+    {
+        echo $first + $second . PHP_EOL;
+    }
 }
 ```
 We can then run the following command:
@@ -305,10 +305,10 @@ use Phalcon\Cli\Task;
 
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    print_r( $this->dispatcher->getParams() );
-}
+    public function mainAction()
+    {
+        print_r( $this->dispatcher->getParams() );
+    }
 
 }
 ```
@@ -319,8 +319,8 @@ php cli.php users main additional parameters
 
 Array
 (
-[0] => additional
-[1] => parameters
+    [0] => additional
+    [1] => parameters
 )
 ```
 
@@ -352,25 +352,25 @@ use Phalcon\Cli\Task;
  */
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    # This is the default task and the default action
-    echo '000000' . PHP_EOL;
+    public function mainAction()
+    {
+        # This is the default task and the default action
+        echo '000000' . PHP_EOL;
 
-    # Also handle the `print` action
-    $this->console->handle(
-        [
-            'task'   => 'main',
-            'action' => 'print',
-        ]
-    );
-}
+        # Also handle the `print` action
+        $this->console->handle(
+            [
+                'task'   => 'main',
+                'action' => 'print',
+            ]
+        );
+    }
 
-public function printAction()
-{
-    # Print action executed also
-    echo '444444' . PHP_EOL;
-}
+    public function printAction()
+    {
+        # Print action executed also
+        echo '444444' . PHP_EOL;
+    }
 }
 ```
 This technique allows you to run any task and any action from any other task. However, it is not recommended because it could lead to maintenance nightmares. It is better to extend `Phalcon\Cli\Task` and implement your logic there.
@@ -397,9 +397,9 @@ use Throwable;
 
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp' => 'src/',
-]
+    [
+        'MyApp' => 'src/',
+    ]
 );
 $loader->register();
 
@@ -412,40 +412,40 @@ $container->setShared('dispatcher', $dispatcher);
 $console = new Console($container);
 
 $console->registerModules(
-[
-    'frontend' => [
-        'className' => BackendModule::class,
-        'path'      => './src/frontend/Module.php',
-    ],
-    'backend' => [
-        'className' => FrontendModule::class,
-        'path'      => './src/backend/Module.php',
-    ],
-]
+    [
+        'frontend' => [
+            'className' => BackendModule::class,
+            'path'      => './src/frontend/Module.php',
+        ],
+        'backend' => [
+            'className' => FrontendModule::class,
+            'path'      => './src/backend/Module.php',
+        ],
+    ]
 );
 
 $arguments = [];
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 
 try {
-$console->handle($arguments);
+    $console->handle($arguments);
 } catch (PhalconException $e) {
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 The above code assumes that you have structured your directories to contain modules in the `frontend` and `backend` directories.
@@ -486,6 +486,8 @@ public function setDefaultModule(string $defaultModule): AbstractApplication
 ```
 Sets the module name to be used if the router does not return a valid module
 
+
+
 ## Routes
 The CLI application has its own router. By default, the Phalcon CLI application uses the [Phalcon\Cli\Router][cli-router] object, but you can implement your own by using the [Phalcon\Cli\RouterInterface][cli-routerinterface].
 
@@ -493,6 +495,7 @@ The CLI application has its own router. By default, the Phalcon CLI application 
 Similar to an MVC application, the [Phalcon\Cli\Router][cli-router] uses [Phalcon\Cli\Router\Route][cli-router-route] objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface][cli-router-routeinterface].
 
 These routes support regex parameters, such as `a-zA-Z0-9`, and also provide additional placeholders:
+
 
 | Placeholder  | Description                                |
 |--------------|--------------------------------------------|
@@ -524,6 +527,7 @@ For more details about routes and route classes, you can refer to the [Routing][
 
 ## Events
 CLI applications in Phalcon are [event-aware][events], allowing you to utilize the `setEventsManager` and `getEventsManager` methods to access the events manager. The following events are available:
+
 
 | Event               | Stop | Description                                                                                                            |
 |---------------------|:----:|------------------------------------------------------------------------------------------------------------------------|

@@ -12,6 +12,7 @@ version: "4.2"
 ## Overview
 [Phalcon\Mvc\Application][mvc-application] is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.
 
+
 ```php
 <?php
 
@@ -22,20 +23,20 @@ $container   = new FactoryDefault();
 $application = new Application($container);
 
 try {
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
 ## Methods
 ```php
 public function __construct(
-DiInterface $container = null
+    DiInterface $container = null
 )
 ```
 Constructor. Accepts a DI container with relevant services
@@ -52,7 +53,7 @@ Returns the internal event manager
 
 ```php
 public function getModule(
-string $name
+    string $name
 ): array | object
 ```
 Gets the module definition registered in the application via module name
@@ -64,65 +65,65 @@ Return the modules registered in the application
 
 ```php
 public function registerModules(
-array $modules, 
-bool $merge = false
+    array $modules, 
+    bool $merge = false
 ): AbstractApplication
 ```
 Register an array of modules present in the application
 
 ```php
 $this->registerModules(
-[
-    "front" => [
-        "className" => \Multi\Front\Module::class,
-        "path"      => "../apps/front/Module.php",
-    ],
-    "back" => [
-        "className" => \Multi\Back\Module::class,
-        "path"      => "../apps/back/Module.php",
-    ],
-]
+    [
+        "front" => [
+            "className" => \Multi\Front\Module::class,
+            "path"      => "../apps/front/Module.php",
+        ],
+        "back" => [
+            "className" => \Multi\Back\Module::class,
+            "path"      => "../apps/back/Module.php",
+        ],
+    ]
 );
 ```
 
 ```php
 public function setDefaultModule(
-string $defaultModule
+    string $defaultModule
 ): AbstractApplication
 ```
 Sets the module name to be used if the router doesn't return a valid module
 
 ```php
 public function setEventsManager(
-ManagerInterface $eventsManager
+    ManagerInterface $eventsManager
 ): void
 ```
 Sets the events manager
 
 ```php
 public function handle(
-string $uri
+    string $uri
 ): ResponseInterface | bool
 ```
 Handles a MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI`]`)
 
 ```php
 public function sendCookiesOnHandleRequest(
-bool $sendCookies
+    bool $sendCookies
 ): Application
 ```
 Enables or disables sending cookies by each request handling
 
 ```php
 public function sendHeadersOnHandleRequest(
-bool $sendHeaders
+    bool $sendHeaders
 ): Application
 ```
 Enables or disables sending headers by each request handling
 
 ```php
 public function useImplicitView(
-bool $implicitView
+    bool $implicitView
 ): Application
 ```
 This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component using this method
@@ -144,13 +145,13 @@ $container = new FactoryDefault();
 $application = new Application($container);
 
 try {
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo 'Exception: ', $e->getMessage();
+    echo 'Exception: ', $e->getMessage();
 }
 ```
 
@@ -160,7 +161,7 @@ The core of all the work of the controller occurs when `handle()` is invoked:
 <?php
 
 $response = $application->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -178,7 +179,7 @@ $container = new FactoryDefault();
 $router = $container['router'];
 
 $router->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 
 $view = $container['view'];
@@ -186,15 +187,15 @@ $view = $container['view'];
 $dispatcher = $container['dispatcher'];
 
 $dispatcher->setControllerName(
-$router->getControllerName()
+    $router->getControllerName()
 );
 
 $dispatcher->setActionName(
-$router->getActionName()
+    $router->getActionName()
 );
 
 $dispatcher->setParams(
-$router->getParams()
+    $router->getParams()
 );
 
 // View
@@ -205,9 +206,9 @@ $dispatcher->dispatch();
 
 // View 
 $view->render(
-$dispatcher->getControllerName(),
-$dispatcher->getActionName(),
-$dispatcher->getParams()
+    $dispatcher->getControllerName(),
+    $dispatcher->getActionName(),
+    $dispatcher->getParams()
 );
 
 // View
@@ -216,7 +217,7 @@ $view->finish();
 $response = $container['response'];
 
 $response->setContent(
-$view->getContent()
+    $view->getContent()
 );
 
 $response->send();
@@ -236,21 +237,21 @@ $container = new FactoryDefault();
 $router = $container['router'];
 
 $router->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 
 $dispatcher = $container['dispatcher'];
 
 $dispatcher->setControllerName(
-$router->getControllerName()
+    $router->getControllerName()
 );
 
 $dispatcher->setActionName(
-$router->getActionName()
+    $router->getActionName()
 );
 
 $dispatcher->setParams(
-$router->getParams()
+    $router->getParams()
 );
 
 $dispatcher->dispatch();
@@ -258,7 +259,7 @@ $dispatcher->dispatch();
 $response = $dispatcher->getReturnedValue();
 
 if ($response instanceof ResponseInterface) {
-$response->send();
+    $response->send();
 }
 ```
 
@@ -277,37 +278,37 @@ $container = new FactoryDefault();
 $router = $container['router'];
 
 $router->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 
 $dispatcher = $container['dispatcher'];
 
 $dispatcher->setControllerName(
-$router->getControllerName()
+    $router->getControllerName()
 );
 
 $dispatcher->setActionName(
-$router->getActionName()
+    $router->getActionName()
 );
 
 $dispatcher->setParams(
-$router->getParams()
+    $router->getParams()
 );
 
 try {
-$dispatcher->dispatch();
+    $dispatcher->dispatch();
 } catch (Exception $e) {
-// 503
-$dispatcher->setControllerName('errors');
-$dispatcher->setActionName('action503');
+    // 503
+    $dispatcher->setControllerName('errors');
+    $dispatcher->setActionName('action503');
 
-$dispatcher->dispatch();
+    $dispatcher->dispatch();
 }
 
 $response = $dispatcher->getReturnedValue();
 
 if ($response instanceof ResponseInterface) {
-$response->send();
+    $response->send();
 }
 ```
 
@@ -321,14 +322,14 @@ Single module MVC applications consist of one module only. Namespaces can be use
 
 ```
 single/
-app/
-    controllers/
-    models/
-    views/
-public/
-    css/
-    img/
-    js/
+    app/
+        controllers/
+        models/
+        views/
+    public/
+        css/
+        img/
+        js/
 ```
 
 If namespaces are not used, the following bootstrap file could be used:
@@ -343,10 +344,10 @@ use Phalcon\Mvc\View;
 
 $loader = new Loader();
 $loader->registerDirs(
-[
-    '../apps/controllers/',
-    '../apps/models/',
-]
+    [
+        '../apps/controllers/',
+        '../apps/models/',
+    ]
 );
 
 $loader->register();
@@ -354,27 +355,27 @@ $loader->register();
 $container = new FactoryDefault();
 
 $container->set(
-'view',
-function () {
-    $view = new View();
-    $view->setViewsDir(
-        '../apps/views/'
-    );
+    'view',
+    function () {
+        $view = new View();
+        $view->setViewsDir(
+            '../apps/views/'
+        );
 
-    return $view;
-}
+        return $view;
+    }
 );
 
 $application = new Application($container);
 
 try {
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -391,10 +392,10 @@ use Phalcon\Mvc\View;
 
 $loader = new Loader();
 $loader->registerNamespaces(
-[
-    'Single\Controllers' => '../apps/controllers/',
-    'Single\Models'      => '../apps/models/',
-]
+    [
+        'Single\Controllers' => '../apps/controllers/',
+        'Single\Models'      => '../apps/models/',
+    ]
 );
 
 $loader->register();
@@ -402,39 +403,39 @@ $loader->register();
 $container = new FactoryDefault();
 
 $container->set(
-'dispatcher',
-function () {
-    $dispatcher = new Dispatcher();
-    $dispatcher->setDefaultNamespace(
-        'Single\Controllers'
-    );
+    'dispatcher',
+    function () {
+        $dispatcher = new Dispatcher();
+        $dispatcher->setDefaultNamespace(
+            'Single\Controllers'
+        );
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 
 $container->set(
-'view',
-function () {
-    $view = new View();
-    $view->setViewsDir(
-        '../apps/views/'
-    );
+    'view',
+    function () {
+        $view = new View();
+        $view->setViewsDir(
+            '../apps/views/'
+        );
 
-    return $view;
-}
+        return $view;
+    }
 );
 
 $application = new Application($container);
 
 try {
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -444,20 +445,20 @@ A multi-module application uses the same document root for more than one module.
 ```
 multiple/
   apps/
-front/
-   controllers/
-   models/
-   views/
-   Module.php
-back/
-   controllers/
-   models/
-   views/
-   Module.php
+    front/
+       controllers/
+       models/
+       views/
+       Module.php
+    back/
+       controllers/
+       models/
+       views/
+       Module.php
   public/
-css/
-img/
-js/
+    css/
+    img/
+    js/
 ```
 Each subdirectory in `apps/` directory have its own MVC structure. A `Module.php` file is present in each module directory, to configure specific settings of each module, such as autoloaders, custom services etc.
 
@@ -474,49 +475,49 @@ use Phalcon\Mvc\View;
 
 class Module implements ModuleDefinitionInterface
 {
-public function registerAutoloaders(
-    DiInterface $container = null
-)
-{
-    $loader = new Loader();
-    $loader->registerNamespaces(
-        [
-            'Multi\Back\Controllers' => '../apps/back/controllers/',
-            'Multi\Back\Models'      => '../apps/back/models/',
-        ]
-    );
+    public function registerAutoloaders(
+        DiInterface $container = null
+    )
+    {
+        $loader = new Loader();
+        $loader->registerNamespaces(
+            [
+                'Multi\Back\Controllers' => '../apps/back/controllers/',
+                'Multi\Back\Models'      => '../apps/back/models/',
+            ]
+        );
 
-    $loader->register();
-}
+        $loader->register();
+    }
 
-public function registerServices(DiInterface $container)
-{
-    // Registering a dispatcher
-    $container->set(
-        'dispatcher',
-        function () {
-            $dispatcher = new Dispatcher();
-            $dispatcher->setDefaultNamespace(
-                'Multi\Back\Controllers'
-            );
+    public function registerServices(DiInterface $container)
+    {
+        // Registering a dispatcher
+        $container->set(
+            'dispatcher',
+            function () {
+                $dispatcher = new Dispatcher();
+                $dispatcher->setDefaultNamespace(
+                    'Multi\Back\Controllers'
+                );
 
-            return $dispatcher;
-        }
-    );
+                return $dispatcher;
+            }
+        );
 
-    // Registering the view component
-    $container->set(
-        'view',
-        function () {
-            $view = new View();
-            $view->setViewsDir(
-                '../apps/back/views/'
-            );
+        // Registering the view component
+        $container->set(
+            'view',
+            function () {
+                $view = new View();
+                $view->setViewsDir(
+                    '../apps/back/views/'
+                );
 
-            return $view;
-        }
-    );
-}
+                return $view;
+            }
+        );
+    }
 }
 ```
 
@@ -532,65 +533,65 @@ use Phalcon\Mvc\Router;
 $container = new FactoryDefault();
 
 $container->set(
-'router',
-function () {
-    $router = new Router();
+    'router',
+    function () {
+        $router = new Router();
 
-    $router->setDefaultModule('front');
+        $router->setDefaultModule('front');
 
-    $router->add(
-        '/login',
-        [
-            'module'     => 'back',
-            'controller' => 'login',
-            'action'     => 'index',
-        ]
-    );
+        $router->add(
+            '/login',
+            [
+                'module'     => 'back',
+                'controller' => 'login',
+                'action'     => 'index',
+            ]
+        );
 
-    $router->add(
-        '/admin/products/:action',
-        [
-            'module'     => 'back',
-            'controller' => 'products',
-            'action'     => 1,
-        ]
-    );
+        $router->add(
+            '/admin/products/:action',
+            [
+                'module'     => 'back',
+                'controller' => 'products',
+                'action'     => 1,
+            ]
+        );
 
-    $router->add(
-        '/products/:action',
-        [
-            'controller' => 'products',
-            'action'     => 1,
-        ]
-    );
+        $router->add(
+            '/products/:action',
+            [
+                'controller' => 'products',
+                'action'     => 1,
+            ]
+        );
 
-    return $router;
-}
+        return $router;
+    }
 );
 
 $application = new Application($container);
 
 $application->registerModules(
-[
-    'front' => [
-        'className' => \Multi\Front\Module::class,
-        'path'      => '../apps/front/Module.php',
-    ],
-    'back'  => [
-        'className' => \Multi\Back\Module::class,
-        'path'      => '../apps/back/Module.php',
+    [
+        'front' => [
+            'className' => \Multi\Front\Module::class,
+            'path'      => '../apps/front/Module.php',
+        ],
+        'back'  => [
+            'className' => \Multi\Back\Module::class,
+            'path'      => '../apps/back/Module.php',
+        ]
     ]
-]
 );
 
 try {
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -606,32 +607,32 @@ $view = new View();
 // ...
 
 $application->registerModules(
-[
-    'front' => function ($container) use ($view) {
-        $container->setShared(
-            'view',
-            function () use ($view) {
-                $view->setViewsDir(
-                    '../apps/front/views/'
-                );
+    [
+        'front' => function ($container) use ($view) {
+            $container->setShared(
+                'view',
+                function () use ($view) {
+                    $view->setViewsDir(
+                        '../apps/front/views/'
+                    );
 
-                return $view;
-            }
-        );
-    },
-    'back' => function ($container) use ($view) {
-        $container->setShared(
-            'view',
-            function () use ($view) {
-                $view->setViewsDir(
-                    '../apps/back/views/'
-                );
+                    return $view;
+                }
+            );
+        },
+        'back' => function ($container) use ($view) {
+            $container->setShared(
+                'view',
+                function () use ($view) {
+                    $view->setViewsDir(
+                        '../apps/back/views/'
+                    );
 
-                return $view;
-            }
-        );
-    }
-]
+                    return $view;
+                }
+            );
+        }
+    ]
 );
 ```
 
@@ -654,26 +655,27 @@ use Phalcon\Mvc\Application;
 use Phalcon\Mvc\Application\Exception;
 
 try {
-$container   = new FactoryDefault();
+    $container   = new FactoryDefault();
+    
+    // ...
 
-// ...
+    $application = new Application($container);
+    $application->registerModules(
+        [
+            'front' => false,
+        ]
+    );
+    
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$application = new Application($container);
-$application->registerModules(
-    [
-        'front' => false,
-    ]
-);
-
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
-
-$response->send();
+    $response->send();
 } catch (Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
+
 
 ## Events
 [Phalcon\Mvc\Application][mvc-application] is able to send events to the [EventsManager](/4.2/events/) (if it is present). Events are triggered using the type `application`. The following events are supported:
@@ -699,10 +701,10 @@ $manager = new Manager();
 $application->setEventsManager($manager);
 
 $manager->attach(
-'application',
-function (Event $event, $application) {
-    // ...
-}
+    'application',
+    function (Event $event, $application) {
+        // ...
+    }
 );
 ```
 

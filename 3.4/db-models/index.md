@@ -50,10 +50,10 @@ use Phalcon\Mvc\Model;
 
 class RobotParts extends Model
 {
-public function initialize()
-{
-    $this->setSource('toys_robot_parts');
-}
+    public function initialize()
+    {
+        $this->setSource('toys_robot_parts');
+    }
 }
 ```
 
@@ -70,12 +70,13 @@ use Phalcon\Mvc\Model;
 
 class RobotParts extends Model
 {
-public function onConstruct()
-{
-    // ...
-}
+    public function onConstruct()
+    {
+        // ...
+    }
 }
 ```
+
 
 ### Public properties vs. Setters/Getters
 Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
@@ -89,11 +90,11 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public $id;
+    public $id;
 
-public $name;
+    public $name;
 
-public $price;
+    public $price;
 }
 ```
 
@@ -109,51 +110,51 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-protected $id;
+    protected $id;
 
-protected $name;
+    protected $name;
 
-protected $price;
+    protected $price;
 
-public function getId()
-{
-    return $this->id;
-}
-
-public function setName($name)
-{
-    // The name is too short?
-    if (strlen($name) < 10) {
-        throw new InvalidArgumentException(
-            'The name is too short'
-        );
+    public function getId()
+    {
+        return $this->id;
     }
 
-    $this->name = $name;
-}
+    public function setName($name)
+    {
+        // The name is too short?
+        if (strlen($name) < 10) {
+            throw new InvalidArgumentException(
+                'The name is too short'
+            );
+        }
 
-public function getName()
-{
-    return $this->name;
-}
-
-public function setPrice($price)
-{
-    // Negative prices aren't allowed
-    if ($price < 0) {
-        throw new InvalidArgumentException(
-            "Price can't be negative"
-        );
+        $this->name = $name;
     }
 
-    $this->price = $price;
-}
+    public function getName()
+    {
+        return $this->name;
+    }
 
-public function getPrice()
-{
-    // Convert the value to double before be used
-    return (double) $this->price;
-}
+    public function setPrice($price)
+    {
+        // Negative prices aren't allowed
+        if ($price < 0) {
+            throw new InvalidArgumentException(
+                "Price can't be negative"
+            );
+        }
+
+        $this->price = $price;
+    }
+
+    public function getPrice()
+    {
+        // Convert the value to double before be used
+        return (double) $this->price;
+    }
 }
 ```
 
@@ -170,6 +171,7 @@ with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getPrope
 instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly
 removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a
 column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+
 
 ## Understanding Records To Objects
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
@@ -216,6 +218,7 @@ $robot->save();
 
 As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) provides high database abstraction for web applications.
 
+
 ## Finding Records
 [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
@@ -234,22 +237,22 @@ echo 'There are ', count($robots), "\n";
 
 // Get and print virtual robots ordered by name
 $robots = Robots::find(
-[
-    "type = 'virtual'",
-    'order' => 'name',
-]
+    [
+        "type = 'virtual'",
+        'order' => 'name',
+    ]
 );
 foreach ($robots as $robot) {
-echo $robot->name, "\n";
+    echo $robot->name, "\n";
 }
 
 // Get first 100 virtual robots ordered by name
 $robots = Robots::find(
-[
-    "type = 'virtual'",
-    'order' => 'name',
-    'limit' => 100,
-]
+    [
+        "type = 'virtual'",
+        'order' => 'name',
+        'limit' => 100,
+    ]
 );
 foreach ($robots as $robot) {
    echo $robot->name, "\n";
@@ -277,10 +280,10 @@ echo 'The first mechanical robot name is ', $robot->name, "\n";
 
 // Get first virtual robot ordered by name
 $robot = Robots::findFirst(
-[
-    "type = 'virtual'",
-    'order' => 'name',
-]
+    [
+        "type = 'virtual'",
+        'order' => 'name',
+    ]
 );
 
 echo 'The first virtual robot name is ', $robot->name, "\n";
@@ -294,20 +297,20 @@ Both `find()` and `findFirst()` methods accept an associative array specifying t
 use Store\Toys\Robots;
 
 $robot = Robots::findFirst(
-[
-    "type = 'virtual'",
-    'order' => 'name DESC',
-    'limit' => 30,
-]
+    [
+        "type = 'virtual'",
+        'order' => 'name DESC',
+        'limit' => 30,
+    ]
 );
 
 $robots = Robots::find(
-[
-    'conditions' => 'type = ?1',
-    'bind'       => [
-        1 => 'virtual',
+    [
+        'conditions' => 'type = ?1',
+        'bind'       => [
+            1 => 'virtual',
+        ]
     ]
-]
 );
 ```
 
@@ -336,11 +339,11 @@ If you prefer, there is also available a way to create queries in an object-orie
 use Store\Toys\Robots;
 
 $robots = Robots::query()
-->where('type = :type:')
-->andWhere('year < 2000')
-->bind(['type' => 'mechanical'])
-->order('name')
-->execute();
+    ->where('type = :type:')
+    ->andWhere('year < 2000')
+    ->bind(['type' => 'mechanical'])
+    ->order('name')
+    ->execute();
 ```
 
 The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](/3.4/api/phalcon_mvc_model_criteria/) object that is friendly with IDE autocompleters.
@@ -358,11 +361,11 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public $id;
+    public $id;
 
-public $name;
+    public $name;
 
-public $price;
+    public $price;
 }
 ```
 
@@ -378,13 +381,14 @@ $name = 'Terminator';
 $robot = Robots::findFirstByName($name);
 
 if ($robot) {
-echo 'The first robot with the name ' . $name . ' cost ' . $robot->price . '.';
+    echo 'The first robot with the name ' . $name . ' cost ' . $robot->price . '.';
 } else {
-echo 'There were no robots found in our table with the name ' . $name . '.';
+    echo 'There were no robots found in our table with the name ' . $name . '.';
 }
 ```
 
 Notice that we used 'Name' in the method call and passed the variable `$name` to it, which contains the name we are looking for in our table. Notice also that when we find a match with our query, all the other properties are available to us as well.
+
 
 ### Model Resultsets
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](/3.4/api/phalcon_mvc_model_resultset/). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
@@ -401,18 +405,18 @@ $robots = Robots::find();
 
 // Traversing with a foreach
 foreach ($robots as $robot) {
-echo $robot->name, "\n";
+    echo $robot->name, "\n";
 }
 
 // Traversing with a while
 $robots->rewind();
 
 while ($robots->valid()) {
-$robot = $robots->current();
+    $robot = $robots->current();
 
-echo $robot->name, "\n";
+    echo $robot->name, "\n";
 
-$robots->next();
+    $robots->next();
 }
 
 // Count the resultset
@@ -455,18 +459,18 @@ $parts = Parts::find();
 
 // Store the resultset into a file
 file_put_contents(
-'cache.txt',
-serialize($parts)
+    'cache.txt',
+    serialize($parts)
 );
 
 // Get parts from file
 $parts = unserialize(
-file_get_contents('cache.txt')
+    file_get_contents('cache.txt')
 );
 
 // Traverse the parts
 foreach ($parts as $part) {
-echo $part->id;
+    echo $part->id;
 }
 ```
 
@@ -474,6 +478,7 @@ echo $part->id;
 There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data. 
 
 With custom resultsets, you no longer need to do that. The custom resultset will encapsulate the functionality that otherwise would be in the model and can be reused by other models, thus keeping the code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). This way, the `find()` method will no longer return the default [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/), but instead the custom one. Phalcon allows you to do this by using the `getResultsetClass()` in your model.
+
 
 First we need to define the resultset class:
 ```php
@@ -485,9 +490,9 @@ use \Phalcon\Mvc\Model\Resultset\Simple;
 
 class Custom extends Simple
 {
-public function getSomeData() {
-    /** CODE */
-}
+    public function getSomeData() {
+        /** CODE */
+    }
 }
 ```
 
@@ -502,15 +507,15 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function getSource()
-{
-    return 'robots';
-}
-
-public function getResultsetClass()
-{
-return 'Application\Mvc\Model\Resultset\Custom';
-}
+    public function getSource()
+    {
+        return 'robots';
+    }
+    
+    public function getResultsetClass()
+    {
+    return 'Application\Mvc\Model\Resultset\Custom';
+    }
 }
 ```
 
@@ -523,10 +528,10 @@ and finally in your code you will have something like this:
  * Find the robots 
  */
 $robots = Robots::find(
-[
-    'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
-    'order'      => 'date'
-]
+    [
+        'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
+        'order'      => 'date'
+    ]
 );
 
 /**
@@ -534,6 +539,7 @@ $robots = Robots::find(
  */
 $this->view->mydata = $robots->getSomeData();
 ```
+
 
 ### Filtering Resultsets
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
@@ -544,14 +550,15 @@ The most efficient way to filter data is setting some search criteria, databases
 $customers = Customers::find();
 
 $customers = $customers->filter(
-function ($customer) {
-    // Return only customers with a valid e-mail
-    if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
-        return $customer;
+    function ($customer) {
+        // Return only customers with a valid e-mail
+        if (filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
+            return $customer;
+        }
     }
-}
 );
 ```
+
 
 ### Binding Parameters
 Bound parameters are also supported in [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
@@ -564,36 +571,36 @@ use Store\Toys\Robots;
 // Query robots binding parameters with string placeholders
 // Parameters whose keys are the same as placeholders
 $robots = Robots::find(
-[
-    'name = :name: AND type = :type:',
-    'bind' => [
-        'name' => 'Robotina',
-        'type' => 'maid',
-    ],
-]
+    [
+        'name = :name: AND type = :type:',
+        'bind' => [
+            'name' => 'Robotina',
+            'type' => 'maid',
+        ],
+    ]
 );
 
 // Query robots binding parameters with integer placeholders
 $robots = Robots::find(
-[
-    'name = ?1 AND type = ?2',
-    'bind' => [
-        1 => 'Robotina',
-        2 => 'maid',
-    ],
-]
+    [
+        'name = ?1 AND type = ?2',
+        'bind' => [
+            1 => 'Robotina',
+            2 => 'maid',
+        ],
+    ]
 );
 
 // Query robots binding parameters with both string and integer placeholders
 // Parameters whose keys are the same as placeholders
 $robots = Robots::find(
-[
-    'name = :name: AND type = ?1',
-    'bind' => [
-        'name' => 'Robotina',
-        1      => 'maid',
-    ],
-]
+    [
+        'name = :name: AND type = ?1',
+        'bind' => [
+            'name' => 'Robotina',
+            1      => 'maid',
+        ],
+    ]
 );
 ```
 
@@ -611,23 +618,23 @@ use Store\Toys\Robots;
 
 // Bind parameters
 $parameters = [
-'name' => 'Robotina',
-'year' => 2008,
+    'name' => 'Robotina',
+    'year' => 2008,
 ];
 
 // Casting Types
 $types = [
-'name' => Column::BIND_PARAM_STR,
-'year' => Column::BIND_PARAM_INT,
+    'name' => Column::BIND_PARAM_STR,
+    'year' => Column::BIND_PARAM_INT,
 ];
 
 // Query robots binding parameters with string placeholders
 $robots = Robots::find(
-[
-    'name = :name: AND year = :year:',
-    'bind'      => $parameters,
-    'bindTypes' => $types,
-]
+    [
+        'name = :name: AND year = :year:',
+        'bind'      => $parameters,
+        'bindTypes' => $types,
+    ]
 );
 ```
 
@@ -650,12 +657,12 @@ unset($array[1]); // $array: [[0] => 'a', [2] => 'c']
 $array = array_values($array); // $array: [[0] => 'a', [1] => 'c']
 
 $robots = Robots::find(
-[
-    'letter IN ({letter:array})',
-    'bind' => [
-        'letter' => $array
+    [
+        'letter IN ({letter:array})',
+        'bind' => [
+            'letter' => $array
+        ]
     ]
-]
 );
 ```
 
@@ -672,17 +679,18 @@ use Store\Toys\Robots;
 
 // Explicit query using bound parameters
 $robots = Robots::find(
-[
-    'name = ?0',
-    'bind' => [
-        'Ultron',
-    ],
-]
+    [
+        'name = ?0',
+        'bind' => [
+            'Ultron',
+        ],
+    ]
 );
 
 // Implicit query using bound parameters
 $robots = Robots::findByName('Ultron');
 ```
+
 
 ## Initializing/Preparing fetched records
 May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
@@ -696,29 +704,29 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public $id;
+    public $id;
 
-public $name;
+    public $name;
 
-public $status;
+    public $status;
 
-public function beforeSave()
-{
-    // Convert the array into a string
-    $this->status = join(',', $this->status);
-}
+    public function beforeSave()
+    {
+        // Convert the array into a string
+        $this->status = join(',', $this->status);
+    }
 
-public function afterFetch()
-{
-    // Convert the string to an array
-    $this->status = explode(',', $this->status);
-}
-
-public function afterSave()
-{
-    // Convert the string to an array
-    $this->status = explode(',', $this->status);
-}
+    public function afterFetch()
+    {
+        // Convert the string to an array
+        $this->status = explode(',', $this->status);
+    }
+    
+    public function afterSave()
+    {
+        // Convert the string to an array
+        $this->status = explode(',', $this->status);
+    }
 }
 ```
 
@@ -733,18 +741,19 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public $id;
+    public $id;
 
-public $name;
+    public $name;
 
-public $status;
+    public $status;
 
-public function getStatus()
-{
-    return explode(',', $this->status);
-}
+    public function getStatus()
+    {
+        return explode(',', $this->status);
+    }
 }
 ```
+
 
 ## Generating Calculations
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) allows to use these functions directly from the exposed methods.
@@ -759,21 +768,21 @@ $rowcount = Employees::count();
 
 // How many different areas are assigned to employees?
 $rowcount = Employees::count(
-[
-    'distinct' => 'area',
-]
+    [
+        'distinct' => 'area',
+    ]
 );
 
 // How many employees are in the Testing area?
 $rowcount = Employees::count(
-'area = 'Testing''
+    'area = 'Testing''
 );
 
 // Count employees grouping results by their area
 $group = Employees::count(
-[
-    'group' => 'area',
-]
+    [
+        'group' => 'area',
+    ]
 );
 foreach ($group as $row) {
    echo 'There are ', $row->rowcount, ' in ', $row->area;
@@ -781,20 +790,20 @@ foreach ($group as $row) {
 
 // Count employees grouping by their area and ordering the result by count
 $group = Employees::count(
-[
-    'group' => 'area',
-    'order' => 'rowcount',
-]
+    [
+        'group' => 'area',
+        'order' => 'rowcount',
+    ]
 );
 
 // Avoid SQL injections using bound parameters
 $group = Employees::count(
-[
-    'type > ?0',
-    'bind' => [
-        $type
-    ],
-]
+    [
+        'type > ?0',
+        'bind' => [
+            $type
+        ],
+    ]
 );
 ```
 
@@ -805,25 +814,25 @@ Sum examples:
 
 // How much are the salaries of all employees?
 $total = Employees::sum(
-[
-    'column' => 'salary',
-]
+    [
+        'column' => 'salary',
+    ]
 );
 
 // How much are the salaries of all employees in the Sales area?
 $total = Employees::sum(
-[
-    'column'     => 'salary',
-    'conditions' => "area = 'Sales'",
-]
+    [
+        'column'     => 'salary',
+        'conditions' => "area = 'Sales'",
+    ]
 );
 
 // Generate a grouping of the salaries of each area
 $group = Employees::sum(
-[
-    'column' => 'salary',
-    'group'  => 'area',
-]
+    [
+        'column' => 'salary',
+        'group'  => 'area',
+    ]
 );
 foreach ($group as $row) {
    echo 'The sum of salaries of the ', $row->area, ' is ', $row->sumatory;
@@ -832,21 +841,21 @@ foreach ($group as $row) {
 // Generate a grouping of the salaries of each area ordering
 // salaries from higher to lower
 $group = Employees::sum(
-[
-    'column' => 'salary',
-    'group'  => 'area',
-    'order'  => 'sumatory DESC',
-]
+    [
+        'column' => 'salary',
+        'group'  => 'area',
+        'order'  => 'sumatory DESC',
+    ]
 );
 
 // Avoid SQL injections using bound parameters
 $group = Employees::sum(
-[
-    'conditions' => 'area > ?0',
-    'bind'       => [
-        $area
-    ],
-]
+    [
+        'conditions' => 'area > ?0',
+        'bind'       => [
+            $area
+        ],
+    ]
 );
 ```
 
@@ -857,28 +866,28 @@ Average examples:
 
 // What is the average salary for all employees?
 $average = Employees::average(
-[
-    'column' => 'salary',
-]
+    [
+        'column' => 'salary',
+    ]
 );
 
 // What is the average salary for the Sales's area employees?
 $average = Employees::average(
-[
-    'column'     => 'salary',
-    'conditions' => "area = 'Sales'",
-]
+    [
+        'column'     => 'salary',
+        'conditions' => "area = 'Sales'",
+    ]
 );
 
 // Avoid SQL injections using bound parameters
 $average = Employees::average(
-[
-    'column'     => 'age',
-    'conditions' => 'area > ?0',
-    'bind'       => [
-        $area
-    ],
-]
+    [
+        'column'     => 'age',
+        'conditions' => 'area > ?0',
+        'bind'       => [
+            $area
+        ],
+    ]
 );
 ```
 
@@ -889,26 +898,27 @@ Max/Min examples:
 
 // What is the oldest age of all employees?
 $age = Employees::maximum(
-[
-    'column' => 'age',
-]
+    [
+        'column' => 'age',
+    ]
 );
 
 // What is the oldest of employees from the Sales area?
 $age = Employees::maximum(
-[
-    'column'     => 'age',
-    'conditions' => "area = 'Sales'",
-]
+    [
+        'column'     => 'age',
+        'conditions' => "area = 'Sales'",
+    ]
 );
 
 // What is the lowest salary of all employees?
 $salary = Employees::minimum(
-[
-    'column' => 'salary',
-]
+    [
+        'column' => 'salary',
+    ]
 );
 ```
+
 
 ## Creating/Updating Records
 The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
@@ -927,15 +937,15 @@ $robot->name = 'Astro Boy';
 $robot->year = 1952;
 
 if ($robot->save() === false) {
-echo "Umh, We can't store robots right now: \n";
+    echo "Umh, We can't store robots right now: \n";
 
-$messages = $robot->getMessages();
+    $messages = $robot->getMessages();
 
-foreach ($messages as $message) {
-    echo $message, "\n";
-}
+    foreach ($messages as $message) {
+        echo $message, "\n";
+    }
 } else {
-echo 'Great, a new robot was saved successfully!';
+    echo 'Great, a new robot was saved successfully!';
 }
 ```
 
@@ -949,11 +959,11 @@ use Store\Toys\Robots;
 $robot = new Robots();
 
 $robot->save(
-[
-    'type' => 'mechanical',
-    'name' => 'Astro Boy',
-    'year' => 1952,
-]
+    [
+        'type' => 'mechanical',
+        'name' => 'Astro Boy',
+        'year' => 1952,
+    ]
 );
 ```
 
@@ -983,13 +993,14 @@ use Store\Toys\Robots;
 $robot = new Robots();
 
 $robot->save(
-$_POST,
-[
-    'name',
-    'type',
-]
+    $_POST,
+    [
+        'name',
+        'type',
+    ]
 );
 ```
+
 
 ### Create/Update with Confidence
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
@@ -1007,19 +1018,20 @@ $robot->year = 1952;
 
 // This record only must be created
 if ($robot->create() === false) {
-echo "Umh, We can't store robots right now: \n";
+    echo "Umh, We can't store robots right now: \n";
 
-$messages = $robot->getMessages();
+    $messages = $robot->getMessages();
 
-foreach ($messages as $message) {
-    echo $message, "\n";
-}
+    foreach ($messages as $message) {
+        echo $message, "\n";
+    }
 } else {
-echo 'Great, a new robot was created successfully!';
+    echo 'Great, a new robot was created successfully!';
 }
 ```
 
 The methods `create` and `update` also accept an array of values as parameter.
+
 
 ## Deleting Records
 The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
@@ -1032,17 +1044,17 @@ use Store\Toys\Robots;
 $robot = Robots::findFirst(11);
 
 if ($robot !== false) {
-if ($robot->delete() === false) {
-    echo "Sorry, we can't delete the robot right now: \n";
+    if ($robot->delete() === false) {
+        echo "Sorry, we can't delete the robot right now: \n";
 
-    $messages = $robot->getMessages();
+        $messages = $robot->getMessages();
 
-    foreach ($messages as $message) {
-        echo $message, "\n";
+        foreach ($messages as $message) {
+            echo $message, "\n";
+        }
+    } else {
+        echo 'The robot was deleted successfully!';
     }
-} else {
-    echo 'The robot was deleted successfully!';
-}
 }
 ```
 
@@ -1054,21 +1066,21 @@ You can also delete many records by traversing a resultset with a `foreach`:
 use Store\Toys\Robots;
 
 $robots = Robots::find(
-"type = 'mechanical'"
+    "type = 'mechanical'"
 );
 
 foreach ($robots as $robot) {
-if ($robot->delete() === false) {
-    echo "Sorry, we can't delete the robot right now: \n";
+    if ($robot->delete() === false) {
+        echo "Sorry, we can't delete the robot right now: \n";
 
-    $messages = $robot->getMessages();
+        $messages = $robot->getMessages();
 
-    foreach ($messages as $message) {
-        echo $message, "\n";
+        foreach ($messages as $message) {
+            echo $message, "\n";
+        }
+    } else {
+        echo 'The robot was deleted successfully!';
     }
-} else {
-    echo 'The robot was deleted successfully!';
-}
 }
 ```
 
@@ -1090,18 +1102,19 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function beforeDelete()
-{
-    if ($this->status === 'A') {
-        echo "The robot is active, it can't be deleted";
+    public function beforeDelete()
+    {
+        if ($this->status === 'A') {
+            echo "The robot is active, it can't be deleted";
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 }
 ```
+
 
 ## Hydration Modes
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
@@ -1115,9 +1128,9 @@ $robots = Robots::find();
 
 // Manipulating a resultset of complete objects
 foreach ($robots as $robot) {
-$robot->year = 2000;
+    $robot->year = 2000;
 
-$robot->save();
+    $robot->save();
 }
 ```
 
@@ -1133,29 +1146,29 @@ $robots = Robots::find();
 
 // Return every robot as an array
 $robots->setHydrateMode(
-Resultset::HYDRATE_ARRAYS
+    Resultset::HYDRATE_ARRAYS
 );
 
 foreach ($robots as $robot) {
-echo $robot['year'], PHP_EOL;
+    echo $robot['year'], PHP_EOL;
 }
 
 // Return every robot as a stdClass
 $robots->setHydrateMode(
-Resultset::HYDRATE_OBJECTS
+    Resultset::HYDRATE_OBJECTS
 );
 
 foreach ($robots as $robot) {
-echo $robot->year, PHP_EOL;
+    echo $robot->year, PHP_EOL;
 }
 
 // Return every robot as a Robots instance
 $robots->setHydrateMode(
-Resultset::HYDRATE_RECORDS
+    Resultset::HYDRATE_RECORDS
 );
 
 foreach ($robots as $robot) {
-echo $robot->year, PHP_EOL;
+    echo $robot->year, PHP_EOL;
 }
 ```
 
@@ -1168,19 +1181,19 @@ use Phalcon\Mvc\Model\Resultset;
 use Store\Toys\Robots;
 
 $robots = Robots::find(
-[
-    'hydration' => Resultset::HYDRATE_ARRAYS,
-]
+    [
+        'hydration' => Resultset::HYDRATE_ARRAYS,
+    ]
 );
 
 foreach ($robots as $robot) {
-echo $robot['year'], PHP_EOL;
+    echo $robot['year'], PHP_EOL;
 }
 ```
 
 ## Table prefixes
 If you want all your tables to have certain prefix and without setting source in all models you can use the  `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
-
+  
 ```php
 <?php
 
@@ -1197,6 +1210,7 @@ $manager->setModelPrefix('wp_');
 $robots = new Robots(null, null, $manager);
 echo $robots->getSource(); // will return wp_robots
 ```
+
 
 ## Auto-generated identity columns
 Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
@@ -1222,12 +1236,13 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function getSequenceName()
-{
-    return 'robots_sequence_name';
-}
+    public function getSequenceName()
+    {
+        return 'robots_sequence_name';
+    }
 }
 ```
+
 
 ## Skipping Columns
 To tell [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
@@ -1241,30 +1256,30 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    // Skips fields/columns on both INSERT/UPDATE operations
-    $this->skipAttributes(
-        [
-            'year',
-            'price',
-        ]
-    );
+    public function initialize()
+    {
+        // Skips fields/columns on both INSERT/UPDATE operations
+        $this->skipAttributes(
+            [
+                'year',
+                'price',
+            ]
+        );
 
-    // Skips only when inserting
-    $this->skipAttributesOnCreate(
-        [
-            'created_at',
-        ]
-    );
+        // Skips only when inserting
+        $this->skipAttributesOnCreate(
+            [
+                'created_at',
+            ]
+        );
 
-    // Skips only when updating
-    $this->skipAttributesOnUpdate(
-        [
-            'modified_in',
-        ]
-    );
-}
+        // Skips only when updating
+        $this->skipAttributesOnUpdate(
+            [
+                'modified_in',
+            ]
+        );
+    }
 }
 ```
 
@@ -1298,12 +1313,12 @@ use Phalcon\Db\RawValue;
 
 class Robots extends Model
 {
-public function beforeCreate()
-{
-    if ($this->price > 10000) {
-        $this->type = new RawValue('default');
+    public function beforeCreate()
+    {
+        if ($this->price > 10000) {
+            $this->type = new RawValue('default');
+        }
     }
-}
 }
 ```
 
@@ -1325,12 +1340,13 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    $this->useDynamicUpdate(true);
-}
+    public function initialize()
+    {
+        $this->useDynamicUpdate(true);
+    }
 }
 ```
+
 
 ## Independent Column Mapping
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
@@ -1344,25 +1360,25 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public $code;
+    public $code;
 
-public $theName;
+    public $theName;
 
-public $theType;
+    public $theType;
 
-public $theYear;
+    public $theYear;
 
-public function columnMap()
-{
-    // Keys are the real names in the table and
-    // the values their names in the application
-    return [
-        'id'       => 'code',
-        'the_name' => 'theName',
-        'the_type' => 'theType',
-        'the_year' => 'theYear',
-    ];
-}
+    public function columnMap()
+    {
+        // Keys are the real names in the table and
+        // the values their names in the application
+        return [
+            'id'       => 'code',
+            'the_name' => 'theName',
+            'the_type' => 'theType',
+            'the_year' => 'theYear',
+        ];
+    }
 }
 ```
 
@@ -1375,20 +1391,20 @@ use Store\Toys\Robots;
 
 // Find a robot by its name
 $robot = Robots::findFirst(
-"theName = 'Voltron'"
+    "theName = 'Voltron'"
 );
 
 echo $robot->theName, "\n";
 
 // Get robots ordered by type
 $robot = Robots::find(
-[
-    'order' => 'theType DESC',
-]
+    [
+        'order' => 'theType DESC',
+    ]
 );
 
 foreach ($robots as $robot) {
-echo 'Code: ', $robot->code, "\n";
+    echo 'Code: ', $robot->code, "\n";
 }
 
 // Create a robot
@@ -1413,6 +1429,7 @@ The independent column map allows you to:
 * Eliminate vendor prefixes/suffixes in your code
 * Change column names without change your application code
 
+
 ## Record Snapshots
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1425,10 +1442,10 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    $this->keepSnapshots(true);
-}
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 ```
 
@@ -1458,9 +1475,9 @@ You can disable this functionality by using:
 
 ```php
 Phalcon\Mvc\Model::setup(
-[
-    'updateSnapshotOnSave' => false,
-]
+    [
+        'updateSnapshotOnSave' => false,
+    ]
 );
 ``` 
 or if you prefer set this in your `php.ini`
@@ -1470,7 +1487,7 @@ phalcon.orm.update_snapshot_on_save = 0
 ```
 
 Using this functionality will have the following effect:
-
+  
 ```php
 <?php
 
@@ -1480,7 +1497,7 @@ class User extends Model
 {
   public function initialize()
   {
-  $this->keepSnapshots(true);
+      $this->keepSnapshots(true);
   }
 }
 
@@ -1501,13 +1518,14 @@ array(0) {
 }
 array(1) {
 [0]=> 
-string(5) "login"
+    string(5) "login"
 }
 array(0) {
 }
 ```
-
+  
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
+
 
 ## Pointing to a different schema
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
@@ -1521,12 +1539,13 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    $this->setSchema('toys');
-}
+    public function initialize()
+    {
+        $this->setSchema('toys');
+    }
 }
 ```
+
 
 ## Setting multiple databases
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
@@ -1539,32 +1558,32 @@ use Phalcon\Db\Adapter\Pdo\PostgreSQL as PostgreSQLPdo;
 
 // This service returns a MySQL database
 $di->set(
-'dbMysql',
-function () {
-    return new MysqlPdo(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'invo',
-        ]
-    );
-}
+    'dbMysql',
+    function () {
+        return new MysqlPdo(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'invo',
+            ]
+        );
+    }
 );
 
 // This service returns a PostgreSQL database
 $di->set(
-'dbPostgres',
-function () {
-    return new PostgreSQLPdo(
-        [
-            'host'     => 'localhost',
-            'username' => 'postgres',
-            'password' => '',
-            'dbname'   => 'invo',
-        ]
-    );
-}
+    'dbPostgres',
+    function () {
+        return new PostgreSQLPdo(
+            [
+                'host'     => 'localhost',
+                'username' => 'postgres',
+                'password' => '',
+                'dbname'   => 'invo',
+            ]
+        );
+    }
 );
 ```
 
@@ -1579,10 +1598,10 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    $this->setConnectionService('dbPostgres');
-}
+    public function initialize()
+    {
+        $this->setConnectionService('dbPostgres');
+    }
 }
 ```
 
@@ -1597,12 +1616,12 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    $this->setReadConnectionService('dbSlave');
+    public function initialize()
+    {
+        $this->setReadConnectionService('dbSlave');
 
-    $this->setWriteConnectionService('dbMaster');
-}
+        $this->setWriteConnectionService('dbMaster');
+    }
 }
 ```
 
@@ -1617,36 +1636,36 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-/**
- * Dynamically selects a shard
- *
- * @param array $intermediate
- * @param array $bindParams
- * @param array $bindTypes
- */
-public function selectReadConnection($intermediate, $bindParams, $bindTypes)
-{
-    // Check if there is a 'where' clause in the select
-    if (isset($intermediate['where'])) {
-        $conditions = $intermediate['where'];
+    /**
+     * Dynamically selects a shard
+     *
+     * @param array $intermediate
+     * @param array $bindParams
+     * @param array $bindTypes
+     */
+    public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+    {
+        // Check if there is a 'where' clause in the select
+        if (isset($intermediate['where'])) {
+            $conditions = $intermediate['where'];
 
-        // Choose the possible shard according to the conditions
-        if ($conditions['left']['name'] === 'id') {
-            $id = $conditions['right']['value'];
+            // Choose the possible shard according to the conditions
+            if ($conditions['left']['name'] === 'id') {
+                $id = $conditions['right']['value'];
 
-            if ($id > 0 && $id < 10000) {
-                return $this->getDI()->get('dbShard1');
-            }
+                if ($id > 0 && $id < 10000) {
+                    return $this->getDI()->get('dbShard1');
+                }
 
-            if ($id > 10000) {
-                return $this->getDI()->get('dbShard2');
+                if ($id > 10000) {
+                    return $this->getDI()->get('dbShard2');
+                }
             }
         }
-    }
 
-    // Use a default shard
-    return $this->getDI()->get('dbShard0');
-}
+        // Use a default shard
+        return $this->getDI()->get('dbShard0');
+    }
 }
 ```
 
@@ -1660,6 +1679,7 @@ use Store\Toys\Robots;
 $robot = Robots::findFirst('id = 101');
 ```
 
+
 ## Injecting services into Models
 You may be required to access the application services within a model, the following example explains how to do that:
 
@@ -1672,22 +1692,23 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function notSaved()
-{
-    // Obtain the flash service from the DI container
-    $flash = $this->getDI()->getFlash();
+    public function notSaved()
+    {
+        // Obtain the flash service from the DI container
+        $flash = $this->getDI()->getFlash();
 
-    $messages = $this->getMessages();
+        $messages = $this->getMessages();
 
-    // Show validation messages
-    foreach ($messages as $message) {
-        $flash->error($message);
+        // Show validation messages
+        foreach ($messages as $message) {
+            $flash->error($message);
+        }
     }
-}
 }
 ```
 
 The `notSaved` event is triggered every time that a `create` or `update` action fails. So we're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each save.
+
 
 ## Disabling/Enabling Features
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
@@ -1698,10 +1719,10 @@ In the ORM we have implemented a mechanism that allow you to enable/disable spec
 use Phalcon\Mvc\Model;
 
 Model::setup(
-[
-    'events'         => false,
-    'columnRenaming' => false,
-]
+    [
+        'events'         => false,
+        'columnRenaming' => false,
+    ]
 );
 ```
 
@@ -1729,8 +1750,8 @@ The available options are:
 | updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                         | `true`  |
 | virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
-:::warning[NOTE]
-<code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+:::warning\[NOTE]
+<code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable\_assign\_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
 :::
 
 ## Stand-Alone component
@@ -1749,24 +1770,24 @@ $di = new Di();
 
 // Setup a connection
 $di->set(
-'db',
-new Connection(
-    [
-        'dbname' => 'sample.db',
-    ]
-)
+    'db',
+    new Connection(
+        [
+            'dbname' => 'sample.db',
+        ]
+    )
 );
 
 // Set a models manager
 $di->set(
-'modelsManager',
-new ModelsManager()
+    'modelsManager',
+    new ModelsManager()
 );
 
 // Use the memory meta-data adapter or other
 $di->set(
-'modelsMetadata',
-new MetaData()
+    'modelsMetadata',
+    new MetaData()
 );
 
 // Create a model

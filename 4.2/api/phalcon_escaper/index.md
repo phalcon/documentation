@@ -17,18 +17,20 @@ All classes are prefixed with `Phalcon`
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Escaper.zep)
 
+
 -   __Namespace__
 
     - `Phalcon`
 
 -   __Uses__
-
+    
     - `Phalcon\Escaper\EscaperInterface`
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `EscaperInterface`
 
 Phalcon\Escaper
@@ -46,6 +48,7 @@ $escaped = $escaper->escapeCss("font-family: <Verdana>");
 
 echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 ```
+
 
 ### Properties
 ```php
@@ -73,11 +76,13 @@ public function attributes( string $attribute = null ): string;
 ```
 Escapes a HTML attribute string
 
+
 ```php
 public function css( string $input ): string;
 ```
 Escape CSS strings by replacing non-alphanumeric chars by their
 hexadecimal escaped representation
+
 
 ```php
 final public function detectEncoding( string $str ): string | null;
@@ -86,21 +91,25 @@ Detect the character encoding of a string to be handled by an encoder.
 Special-handling for chr(172) and chr(128) to chr(159) which fail to be
 detected by mb_detect_encoding()
 
+
 ```php
 public function escapeCss( string $css ): string;
 ```
 Escape CSS strings by replacing non-alphanumeric chars by their
 hexadecimal escaped representation
 
+
 ```php
 public function escapeHtml( string $text = null ): string;
 ```
 Escapes a HTML string. Internally uses htmlspecialchars
 
+
 ```php
 public function escapeHtmlAttr( string $attribute = null ): string;
 ```
 Escapes a HTML attribute string
+
 
 ```php
 public function escapeJs( string $js ): string;
@@ -108,25 +117,30 @@ public function escapeJs( string $js ): string;
 Escape JavaScript strings by replacing non-alphanumeric chars by their
 hexadecimal escaped representation
 
+
 ```php
 public function escapeUrl( string $url ): string;
 ```
 Escapes a URL. Internally uses rawurlencode
+
 
 ```php
 public function getEncoding(): string;
 ```
 Returns the internal encoding used by the escaper
 
+
 ```php
 public function getFlags(): int;
 ```
 Returns the current flags for htmlspecialchars
 
+
 ```php
 public function html( string $input = null ): string;
 ```
 Escapes a HTML string. Internally uses htmlspecialchars
+
 
 ```php
 public function js( string $input ): string;
@@ -134,10 +148,12 @@ public function js( string $input ): string;
 Escape javascript strings by replacing non-alphanumeric chars by their
 hexadecimal escaped representation
 
+
 ```php
 final public function normalizeEncoding( string $str ): string;
 ```
 Utility to normalize a string's encoding to UTF-32.
+
 
 ```php
 public function setDoubleEncode( bool $doubleEncode ): void;
@@ -148,6 +164,7 @@ Sets the double_encode to be used by the escaper
 $escaper->setDoubleEncode(false);
 ```
 
+
 ```php
 public function setEncoding( string $encoding ): void;
 ```
@@ -156,6 +173,7 @@ Sets the encoding to be used by the escaper
 ```php
 $escaper->setEncoding("utf-8");
 ```
+
 
 ```php
 public function setFlags( int $flags ): Escaper;
@@ -166,6 +184,7 @@ Sets the HTML quoting type for htmlspecialchars
 $escaper->setFlags(ENT_XHTML);
 ```
 
+
 ```php
 public function setHtmlQuoteType( int $flags ): void;
 ```
@@ -175,26 +194,37 @@ Sets the HTML quoting type for htmlspecialchars
 $escaper->setHtmlQuoteType(ENT_XHTML);
 ```
 
+
 ```php
 public function url( string $url ): string;
 ```
 Escapes a URL. Internally uses rawurlencode
 
+
+
+
+
+
 ## Escaper\EscaperInterface ![Interface](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Escaper/EscaperInterface.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Escaper`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Interface for Phalcon\Escaper
+
 
 ## Methods
 
@@ -204,15 +234,18 @@ public function escapeCss( string $css ): string;
 Escape CSS strings by replacing non-alphanumeric chars by their
 hexadecimal representation
 
+
 ```php
 public function escapeHtml( string $text ): string;
 ```
 Escapes a HTML string
 
+
 ```php
 public function escapeHtmlAttr( string $text ): string;
 ```
 Escapes a HTML attribute string
+
 
 ```php
 public function escapeJs( string $js ): string;
@@ -220,41 +253,51 @@ public function escapeJs( string $js ): string;
 Escape Javascript strings by replacing non-alphanumeric chars by their
 hexadecimal representation
 
+
 ```php
 public function escapeUrl( string $url ): string;
 ```
 Escapes a URL. Internally uses rawurlencode
+
 
 ```php
 public function getEncoding(): string;
 ```
 Returns the internal encoding used by the escaper
 
+
 ```php
 public function setEncoding( string $encoding ): void;
 ```
 Sets the encoding to be used by the escaper
+
 
 ```php
 public function setHtmlQuoteType( int $quoteType ): void;
 ```
 Sets the HTML quoting type for htmlspecialchars
 
+
+
+
 ## Html\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Html/Exception.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Html`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
+    
 
 Exceptions thrown in Phalcon\Escaper will use this class
 

@@ -128,34 +128,34 @@ use Phalcon\Mvc\Controller;
 
 class ReportsController extends Controller
 {
-public function viewAction(int $reportId)
-{
-    $factory = new PayloadFactory();
-    $payload = $factory->newInstance();
+    public function viewAction(int $reportId)
+    {
+        $factory = new PayloadFactory();
+        $payload = $factory->newInstance();
 
-    $report = Reports::find(
-        [
-            'conditions' => 'reportId = :reportId:',
-            'bind'       => [
-                'reportId' => $reportId,
-             ],
-        ]          
-    );
+        $report = Reports::find(
+            [
+                'conditions' => 'reportId = :reportId:',
+                'bind'       => [
+                    'reportId' => $reportId,
+                 ],
+            ]          
+        );
+        
+        if (false === $report) {
+            $payload
+                ->setStatus(Status::NOT_FOUND)
+                ->setInput(func_get_args())
+            ;
+        } else {
+            $payload
+                ->setStatus(Status::FOUND)
+                ->setOutput($report)
+            ;
+        }
 
-    if (false === $report) {
-        $payload
-            ->setStatus(Status::NOT_FOUND)
-            ->setInput(func_get_args())
-        ;
-    } else {
-        $payload
-            ->setStatus(Status::FOUND)
-            ->setOutput($report)
-        ;
+        return $payload;
     }
-
-    return $payload;
-}
 }   
 ```
 

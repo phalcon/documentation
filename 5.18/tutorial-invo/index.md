@@ -147,29 +147,29 @@ INVO follows the [PDS skeleton][pds-skeleton] layout. The application source liv
 
 ```bash
 invo/
-config
-public
-    css
-    img
-    js
-resources
-    docker
-    migrations
-src
-    Constants
-    Controllers
-    Forms
-    Models
-    Plugins
-    Providers
-tests
-    Browser
-    Functional
-    Support
-    Unit
-themes
-    invo
-var
+    config
+    public
+        css
+        img
+        js
+    resources
+        docker
+        migrations
+    src
+        Constants
+        Controllers
+        Forms
+        Models
+        Plugins
+        Providers
+    tests
+        Browser
+        Functional
+        Support
+        Unit
+    themes
+        invo
+    var
 ```
 
 | Directory              | Description                                             |
@@ -227,14 +227,14 @@ error_reporting(E_ALL);
 $rootPath = dirname(__DIR__);
 
 try {
-require_once $rootPath . '/vendor/autoload.php';
+    require_once $rootPath . '/vendor/autoload.php';
 
-Dotenv::createImmutable($rootPath)->load();
+    Dotenv::createImmutable($rootPath)->load();
 
-echo (new Application($rootPath))->run();
+    echo (new Application($rootPath))->run();
 } catch (Exception $e) {
-echo $e->getMessage() . '<br>';
-echo '<pre>' . $e->getTraceAsString() . '</pre>';
+    echo $e->getMessage() . '<br>';
+    echo '<pre>' . $e->getTraceAsString() . '</pre>';
 }
 ```
 
@@ -268,49 +268,49 @@ use Phalcon\Mvc\Application as MvcApplication;
 
 class Application
 {
-protected MvcApplication $app;
-protected DiInterface $di;
-protected string $rootPath;
+    protected MvcApplication $app;
+    protected DiInterface $di;
+    protected string $rootPath;
 
-public function __construct(string $rootPath)
-{
-    $this->rootPath = $rootPath;
+    public function __construct(string $rootPath)
+    {
+        $this->rootPath = $rootPath;
 
-    $this->di = new FactoryDefault();
-    $this->di->offsetSet('rootPath', function () use ($rootPath) {
-        return $rootPath;
-    });
+        $this->di = new FactoryDefault();
+        $this->di->offsetSet('rootPath', function () use ($rootPath) {
+            return $rootPath;
+        });
 
-    $this->app = new MvcApplication($this->di);
+        $this->app = new MvcApplication($this->di);
 
-    $this->initializeProviders();
-}
-
-public function getRootPath(): string
-{
-    return $this->rootPath;
-}
-
-public function run(): string
-{
-    /** @var ResponseInterface $response */
-    $response = $this->app->handle($_SERVER['REQUEST_URI']);
-
-    return (string) $response->getContent();
-}
-
-protected function initializeProviders(): void
-{
-    $filename = $this->rootPath . '/config/providers.php';
-    if (!file_exists($filename) || !is_readable($filename)) {
-        throw new Exception('File providers.php does not exist or is not readable.');
+        $this->initializeProviders();
     }
 
-    $providers = require $filename;
-    foreach ($providers as $providerClass) {
-        $this->di->register(new $providerClass());
+    public function getRootPath(): string
+    {
+        return $this->rootPath;
     }
-}
+
+    public function run(): string
+    {
+        /** @var ResponseInterface $response */
+        $response = $this->app->handle($_SERVER['REQUEST_URI']);
+
+        return (string) $response->getContent();
+    }
+
+    protected function initializeProviders(): void
+    {
+        $filename = $this->rootPath . '/config/providers.php';
+        if (!file_exists($filename) || !is_readable($filename)) {
+            throw new Exception('File providers.php does not exist or is not readable.');
+        }
+
+        $providers = require $filename;
+        foreach ($providers as $providerClass) {
+            $this->di->register(new $providerClass());
+        }
+    }
 }
 ```
 
@@ -320,15 +320,15 @@ The container is a [Phalcon\Di\FactoryDefault][di-factorydefault], which has man
 <?php
 
 return [
-\Invo\Providers\ConfigProvider::class,
-\Invo\Providers\DatabaseProvider::class,
-\Invo\Providers\DispatcherProvider::class,
-\Invo\Providers\FlashProvider::class,
-\Invo\Providers\SessionProvider::class,
-\Invo\Providers\SessionBagProvider::class,
-\Invo\Providers\UrlProvider::class,
-\Invo\Providers\ViewProvider::class,
-\Invo\Providers\VoltProvider::class,
+    \Invo\Providers\ConfigProvider::class,
+    \Invo\Providers\DatabaseProvider::class,
+    \Invo\Providers\DispatcherProvider::class,
+    \Invo\Providers\FlashProvider::class,
+    \Invo\Providers\SessionProvider::class,
+    \Invo\Providers\SessionBagProvider::class,
+    \Invo\Providers\UrlProvider::class,
+    \Invo\Providers\ViewProvider::class,
+    \Invo\Providers\VoltProvider::class,
 ];
 ```
 
@@ -360,17 +360,17 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class ConfigProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di): void
-{
-    $configPath = $di->offsetGet('rootPath') . '/config/config.php';
-    if (!file_exists($configPath) || !is_readable($configPath)) {
-        throw new Exception('Config file does not exist: ' . $configPath);
-    }
+    public function register(DiInterface $di): void
+    {
+        $configPath = $di->offsetGet('rootPath') . '/config/config.php';
+        if (!file_exists($configPath) || !is_readable($configPath)) {
+            throw new Exception('Config file does not exist: ' . $configPath);
+        }
 
-    $di->setShared('config', function () use ($configPath) {
-        return require $configPath;
-    });
-}
+        $di->setShared('config', function () use ($configPath) {
+            return require $configPath;
+        });
+    }
 }
 ```
 
@@ -410,21 +410,21 @@ declare(strict_types=1);
 use Phalcon\Config\Config;
 
 return new Config([
-'database' => [
-    'adapter'  => $_ENV['DB_ADAPTER'] ?? 'Mysql',
-    'host'     => $_ENV['DB_HOST'] ?? 'localhost',
-    'username' => $_ENV['DB_USERNAME'] ?? 'root',
-    'password' => $_ENV['DB_PASSWORD'] ?? 'secret',
-    'dbname'   => $_ENV['DB_NAME'] ?? 'invo',
-    'charset'  => $_ENV['DB_CHARSET'] ?? 'utf8',
-    'options'  => [
-        PDO::ATTR_EMULATE_PREPARES => true,
+    'database' => [
+        'adapter'  => $_ENV['DB_ADAPTER'] ?? 'Mysql',
+        'host'     => $_ENV['DB_HOST'] ?? 'localhost',
+        'username' => $_ENV['DB_USERNAME'] ?? 'root',
+        'password' => $_ENV['DB_PASSWORD'] ?? 'secret',
+        'dbname'   => $_ENV['DB_NAME'] ?? 'invo',
+        'charset'  => $_ENV['DB_CHARSET'] ?? 'utf8',
+        'options'  => [
+            PDO::ATTR_EMULATE_PREPARES => true,
+        ],
     ],
-],
-'application' => [
-    'viewsDir' => $_ENV['VIEWS_DIR'] ?? 'themes/invo',
-    'baseUri'  => $_ENV['BASE_URI'] ?? '/',
-],
+    'application' => [
+        'viewsDir' => $_ENV['VIEWS_DIR'] ?? 'themes/invo',
+        'baseUri'  => $_ENV['BASE_URI'] ?? '/',
+    ],
 ]);
 ```
 
@@ -450,19 +450,19 @@ use Phalcon\Session\Manager as SessionManager;
 
 class SessionProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di): void
-{
-    $di->setShared('session', function () {
-        $session = new SessionManager();
-        $files   = new SessionAdapter([
-            'savePath' => sys_get_temp_dir(),
-        ]);
-        $session->setAdapter($files);
-        $session->start();
+    public function register(DiInterface $di): void
+    {
+        $di->setShared('session', function () {
+            $session = new SessionManager();
+            $files   = new SessionAdapter([
+                'savePath' => sys_get_temp_dir(),
+            ]);
+            $session->setAdapter($files);
+            $session->start();
 
-        return $session;
-    });
-}
+            return $session;
+        });
+    }
 }
 ```
 
@@ -488,19 +488,19 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class DatabaseProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di): void
-{
-    $dbConfig = $di->getShared('config')
-                   ->get('database')
-                   ->toArray()
-    ;
-    $di->setShared('db', function () use ($dbConfig) {
-        $dbClass = 'Phalcon\Db\Adapter\Pdo\\' . $dbConfig['adapter'];
-        unset($dbConfig['adapter']);
+    public function register(DiInterface $di): void
+    {
+        $dbConfig = $di->getShared('config')
+                       ->get('database')
+                       ->toArray()
+        ;
+        $di->setShared('db', function () use ($dbConfig) {
+            $dbClass = 'Phalcon\Db\Adapter\Pdo\\' . $dbConfig['adapter'];
+            unset($dbConfig['adapter']);
 
-        return new $dbClass($dbConfig);
-    });
-}
+            return new $dbClass($dbConfig);
+        });
+    }
 }
 ```
 
@@ -522,25 +522,25 @@ use Phalcon\Forms\Form;
 
 class LoginForm extends Form
 {
-public function initialize()
-{
-    $email = new Text('email');
-    $email->setLabel('Username/Email');
-    $email->setFilters(['striptags', 'string']);
-    $email->addValidators([
-        new PresenceOf(['message' => 'Username/Email is required']),
-    ]);
+    public function initialize()
+    {
+        $email = new Text('email');
+        $email->setLabel('Username/Email');
+        $email->setFilters(['striptags', 'string']);
+        $email->addValidators([
+            new PresenceOf(['message' => 'Username/Email is required']),
+        ]);
 
-    $this->add($email);
+        $this->add($email);
 
-    $password = new Password('password');
-    $password->setLabel('Password');
-    $password->addValidators([
-        new PresenceOf(['message' => 'Password is required']),
-    ]);
+        $password = new Password('password');
+        $password->setLabel('Password');
+        $password->addValidators([
+            new PresenceOf(['message' => 'Password is required']),
+        ]);
 
-    $this->add($password);
-}
+        $this->add($password);
+    }
 }
 ```
 
@@ -551,13 +551,13 @@ The `SessionController::indexAction` builds the form, sets the demo credentials 
 
 public function indexAction(): void
 {
-$form = new LoginForm();
+    $form = new LoginForm();
 
-// Set default Invo user credentials
-$form->get('email')->setDefault('demo');
-$form->get('password')->setDefault('phalcon');
+    // Set default Invo user credentials
+    $form->get('email')->setDefault('demo');
+    $form->get('password')->setDefault('phalcon');
 
-$this->view->form = $form;
+    $this->view->form = $form;
 }
 ```
 
@@ -577,54 +577,54 @@ use Invo\Models\Users;
 
 class SessionController extends ControllerBase
 {
-// ...
+    // ...
 
-public function startAction(): void
-{
-    if ($this->request->isPost()) {
-        $email    = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+    public function startAction(): void
+    {
+        if ($this->request->isPost()) {
+            $email    = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
 
-        /** @var Users $user */
-        $user = Users::findFirst(
-            [
-                'conditions' => '(email = :email: OR username = :email:) '
-                    . 'AND active = :active:',
-                'bind'       => [
-                    'email'  => $email,
-                    'active' => Status::ACTIVE,
-                ],
-            ]
-        );
+            /** @var Users $user */
+            $user = Users::findFirst(
+                [
+                    'conditions' => '(email = :email: OR username = :email:) '
+                        . 'AND active = :active:',
+                    'bind'       => [
+                        'email'  => $email,
+                        'active' => Status::ACTIVE,
+                    ],
+                ]
+            );
 
-        if ($user && $this->security->checkHash($password, $user->password)) {
-            $this->registerSession($user);
-            $this->flash->success('Welcome ' . $user->name);
+            if ($user && $this->security->checkHash($password, $user->password)) {
+                $this->registerSession($user);
+                $this->flash->success('Welcome ' . $user->name);
 
-            $this->dispatcher->forward([
-                'controller' => 'invoices',
-                'action'     => 'index',
-            ]);
+                $this->dispatcher->forward([
+                    'controller' => 'invoices',
+                    'action'     => 'index',
+                ]);
 
-            return;
+                return;
+            }
+
+            $this->flash->error('Wrong email/password');
         }
 
-        $this->flash->error('Wrong email/password');
+        $this->dispatcher->forward([
+            'controller' => 'session',
+            'action'     => 'index',
+        ]);
     }
 
-    $this->dispatcher->forward([
-        'controller' => 'session',
-        'action'     => 'index',
-    ]);
-}
-
-private function registerSession(Users $user): void
-{
-    $this->session->set('auth', [
-        'id'   => $user->id,
-        'name' => $user->name,
-    ]);
-}
+    private function registerSession(Users $user): void
+    {
+        $this->session->set('auth', [
+            'id'   => $user->id,
+            'name' => $user->name,
+        ]);
+    }
 }
 ```
 
@@ -640,7 +640,7 @@ For more about container services, see the [Dependency Injection][di] document.
 <?php
 
 if ($this->request->isPost()) {
-// ...
+    // ...
 }
 ```
 
@@ -659,14 +659,14 @@ The active user is looked up by email or username:
 <?php
 
 $user = Users::findFirst(
-[
-    'conditions' => '(email = :email: OR username = :email:) '
-        . 'AND active = :active:',
-    'bind'       => [
-        'email'  => $email,
-        'active' => Status::ACTIVE,
-    ],
-]
+    [
+        'conditions' => '(email = :email: OR username = :email:) '
+            . 'AND active = :active:',
+        'bind'       => [
+            'email'  => $email,
+            'active' => Status::ACTIVE,
+        ],
+    ]
 );
 ```
 
@@ -680,7 +680,7 @@ The password is not part of the query. The stored password is a one-way hash, an
 <?php
 
 if ($user && $this->security->checkHash($password, $user->password)) {
-// ...
+    // ...
 }
 ```
 
@@ -690,15 +690,15 @@ If the credentials match, the user is registered in the session and forwarded to
 <?php
 
 if ($user && $this->security->checkHash($password, $user->password)) {
-$this->registerSession($user);
-$this->flash->success('Welcome ' . $user->name);
+    $this->registerSession($user);
+    $this->flash->success('Welcome ' . $user->name);
 
-$this->dispatcher->forward([
-    'controller' => 'invoices',
-    'action'     => 'index',
-]);
+    $this->dispatcher->forward([
+        'controller' => 'invoices',
+        'action'     => 'index',
+    ]);
 
-return;
+    return;
 }
 ```
 
@@ -728,28 +728,28 @@ use Phalcon\Mvc\Dispatcher;
 
 class DispatcherProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di): void
-{
-    $di->setShared('dispatcher', function () {
-        $eventsManager = new EventsManager();
+    public function register(DiInterface $di): void
+    {
+        $di->setShared('dispatcher', function () {
+            $eventsManager = new EventsManager();
 
-        /**
-         * Check if the user is allowed to access certain action using the SecurityPlugin
-         */
-        $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin());
+            /**
+             * Check if the user is allowed to access certain action using the SecurityPlugin
+             */
+            $eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin());
 
-        /**
-         * Handle exceptions and not-found exceptions using NotFoundPlugin
-         */
-        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin());
+            /**
+             * Handle exceptions and not-found exceptions using NotFoundPlugin
+             */
+            $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin());
 
-        $dispatcher = new Dispatcher();
-        $dispatcher->setDefaultNamespace('Invo\Controllers');
-        $dispatcher->setEventsManager($eventsManager);
+            $dispatcher = new Dispatcher();
+            $dispatcher->setDefaultNamespace('Invo\Controllers');
+            $dispatcher->setEventsManager($eventsManager);
 
-        return $dispatcher;
-    });
-}
+            return $dispatcher;
+        });
+    }
 }
 ```
 
@@ -763,8 +763,8 @@ When `beforeExecuteRoute` fires, the `SecurityPlugin` is notified:
 <?php
 
 $eventsManager->attach(
-'dispatch:beforeExecuteRoute',
-new SecurityPlugin()
+    'dispatch:beforeExecuteRoute',
+    new SecurityPlugin()
 );
 ```
 
@@ -774,8 +774,8 @@ When `beforeException` fires, the `NotFoundPlugin` is notified:
 <?php
 
 $eventsManager->attach(
-'dispatch:beforeException',
-new NotFoundPlugin()
+    'dispatch:beforeException',
+    new NotFoundPlugin()
 );
 ```
 
@@ -794,12 +794,12 @@ use Phalcon\Mvc\Dispatcher;
 
 class SecurityPlugin extends Injectable
 {
-// ...
-
-public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
-{
     // ...
-}
+
+    public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+    {
+        // ...
+    }
 }
 ```
 
@@ -820,43 +820,43 @@ use Phalcon\Mvc\Dispatcher;
 
 class SecurityPlugin extends Injectable
 {
-public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
-{
-    $auth = $this->session->get('auth');
-    if (!$auth) {
-        $role = 'Guests';
-    } else {
-        $role = 'Users';
+    public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+    {
+        $auth = $this->session->get('auth');
+        if (!$auth) {
+            $role = 'Guests';
+        } else {
+            $role = 'Users';
+        }
+
+        $controller = $dispatcher->getControllerName();
+        $action     = $dispatcher->getActionName();
+
+        $acl = $this->getAcl();
+
+        if (!$acl->isComponent($controller)) {
+            $dispatcher->forward([
+                'controller' => 'errors',
+                'action'     => 'show404',
+            ]);
+
+            return false;
+        }
+
+        $allowed = $acl->isAllowed($role, $controller, $action);
+        if (!$allowed) {
+            $dispatcher->forward([
+                'controller' => 'errors',
+                'action'     => 'show401',
+            ]);
+
+            $this->session->destroy();
+
+            return false;
+        }
+
+        return true;
     }
-
-    $controller = $dispatcher->getControllerName();
-    $action     = $dispatcher->getActionName();
-
-    $acl = $this->getAcl();
-
-    if (!$acl->isComponent($controller)) {
-        $dispatcher->forward([
-            'controller' => 'errors',
-            'action'     => 'show404',
-        ]);
-
-        return false;
-    }
-
-    $allowed = $acl->isAllowed($role, $controller, $action);
-    if (!$allowed) {
-        $dispatcher->forward([
-            'controller' => 'errors',
-            'action'     => 'show401',
-        ]);
-
-        $this->session->destroy();
-
-        return false;
-    }
-
-    return true;
-}
 }
 ```
 
@@ -877,18 +877,18 @@ $acl = new AclList();
 $acl->setDefaultAction(Enum::DENY);
 
 $roles = [
-'users'  => new Role(
-    'Users',
-    'Member privileges, granted after sign in.'
-),
-'guests' => new Role(
-    'Guests',
-    'Anyone browsing the site who is not signed in is considered to be a "Guest".'
-),
+    'users'  => new Role(
+        'Users',
+        'Member privileges, granted after sign in.'
+    ),
+    'guests' => new Role(
+        'Guests',
+        'Anyone browsing the site who is not signed in is considered to be a "Guest".'
+    ),
 ];
 
 foreach ($roles as $role) {
-$acl->addRole($role);
+    $acl->addRole($role);
 }
 ```
 
@@ -904,25 +904,25 @@ use Phalcon\Acl\Component;
 // ...
 
 $privateResources = [
-'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
-'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
-'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
-'invoices'     => ['index', 'profile'],
+    'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+    'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+    'producttypes' => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
+    'invoices'     => ['index', 'profile'],
 ];
 foreach ($privateResources as $resource => $actions) {
-$acl->addComponent(new Component($resource), $actions);
+    $acl->addComponent(new Component($resource), $actions);
 }
 
 $publicResources = [
-'index'    => ['index'],
-'about'    => ['index'],
-'register' => ['index'],
-'errors'   => ['show401', 'show404', 'show500'],
-'session'  => ['index', 'register', 'start', 'end'],
-'contact'  => ['index', 'send'],
+    'index'    => ['index'],
+    'about'    => ['index'],
+    'register' => ['index'],
+    'errors'   => ['show401', 'show404', 'show500'],
+    'session'  => ['index', 'register', 'start', 'end'],
+    'contact'  => ['index', 'send'],
 ];
 foreach ($publicResources as $resource => $actions) {
-$acl->addComponent(new Component($resource), $actions);
+    $acl->addComponent(new Component($resource), $actions);
 }
 ```
 
@@ -935,18 +935,18 @@ With roles and components registered, the two are linked. `Users` has access to 
 
 // Grant access to public areas to both users and guests
 foreach ($roles as $role) {
-foreach ($publicResources as $resource => $actions) {
-    foreach ($actions as $action) {
-        $acl->allow($role->getName(), $resource, $action);
+    foreach ($publicResources as $resource => $actions) {
+        foreach ($actions as $action) {
+            $acl->allow($role->getName(), $resource, $action);
+        }
     }
-}
 }
 
 // Grant access to private area to role Users
 foreach ($privateResources as $resource => $actions) {
-foreach ($actions as $action) {
-    $acl->allow('Users', $resource, $action);
-}
+    foreach ($actions as $action) {
+        $acl->allow('Users', $resource, $action);
+    }
 }
 ```
 
@@ -956,20 +956,20 @@ The backend provides forms and logic for CRUD operations. INVO implements [CRUD]
 
 ```bash
 invo/
-src/
-    Controllers/
-        ProductsController.php
-    Forms/
-        ProductsForm.php
-    Models/
-        Products.php
-themes/
-    invo/
-        products/
-            edit.volt
-            index.volt
-            new.volt
-            search.volt
+    src/
+        Controllers/
+            ProductsController.php
+        Forms/
+            ProductsForm.php
+        Models/
+            Products.php
+    themes/
+        invo/
+            products/
+                edit.volt
+                index.volt
+                new.volt
+                search.volt
 ```
 
 Other areas (companies, product types) use equivalent files in the same directories.
@@ -981,19 +981,19 @@ Other areas (companies, product types) use equivalent files in the same director
 
 class ProductsController extends ControllerBase
 {
-public function createAction(): void;
+    public function createAction(): void;
 
-public function deleteAction($id): void;
+    public function deleteAction($id): void;
 
-public function editAction($id): void;
+    public function editAction($id): void;
 
-public function indexAction(): void;
+    public function indexAction(): void;
 
-public function newAction(): void;
+    public function newAction(): void;
 
-public function saveAction(): void;
+    public function saveAction(): void;
 
-public function searchAction(): void;
+    public function searchAction(): void;
 }
 ```
 
@@ -1018,9 +1018,9 @@ CRUD starts with the search form. It shows each field of the `products` table so
 
 public function indexAction(): void
 {
-$this->persistent->searchParams = null;
+    $this->persistent->searchParams = null;
 
-$this->view->form = new ProductsForm();
+    $this->view->form = new ProductsForm();
 }
 ```
 
@@ -1042,42 +1042,42 @@ use Phalcon\Forms\Form;
 
 class ProductsForm extends Form
 {
-use IdAndNameFieldsTrait;
+    use IdAndNameFieldsTrait;
 
-public function initialize($entity = null, array $options = [])
-{
-    $this->addIdAndNameFields($options);
+    public function initialize($entity = null, array $options = [])
+    {
+        $this->addIdAndNameFields($options);
 
-    /**
-     * Product Type Id Select
-     */
-    $type = new Select(
-        'product_types_id',
-        ProductTypes::find(),
-        [
-            'using'      => ['id', 'name'],
-            'useEmpty'   => true,
-            'emptyText'  => '...',
-            'emptyValue' => '',
-        ]
-    );
-    $type->setLabel('Type');
+        /**
+         * Product Type Id Select
+         */
+        $type = new Select(
+            'product_types_id',
+            ProductTypes::find(),
+            [
+                'using'      => ['id', 'name'],
+                'useEmpty'   => true,
+                'emptyText'  => '...',
+                'emptyValue' => '',
+            ]
+        );
+        $type->setLabel('Type');
 
-    $this->add($type);
+        $this->add($type);
 
-    /**
-     * Price text field
-     */
-    $price = new Text('price');
-    $price->setLabel('Price');
-    $price->setFilters(['float']);
-    $price->addValidators([
-        new PresenceOf(['message' => 'Price is required']),
-        new Numericality(['message' => 'Price is required']),
-    ]);
+        /**
+         * Price text field
+         */
+        $price = new Text('price');
+        $price->setLabel('Price');
+        $price->setFilters(['float']);
+        $price->addValidators([
+            new PresenceOf(['message' => 'Price is required']),
+            new Numericality(['message' => 'Price is required']),
+        ]);
 
-    $this->add($price);
-}
+        $this->add($price);
+    }
 }
 ```
 
@@ -1092,19 +1092,19 @@ use Phalcon\Forms\Element\Text;
 $name = new Text('name');
 $name->setLabel('Name');
 $name->setFilters(
-[
-    'striptags',
-    'string',
-]
+    [
+        'striptags',
+        'string',
+    ]
 );
 $name->addValidators(
-[
-    new PresenceOf(
-        [
-            'message' => 'Name is required',
-        ]
-    ),
-]
+    [
+        new PresenceOf(
+            [
+                'message' => 'Name is required',
+            ]
+        ),
+    ]
 );
 
 $this->add($name);
@@ -1119,14 +1119,14 @@ use Invo\Models\ProductTypes;
 use Phalcon\Forms\Element\Select;
 
 $type = new Select(
-'product_types_id',
-ProductTypes::find(),
-[
-    'using'      => ['id', 'name'],
-    'useEmpty'   => true,
-    'emptyText'  => '...',
-    'emptyValue' => '',
-]
+    'product_types_id',
+    ProductTypes::find(),
+    [
+        'using'      => ['id', 'name'],
+        'useEmpty'   => true,
+        'emptyText'  => '...',
+        'emptyValue' => '',
+    ]
 );
 ```
 
@@ -1134,29 +1134,29 @@ The `Select` element uses the resultset from `ProductTypes::find()` to fill the 
 
 ```twig
 <div class="row mb-3">
-<div class="col-xs-12 col-md-6">
-    <h2>Search products</h2>
-</div>
-<div class="col-xs-12 col-md-6 text-right">
-    {{ link_to("products/new", "Create Product", "class": "btn btn-primary") }}
-</div>
+    <div class="col-xs-12 col-md-6">
+        <h2>Search products</h2>
+    </div>
+    <div class="col-xs-12 col-md-6 text-right">
+        {{ link_to("products/new", "Create Product", "class": "btn btn-primary") }}
+    </div>
 </div>
 
 <form action="/products/search" role="form" method="get">
-{% for element in form %}
-    {% if is_a(element, 'Phalcon\Forms\Element\Hidden') %}
-        {{ element }}
-    {% else %}
-        <div class="form-group">
-            {{ element.label() }}
-            <div class="controls">
-                {{ element.setAttribute("class", "form-control") }}
+    {% for element in form %}
+        {% if is_a(element, 'Phalcon\Forms\Element\Hidden') %}
+            {{ element }}
+        {% else %}
+            <div class="form-group">
+                {{ element.label() }}
+                <div class="controls">
+                    {{ element.setAttribute("class", "form-control") }}
+                </div>
             </div>
-        </div>
-    {% endif %}
-{% endfor %}
+        {% endif %}
+    {% endfor %}
 
-{{ submit_button("Search", "class": "btn btn-primary") }}
+    {{ submit_button("Search", "class": "btn btn-primary") }}
 </form>
 ```
 
@@ -1171,13 +1171,13 @@ The `search` action has two operations. On `POST`, it runs the search from the s
 
 public function searchAction(): void
 {
-if ($this->request->isPost()) {
-    // POST
-} else {
-    // GET
-}
+    if ($this->request->isPost()) {
+        // POST
+    } else {
+        // GET
+    }
 
-// ...
+    // ...
 }
 ```
 
@@ -1187,9 +1187,9 @@ if ($this->request->isPost()) {
 <?php
 
 $query = Criteria::fromInput(
-$this->di,
-'Products',
-$this->request->getPost()
+    $this->di,
+    'Products',
+    $this->request->getPost()
 );
 ```
 
@@ -1218,12 +1218,12 @@ The query runs from the built parameters:
 $products = Products::find($parameters);
 
 if (count($products) === 0) {
-$this->flash->notice('The search did not find any products');
+    $this->flash->notice('The search did not find any products');
 
-$this->dispatcher->forward([
-    'controller' => 'products',
-    'action'     => 'index',
-]);
+    $this->dispatcher->forward([
+        'controller' => 'products',
+        'action'     => 'index',
+    ]);
 }
 ```
 
@@ -1237,11 +1237,11 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 // ...
 
 $paginator = new Paginator(
-[
-    'data'  => $products,
-    'limit' => 5,
-    'page'  => $numberPage,
-]
+    [
+        'data'  => $products,
+        'limit' => 5,
+        'page'  => $numberPage,
+    ]
 );
 
 $page = $paginator->paginate();
@@ -1259,21 +1259,21 @@ In the view (`themes/invo/products/search.volt`), the current page is traversed 
 
 ```twig
 {% for product in page.items %}
-<tr>
-    <td>{{ product.id }}</td>
-    <td>{{ product.getProductTypes().name }}</td>
-    <td>{{ product.name }}</td>
-    <td>${{ "%.2f"|format(product.price) }}</td>
-    <td>{{ product.getActiveDetail() }}</td>
-    <td width="7%">
-        {{ link_to("products/edit/" ~ product.id, "Edit", "class": "btn btn-default") }}
-    </td>
-    <td width="7%">
-        {{ link_to("products/delete/" ~ product.id, "Delete", "class": "btn btn-default") }}
-    </td>
-</tr>
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.getProductTypes().name }}</td>
+        <td>{{ product.name }}</td>
+        <td>${{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.getActiveDetail() }}</td>
+        <td width="7%">
+            {{ link_to("products/edit/" ~ product.id, "Edit", "class": "btn btn-default") }}
+        </td>
+        <td width="7%">
+            {{ link_to("products/delete/" ~ product.id, "Delete", "class": "btn btn-default") }}
+        </td>
+    </tr>
 {% else %}
-No products are recorded
+    No products are recorded
 {% endfor %}
 ```
 
@@ -1281,17 +1281,17 @@ A Volt `for` is the equivalent of a PHP `foreach`. It also supports `loop.first`
 
 ```twig
 {% for product in page.items %}
-{% if loop.first %}
-    // Executed before the first product in the loop
-{% endif %}
+    {% if loop.first %}
+        // Executed before the first product in the loop
+    {% endif %}
 
-// Executed for every product on `page.items`
+    // Executed for every product on `page.items`
 
-{% if loop.last %}
-    // Executed after the last product in the loop
-{% endif %}
+    {% if loop.last %}
+        // Executed after the last product in the loop
+    {% endif %}
 {% else %}
-// Executed if `page.items` does not have any products
+    // Executed if `page.items` does not have any products
 {% endfor %}
 ```
 
@@ -1309,25 +1309,25 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-// ...
+    // ...
 
-public function getActiveDetail(): string
-{
-    return $this->active == Status::ACTIVE ? 'Yes' : 'No';
-}
+    public function getActiveDetail(): string
+    {
+        return $this->active == Status::ACTIVE ? 'Yes' : 'No';
+    }
 
-public function initialize()
-{
-    $this->belongsTo(
-        'product_types_id',
-        ProductTypes::class,
-        'id',
-        [
-            'reusable' => true,
-            'alias'    => 'productTypes',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'product_types_id',
+            ProductTypes::class,
+            'id',
+            [
+                'reusable' => true,
+                'alias'    => 'productTypes',
+            ]
+        );
+    }
 }
 ```
 
@@ -1366,23 +1366,23 @@ To create a product, the submitted data is assigned to a new `Products` instance
 
 public function createAction(): void
 {
-if (true !== $this->request->isPost()) {
-    $this->dispatcher->forward([
-        'controller' => 'products',
-        'action'     => 'index',
-    ]);
-}
+    if (true !== $this->request->isPost()) {
+        $this->dispatcher->forward([
+            'controller' => 'products',
+            'action'     => 'index',
+        ]);
+    }
 
-$form    = new ProductsForm();
-$product = new Products();
+    $form    = new ProductsForm();
+    $product = new Products();
 
-$product->id               = $this->request->getPost('id', 'int');
-$product->product_types_id = $this->request->getPost('product_types_id', 'int');
-$product->name             = $this->request->getPost('name', 'striptags');
-$product->price            = $this->request->getPost('price', 'double');
-$product->active           = $this->request->getPost('active');
+    $product->id               = $this->request->getPost('id', 'int');
+    $product->product_types_id = $this->request->getPost('product_types_id', 'int');
+    $product->name             = $this->request->getPost('name', 'striptags');
+    $product->price            = $this->request->getPost('price', 'double');
+    $product->active           = $this->request->getPost('active');
 
-// ...
+    // ...
 }
 ```
 
@@ -1399,16 +1399,16 @@ $product = new Products();
 $data = $this->request->getPost();
 
 if (true !== $form->isValid($data, $product)) {
-$messages = $form->getMessages();
+    $messages = $form->getMessages();
 
-foreach ($messages as $message) {
-    $this->flash->error($message->getMessage());
-}
+    foreach ($messages as $message) {
+        $this->flash->error($message->getMessage());
+    }
 
-$this->dispatcher->forward([
-    'controller' => 'products',
-    'action'     => 'new',
-]);
+    $this->dispatcher->forward([
+        'controller' => 'products',
+        'action'     => 'new',
+    ]);
 }
 ```
 
@@ -1418,16 +1418,16 @@ $this->dispatcher->forward([
 <?php
 
 if ($product->save() === false) {
-$messages = $product->getMessages();
+    $messages = $product->getMessages();
 
-foreach ($messages as $message) {
-    $this->flash->error($message->getMessage());
-}
+    foreach ($messages as $message) {
+        $this->flash->error($message->getMessage());
+    }
 
-$this->dispatcher->forward([
-    'controller' => 'products',
-    'action'     => 'new',
-]);
+    $this->dispatcher->forward([
+        'controller' => 'products',
+        'action'     => 'new',
+    ]);
 }
 
 $form->clear();
@@ -1435,8 +1435,8 @@ $form->clear();
 $this->flash->success('Product was created successfully');
 
 $this->dispatcher->forward([
-'controller' => 'products',
-'action'     => 'index',
+    'controller' => 'products',
+    'action'     => 'index',
 ]);
 ```
 
@@ -1449,25 +1449,25 @@ To update a product, the existing record is loaded and bound to the form:
 
 public function editAction($id): void
 {
-if (true !== $this->request->isPost()) {
-    $product = Products::findFirstById($id);
+    if (true !== $this->request->isPost()) {
+        $product = Products::findFirstById($id);
 
-    if (null === $product) {
-        $this->flash->error('Product was not found');
+        if (null === $product) {
+            $this->flash->error('Product was not found');
 
-        $this->dispatcher->forward([
-            'controller' => 'products',
-            'action'     => 'index',
-        ]);
+            $this->dispatcher->forward([
+                'controller' => 'products',
+                'action'     => 'index',
+            ]);
+        }
+
+        $this->view->form = new ProductsForm(
+            $product,
+            [
+                'edit' => true,
+            ]
+        );
     }
-
-    $this->view->form = new ProductsForm(
-        $product,
-        [
-            'edit' => true,
-        ]
-    );
-}
 }
 ```
 
@@ -1482,16 +1482,16 @@ As you navigate the application, the page title changes to indicate the current 
 
 class ProductsController extends ControllerBase
 {
-public function initialize()
-{
-    parent::initialize();
+    public function initialize()
+    {
+        parent::initialize();
 
-    $this->tag->title()
-              ->set('Manage your products')
-    ;
-}
+        $this->tag->title()
+                  ->set('Manage your products')
+        ;
+    }
 
-// ...
+    // ...
 }
 ```
 
@@ -1508,15 +1508,15 @@ use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller
 {
-protected function initialize()
-{
-    $this->tag->title()
-              ->prepend('INVO | ')
-    ;
-    $this->view->setTemplateAfter('main');
-}
+    protected function initialize()
+    {
+        $this->tag->title()
+                  ->prepend('INVO | ')
+        ;
+        $this->view->setTemplateAfter('main');
+    }
 
-// ...
+    // ...
 }
 ```
 
@@ -1524,9 +1524,9 @@ The title is rendered in the main template (`themes/invo/index.volt`) with the V
 
 ```twig
 <head>
-<meta charset="utf-8">
-{{ title('') }}
-<!-- ... -->
+    <meta charset="utf-8">
+    {{ title('') }}
+    <!-- ... -->
 </head>
 ```
 

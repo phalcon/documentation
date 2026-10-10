@@ -23,22 +23,22 @@ Annotations are read from docblocks in classes, methods and properties. An annot
  */
 class Example
 {
-/**
- * This a property with a special feature
- *
- * @SpecialFeature
- */
-protected $someProperty;
+    /**
+     * This a property with a special feature
+     *
+     * @SpecialFeature
+     */
+    protected $someProperty;
 
-/**
- * This is a method
- *
- * @SpecialFeature
- */
-public function someMethod()
-{
-    // ...
-}
+    /**
+     * This is a method
+     *
+     * @SpecialFeature
+     */
+    public function someMethod()
+    {
+        // ...
+    }
 }
 ```
 
@@ -94,6 +94,7 @@ However, to make the code more maintainable and understandable it is recommended
  */
 ```
 
+
 ## Factory
 There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
@@ -112,18 +113,20 @@ However you can also utilize the factory method to achieve the same thing:
 ```php
 <?php
 
+
 use Phalcon\Annotations\Factory;
 
 $options = [
-'prefix'   => 'annotations',
-'lifetime' => '3600',
-'adapter'  => 'memory',      // Load the Memory adapter
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
 ];
 
 $annotations = Factory::load($options);
 ```
 
 The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files. 
+
 
 ## Reading Annotations
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
@@ -143,20 +146,21 @@ $annotations = $reflector->getClassAnnotations();
 
 // Traverse the annotations
 foreach ($annotations as $annotation) {
-// Print the annotation name
-echo $annotation->getName(), PHP_EOL;
+    // Print the annotation name
+    echo $annotation->getName(), PHP_EOL;
 
-// Print the number of arguments
-echo $annotation->numberArguments(), PHP_EOL;
+    // Print the number of arguments
+    echo $annotation->numberArguments(), PHP_EOL;
 
-// Print the arguments
-print_r($annotation->getArguments());
+    // Print the arguments
+    print_r($annotation->getArguments());
 }
 ```
 
 The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
 
 [Phalcon\Annotations\Adapter\Memory](/3.4/api/phalcon_annotations/) was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
+
 
 ## Types of Annotations
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
@@ -214,8 +218,10 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
  */
 ```
 
+
 ## Practical Usage
 Next we will explain some practical examples of annotations in PHP applications:
+
 
 ### Cache Enabler with Annotations
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
@@ -227,19 +233,19 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Manager as EventsManager;
 
 $di['dispatcher'] = function () {
-$eventsManager = new EventsManager();
+    $eventsManager = new EventsManager();
 
-// Attach the plugin to 'dispatch' events
-$eventsManager->attach(
-    'dispatch',
-    new CacheEnablerPlugin()
-);
+    // Attach the plugin to 'dispatch' events
+    $eventsManager->attach(
+        'dispatch',
+        new CacheEnablerPlugin()
+    );
 
-$dispatcher = new MvcDispatcher();
+    $dispatcher = new MvcDispatcher();
 
-$dispatcher->setEventsManager($eventsManager);
+    $dispatcher->setEventsManager($eventsManager);
 
-return $dispatcher;
+    return $dispatcher;
 };
 ```
 
@@ -258,38 +264,38 @@ use Phalcon\Mvc\User\Plugin;
  */
 class CacheEnablerPlugin extends Plugin
 {
-/**
- * This event is executed before every route is executed in the dispatcher
- */
-public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
-{
-    // Parse the annotations in the method currently executed
-    $annotations = $this->annotations->getMethod(
-        $dispatcher->getControllerClass(),
-        $dispatcher->getActiveMethod()
-    );
+    /**
+     * This event is executed before every route is executed in the dispatcher
+     */
+    public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+    {
+        // Parse the annotations in the method currently executed
+        $annotations = $this->annotations->getMethod(
+            $dispatcher->getControllerClass(),
+            $dispatcher->getActiveMethod()
+        );
 
-    // Check if the method has an annotation 'Cache'
-    if ($annotations->has('Cache')) {
-        // The method has the annotation 'Cache'
-        $annotation = $annotations->get('Cache');
+        // Check if the method has an annotation 'Cache'
+        if ($annotations->has('Cache')) {
+            // The method has the annotation 'Cache'
+            $annotation = $annotations->get('Cache');
 
-        // Get the lifetime
-        $lifetime = $annotation->getNamedParameter('lifetime');
+            // Get the lifetime
+            $lifetime = $annotation->getNamedParameter('lifetime');
 
-        $options = [
-            'lifetime' => $lifetime,
-        ];
+            $options = [
+                'lifetime' => $lifetime,
+            ];
 
-        // Check if there is a user defined cache key
-        if ($annotation->hasNamedParameter('key')) {
-            $options['key'] = $annotation->getNamedParameter('key');
+            // Check if there is a user defined cache key
+            if ($annotation->hasNamedParameter('key')) {
+                $options['key'] = $annotation->getNamedParameter('key');
+            }
+
+            // Enable the cache for the current method
+            $this->view->cache($options);
         }
-
-        // Enable the cache for the current method
-        $this->view->cache($options);
     }
-}
 }
 ```
 
@@ -302,32 +308,33 @@ use Phalcon\Mvc\Controller;
 
 class NewsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-/**
- * This is a comment
- *
- * @Cache(lifetime=86400)
- */
-public function showAllAction()
-{
-    $this->view->article = Articles::find();
-}
+    /**
+     * This is a comment
+     *
+     * @Cache(lifetime=86400)
+     */
+    public function showAllAction()
+    {
+        $this->view->article = Articles::find();
+    }
 
-/**
- * This is a comment
- *
- * @Cache(key='my-key', lifetime=86400)
- */
-public function showAction($slug)
-{
-    $this->view->article = Articles::findFirstByTitle($slug);
-}
+    /**
+     * This is a comment
+     *
+     * @Cache(key='my-key', lifetime=86400)
+     */
+    public function showAction($slug)
+    {
+        $this->view->article = Articles::findFirstByTitle($slug);
+    }
 }
 ```
+
 
 ### Private/Public areas with Annotations
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
@@ -348,47 +355,48 @@ use Phalcon\Acl\Adapter\Memory as AclList;
  */
 class SecurityAnnotationsPlugin extends Plugin
 {
-/**
- * This action is executed before execute any action in the application
- *
- * @param Event $event
- * @param Dispatcher $dispatcher
- *
- * @return bool
- */
-public function beforeDispatch(Event $event, Dispatcher $dispatcher)
-{
-    // Possible controller class name
-    $controllerName = $dispatcher->getControllerClass();
+    /**
+     * This action is executed before execute any action in the application
+     *
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+    {
+        // Possible controller class name
+        $controllerName = $dispatcher->getControllerClass();
 
-    // Possible method name
-    $actionName = $dispatcher->getActiveMethod();
+        // Possible method name
+        $actionName = $dispatcher->getActiveMethod();
 
-    // Get annotations in the controller class
-    $annotations = $this->annotations->get($controllerName);
+        // Get annotations in the controller class
+        $annotations = $this->annotations->get($controllerName);
 
-    // The controller is private?
-    if ($annotations->getClassAnnotations()->has('Private')) {
-        // Check if the session variable is active?
-        if (!$this->session->get('auth')) {
+        // The controller is private?
+        if ($annotations->getClassAnnotations()->has('Private')) {
+            // Check if the session variable is active?
+            if (!$this->session->get('auth')) {
 
-            // The user is no logged redirect to login
-            $dispatcher->forward(
-                [
-                    'controller' => 'session',
-                    'action'     => 'login',
-                ]
-            );
+                // The user is no logged redirect to login
+                $dispatcher->forward(
+                    [
+                        'controller' => 'session',
+                        'action'     => 'login',
+                    ]
+                );
 
-            return false;
+                return false;
+            }
         }
-    }
 
-    // Continue normally
-    return true;
-}
+        // Continue normally
+        return true;
+    }
 }
 ```
+
 
 ## Annotations Adapters
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
@@ -400,8 +408,10 @@ This component makes use of adapters to cache or no cache the parsed and process
 | [Phalcon\Annotations\Adapter\Apc](/3.4/api/phalcon_annotations/)    | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
 | [Phalcon\Annotations\Adapter\Xcache](/3.4/api/phalcon_annotations/) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
 
+
 ### Implementing your own adapters
 The [Phalcon\Annotations\AdapterInterface](/3.4/api/phalcon_annotations/) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
+
 
 ## External Resources
 * [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalcon.io/post/tutorial-creating-a-custom-models-initializer)

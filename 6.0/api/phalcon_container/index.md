@@ -13,6 +13,7 @@ version: "6.0"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Container\Container
 
 Class
@@ -23,131 +24,95 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containercontainer-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#containercontainer-bind" visibility="public" name="bind" returnType="ServiceDefinition" params={[{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"concrete","default":null}]}>
-Bind an interface to a concrete class
-</ApiItem>
-<ApiItem href="#containercontainer-callableget" visibility="public" name="callableGet" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
-Resolve to a closure on a get()
-</ApiItem>
-<ApiItem href="#containercontainer-callablenew" visibility="public" name="callableNew" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
-Resolve to a closure on a new()
-</ApiItem>
-<ApiItem href="#containercontainer-extend" visibility="public" name="extend" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
-Extends the definition
-</ApiItem>
-<ApiItem href="#containercontainer-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-Resolve and return an element registerd in the container
-</ApiItem>
-<ApiItem href="#containercontainer-getalias" visibility="public" name="getAlias" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Return an alias
-</ApiItem>
-<ApiItem href="#containercontainer-getbytag" visibility="public" name="getByTag" returnType="array" params={[{"type":"string","name":"tag","default":null}]}>
-Return services by tag
-</ApiItem>
-<ApiItem href="#containercontainer-getdefinition" visibility="public" name="getDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
-Return the service definition
-</ApiItem>
-<ApiItem href="#containercontainer-getinstance" visibility="public" name="getInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
-Return a stored instance
-</ApiItem>
-<ApiItem href="#containercontainer-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-Return a parameter
-</ApiItem>
-<ApiItem href="#containercontainer-getresolver" visibility="public" name="getResolver" returnType="Resolver" params={[]}>
-Return the resolver
-</ApiItem>
-<ApiItem href="#containercontainer-getservice" visibility="public" name="getService" returnType="object" params={[{"type":"string","name":"serviceName","default":null}]}>
-Resolve an return a service
-</ApiItem>
-<ApiItem href="#containercontainer-getservicenames" visibility="public" name="getServiceNames" returnType="array" params={[]}>
-Returns the names of every registered service definition. Names that
-</ApiItem>
-<ApiItem href="#containercontainer-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Does the container have a particular service
-</ApiItem>
-<ApiItem href="#containercontainer-hasalias" visibility="public" name="hasAlias" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Does the service have an alias
-</ApiItem>
-<ApiItem href="#containercontainer-hasdefinition" visibility="public" name="hasDefinition" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Does the service have a definition
-</ApiItem>
-<ApiItem href="#containercontainer-hasinstance" visibility="public" name="hasInstance" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Does the service have an instance
-</ApiItem>
-<ApiItem href="#containercontainer-hasparameter" visibility="public" name="hasParameter" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Does the service have a parameter
-</ApiItem>
-<ApiItem href="#containercontainer-hasservice" visibility="public" name="hasService" returnType="bool" params={[{"type":"string","name":"serviceName","default":null}]}>
-Does the container have a particular service
-</ApiItem>
-<ApiItem href="#containercontainer-isautowireenabled" visibility="public" name="isAutowireEnabled" returnType="bool" params={[]}>
-Is AutoWiring enabled
-</ApiItem>
-<ApiItem href="#containercontainer-new" visibility="public" name="new" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-Resolve and return a new service
-</ApiItem>
-<ApiItem href="#containercontainer-newdefinition" visibility="public" name="newDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
-Return a new service definition
-</ApiItem>
-<ApiItem href="#containercontainer-set" visibility="public" name="set" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Set a service
-</ApiItem>
-<ApiItem href="#containercontainer-setalias" visibility="public" name="setAlias" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"alias","default":null}]}>
-Set an alias
-</ApiItem>
-<ApiItem href="#containercontainer-setautowire" visibility="public" name="setAutowire" returnType="static" params={[{"type":"bool","name":"enabled","default":null}]}>
-Set AutoWire
-</ApiItem>
-<ApiItem href="#containercontainer-setdefinition" visibility="public" name="setDefinition" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"ServiceDefinition","name":"definition","default":null}]}>
-Set a definition
-</ApiItem>
-<ApiItem href="#containercontainer-setinstance" visibility="public" name="setInstance" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"object","name":"instance","default":null},{"type":"string","name":"lifetime","default":null}]}>
-Set an instance
-</ApiItem>
-<ApiItem href="#containercontainer-setparameter" visibility="public" name="setParameter" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a parameter
-</ApiItem>
-<ApiItem href="#containercontainer-settag" visibility="public" name="setTag" returnType="void" params={[{"type":"string","name":"tag","default":null},{"type":"string","name":"serviceName","default":null}]}>
-Register a tag with a service
-</ApiItem>
-<ApiItem href="#containercontainer-unsetalias" visibility="public" name="unsetAlias" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-Remove an alias
-</ApiItem>
-<ApiItem href="#containercontainer-unsetdefinition" visibility="public" name="unsetDefinition" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-Remove a definition
-</ApiItem>
-<ApiItem href="#containercontainer-unsetinstance" visibility="public" name="unsetInstance" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-Remove an instance
-</ApiItem>
-<ApiItem href="#containercontainer-unsetinstances" visibility="public" name="unsetInstances" returnType="void" params={[{"type":"string","name":"lifetime","default":null}]}>
-Remove instances based on lifetime
-</ApiItem>
-<ApiItem href="#containercontainer-unsetparameter" visibility="public" name="unsetParameter" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-Remove a parameter
-</ApiItem>
+- `public __construct()`
+
+- `public bind(string $interfaceName, string $concrete): ServiceDefinition` — Bind an interface to a concrete class
+
+- `public callableGet(string $name): Closure` — Resolve to a closure on a get()
+
+- `public callableNew(string $name): Closure` — Resolve to a closure on a new()
+
+- `public extend(string $name, callable $callableObject): void` — Extends the definition
+
+- `public get(string $name): mixed` — Resolve and return an element registerd in the container
+
+- `public getAlias(string $name): string` — Return an alias
+
+- `public getByTag(string $tag): array` — Return services by tag
+
+- `public getDefinition(string $name): ServiceDefinition` — Return the service definition
+
+- `public getInstance(string $name): object` — Return a stored instance
+
+- `public getParameter(string $name): mixed` — Return a parameter
+
+- `public getResolver(): Resolver` — Return the resolver
+
+- `public getService(string $serviceName): object` — Resolve an return a service
+
+- `public getServiceNames(): array` — Returns the names of every registered service definition. Names that
+
+- `public has(string $name): bool` — Does the container have a particular service
+
+- `public hasAlias(string $name): bool` — Does the service have an alias
+
+- `public hasDefinition(string $name): bool` — Does the service have a definition
+
+- `public hasInstance(string $name): bool` — Does the service have an instance
+
+- `public hasParameter(string $name): bool` — Does the service have a parameter
+
+- `public hasService(string $serviceName): bool` — Does the container have a particular service
+
+- `public isAutowireEnabled(): bool` — Is AutoWiring enabled
+
+- `public new(string $name): mixed` — Resolve and return a new service
+
+- `public newDefinition(string $name): ServiceDefinition` — Return a new service definition
+
+- `public set(string $name, mixed $definition): ServiceDefinition` — Set a service
+
+- `public setAlias(string $name, string $alias): static` — Set an alias
+
+- `public setAutowire(bool $enabled): static` — Set AutoWire
+
+- `public setDefinition(string $name, ServiceDefinition $definition): static` — Set a definition
+
+- `public setInstance(string $name, object $instance, string $lifetime): static` — Set an instance
+
+- `public setParameter(string $name, mixed $value): static` — Set a parameter
+
+- `public setTag(string $tag, string $serviceName): void` — Register a tag with a service
+
+- `public unsetAlias(string $name): void` — Remove an alias
+
+- `public unsetDefinition(string $name): void` — Remove a definition
+
+- `public unsetInstance(string $name): void` — Remove an instance
+
+- `public unsetInstances(string $lifetime): void` — Remove instances based on lifetime
+
+- `public unsetParameter(string $name): void` — Remove a parameter
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="aliases" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="autowire" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="instanceLifetimes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="instances" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="parameters" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="processors" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resolver" type="Resolver" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tags" type="array" default="[]">
-</ApiItem>
+- `protected array $aliases = []`
+
+- `protected bool $autowire = true`
+
+- `protected array $instanceLifetimes = []`
+
+- `protected array $instances = []`
+
+- `protected array $parameters = []`
+
+- `protected array $processors = []`
+
+- `protected Resolver $resolver`
+
+- `protected array $services = []`
+
+- `protected array $tags = []`
 
 ### Methods
 
@@ -161,8 +126,8 @@ public function __construct();
 
 ```php
 public function bind(
-string $interfaceName,
-string $concrete
+    string $interfaceName,
+    string $concrete
 ): ServiceDefinition;
 ```
 
@@ -188,8 +153,8 @@ Resolve to a closure on a new()
 
 ```php
 public function extend(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): void;
 ```
 
@@ -345,8 +310,8 @@ Return a new service definition
 
 ```php
 public function set(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): ServiceDefinition;
 ```
 
@@ -356,8 +321,8 @@ Set a service
 
 ```php
 public function setAlias(
-string $name,
-string $alias
+    string $name,
+    string $alias
 ): static;
 ```
 
@@ -375,8 +340,8 @@ Set AutoWire
 
 ```php
 public function setDefinition(
-string $name,
-ServiceDefinition $definition
+    string $name,
+    ServiceDefinition $definition
 ): static;
 ```
 
@@ -386,9 +351,9 @@ Set a definition
 
 ```php
 public function setInstance(
-string $name,
-object $instance,
-string $lifetime
+    string $name,
+    object $instance,
+    string $lifetime
 ): static;
 ```
 
@@ -398,8 +363,8 @@ Set an instance
 
 ```php
 public function setParameter(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -409,8 +374,8 @@ Set a parameter
 
 ```php
 public function setTag(
-string $tag,
-string $serviceName
+    string $tag,
+    string $serviceName
 ): void;
 ```
 
@@ -456,6 +421,7 @@ public function unsetParameter( string $name ): void;
 
 Remove a parameter
 
+
 ## Container\ContainerFactory
 
 Class
@@ -466,17 +432,13 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containercontainerfactory-addprovider" visibility="public" name="addProvider" returnType="static" params={[{"type":"Provider","name":"provider","default":null}]}>
-Adds a provider
-</ApiItem>
-<ApiItem href="#containercontainerfactory-newcontainer" visibility="public" name="newContainer" returnType="Container" params={[]}>
-Returns a new container
-</ApiItem>
+- `public addProvider(Provider $provider): static` — Adds a provider
+
+- `public newContainer(): Container` — Returns a new container
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="providers" type="array" default="[]">
-</ApiItem>
+- `protected array $providers = []`
 
 ### Methods
 
@@ -496,6 +458,7 @@ public function newContainer(): Container;
 
 Returns a new container
 
+
 ## Container\Definition\DefinitionType
 
 Class
@@ -504,14 +467,14 @@ Class
 
 ### Constants
 
-<ApiItem kind="constant" name="CLOSURE_TYPE" type="string" default="&quot;closure&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="OBJECT_TYPE" type="string" default="&quot;object&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PARAMETER_TYPE" type="string" default="&quot;parameter&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="STRING_TYPE" type="string" default="&quot;string&quot;">
-</ApiItem>
+- `const string CLOSURE_TYPE = "closure"`
+
+- `const string OBJECT_TYPE = "object"`
+
+- `const string PARAMETER_TYPE = "parameter"`
+
+- `const string STRING_TYPE = "string"`
+
 
 ## Container\Definition\Processor\ClosureProcessor
 
@@ -523,12 +486,9 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerdefinitionprocessorclosureprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
-Wheteher the definition is a Closure
-</ApiItem>
-<ApiItem href="#containerdefinitionprocessorclosureprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
-Process the Closure
-</ApiItem>
+- `public canProcess(mixed $definition): bool` — Wheteher the definition is a Closure
+
+- `public process(string $name, mixed $definition, object $container): ServiceDefinition` — Process the Closure
 
 ### Methods
 
@@ -544,13 +504,14 @@ Wheteher the definition is a Closure
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the Closure
+
 
 ## Container\Definition\Processor\ObjectProcessor
 
@@ -562,12 +523,9 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerdefinitionprocessorobjectprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
-Whether the definition is an Object (not Closure)
-</ApiItem>
-<ApiItem href="#containerdefinitionprocessorobjectprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
-Process the Object
-</ApiItem>
+- `public canProcess(mixed $definition): bool` — Whether the definition is an Object (not Closure)
+
+- `public process(string $name, mixed $definition, object $container): ServiceDefinition` — Process the Object
 
 ### Methods
 
@@ -583,13 +541,14 @@ Whether the definition is an Object (not Closure)
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the Object
+
 
 ## Container\Definition\Processor\ParameterProcessor
 
@@ -601,12 +560,9 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerdefinitionprocessorparameterprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
-Whetehr the definition is a parameter
-</ApiItem>
-<ApiItem href="#containerdefinitionprocessorparameterprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
-Process the parameter
-</ApiItem>
+- `public canProcess(mixed $definition): bool` — Whetehr the definition is a parameter
+
+- `public process(string $name, mixed $definition, object $container): ServiceDefinition` — Process the parameter
 
 ### Methods
 
@@ -622,13 +578,14 @@ Whetehr the definition is a parameter
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the parameter
+
 
 ## Container\Definition\Processor\Processor
 
@@ -640,12 +597,9 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#containerdefinitionprocessorprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
-Can this definition be processed?
-</ApiItem>
-<ApiItem href="#containerdefinitionprocessorprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
-Process the definition
-</ApiItem>
+- `public canProcess(mixed $definition): bool` — Can this definition be processed?
+
+- `public process(string $name, mixed $definition, object $container): ServiceDefinition` — Process the definition
 
 ### Methods
 
@@ -661,13 +615,14 @@ Can this definition be processed?
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the definition
+
 
 ## Container\Definition\Processor\StringProcessor
 
@@ -679,12 +634,9 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerdefinitionprocessorstringprocessor-canprocess" visibility="public" name="canProcess" returnType="bool" params={[{"type":"mixed","name":"definition","default":null}]}>
-Whether the definition is a class string
-</ApiItem>
-<ApiItem href="#containerdefinitionprocessorstringprocessor-process" visibility="public" name="process" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"object","name":"container","default":null}]}>
-Process the class string
-</ApiItem>
+- `public canProcess(mixed $definition): bool` — Whether the definition is a class string
+
+- `public process(string $name, mixed $definition, object $container): ServiceDefinition` — Process the class string
 
 ### Methods
 
@@ -700,13 +652,14 @@ Whether the definition is a class string
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the class string
+
 
 ## Container\Definition\ServiceDefinition
 
@@ -718,124 +671,93 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerdefinitionservicedefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"serviceName","default":null},{"type":"string","name":"type","default":null},{"type":"mixed","name":"raw","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-addextender" visibility="public" name="addExtender" returnType="static" params={[{"type":"callable","name":"extender","default":null}]}>
-Adds an extender
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-addtag" visibility="public" name="addTag" returnType="static" params={[{"type":"string","name":"tag","default":null}]}>
-Adds a tag
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-buildservice" visibility="public" name="buildService" returnType="object" params={[{"type":"object","name":"container","default":null}]}>
-Builds a service and returns the instance back
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-freeze" visibility="public" name="freeze" returnType="void" params={[{"type":"object","name":"container","default":null}]}>
-Freezes the container
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getarguments" visibility="public" name="getArguments" returnType="array" params={[]}>
-Returns the arguments
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getclass" visibility="public" name="getClass" returnType="string" params={[]}>
-Returns the class
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getconstructorargs" visibility="public" name="getConstructorArgs" returnType="array" params={[]}>
-Returns the constructor arguments
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getextenders" visibility="public" name="getExtenders" returnType="array" params={[]}>
-Returns the extenders
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getfactory" visibility="public" name="getFactory" returnType="callable" params={[]}>
-Returns the factory
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getlifetime" visibility="public" name="getLifetime" returnType="string" params={[]}>
-Returns the lifetime
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-getservicename" visibility="public" name="getServiceName" returnType="string" params={[]}>
-Returns the name of the service
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-gettags" visibility="public" name="getTags" returnType="array" params={[]}>
-Returns the tags
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-gettype" visibility="public" name="getType" returnType="string" params={[]}>
-Returns the type
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-hasclass" visibility="public" name="hasClass" returnType="bool" params={[]}>
-Does it have a class
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-hasextenders" visibility="public" name="hasExtenders" returnType="bool" params={[]}>
-Do we have extenders
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-hasfactory" visibility="public" name="hasFactory" returnType="bool" params={[]}>
-Does it have a factory
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-iscacheable" visibility="public" name="isCacheable" returnType="bool" params={[]}>
-Is it cacheable
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-isfrozen" visibility="public" name="isFrozen" returnType="bool" params={[]}>
-Is it frozen
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setargument" visibility="public" name="setArgument" returnType="static" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set an argument
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setclass" visibility="public" name="setClass" returnType="static" params={[{"type":"string","name":"className","default":null}]}>
-Set a class
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setcontainer" visibility="public" name="setContainer" returnType="static" params={[{"type":"object","name":"container","default":null}]}>
-Set the container
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setextenders" visibility="public" name="setExtenders" returnType="static" params={[{"type":"array","name":"extenders","default":null}]}>
-Set extenders
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setfactory" visibility="public" name="setFactory" returnType="static" params={[{"type":"callable","name":"factory","default":null}]}>
-Set a factory
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setiscacheable" visibility="public" name="setIsCacheable" returnType="static" params={[{"type":"bool","name":"isCacheable","default":null}]}>
-Set cachable
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setlifetime" visibility="public" name="setLifetime" returnType="static" params={[{"type":"string","name":"lifetime","default":null}]}>
-Set lifetime
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-unsetclass" visibility="public" name="unsetClass" returnType="static" params={[]}>
-Unset class
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-unsetextenders" visibility="public" name="unsetExtenders" returnType="static" params={[]}>
-Unset extenders
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-unsetfactory" visibility="public" name="unsetFactory" returnType="static" params={[]}>
-Unset the factory
-</ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-checkfrozen" visibility="protected" name="checkFrozen" returnType="void" params={[]}>
-Check if frozen
-</ApiItem>
+- `public __construct(string $serviceName, string $type, mixed $raw = null)`
+
+- `public addExtender(callable $extender): static` — Adds an extender
+
+- `public addTag(string $tag): static` — Adds a tag
+
+- `public buildService(object $container): object` — Builds a service and returns the instance back
+
+- `public freeze(object $container): void` — Freezes the container
+
+- `public getArguments(): array` — Returns the arguments
+
+- `public getClass(): string` — Returns the class
+
+- `public getConstructorArgs(): array` — Returns the constructor arguments
+
+- `public getExtenders(): array` — Returns the extenders
+
+- `public getFactory(): callable` — Returns the factory
+
+- `public getLifetime(): string` — Returns the lifetime
+
+- `public getServiceName(): string` — Returns the name of the service
+
+- `public getTags(): array` — Returns the tags
+
+- `public getType(): string` — Returns the type
+
+- `public hasClass(): bool` — Does it have a class
+
+- `public hasExtenders(): bool` — Do we have extenders
+
+- `public hasFactory(): bool` — Does it have a factory
+
+- `public isCacheable(): bool` — Is it cacheable
+
+- `public isFrozen(): bool` — Is it frozen
+
+- `public setArgument(mixed $param, mixed $value): static` — Set an argument
+
+- `public setClass(string $className): static` — Set a class
+
+- `public setContainer(object $container): static` — Set the container
+
+- `public setExtenders(array $extenders): static` — Set extenders
+
+- `public setFactory(callable $factory): static` — Set a factory
+
+- `public setIsCacheable(bool $isCacheable): static` — Set cachable
+
+- `public setLifetime(string $lifetime): static` — Set lifetime
+
+- `public unsetClass(): static` — Unset class
+
+- `public unsetExtenders(): static` — Unset extenders
+
+- `public unsetFactory(): static` — Unset the factory
+
+- `protected checkFrozen(): void` — Check if frozen
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="className" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="constructorArgs" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="object|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="extenders" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="factory" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="frozen" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isCacheable" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lifetime" type="string" default="ServiceLifetime::SCOPED">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="raw" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="serviceName" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tags" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="">
-</ApiItem>
+- `protected array $arguments = []`
+
+- `protected string|null $className = null`
+
+- `protected array $constructorArgs = []`
+
+- `protected object|null $container = null`
+
+- `protected array $extenders = []`
+
+- `protected callable|null $factory = null`
+
+- `protected bool $frozen = false`
+
+- `protected bool $isCacheable = false`
+
+- `protected string $lifetime = ServiceLifetime::SCOPED`
+
+- `protected mixed $raw = null`
+
+- `protected string $serviceName`
+
+- `protected array $tags = []`
+
+- `protected string $type`
 
 ### Methods
 
@@ -843,9 +765,9 @@ Check if frozen
 
 ```php
 public function __construct(
-string $serviceName,
-string $type,
-mixed $raw = null
+    string $serviceName,
+    string $type,
+    mixed $raw = null
 );
 ```
 
@@ -997,8 +919,8 @@ Is it frozen
 
 ```php
 public function setArgument(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): static;
 ```
 
@@ -1084,6 +1006,7 @@ protected function checkFrozen(): void;
 
 Check if frozen
 
+
 ## Container\Definition\ServiceLifetime
 
 Class
@@ -1092,26 +1015,24 @@ Class
 
 ### Constants
 
-<ApiItem kind="constant" name="SCOPED" type="string" default="&quot;SCOPED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="SINGLETON" type="string" default="&quot;SINGLETON&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="TRANSIENT" type="string" default="&quot;TRANSIENT&quot;">
-</ApiItem>
+- `const string SCOPED = "SCOPED"`
+
+- `const string SINGLETON = "SINGLETON"`
+
+- `const string TRANSIENT = "TRANSIENT"`
+
 
 ## Container\Exceptions\CannotExtendResolved
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\CannotExtendResolved`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\CannotExtendResolved`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionscannotextendresolved-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Cannot extend a resolved service
-</ApiItem>
+- `public __construct(string $name)` — Cannot extend a resolved service
 
 ### Methods
 
@@ -1123,19 +1044,18 @@ public function __construct( string $name );
 
 Cannot extend a resolved service
 
+
 ## Container\Exceptions\CannotResolveParameter
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\CannotResolveParameter`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\CannotResolveParameter`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionscannotresolveparameter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"param","default":null},{"type":"string","name":"className","default":null}]}>
-Cannot resolve a parameter
-</ApiItem>
+- `public __construct(string $param, string $className)` — Cannot resolve a parameter
 
 ### Methods
 
@@ -1143,26 +1063,25 @@ Cannot resolve a parameter
 
 ```php
 public function __construct(
-string $param,
-string $className
+    string $param,
+    string $className
 );
 ```
 
 Cannot resolve a parameter
+
 
 ## Container\Exceptions\CircularAliasFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\CircularAliasFound`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\CircularAliasFound`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionscircularaliasfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Circular Alias found
-</ApiItem>
+- `public __construct(string $name)` — Circular Alias found
 
 ### Methods
 
@@ -1174,28 +1093,29 @@ public function __construct( string $name );
 
 Circular Alias found
 
+
 ## Container\Exceptions\ContainerThrowable
 
 Interface
 
 - `\Throwable`
-- [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable)
-- **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](/6.0/api/phalcon_contracts/#contractscontainerservicethrowable)
+  - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable)
+    - **`Phalcon\Container\Exceptions\ContainerThrowable`** - extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/6.0/api/phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](/6.0/api/phalcon_contracts/#contractscontainerservicethrowable)
 
 `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Container\Resolver\ResolverThrowable` · `Phalcon\Contracts\Container\Service\Throwable`
+
 
 ## Container\Exceptions\EnvNotDefined
 
 Final
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\EnvNotDefined`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\EnvNotDefined`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsenvnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"varname","default":null}]}>
-</ApiItem>
+- `public __construct(string $varname)`
 
 ### Methods
 
@@ -1205,41 +1125,41 @@ Final
 public function __construct( string $varname );
 ```
 
+
 ## Container\Exceptions\Exception
 
 Class
 
 - `\Exception`
-- **`Phalcon\Container\Exceptions\Exception`** - implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
-- [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
-- [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
-- [`Phalcon\Container\Exceptions\CircularAliasFound`](#containerexceptionscircularaliasfound)
-- [`Phalcon\Container\Exceptions\EnvNotDefined`](#containerexceptionsenvnotdefined)
-- [`Phalcon\Container\Exceptions\FrozenDefinition`](#containerexceptionsfrozendefinition)
-- [`Phalcon\Container\Exceptions\InstanceNotFound`](#containerexceptionsinstancenotfound)
-- [`Phalcon\Container\Exceptions\InvalidExtender`](#containerexceptionsinvalidextender)
-- [`Phalcon\Container\Exceptions\NoClassSet`](#containerexceptionsnoclassset)
-- [`Phalcon\Container\Exceptions\NoFactorySet`](#containerexceptionsnofactoryset)
-- [`Phalcon\Container\Exceptions\NoProcessorFound`](#containerexceptionsnoprocessorfound)
-- [`Phalcon\Container\Exceptions\ParameterNotFound`](#containerexceptionsparameternotfound)
-- [`Phalcon\Container\Exceptions\ServiceNotFound`](#containerexceptionsservicenotfound)
-- [`Phalcon\Container\Exceptions\ServiceNotRegistered`](#containerexceptionsservicenotregistered)
+  - **`Phalcon\Container\Exceptions\Exception`** - implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
+    - [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
+    - [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
+    - [`Phalcon\Container\Exceptions\CircularAliasFound`](#containerexceptionscircularaliasfound)
+    - [`Phalcon\Container\Exceptions\EnvNotDefined`](#containerexceptionsenvnotdefined)
+    - [`Phalcon\Container\Exceptions\FrozenDefinition`](#containerexceptionsfrozendefinition)
+    - [`Phalcon\Container\Exceptions\InstanceNotFound`](#containerexceptionsinstancenotfound)
+    - [`Phalcon\Container\Exceptions\InvalidExtender`](#containerexceptionsinvalidextender)
+    - [`Phalcon\Container\Exceptions\NoClassSet`](#containerexceptionsnoclassset)
+    - [`Phalcon\Container\Exceptions\NoFactorySet`](#containerexceptionsnofactoryset)
+    - [`Phalcon\Container\Exceptions\NoProcessorFound`](#containerexceptionsnoprocessorfound)
+    - [`Phalcon\Container\Exceptions\ParameterNotFound`](#containerexceptionsparameternotfound)
+    - [`Phalcon\Container\Exceptions\ServiceNotFound`](#containerexceptionsservicenotfound)
+    - [`Phalcon\Container\Exceptions\ServiceNotRegistered`](#containerexceptionsservicenotregistered)
 
 `Exception`
+
 
 ## Container\Exceptions\FrozenDefinition
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\FrozenDefinition`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\FrozenDefinition`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsfrozendefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Definition is frozen
-</ApiItem>
+- `public __construct(string $name)` — Definition is frozen
 
 ### Methods
 
@@ -1251,18 +1171,18 @@ public function __construct( string $name );
 
 Definition is frozen
 
+
 ## Container\Exceptions\InstanceNotFound
 
 Final
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\InstanceNotFound`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\InstanceNotFound`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsinstancenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1272,19 +1192,18 @@ Final
 public function __construct( string $name );
 ```
 
+
 ## Container\Exceptions\InvalidExtender
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\InvalidExtender`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\InvalidExtender`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsinvalidextender-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"service","default":null},{"type":"string","name":"key","default":null}]}>
-Invalid extender (not callable)
-</ApiItem>
+- `public __construct(string $service, string $key)` — Invalid extender (not callable)
 
 ### Methods
 
@@ -1292,26 +1211,25 @@ Invalid extender (not callable)
 
 ```php
 public function __construct(
-string $service,
-string $key
+    string $service,
+    string $key
 );
 ```
 
 Invalid extender (not callable)
+
 
 ## Container\Exceptions\NoClassSet
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\NoClassSet`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\NoClassSet`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsnoclassset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-No set for service
-</ApiItem>
+- `public __construct(string $name)` — No set for service
 
 ### Methods
 
@@ -1323,19 +1241,18 @@ public function __construct( string $name );
 
 No set for service
 
+
 ## Container\Exceptions\NoFactorySet
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\NoFactorySet`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\NoFactorySet`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsnofactoryset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-No factory for service
-</ApiItem>
+- `public __construct(string $name)` — No factory for service
 
 ### Methods
 
@@ -1347,19 +1264,18 @@ public function __construct( string $name );
 
 No factory for service
 
+
 ## Container\Exceptions\NoProcessorFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\NoProcessorFound`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\NoProcessorFound`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsnoprocessorfound-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-No processor found
-</ApiItem>
+- `public __construct()` — No processor found
 
 ### Methods
 
@@ -1371,18 +1287,18 @@ public function __construct();
 
 No processor found
 
+
 ## Container\Exceptions\ParameterNotFound
 
 Final
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\ParameterNotFound`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\ParameterNotFound`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsparameternotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1392,19 +1308,18 @@ Final
 public function __construct( string $name );
 ```
 
+
 ## Container\Exceptions\ServiceNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\ServiceNotFound`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\ServiceNotFound`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsservicenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Service not found
-</ApiItem>
+- `public __construct(string $name)` — Service not found
 
 ### Methods
 
@@ -1416,19 +1331,18 @@ public function __construct( string $name );
 
 Service not found
 
+
 ## Container\Exceptions\ServiceNotRegistered
 
 Class
 
 - `\Exception`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
+  - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+    - **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
 
 ### Method Summary
 
-<ApiItem href="#containerexceptionsservicenotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Service not registered
-</ApiItem>
+- `public __construct(string $name)` — Service not registered
 
 ### Methods
 
@@ -1440,6 +1354,7 @@ public function __construct( string $name );
 
 Service not registered
 
+
 ## Container\Provider\Cli
 
 Class
@@ -1450,9 +1365,7 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerprovidercli-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
-Provider for commonly used CLI applications
-</ApiItem>
+- `public provide(Collection $services): void` — Provider for commonly used CLI applications
 
 ### Methods
 
@@ -1464,6 +1377,7 @@ public function provide( Collection $services ): void;
 
 Provider for commonly used CLI applications
 
+
 ## Container\Provider\Web
 
 Class
@@ -1474,9 +1388,7 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerproviderweb-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
-Provider for commonly used Web applications
-</ApiItem>
+- `public provide(Collection $services): void` — Provider for commonly used Web applications
 
 ### Methods
 
@@ -1488,6 +1400,7 @@ public function provide( Collection $services ): void;
 
 Provider for commonly used Web applications
 
+
 ## Container\Resolver\Lazy\ArrayValues
 
 Class
@@ -1496,40 +1409,37 @@ Class
 @implements IteratorAggregate&lt;array-key, mixed>
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `\ArrayAccess`, `\Countable`, `\IteratorAggregate`
+  - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** - implements `\ArrayAccess`, `\Countable`, `\IteratorAggregate`
 
 `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazyarrayvalues-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"values","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-count" visibility="public" name="count" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-getiterator" visibility="public" name="getIterator" returnType="ArrayIterator" params={[]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-merge" visibility="public" name="merge" returnType="void" params={[{"type":"iterable","name":"values","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"offset","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-resolve" visibility="public" name="resolve" returnType="array" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve to an array, where each element has itself been lazy-resolved.
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-resolvevalue" visibility="protected" name="resolveValue" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-resolvevalues" visibility="protected" name="resolveValues" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"values","default":null}]}>
-</ApiItem>
+- `public __construct(array $values = [])`
+
+- `public count(): int`
+
+- `public getIterator(): ArrayIterator`
+
+- `public merge(iterable $values): void`
+
+- `public offsetExists(mixed $offset): bool`
+
+- `public offsetGet(mixed $offset): mixed`
+
+- `public offsetSet(mixed $offset, mixed $value): void`
+
+- `public offsetUnset(mixed $offset): void`
+
+- `public resolve(object $ioc): array` — Resolve to an array, where each element has itself been lazy-resolved.
+
+- `protected resolveValue(object $ioc, mixed $value): mixed`
+
+- `protected resolveValues(object $ioc, array $values): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="values" type="array" default="[]">
-</ApiItem>
+- `protected array $values = []`
 
 ### Methods
 
@@ -1573,8 +1483,8 @@ public function offsetGet( mixed $offset ): mixed;
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -1596,8 +1506,8 @@ Resolve to an array, where each element has itself been lazy-resolved.
 
 ```php
 protected function resolveValue(
-object $ioc,
-mixed $value
+    object $ioc,
+    mixed $value
 ): mixed;
 ```
 
@@ -1605,30 +1515,28 @@ mixed $value
 
 ```php
 protected function resolveValues(
-object $ioc,
-array $values
+    object $ioc,
+    array $values
 ): array;
 ```
+
 
 ## Container\Resolver\Lazy\Call
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\Call`**
+  - **`Phalcon\Container\Resolver\Lazy\Call`**
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazycall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"callableObject","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazycall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve the callable
-</ApiItem>
+- `public __construct(mixed $callableObject)`
+
+- `public resolve(object $ioc): mixed` — Resolve the callable
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="callableObject" type="mixed" default="">
-</ApiItem>
+- `protected mixed $callableObject`
 
 ### Methods
 
@@ -1646,27 +1554,25 @@ public function resolve( object $ioc ): mixed;
 
 Resolve the callable
 
+
 ## Container\Resolver\Lazy\CallableGet
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\CallableGet`**
+  - **`Phalcon\Container\Resolver\Lazy\CallableGet`**
 
 `Phalcon\Contracts\Container\Service\Collection`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazycallableget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazycallableget-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve to a closure on a get()
-</ApiItem>
+- `public __construct(Lazy|string $id)`
+
+- `public resolve(object $ioc): mixed` — Resolve to a closure on a get()
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
-</ApiItem>
+- `protected Lazy|string $id`
 
 ### Methods
 
@@ -1684,27 +1590,25 @@ public function resolve( object $ioc ): mixed;
 
 Resolve to a closure on a get()
 
+
 ## Container\Resolver\Lazy\CallableNew
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\CallableNew`**
+  - **`Phalcon\Container\Resolver\Lazy\CallableNew`**
 
 `Phalcon\Contracts\Container\Service\Collection`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazycallablenew-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazycallablenew-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve to a closure on a new()
-</ApiItem>
+- `public __construct(Lazy|string $id)`
+
+- `public resolve(object $ioc): mixed` — Resolve to a closure on a new()
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
-</ApiItem>
+- `protected Lazy|string $id`
 
 ### Methods
 
@@ -1722,21 +1626,20 @@ public function resolve( object $ioc ): mixed;
 
 Resolve to a closure on a new()
 
+
 ## Container\Resolver\Lazy\CsEnv
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
-- **`Phalcon\Container\Resolver\Lazy\CsEnv`**
+  - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
+    - **`Phalcon\Container\Resolver\Lazy\CsEnv`**
 
 `Phalcon\Container\Exceptions\EnvNotDefined` · `Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazycsenv-resolve" visibility="public" name="resolve" returnType="array" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve the getEnv() from keys as a comma separated list
-</ApiItem>
+- `public resolve(object $ioc): array` — Resolve the getEnv() from keys as a comma separated list
 
 ### Methods
 
@@ -1748,37 +1651,33 @@ public function resolve( object $ioc ): array;
 
 Resolve the getEnv() from keys as a comma separated list
 
+
 ## Container\Resolver\Lazy\Env
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\Env`**
-- [`Phalcon\Container\Resolver\Lazy\CsEnv`](#containerresolverlazycsenv)
-- [`Phalcon\Container\Resolver\Lazy\EnvDefault`](#containerresolverlazyenvdefault)
+  - **`Phalcon\Container\Resolver\Lazy\Env`**
+    - [`Phalcon\Container\Resolver\Lazy\CsEnv`](#containerresolverlazycsenv)
+    - [`Phalcon\Container\Resolver\Lazy\EnvDefault`](#containerresolverlazyenvdefault)
 
 `Phalcon\Container\Exceptions\EnvNotDefined`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazyenv-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"varname","default":null},{"type":"string|null","name":"vartype","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyenv-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve an environment variable
-</ApiItem>
-<ApiItem href="#containerresolverlazyenv-cast" visibility="protected" name="cast" returnType="mixed" params={[{"type":"mixed","name":"value","default":null}]}>
-Cast a value to the defined type (if any)
-</ApiItem>
-<ApiItem href="#containerresolverlazyenv-getenv" visibility="protected" name="getEnv" returnType="string" params={[]}>
-Return the env value
-</ApiItem>
+- `public __construct(string $varname, string|null $vartype = null)`
+
+- `public resolve(object $ioc): mixed` — Resolve an environment variable
+
+- `protected cast(mixed $value): mixed` — Cast a value to the defined type (if any)
+
+- `protected getEnv(): string` — Return the env value
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="varname" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="vartype" type="string|null" default="null">
-</ApiItem>
+- `protected string $varname`
+
+- `protected string|null $vartype = null`
 
 ### Methods
 
@@ -1786,8 +1685,8 @@ Return the env value
 
 ```php
 public function __construct(
-string $varname,
-string|null $vartype = null
+    string $varname,
+    string|null $vartype = null
 );
 ```
 
@@ -1815,23 +1714,22 @@ protected function getEnv(): string;
 
 Return the env value
 
+
 ## Container\Resolver\Lazy\EnvDefault
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
-- **`Phalcon\Container\Resolver\Lazy\EnvDefault`**
+  - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
+    - **`Phalcon\Container\Resolver\Lazy\EnvDefault`**
 
 `Phalcon\Container\Exceptions\EnvNotDefined`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazyenvdefault-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"varname","default":null},{"type":"mixed","name":"defaultValue","default":null},{"type":"string|null","name":"vartype","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyenvdefault-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve an environment variable, returning the default if not defined
-</ApiItem>
+- `public __construct(string $varname, mixed $defaultValue, string|null $vartype = null)`
+
+- `public resolve(object $ioc): mixed` — Resolve an environment variable, returning the default if not defined
 
 ### Methods
 
@@ -1839,9 +1737,9 @@ Resolve an environment variable, returning the default if not defined
 
 ```php
 public function __construct(
-string $varname,
-mixed $defaultValue,
-string|null $vartype = null
+    string $varname,
+    mixed $defaultValue,
+    string|null $vartype = null
 );
 ```
 
@@ -1853,29 +1751,27 @@ public function resolve( object $ioc ): mixed;
 
 Resolve an environment variable, returning the default if not defined
 
+
 ## Container\Resolver\Lazy\FunctionCall
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\FunctionCall`**
+  - **`Phalcon\Container\Resolver\Lazy\FunctionCall`**
 
 `Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazyfunctioncall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"functionName","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyfunctioncall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve a function
-</ApiItem>
+- `public __construct(string $functionName, array $arguments)`
+
+- `public resolve(object $ioc): mixed` — Resolve a function
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="functionName" type="string" default="">
-</ApiItem>
+- `protected array $arguments`
+
+- `protected string $functionName`
 
 ### Methods
 
@@ -1883,8 +1779,8 @@ Resolve a function
 
 ```php
 public function __construct(
-string $functionName,
-array $arguments
+    string $functionName,
+    array $arguments
 );
 ```
 
@@ -1896,27 +1792,25 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a function
 
+
 ## Container\Resolver\Lazy\Get
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\Get`**
+  - **`Phalcon\Container\Resolver\Lazy\Get`**
 
 `Phalcon\Contracts\Container\Service\Collection`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazyget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazyget-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve a shared instance
-</ApiItem>
+- `public __construct(Lazy|string $id)`
+
+- `public resolve(object $ioc): mixed` — Resolve a shared instance
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
-</ApiItem>
+- `protected Lazy|string $id`
 
 ### Methods
 
@@ -1934,31 +1828,29 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a shared instance
 
+
 ## Container\Resolver\Lazy\GetCall
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\GetCall`**
+  - **`Phalcon\Container\Resolver\Lazy\GetCall`**
 
 `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazygetcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazygetcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve a shared instance method call
-</ApiItem>
+- `public __construct(Lazy|string $id, string $method, array $arguments)`
+
+- `public resolve(object $ioc): mixed` — Resolve a shared instance method call
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="">
-</ApiItem>
+- `protected array $arguments`
+
+- `protected Lazy|string $id`
+
+- `protected string $method`
 
 ### Methods
 
@@ -1966,9 +1858,9 @@ Resolve a shared instance method call
 
 ```php
 public function __construct(
-Lazy|string $id,
-string $method,
-array $arguments
+    Lazy|string $id,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -1980,35 +1872,35 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a shared instance method call
 
+
 ## Container\Resolver\Lazy\Lazy
 
 Abstract
 
 - **`Phalcon\Container\Resolver\Lazy\Lazy`** - implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolvable)
-- [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
-- [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
-- [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
-- [`Phalcon\Container\Resolver\Lazy\CallableNew`](#containerresolverlazycallablenew)
-- [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
-- [`Phalcon\Container\Resolver\Lazy\FunctionCall`](#containerresolverlazyfunctioncall)
-- [`Phalcon\Container\Resolver\Lazy\Get`](#containerresolverlazyget)
-- [`Phalcon\Container\Resolver\Lazy\GetCall`](#containerresolverlazygetcall)
-- [`Phalcon\Container\Resolver\Lazy\NewCall`](#containerresolverlazynewcall)
-- [`Phalcon\Container\Resolver\Lazy\NewInstance`](#containerresolverlazynewinstance)
-- [`Phalcon\Container\Resolver\Lazy\StaticCall`](#containerresolverlazystaticcall)
+  - [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
+  - [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
+  - [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
+  - [`Phalcon\Container\Resolver\Lazy\CallableNew`](#containerresolverlazycallablenew)
+  - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
+  - [`Phalcon\Container\Resolver\Lazy\FunctionCall`](#containerresolverlazyfunctioncall)
+  - [`Phalcon\Container\Resolver\Lazy\Get`](#containerresolverlazyget)
+  - [`Phalcon\Container\Resolver\Lazy\GetCall`](#containerresolverlazygetcall)
+  - [`Phalcon\Container\Resolver\Lazy\NewCall`](#containerresolverlazynewcall)
+  - [`Phalcon\Container\Resolver\Lazy\NewInstance`](#containerresolverlazynewinstance)
+  - [`Phalcon\Container\Resolver\Lazy\StaticCall`](#containerresolverlazystaticcall)
 
 `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\Resolvable`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazylazy-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazy-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazy-resolveargument" visibility="protected" name="resolveArgument" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"argument","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazy-resolvearguments" visibility="protected" name="resolveArguments" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
+- `public __invoke(object $ioc): mixed`
+
+- `public resolve(object $ioc): mixed`
+
+- `protected resolveArgument(object $ioc, mixed $argument): mixed`
+
+- `protected resolveArguments(object $ioc, array $arguments): array`
 
 ### Methods
 
@@ -2028,8 +1920,8 @@ abstract public function resolve( object $ioc ): mixed;
 
 ```php
 protected function resolveArgument(
-object $ioc,
-mixed $argument
+    object $ioc,
+    mixed $argument
 ): mixed;
 ```
 
@@ -2037,10 +1929,11 @@ mixed $argument
 
 ```php
 protected function resolveArguments(
-object $ioc,
-array $arguments
+    object $ioc,
+    array $arguments
 ): array;
 ```
+
 
 ## Container\Resolver\Lazy\LazyFactory
 
@@ -2052,32 +1945,31 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazylazyfactory-arrayvalues" visibility="public" name="arrayValues" returnType="ArrayValues" params={[{"type":"array","name":"values","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-call" visibility="public" name="call" returnType="Call" params={[{"type":"callable","name":"callableObject","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-callableget" visibility="public" name="callableGet" returnType="CallableGet" params={[{"type":"string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-callablenew" visibility="public" name="callableNew" returnType="CallableNew" params={[{"type":"string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-csenv" visibility="public" name="csEnv" returnType="CsEnv" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"type","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-env" visibility="public" name="env" returnType="Env" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"type","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-envdefault" visibility="public" name="envDefault" returnType="EnvDefault" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":null},{"type":"string|null","name":"type","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-functioncall" visibility="public" name="functionCall" returnType="FunctionCall" params={[{"type":"string","name":"functionName","default":null},{"type":"array","name":"args","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-get" visibility="public" name="get" returnType="Get" params={[{"type":"string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-getcall" visibility="public" name="getCall" returnType="GetCall" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"args","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-newcall" visibility="public" name="newCall" returnType="NewCall" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"args","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-newinstance" visibility="public" name="newInstance" returnType="NewInstance" params={[{"type":"string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-staticcall" visibility="public" name="staticCall" returnType="StaticCall" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"args","default":null}]}>
-</ApiItem>
+- `public arrayValues(array $values): ArrayValues`
+
+- `public call(callable $callableObject): Call`
+
+- `public callableGet(string $id): CallableGet`
+
+- `public callableNew(string $id): CallableNew`
+
+- `public csEnv(string $name, string|null $type = null): CsEnv`
+
+- `public env(string $name, string|null $type = null): Env`
+
+- `public envDefault(string $name, mixed $defaultValue, string|null $type = null): EnvDefault`
+
+- `public functionCall(string $functionName, array $args): FunctionCall`
+
+- `public get(string $id): Get`
+
+- `public getCall(string $id, string $method, array $args): GetCall`
+
+- `public newCall(string $id, string $method, array $args): NewCall`
+
+- `public newInstance(string $id): NewInstance`
+
+- `public staticCall(string $className, string $method, array $args): StaticCall`
 
 ### Methods
 
@@ -2109,8 +2001,8 @@ public static function callableNew( string $id ): CallableNew;
 
 ```php
 public static function csEnv(
-string $name,
-string|null $type = null
+    string $name,
+    string|null $type = null
 ): CsEnv;
 ```
 
@@ -2118,8 +2010,8 @@ string|null $type = null
 
 ```php
 public static function env(
-string $name,
-string|null $type = null
+    string $name,
+    string|null $type = null
 ): Env;
 ```
 
@@ -2127,9 +2019,9 @@ string|null $type = null
 
 ```php
 public static function envDefault(
-string $name,
-mixed $defaultValue,
-string|null $type = null
+    string $name,
+    mixed $defaultValue,
+    string|null $type = null
 ): EnvDefault;
 ```
 
@@ -2137,8 +2029,8 @@ string|null $type = null
 
 ```php
 public static function functionCall(
-string $functionName,
-array $args
+    string $functionName,
+    array $args
 ): FunctionCall;
 ```
 
@@ -2152,9 +2044,9 @@ public static function get( string $id ): Get;
 
 ```php
 public static function getCall(
-string $id,
-string $method,
-array $args
+    string $id,
+    string $method,
+    array $args
 ): GetCall;
 ```
 
@@ -2162,9 +2054,9 @@ array $args
 
 ```php
 public static function newCall(
-string $id,
-string $method,
-array $args
+    string $id,
+    string $method,
+    array $args
 ): NewCall;
 ```
 
@@ -2178,37 +2070,35 @@ public static function newInstance( string $id ): NewInstance;
 
 ```php
 public static function staticCall(
-string $className,
-string $method,
-array $args
+    string $className,
+    string $method,
+    array $args
 ): StaticCall;
 ```
+
 
 ## Container\Resolver\Lazy\NewCall
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\NewCall`**
+  - **`Phalcon\Container\Resolver\Lazy\NewCall`**
 
 `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazynewcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazynewcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve a new instance method call
-</ApiItem>
+- `public __construct(Lazy|string $id, string $method, array $arguments)`
+
+- `public resolve(object $ioc): mixed` — Resolve a new instance method call
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="">
-</ApiItem>
+- `protected array $arguments`
+
+- `protected Lazy|string $id`
+
+- `protected string $method`
 
 ### Methods
 
@@ -2216,9 +2106,9 @@ Resolve a new instance method call
 
 ```php
 public function __construct(
-Lazy|string $id,
-string $method,
-array $arguments
+    Lazy|string $id,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -2230,27 +2120,25 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a new instance method call
 
+
 ## Container\Resolver\Lazy\NewInstance
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\NewInstance`**
+  - **`Phalcon\Container\Resolver\Lazy\NewInstance`**
 
 `Phalcon\Contracts\Container\Service\Collection`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazynewinstance-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazynewinstance-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve a new instance
-</ApiItem>
+- `public __construct(Lazy|string $id)`
+
+- `public resolve(object $ioc): mixed` — Resolve a new instance
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
-</ApiItem>
+- `protected Lazy|string $id`
 
 ### Methods
 
@@ -2268,31 +2156,29 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a new instance
 
+
 ## Container\Resolver\Lazy\StaticCall
 
 Class
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\StaticCall`**
+  - **`Phalcon\Container\Resolver\Lazy\StaticCall`**
 
 `Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-<ApiItem href="#containerresolverlazystaticcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"className","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#containerresolverlazystaticcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
-Resolve a static method call
-</ApiItem>
+- `public __construct(Lazy|string $className, string $method, array $arguments)`
+
+- `public resolve(object $ioc): mixed` — Resolve a static method call
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="className" type="Lazy|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="">
-</ApiItem>
+- `protected array $arguments`
+
+- `protected Lazy|string $className`
+
+- `protected string $method`
 
 ### Methods
 
@@ -2300,9 +2186,9 @@ Resolve a static method call
 
 ```php
 public function __construct(
-Lazy|string $className,
-string $method,
-array $arguments
+    Lazy|string $className,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -2314,6 +2200,7 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a static method call
 
+
 ## Container\Resolver\Resolver
 
 Class
@@ -2324,27 +2211,19 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#containerresolverresolver-isresolvableclass" visibility="public" name="isResolvableClass" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
-Is this a resolvable class?
-</ApiItem>
-<ApiItem href="#containerresolverresolver-resolvecall" visibility="public" name="resolveCall" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"callable","name":"callableObject","default":null},{"type":"array","name":"arguments","default":null}]}>
-Resolve a call
-</ApiItem>
-<ApiItem href="#containerresolverresolver-resolveclass" visibility="public" name="resolveClass" returnType="object" params={[{"type":"object","name":"ioc","default":null},{"type":"string","name":"className","default":null},{"type":"array","name":"arguments","default":null}]}>
-Resolve a class
-</ApiItem>
-<ApiItem href="#containerresolverresolver-resolvemethod" visibility="public" name="resolveMethod" returnType="void" params={[{"type":"object","name":"ioc","default":null},{"type":"ReflectionMethod","name":"method","default":null},{"type":"object","name":"instance","default":null}]}>
-Resolve a method
-</ApiItem>
-<ApiItem href="#containerresolverresolver-resolveparameter" visibility="public" name="resolveParameter" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"ReflectionParameter","name":"parameter","default":null}]}>
-Resolve parameters
-</ApiItem>
-<ApiItem href="#containerresolverresolver-resolveparameters" visibility="public" name="resolveParameters" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"parameters","default":null},{"type":"array","name":"arguments","default":null}]}>
-Resolve parameters
-</ApiItem>
-<ApiItem href="#containerresolverresolver-resolvetype" visibility="public" name="resolveType" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"type","default":null}]}>
-type is ReflectionType
-</ApiItem>
+- `public isResolvableClass(string $className): bool` — Is this a resolvable class?
+
+- `public resolveCall(object $ioc, callable $callableObject, array $arguments): mixed` — Resolve a call
+
+- `public resolveClass(object $ioc, string $className, array $arguments): object` — Resolve a class
+
+- `public resolveMethod(object $ioc, ReflectionMethod $method, object $instance): void` — Resolve a method
+
+- `public resolveParameter(object $ioc, ReflectionParameter $parameter): mixed` — Resolve parameters
+
+- `public resolveParameters(object $ioc, array $parameters, array $arguments): array` — Resolve parameters
+
+- `public resolveType(object $ioc, mixed $type): mixed` — type is ReflectionType
 
 ### Methods
 
@@ -2360,9 +2239,9 @@ Is this a resolvable class?
 
 ```php
 public function resolveCall(
-object $ioc,
-callable $callableObject,
-array $arguments
+    object $ioc,
+    callable $callableObject,
+    array $arguments
 ): mixed;
 ```
 
@@ -2372,9 +2251,9 @@ Resolve a call
 
 ```php
 public function resolveClass(
-object $ioc,
-string $className,
-array $arguments
+    object $ioc,
+    string $className,
+    array $arguments
 ): object;
 ```
 
@@ -2384,9 +2263,9 @@ Resolve a class
 
 ```php
 public function resolveMethod(
-object $ioc,
-ReflectionMethod $method,
-object $instance
+    object $ioc,
+    ReflectionMethod $method,
+    object $instance
 ): void;
 ```
 
@@ -2396,8 +2275,8 @@ Resolve a method
 
 ```php
 public function resolveParameter(
-object $ioc,
-ReflectionParameter $parameter
+    object $ioc,
+    ReflectionParameter $parameter
 ): mixed;
 ```
 
@@ -2407,9 +2286,9 @@ Resolve parameters
 
 ```php
 public function resolveParameters(
-object $ioc,
-array $parameters,
-array $arguments
+    object $ioc,
+    array $parameters,
+    array $arguments
 ): array;
 ```
 
@@ -2419,8 +2298,8 @@ Resolve parameters
 
 ```php
 public function resolveType(
-object $ioc,
-mixed $type
+    object $ioc,
+    mixed $type
 ): mixed;
 ```
 

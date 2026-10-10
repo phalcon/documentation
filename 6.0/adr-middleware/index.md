@@ -17,8 +17,8 @@ Every middleware implements `Phalcon\Contracts\ADR\Middleware`:
 
 ```php
 public function __invoke(
-Phalcon\Contracts\Http\AttributeRequest $request,
-Phalcon\Contracts\ADR\Handler $next
+    Phalcon\Contracts\Http\AttributeRequest $request,
+    Phalcon\Contracts\ADR\Handler $next
 ): Phalcon\Http\ResponseInterface;
 ```
 
@@ -36,11 +36,11 @@ use Phalcon\Http\ResponseInterface;
 
 final class ApiVersion implements Middleware
 {
-public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
-{
-    // run the rest of the pipeline, then act on the response
-    return $next($request)->setHeader('X-Api-Version', '1');
-}
+    public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
+    {
+        // run the rest of the pipeline, then act on the response
+        return $next($request)->setHeader('X-Api-Version', '1');
+    }
 }
 ```
 
@@ -80,18 +80,18 @@ A minimal superadmin gate then reads:
 ```php
 final class RequireSuperadmin implements Middleware
 {
-public function __construct(private Identity $identity)
-{
-}
-
-public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
-{
-    if (! $this->identity->isSuperadmin()) {
-        throw new Forbidden();     // the error responder renders the 403
+    public function __construct(private Identity $identity)
+    {
     }
 
-    return $next($request);
-}
+    public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
+    {
+        if (! $this->identity->isSuperadmin()) {
+            throw new Forbidden();     // the error responder renders the 403
+        }
+
+        return $next($request);
+    }
 }
 ```
 
@@ -113,24 +113,24 @@ The middleware reads the caller's role (established by your auth layer) and the 
 ```php
 final class Authorize implements Middleware
 {
-public function __construct(
-    private Memory $acl,
-    private Identity $identity
-) {
-}
-
-public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
-{
-    $role      = $this->identity->role();                               // 'customer'
-    $component = (string) $request->getAttributes()->get('resource');   // 'invoices'
-    $action    = (string) $request->getAttributes()->get('operation');  // 'void'
-
-    if (! $this->acl->isAllowed($role, $component, $action)) {
-        throw new Forbidden();
+    public function __construct(
+        private Memory $acl,
+        private Identity $identity
+    ) {
     }
 
-    return $next($request);
-}
+    public function __invoke(AttributeRequest $request, Handler $next): ResponseInterface
+    {
+        $role      = $this->identity->role();                               // 'customer'
+        $component = (string) $request->getAttributes()->get('resource');   // 'invoices'
+        $action    = (string) $request->getAttributes()->get('operation');  // 'void'
+
+        if (! $this->acl->isAllowed($role, $component, $action)) {
+            throw new Forbidden();
+        }
+
+        return $next($request);
+    }
 }
 ```
 
@@ -138,8 +138,8 @@ A `customer` reaching `POST /accounting/invoices/void/42` throws `Forbidden`, th
 
 ```php
 $router->setMiddlewareMap([
-'\\Admin\\'      => [RequireSuperadmin::class],
-'\\Accounting\\' => [Authorize::class],
+    '\\Admin\\'      => [RequireSuperadmin::class],
+    '\\Accounting\\' => [Authorize::class],
 ]);
 ```
 

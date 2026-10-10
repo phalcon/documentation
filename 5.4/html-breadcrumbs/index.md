@@ -24,8 +24,8 @@ Each of the words above (apart from the last one) are links to the respective pa
 ### Methods
 ```php
 public function add(
-string $label, 
-string $link = ""
+    string $label, 
+    string $link = ""
 ): Breadcrumbs
 ```
 Adds a new crumb.
@@ -34,8 +34,8 @@ In the example below, add a crumb with a link and then add a crumb without a lin
 
 ```php
 $breadcrumbs
-->add("Home", "/")
-->add("Users")
+    ->add("Home", "/")
+    ->add("Users")
 ;
 ```
 
@@ -72,9 +72,9 @@ Renders and outputs breadcrumbs HTML. The template used is:
 
 ```html
 <dl>
-<dt><a href="Hyperlink">Text</a></dt> / 
-<dt><a href="Hyperlink">Text</a></dt> / 
-<dt>Text</dt>
+    <dt><a href="Hyperlink">Text</a></dt> / 
+    <dt><a href="Hyperlink">Text</a></dt> / 
+    <dt>Text</dt>
 </dl>
 ```
 The last set crumb will not have a link and will only have its text displayed. Each crumb is wrapped in `<dt></dt>` tags. The whole collection is wrapped in `<dl></dl>` tags. You can use them in conjunction with CSS to format the crumbs on screen according to the needs of your application.

@@ -152,8 +152,8 @@ The [Assets][phalcon-assets] component has had changes to the interface as well 
 
 ```php
 public function __construct(
-Phalcon\Html\TagFactory $tagFactory, 
-array $options = []
+    Phalcon\Html\TagFactory $tagFactory, 
+    array $options = []
 )
 ```
 
@@ -161,12 +161,12 @@ array $options = []
 
 ```php
 public function addCss(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): Manager
 ```
 
@@ -174,9 +174,9 @@ bool $autoVersion = false
 
 ```php 
 public function addInlineCss(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): Manager 
 ```
 
@@ -184,12 +184,12 @@ array $attributes = []
 
 ```php
 public function addJs(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): Manager
 ```
 
@@ -197,9 +197,9 @@ bool $autoVersion = false
 
 ```php 
 public function addInlineJs(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): Manager 
 ```
 
@@ -225,9 +225,9 @@ use Adapter\Another;
 $loader = new Loader(true);
 
 $loader
-->addNamespace('Base', './Namespaces/Base/')
-->addNamespace('Adapter', './Namespaces/Adapter/')
-->addNamespace('Namespaces', './Namespaces/')
+    ->addNamespace('Base', './Namespaces/Base/')
+    ->addNamespace('Adapter', './Namespaces/Adapter/')
+    ->addNamespace('Namespaces', './Namespaces/')
 ;
 
 $loader->autoload(Another::class);
@@ -691,7 +691,7 @@ The [Helper][phalcon-support-helper] component has been moved to the `Support` n
   Added `set(string $name, mixed $method): void`
 - The `getAdapters()` protected method has been renamed to `getServices()`
 - A new protected method `getExceptionClass()` was introduced to return the exception class to throw from this factory when necessary
-
+ 
 #### `Phalcon\Html\Exception`
 - Changed `Phalcon\Html\Exception` to extend `\Exception`
 
@@ -960,10 +960,10 @@ The [Security][phalcon-encryption-security] component has been moved to the `Enc
 
 #### `Phalcon\Session\Adapter\AbstractAdapter`
 - Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
-
+ 
 #### `Phalcon\Session\Adapter\Noop`
 - Changed `gc(int $maxlifetime): int | bool` to accept only `int` for the parameter
-
+ 
 #### `Phalcon\Session\Adapter\Stream`
 - Changed `__construct()` to throw an exception if the save path is empty
 
@@ -1093,7 +1093,7 @@ The `Phalcon\Text` component has been deprecated. It has been replaced with the 
 ### Translate 
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)][phalcon-translate]
-
+ 
 #### `Phalcon\Translate\Adapter\AbstractAdapter`
 - Changed `__construct(InterpolatorFactory $interpolator, array $options = []` to default to an empty array for `$options`
 
@@ -1152,6 +1152,7 @@ The [Version][phalcon-support-version] component has been moved to the `Support`
 Since the `tag` service has changed from `Phalcon\Tag` to `Phalcon\Html\TagFactory` several helper methods used in Volt have changed also. The biggest change is the `form()` helper in Volt.
 
 If you wish to keep your Volt code the way it is, without changing method signatures, you will have to rename your `form()` calls to `formLegacy()`. `formLegacy()` will use the `Phalcon\Tag` component as before. However, if you wish to use the new `Phalcon\Html\TagFactory` component, you can keep the method call as is (i.e. `form()` but you will need to change the signature of the helper method. [more...][volt-tag-helpers]
+
 
 [php-support]: https://www.php.net/supported-versions.php
 [proxy-psr3]: https://github.com/phalcon/proxy-psr3

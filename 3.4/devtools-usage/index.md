@@ -18,10 +18,12 @@ If you prefer to use the web version instead of the console, this [blog post](ht
 ## Download
 You can download or clone a cross platform package containing the developer tools from [GitHub](https://github.com/phalcon/phalcon-devtools).
 
+
 ## Installation
 These are detailed instructions on how to install the developer tools on different platforms:
 
 [Linux](/3.4/devtools-installation/#installation-linux) : [MacOS](/3.4/devtools-installation/#installation-macos) : [Windows](/3.4/devtools-installation/#installation-windows)
+
 
 ## Available Commands
 You can get a list of available commands in Phalcon tools by typing: :code:`phalcon commands`
@@ -42,6 +44,7 @@ Available commands:
   migration        (alias of: create-migration)
   webtools         (alias of: create-webtools)
 ```
+
 
 ## Generating a Project Skeleton
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
@@ -92,6 +95,7 @@ Accessing the project from the web server will show you:
 
 ![](/assets/images/content/devtools-usage-02.png)
 
+
 ## Generating Controllers
 The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
 
@@ -108,12 +112,13 @@ use Phalcon\Mvc\Controller;
 
 class TestController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 }
 ```
+
 
 ## Preparing Database Settings
 When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
@@ -126,31 +131,32 @@ defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirn
 defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
 return new \Phalcon\Config([
-'database' => [
-    'adapter'     => 'Mysql',
-    'host'        => 'localhost',
-    'username'    => 'root',
-    'password'    => 'secret',
-    'dbname'      => 'test',
-    'charset'     => 'utf8',
-],
-'application' => [
-    'appDir'         => APP_PATH . '/',
-    'controllersDir' => APP_PATH . '/controllers/',
-    'modelsDir'      => APP_PATH . '/models/',
-    'migrationsDir'  => APP_PATH . '/migrations/',
-    'viewsDir'       => APP_PATH . '/views/',
-    'pluginsDir'     => APP_PATH . '/plugins/',
-    'libraryDir'     => APP_PATH . '/library/',
-    'cacheDir'       => BASE_PATH . '/cache/',
+    'database' => [
+        'adapter'     => 'Mysql',
+        'host'        => 'localhost',
+        'username'    => 'root',
+        'password'    => 'secret',
+        'dbname'      => 'test',
+        'charset'     => 'utf8',
+    ],
+    'application' => [
+        'appDir'         => APP_PATH . '/',
+        'controllersDir' => APP_PATH . '/controllers/',
+        'modelsDir'      => APP_PATH . '/models/',
+        'migrationsDir'  => APP_PATH . '/migrations/',
+        'viewsDir'       => APP_PATH . '/views/',
+        'pluginsDir'     => APP_PATH . '/plugins/',
+        'libraryDir'     => APP_PATH . '/library/',
+        'cacheDir'       => BASE_PATH . '/cache/',
 
-    // This allows the baseUri to be understand project paths that are not in the root directory
-    // of the webpspace.  This will break if the public/index.php entry point is moved or
-    // possibly if the web server rewrite rules are changed. This can also be set to a static path.
-    'baseUri'        => preg_replace('/public([\/\\])index.php$/', '', $_SERVER["PHP_SELF"]),
-]
+        // This allows the baseUri to be understand project paths that are not in the root directory
+        // of the webpspace.  This will break if the public/index.php entry point is moved or
+        // possibly if the web server rewrite rules are changed. This can also be set to a static path.
+        'baseUri'        => preg_replace('/public([\/\\])index.php$/', '', $_SERVER["PHP_SELF"]),
+    ]
 ]);
 ```
+
 
 ## Generating Models
 There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
@@ -190,35 +196,35 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-/**
- * @var integer
- */
-public $id;
+    /**
+     * @var integer
+     */
+    public $id;
 
-/**
- * @var integer
- */
-public $typesId;
+    /**
+     * @var integer
+     */
+    public $typesId;
 
-/**
- * @var string
- */
-public $name;
+    /**
+     * @var string
+     */
+    public $name;
 
-/**
- * @var string
- */
-public $price;
+    /**
+     * @var string
+     */
+    public $price;
 
-/**
- * @var integer
- */
-public $quantity;
+    /**
+     * @var integer
+     */
+    public $quantity;
 
-/**
- * @var string
- */
-public $status;
+    /**
+     * @var string
+     */
+    public $status;
 }
 ```
 
@@ -231,67 +237,68 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-/**
- * @var integer
- */
-protected $id;
+    /**
+     * @var integer
+     */
+    protected $id;
 
-/**
- * @var integer
- */
-protected $typesId;
+    /**
+     * @var integer
+     */
+    protected $typesId;
 
-/**
- * @var string
- */
-protected $name;
+    /**
+     * @var string
+     */
+    protected $name;
 
-/**
- * @var string
- */
-protected $price;
+    /**
+     * @var string
+     */
+    protected $price;
 
-/**
- * @var integer
- */
-protected $quantity;
+    /**
+     * @var integer
+     */
+    protected $quantity;
 
-/**
- * @var string
- */
-protected $status;
+    /**
+     * @var string
+     */
+    protected $status;
 
-/**
- * Method to set the value of field id
- *
- * @param integer $id
- */
-public function setId($id)
-{
-    $this->id = $id;
-}
 
-/**
- * Method to set the value of field typesId
- *
- * @param integer $typesId
- */
-public function setTypesId($typesId)
-{
-    $this->typesId = $typesId;
-}
+    /**
+     * Method to set the value of field id
+     *
+     * @param integer $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-// ...
+    /**
+     * Method to set the value of field typesId
+     *
+     * @param integer $typesId
+     */
+    public function setTypesId($typesId)
+    {
+        $this->typesId = $typesId;
+    }
 
-/**
- * Returns the value of field status
- *
- * @return string
- */
-public function getStatus()
-{
-    return $this->status;
-}
+    // ...
+
+    /**
+     * Returns the value of field status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }
 ```
 
@@ -300,6 +307,7 @@ A nice feature of the model generator is that it keeps changes made by the devel
 <div align="center">
     <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
+
 
 ## Scaffold a CRUD
 Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
@@ -333,6 +341,7 @@ After performing a search, a pager component is available to show paged results.
 
 ![](/assets/images/content/devtools-usage-05.png)
 
+
 ## Web Interface to Tools
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
@@ -340,12 +349,14 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 <iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
+
 ## Integrating Tools with PhpStorm IDE
 The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
 </div>
+
 
 ## Conclusion
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.

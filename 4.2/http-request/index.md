@@ -56,13 +56,13 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 $result = $httpClient->send($request);
@@ -74,10 +74,10 @@ The [Request][http-message-request] object created is immutable, meaning it will
 
 ```php
 public function __construct(
-[string $method = "GET" 
-[, mixed $uri = null 
-[, mixed $body = "php://temp" 
-[, array $headers = [] ]]]]
+    [string $method = "GET" 
+    [, mixed $uri = null 
+    [, mixed $body = "php://temp" 
+    [, array $headers = [] ]]]]
 )
 ```
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
@@ -104,13 +104,13 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-$stream,
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    $stream,
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $request->getBody(); // '/assets/stream/mit.txt'
@@ -128,13 +128,13 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $request->getHeader('content-Type'); // ['application/json']
@@ -153,16 +153,16 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 echo $request->getHeaderLine('content-Type'); // 'application/json,application/html'
@@ -180,20 +180,20 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -217,13 +217,13 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $request->getMethod(); // POST
@@ -241,13 +241,13 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $request->getProtocolVersion(); // '1.1'
@@ -280,17 +280,18 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
+
 
 ## Existence
 
@@ -306,16 +307,16 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 echo $request->hasHeader('content-type'); // true
@@ -336,19 +337,19 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+        ],
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -358,15 +359,15 @@ $request->getHeaders()
 // ]
 
 $clone = $request
-->withAddedHeader(
-    'Content-Type', 
-    [
-        'application/html'
-    ]
-);
+    ->withAddedHeader(
+        'Content-Type', 
+        [
+            'application/html'
+        ]
+    );
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -392,13 +393,13 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 $clone = $request->withBody($stream);
@@ -418,30 +419,30 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 
 $clone = $request->withAddedHeader(
-'Content-Type',
-[
-    'application/html',
-]
+    'Content-Type',
+    [
+        'application/html',
+    ]
 );
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -463,13 +464,13 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => 'application/json',
+    ]
 );
 
 echo $request->getMethod(); // POST
@@ -478,7 +479,7 @@ $clone = $request->withMethod('GET');
 
 echo $clone->getMethod(); // GET
 ```
-
+     
 ### `withProtocolVersion()`
 
 Returns an instance with the specified HTTP protocol version (as string). 
@@ -551,19 +552,19 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 
 $request = new Request(
-'POST',
-'https://api.phalcon.io/companies/1',
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+        ],
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -575,7 +576,7 @@ $request->getHeaders()
 $clone = $request->withoutHeader('Content-Type');
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',

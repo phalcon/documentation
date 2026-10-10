@@ -23,14 +23,15 @@ Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\Injectable`](/5.14/api/phalcon_di/#diinjectable)
-- **`Phalcon\Application\AbstractApplication`** — implements [`Phalcon\Events\EventsAwareInterface`](/5.14/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cli\Console`](/5.14/api/phalcon_cli/#cliconsole)
-- [`Phalcon\Mvc\Application`](/5.14/api/phalcon_mvc/#mvcapplication)
+    - [`Phalcon\Di\Injectable`](/5.14/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Application\AbstractApplication`** — implements [`Phalcon\Events\EventsAwareInterface`](/5.14/api/phalcon_events/#eventseventsawareinterface)
+            - [`Phalcon\Cli\Console`](/5.14/api/phalcon_cli/#cliconsole)
+            - [`Phalcon\Mvc\Application`](/5.14/api/phalcon_mvc/#mvcapplication)
 
 </div>
 
 __Uses__ `Phalcon\Application\Exceptions\ModuleNotRegistered` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface`
+
 
 ### Method Summary
 
@@ -157,8 +158,8 @@ Return the modules registered in the application
 
 ```php
 public function registerModules(
-array $modules,
-bool $merge = false
+    array $modules,
+    bool $merge = false
 ): static;
 ```
 
@@ -166,16 +167,16 @@ Register an array of modules present in the application
 
 ```php
 $this->registerModules(
-[
-    "frontend" => [
-        "className" => \Multiple\Frontend\Module::class,
-        "path"      => "../apps/frontend/Module.php",
-    ],
-    "backend" => [
-        "className" => \Multiple\Backend\Module::class,
-        "path"      => "../apps/backend/Module.php",
-    ],
-]
+    [
+        "frontend" => [
+            "className" => \Multiple\Frontend\Module::class,
+            "path"      => "../apps/frontend/Module.php",
+        ],
+        "backend" => [
+            "className" => \Multiple\Backend\Module::class,
+            "path"      => "../apps/backend/Module.php",
+        ],
+    ]
 );
 ```
 
@@ -195,6 +196,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the events manager
 
+
 ## Application\Exception
 
 <span class="badge badge--class">Class</span>
@@ -205,12 +207,13 @@ Exceptions thrown in Phalcon\Application class will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Application\Exception`**
-- [`Phalcon\Application\Exceptions\ModuleNotRegistered`](#applicationexceptionsmodulenotregistered)
-- [`Phalcon\Cli\Console\Exception`](/5.14/api/phalcon_cli/#cliconsoleexception)
-- [`Phalcon\Mvc\Application\Exception`](/5.14/api/phalcon_mvc/#mvcapplicationexception)
+    - **`Phalcon\Application\Exception`**
+        - [`Phalcon\Application\Exceptions\ModuleNotRegistered`](#applicationexceptionsmodulenotregistered)
+        - [`Phalcon\Cli\Console\Exception`](/5.14/api/phalcon_cli/#cliconsoleexception)
+        - [`Phalcon\Mvc\Application\Exception`](/5.14/api/phalcon_mvc/#mvcapplicationexception)
 
 </div>
+
 
 ## Application\Exceptions\ModuleNotRegistered
 
@@ -227,12 +230,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](#applicationexception)
-- **`Phalcon\Application\Exceptions\ModuleNotRegistered`**
+    - [`Phalcon\Application\Exception`](#applicationexception)
+        - **`Phalcon\Application\Exceptions\ModuleNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Application\Exception`
+
 
 ### Method Summary
 

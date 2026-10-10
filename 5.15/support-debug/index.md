@@ -89,9 +89,9 @@ use Phalcon\Support\Debug;
 $debug = new Debug();
 
 $debug
-->listenExceptions()
-->listenLowSeverity()
-->listen();
+    ->listenExceptions()
+    ->listenLowSeverity()
+    ->listen();
 ```
 
 :::info[NOTE]
@@ -138,8 +138,8 @@ $debug = new Debug();
 
 $time = time();
 $debug
-->debugVar('time', $time)
-->listen();
+    ->debugVar('time', $time)
+    ->listen();
 ```
 
 To clear the variable stack, you can call `clearVars()`.
@@ -158,7 +158,7 @@ $debug->listen();
 // .....
 
 if (12345 === $password) {
-$debug->halt();
+    $debug->halt();
 }
 ```
 
@@ -176,14 +176,15 @@ use Phalcon\Support\Debug;
 
 $debug = new Debug();
 
+
 $debug
-->setBlacklist(
-    [
-        'request' => ['some'],
-        'server'  => ['hostname'],
-    ]
-)
-->listen();
+    ->setBlacklist(
+        [
+            'request' => ['some'],
+            'server'  => ['hostname'],
+        ]
+    )
+    ->listen();
 ```
 
 In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostname` from
@@ -227,53 +228,53 @@ The above example prints the following:
 ```html
 Phalcon\Mvc\Router Object
 (
-[_dependencyInjector:protected] =>
-[_module:protected] =>
-[_controller:protected] =>
-[_action:protected] =>
-[_params:protected] => Array
-    (
-    )
-[_routes:protected] => Array
-    (
-        [0] => Phalcon\Mvc\Router\Route Object
-            (
-                [_pattern:protected] => #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
-                [_compiledPattern:protected] => #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
-                [_paths:protected] => Array
-                    (
-                        [controller] => 1
-                    )
+    [_dependencyInjector:protected] =>
+    [_module:protected] =>
+    [_controller:protected] =>
+    [_action:protected] =>
+    [_params:protected] => Array
+        (
+        )
+    [_routes:protected] => Array
+        (
+            [0] => Phalcon\Mvc\Router\Route Object
+                (
+                    [_pattern:protected] => #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
+                    [_compiledPattern:protected] => #^/([a-zA-Z0-9\_]+)[/]{0,1}$#
+                    [_paths:protected] => Array
+                        (
+                            [controller] => 1
+                        )
 
-                [_methods:protected] =>
-                [_id:protected] => 0
-                [_name:protected] =>
-            )
+                    [_methods:protected] =>
+                    [_id:protected] => 0
+                    [_name:protected] =>
+                )
 
-        [1] => Phalcon\Mvc\Router\Route Object
-            (
-                [_pattern:protected] => #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
-                [_compiledPattern:protected] => #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
-                [_paths:protected] => Array
-                    (
-                        [controller] => 1
-                        [action] => 2
-                        [params] => 3
-                    )
-                [_methods:protected] =>
-                [_id:protected] => 1
-                [_name:protected] =>
-            )
-    )
-[_matchedRoute:protected] =>
-[_matches:protected] =>
-[_wasMatched:protected] =>
-[_defaultModule:protected] =>
-[_defaultController:protected] =>
-[_defaultAction:protected] =>
-[_defaultParams:protected] => Array
-    (
-    )
+            [1] => Phalcon\Mvc\Router\Route Object
+                (
+                    [_pattern:protected] => #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
+                    [_compiledPattern:protected] => #^/([a-zA-Z0-9\_]+)/([a-zA-Z0-9\_]+)(/.*)*$#
+                    [_paths:protected] => Array
+                        (
+                            [controller] => 1
+                            [action] => 2
+                            [params] => 3
+                        )
+                    [_methods:protected] =>
+                    [_id:protected] => 1
+                    [_name:protected] =>
+                )
+        )
+    [_matchedRoute:protected] =>
+    [_matches:protected] =>
+    [_wasMatched:protected] =>
+    [_defaultModule:protected] =>
+    [_defaultController:protected] =>
+    [_defaultAction:protected] =>
+    [_defaultParams:protected] => Array
+        (
+        )
 )
 ```
 
@@ -298,26 +299,26 @@ use Phalcon\Mvc\Controller;
 
 class SignupController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function registerAction()
-{
-    $name  = $this->request->getPost('name', 'string');
-    $email = $this->request->getPost('email', 'email');
+    public function registerAction()
+    {
+        $name  = $this->request->getPost('name', 'string');
+        $email = $this->request->getPost('email', 'email');
 
-    // Stop execution and show a backtrace
-    return xdebug_print_function_stack('stop here!');
+        // Stop execution and show a backtrace
+        return xdebug_print_function_stack('stop here!');
 
-    $user        = new Users();
-    $user->name  = $name;
-    $user->email = $email;
+        $user        = new Users();
+        $user->name  = $name;
+        $user->email = $email;
 
-    // Store and check for errors
-    $user->save();
-}
+        // Store and check for errors
+        $user->save();
+    }
 }
 ```
 
@@ -352,7 +353,7 @@ block to catch exceptions. There are plenty of examples in our documentation dem
 
 try {
 
-// ...
+    // ...
 
 } catch (\Exception $ex) {
 
@@ -370,37 +371,37 @@ The [Exception class][exception], exposes the following:
 
 class Exception
 {
-protected int $code;
+    protected int $code;
 
-protected string $file;
+    protected string $file;
 
-protected int $line;
+    protected int $line;
 
-protected string $message;
+    protected string $message;
 
-public function __construct(
-    string $message = ''
-    [, int $code = 0
-    [, Exception $previous = null ]]]
-);
+    public function __construct(
+        string $message = ''
+        [, int $code = 0
+        [, Exception $previous = null ]]]
+    );
 
-public function __toString(): string;
+    public function __toString(): string;
 
-final public function getCode(): int;
+    final public function getCode(): int;
 
-final public function getFile(): string;
+    final public function getFile(): string;
 
-final public function getLine(): int;
+    final public function getLine(): int;
 
-final public function getMessage(): string;
+    final public function getMessage(): string;
 
-final public function getPrevious(): Exception;
+    final public function getPrevious(): Exception;
 
-final public function getTrace(): array;
+    final public function getTrace(): array;
 
-final public function getTraceAsString(): string;
+    final public function getTraceAsString(): string;
 
-final private function __clone(): void;
+    final private function __clone(): void;
 }
 ```
 
@@ -413,13 +414,13 @@ use Phalcon\Support\Debug\Exception;
 
 try {
 
-// ...
+    // ...
 
 } catch (Exception $ex) {
-echo get_class($ex), ': ', $ex->getMessage(), PHP_EOL;
-echo ' File=', $ex->getFile(), PHP_EOL;
-echo ' Line=', $ex->getLine(), PHP_EOL;
-echo $ex->getTraceAsString();
+    echo get_class($ex), ': ', $ex->getMessage(), PHP_EOL;
+    echo ' File=', $ex->getFile(), PHP_EOL;
+    echo ' Line=', $ex->getLine(), PHP_EOL;
+    echo $ex->getTraceAsString();
 }
 ```
 
@@ -428,13 +429,13 @@ components involved in generating the exception:
 
 ```html
 PDOException: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost'
-(using password: NO)
+    (using password: NO)
  File=/app/public/index.php
  Line=74
 #0 [internal function]: PDO->__construct('mysql:host=loca...', 'root', '', Array)
 #1 [internal function]: Phalcon\Db\Adapter\Pdo->connect(Array)
 #2 /app/public/index.php(74):
-Phalcon\Db\Adapter\Pdo->__construct(Array)
+    Phalcon\Db\Adapter\Pdo->__construct(Array)
 #3 [internal function]: {closure}()
 #4 [internal function]: call_user_func_array(Object(Closure), Array)
 #5 [internal function]: Phalcon\Di->_factory(Object(Closure), Array)
@@ -443,7 +444,7 @@ Phalcon\Db\Adapter\Pdo->__construct(Array)
 #8 [internal function]: Phalcon\Mvc\Model->getConnection()
 #9 [internal function]: Phalcon\Mvc\Model::_getOrCreateResultset('Users', Array, true)
 #10 /app/app/controllers/SessionController.php(83):
-Phalcon\Mvc\Model::findFirst('email='demo@pha...')
+    Phalcon\Mvc\Model::findFirst('email='demo@pha...')
 #11 [internal function]: SessionController->startAction()
 #12 [internal function]: call_user_func_array(Array, Array)
 #13 [internal function]: Phalcon\Mvc\Dispatcher->dispatch()

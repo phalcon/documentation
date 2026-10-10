@@ -11,6 +11,7 @@ version: "3.4"
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
 
+
 ## Data Adapters
 This component makes use of adapters to encapsulate different sources of data:
 
@@ -20,6 +21,7 @@ This component makes use of adapters to encapsulate different sources of data:
 | [Phalcon\Paginator\Adapter\Model](/3.4/api/phalcon_paginator/)        | Use a [Phalcon\Mvc\Model\Resultset](/3.4/api/phalcon_mvc_model_resultset/) object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
 | [Phalcon\Paginator\Adapter\QueryBuilder](/3.4/api/phalcon_paginator/) | Use a [Phalcon\Mvc\Model\Query\Builder](/3.4/api/phalcon_mvc_model_query/) object as source data                                                                                                                |
 
+
 ## Factory
 Loads Paginator Adapter class using `adapter` option
 
@@ -27,22 +29,23 @@ Loads Paginator Adapter class using `adapter` option
 <?php
 
 use Phalcon\Paginator\Factory;
-
+ 
 $builder = $this->modelsManager->createBuilder()
-            ->columns('id, name')
-            ->from('Robots')
-            ->orderBy('name');
+                ->columns('id, name')
+                ->from('Robots')
+                ->orderBy('name');
 
 $options = [
-'builder' => $builder,
-'limit'   => 20,
-'page'    => 1,
-'adapter' => 'queryBuilder',
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
+    'adapter' => 'queryBuilder',
 ];
 
 $paginator = Factory::load($options);
 
 ```
+
 
 ## Examples
 In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
@@ -63,11 +66,11 @@ $robots = Robots::find();
 
 // Create a Model paginator, show 10 rows by page starting from $currentPage
 $paginator = new PaginatorModel(
-[
-    'data'  => $robots,
-    'limit' => 10,
-    'page'  => $currentPage,
-]
+    [
+        'data'  => $robots,
+        'limit' => 10,
+        'page'  => $currentPage,
+    ]
 );
 
 // Get the paginated results
@@ -78,18 +81,18 @@ The `$currentPage` variable controls the page to be displayed. The `$paginator->
 
 ```php
 <table>
-<tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Type</th>
-</tr>
-<?php foreach ($page->items as $item) { ?>
-<tr>
-    <td><?php echo $item->id; ?></td>
-    <td><?php echo $item->name; ?></td>
-    <td><?php echo $item->type; ?></td>
-</tr>
-<?php } ?>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Type</th>
+    </tr>
+    <?php foreach ($page->items as $item) { ?>
+    <tr>
+        <td><?php echo $item->id; ?></td>
+        <td><?php echo $item->name; ?></td>
+        <td><?php echo $item->type; ?></td>
+    </tr>
+    <?php } ?>
 </table>
 ```
 
@@ -104,6 +107,7 @@ The `$page` object also contains navigation data:
 <?php echo 'You are in page ', $page->current, ' of ', $page->total_pages; ?>
 ```
 
+
 ## Using Adapters
 An example of the source data that must be used for each adapter:
 
@@ -116,43 +120,44 @@ use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
 // Passing a resultset as data
 $paginator = new PaginatorModel(
-[
-    'data'  => Products::find(),
-    'limit' => 10,
-    'page'  => $currentPage,
-]
+    [
+        'data'  => Products::find(),
+        'limit' => 10,
+        'page'  => $currentPage,
+    ]
 );
 
 // Passing an array as data
 $paginator = new PaginatorArray(
-[
-    'data'  => [
-        ['id' => 1, 'name' => 'Artichoke'],
-        ['id' => 2, 'name' => 'Carrots'],
-        ['id' => 3, 'name' => 'Beet'],
-        ['id' => 4, 'name' => 'Lettuce'],
-        ['id' => 5, 'name' => ''],
-    ],
-    'limit' => 2,
-    'page'  => $currentPage,
-]
+    [
+        'data'  => [
+            ['id' => 1, 'name' => 'Artichoke'],
+            ['id' => 2, 'name' => 'Carrots'],
+            ['id' => 3, 'name' => 'Beet'],
+            ['id' => 4, 'name' => 'Lettuce'],
+            ['id' => 5, 'name' => ''],
+        ],
+        'limit' => 2,
+        'page'  => $currentPage,
+    ]
 );
 
 // Passing a QueryBuilder as data
 
 $builder = $this->modelsManager->createBuilder()
-->columns('id, name')
-->from('Robots')
-->orderBy('name');
+    ->columns('id, name')
+    ->from('Robots')
+    ->orderBy('name');
 
 $paginator = new PaginatorQueryBuilder(
-[
-    'builder' => $builder,
-    'limit'   => 20,
-    'page'    => 1,
-]
+    [
+        'builder' => $builder,
+        'limit'   => 20,
+        'page'    => 1,
+    ]
 );
 ```
+
 
 ## Page Attributes
 The `$page` object has the following attributes:
@@ -167,6 +172,7 @@ The `$page` object has the following attributes:
 | `total_pages` | The number of pages                                    |
 | `total_items` | The number of items in the source data                 |
 
+
 ## Implementing your own adapters
 The [Phalcon\Paginator\AdapterInterface](/3.4/api/phalcon_paginator/) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
@@ -177,26 +183,26 @@ use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
 
 class MyPaginator implements PaginatorInterface
 {
-/**
- * Adapter constructor
- *
- * @param array $config
- */
-public function __construct($config);
+    /**
+     * Adapter constructor
+     *
+     * @param array $config
+     */
+    public function __construct($config);
 
-/**
- * Set the current page number
- *
- * @param int $page
- */
-public function setCurrentPage($page);
+    /**
+     * Set the current page number
+     *
+     * @param int $page
+     */
+    public function setCurrentPage($page);
 
-/**
- * Returns a slice of the resultset to show in the pagination
- *
- * @return stdClass
- */
-public function getPaginate();
+    /**
+     * Returns a slice of the resultset to show in the pagination
+     *
+     * @return stdClass
+     */
+    public function getPaginate();
 }
 ```
 

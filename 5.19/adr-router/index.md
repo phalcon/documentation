@@ -42,12 +42,12 @@ The recognized HTTP methods are `GET`, `POST`, `PUT`, `PATCH` and `DELETE`.
 $router = $container->get('router');
 
 $router
-->setBaseNamespace('MyApp\\Action')
-->setActionDirectory(__DIR__ . '/Action')
-->setWordSeparator('-')
-->setMiddlewareMap([
-    '\\Admin\\' => [RequireAdmin::class],
-]);
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action')
+    ->setWordSeparator('-')
+    ->setMiddlewareMap([
+        '\\Admin\\' => [RequireAdmin::class],
+    ]);
 ```
 
 `setBaseNamespace()` strips a trailing `\`, and `setActionDirectory()` strips a trailing directory separator, so both accept either form.
@@ -64,14 +64,14 @@ Given this tree:
 
 ```
 /app/src/Action/
-Get.php                          ->  MyApp\Action\Get
-Invoices/
-    GetInvoices.php
-    PostInvoices.php
-    Cancel/
-        PostInvoicesCancel.php
-    Lines/
-        GetInvoicesLines.php
+    Get.php                          ->  MyApp\Action\Get
+    Invoices/
+        GetInvoices.php
+        PostInvoices.php
+        Cancel/
+            PostInvoicesCancel.php
+        Lines/
+            GetInvoicesLines.php
 ```
 
 the descent resolves as follows:
@@ -143,9 +143,9 @@ Any other character is literal. With the default separator, `/user_profiles` and
 
 ```php
 $router
-->setBaseNamespace('MyApp\\Action')
-->setActionDirectory(__DIR__ . '/Action')
-->setWordSeparator('_');
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action')
+    ->setWordSeparator('_');
 ```
 
 ```
@@ -162,8 +162,8 @@ Changing the separator changes the directory names the descent looks for, so pic
 $router = $container->get('router');
 
 $router
-->setBaseNamespace('MyApp\\Action')
-->setActionDirectory(__DIR__ . '/Action');
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action');
 
 $router->pathFor(Get::class);                // '/'
 $router->pathFor(GetInvoices::class);        // '/invoices'
@@ -177,14 +177,14 @@ namespace MyApp\Action\Customers;
 
 final class GetCustomers implements Action
 {
-public static function params(): array
-{
-    return [
-        'id' => ['match' => '\d+', 'type' => 'int'],
-    ];
-}
+    public static function params(): array
+    {
+        return [
+            'id' => ['match' => '\d+', 'type' => 'int'],
+        ];
+    }
 
-// ...
+    // ...
 }
 ```
 
@@ -265,8 +265,8 @@ $router->classFor('GET', $path);                     // 'MyApp\Action\Invoices\L
 $router = $container->get('router');
 
 $router
-->setBaseNamespace('MyApp\\Action')
-->setActionDirectory(__DIR__ . '/Action');
+    ->setBaseNamespace('MyApp\\Action')
+    ->setActionDirectory(__DIR__ . '/Action');
 
 $candidates = $router->candidatesFor('GET', '/invoices/lines');
 
@@ -284,19 +284,19 @@ An action may declare a static `params()` method to have its trailing segments v
 ```php
 final class GetInvoices implements Action
 {
-public static function params(): array
-{
-    return [
-        'id' => ['match' => '\d+', 'type' => 'int'],
-    ];
-}
+    public static function params(): array
+    {
+        return [
+            'id' => ['match' => '\d+', 'type' => 'int'],
+        ];
+    }
 
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    // already validated as \d+ and cast to int, and read by name
-    $id = $request->getAttributes()->get('id');
-    // ...
-}
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        // already validated as \d+ and cast to int, and read by name
+        $id = $request->getAttributes()->get('id');
+        // ...
+    }
 }
 ```
 
@@ -307,12 +307,12 @@ Because `convert` receives the already-cast value, it doubles as a hydration hoo
 ```php
 public static function params(): array
 {
-return [
-    'on' => [
-        'match'   => '\d{4}-\d{2}-\d{2}',
-        'convert' => fn (string $value) => new DateTimeImmutable($value),
-    ],
-];
+    return [
+        'on' => [
+            'match'   => '\d{4}-\d{2}-\d{2}',
+            'convert' => fn (string $value) => new DateTimeImmutable($value),
+        ],
+    ];
 }
 ```
 
@@ -326,8 +326,8 @@ The middleware map attaches middleware to a namespace prefix, giving you "group"
 
 ```php
 $router->setMiddlewareMap([
-'\\Admin\\'  => [RequireAdmin::class],
-'\\Portal\\' => [RequireCustomer::class],
+    '\\Admin\\'  => [RequireAdmin::class],
+    '\\Portal\\' => [RequireCustomer::class],
 ]);
 ```
 

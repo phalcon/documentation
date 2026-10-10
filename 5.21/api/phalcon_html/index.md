@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Html\Attributes
 
 Class
@@ -22,21 +23,17 @@ This class helps to work with HTML Attributes
 @extends Collection&lt;mixed>
 
 - [`Phalcon\Support\Collection`](/5.21/api/phalcon_support/#supportcollection)
-- **`Phalcon\Html\Attributes`** - implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
+  - **`Phalcon\Html\Attributes`** - implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
 
 `Phalcon\Html\Attributes\RenderInterface` · `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Exceptions\AttributeNotRenderable` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
-<ApiItem href="#htmlattributes-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Alias of the render method
-</ApiItem>
-<ApiItem href="#htmlattributes-render" visibility="public" name="render" returnType="string" params={[]}>
-Render attributes as HTML attributes
-</ApiItem>
-<ApiItem href="#htmlattributes-renderattributes" visibility="protected" name="renderAttributes" returnType="string" params={[{"type":"array","name":"attributes","default":null}]}>
-@todo remove this when we refactor forms. Maybe remove this class? Put it into traits
-</ApiItem>
+- `public __toString(): string` — Alias of the render method
+
+- `public render(): string` — Render attributes as HTML attributes
+
+- `protected renderAttributes(array $attributes): string` — @todo remove this when we refactor forms. Maybe remove this class? Put it into traits
 
 ### Methods
 
@@ -64,6 +61,7 @@ protected function renderAttributes( array $attributes ): string;
 
 @todo remove this when we refactor forms. Maybe remove this class? Put it into traits
 
+
 ## Html\Attributes\AttributesInterface
 
 Interface
@@ -76,12 +74,9 @@ Html Attributes Interface
 
 ### Method Summary
 
-<ApiItem href="#htmlattributesattributesinterface-getattributes" visibility="public" name="getAttributes" returnType="Attributes" params={[]}>
-Get Attributes
-</ApiItem>
-<ApiItem href="#htmlattributesattributesinterface-setattributes" visibility="public" name="setAttributes" returnType="AttributesInterface" params={[{"type":"Attributes","name":"attributes","default":null}]}>
-Set Attributes
-</ApiItem>
+- `public getAttributes(): Attributes` — Get Attributes
+
+- `public setAttributes(Attributes $attributes): AttributesInterface` — Set Attributes
 
 ### Methods
 
@@ -101,6 +96,7 @@ public function setAttributes( Attributes $attributes ): AttributesInterface;
 
 Set Attributes
 
+
 ## Html\Attributes\RenderInterface
 
 Interface
@@ -111,9 +107,7 @@ Rendering interface for HTML attributes
 
 ### Method Summary
 
-<ApiItem href="#htmlattributesrenderinterface-render" visibility="public" name="render" returnType="string" params={[]}>
-Generate a string representation
-</ApiItem>
+- `public render(): string` — Generate a string representation
 
 ### Methods
 
@@ -124,6 +118,7 @@ public function render(): string;
 ```
 
 Generate a string representation
+
 
 ## Html\Breadcrumbs
 
@@ -141,27 +136,19 @@ in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
 ### Method Summary
 
-<ApiItem href="#htmlbreadcrumbs-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"label","default":null},{"type":"string","name":"link","default":"\"\""}]}>
-Adds a new crumb.
-</ApiItem>
-<ApiItem href="#htmlbreadcrumbs-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears the crumbs
-</ApiItem>
-<ApiItem href="#htmlbreadcrumbs-getseparator" visibility="public" name="getSeparator" returnType="string" params={[]}>
-Returns the separator
-</ApiItem>
-<ApiItem href="#htmlbreadcrumbs-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"link","default":null}]}>
-Removes crumb by url.
-</ApiItem>
-<ApiItem href="#htmlbreadcrumbs-render" visibility="public" name="render" returnType="string" params={[]}>
-Renders and outputs breadcrumbs based on previously set template.
-</ApiItem>
-<ApiItem href="#htmlbreadcrumbs-setseparator" visibility="public" name="setSeparator" returnType="static" params={[{"type":"string","name":"separator","default":null}]}>
-Set the separator
-</ApiItem>
-<ApiItem href="#htmlbreadcrumbs-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the internal breadcrumbs array
-</ApiItem>
+- `public add(string $label, string $link = ""): static` — Adds a new crumb.
+
+- `public clear(): void` — Clears the crumbs
+
+- `public getSeparator(): string` — Returns the separator
+
+- `public remove(string $link): void` — Removes crumb by url.
+
+- `public render(): string` — Renders and outputs breadcrumbs based on previously set template.
+
+- `public setSeparator(string $separator): static` — Set the separator
+
+- `public toArray(): array` — Returns the internal breadcrumbs array
 
 ### Methods
 
@@ -169,8 +156,8 @@ Returns the internal breadcrumbs array
 
 ```php
 public function add(
-string $label,
-string $link = ""
+    string $label,
+    string $link = ""
 ): static;
 ```
 
@@ -251,6 +238,7 @@ public function toArray(): array;
 
 Returns the internal breadcrumbs array
 
+
 ## Html\Escaper
 
 Class
@@ -284,91 +272,75 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ### Method Summary
 
-<ApiItem href="#htmlescaper-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"encoding","default":"\"utf-8\""},{"type":"int","name":"flags","default":"11"},{"type":"bool","name":"doubleEncode","default":"true"}]}>
-Constructor. Accepts the legacy scalar params for backward compatibility
-</ApiItem>
-<ApiItem href="#htmlescaper-attributes" visibility="public" name="attributes" returnType="string" params={[{"type":"mixed","name":"input","default":"null"}]}>
-Escapes a HTML attribute string or array. Delegates to `AttributeEscaper`.
-</ApiItem>
-<ApiItem href="#htmlescaper-css" visibility="public" name="css" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escape CSS strings. Delegates to `CssEscaper`.
-</ApiItem>
-<ApiItem href="#htmlescaper-detectencoding" visibility="public" name="detectEncoding" returnType="string|null" params={[{"type":"string","name":"input","default":null}]}>
-Detects the character encoding of a string. Delegates to `HtmlEscaper`.
-</ApiItem>
-<ApiItem href="#htmlescaper-escapecss" visibility="public" name="escapeCss" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-escapehtml" visibility="public" name="escapeHtml" returnType="string" params={[{"type":"string|null","name":"input","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-escapehtmlattr" visibility="public" name="escapeHtmlAttr" returnType="string" params={[{"type":"string|null","name":"input","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-escapejs" visibility="public" name="escapeJs" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-escapeurl" visibility="public" name="escapeUrl" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-getattributeescaper" visibility="public" name="getAttributeEscaper" returnType="AttributeEscaper" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-getcssescaper" visibility="public" name="getCssEscaper" returnType="CssEscaper" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-getencoding" visibility="public" name="getEncoding" returnType="string" params={[]}>
-Returns the encoding from the HtmlEscaper.
-</ApiItem>
-<ApiItem href="#htmlescaper-getflags" visibility="public" name="getFlags" returnType="int" params={[]}>
-Returns the flags from the HtmlEscaper.
-</ApiItem>
-<ApiItem href="#htmlescaper-gethtmlescaper" visibility="public" name="getHtmlEscaper" returnType="HtmlEscaper" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-getjsescaper" visibility="public" name="getJsEscaper" returnType="JsEscaper" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-geturlescaper" visibility="public" name="getUrlEscaper" returnType="UrlEscaper" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-html" visibility="public" name="html" returnType="string" params={[{"type":"string|null","name":"input","default":"null"}]}>
-Escapes a HTML string. Delegates to `HtmlEscaper`.
-</ApiItem>
-<ApiItem href="#htmlescaper-js" visibility="public" name="js" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escape javascript strings. Delegates to `JsEscaper`.
-</ApiItem>
-<ApiItem href="#htmlescaper-normalizeencoding" visibility="public" name="normalizeEncoding" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Normalizes a string's encoding to UTF-32. Delegates to `HtmlEscaper`.
-</ApiItem>
-<ApiItem href="#htmlescaper-setattributeescaper" visibility="public" name="setAttributeEscaper" returnType="static" params={[{"type":"AttributeEscaper","name":"escaper","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-setcssescaper" visibility="public" name="setCssEscaper" returnType="static" params={[{"type":"CssEscaper","name":"escaper","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-setdoubleencode" visibility="public" name="setDoubleEncode" returnType="static" params={[{"type":"bool","name":"doubleEncode","default":null}]}>
-Sets the double_encode flag. Fans out to all sub-escapers.
-</ApiItem>
-<ApiItem href="#htmlescaper-setencoding" visibility="public" name="setEncoding" returnType="static" params={[{"type":"string","name":"encoding","default":null}]}>
-Sets the encoding. Fans out to all sub-escapers.
-</ApiItem>
-<ApiItem href="#htmlescaper-setflags" visibility="public" name="setFlags" returnType="static" params={[{"type":"int","name":"flags","default":null}]}>
-Sets the htmlspecialchars flags. Fans out to all sub-escapers.
-</ApiItem>
-<ApiItem href="#htmlescaper-sethtmlescaper" visibility="public" name="setHtmlEscaper" returnType="static" params={[{"type":"HtmlEscaper","name":"escaper","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-sethtmlquotetype" visibility="public" name="setHtmlQuoteType" returnType="static" params={[{"type":"int","name":"flags","default":null}]}>
-Sets the HTML quoting type for htmlspecialchars.
-</ApiItem>
-<ApiItem href="#htmlescaper-setjsescaper" visibility="public" name="setJsEscaper" returnType="static" params={[{"type":"JsEscaper","name":"escaper","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-seturlescaper" visibility="public" name="setUrlEscaper" returnType="static" params={[{"type":"UrlEscaper","name":"escaper","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaper-url" visibility="public" name="url" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escapes a URL. Delegates to `UrlEscaper`.
-</ApiItem>
+- `public __construct(string $encoding = "utf-8", int $flags = 11, bool $doubleEncode = true)` — Constructor. Accepts the legacy scalar params for backward compatibility
+
+- `public attributes(mixed $input = null): string` — Escapes a HTML attribute string or array. Delegates to `AttributeEscaper`.
+
+- `public css(string $input): string` — Escape CSS strings. Delegates to `CssEscaper`.
+
+- `public detectEncoding(string $input): string|null` — Detects the character encoding of a string. Delegates to `HtmlEscaper`.
+
+- `public escapeCss(string $input): string`
+
+- `public escapeHtml(string|null $input = null): string`
+
+- `public escapeHtmlAttr(string|null $input = null): string`
+
+- `public escapeJs(string $input): string`
+
+- `public escapeUrl(string $input): string`
+
+- `public getAttributeEscaper(): AttributeEscaper`
+
+- `public getCssEscaper(): CssEscaper`
+
+- `public getEncoding(): string` — Returns the encoding from the HtmlEscaper.
+
+- `public getFlags(): int` — Returns the flags from the HtmlEscaper.
+
+- `public getHtmlEscaper(): HtmlEscaper`
+
+- `public getJsEscaper(): JsEscaper`
+
+- `public getUrlEscaper(): UrlEscaper`
+
+- `public html(string|null $input = null): string` — Escapes a HTML string. Delegates to `HtmlEscaper`.
+
+- `public js(string $input): string` — Escape javascript strings. Delegates to `JsEscaper`.
+
+- `public normalizeEncoding(string $input): string` — Normalizes a string's encoding to UTF-32. Delegates to `HtmlEscaper`.
+
+- `public setAttributeEscaper(AttributeEscaper $escaper): static`
+
+- `public setCssEscaper(CssEscaper $escaper): static`
+
+- `public setDoubleEncode(bool $doubleEncode): static` — Sets the double\_encode flag. Fans out to all sub-escapers.
+
+- `public setEncoding(string $encoding): static` — Sets the encoding. Fans out to all sub-escapers.
+
+- `public setFlags(int $flags): static` — Sets the htmlspecialchars flags. Fans out to all sub-escapers.
+
+- `public setHtmlEscaper(HtmlEscaper $escaper): static`
+
+- `public setHtmlQuoteType(int $flags): static` — Sets the HTML quoting type for htmlspecialchars.
+
+- `public setJsEscaper(JsEscaper $escaper): static`
+
+- `public setUrlEscaper(UrlEscaper $escaper): static`
+
+- `public url(string $input): string` — Escapes a URL. Delegates to `UrlEscaper`.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributeEscaper" type="AttributeEscaper" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cssEscaper" type="CssEscaper" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="htmlEscaper" type="HtmlEscaper" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="jsEscaper" type="JsEscaper" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="urlEscaper" type="UrlEscaper" default="">
-</ApiItem>
+- `protected AttributeEscaper $attributeEscaper`
+
+- `protected CssEscaper $cssEscaper`
+
+- `protected HtmlEscaper $htmlEscaper`
+
+- `protected JsEscaper $jsEscaper`
+
+- `protected UrlEscaper $urlEscaper`
 
 ### Methods
 
@@ -376,9 +348,9 @@ Escapes a URL. Delegates to `UrlEscaper`.
 
 ```php
 public function __construct(
-string $encoding = "utf-8",
-int $flags = 11,
-bool $doubleEncode = true
+    string $encoding = "utf-8",
+    int $flags = 11,
+    bool $doubleEncode = true
 );
 ```
 
@@ -579,6 +551,7 @@ public function url( string $input ): string;
 
 Escapes a URL. Delegates to `UrlEscaper`.
 
+
 ## Html\EscaperFactory
 
 Class
@@ -589,9 +562,7 @@ Class EscaperFactory
 
 ### Method Summary
 
-<ApiItem href="#htmlescaperfactory-newinstance" visibility="public" name="newInstance" returnType="Escaper" params={[]}>
-Create a new instance of the object
-</ApiItem>
+- `public newInstance(): Escaper` — Create a new instance of the object
 
 ### Methods
 
@@ -603,6 +574,7 @@ public function newInstance(): Escaper;
 
 Create a new instance of the object
 
+
 ## Html\Escaper\AbstractEscaper
 
 Abstract
@@ -613,13 +585,14 @@ Shared base for the per-context escaper objects.
 Phalcon\Html\Escaper\Traits\EscaperTrait directly instead of extending this.
 
 - **`Phalcon\Html\Escaper\AbstractEscaper`**
-- [`Phalcon\Html\Escaper\AttributeEscaper`](#htmlescaperattributeescaper)
-- [`Phalcon\Html\Escaper\CssEscaper`](#htmlescapercssescaper)
-- [`Phalcon\Html\Escaper\HtmlEscaper`](#htmlescaperhtmlescaper)
-- [`Phalcon\Html\Escaper\JsEscaper`](#htmlescaperjsescaper)
-- [`Phalcon\Html\Escaper\UrlEscaper`](#htmlescaperurlescaper)
+  - [`Phalcon\Html\Escaper\AttributeEscaper`](#htmlescaperattributeescaper)
+  - [`Phalcon\Html\Escaper\CssEscaper`](#htmlescapercssescaper)
+  - [`Phalcon\Html\Escaper\HtmlEscaper`](#htmlescaperhtmlescaper)
+  - [`Phalcon\Html\Escaper\JsEscaper`](#htmlescaperjsescaper)
+  - [`Phalcon\Html\Escaper\UrlEscaper`](#htmlescaperurlescaper)
 
 `Phalcon\Html\Escaper\Traits\EscaperTrait`
+
 
 ## Html\Escaper\AttributeEscaper
 
@@ -630,19 +603,17 @@ of attribute pairs. Boolean `true` becomes a bare key (e.g. `disabled`);
 `false` and `null` skip the entry; arrays are joined with a space.
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\AttributeEscaper`**
+  - **`Phalcon\Html\Escaper\AttributeEscaper`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlescaperattributeescaper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"input","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlescaperattributeescaper-escape" visibility="public" name="escape" returnType="string" params={[{"type":"mixed","name":"input","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlescaperattributeescaper-escapevalue" visibility="protected" name="escapeValue" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Encodes a single key/value via `htmlspecialchars`.
-</ApiItem>
+- `public __invoke(mixed $input = null): string`
+
+- `public escape(mixed $input = null): string`
+
+- `protected escapeValue(string $input): string` — Encodes a single key/value via `htmlspecialchars`.
 
 ### Methods
 
@@ -666,6 +637,7 @@ protected function escapeValue( string $input ): string;
 
 Encodes a single key/value via `htmlspecialchars`.
 
+
 ## Html\Escaper\CssEscaper
 
 Class
@@ -674,14 +646,13 @@ Escapes a string for use inside a CSS value by replacing non-alphanumeric
 characters with their hexadecimal escape sequence.
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\CssEscaper`**
+  - **`Phalcon\Html\Escaper\CssEscaper`**
 
 ### Method Summary
 
-<ApiItem href="#htmlescapercssescaper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescapercssescaper-escape" visibility="public" name="escape" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input): string`
+
+- `public escape(string $input): string`
 
 ### Methods
 
@@ -696,6 +667,7 @@ public function __invoke( string $input ): string;
 ```php
 public function escape( string $input ): string;
 ```
+
 
 ## Html\Escaper\EscaperInterface
 
@@ -713,30 +685,21 @@ and the rest). Type against the concrete class to reach those.
 
 ### Method Summary
 
-<ApiItem href="#htmlescaperescaperinterface-attributes" visibility="public" name="attributes" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escapes a HTML attribute string.
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-css" visibility="public" name="css" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escape CSS strings by replacing non-alphanumeric chars by their
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-getencoding" visibility="public" name="getEncoding" returnType="string" params={[]}>
-Returns the internal encoding used by the escaper
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-html" visibility="public" name="html" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escapes a HTML string.
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-js" visibility="public" name="js" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escape Javascript strings by replacing non-alphanumeric chars by their
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-setencoding" visibility="public" name="setEncoding" returnType="EscaperInterface" params={[{"type":"string","name":"encoding","default":null}]}>
-Sets the encoding to be used by the escaper
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-setflags" visibility="public" name="setFlags" returnType="EscaperInterface" params={[{"type":"int","name":"flags","default":null}]}>
-Sets the HTML quoting type for htmlspecialchars
-</ApiItem>
-<ApiItem href="#htmlescaperescaperinterface-url" visibility="public" name="url" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Escapes a URL. Internally uses rawurlencode
-</ApiItem>
+- `public attributes(string $input): string` — Escapes a HTML attribute string.
+
+- `public css(string $input): string` — Escape CSS strings by replacing non-alphanumeric chars by their
+
+- `public getEncoding(): string` — Returns the internal encoding used by the escaper
+
+- `public html(string $input): string` — Escapes a HTML string.
+
+- `public js(string $input): string` — Escape Javascript strings by replacing non-alphanumeric chars by their
+
+- `public setEncoding(string $encoding): EscaperInterface` — Sets the encoding to be used by the escaper
+
+- `public setFlags(int $flags): EscaperInterface` — Sets the HTML quoting type for htmlspecialchars
+
+- `public url(string $input): string` — Escapes a URL. Internally uses rawurlencode
 
 ### Methods
 
@@ -815,6 +778,7 @@ public function url( string $input ): string;
 
 Escapes a URL. Internally uses rawurlencode
 
+
 ## Html\Escaper\Exception
 
 Class
@@ -822,7 +786,8 @@ Class
 Class Exception
 
 - `\Exception`
-- **`Phalcon\Html\Escaper\Exception`**
+  - **`Phalcon\Html\Escaper\Exception`**
+
 
 ## Html\Escaper\HtmlEscaper
 
@@ -831,14 +796,13 @@ Class
 Escapes a string for use as HTML body content via `htmlspecialchars`.
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\HtmlEscaper`**
+  - **`Phalcon\Html\Escaper\HtmlEscaper`**
 
 ### Method Summary
 
-<ApiItem href="#htmlescaperhtmlescaper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string|null","name":"input","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlescaperhtmlescaper-escape" visibility="public" name="escape" returnType="string" params={[{"type":"string|null","name":"input","default":"null"}]}>
-</ApiItem>
+- `public __invoke(string|null $input = null): string`
+
+- `public escape(string|null $input = null): string`
 
 ### Methods
 
@@ -854,6 +818,7 @@ public function __invoke( string|null $input = null ): string;
 public function escape( string|null $input = null ): string;
 ```
 
+
 ## Html\Escaper\JsEscaper
 
 Class
@@ -862,14 +827,13 @@ Escapes a string for use inside a JavaScript context by replacing
 non-alphanumeric characters with their hexadecimal escape sequence.
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\JsEscaper`**
+  - **`Phalcon\Html\Escaper\JsEscaper`**
 
 ### Method Summary
 
-<ApiItem href="#htmlescaperjsescaper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaperjsescaper-escape" visibility="public" name="escape" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input): string`
+
+- `public escape(string $input): string`
 
 ### Methods
 
@@ -885,6 +849,7 @@ public function __invoke( string $input ): string;
 public function escape( string $input ): string;
 ```
 
+
 ## Html\Escaper\Traits\EscaperTrait
 
 Trait
@@ -899,34 +864,29 @@ utilities used by the per-context escaper objects (`HtmlEscaper`,
 
 ### Method Summary
 
-<ApiItem href="#htmlescapertraitsescapertrait-detectencoding" visibility="public" name="detectEncoding" returnType="string|null" params={[{"type":"string","name":"input","default":null}]}>
-Detects the character encoding of a string. Special-handling for
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-getdoubleencode" visibility="public" name="getDoubleEncode" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-getencoding" visibility="public" name="getEncoding" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-getflags" visibility="public" name="getFlags" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-normalizeencoding" visibility="public" name="normalizeEncoding" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Normalizes a string's encoding to UTF-32, used by the CSS and JS
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-setdoubleencode" visibility="public" name="setDoubleEncode" returnType="static" params={[{"type":"bool","name":"doubleEncode","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-setencoding" visibility="public" name="setEncoding" returnType="static" params={[{"type":"string","name":"encoding","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescapertraitsescapertrait-setflags" visibility="public" name="setFlags" returnType="static" params={[{"type":"int","name":"flags","default":null}]}>
-</ApiItem>
+- `public detectEncoding(string $input): string|null` — Detects the character encoding of a string. Special-handling for
+
+- `public getDoubleEncode(): bool`
+
+- `public getEncoding(): string`
+
+- `public getFlags(): int`
+
+- `public normalizeEncoding(string $input): string` — Normalizes a string's encoding to UTF-32, used by the CSS and JS
+
+- `public setDoubleEncode(bool $doubleEncode): static`
+
+- `public setEncoding(string $encoding): static`
+
+- `public setFlags(int $flags): static`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="doubleEncode" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="encoding" type="string" default="&quot;utf-8&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="flags" type="int" default="11">
-ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
-</ApiItem>
+- `protected bool $doubleEncode = true`
+
+- `protected string $encoding = "utf-8"`
+
+- `protected int $flags = 11` — ENT\_QUOTES | ENT\_SUBSTITUTE | ENT\_HTML401
 
 ### Methods
 
@@ -985,6 +945,7 @@ public function setEncoding( string $encoding ): static;
 public function setFlags( int $flags ): static;
 ```
 
+
 ## Html\Escaper\UrlEscaper
 
 Class
@@ -992,16 +953,15 @@ Class
 Escapes a string for use as a URL component via `rawurlencode`.
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\UrlEscaper`**
+  - **`Phalcon\Html\Escaper\UrlEscaper`**
 
 `Phalcon\Traits\Php\UrlTrait`
 
 ### Method Summary
 
-<ApiItem href="#htmlescaperurlescaper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlescaperurlescaper-escape" visibility="public" name="escape" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input): string`
+
+- `public escape(string $input): string`
 
 ### Methods
 
@@ -1017,6 +977,7 @@ public function __invoke( string $input ): string;
 public function escape( string $input ): string;
 ```
 
+
 ## Html\Exception
 
 Class
@@ -1024,25 +985,25 @@ Class
 Class Exception
 
 - `\Exception`
-- **`Phalcon\Html\Exception`**
-- [`Phalcon\Html\Exceptions\AttributeNotRenderable`](#htmlexceptionsattributenotrenderable)
-- [`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`](#htmlexceptionsfriendlytitleconversionfailed)
-- [`Phalcon\Html\Exceptions\ServiceNotRegistered`](#htmlexceptionsservicenotregistered)
+  - **`Phalcon\Html\Exception`**
+    - [`Phalcon\Html\Exceptions\AttributeNotRenderable`](#htmlexceptionsattributenotrenderable)
+    - [`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`](#htmlexceptionsfriendlytitleconversionfailed)
+    - [`Phalcon\Html\Exceptions\ServiceNotRegistered`](#htmlexceptionsservicenotregistered)
+
 
 ## Html\Exceptions\AttributeNotRenderable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Html\Exception`](#htmlexception)
-- **`Phalcon\Html\Exceptions\AttributeNotRenderable`**
+  - [`Phalcon\Html\Exception`](#htmlexception)
+    - **`Phalcon\Html\Exceptions\AttributeNotRenderable`**
 
 `Phalcon\Html\Exception`
 
 ### Method Summary
 
-<ApiItem href="#htmlexceptionsattributenotrenderable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null},{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $key, string $type)`
 
 ### Methods
 
@@ -1050,25 +1011,25 @@ Class
 
 ```php
 public function __construct(
-string $key,
-string $type
+    string $key,
+    string $type
 );
 ```
+
 
 ## Html\Exceptions\FriendlyTitleConversionFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Html\Exception`](#htmlexception)
-- **`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`**
+  - [`Phalcon\Html\Exception`](#htmlexception)
+    - **`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`**
 
 `Phalcon\Html\Exception`
 
 ### Method Summary
 
-<ApiItem href="#htmlexceptionsfriendlytitleconversionfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null}]}>
-</ApiItem>
+- `public __construct(string $message)`
 
 ### Methods
 
@@ -1078,19 +1039,19 @@ Class
 public function __construct( string $message );
 ```
 
+
 ## Html\Exceptions\InvalidResultsetValue
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Html\Exceptions\InvalidResultsetValue`**
+  - **`Phalcon\Html\Exceptions\InvalidResultsetValue`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#htmlexceptionsinvalidresultsetvalue-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1100,20 +1061,20 @@ Class
 public function __construct();
 ```
 
+
 ## Html\Exceptions\ServiceNotRegistered
 
 Class
 
 - `\Exception`
-- [`Phalcon\Html\Exception`](#htmlexception)
-- **`Phalcon\Html\Exceptions\ServiceNotRegistered`**
+  - [`Phalcon\Html\Exception`](#htmlexception)
+    - **`Phalcon\Html\Exceptions\ServiceNotRegistered`**
 
 `Phalcon\Html\Exception`
 
 ### Method Summary
 
-<ApiItem href="#htmlexceptionsservicenotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1123,19 +1084,19 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Html\Exceptions\UsingRequiresTwoValues
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Html\Exceptions\UsingRequiresTwoValues`**
+  - **`Phalcon\Html\Exceptions\UsingRequiresTwoValues`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#htmlexceptionsusingrequirestwovalues-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1145,84 +1106,71 @@ Class
 public function __construct();
 ```
 
+
 ## Html\Helper\AbstractHelper
 
 Abstract
 
 - **`Phalcon\Html\Helper\AbstractHelper`**
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- [`Phalcon\Html\Helper\Anchor`](#htmlhelperanchor)
-- [`Phalcon\Html\Helper\Base`](#htmlhelperbase)
-- [`Phalcon\Html\Helper\Body`](#htmlhelperbody)
-- [`Phalcon\Html\Helper\Breadcrumbs`](#htmlhelperbreadcrumbs)
-- [`Phalcon\Html\Helper\Button`](#htmlhelperbutton)
-- [`Phalcon\Html\Helper\Close`](#htmlhelperclose)
-- [`Phalcon\Html\Helper\Element`](#htmlhelperelement)
-- [`Phalcon\Html\Helper\Form`](#htmlhelperform)
-- [`Phalcon\Html\Helper\FriendlyTitle`](#htmlhelperfriendlytitle)
-- [`Phalcon\Html\Helper\Img`](#htmlhelperimg)
-- [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- [`Phalcon\Html\Helper\Label`](#htmlhelperlabel)
-- [`Phalcon\Html\Helper\Preload`](#htmlhelperpreload)
-- [`Phalcon\Html\Helper\Tag`](#htmlhelpertag)
-- [`Phalcon\Html\Helper\Title`](#htmlhelpertitle)
-- [`Phalcon\Html\Helper\VoidTag`](#htmlhelpervoidtag)
+  - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+  - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+  - [`Phalcon\Html\Helper\Anchor`](#htmlhelperanchor)
+  - [`Phalcon\Html\Helper\Base`](#htmlhelperbase)
+  - [`Phalcon\Html\Helper\Body`](#htmlhelperbody)
+  - [`Phalcon\Html\Helper\Breadcrumbs`](#htmlhelperbreadcrumbs)
+  - [`Phalcon\Html\Helper\Button`](#htmlhelperbutton)
+  - [`Phalcon\Html\Helper\Close`](#htmlhelperclose)
+  - [`Phalcon\Html\Helper\Element`](#htmlhelperelement)
+  - [`Phalcon\Html\Helper\Form`](#htmlhelperform)
+  - [`Phalcon\Html\Helper\FriendlyTitle`](#htmlhelperfriendlytitle)
+  - [`Phalcon\Html\Helper\Img`](#htmlhelperimg)
+  - [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
+  - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+  - [`Phalcon\Html\Helper\Label`](#htmlhelperlabel)
+  - [`Phalcon\Html\Helper\Preload`](#htmlhelperpreload)
+  - [`Phalcon\Html\Helper\Tag`](#htmlhelpertag)
+  - [`Phalcon\Html\Helper\Title`](#htmlhelpertitle)
+  - [`Phalcon\Html\Helper\VoidTag`](#htmlhelpervoidtag)
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperabstracthelper-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"}]}>
-AbstractHelper constructor.
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-close" visibility="protected" name="close" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Produces a closing tag
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-escapename" visibility="protected" name="escapeName" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Removes the characters that end a tag or attribute name (white space,
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-indent" visibility="protected" name="indent" returnType="string" params={[]}>
-Replicates the indent x times as per indentLevel
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-injectattribute" visibility="protected" name="injectAttribute" returnType="array" params={[{"type":"string","name":"key","default":null},{"type":"string","name":"value","default":null},{"type":"array","name":"attributes","default":null}]}>
-Forces `$key => $value` to the front of the attributes array,
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-orderattributes" visibility="protected" name="orderAttributes" returnType="array" params={[{"type":"array","name":"overrides","default":null},{"type":"array","name":"attributes","default":null}]}>
-Keeps all the attributes sorted - same order all the time
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-renderarrayelements" visibility="protected" name="renderArrayElements" returnType="string" params={[{"type":"array","name":"elements","default":null},{"type":"string","name":"delimiter","default":null}]}>
-Traverses an array and calls the method defined in the first element
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-renderattributes" visibility="protected" name="renderAttributes" returnType="string" params={[{"type":"array","name":"attributes","default":null}]}>
-Renders all the attributes
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-renderelement" visibility="protected" name="renderElement" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-Renders an element
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-renderfullelement" visibility="protected" name="renderFullElement" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"string","name":"text","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Renders an element
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-rendertag" visibility="protected" name="renderTag" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"string","name":"close","default":"\"\""}]}>
-Renders a tag
-</ApiItem>
-<ApiItem href="#htmlhelperabstracthelper-selfclose" visibility="protected" name="selfClose" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-Produces a self close tag i.e. <img />
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null)` — AbstractHelper constructor.
+
+- `protected close(string $tag, bool $raw = false): string` — Produces a closing tag
+
+- `protected escapeName(string $name): string` — Removes the characters that end a tag or attribute name (white space,
+
+- `protected indent(): string` — Replicates the indent x times as per indentLevel
+
+- `protected injectAttribute(string $key, string $value, array $attributes): array` — Forces `$key => $value` to the front of the attributes array,
+
+- `protected orderAttributes(array $overrides, array $attributes): array` — Keeps all the attributes sorted - same order all the time
+
+- `protected renderArrayElements(array $elements, string $delimiter): string` — Traverses an array and calls the method defined in the first element
+
+- `protected renderAttributes(array $attributes): string` — Renders all the attributes
+
+- `protected renderElement(string $tag, array $attributes = []): string` — Renders an element
+
+- `protected renderFullElement(string $tag, string $text, array $attributes = [], bool $raw = false): string` — Renders an element
+
+- `protected renderTag(string $tag, array $attributes = [], string $close = ""): string` — Renders a tag
+
+- `protected selfClose(string $tag, array $attributes = []): string` — Produces a self close tag i.e. <img />
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="delimiter" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="doctype" type="Doctype|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="escaper" type="EscaperInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="indent" type="string" default="&quot;    &quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="indentLevel" type="int" default="1">
-</ApiItem>
+- `protected string $delimiter = ""`
+
+- `protected Doctype|null $doctype = null`
+
+- `protected EscaperInterface $escaper`
+
+- `protected string $indent = "    "`
+
+- `protected int $indentLevel = 1`
 
 ### Methods
 
@@ -1230,8 +1178,8 @@ Produces a self close tag i.e. <img />
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null
 );
 ```
 
@@ -1241,8 +1189,8 @@ AbstractHelper constructor.
 
 ```php
 protected function close(
-string $tag,
-bool $raw = false
+    string $tag,
+    bool $raw = false
 ): string;
 ```
 
@@ -1270,9 +1218,9 @@ Replicates the indent x times as per indentLevel
 
 ```php
 protected function injectAttribute(
-string $key,
-string $value,
-array $attributes
+    string $key,
+    string $value,
+    array $attributes
 ): array;
 ```
 
@@ -1284,8 +1232,8 @@ attribute is always present and appears first in the rendered output.
 
 ```php
 protected function orderAttributes(
-array $overrides,
-array $attributes
+    array $overrides,
+    array $attributes
 ): array;
 ```
 
@@ -1295,8 +1243,8 @@ Keeps all the attributes sorted - same order all the time
 
 ```php
 protected function renderArrayElements(
-array $elements,
-string $delimiter
+    array $elements,
+    string $delimiter
 ): string;
 ```
 
@@ -1315,8 +1263,8 @@ Renders all the attributes
 
 ```php
 protected function renderElement(
-string $tag,
-array $attributes = []
+    string $tag,
+    array $attributes = []
 ): string;
 ```
 
@@ -1326,10 +1274,10 @@ Renders an element
 
 ```php
 protected function renderFullElement(
-string $tag,
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $tag,
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
@@ -1339,9 +1287,9 @@ Renders an element
 
 ```php
 protected function renderTag(
-string $tag,
-array $attributes = [],
-string $close = ""
+    string $tag,
+    array $attributes = [],
+    string $close = ""
 ): string;
 ```
 
@@ -1351,12 +1299,13 @@ Renders a tag
 
 ```php
 protected function selfClose(
-string $tag,
-array $attributes = []
+    string $tag,
+    array $attributes = []
 ): string;
 ```
 
 Produces a self close tag i.e. <img />
+
 
 ## Html\Helper\AbstractList
 
@@ -1365,31 +1314,27 @@ Abstract
 Class AbstractList
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\AbstractList`**
-- [`Phalcon\Html\Helper\Input\Select`](#htmlhelperinputselect)
-- [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
+  - **`Phalcon\Html\Helper\AbstractList`**
+    - [`Phalcon\Html\Helper\Input\Select`](#htmlhelperinputselect)
+    - [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperabstractlist-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"string","name":"indent","default":"\"    \""},{"type":"string|null","name":"delimiter","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperabstractlist-__tostring" visibility="public" name="__toString" returnType="" params={[]}>
-Generates and returns the HTML for the list.
-</ApiItem>
-<ApiItem href="#htmlhelperabstractlist-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-Returns the tag name.
-</ApiItem>
+- `public __invoke(string $indent = "    ", string|null $delimiter = null, array $attributes = []): static`
+
+- `public __toString()` — Generates and returns the HTML for the list.
+
+- `protected getTag(): string` — Returns the tag name.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="elementTag" type="string" default="&quot;li&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="store" type="array" default="[]">
-</ApiItem>
+- `protected array $attributes = []`
+
+- `protected string $elementTag = "li"`
+
+- `protected array $store = []`
 
 ### Methods
 
@@ -1397,9 +1342,9 @@ Returns the tag name.
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null,
-array $attributes = []
+    string $indent = "    ",
+    string|null $delimiter = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -1419,41 +1364,36 @@ abstract protected function getTag(): string;
 
 Returns the tag name.
 
+
 ## Html\Helper\AbstractSeries
 
 Abstract
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\AbstractSeries`**
-- [`Phalcon\Html\Helper\Meta`](#htmlhelpermeta)
-- [`Phalcon\Html\Helper\Script`](#htmlhelperscript)
-- [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
+  - **`Phalcon\Html\Helper\AbstractSeries`**
+    - [`Phalcon\Html\Helper\Meta`](#htmlhelpermeta)
+    - [`Phalcon\Html\Helper\Script`](#htmlhelperscript)
+    - [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperabstractseries-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"string","name":"indent","default":"\"    \""},{"type":"string|null","name":"delimiter","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperabstractseries-__tostring" visibility="public" name="__toString" returnType="" params={[]}>
-Generates and returns the HTML for the list. Entries are sorted by
-</ApiItem>
-<ApiItem href="#htmlhelperabstractseries-reset" visibility="public" name="reset" returnType="static" params={[]}>
-Resets the internal store.
-</ApiItem>
-<ApiItem href="#htmlhelperabstractseries-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-Returns the tag name.
-</ApiItem>
-<ApiItem href="#htmlhelperabstractseries-pushorplace" visibility="protected" name="pushOrPlace" returnType="void" params={[{"type":"array","name":"entry","default":null},{"type":"int","name":"position","default":"-1"}]}>
-Appends an entry to the store, optionally at a specific integer
-</ApiItem>
+- `public __invoke(string $indent = "    ", string|null $delimiter = null): static`
+
+- `public __toString()` — Generates and returns the HTML for the list. Entries are sorted by
+
+- `public reset(): static` — Resets the internal store.
+
+- `protected getTag(): string` — Returns the tag name.
+
+- `protected pushOrPlace(array $entry, int $position = -1): void` — Appends an entry to the store, optionally at a specific integer
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="store" type="array" default="[]">
-</ApiItem>
+- `protected array $attributes = []`
+
+- `protected array $store = []`
 
 ### Methods
 
@@ -1461,8 +1401,8 @@ Appends an entry to the store, optionally at a specific integer
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null
+    string $indent = "    ",
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -1497,8 +1437,8 @@ Returns the tag name.
 
 ```php
 protected function pushOrPlace(
-array $entry,
-int $position = -1
+    array $entry,
+    int $position = -1
 ): void;
 ```
 
@@ -1509,6 +1449,7 @@ is placed at that key, advancing past any already-occupied slots so
 existing entries are not overwritten. The store is ksort()ed in
 `__toString`, so positions act as a sort key, not a strict address.
 
+
 ## Html\Helper\Anchor
 
 Class
@@ -1516,22 +1457,19 @@ Class
 Class Anchor
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Anchor`**
+  - **`Phalcon\Html\Helper\Anchor`**
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperanchor-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"},{"type":"bool","name":"forceRaw","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperanchor-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"href","default":null},{"type":"string","name":"text","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Produce a `<a>` tag
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null, bool $forceRaw = false)`
+
+- `public __invoke(string $href, string $text, array $attributes = [], bool $raw = false): string` — Produce a `<a>` tag
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forceRaw" type="bool" default="false">
-</ApiItem>
+- `protected bool $forceRaw = false`
 
 ### Methods
 
@@ -1539,9 +1477,9 @@ Produce a `<a>` tag
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -1549,14 +1487,15 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $href,
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $href,
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a `<a>` tag
+
 
 ## Html\Helper\Base
 
@@ -1565,15 +1504,13 @@ Class
 Class Base
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Base`**
+  - **`Phalcon\Html\Helper\Base`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperbase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string|null","name":"href","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
-Produce a `<base/>` tag.
-</ApiItem>
+- `public __invoke(string|null $href = null, array $attributes = []): string` — Produce a `<base/>` tag.
 
 ### Methods
 
@@ -1581,12 +1518,13 @@ Produce a `<base/>` tag.
 
 ```php
 public function __invoke(
-string|null $href = null,
-array $attributes = []
+    string|null $href = null,
+    array $attributes = []
 ): string;
 ```
 
 Produce a `<base/>` tag.
+
 
 ## Html\Helper\Body
 
@@ -1595,15 +1533,13 @@ Class
 Class Body
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Body`**
+  - **`Phalcon\Html\Helper\Body`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperbody-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Produce a `<body>` tag.
-</ApiItem>
+- `public __invoke(array $attributes = []): string` — Produce a `<body>` tag.
 
 ### Methods
 
@@ -1615,6 +1551,7 @@ public function __invoke( array $attributes = [] ): string;
 
 Produce a `<body>` tag.
 
+
 ## Html\Helper\Breadcrumbs
 
 Class
@@ -1624,60 +1561,43 @@ The resulting HTML when calling `render()` will have each breadcrumb enclosed
 in `<li>` tags, while the whole string is enclosed in `<nav>` and `<ol>` tags.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Breadcrumbs`**
+  - **`Phalcon\Html\Helper\Breadcrumbs`**
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperbreadcrumbs-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"UrlInterface|null","name":"url","default":"null"}]}>
-AbstractHelper constructor.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"string","name":"indent","default":"\"    \""},{"type":"string|null","name":"delimiter","default":"null"}]}>
-Sets the indent and delimiter and returns the object back.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"link","default":"\"\""},{"type":"string","name":"icon","default":"\"\""},{"type":"array","name":"attributes","default":"[]"}]}>
-Adds a new crumb.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears the crumbs
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-clearattributes" visibility="public" name="clearAttributes" returnType="static" params={[]}>
-Clear the attributes of the parent element
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Get the attributes of the parent element
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
-Returns the link prefix.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-getseparator" visibility="public" name="getSeparator" returnType="string" params={[]}>
-Returns the separator.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-gettemplate" visibility="public" name="getTemplate" returnType="array" params={[]}>
-Return the current template.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-remove" visibility="public" name="remove" returnType="void" params={[{"type":"int","name":"index","default":null}]}>
-Removes crumb by url.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-render" visibility="public" name="render" returnType="string" params={[]}>
-Renders and outputs breadcrumbs based on previously set template.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-setattributes" visibility="public" name="setAttributes" returnType="static" params={[{"type":"array","name":"attributes","default":null}]}>
-Set the attributes for the parent element
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-setprefix" visibility="public" name="setPrefix" returnType="static" params={[{"type":"string","name":"prefix","default":null}]}>
-Set the link prefix prepended to every non-empty link during rendering.
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-setseparator" visibility="public" name="setSeparator" returnType="static" params={[{"type":"string","name":"separator","default":null}]}>
-Set the separator
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-settemplate" visibility="public" name="setTemplate" returnType="static" params={[{"type":"string","name":"main","default":null},{"type":"string","name":"line","default":null},{"type":"string","name":"last","default":null}]}>
-Set the HTML template
-</ApiItem>
-<ApiItem href="#htmlhelperbreadcrumbs-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the internal breadcrumbs array
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, UrlInterface|null $url = null)` — AbstractHelper constructor.
+
+- `public __invoke(string $indent = "    ", string|null $delimiter = null): static` — Sets the indent and delimiter and returns the object back.
+
+- `public add(string $text, string $link = "", string $icon = "", array $attributes = []): static` — Adds a new crumb.
+
+- `public clear(): void` — Clears the crumbs
+
+- `public clearAttributes(): static` — Clear the attributes of the parent element
+
+- `public getAttributes(): array` — Get the attributes of the parent element
+
+- `public getPrefix(): string` — Returns the link prefix.
+
+- `public getSeparator(): string` — Returns the separator.
+
+- `public getTemplate(): array` — Return the current template.
+
+- `public remove(int $index): void` — Removes crumb by url.
+
+- `public render(): string` — Renders and outputs breadcrumbs based on previously set template.
+
+- `public setAttributes(array $attributes): static` — Set the attributes for the parent element
+
+- `public setPrefix(string $prefix): static` — Set the link prefix prepended to every non-empty link during rendering.
+
+- `public setSeparator(string $separator): static` — Set the separator
+
+- `public setTemplate(string $main, string $line, string $last): static` — Set the HTML template
+
+- `public toArray(): array` — Returns the internal breadcrumbs array
 
 ### Methods
 
@@ -1685,8 +1605,8 @@ Returns the internal breadcrumbs array
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-UrlInterface|null $url = null
+    EscaperInterface $escaper,
+    UrlInterface|null $url = null
 );
 ```
 
@@ -1696,8 +1616,8 @@ AbstractHelper constructor.
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null
+    string $indent = "    ",
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -1707,10 +1627,10 @@ Sets the indent and delimiter and returns the object back.
 
 ```php
 public function add(
-string $text,
-string $link = "",
-string $icon = "",
-array $attributes = []
+    string $text,
+    string $link = "",
+    string $icon = "",
+    array $attributes = []
 ): static;
 ```
 
@@ -1833,9 +1753,9 @@ Set the separator
 
 ```php
 public function setTemplate(
-string $main,
-string $line,
-string $last
+    string $main,
+    string $line,
+    string $last
 ): static;
 ```
 
@@ -1849,6 +1769,7 @@ public function toArray(): array;
 
 Returns the internal breadcrumbs array
 
+
 ## Html\Helper\Button
 
 Class
@@ -1856,22 +1777,19 @@ Class
 Class Button
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Button`**
+  - **`Phalcon\Html\Helper\Button`**
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperbutton-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"},{"type":"bool","name":"forceRaw","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperbutton-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Produce a `<button>` tag.
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null, bool $forceRaw = false)`
+
+- `public __invoke(string $text, array $attributes = [], bool $raw = false): string` — Produce a `<button>` tag.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forceRaw" type="bool" default="false">
-</ApiItem>
+- `protected bool $forceRaw = false`
 
 ### Methods
 
@@ -1879,9 +1797,9 @@ Produce a `<button>` tag.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -1889,13 +1807,14 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a `<button>` tag.
+
 
 ## Html\Helper\Close
 
@@ -1904,13 +1823,11 @@ Class
 Class Close
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Close`**
+  - **`Phalcon\Html\Helper\Close`**
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperclose-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Produce a `</...>` tag.
-</ApiItem>
+- `public __invoke(string $tag, bool $raw = false): string` — Produce a `</...>` tag.
 
 ### Methods
 
@@ -1918,12 +1835,13 @@ Produce a `</...>` tag.
 
 ```php
 public function __invoke(
-string $tag,
-bool $raw = false
+    string $tag,
+    bool $raw = false
 ): string;
 ```
 
 Produce a `</...>` tag.
+
 
 ## Html\Helper\Doctype
 
@@ -1935,40 +1853,37 @@ Creates Doctype tags
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperdoctype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlhelperdoctype-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"int","name":"type","default":"self::HTML5"},{"type":"string","name":"delimiter","default":"\"\\n\""}]}>
-Produce a `<doctype>` tag
-</ApiItem>
-<ApiItem href="#htmlhelperdoctype-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlhelperdoctype-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-</ApiItem>
+- `public __construct()`
+
+- `public __invoke(int $type = self::HTML5, string $delimiter = "\n"): static` — Produce a `<doctype>` tag
+
+- `public __toString(): string`
+
+- `public getType(): int`
 
 ### Constants
 
-<ApiItem kind="constant" name="HTML32" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="HTML401_FRAMESET" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="HTML401_STRICT" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="HTML401_TRANSITIONAL" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="HTML5" type="int" default="5">
-</ApiItem>
-<ApiItem kind="constant" name="XHTML10_FRAMESET" type="int" default="8">
-</ApiItem>
-<ApiItem kind="constant" name="XHTML10_STRICT" type="int" default="6">
-</ApiItem>
-<ApiItem kind="constant" name="XHTML10_TRANSITIONAL" type="int" default="7">
-</ApiItem>
-<ApiItem kind="constant" name="XHTML11" type="int" default="9">
-</ApiItem>
-<ApiItem kind="constant" name="XHTML20" type="int" default="10">
-</ApiItem>
-<ApiItem kind="constant" name="XHTML5" type="int" default="11">
-</ApiItem>
+- `const int HTML32 = 1`
+
+- `const int HTML401_FRAMESET = 4`
+
+- `const int HTML401_STRICT = 2`
+
+- `const int HTML401_TRANSITIONAL = 3`
+
+- `const int HTML5 = 5`
+
+- `const int XHTML10_FRAMESET = 8`
+
+- `const int XHTML10_STRICT = 6`
+
+- `const int XHTML10_TRANSITIONAL = 7`
+
+- `const int XHTML11 = 9`
+
+- `const int XHTML20 = 10`
+
+- `const int XHTML5 = 11`
 
 ### Methods
 
@@ -1982,8 +1897,8 @@ public function __construct();
 
 ```php
 public function __invoke(
-int $type = self::HTML5,
-string $delimiter = "\n"
+    int $type = self::HTML5,
+    string $delimiter = "\n"
 ): static;
 ```
 
@@ -2001,6 +1916,7 @@ public function __toString(): string;
 public function getType(): int;
 ```
 
+
 ## Html\Helper\Element
 
 Class
@@ -2008,22 +1924,19 @@ Class
 Class Element
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Element`**
+  - **`Phalcon\Html\Helper\Element`**
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperelement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"},{"type":"bool","name":"forceRaw","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperelement-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"tag","default":null},{"type":"string","name":"text","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Produce a tag.
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null, bool $forceRaw = false)`
+
+- `public __invoke(string $tag, string $text, array $attributes = [], bool $raw = false): string` — Produce a tag.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forceRaw" type="bool" default="false">
-</ApiItem>
+- `protected bool $forceRaw = false`
 
 ### Methods
 
@@ -2031,9 +1944,9 @@ Produce a tag.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -2041,14 +1954,15 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $tag,
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $tag,
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a tag.
+
 
 ## Html\Helper\Form
 
@@ -2057,15 +1971,13 @@ Class
 Class Form
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Form`**
+  - **`Phalcon\Html\Helper\Form`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperform-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Produce a `<form>` tag.
-</ApiItem>
+- `public __invoke(array $attributes = []): string` — Produce a `<form>` tag.
 
 ### Methods
 
@@ -2077,6 +1989,7 @@ public function __invoke( array $attributes = [] ): string;
 
 Produce a `<form>` tag.
 
+
 ## Html\Helper\FriendlyTitle
 
 Class
@@ -2084,21 +1997,19 @@ Class
 Converts text to a URL-friendly slug.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\FriendlyTitle`**
+  - **`Phalcon\Html\Helper\FriendlyTitle`**
 
 `Exception` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exceptions\FriendlyTitleConversionFailed` · `Phalcon\Support\Helper\Str\Friendly`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperfriendlytitle-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperfriendlytitle-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"mixed","name":"replace","default":"null"}]}>
-</ApiItem>
+- `public __construct(EscaperInterface $escaper)`
+
+- `public __invoke(string $text, string $separator = "-", bool $lowercase = true, mixed $replace = null): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="friendly" type="Friendly" default="">
-</ApiItem>
+- `protected Friendly $friendly`
 
 ### Methods
 
@@ -2112,12 +2023,13 @@ public function __construct( EscaperInterface $escaper );
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "-",
-bool $lowercase = true,
-mixed $replace = null
+    string $text,
+    string $separator = "-",
+    bool $lowercase = true,
+    mixed $replace = null
 ): string;
 ```
+
 
 ## Html\Helper\Img
 
@@ -2126,15 +2038,13 @@ Class
 Class Img
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Img`**
+  - **`Phalcon\Html\Helper\Img`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperimg-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"src","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-Produce a `<img>` tag.
-</ApiItem>
+- `public __invoke(string $src, array $attributes = []): string` — Produce a `<img>` tag.
 
 ### Methods
 
@@ -2142,12 +2052,13 @@ Produce a `<img>` tag.
 
 ```php
 public function __invoke(
-string $src,
-array $attributes = []
+    string $src,
+    array $attributes = []
 ): string;
 ```
 
 Produce a `<img>` tag.
+
 
 ## Html\Helper\Input\AbstractChecked
 
@@ -2163,37 +2074,30 @@ mixed int/string form input round-trips correctly (e.g. `value=0` against
 `checked="0"`). Strict (`===`) matching is available via `strict(true)`.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- **`Phalcon\Html\Helper\Input\AbstractChecked`**
-- [`Phalcon\Html\Helper\Input\Checkbox`](#htmlhelperinputcheckbox)
-- [`Phalcon\Html\Helper\Input\Radio`](#htmlhelperinputradio)
+  - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+    - **`Phalcon\Html\Helper\Input\AbstractChecked`**
+      - [`Phalcon\Html\Helper\Input\Checkbox`](#htmlhelperinputcheckbox)
+      - [`Phalcon\Html\Helper\Input\Radio`](#htmlhelperinputradio)
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputabstractchecked-__tostring" visibility="public" name="__toString" returnType="" params={[]}>
-Returns the HTML for the input, optionally surrounded by the label
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractchecked-label" visibility="public" name="label" returnType="static" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Attaches a wrapping `<label>` to the element. The supplied attributes
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractchecked-strict" visibility="public" name="strict" returnType="static" params={[{"type":"bool","name":"flag","default":"true"}]}>
-Toggles strict (`===`) comparison between the `checked` attribute and
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractchecked-processchecked" visibility="protected" name="processChecked" returnType="void" params={[]}>
-Decides whether the rendered tag carries `checked="checked"`. Two
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractchecked-processunchecked" visibility="protected" name="processUnchecked" returnType="string" params={[]}>
-Returns the markup for the optional hidden companion input that lets
-</ApiItem>
+- `public __toString()` — Returns the HTML for the input, optionally surrounded by the label
+
+- `public label(array $attributes = []): static` — Attaches a wrapping `<label>` to the element. The supplied attributes
+
+- `public strict(bool $flag = true): static` — Toggles strict (`===`) comparison between the `checked` attribute and
+
+- `protected processChecked(): void` — Decides whether the rendered tag carries `checked="checked"`. Two
+
+- `protected processUnchecked(): string` — Returns the markup for the optional hidden companion input that lets
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="label" type="array" default="[...]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="strict" type="bool" default="false">
-</ApiItem>
+- `protected array $label = [...]`
+
+- `protected bool $strict = false`
 
 ### Methods
 
@@ -2251,6 +2155,7 @@ protected function processUnchecked(): string;
 Returns the markup for the optional hidden companion input that lets
 a checkbox/radio submit a value when unchecked.
 
+
 ## Html\Helper\Input\AbstractGroup
 
 Abstract
@@ -2267,38 +2172,33 @@ The $checked parameter is resolved by the concrete subclass:
   - RadioGroup compares against a single scalar value
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Input\AbstractGroup`**
-- [`Phalcon\Html\Helper\Input\CheckboxGroup`](#htmlhelperinputcheckboxgroup)
-- [`Phalcon\Html\Helper\Input\RadioGroup`](#htmlhelperinputradiogroup)
+  - **`Phalcon\Html\Helper\Input\AbstractGroup`**
+    - [`Phalcon\Html\Helper\Input\CheckboxGroup`](#htmlhelperinputcheckboxgroup)
+    - [`Phalcon\Html\Helper\Input\RadioGroup`](#htmlhelperinputradiogroup)
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractHelper`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputabstractgroup-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":null},{"type":"mixed","name":"checked","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractgroup-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Renders the group of inputs as a string.
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractgroup-ischecked" visibility="protected" name="isChecked" returnType="bool" params={[{"type":"string","name":"value","default":null}]}>
-Determines whether the given value is considered checked.
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractgroup-renderitem" visibility="protected" name="renderItem" returnType="string" params={[{"type":"string","name":"value","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Renders a single input + optional label pair.
-</ApiItem>
+- `public __invoke(string $name, array $options, mixed $checked = null, array $attributes = []): static`
+
+- `public __toString(): string` — Renders the group of inputs as a string.
+
+- `protected isChecked(string $value): bool` — Determines whether the given value is considered checked.
+
+- `protected renderItem(string $value, mixed $definition): string` — Renders a single input + optional label pair.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="checked" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="name" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sharedAttributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;checkbox&quot;">
-</ApiItem>
+- `protected mixed $checked = null`
+
+- `protected string $name = ""`
+
+- `protected array $options = []`
+
+- `protected array $sharedAttributes = []`
+
+- `protected string $type = "checkbox"`
 
 ### Methods
 
@@ -2306,10 +2206,10 @@ Renders a single input + optional label pair.
 
 ```php
 public function __invoke(
-string $name,
-array $options,
-mixed $checked = null,
-array $attributes = []
+    string $name,
+    array $options,
+    mixed $checked = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -2333,12 +2233,13 @@ Determines whether the given value is considered checked.
 
 ```php
 protected function renderItem(
-string $value,
-mixed $definition
+    string $value,
+    mixed $definition
 ): string;
 ```
 
 Renders a single input + optional label pair.
+
 
 ## Html\Helper\Input\AbstractInput
 
@@ -2347,30 +2248,26 @@ Abstract
 Class AbstractInput
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Input\AbstractInput`**
-- [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
-- [`Phalcon\Html\Helper\Input\Generic`](#htmlhelperinputgeneric)
-- [`Phalcon\Html\Helper\Input\Textarea`](#htmlhelperinputtextarea)
+  - **`Phalcon\Html\Helper\Input\AbstractInput`**
+    - [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
+    - [`Phalcon\Html\Helper\Input\Generic`](#htmlhelperinputgeneric)
+    - [`Phalcon\Html\Helper\Input\Textarea`](#htmlhelperinputtextarea)
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputabstractinput-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"value","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractinput-__tostring" visibility="public" name="__toString" returnType="" params={[]}>
-Returns the HTML for the input.
-</ApiItem>
-<ApiItem href="#htmlhelperinputabstractinput-setvalue" visibility="public" name="setValue" returnType="static" params={[{"type":"string|null","name":"value","default":"null"}]}>
-Sets the value of the element
-</ApiItem>
+- `public __invoke(string $name, string|null $value = null, array $attributes = []): static`
+
+- `public __toString()` — Returns the HTML for the input.
+
+- `public setValue(string|null $value = null): static` — Sets the value of the element
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;text&quot;">
-</ApiItem>
+- `protected array $attributes = []`
+
+- `protected string $type = "text"`
 
 ### Methods
 
@@ -2378,9 +2275,9 @@ Sets the value of the element
 
 ```php
 public function __invoke(
-string $name,
-string|null $value = null,
-array $attributes = []
+    string $name,
+    string|null $value = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -2400,6 +2297,7 @@ public function setValue( string|null $value = null ): static;
 
 Sets the value of the element
 
+
 ## Html\Helper\Input\Checkbox
 
 Class
@@ -2408,14 +2306,14 @@ Renders an `<input type="checkbox">`. Behavior (label wrapping, `unchecked`
 companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
-- **`Phalcon\Html\Helper\Input\Checkbox`**
+  - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+    - [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
+      - **`Phalcon\Html\Helper\Input\Checkbox`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;checkbox&quot;">
-</ApiItem>
+- `protected string $type = "checkbox"`
+
 
 ## Html\Helper\Input\CheckboxGroup
 
@@ -2427,19 +2325,16 @@ The $checked parameter should be an array of selected values, or a single
 scalar value (treated as a one-element array).
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
-- **`Phalcon\Html\Helper\Input\CheckboxGroup`**
+  - [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
+    - **`Phalcon\Html\Helper\Input\CheckboxGroup`**
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputcheckboxgroup-ischecked" visibility="protected" name="isChecked" returnType="bool" params={[{"type":"string","name":"value","default":null}]}>
-Returns true when $value appears in the checked list.
-</ApiItem>
+- `protected isChecked(string $value): bool` — Returns true when $value appears in the checked list.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;checkbox&quot;">
-</ApiItem>
+- `protected string $type = "checkbox"`
 
 ### Methods
 
@@ -2450,6 +2345,7 @@ protected function isChecked( string $value ): bool;
 ```
 
 Returns true when $value appears in the checked list.
+
 
 ## Html\Helper\Input\Generic
 
@@ -2462,18 +2358,16 @@ and differentiate them through the recipe map. The type can also be
 changed after construction via `setType()`.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- **`Phalcon\Html\Helper\Input\Generic`**
+  - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+    - **`Phalcon\Html\Helper\Input\Generic`**
 
 `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputgeneric-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"},{"type":"string","name":"type","default":"\"text\""}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputgeneric-settype" visibility="public" name="setType" returnType="AbstractInput" params={[{"type":"string","name":"type","default":null}]}>
-Sets the type of the input.
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null, string $type = "text")`
+
+- `public setType(string $type): AbstractInput` — Sets the type of the input.
 
 ### Methods
 
@@ -2481,9 +2375,9 @@ Sets the type of the input.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-string $type = "text"
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    string $type = "text"
 );
 ```
 
@@ -2495,6 +2389,7 @@ public function setType( string $type ): AbstractInput;
 
 Sets the type of the input.
 
+
 ## Html\Helper\Input\Radio
 
 Class
@@ -2503,14 +2398,14 @@ Renders an `<input type="radio">`. Behavior (label wrapping, `unchecked`
 companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
-- **`Phalcon\Html\Helper\Input\Radio`**
+  - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+    - [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
+      - **`Phalcon\Html\Helper\Input\Radio`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;radio&quot;">
-</ApiItem>
+- `protected string $type = "radio"`
+
 
 ## Html\Helper\Input\RadioGroup
 
@@ -2522,19 +2417,16 @@ The $checked parameter should be a single scalar value matching the selected
 option's value attribute.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
-- **`Phalcon\Html\Helper\Input\RadioGroup`**
+  - [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
+    - **`Phalcon\Html\Helper\Input\RadioGroup`**
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputradiogroup-ischecked" visibility="protected" name="isChecked" returnType="bool" params={[{"type":"string","name":"value","default":null}]}>
-Returns true when $value loosely equals the checked scalar.
-</ApiItem>
+- `protected isChecked(string $value): bool` — Returns true when $value loosely equals the checked scalar.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;radio&quot;">
-</ApiItem>
+- `protected string $type = "radio"`
 
 ### Methods
 
@@ -2546,6 +2438,7 @@ protected function isChecked( string $value ): bool;
 
 Returns true when $value loosely equals the checked scalar.
 
+
 ## Html\Helper\Input\Select
 
 Class
@@ -2553,50 +2446,42 @@ Class
 Class Select
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- **`Phalcon\Html\Helper\Input\Select`**
+  - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+    - **`Phalcon\Html\Helper\Input\Select`**
 
 `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\AbstractList`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputselect-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"value","default":"null"},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Add an element to the list
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-addplaceholder" visibility="public" name="addPlaceholder" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"value","default":"null"},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Add a placeholder to the element
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-fromdata" visibility="public" name="fromData" returnType="static" params={[{"type":"SelectData","name":"data","default":null}]}>
-Populates the select from a data provider.
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-optgroup" visibility="public" name="optGroup" returnType="static" params={[{"type":"string|null","name":"label","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
-Creates an option group
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-placeholder" visibility="public" name="placeholder" returnType="static" params={[{"type":"string","name":"text","default":null}]}>
-Adds a non-selectable placeholder option as the first entry. Renders
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-selected" visibility="public" name="selected" returnType="static" params={[{"type":"string","name":"selected","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-strict" visibility="public" name="strict" returnType="static" params={[{"type":"bool","name":"flag","default":"true"}]}>
-Toggles strict (`===`) comparison between an option's `value` and
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-optgroupend" visibility="protected" name="optGroupEnd" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselect-optgroupstart" visibility="protected" name="optGroupStart" returnType="string" params={[{"type":"string","name":"label","default":null},{"type":"array","name":"attributes","default":null}]}>
-</ApiItem>
+- `public add(string $text, string|null $value = null, array $attributes = [], bool $raw = false): static` — Add an element to the list
+
+- `public addPlaceholder(string $text, string|null $value = null, array $attributes = [], bool $raw = false): static` — Add a placeholder to the element
+
+- `public fromData(SelectData $data): static` — Populates the select from a data provider.
+
+- `public optGroup(string|null $label = null, array $attributes = []): static` — Creates an option group
+
+- `public placeholder(string $text): static` — Adds a non-selectable placeholder option as the first entry. Renders
+
+- `public selected(string $selected): static`
+
+- `public strict(bool $flag = true): static` — Toggles strict (`===`) comparison between an option's `value` and
+
+- `protected getTag(): string`
+
+- `protected optGroupEnd(): string`
+
+- `protected optGroupStart(string $label, array $attributes): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="elementTag" type="string" default="&quot;option&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="inOptGroup" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="selected" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="strict" type="bool" default="false">
-</ApiItem>
+- `protected string $elementTag = "option"`
+
+- `protected bool $inOptGroup = false`
+
+- `protected string $selected = ""`
+
+- `protected bool $strict = false`
 
 ### Methods
 
@@ -2604,10 +2489,10 @@ Toggles strict (`===`) comparison between an option's `value` and
 
 ```php
 public function add(
-string $text,
-string|null $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    string|null $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): static;
 ```
 
@@ -2617,10 +2502,10 @@ Add an element to the list
 
 ```php
 public function addPlaceholder(
-string $text,
-string|null $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    string|null $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): static;
 ```
 
@@ -2641,8 +2526,8 @@ Optgroup entries: key = group label, value = [value => label] array.
 
 ```php
 public function optGroup(
-string|null $label = null,
-array $attributes = []
+    string|null $label = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -2691,10 +2576,11 @@ protected function optGroupEnd(): string;
 
 ```php
 protected function optGroupStart(
-string $label,
-array $attributes
+    string $label,
+    array $attributes
 ): string;
 ```
+
 
 ## Html\Helper\Input\Select\ArrayData
 
@@ -2711,19 +2597,17 @@ array values define optgroups.
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputselectarraydata-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselectarraydata-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselectarraydata-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(array $data = [], array $attributes = [])`
+
+- `public getAttributes(): array`
+
+- `public getOptions(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
-</ApiItem>
+- `protected array $attributes = []`
+
+- `protected array $data = []`
 
 ### Methods
 
@@ -2731,8 +2615,8 @@ array values define optgroups.
 
 ```php
 public function __construct(
-array $data = [],
-array $attributes = []
+    array $data = [],
+    array $attributes = []
 );
 ```
 
@@ -2748,6 +2632,7 @@ public function getAttributes(): array;
 public function getOptions(): array;
 ```
 
+
 ## Html\Helper\Input\Select\ResultsetData
 
 Class
@@ -2758,32 +2643,27 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputselectresultsetdata-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ResultsetInterface","name":"resultset","default":null},{"type":"array","name":"using","default":null},{"type":"array","name":"attributesMap","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselectresultsetdata-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Returns per-option attribute maps, keyed by option value.
-</ApiItem>
-<ApiItem href="#htmlhelperinputselectresultsetdata-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#htmlhelperinputselectresultsetdata-readfield" visibility="protected" name="readField" returnType="" params={[{"type":"mixed","name":"option","default":null},{"type":"string","name":"field","default":null}]}>
-Reads a property from the row, supporting both objects (via
-</ApiItem>
-<ApiItem href="#htmlhelperinputselectresultsetdata-resolve" visibility="protected" name="resolve" returnType="void" params={[]}>
-Walks the resultset once, building both the option map and the
-</ApiItem>
+- `public __construct(ResultsetInterface $resultset, array $using, array $attributesMap = [])`
+
+- `public getAttributes(): array` — Returns per-option attribute maps, keyed by option value.
+
+- `public getOptions(): array`
+
+- `protected readField(mixed $option, string $field)` — Reads a property from the row, supporting both objects (via
+
+- `protected resolve(): void` — Walks the resultset once, building both the option map and the
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributesMap" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resolvedAttributes" type="html_select_attributes|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resolvedOptions" type="html_select_options|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resultset" type="ResultsetInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="using" type="array" default="[]">
-</ApiItem>
+- `protected array $attributesMap = []`
+
+- `protected html_select_attributes|null $resolvedAttributes = null`
+
+- `protected html_select_options|null $resolvedOptions = null`
+
+- `protected ResultsetInterface $resultset`
+
+- `protected array $using = []`
 
 ### Methods
 
@@ -2791,9 +2671,9 @@ Walks the resultset once, building both the option map and the
 
 ```php
 public function __construct(
-ResultsetInterface $resultset,
-array $using,
-array $attributesMap = []
+    ResultsetInterface $resultset,
+    array $using,
+    array $attributesMap = []
 );
 ```
 
@@ -2815,8 +2695,8 @@ public function getOptions(): array;
 
 ```php
 protected function readField(
-mixed $option,
-string $field
+    mixed $option,
+    string $field
 );
 ```
 
@@ -2834,6 +2714,7 @@ per-option resolved attribute map. Closures in `attributesMap`
 receive the current row; static values are passed through.
 `false` or `null` values skip the attribute entirely.
 
+
 ## Html\Helper\Input\Textarea
 
 Class
@@ -2841,21 +2722,18 @@ Class
 Class Textarea
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- **`Phalcon\Html\Helper\Input\Textarea`**
+  - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+    - **`Phalcon\Html\Helper\Input\Textarea`**
 
 `Phalcon\Html\Exception`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperinputtextarea-__tostring" visibility="public" name="__toString" returnType="" params={[]}>
-Returns the HTML for the input.
-</ApiItem>
+- `public __toString()` — Returns the HTML for the input.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;textarea&quot;">
-</ApiItem>
+- `protected string $type = "textarea"`
 
 ### Methods
 
@@ -2867,6 +2745,7 @@ public function __toString();
 
 Returns the HTML for the input.
 
+
 ## Html\Helper\Label
 
 Class
@@ -2874,22 +2753,19 @@ Class
 Class Label
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Label`**
+  - **`Phalcon\Html\Helper\Label`**
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperlabel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"},{"type":"bool","name":"forceRaw","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperlabel-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"label","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Produce a `<label>` tag.
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null, bool $forceRaw = false)`
+
+- `public __invoke(string $label, array $attributes = [], bool $raw = false): string` — Produce a `<label>` tag.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forceRaw" type="bool" default="false">
-</ApiItem>
+- `protected bool $forceRaw = false`
 
 ### Methods
 
@@ -2897,9 +2773,9 @@ Produce a `<label>` tag.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -2907,13 +2783,14 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $label,
-array $attributes = [],
-bool $raw = false
+    string $label,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a `<label>` tag.
+
 
 ## Html\Helper\Link
 
@@ -2922,22 +2799,19 @@ Class
 Creates &lt;link> tags
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
-- **`Phalcon\Html\Helper\Link`**
+  - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+    - [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
+      - **`Phalcon\Html\Helper\Link`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperlink-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"url","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"int","name":"position","default":"-1"}]}>
-Add an element to the list
-</ApiItem>
-<ApiItem href="#htmlhelperlink-getattributes" visibility="protected" name="getAttributes" returnType="array" params={[{"type":"string","name":"url","default":null},{"type":"array","name":"attributes","default":null}]}>
-Returns the necessary attributes
-</ApiItem>
-<ApiItem href="#htmlhelperlink-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
+- `public add(string $url, array $attributes = [], int $position = -1): static` — Add an element to the list
+
+- `protected getAttributes(string $url, array $attributes): array` — Returns the necessary attributes
+
+- `protected getTag(): string`
 
 ### Methods
 
@@ -2945,9 +2819,9 @@ Returns the necessary attributes
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -2957,8 +2831,8 @@ Add an element to the list
 
 ```php
 protected function getAttributes(
-string $url,
-array $attributes
+    string $url,
+    array $attributes
 ): array;
 ```
 
@@ -2970,6 +2844,7 @@ Returns the necessary attributes
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Meta
 
 Class
@@ -2977,24 +2852,22 @@ Class
 Class Meta
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- **`Phalcon\Html\Helper\Meta`**
+  - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+    - **`Phalcon\Html\Helper\Meta`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelpermeta-add" visibility="public" name="add" returnType="static" params={[{"type":"array","name":"attributes","default":"[]"},{"type":"int","name":"position","default":"-1"}]}>
-Add an element to the list
-</ApiItem>
-<ApiItem href="#htmlhelpermeta-addhttp" visibility="public" name="addHttp" returnType="static" params={[{"type":"string","name":"httpEquiv","default":null},{"type":"string","name":"content","default":null},{"type":"int","name":"position","default":"-1"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelpermeta-addname" visibility="public" name="addName" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"content","default":null},{"type":"int","name":"position","default":"-1"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelpermeta-addproperty" visibility="public" name="addProperty" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"content","default":null},{"type":"int","name":"position","default":"-1"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelpermeta-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
+- `public add(array $attributes = [], int $position = -1): static` — Add an element to the list
+
+- `public addHttp(string $httpEquiv, string $content, int $position = -1): static`
+
+- `public addName(string $name, string $content, int $position = -1): static`
+
+- `public addProperty(string $name, string $content, int $position = -1): static`
+
+- `protected getTag(): string`
 
 ### Methods
 
@@ -3002,8 +2875,8 @@ Add an element to the list
 
 ```php
 public function add(
-array $attributes = [],
-int $position = -1
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -3013,9 +2886,9 @@ Add an element to the list
 
 ```php
 public function addHttp(
-string $httpEquiv,
-string $content,
-int $position = -1
+    string $httpEquiv,
+    string $content,
+    int $position = -1
 ): static;
 ```
 
@@ -3023,9 +2896,9 @@ int $position = -1
 
 ```php
 public function addName(
-string $name,
-string $content,
-int $position = -1
+    string $name,
+    string $content,
+    int $position = -1
 ): static;
 ```
 
@@ -3033,9 +2906,9 @@ int $position = -1
 
 ```php
 public function addProperty(
-string $name,
-string $content,
-int $position = -1
+    string $name,
+    string $content,
+    int $position = -1
 ): static;
 ```
 
@@ -3045,6 +2918,7 @@ int $position = -1
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Ol
 
 Class
@@ -3052,26 +2926,23 @@ Class
 Class Ol
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- **`Phalcon\Html\Helper\Ol`**
-- [`Phalcon\Html\Helper\Ul`](#htmlhelperul)
+  - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+    - **`Phalcon\Html\Helper\Ol`**
+      - [`Phalcon\Html\Helper\Ul`](#htmlhelperul)
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperol-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"Doctype|null","name":"doctype","default":"null"},{"type":"bool","name":"forceRaw","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperol-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"bool","name":"raw","default":"false"}]}>
-Add an element to the list
-</ApiItem>
-<ApiItem href="#htmlhelperol-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, Doctype|null $doctype = null, bool $forceRaw = false)`
+
+- `public add(string $text, array $attributes = [], bool $raw = false): static` — Add an element to the list
+
+- `protected getTag(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forceRaw" type="bool" default="false">
-</ApiItem>
+- `protected bool $forceRaw = false`
 
 ### Methods
 
@@ -3079,9 +2950,9 @@ Add an element to the list
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -3089,9 +2960,9 @@ bool $forceRaw = false
 
 ```php
 public function add(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): static;
 ```
 
@@ -3103,6 +2974,7 @@ Add an element to the list
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Preload
 
 Class
@@ -3111,21 +2983,19 @@ Generates a &lt;link rel="preload"> tag for resource hinting.
 If a ResponseInterface is provided, also sets the HTTP Link header.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Preload`**
+  - **`Phalcon\Html\Helper\Preload`**
 
 `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperpreload-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"ResponseInterface|null","name":"response","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#htmlhelperpreload-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"href","default":null},{"type":"string","name":"type","default":"\"style\""},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
+- `public __construct(EscaperInterface $escaper, ResponseInterface|null $response = null)`
+
+- `public __invoke(string $href, string $type = "style", array $attributes = []): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="response" type="ResponseInterface|null" default="null">
-</ApiItem>
+- `protected ResponseInterface|null $response = null`
 
 ### Methods
 
@@ -3133,8 +3003,8 @@ If a ResponseInterface is provided, also sets the HTTP Link header.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-ResponseInterface|null $response = null
+    EscaperInterface $escaper,
+    ResponseInterface|null $response = null
 );
 ```
 
@@ -3142,11 +3012,12 @@ ResponseInterface|null $response = null
 
 ```php
 public function __invoke(
-string $href,
-string $type = "style",
-array $attributes = []
+    string $href,
+    string $type = "style",
+    array $attributes = []
 ): string;
 ```
+
 
 ## Html\Helper\Script
 
@@ -3155,27 +3026,22 @@ Class
 Class Script
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- **`Phalcon\Html\Helper\Script`**
+  - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+    - **`Phalcon\Html\Helper\Script`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperscript-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"url","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"int","name":"position","default":"-1"}]}>
-Add an element to the list
-</ApiItem>
-<ApiItem href="#htmlhelperscript-begininternal" visibility="public" name="beginInternal" returnType="void" params={[]}>
-Begins capturing inline script content via output buffering. Pair
-</ApiItem>
-<ApiItem href="#htmlhelperscript-endinternal" visibility="public" name="endInternal" returnType="static" params={[{"type":"array","name":"attributes","default":"[]"},{"type":"int","name":"position","default":"-1"}]}>
-Closes an inline-script buffer opened by `beginInternal()` and adds
-</ApiItem>
-<ApiItem href="#htmlhelperscript-getattributes" visibility="protected" name="getAttributes" returnType="array" params={[{"type":"string","name":"url","default":null},{"type":"array","name":"attributes","default":null}]}>
-Returns the necessary attributes
-</ApiItem>
-<ApiItem href="#htmlhelperscript-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
+- `public add(string $url, array $attributes = [], int $position = -1): static` — Add an element to the list
+
+- `public beginInternal(): void` — Begins capturing inline script content via output buffering. Pair
+
+- `public endInternal(array $attributes = [], int $position = -1): static` — Closes an inline-script buffer opened by `beginInternal()` and adds
+
+- `protected getAttributes(string $url, array $attributes): array` — Returns the necessary attributes
+
+- `protected getTag(): string`
 
 ### Methods
 
@@ -3183,9 +3049,9 @@ Returns the necessary attributes
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -3205,8 +3071,8 @@ markup as a `<script>...</script>` block in the asset stack.
 
 ```php
 public function endInternal(
-array $attributes = [],
-int $position = -1
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -3219,8 +3085,8 @@ is treated as raw HTML (it is JavaScript, not user-supplied text).
 
 ```php
 protected function getAttributes(
-string $url,
-array $attributes
+    string $url,
+    array $attributes
 ): array;
 ```
 
@@ -3232,6 +3098,7 @@ Returns the necessary attributes
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Style
 
 Class
@@ -3239,25 +3106,21 @@ Class
 Class Style
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- **`Phalcon\Html\Helper\Style`**
-- [`Phalcon\Html\Helper\Link`](#htmlhelperlink)
+  - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+    - **`Phalcon\Html\Helper\Style`**
+      - [`Phalcon\Html\Helper\Link`](#htmlhelperlink)
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperstyle-add" visibility="public" name="add" returnType="static" params={[{"type":"string","name":"url","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"int","name":"position","default":"-1"}]}>
-Add an element to the list
-</ApiItem>
-<ApiItem href="#htmlhelperstyle-setstyle" visibility="public" name="setStyle" returnType="static" params={[{"type":"bool","name":"flag","default":null}]}>
-Sets if this is a style or link tag
-</ApiItem>
-<ApiItem href="#htmlhelperstyle-getattributes" visibility="protected" name="getAttributes" returnType="array" params={[{"type":"string","name":"url","default":null},{"type":"array","name":"attributes","default":null}]}>
-Returns the necessary attributes
-</ApiItem>
-<ApiItem href="#htmlhelperstyle-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
+- `public add(string $url, array $attributes = [], int $position = -1): static` — Add an element to the list
+
+- `public setStyle(bool $flag): static` — Sets if this is a style or link tag
+
+- `protected getAttributes(string $url, array $attributes): array` — Returns the necessary attributes
+
+- `protected getTag(): string`
 
 ### Methods
 
@@ -3265,9 +3128,9 @@ Returns the necessary attributes
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -3285,8 +3148,8 @@ Sets if this is a style or link tag
 
 ```php
 protected function getAttributes(
-string $url,
-array $attributes
+    string $url,
+    array $attributes
 ): array;
 ```
 
@@ -3298,6 +3161,7 @@ Returns the necessary attributes
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Tag
 
 Class
@@ -3308,14 +3172,13 @@ use `Element` instead. For self-closing void tags (img, br, hr, etc.)
 use `VoidTag`.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Tag`**
+  - **`Phalcon\Html\Helper\Tag`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelpertag-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
+- `public __invoke(string $name, array $attributes = []): string`
 
 ### Methods
 
@@ -3323,10 +3186,11 @@ use `VoidTag`.
 
 ```php
 public function __invoke(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
+
 
 ## Html\Helper\Title
 
@@ -3335,47 +3199,37 @@ Class
 Class Title
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Title`**
+  - **`Phalcon\Html\Helper\Title`**
 
 `Phalcon\Html\Exception`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelpertitle-__invoke" visibility="public" name="__invoke" returnType="static" params={[{"type":"string","name":"indent","default":"\"    \""},{"type":"string|null","name":"delimiter","default":"null"}]}>
-Sets the separator and returns the object back
-</ApiItem>
-<ApiItem href="#htmlhelpertitle-__tostring" visibility="public" name="__toString" returnType="" params={[]}>
-Returns the title tags
-</ApiItem>
-<ApiItem href="#htmlhelpertitle-append" visibility="public" name="append" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Appends text to current document title
-</ApiItem>
-<ApiItem href="#htmlhelpertitle-get" visibility="public" name="get" returnType="string" params={[]}>
-Returns the title
-</ApiItem>
-<ApiItem href="#htmlhelpertitle-prepend" visibility="public" name="prepend" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Prepends text to current document title
-</ApiItem>
-<ApiItem href="#htmlhelpertitle-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"text","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Sets the title
-</ApiItem>
-<ApiItem href="#htmlhelpertitle-setseparator" visibility="public" name="setSeparator" returnType="static" params={[{"type":"string","name":"separator","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Sets the separator
-</ApiItem>
+- `public __invoke(string $indent = "    ", string|null $delimiter = null): static` — Sets the separator and returns the object back
+
+- `public __toString()` — Returns the title tags
+
+- `public append(string $text, bool $raw = false): static` — Appends text to current document title
+
+- `public get(): string` — Returns the title
+
+- `public prepend(string $text, bool $raw = false): static` — Prepends text to current document title
+
+- `public set(string $text, bool $raw = false): static` — Sets the title
+
+- `public setSeparator(string $separator, bool $raw = false): static` — Sets the separator
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="append" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prepend" type="array" default="[]">
-Untyped on purpose. A typed `array` default is shared by all instances
-and `prepend()` mutates it in place, which corrupts the heap. See
-team/Planning/2026-08-20-zephir-typed-array-property-shared-default.md
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="separator" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="title" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected array $append = []`
+
+- `protected array $prepend = []` — Untyped on purpose. A typed `array` default is shared by all instances
+  and `prepend()` mutates it in place, which corrupts the heap. See
+  team/Planning/2026-08-20-zephir-typed-array-property-shared-default.md
+
+- `protected string $separator = ""`
+
+- `protected string $title = ""`
 
 ### Methods
 
@@ -3383,8 +3237,8 @@ team/Planning/2026-08-20-zephir-typed-array-property-shared-default.md
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null
+    string $indent = "    ",
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -3402,8 +3256,8 @@ Returns the title tags
 
 ```php
 public function append(
-string $text,
-bool $raw = false
+    string $text,
+    bool $raw = false
 ): static;
 ```
 
@@ -3421,8 +3275,8 @@ Returns the title
 
 ```php
 public function prepend(
-string $text,
-bool $raw = false
+    string $text,
+    bool $raw = false
 ): static;
 ```
 
@@ -3432,8 +3286,8 @@ Prepends text to current document title
 
 ```php
 public function set(
-string $text,
-bool $raw = false
+    string $text,
+    bool $raw = false
 ): static;
 ```
 
@@ -3443,12 +3297,13 @@ Sets the title
 
 ```php
 public function setSeparator(
-string $separator,
-bool $raw = false
+    string $separator,
+    bool $raw = false
 ): static;
 ```
 
 Sets the separator
+
 
 ## Html\Helper\Ul
 
@@ -3457,14 +3312,13 @@ Class
 Class Ul
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
-- **`Phalcon\Html\Helper\Ul`**
+  - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+    - [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
+      - **`Phalcon\Html\Helper\Ul`**
 
 ### Method Summary
 
-<ApiItem href="#htmlhelperul-gettag" visibility="protected" name="getTag" returnType="string" params={[]}>
-</ApiItem>
+- `protected getTag(): string`
 
 ### Methods
 
@@ -3473,6 +3327,7 @@ Class Ul
 ```php
 protected function getTag(): string;
 ```
+
 
 ## Html\Helper\VoidTag
 
@@ -3483,14 +3338,13 @@ without a dedicated helper. The trailing `/` is emitted only for XHTML
 doctypes, matching the `Input/AbstractInput::__toString` convention.
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\VoidTag`**
+  - **`Phalcon\Html\Helper\VoidTag`**
 
 `Phalcon\Contracts\Html\HtmlTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmlhelpervoidtag-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-</ApiItem>
+- `public __invoke(string $name, array $attributes = []): string`
 
 ### Methods
 
@@ -3498,61 +3352,54 @@ doctypes, matching the `Input/AbstractInput::__toString` convention.
 
 ```php
 public function __invoke(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
+
 
 ## Html\Link\AbstractLink
 
 Abstract
 
 - **`Phalcon\Html\Link\AbstractLink`**
-- [`Phalcon\Html\Link\Link`](#htmllinklink)
+  - [`Phalcon\Html\Link\Link`](#htmllinklink)
 
 `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
-<ApiItem href="#htmllinkabstractlink-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"rel","default":"\"\""},{"type":"string","name":"href","default":"\"\""},{"type":"array","name":"attributes","default":"[]"}]}>
-Link constructor.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dogetattributes" visibility="protected" name="doGetAttributes" returnType="array" params={[]}>
-Returns a list of attributes that describe the target URI.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dogethref" visibility="protected" name="doGetHref" returnType="string" params={[]}>
-Returns the target of the link.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dogetrels" visibility="protected" name="doGetRels" returnType="array" params={[]}>
-Returns the relationship type(s) of the link.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-doistemplated" visibility="protected" name="doIsTemplated" returnType="bool" params={[]}>
-Returns whether this is a templated link. True if this link object is
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dowithattribute" visibility="protected" name="doWithAttribute" returnType="static" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dowithhref" visibility="protected" name="doWithHref" returnType="static" params={[{"type":"string","name":"href","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dowithrel" visibility="protected" name="doWithRel" returnType="static" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dowithoutattribute" visibility="protected" name="doWithoutAttribute" returnType="static" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-dowithoutrel" visibility="protected" name="doWithoutRel" returnType="static" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmllinkabstractlink-hrefistemplated" visibility="protected" name="hrefIsTemplated" returnType="bool" params={[{"type":"string","name":"href","default":null}]}>
-Determines if a href is a templated link or not.
-</ApiItem>
+- `public __construct(string $rel = "", string $href = "", array $attributes = [])` — Link constructor.
+
+- `protected doGetAttributes(): array` — Returns a list of attributes that describe the target URI.
+
+- `protected doGetHref(): string` — Returns the target of the link.
+
+- `protected doGetRels(): array` — Returns the relationship type(s) of the link.
+
+- `protected doIsTemplated(): bool` — Returns whether this is a templated link. True if this link object is
+
+- `protected doWithAttribute(string $key, mixed $value): static`
+
+- `protected doWithHref(string $href): static`
+
+- `protected doWithRel(string $key): static`
+
+- `protected doWithoutAttribute(string $key): static`
+
+- `protected doWithoutRel(string $key): static`
+
+- `protected hrefIsTemplated(string $href): bool` — Determines if a href is a templated link or not.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="Collection" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="href" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rels" type="Collection" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="templated" type="bool" default="false">
-</ApiItem>
+- `protected Collection $attributes`
+
+- `protected string $href = ""`
+
+- `protected Collection $rels`
+
+- `protected bool $templated = false`
 
 ### Methods
 
@@ -3560,9 +3407,9 @@ Determines if a href is a templated link or not.
 
 ```php
 public function __construct(
-string $rel = "",
-string $href = "",
-array $attributes = []
+    string $rel = "",
+    string $href = "",
+    array $attributes = []
 );
 ```
 
@@ -3620,8 +3467,8 @@ templated, False otherwise.
 
 ```php
 protected function doWithAttribute(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 
@@ -3659,40 +3506,33 @@ Determines if a href is a templated link or not.
 
 @see https://tools.ietf.org/html/rfc6570
 
+
 ## Html\Link\AbstractLinkProvider
 
 Abstract
 
 - **`Phalcon\Html\Link\AbstractLinkProvider`**
-- [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
+  - [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
 
 `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmllinkabstractlinkprovider-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"links","default":"[]"}]}>
-LinkProvider constructor.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlinkprovider-dogetlinks" visibility="protected" name="doGetLinks" returnType="array" params={[]}>
-Returns an iterable of LinkInterface objects.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlinkprovider-dogetlinksbyrel" visibility="protected" name="doGetLinksByRel" returnType="array" params={[{"type":"string","name":"rel","default":null}]}>
-Returns an iterable of LinkInterface objects that have a specific
-</ApiItem>
-<ApiItem href="#htmllinkabstractlinkprovider-dowithlink" visibility="protected" name="doWithLink" returnType="static" params={[{"type":"mixed","name":"link","default":null}]}>
-Returns an instance with the specified link included.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlinkprovider-dowithoutlink" visibility="protected" name="doWithoutLink" returnType="static" params={[{"type":"mixed","name":"link","default":null}]}>
-Returns an instance with the specified link removed.
-</ApiItem>
-<ApiItem href="#htmllinkabstractlinkprovider-getkey" visibility="protected" name="getKey" returnType="string" params={[{"type":"mixed","name":"link","default":null}]}>
-Returns the object hash key
-</ApiItem>
+- `public __construct(array $links = [])` — LinkProvider constructor.
+
+- `protected doGetLinks(): array` — Returns an iterable of LinkInterface objects.
+
+- `protected doGetLinksByRel(string $rel): array` — Returns an iterable of LinkInterface objects that have a specific
+
+- `protected doWithLink(mixed $link): static` — Returns an instance with the specified link included.
+
+- `protected doWithoutLink(mixed $link): static` — Returns an instance with the specified link removed.
+
+- `protected getKey(mixed $link): string` — Returns the object hash key
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="links" type="array" default="[]">
-</ApiItem>
+- `protected array $links = []`
 
 ### Methods
 
@@ -3763,6 +3603,7 @@ protected function getKey( mixed $link ): string;
 
 Returns the object hash key
 
+
 ## Html\Link\EvolvableLink
 
 Class
@@ -3770,28 +3611,22 @@ Class
 Class Phalcon\Html\Link\EvolvableLink
 
 - [`Phalcon\Html\Link\AbstractLink`](#htmllinkabstractlink)
-- [`Phalcon\Html\Link\Link`](#htmllinklink)
-- **`Phalcon\Html\Link\EvolvableLink`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
+  - [`Phalcon\Html\Link\Link`](#htmllinklink)
+    - **`Phalcon\Html\Link\EvolvableLink`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
 
 `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmllinkevolvablelink-withattribute" visibility="public" name="withAttribute" returnType="static" params={[{"type":"mixed","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Returns an instance with the specified attribute added.
-</ApiItem>
-<ApiItem href="#htmllinkevolvablelink-withhref" visibility="public" name="withHref" returnType="static" params={[{"type":"string","name":"href","default":null}]}>
-Returns an instance with the specified href.
-</ApiItem>
-<ApiItem href="#htmllinkevolvablelink-withrel" visibility="public" name="withRel" returnType="static" params={[{"type":"string","name":"rel","default":null}]}>
-Returns an instance with the specified relationship included.
-</ApiItem>
-<ApiItem href="#htmllinkevolvablelink-withoutattribute" visibility="public" name="withoutAttribute" returnType="static" params={[{"type":"string","name":"attribute","default":null}]}>
-Returns an instance with the specified attribute excluded.
-</ApiItem>
-<ApiItem href="#htmllinkevolvablelink-withoutrel" visibility="public" name="withoutRel" returnType="static" params={[{"type":"string","name":"rel","default":null}]}>
-Returns an instance with the specified relationship excluded.
-</ApiItem>
+- `public withAttribute(mixed $attribute, mixed $value): static` — Returns an instance with the specified attribute added.
+
+- `public withHref(string $href): static` — Returns an instance with the specified href.
+
+- `public withRel(string $rel): static` — Returns an instance with the specified relationship included.
+
+- `public withoutAttribute(string $attribute): static` — Returns an instance with the specified attribute excluded.
+
+- `public withoutRel(string $rel): static` — Returns an instance with the specified relationship excluded.
 
 ### Methods
 
@@ -3799,8 +3634,8 @@ Returns an instance with the specified relationship excluded.
 
 ```php
 public function withAttribute(
-mixed $attribute,
-mixed $value
+    mixed $attribute,
+    mixed $value
 ): static;
 ```
 
@@ -3853,6 +3688,7 @@ Returns an instance with the specified relationship excluded.
 If the specified rel is not present, this method MUST return
 normally without errors.
 
+
 ## Html\Link\EvolvableLinkProvider
 
 Class
@@ -3860,19 +3696,16 @@ Class
 Class Phalcon\Html\Link\EvolvableLinkProvider
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
-- [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
-- **`Phalcon\Html\Link\EvolvableLinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
+  - [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
+    - **`Phalcon\Html\Link\EvolvableLinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
 
 `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface` · `Phalcon\Html\Link\Interfaces\LinkInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmllinkevolvablelinkprovider-withlink" visibility="public" name="withLink" returnType="static" params={[{"type":"LinkInterface","name":"link","default":null}]}>
-Returns an instance with the specified link included.
-</ApiItem>
-<ApiItem href="#htmllinkevolvablelinkprovider-withoutlink" visibility="public" name="withoutLink" returnType="static" params={[{"type":"LinkInterface","name":"link","default":null}]}>
-Returns an instance with the specified link removed.
-</ApiItem>
+- `public withLink(LinkInterface $link): static` — Returns an instance with the specified link included.
+
+- `public withoutLink(LinkInterface $link): static` — Returns an instance with the specified link removed.
 
 ### Methods
 
@@ -3900,6 +3733,7 @@ If the specified link is not present, this method MUST return normally
 without errors. The link is present if $link is === identical to a link
 object already in the collection.
 
+
 ## Html\Link\Interfaces\EvolvableLinkInterface
 
 Interface
@@ -3907,25 +3741,19 @@ Interface
 An evolvable link value object.
 
 - [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
-- **`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`**
+  - **`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`**
 
 ### Method Summary
 
-<ApiItem href="#htmllinkinterfacesevolvablelinkinterface-withattribute" visibility="public" name="withAttribute" returnType="EvolvableLinkInterface" params={[{"type":"string","name":"attribute","default":null},{"type":"string","name":"value","default":null}]}>
-Returns an instance with the specified attribute added.
-</ApiItem>
-<ApiItem href="#htmllinkinterfacesevolvablelinkinterface-withhref" visibility="public" name="withHref" returnType="EvolvableLinkInterface" params={[{"type":"string","name":"href","default":null}]}>
-Returns an instance with the specified href.
-</ApiItem>
-<ApiItem href="#htmllinkinterfacesevolvablelinkinterface-withrel" visibility="public" name="withRel" returnType="EvolvableLinkInterface" params={[{"type":"string","name":"rel","default":null}]}>
-Returns an instance with the specified relationship included.
-</ApiItem>
-<ApiItem href="#htmllinkinterfacesevolvablelinkinterface-withoutattribute" visibility="public" name="withoutAttribute" returnType="EvolvableLinkInterface" params={[{"type":"string","name":"attribute","default":null}]}>
-Returns an instance with the specified attribute excluded.
-</ApiItem>
-<ApiItem href="#htmllinkinterfacesevolvablelinkinterface-withoutrel" visibility="public" name="withoutRel" returnType="EvolvableLinkInterface" params={[{"type":"string","name":"rel","default":null}]}>
-Returns an instance with the specified relationship excluded.
-</ApiItem>
+- `public withAttribute(string $attribute, string $value): EvolvableLinkInterface` — Returns an instance with the specified attribute added.
+
+- `public withHref(string $href): EvolvableLinkInterface` — Returns an instance with the specified href.
+
+- `public withRel(string $rel): EvolvableLinkInterface` — Returns an instance with the specified relationship included.
+
+- `public withoutAttribute(string $attribute): EvolvableLinkInterface` — Returns an instance with the specified attribute excluded.
+
+- `public withoutRel(string $rel): EvolvableLinkInterface` — Returns an instance with the specified relationship excluded.
 
 ### Methods
 
@@ -3933,8 +3761,8 @@ Returns an instance with the specified relationship excluded.
 
 ```php
 public function withAttribute(
-string $attribute,
-string $value
+    string $attribute,
+    string $value
 ): EvolvableLinkInterface;
 ```
 
@@ -3987,6 +3815,7 @@ Returns an instance with the specified relationship excluded.
 If the specified rel is already not present, this method MUST return
 normally without errors.
 
+
 ## Html\Link\Interfaces\EvolvableLinkProviderInterface
 
 Interface
@@ -3994,16 +3823,13 @@ Interface
 An evolvable link provider value object.
 
 - [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
-- **`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`**
+  - **`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`**
 
 ### Method Summary
 
-<ApiItem href="#htmllinkinterfacesevolvablelinkproviderinterface-withlink" visibility="public" name="withLink" returnType="EvolvableLinkProviderInterface" params={[{"type":"LinkInterface","name":"link","default":null}]}>
-Returns an instance with the specified link included.
-</ApiItem>
-<ApiItem href="#htmllinkinterfacesevolvablelinkproviderinterface-withoutlink" visibility="public" name="withoutLink" returnType="EvolvableLinkProviderInterface" params={[{"type":"LinkInterface","name":"link","default":null}]}>
-Returns an instance with the specified link removed.
-</ApiItem>
+- `public withLink(LinkInterface $link): EvolvableLinkProviderInterface` — Returns an instance with the specified link included.
+
+- `public withoutLink(LinkInterface $link): EvolvableLinkProviderInterface` — Returns an instance with the specified link removed.
 
 ### Methods
 
@@ -4031,6 +3857,7 @@ If the specified link is not present, this method MUST return normally
 without errors. The link is present if $link is === identical to a link
 object already in the collection.
 
+
 ## Html\Link\Interfaces\LinkInterface
 
 Interface
@@ -4038,24 +3865,19 @@ Interface
 A readable link object.
 
 - **`Phalcon\Html\Link\Interfaces\LinkInterface`**
-- [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
+  - [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
 
 `Phalcon\Contracts\Html\Link\LinkTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmllinkinterfaceslinkinterface-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Returns a list of attributes that describe the target URI.
-</ApiItem>
-<ApiItem href="#htmllinkinterfaceslinkinterface-gethref" visibility="public" name="getHref" returnType="string" params={[]}>
-Returns the target of the link.
-</ApiItem>
-<ApiItem href="#htmllinkinterfaceslinkinterface-getrels" visibility="public" name="getRels" returnType="array" params={[]}>
-Returns the relationship type(s) of the link.
-</ApiItem>
-<ApiItem href="#htmllinkinterfaceslinkinterface-istemplated" visibility="public" name="isTemplated" returnType="bool" params={[]}>
-Returns whether this is a templated link.
-</ApiItem>
+- `public getAttributes(): array` — Returns a list of attributes that describe the target URI.
+
+- `public getHref(): string` — Returns the target of the link.
+
+- `public getRels(): array` — Returns the relationship type(s) of the link.
+
+- `public isTemplated(): bool` — Returns whether this is a templated link.
 
 ### Methods
 
@@ -4106,6 +3928,7 @@ public function isTemplated(): bool;
 
 Returns whether this is a templated link.
 
+
 ## Html\Link\Interfaces\LinkProviderInterface
 
 Interface
@@ -4113,18 +3936,15 @@ Interface
 A link provider object.
 
 - **`Phalcon\Html\Link\Interfaces\LinkProviderInterface`**
-- [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
+  - [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
 
 `Phalcon\Contracts\Html\Link\LinkTypes`
 
 ### Method Summary
 
-<ApiItem href="#htmllinkinterfaceslinkproviderinterface-getlinks" visibility="public" name="getLinks" returnType="array" params={[]}>
-Returns an array of LinkInterface objects.
-</ApiItem>
-<ApiItem href="#htmllinkinterfaceslinkproviderinterface-getlinksbyrel" visibility="public" name="getLinksByRel" returnType="array" params={[{"type":"string","name":"rel","default":null}]}>
-Returns an array of LinkInterface objects that have a specific
-</ApiItem>
+- `public getLinks(): array` — Returns an array of LinkInterface objects.
+
+- `public getLinksByRel(string $rel): array` — Returns an array of LinkInterface objects that have a specific
 
 ### Methods
 
@@ -4145,6 +3965,7 @@ public function getLinksByRel( string $rel ): array;
 Returns an array of LinkInterface objects that have a specific
 relationship.
 
+
 ## Html\Link\Link
 
 Class
@@ -4152,25 +3973,20 @@ Class
 Class Phalcon\Html\Link\Link
 
 - [`Phalcon\Html\Link\AbstractLink`](#htmllinkabstractlink)
-- **`Phalcon\Html\Link\Link`** - implements [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
-- [`Phalcon\Html\Link\EvolvableLink`](#htmllinkevolvablelink)
+  - **`Phalcon\Html\Link\Link`** - implements [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
+    - [`Phalcon\Html\Link\EvolvableLink`](#htmllinkevolvablelink)
 
 `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmllinklink-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Returns a list of attributes that describe the target URI.
-</ApiItem>
-<ApiItem href="#htmllinklink-gethref" visibility="public" name="getHref" returnType="string" params={[]}>
-Returns the target of the link.
-</ApiItem>
-<ApiItem href="#htmllinklink-getrels" visibility="public" name="getRels" returnType="array" params={[]}>
-Returns the relationship type(s) of the link.
-</ApiItem>
-<ApiItem href="#htmllinklink-istemplated" visibility="public" name="isTemplated" returnType="bool" params={[]}>
-Returns whether this is a templated link.
-</ApiItem>
+- `public getAttributes(): array` — Returns a list of attributes that describe the target URI.
+
+- `public getHref(): string` — Returns the target of the link.
+
+- `public getRels(): array` — Returns the relationship type(s) of the link.
+
+- `public isTemplated(): bool` — Returns whether this is a templated link.
 
 ### Methods
 
@@ -4221,24 +4037,22 @@ public function isTemplated(): bool;
 
 Returns whether this is a templated link.
 
+
 ## Html\Link\LinkProvider
 
 Class
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
-- **`Phalcon\Html\Link\LinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
-- [`Phalcon\Html\Link\EvolvableLinkProvider`](#htmllinkevolvablelinkprovider)
+  - **`Phalcon\Html\Link\LinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
+    - [`Phalcon\Html\Link\EvolvableLinkProvider`](#htmllinkevolvablelinkprovider)
 
 `Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkProviderInterface`
 
 ### Method Summary
 
-<ApiItem href="#htmllinklinkprovider-getlinks" visibility="public" name="getLinks" returnType="array" params={[]}>
-Returns an iterable of LinkInterface objects.
-</ApiItem>
-<ApiItem href="#htmllinklinkprovider-getlinksbyrel" visibility="public" name="getLinksByRel" returnType="array" params={[{"type":"mixed","name":"rel","default":null}]}>
-Returns an iterable of LinkInterface objects that have a specific
-</ApiItem>
+- `public getLinks(): array` — Returns an iterable of LinkInterface objects.
+
+- `public getLinksByRel(mixed $rel): array` — Returns an iterable of LinkInterface objects that have a specific
 
 ### Methods
 
@@ -4266,6 +4080,7 @@ The iterable may be an array or any PHP \Traversable object. If no links
 with that relationship are available, an empty array or \Traversable
 MUST be returned.
 
+
 ## Html\Link\Serializer\Header
 
 Class
@@ -4278,9 +4093,7 @@ Class Phalcon\Http\Link\Serializer\Header
 
 ### Method Summary
 
-<ApiItem href="#htmllinkserializerheader-serialize" visibility="public" name="serialize" returnType="string|null" params={[{"type":"array","name":"links","default":null}]}>
-Serializes all the passed links to a HTTP link header
-</ApiItem>
+- `public serialize(array $links): string|null` — Serializes all the passed links to a HTTP link header
 
 ### Methods
 
@@ -4291,6 +4104,7 @@ public function serialize( array $links ): string|null;
 ```
 
 Serializes all the passed links to a HTTP link header
+
 
 ## Html\Link\Serializer\SerializerInterface
 
@@ -4304,9 +4118,7 @@ Class Phalcon\Http\Link\Serializer\SerializerInterface
 
 ### Method Summary
 
-<ApiItem href="#htmllinkserializerserializerinterface-serialize" visibility="public" name="serialize" returnType="string|null" params={[{"type":"array","name":"links","default":null}]}>
-Serializer method
-</ApiItem>
+- `public serialize(array $links): string|null` — Serializer method
 
 ### Methods
 
@@ -4317,6 +4129,7 @@ public function serialize( array $links ): string|null;
 ```
 
 Serializer method
+
 
 ## Html\TagFactory
 
@@ -4394,30 +4207,23 @@ so each entry in the @method block below describes the result of calling
 
 ### Method Summary
 
-<ApiItem href="#htmltagfactory-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
-Magic call to make the helper objects available as methods.
-</ApiItem>
-<ApiItem href="#htmltagfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface","name":"escaper","default":null},{"type":"array","name":"services","default":"[]"},{"type":"ResponseInterface|null","name":"response","default":"null"},{"type":"UrlInterface|null","name":"url","default":"null"}]}>
-TagFactory constructor.
-</ApiItem>
-<ApiItem href="#htmltagfactory-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#htmltagfactory-newinstance" visibility="public" name="newInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
-Create or return a cached instance of the helper.
-</ApiItem>
-<ApiItem href="#htmltagfactory-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"Closure","name":"definition","default":null}]}>
-Register a helper via a zero-argument Closure. The Closure is invoked on
-</ApiItem>
-<ApiItem href="#htmltagfactory-getdefaultservices" visibility="protected" name="getDefaultServices" returnType="array" params={[]}>
-Default service recipes. Every entry is a callable that returns a
-</ApiItem>
+- `public __call(string $name, array $arguments)` — Magic call to make the helper objects available as methods.
+
+- `public __construct(EscaperInterface $escaper, array $services = [], ResponseInterface|null $response = null, UrlInterface|null $url = null)` — TagFactory constructor.
+
+- `public has(string $name): bool`
+
+- `public newInstance(string $name): object` — Create or return a cached instance of the helper.
+
+- `public set(string $name, Closure $definition): void` — Register a helper via a zero-argument Closure. The Closure is invoked on
+
+- `protected getDefaultServices(): array` — Default service recipes. Every entry is a callable that returns a
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="factories" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="instances" type="array" default="[]">
-</ApiItem>
+- `protected array $factories = []`
+
+- `protected array $instances = []`
 
 ### Methods
 
@@ -4425,8 +4231,8 @@ Default service recipes. Every entry is a callable that returns a
 
 ```php
 public function __call(
-string $name,
-array $arguments
+    string $name,
+    array $arguments
 );
 ```
 
@@ -4436,10 +4242,10 @@ Magic call to make the helper objects available as methods.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-array $services = [],
-ResponseInterface|null $response = null,
-UrlInterface|null $url = null
+    EscaperInterface $escaper,
+    array $services = [],
+    ResponseInterface|null $response = null,
+    UrlInterface|null $url = null
 );
 ```
 
@@ -4466,8 +4272,8 @@ Create or return a cached instance of the helper.
 
 ```php
 public function set(
-string $name,
-Closure $definition
+    string $name,
+    Closure $definition
 ): void;
 ```
 

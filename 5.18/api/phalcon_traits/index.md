@@ -28,51 +28,95 @@ APCu based wrapper methods
 
 __Used by__ [`Phalcon\Storage\Adapter\Apcu`](/5.18/api/phalcon_storage/#storageadapterapcu)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcudec">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool|int</code>
+
 <code class="sig"><span class="sf">phpApcuDec</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$step</span><span class="sm"> = 1</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.apcu-dec.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcudelete">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool|array</code>
+
 <code class="sig"><span class="sf">phpApcuDelete</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.apcu-delete.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcuexists">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool|array</code>
+
 <code class="sig"><span class="sf">phpApcuExists</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.apcu-exists.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcufetch">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">mixed</code>
+
 <code class="sig"><span class="sf">phpApcuFetch</span>( <span class="st">mixed</span> <span class="sv">$key</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.apcu-fetch.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcuinc">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool|int</code>
+
 <code class="sig"><span class="sf">phpApcuInc</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$step</span><span class="sm"> = 1</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.apcu-inc.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcuiterator">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">\APCUIterator|bool</code>
+
 <code class="sig"><span class="sf">phpApcuIterator</span>( <span class="st">string</span> <span class="sv">$pattern</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/class.apcuiterator.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpapcutrait-phpapcustore">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool|array</code>
+
 <code class="sig"><span class="sf">phpApcuStore</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$payload</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$ttl</span><span class="sm"> = 0</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.apcu-store.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -83,8 +127,8 @@ __Used by__ [`Phalcon\Storage\Adapter\Apcu`](/5.18/api/phalcon_storage/#storagea
 
 ```php
 protected static function phpApcuDec(
-mixed $key,
-int $step = 1
+    mixed $key,
+    int $step = 1
 ): bool|int;
 ```
 
@@ -118,8 +162,8 @@ protected static function phpApcuFetch( mixed $key ): mixed;
 
 ```php
 protected static function phpApcuInc(
-mixed $key,
-int $step = 1
+    mixed $key,
+    int $step = 1
 ): bool|int;
 ```
 
@@ -137,13 +181,14 @@ protected static function phpApcuIterator( string $pattern ): \APCUIterator|bool
 
 ```php
 protected static function phpApcuStore(
-mixed $key,
-mixed $payload,
-int $ttl = 0
+    mixed $key,
+    mixed $payload,
+    int $ttl = 0
 ): bool|array;
 ```
 
 @link https://php.net/manual/en/function.apcu-store.php
+
 
 ## Traits\Php\Base64Trait
 
@@ -160,33 +205,49 @@ Base64 based wrapper methods
 
 __Used by__ [`Phalcon\Encryption\Crypt`](/5.18/api/phalcon_encryption/#encryptioncrypt) · [`Phalcon\Encryption\Security\JWT\Builder`](/5.18/api/phalcon_encryption/#encryptionsecurityjwtbuilder) · [`Phalcon\Encryption\Security\JWT\Token\Parser`](/5.18/api/phalcon_encryption/#encryptionsecurityjwttokenparser) · [`Phalcon\Storage\Serializer\Base64`](/5.18/api/phalcon_storage/#storageserializerbase64)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpbase64trait-dodecodeurl">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">doDecodeUrl</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Decode a Base64 URL string</span>
 </a>
+
 <a class="api-item" href="#traitsphpbase64trait-doencodeurl">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">doEncodeUrl</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
 <span class="desc">Encode a string in Base64 URL format</span>
 </a>
+
 <a class="api-item" href="#traitsphpbase64trait-phpbase64decode">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string|false</code>
+
 <code class="sig"><span class="sf">phpBase64Decode</span>(<span class="prm"><span class="st">string</span> <span class="sv">$input</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.base64-decode.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpbase64trait-phpbase64encode">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpBase64Encode</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.base64-encode.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -213,8 +274,8 @@ Encode a string in Base64 URL format
 
 ```php
 protected static function phpBase64Decode(
-string $input,
-bool $strict = false
+    string $input,
+    bool $strict = false
 ): string|false;
 ```
 
@@ -227,6 +288,7 @@ protected static function phpBase64Encode( string $input ): string;
 ```
 
 @link https://php.net/manual/en/function.base64-encode.php
+
 
 ## Traits\Php\FileTrait
 
@@ -243,63 +305,99 @@ File based wrapper methods
 
 __Used by__ [`Phalcon\Annotations\Adapter\Stream`](/5.18/api/phalcon_annotations/#annotationsadapterstream) · [`Phalcon\Assets\Asset`](/5.18/api/phalcon_assets/#assetsasset) · [`Phalcon\Assets\Collection`](/5.18/api/phalcon_assets/#assetscollection) · [`Phalcon\Assets\Manager`](/5.18/api/phalcon_assets/#assetsmanager) · [`Phalcon\Auth\Adapter\Stream`](/5.18/api/phalcon_auth/#authadapterstream) · [`Phalcon\Cli\Console`](/5.18/api/phalcon_cli/#cliconsole) · [`Phalcon\Config\Adapter\Json`](/5.18/api/phalcon_config/#configadapterjson) · [`Phalcon\Encryption\Security\Uuid\SysNodeProvider`](/5.18/api/phalcon_encryption/#encryptionsecurityuuidsysnodeprovider) · [`Phalcon\Forms\Loader\JsonLoader`](/5.18/api/phalcon_forms/#formsloaderjsonloader) · [`Phalcon\Http\Request`](/5.18/api/phalcon_http/#httprequest) · [`Phalcon\Image\Adapter\Gd`](/5.18/api/phalcon_image/#imageadaptergd) · [`Phalcon\Image\Adapter\Imagick`](/5.18/api/phalcon_image/#imageadapterimagick) · [`Phalcon\Logger\Adapter\Stream`](/5.18/api/phalcon_logger/#loggeradapterstream) · [`Phalcon\Mvc\Application`](/5.18/api/phalcon_mvc/#mvcapplication) · [`Phalcon\Mvc\Model\MetaData\Stream`](/5.18/api/phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\Router`](/5.18/api/phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\View`](/5.18/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/5.18/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Mvc\View\Simple`](/5.18/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnection`](/5.18/api/phalcon_queue/#queueadapterbeanstalkbeanstalkconnection) · [`Phalcon\Queue\Adapter\Stream\StreamContext`](/5.18/api/phalcon_queue/#queueadapterstreamstreamcontext) · [`Phalcon\Session\Adapter\Stream`](/5.18/api/phalcon_session/#sessionadapterstream) · [`Phalcon\Storage\Adapter\Stream`](/5.18/api/phalcon_storage/#storageadapterstream) · [`Phalcon\Translate\Adapter\Csv`](/5.18/api/phalcon_translate/#translateadaptercsv)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpfiletrait-phpfclose">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">phpFclose</span>( <span class="st">mixed</span> <span class="sv">$handle</span> )</code>
 <span class="desc">Closes an open file pointer</span>
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpfgetcsv">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|false</code>
 <code class="sig"><span class="sf">phpFgetCsv</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$stream</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$separator</span><span class="sm"> = &quot;,&quot;</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$enclosure</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$escape</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Gets line from file pointer and parse for CSV fields</span>
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpfileexists">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool</code>
+
 <code class="sig"><span class="sf">phpFileExists</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.file-exists.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpfilegetcontents">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">false|string</code>
+
 <code class="sig"><span class="sf">phpFileGetContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useIncludePath</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$offset</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = null</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.file-get-contents.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpfileputcontents">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">false|int</code>
+
 <code class="sig"><span class="sf">phpFilePutContents</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$flags</span><span class="sm"> = 0</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.file-put-contents.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpfopen">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">mixed</code>
+
 <code class="sig"><span class="sf">phpFopen</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$mode</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$useIncludePath</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.fopen.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpfwrite">
 <code class="vis vis-protected">protected</code>
 <code class="ret">false|int</code>
 <code class="sig"><span class="sf">phpFwrite</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$handle</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$length</span><span class="sm"> = null</span></span>)</code>
 <span class="desc">Binary-safe file write</span>
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpiswritable">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">phpIsWritable</span>( <span class="st">string</span> <span class="sv">$filename</span> )</code>
 <span class="desc">Tells whether the filename is writable</span>
 </a>
+
 <a class="api-item" href="#traitsphpfiletrait-phpunlink">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool</code>
+
 <code class="sig"><span class="sf">phpUnlink</span>(<span class="prm"><span class="st">string</span> <span class="sv">$filename</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$context</span><span class="sm"> = null</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.unlink.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -320,11 +418,11 @@ Closes an open file pointer
 
 ```php
 protected static function phpFgetCsv(
-mixed $stream,
-int $length = 0,
-string $separator = ",",
-mixed $enclosure = null,
-mixed $escape = null
+    mixed $stream,
+    int $length = 0,
+    string $separator = ",",
+    mixed $enclosure = null,
+    mixed $escape = null
 ): array|false;
 ```
 
@@ -344,11 +442,11 @@ protected static function phpFileExists( string $filename ): bool;
 
 ```php
 protected static function phpFileGetContents(
-string $filename,
-bool $useIncludePath = false,
-mixed $context = null,
-int $offset = 0,
-int $length = null
+    string $filename,
+    bool $useIncludePath = false,
+    mixed $context = null,
+    int $offset = 0,
+    int $length = null
 ): false|string;
 ```
 
@@ -358,10 +456,10 @@ int $length = null
 
 ```php
 protected static function phpFilePutContents(
-string $filename,
-mixed $data,
-int $flags = 0,
-mixed $context = null
+    string $filename,
+    mixed $data,
+    int $flags = 0,
+    mixed $context = null
 ): false|int;
 ```
 
@@ -371,10 +469,10 @@ mixed $context = null
 
 ```php
 protected static function phpFopen(
-string $filename,
-string $mode,
-bool $useIncludePath = false,
-mixed $context = null
+    string $filename,
+    string $mode,
+    bool $useIncludePath = false,
+    mixed $context = null
 ): mixed;
 ```
 
@@ -384,9 +482,9 @@ mixed $context = null
 
 ```php
 protected static function phpFwrite(
-mixed $handle,
-string $data,
-int $length = null
+    mixed $handle,
+    string $data,
+    int $length = null
 ): false|int;
 ```
 
@@ -408,12 +506,13 @@ Tells whether the filename is writable
 
 ```php
 protected static function phpUnlink(
-string $filename,
-mixed $context = null
+    string $filename,
+    mixed $context = null
 ): bool;
 ```
 
 @link https://php.net/manual/en/function.unlink.php
+
 
 ## Traits\Php\HashTrait
 
@@ -430,27 +529,47 @@ Hashing method wrappers
 
 __Used by__ [`Phalcon\Assets\Asset`](/5.18/api/phalcon_assets/#assetsasset) · [`Phalcon\Assets\Inline`](/5.18/api/phalcon_assets/#assetsinline) · [`Phalcon\Encryption\Crypt`](/5.18/api/phalcon_encryption/#encryptioncrypt) · [`Phalcon\Encryption\Security`](/5.18/api/phalcon_encryption/#encryptionsecurity) · [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](/5.18/api/phalcon_encryption/#encryptionsecurityjwtsignerhmac)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphphashtrait-phphash">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpHash</span>(<span class="prm"><span class="st">string</span> <span class="sv">$algorithm</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$binary</span><span class="sm"> = false</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.hash.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphphashtrait-phphashequals">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">bool</code>
+
 <code class="sig"><span class="sf">phpHashEquals</span>(<span class="prm"><span class="st">string</span> <span class="sv">$knownString</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$userString</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.hash-equals.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphphashtrait-phphashhmac">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpHashHmac</span>(<span class="prm"><span class="st">string</span> <span class="sv">$algorithm</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$key</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$binary</span><span class="sm"> = false</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.hash-hmac.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -461,9 +580,9 @@ __Used by__ [`Phalcon\Assets\Asset`](/5.18/api/phalcon_assets/#assetsasset) · [
 
 ```php
 protected static function phpHash(
-string $algorithm,
-string $data,
-bool $binary = false
+    string $algorithm,
+    string $data,
+    bool $binary = false
 ): string;
 ```
 
@@ -473,8 +592,8 @@ bool $binary = false
 
 ```php
 protected static function phpHashEquals(
-string $knownString,
-string $userString
+    string $knownString,
+    string $userString
 ): bool;
 ```
 
@@ -484,14 +603,15 @@ string $userString
 
 ```php
 protected static function phpHashHmac(
-string $algorithm,
-string $data,
-string $key,
-bool $binary = false
+    string $algorithm,
+    string $data,
+    string $key,
+    bool $binary = false
 ): string;
 ```
 
 @link https://php.net/manual/en/function.hash-hmac.php
+
 
 ## Traits\Php\HeaderTrait
 
@@ -507,6 +627,7 @@ Header based wrapper methods
 </div>
 
 __Used by__ [`Phalcon\Session\Manager`](/5.18/api/phalcon_session/#sessionmanager)
+
 
 ### Method Summary
 
@@ -533,6 +654,7 @@ Checks if or where headers have been sent
 
 @link https://php.net/manual/en/function.headers-sent.php
 
+
 ## Traits\Php\IgbinaryTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -548,20 +670,33 @@ Igbinary based wrapper methods
 
 __Used by__ [`Phalcon\Storage\Serializer\Igbinary`](/5.18/api/phalcon_storage/#storageserializerigbinary)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpigbinarytrait-phpigbinaryserialize">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string|null</code>
+
 <code class="sig"><span class="sf">phpIgbinarySerialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.igbinary-serialize.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpigbinarytrait-phpigbinaryunserialize">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="sig"><span class="sf">phpIgbinaryUnserialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.igbinary-unserialize.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -584,6 +719,7 @@ protected static function phpIgbinaryUnserialize( mixed $value );
 
 @link https://php.net/manual/en/function.igbinary-unserialize.php
 
+
 ## Traits\Php\InfoTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -598,6 +734,7 @@ Information method wrappers
 </div>
 
 __Used by__ [`Phalcon\Config\Adapter\Yaml`](/5.18/api/phalcon_config/#configadapteryaml) · [`Phalcon\Encryption\Crypt`](/5.18/api/phalcon_encryption/#encryptioncrypt) · [`Phalcon\Encryption\Security\Uuid\SysNodeProvider`](/5.18/api/phalcon_encryption/#encryptionsecurityuuidsysnodeprovider) · [`Phalcon\Filter\Validation\Validator\Confirmation`](/5.18/api/phalcon_filter/#filtervalidationvalidatorconfirmation) · [`Phalcon\Filter\Validation\Validator\File\MimeType`](/5.18/api/phalcon_filter/#filtervalidationvalidatorfilemimetype) · [`Phalcon\Filter\Validation\Validator\StringLength\Max`](/5.18/api/phalcon_filter/#filtervalidationvalidatorstringlengthmax) · [`Phalcon\Filter\Validation\Validator\StringLength\Min`](/5.18/api/phalcon_filter/#filtervalidationvalidatorstringlengthmin) · [`Phalcon\Forms\Loader\YamlLoader`](/5.18/api/phalcon_forms/#formsloaderyamlloader) · [`Phalcon\Http\Response`](/5.18/api/phalcon_http/#httpresponse) · [`Phalcon\Image\Adapter\Gd`](/5.18/api/phalcon_image/#imageadaptergd) · [`Phalcon\Mvc\View\Engine\Volt`](/5.18/api/phalcon_mvc/#mvcviewenginevolt) · [`Phalcon\Queue\Consumer\Worker`](/5.18/api/phalcon_queue/#queueconsumerworker) · [`Phalcon\Support\Debug\ReportBuilder`](/5.18/api/phalcon_support/#supportdebugreportbuilder) · [`Phalcon\Support\Helper\Arr\Group`](/5.18/api/phalcon_support/#supporthelperarrgroup) · [`Phalcon\Translate\Adapter\Gettext`](/5.18/api/phalcon_translate/#translateadaptergettext)
+
 
 ### Method Summary
 
@@ -640,6 +777,7 @@ Return true if the given function has been defined
 
 @link https://php.net/manual/en/function.function-exists.php
 
+
 ## Traits\Php\IniTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -652,6 +790,7 @@ Return true if the given function has been defined
 </div>
 
 __Used by__ [`Phalcon\Config\Adapter\Ini`](/5.18/api/phalcon_config/#configadapterini) · [`Phalcon\Session\Adapter\Stream`](/5.18/api/phalcon_session/#sessionadapterstream)
+
 
 ### Method Summary
 
@@ -690,8 +829,8 @@ __Used by__ [`Phalcon\Config\Adapter\Ini`](/5.18/api/phalcon_config/#configadapt
 
 ```php
 protected static function phpIniGet(
-string $input,
-string $defaultValue = ""
+    string $input,
+    string $defaultValue = ""
 ): string;
 ```
 
@@ -704,8 +843,8 @@ Gets the value of a configuration option
 
 ```php
 protected static function phpIniGetBool(
-string $input,
-bool $defaultValue = false
+    string $input,
+    bool $defaultValue = false
 ): bool;
 ```
 
@@ -718,8 +857,8 @@ Query a php.ini value and return it back as boolean
 
 ```php
 protected static function phpIniGetInt(
-string $input,
-int $defaultValue = 0
+    string $input,
+    int $defaultValue = 0
 ): int;
 ```
 
@@ -732,15 +871,16 @@ Query a php.ini value and return it back as integer
 
 ```php
 protected static function phpParseIniFile(
-string $filename,
-bool $processSections = false,
-int $scannerMode = 0
+    string $filename,
+    bool $processSections = false,
+    int $scannerMode = 0
 ): array|false;
 ```
 
 Parse a configuration file
 
 @link https://php.net/manual/en/function.parse-ini-file.php
+
 
 ## Traits\Php\MbCaseTrait
 
@@ -756,6 +896,7 @@ Multibyte case conversion wrapper method
 </div>
 
 __Used by__ [`Phalcon\Filter\Sanitize\Lower`](/5.18/api/phalcon_filter/#filtersanitizelower) · [`Phalcon\Filter\Sanitize\Upper`](/5.18/api/phalcon_filter/#filtersanitizeupper) · [`Phalcon\Filter\Sanitize\UpperWords`](/5.18/api/phalcon_filter/#filtersanitizeupperwords)
+
 
 ### Method Summary
 
@@ -776,14 +917,15 @@ __Used by__ [`Phalcon\Filter\Sanitize\Lower`](/5.18/api/phalcon_filter/#filtersa
 
 ```php
 protected static function phpMbConvertCase(
-string $input,
-int $mode
+    string $input,
+    int $mode
 ): string;
 ```
 
 Converts the case of a string using `mb_convert_case()`
 
 @link https://php.net/manual/en/function.mb-convert-case.php
+
 
 ## Traits\Php\MsgpackTrait
 
@@ -800,20 +942,33 @@ MessagePack based wrapper methods
 
 __Used by__ [`Phalcon\Storage\Serializer\Msgpack`](/5.18/api/phalcon_storage/#storageserializermsgpack)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpmsgpacktrait-phpmsgpackpack">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpMsgpackPack</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.msgpack-pack.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpmsgpacktrait-phpmsgpackunpack">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="sig"><span class="sf">phpMsgpackUnpack</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.msgpack-unpack.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -836,6 +991,7 @@ protected static function phpMsgpackUnpack( mixed $value );
 
 @link https://php.net/manual/en/function.msgpack-unpack.php
 
+
 ## Traits\Php\OpensslTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -851,20 +1007,33 @@ OpenSSL based wrapper methods
 
 __Used by__ [`Phalcon\Encryption\Crypt`](/5.18/api/phalcon_encryption/#encryptioncrypt)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpopenssltrait-phpopensslcipherivlength">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">int|bool</code>
+
 <code class="sig"><span class="sf">phpOpensslCipherIvLength</span>( <span class="st">string</span> <span class="sv">$cipher</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.openssl-cipher-iv-length.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpopenssltrait-phpopensslrandompseudobytes">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="sig"><span class="sf">phpOpensslRandomPseudoBytes</span>( <span class="st">int</span> <span class="sv">$length</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.openssl-random-pseudo-bytes.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -887,6 +1056,7 @@ protected static function phpOpensslRandomPseudoBytes( int $length );
 
 @link https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
 
+
 ## Traits\Php\SerializeTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -902,21 +1072,35 @@ PHP serialize/unserialize wrapper methods
 
 __Used by__ [`Phalcon\Storage\Serializer\Php`](/5.18/api/phalcon_storage/#storageserializerphp)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpserializetrait-phpserialize">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpSerialize</span>( <span class="st">mixed</span> <span class="sv">$value</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.serialize.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpserializetrait-phpunserialize">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">mixed</code>
+
 <code class="sig"><span class="sf">phpUnserialize</span>(<span class="prm"><span class="st">string</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$options</span><span class="sm"> = []</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.unserialize.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -935,12 +1119,13 @@ protected static function phpSerialize( mixed $value ): string;
 
 ```php
 protected static function phpUnserialize(
-string $data,
-array $options = []
+    string $data,
+    array $options = []
 ): mixed;
 ```
 
 @link https://php.net/manual/en/function.unserialize.php
+
 
 ## Traits\Php\UrlTrait
 
@@ -957,26 +1142,45 @@ URL based wrapper methods
 
 __Used by__ [`Phalcon\Html\Escaper\UrlEscaper`](/5.18/api/phalcon_html/#htmlescaperurlescaper) · [`Phalcon\Http\Response`](/5.18/api/phalcon_http/#httpresponse)
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#traitsphpurltrait-phpparseurl">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="sig"><span class="sf">phpParseUrl</span>(<span class="prm"><span class="st">string</span> <span class="sv">$url</span>,</span><span class="prm"><span class="st">int</span> <span class="sv">$component</span><span class="sm"> = -1</span></span>)</code>
+
 <span class="desc">@link https://php.net/manual/en/function.parse-url.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpurltrait-phprawurldecode">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpRawUrlDecode</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.rawurldecode.php</span>
+
 </a>
+
 <a class="api-item" href="#traitsphpurltrait-phprawurlencode">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">phpRawUrlEncode</span>( <span class="st">string</span> <span class="sv">$input</span> )</code>
+
 <span class="desc">@link https://php.net/manual/en/function.rawurlencode.php</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -987,8 +1191,8 @@ __Used by__ [`Phalcon\Html\Escaper\UrlEscaper`](/5.18/api/phalcon_html/#htmlesca
 
 ```php
 protected static function phpParseUrl(
-string $url,
-int $component = -1
+    string $url,
+    int $component = -1
 );
 ```
 
@@ -1010,6 +1214,7 @@ protected static function phpRawUrlEncode( string $input ): string;
 
 @link https://php.net/manual/en/function.rawurlencode.php
 
+
 ## Traits\Php\YamlTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -1024,6 +1229,7 @@ YAML based wrapper methods
 </div>
 
 __Used by__ [`Phalcon\Config\Adapter\Yaml`](/5.18/api/phalcon_config/#configadapteryaml)
+
 
 ### Method Summary
 
@@ -1043,15 +1249,16 @@ __Used by__ [`Phalcon\Config\Adapter\Yaml`](/5.18/api/phalcon_config/#configadap
 
 ```php
 protected static function phpYamlParseFile(
-string $filename,
-int $pos = 0,
-array $callbacks = []
+    string $filename,
+    int $pos = 0,
+    array $callbacks = []
 );
 ```
 
 Parse a YAML stream from a file
 
 @link https://php.net/manual/en/function.yaml-parse-file.php
+
 
 ## Traits\Support\Helper\Arr\FilterTrait
 
@@ -1067,6 +1274,7 @@ Filters a collection using array_filter with an optional callable
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Arr\AbstractArr`](/5.18/api/phalcon_support/#supporthelperarrabstractarr)
+
 
 ### Method Summary
 
@@ -1087,12 +1295,13 @@ __Used by__ [`Phalcon\Support\Helper\Arr\AbstractArr`](/5.18/api/phalcon_support
 
 ```php
 protected static function toFilter(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): array;
 ```
 
 Helper method to filter the collection
+
 
 ## Traits\Support\Helper\Arr\GetTrait
 
@@ -1110,6 +1319,7 @@ It also allows for casting the returned value to a specific type using
 </div>
 
 __Used by__ [`Phalcon\ADR\Middleware\CorsMiddleware`](/5.18/api/phalcon_adr/#adrmiddlewarecorsmiddleware) · [`Phalcon\Annotations\AnnotationsFactory`](/5.18/api/phalcon_annotations/#annotationsannotationsfactory) · [`Phalcon\Db\Adapter\PdoFactory`](/5.18/api/phalcon_db/#dbadapterpdofactory) · [`Phalcon\Filter\Validation\Validator\File`](/5.18/api/phalcon_filter/#filtervalidationvalidatorfile) · [`Phalcon\Http\Cookie`](/5.18/api/phalcon_http/#httpcookie) · [`Phalcon\Http\Request\File`](/5.18/api/phalcon_http/#httprequestfile) · [`Phalcon\Image\ImageFactory`](/5.18/api/phalcon_image/#imageimagefactory) · [`Phalcon\Logger\LoggerFactory`](/5.18/api/phalcon_logger/#loggerloggerfactory) · [`Phalcon\Mvc\Model\MetaData`](/5.18/api/phalcon_mvc/#mvcmodelmetadata) · [`Phalcon\Session\Adapter\AbstractAdapter`](/5.18/api/phalcon_session/#sessionadapterabstractadapter) · [`Phalcon\Session\Adapter\Stream`](/5.18/api/phalcon_session/#sessionadapterstream) · [`Phalcon\Session\Manager`](/5.18/api/phalcon_session/#sessionmanager) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/5.18/api/phalcon_storage/#storageadapterabstractadapter) · [`Phalcon\Support\Debug`](/5.18/api/phalcon_support/#supportdebug) · [`Phalcon\Support\Debug\ReportBuilder`](/5.18/api/phalcon_support/#supportdebugreportbuilder) · [`Phalcon\Support\Helper\Arr\Get`](/5.18/api/phalcon_support/#supporthelperarrget)
+
 
 ### Method Summary
 
@@ -1129,12 +1339,13 @@ __Used by__ [`Phalcon\ADR\Middleware\CorsMiddleware`](/5.18/api/phalcon_adr/#adr
 
 ```php
 protected static function getArrVal(
-array $collection,
-mixed $index,
-mixed $defaultValue = null,
-string $cast = null
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    string $cast = null
 ): mixed;
 ```
+
 
 ## Traits\Support\Helper\Json\DecodeTrait
 
@@ -1152,6 +1363,7 @@ helper class that wraps this trait.
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Json\Decode`](/5.18/api/phalcon_support/#supporthelperjsondecode)
+
 
 ### Method Summary
 
@@ -1171,14 +1383,15 @@ __Used by__ [`Phalcon\Support\Helper\Json\Decode`](/5.18/api/phalcon_support/#su
 
 ```php
 protected static function toDecode(
-string $data,
-bool $associative = false,
-int $depth = 512,
-int $options = 79
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 79
 );
 ```
 
 Decodes a string using `json_decode`
+
 
 ## Traits\Support\Helper\Json\EncodeTrait
 
@@ -1196,6 +1409,7 @@ class that wraps this trait.
 </div>
 
 __Used by__ [`Phalcon\Logger\Formatter\Json`](/5.18/api/phalcon_logger/#loggerformatterjson) · [`Phalcon\Support\Helper\Json\Encode`](/5.18/api/phalcon_support/#supporthelperjsonencode)
+
 
 ### Method Summary
 
@@ -1216,13 +1430,14 @@ __Used by__ [`Phalcon\Logger\Formatter\Json`](/5.18/api/phalcon_logger/#loggerfo
 
 ```php
 protected static function toEncode(
-mixed $data,
-int $options = 79,
-int $depth = 512
+    mixed $data,
+    int $options = 79,
+    int $depth = 512
 ): string;
 ```
 
 Encodes data using `json_encode`
+
 
 ## Traits\Support\Helper\Str\CamelizeTrait
 
@@ -1238,6 +1453,7 @@ Converts strings to upperCamelCase or lowerCamelCase
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Str\Camelize`](/5.18/api/phalcon_support/#supporthelperstrcamelize)
+
 
 ### Method Summary
 
@@ -1257,11 +1473,12 @@ __Used by__ [`Phalcon\Support\Helper\Str\Camelize`](/5.18/api/phalcon_support/#s
 
 ```php
 public static function toCamelize(
-string $text,
-string $delimiters = "-_",
-bool $lowerFirst = false
+    string $text,
+    string $delimiters = "-_",
+    bool $lowerFirst = false
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\DirFromFileTrait
 
@@ -1278,6 +1495,7 @@ directory structure with the filename in the end
 </div>
 
 __Used by__ [`Phalcon\Storage\Adapter\Stream`](/5.18/api/phalcon_storage/#storageadapterstream) · [`Phalcon\Support\Helper\Str\DirFromFile`](/5.18/api/phalcon_support/#supporthelperstrdirfromfile)
+
 
 ### Method Summary
 
@@ -1297,10 +1515,11 @@ __Used by__ [`Phalcon\Storage\Adapter\Stream`](/5.18/api/phalcon_storage/#storag
 
 ```php
 protected static function toDirFromFile(
-string $file,
-bool $filesystemSafe = false
+    string $file,
+    bool $filesystemSafe = false
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\DirSeparatorTrait
 
@@ -1317,6 +1536,7 @@ DIRECTORY_SEPARATOR
 </div>
 
 __Used by__ [`Phalcon\Mvc\View`](/5.18/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Simple`](/5.18/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Session\Adapter\Stream`](/5.18/api/phalcon_session/#sessionadapterstream) · [`Phalcon\Storage\Adapter\Stream`](/5.18/api/phalcon_storage/#storageadapterstream) · [`Phalcon\Support\Helper\Str\DirSeparator`](/5.18/api/phalcon_support/#supporthelperstrdirseparator)
+
 
 ### Method Summary
 
@@ -1338,6 +1558,7 @@ __Used by__ [`Phalcon\Mvc\View`](/5.18/api/phalcon_mvc/#mvcview) · [`Phalcon\Mv
 protected static function toDirSeparator( string $directory ): string;
 ```
 
+
 ## Traits\Support\Helper\Str\EndsWithTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -1352,6 +1573,7 @@ Check if a string ends with a given string
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support/#supporthelperstrabstractstr)
+
 
 ### Method Summary
 
@@ -1371,11 +1593,12 @@ __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support
 
 ```php
 protected static function toEndsWith(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Traits\Support\Helper\Str\InterpolateTrait
 
@@ -1393,6 +1616,7 @@ Interpolates context values into the message placeholders
 </div>
 
 __Used by__ [`Phalcon\Logger\Formatter\AbstractFormatter`](/5.18/api/phalcon_logger/#loggerformatterabstractformatter) · [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support/#supporthelperstrabstractstr) · [`Phalcon\Support\Helper\Str\Interpolate`](/5.18/api/phalcon_support/#supporthelperstrinterpolate) · [`Phalcon\Translate\Interpolator\AssociativeArray`](/5.18/api/phalcon_translate/#translateinterpolatorassociativearray)
+
 
 ### Method Summary
 
@@ -1412,12 +1636,13 @@ __Used by__ [`Phalcon\Logger\Formatter\AbstractFormatter`](/5.18/api/phalcon_log
 
 ```php
 protected static function toInterpolate(
-string $input,
-array $context = [],
-string $left = "%",
-string $right = "%"
+    string $input,
+    array $context = [],
+    string $left = "%",
+    string $right = "%"
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\LowerTrait
 
@@ -1433,6 +1658,7 @@ Lowercases a string using mbstring
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support/#supporthelperstrabstractstr)
+
 
 ### Method Summary
 
@@ -1452,10 +1678,11 @@ __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support
 
 ```php
 protected static function toLower(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\StartsWithTrait
 
@@ -1471,6 +1698,7 @@ Check if a string starts with a given string
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support/#supporthelperstrabstractstr)
+
 
 ### Method Summary
 
@@ -1490,11 +1718,12 @@ __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support
 
 ```php
 protected static function toStartsWith(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Traits\Support\Helper\Str\UncamelizeTrait
 
@@ -1510,6 +1739,7 @@ Converts strings to non camelized style
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Str\Uncamelize`](/5.18/api/phalcon_support/#supporthelperstruncamelize)
+
 
 ### Method Summary
 
@@ -1529,10 +1759,11 @@ __Used by__ [`Phalcon\Support\Helper\Str\Uncamelize`](/5.18/api/phalcon_support/
 
 ```php
 protected static function toUncamelize(
-string $text,
-string $delimiter = "_"
+    string $text,
+    string $delimiter = "_"
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\UpperTrait
 
@@ -1548,6 +1779,7 @@ Uppercases a string using mbstring
 </div>
 
 __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support/#supporthelperstrabstractstr)
+
 
 ### Method Summary
 
@@ -1567,8 +1799,8 @@ __Used by__ [`Phalcon\Support\Helper\Str\AbstractStr`](/5.18/api/phalcon_support
 
 ```php
 protected static function toUpper(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
 

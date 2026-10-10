@@ -25,13 +25,14 @@ All classes are prefixed with `Phalcon`
 <div class="api-tree">
 
 - **`Phalcon\Translate\Adapter\AbstractAdapter`** - implements [`Phalcon\Translate\Adapter\AdapterInterface`](#translateadapteradapterinterface), `ArrayAccess`
-- [`Phalcon\Translate\Adapter\Csv`](#translateadaptercsv)
-- [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
-- [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
+    - [`Phalcon\Translate\Adapter\Csv`](#translateadaptercsv)
+    - [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
+    - [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
 
 </div>
 
 __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+
 
 ### Method Summary
 
@@ -124,8 +125,8 @@ __Uses__ `ArrayAccess` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Ex
 
 ```php
 public function __construct(
-InterpolatorFactory $interpolator,
-array $options = []
+    InterpolatorFactory $interpolator,
+    array $options = []
 );
 ```
 
@@ -135,8 +136,8 @@ AbstractAdapter constructor.
 
 ```php
 public function _(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
@@ -170,8 +171,8 @@ Returns the translation related to the given key
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -189,8 +190,8 @@ Unsets a translation from the dictionary
 
 ```php
 public function t(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
@@ -202,12 +203,13 @@ Returns the translation string of the given key
 
 ```php
 protected function replacePlaceholders(
-string $translation,
-array $placeholders = []
+    string $translation,
+    array $placeholders = []
 ): string;
 ```
 
 Replaces placeholders by the values passed
+
 
 ## Translate\Adapter\AdapterInterface
 
@@ -263,8 +265,8 @@ Check whether is defined a translation key in the internal array
 
 ```php
 public function query(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
@@ -285,12 +287,13 @@ throws `KeyNotFound` instead of falling back.
 
 ```php
 public function t(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
 Returns the translation string of the given key
+
 
 ## Translate\Adapter\Csv
 
@@ -300,11 +303,12 @@ Returns the translation string of the given key
 <div class="api-tree">
 
 - [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
-- **`Phalcon\Translate\Adapter\Csv`**
+    - **`Phalcon\Translate\Adapter\Csv`**
 
 </div>
 
 __Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+
 
 ### Method Summary
 
@@ -358,8 +362,8 @@ __Uses__ `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Pha
 
 ```php
 public function __construct(
-InterpolatorFactory $interpolator,
-array $options
+    InterpolatorFactory $interpolator,
+    array $options
 );
 ```
 
@@ -385,8 +389,8 @@ Check whether is defined a translation key in the internal array
 
 ```php
 public function query(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
@@ -400,6 +404,7 @@ public function toArray(): array;
 
 Returns the internal array
 
+
 ## Translate\Adapter\Gettext
 
 <span class="badge badge--class">Class</span>
@@ -411,12 +416,12 @@ Phalcon\Translate\Adapter\Gettext
 use Phalcon\Translate\Adapter\Gettext;
 
 $adapter = new Gettext(
-[
-    "locale"        => "de_DE.UTF-8",
-    "defaultDomain" => "translations",
-    "directory"     => "/path/to/application/locales",
-    "category"      => LC_MESSAGES,
-]
+    [
+        "locale"        => "de_DE.UTF-8",
+        "defaultDomain" => "translations",
+        "directory"     => "/path/to/application/locales",
+        "category"      => LC_MESSAGES,
+    ]
 );
 ```
 
@@ -425,11 +430,12 @@ Allows translations using gettext
 <div class="api-tree">
 
 - [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
-- **`Phalcon\Translate\Adapter\Gettext`**
+    - **`Phalcon\Translate\Adapter\Gettext`**
 
 </div>
 
 __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+
 
 ### Method Summary
 
@@ -560,8 +566,8 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Pha
 
 ```php
 public function __construct(
-InterpolatorFactory $interpolator,
-array $options
+    InterpolatorFactory $interpolator,
+    array $options
 );
 ```
 
@@ -611,11 +617,11 @@ Check whether is defined a translation key in the internal array
 
 ```php
 public function nquery(
-string $msgid1,
-string $msgid2,
-int $count,
-array $placeholders = [],
-string $domain = null
+    string $msgid1,
+    string $msgid2,
+    int $count,
+    array $placeholders = [],
+    string $domain = null
 ): string;
 ```
 
@@ -627,8 +633,8 @@ the count.
 
 ```php
 public function query(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
@@ -668,10 +674,10 @@ $gettext->setDirectory("/path/to/the/messages");
 
 // Set the domains and directories path
 $gettext->setDirectory(
-[
-    "messages" => "/path/to/the/messages",
-    "another"  => "/path/to/the/another",
-]
+    [
+        "messages" => "/path/to/the/messages",
+        "another"  => "/path/to/the/another",
+    ]
 );
 ```
 
@@ -687,8 +693,8 @@ Changes the current domain (i.e. the translation file)
 
 ```php
 public function setLocale(
-int $category,
-array $localeArray = []
+    int $category,
+    array $localeArray = []
 ): string|bool;
 ```
 
@@ -727,6 +733,7 @@ protected function prepareOptions( array $options ): void;
 
 Validator for constructor
 
+
 ## Translate\Adapter\NativeArray
 
 <span class="badge badge--class">Class</span>
@@ -737,11 +744,12 @@ Defines translation lists using PHP arrays
 <div class="api-tree">
 
 - [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
-- **`Phalcon\Translate\Adapter\NativeArray`**
+    - **`Phalcon\Translate\Adapter\NativeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
+
 
 ### Method Summary
 
@@ -785,8 +793,8 @@ __Uses__ `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidD
 
 ```php
 public function __construct(
-InterpolatorFactory $interpolator,
-array $options
+    InterpolatorFactory $interpolator,
+    array $options
 );
 ```
 
@@ -812,8 +820,8 @@ Check whether is defined a translation key in the internal array
 
 ```php
 public function query(
-string $translateKey,
-array $placeholders = []
+    string $translateKey,
+    array $placeholders = []
 ): string;
 ```
 
@@ -827,6 +835,7 @@ public function toArray(): array;
 
 Returns the internal array
 
+
 ## Translate\Exception
 
 <span class="badge badge--class">Class</span>
@@ -837,18 +846,19 @@ Class for exceptions thrown by Phalcon\Translate
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Translate\Exception`**
-- [`Phalcon\Translate\Exceptions\FileOpenError`](#translateexceptionsfileopenerror)
-- [`Phalcon\Translate\Exceptions\ImmutableObject`](#translateexceptionsimmutableobject)
-- [`Phalcon\Translate\Exceptions\InterpolatorNotRegistered`](#translateexceptionsinterpolatornotregistered)
-- [`Phalcon\Translate\Exceptions\InvalidDataType`](#translateexceptionsinvaliddatatype)
-- [`Phalcon\Translate\Exceptions\KeyNotFound`](#translateexceptionskeynotfound)
-- [`Phalcon\Translate\Exceptions\MissingContent`](#translateexceptionsmissingcontent)
-- [`Phalcon\Translate\Exceptions\MissingGettextExtension`](#translateexceptionsmissinggettextextension)
-- [`Phalcon\Translate\Exceptions\MissingRequiredParameter`](#translateexceptionsmissingrequiredparameter)
-- [`Phalcon\Translate\Exceptions\TranslatorNotRegistered`](#translateexceptionstranslatornotregistered)
+    - **`Phalcon\Translate\Exception`**
+        - [`Phalcon\Translate\Exceptions\FileOpenError`](#translateexceptionsfileopenerror)
+        - [`Phalcon\Translate\Exceptions\ImmutableObject`](#translateexceptionsimmutableobject)
+        - [`Phalcon\Translate\Exceptions\InterpolatorNotRegistered`](#translateexceptionsinterpolatornotregistered)
+        - [`Phalcon\Translate\Exceptions\InvalidDataType`](#translateexceptionsinvaliddatatype)
+        - [`Phalcon\Translate\Exceptions\KeyNotFound`](#translateexceptionskeynotfound)
+        - [`Phalcon\Translate\Exceptions\MissingContent`](#translateexceptionsmissingcontent)
+        - [`Phalcon\Translate\Exceptions\MissingGettextExtension`](#translateexceptionsmissinggettextextension)
+        - [`Phalcon\Translate\Exceptions\MissingRequiredParameter`](#translateexceptionsmissingrequiredparameter)
+        - [`Phalcon\Translate\Exceptions\TranslatorNotRegistered`](#translateexceptionstranslatornotregistered)
 
 </div>
+
 
 ## Translate\Exceptions\FileOpenError
 
@@ -858,12 +868,13 @@ Class for exceptions thrown by Phalcon\Translate
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\FileOpenError`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\FileOpenError`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -884,6 +895,7 @@ __Uses__ `Phalcon\Translate\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Translate\Exceptions\ImmutableObject
 
 <span class="badge badge--class">Class</span>
@@ -892,12 +904,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\ImmutableObject`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\ImmutableObject`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -918,6 +931,7 @@ __Uses__ `Phalcon\Translate\Exception`
 public function __construct();
 ```
 
+
 ## Translate\Exceptions\InterpolatorNotRegistered
 
 <span class="badge badge--class">Class</span>
@@ -926,12 +940,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\InterpolatorNotRegistered`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\InterpolatorNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
+
 
 ## Translate\Exceptions\InvalidDataType
 
@@ -941,12 +957,13 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\InvalidDataType`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\InvalidDataType`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -967,6 +984,7 @@ __Uses__ `Phalcon\Translate\Exception`
 public function __construct();
 ```
 
+
 ## Translate\Exceptions\KeyNotFound
 
 <span class="badge badge--class">Class</span>
@@ -975,12 +993,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\KeyNotFound`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\KeyNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -1001,6 +1020,7 @@ __Uses__ `Phalcon\Translate\Exception`
 public function __construct( string $key );
 ```
 
+
 ## Translate\Exceptions\MissingContent
 
 <span class="badge badge--class">Class</span>
@@ -1009,12 +1029,13 @@ public function __construct( string $key );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\MissingContent`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\MissingContent`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -1035,6 +1056,7 @@ __Uses__ `Phalcon\Translate\Exception`
 public function __construct();
 ```
 
+
 ## Translate\Exceptions\MissingGettextExtension
 
 <span class="badge badge--class">Class</span>
@@ -1043,12 +1065,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\MissingGettextExtension`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\MissingGettextExtension`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -1069,6 +1092,7 @@ __Uses__ `Phalcon\Translate\Exception`
 public function __construct();
 ```
 
+
 ## Translate\Exceptions\MissingRequiredParameter
 
 <span class="badge badge--class">Class</span>
@@ -1077,12 +1101,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\MissingRequiredParameter`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\MissingRequiredParameter`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
 
 ### Method Summary
 
@@ -1114,6 +1139,7 @@ public function __construct( string $parameter );
 public function getParameter(): string;
 ```
 
+
 ## Translate\Exceptions\TranslatorNotRegistered
 
 <span class="badge badge--class">Class</span>
@@ -1122,12 +1148,14 @@ public function getParameter(): string;
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Translate\Exception`](#translateexception)
-- **`Phalcon\Translate\Exceptions\TranslatorNotRegistered`**
+    - [`Phalcon\Translate\Exception`](#translateexception)
+        - **`Phalcon\Translate\Exceptions\TranslatorNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Translate\Exception`
+
+
 
 ## Translate\InterpolatorFactory
 
@@ -1137,12 +1165,13 @@ __Uses__ `Phalcon\Translate\Exception`
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.17/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Translate\InterpolatorFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Translate\InterpolatorFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+
 
 ### Method Summary
 
@@ -1204,6 +1233,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Translate\Interpolator\AssociativeArray
 
 <span class="badge badge--class">Class</span>
@@ -1218,6 +1248,7 @@ Class AssociativeArray
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+
 
 ### Method Summary
 
@@ -1238,12 +1269,13 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ```php
 public function replacePlaceholders(
-string $translation,
-array $placeholders = []
+    string $translation,
+    array $placeholders = []
 ): string;
 ```
 
 Replaces placeholders by the values passed
+
 
 ## Translate\Interpolator\IndexedArray
 
@@ -1275,12 +1307,13 @@ Replaces placeholders by the values passed
 
 ```php
 public function replacePlaceholders(
-string $translation,
-array $placeholders = []
+    string $translation,
+    array $placeholders = []
 ): string;
 ```
 
 Replaces placeholders by the values passed
+
 
 ## Translate\Interpolator\InterpolatorInterface
 
@@ -1316,12 +1349,13 @@ Interface for Phalcon\Translate interpolators
 
 ```php
 public function replacePlaceholders(
-string $translation,
-array $placeholders = []
+    string $translation,
+    array $placeholders = []
 ): string;
 ```
 
 Replaces placeholders by the values passed
+
 
 ## Translate\TranslateFactory
 
@@ -1333,12 +1367,13 @@ Replaces placeholders by the values passed
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.17/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Translate\TranslateFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Translate\TranslateFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Translate\Adapter\AdapterInterface`
+
 
 ### Method Summary
 
@@ -1380,8 +1415,8 @@ __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` �
 
 ```php
 public function __construct(
-InterpolatorFactory $interpolator,
-array $services = []
+    InterpolatorFactory $interpolator,
+    array $services = []
 );
 ```
 
@@ -1397,8 +1432,8 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 

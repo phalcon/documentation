@@ -19,7 +19,7 @@ version: "5.20"
 use Phalcon\Support\HelperFactory;
 
 $helper = new HelperFactory();
-```
+ ```
 
 The methods are available either by calling `newInstance()` on the factory object with the relevant name of the helper class or by calling the helper class directly as a method on the helper factory. The factory acts as a service locator, caching the objects to be reused if need be, in the same request.
 
@@ -128,30 +128,30 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'value-1',
-'key-2'   => 'value-2',
-'key-3'   => 'value-3',
-9         => 'value-4',
-12        => 'value-5',
-' key-6 ' => 'value-6',
-99        => 'value-7',
-'key-8'   => 'value-8',
+    'value-1',
+    'key-2'   => 'value-2',
+    'key-3'   => 'value-3',
+    9         => 'value-4',
+    12        => 'value-5',
+    ' key-6 ' => 'value-6',
+    99        => 'value-7',
+    'key-8'   => 'value-8',
 ];
 
 $blackList = [
-99,
-48,
-31,
-9,
-'key-45',
-null,
--228,
-new stdClass(),
-[],
-3.501,
-false,
-'key-2',
-'key-3',
+    99,
+    48,
+    31,
+    9,
+    'key-45',
+    null,
+    -228,
+    new stdClass(),
+    [],
+    3.501,
+    false,
+    'key-2',
+    'key-3',
 ];
 
 $result = $helper->blacklist($source, $blackList);
@@ -179,12 +179,12 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'k1' => 1,
-'k2' => 2,
-'k3' => 3,
-'k4' => 4,
-'k5' => 5,
-'k6' => 6,
+    'k1' => 1,
+    'k2' => 2,
+    'k3' => 3,
+    'k4' => 4,
+    'k5' => 5,
+    'k6' => 6,
 ];
 
 $result = $helper->chunk($source, 2, true);
@@ -211,23 +211,23 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-1  => 1,
-2  => 2,
-3  => 3,
-4  => 4,
-5  => 5,
-6  => 6,
-7  => 7,
-8  => 8,
-9  => 9,
-10 => 10,
+    1  => 1,
+    2  => 2,
+    3  => 3,
+    4  => 4,
+    5  => 5,
+    6  => 6,
+    7  => 7,
+    8  => 8,
+    9  => 9,
+    10 => 10,
 ];
 
 $result = $helper->filter(
-$source,
-function ($element) {
-    return $element & 1;
-}
+    $source,
+    function ($element) {
+        return $element & 1;
+    }
 );
 
 var_dump($result);
@@ -254,8 +254,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'Phalcon',
-'two' => 'Framework',
+    'one' => 'Phalcon',
+    'two' => 'Framework',
 ];
 
 $result = $helper->first($source);
@@ -277,8 +277,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'Phalcon',
-'two' => 'Framework',
+    'one' => 'Phalcon',
+    'two' => 'Framework',
 ];
 
 $result = $helper->firstKey($source);
@@ -321,8 +321,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'Phalcon',
-'two' => '1',
+    'one' => 'Phalcon',
+    'two' => '1',
 ];
 
 echo $helper->get($source, 1);               // 'Phalcon'
@@ -344,18 +344,18 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-[
-    'name' => 'Paul',
-    'age'  => 34,
-],
-[
-    'name' => 'Peter',
-    'age'  => 31,
-],
-[
-    'name' => 'John',
-    'age'  => 29,
-],
+    [
+        'name' => 'Paul',
+        'age'  => 34,
+    ],
+    [
+        'name' => 'Peter',
+        'age'  => 31,
+    ],
+    [
+        'name' => 'John',
+        'age'  => 29,
+    ],
 ];
 
 $result = $helper->group($source, 'age');
@@ -396,8 +396,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-1     => 'Phalcon',
-'two' => 'Framework',
+    1     => 'Phalcon',
+    'two' => 'Framework',
 ];
 
 echo $helper->has($source, 1);         // true
@@ -419,16 +419,16 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'Phalcon',
-'Framework',
+    'Phalcon',
+    'Framework',
 ];
 
 echo $helper->isUnique($source); // true
 
 $source = [
-'Phalcon',
-'Framework',
-'Phalcon',
+    'Phalcon',
+    'Framework',
+    'Phalcon',
 ];
 
 echo $helper->isUnique($source); // false
@@ -448,8 +448,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'Phalcon',
-'two' => 'Framework',
+    'one' => 'Phalcon',
+    'two' => 'Framework',
 ];
 
 $result = $helper->last($source);
@@ -471,8 +471,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'Phalcon',
-'two' => 'Framework',
+    'one' => 'Phalcon',
+    'two' => 'Framework',
 ];
 
 $result = $helper->lastKey($source);
@@ -495,18 +495,18 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-[
-    'id'   => 2,
-    'name' => 'Paul',
-],
-[
-    'id'   => 3,
-    'name' => 'Peter',
-],
-[
-    'id'   => 1,
-    'name' => 'John',
-],
+    [
+        'id'   => 2,
+        'name' => 'Paul',
+    ],
+    [
+        'id'   => 3,
+        'name' => 'Peter',
+    ],
+    [
+        'id'   => 1,
+        'name' => 'John',
+    ],
 ];
 
 $result = $helper->order($source, 'id');
@@ -546,18 +546,18 @@ var_dump($result);
 // ]
 
 $source = [
-(object) [
-    'id'   => 2,
-    'name' => 'Paul',
-],
-(object) [
-    'id'   => 3,
-    'name' => 'Peter',
-],
-(object) [
-    'id'   => 1,
-    'name' => 'John',
-],
+    (object) [
+        'id'   => 2,
+        'name' => 'Paul',
+    ],
+    (object) [
+        'id'   => 3,
+        'name' => 'Peter',
+    ],
+    (object) [
+        'id'   => 1,
+        'name' => 'John',
+    ],
 ];
 
 $result = $helper->order($source, 'id');
@@ -593,8 +593,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-['product_id' => 'prod-100', 'name' => 'Desk'],
-['product_id' => 'prod-200', 'name' => 'Chair'],
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
 ];
 
 $result = $helper->pluck($source, 'name');
@@ -606,8 +606,8 @@ var_dump($result);
 // ]
 
 $source = [
-(object) ['product_id' => 'prod-100', 'name' => 'Desk'],
-(object) ['product_id' => 'prod-200', 'name' => 'Chair'],
+    (object) ['product_id' => 'prod-100', 'name' => 'Desk'],
+    (object) ['product_id' => 'prod-200', 'name' => 'Chair'],
 ];
 
 $result = $helper->pluck($source, 'name');
@@ -633,7 +633,7 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'Phalcon',
+    'one' => 'Phalcon',
 ];
 
 $result = $helper->set($source, 'Framework');
@@ -668,10 +668,10 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'Phalcon',
-'Framework',
-'for',
-'PHP',
+    'Phalcon',
+    'Framework',
+    'for',
+    'PHP',
 ];
 
 $result = $helper->sliceLeft($source);
@@ -705,10 +705,10 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'Phalcon',
-'Framework',
-'for',
-'PHP',
+    'Phalcon',
+    'Framework',
+    'for',
+    'PHP',
 ];
 
 $result = $helper->sliceRight($source);
@@ -742,8 +742,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-1 => 'Phalcon',
-3 => 'Framework',
+    1 => 'Phalcon',
+    3 => 'Framework',
 ];
 
 $result = $helper->split($source);
@@ -769,8 +769,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one'   => 'two',
-'three' => 'four',
+    'one'   => 'two',
+    'three' => 'four',
 ];
 
 $result = $helper->toObject($source);
@@ -800,10 +800,10 @@ $helper = new HelperFactory();
 $source = [2, 3, 4, 5];
 
 $result = $helper->validateAll(
-$source,
-function ($element) {
-    return $element > 1;
-}
+    $source,
+    function ($element) {
+        return $element > 1;
+    }
 );
 
 echo $result; // true        
@@ -825,10 +825,10 @@ $helper = new HelperFactory();
 $source = [1, 2, 3, 4, 5];
 
 $result = $helper->validateAny(
-$source,
-function ($element) {
-    return $element < 2;
-}
+    $source,
+    function ($element) {
+        return $element < 2;
+    }
 );
 
 echo $result; // true
@@ -848,26 +848,26 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source  = [
-'value-1',
-' key '  => 'value-2',
-5        => 'value-3',
-6        => 'value-4',
-7        => 'value-5',
-' key-2' => 'value-6',
-'key-3 ' => 'value-7',
-'key-4'  => 'value-8',
+    'value-1',
+    ' key '  => 'value-2',
+    5        => 'value-3',
+    6        => 'value-4',
+    7        => 'value-5',
+    ' key-2' => 'value-6',
+    'key-3 ' => 'value-7',
+    'key-4'  => 'value-8',
 ];
 
 $whiteList = [
-7,
-5,
-0,
-'key-3 ',
-null,
--13,
-new stdClass(),
-[],
-3.1415,
+    7,
+    5,
+    0,
+    'key-3 ',
+    null,
+    -13,
+    new stdClass(),
+    [],
+    3.1415,
 ];
 
 $result = $helper->whitelist($source, $whiteList);
@@ -954,8 +954,8 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $source = [
-'one' => 'two',
-'three',
+    'one' => 'two',
+    'three',
 ];
 
 $result = $helper->encode($source);
@@ -1015,11 +1015,11 @@ use Phalcon\Support\HelperFactory;
 $helper = new HelperFactory();
 
 $result = $helper->concat(
-'.',
-'@test.',
-'.test2.',
-'.test',
-'.34'
+    '.',
+    '@test.',
+    '.test2.',
+    '.test',
+    '.34'
 );
 
 $result = $helper->concat($source);
@@ -1286,8 +1286,8 @@ $helper = new HelperFactory();
 
 $source = '%date% (YYYY-MM-DD) %level% (0-9)';
 $data   = [
-'date'  => '2020-09-09',
-'level' => 'CRITICAL',
+    'date'  => '2020-09-09',
+    'level' => 'CRITICAL',
 ];
 
 $result = $helper->interpolate($source, $data);

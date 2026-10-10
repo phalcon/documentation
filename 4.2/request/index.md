@@ -21,10 +21,10 @@ $request = new Request();
 
 // POST
 if (true === $request->isPost()) {
-// AJAX
-if (true === $request->isAjax()) {
-    // ....
-}
+    // AJAX
+    if (true === $request->isAjax()) {
+        // ....
+    }
 }
 ```
 
@@ -55,11 +55,11 @@ use Phalcon\Http\Request;
 $request = new Request();
 
 $request->get(
-$name = null,            // string
-$filters = null,         // mixed
-$defaultValue = null,    // mixed
-$notAllowEmpty = false,  // bool
-$noRecursive = false     // bool
+    $name = null,            // string
+    $filters = null,         // mixed
+    $defaultValue = null,    // mixed
+    $notAllowEmpty = false,  // bool
+    $noRecursive = false     // bool
 ): mixed
 ```
 
@@ -144,6 +144,7 @@ $request = new Request();
 
 $email = $request->getQuery('userEmail', null, 'some@example.com');
 ```
+
 
 ### $_POST
 The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows: 
@@ -256,31 +257,31 @@ use Phalcon\Http\Request;
 $container = new Di();
 
 $container->set(
-'request',
-function () {
-    $request = new Request();
-    $request
-        ->setParameterFilters(
-            'id', 
-            Filter::FILTER_ABSINT, 
-            [
-                'post'
-            ]
-        )
-        ->setParameterFilters(
-            'name', 
-            [
-                'trim', 
-                'string'
-            ], 
-            [
-                'post'
-            ]
-        )
-    ;
-
-    return $request;
-}
+    'request',
+    function () {
+        $request = new Request();
+        $request
+            ->setParameterFilters(
+                'id', 
+                Filter::FILTER_ABSINT, 
+                [
+                    'post'
+                ]
+            )
+            ->setParameterFilters(
+                'name', 
+                [
+                    'trim', 
+                    'string'
+                ], 
+                [
+                    'post'
+                ]
+            )
+        ;
+        
+        return $request;
+    }
 );
 
 ```
@@ -308,19 +309,19 @@ use Phalcon\Mvc\Controller;
  */
 class PostsController extends Controller
 {
-public function saveAction()
-{
-    // Check if request has made with POST
-    if (true === $this->request->isPost()) {
-        // Access POST data
-        $customerName = $this
-            ->request
-            ->getPost('name');
-        $customerBorn = $this
-            ->request
-            ->getPost('born', 'string', '1984');
+    public function saveAction()
+    {
+        // Check if request has made with POST
+        if (true === $this->request->isPost()) {
+            // Access POST data
+            $customerName = $this
+                ->request
+                ->getPost('name');
+            $customerBorn = $this
+                ->request
+                ->getPost('born', 'string', '1984');
+        }
     }
-}
 }
 ```
 
@@ -392,12 +393,12 @@ use Phalcon\Http\Request;
 $request = new Request();
 
 if ($request->isAjax()) {
-echo 'The request was made with Ajax';
+    echo 'The request was made with Ajax';
 }
 
 // Check the request layer
 if ($request->isSecure()) {
-echo 'The request was made using a secure layer';
+    echo 'The request was made using a secure layer';
 }
 ```
 
@@ -432,6 +433,7 @@ Get the best charset accepted by the browser. ie. `utf-8`
 $language = $request->getBestLanguage();
 ```
 Get the best language accepted configured in the browser. ie. `en-us`
+
 
 ### Method
 `getMethod()` returns the HTTP method which request has been made. If the `X-HTTP-Method-Override` header is set, and if the method is a `POST`, then it is used to determine the "real" intended HTTP method. The `_method` request parameter can also be used to determine the HTTP method, `setHttpMethodParameterOverride(true)` has been called. The method always returns an uppercase string.
@@ -511,21 +513,21 @@ use Phalcon\Mvc\Controller;
  */
 class PostsController extends Controller
 {
-public function uploadAction()
-{
-    // if ($this->request->numFiles() > 0) {
-    if ($this->request->hasFiles()) {
-        $files = $this->request->getUploadedFiles();
+    public function uploadAction()
+    {
+        // if ($this->request->numFiles() > 0) {
+        if ($this->request->hasFiles()) {
+            $files = $this->request->getUploadedFiles();
 
-        foreach ($files as $file) {
-            echo $file->getName(), ' ', $file->getSize(), '\n';
+            foreach ($files as $file) {
+                echo $file->getName(), ' ', $file->getSize(), '\n';
 
-            $file->moveTo(
-                'files/' . $file->getName()
-            );
+                $file->moveTo(
+                    'files/' . $file->getName()
+                );
+            }
         }
     }
-}
 }
 ```
 
@@ -603,7 +605,7 @@ Result:
 ```bash
 Array
 (
-[Authorization] => Enigma Secret
+    [Authorization] => Enigma Secret
 )
 
 Type: Enigma
@@ -621,45 +623,45 @@ use Phalcon\Events\Manager;
 
 class NegotiateAuthorizationListener
 {
-public function afterAuthorizationResolve(Event $event, Request $request, array $data)
-{
-    if (empty($data['server']['CUSTOM_KERBEROS_AUTH'])) {
-        return false;
+    public function afterAuthorizationResolve(Event $event, Request $request, array $data)
+    {
+        if (empty($data['server']['CUSTOM_KERBEROS_AUTH'])) {
+            return false;
+        }
+
+        list($type,) = explode(
+            ' ', 
+            $data['server']['CUSTOM_KERBEROS_AUTH'], 
+            2
+        );
+
+        if (!$type || stripos($type, 'negotiate') !== 0) {
+            return false;
+        }
+
+        return [
+           'Authorization'=> $data['server']['CUSTOM_KERBEROS_AUTH'],
+        ];
     }
-
-    list($type,) = explode(
-        ' ', 
-        $data['server']['CUSTOM_KERBEROS_AUTH'], 
-        2
-    );
-
-    if (!$type || stripos($type, 'negotiate') !== 0) {
-        return false;
-    }
-
-    return [
-       'Authorization'=> $data['server']['CUSTOM_KERBEROS_AUTH'],
-    ];
-}
 }
 
 $_SERVER['CUSTOM_KERBEROS_AUTH'] = 'Negotiate '
-                             . 'a87421000492aa874209af8bc028';
+                                 . 'a87421000492aa874209af8bc028';
 
 $di = new Di();
 
 $di->set(
-'eventsManager',
-function () {
-    $manager = new Manager();
+    'eventsManager',
+    function () {
+        $manager = new Manager();
 
-    $manager->attach(
-        'request',
-        new NegotiateAuthorizationListener()
-    );
+        $manager->attach(
+            'request',
+            new NegotiateAuthorizationListener()
+        );
 
-    return $manager;
-}
+        return $manager;
+    }
 );
 
 $request = new Request();
@@ -667,7 +669,7 @@ $request = new Request();
 $request->setDI($di);
 
 print_r(
-$request->getHeaders()
+    $request->getHeaders()
 );
 ```
 
@@ -676,7 +678,7 @@ Result:
 ```bash
 Array
 (
-[Authorization] => Negotiate a87421000492aa874209af8bc028
+    [Authorization] => Negotiate a87421000492aa874209af8bc028
 )
 
 Type: Negotiate

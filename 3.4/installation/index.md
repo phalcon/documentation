@@ -11,10 +11,12 @@ version: "3.4"
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
+
 ## Hardware
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
 Our website and blog (as well as other sites) are hosted on an Amazon VM with 512MB RAM and 1 vCPU.
+
 
 ## Software
 * PHP >= 5.5
@@ -35,22 +37,27 @@ Phalcon need the following extensions to run (minimal):
 * `fileinfo`
 * `openssl`
 
+
 ### Optional depending on the needs of your application
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
 * [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension
 * [Memcache](https://php.net/manual/en/book.memcache.php), [Memcached](https://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
 
+
 # Installation
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
+
 ## Linux
 To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+
 
 ### DEB based distributions (Debian, Ubuntu, etc.)
 
 #### Repository installation
 Add the repository to your distribution:
+
 
 ##### Stable releases
 ```bash
@@ -58,6 +65,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 ```
 
 or
+
 
 ##### Nightly releases
 ```bash
@@ -85,6 +93,7 @@ sudo apt-get update
 sudo apt-get install php7.0-phalcon
 ```
 
+
 #### Additional PPAs
 #### Ondřej Surý
 If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
@@ -101,10 +110,12 @@ and Phalcon:
 sudo apt-get install php-phalcon
 ```
 
+
 ### RPM based distributions (CentOS, Fedora, etc.)
 
 #### Repository installation
 Add the repository to your distribution:
+
 
 ##### Stable releases
 ```bash
@@ -112,6 +123,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.s
 ```
 
 or
+
 
 ##### Nightly releases
 ```bash
@@ -139,6 +151,7 @@ sudo yum update
 sudo yum install php70u-phalcon
 ```
 
+
 #### Additional RPMs
 ##### Remi
 [Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
@@ -150,6 +163,7 @@ yum install php56-php-phalcon3
 ```
 
 Additional versions are available both architecture specific (x86/x64) as well as PHP specific (5.5, 5.6, 7.x)
+
 
 ## FreeBSD
 A port is available for FreeBSD. To install it you will need to issue the following commands:
@@ -168,8 +182,10 @@ cd /usr/ports/www/phalcon
 make install clean
 ```
 
+
 ## Gentoo
 An overlay for installing Phalcon can be found here [https://github.com/smoke/phalcon-gentoo-overlay](https://github.com/smoke/phalcon-gentoo-overlay)
+
 
 ## macOS
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
@@ -177,6 +193,7 @@ On a macOS system you can compile and install the extension with `brew`, `macpor
 ### Requirements
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * XCode
+
 
 ### Brew
 
@@ -192,6 +209,7 @@ brew install php71-phalcon
 brew install php72-phalcon
 ```
 
+
 ### MacPorts
 ```bash
 sudo port install php55-phalcon
@@ -205,6 +223,7 @@ extension=php_phalcon.so
 ```
 
 Restart your webserver.
+
 
 ## Windows
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
@@ -237,6 +256,7 @@ extension=php_phalcon.dll
 ```
 
 Restart your webserver.
+
 
 ## Compile from Sources
 Compiling from source is similar to most environments (Linux/macOS).
@@ -293,6 +313,7 @@ extension=phalcon.so
 # Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
 extension=phalcon.so
 ```
+
 
 ## Advanced Compilation
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
@@ -352,6 +373,7 @@ make install
 
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
+
 You can create a small script in your web server root that has the following in it:
 
 ```php
@@ -373,13 +395,13 @@ This will output something similar to this:
 ```php
 Array
 (
-[0] => Core
-[1] => libxml
-[2] => filter
-[3] => SPL
-[4] => standard
-[5] => phalcon
-[6] => pdo_mysql
+    [0] => Core
+    [1] => libxml
+    [2] => filter
+    [3] => SPL
+    [4] => standard
+    [5] => phalcon
+    [6] => pdo_mysql
 )
 ```
 

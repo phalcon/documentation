@@ -13,6 +13,7 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Encryption\Crypt
 
 Class
@@ -41,146 +42,114 @@ echo $crypt->decrypt($encrypted, $key);
 
 ### Method Summary
 
-<ApiItem href="#encryptioncrypt-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"cipher","default":"self::DEFAULT_CIPHER"},{"type":"bool","name":"useSigning","default":"true"},{"type":"PadFactory|null","name":"padFactory","default":"null"}]}>
-Crypt constructor.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-decrypt" visibility="public" name="decrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
-Decrypts an encrypted text.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-decryptbase64" visibility="public" name="decryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"},{"type":"bool","name":"safe","default":"false"}]}>
-Decrypt a text that is coded as a base64 string.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-encrypt" visibility="public" name="encrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
-Encrypts a text.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-encryptbase64" visibility="public" name="encryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"},{"type":"bool","name":"safe","default":"false"}]}>
-Encrypts a text returning the result as a base64 string.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getauthdata" visibility="public" name="getAuthData" returnType="string" params={[]}>
-Returns the auth data
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getauthtag" visibility="public" name="getAuthTag" returnType="string" params={[]}>
-Returns the auth tag
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getauthtaglength" visibility="public" name="getAuthTagLength" returnType="int" params={[]}>
-Returns the auth tag length
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getavailableciphers" visibility="public" name="getAvailableCiphers" returnType="array" params={[]}>
-Returns a list of available ciphers.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getavailablehashalgorithms" visibility="public" name="getAvailableHashAlgorithms" returnType="array" params={[]}>
-Return a list of registered hashing algorithms suitable for hash_hmac.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getcipher" visibility="public" name="getCipher" returnType="string" params={[]}>
-Returns the current cipher
-</ApiItem>
-<ApiItem href="#encryptioncrypt-gethashalgorithm" visibility="public" name="getHashAlgorithm" returnType="string" params={[]}>
-Get the name of hashing algorithm.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-getkey" visibility="public" name="getKey" returnType="string" params={[]}>
-Returns the encryption key
-</ApiItem>
-<ApiItem href="#encryptioncrypt-isvaliddecryptlength" visibility="public" name="isValidDecryptLength" returnType="bool" params={[{"type":"string","name":"input","default":null}]}>
-Returns if the input length for decryption is valid or not
-</ApiItem>
-<ApiItem href="#encryptioncrypt-setauthdata" visibility="public" name="setAuthData" returnType="CryptInterface" params={[{"type":"string","name":"data","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-setauthtag" visibility="public" name="setAuthTag" returnType="CryptInterface" params={[{"type":"string","name":"tag","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-setauthtaglength" visibility="public" name="setAuthTagLength" returnType="CryptInterface" params={[{"type":"int","name":"length","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-setcipher" visibility="public" name="setCipher" returnType="CryptInterface" params={[{"type":"string","name":"cipher","default":null}]}>
-Sets the cipher algorithm for data encryption and decryption.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-sethashalgorithm" visibility="public" name="setHashAlgorithm" returnType="static" params={[{"type":"string","name":"hashAlgorithm","default":null}]}>
-Set the name of hashing algorithm.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-setkey" visibility="public" name="setKey" returnType="CryptInterface" params={[{"type":"string","name":"key","default":null}]}>
-Sets the encryption key.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-setpadding" visibility="public" name="setPadding" returnType="CryptInterface" params={[{"type":"int","name":"scheme","default":null}]}>
-Changes the padding scheme used.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-usesigning" visibility="public" name="useSigning" returnType="CryptInterface" params={[{"type":"bool","name":"useSigning","default":null}]}>
-Sets if the calculating message digest must used.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-checkcipherhashisavailable" visibility="protected" name="checkCipherHashIsAvailable" returnType="void" params={[{"type":"string","name":"cipher","default":null},{"type":"string","name":"type","default":null}]}>
-Checks if a cipher or a hash algorithm is available
-</ApiItem>
-<ApiItem href="#encryptioncrypt-cryptpadtext" visibility="protected" name="cryptPadText" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"mode","default":null},{"type":"int","name":"blockSize","default":null},{"type":"int","name":"paddingType","default":null}]}>
-Pads texts before encryption. See
-</ApiItem>
-<ApiItem href="#encryptioncrypt-cryptunpadtext" visibility="protected" name="cryptUnpadText" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"mode","default":null},{"type":"int","name":"blockSize","default":null},{"type":"int","name":"paddingType","default":null}]}>
-Removes a padding from a text.
-</ApiItem>
-<ApiItem href="#encryptioncrypt-decryptgcmccmauth" visibility="protected" name="decryptGcmCcmAuth" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"string","name":"cipherText","default":null},{"type":"string","name":"decryptKey","default":null},{"type":"string","name":"iv","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-decryptgetunpadded" visibility="protected" name="decryptGetUnpadded" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"int","name":"blockSize","default":null},{"type":"string","name":"decrypted","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-encryptgcmccm" visibility="protected" name="encryptGcmCcm" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"string","name":"padded","default":null},{"type":"string","name":"encryptKey","default":null},{"type":"string","name":"iv","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-encryptgetpadded" visibility="protected" name="encryptGetPadded" returnType="string" params={[{"type":"string","name":"mode","default":null},{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncrypt-initializeavailableciphers" visibility="protected" name="initializeAvailableCiphers" returnType="static" params={[]}>
-Initialize available cipher algorithms.
-</ApiItem>
+- `public __construct(string $cipher = self::DEFAULT_CIPHER, bool $useSigning = true, PadFactory|null $padFactory = null)` — Crypt constructor.
+
+- `public decrypt(string $input, string|null $key = null): string` — Decrypts an encrypted text.
+
+- `public decryptBase64(string $input, string|null $key = null, bool $safe = false): string` — Decrypt a text that is coded as a base64 string.
+
+- `public encrypt(string $input, string|null $key = null): string` — Encrypts a text.
+
+- `public encryptBase64(string $input, string|null $key = null, bool $safe = false): string` — Encrypts a text returning the result as a base64 string.
+
+- `public getAuthData(): string` — Returns the auth data
+
+- `public getAuthTag(): string` — Returns the auth tag
+
+- `public getAuthTagLength(): int` — Returns the auth tag length
+
+- `public getAvailableCiphers(): array` — Returns a list of available ciphers.
+
+- `public getAvailableHashAlgorithms(): array` — Return a list of registered hashing algorithms suitable for hash\_hmac.
+
+- `public getCipher(): string` — Returns the current cipher
+
+- `public getHashAlgorithm(): string` — Get the name of hashing algorithm.
+
+- `public getKey(): string` — Returns the encryption key
+
+- `public isValidDecryptLength(string $input): bool` — Returns if the input length for decryption is valid or not
+
+- `public setAuthData(string $data): CryptInterface`
+
+- `public setAuthTag(string $tag): CryptInterface`
+
+- `public setAuthTagLength(int $length): CryptInterface`
+
+- `public setCipher(string $cipher): CryptInterface` — Sets the cipher algorithm for data encryption and decryption.
+
+- `public setHashAlgorithm(string $hashAlgorithm): static` — Set the name of hashing algorithm.
+
+- `public setKey(string $key): CryptInterface` — Sets the encryption key.
+
+- `public setPadding(int $scheme): CryptInterface` — Changes the padding scheme used.
+
+- `public useSigning(bool $useSigning): CryptInterface` — Sets if the calculating message digest must used.
+
+- `protected checkCipherHashIsAvailable(string $cipher, string $type): void` — Checks if a cipher or a hash algorithm is available
+
+- `protected cryptPadText(string $input, string $mode, int $blockSize, int $paddingType): string` — Pads texts before encryption. See
+
+- `protected cryptUnpadText(string $input, string $mode, int $blockSize, int $paddingType): string` — Removes a padding from a text.
+
+- `protected decryptGcmCcmAuth(string $mode, string $cipherText, string $decryptKey, string $iv): string`
+
+- `protected decryptGetUnpadded(string $mode, int $blockSize, string $decrypted): string`
+
+- `protected encryptGcmCcm(string $mode, string $padded, string $encryptKey, string $iv): string`
+
+- `protected encryptGetPadded(string $mode, string $input, int $blockSize): string`
+
+- `protected initializeAvailableCiphers(): static` — Initialize available cipher algorithms.
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_ALGORITHM" type="string" default="&quot;sha256&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="DEFAULT_CIPHER" type="string" default="&quot;aes-256-cfb&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_ANSI_X_923" type="int" default="1">
-Padding
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_DEFAULT" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_ISO_10126" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_ISO_IEC_7816_4" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_PKCS7" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_SPACE" type="int" default="6">
-</ApiItem>
-<ApiItem kind="constant" name="PADDING_ZERO" type="int" default="5">
-</ApiItem>
+- `const string DEFAULT_ALGORITHM = "sha256"`
+
+- `const string DEFAULT_CIPHER = "aes-256-cfb"`
+
+- `const int PADDING_ANSI_X_923 = 1` — Padding
+
+- `const int PADDING_DEFAULT = 0`
+
+- `const int PADDING_ISO_10126 = 3`
+
+- `const int PADDING_ISO_IEC_7816_4 = 4`
+
+- `const int PADDING_PKCS7 = 2`
+
+- `const int PADDING_SPACE = 6`
+
+- `const int PADDING_ZERO = 5`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="authData" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="authTag" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="authTagLength" type="int" default="16">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="availableCiphers" type="array" default="[]">
-Available cipher methods.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cipher" type="string" default="self::DEFAULT_CIPHER">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hashAlgorithm" type="string" default="self::DEFAULT_ALGORITHM">
-The name of hashing algorithm.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hashLengthCache" type="array" default="[]">
-Memoized `strlen(hash($algo, "", true))` results, keyed by
-algorithm name. The hash output length is deterministic for a
-given algorithm, so this collapses the per-decrypt strlen+hash
-call to a single hash lookup after warm-up.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="ivLength" type="int" default="16">
-The cipher iv length.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="key" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="padFactory" type="PadFactory" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="padding" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="useSigning" type="bool" default="true">
-Whether calculating message digest enabled or not.
-</ApiItem>
+- `protected string $authData = ""`
+
+- `protected string $authTag = ""`
+
+- `protected int $authTagLength = 16`
+
+- `protected array $availableCiphers = []` — Available cipher methods.
+
+- `protected string $cipher = self::DEFAULT_CIPHER`
+
+- `protected string $hashAlgorithm = self::DEFAULT_ALGORITHM` — The name of hashing algorithm.
+
+- `protected array $hashLengthCache = []` — Memoized `strlen(hash($algo, "", true))` results, keyed by
+  algorithm name. The hash output length is deterministic for a
+  given algorithm, so this collapses the per-decrypt strlen+hash
+  call to a single hash lookup after warm-up.
+
+- `protected int $ivLength = 16` — The cipher iv length.
+
+- `protected string $key = ""`
+
+- `protected PadFactory $padFactory`
+
+- `protected int $padding = 0`
+
+- `protected bool $useSigning = true` — Whether calculating message digest enabled or not.
 
 ### Methods
 
@@ -188,9 +157,9 @@ Whether calculating message digest enabled or not.
 
 ```php
 public function __construct(
-string $cipher = self::DEFAULT_CIPHER,
-bool $useSigning = true,
-PadFactory|null $padFactory = null
+    string $cipher = self::DEFAULT_CIPHER,
+    bool $useSigning = true,
+    PadFactory|null $padFactory = null
 );
 ```
 
@@ -200,8 +169,8 @@ Crypt constructor.
 
 ```php
 public function decrypt(
-string $input,
-string|null $key = null
+    string $input,
+    string|null $key = null
 ): string;
 ```
 
@@ -209,8 +178,8 @@ Decrypts an encrypted text.
 
 ```php
 $encrypted = $crypt->decrypt(
-$encrypted,
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    $encrypted,
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
 
@@ -218,9 +187,9 @@ $encrypted,
 
 ```php
 public function decryptBase64(
-string $input,
-string|null $key = null,
-bool $safe = false
+    string $input,
+    string|null $key = null,
+    bool $safe = false
 ): string;
 ```
 
@@ -230,8 +199,8 @@ Decrypt a text that is coded as a base64 string.
 
 ```php
 public function encrypt(
-string $input,
-string|null $key = null
+    string $input,
+    string|null $key = null
 ): string;
 ```
 
@@ -239,8 +208,8 @@ Encrypts a text.
 
 ```php
 $encrypted = $crypt->encrypt(
-"Top secret",
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    "Top secret",
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
 
@@ -248,9 +217,9 @@ $encrypted = $crypt->encrypt(
 
 ```php
 public function encryptBase64(
-string $input,
-string|null $key = null,
-bool $safe = false
+    string $input,
+    string|null $key = null,
+    bool $safe = false
 ): string;
 ```
 
@@ -403,8 +372,8 @@ Sets if the calculating message digest must used.
 
 ```php
 protected function checkCipherHashIsAvailable(
-string $cipher,
-string $type
+    string $cipher,
+    string $type
 ): void;
 ```
 
@@ -414,10 +383,10 @@ Checks if a cipher or a hash algorithm is available
 
 ```php
 protected function cryptPadText(
-string $input,
-string $mode,
-int $blockSize,
-int $paddingType
+    string $input,
+    string $mode,
+    int $blockSize,
+    int $paddingType
 ): string;
 ```
 
@@ -428,10 +397,10 @@ Pads texts before encryption. See
 
 ```php
 protected function cryptUnpadText(
-string $input,
-string $mode,
-int $blockSize,
-int $paddingType
+    string $input,
+    string $mode,
+    int $blockSize,
+    int $paddingType
 ): string;
 ```
 
@@ -444,10 +413,10 @@ unmodified.
 
 ```php
 protected function decryptGcmCcmAuth(
-string $mode,
-string $cipherText,
-string $decryptKey,
-string $iv
+    string $mode,
+    string $cipherText,
+    string $decryptKey,
+    string $iv
 ): string;
 ```
 
@@ -455,9 +424,9 @@ string $iv
 
 ```php
 protected function decryptGetUnpadded(
-string $mode,
-int $blockSize,
-string $decrypted
+    string $mode,
+    int $blockSize,
+    string $decrypted
 ): string;
 ```
 
@@ -465,10 +434,10 @@ string $decrypted
 
 ```php
 protected function encryptGcmCcm(
-string $mode,
-string $padded,
-string $encryptKey,
-string $iv
+    string $mode,
+    string $padded,
+    string $encryptKey,
+    string $iv
 ): string;
 ```
 
@@ -476,9 +445,9 @@ string $iv
 
 ```php
 protected function encryptGetPadded(
-string $mode,
-string $input,
-int $blockSize
+    string $mode,
+    string $input,
+    int $blockSize
 ): string;
 ```
 
@@ -490,6 +459,7 @@ protected function initializeAvailableCiphers(): static;
 
 Initialize available cipher algorithms.
 
+
 ## Encryption\Crypt\CryptInterface
 
 Interface
@@ -497,22 +467,22 @@ Interface
 Interface for Phalcon\Crypt
 
 - [`Phalcon\Contracts\Encryption\Crypt\Crypt`](/5.20/api/phalcon_contracts/#contractsencryptioncryptcrypt)
-- **`Phalcon\Encryption\Crypt\CryptInterface`**
+  - **`Phalcon\Encryption\Crypt\CryptInterface`**
 
 `Phalcon\Contracts\Encryption\Crypt\Crypt`
+
 
 ## Encryption\Crypt\Exception\DecryptionFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptiondecryptionfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -522,18 +492,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\EmptyDecryptionKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionemptydecryptionkey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -543,18 +513,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\EmptyEncryptionKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionemptyencryptionkey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -564,18 +534,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\EncryptionFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionencryptionfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -585,6 +555,7 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\Exception
 
 Class
@@ -592,33 +563,33 @@ Class
 Exceptions thrown in Phalcon\Crypt use this class
 
 - `\Exception`
-- **`Phalcon\Encryption\Crypt\Exception\Exception`**
-- [`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`](#encryptioncryptexceptiondecryptionfailed)
-- [`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`](#encryptioncryptexceptionemptydecryptionkey)
-- [`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`](#encryptioncryptexceptionemptyencryptionkey)
-- [`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`](#encryptioncryptexceptionencryptionfailed)
-- [`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`](#encryptioncryptexceptioninvalidauthtaglength)
-- [`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`](#encryptioncryptexceptioninvaliddecryptlength)
-- [`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`](#encryptioncryptexceptioninvalidpaddingsize)
-- [`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`](#encryptioncryptexceptionivlengthcalculationfailed)
-- [`Phalcon\Encryption\Crypt\Exception\Mismatch`](#encryptioncryptexceptionmismatch)
-- [`Phalcon\Encryption\Crypt\Exception\MissingAuthData`](#encryptioncryptexceptionmissingauthdata)
-- [`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`](#encryptioncryptexceptionmissingopensslextension)
-- [`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`](#encryptioncryptexceptionrandombytesgenerationfailed)
-- [`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`](#encryptioncryptexceptionunsupportedalgorithm)
+  - **`Phalcon\Encryption\Crypt\Exception\Exception`**
+    - [`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`](#encryptioncryptexceptiondecryptionfailed)
+    - [`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`](#encryptioncryptexceptionemptydecryptionkey)
+    - [`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`](#encryptioncryptexceptionemptyencryptionkey)
+    - [`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`](#encryptioncryptexceptionencryptionfailed)
+    - [`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`](#encryptioncryptexceptioninvalidauthtaglength)
+    - [`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`](#encryptioncryptexceptioninvaliddecryptlength)
+    - [`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`](#encryptioncryptexceptioninvalidpaddingsize)
+    - [`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`](#encryptioncryptexceptionivlengthcalculationfailed)
+    - [`Phalcon\Encryption\Crypt\Exception\Mismatch`](#encryptioncryptexceptionmismatch)
+    - [`Phalcon\Encryption\Crypt\Exception\MissingAuthData`](#encryptioncryptexceptionmissingauthdata)
+    - [`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`](#encryptioncryptexceptionmissingopensslextension)
+    - [`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`](#encryptioncryptexceptionrandombytesgenerationfailed)
+    - [`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`](#encryptioncryptexceptionunsupportedalgorithm)
+
 
 ## Encryption\Crypt\Exception\InvalidAuthTagLength
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptioninvalidauthtaglength-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -628,18 +599,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\InvalidDecryptLength
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptioninvaliddecryptlength-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -649,18 +620,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\InvalidPaddingSize
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptioninvalidpaddingsize-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -670,18 +641,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\IvLengthCalculationFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionivlengthcalculationfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -691,6 +662,7 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\Mismatch
 
 Class
@@ -698,21 +670,21 @@ Class
 Exceptions thrown in Phalcon\Crypt will use this class.
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\Mismatch`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\Mismatch`**
+
 
 ## Encryption\Crypt\Exception\MissingAuthData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\MissingAuthData`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\MissingAuthData`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionmissingauthdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -722,18 +694,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\MissingOpensslExtension
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionmissingopensslextension-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -743,18 +715,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\RandomBytesGenerationFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionrandombytesgenerationfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -764,18 +736,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\UnsupportedAlgorithm
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`**
+  - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+    - **`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`**
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptexceptionunsupportedalgorithm-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"cipher","default":null}]}>
-</ApiItem>
+- `public __construct(string $type, string $cipher)`
 
 ### Methods
 
@@ -783,10 +755,11 @@ Class
 
 ```php
 public function __construct(
-string $type,
-string $cipher
+    string $type,
+    string $cipher
 );
 ```
+
 
 ## Encryption\Crypt\PadFactory
 
@@ -795,29 +768,24 @@ Class
 Factory for creating pad classes
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Encryption\Crypt\PadFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Encryption\Crypt\PadFactory`**
 
 `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Padding\Ansi` · `Phalcon\Encryption\Crypt\Padding\Iso10126` · `Phalcon\Encryption\Crypt\Padding\IsoIek` · `Phalcon\Encryption\Crypt\Padding\Noop` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Encryption\Crypt\Padding\Pkcs7` · `Phalcon\Encryption\Crypt\Padding\Space` · `Phalcon\Encryption\Crypt\Padding\Zero` · `Phalcon\Factory\AbstractFactory`
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpadfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-AdapterFactory constructor.
-</ApiItem>
-<ApiItem href="#encryptioncryptpadfactory-newinstance" visibility="public" name="newInstance" returnType="PadInterface" params={[{"type":"string","name":"name","default":null}]}>
-Create a new instance of the adapter
-</ApiItem>
-<ApiItem href="#encryptioncryptpadfactory-padnumbertoservice" visibility="public" name="padNumberToService" returnType="string" params={[{"type":"int","name":"number","default":null}]}>
-Gets a Crypt pad constant and returns the unique service name for the
-</ApiItem>
-<ApiItem href="#encryptioncryptpadfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(array $services = [])` — AdapterFactory constructor.
+
+- `public newInstance(string $name): PadInterface` — Create a new instance of the adapter
+
+- `public padNumberToService(int $number): string` — Gets a Crypt pad constant and returns the unique service name for the
+
+- `protected getServices(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="exception" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $exception = ""`
 
 ### Methods
 
@@ -852,6 +820,7 @@ padding class
 protected function getServices(): array;
 ```
 
+
 ## Encryption\Crypt\Padding\Ansi
 
 Class
@@ -864,10 +833,9 @@ Class Ansi
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingansi-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingansi-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -881,10 +849,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Iso10126
 
@@ -898,10 +867,9 @@ Class Iso10126
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingiso10126-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingiso10126-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -915,10 +883,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\IsoIek
 
@@ -932,10 +901,9 @@ Class IsoIek
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingisoiek-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingisoiek-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -949,10 +917,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Noop
 
@@ -966,10 +935,9 @@ Class Noop
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingnoop-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingnoop-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -983,10 +951,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\PadInterface
 
@@ -995,9 +964,10 @@ Interface
 Interface for Phalcon\Encryption\Crypt\Padding
 
 - [`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`](/5.20/api/phalcon_contracts/#contractsencryptioncryptpaddingpad)
-- **`Phalcon\Encryption\Crypt\Padding\PadInterface`**
+  - **`Phalcon\Encryption\Crypt\Padding\PadInterface`**
 
 `Phalcon\Contracts\Encryption\Crypt\Padding\Pad`
+
 
 ## Encryption\Crypt\Padding\Pkcs7
 
@@ -1011,10 +981,9 @@ Class Pkcs7
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingpkcs7-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingpkcs7-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -1028,10 +997,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Space
 
@@ -1045,10 +1015,9 @@ Class Space
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingspace-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingspace-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -1062,10 +1031,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Zero
 
@@ -1079,10 +1049,9 @@ Class Zero
 
 ### Method Summary
 
-<ApiItem href="#encryptioncryptpaddingzero-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptioncryptpaddingzero-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -1096,10 +1065,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Security
 
@@ -1115,148 +1085,121 @@ $password = $this->request->getPost("password");
 $user = Users::findFirstByLogin($login);
 
 if ($user) {
-if ($this->security->checkHash($password, $user->password)) {
-    // The password is valid
-}
+    if ($this->security->checkHash($password, $user->password)) {
+        // The password is valid
+    }
 }
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](/5.20/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](/5.20/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
 
 `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurity-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SessionInterface|null","name":"session","default":"null"},{"type":"RequestInterface|null","name":"request","default":"null"}]}>
-Security constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurity-checkhash" visibility="public" name="checkHash" returnType="bool" params={[{"type":"string","name":"password","default":null},{"type":"string","name":"passwordHash","default":null},{"type":"int","name":"maxPassLength","default":"0"}]}>
-Checks a plain text password and its hash version to check if the
-</ApiItem>
-<ApiItem href="#encryptionsecurity-checktoken" visibility="public" name="checkToken" returnType="bool" params={[{"type":"string|null","name":"tokenKey","default":"null"},{"type":"mixed","name":"tokenValue","default":"null"},{"type":"bool","name":"destroyIfValid","default":"true"}]}>
-Check if the CSRF token sent in the request is the same that the current
-</ApiItem>
-<ApiItem href="#encryptionsecurity-computehmac" visibility="public" name="computeHmac" returnType="string" params={[{"type":"string","name":"data","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"algorithm","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-Computes a HMAC
-</ApiItem>
-<ApiItem href="#encryptionsecurity-destroytoken" visibility="public" name="destroyToken" returnType="static" params={[]}>
-Removes the value of the CSRF token and key from session
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getdefaulthash" visibility="public" name="getDefaultHash" returnType="int" params={[]}>
-Returns the default hash
-</ApiItem>
-<ApiItem href="#encryptionsecurity-gethashinformation" visibility="public" name="getHashInformation" returnType="array" params={[{"type":"string","name":"hash","default":null}]}>
-Returns information regarding a hash
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getrandom" visibility="public" name="getRandom" returnType="Random" params={[]}>
-Returns a secure random number generator instance
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getrandombytes" visibility="public" name="getRandomBytes" returnType="int" params={[]}>
-Returns a number of bytes to be generated by the openssl pseudo random
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getrequesttoken" visibility="public" name="getRequestToken" returnType="string|null" params={[]}>
-Returns the value of the CSRF token for the current request.
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getsaltbytes" visibility="public" name="getSaltBytes" returnType="string" params={[{"type":"int","name":"numberBytes","default":"0"}]}>
-Generate a >22-length pseudo random string to be used as salt for
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getsessiontoken" visibility="public" name="getSessionToken" returnType="string|null" params={[]}>
-Returns the value of the CSRF token in session
-</ApiItem>
-<ApiItem href="#encryptionsecurity-gettoken" visibility="public" name="getToken" returnType="string|null" params={[]}>
-Generates a pseudo random token value to be used as input's value in a
-</ApiItem>
-<ApiItem href="#encryptionsecurity-gettokenkey" visibility="public" name="getTokenKey" returnType="string|null" params={[]}>
-Generates a pseudo random token key to be used as input's name in a CSRF
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getworkfactor" visibility="public" name="getWorkFactor" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurity-hash" visibility="public" name="hash" returnType="string" params={[{"type":"string","name":"password","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Creates a password hash using bcrypt with a pseudo random salt
-</ApiItem>
-<ApiItem href="#encryptionsecurity-islegacyhash" visibility="public" name="isLegacyHash" returnType="bool" params={[{"type":"string","name":"passwordHash","default":null}]}>
-Checks if a password hash is a valid bcrypt's hash
-</ApiItem>
-<ApiItem href="#encryptionsecurity-refreshtoken" visibility="public" name="refreshToken" returnType="static" params={[]}>
-Forces the regeneration of the CSRF token and key, writing the new
-</ApiItem>
-<ApiItem href="#encryptionsecurity-setautorefresh" visibility="public" name="setAutoRefresh" returnType="static" params={[{"type":"bool","name":"autoRefresh","default":null}]}>
-Toggles automatic regeneration of the CSRF token on every call to
-</ApiItem>
-<ApiItem href="#encryptionsecurity-setdefaulthash" visibility="public" name="setDefaultHash" returnType="static" params={[{"type":"int","name":"defaultHash","default":null}]}>
-Sets the default hash
-</ApiItem>
-<ApiItem href="#encryptionsecurity-setrandombytes" visibility="public" name="setRandomBytes" returnType="static" params={[{"type":"int","name":"randomBytes","default":null}]}>
-Sets a number of bytes to be generated by the openssl pseudo random
-</ApiItem>
-<ApiItem href="#encryptionsecurity-setworkfactor" visibility="public" name="setWorkFactor" returnType="static" params={[{"type":"int","name":"workFactor","default":null}]}>
-Sets the work factor
-</ApiItem>
-<ApiItem href="#encryptionsecurity-getlocalservice" visibility="protected" name="getLocalService" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"property","default":null}]}>
-</ApiItem>
+- `public __construct(SessionInterface|null $session = null, RequestInterface|null $request = null)` — Security constructor.
+
+- `public checkHash(string $password, string $passwordHash, int $maxPassLength = 0): bool` — Checks a plain text password and its hash version to check if the
+
+- `public checkToken(string|null $tokenKey = null, mixed $tokenValue = null, bool $destroyIfValid = true): bool` — Check if the CSRF token sent in the request is the same that the current
+
+- `public computeHmac(string $data, string $key, string $algorithm, bool $raw = false): string` — Computes a HMAC
+
+- `public destroyToken(): static` — Removes the value of the CSRF token and key from session
+
+- `public getDefaultHash(): int` — Returns the default hash
+
+- `public getHashInformation(string $hash): array` — Returns information regarding a hash
+
+- `public getRandom(): Random` — Returns a secure random number generator instance
+
+- `public getRandomBytes(): int` — Returns a number of bytes to be generated by the openssl pseudo random
+
+- `public getRequestToken(): string|null` — Returns the value of the CSRF token for the current request.
+
+- `public getSaltBytes(int $numberBytes = 0): string` — Generate a >22-length pseudo random string to be used as salt for
+
+- `public getSessionToken(): string|null` — Returns the value of the CSRF token in session
+
+- `public getToken(): string|null` — Generates a pseudo random token value to be used as input's value in a
+
+- `public getTokenKey(): string|null` — Generates a pseudo random token key to be used as input's name in a CSRF
+
+- `public getWorkFactor(): int`
+
+- `public hash(string $password, array $options = []): string` — Creates a password hash using bcrypt with a pseudo random salt
+
+- `public isLegacyHash(string $passwordHash): bool` — Checks if a password hash is a valid bcrypt's hash
+
+- `public refreshToken(): static` — Forces the regeneration of the CSRF token and key, writing the new
+
+- `public setAutoRefresh(bool $autoRefresh): static` — Toggles automatic regeneration of the CSRF token on every call to
+
+- `public setDefaultHash(int $defaultHash): static` — Sets the default hash
+
+- `public setRandomBytes(int $randomBytes): static` — Sets a number of bytes to be generated by the openssl pseudo random
+
+- `public setWorkFactor(int $workFactor): static` — Sets the work factor
+
+- `protected getLocalService(string $name, string $property)`
 
 ### Constants
 
-<ApiItem kind="constant" name="CRYPT_ARGON2I" type="int" default="10">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_ARGON2ID" type="int" default="11">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_BCRYPT" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_BLOWFISH" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_BLOWFISH_A" type="int" default="5">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_BLOWFISH_X" type="int" default="6">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_BLOWFISH_Y" type="int" default="7">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_DEFAULT" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_EXT_DES" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_MD5" type="int" default="3">
-Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
-`CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
-passwords on login. To be removed in a future major version.
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_SHA256" type="int" default="8">
-Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
-`CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
-passwords on login. To be removed in a future major version.
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_SHA512" type="int" default="9">
-Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
-`CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
-passwords on login. To be removed in a future major version.
-</ApiItem>
-<ApiItem kind="constant" name="CRYPT_STD_DES" type="int" default="1">
-</ApiItem>
+- `const int CRYPT_ARGON2I = 10`
+
+- `const int CRYPT_ARGON2ID = 11`
+
+- `const int CRYPT_BCRYPT = 0`
+
+- `const int CRYPT_BLOWFISH = 4`
+
+- `const int CRYPT_BLOWFISH_A = 5`
+
+- `const int CRYPT_BLOWFISH_X = 6`
+
+- `const int CRYPT_BLOWFISH_Y = 7`
+
+- `const int CRYPT_DEFAULT = 0`
+
+- `const int CRYPT_EXT_DES = 2`
+
+- `const int CRYPT_MD5 = 3` — Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+  `CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
+  passwords on login. To be removed in a future major version.
+
+- `const int CRYPT_SHA256 = 8` — Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+  `CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
+  passwords on login. To be removed in a future major version.
+
+- `const int CRYPT_SHA512 = 9` — Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
+  `CRYPT_DEFAULT` (bcrypt) or the Argon2 algorithms and rehash stored
+  passwords on login. To be removed in a future major version.
+
+- `const int CRYPT_STD_DES = 1`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="autoRefresh" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultHash" type="int" default="self::CRYPT_DEFAULT">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="numberBytes" type="int" default="16">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="random" type="Random" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="requestToken" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="token" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tokenKey" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tokenKeySessionId" type="string" default="&quot;$PHALCON/CSRF/KEY$&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tokenValueSessionId" type="string" default="&quot;$PHALCON/CSRF$&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="workFactor" type="int" default="10">
-</ApiItem>
+- `protected bool $autoRefresh = true`
+
+- `protected int $defaultHash = self::CRYPT_DEFAULT`
+
+- `protected int $numberBytes = 16`
+
+- `protected Random $random`
+
+- `protected string|null $requestToken = null`
+
+- `protected string|null $token = null`
+
+- `protected string|null $tokenKey = null`
+
+- `protected string $tokenKeySessionId = "$PHALCON/CSRF/KEY$"`
+
+- `protected string $tokenValueSessionId = "$PHALCON/CSRF$"`
+
+- `protected int $workFactor = 10`
 
 ### Methods
 
@@ -1264,8 +1207,8 @@ passwords on login. To be removed in a future major version.
 
 ```php
 public function __construct(
-SessionInterface|null $session = null,
-RequestInterface|null $request = null
+    SessionInterface|null $session = null,
+    RequestInterface|null $request = null
 );
 ```
 
@@ -1275,9 +1218,9 @@ Security constructor.
 
 ```php
 public function checkHash(
-string $password,
-string $passwordHash,
-int $maxPassLength = 0
+    string $password,
+    string $passwordHash,
+    int $maxPassLength = 0
 ): bool;
 ```
 
@@ -1288,9 +1231,9 @@ password matches
 
 ```php
 public function checkToken(
-string|null $tokenKey = null,
-mixed $tokenValue = null,
-bool $destroyIfValid = true
+    string|null $tokenKey = null,
+    mixed $tokenValue = null,
+    bool $destroyIfValid = true
 ): bool;
 ```
 
@@ -1301,10 +1244,10 @@ in session
 
 ```php
 public function computeHmac(
-string $data,
-string $key,
-string $algorithm,
-bool $raw = false
+    string $data,
+    string $key,
+    string $algorithm,
+    bool $raw = false
 ): string;
 ```
 
@@ -1404,8 +1347,8 @@ public function getWorkFactor(): int;
 
 ```php
 public function hash(
-string $password,
-array $options = []
+    string $password,
+    array $options = []
 ): string;
 ```
 
@@ -1473,10 +1416,11 @@ Sets the work factor
 
 ```php
 protected function getLocalService(
-string $name,
-string $property
+    string $name,
+    string $property
 );
 ```
+
 
 ## Encryption\Security\Exception
 
@@ -1487,24 +1431,24 @@ Phalcon\Encryption\Security\Exception
 Exceptions thrown in Phalcon\Security will use this class
 
 - `\Exception`
-- **`Phalcon\Encryption\Security\Exception`**
-- [`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`](#encryptionsecurityexceptionsinvalidrandominput)
-- [`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`](#encryptionsecurityexceptionsunknownhashalgorithm)
+  - **`Phalcon\Encryption\Security\Exception`**
+    - [`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`](#encryptionsecurityexceptionsinvalidrandominput)
+    - [`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`](#encryptionsecurityexceptionsunknownhashalgorithm)
+
 
 ## Encryption\Security\Exceptions\InvalidRandomInput
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
-- **`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`**
+  - [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
+    - **`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`**
 
 `Phalcon\Encryption\Security\Exception`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityexceptionsinvalidrandominput-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1514,20 +1458,20 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\Exceptions\UnknownHashAlgorithm
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
-- **`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`**
+  - [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
+    - **`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`**
 
 `Phalcon\Encryption\Security\Exception`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityexceptionsunknownhashalgorithm-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"algo","default":null}]}>
-</ApiItem>
+- `public __construct(string $algo)`
 
 ### Methods
 
@@ -1536,6 +1480,7 @@ Class
 ```php
 public function __construct( string $algo );
 ```
+
 
 ## Encryption\Security\JWT\Builder
 
@@ -1551,70 +1496,57 @@ JWT Builder
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtbuilder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"SignerInterface","name":"signer","default":null}]}>
-Builder constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-addclaim" visibility="public" name="addClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Adds a custom claim
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-addheader" visibility="public" name="addHeader" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Adds a custom claim
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getaudience" visibility="public" name="getAudience" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getclaims" visibility="public" name="getClaims" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getcontenttype" visibility="public" name="getContentType" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getexpirationtime" visibility="public" name="getExpirationTime" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getheaders" visibility="public" name="getHeaders" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getid" visibility="public" name="getId" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getissuedat" visibility="public" name="getIssuedAt" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getissuer" visibility="public" name="getIssuer" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getnotbefore" visibility="public" name="getNotBefore" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getpassphrase" visibility="public" name="getPassphrase" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-getsubject" visibility="public" name="getSubject" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-gettoken" visibility="public" name="getToken" returnType="Token" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-init" visibility="public" name="init" returnType="static" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setaudience" visibility="public" name="setAudience" returnType="static" params={[{"type":"mixed","name":"audience","default":null}]}>
-The "aud" (audience) claim identifies the recipients that the JWT is
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setcontenttype" visibility="public" name="setContentType" returnType="static" params={[{"type":"string","name":"contentType","default":null}]}>
-Sets the content type header 'cty'
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setexpirationtime" visibility="public" name="setExpirationTime" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
-The "exp" (expiration time) claim identifies the expiration time on
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setid" visibility="public" name="setId" returnType="static" params={[{"type":"string","name":"jwtId","default":null}]}>
-The "jti" (JWT ID) claim provides a unique identifier for the JWT.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setissuedat" visibility="public" name="setIssuedAt" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
-The "iat" (issued at) claim identifies the time at which the JWT was
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setissuer" visibility="public" name="setIssuer" returnType="static" params={[{"type":"string","name":"issuer","default":null}]}>
-The "iss" (issuer) claim identifies the principal that issued the
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setnotbefore" visibility="public" name="setNotBefore" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
-The "nbf" (not before) claim identifies the time before which the JWT
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setpassphrase" visibility="public" name="setPassphrase" returnType="static" params={[{"type":"string","name":"passphrase","default":null}]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setsubject" visibility="public" name="setSubject" returnType="static" params={[{"type":"string","name":"subject","default":null}]}>
-The "sub" (subject) claim identifies the principal that is the
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setclaim" visibility="protected" name="setClaim" returnType="Builder" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a registered claim
-</ApiItem>
+- `public __construct(SignerInterface $signer)` — Builder constructor.
+
+- `public addClaim(string $name, mixed $value): static` — Adds a custom claim
+
+- `public addHeader(string $name, mixed $value): static` — Adds a custom claim
+
+- `public getAudience()`
+
+- `public getClaims(): array`
+
+- `public getContentType(): string|null`
+
+- `public getExpirationTime(): int|null`
+
+- `public getHeaders(): array`
+
+- `public getId(): string|null`
+
+- `public getIssuedAt(): int|null`
+
+- `public getIssuer(): string|null`
+
+- `public getNotBefore(): int|null`
+
+- `public getPassphrase(): string`
+
+- `public getSubject(): string|null`
+
+- `public getToken(): Token`
+
+- `public init(): static`
+
+- `public setAudience(mixed $audience): static` — The "aud" (audience) claim identifies the recipients that the JWT is
+
+- `public setContentType(string $contentType): static` — Sets the content type header 'cty'
+
+- `public setExpirationTime(int $timestamp): static` — The "exp" (expiration time) claim identifies the expiration time on
+
+- `public setId(string $jwtId): static` — The "jti" (JWT ID) claim provides a unique identifier for the JWT.
+
+- `public setIssuedAt(int $timestamp): static` — The "iat" (issued at) claim identifies the time at which the JWT was
+
+- `public setIssuer(string $issuer): static` — The "iss" (issuer) claim identifies the principal that issued the
+
+- `public setNotBefore(int $timestamp): static` — The "nbf" (not before) claim identifies the time before which the JWT
+
+- `public setPassphrase(string $passphrase): static`
+
+- `public setSubject(string $subject): static` — The "sub" (subject) claim identifies the principal that is the
+
+- `protected setClaim(string $name, mixed $value): Builder` — Sets a registered claim
 
 ### Methods
 
@@ -1630,8 +1562,8 @@ Builder constructor.
 
 ```php
 public function addClaim(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -1641,8 +1573,8 @@ Adds a custom claim
 
 ```php
 public function addHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -1841,25 +1773,25 @@ value.  Use of this claim is OPTIONAL.
 
 ```php
 protected function setClaim(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): Builder;
 ```
 
 Sets a registered claim
+
 
 ## Encryption\Security\JWT\Exceptions\EmptyPassphrase
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsemptypassphrase-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1869,18 +1801,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidAudience
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsinvalidaudience-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1890,18 +1822,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidAudienceType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsinvalidaudiencetype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1911,19 +1843,19 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidClaims
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`**
+  - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsinvalidclaims-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1933,18 +1865,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidExpirationTime
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsinvalidexpirationtime-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1954,19 +1886,19 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidHeader
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`**
+  - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsinvalidheader-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1976,18 +1908,18 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidNotBefore
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsinvalidnotbefore-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1997,19 +1929,19 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\MalformedJwtString
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`**
+  - **`Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsmalformedjwtstring-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2019,19 +1951,19 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\MissingJwtTypHeader
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`**
+  - **`Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsmissingjwttypheader-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2041,6 +1973,7 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException
 
 Class
@@ -2048,23 +1981,23 @@ Class
 Exception thrown when the algorithm is not supported for JWT
 
 - `\Exception`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`**
-- [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`](#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm)
+  - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`](#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm)
 
 `Exception`
+
 
 ## Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`](#encryptionsecurityjwtexceptionsunsupportedalgorithmexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`](#encryptionsecurityjwtexceptionsunsupportedalgorithmexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2074,6 +2007,7 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\ValidatorException
 
 Class
@@ -2081,28 +2015,28 @@ Class
 Exception thrown when the validation does not pass for JWT
 
 - `\Exception`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`**
-- [`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`](#encryptionsecurityjwtexceptionsemptypassphrase)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`](#encryptionsecurityjwtexceptionsinvalidaudience)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`](#encryptionsecurityjwtexceptionsinvalidaudiencetype)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`](#encryptionsecurityjwtexceptionsinvalidexpirationtime)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`](#encryptionsecurityjwtexceptionsinvalidnotbefore)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`](#encryptionsecurityjwtexceptionsweakpassphrase)
+  - **`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`](#encryptionsecurityjwtexceptionsemptypassphrase)
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`](#encryptionsecurityjwtexceptionsinvalidaudience)
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`](#encryptionsecurityjwtexceptionsinvalidaudiencetype)
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`](#encryptionsecurityjwtexceptionsinvalidexpirationtime)
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`](#encryptionsecurityjwtexceptionsinvalidnotbefore)
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`](#encryptionsecurityjwtexceptionsweakpassphrase)
 
 `Exception`
+
 
 ## Encryption\Security\JWT\Exceptions\WeakPassphrase
 
 Class
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`**
+  - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtexceptionsweakpassphrase-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2112,6 +2046,7 @@ Class
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Signer\AbstractSigner
 
 Abstract
@@ -2119,17 +2054,15 @@ Abstract
 Abstract class helping with the signer classes
 
 - **`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`** - implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
-- [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](#encryptionsecurityjwtsignerhmac)
+  - [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](#encryptionsecurityjwtsignerhmac)
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtsignerabstractsigner-getalgorithm" visibility="public" name="getAlgorithm" returnType="string" params={[]}>
-</ApiItem>
+- `public getAlgorithm(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="algorithm" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $algorithm = ""`
 
 ### Methods
 
@@ -2139,6 +2072,7 @@ Abstract class helping with the signer classes
 public function getAlgorithm(): string;
 ```
 
+
 ## Encryption\Security\JWT\Signer\Hmac
 
 Class
@@ -2146,24 +2080,19 @@ Class
 HMAC signing class
 
 - [`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`](#encryptionsecurityjwtsignerabstractsigner)
-- **`Phalcon\Encryption\Security\JWT\Signer\Hmac`**
+  - **`Phalcon\Encryption\Security\JWT\Signer\Hmac`**
 
 `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException` · `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm` · `Phalcon\Traits\Php\HashTrait`
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtsignerhmac-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"algo","default":"\"sha512\""}]}>
-Hmac constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtsignerhmac-getalgheader" visibility="public" name="getAlgHeader" returnType="string" params={[]}>
-Return the value that is used for the "alg" header
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtsignerhmac-sign" visibility="public" name="sign" returnType="string" params={[{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Sign a payload using the passphrase
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtsignerhmac-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"string","name":"source","default":null},{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Verify a passed source with a payload and passphrase
-</ApiItem>
+- `public __construct(string $algo = "sha512")` — Hmac constructor.
+
+- `public getAlgHeader(): string` — Return the value that is used for the "alg" header
+
+- `public sign(string $payload, string $passphrase): string` — Sign a payload using the passphrase
+
+- `public verify(string $source, string $payload, string $passphrase): bool` — Verify a passed source with a payload and passphrase
 
 ### Methods
 
@@ -2187,8 +2116,8 @@ Return the value that is used for the "alg" header
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -2198,13 +2127,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Encryption\Security\JWT\Signer\None
 
@@ -2216,18 +2146,13 @@ No signing class
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtsignernone-getalgheader" visibility="public" name="getAlgHeader" returnType="string" params={[]}>
-Return the value that is used for the "alg" header
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtsignernone-getalgorithm" visibility="public" name="getAlgorithm" returnType="string" params={[]}>
-Return the algorithm used
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtsignernone-sign" visibility="public" name="sign" returnType="string" params={[{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Sign a payload using the passphrase
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtsignernone-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"string","name":"source","default":null},{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Verify a passed source with a payload and passphrase
-</ApiItem>
+- `public getAlgHeader(): string` — Return the value that is used for the "alg" header
+
+- `public getAlgorithm(): string` — Return the algorithm used
+
+- `public sign(string $payload, string $passphrase): string` — Sign a payload using the passphrase
+
+- `public verify(string $source, string $payload, string $passphrase): bool` — Verify a passed source with a payload and passphrase
 
 ### Methods
 
@@ -2251,8 +2176,8 @@ Return the algorithm used
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -2262,13 +2187,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Encryption\Security\JWT\Signer\SignerInterface
 
@@ -2277,9 +2203,10 @@ Interface
 Interface for JWT Signer classes
 
 - [`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`](/5.20/api/phalcon_contracts/#contractsencryptionsecurityjwtsignersigner)
-- **`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`**
+  - **`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`**
 
 `Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`
+
 
 ## Encryption\Security\JWT\Token\AbstractItem
 
@@ -2288,18 +2215,16 @@ Abstract
 Abstract helper class for Tokens
 
 - **`Phalcon\Encryption\Security\JWT\Token\AbstractItem`**
-- [`Phalcon\Encryption\Security\JWT\Token\Item`](#encryptionsecurityjwttokenitem)
-- [`Phalcon\Encryption\Security\JWT\Token\Signature`](#encryptionsecurityjwttokensignature)
+  - [`Phalcon\Encryption\Security\JWT\Token\Item`](#encryptionsecurityjwttokenitem)
+  - [`Phalcon\Encryption\Security\JWT\Token\Signature`](#encryptionsecurityjwttokensignature)
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwttokenabstractitem-getencoded" visibility="public" name="getEncoded" returnType="string" params={[]}>
-</ApiItem>
+- `public getEncoded(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
-</ApiItem>
+- `protected array $data = []`
 
 ### Methods
 
@@ -2308,6 +2233,7 @@ Abstract helper class for Tokens
 ```php
 public function getEncoded(): string;
 ```
+
 
 ## Encryption\Security\JWT\Token\Enum
 
@@ -2321,28 +2247,26 @@ Constants for Tokens. It offers constants for Headers as well as Claims
 
 ### Constants
 
-<ApiItem kind="constant" name="ALGO" type="string" default="&quot;alg&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AUDIENCE" type="string" default="&quot;aud&quot;">
-Claims
-</ApiItem>
-<ApiItem kind="constant" name="CONTENT_TYPE" type="string" default="&quot;cty&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="EXPIRATION_TIME" type="string" default="&quot;exp&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="ID" type="string" default="&quot;jti&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="ISSUED_AT" type="string" default="&quot;iat&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="ISSUER" type="string" default="&quot;iss&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_BEFORE" type="string" default="&quot;nbf&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="SUBJECT" type="string" default="&quot;sub&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="TYPE" type="string" default="&quot;typ&quot;">
-Headers
-</ApiItem>
+- `const string ALGO = "alg"`
+
+- `const string AUDIENCE = "aud"` — Claims
+
+- `const string CONTENT_TYPE = "cty"`
+
+- `const string EXPIRATION_TIME = "exp"`
+
+- `const string ID = "jti"`
+
+- `const string ISSUED_AT = "iat"`
+
+- `const string ISSUER = "iss"`
+
+- `const string NOT_BEFORE = "nbf"`
+
+- `const string SUBJECT = "sub"`
+
+- `const string TYPE = "typ"` — Headers
+
 
 ## Encryption\Security\JWT\Token\Item
 
@@ -2351,19 +2275,17 @@ Class
 Storage class for a Token Item
 
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
-- **`Phalcon\Encryption\Security\JWT\Token\Item`**
+  - **`Phalcon\Encryption\Security\JWT\Token\Item`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwttokenitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"payload","default":null},{"type":"string","name":"encoded","default":null}]}>
-Item constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokenitem-get" visibility="public" name="get" returnType="mixed|null" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokenitem-getpayload" visibility="public" name="getPayload" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokenitem-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(array $payload, string $encoded)` — Item constructor.
+
+- `public get(string $name, mixed $defaultValue = null): mixed|null`
+
+- `public getPayload(): array`
+
+- `public has(string $name): bool`
 
 ### Methods
 
@@ -2371,8 +2293,8 @@ Item constructor.
 
 ```php
 public function __construct(
-array $payload,
-string $encoded
+    array $payload,
+    string $encoded
 );
 ```
 
@@ -2382,8 +2304,8 @@ Item constructor.
 
 ```php
 public function get(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed|null;
 ```
 
@@ -2398,6 +2320,7 @@ public function getPayload(): array;
 ```php
 public function has( string $name ): bool;
 ```
+
 
 ## Encryption\Security\JWT\Token\Parser
 
@@ -2415,11 +2338,9 @@ signature. It returns a token object populated with the decoded information.
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwttokenparser-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Decode|null","name":"decode","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokenparser-parse" visibility="public" name="parse" returnType="Token" params={[{"type":"string","name":"token","default":null}]}>
-Parse a token and return it
-</ApiItem>
+- `public __construct(Decode|null $decode = null)`
+
+- `public parse(string $token): Token` — Parse a token and return it
 
 ### Methods
 
@@ -2437,6 +2358,7 @@ public function parse( string $token ): Token;
 
 Parse a token and return it
 
+
 ## Encryption\Security\JWT\Token\Signature
 
 Class
@@ -2444,15 +2366,13 @@ Class
 Signature class containing the encoded data and the hash.
 
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
-- **`Phalcon\Encryption\Security\JWT\Token\Signature`**
+  - **`Phalcon\Encryption\Security\JWT\Token\Signature`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwttokensignature-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"hash","default":"\"\""},{"type":"string","name":"encoded","default":"\"\""}]}>
-Signature constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokensignature-gethash" visibility="public" name="getHash" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $hash = "", string $encoded = "")` — Signature constructor.
+
+- `public getHash(): string`
 
 ### Methods
 
@@ -2460,8 +2380,8 @@ Signature constructor.
 
 ```php
 public function __construct(
-string $hash = "",
-string $encoded = ""
+    string $hash = "",
+    string $encoded = ""
 );
 ```
 
@@ -2472,6 +2392,7 @@ Signature constructor.
 ```php
 public function getHash(): string;
 ```
+
 
 ## Encryption\Security\JWT\Token\Token
 
@@ -2494,30 +2415,21 @@ and payload. It also calculates and returns the token string.
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwttokentoken-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Item","name":"headers","default":null},{"type":"Item","name":"claims","default":null},{"type":"Signature","name":"signature","default":null}]}>
-Token constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-getclaims" visibility="public" name="getClaims" returnType="Item" params={[]}>
-Return the registered claims
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-getheaders" visibility="public" name="getHeaders" returnType="Item" params={[]}>
-Return the registered headers
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-getpayload" visibility="public" name="getPayload" returnType="string" params={[]}>
-Return the payload
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-getsignature" visibility="public" name="getSignature" returnType="Signature" params={[]}>
-Return the signature
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-gettoken" visibility="public" name="getToken" returnType="string" params={[]}>
-Return the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-validate" visibility="public" name="validate" returnType="array" params={[{"type":"Validator","name":"validator","default":null}]}>
-Validate the token against the claims registered in the validator.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwttokentoken-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"SignerInterface","name":"signer","default":null},{"type":"string","name":"key","default":null}]}>
-Verify the signature
-</ApiItem>
+- `public __construct(Item $headers, Item $claims, Signature $signature)` — Token constructor.
+
+- `public getClaims(): Item` — Return the registered claims
+
+- `public getHeaders(): Item` — Return the registered headers
+
+- `public getPayload(): string` — Return the payload
+
+- `public getSignature(): Signature` — Return the signature
+
+- `public getToken(): string` — Return the token
+
+- `public validate(Validator $validator): array` — Validate the token against the claims registered in the validator.
+
+- `public verify(SignerInterface $signer, string $key): bool` — Verify the signature
 
 ### Methods
 
@@ -2525,9 +2437,9 @@ Verify the signature
 
 ```php
 public function __construct(
-Item $headers,
-Item $claims,
-Signature $signature
+    Item $headers,
+    Item $claims,
+    Signature $signature
 );
 ```
 
@@ -2594,12 +2506,13 @@ A signature-aware default is planned for a future major version.
 
 ```php
 public function verify(
-SignerInterface $signer,
-string $key
+    SignerInterface $signer,
+    string $key
 ): bool;
 ```
 
 Verify the signature
+
 
 ## Encryption\Security\JWT\Validator
 
@@ -2613,48 +2526,33 @@ Class Validator
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityjwtvalidator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Token","name":"token","default":null},{"type":"int","name":"timeShift","default":"0"},{"type":"ClockInterface|null","name":"clock","default":"null"}]}>
-Validator constructor.
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-get" visibility="public" name="get" returnType="mixed|null" params={[{"type":"string","name":"claim","default":null}]}>
-Return the value of a claim
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-geterrors" visibility="public" name="getErrors" returnType="array" params={[]}>
-Return an array with validation errors (if any)
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"claim","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set the value of a claim, for comparison with the token values
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-settoken" visibility="public" name="setToken" returnType="static" params={[{"type":"Token","name":"token","default":null}]}>
-Set the token to be validated
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateaudience" visibility="public" name="validateAudience" returnType="static" params={[{"type":"mixed","name":"audience","default":null}]}>
-Validate the audience
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateclaim" visibility="public" name="validateClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Validate a claim
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateexpiration" visibility="public" name="validateExpiration" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
-Validate the expiration time of the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateid" visibility="public" name="validateId" returnType="static" params={[{"type":"string|null","name":"id","default":"null"}]}>
-Validate the id of the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateissuedat" visibility="public" name="validateIssuedAt" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
-Validate the issued at (iat) of the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateissuer" visibility="public" name="validateIssuer" returnType="static" params={[{"type":"string|null","name":"issuer","default":"null"}]}>
-Validate the issuer of the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validatenotbefore" visibility="public" name="validateNotBefore" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
-Validate the notbefore (nbf) of the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validatesignature" visibility="public" name="validateSignature" returnType="static" params={[{"type":"SignerInterface","name":"signer","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Validate the signature of the token
-</ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validatesubject" visibility="public" name="validateSubject" returnType="static" params={[{"type":"string|null","name":"subject","default":"null"}]}>
-Validate the subject of the token
-</ApiItem>
+- `public __construct(Token $token, int $timeShift = 0, ClockInterface|null $clock = null)` — Validator constructor.
+
+- `public get(string $claim): mixed|null` — Return the value of a claim
+
+- `public getErrors(): array` — Return an array with validation errors (if any)
+
+- `public set(string $claim, mixed $value): static` — Set the value of a claim, for comparison with the token values
+
+- `public setToken(Token $token): static` — Set the token to be validated
+
+- `public validateAudience(mixed $audience): static` — Validate the audience
+
+- `public validateClaim(string $name, mixed $value): static` — Validate a claim
+
+- `public validateExpiration(int $timestamp): static` — Validate the expiration time of the token
+
+- `public validateId(string|null $id = null): static` — Validate the id of the token
+
+- `public validateIssuedAt(int $timestamp): static` — Validate the issued at (iat) of the token
+
+- `public validateIssuer(string|null $issuer = null): static` — Validate the issuer of the token
+
+- `public validateNotBefore(int $timestamp): static` — Validate the notbefore (nbf) of the token
+
+- `public validateSignature(SignerInterface $signer, string $passphrase): static` — Validate the signature of the token
+
+- `public validateSubject(string|null $subject = null): static` — Validate the subject of the token
 
 ### Methods
 
@@ -2662,9 +2560,9 @@ Validate the subject of the token
 
 ```php
 public function __construct(
-Token $token,
-int $timeShift = 0,
-ClockInterface|null $clock = null
+    Token $token,
+    int $timeShift = 0,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -2690,8 +2588,8 @@ Return an array with validation errors (if any)
 
 ```php
 public function set(
-string $claim,
-mixed $value
+    string $claim,
+    mixed $value
 ): static;
 ```
 
@@ -2717,8 +2615,8 @@ Validate the audience
 
 ```php
 public function validateClaim(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -2778,8 +2676,8 @@ A token is valid at exactly $timestamp. Only a timestamp before the
 
 ```php
 public function validateSignature(
-SignerInterface $signer,
-string $passphrase
+    SignerInterface $signer,
+    string $passphrase
 ): static;
 ```
 
@@ -2794,6 +2692,7 @@ public function validateSubject( string|null $subject = null ): static;
 Validate the subject of the token
 
 A null subject expresses no expectation and is skipped.
+
 
 ## Encryption\Security\Random
 
@@ -2875,33 +2774,23 @@ This class partially borrows SecureRandom library from Ruby
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityrandom-base58" visibility="public" name="base58" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
-Generates a random base58 string
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-base62" visibility="public" name="base62" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
-Generates a random base62 string
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-base64" visibility="public" name="base64" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
-Generates a random base64 string
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-base64safe" visibility="public" name="base64Safe" returnType="string" params={[{"type":"int","name":"len","default":"16"},{"type":"bool","name":"padding","default":"false"}]}>
-Generates a random URL-safe base64 string
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-bytes" visibility="public" name="bytes" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
-Generates a random binary string
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-hex" visibility="public" name="hex" returnType="string" params={[{"type":"int","name":"len","default":"16"}]}>
-Generates a random hex string
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-number" visibility="public" name="number" returnType="int" params={[{"type":"int","name":"len","default":null}]}>
-Generates a random number between 0 and $len
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-uuid" visibility="public" name="uuid" returnType="string" params={[]}>
-Generates a v4 random UUID (Universally Unique IDentifier)
-</ApiItem>
-<ApiItem href="#encryptionsecurityrandom-base" visibility="protected" name="base" returnType="string" params={[{"type":"string","name":"alphabet","default":null},{"type":"int","name":"base","default":null},{"type":"mixed","name":"number","default":"16"}]}>
-Generates a random string based on the number ($base) of characters
-</ApiItem>
+- `public base58(int $len = 16): string` — Generates a random base58 string
+
+- `public base62(int $len = 16): string` — Generates a random base62 string
+
+- `public base64(int $len = 16): string` — Generates a random base64 string
+
+- `public base64Safe(int $len = 16, bool $padding = false): string` — Generates a random URL-safe base64 string
+
+- `public bytes(int $len = 16): string` — Generates a random binary string
+
+- `public hex(int $len = 16): string` — Generates a random hex string
+
+- `public number(int $len): int` — Generates a random number between 0 and $len
+
+- `public uuid(): string` — Generates a v4 random UUID (Universally Unique IDentifier)
+
+- `protected base(string $alphabet, int $base, mixed $number = 16): string` — Generates a random string based on the number ($base) of characters
 
 ### Methods
 
@@ -2970,8 +2859,8 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 ```php
 public function base64Safe(
-int $len = 16,
-bool $padding = false
+    int $len = 16,
+    bool $padding = false
 ): string;
 ```
 
@@ -3073,14 +2962,15 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ```php
 protected function base(
-string $alphabet,
-int $base,
-mixed $number = 16
+    string $alphabet,
+    int $base,
+    mixed $number = 16
 ): string;
 ```
 
 Generates a random string based on the number ($base) of characters
 ($alphabet).
+
 
 ## Encryption\Security\Uuid
 
@@ -3098,24 +2988,17 @@ getDateTime() or getNode().
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuid-v1" visibility="public" name="v1" returnType="Version1" params={[]}>
-Generates a version 1 (time-based) UUID.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuid-v3" visibility="public" name="v3" returnType="Version3" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
-Generates a version 3 (name-based MD5) UUID.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuid-v4" visibility="public" name="v4" returnType="Version4" params={[]}>
-Generates a version 4 (random) UUID.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuid-v5" visibility="public" name="v5" returnType="Version5" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
-Generates a version 5 (name-based SHA-1) UUID.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuid-v6" visibility="public" name="v6" returnType="Version6" params={[]}>
-Generates a version 6 (reordered time-based) UUID.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuid-v7" visibility="public" name="v7" returnType="Version7" params={[]}>
-Generates a version 7 (Unix timestamp) UUID.
-</ApiItem>
+- `public v1(): Version1` — Generates a version 1 (time-based) UUID.
+
+- `public v3(string $namespaceName, string $name): Version3` — Generates a version 3 (name-based MD5) UUID.
+
+- `public v4(): Version4` — Generates a version 4 (random) UUID.
+
+- `public v5(string $namespaceName, string $name): Version5` — Generates a version 5 (name-based SHA-1) UUID.
+
+- `public v6(): Version6` — Generates a version 6 (reordered time-based) UUID.
+
+- `public v7(): Version7` — Generates a version 7 (Unix timestamp) UUID.
 
 ### Methods
 
@@ -3131,8 +3014,8 @@ Generates a version 1 (time-based) UUID.
 
 ```php
 public function v3(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 ): Version3;
 ```
 
@@ -3150,8 +3033,8 @@ Generates a version 4 (random) UUID.
 
 ```php
 public function v5(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 ): Version5;
 ```
 
@@ -3173,6 +3056,7 @@ public function v7(): Version7;
 
 Generates a version 7 (Unix timestamp) UUID.
 
+
 ## Encryption\Security\Uuid\AbstractUuid
 
 Abstract
@@ -3180,52 +3064,40 @@ Abstract
 Shared base for all UUID version objects.
 
 - **`Phalcon\Encryption\Security\Uuid\AbstractUuid`** - implements [`Phalcon\Encryption\Security\Uuid\UuidInterface`](#encryptionsecurityuuiduuidinterface)
-- [`Phalcon\Encryption\Security\Uuid\Version1`](#encryptionsecurityuuidversion1)
-- [`Phalcon\Encryption\Security\Uuid\Version3`](#encryptionsecurityuuidversion3)
-- [`Phalcon\Encryption\Security\Uuid\Version4`](#encryptionsecurityuuidversion4)
-- [`Phalcon\Encryption\Security\Uuid\Version5`](#encryptionsecurityuuidversion5)
-- [`Phalcon\Encryption\Security\Uuid\Version6`](#encryptionsecurityuuidversion6)
-- [`Phalcon\Encryption\Security\Uuid\Version7`](#encryptionsecurityuuidversion7)
+  - [`Phalcon\Encryption\Security\Uuid\Version1`](#encryptionsecurityuuidversion1)
+  - [`Phalcon\Encryption\Security\Uuid\Version3`](#encryptionsecurityuuidversion3)
+  - [`Phalcon\Encryption\Security\Uuid\Version4`](#encryptionsecurityuuidversion4)
+  - [`Phalcon\Encryption\Security\Uuid\Version5`](#encryptionsecurityuuidversion5)
+  - [`Phalcon\Encryption\Security\Uuid\Version6`](#encryptionsecurityuuidversion6)
+  - [`Phalcon\Encryption\Security\Uuid\Version7`](#encryptionsecurityuuidversion7)
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidabstractuuid-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Returns the UUID string.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidabstractuuid-jsonserialize" visibility="public" name="jsonSerialize" returnType="string" params={[]}>
-Returns the UUID string for JSON serialisation.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidabstractuuid-format" visibility="protected" name="format" returnType="string" params={[{"type":"string","name":"hex","default":null}]}>
-Formats a 32-character hex string as a canonical UUID string.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidabstractuuid-getnodeprovider" visibility="protected" name="getNodeProvider" returnType="NodeProviderInterface" params={[]}>
-Returns the shared SysNodeProvider instance, creating it on first call.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidabstractuuid-namespacetobytes" visibility="protected" name="namespaceToBytes" returnType="string" params={[{"type":"string","name":"uuid","default":null}]}>
-Converts a canonical UUID string to its 16-byte binary representation.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidabstractuuid-uuidtimestamptodatetime" visibility="protected" name="uuidTimestampToDateTime" returnType="\DateTimeImmutable" params={[{"type":"mixed","name":"timestamp","default":null}]}>
-Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
-</ApiItem>
+- `public __toString(): string` — Returns the UUID string.
+
+- `public jsonSerialize(): string` — Returns the UUID string for JSON serialisation.
+
+- `protected format(string $hex): string` — Formats a 32-character hex string as a canonical UUID string.
+
+- `protected getNodeProvider(): NodeProviderInterface` — Returns the shared SysNodeProvider instance, creating it on first call.
+
+- `protected namespaceToBytes(string $uuid): string` — Converts a canonical UUID string to its 16-byte binary representation.
+
+- `protected uuidTimestampToDateTime(mixed $timestamp): \DateTimeImmutable` — Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
 
 ### Constants
 
-<ApiItem kind="constant" name="MAX" type="string" default="&quot;ffffffff-ffff-ffff-ffff-ffffffffffff&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NIL" type="string" default="&quot;00000000-0000-0000-0000-000000000000&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="TIME_OFFSET_INT" type="int" default="0x01B21DD213814000">
-100-nanosecond intervals between UUID epoch (1582-10-15) and Unix epoch (1970-01-01).
-</ApiItem>
+- `const string MAX = "ffffffff-ffff-ffff-ffff-ffffffffffff"`
+
+- `const string NIL = "00000000-0000-0000-0000-000000000000"`
+
+- `const int TIME_OFFSET_INT = 0x01B21DD213814000` — 100-nanosecond intervals between UUID epoch (1582-10-15) and Unix epoch (1970-01-01).
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="nodeProvider" type="NodeProviderInterface|null" default="null">
-Cached SysNodeProvider instance - shared within the request via static.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uid" type="string" default="&quot;&quot;">
-The generated UUID string.
-</ApiItem>
+- `protected NodeProviderInterface|null $nodeProvider = null` — Cached SysNodeProvider instance - shared within the request via static.
+
+- `protected string $uid = ""` — The generated UUID string.
 
 ### Methods
 
@@ -3280,14 +3152,16 @@ protected function uuidTimestampToDateTime( mixed $timestamp ): \DateTimeImmutab
 Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
 a DateTimeImmutable. Used by Version1 and Version6.
 
+
 ## Encryption\Security\Uuid\NodeProviderInterface
 
 Interface
 
 - [`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`](/5.20/api/phalcon_contracts/#contractsencryptionsecurityuuidnodeprovider)
-- **`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`**
+  - **`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`**
 
 `Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`
+
 
 ## Encryption\Security\Uuid\RandomNodeProvider
 
@@ -3303,9 +3177,7 @@ Used as a fallback when no hardware MAC address is available.
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidrandomnodeprovider-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
-Returns a random 12-character hex node with the multicast bit set.
-</ApiItem>
+- `public getNode(): string` — Returns a random 12-character hex node with the multicast bit set.
 
 ### Methods
 
@@ -3316,6 +3188,7 @@ public function getNode(): string;
 ```
 
 Returns a random 12-character hex node with the multicast bit set.
+
 
 ## Encryption\Security\Uuid\SysNodeProvider
 
@@ -3341,9 +3214,7 @@ Platform support:
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidsysnodeprovider-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
-Returns the hardware MAC address as a 12-character hex string.
-</ApiItem>
+- `public getNode(): string` — Returns the hardware MAC address as a 12-character hex string.
 
 ### Methods
 
@@ -3356,14 +3227,16 @@ public function getNode(): string;
 Returns the hardware MAC address as a 12-character hex string.
 Result is cached in the instance property and optionally in APCu.
 
+
 ## Encryption\Security\Uuid\TimeBasedUuidInterface
 
 Interface
 
 - [`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`](/5.20/api/phalcon_contracts/#contractsencryptionsecurityuuidtimebaseduuid)
-- **`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`**
+  - **`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`**
 
 `Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`
+
 
 ## Encryption\Security\Uuid\UuidInterface
 
@@ -3374,9 +3247,10 @@ Marker interface for UUID version adapters.
 Also carries the standard RFC 4122 namespace UUIDs as constants.
 
 - [`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`](/5.20/api/phalcon_contracts/#contractsencryptionsecurityuuiduuid)
-- **`Phalcon\Encryption\Security\Uuid\UuidInterface`**
+  - **`Phalcon\Encryption\Security\Uuid\UuidInterface`**
 
 `Phalcon\Contracts\Encryption\Security\Uuid\Uuid`
+
 
 ## Encryption\Security\Uuid\Version1
 
@@ -3392,18 +3266,15 @@ as fallback.
 @link https://www.ietf.org/rfc/rfc4122.txt
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version1`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
+  - **`Phalcon\Encryption\Security\Uuid\Version1`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidversion1-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"\\DateTimeInterface|null","name":"dateTime","default":"null"},{"type":"mixed","name":"node","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidversion1-getdatetime" visibility="public" name="getDateTime" returnType="\DateTimeImmutable" params={[]}>
-Returns a DateTimeImmutable built from the UUID's embedded timestamp.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidversion1-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
-Returns the 12-character hex node embedded in the UUID.
-</ApiItem>
+- `public __construct(\DateTimeInterface|null $dateTime = null, mixed $node = null)`
+
+- `public getDateTime(): \DateTimeImmutable` — Returns a DateTimeImmutable built from the UUID's embedded timestamp.
+
+- `public getNode(): string` — Returns the 12-character hex node embedded in the UUID.
 
 ### Methods
 
@@ -3411,8 +3282,8 @@ Returns the 12-character hex node embedded in the UUID.
 
 ```php
 public function __construct(
-\DateTimeInterface|null $dateTime = null,
-mixed $node = null
+    \DateTimeInterface|null $dateTime = null,
+    mixed $node = null
 );
 ```
 
@@ -3432,6 +3303,7 @@ public function getNode(): string;
 
 Returns the 12-character hex node embedded in the UUID.
 
+
 ## Encryption\Security\Uuid\Version3
 
 Class
@@ -3444,12 +3316,11 @@ by hashing namespace bytes + name with MD5, then stamping version/variant.
 @link https://www.ietf.org/rfc/rfc4122.txt
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version3`**
+  - **`Phalcon\Encryption\Security\Uuid\Version3`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidversion3-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $namespaceName, string $name)`
 
 ### Methods
 
@@ -3457,10 +3328,11 @@ by hashing namespace bytes + name with MD5, then stamping version/variant.
 
 ```php
 public function __construct(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 );
 ```
+
 
 ## Encryption\Security\Uuid\Version4
 
@@ -3474,12 +3346,11 @@ Phalcon\Encryption\Security\Random::uuid().
 @link https://www.ietf.org/rfc/rfc4122.txt
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version4`**
+  - **`Phalcon\Encryption\Security\Uuid\Version4`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidversion4-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -3488,6 +3359,7 @@ Phalcon\Encryption\Security\Random::uuid().
 ```php
 public function __construct();
 ```
+
 
 ## Encryption\Security\Uuid\Version5
 
@@ -3502,12 +3374,11 @@ then stamping version/variant bits.
 @link https://www.ietf.org/rfc/rfc4122.txt
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version5`**
+  - **`Phalcon\Encryption\Security\Uuid\Version5`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidversion5-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $namespaceName, string $name)`
 
 ### Methods
 
@@ -3515,10 +3386,11 @@ then stamping version/variant bits.
 
 ```php
 public function __construct(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 );
 ```
+
 
 ## Encryption\Security\Uuid\Version6
 
@@ -3533,18 +3405,15 @@ that sort lexicographically in chronological order.
 @link https://www.rfc-editor.org/rfc/rfc9562
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version6`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
+  - **`Phalcon\Encryption\Security\Uuid\Version6`** - implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidversion6-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidversion6-getdatetime" visibility="public" name="getDateTime" returnType="\DateTimeImmutable" params={[]}>
-Returns a DateTimeImmutable built from the UUID's embedded timestamp.
-</ApiItem>
-<ApiItem href="#encryptionsecurityuuidversion6-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
-Returns the 12-character hex node embedded in the UUID.
-</ApiItem>
+- `public __construct()`
+
+- `public getDateTime(): \DateTimeImmutable` — Returns a DateTimeImmutable built from the UUID's embedded timestamp.
+
+- `public getNode(): string` — Returns the 12-character hex node embedded in the UUID.
 
 ### Methods
 
@@ -3570,6 +3439,7 @@ public function getNode(): string;
 
 Returns the 12-character hex node embedded in the UUID.
 
+
 ## Encryption\Security\Uuid\Version7
 
 Class
@@ -3582,12 +3452,11 @@ Layout (128 bits):
 @link https://www.rfc-editor.org/rfc/rfc9562
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version7`**
+  - **`Phalcon\Encryption\Security\Uuid\Version7`**
 
 ### Method Summary
 
-<ApiItem href="#encryptionsecurityuuidversion7-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 

@@ -21,23 +21,24 @@ application code.
 <?php
 
 $config = new \Phalcon\Config(
-[
-    "database" => [
-        "adapter"  => "Mysql",
-        "host"     => "localhost",
-        "username" => "scott",
-        "password" => "cheetah",
-        "dbname"   => "test_db",
-    ],
-    "phalcon" => [
-        "controllersDir" => "../app/controllers/",
-        "modelsDir"      => "../app/models/",
-        "viewsDir"       => "../app/views/",
-    ],
-]
+    [
+        "database" => [
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db",
+        ],
+        "phalcon" => [
+            "controllersDir" => "../app/controllers/",
+            "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ],
+    ]
 );
 
 ```
+
 
 ## Constants
 *string* **DEFAULT_PATH_DELIMITER**
@@ -47,6 +48,8 @@ public  **__construct** ([*array* $arrayConfig])
 
 Phalcon\Config constructor
 
+
+
 public  **offsetExists** (*mixed* $index)
 
 Allows to check whether an attribute is defined using the array-syntax
@@ -55,10 +58,12 @@ Allows to check whether an attribute is defined using the array-syntax
 <?php
 
 var_dump(
-isset($config["database"])
+    isset($config["database"])
 );
 
 ```
+
+
 
 public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter])
 
@@ -70,6 +75,8 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 
 ```
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue])
 
@@ -83,6 +90,8 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $index)
 
 Gets an attribute using the array-syntax
@@ -91,10 +100,12 @@ Gets an attribute using the array-syntax
 <?php
 
 print_r(
-$config["database"]
+    $config["database"]
 );
 
 ```
+
+
 
 public  **offsetSet** (*mixed* $index, *mixed* $value)
 
@@ -104,10 +115,12 @@ Sets an attribute using the array-syntax
 <?php
 
 $config["database"] = [
-"type" => "Sqlite",
+    "type" => "Sqlite",
 ];
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index)
 
@@ -120,6 +133,8 @@ unset($config["database"]);
 
 ```
 
+
+
 public  **merge** ([Phalcon\Config](/3.4/api/phalcon_config/) $config)
 
 Merges a configuration into the current one
@@ -128,16 +143,18 @@ Merges a configuration into the current one
 <?php
 
 $appConfig = new \Phalcon\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
 
 ```
+
+
 
 public  **toArray** ()
 
@@ -147,10 +164,12 @@ Converts recursively the object to an array
 <?php
 
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 
 ```
+
+
 
 public  **count** ()
 
@@ -171,21 +190,32 @@ print $config->count();
 
 ```
 
+
+
 public static  **__set_state** (*array* $data)
 
 Restores the state of a Phalcon\Config object
+
+
 
 public static  **setPathDelimiter** ([*mixed* $delimiter])
 
 Sets the default path delimiter
 
+
+
 public static  **getPathDelimiter** ()
 
 Gets the default path delimiter
 
+
+
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
 Helper method for merge configs (forwarding nested config instance)
+
+
+
 
 <hr />
 
@@ -205,10 +235,10 @@ Reads multiple files (or arrays) and merges them all together.
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
-    "path/to/config.php",
-    "path/to/config.dist.php",
-]
+    [
+        "path/to/config.php",
+        "path/to/config.dist.php",
+    ]
 );
 
 ```
@@ -219,11 +249,11 @@ $config = new Grouped(
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
-    "path/to/config.json",
-    "path/to/config.dist.json",
-],
-"json"
+    [
+        "path/to/config.json",
+        "path/to/config.dist.json",
+    ],
+    "json"
 );
 
 ```
@@ -234,24 +264,25 @@ $config = new Grouped(
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
     [
-        "filePath" => "path/to/config.php",
-        "adapter"  => "php",
+        [
+            "filePath" => "path/to/config.php",
+            "adapter"  => "php",
+        ],
+        [
+            "filePath" => "path/to/config.json",
+            "adapter"  => "json",
+        ],
+        [
+            "adapter"  => "array",
+            "config"   => [
+                "property" => "value",
+        ],
     ],
-    [
-        "filePath" => "path/to/config.json",
-        "adapter"  => "json",
-    ],
-    [
-        "adapter"  => "array",
-        "config"   => [
-            "property" => "value",
-    ],
-],
 );
 
 ```
+
 
 ## Constants
 *string* **DEFAULT_PATH_DELIMITER**
@@ -261,6 +292,8 @@ public  **__construct** (*array* $arrayConfig, [*mixed* $defaultAdapter])
 
 Phalcon\Config\Adapter\Grouped constructor
 
+
+
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Allows to check whether an attribute is defined using the array-syntax
@@ -269,10 +302,12 @@ Allows to check whether an attribute is defined using the array-syntax
 <?php
 
 var_dump(
-isset($config["database"])
+    isset($config["database"])
 );
 
 ```
+
+
 
 public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -284,6 +319,8 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 
 ```
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -297,6 +334,8 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets an attribute using the array-syntax
@@ -305,10 +344,12 @@ Gets an attribute using the array-syntax
 <?php
 
 print_r(
-$config["database"]
+    $config["database"]
 );
 
 ```
+
+
 
 public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -318,10 +359,12 @@ Sets an attribute using the array-syntax
 <?php
 
 $config["database"] = [
-"type" => "Sqlite",
+    "type" => "Sqlite",
 ];
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -334,6 +377,8 @@ unset($config["database"]);
 
 ```
 
+
+
 public  **merge** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Merges a configuration into the current one
@@ -342,16 +387,18 @@ Merges a configuration into the current one
 <?php
 
 $appConfig = new \Phalcon\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
 
 ```
+
+
 
 public  **toArray** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -361,10 +408,12 @@ Converts recursively the object to an array
 <?php
 
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 
 ```
+
+
 
 public  **count** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -385,21 +434,32 @@ print $config->count();
 
 ```
 
+
+
 public static  **__set_state** (*array* $data) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Restores the state of a Phalcon\Config object
+
+
 
 public static  **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Sets the default path delimiter
 
+
+
 public static  **getPathDelimiter** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets the default path delimiter
 
+
+
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Helper method for merge configs (forwarding nested config instance)
+
+
+
 
 <hr />
 
@@ -453,11 +513,12 @@ second parameter as INI_SCANNER_NORMAL when calling the constructor:
 <?php
 
 $config = new \Phalcon\Config\Adapter\Ini(
-"path/config-with-constants.ini",
-INI_SCANNER_NORMAL
+    "path/config-with-constants.ini",
+    INI_SCANNER_NORMAL
 );
 
 ```
+
 
 ## Constants
 *string* **DEFAULT_PATH_DELIMITER**
@@ -466,6 +527,8 @@ INI_SCANNER_NORMAL
 public  **__construct** (*mixed* $filePath, [*mixed* $mode])
 
 Phalcon\Config\Adapter\Ini constructor
+
+
 
 protected  **_parseIniString** (*mixed* $path, *mixed* $value)
 
@@ -478,18 +541,22 @@ $this->_parseIniString("path.hello.world", "value for last key");
 
 // result
 [
- "path" => [
-     "hello" => [
-         "world" => "value for last key",
+     "path" => [
+         "hello" => [
+             "world" => "value for last key",
+         ],
      ],
- ],
 ];
 
 ```
 
+
+
 protected  **_cast** (*mixed* $ini)
 
 We have to cast values manually because parse_ini_file() has a poor implementation.
+
+
 
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -499,10 +566,12 @@ Allows to check whether an attribute is defined using the array-syntax
 <?php
 
 var_dump(
-isset($config["database"])
+    isset($config["database"])
 );
 
 ```
+
+
 
 public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -514,6 +583,8 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 
 ```
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -527,6 +598,8 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets an attribute using the array-syntax
@@ -535,10 +608,12 @@ Gets an attribute using the array-syntax
 <?php
 
 print_r(
-$config["database"]
+    $config["database"]
 );
 
 ```
+
+
 
 public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -548,10 +623,12 @@ Sets an attribute using the array-syntax
 <?php
 
 $config["database"] = [
-"type" => "Sqlite",
+    "type" => "Sqlite",
 ];
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -564,6 +641,8 @@ unset($config["database"]);
 
 ```
 
+
+
 public  **merge** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Merges a configuration into the current one
@@ -572,16 +651,18 @@ Merges a configuration into the current one
 <?php
 
 $appConfig = new \Phalcon\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
 
 ```
+
+
 
 public  **toArray** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -591,10 +672,12 @@ Converts recursively the object to an array
 <?php
 
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 
 ```
+
+
 
 public  **count** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -615,21 +698,32 @@ print $config->count();
 
 ```
 
+
+
 public static  **__set_state** (*array* $data) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Restores the state of a Phalcon\Config object
+
+
 
 public static  **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Sets the default path delimiter
 
+
+
 public static  **getPathDelimiter** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets the default path delimiter
 
+
+
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Helper method for merge configs (forwarding nested config instance)
+
+
+
 
 <hr />
 
@@ -664,6 +758,7 @@ echo $config->models->metadata;
 
 ```
 
+
 ## Constants
 *string* **DEFAULT_PATH_DELIMITER**
 
@@ -671,6 +766,8 @@ echo $config->models->metadata;
 public  **__construct** (*mixed* $filePath)
 
 Phalcon\Config\Adapter\Json constructor
+
+
 
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -680,10 +777,12 @@ Allows to check whether an attribute is defined using the array-syntax
 <?php
 
 var_dump(
-isset($config["database"])
+    isset($config["database"])
 );
 
 ```
+
+
 
 public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -695,6 +794,8 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 
 ```
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -708,6 +809,8 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets an attribute using the array-syntax
@@ -716,10 +819,12 @@ Gets an attribute using the array-syntax
 <?php
 
 print_r(
-$config["database"]
+    $config["database"]
 );
 
 ```
+
+
 
 public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -729,10 +834,12 @@ Sets an attribute using the array-syntax
 <?php
 
 $config["database"] = [
-"type" => "Sqlite",
+    "type" => "Sqlite",
 ];
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -745,6 +852,8 @@ unset($config["database"]);
 
 ```
 
+
+
 public  **merge** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Merges a configuration into the current one
@@ -753,16 +862,18 @@ Merges a configuration into the current one
 <?php
 
 $appConfig = new \Phalcon\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
 
 ```
+
+
 
 public  **toArray** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -772,10 +883,12 @@ Converts recursively the object to an array
 <?php
 
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 
 ```
+
+
 
 public  **count** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -796,21 +909,32 @@ print $config->count();
 
 ```
 
+
+
 public static  **__set_state** (*array* $data) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Restores the state of a Phalcon\Config object
+
+
 
 public static  **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Sets the default path delimiter
 
+
+
 public static  **getPathDelimiter** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets the default path delimiter
 
+
+
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Helper method for merge configs (forwarding nested config instance)
+
+
+
 
 <hr />
 
@@ -832,18 +956,18 @@ Given the next configuration file:
 <?php
 
 return [
-"database" => [
-    "adapter"  => "Mysql",
-    "host"     => "localhost",
-    "username" => "scott",
-    "password" => "cheetah",
-    "dbname"   => "test_db",
-],
-"phalcon" => [
-    "controllersDir" => "../app/controllers/",
-    "modelsDir"      => "../app/models/",
-    "viewsDir"       => "../app/views/",
-],
+    "database" => [
+        "adapter"  => "Mysql",
+        "host"     => "localhost",
+        "username" => "scott",
+        "password" => "cheetah",
+        "dbname"   => "test_db",
+    ],
+    "phalcon" => [
+        "controllersDir" => "../app/controllers/",
+        "modelsDir"      => "../app/models/",
+        "viewsDir"       => "../app/views/",
+    ],
 ];
 
 ```
@@ -860,6 +984,7 @@ echo $config->database->username;
 
 ```
 
+
 ## Constants
 *string* **DEFAULT_PATH_DELIMITER**
 
@@ -867,6 +992,8 @@ echo $config->database->username;
 public  **__construct** (*mixed* $filePath)
 
 Phalcon\Config\Adapter\Php constructor
+
+
 
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -876,10 +1003,12 @@ Allows to check whether an attribute is defined using the array-syntax
 <?php
 
 var_dump(
-isset($config["database"])
+    isset($config["database"])
 );
 
 ```
+
+
 
 public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -891,6 +1020,8 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 
 ```
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -904,6 +1035,8 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets an attribute using the array-syntax
@@ -912,10 +1045,12 @@ Gets an attribute using the array-syntax
 <?php
 
 print_r(
-$config["database"]
+    $config["database"]
 );
 
 ```
+
+
 
 public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -925,10 +1060,12 @@ Sets an attribute using the array-syntax
 <?php
 
 $config["database"] = [
-"type" => "Sqlite",
+    "type" => "Sqlite",
 ];
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -941,6 +1078,8 @@ unset($config["database"]);
 
 ```
 
+
+
 public  **merge** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Merges a configuration into the current one
@@ -949,16 +1088,18 @@ Merges a configuration into the current one
 <?php
 
 $appConfig = new \Phalcon\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
 
 ```
+
+
 
 public  **toArray** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -968,10 +1109,12 @@ Converts recursively the object to an array
 <?php
 
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 
 ```
+
+
 
 public  **count** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -992,21 +1135,32 @@ print $config->count();
 
 ```
 
+
+
 public static  **__set_state** (*array* $data) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Restores the state of a Phalcon\Config object
+
+
 
 public static  **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Sets the default path delimiter
 
+
+
 public static  **getPathDelimiter** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets the default path delimiter
 
+
+
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Helper method for merge configs (forwarding nested config instance)
+
+
+
 
 <hr />
 
@@ -1039,17 +1193,17 @@ You can read it as follows:
 <?php
 
 define(
-"APPROOT",
-dirname(__DIR__)
+    "APPROOT",
+    dirname(__DIR__)
 );
 
 $config = new \Phalcon\Config\Adapter\Yaml(
-"path/config.yaml",
-[
-    "!approot" => function($value) {
-        return APPROOT . $value;
-    },
-]
+    "path/config.yaml",
+    [
+        "!approot" => function($value) {
+            return APPROOT . $value;
+        },
+    ]
 );
 
 echo $config->phalcon->controllersDir;
@@ -1057,6 +1211,7 @@ echo $config->phalcon->baseuri;
 echo $config->models->metadata;
 
 ```
+
 
 ## Constants
 *string* **DEFAULT_PATH_DELIMITER**
@@ -1066,6 +1221,8 @@ public  **__construct** (*mixed* $filePath, [*array* $callbacks])
 
 Phalcon\Config\Adapter\Yaml constructor
 
+
+
 public  **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Allows to check whether an attribute is defined using the array-syntax
@@ -1074,10 +1231,12 @@ Allows to check whether an attribute is defined using the array-syntax
 <?php
 
 var_dump(
-isset($config["database"])
+    isset($config["database"])
 );
 
 ```
+
+
 
 public  **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -1089,6 +1248,8 @@ Returns a value from current config using a dot separated path.
 echo $config->path("unknown.path", "default", ".");
 
 ```
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -1102,6 +1263,8 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets an attribute using the array-syntax
@@ -1110,10 +1273,12 @@ Gets an attribute using the array-syntax
 <?php
 
 print_r(
-$config["database"]
+    $config["database"]
 );
 
 ```
+
+
 
 public  **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -1123,10 +1288,12 @@ Sets an attribute using the array-syntax
 <?php
 
 $config["database"] = [
-"type" => "Sqlite",
+    "type" => "Sqlite",
 ];
 
 ```
+
+
 
 public  **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -1139,6 +1306,8 @@ unset($config["database"]);
 
 ```
 
+
+
 public  **merge** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Merges a configuration into the current one
@@ -1147,16 +1316,18 @@ Merges a configuration into the current one
 <?php
 
 $appConfig = new \Phalcon\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
 
 ```
+
+
 
 public  **toArray** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -1166,10 +1337,12 @@ Converts recursively the object to an array
 <?php
 
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 
 ```
+
+
 
 public  **count** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
@@ -1190,21 +1363,32 @@ print $config->count();
 
 ```
 
+
+
 public static  **__set_state** (*array* $data) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Restores the state of a Phalcon\Config object
+
+
 
 public static  **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Sets the default path delimiter
 
+
+
 public static  **getPathDelimiter** () inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Gets the default path delimiter
 
+
+
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](/3.4/api/phalcon_config/)
 
 Helper method for merge configs (forwarding nested config instance)
+
+
+
 
 <hr />
 
@@ -1221,45 +1405,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -1279,15 +1485,20 @@ Loads Config Adapter class using 'adapter' option, if no extension is provided i
 use Phalcon\Config\Factory;
 
 $options = [
-"filePath" => "path/config",
-"adapter"  => "php",
+    "filePath" => "path/config",
+    "adapter"  => "php",
 ];
 $config = Factory::load($options);
 
 ```
 
+
 ## Methods
 public static  **load** ([Phalcon\Config](/3.4/api/phalcon_config/) | *array* $config)
+
+
+
+
 
 protected static  **loadClass** (*mixed* $namespace, *mixed* $config)
 

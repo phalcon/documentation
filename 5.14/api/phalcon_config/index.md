@@ -26,10 +26,10 @@ See `Phalcon\Config\ConfigFactory::load` To load Config Adapter class using 'ada
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
-    "path/to/config.php",
-    "path/to/config.dist.php",
-]
+    [
+        "path/to/config.php",
+        "path/to/config.dist.php",
+    ]
 );
 ```
 
@@ -37,11 +37,11 @@ $config = new Grouped(
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
-    "path/to/config.json",
-    "path/to/config.dist.json",
-],
-"json"
+    [
+        "path/to/config.json",
+        "path/to/config.dist.json",
+    ],
+    "json"
 );
 ```
 
@@ -49,34 +49,35 @@ $config = new Grouped(
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
     [
-        "filePath" => "path/to/config.php",
-        "adapter"  => "php",
-    ],
-    [
-        "filePath" => "path/to/config.json",
-        "adapter"  => "json",
-    ],
-    [
-        "adapter"  => "array",
-        "config"   => [
-            "property" => "value",
+        [
+            "filePath" => "path/to/config.php",
+            "adapter"  => "php",
+        ],
+        [
+            "filePath" => "path/to/config.json",
+            "adapter"  => "json",
+        ],
+        [
+            "adapter"  => "array",
+            "config"   => [
+                "property" => "value",
+            ],
         ],
     ],
-],
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.14/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Grouped`**
+    - [`Phalcon\Config\Config`](#configconfig)
+        - **`Phalcon\Config\Adapter\Grouped`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` · `Phalcon\Factory\Exception`
+
 
 ### Method Summary
 
@@ -96,12 +97,13 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\C
 
 ```php
 public function __construct(
-array $arrayConfig,
-string $defaultAdapter = "php"
+    array $arrayConfig,
+    string $defaultAdapter = "php"
 );
 ```
 
 Phalcon\Config\Adapter\Grouped constructor
+
 
 ## Config\Adapter\Ini
 
@@ -144,20 +146,21 @@ second parameter as `INI_SCANNER_NORMAL` when calling the constructor:
 
 ```php
 $config = new \Phalcon\Config\Adapter\Ini(
-"path/config-with-constants.ini",
-INI_SCANNER_NORMAL
+    "path/config-with-constants.ini",
+    INI_SCANNER_NORMAL
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.14/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Ini`**
+    - [`Phalcon\Config\Config`](#configconfig)
+        - **`Phalcon\Config\Adapter\Ini`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile`
+
 
 ### Method Summary
 
@@ -199,8 +202,8 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 
 ```php
 public function __construct(
-string $filePath,
-int $mode = 1
+    string $filePath,
+    int $mode = 1
 );
 ```
 
@@ -227,8 +230,8 @@ protected function castArray( array $ini ): array;
 
 ```php
 protected function parseIniString(
-string $path,
-mixed $value
+    string $path,
+    mixed $value
 ): array;
 ```
 
@@ -238,13 +241,14 @@ Build multidimensional array from string
 
 ```php
 protected function phpParseIniFile(
-string $filename,
-bool $processSections = false,
-int $scannerMode = 1
+    string $filename,
+    bool $processSections = false,
+    int $scannerMode = 1
 );
 ```
 
 @todo to be removed when we get traits
+
 
 ## Config\Adapter\Json
 
@@ -273,12 +277,13 @@ echo $config->models->metadata;
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.14/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Json`**
+    - [`Phalcon\Config\Config`](#configconfig)
+        - **`Phalcon\Config\Adapter\Json`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Config` · `Phalcon\Support\Helper\Json\Decode`
+
 
 ### Method Summary
 
@@ -302,6 +307,7 @@ public function __construct( string $filePath );
 
 Phalcon\Config\Adapter\Json constructor
 
+
 ## Config\Adapter\Php
 
 <span class="badge badge--class">Class</span>
@@ -315,18 +321,18 @@ Given the next configuration file:
 <?php
 
 return [
-"database" => [
-    "adapter"  => "Mysql",
-    "host"     => "localhost",
-    "username" => "scott",
-    "password" => "cheetah",
-    "dbname"   => "test_db",
-],
-"phalcon" => [
-    "controllersDir" => "../app/controllers/",
-    "modelsDir"      => "../app/models/",
-    "viewsDir"       => "../app/views/",
-],
+    "database" => [
+        "adapter"  => "Mysql",
+        "host"     => "localhost",
+        "username" => "scott",
+        "password" => "cheetah",
+        "dbname"   => "test_db",
+    ],
+    "phalcon" => [
+        "controllersDir" => "../app/controllers/",
+        "modelsDir"      => "../app/models/",
+        "viewsDir"       => "../app/views/",
+    ],
 ];
 ```
 
@@ -344,12 +350,13 @@ echo $config->database->username;
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.14/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Php`**
+    - [`Phalcon\Config\Config`](#configconfig)
+        - **`Phalcon\Config\Adapter\Php`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Config`
+
 
 ### Method Summary
 
@@ -373,6 +380,7 @@ public function __construct( string $filePath );
 
 Phalcon\Config\Adapter\Php constructor
 
+
 ## Config\Adapter\Yaml
 
 <span class="badge badge--class">Class</span>
@@ -394,19 +402,19 @@ You can read it as follows:
 
 ```php
 define(
-"APPROOT",
-dirname(__DIR__)
+    "APPROOT",
+    dirname(__DIR__)
 );
 
 use Phalcon\Config\Adapter\Yaml;
 
 $config = new Yaml(
-"path/config.yaml",
-[
-    "!approot" => function($value) {
-        return APPROOT . $value;
-    },
-]
+    "path/config.yaml",
+    [
+        "!approot" => function($value) {
+            return APPROOT . $value;
+        },
+    ]
 );
 
 echo $config->phalcon->controllersDir;
@@ -417,12 +425,13 @@ echo $config->models->metadata;
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.14/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Yaml`**
+    - [`Phalcon\Config\Config`](#configconfig)
+        - **`Phalcon\Config\Adapter\Yaml`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Config\Exceptions\MissingYamlExtension`
+
 
 ### Method Summary
 
@@ -452,8 +461,8 @@ __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Confi
 
 ```php
 public function __construct(
-string $filePath,
-array $callbacks = null
+    string $filePath,
+    array $callbacks = null
 );
 ```
 
@@ -471,14 +480,15 @@ protected function phpExtensionLoaded( string $name ): bool;
 
 ```php
 protected function phpYamlParseFile(
-mixed $filename,
-mixed $pos = 0,
-mixed $ndocs = null,
-mixed $callbacks = []
+    mixed $filename,
+    mixed $pos = 0,
+    mixed $ndocs = null,
+    mixed $callbacks = []
 );
 ```
 
 @todo to be removed when we get traits
+
 
 ## Config\Config
 
@@ -492,36 +502,37 @@ code.
 
 ```php
 $config = new \Phalcon\Config\Config(
-[
-    "database" => [
-        "adapter"  => "Mysql",
-        "host"     => "localhost",
-        "username" => "scott",
-        "password" => "cheetah",
-        "dbname"   => "test_db",
-    ],
-    "phalcon" => [
-        "controllersDir" => "../app/controllers/",
-        "modelsDir"      => "../app/models/",
-        "viewsDir"       => "../app/views/",
-    ],
-]
+    [
+        "database" => [
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db",
+        ],
+        "phalcon" => [
+            "controllersDir" => "../app/controllers/",
+            "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ],
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.14/api/phalcon_support/#supportcollection)
-- **`Phalcon\Config\Config`** — implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
-- [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
-- [`Phalcon\Config\Adapter\Ini`](#configadapterini)
-- [`Phalcon\Config\Adapter\Json`](#configadapterjson)
-- [`Phalcon\Config\Adapter\Php`](#configadapterphp)
-- [`Phalcon\Config\Adapter\Yaml`](#configadapteryaml)
+    - **`Phalcon\Config\Config`** — implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
+        - [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
+        - [`Phalcon\Config\Adapter\Ini`](#configadapterini)
+        - [`Phalcon\Config\Adapter\Json`](#configadapterjson)
+        - [`Phalcon\Config\Adapter\Php`](#configadapterphp)
+        - [`Phalcon\Config\Adapter\Yaml`](#configadapteryaml)
 
 </div>
 
 __Uses__ `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Support\Collection`
+
 
 ### Method Summary
 
@@ -611,11 +622,11 @@ Merges a configuration into the current one
 
 ```php
 $appConfig = new \Phalcon\Config\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
@@ -625,9 +636,9 @@ $globalConfig->merge($appConfig);
 
 ```php
 public function path(
-string $path,
-mixed $defaultValue = null,
-string $delimiter = null
+    string $path,
+    mixed $defaultValue = null,
+    string $delimiter = null
 ): mixed;
 ```
 
@@ -655,7 +666,7 @@ Converts recursively the object to an array
 
 ```php
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 ```
 
@@ -665,8 +676,8 @@ $config->toArray()
 
 ```php
 final protected function internalMerge(
-array $source,
-array $target
+    array $source,
+    array $target
 ): array;
 ```
 
@@ -676,12 +687,13 @@ Performs a merge recursively
 
 ```php
 protected function setData(
-mixed $element,
-mixed $value
+    mixed $element,
+    mixed $value
 ): void;
 ```
 
 Sets the collection data
+
 
 ## Config\ConfigFactory
 
@@ -695,8 +707,8 @@ provided it will be added to filePath
 use Phalcon\Config\ConfigFactory;
 
 $options = [
-"filePath" => "path/config",
-"adapter"  => "php",
+    "filePath" => "path/config",
+    "adapter"  => "php",
 ];
 
 $config = (new ConfigFactory())->load($options);
@@ -705,12 +717,13 @@ $config = (new ConfigFactory())->load($options);
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.14/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Config\ConfigFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Config\ConfigFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Factory\AbstractFactory`
+
 
 ### Method Summary
 
@@ -774,9 +787,9 @@ Load a config to create a new instance
 
 ```php
 public function newInstance(
-string $name,
-string $fileName,
-mixed $params = null
+    string $name,
+    string $fileName,
+    mixed $params = null
 ): ConfigInterface;
 ```
 
@@ -804,6 +817,7 @@ Returns the available adapters
 protected function parseConfig( mixed $config ): array;
 ```
 
+
 ## Config\ConfigInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -816,13 +830,14 @@ Interface for Phalcon\Config\Config class
 <div class="api-tree">
 
 - `ArrayAccess`
-- [`Phalcon\Contracts\Support\Collection`](/5.14/api/phalcon_contracts/#contractssupportcollection)
-- [`Phalcon\Support\Collection\CollectionInterface`](/5.14/api/phalcon_support/#supportcollectioncollectioninterface)
-- **`Phalcon\Config\ConfigInterface`**
+    - [`Phalcon\Contracts\Support\Collection`](/5.14/api/phalcon_contracts/#contractssupportcollection)
+        - [`Phalcon\Support\Collection\CollectionInterface`](/5.14/api/phalcon_support/#supportcollectioncollectioninterface)
+            - **`Phalcon\Config\ConfigInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Collection\CollectionInterface`
+
 
 ### Method Summary
 
@@ -869,9 +884,9 @@ public function merge( mixed $toMerge ): ConfigInterface;
 
 ```php
 public function path(
-string $path,
-mixed $defaultValue = null,
-string $delimiter = null
+    string $path,
+    mixed $defaultValue = null,
+    string $delimiter = null
 ): mixed;
 ```
 
@@ -880,6 +895,7 @@ string $delimiter = null
 ```php
 public function setPathDelimiter( string $delimiter = null ): ConfigInterface;
 ```
+
 
 ## Config\Exception
 
@@ -891,16 +907,17 @@ Exceptions thrown in Phalcon\Config will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Config\Exception`**
-- [`Phalcon\Config\Exceptions\CannotLoadConfigFile`](#configexceptionscannotloadconfigfile)
-- [`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`](#configexceptionsconfignotarrayorobject)
-- [`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`](#configexceptionsgroupedadapterrequiresarray)
-- [`Phalcon\Config\Exceptions\InvalidMergeData`](#configexceptionsinvalidmergedata)
-- [`Phalcon\Config\Exceptions\MissingConfigOption`](#configexceptionsmissingconfigoption)
-- [`Phalcon\Config\Exceptions\MissingFileExtension`](#configexceptionsmissingfileextension)
-- [`Phalcon\Config\Exceptions\MissingYamlExtension`](#configexceptionsmissingyamlextension)
+    - **`Phalcon\Config\Exception`**
+        - [`Phalcon\Config\Exceptions\CannotLoadConfigFile`](#configexceptionscannotloadconfigfile)
+        - [`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`](#configexceptionsconfignotarrayorobject)
+        - [`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`](#configexceptionsgroupedadapterrequiresarray)
+        - [`Phalcon\Config\Exceptions\InvalidMergeData`](#configexceptionsinvalidmergedata)
+        - [`Phalcon\Config\Exceptions\MissingConfigOption`](#configexceptionsmissingconfigoption)
+        - [`Phalcon\Config\Exceptions\MissingFileExtension`](#configexceptionsmissingfileextension)
+        - [`Phalcon\Config\Exceptions\MissingYamlExtension`](#configexceptionsmissingyamlextension)
 
 </div>
+
 
 ## Config\Exceptions\CannotLoadConfigFile
 
@@ -917,12 +934,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\CannotLoadConfigFile`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\CannotLoadConfigFile`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 
@@ -954,6 +972,7 @@ public function __construct( string $fileName );
 public function getFileName(): string;
 ```
 
+
 ## Config\Exceptions\ConfigNotArrayOrObject
 
 <span class="badge badge--class">Class</span>
@@ -969,12 +988,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 
@@ -995,6 +1015,7 @@ __Uses__ `Phalcon\Config\Exception`
 public function __construct();
 ```
 
+
 ## Config\Exceptions\GroupedAdapterRequiresArray
 
 <span class="badge badge--class">Class</span>
@@ -1010,12 +1031,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 
@@ -1036,6 +1058,7 @@ __Uses__ `Phalcon\Config\Exception`
 public function __construct();
 ```
 
+
 ## Config\Exceptions\InvalidMergeData
 
 <span class="badge badge--class">Class</span>
@@ -1051,12 +1074,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\InvalidMergeData`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\InvalidMergeData`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 
@@ -1077,6 +1101,7 @@ __Uses__ `Phalcon\Config\Exception`
 public function __construct();
 ```
 
+
 ## Config\Exceptions\MissingConfigOption
 
 <span class="badge badge--class">Class</span>
@@ -1092,12 +1117,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\MissingConfigOption`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\MissingConfigOption`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 
@@ -1129,6 +1155,7 @@ public function __construct( string $option );
 public function getOption(): string;
 ```
 
+
 ## Config\Exceptions\MissingFileExtension
 
 <span class="badge badge--class">Class</span>
@@ -1144,12 +1171,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\MissingFileExtension`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\MissingFileExtension`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 
@@ -1170,6 +1198,7 @@ __Uses__ `Phalcon\Config\Exception`
 public function __construct();
 ```
 
+
 ## Config\Exceptions\MissingYamlExtension
 
 <span class="badge badge--class">Class</span>
@@ -1185,12 +1214,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\MissingYamlExtension`**
+    - [`Phalcon\Config\Exception`](#configexception)
+        - **`Phalcon\Config\Exceptions\MissingYamlExtension`**
 
 </div>
 
 __Uses__ `Phalcon\Config\Exception`
+
 
 ### Method Summary
 

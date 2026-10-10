@@ -312,12 +312,12 @@ use Phalcon\Html\Escaper\HtmlEscaper as PhalconHtmlEscaper;
 
 class LoggingHtmlEscaper extends PhalconHtmlEscaper
 {
-public function escape(string $input): string
-{
-    error_log('Escaping HTML: ' . $input);
+    public function escape(string $input): string
+    {
+        error_log('Escaping HTML: ' . $input);
 
-    return parent::escape($input);
-}
+        return parent::escape($input);
+    }
 }
 ```
 
@@ -395,14 +395,14 @@ use Phalcon\Mvc\Controller;
  */
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        echo $this->escaper->normalizeEncoding('ḂḃĊċḊḋḞḟĠġṀṁ');  
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            echo $this->escaper->normalizeEncoding('ḂḃĊċḊḋḞḟĠġṀṁ');  
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -420,10 +420,10 @@ use Phalcon\Html\Escaper;
 $container = new Di();
 
 $container->set(
-'escaper',
-function () use  {
-    return new Escaper();
-}
+    'escaper',
+    function () use  {
+        return new Escaper();
+    }
 );
 ```
 
@@ -444,15 +444,15 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    echo $this->escaper->html('The post was correctly saved!');
-}
+    public function saveAction()
+    {
+        echo $this->escaper->html('The post was correctly saved!');
+    }
 }
 ```
 
@@ -468,21 +468,21 @@ use Phalcon\Html\Escaper\EscaperInterface;
 
 class Custom extends EscaperInterface
 {
-public function css(string $css): string;
+    public function css(string $css): string;
 
-public function html(string $text): string;
+    public function html(string $text): string;
 
-public function attributes(string $text): string;
+    public function attributes(string $text): string;
 
-public function js(string $js): string;
+    public function js(string $js): string;
 
-public function url(string $url): string;
+    public function url(string $url): string;
 
-public function getEncoding(): string;
+    public function getEncoding(): string;
 
-public function setEncoding(string $encoding): void;
+    public function setEncoding(string $encoding): void;
 
-public function setHtmlQuoteType(int $quoteType): void;
+    public function setHtmlQuoteType(int $quoteType): void;
 }
 ```
 

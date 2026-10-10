@@ -13,6 +13,7 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Messages\Exception
 
 Class
@@ -20,24 +21,24 @@ Class
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 - `\Exception`
-- **`Phalcon\Messages\Exception`**
-- [`Phalcon\Messages\Exceptions\MessageNotObject`](#messagesexceptionsmessagenotobject)
-- [`Phalcon\Messages\Exceptions\MessagesNotIterable`](#messagesexceptionsmessagesnotiterable)
+  - **`Phalcon\Messages\Exception`**
+    - [`Phalcon\Messages\Exceptions\MessageNotObject`](#messagesexceptionsmessagenotobject)
+    - [`Phalcon\Messages\Exceptions\MessagesNotIterable`](#messagesexceptionsmessagesnotiterable)
+
 
 ## Messages\Exceptions\MessageNotObject
 
 Class
 
 - `\Exception`
-- [`Phalcon\Messages\Exception`](#messagesexception)
-- **`Phalcon\Messages\Exceptions\MessageNotObject`**
+  - [`Phalcon\Messages\Exception`](#messagesexception)
+    - **`Phalcon\Messages\Exceptions\MessageNotObject`**
 
 `Phalcon\Messages\Exception`
 
 ### Method Summary
 
-<ApiItem href="#messagesexceptionsmessagenotobject-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -47,20 +48,20 @@ Class
 public function __construct();
 ```
 
+
 ## Messages\Exceptions\MessagesNotIterable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Messages\Exception`](#messagesexception)
-- **`Phalcon\Messages\Exceptions\MessagesNotIterable`**
+  - [`Phalcon\Messages\Exception`](#messagesexception)
+    - **`Phalcon\Messages\Exceptions\MessagesNotIterable`**
 
 `Phalcon\Messages\Exception`
 
 ### Method Summary
 
-<ApiItem href="#messagesexceptionsmessagesnotiterable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -69,6 +70,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Messages\Message
 
@@ -84,53 +86,43 @@ Stores a message from various components
 
 ### Method Summary
 
-<ApiItem href="#messagesmessage-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null},{"type":"string","name":"field","default":"\"\""},{"type":"string","name":"type","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"array","name":"metaData","default":"[]"}]}>
-Phalcon\Messages\Message constructor
-</ApiItem>
-<ApiItem href="#messagesmessage-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Magic __toString method returns verbose message
-</ApiItem>
-<ApiItem href="#messagesmessage-getcode" visibility="public" name="getCode" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#messagesmessage-getfield" visibility="public" name="getField" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#messagesmessage-getmessage" visibility="public" name="getMessage" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#messagesmessage-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#messagesmessage-gettype" visibility="public" name="getType" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#messagesmessage-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Serializes the object for json_encode
-</ApiItem>
-<ApiItem href="#messagesmessage-setcode" visibility="public" name="setCode" returnType="MessageInterface" params={[{"type":"int","name":"code","default":null}]}>
-Sets code for the message
-</ApiItem>
-<ApiItem href="#messagesmessage-setfield" visibility="public" name="setField" returnType="MessageInterface" params={[{"type":"string","name":"field","default":null}]}>
-Sets field name related to message
-</ApiItem>
-<ApiItem href="#messagesmessage-setmessage" visibility="public" name="setMessage" returnType="MessageInterface" params={[{"type":"string","name":"message","default":null}]}>
-Sets verbose message
-</ApiItem>
-<ApiItem href="#messagesmessage-setmetadata" visibility="public" name="setMetaData" returnType="MessageInterface" params={[{"type":"array","name":"metaData","default":null}]}>
-Sets message metadata
-</ApiItem>
-<ApiItem href="#messagesmessage-settype" visibility="public" name="setType" returnType="MessageInterface" params={[{"type":"string","name":"type","default":null}]}>
-Sets message type
-</ApiItem>
+- `public __construct(string $message, string $field = "", string $type = "", int $code = 0, array $metaData = [])` — Phalcon\Messages\Message constructor
+
+- `public __toString(): string` — Magic \_\_toString method returns verbose message
+
+- `public getCode(): int`
+
+- `public getField(): string`
+
+- `public getMessage(): string`
+
+- `public getMetaData(): array`
+
+- `public getType(): string`
+
+- `public jsonSerialize(): array` — Serializes the object for json\_encode
+
+- `public setCode(int $code): MessageInterface` — Sets code for the message
+
+- `public setField(string $field): MessageInterface` — Sets field name related to message
+
+- `public setMessage(string $message): MessageInterface` — Sets verbose message
+
+- `public setMetaData(array $metaData): MessageInterface` — Sets message metadata
+
+- `public setType(string $type): MessageInterface` — Sets message type
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="code" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="field" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="message" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="metaData" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected int $code = 0`
+
+- `protected string $field = ""`
+
+- `protected string $message`
+
+- `protected array $metaData = []`
+
+- `protected string $type = ""`
 
 ### Methods
 
@@ -138,11 +130,11 @@ Sets message type
 
 ```php
 public function __construct(
-string $message,
-string $field = "",
-string $type = "",
-int $code = 0,
-array $metaData = []
+    string $message,
+    string $field = "",
+    string $type = "",
+    int $code = 0,
+    array $metaData = []
 );
 ```
 
@@ -234,6 +226,7 @@ public function setType( string $type ): MessageInterface;
 
 Sets message type
 
+
 ## Messages\MessageInterface
 
 Interface
@@ -246,39 +239,27 @@ Interface for Phalcon\Messages\Message
 
 ### Method Summary
 
-<ApiItem href="#messagesmessageinterface-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Magic __toString method returns verbose message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-getcode" visibility="public" name="getCode" returnType="int" params={[]}>
-Returns the message code related to this message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-getfield" visibility="public" name="getField" returnType="string" params={[]}>
-Returns field name related to message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-getmessage" visibility="public" name="getMessage" returnType="string" params={[]}>
-Returns verbose message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[]}>
-Returns message metadata
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-gettype" visibility="public" name="getType" returnType="string" params={[]}>
-Returns message type
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-setcode" visibility="public" name="setCode" returnType="MessageInterface" params={[{"type":"int","name":"code","default":null}]}>
-Sets code for the message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-setfield" visibility="public" name="setField" returnType="MessageInterface" params={[{"type":"string","name":"field","default":null}]}>
-Sets field name related to message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-setmessage" visibility="public" name="setMessage" returnType="MessageInterface" params={[{"type":"string","name":"message","default":null}]}>
-Sets verbose message
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-setmetadata" visibility="public" name="setMetaData" returnType="MessageInterface" params={[{"type":"array","name":"metaData","default":null}]}>
-Sets message metadata
-</ApiItem>
-<ApiItem href="#messagesmessageinterface-settype" visibility="public" name="setType" returnType="MessageInterface" params={[{"type":"string","name":"type","default":null}]}>
-Sets message type
-</ApiItem>
+- `public __toString(): string` — Magic \_\_toString method returns verbose message
+
+- `public getCode(): int` — Returns the message code related to this message
+
+- `public getField(): string` — Returns field name related to message
+
+- `public getMessage(): string` — Returns verbose message
+
+- `public getMetaData(): array` — Returns message metadata
+
+- `public getType(): string` — Returns message type
+
+- `public setCode(int $code): MessageInterface` — Sets code for the message
+
+- `public setField(string $field): MessageInterface` — Sets field name related to message
+
+- `public setMessage(string $message): MessageInterface` — Sets verbose message
+
+- `public setMetaData(array $metaData): MessageInterface` — Sets message metadata
+
+- `public setType(string $type): MessageInterface` — Sets message type
 
 ### Methods
 
@@ -370,6 +351,7 @@ public function setType( string $type ): MessageInterface;
 
 Sets message type
 
+
 ## Messages\Messages
 
 Class
@@ -389,21 +371,15 @@ must take part in iteration.
 
 ### Method Summary
 
-<ApiItem href="#messagesmessages-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"messages","default":"[]"}]}>
-Phalcon\Messages\Messages constructor
-</ApiItem>
-<ApiItem href="#messagesmessages-appendmessage" visibility="public" name="appendMessage" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the collection
-</ApiItem>
-<ApiItem href="#messagesmessages-appendmessages" visibility="public" name="appendMessages" returnType="" params={[{"type":"mixed","name":"messages","default":null}]}>
-Appends an array of messages to the collection
-</ApiItem>
-<ApiItem href="#messagesmessages-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"fieldName","default":null}]}>
-Filters the message collection by field name
-</ApiItem>
-<ApiItem href="#messagesmessages-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Returns serialised message objects as array for json_encode. Calls
-</ApiItem>
+- `public __construct(array $messages = [])` — Phalcon\Messages\Messages constructor
+
+- `public appendMessage(MessageInterface $message): void` — Appends a message to the collection
+
+- `public appendMessages(mixed $messages)` — Appends an array of messages to the collection
+
+- `public filter(string $fieldName): array` — Filters the message collection by field name
+
+- `public jsonSerialize(): array` — Returns serialised message objects as array for json\_encode. Calls
 
 ### Methods
 
@@ -425,7 +401,7 @@ Appends a message to the collection
 
 ```php
 $messages->appendMessage(
-new \Phalcon\Messages\Message("This is a message")
+    new \Phalcon\Messages\Message("This is a message")
 );
 ```
 
@@ -468,6 +444,7 @@ $data = $messages->jsonSerialize();
 echo json_encode($data);
 ```
 
+
 ## Messages\Traits\MessagesHelperTrait
 
 Trait
@@ -482,43 +459,31 @@ Trait MessagesHelperTrait
 
 ### Method Summary
 
-<ApiItem href="#messagestraitsmessageshelpertrait-count" visibility="public" name="count" returnType="int" params={[]}>
-Returns the number of messages in the list
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-current" visibility="public" name="current" returnType="MessageInterface" params={[]}>
-Returns the current message in the iterator
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-key" visibility="public" name="key" returnType="int" params={[]}>
-Returns the current position/key in the iterator
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-next" visibility="public" name="next" returnType="void" params={[]}>
-Moves the internal iteration pointer to the next position
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
-Checks if an index exists
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"offset","default":null}]}>
-Gets an attribute a message using the array syntax
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets an attribute using the array-syntax
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
-Removes a message from the list
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-rewind" visibility="public" name="rewind" returnType="void" params={[]}>
-Rewinds the internal iterator
-</ApiItem>
-<ApiItem href="#messagestraitsmessageshelpertrait-valid" visibility="public" name="valid" returnType="bool" params={[]}>
-Check if the current message in the iterator is valid
-</ApiItem>
+- `public count(): int` — Returns the number of messages in the list
+
+- `public current(): MessageInterface` — Returns the current message in the iterator
+
+- `public key(): int` — Returns the current position/key in the iterator
+
+- `public next(): void` — Moves the internal iteration pointer to the next position
+
+- `public offsetExists(mixed $offset): bool` — Checks if an index exists
+
+- `public offsetGet(mixed $offset): mixed` — Gets an attribute a message using the array syntax
+
+- `public offsetSet(mixed $offset, mixed $value): void` — Sets an attribute using the array-syntax
+
+- `public offsetUnset(mixed $offset): void` — Removes a message from the list
+
+- `public rewind(): void` — Rewinds the internal iterator
+
+- `public valid(): bool` — Check if the current message in the iterator is valid
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="messages" type="messages_list" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="position" type="int" default="0">
-</ApiItem>
+- `protected messages_list $messages = []`
+
+- `protected int $position = 0`
 
 ### Methods
 
@@ -564,7 +529,7 @@ Checks if an index exists
 
 ```php
 var_dump(
-isset($message["database"])
+    isset($message["database"])
 );
 ```
 
@@ -578,7 +543,7 @@ Gets an attribute a message using the array syntax
 
 ```php
 print_r(
-$messages[0]
+    $messages[0]
 );
 ```
 
@@ -586,8 +551,8 @@ $messages[0]
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 

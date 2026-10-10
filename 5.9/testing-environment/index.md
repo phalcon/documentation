@@ -22,6 +22,7 @@ Formerly relying on `nanobox," a solution now discontinued, we intensified our e
 
 This Docker-based approach simplifies the setup, ensuring a more accessible and efficient development process for Phalcon.
 
+
 # Installation
 Before you begin, ensure that docker is installed on your machine. If you haven't installed it yet, follow the instructions [here][docker_installation]. Additionally, you'll need `docker compose` - installation details can be found [here][docker_compose].
 

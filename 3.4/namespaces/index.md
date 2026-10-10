@@ -11,6 +11,7 @@ version: "3.4"
 
 [Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
+
 ## Setting up the framework
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
@@ -20,10 +21,10 @@ Use an autoload strategy that takes into account the namespaces, for example wit
 <?php
 
 $loader->registerNamespaces(
-[
-   'Store\Admin\Controllers' => '../bundles/admin/controllers/',
-   'Store\Admin\Models'      => '../bundles/admin/models/',
-]
+    [
+       'Store\Admin\Controllers' => '../bundles/admin/controllers/',
+       'Store\Admin\Models'      => '../bundles/admin/models/',
+    ]
 );
 ```
 
@@ -32,12 +33,12 @@ Specify it in the routes as a separate parameter in the route's paths:
 <?php
 
 $router->add(
-'/admin/users/my-profile',
-[
-    'namespace'  => 'Store\Admin',
-    'controller' => 'Users',
-    'action'     => 'profile',
-]
+    '/admin/users/my-profile',
+    [
+        'namespace'  => 'Store\Admin',
+        'controller' => 'Users',
+        'action'     => 'profile',
+    ]
 );
 ```
 
@@ -47,12 +48,12 @@ Passing it as part of the route:
 <?php
 
 $router->add(
-'/:namespace/admin/users/my-profile',
-[
-    'namespace'  => 1,
-    'controller' => 'Users',
-    'action'     => 'profile',
-]
+    '/:namespace/admin/users/my-profile',
+    [
+        'namespace'  => 1,
+        'controller' => 'Users',
+        'action'     => 'profile',
+    ]
 );
 ```
 
@@ -65,18 +66,19 @@ use Phalcon\Mvc\Dispatcher;
 
 // Registering a dispatcher
 $di->set(
-'dispatcher',
-function () {
-    $dispatcher = new Dispatcher();
+    'dispatcher',
+    function () {
+        $dispatcher = new Dispatcher();
 
-    $dispatcher->setDefaultNamespace(
-        'Store\Admin\Controllers'
-    );
+        $dispatcher->setDefaultNamespace(
+            'Store\Admin\Controllers'
+        );
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
+
 
 ## Controllers in Namespaces
 The following example shows how to implement a controller that use namespaces:
@@ -90,17 +92,18 @@ use Phalcon\Mvc\Controller;
 
 class UsersController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function profileAction()
-{
+    public function profileAction()
+    {
 
-}
+    }
 }
 ```
+
 
 ## Models in Namespaces
 Take the following into consideration when using models in namespaces:
@@ -129,17 +132,17 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function initialize()
-{
-    $this->hasMany(
-        'id',
-        'Store\Models\Parts',
-        'robots_id',
-        [
-            'alias' => 'parts',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            'id',
+            'Store\Models\Parts',
+            'robots_id',
+            [
+                'alias' => 'parts',
+            ]
+        );
+    }
 }
 ```
 

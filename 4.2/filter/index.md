@@ -43,7 +43,7 @@ use MyApp\Sanitizers\HelloSanitizer;
 use Phalcon\Filter;
 
 $services = [
-'hello' => HelloSanitizer::class,
+    'hello' => HelloSanitizer::class,
 ];
 
 $locator = new Filter($services);
@@ -272,17 +272,17 @@ use Phalcon\Mvc\Controller;
  */
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    if (true === $this->request->isPost()) {
-        $price = $this->request->getPost('price', 'double');
+    public function saveAction()
+    {
+        if (true === $this->request->isPost()) {
+            $price = $this->request->getPost('price', 'double');
 
-        $email = $this->request->getPost(
-            'customerEmail',
-            Filter::FILTER_EMAIL
-        );
+            $email = $this->request->getPost(
+                'customerEmail',
+                Filter::FILTER_EMAIL
+            );
+        }
     }
-}
 }
 ```
 
@@ -304,10 +304,10 @@ use Phalcon\Mvc\Controller;
  */
 class ProductsController extends Controller
 {
-public function showAction($productId)
-{
-    $productId = $this->filter->sanitize($productId, 'absint');
-}
+    public function showAction($productId)
+    {
+        $productId = $this->filter->sanitize($productId, 'absint');
+    }
 }
 ```
 
@@ -330,6 +330,7 @@ $locator->sanitize('<h1>Hello</h1>', 'striptags');
 $locator->sanitize('  Hello   ', 'trim');
 ```
 
+
 ## Adding Sanitizers
 You can add your own sanitizers to [Phalcon\Filter][filter-filter]. The sanitizer can be an anonymous function when initializing the locator:
 
@@ -339,9 +340,9 @@ You can add your own sanitizers to [Phalcon\Filter][filter-filter]. The sanitize
 use Phalcon\Filter;
 
 $services = [
-'md5' => function ($input) {
-    return md5($input);
-},
+    'md5' => function ($input) {
+        return md5($input);
+    },
 ];
 
 $locator = new Filter($services);
@@ -361,10 +362,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'md5',
-function ($input) {
-    return md5($input);
-}
+    'md5',
+    function ($input) {
+        return md5($input);
+    }
 );
 
 $sanitized = $locator->sanitize($value, 'md5');
@@ -379,10 +380,10 @@ use Phalcon\Filter\FilterFactory;
 
 class IPv4
 {
-public function __invoke($value)
-{
-    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-}
+    public function __invoke($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+    }
 }
 
 $factory = new FilterFactory();
@@ -390,13 +391,14 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'ipv4',
-new Ipv4()
+    'ipv4',
+    new Ipv4()
 );
 
 // Sanitize with the 'ipv4' filter
 $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
+
 
 ## Combining Sanitizers
 There are times where one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter][filter-filter] component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
@@ -412,11 +414,11 @@ $locator = $factory->newInstance();
 
 // Returns 'Hello'
 $locator->sanitize(
-'   <h1> Hello </h1>   ',
-[
-    'striptags',
-    'trim',
-]
+    '   <h1> Hello </h1>   ',
+    [
+        'striptags',
+        'trim',
+    ]
 );
 ```
 
@@ -436,19 +438,19 @@ use Phalcon\Mvc\Controller;
  */
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    if (true === $this->request->isPost()) {
-        $message =  $this->request->getPost(
-            '   <h1> Hello </h1>   ',
-            [
-                'striptags',
-                'trim',
-            ]
-        );
+    public function saveAction()
+    {
+        if (true === $this->request->isPost()) {
+            $message =  $this->request->getPost(
+                '   <h1> Hello </h1>   ',
+                [
+                    'striptags',
+                    'trim',
+                ]
+            );
 
+        }
     }
-}
 }
 ```
 
@@ -465,10 +467,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'md5',
-function ($input) {
-    return md5($input);
-}
+    'md5',
+    function ($input) {
+        return md5($input);
+    }
 );
 
 $sanitized = $locator->sanitize($value, 'md5');
@@ -483,10 +485,10 @@ use Phalcon\Filter\FilterFactory;
 
 class IPv4
 {
-public function __invoke($value)
-{
-    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-}
+    public function __invoke($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+    }
 }
 
 $factory = new FilterFactory();
@@ -494,10 +496,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'ipv4',
-function () {
-    return new Ipv4();
-}
+    'ipv4',
+    function () {
+        return new Ipv4();
+    }
 );
 
 // Sanitize with the 'ipv4' filter

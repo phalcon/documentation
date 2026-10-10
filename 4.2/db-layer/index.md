@@ -23,6 +23,7 @@ This component makes use of adapters to encapsulate specific database system det
 | [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql] | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
 | [Phalcon\Db\Adapter\Pdo\Sqlite][db-adapter-pdo-sqlite]         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
 
+
 ### Constants
 The [Phalcon\Db\Enum][db-enum] class exposes a number of constants that can be used on the DB layer.
 
@@ -94,36 +95,36 @@ Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not
 
 ```php
 public function addColumn(
-string $tableName, 
-string $schemaName, 
-ColumnInterface $column
+    string $tableName, 
+    string $schemaName, 
+    ColumnInterface $column
 ): bool
 ```
 Adds a column to a table
 
 ```php
 public function addIndex(
-string $tableName, 
-string $schemaName,
-IndexInterface $index
+    string $tableName, 
+    string $schemaName,
+    IndexInterface $index
 ): bool
 ```
 Adds an index to a table
 
 ```php
 public function addForeignKey(
-string $tableName, 
-string $schemaName, 
-ReferenceInterface $reference
+    string $tableName, 
+    string $schemaName, 
+    ReferenceInterface $reference
 ): bool
 ```
 Adds a foreign key to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName, 
-string $schemaName, 
-IndexInterface $index
+    string $tableName, 
+    string $schemaName, 
+    IndexInterface $index
 ): bool
 ```
 Adds a primary key to a table
@@ -135,7 +136,7 @@ Returns the number of affected rows by the last `INSERT`/`UPDATE`/`DELETE` repor
 
 ```php
 public function begin(
-bool $nesting = true
+    bool $nesting = true
 ): bool
 ```
 Starts a transaction in the connection
@@ -147,21 +148,21 @@ Closes active connection returning success. Phalcon automatically closes and des
 
 ```php
 public function commit(
-bool $nesting = true
+    bool $nesting = true
 ): bool
 ```
 Commits the active transaction in the connection
 
 ```php
 public function connect(
-array $descriptor = null
+    array $descriptor = null
 ): bool
 ```
  This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo][db-adapter-pdo-abstractpdo] constructor. Call it when you need to restore a database connection
 
 ```php
 public function createSavepoint(
-string $name
+    string $name
 ): bool
 ```
 Creates a new savepoint
@@ -612,7 +613,7 @@ public function viewExists(
 ): bool
 ```
 Generates SQL checking for the existence of a schema view
-
+    
 ### Custom 
 The [Phalcon\Db\AdapterInterface][db-adapter-adapterinterface] interface must be implemented in order to create your own database adapters or extend the existing ones. Additionally you can extend the [Phalcon\Db\AbstractAdapter][db-adapter-abstractadapter] that already has some implementation for your custom adapter. 
 
@@ -632,7 +633,7 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 ## Factory
 ### `newInstance()`
 Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory][db-adapter-pdofactory] class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
-
+                                                                                                                                                              
 The reserved names are:
 - `mysql` - [Phalcon\Db\Adapter\Pdo\Mysql][db-adapter-pdo-mysql]
 - `postgresql` - [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql]
@@ -764,7 +765,7 @@ $phql = '
   SELECT *
   FROM   Invoices
   WHERE  MATCH_AGAINST(title, :pattern:)';
-
+  
 $posts = $modelsManager->executeQuery(
     $phql,
     [
@@ -795,7 +796,7 @@ To create a connection it's necessary instantiate the adapter class. It only req
 | `Sqlite`     | `dbname`     | required |
 
 Connecting to each adapter can be achieved by either the factory as demonstrated above or by passing the relevant options to the constructor of each class.
-
+ 
 ```php
 <?php
 
@@ -1613,6 +1614,7 @@ The adapters also send events to an [Events Manager](/4.2/events/) if it is pres
 | `rollbackTransaction` | Before a transaction is rolled back |    No    |
 | `rollbackSavepoint`   | Before a savepoint is rolled back   |    No    |
 
+
 If you bind an [Events Manager](/4.2/events/) to the database connection, all the events with the type `db` will be enabled and fired for the relevant listeners.
 
 ```php
@@ -1989,6 +1991,7 @@ $connection->addColumn(
         ]
     )
 );
+
 
 $connection->modifyColumn(
     'co_invoices',

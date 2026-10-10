@@ -85,8 +85,8 @@ $key   = random_bytes(32);
 $crypt = new Crypt();
 
 $crypt
-->setCipher('aes256')
-->useSigning(false)
+    ->setCipher('aes256')
+    ->useSigning(false)
 ;
 
 $text      = 'This is the text that you want to encrypt.';
@@ -275,18 +275,18 @@ use Phalcon\Encryption\Crypt;
 $container = new FactoryDefault();
 
 $container->set(
-'crypt',
-function () {
-    $crypt = new Crypt();
+    'crypt',
+    function () {
+        $crypt = new Crypt();
 
-    // Set a global encryption key
-    $crypt->setKey(
-        "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
-    );
+        // Set a global encryption key
+        $crypt->setKey(
+            "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+        );
 
-    return $crypt;
-},
-true
+        return $crypt;
+    },
+    true
 );
 ```
 
@@ -306,20 +306,20 @@ use Phalcon\Mvc\Controller;
  */
 class SecretsController extends Controller
 {
-public function saveAction()
-{
-    $secret = new Secrets();
+    public function saveAction()
+    {
+        $secret = new Secrets();
 
-    $text = $this->request->getPost('text');
+        $text = $this->request->getPost('text');
 
-    $secret->content = $this->crypt->encrypt($text);
+        $secret->content = $this->crypt->encrypt($text);
 
-    if ($secret->save()) {
-        $this->flash->success(
-            'Secret was successfully created!'
-        );
+        if ($secret->save()) {
+            $this->flash->success(
+                'Secret was successfully created!'
+            );
+        }
     }
-}
 }
 ```
 
@@ -344,9 +344,9 @@ You can use them in your project or override them if you want to implement your 
 
 ```php
 public function __construct(
-string $cipher = self::DEFAULT_CIPHER, 
-bool $useSigning = true, 
-PadFactory $padFactory = null
+    string $cipher = self::DEFAULT_CIPHER, 
+    bool $useSigning = true, 
+    PadFactory $padFactory = null
 )
 ```
 
@@ -360,9 +360,9 @@ Decrypt an encrypted text
 
 ```php
 public function decryptBase64(
-string $input, 
-string $key = null, 
-bool $safe = false
+    string $input, 
+    string $key = null, 
+    bool $safe = false
 ): string
 ```
 
@@ -376,9 +376,9 @@ Encrypt a text
 
 ```php
 public function encryptBase64(
-string $input, 
-string $key = null, 
-bool $safe = false
+    string $input, 
+    string $key = null, 
+    bool $safe = false
 ): string
 ```
 
@@ -527,7 +527,7 @@ use Phalcon\Contracts\Encryption\Crypt\Crypt;
 
 function encryptValue(Crypt $crypt, string $value): string
 {
-return $crypt->encrypt($value);
+    return $crypt->encrypt($value);
 }
 ```
 
@@ -555,15 +555,15 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        // Get some configuration values
-        $this->crypt->decrypt('hello');
-    } catch (Mismatch $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            // Get some configuration values
+            $this->crypt->decrypt('hello');
+        } catch (Mismatch $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 

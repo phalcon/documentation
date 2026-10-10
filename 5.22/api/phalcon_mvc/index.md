@@ -13,6 +13,7 @@ version: "5.22"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Mvc\Application
 
 Class
@@ -26,33 +27,33 @@ use Phalcon\Mvc\Application;
 
 class MyApp extends Application
 {
-/**
- * Register the services here to make them general or register
- * in the ModuleDefinition to make them module-specific
- *\/
-protected function registerServices()
-{
+    /**
+     * Register the services here to make them general or register
+     * in the ModuleDefinition to make them module-specific
+     *\/
+    protected function registerServices()
+    {
 
-}
+    }
 
-/**
- * This method registers all the modules in the application
- *\/
-public function main()
-{
-    $this->registerModules(
-        [
-            "frontend" => [
-                "className" => "Multiple\\Frontend\\Module",
-                "path"      => "../apps/frontend/Module.php",
-            ],
-            "backend" => [
-                "className" => "Multiple\\Backend\\Module",
-                "path"      => "../apps/backend/Module.php",
-            ],
-        ]
-    );
-}
+    /**
+     * This method registers all the modules in the application
+     *\/
+    public function main()
+    {
+        $this->registerModules(
+            [
+                "frontend" => [
+                    "className" => "Multiple\\Frontend\\Module",
+                    "path"      => "../apps/frontend/Module.php",
+                ],
+                "backend" => [
+                    "className" => "Multiple\\Backend\\Module",
+                    "path"      => "../apps/backend/Module.php",
+                ],
+            ]
+        );
+    }
 }
 
 $application = new MyApp();
@@ -61,35 +62,29 @@ $application->main();
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- [`Phalcon\Application\AbstractApplication`](/5.22/api/phalcon_application/#applicationabstractapplication)
-- **`Phalcon\Mvc\Application`**
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - [`Phalcon\Application\AbstractApplication`](/5.22/api/phalcon_application/#applicationabstractapplication)
+      - **`Phalcon\Mvc\Application`**
 
 `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Application\Exception` · `Phalcon\Mvc\Application\Exceptions\ContainerRequired` · `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` · `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcapplication-handle" visibility="public" name="handle" returnType="bool|ResponseInterface" params={[{"type":"string","name":"uri","default":null}]}>
-Handles a MVC request
-</ApiItem>
-<ApiItem href="#mvcapplication-sendcookiesonhandlerequest" visibility="public" name="sendCookiesOnHandleRequest" returnType="static" params={[{"type":"bool","name":"sendCookies","default":null}]}>
-Enables or disables sending cookies by each request handling
-</ApiItem>
-<ApiItem href="#mvcapplication-sendheadersonhandlerequest" visibility="public" name="sendHeadersOnHandleRequest" returnType="static" params={[{"type":"bool","name":"sendHeaders","default":null}]}>
-Enables or disables sending headers by each request handling
-</ApiItem>
-<ApiItem href="#mvcapplication-useimplicitview" visibility="public" name="useImplicitView" returnType="static" params={[{"type":"bool","name":"implicitView","default":null}]}>
-By default. The view is implicitly buffering all the output
-</ApiItem>
+- `public handle(string $uri): bool|ResponseInterface` — Handles a MVC request
+
+- `public sendCookiesOnHandleRequest(bool $sendCookies): static` — Enables or disables sending cookies by each request handling
+
+- `public sendHeadersOnHandleRequest(bool $sendHeaders): static` — Enables or disables sending headers by each request handling
+
+- `public useImplicitView(bool $implicitView): static` — By default. The view is implicitly buffering all the output
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="implicitView" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sendCookies" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sendHeaders" type="bool" default="true">
-</ApiItem>
+- `protected bool $implicitView = true`
+
+- `protected bool $sendCookies = true`
+
+- `protected bool $sendHeaders = true`
 
 ### Methods
 
@@ -126,6 +121,7 @@ public function useImplicitView( bool $implicitView ): static;
 By default. The view is implicitly buffering all the output
 You can full disable the view component using this method
 
+
 ## Mvc\Application\Exception
 
 Class
@@ -133,27 +129,27 @@ Class
 Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
-- **`Phalcon\Mvc\Application\Exception`**
-- [`Phalcon\Mvc\Application\Exceptions\ContainerRequired`](#mvcapplicationexceptionscontainerrequired)
-- [`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`](#mvcapplicationexceptionsinvalidmoduledefinition)
-- [`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`](#mvcapplicationexceptionsmoduledefinitionpathnotfound)
+  - [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
+    - **`Phalcon\Mvc\Application\Exception`**
+      - [`Phalcon\Mvc\Application\Exceptions\ContainerRequired`](#mvcapplicationexceptionscontainerrequired)
+      - [`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`](#mvcapplicationexceptionsinvalidmoduledefinition)
+      - [`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`](#mvcapplicationexceptionsmoduledefinitionpathnotfound)
+
 
 ## Mvc\Application\Exceptions\ContainerRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
-- [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
-- **`Phalcon\Mvc\Application\Exceptions\ContainerRequired`**
+  - [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
+    - [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
+      - **`Phalcon\Mvc\Application\Exceptions\ContainerRequired`**
 
 `Phalcon\Mvc\Application\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcapplicationexceptionscontainerrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -163,21 +159,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Application\Exceptions\InvalidModuleDefinition
 
 Class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
-- [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
-- **`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`**
+  - [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
+    - [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
+      - **`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`**
 
 `Phalcon\Mvc\Application\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcapplicationexceptionsinvalidmoduledefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"name","default":"null"},{"type":"string|null","name":"reason","default":"null"}]}>
-</ApiItem>
+- `public __construct(string|null $name = null, string|null $reason = null)`
 
 ### Methods
 
@@ -185,26 +181,26 @@ Class
 
 ```php
 public function __construct(
-string|null $name = null,
-string|null $reason = null
+    string|null $name = null,
+    string|null $reason = null
 );
 ```
+
 
 ## Mvc\Application\Exceptions\ModuleDefinitionPathNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
-- [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
-- **`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`**
+  - [`Phalcon\Application\Exception`](/5.22/api/phalcon_application/#applicationexception)
+    - [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
+      - **`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`**
 
 `Phalcon\Mvc\Application\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcapplicationexceptionsmoduledefinitionpathnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -213,6 +209,7 @@ Class
 ```php
 public function __construct( string $path );
 ```
+
 
 ## Mvc\Controller
 
@@ -231,50 +228,45 @@ presentation.
 
 class PeopleController extends \Phalcon\Mvc\Controller
 {
-// This action will be executed by default
-public function indexAction()
-{
+    // This action will be executed by default
+    public function indexAction()
+    {
 
-}
+    }
 
-public function findAction()
-{
+    public function findAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Forwards flow to the index action
-    return $this->dispatcher->forward(
-        [
-            "controller" => "people",
-            "action"     => "index",
-        ]
-    );
-}
+    public function saveAction()
+    {
+        // Forwards flow to the index action
+        return $this->dispatcher->forward(
+            [
+                "controller" => "people",
+                "action"     => "index",
+            ]
+        );
+    }
 }
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
 `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface`
 
 ### Method Summary
 
-<ApiItem href="#mvccontroller-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-Phalcon\Mvc\Controller constructor
-</ApiItem>
-<ApiItem href="#mvccontroller-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvccontroller-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvccontroller-firemanagerevent" visibility="protected" name="fireManagerEvent" returnType="mixed|bool" params={[{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancellable","default":"true"}]}>
-Helper method to fire an event
-</ApiItem>
+- `public __construct()` — Phalcon\Mvc\Controller constructor
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `protected fireManagerEvent(string $eventName, mixed $data = null, bool $cancellable = true): mixed|bool` — Helper method to fire an event
 
 ### Methods
 
@@ -306,13 +298,14 @@ Sets the events manager
 
 ```php
 protected function fireManagerEvent(
-string $eventName,
-mixed $data = null,
-bool $cancellable = true
+    string $eventName,
+    mixed $data = null,
+    bool $cancellable = true
 ): mixed|bool;
 ```
 
 Helper method to fire an event
+
 
 ## Mvc\ControllerInterface
 
@@ -321,6 +314,7 @@ Interface
 Interface for controller handlers
 
 - **`Phalcon\Mvc\ControllerInterface`**
+
 
 ## Mvc\Controller\BindModelInterface
 
@@ -332,9 +326,7 @@ Interface for Phalcon\Mvc\Controller
 
 ### Method Summary
 
-<ApiItem href="#mvccontrollerbindmodelinterface-getmodelname" visibility="public" name="getModelName" returnType="string" params={[]}>
-Return the model name associated with this controller
-</ApiItem>
+- `public getModelName(): string` — Return the model name associated with this controller
 
 ### Methods
 
@@ -345,6 +337,7 @@ public static function getModelName(): string;
 ```
 
 Return the model name associated with this controller
+
 
 ## Mvc\Dispatcher
 
@@ -370,56 +363,43 @@ $controller = $dispatcher->dispatch();
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Dispatcher\AbstractDispatcher`](/5.22/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
-- **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
+    - [`Phalcon\Dispatcher\AbstractDispatcher`](/5.22/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
+      - **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
 
 `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
 
 ### Method Summary
 
-<ApiItem href="#mvcdispatcher-forward" visibility="public" name="forward" returnType="void" params={[{"type":"array","name":"forward","default":null}]}>
-Forwards the execution flow to another controller/action.
-</ApiItem>
-<ApiItem href="#mvcdispatcher-getactivecontroller" visibility="public" name="getActiveController" returnType="ControllerInterface" params={[]}>
-Returns the active controller in the dispatcher
-</ApiItem>
-<ApiItem href="#mvcdispatcher-getcontrollerclass" visibility="public" name="getControllerClass" returnType="string" params={[]}>
-Possible controller class name that will be located to dispatch the
-</ApiItem>
-<ApiItem href="#mvcdispatcher-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
-Gets last dispatched controller name
-</ApiItem>
-<ApiItem href="#mvcdispatcher-getlastcontroller" visibility="public" name="getLastController" returnType="ControllerInterface" params={[]}>
-Returns the latest dispatched controller
-</ApiItem>
-<ApiItem href="#mvcdispatcher-getpreviouscontrollername" visibility="public" name="getPreviousControllerName" returnType="string" params={[]}>
-Gets previous dispatched controller name
-</ApiItem>
-<ApiItem href="#mvcdispatcher-setcontrollername" visibility="public" name="setControllerName" returnType="DispatcherInterface" params={[{"type":"string","name":"controllerName","default":null}]}>
-Sets the controller name to be dispatched
-</ApiItem>
-<ApiItem href="#mvcdispatcher-setcontrollersuffix" visibility="public" name="setControllerSuffix" returnType="DispatcherInterface" params={[{"type":"string","name":"controllerSuffix","default":null}]}>
-Sets the default controller suffix
-</ApiItem>
-<ApiItem href="#mvcdispatcher-setdefaultcontroller" visibility="public" name="setDefaultController" returnType="DispatcherInterface" params={[{"type":"string","name":"controllerName","default":null}]}>
-Sets the default controller name
-</ApiItem>
-<ApiItem href="#mvcdispatcher-handleexception" visibility="protected" name="handleException" returnType="" params={[{"type":"\\Exception","name":"exception","default":null}]}>
-Handles a user exception
-</ApiItem>
-<ApiItem href="#mvcdispatcher-throwdispatchexception" visibility="protected" name="throwDispatchException" returnType="" params={[{"type":"string","name":"message","default":null},{"type":"int","name":"exceptionCode","default":"0"}]}>
-Throws an internal exception
-</ApiItem>
+- `public forward(array $forward): void` — Forwards the execution flow to another controller/action.
+
+- `public getActiveController(): ControllerInterface` — Returns the active controller in the dispatcher
+
+- `public getControllerClass(): string` — Possible controller class name that will be located to dispatch the
+
+- `public getControllerName(): string` — Gets last dispatched controller name
+
+- `public getLastController(): ControllerInterface` — Returns the latest dispatched controller
+
+- `public getPreviousControllerName(): string` — Gets previous dispatched controller name
+
+- `public setControllerName(string $controllerName): DispatcherInterface` — Sets the controller name to be dispatched
+
+- `public setControllerSuffix(string $controllerSuffix): DispatcherInterface` — Sets the default controller suffix
+
+- `public setDefaultController(string $controllerName): DispatcherInterface` — Sets the default controller name
+
+- `protected handleException(\Exception $exception)` — Handles a user exception
+
+- `protected throwDispatchException(string $message, int $exceptionCode = 0)` — Throws an internal exception
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="defaultAction" type="string" default="&quot;index&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultHandler" type="string" default="&quot;index&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlerSuffix" type="string" default="&quot;Controller&quot;">
-</ApiItem>
+- `protected string $defaultAction = "index"`
+
+- `protected string $defaultHandler = "index"`
+
+- `protected string $handlerSuffix = "Controller"`
 
 ### Methods
 
@@ -439,20 +419,20 @@ use App\Frontend\Bootstrap as Frontend;
 
 // Registering modules
 $modules = [
-"frontend" => [
-    "className" => Frontend::class,
-    "path"      => __DIR__ . "/app/Modules/Frontend/Bootstrap.php",
-    "metadata"  => [
-        "controllersNamespace" => "App\Frontend\Controllers",
+    "frontend" => [
+        "className" => Frontend::class,
+        "path"      => __DIR__ . "/app/Modules/Frontend/Bootstrap.php",
+        "metadata"  => [
+            "controllersNamespace" => "App\Frontend\Controllers",
+        ],
     ],
-],
-"backend" => [
-    "className" => Backend::class,
-    "path"      => __DIR__ . "/app/Modules/Backend/Bootstrap.php",
-    "metadata"  => [
-        "controllersNamespace" => "App\Backend\Controllers",
+    "backend" => [
+        "className" => Backend::class,
+        "path"      => __DIR__ . "/app/Modules/Backend/Bootstrap.php",
+        "metadata"  => [
+            "controllersNamespace" => "App\Backend\Controllers",
+        ],
     ],
-],
 ];
 
 $application->registerModules($modules);
@@ -461,27 +441,27 @@ $application->registerModules($modules);
 $eventsManager  = $di->getShared("eventsManager");
 
 $eventsManager->attach(
-"dispatch:beforeForward",
-function(Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
-    $metadata = $modules[$forward["module"]]["metadata"];
+    "dispatch:beforeForward",
+    function(Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
+        $metadata = $modules[$forward["module"]]["metadata"];
 
-    $dispatcher->setModuleName(
-        $forward["module"]
-    );
+        $dispatcher->setModuleName(
+            $forward["module"]
+        );
 
-    $dispatcher->setNamespaceName(
-        $metadata["controllersNamespace"]
-    );
-}
+        $dispatcher->setNamespaceName(
+            $metadata["controllersNamespace"]
+        );
+    }
 );
 
 // Forward
 $this->dispatcher->forward(
-[
-    "module"     => "backend",
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "module"     => "backend",
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 ```
 
@@ -565,12 +545,13 @@ Handles a user exception
 
 ```php
 protected function throwDispatchException(
-string $message,
-int $exceptionCode = 0
+    string $message,
+    int $exceptionCode = 0
 );
 ```
 
 Throws an internal exception
+
 
 ## Mvc\DispatcherInterface
 
@@ -579,10 +560,11 @@ Interface
 Interface for Phalcon\Mvc\Dispatcher
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](/5.22/api/phalcon_contracts/#contractsdispatcherdispatcher)
-- [`Phalcon\Contracts\Mvc\Dispatcher`](/5.22/api/phalcon_contracts/#contractsmvcdispatcher)
-- **`Phalcon\Mvc\DispatcherInterface`**
+  - [`Phalcon\Contracts\Mvc\Dispatcher`](/5.22/api/phalcon_contracts/#contractsmvcdispatcher)
+    - **`Phalcon\Mvc\DispatcherInterface`**
 
 `Phalcon\Contracts\Mvc\Dispatcher`
+
 
 ## Mvc\Dispatcher\Exception
 
@@ -591,25 +573,25 @@ Class
 Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](/5.22/api/phalcon_dispatcher/#dispatcherexception)
-- **`Phalcon\Mvc\Dispatcher\Exception`**
-- [`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`](#mvcdispatcherexceptionsresponseserviceunavailable)
+  - [`Phalcon\Dispatcher\Exception`](/5.22/api/phalcon_dispatcher/#dispatcherexception)
+    - **`Phalcon\Mvc\Dispatcher\Exception`**
+      - [`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`](#mvcdispatcherexceptionsresponseserviceunavailable)
+
 
 ## Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](/5.22/api/phalcon_dispatcher/#dispatcherexception)
-- [`Phalcon\Mvc\Dispatcher\Exception`](#mvcdispatcherexception)
-- **`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`**
+  - [`Phalcon\Dispatcher\Exception`](/5.22/api/phalcon_dispatcher/#dispatcherexception)
+    - [`Phalcon\Mvc\Dispatcher\Exception`](#mvcdispatcherexception)
+      - **`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`**
 
 `Phalcon\Mvc\Dispatcher\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcdispatcherexceptionsresponseserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -618,6 +600,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\EntityInterface
 
@@ -629,12 +612,9 @@ Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 
 ### Method Summary
 
-<ApiItem href="#mvcentityinterface-readattribute" visibility="public" name="readAttribute" returnType="mixed|null" params={[{"type":"string","name":"attribute","default":null}]}>
-Reads an attribute value by its name
-</ApiItem>
-<ApiItem href="#mvcentityinterface-writeattribute" visibility="public" name="writeAttribute" returnType="" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Writes an attribute value by its name
-</ApiItem>
+- `public readAttribute(string $attribute): mixed|null` — Reads an attribute value by its name
+
+- `public writeAttribute(string $attribute, mixed $value)` — Writes an attribute value by its name
 
 ### Methods
 
@@ -650,12 +630,13 @@ Reads an attribute value by its name
 
 ```php
 public function writeAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 );
 ```
 
 Writes an attribute value by its name
+
 
 ## Mvc\Micro
 
@@ -670,170 +651,130 @@ prototypes in a practical way.
 $app = new \Phalcon\Mvc\Micro();
 
 $app->get(
-"/say/welcome/{name}",
-function ($name) {
-    echo "<h1>Welcome $name!</h1>";
-}
+    "/say/welcome/{name}",
+    function ($name) {
+        echo "<h1>Welcome $name!</h1>";
+    }
 );
 
 $app->handle("/say/welcome/Phalcon");
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\Micro`** - implements `\ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Mvc\Micro`** - implements `\ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
 `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Injectable` · `Phalcon\Di\ServiceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Micro\Collection` · `Phalcon\Mvc\Micro\CollectionInterface` · `Phalcon\Mvc\Micro\Exception` · `Phalcon\Mvc\Micro\Exceptions\ContainerRequired` · `Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler` · `Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler` · `Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount` · `Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler` · `Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable` · `Phalcon\Mvc\Micro\LazyLoader` · `Phalcon\Mvc\Micro\MiddlewareInterface` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicro-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Phalcon\Mvc\Micro constructor
-</ApiItem>
-<ApiItem href="#mvcmicro-after" visibility="public" name="after" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Appends an 'after' middleware to be called after execute the route
-</ApiItem>
-<ApiItem href="#mvcmicro-afterbinding" visibility="public" name="afterBinding" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Appends a afterBinding middleware to be called after model binding
-</ApiItem>
-<ApiItem href="#mvcmicro-before" visibility="public" name="before" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Appends a before middleware to be called before execute the route
-</ApiItem>
-<ApiItem href="#mvcmicro-delete" visibility="public" name="delete" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is DELETE
-</ApiItem>
-<ApiItem href="#mvcmicro-error" visibility="public" name="error" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Sets a handler that will be called when an exception is thrown handling
-</ApiItem>
-<ApiItem href="#mvcmicro-finish" visibility="public" name="finish" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Appends a 'finish' middleware to be called when the request is finished
-</ApiItem>
-<ApiItem href="#mvcmicro-get" visibility="public" name="get" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is GET
-</ApiItem>
-<ApiItem href="#mvcmicro-getactivehandler" visibility="public" name="getActiveHandler" returnType="" params={[]}>
-Return the handler that will be called for the matched route
-</ApiItem>
-<ApiItem href="#mvcmicro-getboundmodels" visibility="public" name="getBoundModels" returnType="array" params={[]}>
-Returns bound models from binder instance
-</ApiItem>
-<ApiItem href="#mvcmicro-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcmicro-gethandlers" visibility="public" name="getHandlers" returnType="array" params={[]}>
-Returns the internal handlers attached to the application
-</ApiItem>
-<ApiItem href="#mvcmicro-getmodelbinder" visibility="public" name="getModelBinder" returnType="BinderInterface|null" params={[]}>
-Gets model binder
-</ApiItem>
-<ApiItem href="#mvcmicro-getreturnedvalue" visibility="public" name="getReturnedValue" returnType="" params={[]}>
-Returns the value returned by the executed handler
-</ApiItem>
-<ApiItem href="#mvcmicro-getrouter" visibility="public" name="getRouter" returnType="RouterInterface" params={[]}>
-Returns the internal router used by the application
-</ApiItem>
-<ApiItem href="#mvcmicro-getservice" visibility="public" name="getService" returnType="" params={[{"type":"string","name":"serviceName","default":null}]}>
-Obtains a service from the DI
-</ApiItem>
-<ApiItem href="#mvcmicro-getsharedservice" visibility="public" name="getSharedService" returnType="" params={[{"type":"string","name":"serviceName","default":null}]}>
-Obtains a shared service from the DI
-</ApiItem>
-<ApiItem href="#mvcmicro-handle" visibility="public" name="handle" returnType="" params={[{"type":"string","name":"uri","default":null}]}>
-Handle the whole request
-</ApiItem>
-<ApiItem href="#mvcmicro-hasservice" visibility="public" name="hasService" returnType="bool" params={[{"type":"string","name":"serviceName","default":null}]}>
-Checks if a service is registered in the DI
-</ApiItem>
-<ApiItem href="#mvcmicro-head" visibility="public" name="head" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is HEAD
-</ApiItem>
-<ApiItem href="#mvcmicro-map" visibility="public" name="map" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler without any HTTP method constraint
-</ApiItem>
-<ApiItem href="#mvcmicro-mount" visibility="public" name="mount" returnType="static" params={[{"type":"CollectionInterface","name":"collection","default":null}]}>
-Mounts a collection of handlers
-</ApiItem>
-<ApiItem href="#mvcmicro-notfound" visibility="public" name="notFound" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Sets a handler that will be called when the router does not match any of
-</ApiItem>
-<ApiItem href="#mvcmicro-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
-Check if a service is registered in the internal services container using
-</ApiItem>
-<ApiItem href="#mvcmicro-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"offset","default":null}]}>
-Allows to obtain a shared service in the internal services container
-</ApiItem>
-<ApiItem href="#mvcmicro-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
-Allows to register a shared service in the internal services container
-</ApiItem>
-<ApiItem href="#mvcmicro-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
-Removes a service from the internal services container using the array
-</ApiItem>
-<ApiItem href="#mvcmicro-options" visibility="public" name="options" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
-</ApiItem>
-<ApiItem href="#mvcmicro-patch" visibility="public" name="patch" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is PATCH
-</ApiItem>
-<ApiItem href="#mvcmicro-post" visibility="public" name="post" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is POST
-</ApiItem>
-<ApiItem href="#mvcmicro-put" visibility="public" name="put" returnType="RouteInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Maps a route to a handler that only matches if the HTTP method is PUT
-</ApiItem>
-<ApiItem href="#mvcmicro-setactivehandler" visibility="public" name="setActiveHandler" returnType="self" params={[{"type":"mixed","name":"activeHandler","default":null}]}>
-Sets externally the handler that must be called by the matched route
-</ApiItem>
-<ApiItem href="#mvcmicro-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmicro-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvcmicro-setmodelbinder" visibility="public" name="setModelBinder" returnType="static" params={[{"type":"BinderInterface","name":"modelBinder","default":null},{"type":"mixed","name":"cache","default":"null"}]}>
-Sets model binder
-</ApiItem>
-<ApiItem href="#mvcmicro-setresponsehandler" visibility="public" name="setResponseHandler" returnType="static" params={[{"type":"mixed","name":"handler","default":null}]}>
-Appends a custom 'response' handler to be called instead of the default
-</ApiItem>
-<ApiItem href="#mvcmicro-setservice" visibility="public" name="setService" returnType="ServiceInterface" params={[{"type":"string","name":"serviceName","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"isShared","default":"false"}]}>
-Sets a service from the DI
-</ApiItem>
-<ApiItem href="#mvcmicro-stop" visibility="public" name="stop" returnType="void" params={[]}>
-Stops the middleware execution avoiding than other middlewares be
-</ApiItem>
+- `public __construct(DiInterface|null $container = null)` — Phalcon\Mvc\Micro constructor
+
+- `public after(mixed $handler): static` — Appends an 'after' middleware to be called after execute the route
+
+- `public afterBinding(mixed $handler): static` — Appends a afterBinding middleware to be called after model binding
+
+- `public before(mixed $handler): static` — Appends a before middleware to be called before execute the route
+
+- `public delete(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is DELETE
+
+- `public error(mixed $handler): static` — Sets a handler that will be called when an exception is thrown handling
+
+- `public finish(mixed $handler): static` — Appends a 'finish' middleware to be called when the request is finished
+
+- `public get(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is GET
+
+- `public getActiveHandler()` — Return the handler that will be called for the matched route
+
+- `public getBoundModels(): array` — Returns bound models from binder instance
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public getHandlers(): array` — Returns the internal handlers attached to the application
+
+- `public getModelBinder(): BinderInterface|null` — Gets model binder
+
+- `public getReturnedValue()` — Returns the value returned by the executed handler
+
+- `public getRouter(): RouterInterface` — Returns the internal router used by the application
+
+- `public getService(string $serviceName)` — Obtains a service from the DI
+
+- `public getSharedService(string $serviceName)` — Obtains a shared service from the DI
+
+- `public handle(string $uri)` — Handle the whole request
+
+- `public hasService(string $serviceName): bool` — Checks if a service is registered in the DI
+
+- `public head(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is HEAD
+
+- `public map(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler without any HTTP method constraint
+
+- `public mount(CollectionInterface $collection): static` — Mounts a collection of handlers
+
+- `public notFound(mixed $handler): static` — Sets a handler that will be called when the router does not match any of
+
+- `public offsetExists(mixed $offset): bool` — Check if a service is registered in the internal services container using
+
+- `public offsetGet(mixed $offset): mixed` — Allows to obtain a shared service in the internal services container
+
+- `public offsetSet(mixed $offset, mixed $value): void` — Allows to register a shared service in the internal services container
+
+- `public offsetUnset(mixed $offset): void` — Removes a service from the internal services container using the array
+
+- `public options(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is OPTIONS
+
+- `public patch(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is PATCH
+
+- `public post(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is POST
+
+- `public put(string $routePattern, mixed $handler): RouteInterface` — Maps a route to a handler that only matches if the HTTP method is PUT
+
+- `public setActiveHandler(mixed $activeHandler): self` — Sets externally the handler that must be called by the matched route
+
+- `public setDI(DiInterface $container): void` — Sets the DependencyInjector container
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `public setModelBinder(BinderInterface $modelBinder, mixed $cache = null): static` — Sets model binder
+
+- `public setResponseHandler(mixed $handler): static` — Appends a custom 'response' handler to be called instead of the default
+
+- `public setService(string $serviceName, mixed $definition, bool $isShared = false): ServiceInterface` — Sets a service from the DI
+
+- `public stop(): void` — Stops the middleware execution avoiding than other middlewares be
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="activeHandler" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="afterBindingHandlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="afterHandlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="beforeHandlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="errorHandler" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="finishHandlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelBinder" type="BinderInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="notFoundHandler" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="responseHandler" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="returnedValue" type="mixed|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="router" type="RouterInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="stopped" type="bool" default="false">
-</ApiItem>
+- `protected callable|null $activeHandler = null`
+
+- `protected array $afterBindingHandlers = []`
+
+- `protected array $afterHandlers = []`
+
+- `protected array $beforeHandlers = []`
+
+- `protected DiInterface|null $container = null`
+
+- `protected callable|null $errorHandler = null`
+
+- `protected ManagerInterface|null $eventsManager = null`
+
+- `protected array $finishHandlers = []`
+
+- `protected array $handlers = []`
+
+- `protected BinderInterface|null $modelBinder = null`
+
+- `protected callable|null $notFoundHandler = null`
+
+- `protected callable|null $responseHandler = null`
+
+- `protected mixed|null $returnedValue = null`
+
+- `protected RouterInterface|null $router = null`
+
+- `protected bool $stopped = false`
 
 ### Methods
 
@@ -873,8 +814,8 @@ Appends a before middleware to be called before execute the route
 
 ```php
 public function delete(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -901,8 +842,8 @@ Appends a 'finish' middleware to be called when the request is finished
 
 ```php
 public function get(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1000,8 +941,8 @@ Checks if a service is registered in the DI
 
 ```php
 public function head(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1011,8 +952,8 @@ Maps a route to a handler that only matches if the HTTP method is HEAD
 
 ```php
 public function map(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1055,7 +996,7 @@ using the array syntax
 
 ```php
 var_dump(
-$app["request"]
+    $app["request"]
 );
 ```
 
@@ -1063,8 +1004,8 @@ $app["request"]
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -1088,8 +1029,8 @@ syntax
 
 ```php
 public function options(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1099,8 +1040,8 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 ```php
 public function patch(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1110,8 +1051,8 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 
 ```php
 public function post(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1121,8 +1062,8 @@ Maps a route to a handler that only matches if the HTTP method is POST
 
 ```php
 public function put(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1156,8 +1097,8 @@ Sets the events manager
 
 ```php
 public function setModelBinder(
-BinderInterface $modelBinder,
-mixed $cache = null
+    BinderInterface $modelBinder,
+    mixed $cache = null
 ): static;
 ```
 
@@ -1167,8 +1108,8 @@ Sets model binder
 $micro = new Micro($di);
 
 $micro->setModelBinder(
-new Binder(),
-'cache'
+    new Binder(),
+    'cache'
 );
 ```
 
@@ -1185,9 +1126,9 @@ response handler
 
 ```php
 public function setService(
-string $serviceName,
-mixed $definition,
-bool $isShared = false
+    string $serviceName,
+    mixed $definition,
+    bool $isShared = false
 ): ServiceInterface;
 ```
 
@@ -1202,6 +1143,7 @@ public function stop(): void;
 Stops the middleware execution avoiding than other middlewares be
 executed
 
+
 ## Mvc\Micro\Collection
 
 Class
@@ -1214,7 +1156,7 @@ $app = new \Phalcon\Mvc\Micro();
 $collection = new Collection();
 
 $collection->setHandler(
-new PostsController()
+    new PostsController()
 );
 
 $collection->get('/posts/edit/{id}', 'edit');
@@ -1228,68 +1170,49 @@ $app->mount($collection);
 
 ### Method Summary
 
-<ApiItem href="#mvcmicrocollection-delete" visibility="public" name="delete" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is DELETE.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-get" visibility="public" name="get" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is GET.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-gethandler" visibility="public" name="getHandler" returnType="mixed" params={[]}>
-Returns the main handler
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-gethandlers" visibility="public" name="getHandlers" returnType="array" params={[]}>
-Returns the registered handlers
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
-Returns the collection prefix if any
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-head" visibility="public" name="head" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is HEAD.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-islazy" visibility="public" name="isLazy" returnType="bool" params={[]}>
-Returns if the main handler must be lazy loaded
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-map" visibility="public" name="map" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-mapvia" visibility="public" name="mapVia" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"mixed","name":"method","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler via methods.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-options" visibility="public" name="options" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-patch" visibility="public" name="patch" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is PATCH.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-post" visibility="public" name="post" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is POST.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-put" visibility="public" name="put" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is PUT.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-sethandler" visibility="public" name="setHandler" returnType="CollectionInterface" params={[{"type":"mixed","name":"handler","default":null},{"type":"bool","name":"isLazy","default":"false"}]}>
-Sets the main handler.
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-setlazy" visibility="public" name="setLazy" returnType="CollectionInterface" params={[{"type":"bool","name":"isLazy","default":null}]}>
-Sets if the main handler must be lazy loaded
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-setprefix" visibility="public" name="setPrefix" returnType="CollectionInterface" params={[{"type":"string","name":"prefix","default":null}]}>
-Sets a prefix for all routes added to the collection
-</ApiItem>
-<ApiItem href="#mvcmicrocollection-addmap" visibility="protected" name="addMap" returnType="void" params={[{"type":"mixed","name":"method","default":null},{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Internal function to add a handler to the group.
-</ApiItem>
+- `public delete(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is DELETE.
+
+- `public get(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is GET.
+
+- `public getHandler(): mixed` — Returns the main handler
+
+- `public getHandlers(): array` — Returns the registered handlers
+
+- `public getPrefix(): string` — Returns the collection prefix if any
+
+- `public head(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is HEAD.
+
+- `public isLazy(): bool` — Returns if the main handler must be lazy loaded
+
+- `public map(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler.
+
+- `public mapVia(string $routePattern, callable $handler, mixed $method, string|null $name = null): CollectionInterface` — Maps a route to a handler via methods.
+
+- `public options(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is
+
+- `public patch(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is PATCH.
+
+- `public post(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is POST.
+
+- `public put(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is PUT.
+
+- `public setHandler(mixed $handler, bool $isLazy = false): CollectionInterface` — Sets the main handler.
+
+- `public setLazy(bool $isLazy): CollectionInterface` — Sets if the main handler must be lazy loaded
+
+- `public setPrefix(string $prefix): CollectionInterface` — Sets a prefix for all routes added to the collection
+
+- `protected addMap(mixed $method, string $routePattern, callable $handler, string|null $name = null): void` — Internal function to add a handler to the group.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="handler" type="callable" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isLazy" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected callable $handler`
+
+- `protected array $handlers = []`
+
+- `protected bool $isLazy = false`
+
+- `protected string $prefix = ""`
 
 ### Methods
 
@@ -1297,9 +1220,9 @@ Internal function to add a handler to the group.
 
 ```php
 public function delete(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1309,9 +1232,9 @@ Maps a route to a handler that only matches if the HTTP method is DELETE.
 
 ```php
 public function get(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1345,9 +1268,9 @@ Returns the collection prefix if any
 
 ```php
 public function head(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1365,9 +1288,9 @@ Returns if the main handler must be lazy loaded
 
 ```php
 public function map(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1377,10 +1300,10 @@ Maps a route to a handler.
 
 ```php
 public function mapVia(
-string $routePattern,
-callable $handler,
-mixed $method,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    mixed $method,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1388,10 +1311,10 @@ Maps a route to a handler via methods.
 
 ```php
 $collection->mapVia(
-'/test',
-'indexAction',
-['POST', 'GET'],
-'test'
+    '/test',
+    'indexAction',
+    ['POST', 'GET'],
+    'test'
 );
 ```
 
@@ -1399,9 +1322,9 @@ $collection->mapVia(
 
 ```php
 public function options(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1412,9 +1335,9 @@ OPTIONS.
 
 ```php
 public function patch(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1424,9 +1347,9 @@ Maps a route to a handler that only matches if the HTTP method is PATCH.
 
 ```php
 public function post(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1436,9 +1359,9 @@ Maps a route to a handler that only matches if the HTTP method is POST.
 
 ```php
 public function put(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1448,8 +1371,8 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 
 ```php
 public function setHandler(
-mixed $handler,
-bool $isLazy = false
+    mixed $handler,
+    bool $isLazy = false
 ): CollectionInterface;
 ```
 
@@ -1475,14 +1398,15 @@ Sets a prefix for all routes added to the collection
 
 ```php
 protected function addMap(
-mixed $method,
-string $routePattern,
-callable $handler,
-string|null $name = null
+    mixed $method,
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): void;
 ```
 
 Internal function to add a handler to the group.
+
 
 ## Mvc\Micro\CollectionInterface
 
@@ -1496,51 +1420,35 @@ Interface for Phalcon\Mvc\Micro\Collection
 
 ### Method Summary
 
-<ApiItem href="#mvcmicrocollectioninterface-delete" visibility="public" name="delete" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is DELETE
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-get" visibility="public" name="get" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is GET
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-gethandler" visibility="public" name="getHandler" returnType="mixed" params={[]}>
-Returns the main handler
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-gethandlers" visibility="public" name="getHandlers" returnType="array" params={[]}>
-Returns the registered handlers
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-getprefix" visibility="public" name="getPrefix" returnType="string" params={[]}>
-Returns the collection prefix if any
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-head" visibility="public" name="head" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is HEAD
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-islazy" visibility="public" name="isLazy" returnType="bool" params={[]}>
-Returns if the main handler must be lazy loaded
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-map" visibility="public" name="map" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-options" visibility="public" name="options" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-patch" visibility="public" name="patch" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is PATCH
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-post" visibility="public" name="post" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is POST
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-put" visibility="public" name="put" returnType="CollectionInterface" params={[{"type":"string","name":"routePattern","default":null},{"type":"callable","name":"handler","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Maps a route to a handler that only matches if the HTTP method is PUT
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-sethandler" visibility="public" name="setHandler" returnType="CollectionInterface" params={[{"type":"mixed","name":"handler","default":null},{"type":"bool","name":"isLazy","default":"false"}]}>
-Sets the main handler
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-setlazy" visibility="public" name="setLazy" returnType="CollectionInterface" params={[{"type":"bool","name":"isLazy","default":null}]}>
-Sets if the main handler must be lazy loaded
-</ApiItem>
-<ApiItem href="#mvcmicrocollectioninterface-setprefix" visibility="public" name="setPrefix" returnType="CollectionInterface" params={[{"type":"string","name":"prefix","default":null}]}>
-Sets a prefix for all routes added to the collection
-</ApiItem>
+- `public delete(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is DELETE
+
+- `public get(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is GET
+
+- `public getHandler(): mixed` — Returns the main handler
+
+- `public getHandlers(): array` — Returns the registered handlers
+
+- `public getPrefix(): string` — Returns the collection prefix if any
+
+- `public head(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is HEAD
+
+- `public isLazy(): bool` — Returns if the main handler must be lazy loaded
+
+- `public map(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler
+
+- `public options(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is OPTIONS
+
+- `public patch(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is PATCH
+
+- `public post(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is POST
+
+- `public put(string $routePattern, callable $handler, string|null $name = null): CollectionInterface` — Maps a route to a handler that only matches if the HTTP method is PUT
+
+- `public setHandler(mixed $handler, bool $isLazy = false): CollectionInterface` — Sets the main handler
+
+- `public setLazy(bool $isLazy): CollectionInterface` — Sets if the main handler must be lazy loaded
+
+- `public setPrefix(string $prefix): CollectionInterface` — Sets a prefix for all routes added to the collection
 
 ### Methods
 
@@ -1548,9 +1456,9 @@ Sets a prefix for all routes added to the collection
 
 ```php
 public function delete(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1560,9 +1468,9 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 
 ```php
 public function get(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1596,9 +1504,9 @@ Returns the collection prefix if any
 
 ```php
 public function head(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1616,9 +1524,9 @@ Returns if the main handler must be lazy loaded
 
 ```php
 public function map(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1628,9 +1536,9 @@ Maps a route to a handler
 
 ```php
 public function options(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1640,9 +1548,9 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 ```php
 public function patch(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1652,9 +1560,9 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 
 ```php
 public function post(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1664,9 +1572,9 @@ Maps a route to a handler that only matches if the HTTP method is POST
 
 ```php
 public function put(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1676,8 +1584,8 @@ Maps a route to a handler that only matches if the HTTP method is PUT
 
 ```php
 public function setHandler(
-mixed $handler,
-bool $isLazy = false
+    mixed $handler,
+    bool $isLazy = false
 ): CollectionInterface;
 ```
 
@@ -1699,6 +1607,7 @@ public function setPrefix( string $prefix ): CollectionInterface;
 
 Sets a prefix for all routes added to the collection
 
+
 ## Mvc\Micro\Exception
 
 Class
@@ -1706,32 +1615,32 @@ Class
 Exceptions thrown in Phalcon\Mvc\Micro will use this class
 
 - `\Exception`
-- **`Phalcon\Mvc\Micro\Exception`**
-- [`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`](#mvcmicroexceptionscontainerrequired)
-- [`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`](#mvcmicroexceptionserrorhandlernotcallable)
-- [`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`](#mvcmicroexceptionshandlernotcallable)
-- [`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`](#mvcmicroexceptionsinvalidregisteredhandler)
-- [`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`](#mvcmicroexceptionslazyhandlernotfound)
-- [`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`](#mvcmicroexceptionsmissingcollectionmainhandler)
-- [`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`](#mvcmicroexceptionsnohandlerstomount)
-- [`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`](#mvcmicroexceptionsnomatchedroutehandler)
-- [`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`](#mvcmicroexceptionsnotfoundhandlernotcallable)
-- [`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`](#mvcmicroexceptionsresponsehandlernotcallable)
+  - **`Phalcon\Mvc\Micro\Exception`**
+    - [`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`](#mvcmicroexceptionscontainerrequired)
+    - [`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`](#mvcmicroexceptionserrorhandlernotcallable)
+    - [`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`](#mvcmicroexceptionshandlernotcallable)
+    - [`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`](#mvcmicroexceptionsinvalidregisteredhandler)
+    - [`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`](#mvcmicroexceptionslazyhandlernotfound)
+    - [`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`](#mvcmicroexceptionsmissingcollectionmainhandler)
+    - [`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`](#mvcmicroexceptionsnohandlerstomount)
+    - [`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`](#mvcmicroexceptionsnomatchedroutehandler)
+    - [`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`](#mvcmicroexceptionsnotfoundhandlernotcallable)
+    - [`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`](#mvcmicroexceptionsresponsehandlernotcallable)
+
 
 ## Mvc\Micro\Exceptions\ContainerRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionscontainerrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1741,20 +1650,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\ErrorHandlerNotCallable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionserrorhandlernotcallable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1764,20 +1673,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\HandlerNotCallable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionshandlernotcallable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -1787,20 +1696,20 @@ Class
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Micro\Exceptions\InvalidRegisteredHandler
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionsinvalidregisteredhandler-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1810,20 +1719,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\LazyHandlerNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionslazyhandlernotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"definition","default":null}]}>
-</ApiItem>
+- `public __construct(string $definition)`
 
 ### Methods
 
@@ -1833,20 +1742,20 @@ Class
 public function __construct( string $definition );
 ```
 
+
 ## Mvc\Micro\Exceptions\MissingCollectionMainHandler
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionsmissingcollectionmainhandler-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1856,20 +1765,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\NoHandlersToMount
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionsnohandlerstomount-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1879,20 +1788,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\NoMatchedRouteHandler
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionsnomatchedroutehandler-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1902,20 +1811,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\NotFoundHandlerNotCallable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionsnotfoundhandlernotcallable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1925,20 +1834,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\ResponseHandlerNotCallable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`**
+  - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+    - **`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`**
 
 `Phalcon\Mvc\Micro\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmicroexceptionsresponsehandlernotcallable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1947,6 +1856,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\Micro\LazyLoader
 
@@ -1960,23 +1870,19 @@ Lazy-Load of handlers for Mvc\Micro using auto-loading
 
 ### Method Summary
 
-<ApiItem href="#mvcmicrolazyloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"definition","default":null}]}>
-Phalcon\Mvc\Micro\LazyLoader constructor
-</ApiItem>
-<ApiItem href="#mvcmicrolazyloader-callmethod" visibility="public" name="callMethod" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"mixed","name":"arguments","default":null},{"type":"BinderInterface|null","name":"modelBinder","default":"null"}]}>
-Calling __call method
-</ApiItem>
-<ApiItem href="#mvcmicrolazyloader-getdefinition" visibility="public" name="getDefinition" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmicrolazyloader-gethandler" visibility="public" name="getHandler" returnType="object|null" params={[]}>
-</ApiItem>
+- `public __construct(string $definition)` — Phalcon\Mvc\Micro\LazyLoader constructor
+
+- `public callMethod(string $method, mixed $arguments, BinderInterface|null $modelBinder = null)` — Calling \_\_call method
+
+- `public getDefinition(): string`
+
+- `public getHandler(): object|null`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="definition" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handler" type="object|null" default="null">
-</ApiItem>
+- `protected string $definition`
+
+- `protected object|null $handler = null`
 
 ### Methods
 
@@ -1992,9 +1898,9 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 
 ```php
 public function callMethod(
-string $method,
-mixed $arguments,
-BinderInterface|null $modelBinder = null
+    string $method,
+    mixed $arguments,
+    BinderInterface|null $modelBinder = null
 );
 ```
 
@@ -2012,6 +1918,7 @@ public function getDefinition(): string;
 public function getHandler(): object|null;
 ```
 
+
 ## Mvc\Micro\MiddlewareInterface
 
 Interface
@@ -2024,9 +1931,7 @@ Allows to implement Phalcon\Mvc\Micro middleware in classes
 
 ### Method Summary
 
-<ApiItem href="#mvcmicromiddlewareinterface-call" visibility="public" name="call" returnType="" params={[{"type":"Micro","name":"application","default":null}]}>
-Calls the middleware
-</ApiItem>
+- `public call(Micro $application)` — Calls the middleware
 
 ### Methods
 
@@ -2037,6 +1942,7 @@ public function call( Micro $application );
 ```
 
 Calls the middleware
+
 
 ## Mvc\Model
 
@@ -2064,15 +1970,15 @@ $invoice->inv_title = "Test Invoice";
 $invoice->inv_total = 1952;
 
 if ($invoice->save() === false) {
-echo "Umh, We can store invoices: ";
+    echo "Umh, We can store invoices: ";
 
-$messages = $invoice->getMessages();
+    $messages = $invoice->getMessages();
 
-foreach ($messages as $message) {
-    echo $message;
-}
+    foreach ($messages as $message) {
+        echo $message;
+    }
 } else {
-echo "Great, a new invoice was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -2094,377 +2000,271 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 @template T of static
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
 
 `JsonSerializable` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exceptions\InvalidWkb` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Eager\PathTree` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap` · `Phalcon\Mvc\Model\Hydration\CloneResult` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\Hydration\GetPrivateProperties` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Mvc\Model\Row` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodel-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-Handles method calls when a method is not implemented
-</ApiItem>
-<ApiItem href="#mvcmodel-__callstatic" visibility="public" name="__callStatic" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-Handles method calls when a static method is not implemented
-</ApiItem>
-<ApiItem href="#mvcmodel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"data","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"},{"type":"ManagerInterface|null","name":"modelsManager","default":"null"}]}>
-Phalcon\Mvc\Model constructor
-</ApiItem>
-<ApiItem href="#mvcmodel-__get" visibility="public" name="__get" returnType="" params={[{"type":"string","name":"property","default":null}]}>
-Magic method to get related records using the relation alias as a
-</ApiItem>
-<ApiItem href="#mvcmodel-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"property","default":null}]}>
-Magic method to check if a property is a valid relation
-</ApiItem>
-<ApiItem href="#mvcmodel-__serialize" visibility="public" name="__serialize" returnType="array" params={[]}>
-Serializes a model
-</ApiItem>
-<ApiItem href="#mvcmodel-__set" visibility="public" name="__set" returnType="" params={[{"type":"string","name":"property","default":null},{"type":"mixed","name":"value","default":null}]}>
-Magic method to assign values to the the model
-</ApiItem>
-<ApiItem href="#mvcmodel-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-Unserializes an array to the model
-</ApiItem>
-<ApiItem href="#mvcmodel-addbehavior" visibility="public" name="addBehavior" returnType="void" params={[{"type":"BehaviorInterface","name":"behavior","default":null}]}>
-Setups a behavior in a model
-</ApiItem>
-<ApiItem href="#mvcmodel-appendmessage" visibility="public" name="appendMessage" returnType="ModelInterface" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a customized message on the validation process
-</ApiItem>
-<ApiItem href="#mvcmodel-appendmessagesfrom" visibility="public" name="appendMessagesFrom" returnType="void" params={[{"type":"mixed","name":"model","default":null}]}>
-Append messages to this model from another Model.
-</ApiItem>
-<ApiItem href="#mvcmodel-assign" visibility="public" name="assign" returnType="ModelInterface" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"whiteList","default":"null"},{"type":"mixed","name":"dataColumnMap","default":"null"}]}>
-Assigns values to a model from an array
-</ApiItem>
-<ApiItem href="#mvcmodel-average" visibility="public" name="average" returnType="float|ResultsetInterface" params={[{"type":"array","name":"parameters","default":"[]"}]}>
-Returns the average value on a column for a result-set of rows matching
-</ApiItem>
-<ApiItem href="#mvcmodel-cloneresult" visibility="public" name="cloneResult" returnType="ModelInterface" params={[{"type":"ModelInterface","name":"base","default":null},{"type":"array","name":"data","default":null},{"type":"int","name":"dirtyState","default":"0"}]}>
-Assigns values to a model from an array returning a new model
-</ApiItem>
-<ApiItem href="#mvcmodel-cloneresultmap" visibility="public" name="cloneResultMap" returnType="ModelInterface" params={[{"type":"mixed","name":"base","default":null},{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":null},{"type":"int","name":"dirtyState","default":"0"},{"type":"bool|null","name":"keepSnapshots","default":"null"}]}>
-Assigns values to a model from an array, returning a new model.
-</ApiItem>
-<ApiItem href="#mvcmodel-cloneresultmaphydrate" visibility="public" name="cloneResultMapHydrate" returnType="" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":null},{"type":"int","name":"hydrationMode","default":null}]}>
-Returns an hydrated result based on the data and the column map
-</ApiItem>
-<ApiItem href="#mvcmodel-count" visibility="public" name="count" returnType="int|ResultsetInterface" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Counts how many records match the specified conditions.
-</ApiItem>
-<ApiItem href="#mvcmodel-create" visibility="public" name="create" returnType="bool" params={[]}>
-Inserts a model instance. If the instance already exists in the
-</ApiItem>
-<ApiItem href="#mvcmodel-delete" visibility="public" name="delete" returnType="bool" params={[]}>
-Deletes a model instance. Returning true on success or false otherwise.
-</ApiItem>
-<ApiItem href="#mvcmodel-dosave" visibility="public" name="doSave" returnType="bool" params={[{"type":"CollectionInterface","name":"visited","default":null}]}>
-Inserted or updates model instance, expects a visited list of objects.
-</ApiItem>
-<ApiItem href="#mvcmodel-dump" visibility="public" name="dump" returnType="array" params={[]}>
-Returns a simple representation of the object that can be used with
-</ApiItem>
-<ApiItem href="#mvcmodel-find" visibility="public" name="find" returnType="ResultsetInterface" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Query for a set of records that match the specified conditions
-</ApiItem>
-<ApiItem href="#mvcmodel-findfirst" visibility="public" name="findFirst" returnType="mixed|null" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Query the first record that matches the specified conditions
-</ApiItem>
-<ApiItem href="#mvcmodel-fireevent" visibility="public" name="fireEvent" returnType="bool" params={[{"type":"string","name":"eventName","default":null}]}>
-Fires an event, implicitly calls behaviors and listeners in the events
-</ApiItem>
-<ApiItem href="#mvcmodel-fireeventcancel" visibility="public" name="fireEventCancel" returnType="bool" params={[{"type":"string","name":"eventName","default":null}]}>
-Fires an event, implicitly calls behaviors and listeners in the events
-</ApiItem>
-<ApiItem href="#mvcmodel-getchangedfields" visibility="public" name="getChangedFields" returnType="array" params={[]}>
-Returns a list of changed values.
-</ApiItem>
-<ApiItem href="#mvcmodel-getdirtystate" visibility="public" name="getDirtyState" returnType="int" params={[]}>
-Returns one of the DIRTY_STATE_* constants telling if the record exists
-</ApiItem>
-<ApiItem href="#mvcmodel-geteventsmanager" visibility="public" name="getEventsManager" returnType="EventsManagerInterface|null" params={[]}>
-Returns the custom events manager or null if there is no custom events manager
-</ApiItem>
-<ApiItem href="#mvcmodel-getmessages" visibility="public" name="getMessages" returnType="MessageInterface[]" params={[{"type":"mixed","name":"filter","default":"null"}]}>
-Returns array of validation messages
-</ApiItem>
-<ApiItem href="#mvcmodel-getmodelsmanager" visibility="public" name="getModelsManager" returnType="ManagerInterface" params={[]}>
-Returns the models manager related to the entity instance
-</ApiItem>
-<ApiItem href="#mvcmodel-getmodelsmetadata" visibility="public" name="getModelsMetaData" returnType="MetaDataInterface" params={[]}>
-\{@inheritdoc\}
-</ApiItem>
-<ApiItem href="#mvcmodel-getoldsnapshotdata" visibility="public" name="getOldSnapshotData" returnType="array" params={[]}>
-Returns the internal old snapshot data
-</ApiItem>
-<ApiItem href="#mvcmodel-getoperationmade" visibility="public" name="getOperationMade" returnType="int" params={[]}>
-Returns the type of the latest operation performed by the ORM
-</ApiItem>
-<ApiItem href="#mvcmodel-getreadconnection" visibility="public" name="getReadConnection" returnType="AdapterInterface" params={[]}>
-Gets the connection used to read data for the model
-</ApiItem>
-<ApiItem href="#mvcmodel-getreadconnectionservice" visibility="public" name="getReadConnectionService" returnType="string" params={[]}>
-Returns the DependencyInjection connection service name used to read data
-</ApiItem>
-<ApiItem href="#mvcmodel-getrelated" visibility="public" name="getRelated" returnType="" params={[{"type":"string","name":"alias","default":null},{"type":"mixed","name":"arguments","default":"null"}]}>
-Returns related records based on defined relations
-</ApiItem>
-<ApiItem href="#mvcmodel-getschema" visibility="public" name="getSchema" returnType="string|null" params={[]}>
-Returns schema name where the mapped table is located
-</ApiItem>
-<ApiItem href="#mvcmodel-getsnapshotdata" visibility="public" name="getSnapshotData" returnType="array" params={[]}>
-Returns the internal snapshot data
-</ApiItem>
-<ApiItem href="#mvcmodel-getsource" visibility="public" name="getSource" returnType="string" params={[]}>
-Returns the table name mapped in the model
-</ApiItem>
-<ApiItem href="#mvcmodel-gettransaction" visibility="public" name="getTransaction" returnType="TransactionInterface|null" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmodel-getupdatedfields" visibility="public" name="getUpdatedFields" returnType="array" params={[]}>
-Returns a list of updated values.
-</ApiItem>
-<ApiItem href="#mvcmodel-getwriteconnection" visibility="public" name="getWriteConnection" returnType="AdapterInterface" params={[]}>
-Gets the connection used to write data to the model
-</ApiItem>
-<ApiItem href="#mvcmodel-getwriteconnectionservice" visibility="public" name="getWriteConnectionService" returnType="string" params={[]}>
-Returns the DependencyInjection connection service name used to write
-</ApiItem>
-<ApiItem href="#mvcmodel-haschanged" visibility="public" name="hasChanged" returnType="bool" params={[{"type":"mixed","name":"fieldName","default":"null"},{"type":"bool","name":"allFields","default":"false"}]}>
-Check if a specific attribute has changed
-</ApiItem>
-<ApiItem href="#mvcmodel-hassnapshotdata" visibility="public" name="hasSnapshotData" returnType="bool" params={[]}>
-Checks if the object has internal snapshot data
-</ApiItem>
-<ApiItem href="#mvcmodel-hasupdated" visibility="public" name="hasUpdated" returnType="bool" params={[{"type":"mixed","name":"fieldName","default":"null"},{"type":"bool","name":"allFields","default":"false"}]}>
-Check if a specific attribute was updated
-</ApiItem>
-<ApiItem href="#mvcmodel-isrelationshiploaded" visibility="public" name="isRelationshipLoaded" returnType="bool" params={[{"type":"string","name":"relationshipAlias","default":null}]}>
-Checks if saved related records have already been loaded.
-</ApiItem>
-<ApiItem href="#mvcmodel-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Serializes the object for json_encode
-</ApiItem>
-<ApiItem href="#mvcmodel-maximum" visibility="public" name="maximum" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Returns the maximum value of a column for a result-set of rows that match
-</ApiItem>
-<ApiItem href="#mvcmodel-minimum" visibility="public" name="minimum" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Returns the minimum value of a column for a result-set of rows that match
-</ApiItem>
-<ApiItem href="#mvcmodel-query" visibility="public" name="query" returnType="CriteriaInterface" params={[{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Create a criteria for a specific model
-</ApiItem>
-<ApiItem href="#mvcmodel-readattribute" visibility="public" name="readAttribute" returnType="mixed|null" params={[{"type":"string","name":"attribute","default":null}]}>
-Reads an attribute value by its name
-</ApiItem>
-<ApiItem href="#mvcmodel-refresh" visibility="public" name="refresh" returnType="ModelInterface" params={[]}>
-Refreshes the model attributes re-querying the record from the database
-</ApiItem>
-<ApiItem href="#mvcmodel-save" visibility="public" name="save" returnType="bool" params={[]}>
-Inserts or updates a model instance. Returning true on success or false
-</ApiItem>
-<ApiItem href="#mvcmodel-serialize" visibility="public" name="serialize" returnType="string|null" params={[]}>
-Serializes the object ignoring connections, services, related objects or
-</ApiItem>
-<ApiItem href="#mvcmodel-setconnectionservice" visibility="public" name="setConnectionService" returnType="void" params={[{"type":"string","name":"connectionService","default":null}]}>
-Sets the DependencyInjection connection service name
-</ApiItem>
-<ApiItem href="#mvcmodel-setdirtystate" visibility="public" name="setDirtyState" returnType="ModelInterface|bool" params={[{"type":"int","name":"dirtyState","default":null}]}>
-Sets the dirty state of the object using one of the DIRTY_STATE_* constants
-</ApiItem>
-<ApiItem href="#mvcmodel-seteventsmanager" visibility="public" name="setEventsManager" returnType="" params={[{"type":"EventsManagerInterface","name":"eventsManager","default":null}]}>
-Sets a custom events manager
-</ApiItem>
-<ApiItem href="#mvcmodel-setoldsnapshotdata" visibility="public" name="setOldSnapshotData" returnType="" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":"null"}]}>
-Sets the record's old snapshot data.
-</ApiItem>
-<ApiItem href="#mvcmodel-setreadconnectionservice" visibility="public" name="setReadConnectionService" returnType="void" params={[{"type":"string","name":"connectionService","default":null}]}>
-Sets the DependencyInjection connection service name used to read data
-</ApiItem>
-<ApiItem href="#mvcmodel-setrelated" visibility="public" name="setRelated" returnType="ModelInterface" params={[{"type":"string","name":"alias","default":null},{"type":"mixed","name":"records","default":null}]}>
-Stores related records in the relation cache, so that a subsequent
-</ApiItem>
-<ApiItem href="#mvcmodel-setsnapshotdata" visibility="public" name="setSnapshotData" returnType="void" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":"null"}]}>
-Sets the record's snapshot data.
-</ApiItem>
-<ApiItem href="#mvcmodel-setsync" visibility="public" name="setSync" returnType="ModelInterface" params={[{"type":"mixed","name":"elements","default":"null"},{"type":"bool","name":"enabled","default":"true"}]}>
-Marks one or more many-to-many relationships to be synchronized (or not)
-</ApiItem>
-<ApiItem href="#mvcmodel-settransaction" visibility="public" name="setTransaction" returnType="ModelInterface" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Sets a transaction related to the Model instance
-</ApiItem>
-<ApiItem href="#mvcmodel-setwriteconnectionservice" visibility="public" name="setWriteConnectionService" returnType="void" params={[{"type":"string","name":"connectionService","default":null}]}>
-Sets the DependencyInjection connection service name used to write data
-</ApiItem>
-<ApiItem href="#mvcmodel-setup" visibility="public" name="setup" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
-Enables/disables options in the ORM.
-</ApiItem>
-<ApiItem href="#mvcmodel-skipoperation" visibility="public" name="skipOperation" returnType="void" params={[{"type":"bool","name":"skip","default":null}]}>
-Skips the current operation forcing a success state
-</ApiItem>
-<ApiItem href="#mvcmodel-sum" visibility="public" name="sum" returnType="float|ResultsetInterface" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Calculates the sum on a column for a result-set of rows that match the
-</ApiItem>
-<ApiItem href="#mvcmodel-toarray" visibility="public" name="toArray" returnType="array" params={[{"type":"mixed","name":"columns","default":"null"},{"type":"mixed","name":"useGetter","default":"true"}]}>
-Returns the instance as an array representation
-</ApiItem>
-<ApiItem href="#mvcmodel-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"data","default":null}]}>
-Unserializes the object from a serialized string
-</ApiItem>
-<ApiItem href="#mvcmodel-update" visibility="public" name="update" returnType="bool" params={[]}>
-Updates a model instance. If the instance does not exist in the
-</ApiItem>
-<ApiItem href="#mvcmodel-validationhasfailed" visibility="public" name="validationHasFailed" returnType="bool" params={[]}>
-Check whether validation process has generated any messages
-</ApiItem>
-<ApiItem href="#mvcmodel-writeattribute" visibility="public" name="writeAttribute" returnType="void" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Writes an attribute value by its name
-</ApiItem>
-<ApiItem href="#mvcmodel-allowemptystringvalues" visibility="protected" name="allowEmptyStringValues" returnType="void" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets a list of attributes that must be skipped from the
-</ApiItem>
-<ApiItem href="#mvcmodel-belongsto" visibility="protected" name="belongsTo" returnType="Relation" params={[{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referenceModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a reverse 1-1 or n-1 relation between two models
-</ApiItem>
-<ApiItem href="#mvcmodel-canceloperation" visibility="protected" name="cancelOperation" returnType="" params={[]}>
-Cancel the current operation
-</ApiItem>
-<ApiItem href="#mvcmodel-checkforeignkeysrestrict" visibility="protected" name="checkForeignKeysRestrict" returnType="bool" params={[]}>
-Reads "belongs to" relations and check the virtual foreign keys when
-</ApiItem>
-<ApiItem href="#mvcmodel-checkforeignkeysreversecascade" visibility="protected" name="checkForeignKeysReverseCascade" returnType="bool" params={[]}>
-Reads both "hasMany" and "hasOne" relations and checks the virtual
-</ApiItem>
-<ApiItem href="#mvcmodel-checkforeignkeysreverserestrict" visibility="protected" name="checkForeignKeysReverseRestrict" returnType="bool" params={[]}>
-Reads both "hasMany" and "hasOne" relations and checks the virtual
-</ApiItem>
-<ApiItem href="#mvcmodel-collectrelatedtosave" visibility="protected" name="collectRelatedToSave" returnType="array" params={[]}>
-Collects previously queried (belongs-to, has-one and has-one-through)
-</ApiItem>
-<ApiItem href="#mvcmodel-dolowinsert" visibility="protected" name="doLowInsert" returnType="bool" params={[{"type":"MetaDataInterface","name":"metaData","default":null},{"type":"AdapterInterface","name":"connection","default":null},{"type":"mixed","name":"table","default":null},{"type":"mixed","name":"identityField","default":null}]}>
-Sends a pre-build INSERT SQL statement to the relational database system
-</ApiItem>
-<ApiItem href="#mvcmodel-dolowupdate" visibility="protected" name="doLowUpdate" returnType="bool" params={[{"type":"MetaDataInterface","name":"metaData","default":null},{"type":"AdapterInterface","name":"connection","default":null},{"type":"mixed","name":"table","default":null}]}>
-Sends a pre-build UPDATE SQL statement to the relational database system
-</ApiItem>
-<ApiItem href="#mvcmodel-getrelatedrecords" visibility="protected" name="getRelatedRecords" returnType="" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-Returns related records defined relations depending on the method name.
-</ApiItem>
-<ApiItem href="#mvcmodel-groupresult" visibility="protected" name="groupResult" returnType="mixed" params={[{"type":"string","name":"functionName","default":null},{"type":"string","name":"alias","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
-Generate a PHQL SELECT statement for an aggregate
-</ApiItem>
-<ApiItem href="#mvcmodel-has" visibility="protected" name="has" returnType="bool" params={[{"type":"MetaDataInterface","name":"metaData","default":null},{"type":"AdapterInterface","name":"connection","default":null}]}>
-Checks whether the current record already exists
-</ApiItem>
-<ApiItem href="#mvcmodel-hasmany" visibility="protected" name="hasMany" returnType="Relation" params={[{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referenceModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a 1-n relation between two models
-</ApiItem>
-<ApiItem href="#mvcmodel-hasmanytomany" visibility="protected" name="hasManyToMany" returnType="Relation" params={[{"type":"mixed","name":"fields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateFields","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null},{"type":"string","name":"referenceModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup an n-n relation between two models, through an intermediate
-</ApiItem>
-<ApiItem href="#mvcmodel-hasone" visibility="protected" name="hasOne" returnType="Relation" params={[{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referenceModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a 1-1 relation between two models
-</ApiItem>
-<ApiItem href="#mvcmodel-hasonethrough" visibility="protected" name="hasOneThrough" returnType="Relation" params={[{"type":"mixed","name":"fields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateFields","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null},{"type":"string","name":"referenceModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a 1-1 relation between two models, through an intermediate
-</ApiItem>
-<ApiItem href="#mvcmodel-invokefinder" visibility="protected" name="invokeFinder" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
-Try to check if the query must invoke a finder
-</ApiItem>
-<ApiItem href="#mvcmodel-keepsnapshots" visibility="protected" name="keepSnapshots" returnType="void" params={[{"type":"bool","name":"keepSnapshot","default":null}]}>
-Sets if the model must keep the original record snapshot in memory
-</ApiItem>
-<ApiItem href="#mvcmodel-possiblesetter" visibility="protected" name="possibleSetter" returnType="bool" params={[{"type":"string","name":"property","default":null},{"type":"mixed","name":"value","default":null}]}>
-Check for, and attempt to use, possible setter.
-</ApiItem>
-<ApiItem href="#mvcmodel-postsave" visibility="protected" name="postSave" returnType="bool" params={[{"type":"bool","name":"success","default":null},{"type":"bool","name":"exists","default":null}]}>
-Executes internal events after save a record
-</ApiItem>
-<ApiItem href="#mvcmodel-postsaverelatedrecords" visibility="protected" name="postSaveRelatedRecords" returnType="bool" params={[{"type":"AdapterInterface","name":"connection","default":null},{"type":"mixed","name":"related","default":null},{"type":"CollectionInterface","name":"visited","default":null}]}>
-Save the related records assigned in the has-one/has-many relations
-</ApiItem>
-<ApiItem href="#mvcmodel-presave" visibility="protected" name="preSave" returnType="bool" params={[{"type":"MetaDataInterface","name":"metaData","default":null},{"type":"bool","name":"exists","default":null},{"type":"mixed","name":"identityField","default":null}]}>
-Executes internal hooks before save a record
-</ApiItem>
-<ApiItem href="#mvcmodel-presaverelatedrecords" visibility="protected" name="preSaveRelatedRecords" returnType="bool" params={[{"type":"AdapterInterface","name":"connection","default":null},{"type":"mixed","name":"related","default":null},{"type":"CollectionInterface","name":"visited","default":null}]}>
-Saves related records that must be stored prior to save the master record
-</ApiItem>
-<ApiItem href="#mvcmodel-setschema" visibility="protected" name="setSchema" returnType="ModelInterface" params={[{"type":"string","name":"schema","default":null}]}>
-Sets schema name where the mapped table is located
-</ApiItem>
-<ApiItem href="#mvcmodel-setsource" visibility="protected" name="setSource" returnType="ModelInterface" params={[{"type":"string","name":"source","default":null}]}>
-Sets the table name to which model should be mapped
-</ApiItem>
-<ApiItem href="#mvcmodel-skipattributes" visibility="protected" name="skipAttributes" returnType="void" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets a list of attributes that must be skipped from the
-</ApiItem>
-<ApiItem href="#mvcmodel-skipattributesoncreate" visibility="protected" name="skipAttributesOnCreate" returnType="void" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets a list of attributes that must be skipped from the
-</ApiItem>
-<ApiItem href="#mvcmodel-skipattributesonupdate" visibility="protected" name="skipAttributesOnUpdate" returnType="void" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets a list of attributes that must be skipped from the
-</ApiItem>
-<ApiItem href="#mvcmodel-usedynamicupdate" visibility="protected" name="useDynamicUpdate" returnType="void" params={[{"type":"bool","name":"dynamicUpdate","default":null}]}>
-Sets if a model must use dynamic update instead of the all-field update
-</ApiItem>
-<ApiItem href="#mvcmodel-validate" visibility="protected" name="validate" returnType="bool" params={[{"type":"ValidationInterface","name":"validator","default":null}]}>
-Executes validators on every validation call
-</ApiItem>
+- `public __call(string $method, array $arguments)` — Handles method calls when a method is not implemented
+
+- `public __callStatic(string $method, array $arguments)` — Handles method calls when a static method is not implemented
+
+- `public __construct(mixed $data = null, DiInterface|null $container = null, ManagerInterface|null $modelsManager = null)` — Phalcon\Mvc\Model constructor
+
+- `public __get(string $property)` — Magic method to get related records using the relation alias as a
+
+- `public __isset(string $property): bool` — Magic method to check if a property is a valid relation
+
+- `public __serialize(): array` — Serializes a model
+
+- `public __set(string $property, mixed $value)` — Magic method to assign values to the the model
+
+- `public __unserialize(array $data): void` — Unserializes an array to the model
+
+- `public addBehavior(BehaviorInterface $behavior): void` — Setups a behavior in a model
+
+- `public appendMessage(MessageInterface $message): ModelInterface` — Appends a customized message on the validation process
+
+- `public appendMessagesFrom(mixed $model): void` — Append messages to this model from another Model.
+
+- `public assign(array $data, mixed $whiteList = null, mixed $dataColumnMap = null): ModelInterface` — Assigns values to a model from an array
+
+- `public average(array $parameters = []): float|ResultsetInterface` — Returns the average value on a column for a result-set of rows matching
+
+- `public cloneResult(ModelInterface $base, array $data, int $dirtyState = 0): ModelInterface` — Assigns values to a model from an array returning a new model
+
+- `public cloneResultMap(mixed $base, array $data, mixed $columnMap, int $dirtyState = 0, bool|null $keepSnapshots = null): ModelInterface` — Assigns values to a model from an array, returning a new model.
+
+- `public cloneResultMapHydrate(array $data, mixed $columnMap, int $hydrationMode)` — Returns an hydrated result based on the data and the column map
+
+- `public count(mixed $parameters = null): int|ResultsetInterface` — Counts how many records match the specified conditions.
+
+- `public create(): bool` — Inserts a model instance. If the instance already exists in the
+
+- `public delete(): bool` — Deletes a model instance. Returning true on success or false otherwise.
+
+- `public doSave(CollectionInterface $visited): bool` — Inserted or updates model instance, expects a visited list of objects.
+
+- `public dump(): array` — Returns a simple representation of the object that can be used with
+
+- `public find(mixed $parameters = null): ResultsetInterface` — Query for a set of records that match the specified conditions
+
+- `public findFirst(mixed $parameters = null): mixed|null` — Query the first record that matches the specified conditions
+
+- `public fireEvent(string $eventName): bool` — Fires an event, implicitly calls behaviors and listeners in the events
+
+- `public fireEventCancel(string $eventName): bool` — Fires an event, implicitly calls behaviors and listeners in the events
+
+- `public getChangedFields(): array` — Returns a list of changed values.
+
+- `public getDirtyState(): int` — Returns one of the DIRTY\_STATE\_\* constants telling if the record exists
+
+- `public getEventsManager(): EventsManagerInterface|null` — Returns the custom events manager or null if there is no custom events manager
+
+- `public getMessages(mixed $filter = null): MessageInterface[]` — Returns array of validation messages
+
+- `public getModelsManager(): ManagerInterface` — Returns the models manager related to the entity instance
+
+- `public getModelsMetaData(): MetaDataInterface` — \{@inheritdoc}
+
+- `public getOldSnapshotData(): array` — Returns the internal old snapshot data
+
+- `public getOperationMade(): int` — Returns the type of the latest operation performed by the ORM
+
+- `public getReadConnection(): AdapterInterface` — Gets the connection used to read data for the model
+
+- `public getReadConnectionService(): string` — Returns the DependencyInjection connection service name used to read data
+
+- `public getRelated(string $alias, mixed $arguments = null)` — Returns related records based on defined relations
+
+- `public getSchema(): string|null` — Returns schema name where the mapped table is located
+
+- `public getSnapshotData(): array` — Returns the internal snapshot data
+
+- `public getSource(): string` — Returns the table name mapped in the model
+
+- `public getTransaction(): TransactionInterface|null`
+
+- `public getUpdatedFields(): array` — Returns a list of updated values.
+
+- `public getWriteConnection(): AdapterInterface` — Gets the connection used to write data to the model
+
+- `public getWriteConnectionService(): string` — Returns the DependencyInjection connection service name used to write
+
+- `public hasChanged(mixed $fieldName = null, bool $allFields = false): bool` — Check if a specific attribute has changed
+
+- `public hasSnapshotData(): bool` — Checks if the object has internal snapshot data
+
+- `public hasUpdated(mixed $fieldName = null, bool $allFields = false): bool` — Check if a specific attribute was updated
+
+- `public isRelationshipLoaded(string $relationshipAlias): bool` — Checks if saved related records have already been loaded.
+
+- `public jsonSerialize(): array` — Serializes the object for json\_encode
+
+- `public maximum(mixed $parameters = null): mixed` — Returns the maximum value of a column for a result-set of rows that match
+
+- `public minimum(mixed $parameters = null): mixed` — Returns the minimum value of a column for a result-set of rows that match
+
+- `public query(DiInterface|null $container = null): CriteriaInterface` — Create a criteria for a specific model
+
+- `public readAttribute(string $attribute): mixed|null` — Reads an attribute value by its name
+
+- `public refresh(): ModelInterface` — Refreshes the model attributes re-querying the record from the database
+
+- `public save(): bool` — Inserts or updates a model instance. Returning true on success or false
+
+- `public serialize(): string|null` — Serializes the object ignoring connections, services, related objects or
+
+- `public setConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service name
+
+- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Sets the dirty state of the object using one of the DIRTY\_STATE\_\* constants
+
+- `public setEventsManager(EventsManagerInterface $eventsManager)` — Sets a custom events manager
+
+- `public setOldSnapshotData(array $data, mixed $columnMap = null)` — Sets the record's old snapshot data.
+
+- `public setReadConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service name used to read data
+
+- `public setRelated(string $alias, mixed $records): ModelInterface` — Stores related records in the relation cache, so that a subsequent
+
+- `public setSnapshotData(array $data, mixed $columnMap = null): void` — Sets the record's snapshot data.
+
+- `public setSync(mixed $elements = null, bool $enabled = true): ModelInterface` — Marks one or more many-to-many relationships to be synchronized (or not)
+
+- `public setTransaction(TransactionInterface $transaction): ModelInterface` — Sets a transaction related to the Model instance
+
+- `public setWriteConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service name used to write data
+
+- `public setup(array $options): void` — Enables/disables options in the ORM.
+
+- `public skipOperation(bool $skip): void` — Skips the current operation forcing a success state
+
+- `public sum(mixed $parameters = null): float|ResultsetInterface` — Calculates the sum on a column for a result-set of rows that match the
+
+- `public toArray(mixed $columns = null, mixed $useGetter = true): array` — Returns the instance as an array representation
+
+- `public unserialize(string $data): void` — Unserializes the object from a serialized string
+
+- `public update(): bool` — Updates a model instance. If the instance does not exist in the
+
+- `public validationHasFailed(): bool` — Check whether validation process has generated any messages
+
+- `public writeAttribute(string $attribute, mixed $value): void` — Writes an attribute value by its name
+
+- `protected allowEmptyStringValues(array $attributes): void` — Sets a list of attributes that must be skipped from the
+
+- `protected belongsTo(mixed $fields, string $referenceModel, mixed $referencedFields, array $options = []): Relation` — Setup a reverse 1-1 or n-1 relation between two models
+
+- `protected cancelOperation()` — Cancel the current operation
+
+- `protected checkForeignKeysRestrict(): bool` — Reads "belongs to" relations and check the virtual foreign keys when
+
+- `protected checkForeignKeysReverseCascade(): bool` — Reads both "hasMany" and "hasOne" relations and checks the virtual
+
+- `protected checkForeignKeysReverseRestrict(): bool` — Reads both "hasMany" and "hasOne" relations and checks the virtual
+
+- `protected collectRelatedToSave(): array` — Collects previously queried (belongs-to, has-one and has-one-through)
+
+- `protected doLowInsert(MetaDataInterface $metaData, AdapterInterface $connection, mixed $table, mixed $identityField): bool` — Sends a pre-build INSERT SQL statement to the relational database system
+
+- `protected doLowUpdate(MetaDataInterface $metaData, AdapterInterface $connection, mixed $table): bool` — Sends a pre-build UPDATE SQL statement to the relational database system
+
+- `protected getRelatedRecords(string $modelName, string $method, array $arguments)` — Returns related records defined relations depending on the method name.
+
+- `protected groupResult(string $functionName, string $alias, mixed $parameters = null): mixed` — Generate a PHQL SELECT statement for an aggregate
+
+- `protected has(MetaDataInterface $metaData, AdapterInterface $connection): bool` — Checks whether the current record already exists
+
+- `protected hasMany(mixed $fields, string $referenceModel, mixed $referencedFields, array $options = []): Relation` — Setup a 1-n relation between two models
+
+- `protected hasManyToMany(mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, array $options = []): Relation` — Setup an n-n relation between two models, through an intermediate
+
+- `protected hasOne(mixed $fields, string $referenceModel, mixed $referencedFields, array $options = []): Relation` — Setup a 1-1 relation between two models
+
+- `protected hasOneThrough(mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, array $options = []): Relation` — Setup a 1-1 relation between two models, through an intermediate
+
+- `protected invokeFinder(string $method, array $arguments)` — Try to check if the query must invoke a finder
+
+- `protected keepSnapshots(bool $keepSnapshot): void` — Sets if the model must keep the original record snapshot in memory
+
+- `protected possibleSetter(string $property, mixed $value): bool` — Check for, and attempt to use, possible setter.
+
+- `protected postSave(bool $success, bool $exists): bool` — Executes internal events after save a record
+
+- `protected postSaveRelatedRecords(AdapterInterface $connection, mixed $related, CollectionInterface $visited): bool` — Save the related records assigned in the has-one/has-many relations
+
+- `protected preSave(MetaDataInterface $metaData, bool $exists, mixed $identityField): bool` — Executes internal hooks before save a record
+
+- `protected preSaveRelatedRecords(AdapterInterface $connection, mixed $related, CollectionInterface $visited): bool` — Saves related records that must be stored prior to save the master record
+
+- `protected setSchema(string $schema): ModelInterface` — Sets schema name where the mapped table is located
+
+- `protected setSource(string $source): ModelInterface` — Sets the table name to which model should be mapped
+
+- `protected skipAttributes(array $attributes): void` — Sets a list of attributes that must be skipped from the
+
+- `protected skipAttributesOnCreate(array $attributes): void` — Sets a list of attributes that must be skipped from the
+
+- `protected skipAttributesOnUpdate(array $attributes): void` — Sets a list of attributes that must be skipped from the
+
+- `protected useDynamicUpdate(bool $dynamicUpdate): void` — Sets if a model must use dynamic update instead of the all-field update
+
+- `protected validate(ValidationInterface $validator): bool` — Executes validators on every validation call
 
 ### Constants
 
-<ApiItem kind="constant" name="DIRTY_STATE_DETACHED" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="DIRTY_STATE_PERSISTENT" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="DIRTY_STATE_TRANSIENT" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="OP_CREATE" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="OP_DELETE" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="OP_NONE" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="OP_UPDATE" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="TRANSACTION_INDEX" type="string" default="&quot;transaction&quot;">
-</ApiItem>
+- `const int DIRTY_STATE_DETACHED = 2`
+
+- `const int DIRTY_STATE_PERSISTENT = 0`
+
+- `const int DIRTY_STATE_TRANSIENT = 1`
+
+- `const int OP_CREATE = 1`
+
+- `const int OP_DELETE = 3`
+
+- `const int OP_NONE = 0`
+
+- `const int OP_UPDATE = 2`
+
+- `const string TRANSACTION_INDEX = "transaction"`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="dirtyRelated" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="dirtyState" type="int" default="1">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="errorMessages" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelsMetaData" type="MetaDataInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="oldSnapshot" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="operationMade" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rawValues" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="related" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="skipped" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="snapshot" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="syncRelated" type="array" default="[]">
-Per-save many-to-many sync overrides, keyed by lowercased relation
-alias (or "*" wildcard) => bool. Cleared after each save().
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="transaction" type="TransactionInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uniqueKey" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uniqueParams" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uniqueTypes" type="array" default="[]">
-</ApiItem>
+- `protected array $dirtyRelated = []`
+
+- `protected int $dirtyState = 1`
+
+- `protected array $errorMessages = []`
+
+- `protected ManagerInterface|null $modelsManager = null`
+
+- `protected MetaDataInterface|null $modelsMetaData = null`
+
+- `protected array $oldSnapshot = []`
+
+- `protected int $operationMade = 0`
+
+- `protected array $rawValues = []`
+
+- `protected array $related = []`
+
+- `protected bool $skipped = false`
+
+- `protected array $snapshot = []`
+
+- `protected array $syncRelated = []` — Per-save many-to-many sync overrides, keyed by lowercased relation
+  alias (or "\*" wildcard) => bool. Cleared after each save().
+
+- `protected TransactionInterface|null $transaction = null`
+
+- `protected string|null $uniqueKey = null`
+
+- `protected array $uniqueParams = []`
+
+- `protected array $uniqueTypes = []`
 
 ### Methods
 
@@ -2472,8 +2272,8 @@ alias (or "*" wildcard) => bool. Cleared after each save().
 
 ```php
 public function __call(
-string $method,
-array $arguments
+    string $method,
+    array $arguments
 );
 ```
 
@@ -2483,8 +2283,8 @@ Handles method calls when a method is not implemented
 
 ```php
 public static function __callStatic(
-string $method,
-array $arguments
+    string $method,
+    array $arguments
 );
 ```
 
@@ -2494,9 +2294,9 @@ Handles method calls when a static method is not implemented
 
 ```php
 final public function __construct(
-mixed $data = null,
-DiInterface|null $container = null,
-ManagerInterface|null $modelsManager = null
+    mixed $data = null,
+    DiInterface|null $container = null,
+    ManagerInterface|null $modelsManager = null
 );
 ```
 
@@ -2531,8 +2331,8 @@ Serializes a model
 
 ```php
 public function __set(
-string $property,
-mixed $value
+    string $property,
+    mixed $value
 );
 ```
 
@@ -2560,30 +2360,30 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->addBehavior(
-        new Timestampable(
-            [
-                "beforeCreate" => [
-                    "field"  => "created_at",
-                    "format" => "Y-m-d",
-                ],
-            ]
-        )
-    );
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeCreate" => [
+                        "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
 
-    $this->addBehavior(
-        new Timestampable(
-            [
-                "beforeUpdate" => [
-                    "field"  => "updated_at",
-                    "format" => "Y-m-d",
-                ],
-            ]
-        )
-    );
-}
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeUpdate" => [
+                        "field"  => "updated_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -2601,16 +2401,16 @@ use Phalcon\Messages\Message as Message;
 
 class Invoices extends Model
 {
-public function beforeSave()
-{
-    if ($this->name === "Peter") {
-        $message = new Message(
-            "Sorry, but an invoice cannot be named Peter"
-        );
+    public function beforeSave()
+    {
+        if ($this->name === "Peter") {
+            $message = new Message(
+                "Sorry, but an invoice cannot be named Peter"
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
+        }
     }
-}
 }
 ```
 
@@ -2626,9 +2426,9 @@ Append messages to this model from another Model.
 
 ```php
 public function assign(
-array $data,
-mixed $whiteList = null,
-mixed $dataColumnMap = null
+    array $data,
+    mixed $whiteList = null,
+    mixed $dataColumnMap = null
 ): ModelInterface;
 ```
 
@@ -2636,30 +2436,30 @@ Assigns values to a model from an array
 
 ```php
 $invoice->assign(
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 
 // Assign by db row, column map needed
 $invoice->assign(
-$dbRow,
-[
-    "db_type" => "type",
-    "db_name" => "name",
-    "db_year" => "year",
-]
+    $dbRow,
+    [
+        "db_type" => "type",
+        "db_name" => "name",
+        "db_year" => "year",
+    ]
 );
 
 // Allow assign only name and year
 $invoice->assign(
-$_POST,
-[
-    "name",
-    "year",
-]
+    $_POST,
+    [
+        "name",
+        "year",
+    ]
 );
 
 // By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
@@ -2667,11 +2467,11 @@ $_POST,
 ini_set("phalcon.orm.disable_assign_setters", true);
 
 $invoice->assign(
-$_POST,
-[
-    "name",
-    "year",
-]
+    $_POST,
+    [
+        "name",
+        "year",
+    ]
 );
 ```
 
@@ -2691,19 +2491,19 @@ contain the average of each group.
 ```php
 // What's the average price of invoices?
 $average = Invoices::average(
-[
-    "column" => "inv_total",
-]
+    [
+        "column" => "inv_total",
+    ]
 );
 
 echo "The average price is ", $average, "\n";
 
 // What's the average price of paid invoices?
 $average = Invoices::average(
-[
-    "inv_status_flag = 1",
-    "column" => "inv_total",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "inv_total",
+    ]
 );
 
 echo "The average price of paid invoices is ", $average, "\n";
@@ -2713,9 +2513,9 @@ echo "The average price of paid invoices is ", $average, "\n";
 
 ```php
 public static function cloneResult(
-ModelInterface $base,
-array $data,
-int $dirtyState = 0
+    ModelInterface $base,
+    array $data,
+    int $dirtyState = 0
 ): ModelInterface;
 ```
 
@@ -2723,12 +2523,12 @@ Assigns values to a model from an array returning a new model
 
 ```php
 $invoice = Phalcon\Mvc\Model::cloneResult(
-new Invoices(),
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    new Invoices(),
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 ```
 
@@ -2736,11 +2536,11 @@ new Invoices(),
 
 ```php
 public static function cloneResultMap(
-mixed $base,
-array $data,
-mixed $columnMap,
-int $dirtyState = 0,
-bool|null $keepSnapshots = null
+    mixed $base,
+    array $data,
+    mixed $columnMap,
+    int $dirtyState = 0,
+    bool|null $keepSnapshots = null
 ): ModelInterface;
 ```
 
@@ -2748,12 +2548,12 @@ Assigns values to a model from an array, returning a new model.
 
 ```php
 $invoice = \Phalcon\Mvc\Model::cloneResultMap(
-new Invoices(),
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    new Invoices(),
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 ```
 
@@ -2761,9 +2561,9 @@ new Invoices(),
 
 ```php
 public static function cloneResultMapHydrate(
-array $data,
-mixed $columnMap,
-int $hydrationMode
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode
 );
 ```
 
@@ -2817,11 +2617,11 @@ $invoice->create();
 $invoice = new Invoices();
 
 $invoice->assign(
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 
 $invoice->create();
@@ -2843,7 +2643,7 @@ $invoice->delete();
 $invoices = Invoices::find("inv_status_flag = 1");
 
 foreach ($invoices as $invoice) {
-$invoice->delete();
+    $invoice->delete();
 }
 ```
 
@@ -2866,7 +2666,7 @@ Returns a simple representation of the object that can be used with
 
 ```php
 var_dump(
-$invoice->dump()
+    $invoice->dump()
 );
 ```
 
@@ -2886,34 +2686,34 @@ echo "There are ", count($invoices), "\n";
 
 // How many paid invoices are there?
 $invoices = Invoices::find(
-"inv_status_flag = 1"
+    "inv_status_flag = 1"
 );
 
 echo "There are ", count($invoices), "\n";
 
 // Get and print virtual invoices ordered by name
 $invoices = Invoices::find(
-[
-    "type = 'virtual'",
-    "order" => "name",
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 // Get first 100 virtual invoices ordered by name
 $invoices = Invoices::find(
-[
-    "type = 'virtual'",
-    "order" => "name",
-    "limit" => 100,
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+        "limit" => 100,
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 // encapsulate find it into an running transaction esp. useful for application unit-tests
@@ -2926,30 +2726,30 @@ $newInvoices = new Invoices();
 $newInvoices->setTransaction($myTransaction);
 
 $newInvoices->assign(
-[
-    'name' => 'test',
-    'type' => 'mechanical',
-    'year' => 1944,
-]
+    [
+        'name' => 'test',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
 );
 
 $newInvoices->save();
 
 $resultInsideTransaction = Invoices::find(
-[
-    'name' => 'test',
-    Model::TRANSACTION_INDEX => $myTransaction,
-]
+    [
+        'name' => 'test',
+        Model::TRANSACTION_INDEX => $myTransaction,
+    ]
 );
 
 $resultOutsideTransaction = Invoices::find(['name' => 'test']);
 
 foreach ($setInsideTransaction as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 foreach ($setOutsideTransaction as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 // reverts all not commited changes
@@ -2965,69 +2765,69 @@ $myTransaction2->begin();
 $firstNewInvoices = new Invoices();
 $firstNewInvoices->setTransaction($myTransaction1);
 $firstNewInvoices->assign(
-[
-    'name' => 'first-transaction-invoice',
-    'type' => 'mechanical',
-    'year' => 1944,
-]
+    [
+        'name' => 'first-transaction-invoice',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
 );
 $firstNewInvoices->save();
 
 $secondNewInvoices = new Invoices();
 $secondNewInvoices->setTransaction($myTransaction2);
 $secondNewInvoices->assign(
-[
-    'name' => 'second-transaction-invoice',
-    'type' => 'fictional',
-    'year' => 1984,
-]
+    [
+        'name' => 'second-transaction-invoice',
+        'type' => 'fictional',
+        'year' => 1984,
+    ]
 );
 $secondNewInvoices->save();
 
 // this transaction will find the invoice.
 $resultInFirstTransaction = Invoices::find(
-[
-    'name'                   => 'first-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction1,
-]
+    [
+        'name'                   => 'first-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction1,
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultInSecondTransaction = Invoices::find(
-[
-    'name'                   => 'first-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction2,
-]
+    [
+        'name'                   => 'first-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction2,
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultOutsideAnyExplicitTransaction = Invoices::find(
-[
-    'name' => 'first-transaction-invoice',
-]
+    [
+        'name' => 'first-transaction-invoice',
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultInFirstTransaction = Invoices::find(
-[
-    'name'                   => 'second-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction2,
-]
+    [
+        'name'                   => 'second-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction2,
+    ]
 );
 
 // this transaction will find the invoice.
 $resultInSecondTransaction = Invoices::find(
-[
-    'name'                   => 'second-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction1,
-]
+    [
+        'name'                   => 'second-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction1,
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultOutsideAnyExplicitTransaction = Invoices::find(
-[
-    'name' => 'second-transaction-invoice',
-]
+    [
+        'name' => 'second-transaction-invoice',
+    ]
 );
 
 $transaction1->rollback();
@@ -3050,17 +2850,17 @@ echo "The invoice name is ", $invoice->inv_title;
 
 // What's the first paid invoice in invoices table?
 $invoice = Invoices::findFirst(
-"inv_status_flag = 1"
+    "inv_status_flag = 1"
 );
 
 echo "The first paid invoice name is ", $invoice->inv_title;
 
 // Get first virtual invoice ordered by name
 $invoice = Invoices::findFirst(
-[
-    "type = 'virtual'",
-    "order" => "name",
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
 );
 
 echo "The first virtual invoice name is ", $invoice->inv_title;
@@ -3072,25 +2872,25 @@ $myTransaction->begin();
 $newInvoices = new Invoices();
 $newInvoices->setTransaction($myTransaction);
 $newInvoices->assign(
-[
-    'name' => 'test',
-    'type' => 'mechanical',
-    'year' => 1944,
-]
+    [
+        'name' => 'test',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
 );
 $newInvoices->save();
 
 $findsAInvoices = Invoices::findFirst(
-[
-    'name'                   => 'test',
-    Model::TRANSACTION_INDEX => $myTransaction,
-]
+    [
+        'name'                   => 'test',
+        Model::TRANSACTION_INDEX => $myTransaction,
+    ]
 );
 
 $doesNotFindAInvoices = Invoices::findFirst(
-[
-    'name' => 'test',
-]
+    [
+        'name' => 'test',
+    ]
 );
 
 var_dump($findAInvoices);
@@ -3099,9 +2899,9 @@ var_dump($doesNotFindAInvoices);
 $transaction->commit();
 
 $doesFindTheInvoicesNow = Invoices::findFirst(
-[
-    'name' => 'test',
-]
+    [
+        'name' => 'test',
+    ]
 );
 ```
 
@@ -3175,15 +2975,15 @@ $invoice->inv_title = "Test Invoice";
 $invoice->inv_total = 1952;
 
 if ($invoice->save() === false) {
-echo "Umh, We can't store invoices right now ";
+    echo "Umh, We can't store invoices right now ";
 
-$messages = $invoice->getMessages();
+    $messages = $invoice->getMessages();
 
-foreach ($messages as $message) {
-    echo $message;
-}
+    foreach ($messages as $message) {
+        echo $message;
+    }
 } else {
-echo "Great, a new invoice was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -3241,8 +3041,8 @@ related the model
 
 ```php
 public function getRelated(
-string $alias,
-mixed $arguments = null
+    string $alias,
+    mixed $arguments = null
 );
 ```
 
@@ -3320,8 +3120,8 @@ data related to the model
 
 ```php
 public function hasChanged(
-mixed $fieldName = null,
-bool $allFields = false
+    mixed $fieldName = null,
+    bool $allFields = false
 ): bool;
 ```
 
@@ -3356,8 +3156,8 @@ Checks if the object has internal snapshot data
 
 ```php
 public function hasUpdated(
-mixed $fieldName = null,
-bool $allFields = false
+    mixed $fieldName = null,
+    bool $allFields = false
 ): bool;
 ```
 
@@ -3413,19 +3213,19 @@ the specified conditions
 ```php
 // What is the maximum invoice id?
 $id = Invoices::maximum(
-[
-    "column" => "id",
-]
+    [
+        "column" => "id",
+    ]
 );
 
 echo "The maximum invoice id is: ", $id, "\n";
 
 // What is the maximum id of paid invoices?
 $sum = Invoices::maximum(
-[
-    "inv_status_flag = 1",
-    "column" => "id",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "id",
+    ]
 );
 
 echo "The maximum invoice id of paid invoices is ", $id, "\n";
@@ -3443,19 +3243,19 @@ the specified conditions
 ```php
 // What is the minimum invoice id?
 $id = Invoices::minimum(
-[
-    "column" => "id",
-]
+    [
+        "column" => "id",
+    ]
 );
 
 echo "The minimum invoice id is: ", $id;
 
 // What is the minimum id of paid invoices?
 $sum = Invoices::minimum(
-[
-    "inv_status_flag = 1",
-    "column" => "id",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "id",
+    ]
 );
 
 echo "The minimum invoice id of paid invoices is ", $id;
@@ -3553,8 +3353,8 @@ Sets a custom events manager
 
 ```php
 public function setOldSnapshotData(
-array $data,
-mixed $columnMap = null
+    array $data,
+    mixed $columnMap = null
 );
 ```
 
@@ -3574,8 +3374,8 @@ Sets the DependencyInjection connection service name used to read data
 
 ```php
 public function setRelated(
-string $alias,
-mixed $records
+    string $alias,
+    mixed $records
 ): ModelInterface;
 ```
 
@@ -3596,8 +3396,8 @@ the caller this exists for, never triggers a cascade.
 
 ```php
 public function setSnapshotData(
-array $data,
-mixed $columnMap = null
+    array $data,
+    mixed $columnMap = null
 ): void;
 ```
 
@@ -3609,8 +3409,8 @@ set up to keep snapshot data
 
 ```php
 public function setSync(
-mixed $elements = null,
-bool $enabled = true
+    mixed $elements = null,
+    bool $enabled = true
 ): ModelInterface;
 ```
 
@@ -3648,34 +3448,34 @@ use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 
 try {
-$txManager = new TxManager();
+    $txManager = new TxManager();
 
-$transaction = $txManager->get();
+    $transaction = $txManager->get();
 
-$invoice = new Invoices();
+    $invoice = new Invoices();
 
-$invoice->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-$invoice->inv_title       = "WALL·E";
-$invoice->created_at = date("Y-m-d");
+    $invoice->inv_title       = "WALL·E";
+    $invoice->created_at = date("Y-m-d");
 
-if ($invoice->save() === false) {
-    $transaction->rollback("Can't save invoice");
-}
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
+    }
 
-$invoicePart = new OrdersProducts();
+    $invoicePart = new OrdersProducts();
 
-$invoicePart->setTransaction($transaction);
+    $invoicePart->setTransaction($transaction);
 
-$invoicePart->type = "head";
+    $invoicePart->type = "head";
 
-if ($invoicePart->save() === false) {
-    $transaction->rollback("Invoices part cannot be saved");
-}
+    if ($invoicePart->save() === false) {
+        $transaction->rollback("Invoices part cannot be saved");
+    }
 
-$transaction->commit();
+    $transaction->commit();
 } catch (TxFailed $e) {
-echo "Failed, reason: ", $e->getMessage();
+    echo "Failed, reason: ", $e->getMessage();
 }
 ```
 
@@ -3721,19 +3521,19 @@ specified conditions
 ```php
 // How much are all invoices?
 $sum = Invoices::sum(
-[
-    "column" => "inv_total",
-]
+    [
+        "column" => "inv_total",
+    ]
 );
 
 echo "The total price of invoices is ", $sum, "\n";
 
 // How much are paid invoices?
 $sum = Invoices::sum(
-[
-    "inv_status_flag = 1",
-    "column" => "inv_total",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "inv_total",
+    ]
 );
 
 echo "The total price of paid invoices is  ", $sum, "\n";
@@ -3743,8 +3543,8 @@ echo "The total price of paid invoices is  ", $sum, "\n";
 
 ```php
 public function toArray(
-mixed $columns = null,
-mixed $useGetter = true
+    mixed $columns = null,
+    mixed $useGetter = true
 ): array;
 ```
 
@@ -3752,7 +3552,7 @@ Returns the instance as an array representation
 
 ```php
 print_r(
-$invoice->toArray()
+    $invoice->toArray()
 );
 ```
 
@@ -3788,9 +3588,9 @@ $invoice->update();
 
 !!! warning "NOTE"
 
-    When retrieving the record with `findFirst()`, you need to get the full
-    object back (no `columns` definition) but also retrieve it using the
-    primary key. If not, the ORM will issue an `INSERT` instead of `UPDATE`.
+When retrieving the record with `findFirst()`, you need to get the full
+object back (no `columns` definition) but also retrieve it using the
+primary key. If not, the ORM will issue an `INSERT` instead of `UPDATE`.
 
 <h4 id="mvcmodel-validationhasfailed"><code>validationHasFailed()</code></h4>
 
@@ -3807,24 +3607,24 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->validate(
-        "status",
-        new ExclusionIn(
-            [
-                "domain" => [
-                    "A",
-                    "I",
-                ],
-            ]
-        )
-    );
+        $validator->validate(
+            "status",
+            new ExclusionIn(
+                [
+                    "domain" => [
+                        "A",
+                        "I",
+                    ],
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -3832,8 +3632,8 @@ public function validation()
 
 ```php
 public function writeAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): void;
 ```
 
@@ -3855,14 +3655,14 @@ generated UPDATE statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->allowEmptyStringValues(
-        [
-            "name",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->allowEmptyStringValues(
+            [
+                "name",
+            ]
+        );
+    }
 }
 ```
 
@@ -3870,10 +3670,10 @@ public function initialize()
 
 ```php
 protected function belongsTo(
-mixed $fields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -3882,14 +3682,14 @@ Setup a reverse 1-1 or n-1 relation between two models
 ```php
 class OrdersProducts extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        "oxp_ord_id",
-        Invoices::class,
-        "id"
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            "oxp_ord_id",
+            Invoices::class,
+            "id"
+        );
+    }
 }
 ```
 
@@ -3942,10 +3742,10 @@ related records along with freshly added one
 
 ```php
 protected function doLowInsert(
-MetaDataInterface $metaData,
-AdapterInterface $connection,
-mixed $table,
-mixed $identityField
+    MetaDataInterface $metaData,
+    AdapterInterface $connection,
+    mixed $table,
+    mixed $identityField
 ): bool;
 ```
 
@@ -3955,9 +3755,9 @@ Sends a pre-build INSERT SQL statement to the relational database system
 
 ```php
 protected function doLowUpdate(
-MetaDataInterface $metaData,
-AdapterInterface $connection,
-mixed $table
+    MetaDataInterface $metaData,
+    AdapterInterface $connection,
+    mixed $table
 ): bool;
 ```
 
@@ -3967,9 +3767,9 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 ```php
 protected function getRelatedRecords(
-string $modelName,
-string $method,
-array $arguments
+    string $modelName,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -3980,9 +3780,9 @@ Returns false if the relation is non-existent.
 
 ```php
 protected static function groupResult(
-string $functionName,
-string $alias,
-mixed $parameters = null
+    string $functionName,
+    string $alias,
+    mixed $parameters = null
 ): mixed;
 ```
 
@@ -3992,8 +3792,8 @@ Generate a PHQL SELECT statement for an aggregate
 
 ```php
 protected function has(
-MetaDataInterface $metaData,
-AdapterInterface $connection
+    MetaDataInterface $metaData,
+    AdapterInterface $connection
 ): bool;
 ```
 
@@ -4003,10 +3803,10 @@ Checks whether the current record already exists
 
 ```php
 protected function hasMany(
-mixed $fields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -4015,14 +3815,14 @@ Setup a 1-n relation between two models
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->hasMany(
-        "id",
-        OrdersProducts::class,
-        "oxp_ord_id"
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            "id",
+            OrdersProducts::class,
+            "oxp_ord_id"
+        );
+    }
 }
 ```
 
@@ -4030,13 +3830,13 @@ public function initialize()
 
 ```php
 protected function hasManyToMany(
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -4046,18 +3846,18 @@ relation
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    // Setup a many-to-many relation to Parts through OrdersProducts
-    $this->hasManyToMany(
-        "id",
-        OrdersProducts::class,
-        "oxp_ord_id",
-        "oxp_prd_id",
-        Products::class,
-        "id",
-    );
-}
+    public function initialize()
+    {
+        // Setup a many-to-many relation to Parts through OrdersProducts
+        $this->hasManyToMany(
+            "id",
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
+            "id",
+        );
+    }
 }
 ```
 
@@ -4065,10 +3865,10 @@ public function initialize()
 
 ```php
 protected function hasOne(
-mixed $fields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -4077,14 +3877,14 @@ Setup a 1-1 relation between two models
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->hasOne(
-        "id",
-        InvoicesDescription::class,
-        "oxp_ord_id"
-    );
-}
+    public function initialize()
+    {
+        $this->hasOne(
+            "id",
+            InvoicesDescription::class,
+            "oxp_ord_id"
+        );
+    }
 }
 ```
 
@@ -4092,13 +3892,13 @@ public function initialize()
 
 ```php
 protected function hasOneThrough(
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -4108,18 +3908,18 @@ relation
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    // Setup a 1-1 relation to one item from Parts through OrdersProducts
-    $this->hasOneThrough(
-        "id",
-        OrdersProducts::class,
-        "oxp_ord_id",
-        "oxp_prd_id",
-        Products::class,
-        "id",
-    );
-}
+    public function initialize()
+    {
+        // Setup a 1-1 relation to one item from Parts through OrdersProducts
+        $this->hasOneThrough(
+            "id",
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
+            "id",
+        );
+    }
 }
 ```
 
@@ -4127,8 +3927,8 @@ public function initialize()
 
 ```php
 final protected static function invokeFinder(
-string $method,
-array $arguments
+    string $method,
+    array $arguments
 );
 ```
 
@@ -4147,10 +3947,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->keepSnapshots(true);
-}
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 ```
 
@@ -4158,8 +3958,8 @@ public function initialize()
 
 ```php
 final protected function possibleSetter(
-string $property,
-mixed $value
+    string $property,
+    mixed $value
 ): bool;
 ```
 
@@ -4169,8 +3969,8 @@ Check for, and attempt to use, possible setter.
 
 ```php
 protected function postSave(
-bool $success,
-bool $exists
+    bool $success,
+    bool $exists
 ): bool;
 ```
 
@@ -4180,9 +3980,9 @@ Executes internal events after save a record
 
 ```php
 protected function postSaveRelatedRecords(
-AdapterInterface $connection,
-mixed $related,
-CollectionInterface $visited
+    AdapterInterface $connection,
+    mixed $related,
+    CollectionInterface $visited
 ): bool;
 ```
 
@@ -4192,9 +3992,9 @@ Save the related records assigned in the has-one/has-many relations
 
 ```php
 protected function preSave(
-MetaDataInterface $metaData,
-bool $exists,
-mixed $identityField
+    MetaDataInterface $metaData,
+    bool $exists,
+    mixed $identityField
 ): bool;
 ```
 
@@ -4204,9 +4004,9 @@ Executes internal hooks before save a record
 
 ```php
 protected function preSaveRelatedRecords(
-AdapterInterface $connection,
-mixed $related,
-CollectionInterface $visited
+    AdapterInterface $connection,
+    mixed $related,
+    CollectionInterface $visited
 ): bool;
 ```
 
@@ -4240,14 +4040,14 @@ generated INSERT/UPDATE statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->skipAttributes(
-        [
-            "price",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributes(
+            [
+                "price",
+            ]
+        );
+    }
 }
 ```
 
@@ -4263,14 +4063,14 @@ generated INSERT statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->skipAttributesOnCreate(
-        [
-            "created_at",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributesOnCreate(
+            [
+                "created_at",
+            ]
+        );
+    }
 }
 ```
 
@@ -4286,14 +4086,14 @@ generated UPDATE statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->skipAttributesOnUpdate(
-        [
-            "modified_in",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributesOnUpdate(
+            [
+                "modified_in",
+            ]
+        );
+    }
 }
 ```
 
@@ -4310,10 +4110,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->useDynamicUpdate(true);
-}
+    public function initialize()
+    {
+        $this->useDynamicUpdate(true);
+    }
 }
 ```
 
@@ -4332,26 +4132,27 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        "status",
-        new ExclusionIn(
-            [
-                "domain" => [
-                    "A",
-                    "I",
-                ],
-            ]
-        )
-    );
+        $validator->add(
+            "status",
+            new ExclusionIn(
+                [
+                    "domain" => [
+                        "A",
+                        "I",
+                    ],
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
+
 
 ## Mvc\ModelInterface
 
@@ -4369,126 +4170,85 @@ Interface for Phalcon\Mvc\Model
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelinterface-appendmessage" visibility="public" name="appendMessage" returnType="ModelInterface" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a customized message on the validation process
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-assign" visibility="public" name="assign" returnType="ModelInterface" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"whiteList","default":"null"},{"type":"mixed","name":"dataColumnMap","default":"null"}]}>
-Assigns values to a model from an array
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-average" visibility="public" name="average" returnType="float|ResultsetInterface" params={[{"type":"array","name":"parameters","default":"[]"}]}>
-Allows to calculate the average value on a column matching the specified
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-cloneresult" visibility="public" name="cloneResult" returnType="ModelInterface" params={[{"type":"ModelInterface","name":"base","default":null},{"type":"array","name":"data","default":null},{"type":"int","name":"dirtyState","default":"0"}]}>
-Assigns values to a model from an array returning a new model
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-cloneresultmap" visibility="public" name="cloneResultMap" returnType="ModelInterface" params={[{"type":"mixed","name":"base","default":null},{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":null},{"type":"int","name":"dirtyState","default":"0"},{"type":"bool","name":"keepSnapshots","default":"false"}]}>
-Assigns values to a model from an array returning a new model
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-cloneresultmaphydrate" visibility="public" name="cloneResultMapHydrate" returnType="" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":null},{"type":"int","name":"hydrationMode","default":null}]}>
-Returns an hydrated result based on the data and the column map
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-count" visibility="public" name="count" returnType="int|ResultsetInterface" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Allows to count how many records match the specified conditions
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-create" visibility="public" name="create" returnType="bool" params={[]}>
-Inserts a model instance. If the instance already exists in the
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-delete" visibility="public" name="delete" returnType="bool" params={[]}>
-Deletes a model instance. Returning true on success or false otherwise.
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-find" visibility="public" name="find" returnType="" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Allows to query a set of records that match the specified conditions.
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-findfirst" visibility="public" name="findFirst" returnType="mixed|null" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Allows to query the first record that match the specified conditions
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-fireevent" visibility="public" name="fireEvent" returnType="bool" params={[{"type":"string","name":"eventName","default":null}]}>
-Fires an event, implicitly calls behaviors and listeners in the events
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-fireeventcancel" visibility="public" name="fireEventCancel" returnType="bool" params={[{"type":"string","name":"eventName","default":null}]}>
-Fires an event, implicitly calls behaviors and listeners in the events
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getdirtystate" visibility="public" name="getDirtyState" returnType="int" params={[]}>
-Returns one of the DIRTY_STATE_* constants telling if the record exists
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getmessages" visibility="public" name="getMessages" returnType="MessageInterface[]" params={[]}>
-Returns array of validation messages
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getmodelsmetadata" visibility="public" name="getModelsMetaData" returnType="MetaDataInterface" params={[]}>
-Returns the models meta-data service related to the entity instance.
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getoperationmade" visibility="public" name="getOperationMade" returnType="int" params={[]}>
-Returns the type of the latest operation performed by the ORM
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getreadconnection" visibility="public" name="getReadConnection" returnType="AdapterInterface" params={[]}>
-Gets internal database connection
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getreadconnectionservice" visibility="public" name="getReadConnectionService" returnType="string" params={[]}>
-Returns DependencyInjection connection service used to read data
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getrelated" visibility="public" name="getRelated" returnType="" params={[{"type":"string","name":"alias","default":null},{"type":"mixed","name":"arguments","default":"null"}]}>
-Returns related records based on defined relations
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getschema" visibility="public" name="getSchema" returnType="string|null" params={[]}>
-Returns schema name where table mapped is located
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getsource" visibility="public" name="getSource" returnType="string" params={[]}>
-Returns table name mapped in the model
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getwriteconnection" visibility="public" name="getWriteConnection" returnType="AdapterInterface" params={[]}>
-Gets internal database connection
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-getwriteconnectionservice" visibility="public" name="getWriteConnectionService" returnType="string" params={[]}>
-Returns DependencyInjection connection service used to write data
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-maximum" visibility="public" name="maximum" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Allows to get the maximum value of a column that match the specified
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-minimum" visibility="public" name="minimum" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Allows to get the minimum value of a column that match the specified
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-query" visibility="public" name="query" returnType="CriteriaInterface" params={[{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Create a criteria for a specific model
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-refresh" visibility="public" name="refresh" returnType="ModelInterface" params={[]}>
-Refreshes the model attributes re-querying the record from the database
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-save" visibility="public" name="save" returnType="bool" params={[]}>
-Inserts or updates a model instance. Returning true on success or false
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-setconnectionservice" visibility="public" name="setConnectionService" returnType="void" params={[{"type":"string","name":"connectionService","default":null}]}>
-Sets both read/write connection services
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-setdirtystate" visibility="public" name="setDirtyState" returnType="ModelInterface|bool" params={[{"type":"int","name":"dirtyState","default":null}]}>
-Sets the dirty state of the object using one of the DIRTY_STATE_*
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-setreadconnectionservice" visibility="public" name="setReadConnectionService" returnType="void" params={[{"type":"string","name":"connectionService","default":null}]}>
-Sets the DependencyInjection connection service used to read data
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-setsnapshotdata" visibility="public" name="setSnapshotData" returnType="void" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":"null"}]}>
-Sets the record's snapshot data. This method is used internally to set
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-setsync" visibility="public" name="setSync" returnType="ModelInterface" params={[{"type":"mixed","name":"elements","default":"null"},{"type":"bool","name":"enabled","default":"true"}]}>
-Marks one or more many-to-many relationships to be synchronized (or not)
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-settransaction" visibility="public" name="setTransaction" returnType="ModelInterface" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Sets a transaction related to the Model instance
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-setwriteconnectionservice" visibility="public" name="setWriteConnectionService" returnType="void" params={[{"type":"string","name":"connectionService","default":null}]}>
-Sets the DependencyInjection connection service used to write data
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-skipoperation" visibility="public" name="skipOperation" returnType="void" params={[{"type":"bool","name":"skip","default":null}]}>
-Skips the current operation forcing a success state
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-sum" visibility="public" name="sum" returnType="float|ResultsetInterface" params={[{"type":"mixed","name":"parameters","default":"null"}]}>
-Allows to calculate a sum on a column that match the specified conditions
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-update" visibility="public" name="update" returnType="bool" params={[]}>
-Updates a model instance. If the instance does not exist in the
-</ApiItem>
-<ApiItem href="#mvcmodelinterface-validationhasfailed" visibility="public" name="validationHasFailed" returnType="bool" params={[]}>
-Check whether validation process has generated any messages
-</ApiItem>
+- `public appendMessage(MessageInterface $message): ModelInterface` — Appends a customized message on the validation process
+
+- `public assign(array $data, mixed $whiteList = null, mixed $dataColumnMap = null): ModelInterface` — Assigns values to a model from an array
+
+- `public average(array $parameters = []): float|ResultsetInterface` — Allows to calculate the average value on a column matching the specified
+
+- `public cloneResult(ModelInterface $base, array $data, int $dirtyState = 0): ModelInterface` — Assigns values to a model from an array returning a new model
+
+- `public cloneResultMap(mixed $base, array $data, mixed $columnMap, int $dirtyState = 0, bool $keepSnapshots = false): ModelInterface` — Assigns values to a model from an array returning a new model
+
+- `public cloneResultMapHydrate(array $data, mixed $columnMap, int $hydrationMode)` — Returns an hydrated result based on the data and the column map
+
+- `public count(mixed $parameters = null): int|ResultsetInterface` — Allows to count how many records match the specified conditions
+
+- `public create(): bool` — Inserts a model instance. If the instance already exists in the
+
+- `public delete(): bool` — Deletes a model instance. Returning true on success or false otherwise.
+
+- `public find(mixed $parameters = null)` — Allows to query a set of records that match the specified conditions.
+
+- `public findFirst(mixed $parameters = null): mixed|null` — Allows to query the first record that match the specified conditions
+
+- `public fireEvent(string $eventName): bool` — Fires an event, implicitly calls behaviors and listeners in the events
+
+- `public fireEventCancel(string $eventName): bool` — Fires an event, implicitly calls behaviors and listeners in the events
+
+- `public getDirtyState(): int` — Returns one of the DIRTY\_STATE\_\* constants telling if the record exists
+
+- `public getMessages(): MessageInterface[]` — Returns array of validation messages
+
+- `public getModelsMetaData(): MetaDataInterface` — Returns the models meta-data service related to the entity instance.
+
+- `public getOperationMade(): int` — Returns the type of the latest operation performed by the ORM
+
+- `public getReadConnection(): AdapterInterface` — Gets internal database connection
+
+- `public getReadConnectionService(): string` — Returns DependencyInjection connection service used to read data
+
+- `public getRelated(string $alias, mixed $arguments = null)` — Returns related records based on defined relations
+
+- `public getSchema(): string|null` — Returns schema name where table mapped is located
+
+- `public getSource(): string` — Returns table name mapped in the model
+
+- `public getWriteConnection(): AdapterInterface` — Gets internal database connection
+
+- `public getWriteConnectionService(): string` — Returns DependencyInjection connection service used to write data
+
+- `public maximum(mixed $parameters = null): mixed` — Allows to get the maximum value of a column that match the specified
+
+- `public minimum(mixed $parameters = null): mixed` — Allows to get the minimum value of a column that match the specified
+
+- `public query(DiInterface|null $container = null): CriteriaInterface` — Create a criteria for a specific model
+
+- `public refresh(): ModelInterface` — Refreshes the model attributes re-querying the record from the database
+
+- `public save(): bool` — Inserts or updates a model instance. Returning true on success or false
+
+- `public setConnectionService(string $connectionService): void` — Sets both read/write connection services
+
+- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Sets the dirty state of the object using one of the DIRTY\_STATE\_\*
+
+- `public setReadConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service used to read data
+
+- `public setSnapshotData(array $data, mixed $columnMap = null): void` — Sets the record's snapshot data. This method is used internally to set
+
+- `public setSync(mixed $elements = null, bool $enabled = true): ModelInterface` — Marks one or more many-to-many relationships to be synchronized (or not)
+
+- `public setTransaction(TransactionInterface $transaction): ModelInterface` — Sets a transaction related to the Model instance
+
+- `public setWriteConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service used to write data
+
+- `public skipOperation(bool $skip): void` — Skips the current operation forcing a success state
+
+- `public sum(mixed $parameters = null): float|ResultsetInterface` — Allows to calculate a sum on a column that match the specified conditions
+
+- `public update(): bool` — Updates a model instance. If the instance does not exist in the
+
+- `public validationHasFailed(): bool` — Check whether validation process has generated any messages
 
 ### Methods
 
@@ -4504,9 +4264,9 @@ Appends a customized message on the validation process
 
 ```php
 public function assign(
-array $data,
-mixed $whiteList = null,
-mixed $dataColumnMap = null
+    array $data,
+    mixed $whiteList = null,
+    mixed $dataColumnMap = null
 ): ModelInterface;
 ```
 
@@ -4525,9 +4285,9 @@ conditions
 
 ```php
 public static function cloneResult(
-ModelInterface $base,
-array $data,
-int $dirtyState = 0
+    ModelInterface $base,
+    array $data,
+    int $dirtyState = 0
 ): ModelInterface;
 ```
 
@@ -4537,11 +4297,11 @@ Assigns values to a model from an array returning a new model
 
 ```php
 public static function cloneResultMap(
-mixed $base,
-array $data,
-mixed $columnMap,
-int $dirtyState = 0,
-bool $keepSnapshots = false
+    mixed $base,
+    array $data,
+    mixed $columnMap,
+    int $dirtyState = 0,
+    bool $keepSnapshots = false
 ): ModelInterface;
 ```
 
@@ -4551,9 +4311,9 @@ Assigns values to a model from an array returning a new model
 
 ```php
 public static function cloneResultMapHydrate(
-array $data,
-mixed $columnMap,
-int $hydrationMode
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode
 );
 ```
 
@@ -4690,8 +4450,8 @@ Returns DependencyInjection connection service used to read data
 
 ```php
 public function getRelated(
-string $alias,
-mixed $arguments = null
+    string $alias,
+    mixed $arguments = null
 );
 ```
 
@@ -4801,8 +4561,8 @@ Sets the DependencyInjection connection service used to read data
 
 ```php
 public function setSnapshotData(
-array $data,
-mixed $columnMap = null
+    array $data,
+    mixed $columnMap = null
 ): void;
 ```
 
@@ -4813,8 +4573,8 @@ snapshot data when the model was set up to keep snapshot data
 
 ```php
 public function setSync(
-mixed $elements = null,
-bool $enabled = true
+    mixed $elements = null,
+    bool $enabled = true
 ): ModelInterface;
 ```
 
@@ -4871,6 +4631,7 @@ public function validationHasFailed(): bool;
 
 Check whether validation process has generated any messages
 
+
 ## Mvc\Model\Behavior
 
 Abstract
@@ -4878,33 +4639,26 @@ Abstract
 This is an optional base class for ORM behaviors
 
 - **`Phalcon\Mvc\Model\Behavior`** - implements [`Phalcon\Mvc\Model\BehaviorInterface`](#mvcmodelbehaviorinterface)
-- [`Phalcon\Mvc\Model\Behavior\SoftDelete`](#mvcmodelbehaviorsoftdelete)
-- [`Phalcon\Mvc\Model\Behavior\Timestampable`](#mvcmodelbehaviortimestampable)
+  - [`Phalcon\Mvc\Model\Behavior\SoftDelete`](#mvcmodelbehaviorsoftdelete)
+  - [`Phalcon\Mvc\Model\Behavior\Timestampable`](#mvcmodelbehaviortimestampable)
 
 `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbehavior-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\Model\Behavior
-</ApiItem>
-<ApiItem href="#mvcmodelbehavior-missingmethod" visibility="public" name="missingMethod" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":"[]"}]}>
-Acts as fallbacks when a missing method is called on the model
-</ApiItem>
-<ApiItem href="#mvcmodelbehavior-notify" visibility="public" name="notify" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-This method receives the notifications from the EventsManager
-</ApiItem>
-<ApiItem href="#mvcmodelbehavior-getoptions" visibility="protected" name="getOptions" returnType="" params={[{"type":"string|null","name":"eventName","default":"null"}]}>
-Returns the behavior options related to an event
-</ApiItem>
-<ApiItem href="#mvcmodelbehavior-musttakeaction" visibility="protected" name="mustTakeAction" returnType="bool" params={[{"type":"string","name":"eventName","default":null}]}>
-Checks whether the behavior must take action on certain event
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Mvc\Model\Behavior
+
+- `public missingMethod(ModelInterface $model, string $method, array $arguments = [])` — Acts as fallbacks when a missing method is called on the model
+
+- `public notify(string $type, ModelInterface $model)` — This method receives the notifications from the EventsManager
+
+- `protected getOptions(string|null $eventName = null)` — Returns the behavior options related to an event
+
+- `protected mustTakeAction(string $eventName): bool` — Checks whether the behavior must take action on certain event
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="">
-</ApiItem>
+- `protected array $options`
 
 ### Methods
 
@@ -4920,9 +4674,9 @@ Phalcon\Mvc\Model\Behavior
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $method,
-array $arguments = []
+    ModelInterface $model,
+    string $method,
+    array $arguments = []
 );
 ```
 
@@ -4932,8 +4686,8 @@ Acts as fallbacks when a missing method is called on the model
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
@@ -4955,6 +4709,7 @@ protected function mustTakeAction( string $eventName ): bool;
 
 Checks whether the behavior must take action on certain event
 
+
 ## Mvc\Model\BehaviorInterface
 
 Interface
@@ -4967,12 +4722,9 @@ Interface for Phalcon\Mvc\Model\Behavior
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbehaviorinterface-missingmethod" visibility="public" name="missingMethod" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":"[]"}]}>
-Calls a method when it's missing in the model
-</ApiItem>
-<ApiItem href="#mvcmodelbehaviorinterface-notify" visibility="public" name="notify" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-This method receives the notifications from the EventsManager
-</ApiItem>
+- `public missingMethod(ModelInterface $model, string $method, array $arguments = [])` — Calls a method when it's missing in the model
+
+- `public notify(string $type, ModelInterface $model)` — This method receives the notifications from the EventsManager
 
 ### Methods
 
@@ -4980,9 +4732,9 @@ This method receives the notifications from the EventsManager
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $method,
-array $arguments = []
+    ModelInterface $model,
+    string $method,
+    array $arguments = []
 );
 ```
 
@@ -4992,27 +4744,27 @@ Calls a method when it's missing in the model
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
 This method receives the notifications from the EventsManager
+
 
 ## Mvc\Model\Behavior\Exceptions\MissingRequiredOption
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbehaviorexceptionsmissingrequiredoption-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"option","default":null}]}>
-</ApiItem>
+- `public __construct(string $option)`
 
 ### Methods
 
@@ -5022,6 +4774,7 @@ Class
 public function __construct( string $option );
 ```
 
+
 ## Mvc\Model\Behavior\SoftDelete
 
 Class
@@ -5030,15 +4783,13 @@ Instead of permanently delete a record it marks the record as deleted
 changing the value of a flag column
 
 - [`Phalcon\Mvc\Model\Behavior`](#mvcmodelbehavior)
-- **`Phalcon\Mvc\Model\Behavior\SoftDelete`**
+  - **`Phalcon\Mvc\Model\Behavior\SoftDelete`**
 
 `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbehaviorsoftdelete-notify" visibility="public" name="notify" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-Listens for notifications from the models manager
-</ApiItem>
+- `public notify(string $type, ModelInterface $model)` — Listens for notifications from the models manager
 
 ### Methods
 
@@ -5046,12 +4797,13 @@ Listens for notifications from the models manager
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
 Listens for notifications from the models manager
+
 
 ## Mvc\Model\Behavior\Timestampable
 
@@ -5061,15 +4813,13 @@ Allows to automatically update a model’s attribute saving the datetime when a
 record is created or updated
 
 - [`Phalcon\Mvc\Model\Behavior`](#mvcmodelbehavior)
-- **`Phalcon\Mvc\Model\Behavior\Timestampable`**
+  - **`Phalcon\Mvc\Model\Behavior\Timestampable`**
 
 `Closure` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` · `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbehaviortimestampable-notify" visibility="public" name="notify" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-Listens for notifications from the models manager
-</ApiItem>
+- `public notify(string $type, ModelInterface $model)` — Listens for notifications from the models manager
 
 ### Methods
 
@@ -5077,12 +4827,13 @@ Listens for notifications from the models manager
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
 Listens for notifications from the models manager
+
 
 ## Mvc\Model\Binder
 
@@ -5096,48 +4847,33 @@ This is a class for binding models into params for handler
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbinder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterInterface|null","name":"cache","default":"null"}]}>
-Phalcon\Mvc\Model\Binder constructor
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-bindtohandler" visibility="public" name="bindToHandler" returnType="array" params={[{"type":"object","name":"handler","default":null},{"type":"array","name":"params","default":null},{"type":"string","name":"cacheKey","default":null},{"type":"string|null","name":"methodName","default":"null"}]}>
-Bind models into params in proper handler
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-getboundmodels" visibility="public" name="getBoundModels" returnType="array" params={[]}>
-Return the active bound models
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-getcache" visibility="public" name="getCache" returnType="AdapterInterface" params={[]}>
-Sets cache instance
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-getoriginalvalues" visibility="public" name="getOriginalValues" returnType="array" params={[]}>
-Return the array for original values
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-setcache" visibility="public" name="setCache" returnType="BinderInterface" params={[{"type":"AdapterInterface","name":"cache","default":null}]}>
-Gets cache instance
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-findboundmodel" visibility="protected" name="findBoundModel" returnType="mixed|bool" params={[{"type":"mixed","name":"paramValue","default":null},{"type":"string","name":"className","default":null}]}>
-Find the model by param value.
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-getparamsfromcache" visibility="protected" name="getParamsFromCache" returnType="array|null" params={[{"type":"string","name":"cacheKey","default":null}]}>
-Get params classes from cache by key
-</ApiItem>
-<ApiItem href="#mvcmodelbinder-getparamsfromreflection" visibility="protected" name="getParamsFromReflection" returnType="array" params={[{"type":"object","name":"handler","default":null},{"type":"array","name":"params","default":null},{"type":"string","name":"cacheKey","default":null},{"type":"string","name":"methodName","default":null}]}>
-Get modified params for handler using reflection
-</ApiItem>
+- `public __construct(AdapterInterface|null $cache = null)` — Phalcon\Mvc\Model\Binder constructor
+
+- `public bindToHandler(object $handler, array $params, string $cacheKey, string|null $methodName = null): array` — Bind models into params in proper handler
+
+- `public getBoundModels(): array` — Return the active bound models
+
+- `public getCache(): AdapterInterface` — Sets cache instance
+
+- `public getOriginalValues(): array` — Return the array for original values
+
+- `public setCache(AdapterInterface $cache): BinderInterface` — Gets cache instance
+
+- `protected findBoundModel(mixed $paramValue, string $className): mixed|bool` — Find the model by param value.
+
+- `protected getParamsFromCache(string $cacheKey): array|null` — Get params classes from cache by key
+
+- `protected getParamsFromReflection(object $handler, array $params, string $cacheKey, string $methodName): array` — Get modified params for handler using reflection
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="boundModels" type="array" default="[]">
-Array for storing active bound models
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cache" type="AdapterInterface" default="">
-Cache object used for caching parameters for model binding
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="internalCache" type="array" default="[]">
-Internal cache for caching parameters for model binding during request
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="originalValues" type="array" default="[]">
-Array for original values
-</ApiItem>
+- `protected array $boundModels = []` — Array for storing active bound models
+
+- `protected AdapterInterface $cache` — Cache object used for caching parameters for model binding
+
+- `protected array $internalCache = []` — Internal cache for caching parameters for model binding during request
+
+- `protected array $originalValues = []` — Array for original values
 
 ### Methods
 
@@ -5153,10 +4889,10 @@ Phalcon\Mvc\Model\Binder constructor
 
 ```php
 public function bindToHandler(
-object $handler,
-array $params,
-string $cacheKey,
-string|null $methodName = null
+    object $handler,
+    array $params,
+    string $cacheKey,
+    string|null $methodName = null
 ): array;
 ```
 
@@ -5198,8 +4934,8 @@ Gets cache instance
 
 ```php
 protected function findBoundModel(
-mixed $paramValue,
-string $className
+    mixed $paramValue,
+    string $className
 ): mixed|bool;
 ```
 
@@ -5217,14 +4953,15 @@ Get params classes from cache by key
 
 ```php
 protected function getParamsFromReflection(
-object $handler,
-array $params,
-string $cacheKey,
-string $methodName
+    object $handler,
+    array $params,
+    string $cacheKey,
+    string $methodName
 ): array;
 ```
 
 Get modified params for handler using reflection
+
 
 ## Mvc\Model\BinderInterface
 
@@ -5240,18 +4977,13 @@ Interface for Phalcon\Mvc\Model\Binder
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbinderinterface-bindtohandler" visibility="public" name="bindToHandler" returnType="array" params={[{"type":"object","name":"handler","default":null},{"type":"array","name":"params","default":null},{"type":"string","name":"cacheKey","default":null},{"type":"string|null","name":"methodName","default":"null"}]}>
-Bind models into params in proper handler
-</ApiItem>
-<ApiItem href="#mvcmodelbinderinterface-getboundmodels" visibility="public" name="getBoundModels" returnType="array" params={[]}>
-Gets active bound models
-</ApiItem>
-<ApiItem href="#mvcmodelbinderinterface-getcache" visibility="public" name="getCache" returnType="AdapterInterface" params={[]}>
-Gets cache instance
-</ApiItem>
-<ApiItem href="#mvcmodelbinderinterface-setcache" visibility="public" name="setCache" returnType="BinderInterface" params={[{"type":"AdapterInterface","name":"cache","default":null}]}>
-Sets cache instance
-</ApiItem>
+- `public bindToHandler(object $handler, array $params, string $cacheKey, string|null $methodName = null): array` — Bind models into params in proper handler
+
+- `public getBoundModels(): array` — Gets active bound models
+
+- `public getCache(): AdapterInterface` — Gets cache instance
+
+- `public setCache(AdapterInterface $cache): BinderInterface` — Sets cache instance
 
 ### Methods
 
@@ -5259,10 +4991,10 @@ Sets cache instance
 
 ```php
 public function bindToHandler(
-object $handler,
-array $params,
-string $cacheKey,
-string|null $methodName = null
+    object $handler,
+    array $params,
+    string $cacheKey,
+    string|null $methodName = null
 ): array;
 ```
 
@@ -5292,6 +5024,7 @@ public function setCache( AdapterInterface $cache ): BinderInterface;
 
 Sets cache instance
 
+
 ## Mvc\Model\Binder\BindableInterface
 
 Interface
@@ -5302,9 +5035,7 @@ Interface for bindable classes
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelbinderbindableinterface-getmodelname" visibility="public" name="getModelName" returnType="array|string" params={[]}>
-Return the model name or models names and parameters keys associated with
-</ApiItem>
+- `public getModelName(): array|string` — Return the model name or models names and parameters keys associated with
 
 ### Methods
 
@@ -5316,6 +5047,7 @@ public function getModelName(): array|string;
 
 Return the model name or models names and parameters keys associated with
 this class
+
 
 ## Mvc\Model\Criteria
 
@@ -5329,12 +5061,12 @@ object-oriented interface.
 <?php
 
 $invoices = Invoices::query()
-->where("inv_cst_id = :customerId:")
-->andWhere("inv_created_date < '2000-01-01'")
-->bind(["customerId" => 1])
-->limit(5, 10)
-->orderBy("inv_title")
-->execute();
+    ->where("inv_cst_id = :customerId:")
+    ->andWhere("inv_created_date < '2000-01-01'")
+    ->bind(["customerId" => 1])
+    ->limit(5, 10)
+    ->orderBy("inv_title")
+    ->execute();
 ```
 
 - **`Phalcon\Mvc\Model\Criteria`** - implements [`Phalcon\Mvc\Model\CriteriaInterface`](#mvcmodelcriteriainterface), [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface)
@@ -5343,136 +5075,95 @@ $invoices = Invoices::query()
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelcriteria-andwhere" visibility="public" name="andWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
-Appends a condition to the current conditions using an AND operator
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-betweenwhere" visibility="public" name="betweenWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null}]}>
-Appends a BETWEEN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-bind" visibility="public" name="bind" returnType="CriteriaInterface" params={[{"type":"array","name":"bindParams","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Sets the bound parameters in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-bindtypes" visibility="public" name="bindTypes" returnType="CriteriaInterface" params={[{"type":"array","name":"bindTypes","default":null}]}>
-Sets the bind types in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-cache" visibility="public" name="cache" returnType="CriteriaInterface" params={[{"type":"array","name":"cache","default":null}]}>
-Sets the cache options in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-columns" visibility="public" name="columns" returnType="CriteriaInterface" params={[{"type":"mixed","name":"columns","default":null}]}>
-Sets the columns to be queried. The columns can be either a `string` or
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-conditions" visibility="public" name="conditions" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null}]}>
-Adds the conditions parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-createbuilder" visibility="public" name="createBuilder" returnType="BuilderInterface" params={[]}>
-Creates a query builder from criteria.
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-distinct" visibility="public" name="distinct" returnType="CriteriaInterface" params={[{"type":"mixed","name":"distinct","default":null}]}>
-Sets SELECT DISTINCT / SELECT ALL flag
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-eager" visibility="public" name="eager" returnType="Criteria" params={[{"type":"array","name":"paths","default":null}]}>
-Pre-loads the named relations when the criteria is executed
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-execute" visibility="public" name="execute" returnType="ResultsetInterface" params={[]}>
-Executes a find using the parameters built with the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-forupdate" visibility="public" name="forUpdate" returnType="CriteriaInterface" params={[{"type":"bool","name":"forUpdate","default":"true"}]}>
-Adds the "for_update" parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-frominput" visibility="public" name="fromInput" returnType="CriteriaInterface" params={[{"type":"DiInterface","name":"container","default":null},{"type":"string","name":"modelName","default":null},{"type":"array","name":"data","default":null},{"type":"string","name":"operator","default":"\"AND\""}]}>
-Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getcolumns" visibility="public" name="getColumns" returnType="array|string|null" params={[]}>
-Returns the columns to be queried
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getconditions" visibility="public" name="getConditions" returnType="string|null" params={[]}>
-Returns the conditions parameter in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getgroupby" visibility="public" name="getGroupBy" returnType="" params={[]}>
-Returns the group clause in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-gethaving" visibility="public" name="getHaving" returnType="" params={[]}>
-Returns the having clause in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getlimit" visibility="public" name="getLimit" returnType="array|int|null" params={[]}>
-Returns the limit parameter in the criteria, which will be
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getmodelname" visibility="public" name="getModelName" returnType="string" params={[]}>
-Returns an internal model name on which the criteria will be applied
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getorderby" visibility="public" name="getOrderBy" returnType="string|null" params={[]}>
-Returns the order clause in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
-Returns all the parameters defined in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-getwhere" visibility="public" name="getWhere" returnType="string|null" params={[]}>
-Returns the conditions parameter in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-groupby" visibility="public" name="groupBy" returnType="CriteriaInterface" params={[{"type":"mixed","name":"group","default":null}]}>
-Adds the group-by clause to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-having" visibility="public" name="having" returnType="CriteriaInterface" params={[{"type":"mixed","name":"having","default":null}]}>
-Adds the having clause to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-inwhere" visibility="public" name="inWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null}]}>
-Appends an IN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-innerjoin" visibility="public" name="innerJoin" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"}]}>
-Adds an INNER join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-join" visibility="public" name="join" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"},{"type":"mixed","name":"type","default":"null"}]}>
-Adds an INNER join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-leftjoin" visibility="public" name="leftJoin" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"}]}>
-Adds a LEFT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-limit" visibility="public" name="limit" returnType="CriteriaInterface" params={[{"type":"int","name":"limit","default":null},{"type":"int","name":"offset","default":"0"}]}>
-Adds the limit parameter to the criteria.
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-notbetweenwhere" visibility="public" name="notBetweenWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null}]}>
-Appends a NOT BETWEEN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-notinwhere" visibility="public" name="notInWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null}]}>
-Appends a NOT IN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-orwhere" visibility="public" name="orWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
-Appends a condition to the current conditions using an OR operator
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-orderby" visibility="public" name="orderBy" returnType="CriteriaInterface" params={[{"type":"string","name":"orderColumns","default":null}]}>
-Adds the order-by clause to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-rightjoin" visibility="public" name="rightJoin" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"}]}>
-Adds a RIGHT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-setmodelname" visibility="public" name="setModelName" returnType="CriteriaInterface" params={[{"type":"string","name":"modelName","default":null}]}>
-Set a model on which the query will be executed
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-sharedlock" visibility="public" name="sharedLock" returnType="CriteriaInterface" params={[{"type":"bool","name":"sharedLock","default":"true"}]}>
-Adds the "shared_lock" parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteria-where" visibility="public" name="where" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
-Sets the conditions parameter in the criteria
-</ApiItem>
+- `public andWhere(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Appends a condition to the current conditions using an AND operator
+
+- `public betweenWhere(string $expr, mixed $minimum, mixed $maximum): CriteriaInterface` — Appends a BETWEEN condition to the current conditions
+
+- `public bind(array $bindParams, bool $merge = false): CriteriaInterface` — Sets the bound parameters in the criteria
+
+- `public bindTypes(array $bindTypes): CriteriaInterface` — Sets the bind types in the criteria
+
+- `public cache(array $cache): CriteriaInterface` — Sets the cache options in the criteria
+
+- `public columns(mixed $columns): CriteriaInterface` — Sets the columns to be queried. The columns can be either a `string` or
+
+- `public conditions(string $conditions): CriteriaInterface` — Adds the conditions parameter to the criteria
+
+- `public createBuilder(): BuilderInterface` — Creates a query builder from criteria.
+
+- `public distinct(mixed $distinct): CriteriaInterface` — Sets SELECT DISTINCT / SELECT ALL flag
+
+- `public eager(array $paths): Criteria` — Pre-loads the named relations when the criteria is executed
+
+- `public execute(): ResultsetInterface` — Executes a find using the parameters built with the criteria
+
+- `public forUpdate(bool $forUpdate = true): CriteriaInterface` — Adds the "for\_update" parameter to the criteria
+
+- `public fromInput(DiInterface $container, string $modelName, array $data, string $operator = "AND"): CriteriaInterface` — Builds a Phalcon\Mvc\Model\Criteria based on an input array like $\_POST
+
+- `public getColumns(): array|string|null` — Returns the columns to be queried
+
+- `public getConditions(): string|null` — Returns the conditions parameter in the criteria
+
+- `public getDI(): DiInterface` — Returns the DependencyInjector container
+
+- `public getGroupBy()` — Returns the group clause in the criteria
+
+- `public getHaving()` — Returns the having clause in the criteria
+
+- `public getLimit(): array|int|null` — Returns the limit parameter in the criteria, which will be
+
+- `public getModelName(): string` — Returns an internal model name on which the criteria will be applied
+
+- `public getOrderBy(): string|null` — Returns the order clause in the criteria
+
+- `public getParams(): array` — Returns all the parameters defined in the criteria
+
+- `public getWhere(): string|null` — Returns the conditions parameter in the criteria
+
+- `public groupBy(mixed $group): CriteriaInterface` — Adds the group-by clause to the criteria
+
+- `public having(mixed $having): CriteriaInterface` — Adds the having clause to the criteria
+
+- `public inWhere(string $expr, array $values): CriteriaInterface` — Appends an IN condition to the current conditions
+
+- `public innerJoin(string $model, mixed $conditions = null, mixed $alias = null): CriteriaInterface` — Adds an INNER join to the query
+
+- `public join(string $model, mixed $conditions = null, mixed $alias = null, mixed $type = null): CriteriaInterface` — Adds an INNER join to the query
+
+- `public leftJoin(string $model, mixed $conditions = null, mixed $alias = null): CriteriaInterface` — Adds a LEFT join to the query
+
+- `public limit(int $limit, int $offset = 0): CriteriaInterface` — Adds the limit parameter to the criteria.
+
+- `public notBetweenWhere(string $expr, mixed $minimum, mixed $maximum): CriteriaInterface` — Appends a NOT BETWEEN condition to the current conditions
+
+- `public notInWhere(string $expr, array $values): CriteriaInterface` — Appends a NOT IN condition to the current conditions
+
+- `public orWhere(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Appends a condition to the current conditions using an OR operator
+
+- `public orderBy(string $orderColumns): CriteriaInterface` — Adds the order-by clause to the criteria
+
+- `public rightJoin(string $model, mixed $conditions = null, mixed $alias = null): CriteriaInterface` — Adds a RIGHT join to the query
+
+- `public setDI(DiInterface $container): void` — Sets the DependencyInjector container
+
+- `public setModelName(string $modelName): CriteriaInterface` — Set a model on which the query will be executed
+
+- `public sharedLock(bool $sharedLock = true): CriteriaInterface` — Adds the "shared\_lock" parameter to the criteria
+
+- `public where(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Sets the conditions parameter in the criteria
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="bindParams" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="bindTypes" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hiddenParamNumber" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="model" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="params" type="array" default="[]">
-</ApiItem>
+- `protected array $bindParams`
+
+- `protected array $bindTypes`
+
+- `protected int $hiddenParamNumber = 0`
+
+- `protected string|null $model = null`
+
+- `protected array $params = []`
 
 ### Methods
 
@@ -5480,9 +5171,9 @@ Sets the conditions parameter in the criteria
 
 ```php
 public function andWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -5492,9 +5183,9 @@ Appends a condition to the current conditions using an AND operator
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -5508,8 +5199,8 @@ $criteria->betweenWhere("price", 100.25, 200.50);
 
 ```php
 public function bind(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): CriteriaInterface;
 ```
 
@@ -5559,28 +5250,28 @@ $criteria->columns("id, category");
 
 // Array, one column per element
 $criteria->columns(
-[
-    "inv_id",
-    "inv_total",
-]
+    [
+        "inv_id",
+        "inv_total",
+    ]
 );
 
 // Array with named key. The name of the key acts as an
 // alias (`AS` clause)
 $criteria->columns(
-[
-    "inv_cst_id",
-    "total_invoices" => "COUNT(*)",
-]
+    [
+        "inv_cst_id",
+        "total_invoices" => "COUNT(*)",
+    ]
 );
 
 // Different models
 $criteria->columns(
-[
-    "\Phalcon\Models\Invoices.*",
-    "\Phalcon\Models\Customers.cst_name_first",
-    "\Phalcon\Models\Customers.cst_name_last",
-]
+    [
+        "\Phalcon\Models\Invoices.*",
+        "\Phalcon\Models\Customers.cst_name_first",
+        "\Phalcon\Models\Customers.cst_name_last",
+    ]
 );
 ```
 
@@ -5604,9 +5295,9 @@ Creates a query builder from criteria.
 <?php
 
 $invoices = Invoices::query()
-->where("inv_cst_id = :customerId:")
-->bind(["customerId" => 1])
-->createBuilder();
+    ->where("inv_cst_id = :customerId:")
+    ->bind(["customerId" => 1])
+    ->createBuilder();
 ```
 
 <h4 id="mvcmodelcriteria-distinct"><code>distinct()</code></h4>
@@ -5627,9 +5318,9 @@ Pre-loads the named relations when the criteria is executed
 
 ```php
 $invoices = Invoices::query()
-->eager(["customer"])
-->where("inv_total > 100")
-->execute();
+    ->eager(["customer"])
+    ->where("inv_total > 100")
+    ->execute();
 ```
 
 execute() forwards the parameters to Model::find(), which owns the
@@ -5660,10 +5351,10 @@ Adds the "for_update" parameter to the criteria
 
 ```php
 public static function fromInput(
-DiInterface $container,
-string $modelName,
-array $data,
-string $operator = "AND"
+    DiInterface $container,
+    string $modelName,
+    array $data,
+    string $operator = "AND"
 ): CriteriaInterface;
 ```
 
@@ -5773,8 +5464,8 @@ Adds the having clause to the criteria
 
 ```php
 public function inWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -5788,9 +5479,9 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 ```php
 public function innerJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -5800,18 +5491,18 @@ Adds an INNER join to the query
 <?php
 
 $criteria->innerJoin(
-Invoices::class
+    Invoices::class
 );
 
 $criteria->innerJoin(
-Invoices::class,
-"inv_cst_id = Customers.cst_id"
+    Invoices::class,
+    "inv_cst_id = Customers.cst_id"
 );
 
 $criteria->innerJoin(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -5819,10 +5510,10 @@ Invoices::class,
 
 ```php
 public function join(
-string $model,
-mixed $conditions = null,
-mixed $alias = null,
-mixed $type = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null,
+    mixed $type = null
 ): CriteriaInterface;
 ```
 
@@ -5832,25 +5523,25 @@ Adds an INNER join to the query
 <?php
 
 $criteria->join(
-Invoices::class
+    Invoices::class
 );
 
 $criteria->join(
-Invoices::class,
-"inv_cst_id = Customers.cst_id"
+    Invoices::class,
+    "inv_cst_id = Customers.cst_id"
 );
 
 $criteria->join(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 
 $criteria->join(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i",
-"LEFT"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i",
+    "LEFT"
 );
 ```
 
@@ -5858,9 +5549,9 @@ Invoices::class,
 
 ```php
 public function leftJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -5870,9 +5561,9 @@ Adds a LEFT join to the query
 <?php
 
 $criteria->leftJoin(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -5880,8 +5571,8 @@ Invoices::class,
 
 ```php
 public function limit(
-int $limit,
-int $offset = 0
+    int $limit,
+    int $offset = 0
 ): CriteriaInterface;
 ```
 
@@ -5897,9 +5588,9 @@ $criteria->limit("100", "200");
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -5913,8 +5604,8 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 ```php
 public function notInWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -5928,9 +5619,9 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 ```php
 public function orWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -5948,9 +5639,9 @@ Adds the order-by clause to the criteria
 
 ```php
 public function rightJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -5960,9 +5651,9 @@ Adds a RIGHT join to the query
 <?php
 
 $criteria->rightJoin(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -5994,13 +5685,14 @@ Adds the "shared_lock" parameter to the criteria
 
 ```php
 public function where(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
 Sets the conditions parameter in the criteria
+
 
 ## Mvc\Model\CriteriaInterface
 
@@ -6014,102 +5706,69 @@ Interface for Phalcon\Mvc\Model\Criteria
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelcriteriainterface-andwhere" visibility="public" name="andWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
-Appends a condition to the current conditions using an AND operator
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-betweenwhere" visibility="public" name="betweenWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null}]}>
-Appends a BETWEEN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-bind" visibility="public" name="bind" returnType="CriteriaInterface" params={[{"type":"array","name":"bindParams","default":null}]}>
-Sets the bound parameters in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-bindtypes" visibility="public" name="bindTypes" returnType="CriteriaInterface" params={[{"type":"array","name":"bindTypes","default":null}]}>
-Sets the bind types in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-cache" visibility="public" name="cache" returnType="CriteriaInterface" params={[{"type":"array","name":"cache","default":null}]}>
-Sets the cache options in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-conditions" visibility="public" name="conditions" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null}]}>
-Adds the conditions parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-distinct" visibility="public" name="distinct" returnType="CriteriaInterface" params={[{"type":"mixed","name":"distinct","default":null}]}>
-Sets SELECT DISTINCT / SELECT ALL flag
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-execute" visibility="public" name="execute" returnType="ResultsetInterface" params={[]}>
-Executes a find using the parameters built with the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-forupdate" visibility="public" name="forUpdate" returnType="CriteriaInterface" params={[{"type":"bool","name":"forUpdate","default":"true"}]}>
-Sets the "for_update" parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getcolumns" visibility="public" name="getColumns" returnType="array|string|null" params={[]}>
-Returns the columns to be queried
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getconditions" visibility="public" name="getConditions" returnType="string|null" params={[]}>
-Returns the conditions parameter in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getgroupby" visibility="public" name="getGroupBy" returnType="" params={[]}>
-Returns the group clause in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-gethaving" visibility="public" name="getHaving" returnType="" params={[]}>
-Returns the having clause in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getlimit" visibility="public" name="getLimit" returnType="array|int|null" params={[]}>
-Returns the limit parameter in the criteria, which will be
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getmodelname" visibility="public" name="getModelName" returnType="string" params={[]}>
-Returns an internal model name on which the criteria will be applied
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getorderby" visibility="public" name="getOrderBy" returnType="string|null" params={[]}>
-Returns the order parameter in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
-Returns all the parameters defined in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-getwhere" visibility="public" name="getWhere" returnType="string|null" params={[]}>
-Returns the conditions parameter in the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-groupby" visibility="public" name="groupBy" returnType="CriteriaInterface" params={[{"type":"mixed","name":"group","default":null}]}>
-Adds the group-by clause to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-having" visibility="public" name="having" returnType="CriteriaInterface" params={[{"type":"mixed","name":"having","default":null}]}>
-Adds the having clause to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-inwhere" visibility="public" name="inWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null}]}>
-Appends an IN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-innerjoin" visibility="public" name="innerJoin" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"}]}>
-Adds an INNER join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-leftjoin" visibility="public" name="leftJoin" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"}]}>
-Adds a LEFT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-limit" visibility="public" name="limit" returnType="CriteriaInterface" params={[{"type":"int","name":"limit","default":null},{"type":"int","name":"offset","default":"0"}]}>
-Sets the limit parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-notbetweenwhere" visibility="public" name="notBetweenWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null}]}>
-Appends a NOT BETWEEN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-notinwhere" visibility="public" name="notInWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null}]}>
-Appends a NOT IN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-orwhere" visibility="public" name="orWhere" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
-Appends a condition to the current conditions using an OR operator
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-orderby" visibility="public" name="orderBy" returnType="CriteriaInterface" params={[{"type":"string","name":"orderColumns","default":null}]}>
-Adds the order-by parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-rightjoin" visibility="public" name="rightJoin" returnType="CriteriaInterface" params={[{"type":"string","name":"model","default":null},{"type":"mixed","name":"conditions","default":"null"},{"type":"mixed","name":"alias","default":"null"}]}>
-Adds a RIGHT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-setmodelname" visibility="public" name="setModelName" returnType="CriteriaInterface" params={[{"type":"string","name":"modelName","default":null}]}>
-Set a model on which the query will be executed
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-sharedlock" visibility="public" name="sharedLock" returnType="CriteriaInterface" params={[{"type":"bool","name":"sharedLock","default":"true"}]}>
-Sets the "shared_lock" parameter to the criteria
-</ApiItem>
-<ApiItem href="#mvcmodelcriteriainterface-where" visibility="public" name="where" returnType="CriteriaInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
-Sets the conditions parameter in the criteria
-</ApiItem>
+- `public andWhere(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Appends a condition to the current conditions using an AND operator
+
+- `public betweenWhere(string $expr, mixed $minimum, mixed $maximum): CriteriaInterface` — Appends a BETWEEN condition to the current conditions
+
+- `public bind(array $bindParams): CriteriaInterface` — Sets the bound parameters in the criteria
+
+- `public bindTypes(array $bindTypes): CriteriaInterface` — Sets the bind types in the criteria
+
+- `public cache(array $cache): CriteriaInterface` — Sets the cache options in the criteria
+
+- `public conditions(string $conditions): CriteriaInterface` — Adds the conditions parameter to the criteria
+
+- `public distinct(mixed $distinct): CriteriaInterface` — Sets SELECT DISTINCT / SELECT ALL flag
+
+- `public execute(): ResultsetInterface` — Executes a find using the parameters built with the criteria
+
+- `public forUpdate(bool $forUpdate = true): CriteriaInterface` — Sets the "for\_update" parameter to the criteria
+
+- `public getColumns(): array|string|null` — Returns the columns to be queried
+
+- `public getConditions(): string|null` — Returns the conditions parameter in the criteria
+
+- `public getGroupBy()` — Returns the group clause in the criteria
+
+- `public getHaving()` — Returns the having clause in the criteria
+
+- `public getLimit(): array|int|null` — Returns the limit parameter in the criteria, which will be
+
+- `public getModelName(): string` — Returns an internal model name on which the criteria will be applied
+
+- `public getOrderBy(): string|null` — Returns the order parameter in the criteria
+
+- `public getParams(): array` — Returns all the parameters defined in the criteria
+
+- `public getWhere(): string|null` — Returns the conditions parameter in the criteria
+
+- `public groupBy(mixed $group): CriteriaInterface` — Adds the group-by clause to the criteria
+
+- `public having(mixed $having): CriteriaInterface` — Adds the having clause to the criteria
+
+- `public inWhere(string $expr, array $values): CriteriaInterface` — Appends an IN condition to the current conditions
+
+- `public innerJoin(string $model, mixed $conditions = null, mixed $alias = null): CriteriaInterface` — Adds an INNER join to the query
+
+- `public leftJoin(string $model, mixed $conditions = null, mixed $alias = null): CriteriaInterface` — Adds a LEFT join to the query
+
+- `public limit(int $limit, int $offset = 0): CriteriaInterface` — Sets the limit parameter to the criteria
+
+- `public notBetweenWhere(string $expr, mixed $minimum, mixed $maximum): CriteriaInterface` — Appends a NOT BETWEEN condition to the current conditions
+
+- `public notInWhere(string $expr, array $values): CriteriaInterface` — Appends a NOT IN condition to the current conditions
+
+- `public orWhere(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Appends a condition to the current conditions using an OR operator
+
+- `public orderBy(string $orderColumns): CriteriaInterface` — Adds the order-by parameter to the criteria
+
+- `public rightJoin(string $model, mixed $conditions = null, mixed $alias = null): CriteriaInterface` — Adds a RIGHT join to the query
+
+- `public setModelName(string $modelName): CriteriaInterface` — Set a model on which the query will be executed
+
+- `public sharedLock(bool $sharedLock = true): CriteriaInterface` — Sets the "shared\_lock" parameter to the criteria
+
+- `public where(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Sets the conditions parameter in the criteria
 
 ### Methods
 
@@ -6117,9 +5776,9 @@ Sets the conditions parameter in the criteria
 
 ```php
 public function andWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -6129,9 +5788,9 @@ Appends a condition to the current conditions using an AND operator
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -6296,8 +5955,8 @@ Adds the having clause to the criteria
 
 ```php
 public function inWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -6311,9 +5970,9 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 ```php
 public function innerJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -6321,18 +5980,18 @@ Adds an INNER join to the query
 
 ```php
 $criteria->innerJoin(
-Orders::class
+    Orders::class
 );
 
 $criteria->innerJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id"
 );
 
 $criteria->innerJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id",
-"r"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -6340,9 +5999,9 @@ Orders::class,
 
 ```php
 public function leftJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -6350,9 +6009,9 @@ Adds a LEFT join to the query
 
 ```php
 $criteria->leftJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id",
-"r"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -6360,8 +6019,8 @@ Orders::class,
 
 ```php
 public function limit(
-int $limit,
-int $offset = 0
+    int $limit,
+    int $offset = 0
 ): CriteriaInterface;
 ```
 
@@ -6371,9 +6030,9 @@ Sets the limit parameter to the criteria
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -6387,8 +6046,8 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 ```php
 public function notInWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -6402,9 +6061,9 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 ```php
 public function orWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -6422,9 +6081,9 @@ Adds the order-by parameter to the criteria
 
 ```php
 public function rightJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -6432,9 +6091,9 @@ Adds a RIGHT join to the query
 
 ```php
 $criteria->rightJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id",
-"r"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -6458,13 +6117,14 @@ Sets the "shared_lock" parameter to the criteria
 
 ```php
 public function where(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
 Sets the conditions parameter in the criteria
+
 
 ## Mvc\Model\Eager\Loader
 
@@ -6480,51 +6140,37 @@ are hydrated.
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeleagerloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ManagerInterface","name":"manager","default":null}]}>
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-apply" visibility="public" name="apply" returnType="void" params={[{"type":"mixed","name":"record","default":null},{"type":"array","name":"eagerMap","default":null}]}>
-Applies a pre-built eager map to a single record.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-buildkey" visibility="public" name="buildKey" returnType="string" params={[{"type":"array","name":"values","default":null}]}>
-Builds the lookup key for a set of key-field values.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-loadresultset" visibility="public" name="loadResultset" returnType="void" params={[{"type":"Simple","name":"resultset","default":null},{"type":"string","name":"modelName","default":null},{"type":"array","name":"tree","default":null}]}>
-Loads a relation tree for a root resultset.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-buildmap" visibility="protected" name="buildMap" returnType="array" params={[{"type":"array","name":"parents","default":null},{"type":"string","name":"modelName","default":null},{"type":"array","name":"tree","default":null}]}>
-Builds one level of the map.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-buildnode" visibility="protected" name="buildNode" returnType="array" params={[{"type":"RelationInterface","name":"relation","default":null},{"type":"string","name":"alias","default":null},{"type":"array","name":"parents","default":null},{"type":"array","name":"node","default":null}]}>
-Builds a single map node: one query, indexed by the referenced field.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-buildthroughnode" visibility="protected" name="buildThroughNode" returnType="array" params={[{"type":"RelationInterface","name":"relation","default":null},{"type":"string","name":"alias","default":null},{"type":"array","name":"parents","default":null},{"type":"array","name":"node","default":null}]}>
-Through-relations in two steps rather than a join.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-collectkeys" visibility="protected" name="collectKeys" returnType="array" params={[{"type":"array","name":"parents","default":null},{"type":"array","name":"fields","default":null},{"type":"string","name":"alias","default":null}]}>
-Distinct, non-null local key tuples across the parent set.
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-fetchreferenced" visibility="protected" name="fetchReferenced" returnType="Simple" params={[{"type":"RelationInterface","name":"relation","default":null},{"type":"string","name":"alias","default":null},{"type":"array","name":"keys","default":null},{"type":"array","name":"options","default":null}]}>
-One query per relation node. An empty key set issues none at all -
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-normalizefields" visibility="protected" name="normalizeFields" returnType="array" params={[{"type":"mixed","name":"fields","default":null}]}>
-Relation fields are declared as a string for a single column and an
-</ApiItem>
-<ApiItem href="#mvcmodeleagerloader-recordkey" visibility="protected" name="recordKey" returnType="string" params={[{"type":"mixed","name":"record","default":null},{"type":"array","name":"fields","default":null}]}>
-Lookup key for an already-hydrated record.
-</ApiItem>
+- `public __construct(ManagerInterface $manager)`
+
+- `public apply(mixed $record, array $eagerMap): void` — Applies a pre-built eager map to a single record.
+
+- `public buildKey(array $values): string` — Builds the lookup key for a set of key-field values.
+
+- `public loadResultset(Simple $resultset, string $modelName, array $tree): void` — Loads a relation tree for a root resultset.
+
+- `protected buildMap(array $parents, string $modelName, array $tree): array` — Builds one level of the map.
+
+- `protected buildNode(RelationInterface $relation, string $alias, array $parents, array $node): array` — Builds a single map node: one query, indexed by the referenced field.
+
+- `protected buildThroughNode(RelationInterface $relation, string $alias, array $parents, array $node): array` — Through-relations in two steps rather than a join.
+
+- `protected collectKeys(array $parents, array $fields, string $alias): array` — Distinct, non-null local key tuples across the parent set.
+
+- `protected fetchReferenced(RelationInterface $relation, string $alias, array $keys, array $options): Simple` — One query per relation node. An empty key set issues none at all -
+
+- `protected normalizeFields(mixed $fields): array` — Relation fields are declared as a string for a single column and an
+
+- `protected recordKey(mixed $record, array $fields): string` — Lookup key for an already-hydrated record.
 
 ### Constants
 
-<ApiItem kind="constant" name="MAX_ROWS_PER_LEVEL" type="int" default="100000">
-Maximum number of rows a single relation node may return before the load
-is refused. Guards against a to-many hop that follows a to-one hop, which
-can fan out to an entire table.
-</ApiItem>
+- `const int MAX_ROWS_PER_LEVEL = 100000` — Maximum number of rows a single relation node may return before the load
+  is refused. Guards against a to-many hop that follows a to-one hop, which
+  can fan out to an entire table.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="manager" type="ManagerInterface" default="">
-</ApiItem>
+- `protected ManagerInterface $manager`
 
 ### Methods
 
@@ -6538,8 +6184,8 @@ public function __construct( ManagerInterface $manager );
 
 ```php
 public static function apply(
-mixed $record,
-array $eagerMap
+    mixed $record,
+    array $eagerMap
 ): void;
 ```
 
@@ -6569,9 +6215,9 @@ values are length-prefixed so ["a|b", "c"] cannot collide with
 
 ```php
 public function loadResultset(
-Simple $resultset,
-string $modelName,
-array $tree
+    Simple $resultset,
+    string $modelName,
+    array $tree
 ): void;
 ```
 
@@ -6585,9 +6231,9 @@ and gives the key values without a second pass over the cursor.
 
 ```php
 protected function buildMap(
-array $parents,
-string $modelName,
-array $tree
+    array $parents,
+    string $modelName,
+    array $tree
 ): array;
 ```
 
@@ -6597,10 +6243,10 @@ Builds one level of the map.
 
 ```php
 protected function buildNode(
-RelationInterface $relation,
-string $alias,
-array $parents,
-array $node
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
 ): array;
 ```
 
@@ -6610,10 +6256,10 @@ Builds a single map node: one query, indexed by the referenced field.
 
 ```php
 protected function buildThroughNode(
-RelationInterface $relation,
-string $alias,
-array $parents,
-array $node
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
 ): array;
 ```
 
@@ -6629,9 +6275,9 @@ multiplication an inner join would cause.
 
 ```php
 protected function collectKeys(
-array $parents,
-array $fields,
-string $alias
+    array $parents,
+    array $fields,
+    string $alias
 ): array;
 ```
 
@@ -6641,10 +6287,10 @@ Distinct, non-null local key tuples across the parent set.
 
 ```php
 protected function fetchReferenced(
-RelationInterface $relation,
-string $alias,
-array $keys,
-array $options
+    RelationInterface $relation,
+    string $alias,
+    array $keys,
+    array $options
 ): Simple;
 ```
 
@@ -6665,12 +6311,13 @@ downstream.
 
 ```php
 protected function recordKey(
-mixed $record,
-array $fields
+    mixed $record,
+    array $fields
 ): string;
 ```
 
 Lookup key for an already-hydrated record.
+
 
 ## Mvc\Model\Eager\PathTree
 
@@ -6690,15 +6337,12 @@ this tree, not the number of elements supplied.
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeleagerpathtree-parse" visibility="public" name="parse" returnType="array" params={[{"type":"array","name":"spec","default":null}]}>
-</ApiItem>
+- `public parse(array $spec): array`
 
 ### Constants
 
-<ApiItem kind="constant" name="MAX_DEPTH" type="int" default="5">
-Longest path accepted. Depth alone is not what makes an eager load
-expensive, but an unbounded path is never intentional.
-</ApiItem>
+- `const int MAX_DEPTH = 5` — Longest path accepted. Depth alone is not what makes an eager load
+  expensive, but an unbounded path is never intentional.
 
 ### Methods
 
@@ -6707,6 +6351,7 @@ expensive, but an unbounded path is never intentional.
 ```php
 public static function parse( array $spec ): array;
 ```
+
 
 ## Mvc\Model\Exception
 
@@ -6717,146 +6362,146 @@ Phalcon\Mvc\Model\Exception
 Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 - `\Exception`
-- **`Phalcon\Mvc\Model\Exception`**
-- [`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`](#mvcmodelbehaviorexceptionsmissingrequiredoption)
-- [`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`](#mvcmodelexceptionsbelongstorequiresobject)
-- [`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`](#mvcmodelexceptionsbindtypenotdefined)
-- [`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`](#mvcmodelexceptionscannotresolveattribute)
-- [`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`](#mvcmodelexceptionscolumnnotinmap)
-- [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`](#mvcmodelexceptionscolumnnotintablecolumns)
-- [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`](#mvcmodelexceptionscolumnnotintablemap)
-- [`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`](#mvcmodelexceptionscorruptcolumntype)
-- [`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`](#mvcmodelexceptionscursorisimmutable)
-- [`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`](#mvcmodelexceptionsdatatypenotdefined)
-- [`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`](#mvcmodelexceptionseagerrowlimitexceeded)
-- [`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`](#mvcmodelexceptionshandlermustimplementbindable)
-- [`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`](#mvcmodelexceptionsidentitynotincolumnmap)
-- [`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`](#mvcmodelexceptionsidentitynotintablecolumns)
-- [`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`](#mvcmodelexceptionsindexnotincursor)
-- [`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`](#mvcmodelexceptionsindexnotinrow)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`](#mvcmodelexceptionsinvalidconnectionservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidContainer`](#mvcmodelexceptionsinvalidcontainer)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`](#mvcmodelexceptionsinvaliddumpresultkey)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`](#mvcmodelexceptionsinvalideagerparameter)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`](#mvcmodelexceptionsinvalideagerpath)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`](#mvcmodelexceptionsinvalidfindparameters)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`](#mvcmodelexceptionsinvalidgetmodelnamereturn)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidModelName`](#mvcmodelexceptionsinvalidmodelname)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`](#mvcmodelexceptionsinvalidmodelsmanagerservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`](#mvcmodelexceptionsinvalidmodelsmetadataservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`](#mvcmodelexceptionsinvalidresultsetcacheservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`](#mvcmodelexceptionsinvalidreturnedrecord)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`](#mvcmodelexceptionsinvalidserializationdata)
-- [`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`](#mvcmodelexceptionsmanagerormservicesunavailable)
-- [`Phalcon\Mvc\Model\Exceptions\MethodNotFound`](#mvcmodelexceptionsmethodnotfound)
-- [`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`](#mvcmodelexceptionsmissingeagerkeycolumn)
-- [`Phalcon\Mvc\Model\Exceptions\MissingMethodName`](#mvcmodelexceptionsmissingmethodname)
-- [`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`](#mvcmodelexceptionsmissingmodelclassname)
-- [`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`](#mvcmodelexceptionsmodelcouldnotload)
-- [`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`](#mvcmodelexceptionsmodelormservicesunavailable)
-- [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`](#mvcmodelexceptionsprimarykeyattributenotset)
-- [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`](#mvcmodelexceptionsprimarykeyrequired)
-- [`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`](#mvcmodelexceptionspropertynotaccessible)
-- [`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`](#mvcmodelexceptionsrecordcannotrefresh)
-- [`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`](#mvcmodelexceptionsrecordnotpersisted)
-- [`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`](#mvcmodelexceptionsreferencedfieldsmismatch)
-- [`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`](#mvcmodelexceptionsrelationaliasmustbestring)
-- [`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`](#mvcmodelexceptionsrelationnotdefined)
-- [`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`](#mvcmodelexceptionsrelationrequiresobjectorarray)
-- [`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`](#mvcmodelexceptionsresultsetcolumnnotinmap)
-- [`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`](#mvcmodelexceptionsrowisimmutable)
-- [`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`](#mvcmodelexceptionssnapshotsdisabled)
-- [`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`](#mvcmodelexceptionsstaticmethodrequiresoneargument)
-- [`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`](#mvcmodelexceptionsunknowneagerrelation)
-- [`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`](#mvcmodelexceptionsunknownrelationtype)
-- [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`](#mvcmodelexceptionsunsupportedeagerhydration)
-- [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`](#mvcmodelexceptionsunsupportedeageroption)
-- [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`](#mvcmodelexceptionsunsupportedeagerresultset)
-- [`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`](#mvcmodelexceptionsupdatesnapshotdisabled)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`](#mvcmodelmetadataexceptionscannotobtaintablecolumns)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`](#mvcmodelmetadataexceptionscolumnmapnotarray)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`](#mvcmodelmetadataexceptionscontainerrequired)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`](#mvcmodelmetadataexceptionscorruptedmetadata)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`](#mvcmodelmetadataexceptionsinvalidcontainer)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`](#mvcmodelmetadataexceptionsinvalidmetadataformodel)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`](#mvcmodelmetadataexceptionsmetadatadirectorynotwritable)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`](#mvcmodelmetadataexceptionsmetadatastrategyfailed)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`](#mvcmodelmetadataexceptionsnoannotationsforclass)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`](#mvcmodelmetadataexceptionsnopropertyannotationsforclass)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`](#mvcmodelmetadataexceptionstablenotindatabase)
-- [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`](#mvcmodelqueryexceptionsambiguouscolumn)
-- [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`](#mvcmodelqueryexceptionsambiguousjoinrelation)
-- [`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`](#mvcmodelqueryexceptionsbindparameternotinplaceholders)
-- [`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`](#mvcmodelqueryexceptionsbindtyperequiresarray)
-- [`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`](#mvcmodelqueryexceptionsbindvaluerequired)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`](#mvcmodelqueryexceptionsbuilderbuildercolumnnotinmap)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`](#mvcmodelqueryexceptionsbuilderbuilderconditioninvalid)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`](#mvcmodelqueryexceptionsbuildermodelrequired)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`](#mvcmodelqueryexceptionsbuildernoprimarykey)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`](#mvcmodelqueryexceptionsbuilderoperatornotavailable)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`](#mvcmodelqueryexceptionscolumnnotindomain)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`](#mvcmodelqueryexceptionscolumnnotinselectedmodels)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`](#mvcmodelqueryexceptionscorruptedast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`](#mvcmodelqueryexceptionscorrupteddeleteast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`](#mvcmodelqueryexceptionscorruptedinsertast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`](#mvcmodelqueryexceptionscorruptedselectast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`](#mvcmodelqueryexceptionscorruptedupdateast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`](#mvcmodelqueryexceptionsdeletemultiplenotsupported)
-- [`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`](#mvcmodelqueryexceptionsduplicatealias)
-- [`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`](#mvcmodelqueryexceptionsemptyarrayplaceholdervalue)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`](#mvcmodelqueryexceptionsinsertcolumncountmismatch)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`](#mvcmodelqueryexceptionsinvalidcachedresultset)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`](#mvcmodelqueryexceptionsinvalidcachingoptions)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`](#mvcmodelqueryexceptionsinvalidcolumndefinition)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`](#mvcmodelqueryexceptionsinvalidinjectedmanager)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`](#mvcmodelqueryexceptionsinvalidinjectedmetadata)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`](#mvcmodelqueryexceptionsinvalidquerycacheservice)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`](#mvcmodelqueryexceptionsinvalidresultsetclass)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`](#mvcmodelqueryexceptionsinvalidresultsetrowclass)
-- [`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`](#mvcmodelqueryexceptionsjoinaliasalreadyused)
-- [`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`](#mvcmodelqueryexceptionsjoinfieldcountmismatch)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`](#mvcmodelqueryexceptionsmissingcachekey)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`](#mvcmodelqueryexceptionsmissingmetadata)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`](#mvcmodelqueryexceptionsmissingmodelattribute)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`](#mvcmodelqueryexceptionsmissingmodelsmanager)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`](#mvcmodelqueryexceptionsmixeddatabasesystems)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`](#mvcmodelqueryexceptionsmodelsourcenotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`](#mvcmodelqueryexceptionsmodelslistnotloaded)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`](#mvcmodelqueryexceptionsmultiplesqlstatementsnotsupported)
-- [`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`](#mvcmodelqueryexceptionsnomodelforalias)
-- [`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`](#mvcmodelqueryexceptionsphqlcolumnnotinmap)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`](#mvcmodelqueryexceptionsreadconnectionmissing)
-- [`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`](#mvcmodelqueryexceptionsrelationshipnotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`](#mvcmodelqueryexceptionsresultsetclassnotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`](#mvcmodelqueryexceptionsresultsetnoncacheable)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`](#mvcmodelqueryexceptionsresultsetrowclassnotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`](#mvcmodelqueryexceptionsunknownbindtype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`](#mvcmodelqueryexceptionsunknowncolumntype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`](#mvcmodelqueryexceptionsunknownjointype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`](#mvcmodelqueryexceptionsunknownmodeloralias)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`](#mvcmodelqueryexceptionsunknownphqlexpression)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`](#mvcmodelqueryexceptionsunknownphqlexpressiontype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`](#mvcmodelqueryexceptionsunknownphqlstatement)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier`](#mvcmodelqueryexceptionsunsafeidentifier)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`](#mvcmodelqueryexceptionsupdatemultiplenotsupported)
-- [`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`](#mvcmodelqueryexceptionswriteconnectionmissing)
-- [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
-- [`Phalcon\Mvc\Model\ValidationFailed`](#mvcmodelvalidationfailed)
+  - **`Phalcon\Mvc\Model\Exception`**
+    - [`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`](#mvcmodelbehaviorexceptionsmissingrequiredoption)
+    - [`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`](#mvcmodelexceptionsbelongstorequiresobject)
+    - [`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`](#mvcmodelexceptionsbindtypenotdefined)
+    - [`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`](#mvcmodelexceptionscannotresolveattribute)
+    - [`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`](#mvcmodelexceptionscolumnnotinmap)
+    - [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`](#mvcmodelexceptionscolumnnotintablecolumns)
+    - [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`](#mvcmodelexceptionscolumnnotintablemap)
+    - [`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`](#mvcmodelexceptionscorruptcolumntype)
+    - [`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`](#mvcmodelexceptionscursorisimmutable)
+    - [`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`](#mvcmodelexceptionsdatatypenotdefined)
+    - [`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`](#mvcmodelexceptionseagerrowlimitexceeded)
+    - [`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`](#mvcmodelexceptionshandlermustimplementbindable)
+    - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`](#mvcmodelexceptionsidentitynotincolumnmap)
+    - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`](#mvcmodelexceptionsidentitynotintablecolumns)
+    - [`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`](#mvcmodelexceptionsindexnotincursor)
+    - [`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`](#mvcmodelexceptionsindexnotinrow)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`](#mvcmodelexceptionsinvalidconnectionservice)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidContainer`](#mvcmodelexceptionsinvalidcontainer)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`](#mvcmodelexceptionsinvaliddumpresultkey)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`](#mvcmodelexceptionsinvalideagerparameter)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`](#mvcmodelexceptionsinvalideagerpath)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`](#mvcmodelexceptionsinvalidfindparameters)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`](#mvcmodelexceptionsinvalidgetmodelnamereturn)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidModelName`](#mvcmodelexceptionsinvalidmodelname)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`](#mvcmodelexceptionsinvalidmodelsmanagerservice)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`](#mvcmodelexceptionsinvalidmodelsmetadataservice)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`](#mvcmodelexceptionsinvalidresultsetcacheservice)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`](#mvcmodelexceptionsinvalidreturnedrecord)
+    - [`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`](#mvcmodelexceptionsinvalidserializationdata)
+    - [`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`](#mvcmodelexceptionsmanagerormservicesunavailable)
+    - [`Phalcon\Mvc\Model\Exceptions\MethodNotFound`](#mvcmodelexceptionsmethodnotfound)
+    - [`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`](#mvcmodelexceptionsmissingeagerkeycolumn)
+    - [`Phalcon\Mvc\Model\Exceptions\MissingMethodName`](#mvcmodelexceptionsmissingmethodname)
+    - [`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`](#mvcmodelexceptionsmissingmodelclassname)
+    - [`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`](#mvcmodelexceptionsmodelcouldnotload)
+    - [`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`](#mvcmodelexceptionsmodelormservicesunavailable)
+    - [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`](#mvcmodelexceptionsprimarykeyattributenotset)
+    - [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`](#mvcmodelexceptionsprimarykeyrequired)
+    - [`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`](#mvcmodelexceptionspropertynotaccessible)
+    - [`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`](#mvcmodelexceptionsrecordcannotrefresh)
+    - [`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`](#mvcmodelexceptionsrecordnotpersisted)
+    - [`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`](#mvcmodelexceptionsreferencedfieldsmismatch)
+    - [`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`](#mvcmodelexceptionsrelationaliasmustbestring)
+    - [`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`](#mvcmodelexceptionsrelationnotdefined)
+    - [`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`](#mvcmodelexceptionsrelationrequiresobjectorarray)
+    - [`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`](#mvcmodelexceptionsresultsetcolumnnotinmap)
+    - [`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`](#mvcmodelexceptionsrowisimmutable)
+    - [`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`](#mvcmodelexceptionssnapshotsdisabled)
+    - [`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`](#mvcmodelexceptionsstaticmethodrequiresoneargument)
+    - [`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`](#mvcmodelexceptionsunknowneagerrelation)
+    - [`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`](#mvcmodelexceptionsunknownrelationtype)
+    - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`](#mvcmodelexceptionsunsupportedeagerhydration)
+    - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`](#mvcmodelexceptionsunsupportedeageroption)
+    - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`](#mvcmodelexceptionsunsupportedeagerresultset)
+    - [`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`](#mvcmodelexceptionsupdatesnapshotdisabled)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`](#mvcmodelmetadataexceptionscannotobtaintablecolumns)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`](#mvcmodelmetadataexceptionscolumnmapnotarray)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`](#mvcmodelmetadataexceptionscontainerrequired)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`](#mvcmodelmetadataexceptionscorruptedmetadata)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`](#mvcmodelmetadataexceptionsinvalidcontainer)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`](#mvcmodelmetadataexceptionsinvalidmetadataformodel)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`](#mvcmodelmetadataexceptionsmetadatadirectorynotwritable)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`](#mvcmodelmetadataexceptionsmetadatastrategyfailed)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`](#mvcmodelmetadataexceptionsnoannotationsforclass)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`](#mvcmodelmetadataexceptionsnopropertyannotationsforclass)
+    - [`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`](#mvcmodelmetadataexceptionstablenotindatabase)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`](#mvcmodelqueryexceptionsambiguouscolumn)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`](#mvcmodelqueryexceptionsambiguousjoinrelation)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`](#mvcmodelqueryexceptionsbindparameternotinplaceholders)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`](#mvcmodelqueryexceptionsbindtyperequiresarray)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`](#mvcmodelqueryexceptionsbindvaluerequired)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`](#mvcmodelqueryexceptionsbuilderbuildercolumnnotinmap)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`](#mvcmodelqueryexceptionsbuilderbuilderconditioninvalid)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`](#mvcmodelqueryexceptionsbuildermodelrequired)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`](#mvcmodelqueryexceptionsbuildernoprimarykey)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`](#mvcmodelqueryexceptionsbuilderoperatornotavailable)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`](#mvcmodelqueryexceptionscolumnnotindomain)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`](#mvcmodelqueryexceptionscolumnnotinselectedmodels)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`](#mvcmodelqueryexceptionscorruptedast)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`](#mvcmodelqueryexceptionscorrupteddeleteast)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`](#mvcmodelqueryexceptionscorruptedinsertast)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`](#mvcmodelqueryexceptionscorruptedselectast)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`](#mvcmodelqueryexceptionscorruptedupdateast)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`](#mvcmodelqueryexceptionsdeletemultiplenotsupported)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`](#mvcmodelqueryexceptionsduplicatealias)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`](#mvcmodelqueryexceptionsemptyarrayplaceholdervalue)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`](#mvcmodelqueryexceptionsinsertcolumncountmismatch)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`](#mvcmodelqueryexceptionsinvalidcachedresultset)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`](#mvcmodelqueryexceptionsinvalidcachingoptions)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`](#mvcmodelqueryexceptionsinvalidcolumndefinition)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`](#mvcmodelqueryexceptionsinvalidinjectedmanager)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`](#mvcmodelqueryexceptionsinvalidinjectedmetadata)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`](#mvcmodelqueryexceptionsinvalidquerycacheservice)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`](#mvcmodelqueryexceptionsinvalidresultsetclass)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`](#mvcmodelqueryexceptionsinvalidresultsetrowclass)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`](#mvcmodelqueryexceptionsjoinaliasalreadyused)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`](#mvcmodelqueryexceptionsjoinfieldcountmismatch)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`](#mvcmodelqueryexceptionsmissingcachekey)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`](#mvcmodelqueryexceptionsmissingmetadata)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`](#mvcmodelqueryexceptionsmissingmodelattribute)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`](#mvcmodelqueryexceptionsmissingmodelsmanager)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`](#mvcmodelqueryexceptionsmixeddatabasesystems)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`](#mvcmodelqueryexceptionsmodelsourcenotfound)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`](#mvcmodelqueryexceptionsmodelslistnotloaded)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`](#mvcmodelqueryexceptionsmultiplesqlstatementsnotsupported)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`](#mvcmodelqueryexceptionsnomodelforalias)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`](#mvcmodelqueryexceptionsphqlcolumnnotinmap)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`](#mvcmodelqueryexceptionsreadconnectionmissing)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`](#mvcmodelqueryexceptionsrelationshipnotfound)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`](#mvcmodelqueryexceptionsresultsetclassnotfound)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`](#mvcmodelqueryexceptionsresultsetnoncacheable)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`](#mvcmodelqueryexceptionsresultsetrowclassnotfound)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`](#mvcmodelqueryexceptionsunknownbindtype)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`](#mvcmodelqueryexceptionsunknowncolumntype)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`](#mvcmodelqueryexceptionsunknownjointype)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`](#mvcmodelqueryexceptionsunknownmodeloralias)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`](#mvcmodelqueryexceptionsunknownphqlexpression)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`](#mvcmodelqueryexceptionsunknownphqlexpressiontype)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`](#mvcmodelqueryexceptionsunknownphqlstatement)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier`](#mvcmodelqueryexceptionsunsafeidentifier)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`](#mvcmodelqueryexceptionsupdatemultiplenotsupported)
+    - [`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`](#mvcmodelqueryexceptionswriteconnectionmissing)
+    - [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
+    - [`Phalcon\Mvc\Model\ValidationFailed`](#mvcmodelvalidationfailed)
+
 
 ## Mvc\Model\Exceptions\BelongsToRequiresObject
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsbelongstorequiresobject-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"relationName","default":null}]}>
-</ApiItem>
+- `public __construct(string $className, string $relationName)`
 
 ### Methods
 
@@ -6864,25 +6509,25 @@ Class
 
 ```php
 public function __construct(
-string $className,
-string $relationName
+    string $className,
+    string $relationName
 );
 ```
+
 
 ## Mvc\Model\Exceptions\BindTypeNotDefined
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsbindtypenotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"column","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $column, string $className)`
 
 ### Methods
 
@@ -6890,25 +6535,25 @@ Class
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\CannotResolveAttribute
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionscannotresolveattribute-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"attribute","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $attribute, string $className)`
 
 ### Methods
 
@@ -6916,25 +6561,25 @@ Class
 
 ```php
 public function __construct(
-string $attribute,
-string $className
+    string $attribute,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ColumnNotInMap
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionscolumnnotinmap-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"column","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $column, string $className)`
 
 ### Methods
 
@@ -6942,25 +6587,25 @@ Class
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ColumnNotInTableColumns
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionscolumnnotintablecolumns-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"column","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $column, string $className)`
 
 ### Methods
 
@@ -6968,25 +6613,25 @@ Class
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ColumnNotInTableMap
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionscolumnnotintablemap-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"column","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $column, string $className)`
 
 ### Methods
 
@@ -6994,25 +6639,25 @@ Class
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\CorruptColumnType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionscorruptcolumntype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7022,20 +6667,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\CursorIsImmutable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionscursorisimmutable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7045,20 +6690,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\DataTypeNotDefined
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsdatatypenotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"column","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $column, string $className)`
 
 ### Methods
 
@@ -7066,25 +6711,25 @@ Class
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\EagerRowLimitExceeded
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionseagerrowlimitexceeded-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"modelName","default":null},{"type":"int","name":"rowCount","default":null},{"type":"int","name":"limit","default":null}]}>
-</ApiItem>
+- `public __construct(string $modelName, int $rowCount, int $limit)`
 
 ### Methods
 
@@ -7092,26 +6737,26 @@ Class
 
 ```php
 public function __construct(
-string $modelName,
-int $rowCount,
-int $limit
+    string $modelName,
+    int $rowCount,
+    int $limit
 );
 ```
+
 
 ## Mvc\Model\Exceptions\HandlerMustImplementBindable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionshandlermustimplementbindable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7121,20 +6766,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\IdentityNotInColumnMap
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsidentitynotincolumnmap-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"identityField","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $identityField, string $className)`
 
 ### Methods
 
@@ -7142,25 +6787,25 @@ Class
 
 ```php
 public function __construct(
-string $identityField,
-string $className
+    string $identityField,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\IdentityNotInTableColumns
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsidentitynotintablecolumns-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"identityField","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $identityField, string $className)`
 
 ### Methods
 
@@ -7168,25 +6813,25 @@ Class
 
 ```php
 public function __construct(
-string $identityField,
-string $className
+    string $identityField,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\IndexNotInCursor
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsindexnotincursor-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7196,20 +6841,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\IndexNotInRow
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsindexnotinrow-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7219,20 +6864,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidConnectionService
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidconnectionservice-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7242,20 +6887,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidContainer
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidContainer`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidContainer`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidcontainer-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7265,20 +6910,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidDumpResultKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvaliddumpresultkey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7288,20 +6933,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidEagerParameter
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalideagerparameter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7311,20 +6956,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidEagerPath
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalideagerpath-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -7334,20 +6979,20 @@ Class
 public function __construct( string $path );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidFindParameters
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidfindparameters-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7357,20 +7002,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidGetModelNameReturn
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidgetmodelnamereturn-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7380,20 +7025,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidModelName
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidModelName`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidModelName`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidmodelname-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7403,20 +7048,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidModelsManagerService
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidmodelsmanagerservice-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7426,20 +7071,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidModelsMetadataService
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidmodelsmetadataservice-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7449,20 +7094,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidResultsetCacheService
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidresultsetcacheservice-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7472,20 +7117,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidReturnedRecord
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidreturnedrecord-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7495,20 +7140,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidSerializationData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsinvalidserializationdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7518,20 +7163,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\ManagerOrmServicesUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmanagerormservicesunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7541,20 +7186,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\MethodNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MethodNotFound`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\MethodNotFound`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmethodnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"modelName","default":null}]}>
-</ApiItem>
+- `public __construct(string $method, string $modelName)`
 
 ### Methods
 
@@ -7562,25 +7207,25 @@ Class
 
 ```php
 public function __construct(
-string $method,
-string $modelName
+    string $method,
+    string $modelName
 );
 ```
+
 
 ## Mvc\Model\Exceptions\MissingEagerKeyColumn
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmissingeagerkeycolumn-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"alias","default":null},{"type":"string","name":"column","default":null}]}>
-</ApiItem>
+- `public __construct(string $alias, string $column)`
 
 ### Methods
 
@@ -7588,25 +7233,25 @@ Class
 
 ```php
 public function __construct(
-string $alias,
-string $column
+    string $alias,
+    string $column
 );
 ```
+
 
 ## Mvc\Model\Exceptions\MissingMethodName
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MissingMethodName`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\MissingMethodName`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmissingmethodname-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7616,20 +7261,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\MissingModelClassName
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmissingmodelclassname-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"paramKey","default":null}]}>
-</ApiItem>
+- `public __construct(string $paramKey)`
 
 ### Methods
 
@@ -7639,20 +7284,20 @@ Class
 public function __construct( string $paramKey );
 ```
 
+
 ## Mvc\Model\Exceptions\ModelCouldNotLoad
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmodelcouldnotload-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"modelName","default":null}]}>
-</ApiItem>
+- `public __construct(string $modelName)`
 
 ### Methods
 
@@ -7662,20 +7307,20 @@ Class
 public function __construct( string $modelName );
 ```
 
+
 ## Mvc\Model\Exceptions\ModelOrmServicesUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsmodelormservicesunavailable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7685,20 +7330,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsprimarykeyattributenotset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"attribute","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $attribute, string $className)`
 
 ### Methods
 
@@ -7706,25 +7351,25 @@ Class
 
 ```php
 public function __construct(
-string $attribute,
-string $className
+    string $attribute,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\PrimaryKeyRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsprimarykeyrequired-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7734,20 +7379,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\PropertyNotAccessible
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionspropertynotaccessible-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"property","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $property, string $className)`
 
 ### Methods
 
@@ -7755,25 +7400,25 @@ Class
 
 ```php
 public function __construct(
-string $property,
-string $className
+    string $property,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RecordCannotRefresh
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsrecordcannotrefresh-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7783,20 +7428,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\RecordNotPersisted
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsrecordnotpersisted-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7806,20 +7451,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\ReferencedFieldsMismatch
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsreferencedfieldsmismatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"relationType","default":null},{"type":"string","name":"entityName","default":null},{"type":"string","name":"referencedEntity","default":null}]}>
-</ApiItem>
+- `public __construct(string $relationType, string $entityName, string $referencedEntity)`
 
 ### Methods
 
@@ -7827,26 +7472,26 @@ Class
 
 ```php
 public function __construct(
-string $relationType,
-string $entityName,
-string $referencedEntity
+    string $relationType,
+    string $entityName,
+    string $referencedEntity
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RelationAliasMustBeString
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsrelationaliasmustbestring-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"relationType","default":null},{"type":"string","name":"entityName","default":null},{"type":"string","name":"referencedEntity","default":null}]}>
-</ApiItem>
+- `public __construct(string $relationType, string $entityName, string $referencedEntity)`
 
 ### Methods
 
@@ -7854,26 +7499,26 @@ Class
 
 ```php
 public function __construct(
-string $relationType,
-string $entityName,
-string $referencedEntity
+    string $relationType,
+    string $entityName,
+    string $referencedEntity
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RelationNotDefined
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsrelationnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"alias","default":null}]}>
-</ApiItem>
+- `public __construct(string $className, string $alias)`
 
 ### Methods
 
@@ -7881,25 +7526,25 @@ Class
 
 ```php
 public function __construct(
-string $className,
-string $alias
+    string $className,
+    string $alias
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RelationRequiresObjectOrArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsrelationrequiresobjectorarray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"relationName","default":null}]}>
-</ApiItem>
+- `public __construct(string $className, string $relationName)`
 
 ### Methods
 
@@ -7907,25 +7552,25 @@ Class
 
 ```php
 public function __construct(
-string $className,
-string $relationName
+    string $className,
+    string $relationName
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ResultsetColumnNotInMap
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsresultsetcolumnnotinmap-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $key)`
 
 ### Methods
 
@@ -7935,20 +7580,20 @@ Class
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Model\Exceptions\RowIsImmutable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsrowisimmutable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -7958,20 +7603,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\SnapshotsDisabled
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionssnapshotsdisabled-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -7981,20 +7626,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\StaticMethodRequiresOneArgument
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsstaticmethodrequiresoneargument-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $method, string $className)`
 
 ### Methods
 
@@ -8002,25 +7647,25 @@ Class
 
 ```php
 public function __construct(
-string $method,
-string $className
+    string $method,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\UnknownEagerRelation
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsunknowneagerrelation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"alias","default":null}]}>
-</ApiItem>
+- `public __construct(string $modelName, string $alias)`
 
 ### Methods
 
@@ -8028,25 +7673,25 @@ Class
 
 ```php
 public function __construct(
-string $modelName,
-string $alias
+    string $modelName,
+    string $alias
 );
 ```
+
 
 ## Mvc\Model\Exceptions\UnknownRelationType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsunknownrelationtype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -8056,20 +7701,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\UnsupportedEagerHydration
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsunsupportedeagerhydration-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -8079,20 +7724,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\UnsupportedEagerOption
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsunsupportedeageroption-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"option","default":null}]}>
-</ApiItem>
+- `public __construct(string $option)`
 
 ### Methods
 
@@ -8102,20 +7747,20 @@ Class
 public function __construct( string $option );
 ```
 
+
 ## Mvc\Model\Exceptions\UnsupportedEagerResultset
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsunsupportedeagerresultset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -8125,20 +7770,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\UpdateSnapshotDisabled
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelexceptionsupdatesnapshotdisabled-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -8148,6 +7793,7 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Hydration\CaseInsensitiveColumnMap
 
 Class
@@ -8156,9 +7802,7 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelhydrationcaseinsensitivecolumnmap-caseinsensitivecolumnmap" visibility="public" name="caseInsensitiveColumnMap" returnType="string" params={[{"type":"mixed","name":"columnMap","default":null},{"type":"mixed","name":"key","default":null}]}>
-Attempts to find key case-insensitively
-</ApiItem>
+- `public caseInsensitiveColumnMap(mixed $columnMap, mixed $key): string` — Attempts to find key case-insensitively
 
 ### Methods
 
@@ -8166,12 +7810,13 @@ Attempts to find key case-insensitively
 
 ```php
 public static function caseInsensitiveColumnMap(
-mixed $columnMap,
-mixed $key
+    mixed $columnMap,
+    mixed $key
 ): string;
 ```
 
 Attempts to find key case-insensitively
+
 
 ## Mvc\Model\Hydration\CloneResult
 
@@ -8183,9 +7828,7 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelhydrationcloneresult-cloneresult" visibility="public" name="cloneResult" returnType="ModelInterface" params={[{"type":"ModelInterface","name":"base","default":null},{"type":"array","name":"data","default":null},{"type":"int","name":"dirtyState","default":"0"}]}>
-Assigns values to a model from an array returning a new model
-</ApiItem>
+- `public cloneResult(ModelInterface $base, array $data, int $dirtyState = 0): ModelInterface` — Assigns values to a model from an array returning a new model
 
 ### Methods
 
@@ -8193,9 +7836,9 @@ Assigns values to a model from an array returning a new model
 
 ```php
 public static function cloneResult(
-ModelInterface $base,
-array $data,
-int $dirtyState = 0
+    ModelInterface $base,
+    array $data,
+    int $dirtyState = 0
 ): ModelInterface;
 ```
 
@@ -8203,14 +7846,15 @@ Assigns values to a model from an array returning a new model
 
 ```php
 $invoice = Phalcon\Mvc\Model::cloneResult(
-new Invoices(),
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    new Invoices(),
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 ```
+
 
 ## Mvc\Model\Hydration\CloneResultMapHydrate
 
@@ -8222,9 +7866,7 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelhydrationcloneresultmaphydrate-cloneresultmaphydrate" visibility="public" name="cloneResultMapHydrate" returnType="" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"columnMap","default":null},{"type":"int","name":"hydrationMode","default":null},{"type":"string","name":"calledClass","default":"\"Phalcon\\\\Mvc\\\\Model\""}]}>
-Returns an hydrated result based on the data and the column map
-</ApiItem>
+- `public cloneResultMapHydrate(array $data, mixed $columnMap, int $hydrationMode, string $calledClass = "Phalcon\\Mvc\\Model")` — Returns an hydrated result based on the data and the column map
 
 ### Methods
 
@@ -8232,14 +7874,15 @@ Returns an hydrated result based on the data and the column map
 
 ```php
 public static function cloneResultMapHydrate(
-array $data,
-mixed $columnMap,
-int $hydrationMode,
-string $calledClass = "Phalcon\\Mvc\\Model"
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode,
+    string $calledClass = "Phalcon\\Mvc\\Model"
 );
 ```
 
 Returns an hydrated result based on the data and the column map
+
 
 ## Mvc\Model\Hydration\GetPrivateProperties
 
@@ -8251,9 +7894,7 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelhydrationgetprivateproperties-getprivateproperties" visibility="public" name="getPrivateProperties" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the declared private properties of a class (including inherited
-</ApiItem>
+- `public getPrivateProperties(string $className): array` — Returns the declared private properties of a class (including inherited
 
 ### Methods
 
@@ -8274,6 +7915,7 @@ database value instead.
 
 @see https://github.com/phalcon/cphalcon/issues/16454
 
+
 ## Mvc\Model\Manager
 
 Class
@@ -8291,10 +7933,10 @@ use Phalcon\Mvc\Model\Manager as ModelsManager;
 $di = new Di();
 
 $di->set(
-"modelsManager",
-function() {
-    return new ModelsManager();
-}
+    "modelsManager",
+    function() {
+        return new ModelsManager();
+    }
 );
 
 $invoice = new Invoices($di);
@@ -8306,315 +7948,220 @@ $invoice = new Invoices($di);
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmanager-__destruct" visibility="public" name="__destruct" returnType="" params={[]}>
-Destroys the current PHQL cache
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-addbehavior" visibility="public" name="addBehavior" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"BehaviorInterface","name":"behavior","default":null}]}>
-Binds a behavior to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-addbelongsto" visibility="public" name="addBelongsTo" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a relation reverse many to one between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-addhasmany" visibility="public" name="addHasMany" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a relation 1-n between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-addhasmanytomany" visibility="public" name="addHasManyToMany" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateFields","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setups a relation n-m between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-addhasone" visibility="public" name="addHasOne" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a 1-1 relation between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-addhasonethrough" visibility="public" name="addHasOneThrough" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateFields","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setups a relation 1-1 between two models using an intermediate model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-clearreusableobjects" visibility="public" name="clearReusableObjects" returnType="void" params={[]}>
-Clears the internal reusable list
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-createbuilder" visibility="public" name="createBuilder" returnType="BuilderInterface" params={[{"type":"mixed","name":"params","default":"null"}]}>
-Creates a Phalcon\Mvc\Model\Query\Builder
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-createquery" visibility="public" name="createQuery" returnType="QueryInterface" params={[{"type":"string","name":"phql","default":null}]}>
-Creates a Phalcon\Mvc\Model\Query without execute it
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-executequery" visibility="public" name="executeQuery" returnType="mixed" params={[{"type":"string","name":"phql","default":null},{"type":"mixed","name":"placeholders","default":"null"},{"type":"mixed","name":"types","default":"null"}]}>
-Creates a Phalcon\Mvc\Model\Query and execute it
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-existsbelongsto" visibility="public" name="existsBelongsTo" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a belongsTo relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-existshasmany" visibility="public" name="existsHasMany" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasMany relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-existshasmanytomany" visibility="public" name="existsHasManyToMany" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasManyToMany relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-existshasone" visibility="public" name="existsHasOne" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasOne relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-existshasonethrough" visibility="public" name="existsHasOneThrough" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasOneThrough relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getbelongsto" visibility="public" name="getBelongsTo" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets all the belongsTo relations defined in a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getbelongstorecords" visibility="public" name="getBelongsToRecords" returnType="ResultsetInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Gets belongsTo related records from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getbuilder" visibility="public" name="getBuilder" returnType="BuilderInterface|null" params={[]}>
-Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getconnectionservice" visibility="public" name="getConnectionService" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"connectionServices","default":null}]}>
-Returns the connection service name used to read or write data related to
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getcustomeventsmanager" visibility="public" name="getCustomEventsManager" returnType="EventsManagerInterface|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns a custom events manager related to a model or null if there is
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-geteventsmanager" visibility="public" name="getEventsManager" returnType="EventsManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasmany" visibility="public" name="getHasMany" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasMany relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasmanyrecords" visibility="public" name="getHasManyRecords" returnType="ResultsetInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Gets hasMany related records from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasmanytomany" visibility="public" name="getHasManyToMany" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasManyToMany relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasone" visibility="public" name="getHasOne" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasOne relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasoneandhasmany" visibility="public" name="getHasOneAndHasMany" returnType="RelationInterface[]" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasOne relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasonerecords" visibility="public" name="getHasOneRecords" returnType="ModelInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Gets belongsTo related records from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-gethasonethrough" visibility="public" name="getHasOneThrough" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasOneThrough relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getlastinitialized" visibility="public" name="getLastInitialized" returnType="ModelInterface|null" params={[]}>
-Get last initialized model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getlastquery" visibility="public" name="getLastQuery" returnType="QueryInterface" params={[]}>
-Returns the last query created or executed in the models manager
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getmodelprefix" visibility="public" name="getModelPrefix" returnType="string" params={[]}>
-Returns the prefix for all model sources.
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getmodelschema" visibility="public" name="getModelSchema" returnType="string|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the mapped schema for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getmodelsource" visibility="public" name="getModelSource" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the mapped source for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getreadconnection" visibility="public" name="getReadConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection to read data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getreadconnectionservice" visibility="public" name="getReadConnectionService" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection service name used to read data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getrelationbyalias" visibility="public" name="getRelationByAlias" returnType="bool|RelationInterface" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"alias","default":null}]}>
-Returns a relation by its alias
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getrelationrecords" visibility="public" name="getRelationRecords" returnType="" params={[{"type":"RelationInterface","name":"relation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Helper method to query records based on a relation definition
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getrelations" visibility="public" name="getRelations" returnType="RelationInterface[]" params={[{"type":"string","name":"modelName","default":null}]}>
-Query all the relationships defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getrelationsbetween" visibility="public" name="getRelationsBetween" returnType="RelationInterface[]|bool" params={[{"type":"string","name":"first","default":null},{"type":"string","name":"second","default":null}]}>
-Query the first relationship defined between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getreusablerecords" visibility="public" name="getReusableRecords" returnType="" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"key","default":null}]}>
-Returns a reusable object from the internal list
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getwriteconnection" visibility="public" name="getWriteConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection to write data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getwriteconnectionservice" visibility="public" name="getWriteConnectionService" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection service name used to write data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-hasbelongsto" visibility="public" name="hasBelongsTo" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a belongsTo relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-hashasmany" visibility="public" name="hasHasMany" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasMany relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-hashasmanytomany" visibility="public" name="hasHasManyToMany" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasManyToMany relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-hashasone" visibility="public" name="hasHasOne" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasOne relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-hashasonethrough" visibility="public" name="hasHasOneThrough" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasOneThrough relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-initialize" visibility="public" name="initialize" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Initializes a model in the model manager
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-isinitialized" visibility="public" name="isInitialized" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
-Check whether a model is already initialized
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-iskeepingsnapshots" visibility="public" name="isKeepingSnapshots" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Checks if a model is keeping snapshots for the queried records
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-isusingdynamicupdate" visibility="public" name="isUsingDynamicUpdate" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Checks if a model is using dynamic update instead of all-field update
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-isvisiblemodelproperty" visibility="public" name="isVisibleModelProperty" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"property","default":null}]}>
-Check whether a model property is declared as public.
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-keepsnapshots" visibility="public" name="keepSnapshots" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"bool","name":"keepSnapshots","default":null}]}>
-Sets if a model must keep snapshots
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-load" visibility="public" name="load" returnType="ModelInterface" params={[{"type":"string","name":"modelName","default":null}]}>
-Loads a model throwing an exception if it does not exist
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-mergefindparameters" visibility="public" name="mergeFindParameters" returnType="array" params={[{"type":"mixed","name":"findParamsOne","default":null},{"type":"mixed","name":"findParamsTwo","default":null}]}>
-Merge two arrays of find parameters
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-missingmethod" visibility="public" name="missingMethod" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":null}]}>
-Dispatch an event to the listeners and behaviors
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-notifyevent" visibility="public" name="notifyEvent" returnType="" params={[{"type":"string","name":"eventName","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-Receives events generated in the models and dispatches them to an
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-registerwrite" visibility="public" name="registerWrite" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Marks the model's write connection service as written-to for the
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-removebehavior" visibility="public" name="removeBehavior" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"behaviorClass","default":null}]}>
-Removes a behavior from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-resetconnectionstate" visibility="public" name="resetConnectionState" returnType="void" params={[]}>
-Clears the per-request sticky write tracking. Call this between
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setconnectionservice" visibility="public" name="setConnectionService" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"connectionService","default":null}]}>
-Sets both write and read connection service for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setcustomeventsmanager" visibility="public" name="setCustomEventsManager" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"EventsManagerInterface","name":"eventsManager","default":null}]}>
-Sets a custom events manager for a specific model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"EventsManagerInterface","name":"eventsManager","default":null}]}>
-Sets a global events manager
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setmodelprefix" visibility="public" name="setModelPrefix" returnType="void" params={[{"type":"string","name":"prefix","default":null}]}>
-Sets the prefix for all model sources.
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setmodelschema" visibility="public" name="setModelSchema" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"schema","default":null}]}>
-Sets the mapped schema for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setmodelsource" visibility="public" name="setModelSource" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"source","default":null}]}>
-Sets the mapped source for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setreadconnectionservice" visibility="public" name="setReadConnectionService" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"connectionService","default":null}]}>
-Sets read connection service for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setreusablerecords" visibility="public" name="setReusableRecords" returnType="void" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"key","default":null},{"type":"mixed","name":"records","default":null}]}>
-Stores a reusable record in the internal list
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setsticky" visibility="public" name="setSticky" returnType="void" params={[{"type":"bool","name":"sticky","default":null}]}>
-Enables or disables sticky connections. When enabled, once a model has
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-setwriteconnectionservice" visibility="public" name="setWriteConnectionService" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"connectionService","default":null}]}>
-Sets write connection service for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-usedynamicupdate" visibility="public" name="useDynamicUpdate" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"bool","name":"dynamicUpdate","default":null}]}>
-Sets if a model must use dynamic update instead of the all-field update
-</ApiItem>
-<ApiItem href="#mvcmodelmanager-getconnection" visibility="protected" name="getConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"connectionServices","default":null}]}>
-Returns the connection to read or write data related to a model
-</ApiItem>
+- `public __destruct()` — Destroys the current PHQL cache
+
+- `public addBehavior(ModelInterface $model, BehaviorInterface $behavior): void` — Binds a behavior to a model
+
+- `public addBelongsTo(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setup a relation reverse many to one between two models
+
+- `public addHasMany(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setup a relation 1-n between two models
+
+- `public addHasManyToMany(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setups a relation n-m between two models
+
+- `public addHasOne(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setup a 1-1 relation between two models
+
+- `public addHasOneThrough(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setups a relation 1-1 between two models using an intermediate model
+
+- `public clearReusableObjects(): void` — Clears the internal reusable list
+
+- `public createBuilder(mixed $params = null): BuilderInterface` — Creates a Phalcon\Mvc\Model\Query\Builder
+
+- `public createQuery(string $phql): QueryInterface` — Creates a Phalcon\Mvc\Model\Query without execute it
+
+- `public executeQuery(string $phql, mixed $placeholders = null, mixed $types = null): mixed` — Creates a Phalcon\Mvc\Model\Query and execute it
+
+- `public existsBelongsTo(string $modelName, string $modelRelation): bool` — Checks whether a model has a belongsTo relation with another model
+
+- `public existsHasMany(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasMany relation with another model
+
+- `public existsHasManyToMany(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasManyToMany relation with another model
+
+- `public existsHasOne(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasOne relation with another model
+
+- `public existsHasOneThrough(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasOneThrough relation with another model
+
+- `public getBelongsTo(ModelInterface $model): RelationInterface[]|array` — Gets all the belongsTo relations defined in a model
+
+- `public getBelongsToRecords(string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string|null $method = null): ResultsetInterface|bool` — Gets belongsTo related records from a model
+
+- `public getBuilder(): BuilderInterface|null` — Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
+
+- `public getConnectionService(ModelInterface $model, array $connectionServices): string` — Returns the connection service name used to read or write data related to
+
+- `public getCustomEventsManager(ModelInterface $model): EventsManagerInterface|null` — Returns a custom events manager related to a model or null if there is
+
+- `public getDI(): DiInterface` — Returns the DependencyInjector container
+
+- `public getEventsManager(): EventsManagerInterface|null` — Returns the internal event manager
+
+- `public getHasMany(ModelInterface $model): RelationInterface[]|array` — Gets hasMany relations defined on a model
+
+- `public getHasManyRecords(string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string|null $method = null): ResultsetInterface|bool` — Gets hasMany related records from a model
+
+- `public getHasManyToMany(ModelInterface $model): RelationInterface[]|array` — Gets hasManyToMany relations defined on a model
+
+- `public getHasOne(ModelInterface $model): array` — Gets hasOne relations defined on a model
+
+- `public getHasOneAndHasMany(ModelInterface $model): RelationInterface[]` — Gets hasOne relations defined on a model
+
+- `public getHasOneRecords(string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string|null $method = null): ModelInterface|bool` — Gets belongsTo related records from a model
+
+- `public getHasOneThrough(ModelInterface $model): RelationInterface[]|array` — Gets hasOneThrough relations defined on a model
+
+- `public getLastInitialized(): ModelInterface|null` — Get last initialized model
+
+- `public getLastQuery(): QueryInterface` — Returns the last query created or executed in the models manager
+
+- `public getModelPrefix(): string` — Returns the prefix for all model sources.
+
+- `public getModelSchema(ModelInterface $model): string|null` — Returns the mapped schema for a model
+
+- `public getModelSource(ModelInterface $model): string` — Returns the mapped source for a model
+
+- `public getReadConnection(ModelInterface $model): AdapterInterface` — Returns the connection to read data related to a model
+
+- `public getReadConnectionService(ModelInterface $model): string` — Returns the connection service name used to read data related to a model
+
+- `public getRelationByAlias(string $modelName, string $alias): bool|RelationInterface` — Returns a relation by its alias
+
+- `public getRelationRecords(RelationInterface $relation, ModelInterface $record, mixed $parameters = null, string|null $method = null)` — Helper method to query records based on a relation definition
+
+- `public getRelations(string $modelName): RelationInterface[]` — Query all the relationships defined on a model
+
+- `public getRelationsBetween(string $first, string $second): RelationInterface[]|bool` — Query the first relationship defined between two models
+
+- `public getReusableRecords(string $modelName, string $key)` — Returns a reusable object from the internal list
+
+- `public getWriteConnection(ModelInterface $model): AdapterInterface` — Returns the connection to write data related to a model
+
+- `public getWriteConnectionService(ModelInterface $model): string` — Returns the connection service name used to write data related to a model
+
+- `public hasBelongsTo(string $modelName, string $modelRelation): bool` — Checks whether a model has a belongsTo relation with another model
+
+- `public hasHasMany(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasMany relation with another model
+
+- `public hasHasManyToMany(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasManyToMany relation with another model
+
+- `public hasHasOne(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasOne relation with another model
+
+- `public hasHasOneThrough(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasOneThrough relation with another model
+
+- `public initialize(ModelInterface $model): bool` — Initializes a model in the model manager
+
+- `public isInitialized(string $className): bool` — Check whether a model is already initialized
+
+- `public isKeepingSnapshots(ModelInterface $model): bool` — Checks if a model is keeping snapshots for the queried records
+
+- `public isUsingDynamicUpdate(ModelInterface $model): bool` — Checks if a model is using dynamic update instead of all-field update
+
+- `public isVisibleModelProperty(ModelInterface $model, string $property): bool` — Check whether a model property is declared as public.
+
+- `public keepSnapshots(ModelInterface $model, bool $keepSnapshots): void` — Sets if a model must keep snapshots
+
+- `public load(string $modelName): ModelInterface` — Loads a model throwing an exception if it does not exist
+
+- `public mergeFindParameters(mixed $findParamsOne, mixed $findParamsTwo): array` — Merge two arrays of find parameters
+
+- `public missingMethod(ModelInterface $model, string $eventName, mixed $data)` — Dispatch an event to the listeners and behaviors
+
+- `public notifyEvent(string $eventName, ModelInterface $model)` — Receives events generated in the models and dispatches them to an
+
+- `public registerWrite(ModelInterface $model): void` — Marks the model's write connection service as written-to for the
+
+- `public removeBehavior(ModelInterface $model, string $behaviorClass): void` — Removes a behavior from a model
+
+- `public resetConnectionState(): void` — Clears the per-request sticky write tracking. Call this between
+
+- `public setConnectionService(ModelInterface $model, string $connectionService): void` — Sets both write and read connection service for a model
+
+- `public setCustomEventsManager(ModelInterface $model, EventsManagerInterface $eventsManager): void` — Sets a custom events manager for a specific model
+
+- `public setDI(DiInterface $container): void` — Sets the DependencyInjector container
+
+- `public setEventsManager(EventsManagerInterface $eventsManager): void` — Sets a global events manager
+
+- `public setModelPrefix(string $prefix): void` — Sets the prefix for all model sources.
+
+- `public setModelSchema(ModelInterface $model, string $schema): void` — Sets the mapped schema for a model
+
+- `public setModelSource(ModelInterface $model, string $source): void` — Sets the mapped source for a model
+
+- `public setReadConnectionService(ModelInterface $model, string $connectionService): void` — Sets read connection service for a model
+
+- `public setReusableRecords(string $modelName, string $key, mixed $records): void` — Stores a reusable record in the internal list
+
+- `public setSticky(bool $sticky): void` — Enables or disables sticky connections. When enabled, once a model has
+
+- `public setWriteConnectionService(ModelInterface $model, string $connectionService): void` — Sets write connection service for a model
+
+- `public useDynamicUpdate(ModelInterface $model, bool $dynamicUpdate): void` — Sets if a model must use dynamic update instead of the all-field update
+
+- `protected getConnection(ModelInterface $model, array $connectionServices): AdapterInterface` — Returns the connection to read or write data related to a model
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="aliases" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="behaviors" type="array" default="[]">
-Models' behaviors
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="belongsTo" type="array" default="[]">
-Belongs to relations
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="belongsToSingle" type="array" default="[]">
-All the relationships by model
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="builder" type="BuilderInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="customEventsManager" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="dirtyWriteServices" type="array" default="[]">
-Write connection services that have been written to during the current
-request cycle. Used by the sticky mechanism to route reads to the write
-connection after a write.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="dynamicUpdate" type="array" default="[]">
-Does the model use dynamic update, instead of updating all rows?
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="EventsManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasMany" type="array" default="[]">
-Has many relations
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasManySingle" type="array" default="[]">
-Has many relations by model
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasManyToMany" type="array" default="[]">
-Has many-Through relations
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasManyToManySingle" type="array" default="[]">
-Has many-Through relations by model
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasOne" type="array" default="[]">
-Has one relations
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasOneSingle" type="array" default="[]">
-Has one relations by model
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasOneThrough" type="array" default="[]">
-Has one through relations
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasOneThroughSingle" type="array" default="[]">
-Has one through relations by model
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="initialized" type="array" default="[]">
-Mark initialized models
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="keepSnapshots" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lastInitialized" type="ModelInterface|null" default="null">
-Last model initialized
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lastQuery" type="QueryInterface|null" default="null">
-Last query created/executed
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelVisibility" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="readConnectionServices" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="reusable" type="array" default="[]">
-Stores a list of reusable instances
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="schemas" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sources" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sticky" type="bool" default="false">
-Whether reads should stick to the write connection after a write has
-occurred during the current request cycle.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="writeConnectionServices" type="array" default="[]">
-</ApiItem>
+- `protected array $aliases = []`
+
+- `protected array $behaviors = []` — Models' behaviors
+
+- `protected array $belongsTo = []` — Belongs to relations
+
+- `protected array $belongsToSingle = []` — All the relationships by model
+
+- `protected BuilderInterface|null $builder = null`
+
+- `protected DiInterface|null $container = null`
+
+- `protected array $customEventsManager = []`
+
+- `protected array $dirtyWriteServices = []` — Write connection services that have been written to during the current
+  request cycle. Used by the sticky mechanism to route reads to the write
+  connection after a write.
+
+- `protected array $dynamicUpdate = []` — Does the model use dynamic update, instead of updating all rows?
+
+- `protected EventsManagerInterface|null $eventsManager = null`
+
+- `protected array $hasMany = []` — Has many relations
+
+- `protected array $hasManySingle = []` — Has many relations by model
+
+- `protected array $hasManyToMany = []` — Has many-Through relations
+
+- `protected array $hasManyToManySingle = []` — Has many-Through relations by model
+
+- `protected array $hasOne = []` — Has one relations
+
+- `protected array $hasOneSingle = []` — Has one relations by model
+
+- `protected array $hasOneThrough = []` — Has one through relations
+
+- `protected array $hasOneThroughSingle = []` — Has one through relations by model
+
+- `protected array $initialized = []` — Mark initialized models
+
+- `protected array $keepSnapshots = []`
+
+- `protected ModelInterface|null $lastInitialized = null` — Last model initialized
+
+- `protected QueryInterface|null $lastQuery = null` — Last query created/executed
+
+- `protected array $modelVisibility = []`
+
+- `protected string $prefix = ""`
+
+- `protected array $readConnectionServices = []`
+
+- `protected array $reusable = []` — Stores a list of reusable instances
+
+- `protected array $schemas = []`
+
+- `protected array $sources = []`
+
+- `protected bool $sticky = false` — Whether reads should stick to the write connection after a write has
+  occurred during the current request cycle.
+
+- `protected array $writeConnectionServices = []`
 
 ### Methods
 
@@ -8630,8 +8177,8 @@ Destroys the current PHQL cache
 
 ```php
 public function addBehavior(
-ModelInterface $model,
-BehaviorInterface $behavior
+    ModelInterface $model,
+    BehaviorInterface $behavior
 ): void;
 ```
 
@@ -8641,11 +8188,11 @@ Binds a behavior to a model
 
 ```php
 public function addBelongsTo(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -8655,11 +8202,11 @@ Setup a relation reverse many to one between two models
 
 ```php
 public function addHasMany(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -8669,14 +8216,14 @@ Setup a relation 1-n between two models
 
 ```php
 public function addHasManyToMany(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -8686,11 +8233,11 @@ Setups a relation n-m between two models
 
 ```php
 public function addHasOne(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -8700,14 +8247,14 @@ Setup a 1-1 relation between two models
 
 ```php
 public function addHasOneThrough(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -8741,9 +8288,9 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 ```php
 public function executeQuery(
-string $phql,
-mixed $placeholders = null,
-mixed $types = null
+    string $phql,
+    mixed $placeholders = null,
+    mixed $types = null
 ): mixed;
 ```
 
@@ -8773,8 +8320,8 @@ $manager->executeQuery('DELETE FROM Invoices WHERE inv_id = :id:', ['id' => 1]);
 
 ```php
 public function existsBelongsTo(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -8784,8 +8331,8 @@ Checks whether a model has a belongsTo relation with another model
 
 ```php
 public function existsHasMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -8795,8 +8342,8 @@ Checks whether a model has a hasMany relation with another model
 
 ```php
 public function existsHasManyToMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -8806,8 +8353,8 @@ Checks whether a model has a hasManyToMany relation with another model
 
 ```php
 public function existsHasOne(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -8817,8 +8364,8 @@ Checks whether a model has a hasOne relation with another model
 
 ```php
 public function existsHasOneThrough(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -8834,7 +8381,7 @@ Gets all the belongsTo relations defined in a model
 
 ```php
 $relations = $modelsManager->getBelongsTo(
-new Invoices()
+    new Invoices()
 );
 ```
 
@@ -8842,11 +8389,11 @@ new Invoices()
 
 ```php
 public function getBelongsToRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -8864,8 +8411,8 @@ Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
 
 ```php
 public function getConnectionService(
-ModelInterface $model,
-array $connectionServices
+    ModelInterface $model,
+    array $connectionServices
 ): string;
 ```
 
@@ -8909,11 +8456,11 @@ Gets hasMany relations defined on a model
 
 ```php
 public function getHasManyRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -8947,11 +8494,11 @@ Gets hasOne relations defined on a model
 
 ```php
 public function getHasOneRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ModelInterface|bool;
 ```
 
@@ -9025,8 +8572,8 @@ Returns the connection service name used to read data related to a model
 
 ```php
 public function getRelationByAlias(
-string $modelName,
-string $alias
+    string $modelName,
+    string $alias
 ): bool|RelationInterface;
 ```
 
@@ -9036,10 +8583,10 @@ Returns a relation by its alias
 
 ```php
 public function getRelationRecords(
-RelationInterface $relation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    RelationInterface $relation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 );
 ```
 
@@ -9057,8 +8604,8 @@ Query all the relationships defined on a model
 
 ```php
 public function getRelationsBetween(
-string $first,
-string $second
+    string $first,
+    string $second
 ): RelationInterface[]|bool;
 ```
 
@@ -9068,8 +8615,8 @@ Query the first relationship defined between two models
 
 ```php
 public function getReusableRecords(
-string $modelName,
-string $key
+    string $modelName,
+    string $key
 );
 ```
 
@@ -9095,8 +8642,8 @@ Returns the connection service name used to write data related to a model
 
 ```php
 public function hasBelongsTo(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -9106,8 +8653,8 @@ Checks whether a model has a belongsTo relation with another model
 
 ```php
 public function hasHasMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -9117,8 +8664,8 @@ Checks whether a model has a hasMany relation with another model
 
 ```php
 public function hasHasManyToMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -9128,8 +8675,8 @@ Checks whether a model has a hasManyToMany relation with another model
 
 ```php
 public function hasHasOne(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -9139,8 +8686,8 @@ Checks whether a model has a hasOne relation with another model
 
 ```php
 public function hasHasOneThrough(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -9182,8 +8729,8 @@ Checks if a model is using dynamic update instead of all-field update
 
 ```php
 final public function isVisibleModelProperty(
-ModelInterface $model,
-string $property
+    ModelInterface $model,
+    string $property
 ): bool;
 ```
 
@@ -9191,8 +8738,8 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-new Invoices(),
-"name"
+    new Invoices(),
+    "name"
 );
 ```
 
@@ -9200,8 +8747,8 @@ new Invoices(),
 
 ```php
 public function keepSnapshots(
-ModelInterface $model,
-bool $keepSnapshots
+    ModelInterface $model,
+    bool $keepSnapshots
 ): void;
 ```
 
@@ -9219,8 +8766,8 @@ Loads a model throwing an exception if it does not exist
 
 ```php
 final public static function mergeFindParameters(
-mixed $findParamsOne,
-mixed $findParamsTwo
+    mixed $findParamsOne,
+    mixed $findParamsTwo
 ): array;
 ```
 
@@ -9238,9 +8785,9 @@ loaders can reuse the merge instead of duplicating these semantics.
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $eventName,
-mixed $data
+    ModelInterface $model,
+    string $eventName,
+    mixed $data
 );
 ```
 
@@ -9252,8 +8799,8 @@ meaning that a least one was implemented
 
 ```php
 public function notifyEvent(
-string $eventName,
-ModelInterface $model
+    string $eventName,
+    ModelInterface $model
 );
 ```
 
@@ -9275,8 +8822,8 @@ subsequent reads to the write connection.
 
 ```php
 public function removeBehavior(
-ModelInterface $model,
-string $behaviorClass
+    ModelInterface $model,
+    string $behaviorClass
 ): void;
 ```
 
@@ -9296,8 +8843,8 @@ manager instance is reused across requests.
 
 ```php
 public function setConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -9307,8 +8854,8 @@ Sets both write and read connection service for a model
 
 ```php
 public function setCustomEventsManager(
-ModelInterface $model,
-EventsManagerInterface $eventsManager
+    ModelInterface $model,
+    EventsManagerInterface $eventsManager
 ): void;
 ```
 
@@ -9342,14 +8889,14 @@ Sets the prefix for all model sources.
 use Phalcon\Mvc\Model\Manager;
 
 $di->set(
-"modelsManager",
-function () {
-    $modelsManager = new Manager();
+    "modelsManager",
+    function () {
+        $modelsManager = new Manager();
 
-    $modelsManager->setModelPrefix("wp_");
+        $modelsManager->setModelPrefix("wp_");
 
-    return $modelsManager;
-}
+        return $modelsManager;
+    }
 );
 
 $invoices = new Invoices();
@@ -9361,8 +8908,8 @@ echo $invoices->getSource(); // wp_co_invoices
 
 ```php
 public function setModelSchema(
-ModelInterface $model,
-string $schema
+    ModelInterface $model,
+    string $schema
 ): void;
 ```
 
@@ -9372,8 +8919,8 @@ Sets the mapped schema for a model
 
 ```php
 public function setModelSource(
-ModelInterface $model,
-string $source
+    ModelInterface $model,
+    string $source
 ): void;
 ```
 
@@ -9383,8 +8930,8 @@ Sets the mapped source for a model
 
 ```php
 public function setReadConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -9394,9 +8941,9 @@ Sets read connection service for a model
 
 ```php
 public function setReusableRecords(
-string $modelName,
-string $key,
-mixed $records
+    string $modelName,
+    string $key,
+    mixed $records
 ): void;
 ```
 
@@ -9416,8 +8963,8 @@ further reads for that write service use the write connection.
 
 ```php
 public function setWriteConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -9427,8 +8974,8 @@ Sets write connection service for a model
 
 ```php
 public function useDynamicUpdate(
-ModelInterface $model,
-bool $dynamicUpdate
+    ModelInterface $model,
+    bool $dynamicUpdate
 ): void;
 ```
 
@@ -9438,13 +8985,14 @@ Sets if a model must use dynamic update instead of the all-field update
 
 ```php
 protected function getConnection(
-ModelInterface $model,
-array $connectionServices
+    ModelInterface $model,
+    array $connectionServices
 ): AdapterInterface;
 ```
 
 Returns the connection to read or write data related to a model
 depending on the connection services.
+
 
 ## Mvc\Model\ManagerInterface
 
@@ -9458,180 +9006,121 @@ Interface for Phalcon\Mvc\Model\Manager
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmanagerinterface-addbehavior" visibility="public" name="addBehavior" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"BehaviorInterface","name":"behavior","default":null}]}>
-Binds a behavior to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-addbelongsto" visibility="public" name="addBelongsTo" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a relation reverse 1-1  between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-addhasmany" visibility="public" name="addHasMany" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a relation 1-n between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-addhasmanytomany" visibility="public" name="addHasManyToMany" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateFields","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setups a relation n-m between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-addhasone" visibility="public" name="addHasOne" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setup a 1-1 relation between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-addhasonethrough" visibility="public" name="addHasOneThrough" returnType="RelationInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"fields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateFields","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Setups a 1-1 relation between two models using an intermediate table
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-clearreusableobjects" visibility="public" name="clearReusableObjects" returnType="void" params={[]}>
-Clears the internal reusable list
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-createbuilder" visibility="public" name="createBuilder" returnType="BuilderInterface" params={[{"type":"mixed","name":"params","default":"null"}]}>
-Creates a Phalcon\Mvc\Model\Query\Builder
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-createquery" visibility="public" name="createQuery" returnType="QueryInterface" params={[{"type":"string","name":"phql","default":null}]}>
-Creates a Phalcon\Mvc\Model\Query without execute it
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-executequery" visibility="public" name="executeQuery" returnType="mixed" params={[{"type":"string","name":"phql","default":null},{"type":"mixed","name":"placeholders","default":"null"},{"type":"mixed","name":"types","default":"null"}]}>
-Creates a Phalcon\Mvc\Model\Query and execute it
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getbelongsto" visibility="public" name="getBelongsTo" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets belongsTo relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getbelongstorecords" visibility="public" name="getBelongsToRecords" returnType="ResultsetInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Gets belongsTo related records from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getbuilder" visibility="public" name="getBuilder" returnType="BuilderInterface|null" params={[]}>
-Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasmany" visibility="public" name="getHasMany" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasMany relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasmanyrecords" visibility="public" name="getHasManyRecords" returnType="bool|ResultsetInterface" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Gets hasMany related records from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasmanytomany" visibility="public" name="getHasManyToMany" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasManyToMany relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasone" visibility="public" name="getHasOne" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasOne relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasoneandhasmany" visibility="public" name="getHasOneAndHasMany" returnType="RelationInterface[]" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasOne relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasonerecords" visibility="public" name="getHasOneRecords" returnType="bool|ModelInterface" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Gets hasOne related records from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-gethasonethrough" visibility="public" name="getHasOneThrough" returnType="RelationInterface[]|array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Gets hasOneThrough relations defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getlastinitialized" visibility="public" name="getLastInitialized" returnType="ModelInterface|null" params={[]}>
-Get last initialized model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getlastquery" visibility="public" name="getLastQuery" returnType="QueryInterface" params={[]}>
-Returns the last query created or executed in the models manager
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getmodelschema" visibility="public" name="getModelSchema" returnType="string|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the mapped schema for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getmodelsource" visibility="public" name="getModelSource" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the mapped source for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getreadconnection" visibility="public" name="getReadConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection to read data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getreadconnectionservice" visibility="public" name="getReadConnectionService" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection service name used to read data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getrelationbyalias" visibility="public" name="getRelationByAlias" returnType="RelationInterface|bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"alias","default":null}]}>
-Returns a relation by its alias
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getrelationrecords" visibility="public" name="getRelationRecords" returnType="" params={[{"type":"RelationInterface","name":"relation","default":null},{"type":"ModelInterface","name":"record","default":null},{"type":"mixed","name":"parameters","default":"null"},{"type":"string|null","name":"method","default":"null"}]}>
-Helper method to query records based on a relation definition
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getrelations" visibility="public" name="getRelations" returnType="RelationInterface[]" params={[{"type":"string","name":"modelName","default":null}]}>
-Query all the relationships defined on a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getrelationsbetween" visibility="public" name="getRelationsBetween" returnType="RelationInterface[]|bool" params={[{"type":"string","name":"first","default":null},{"type":"string","name":"second","default":null}]}>
-Query the relations between two models
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getreusablerecords" visibility="public" name="getReusableRecords" returnType="" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"key","default":null}]}>
-Returns a reusable object from the internal list
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getwriteconnection" visibility="public" name="getWriteConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection to write data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-getwriteconnectionservice" visibility="public" name="getWriteConnectionService" returnType="string" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the connection service name used to write data related to a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-hasbelongsto" visibility="public" name="hasBelongsTo" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a belongsTo relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-hashasmany" visibility="public" name="hasHasMany" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasMany relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-hashasmanytomany" visibility="public" name="hasHasManyToMany" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasManyToMany relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-hashasone" visibility="public" name="hasHasOne" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasOne relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-hashasonethrough" visibility="public" name="hasHasOneThrough" returnType="bool" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"modelRelation","default":null}]}>
-Checks whether a model has a hasOneThrough relation with another model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-initialize" visibility="public" name="initialize" returnType="" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Initializes a model in the model manager
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-isinitialized" visibility="public" name="isInitialized" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
-Check of a model is already initialized
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-iskeepingsnapshots" visibility="public" name="isKeepingSnapshots" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Checks if a model is keeping snapshots for the queried records
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-isusingdynamicupdate" visibility="public" name="isUsingDynamicUpdate" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Checks if a model is using dynamic update instead of all-field update
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-isvisiblemodelproperty" visibility="public" name="isVisibleModelProperty" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"property","default":null}]}>
-Check whether a model property is declared as public.
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-keepsnapshots" visibility="public" name="keepSnapshots" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"bool","name":"keepSnapshots","default":null}]}>
-Sets if a model must keep snapshots
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-load" visibility="public" name="load" returnType="ModelInterface" params={[{"type":"string","name":"modelName","default":null}]}>
-Loads a model throwing an exception if it does not exist
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-missingmethod" visibility="public" name="missingMethod" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":null}]}>
-Dispatch an event to the listeners and behaviors
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-notifyevent" visibility="public" name="notifyEvent" returnType="" params={[{"type":"string","name":"eventName","default":null},{"type":"ModelInterface","name":"model","default":null}]}>
-Receives events generated in the models and dispatches them to an
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-registerwrite" visibility="public" name="registerWrite" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Marks the model's write connection service as written-to for the
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-removebehavior" visibility="public" name="removeBehavior" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"behaviorClass","default":null}]}>
-Removes a behavior from a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-resetconnectionstate" visibility="public" name="resetConnectionState" returnType="void" params={[]}>
-Clears the per-request sticky write tracking
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setconnectionservice" visibility="public" name="setConnectionService" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"connectionService","default":null}]}>
-Sets both write and read connection service for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setmodelschema" visibility="public" name="setModelSchema" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"schema","default":null}]}>
-Sets the mapped schema for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setmodelsource" visibility="public" name="setModelSource" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"source","default":null}]}>
-Sets the mapped source for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setreadconnectionservice" visibility="public" name="setReadConnectionService" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"connectionService","default":null}]}>
-Sets read connection service for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setreusablerecords" visibility="public" name="setReusableRecords" returnType="void" params={[{"type":"string","name":"modelName","default":null},{"type":"string","name":"key","default":null},{"type":"mixed","name":"records","default":null}]}>
-Stores a reusable record in the internal list
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setsticky" visibility="public" name="setSticky" returnType="void" params={[{"type":"bool","name":"sticky","default":null}]}>
-Enables or disables sticky connections
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-setwriteconnectionservice" visibility="public" name="setWriteConnectionService" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"connectionService","default":null}]}>
-Sets write connection service for a model
-</ApiItem>
-<ApiItem href="#mvcmodelmanagerinterface-usedynamicupdate" visibility="public" name="useDynamicUpdate" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"bool","name":"dynamicUpdate","default":null}]}>
-Sets if a model must use dynamic update instead of the all-field update
-</ApiItem>
+- `public addBehavior(ModelInterface $model, BehaviorInterface $behavior): void` — Binds a behavior to a model
+
+- `public addBelongsTo(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setup a relation reverse 1-1  between two models
+
+- `public addHasMany(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setup a relation 1-n between two models
+
+- `public addHasManyToMany(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setups a relation n-m between two models
+
+- `public addHasOne(ModelInterface $model, mixed $fields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setup a 1-1 relation between two models
+
+- `public addHasOneThrough(ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, array $options = []): RelationInterface` — Setups a 1-1 relation between two models using an intermediate table
+
+- `public clearReusableObjects(): void` — Clears the internal reusable list
+
+- `public createBuilder(mixed $params = null): BuilderInterface` — Creates a Phalcon\Mvc\Model\Query\Builder
+
+- `public createQuery(string $phql): QueryInterface` — Creates a Phalcon\Mvc\Model\Query without execute it
+
+- `public executeQuery(string $phql, mixed $placeholders = null, mixed $types = null): mixed` — Creates a Phalcon\Mvc\Model\Query and execute it
+
+- `public getBelongsTo(ModelInterface $model): RelationInterface[]|array` — Gets belongsTo relations defined on a model
+
+- `public getBelongsToRecords(string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string|null $method = null): ResultsetInterface|bool` — Gets belongsTo related records from a model
+
+- `public getBuilder(): BuilderInterface|null` — Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
+
+- `public getHasMany(ModelInterface $model): RelationInterface[]|array` — Gets hasMany relations defined on a model
+
+- `public getHasManyRecords(string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string|null $method = null): bool|ResultsetInterface` — Gets hasMany related records from a model
+
+- `public getHasManyToMany(ModelInterface $model): RelationInterface[]|array` — Gets hasManyToMany relations defined on a model
+
+- `public getHasOne(ModelInterface $model): RelationInterface[]|array` — Gets hasOne relations defined on a model
+
+- `public getHasOneAndHasMany(ModelInterface $model): RelationInterface[]` — Gets hasOne relations defined on a model
+
+- `public getHasOneRecords(string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string|null $method = null): bool|ModelInterface` — Gets hasOne related records from a model
+
+- `public getHasOneThrough(ModelInterface $model): RelationInterface[]|array` — Gets hasOneThrough relations defined on a model
+
+- `public getLastInitialized(): ModelInterface|null` — Get last initialized model
+
+- `public getLastQuery(): QueryInterface` — Returns the last query created or executed in the models manager
+
+- `public getModelSchema(ModelInterface $model): string|null` — Returns the mapped schema for a model
+
+- `public getModelSource(ModelInterface $model): string` — Returns the mapped source for a model
+
+- `public getReadConnection(ModelInterface $model): AdapterInterface` — Returns the connection to read data related to a model
+
+- `public getReadConnectionService(ModelInterface $model): string` — Returns the connection service name used to read data related to a model
+
+- `public getRelationByAlias(string $modelName, string $alias): RelationInterface|bool` — Returns a relation by its alias
+
+- `public getRelationRecords(RelationInterface $relation, ModelInterface $record, mixed $parameters = null, string|null $method = null)` — Helper method to query records based on a relation definition
+
+- `public getRelations(string $modelName): RelationInterface[]` — Query all the relationships defined on a model
+
+- `public getRelationsBetween(string $first, string $second): RelationInterface[]|bool` — Query the relations between two models
+
+- `public getReusableRecords(string $modelName, string $key)` — Returns a reusable object from the internal list
+
+- `public getWriteConnection(ModelInterface $model): AdapterInterface` — Returns the connection to write data related to a model
+
+- `public getWriteConnectionService(ModelInterface $model): string` — Returns the connection service name used to write data related to a model
+
+- `public hasBelongsTo(string $modelName, string $modelRelation): bool` — Checks whether a model has a belongsTo relation with another model
+
+- `public hasHasMany(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasMany relation with another model
+
+- `public hasHasManyToMany(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasManyToMany relation with another model
+
+- `public hasHasOne(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasOne relation with another model
+
+- `public hasHasOneThrough(string $modelName, string $modelRelation): bool` — Checks whether a model has a hasOneThrough relation with another model
+
+- `public initialize(ModelInterface $model)` — Initializes a model in the model manager
+
+- `public isInitialized(string $className): bool` — Check of a model is already initialized
+
+- `public isKeepingSnapshots(ModelInterface $model): bool` — Checks if a model is keeping snapshots for the queried records
+
+- `public isUsingDynamicUpdate(ModelInterface $model): bool` — Checks if a model is using dynamic update instead of all-field update
+
+- `public isVisibleModelProperty(ModelInterface $model, string $property): bool` — Check whether a model property is declared as public.
+
+- `public keepSnapshots(ModelInterface $model, bool $keepSnapshots): void` — Sets if a model must keep snapshots
+
+- `public load(string $modelName): ModelInterface` — Loads a model throwing an exception if it does not exist
+
+- `public missingMethod(ModelInterface $model, string $eventName, mixed $data)` — Dispatch an event to the listeners and behaviors
+
+- `public notifyEvent(string $eventName, ModelInterface $model)` — Receives events generated in the models and dispatches them to an
+
+- `public registerWrite(ModelInterface $model): void` — Marks the model's write connection service as written-to for the
+
+- `public removeBehavior(ModelInterface $model, string $behaviorClass): void` — Removes a behavior from a model
+
+- `public resetConnectionState(): void` — Clears the per-request sticky write tracking
+
+- `public setConnectionService(ModelInterface $model, string $connectionService): void` — Sets both write and read connection service for a model
+
+- `public setModelSchema(ModelInterface $model, string $schema): void` — Sets the mapped schema for a model
+
+- `public setModelSource(ModelInterface $model, string $source): void` — Sets the mapped source for a model
+
+- `public setReadConnectionService(ModelInterface $model, string $connectionService): void` — Sets read connection service for a model
+
+- `public setReusableRecords(string $modelName, string $key, mixed $records): void` — Stores a reusable record in the internal list
+
+- `public setSticky(bool $sticky): void` — Enables or disables sticky connections
+
+- `public setWriteConnectionService(ModelInterface $model, string $connectionService)` — Sets write connection service for a model
+
+- `public useDynamicUpdate(ModelInterface $model, bool $dynamicUpdate): void` — Sets if a model must use dynamic update instead of the all-field update
 
 ### Methods
 
@@ -9639,8 +9128,8 @@ Sets if a model must use dynamic update instead of the all-field update
 
 ```php
 public function addBehavior(
-ModelInterface $model,
-BehaviorInterface $behavior
+    ModelInterface $model,
+    BehaviorInterface $behavior
 ): void;
 ```
 
@@ -9650,11 +9139,11 @@ Binds a behavior to a model
 
 ```php
 public function addBelongsTo(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -9664,11 +9153,11 @@ Setup a relation reverse 1-1  between two models
 
 ```php
 public function addHasMany(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -9678,14 +9167,14 @@ Setup a relation 1-n between two models
 
 ```php
 public function addHasManyToMany(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -9695,11 +9184,11 @@ Setups a relation n-m between two models
 
 ```php
 public function addHasOne(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -9709,14 +9198,14 @@ Setup a 1-1 relation between two models
 
 ```php
 public function addHasOneThrough(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -9750,9 +9239,9 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 ```php
 public function executeQuery(
-string $phql,
-mixed $placeholders = null,
-mixed $types = null
+    string $phql,
+    mixed $placeholders = null,
+    mixed $types = null
 ): mixed;
 ```
 
@@ -9770,11 +9259,11 @@ Gets belongsTo relations defined on a model
 
 ```php
 public function getBelongsToRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -9800,11 +9289,11 @@ Gets hasMany relations defined on a model
 
 ```php
 public function getHasManyRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): bool|ResultsetInterface;
 ```
 
@@ -9838,11 +9327,11 @@ Gets hasOne relations defined on a model
 
 ```php
 public function getHasOneRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): bool|ModelInterface;
 ```
 
@@ -9908,8 +9397,8 @@ Returns the connection service name used to read data related to a model
 
 ```php
 public function getRelationByAlias(
-string $modelName,
-string $alias
+    string $modelName,
+    string $alias
 ): RelationInterface|bool;
 ```
 
@@ -9919,10 +9408,10 @@ Returns a relation by its alias
 
 ```php
 public function getRelationRecords(
-RelationInterface $relation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    RelationInterface $relation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 );
 ```
 
@@ -9940,8 +9429,8 @@ Query all the relationships defined on a model
 
 ```php
 public function getRelationsBetween(
-string $first,
-string $second
+    string $first,
+    string $second
 ): RelationInterface[]|bool;
 ```
 
@@ -9951,8 +9440,8 @@ Query the relations between two models
 
 ```php
 public function getReusableRecords(
-string $modelName,
-string $key
+    string $modelName,
+    string $key
 );
 ```
 
@@ -9978,8 +9467,8 @@ Returns the connection service name used to write data related to a model
 
 ```php
 public function hasBelongsTo(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -9989,8 +9478,8 @@ Checks whether a model has a belongsTo relation with another model
 
 ```php
 public function hasHasMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -10000,8 +9489,8 @@ Checks whether a model has a hasMany relation with another model
 
 ```php
 public function hasHasManyToMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -10011,8 +9500,8 @@ Checks whether a model has a hasManyToMany relation with another model
 
 ```php
 public function hasHasOne(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -10022,8 +9511,8 @@ Checks whether a model has a hasOne relation with another model
 
 ```php
 public function hasHasOneThrough(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -10065,8 +9554,8 @@ Checks if a model is using dynamic update instead of all-field update
 
 ```php
 public function isVisibleModelProperty(
-ModelInterface $model,
-string $property
+    ModelInterface $model,
+    string $property
 ): bool;
 ```
 
@@ -10074,8 +9563,8 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-new Invoices(),
-"inv_title"
+    new Invoices(),
+    "inv_title"
 );
 ```
 
@@ -10083,8 +9572,8 @@ new Invoices(),
 
 ```php
 public function keepSnapshots(
-ModelInterface $model,
-bool $keepSnapshots
+    ModelInterface $model,
+    bool $keepSnapshots
 ): void;
 ```
 
@@ -10102,9 +9591,9 @@ Loads a model throwing an exception if it does not exist
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $eventName,
-mixed $data
+    ModelInterface $model,
+    string $eventName,
+    mixed $data
 );
 ```
 
@@ -10116,8 +9605,8 @@ meaning that a least one is implemented
 
 ```php
 public function notifyEvent(
-string $eventName,
-ModelInterface $model
+    string $eventName,
+    ModelInterface $model
 );
 ```
 
@@ -10138,8 +9627,8 @@ current request cycle (sticky connections)
 
 ```php
 public function removeBehavior(
-ModelInterface $model,
-string $behaviorClass
+    ModelInterface $model,
+    string $behaviorClass
 ): void;
 ```
 
@@ -10157,8 +9646,8 @@ Clears the per-request sticky write tracking
 
 ```php
 public function setConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -10168,8 +9657,8 @@ Sets both write and read connection service for a model
 
 ```php
 public function setModelSchema(
-ModelInterface $model,
-string $schema
+    ModelInterface $model,
+    string $schema
 ): void;
 ```
 
@@ -10179,8 +9668,8 @@ Sets the mapped schema for a model
 
 ```php
 public function setModelSource(
-ModelInterface $model,
-string $source
+    ModelInterface $model,
+    string $source
 ): void;
 ```
 
@@ -10190,8 +9679,8 @@ Sets the mapped source for a model
 
 ```php
 public function setReadConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -10201,9 +9690,9 @@ Sets read connection service for a model
 
 ```php
 public function setReusableRecords(
-string $modelName,
-string $key,
-mixed $records
+    string $modelName,
+    string $key,
+    mixed $records
 ): void;
 ```
 
@@ -10221,8 +9710,8 @@ Enables or disables sticky connections
 
 ```php
 public function setWriteConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 );
 ```
 
@@ -10232,12 +9721,13 @@ Sets write connection service for a model
 
 ```php
 public function useDynamicUpdate(
-ModelInterface $model,
-bool $dynamicUpdate
+    ModelInterface $model,
+    bool $dynamicUpdate
 ): void;
 ```
 
 Sets if a model must use dynamic update instead of the all-field update
+
 
 ## Mvc\Model\MetaData
 
@@ -10254,7 +9744,7 @@ A standard Phalcon\Mvc\Model\MetaData can be used to query model attributes:
 $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
 
 $attributes = $metaData->getAttributes(
-new Invoices()
+    new Invoices()
 );
 
 print_r($attributes);
@@ -10295,187 +9785,144 @@ is defined:
 | 1    | `MODELS_REVERSE_COLUMN_MAP` | attribute => column |
 
 - **`Phalcon\Mvc\Model\MetaData`** - implements [`Phalcon\Di\InjectionAwareInterface`](/5.22/api/phalcon_di/#diinjectionawareinterface), [`Phalcon\Mvc\Model\MetaDataInterface`](#mvcmodelmetadatainterface)
-- [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
-- [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
-- [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
-- [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
-- [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
+  - [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
+  - [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
+  - [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
+  - [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
+  - [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadata-getadapter" visibility="public" name="getAdapter" returnType="CacheAdapterInterface|null" params={[]}>
-Return the internal cache adapter
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getattributes" visibility="public" name="getAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns table attributes names (fields)
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getautomaticcreateattributes" visibility="public" name="getAutomaticCreateAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes that must be ignored from the INSERT SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getautomaticupdateattributes" visibility="public" name="getAutomaticUpdateAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes that must be ignored from the UPDATE SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getbindtypes" visibility="public" name="getBindTypes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes and their bind data types
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getcolumnmap" visibility="public" name="getColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the column map if any
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getcolumnmapuniquekey" visibility="public" name="getColumnMapUniqueKey" returnType="string|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns a ColumnMap Unique key for meta-data is created using className
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getdatatypes" visibility="public" name="getDataTypes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes and their data types
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getdatatypesnumeric" visibility="public" name="getDataTypesNumeric" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes which types are numerical
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getdefaultvalues" visibility="public" name="getDefaultValues" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes (which have default values) and their default values
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getemptystringattributes" visibility="public" name="getEmptyStringAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes allow empty strings
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getidentityfield" visibility="public" name="getIdentityField" returnType="bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the name of identity field (if one is present)
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getmetadatauniquekey" visibility="public" name="getMetaDataUniqueKey" returnType="string|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns a MetaData Unique key for meta-data is created using className
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getmodeluuid" visibility="public" name="getModelUUID" returnType="string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"row","default":null}]}>
-Returns the model UniqueID based on model and array row primary key(s) value(s)
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getnonprimarykeyattributes" visibility="public" name="getNonPrimaryKeyAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns an array of fields which are not part of the primary key
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getnotnullattributes" visibility="public" name="getNotNullAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns an array of not null attributes
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getprimarykeyattributes" visibility="public" name="getPrimaryKeyAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns an array of fields which are part of the primary key
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getreversecolumnmap" visibility="public" name="getReverseColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the reverse column map if any
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-getstrategy" visibility="public" name="getStrategy" returnType="StrategyInterface" params={[]}>
-Return the strategy to obtain the meta-data
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-hasattribute" visibility="public" name="hasAttribute" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"attribute","default":null}]}>
-Check if a model has certain attribute
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-isempty" visibility="public" name="isEmpty" returnType="bool" params={[]}>
-Checks if the internal meta-data container is empty
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-modelequals" visibility="public" name="modelEquals" returnType="bool" params={[{"type":"ModelInterface","name":"first","default":null},{"type":"ModelInterface","name":"other","default":null}]}>
-Compares if two models are the same in memory
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-read" visibility="public" name="read" returnType="array|null" params={[{"type":"mixed","name":"key","default":null}]}>
-Reads metadata from the adapter
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-readcolumnmap" visibility="public" name="readColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Reads the ordered/reversed column map for certain model
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-readcolumnmapindex" visibility="public" name="readColumnMapIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
-Reads column-map information for certain model using a MODEL_* constant
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-readmetadata" visibility="public" name="readMetaData" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Reads the complete meta-data for certain model
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-readmetadataindex" visibility="public" name="readMetaDataIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
-Reads meta-data for certain model
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets internal meta-data in order to regenerate it
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-setautomaticcreateattributes" visibility="public" name="setAutomaticCreateAttributes" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Set the attributes that must be ignored from the INSERT SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-setautomaticupdateattributes" visibility="public" name="setAutomaticUpdateAttributes" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Set the attributes that must be ignored from the UPDATE SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-setemptystringattributes" visibility="public" name="setEmptyStringAttributes" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Initialize old behavior for compatability
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-setstrategy" visibility="public" name="setStrategy" returnType="void" params={[{"type":"StrategyInterface","name":"strategy","default":null}]}>
-Set the meta-data extraction strategy
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-write" visibility="public" name="write" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"array","name":"data","default":null}]}>
-Writes the metadata to adapter
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-writemetadataindex" visibility="public" name="writeMetaDataIndex" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null},{"type":"mixed","name":"data","default":null}]}>
-Writes meta-data for certain model using a MODEL_* constant
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-initialize" visibility="protected" name="initialize" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"key","default":null},{"type":"mixed","name":"table","default":null},{"type":"mixed","name":"schema","default":null}]}>
-Initialize old behavior for compatability
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-initializecolumnmap" visibility="protected" name="initializeColumnMap" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"key","default":null}]}>
-Initialize ColumnMap for a certain table
-</ApiItem>
-<ApiItem href="#mvcmodelmetadata-initializemetadata" visibility="protected" name="initializeMetaData" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"mixed","name":"key","default":null}]}>
-Initialize the metadata for certain table
-</ApiItem>
+- `public getAdapter(): CacheAdapterInterface|null` — Return the internal cache adapter
+
+- `public getAttributes(ModelInterface $model): array` — Returns table attributes names (fields)
+
+- `public getAutomaticCreateAttributes(ModelInterface $model): array` — Returns attributes that must be ignored from the INSERT SQL generation
+
+- `public getAutomaticUpdateAttributes(ModelInterface $model): array` — Returns attributes that must be ignored from the UPDATE SQL generation
+
+- `public getBindTypes(ModelInterface $model): array` — Returns attributes and their bind data types
+
+- `public getColumnMap(ModelInterface $model): array|null` — Returns the column map if any
+
+- `public getColumnMapUniqueKey(ModelInterface $model): string|null` — Returns a ColumnMap Unique key for meta-data is created using className
+
+- `public getDI(): DiInterface` — Returns the DependencyInjector container
+
+- `public getDataTypes(ModelInterface $model): array` — Returns attributes and their data types
+
+- `public getDataTypesNumeric(ModelInterface $model): array` — Returns attributes which types are numerical
+
+- `public getDefaultValues(ModelInterface $model): array` — Returns attributes (which have default values) and their default values
+
+- `public getEmptyStringAttributes(ModelInterface $model): array` — Returns attributes allow empty strings
+
+- `public getIdentityField(ModelInterface $model): bool|string|null` — Returns the name of identity field (if one is present)
+
+- `public getMetaDataUniqueKey(ModelInterface $model): string|null` — Returns a MetaData Unique key for meta-data is created using className
+
+- `public getModelUUID(ModelInterface $model, array $row): string|null` — Returns the model UniqueID based on model and array row primary key(s) value(s)
+
+- `public getNonPrimaryKeyAttributes(ModelInterface $model): array` — Returns an array of fields which are not part of the primary key
+
+- `public getNotNullAttributes(ModelInterface $model): array` — Returns an array of not null attributes
+
+- `public getPrimaryKeyAttributes(ModelInterface $model): array` — Returns an array of fields which are part of the primary key
+
+- `public getReverseColumnMap(ModelInterface $model): array|null` — Returns the reverse column map if any
+
+- `public getStrategy(): StrategyInterface` — Return the strategy to obtain the meta-data
+
+- `public hasAttribute(ModelInterface $model, string $attribute): bool` — Check if a model has certain attribute
+
+- `public isEmpty(): bool` — Checks if the internal meta-data container is empty
+
+- `public modelEquals(ModelInterface $first, ModelInterface $other): bool` — Compares if two models are the same in memory
+
+- `public read(mixed $key): array|null` — Reads metadata from the adapter
+
+- `public readColumnMap(ModelInterface $model): array|null` — Reads the ordered/reversed column map for certain model
+
+- `public readColumnMapIndex(ModelInterface $model, int $index): array|bool|string|null` — Reads column-map information for certain model using a MODEL\_\* constant
+
+- `public readMetaData(ModelInterface $model): array|null` — Reads the complete meta-data for certain model
+
+- `public readMetaDataIndex(ModelInterface $model, int $index): array|bool|string|null` — Reads meta-data for certain model
+
+- `public reset(): void` — Resets internal meta-data in order to regenerate it
+
+- `public setAutomaticCreateAttributes(ModelInterface $model, array $attributes): void` — Set the attributes that must be ignored from the INSERT SQL generation
+
+- `public setAutomaticUpdateAttributes(ModelInterface $model, array $attributes): void` — Set the attributes that must be ignored from the UPDATE SQL generation
+
+- `public setDI(DiInterface $container): void` — Sets the DependencyInjector container
+
+- `public setEmptyStringAttributes(ModelInterface $model, array $attributes): void` — Initialize old behavior for compatability
+
+- `public setStrategy(StrategyInterface $strategy): void` — Set the meta-data extraction strategy
+
+- `public write(string $key, array $data): void` — Writes the metadata to adapter
+
+- `public writeMetaDataIndex(ModelInterface $model, int $index, mixed $data): void` — Writes meta-data for certain model using a MODEL\_\* constant
+
+- `protected initialize(ModelInterface $model, mixed $key, mixed $table, mixed $schema)` — Initialize old behavior for compatability
+
+- `protected initializeColumnMap(ModelInterface $model, mixed $key): bool` — Initialize ColumnMap for a certain table
+
+- `protected initializeMetaData(ModelInterface $model, mixed $key): bool` — Initialize the metadata for certain table
 
 ### Constants
 
-<ApiItem kind="constant" name="MODELS_ATTRIBUTES" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_AUTOMATIC_DEFAULT_INSERT" type="int" default="10">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_AUTOMATIC_DEFAULT_UPDATE" type="int" default="11">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_COLUMN_MAP" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_DATA_TYPES" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_DATA_TYPES_BIND" type="int" default="9">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_DATA_TYPES_NUMERIC" type="int" default="5">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_DATE_AT" type="int" default="6">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_DATE_IN" type="int" default="7">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_DEFAULT_VALUES" type="int" default="12">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_EMPTY_STRING_VALUES" type="int" default="13">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_IDENTITY_COLUMN" type="int" default="8">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_NON_PRIMARY_KEY" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_NOT_NULL" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_PRIMARY_KEY" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="MODELS_REVERSE_COLUMN_MAP" type="int" default="1">
-</ApiItem>
+- `const int MODELS_ATTRIBUTES = 0`
+
+- `const int MODELS_AUTOMATIC_DEFAULT_INSERT = 10`
+
+- `const int MODELS_AUTOMATIC_DEFAULT_UPDATE = 11`
+
+- `const int MODELS_COLUMN_MAP = 0`
+
+- `const int MODELS_DATA_TYPES = 4`
+
+- `const int MODELS_DATA_TYPES_BIND = 9`
+
+- `const int MODELS_DATA_TYPES_NUMERIC = 5`
+
+- `const int MODELS_DATE_AT = 6`
+
+- `const int MODELS_DATE_IN = 7`
+
+- `const int MODELS_DEFAULT_VALUES = 12`
+
+- `const int MODELS_EMPTY_STRING_VALUES = 13`
+
+- `const int MODELS_IDENTITY_COLUMN = 8`
+
+- `const int MODELS_NON_PRIMARY_KEY = 2`
+
+- `const int MODELS_NOT_NULL = 3`
+
+- `const int MODELS_PRIMARY_KEY = 1`
+
+- `const int MODELS_REVERSE_COLUMN_MAP = 1`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="adapter" type="CacheAdapterInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="columnMap" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="metaData" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pendingMetaDataWrites" type="array" default="[]">
-Holds metadata index writes that arrived before the model's metadata was
-properly initialized (e.g. skipAttributes() called in a parent model's
-initialize() while the child's source had not yet been set).  Applied
-inside initializeMetaData() after the real schema is loaded.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="strategy" type="StrategyInterface|null" default="null">
-</ApiItem>
+- `protected CacheAdapterInterface|null $adapter = null`
+
+- `protected array $columnMap = []`
+
+- `protected DiInterface|null $container = null`
+
+- `protected array $metaData = []`
+
+- `protected array $pendingMetaDataWrites = []` — Holds metadata index writes that arrived before the model's metadata was
+  properly initialized (e.g. skipAttributes() called in a parent model's
+  initialize() while the child's source had not yet been set).  Applied
+  inside initializeMetaData() after the real schema is loaded.
+
+- `protected StrategyInterface|null $strategy = null`
 
 ### Methods
 
@@ -10497,9 +9944,9 @@ Returns table attributes names (fields)
 
 ```php
 print_r(
-$metaData->getAttributes(
-    new Invoices()
-)
+    $metaData->getAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10513,9 +9960,9 @@ Returns attributes that must be ignored from the INSERT SQL generation
 
 ```php
 print_r(
-$metaData->getAutomaticCreateAttributes(
-    new Invoices()
-)
+    $metaData->getAutomaticCreateAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10529,9 +9976,9 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 print_r(
-$metaData->getAutomaticUpdateAttributes(
-    new Invoices()
-)
+    $metaData->getAutomaticUpdateAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10545,9 +9992,9 @@ Returns attributes and their bind data types
 
 ```php
 print_r(
-$metaData->getBindTypes(
-    new Invoices()
-)
+    $metaData->getBindTypes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10561,9 +10008,9 @@ Returns the column map if any
 
 ```php
 print_r(
-$metaData->getColumnMap(
-    new Invoices()
-)
+    $metaData->getColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -10593,9 +10040,9 @@ Returns attributes and their data types
 
 ```php
 print_r(
-$metaData->getDataTypes(
-    new Invoices()
-)
+    $metaData->getDataTypes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10609,9 +10056,9 @@ Returns attributes which types are numerical
 
 ```php
 print_r(
-$metaData->getDataTypesNumeric(
-    new Invoices()
-)
+    $metaData->getDataTypesNumeric(
+        new Invoices()
+    )
 );
 ```
 
@@ -10625,9 +10072,9 @@ Returns attributes (which have default values) and their default values
 
 ```php
 print_r(
-$metaData->getDefaultValues(
-    new Invoices()
-)
+    $metaData->getDefaultValues(
+        new Invoices()
+    )
 );
 ```
 
@@ -10641,9 +10088,9 @@ Returns attributes allow empty strings
 
 ```php
 print_r(
-$metaData->getEmptyStringAttributes(
-    new Invoices()
-)
+    $metaData->getEmptyStringAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10657,9 +10104,9 @@ Returns the name of identity field (if one is present)
 
 ```php
 print_r(
-$metaData->getIdentityField(
-    new Invoices()
-)
+    $metaData->getIdentityField(
+        new Invoices()
+    )
 );
 ```
 
@@ -10675,8 +10122,8 @@ Returns a MetaData Unique key for meta-data is created using className
 
 ```php
 public function getModelUUID(
-ModelInterface $model,
-array $row
+    ModelInterface $model,
+    array $row
 ): string|null;
 ```
 
@@ -10692,9 +10139,9 @@ Returns an array of fields which are not part of the primary key
 
 ```php
 print_r(
-$metaData->getNonPrimaryKeyAttributes(
-    new Invoices()
-)
+    $metaData->getNonPrimaryKeyAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10708,9 +10155,9 @@ Returns an array of not null attributes
 
 ```php
 print_r(
-$metaData->getNotNullAttributes(
-    new Invoices()
-)
+    $metaData->getNotNullAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10724,9 +10171,9 @@ Returns an array of fields which are part of the primary key
 
 ```php
 print_r(
-$metaData->getPrimaryKeyAttributes(
-    new Invoices()
-)
+    $metaData->getPrimaryKeyAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -10740,9 +10187,9 @@ Returns the reverse column map if any
 
 ```php
 print_r(
-$metaData->getReverseColumnMap(
-    new Invoices()
-)
+    $metaData->getReverseColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -10758,8 +10205,8 @@ Return the strategy to obtain the meta-data
 
 ```php
 public function hasAttribute(
-ModelInterface $model,
-string $attribute
+    ModelInterface $model,
+    string $attribute
 ): bool;
 ```
 
@@ -10767,10 +10214,10 @@ Check if a model has certain attribute
 
 ```php
 var_dump(
-$metaData->hasAttribute(
-    new Invoices(),
-    "name"
-)
+    $metaData->hasAttribute(
+        new Invoices(),
+        "name"
+    )
 );
 ```
 
@@ -10784,7 +10231,7 @@ Checks if the internal meta-data container is empty
 
 ```php
 var_dump(
-$metaData->isEmpty()
+    $metaData->isEmpty()
 );
 ```
 
@@ -10792,8 +10239,8 @@ $metaData->isEmpty()
 
 ```php
 public function modelEquals(
-ModelInterface $first,
-ModelInterface $other
+    ModelInterface $first,
+    ModelInterface $other
 ): bool;
 ```
 
@@ -10817,9 +10264,9 @@ Reads the ordered/reversed column map for certain model
 
 ```php
 print_r(
-$metaData->readColumnMap(
-    new Invoices()
-)
+    $metaData->readColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -10827,8 +10274,8 @@ $metaData->readColumnMap(
 
 ```php
 final public function readColumnMapIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|bool|string|null;
 ```
 
@@ -10836,10 +10283,10 @@ Reads column-map information for certain model using a MODEL_* constant
 
 ```php
 print_r(
-$metaData->readColumnMapIndex(
-    new Invoices(),
-    MetaData::MODELS_REVERSE_COLUMN_MAP
-)
+    $metaData->readColumnMapIndex(
+        new Invoices(),
+        MetaData::MODELS_REVERSE_COLUMN_MAP
+    )
 );
 ```
 
@@ -10853,9 +10300,9 @@ Reads the complete meta-data for certain model
 
 ```php
 print_r(
-$metaData->readMetaData(
-    new Invoices()
-)
+    $metaData->readMetaData(
+        new Invoices()
+    )
 );
 ```
 
@@ -10863,8 +10310,8 @@ $metaData->readMetaData(
 
 ```php
 final public function readMetaDataIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|bool|string|null;
 ```
 
@@ -10872,10 +10319,10 @@ Reads meta-data for certain model
 
 ```php
 print_r(
-$metaData->readMetaDataIndex(
-    new Invoices(),
-    0
-)
+    $metaData->readMetaDataIndex(
+        new Invoices(),
+        0
+    )
 );
 ```
 
@@ -10895,8 +10342,8 @@ $metaData->reset();
 
 ```php
 public function setAutomaticCreateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -10904,10 +10351,10 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 $metaData->setAutomaticCreateAttributes(
-new Invoices(),
-[
-    "created_at" => true,
-]
+    new Invoices(),
+    [
+        "created_at" => true,
+    ]
 );
 ```
 
@@ -10915,8 +10362,8 @@ new Invoices(),
 
 ```php
 public function setAutomaticUpdateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -10924,10 +10371,10 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
-new Invoices(),
-[
-    "modified_at" => true,
-]
+    new Invoices(),
+    [
+        "modified_at" => true,
+    ]
 );
 ```
 
@@ -10943,8 +10390,8 @@ Sets the DependencyInjector container
 
 ```php
 public function setEmptyStringAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -10954,10 +10401,10 @@ Set the attributes that allow empty string values
 
 ```php
 $metaData->setEmptyStringAttributes(
-new Invoices(),
-[
-    "name" => true,
-]
+    new Invoices(),
+    [
+        "name" => true,
+    ]
 );
 ```
 
@@ -10973,8 +10420,8 @@ Set the meta-data extraction strategy
 
 ```php
 public function write(
-string $key,
-array $data
+    string $key,
+    array $data
 ): void;
 ```
 
@@ -10984,9 +10431,9 @@ Writes the metadata to adapter
 
 ```php
 final public function writeMetaDataIndex(
-ModelInterface $model,
-int $index,
-mixed $data
+    ModelInterface $model,
+    int $index,
+    mixed $data
 ): void;
 ```
 
@@ -10994,13 +10441,13 @@ Writes meta-data for certain model using a MODEL_* constant
 
 ```php
 print_r(
-$metaData->writeColumnMapIndex(
-    new Invoices(),
-    MetaData::MODELS_REVERSE_COLUMN_MAP,
-    [
-        "leName" => "name",
-    ]
-)
+    $metaData->writeColumnMapIndex(
+        new Invoices(),
+        MetaData::MODELS_REVERSE_COLUMN_MAP,
+        [
+            "leName" => "name",
+        ]
+    )
 );
 ```
 
@@ -11008,10 +10455,10 @@ $metaData->writeColumnMapIndex(
 
 ```php
 final protected function initialize(
-ModelInterface $model,
-mixed $key,
-mixed $table,
-mixed $schema
+    ModelInterface $model,
+    mixed $key,
+    mixed $table,
+    mixed $schema
 );
 ```
 
@@ -11021,8 +10468,8 @@ Initialize old behavior for compatability
 
 ```php
 final protected function initializeColumnMap(
-ModelInterface $model,
-mixed $key
+    ModelInterface $model,
+    mixed $key
 ): bool;
 ```
 
@@ -11032,12 +10479,13 @@ Initialize ColumnMap for a certain table
 
 ```php
 final protected function initializeMetaData(
-ModelInterface $model,
-mixed $key
+    ModelInterface $model,
+    mixed $key
 ): bool;
 ```
 
 Initialize the metadata for certain table
+
 
 ## Mvc\Model\MetaDataInterface
 
@@ -11053,93 +10501,63 @@ Interface for Phalcon\Mvc\Model\MetaData
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatainterface-getattributes" visibility="public" name="getAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns table attributes names (fields)
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getautomaticcreateattributes" visibility="public" name="getAutomaticCreateAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes that must be ignored from the INSERT SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getautomaticupdateattributes" visibility="public" name="getAutomaticUpdateAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes that must be ignored from the UPDATE SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getbindtypes" visibility="public" name="getBindTypes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes and their bind data types
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getcolumnmap" visibility="public" name="getColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the column map if any
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getdatatypes" visibility="public" name="getDataTypes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes and their data types
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getdatatypesnumeric" visibility="public" name="getDataTypesNumeric" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes which types are numerical
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getdefaultvalues" visibility="public" name="getDefaultValues" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes (which have default values) and their default values
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getemptystringattributes" visibility="public" name="getEmptyStringAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns attributes allow empty strings
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getidentityfield" visibility="public" name="getIdentityField" returnType="bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the name of identity field (if one is present)
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getnonprimarykeyattributes" visibility="public" name="getNonPrimaryKeyAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns an array of fields which are not part of the primary key
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getnotnullattributes" visibility="public" name="getNotNullAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns an array of not null attributes
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getprimarykeyattributes" visibility="public" name="getPrimaryKeyAttributes" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns an array of fields which are part of the primary key
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getreversecolumnmap" visibility="public" name="getReverseColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Returns the reverse column map if any
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-getstrategy" visibility="public" name="getStrategy" returnType="StrategyInterface" params={[]}>
-Return the strategy to obtain the meta-data
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-hasattribute" visibility="public" name="hasAttribute" returnType="bool" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"string","name":"attribute","default":null}]}>
-Check if a model has certain attribute
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-isempty" visibility="public" name="isEmpty" returnType="bool" params={[]}>
-Checks if the internal meta-data container is empty
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-read" visibility="public" name="read" returnType="array|null" params={[{"type":"string","name":"key","default":null}]}>
-Reads meta-data from the adapter
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-readcolumnmap" visibility="public" name="readColumnMap" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Reads the ordered/reversed column map for certain model
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-readcolumnmapindex" visibility="public" name="readColumnMapIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
-Reads column-map information for certain model using a MODEL_* constant
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-readmetadata" visibility="public" name="readMetaData" returnType="array|null" params={[{"type":"ModelInterface","name":"model","default":null}]}>
-Reads meta-data for certain model
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-readmetadataindex" visibility="public" name="readMetaDataIndex" returnType="array|bool|string|null" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null}]}>
-Reads meta-data for certain model using a MODEL_* constant
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-reset" visibility="public" name="reset" returnType="" params={[]}>
-Resets internal meta-data in order to regenerate it
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-setautomaticcreateattributes" visibility="public" name="setAutomaticCreateAttributes" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Set the attributes that must be ignored from the INSERT SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-setautomaticupdateattributes" visibility="public" name="setAutomaticUpdateAttributes" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Set the attributes that must be ignored from the UPDATE SQL generation
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-setemptystringattributes" visibility="public" name="setEmptyStringAttributes" returnType="void" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"attributes","default":null}]}>
-Set the attributes that allow empty string values
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-setstrategy" visibility="public" name="setStrategy" returnType="" params={[{"type":"StrategyInterface","name":"strategy","default":null}]}>
-Set the meta-data extraction strategy
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-write" visibility="public" name="write" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"array","name":"data","default":null}]}>
-Writes meta-data to the adapter
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatainterface-writemetadataindex" visibility="public" name="writeMetaDataIndex" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"int","name":"index","default":null},{"type":"mixed","name":"data","default":null}]}>
-Writes meta-data for certain model using a MODEL_* constant
-</ApiItem>
+- `public getAttributes(ModelInterface $model): array` — Returns table attributes names (fields)
+
+- `public getAutomaticCreateAttributes(ModelInterface $model): array` — Returns attributes that must be ignored from the INSERT SQL generation
+
+- `public getAutomaticUpdateAttributes(ModelInterface $model): array` — Returns attributes that must be ignored from the UPDATE SQL generation
+
+- `public getBindTypes(ModelInterface $model): array` — Returns attributes and their bind data types
+
+- `public getColumnMap(ModelInterface $model): array|null` — Returns the column map if any
+
+- `public getDataTypes(ModelInterface $model): array` — Returns attributes and their data types
+
+- `public getDataTypesNumeric(ModelInterface $model): array` — Returns attributes which types are numerical
+
+- `public getDefaultValues(ModelInterface $model): array` — Returns attributes (which have default values) and their default values
+
+- `public getEmptyStringAttributes(ModelInterface $model): array` — Returns attributes allow empty strings
+
+- `public getIdentityField(ModelInterface $model): bool|string|null` — Returns the name of identity field (if one is present)
+
+- `public getNonPrimaryKeyAttributes(ModelInterface $model): array` — Returns an array of fields which are not part of the primary key
+
+- `public getNotNullAttributes(ModelInterface $model): array` — Returns an array of not null attributes
+
+- `public getPrimaryKeyAttributes(ModelInterface $model): array` — Returns an array of fields which are part of the primary key
+
+- `public getReverseColumnMap(ModelInterface $model): array|null` — Returns the reverse column map if any
+
+- `public getStrategy(): StrategyInterface` — Return the strategy to obtain the meta-data
+
+- `public hasAttribute(ModelInterface $model, string $attribute): bool` — Check if a model has certain attribute
+
+- `public isEmpty(): bool` — Checks if the internal meta-data container is empty
+
+- `public read(string $key): array|null` — Reads meta-data from the adapter
+
+- `public readColumnMap(ModelInterface $model): array|null` — Reads the ordered/reversed column map for certain model
+
+- `public readColumnMapIndex(ModelInterface $model, int $index): array|bool|string|null` — Reads column-map information for certain model using a MODEL\_\* constant
+
+- `public readMetaData(ModelInterface $model): array|null` — Reads meta-data for certain model
+
+- `public readMetaDataIndex(ModelInterface $model, int $index): array|bool|string|null` — Reads meta-data for certain model using a MODEL\_\* constant
+
+- `public reset()` — Resets internal meta-data in order to regenerate it
+
+- `public setAutomaticCreateAttributes(ModelInterface $model, array $attributes)` — Set the attributes that must be ignored from the INSERT SQL generation
+
+- `public setAutomaticUpdateAttributes(ModelInterface $model, array $attributes)` — Set the attributes that must be ignored from the UPDATE SQL generation
+
+- `public setEmptyStringAttributes(ModelInterface $model, array $attributes): void` — Set the attributes that allow empty string values
+
+- `public setStrategy(StrategyInterface $strategy)` — Set the meta-data extraction strategy
+
+- `public write(string $key, array $data): void` — Writes meta-data to the adapter
+
+- `public writeMetaDataIndex(ModelInterface $model, int $index, mixed $data)` — Writes meta-data for certain model using a MODEL\_\* constant
 
 ### Methods
 
@@ -11267,8 +10685,8 @@ Return the strategy to obtain the meta-data
 
 ```php
 public function hasAttribute(
-ModelInterface $model,
-string $attribute
+    ModelInterface $model,
+    string $attribute
 ): bool;
 ```
 
@@ -11302,8 +10720,8 @@ Reads the ordered/reversed column map for certain model
 
 ```php
 public function readColumnMapIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|bool|string|null;
 ```
 
@@ -11321,8 +10739,8 @@ Reads meta-data for certain model
 
 ```php
 public function readMetaDataIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|bool|string|null;
 ```
 
@@ -11340,8 +10758,8 @@ Resets internal meta-data in order to regenerate it
 
 ```php
 public function setAutomaticCreateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 );
 ```
 
@@ -11351,8 +10769,8 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 public function setAutomaticUpdateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 );
 ```
 
@@ -11362,8 +10780,8 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 public function setEmptyStringAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -11381,8 +10799,8 @@ Set the meta-data extraction strategy
 
 ```php
 public function write(
-string $key,
-array $data
+    string $key,
+    array $data
 ): void;
 ```
 
@@ -11392,13 +10810,14 @@ Writes meta-data to the adapter
 
 ```php
 public function writeMetaDataIndex(
-ModelInterface $model,
-int $index,
-mixed $data
+    ModelInterface $model,
+    int $index,
+    mixed $data
 );
 ```
 
 Writes meta-data for certain model using a MODEL_* constant
+
 
 ## Mvc\Model\MetaData\Apcu
 
@@ -11414,23 +10833,21 @@ You can query the meta-data by printing apcu_fetch('$PMM$') or apcu_fetch('$PMM$
 
 ```php
 $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
-[
-    "prefix"   => "my-app-id",
-    "lifetime" => 86400,
-]
+    [
+        "prefix"   => "my-app-id",
+        "lifetime" => 86400,
+    ]
 );
 ```
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Apcu`**
+  - **`Phalcon\Mvc\Model\MetaData\Apcu`**
 
 `Phalcon\Cache\AdapterFactory` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataapcu-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array|null","name":"options","default":"null"}]}>
-Phalcon\Mvc\Model\MetaData\Apcu constructor
-</ApiItem>
+- `public __construct(AdapterFactory $factory, array|null $options = null)` — Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 ### Methods
 
@@ -11438,27 +10855,27 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array|null $options = null
+    AdapterFactory $factory,
+    array|null $options = null
 );
 ```
 
 Phalcon\Mvc\Model\MetaData\Apcu constructor
+
 
 ## Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionscannotobtaintablecolumns-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"completeTable","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $completeTable, string $className)`
 
 ### Methods
 
@@ -11466,25 +10883,25 @@ Class
 
 ```php
 public function __construct(
-string $completeTable,
-string $className
+    string $completeTable,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\MetaData\Exceptions\ColumnMapNotArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionscolumnmapnotarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -11494,20 +10911,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\ContainerRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionscontainerrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -11517,20 +10934,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\CorruptedMetaData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionscorruptedmetadata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -11540,20 +10957,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\InvalidContainer
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionsinvalidcontainer-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -11563,20 +10980,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionsinvalidmetadataformodel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"modelName","default":null}]}>
-</ApiItem>
+- `public __construct(string $modelName)`
 
 ### Methods
 
@@ -11586,20 +11003,20 @@ Class
 public function __construct( string $modelName );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionsmetadatadirectorynotwritable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -11609,20 +11026,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionsmetadatastrategyfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null}]}>
-</ApiItem>
+- `public __construct(string $message)`
 
 ### Methods
 
@@ -11632,20 +11049,20 @@ Class
 public function __construct( string $message );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionsnoannotationsforclass-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -11655,20 +11072,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionsnopropertyannotationsforclass-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -11678,20 +11095,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\TableNotInDatabase
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataexceptionstablenotindatabase-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"completeTable","default":null},{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $completeTable, string $className)`
 
 ### Methods
 
@@ -11699,10 +11116,11 @@ Class
 
 ```php
 public function __construct(
-string $completeTable,
-string $className
+    string $completeTable,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\MetaData\Libmemcached
 
@@ -11713,18 +11131,15 @@ Stores model meta-data in the Memcache.
 By default meta-data is stored for 48 hours (172800 seconds)
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
+  - **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
 
 `Phalcon\Cache\AdapterFactory` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatalibmemcached-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\Model\MetaData\Libmemcached constructor
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatalibmemcached-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Flush Memcache data and resets internal meta-data in order to regenerate it
-</ApiItem>
+- `public __construct(AdapterFactory $factory, array $options = [])` — Phalcon\Mvc\Model\MetaData\Libmemcached constructor
+
+- `public reset(): void` — Flush Memcache data and resets internal meta-data in order to regenerate it
 
 ### Methods
 
@@ -11732,8 +11147,8 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
@@ -11747,6 +11162,7 @@ public function reset(): void;
 
 Flush Memcache data and resets internal meta-data in order to regenerate it
 
+
 ## Mvc\Model\MetaData\Memory
 
 Class
@@ -11755,18 +11171,15 @@ Stores model meta-data in memory. Data will be erased when the request
 finishes
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Memory`**
+  - **`Phalcon\Mvc\Model\MetaData\Memory`**
 
 `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatamemory-read" visibility="public" name="read" returnType="array|null" params={[{"type":"mixed","name":"key","default":null}]}>
-Reads the meta-data from temporal memory
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatamemory-write" visibility="public" name="write" returnType="void" params={[{"type":"mixed","name":"key","default":null},{"type":"array","name":"data","default":null}]}>
-Writes the meta-data to temporal memory
-</ApiItem>
+- `public read(mixed $key): array|null` — Reads the meta-data from temporal memory
+
+- `public write(mixed $key, array $data): void` — Writes the meta-data to temporal memory
 
 ### Methods
 
@@ -11782,12 +11195,13 @@ Reads the meta-data from temporal memory
 
 ```php
 public function write(
-mixed $key,
-array $data
+    mixed $key,
+    array $data
 ): void;
 ```
 
 Writes the meta-data to temporal memory
+
 
 ## Mvc\Model\MetaData\Redis
 
@@ -11803,29 +11217,26 @@ By default meta-data is stored for 48 hours (172800 seconds)
 use Phalcon\Mvc\Model\MetaData\Redis;
 
 $metaData = new Redis(
-[
-    "host"       => "127.0.0.1",
-    "port"       => 6379,
-    "persistent" => 0,
-    "lifetime"   => 172800,
-    "index"      => 2,
-]
+    [
+        "host"       => "127.0.0.1",
+        "port"       => 6379,
+        "persistent" => 0,
+        "lifetime"   => 172800,
+        "index"      => 2,
+    ]
 );
 ```
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Redis`**
+  - **`Phalcon\Mvc\Model\MetaData\Redis`**
 
 `Phalcon\Cache\AdapterFactory` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Mvc\Model\MetaData`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadataredis-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\Model\MetaData\Redis constructor
-</ApiItem>
-<ApiItem href="#mvcmodelmetadataredis-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Flush Redis data and resets internal meta-data in order to regenerate it
-</ApiItem>
+- `public __construct(AdapterFactory $factory, array $options = [])` — Phalcon\Mvc\Model\MetaData\Redis constructor
+
+- `public reset(): void` — Flush Redis data and resets internal meta-data in order to regenerate it
 
 ### Methods
 
@@ -11833,8 +11244,8 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
@@ -11848,6 +11259,7 @@ public function reset(): void;
 
 Flush Redis data and resets internal meta-data in order to regenerate it
 
+
 ## Mvc\Model\MetaData\Strategy\Annotations
 
 Class
@@ -11858,12 +11270,9 @@ Class
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatastrategyannotations-getcolumnmaps" visibility="public" name="getColumnMaps" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-Read the model's column map, this can't be inferred
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatastrategyannotations-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-The meta-data is obtained by reading the column descriptions from the database information schema
-</ApiItem>
+- `public getColumnMaps(ModelInterface $model, DiInterface $container): array` — Read the model's column map, this can't be inferred
+
+- `public getMetaData(ModelInterface $model, DiInterface $container): array` — The meta-data is obtained by reading the column descriptions from the database information schema
 
 ### Methods
 
@@ -11871,8 +11280,8 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 ```php
 final public function getColumnMaps(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
@@ -11882,12 +11291,13 @@ Read the model's column map, this can't be inferred
 
 ```php
 final public function getMetaData(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
 The meta-data is obtained by reading the column descriptions from the database information schema
+
 
 ## Mvc\Model\MetaData\Strategy\Introspection
 
@@ -11901,12 +11311,9 @@ Queries the table meta-data in order to introspect the model's metadata
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatastrategyintrospection-getcolumnmaps" visibility="public" name="getColumnMaps" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-Read the model's column map, this can't be inferred
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatastrategyintrospection-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-The meta-data is obtained by reading the column descriptions from the database information schema
-</ApiItem>
+- `public getColumnMaps(ModelInterface $model, DiInterface $container): array` — Read the model's column map, this can't be inferred
+
+- `public getMetaData(ModelInterface $model, DiInterface $container): array` — The meta-data is obtained by reading the column descriptions from the database information schema
 
 ### Methods
 
@@ -11914,8 +11321,8 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 ```php
 final public function getColumnMaps(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
@@ -11925,12 +11332,13 @@ Read the model's column map, this can't be inferred
 
 ```php
 final public function getMetaData(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
 The meta-data is obtained by reading the column descriptions from the database information schema
+
 
 ## Mvc\Model\MetaData\Strategy\StrategyInterface
 
@@ -11942,12 +11350,9 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatastrategystrategyinterface-getcolumnmaps" visibility="public" name="getColumnMaps" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-Read the model's column map, this can't be inferred
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatastrategystrategyinterface-getmetadata" visibility="public" name="getMetaData" returnType="array" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"DiInterface","name":"container","default":null}]}>
-The meta-data is obtained by reading the column descriptions from the
-</ApiItem>
+- `public getColumnMaps(ModelInterface $model, DiInterface $container): array` — Read the model's column map, this can't be inferred
+
+- `public getMetaData(ModelInterface $model, DiInterface $container): array` — The meta-data is obtained by reading the column descriptions from the
 
 ### Methods
 
@@ -11955,8 +11360,8 @@ The meta-data is obtained by reading the column descriptions from the
 
 ```php
 public function getColumnMaps(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
@@ -11968,13 +11373,14 @@ Read the model's column map, this can't be inferred
 
 ```php
 public function getMetaData(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
 The meta-data is obtained by reading the column descriptions from the
 database information schema
+
 
 ## Mvc\Model\MetaData\Stream
 
@@ -11986,33 +11392,28 @@ Stores model meta-data in PHP files.
 
 ```php
 $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
-[
-    "metaDataDir" => "app/cache/metadata/",
-]
+    [
+        "metaDataDir" => "app/cache/metadata/",
+    ]
 );
 ```
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Stream`**
+  - **`Phalcon\Mvc\Model\MetaData\Stream`**
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelmetadatastream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\Model\MetaData\Files constructor
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatastream-read" visibility="public" name="read" returnType="array|null" params={[{"type":"mixed","name":"key","default":null}]}>
-Reads meta-data from files
-</ApiItem>
-<ApiItem href="#mvcmodelmetadatastream-write" visibility="public" name="write" returnType="void" params={[{"type":"mixed","name":"key","default":null},{"type":"array","name":"data","default":null}]}>
-Writes the meta-data to files
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Mvc\Model\MetaData\Files constructor
+
+- `public read(mixed $key): array|null` — Reads meta-data from files
+
+- `public write(mixed $key, array $data): void` — Writes the meta-data to files
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="metaDataDir" type="string" default="&quot;./&quot;">
-</ApiItem>
+- `protected string $metaDataDir = "./"`
 
 ### Methods
 
@@ -12036,12 +11437,13 @@ Reads meta-data from files
 
 ```php
 public function write(
-mixed $key,
-array $data
+    mixed $key,
+    array $data
 ): void;
 ```
 
 Writes the meta-data to files
+
 
 ## Mvc\Model\Query
 
@@ -12051,19 +11453,19 @@ This class takes a PHQL intermediate representation and executes it.
 
 ```php
 $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
-     WHERE b.name = :name: ORDER BY c.name";
+         WHERE b.name = :name: ORDER BY c.name";
 
 $result = $manager->executeQuery(
-$phql,
-[
-    "name" => "Lamborghini",
-]
+    $phql,
+    [
+        "name" => "Lamborghini",
+    ]
 );
 
 foreach ($result as $row) {
-echo "Name: ",  $row->cars->name, "\n";
-echo "Price: ", $row->cars->price, "\n";
-echo "Taxes: ", $row->taxes, "\n";
+    echo "Name: ",  $row->cars->name, "\n";
+    echo "Price: ", $row->cars->price, "\n";
+    echo "Taxes: ", $row->taxes, "\n";
 }
 
 // with transaction
@@ -12100,232 +11502,176 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelquery-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"phql","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"},{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\Model\Query constructor
-</ApiItem>
-<ApiItem href="#mvcmodelquery-cache" visibility="public" name="cache" returnType="QueryInterface" params={[{"type":"array","name":"cacheOptions","default":null}]}>
-Sets the cache parameters of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquery-clean" visibility="public" name="clean" returnType="void" params={[]}>
-Destroys the internal PHQL cache
-</ApiItem>
-<ApiItem href="#mvcmodelquery-execute" visibility="public" name="execute" returnType="" params={[{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Executes a parsed PHQL statement
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getbindparams" visibility="public" name="getBindParams" returnType="array" params={[]}>
-Returns default bind params
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getbindtypes" visibility="public" name="getBindTypes" returnType="array" params={[]}>
-Returns default bind types
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getcache" visibility="public" name="getCache" returnType="AdapterInterface" params={[]}>
-Returns the current cache backend instance
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getcacheoptions" visibility="public" name="getCacheOptions" returnType="array" params={[]}>
-Returns the current cache options
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the dependency injection container
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getintermediate" visibility="public" name="getIntermediate" returnType="array" params={[]}>
-Returns the intermediate representation of the PHQL statement
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getresultsetrowclass" visibility="public" name="getResultsetRowClass" returnType="string" params={[]}>
-Returns the class that will be used to hydrate rows that are not mapped
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getsingleresult" visibility="public" name="getSingleResult" returnType="ModelInterface" params={[{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Executes the query returning the first result
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getsql" visibility="public" name="getSql" returnType="array" params={[]}>
-Returns an associative array with the SQL to be generated by the internal PHQL,
-</ApiItem>
-<ApiItem href="#mvcmodelquery-gettransaction" visibility="public" name="getTransaction" returnType="TransactionInterface|null" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmodelquery-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-Gets the type of PHQL statement executed
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getuniquerow" visibility="public" name="getUniqueRow" returnType="bool" params={[]}>
-Check if the query is programmed to get only the first row in the
-</ApiItem>
-<ApiItem href="#mvcmodelquery-parse" visibility="public" name="parse" returnType="array" params={[]}>
-Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setbindparams" visibility="public" name="setBindParams" returnType="QueryInterface" params={[{"type":"array","name":"bindParams","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind parameters
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setbindtypes" visibility="public" name="setBindTypes" returnType="QueryInterface" params={[{"type":"array","name":"bindTypes","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind parameters
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the dependency injection container
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setintermediate" visibility="public" name="setIntermediate" returnType="QueryInterface" params={[{"type":"array","name":"intermediate","default":null}]}>
-Allows to set the IR to be executed
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setresultsetrowclass" visibility="public" name="setResultsetRowClass" returnType="QueryInterface" params={[{"type":"string","name":"resultsetRowClass","default":null}]}>
-Sets the class used to hydrate rows that are not mapped to a model
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setsharedlock" visibility="public" name="setSharedLock" returnType="QueryInterface" params={[{"type":"bool","name":"sharedLock","default":"false"}]}>
-Set SHARED LOCK clause
-</ApiItem>
-<ApiItem href="#mvcmodelquery-settransaction" visibility="public" name="setTransaction" returnType="QueryInterface" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-allows to wrap a transaction around all queries
-</ApiItem>
-<ApiItem href="#mvcmodelquery-settype" visibility="public" name="setType" returnType="QueryInterface" params={[{"type":"int","name":"type","default":null}]}>
-Sets the type of PHQL statement to be executed
-</ApiItem>
-<ApiItem href="#mvcmodelquery-setuniquerow" visibility="public" name="setUniqueRow" returnType="QueryInterface" params={[{"type":"bool","name":"uniqueRow","default":null}]}>
-Tells to the query if only the first row in the resultset must be
-</ApiItem>
-<ApiItem href="#mvcmodelquery-executedelete" visibility="protected" name="executeDelete" returnType="StatusInterface" params={[{"type":"array","name":"intermediate","default":null},{"type":"array","name":"bindParams","default":null},{"type":"array","name":"bindTypes","default":null}]}>
-Executes the DELETE intermediate representation producing a
-</ApiItem>
-<ApiItem href="#mvcmodelquery-executeinsert" visibility="protected" name="executeInsert" returnType="StatusInterface" params={[{"type":"array","name":"intermediate","default":null},{"type":"array","name":"bindParams","default":null},{"type":"array","name":"bindTypes","default":null}]}>
-Executes the INSERT intermediate representation producing a
-</ApiItem>
-<ApiItem href="#mvcmodelquery-executeselect" visibility="protected" name="executeSelect" returnType="ResultsetInterface|array" params={[{"type":"array","name":"intermediate","default":null},{"type":"array","name":"bindParams","default":null},{"type":"array","name":"bindTypes","default":null},{"type":"bool","name":"simulate","default":"false"}]}>
-Executes the SELECT intermediate representation producing a
-</ApiItem>
-<ApiItem href="#mvcmodelquery-executeupdate" visibility="protected" name="executeUpdate" returnType="StatusInterface" params={[{"type":"array","name":"intermediate","default":null},{"type":"array","name":"bindParams","default":null},{"type":"array","name":"bindTypes","default":null}]}>
-Executes the UPDATE intermediate representation producing a
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getcallargument" visibility="protected" name="getCallArgument" returnType="array" params={[{"type":"array","name":"argument","default":null}]}>
-Resolves an expression in a single call argument
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getcaseexpression" visibility="protected" name="getCaseExpression" returnType="array" params={[{"type":"array","name":"expr","default":null}]}>
-Resolves an expression in a single call argument
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getexpression" visibility="protected" name="getExpression" returnType="array" params={[{"type":"array","name":"expr","default":null},{"type":"bool","name":"quoting","default":"true"}]}>
-Resolves an expression from its intermediate code into an array
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getfunctioncall" visibility="protected" name="getFunctionCall" returnType="array" params={[{"type":"array","name":"expr","default":null}]}>
-Resolves an expression in a single call argument
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getgroupclause" visibility="protected" name="getGroupClause" returnType="array" params={[{"type":"array","name":"group","default":null}]}>
-Returns a processed group clause for a SELECT statement
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getjoin" visibility="protected" name="getJoin" returnType="array" params={[{"type":"ManagerInterface","name":"manager","default":null},{"type":"array","name":"join","default":null}]}>
-Resolves a JOIN clause checking if the associated models exist
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getjointype" visibility="protected" name="getJoinType" returnType="string" params={[{"type":"array","name":"join","default":null}]}>
-Resolves a JOIN type
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getjoins" visibility="protected" name="getJoins" returnType="array" params={[{"type":"array","name":"select","default":null}]}>
-Processes the JOINs in the query returning an internal representation for
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getlimitclause" visibility="protected" name="getLimitClause" returnType="array" params={[{"type":"array","name":"limitClause","default":null}]}>
-Returns a processed limit clause for a SELECT statement
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getmultijoin" visibility="protected" name="getMultiJoin" returnType="array" params={[{"type":"string","name":"joinType","default":null},{"type":"mixed","name":"joinSource","default":null},{"type":"string","name":"modelAlias","default":null},{"type":"string","name":"joinAlias","default":null},{"type":"RelationInterface","name":"relation","default":null}]}>
-Resolves joins involving many-to-many relations
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getorderclause" visibility="protected" name="getOrderClause" returnType="array" params={[{"type":"mixed","name":"order","default":null}]}>
-Returns a processed order clause for a SELECT statement
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getqualified" visibility="protected" name="getQualified" returnType="array" params={[{"type":"array","name":"expr","default":null}]}>
-Replaces the model's name to its source name in a qualified-name
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getreadconnection" visibility="protected" name="getReadConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array|null","name":"intermediate","default":"null"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Gets the read connection from the model if there is no transaction set
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getrelatedrecords" visibility="protected" name="getRelatedRecords" returnType="ResultsetInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"intermediate","default":null},{"type":"array","name":"bindParams","default":null},{"type":"array","name":"bindTypes","default":null}]}>
-Query the records on which the UPDATE/DELETE operation will be done
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getselectcolumn" visibility="protected" name="getSelectColumn" returnType="array" params={[{"type":"array","name":"column","default":null}]}>
-Resolves a column from its intermediate representation into an array
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getsinglejoin" visibility="protected" name="getSingleJoin" returnType="array" params={[{"type":"string","name":"joinType","default":null},{"type":"mixed","name":"joinSource","default":null},{"type":"string","name":"modelAlias","default":null},{"type":"string","name":"joinAlias","default":null},{"type":"RelationInterface","name":"relation","default":null}]}>
-Resolves joins involving has-one/belongs-to/has-many relations
-</ApiItem>
-<ApiItem href="#mvcmodelquery-gettable" visibility="protected" name="getTable" returnType="" params={[{"type":"ManagerInterface","name":"manager","default":null},{"type":"array","name":"qualifiedName","default":null}]}>
-Resolves a table in a SELECT statement checking if the model exists
-</ApiItem>
-<ApiItem href="#mvcmodelquery-getwriteconnection" visibility="protected" name="getWriteConnection" returnType="AdapterInterface" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array|null","name":"intermediate","default":"null"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Gets the write connection from the model if there is no transaction
-</ApiItem>
-<ApiItem href="#mvcmodelquery-preparedelete" visibility="protected" name="prepareDelete" returnType="array" params={[]}>
-Analyzes a DELETE intermediate code and produces an array to be executed
-</ApiItem>
-<ApiItem href="#mvcmodelquery-prepareinsert" visibility="protected" name="prepareInsert" returnType="array" params={[]}>
-Analyzes an INSERT intermediate code and produces an array to be executed
-</ApiItem>
-<ApiItem href="#mvcmodelquery-prepareselect" visibility="protected" name="prepareSelect" returnType="array" params={[{"type":"mixed","name":"ast","default":"null"},{"type":"bool","name":"merge","default":"false"}]}>
-Analyzes a SELECT intermediate code and produces an array to be executed later
-</ApiItem>
-<ApiItem href="#mvcmodelquery-prepareupdate" visibility="protected" name="prepareUpdate" returnType="array" params={[]}>
-Analyzes an UPDATE intermediate code and produces an array to be executed
-</ApiItem>
-<ApiItem href="#mvcmodelquery-refreshschemasinintermediate" visibility="protected" name="refreshSchemasInIntermediate" returnType="array" params={[{"type":"array","name":"irPhql","default":null}]}>
-Refreshes the schema/source of every model referenced in a cached
-</ApiItem>
+- `public __construct(string|null $phql = null, DiInterface|null $container = null, array $options = [])` — Phalcon\Mvc\Model\Query constructor
+
+- `public cache(array $cacheOptions): QueryInterface` — Sets the cache parameters of the query
+
+- `public clean(): void` — Destroys the internal PHQL cache
+
+- `public execute(array $bindParams = [], array $bindTypes = [])` — Executes a parsed PHQL statement
+
+- `public getBindParams(): array` — Returns default bind params
+
+- `public getBindTypes(): array` — Returns default bind types
+
+- `public getCache(): AdapterInterface` — Returns the current cache backend instance
+
+- `public getCacheOptions(): array` — Returns the current cache options
+
+- `public getDI(): DiInterface` — Returns the dependency injection container
+
+- `public getIntermediate(): array` — Returns the intermediate representation of the PHQL statement
+
+- `public getResultsetRowClass(): string` — Returns the class that will be used to hydrate rows that are not mapped
+
+- `public getSingleResult(array $bindParams = [], array $bindTypes = []): ModelInterface` — Executes the query returning the first result
+
+- `public getSql(): array` — Returns an associative array with the SQL to be generated by the internal PHQL,
+
+- `public getTransaction(): TransactionInterface|null`
+
+- `public getType(): int` — Gets the type of PHQL statement executed
+
+- `public getUniqueRow(): bool` — Check if the query is programmed to get only the first row in the
+
+- `public parse(): array` — Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
+
+- `public setBindParams(array $bindParams, bool $merge = false): QueryInterface` — Set default bind parameters
+
+- `public setBindTypes(array $bindTypes, bool $merge = false): QueryInterface` — Set default bind parameters
+
+- `public setDI(DiInterface $container): void` — Sets the dependency injection container
+
+- `public setIntermediate(array $intermediate): QueryInterface` — Allows to set the IR to be executed
+
+- `public setResultsetRowClass(string $resultsetRowClass): QueryInterface` — Sets the class used to hydrate rows that are not mapped to a model
+
+- `public setSharedLock(bool $sharedLock = false): QueryInterface` — Set SHARED LOCK clause
+
+- `public setTransaction(TransactionInterface $transaction): QueryInterface` — allows to wrap a transaction around all queries
+
+- `public setType(int $type): QueryInterface` — Sets the type of PHQL statement to be executed
+
+- `public setUniqueRow(bool $uniqueRow): QueryInterface` — Tells to the query if only the first row in the resultset must be
+
+- `protected executeDelete(array $intermediate, array $bindParams, array $bindTypes): StatusInterface` — Executes the DELETE intermediate representation producing a
+
+- `protected executeInsert(array $intermediate, array $bindParams, array $bindTypes): StatusInterface` — Executes the INSERT intermediate representation producing a
+
+- `protected executeSelect(array $intermediate, array $bindParams, array $bindTypes, bool $simulate = false): ResultsetInterface|array` — Executes the SELECT intermediate representation producing a
+
+- `protected executeUpdate(array $intermediate, array $bindParams, array $bindTypes): StatusInterface` — Executes the UPDATE intermediate representation producing a
+
+- `protected getCallArgument(array $argument): array` — Resolves an expression in a single call argument
+
+- `protected getCaseExpression(array $expr): array` — Resolves an expression in a single call argument
+
+- `protected getExpression(array $expr, bool $quoting = true): array` — Resolves an expression from its intermediate code into an array
+
+- `protected getFunctionCall(array $expr): array` — Resolves an expression in a single call argument
+
+- `protected getGroupClause(array $group): array` — Returns a processed group clause for a SELECT statement
+
+- `protected getJoin(ManagerInterface $manager, array $join): array` — Resolves a JOIN clause checking if the associated models exist
+
+- `protected getJoinType(array $join): string` — Resolves a JOIN type
+
+- `protected getJoins(array $select): array` — Processes the JOINs in the query returning an internal representation for
+
+- `protected getLimitClause(array $limitClause): array` — Returns a processed limit clause for a SELECT statement
+
+- `protected getMultiJoin(string $joinType, mixed $joinSource, string $modelAlias, string $joinAlias, RelationInterface $relation): array` — Resolves joins involving many-to-many relations
+
+- `protected getOrderClause(mixed $order): array` — Returns a processed order clause for a SELECT statement
+
+- `protected getQualified(array $expr): array` — Replaces the model's name to its source name in a qualified-name
+
+- `protected getReadConnection(ModelInterface $model, array|null $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface` — Gets the read connection from the model if there is no transaction set
+
+- `protected getRelatedRecords(ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes): ResultsetInterface` — Query the records on which the UPDATE/DELETE operation will be done
+
+- `protected getSelectColumn(array $column): array` — Resolves a column from its intermediate representation into an array
+
+- `protected getSingleJoin(string $joinType, mixed $joinSource, string $modelAlias, string $joinAlias, RelationInterface $relation): array` — Resolves joins involving has-one/belongs-to/has-many relations
+
+- `protected getTable(ManagerInterface $manager, array $qualifiedName)` — Resolves a table in a SELECT statement checking if the model exists
+
+- `protected getWriteConnection(ModelInterface $model, array|null $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface` — Gets the write connection from the model if there is no transaction
+
+- `protected prepareDelete(): array` — Analyzes a DELETE intermediate code and produces an array to be executed
+
+- `protected prepareInsert(): array` — Analyzes an INSERT intermediate code and produces an array to be executed
+
+- `protected prepareSelect(mixed $ast = null, bool $merge = false): array` — Analyzes a SELECT intermediate code and produces an array to be executed later
+
+- `protected prepareUpdate(): array` — Analyzes an UPDATE intermediate code and produces an array to be executed
+
+- `protected refreshSchemasInIntermediate(array $irPhql): array` — Refreshes the schema/source of every model referenced in a cached
 
 ### Constants
 
-<ApiItem kind="constant" name="TYPE_DELETE" type="int" default="303">
-</ApiItem>
-<ApiItem kind="constant" name="TYPE_INSERT" type="int" default="306">
-</ApiItem>
-<ApiItem kind="constant" name="TYPE_SELECT" type="int" default="309">
-</ApiItem>
-<ApiItem kind="constant" name="TYPE_UPDATE" type="int" default="300">
-</ApiItem>
+- `const int TYPE_DELETE = 303`
+
+- `const int TYPE_INSERT = 306`
+
+- `const int TYPE_SELECT = 309`
+
+- `const int TYPE_UPDATE = 300`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="ast" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="bindParams" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="bindTypes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cache" type="mixed|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cacheOptions" type="array|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="enableImplicitJoins" type="bool" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="intermediate" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="internalPhqlCache" type="array|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="manager" type="\Phalcon\Mvc\Model\ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="metaData" type="\Phalcon\Mvc\Model\MetaDataInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="models" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="modelsInstances" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="nestingLevel" type="int" default="-1">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="phql" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resultsetRowClass" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sharedLock" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlAliases" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlAliasesModels" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlAliasesModelsInstances" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlColumnAliases" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlModelsAliases" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="transaction" type="TransactionInterface|null" default="null">
-TransactionInterface so that the query can wrap a transaction
-around batch updates and intermediate selects within the transaction.
-however if a model got a transaction set inside it will use the local
-transaction instead of this one
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="int|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uniqueRow" type="bool" default="false">
-</ApiItem>
+- `protected array $ast`
+
+- `protected array $bindParams = []`
+
+- `protected array $bindTypes = []`
+
+- `protected mixed|null $cache = null`
+
+- `protected array|null $cacheOptions`
+
+- `protected DiInterface|null $container = null`
+
+- `protected bool $enableImplicitJoins`
+
+- `protected array $intermediate`
+
+- `protected array|null $internalPhqlCache`
+
+- `protected \Phalcon\Mvc\Model\ManagerInterface|null $manager = null`
+
+- `protected \Phalcon\Mvc\Model\MetaDataInterface|null $metaData = null`
+
+- `protected array $models = []`
+
+- `protected array $modelsInstances = []`
+
+- `protected int $nestingLevel = -1`
+
+- `protected string|null $phql = null`
+
+- `protected string $resultsetRowClass = ""`
+
+- `protected bool $sharedLock = false`
+
+- `protected array $sqlAliases = []`
+
+- `protected array $sqlAliasesModels = []`
+
+- `protected array $sqlAliasesModelsInstances = []`
+
+- `protected array $sqlColumnAliases = []`
+
+- `protected array $sqlModelsAliases = []`
+
+- `protected TransactionInterface|null $transaction = null` — TransactionInterface so that the query can wrap a transaction
+  around batch updates and intermediate selects within the transaction.
+  however if a model got a transaction set inside it will use the local
+  transaction instead of this one
+
+- `protected int|null $type`
+
+- `protected bool $uniqueRow = false`
 
 ### Methods
 
@@ -12333,9 +11679,9 @@ transaction instead of this one
 
 ```php
 public function __construct(
-string|null $phql = null,
-DiInterface|null $container = null,
-array $options = []
+    string|null $phql = null,
+    DiInterface|null $container = null,
+    array $options = []
 );
 ```
 
@@ -12361,8 +11707,8 @@ Destroys the internal PHQL cache
 
 ```php
 public function execute(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 );
 ```
 
@@ -12430,8 +11776,8 @@ Phalcon\Mvc\Model\Row is used.
 
 ```php
 public function getSingleResult(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 ): ModelInterface;
 ```
 
@@ -12448,9 +11794,9 @@ and arrays with bound parameters and their types (only works in SELECT statement
 
 ```php
 [
-'sql' => 'SELECT * FROM co_invoices WHERE inv_cst_id = :cst_id',
-'bind' => ['cst_id' => 123],
-'bindTypes => ['cst_id' => 1] // 1 corresponds to int
+    'sql' => 'SELECT * FROM co_invoices WHERE inv_cst_id = :cst_id',
+    'bind' => ['cst_id' => 123],
+    'bindTypes => ['cst_id' => 1] // 1 corresponds to int
 ]
 ```
 
@@ -12491,8 +11837,8 @@ Phalcon\Mvc\Model\Query
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -12502,8 +11848,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -12572,9 +11918,9 @@ returned
 
 ```php
 final protected function executeDelete(
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): StatusInterface;
 ```
 
@@ -12585,9 +11931,9 @@ Phalcon\Mvc\Model\Query\Status
 
 ```php
 final protected function executeInsert(
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): StatusInterface;
 ```
 
@@ -12598,10 +11944,10 @@ Phalcon\Mvc\Model\Query\Status
 
 ```php
 final protected function executeSelect(
-array $intermediate,
-array $bindParams,
-array $bindTypes,
-bool $simulate = false
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes,
+    bool $simulate = false
 ): ResultsetInterface|array;
 ```
 
@@ -12612,9 +11958,9 @@ Phalcon\Mvc\Model\Resultset
 
 ```php
 final protected function executeUpdate(
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): StatusInterface;
 ```
 
@@ -12641,8 +11987,8 @@ Resolves an expression in a single call argument
 
 ```php
 final protected function getExpression(
-array $expr,
-bool $quoting = true
+    array $expr,
+    bool $quoting = true
 ): array;
 ```
 
@@ -12668,8 +12014,8 @@ Returns a processed group clause for a SELECT statement
 
 ```php
 final protected function getJoin(
-ManagerInterface $manager,
-array $join
+    ManagerInterface $manager,
+    array $join
 ): array;
 ```
 
@@ -12704,11 +12050,11 @@ Returns a processed limit clause for a SELECT statement
 
 ```php
 final protected function getMultiJoin(
-string $joinType,
-mixed $joinSource,
-string $modelAlias,
-string $joinAlias,
-RelationInterface $relation
+    string $joinType,
+    mixed $joinSource,
+    string $modelAlias,
+    string $joinAlias,
+    RelationInterface $relation
 ): array;
 ```
 
@@ -12735,10 +12081,10 @@ expression
 
 ```php
 protected function getReadConnection(
-ModelInterface $model,
-array|null $intermediate = null,
-array $bindParams = [],
-array $bindTypes = []
+    ModelInterface $model,
+    array|null $intermediate = null,
+    array $bindParams = [],
+    array $bindTypes = []
 ): AdapterInterface;
 ```
 
@@ -12749,10 +12095,10 @@ inside the query object
 
 ```php
 final protected function getRelatedRecords(
-ModelInterface $model,
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    ModelInterface $model,
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): ResultsetInterface;
 ```
 
@@ -12771,11 +12117,11 @@ used to determine if the resultset produced is simple or complex
 
 ```php
 final protected function getSingleJoin(
-string $joinType,
-mixed $joinSource,
-string $modelAlias,
-string $joinAlias,
-RelationInterface $relation
+    string $joinType,
+    mixed $joinSource,
+    string $modelAlias,
+    string $joinAlias,
+    RelationInterface $relation
 ): array;
 ```
 
@@ -12785,8 +12131,8 @@ Resolves joins involving has-one/belongs-to/has-many relations
 
 ```php
 final protected function getTable(
-ManagerInterface $manager,
-array $qualifiedName
+    ManagerInterface $manager,
+    array $qualifiedName
 );
 ```
 
@@ -12796,10 +12142,10 @@ Resolves a table in a SELECT statement checking if the model exists
 
 ```php
 protected function getWriteConnection(
-ModelInterface $model,
-array|null $intermediate = null,
-array $bindParams = [],
-array $bindTypes = []
+    ModelInterface $model,
+    array|null $intermediate = null,
+    array $bindParams = [],
+    array $bindTypes = []
 ): AdapterInterface;
 ```
 
@@ -12828,8 +12174,8 @@ later
 
 ```php
 final protected function prepareSelect(
-mixed $ast = null,
-bool $merge = false
+    mixed $ast = null,
+    bool $merge = false
 ): array;
 ```
 
@@ -12856,6 +12202,7 @@ string only, so a model that switches its schema or source at
 runtime (for instance via setSchema()/setSource() in initialize())
 would otherwise see the value frozen at first parse. See #17020.
 
+
 ## Mvc\Model\QueryInterface
 
 Interface
@@ -12868,45 +12215,31 @@ Interface for Phalcon\Mvc\Model\Query
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryinterface-cache" visibility="public" name="cache" returnType="QueryInterface" params={[{"type":"array","name":"cacheOptions","default":null}]}>
-Sets the cache parameters of the query
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-execute" visibility="public" name="execute" returnType="" params={[{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Executes a parsed PHQL statement
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-getbindparams" visibility="public" name="getBindParams" returnType="array" params={[]}>
-Returns default bind params
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-getbindtypes" visibility="public" name="getBindTypes" returnType="array" params={[]}>
-Returns default bind types
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-getcacheoptions" visibility="public" name="getCacheOptions" returnType="array" params={[]}>
-Returns the current cache options
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-getsingleresult" visibility="public" name="getSingleResult" returnType="ModelInterface" params={[{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Executes the query returning the first result
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-getsql" visibility="public" name="getSql" returnType="array" params={[]}>
-Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-getuniquerow" visibility="public" name="getUniqueRow" returnType="bool" params={[]}>
-Check if the query is programmed to get only the first row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-parse" visibility="public" name="parse" returnType="array" params={[]}>
-Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-setbindparams" visibility="public" name="setBindParams" returnType="QueryInterface" params={[{"type":"array","name":"bindParams","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind parameters
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-setbindtypes" visibility="public" name="setBindTypes" returnType="QueryInterface" params={[{"type":"array","name":"bindTypes","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind parameters
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-setsharedlock" visibility="public" name="setSharedLock" returnType="QueryInterface" params={[{"type":"bool","name":"sharedLock","default":"false"}]}>
-Set SHARED LOCK clause
-</ApiItem>
-<ApiItem href="#mvcmodelqueryinterface-setuniquerow" visibility="public" name="setUniqueRow" returnType="QueryInterface" params={[{"type":"bool","name":"uniqueRow","default":null}]}>
-Tells to the query if only the first row in the resultset must be returned
-</ApiItem>
+- `public cache(array $cacheOptions): QueryInterface` — Sets the cache parameters of the query
+
+- `public execute(array $bindParams = [], array $bindTypes = [])` — Executes a parsed PHQL statement
+
+- `public getBindParams(): array` — Returns default bind params
+
+- `public getBindTypes(): array` — Returns default bind types
+
+- `public getCacheOptions(): array` — Returns the current cache options
+
+- `public getSingleResult(array $bindParams = [], array $bindTypes = []): ModelInterface` — Executes the query returning the first result
+
+- `public getSql(): array` — Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
+
+- `public getUniqueRow(): bool` — Check if the query is programmed to get only the first row in the resultset
+
+- `public parse(): array` — Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang
+
+- `public setBindParams(array $bindParams, bool $merge = false): QueryInterface` — Set default bind parameters
+
+- `public setBindTypes(array $bindTypes, bool $merge = false): QueryInterface` — Set default bind parameters
+
+- `public setSharedLock(bool $sharedLock = false): QueryInterface` — Set SHARED LOCK clause
+
+- `public setUniqueRow(bool $uniqueRow): QueryInterface` — Tells to the query if only the first row in the resultset must be returned
 
 ### Methods
 
@@ -12922,8 +12255,8 @@ Sets the cache parameters of the query
 
 ```php
 public function execute(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 );
 ```
 
@@ -12957,8 +12290,8 @@ Returns the current cache options
 
 ```php
 public function getSingleResult(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 ): ModelInterface;
 ```
 
@@ -12994,8 +12327,8 @@ by Phalcon\Mvc\Model\Query
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -13005,8 +12338,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -13028,6 +12361,7 @@ public function setUniqueRow( bool $uniqueRow ): QueryInterface;
 
 Tells to the query if only the first row in the resultset must be returned
 
+
 ## Mvc\Model\Query\Builder
 
 Class
@@ -13036,30 +12370,30 @@ Helps to create PHQL queries using an OO interface
 
 ```php
 $params = [
-"models"     => [
-    Users::class,
-],
-"columns"    => ["id", "name", "status"],
-"conditions" => [
-    [
-        "created > :min: AND created < :max:",
+    "models"     => [
+        Users::class,
+    ],
+    "columns"    => ["id", "name", "status"],
+    "conditions" => [
         [
-            "min" => "2013-01-01",
-            "max" => "2014-01-01",
-        ],
-        [
-            "min" => PDO::PARAM_STR,
-            "max" => PDO::PARAM_STR,
+            "created > :min: AND created < :max:",
+            [
+                "min" => "2013-01-01",
+                "max" => "2014-01-01",
+            ],
+            [
+                "min" => PDO::PARAM_STR,
+                "max" => PDO::PARAM_STR,
+            ],
         ],
     ],
-],
-// or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
-"group"      => ["id", "name"],
-"having"     => "name = 'Kamil'",
-"order"      => ["name", "id"],
-"limit"      => 20,
-"offset"     => 20,
-// or "limit" => [20, 20],
+    // or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
+    "group"      => ["id", "name"],
+    "having"     => "name = 'Kamil'",
+    "order"      => ["name", "id"],
+    "limit"      => 20,
+    "offset"     => 20,
+    // or "limit" => [20, 20],
 ];
 
 $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
@@ -13071,205 +12405,149 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelquerybuilder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"params","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Phalcon\Mvc\Model\Query\Builder constructor
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-addfrom" visibility="public" name="addFrom" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"alias","default":"null"}]}>
-Add a model to take part of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-andhaving" visibility="public" name="andHaving" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Appends a condition to the current HAVING conditions clause using a AND operator
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-andwhere" visibility="public" name="andWhere" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Appends a condition to the current WHERE conditions using a AND operator
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-autoescape" visibility="public" name="autoescape" returnType="string" params={[{"type":"string","name":"identifier","default":null}]}>
-Automatically escapes identifiers but only if they need to be escaped.
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-betweenhaving" visibility="public" name="betweenHaving" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a BETWEEN condition to the current HAVING conditions clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-betweenwhere" visibility="public" name="betweenWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a BETWEEN condition to the current WHERE conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-columns" visibility="public" name="columns" returnType="BuilderInterface" params={[{"type":"mixed","name":"columns","default":null}]}>
-Sets the columns to be queried. The columns can be either a `string` or
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-distinct" visibility="public" name="distinct" returnType="BuilderInterface" params={[{"type":"mixed","name":"distinct","default":null}]}>
-Sets SELECT DISTINCT / SELECT ALL flag
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-forupdate" visibility="public" name="forUpdate" returnType="BuilderInterface" params={[{"type":"bool","name":"forUpdate","default":null}]}>
-Sets a FOR UPDATE clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-from" visibility="public" name="from" returnType="BuilderInterface" params={[{"type":"mixed","name":"models","default":null}]}>
-Sets the models who makes part of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getbindparams" visibility="public" name="getBindParams" returnType="array" params={[]}>
-Returns default bind params
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getbindtypes" visibility="public" name="getBindTypes" returnType="array" params={[]}>
-Returns default bind types
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getcolumns" visibility="public" name="getColumns" returnType="" params={[]}>
-Return the columns to be queried
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getdistinct" visibility="public" name="getDistinct" returnType="bool" params={[]}>
-Returns SELECT DISTINCT / SELECT ALL flag
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getfrom" visibility="public" name="getFrom" returnType="" params={[]}>
-Return the models who makes part of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getgroupby" visibility="public" name="getGroupBy" returnType="array" params={[]}>
-Returns the GROUP BY clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-gethaving" visibility="public" name="getHaving" returnType="string|null" params={[]}>
-Return the current having clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getjoins" visibility="public" name="getJoins" returnType="array" params={[]}>
-Return join parts of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getlimit" visibility="public" name="getLimit" returnType="" params={[]}>
-Returns the current LIMIT clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getmodels" visibility="public" name="getModels" returnType="array|string|null" params={[]}>
-Returns the models involved in the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getoffset" visibility="public" name="getOffset" returnType="int" params={[]}>
-Returns the current OFFSET clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getorderby" visibility="public" name="getOrderBy" returnType="" params={[]}>
-Returns the set ORDER BY clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getphql" visibility="public" name="getPhql" returnType="string" params={[]}>
-Returns a PHQL statement built based on the builder parameters
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getquery" visibility="public" name="getQuery" returnType="QueryInterface" params={[]}>
-Returns the query built
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getresultsetrowclass" visibility="public" name="getResultsetRowClass" returnType="string" params={[]}>
-Returns the class that will be used to hydrate rows that are not mapped
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-getwhere" visibility="public" name="getWhere" returnType="" params={[]}>
-Return the conditions for the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-groupby" visibility="public" name="groupBy" returnType="BuilderInterface" params={[{"type":"mixed","name":"group","default":null}]}>
-Sets a GROUP BY clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-having" visibility="public" name="having" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Sets the HAVING condition clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-inhaving" visibility="public" name="inHaving" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends an IN condition to the current HAVING conditions clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-inwhere" visibility="public" name="inWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends an IN condition to the current WHERE conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-innerjoin" visibility="public" name="innerJoin" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds an INNER join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-join" visibility="public" name="join" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"},{"type":"string|null","name":"type","default":"null"}]}>
-Adds an :type: join (by default type - INNER) to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-leftjoin" visibility="public" name="leftJoin" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds a LEFT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-limit" visibility="public" name="limit" returnType="BuilderInterface" params={[{"type":"int","name":"limit","default":null},{"type":"mixed","name":"offset","default":"null"}]}>
-Sets a LIMIT clause, optionally an offset clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-notbetweenhaving" visibility="public" name="notBetweenHaving" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a NOT BETWEEN condition to the current HAVING conditions clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-notbetweenwhere" visibility="public" name="notBetweenWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a NOT BETWEEN condition to the current WHERE conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-notinhaving" visibility="public" name="notInHaving" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a NOT IN condition to the current HAVING conditions clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-notinwhere" visibility="public" name="notInWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a NOT IN condition to the current WHERE conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-offset" visibility="public" name="offset" returnType="BuilderInterface" params={[{"type":"int","name":"offset","default":null}]}>
-Sets an OFFSET clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-orhaving" visibility="public" name="orHaving" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Appends a condition to the current HAVING conditions clause using an OR operator
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-orwhere" visibility="public" name="orWhere" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Appends a condition to the current conditions using an OR operator
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-orderby" visibility="public" name="orderBy" returnType="BuilderInterface" params={[{"type":"mixed","name":"orderBy","default":null}]}>
-Sets an ORDER BY condition clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-rightjoin" visibility="public" name="rightJoin" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds a RIGHT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-setbindparams" visibility="public" name="setBindParams" returnType="BuilderInterface" params={[{"type":"array","name":"bindParams","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind parameters
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-setbindtypes" visibility="public" name="setBindTypes" returnType="BuilderInterface" params={[{"type":"array","name":"bindTypes","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind types
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the DependencyInjector container
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-setresultsetrowclass" visibility="public" name="setResultsetRowClass" returnType="BuilderInterface" params={[{"type":"string","name":"resultsetRowClass","default":null}]}>
-Sets the class used to hydrate rows that are not mapped to a model
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-where" visibility="public" name="where" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Sets the query WHERE conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-conditionbetween" visibility="protected" name="conditionBetween" returnType="BuilderInterface" params={[{"type":"string","name":"clause","default":null},{"type":"string","name":"operator","default":null},{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null}]}>
-Appends a BETWEEN condition
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-conditionin" visibility="protected" name="conditionIn" returnType="BuilderInterface" params={[{"type":"string","name":"clause","default":null},{"type":"string","name":"operator","default":null},{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null}]}>
-Appends an IN condition
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-conditionnotbetween" visibility="protected" name="conditionNotBetween" returnType="BuilderInterface" params={[{"type":"string","name":"clause","default":null},{"type":"string","name":"operator","default":null},{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null}]}>
-Appends a NOT BETWEEN condition
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilder-conditionnotin" visibility="protected" name="conditionNotIn" returnType="BuilderInterface" params={[{"type":"string","name":"clause","default":null},{"type":"string","name":"operator","default":null},{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null}]}>
-Appends a NOT IN condition
-</ApiItem>
+- `public __construct(mixed $params = null, DiInterface|null $container = null)` — Phalcon\Mvc\Model\Query\Builder constructor
+
+- `public addFrom(string $model, string|null $alias = null): BuilderInterface` — Add a model to take part of the query
+
+- `public andHaving(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Appends a condition to the current HAVING conditions clause using a AND operator
+
+- `public andWhere(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Appends a condition to the current WHERE conditions using a AND operator
+
+- `public autoescape(string $identifier): string` — Automatically escapes identifiers but only if they need to be escaped.
+
+- `public betweenHaving(string $expr, mixed $minimum, mixed $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a BETWEEN condition to the current HAVING conditions clause
+
+- `public betweenWhere(string $expr, mixed $minimum, mixed $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a BETWEEN condition to the current WHERE conditions
+
+- `public columns(mixed $columns): BuilderInterface` — Sets the columns to be queried. The columns can be either a `string` or
+
+- `public distinct(mixed $distinct): BuilderInterface` — Sets SELECT DISTINCT / SELECT ALL flag
+
+- `public forUpdate(bool $forUpdate): BuilderInterface` — Sets a FOR UPDATE clause
+
+- `public from(mixed $models): BuilderInterface` — Sets the models who makes part of the query
+
+- `public getBindParams(): array` — Returns default bind params
+
+- `public getBindTypes(): array` — Returns default bind types
+
+- `public getColumns()` — Return the columns to be queried
+
+- `public getDI(): DiInterface` — Returns the DependencyInjector container
+
+- `public getDistinct(): bool` — Returns SELECT DISTINCT / SELECT ALL flag
+
+- `public getFrom()` — Return the models who makes part of the query
+
+- `public getGroupBy(): array` — Returns the GROUP BY clause
+
+- `public getHaving(): string|null` — Return the current having clause
+
+- `public getJoins(): array` — Return join parts of the query
+
+- `public getLimit()` — Returns the current LIMIT clause
+
+- `public getModels(): array|string|null` — Returns the models involved in the query
+
+- `public getOffset(): int` — Returns the current OFFSET clause
+
+- `public getOrderBy()` — Returns the set ORDER BY clause
+
+- `public getPhql(): string` — Returns a PHQL statement built based on the builder parameters
+
+- `public getQuery(): QueryInterface` — Returns the query built
+
+- `public getResultsetRowClass(): string` — Returns the class that will be used to hydrate rows that are not mapped
+
+- `public getWhere()` — Return the conditions for the query
+
+- `public groupBy(mixed $group): BuilderInterface` — Sets a GROUP BY clause
+
+- `public having(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Sets the HAVING condition clause
+
+- `public inHaving(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends an IN condition to the current HAVING conditions clause
+
+- `public inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends an IN condition to the current WHERE conditions
+
+- `public innerJoin(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds an INNER join to the query
+
+- `public join(string $model, string|null $conditions = null, string|null $alias = null, string|null $type = null): BuilderInterface` — Adds an :type: join (by default type - INNER) to the query
+
+- `public leftJoin(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds a LEFT join to the query
+
+- `public limit(int $limit, mixed $offset = null): BuilderInterface` — Sets a LIMIT clause, optionally an offset clause
+
+- `public notBetweenHaving(string $expr, mixed $minimum, mixed $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a NOT BETWEEN condition to the current HAVING conditions clause
+
+- `public notBetweenWhere(string $expr, mixed $minimum, mixed $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a NOT BETWEEN condition to the current WHERE conditions
+
+- `public notInHaving(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a NOT IN condition to the current HAVING conditions clause
+
+- `public notInWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a NOT IN condition to the current WHERE conditions
+
+- `public offset(int $offset): BuilderInterface` — Sets an OFFSET clause
+
+- `public orHaving(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Appends a condition to the current HAVING conditions clause using an OR operator
+
+- `public orWhere(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Appends a condition to the current conditions using an OR operator
+
+- `public orderBy(mixed $orderBy): BuilderInterface` — Sets an ORDER BY condition clause
+
+- `public rightJoin(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds a RIGHT join to the query
+
+- `public setBindParams(array $bindParams, bool $merge = false): BuilderInterface` — Set default bind parameters
+
+- `public setBindTypes(array $bindTypes, bool $merge = false): BuilderInterface` — Set default bind types
+
+- `public setDI(DiInterface $container): void` — Sets the DependencyInjector container
+
+- `public setResultsetRowClass(string $resultsetRowClass): BuilderInterface` — Sets the class used to hydrate rows that are not mapped to a model
+
+- `public where(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Sets the query WHERE conditions
+
+- `protected conditionBetween(string $clause, string $operator, string $expr, mixed $minimum, mixed $maximum): BuilderInterface` — Appends a BETWEEN condition
+
+- `protected conditionIn(string $clause, string $operator, string $expr, array $values): BuilderInterface` — Appends an IN condition
+
+- `protected conditionNotBetween(string $clause, string $operator, string $expr, mixed $minimum, mixed $maximum): BuilderInterface` — Appends a NOT BETWEEN condition
+
+- `protected conditionNotIn(string $clause, string $operator, string $expr, array $values): BuilderInterface` — Appends a NOT IN condition
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="bindParams" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="bindTypes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="columns" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="conditions" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="distinct" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="forUpdate" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="group" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="having" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hiddenParamNumber" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="joins" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="limit" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="models" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="offset" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="order" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resultsetRowClass" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sharedLock" type="bool" default="false">
-</ApiItem>
+- `protected array $bindParams = []`
+
+- `protected array $bindTypes = []`
+
+- `protected mixed $columns = null`
+
+- `protected mixed $conditions = null`
+
+- `protected DiInterface|null $container`
+
+- `protected mixed $distinct = null`
+
+- `protected bool $forUpdate = false`
+
+- `protected array $group = []`
+
+- `protected string|null $having = null`
+
+- `protected int $hiddenParamNumber = 0`
+
+- `protected array $joins = []`
+
+- `protected array|string $limit`
+
+- `protected array|string $models`
+
+- `protected int $offset = 0`
+
+- `protected array|string $order`
+
+- `protected string $resultsetRowClass = ""`
+
+- `protected bool $sharedLock = false`
 
 ### Methods
 
@@ -13277,8 +12555,8 @@ Appends a NOT IN condition
 
 ```php
 public function __construct(
-mixed $params = null,
-DiInterface|null $container = null
+    mixed $params = null,
+    DiInterface|null $container = null
 );
 ```
 
@@ -13288,8 +12566,8 @@ Phalcon\Mvc\Model\Query\Builder constructor
 
 ```php
 public function addFrom(
-string $model,
-string|null $alias = null
+    string $model,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -13298,13 +12576,13 @@ Add a model to take part of the query
 ```php
 // Load data from models Invoices
 $builder->addFrom(
-Invoices::class
+    Invoices::class
 );
 
 // Load data from model 'Invoices' using 'r' as alias in PHQL
 $builder->addFrom(
-Invoices::class,
-"r"
+    Invoices::class,
+    "r"
 );
 ```
 
@@ -13312,9 +12590,9 @@ Invoices::class,
 
 ```php
 public function andHaving(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -13324,10 +12602,10 @@ Appends a condition to the current HAVING conditions clause using a AND operator
 $builder->andHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->andHaving(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 100,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 100,
+    ]
 );
 ```
 
@@ -13335,9 +12613,9 @@ $builder->andHaving(
 
 ```php
 public function andWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -13347,11 +12625,11 @@ Appends a condition to the current WHERE conditions using a AND operator
 $builder->andWhere("name = 'Peter'");
 
 $builder->andWhere(
-"name = :name: AND id > :id:",
-[
-    "name" => "Peter",
-    "id"   => 100,
-]
+    "name = :name: AND id > :id:",
+    [
+        "name" => "Peter",
+        "id"   => 100,
+    ]
 );
 ```
 
@@ -13367,10 +12645,10 @@ Automatically escapes identifiers but only if they need to be escaped.
 
 ```php
 public function betweenHaving(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13384,10 +12662,10 @@ $builder->betweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13422,28 +12700,28 @@ $builder->columns("id, category");
 
 // Array, one column per element
 $builder->columns(
-[
-    "inv_id",
-    "inv_total",
-]
+    [
+        "inv_id",
+        "inv_total",
+    ]
 );
 
 // Array with named key. The name of the key acts as an
 // alias (`AS` clause)
 $builder->columns(
-[
-    "inv_cst_id",
-    "total_invoices" => "COUNT(*)",
-]
+    [
+        "inv_cst_id",
+        "total_invoices" => "COUNT(*)",
+    ]
 );
 
 // Different models
 $builder->columns(
-[
-    "\Phalcon\Models\Invoices.*",
-    "\Phalcon\Models\Customers.cst_name_first",
-    "\Phalcon\Models\Customers.cst_name_last",
-]
+    [
+        "\Phalcon\Models\Invoices.*",
+        "\Phalcon\Models\Customers.cst_name_first",
+        "\Phalcon\Models\Customers.cst_name_last",
+    ]
 );
 ```
 
@@ -13482,21 +12760,21 @@ Sets the models who makes part of the query
 
 ```php
 $builder->from(
-Invoices::class
+    Invoices::class
 );
 
 $builder->from(
-[
-    Invoices::class,
-    OrdersProducts::class,
-]
+    [
+        Invoices::class,
+        OrdersProducts::class,
+    ]
 );
 
 $builder->from(
-[
-    "r"  => Invoices::class,
-    "rp" => OrdersProducts::class,
-]
+    [
+        "r"  => Invoices::class,
+        "rp" => OrdersProducts::class,
+    ]
 );
 ```
 
@@ -13648,9 +12926,9 @@ Sets a GROUP BY clause
 
 ```php
 $builder->groupBy(
-[
-    "Invoices.inv_title",
-]
+    [
+        "Invoices.inv_title",
+    ]
 );
 ```
 
@@ -13661,9 +12939,9 @@ treats both as "no GROUP BY".
 
 ```php
 public function having(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -13673,10 +12951,10 @@ Sets the HAVING condition clause
 $builder->having("SUM(Invoices.inv_total) > 0");
 
 $builder->having(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 100,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 100,
+    ]
 );
 ```
 
@@ -13684,9 +12962,9 @@ $builder->having(
 
 ```php
 public function inHaving(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13700,9 +12978,9 @@ $builder->inHaving("SUM(Invoices.inv_total)", [100, 200]);
 
 ```php
 public function inWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13710,8 +12988,8 @@ Appends an IN condition to the current WHERE conditions
 
 ```php
 $builder->inWhere(
-"id",
-[1, 2, 3]
+    "id",
+    [1, 2, 3]
 );
 ```
 
@@ -13719,9 +12997,9 @@ $builder->inWhere(
 
 ```php
 public function innerJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -13730,20 +13008,20 @@ Adds an INNER join to the query
 ```php
 // Inner Join model 'Invoices' with automatic conditions and alias
 $builder->innerJoin(
-Invoices::class
+    Invoices::class
 );
 
 // Inner Join model 'Invoices' specifying conditions
 $builder->innerJoin(
-Invoices::class,
-"Invoices.inv_id = OrdersProducts.oxp_ord_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
 // Inner Join model 'Invoices' specifying conditions and alias
 $builder->innerJoin(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -13751,10 +13029,10 @@ Invoices::class,
 
 ```php
 public function join(
-string $model,
-string|null $conditions = null,
-string|null $alias = null,
-string|null $type = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null,
+    string|null $type = null
 ): BuilderInterface;
 ```
 
@@ -13763,28 +13041,28 @@ Adds an :type: join (by default type - INNER) to the query
 ```php
 // Inner Join model 'Invoices' with automatic conditions and alias
 $builder->join(
-Invoices::class
+    Invoices::class
 );
 
 // Inner Join model 'Invoices' specifying conditions
 $builder->join(
-Invoices::class,
-"Invoices.inv_id = OrdersProducts.oxp_ord_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
 // Inner Join model 'Invoices' specifying conditions and alias
 $builder->join(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 
 // Left Join model 'Invoices' specifying conditions, alias and type of join
 $builder->join(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r",
-"LEFT"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r",
+    "LEFT"
 );
 ```
 
@@ -13792,9 +13070,9 @@ Invoices::class,
 
 ```php
 public function leftJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -13802,9 +13080,9 @@ Adds a LEFT join to the query
 
 ```php
 $builder->leftJoin(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -13812,8 +13090,8 @@ Invoices::class,
 
 ```php
 public function limit(
-int $limit,
-mixed $offset = null
+    int $limit,
+    mixed $offset = null
 ): BuilderInterface;
 ```
 
@@ -13829,10 +13107,10 @@ $builder->limit("100", "20");
 
 ```php
 public function notBetweenHaving(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13846,10 +13124,10 @@ $builder->notBetweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13863,9 +13141,9 @@ $builder->notBetweenWhere("price", 100.25, 200.50);
 
 ```php
 public function notInHaving(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13879,9 +13157,9 @@ $builder->notInHaving("SUM(Invoices.inv_total)", [100, 200]);
 
 ```php
 public function notInWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -13907,9 +13185,9 @@ $builder->offset(30);
 
 ```php
 public function orHaving(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -13919,10 +13197,10 @@ Appends a condition to the current HAVING conditions clause using an OR operator
 $builder->orHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->orHaving(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 100,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 100,
+    ]
 );
 ```
 
@@ -13930,9 +13208,9 @@ $builder->orHaving(
 
 ```php
 public function orWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -13942,11 +13220,11 @@ Appends a condition to the current conditions using an OR operator
 $builder->orWhere("name = 'Peter'");
 
 $builder->orWhere(
-"name = :name: AND id > :id:",
-[
-    "name" => "Peter",
-    "id"   => 100,
-]
+    "name = :name: AND id > :id:",
+    [
+        "name" => "Peter",
+        "id"   => 100,
+    ]
 );
 ```
 
@@ -13968,9 +13246,9 @@ $builder->orderBy(["Invoices.inv_title DESC"]);
 
 ```php
 public function rightJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -13978,9 +13256,9 @@ Adds a RIGHT join to the query
 
 ```php
 $builder->rightJoin(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -13988,8 +13266,8 @@ Invoices::class,
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -13999,8 +13277,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -14029,9 +13307,9 @@ Phalcon\Mvc\Model\Query when the query is built.
 
 ```php
 public function where(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -14043,11 +13321,11 @@ $builder->where(100);
 $builder->where("name = 'Peter'");
 
 $builder->where(
-"name = :name: AND id > :id:",
-[
-    "name" => "Peter",
-    "id"   => 100,
-]
+    "name = :name: AND id > :id:",
+    [
+        "name" => "Peter",
+        "id"   => 100,
+    ]
 );
 ```
 
@@ -14055,11 +13333,11 @@ $builder->where(
 
 ```php
 protected function conditionBetween(
-string $clause,
-string $operator,
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $clause,
+    string $operator,
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): BuilderInterface;
 ```
 
@@ -14069,10 +13347,10 @@ Appends a BETWEEN condition
 
 ```php
 protected function conditionIn(
-string $clause,
-string $operator,
-string $expr,
-array $values
+    string $clause,
+    string $operator,
+    string $expr,
+    array $values
 ): BuilderInterface;
 ```
 
@@ -14082,11 +13360,11 @@ Appends an IN condition
 
 ```php
 protected function conditionNotBetween(
-string $clause,
-string $operator,
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $clause,
+    string $operator,
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): BuilderInterface;
 ```
 
@@ -14096,14 +13374,15 @@ Appends a NOT BETWEEN condition
 
 ```php
 protected function conditionNotIn(
-string $clause,
-string $operator,
-string $expr,
-array $values
+    string $clause,
+    string $operator,
+    string $expr,
+    array $values
 ): BuilderInterface;
 ```
 
 Appends a NOT IN condition
+
 
 ## Mvc\Model\Query\BuilderInterface
 
@@ -14117,127 +13396,87 @@ Interface for Phalcon\Mvc\Model\Query\Builder
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelquerybuilderinterface-addfrom" visibility="public" name="addFrom" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"alias","default":"null"}]}>
-Add a model to take part of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-andwhere" visibility="public" name="andWhere" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Appends a condition to the current conditions using a AND operator
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-betweenwhere" visibility="public" name="betweenWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a BETWEEN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-columns" visibility="public" name="columns" returnType="BuilderInterface" params={[{"type":"mixed","name":"columns","default":null}]}>
-Sets the columns to be queried. The columns can be either a `string` or
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-distinct" visibility="public" name="distinct" returnType="BuilderInterface" params={[{"type":"mixed","name":"distinct","default":null}]}>
-Sets SELECT DISTINCT / SELECT ALL flag
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-forupdate" visibility="public" name="forUpdate" returnType="BuilderInterface" params={[{"type":"bool","name":"forUpdate","default":null}]}>
-Sets a FOR UPDATE clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-from" visibility="public" name="from" returnType="BuilderInterface" params={[{"type":"mixed","name":"models","default":null}]}>
-Sets the models who makes part of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getbindparams" visibility="public" name="getBindParams" returnType="array" params={[]}>
-Returns default bind params
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getbindtypes" visibility="public" name="getBindTypes" returnType="array" params={[]}>
-Returns default bind types
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getcolumns" visibility="public" name="getColumns" returnType="" params={[]}>
-Return the columns to be queried
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getdistinct" visibility="public" name="getDistinct" returnType="bool" params={[]}>
-Returns SELECT DISTINCT / SELECT ALL flag
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getfrom" visibility="public" name="getFrom" returnType="" params={[]}>
-Return the models who makes part of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getgroupby" visibility="public" name="getGroupBy" returnType="array" params={[]}>
-Returns the GROUP BY clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-gethaving" visibility="public" name="getHaving" returnType="string|null" params={[]}>
-Returns the HAVING condition clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getjoins" visibility="public" name="getJoins" returnType="array" params={[]}>
-Return join parts of the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getlimit" visibility="public" name="getLimit" returnType="" params={[]}>
-Returns the current LIMIT clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getmodels" visibility="public" name="getModels" returnType="array|string|null" params={[]}>
-Returns the models involved in the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getoffset" visibility="public" name="getOffset" returnType="int" params={[]}>
-Returns the current OFFSET clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getorderby" visibility="public" name="getOrderBy" returnType="" params={[]}>
-Return the set ORDER BY clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getphql" visibility="public" name="getPhql" returnType="string" params={[]}>
-Returns a PHQL statement built based on the builder parameters
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getquery" visibility="public" name="getQuery" returnType="QueryInterface" params={[]}>
-Returns the query built
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-getwhere" visibility="public" name="getWhere" returnType="" params={[]}>
-Return the conditions for the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-groupby" visibility="public" name="groupBy" returnType="BuilderInterface" params={[{"type":"mixed","name":"group","default":null}]}>
-Sets a GROUP BY clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-having" visibility="public" name="having" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Sets a HAVING condition clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-inwhere" visibility="public" name="inWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends an IN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-innerjoin" visibility="public" name="innerJoin" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds an INNER join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-join" visibility="public" name="join" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds an :type: join (by default type - INNER) to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-leftjoin" visibility="public" name="leftJoin" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds a LEFT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-limit" visibility="public" name="limit" returnType="BuilderInterface" params={[{"type":"int","name":"limit","default":null},{"type":"mixed","name":"offset","default":"null"}]}>
-Sets a LIMIT clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-notbetweenwhere" visibility="public" name="notBetweenWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"mixed","name":"minimum","default":null},{"type":"mixed","name":"maximum","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a NOT BETWEEN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-notinwhere" visibility="public" name="notInWhere" returnType="BuilderInterface" params={[{"type":"string","name":"expr","default":null},{"type":"array","name":"values","default":null},{"type":"string","name":"operator","default":"BuilderInterface::OPERATOR_AND"}]}>
-Appends a NOT IN condition to the current conditions
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-offset" visibility="public" name="offset" returnType="BuilderInterface" params={[{"type":"int","name":"offset","default":null}]}>
-Sets an OFFSET clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-orwhere" visibility="public" name="orWhere" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Appends a condition to the current conditions using an OR operator
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-orderby" visibility="public" name="orderBy" returnType="BuilderInterface" params={[{"type":"mixed","name":"orderBy","default":null}]}>
-Sets an ORDER BY condition clause
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-rightjoin" visibility="public" name="rightJoin" returnType="BuilderInterface" params={[{"type":"string","name":"model","default":null},{"type":"string|null","name":"conditions","default":"null"},{"type":"string|null","name":"alias","default":"null"}]}>
-Adds a RIGHT join to the query
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-setbindparams" visibility="public" name="setBindParams" returnType="BuilderInterface" params={[{"type":"array","name":"bindParams","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind parameters
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-setbindtypes" visibility="public" name="setBindTypes" returnType="BuilderInterface" params={[{"type":"array","name":"bindTypes","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Set default bind types
-</ApiItem>
-<ApiItem href="#mvcmodelquerybuilderinterface-where" visibility="public" name="where" returnType="BuilderInterface" params={[{"type":"string","name":"conditions","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Sets conditions for the query
-</ApiItem>
+- `public addFrom(string $model, string|null $alias = null): BuilderInterface` — Add a model to take part of the query
+
+- `public andWhere(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Appends a condition to the current conditions using a AND operator
+
+- `public betweenWhere(string $expr, mixed $minimum, mixed $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a BETWEEN condition to the current conditions
+
+- `public columns(mixed $columns): BuilderInterface` — Sets the columns to be queried. The columns can be either a `string` or
+
+- `public distinct(mixed $distinct): BuilderInterface` — Sets SELECT DISTINCT / SELECT ALL flag
+
+- `public forUpdate(bool $forUpdate): BuilderInterface` — Sets a FOR UPDATE clause
+
+- `public from(mixed $models): BuilderInterface` — Sets the models who makes part of the query
+
+- `public getBindParams(): array` — Returns default bind params
+
+- `public getBindTypes(): array` — Returns default bind types
+
+- `public getColumns()` — Return the columns to be queried
+
+- `public getDistinct(): bool` — Returns SELECT DISTINCT / SELECT ALL flag
+
+- `public getFrom()` — Return the models who makes part of the query
+
+- `public getGroupBy(): array` — Returns the GROUP BY clause
+
+- `public getHaving(): string|null` — Returns the HAVING condition clause
+
+- `public getJoins(): array` — Return join parts of the query
+
+- `public getLimit()` — Returns the current LIMIT clause
+
+- `public getModels(): array|string|null` — Returns the models involved in the query
+
+- `public getOffset(): int` — Returns the current OFFSET clause
+
+- `public getOrderBy()` — Return the set ORDER BY clause
+
+- `public getPhql(): string` — Returns a PHQL statement built based on the builder parameters
+
+- `public getQuery(): QueryInterface` — Returns the query built
+
+- `public getWhere()` — Return the conditions for the query
+
+- `public groupBy(mixed $group): BuilderInterface` — Sets a GROUP BY clause
+
+- `public having(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Sets a HAVING condition clause
+
+- `public inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends an IN condition to the current conditions
+
+- `public innerJoin(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds an INNER join to the query
+
+- `public join(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds an :type: join (by default type - INNER) to the query
+
+- `public leftJoin(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds a LEFT join to the query
+
+- `public limit(int $limit, mixed $offset = null): BuilderInterface` — Sets a LIMIT clause
+
+- `public notBetweenWhere(string $expr, mixed $minimum, mixed $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a NOT BETWEEN condition to the current conditions
+
+- `public notInWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface` — Appends a NOT IN condition to the current conditions
+
+- `public offset(int $offset): BuilderInterface` — Sets an OFFSET clause
+
+- `public orWhere(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Appends a condition to the current conditions using an OR operator
+
+- `public orderBy(mixed $orderBy): BuilderInterface` — Sets an ORDER BY condition clause
+
+- `public rightJoin(string $model, string|null $conditions = null, string|null $alias = null): BuilderInterface` — Adds a RIGHT join to the query
+
+- `public setBindParams(array $bindParams, bool $merge = false): BuilderInterface` — Set default bind parameters
+
+- `public setBindTypes(array $bindTypes, bool $merge = false): BuilderInterface` — Set default bind types
+
+- `public where(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface` — Sets conditions for the query
 
 ### Constants
 
-<ApiItem kind="constant" name="OPERATOR_AND" type="string" default="&quot;and&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="OPERATOR_OR" type="string" default="&quot;or&quot;">
-</ApiItem>
+- `const string OPERATOR_AND = "and"`
+
+- `const string OPERATOR_OR = "or"`
 
 ### Methods
 
@@ -14245,8 +13484,8 @@ Sets conditions for the query
 
 ```php
 public function addFrom(
-string $model,
-string|null $alias = null
+    string $model,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -14256,9 +13495,9 @@ Add a model to take part of the query
 
 ```php
 public function andWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -14268,10 +13507,10 @@ Appends a condition to the current conditions using a AND operator
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -14302,27 +13541,27 @@ $builder->columns("id, name");
 
 // Array, one column per element
 $builder->columns(
-[
-    "inv_id",
-    "inv_title",
-]
+    [
+        "inv_id",
+        "inv_title",
+    ]
 );
 
 // Array, named keys. The name of the key acts as an alias (`AS` clause)
 $builder->columns(
-[
-    "inv_title",
-    "number" => "COUNT(*)",
-]
+    [
+        "inv_title",
+        "number" => "COUNT(*)",
+    ]
 );
 
 // Different models
 $builder->columns(
-[
-    "\Phalcon\Models\Invoices.*",
-    "\Phalcon\Models\Customers.cst_name_first",
-    "\Phalcon\Models\Customers.cst_name_last",
-]
+    [
+        "\Phalcon\Models\Invoices.*",
+        "\Phalcon\Models\Customers.cst_name_first",
+        "\Phalcon\Models\Customers.cst_name_last",
+    ]
 );
 ```
 
@@ -14491,9 +13730,9 @@ Sets a GROUP BY clause
 
 ```php
 public function having(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -14503,9 +13742,9 @@ Sets a HAVING condition clause
 
 ```php
 public function inWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -14515,9 +13754,9 @@ Appends an IN condition to the current conditions
 
 ```php
 public function innerJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -14527,9 +13766,9 @@ Adds an INNER join to the query
 
 ```php
 public function join(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -14539,9 +13778,9 @@ Adds an :type: join (by default type - INNER) to the query
 
 ```php
 public function leftJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -14551,8 +13790,8 @@ Adds a LEFT join to the query
 
 ```php
 public function limit(
-int $limit,
-mixed $offset = null
+    int $limit,
+    mixed $offset = null
 ): BuilderInterface;
 ```
 
@@ -14562,10 +13801,10 @@ Sets a LIMIT clause
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -14575,9 +13814,9 @@ Appends a NOT BETWEEN condition to the current conditions
 
 ```php
 public function notInWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -14595,9 +13834,9 @@ Sets an OFFSET clause
 
 ```php
 public function orWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -14615,9 +13854,9 @@ Sets an ORDER BY condition clause
 
 ```php
 public function rightJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -14627,8 +13866,8 @@ Adds a RIGHT join to the query
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -14638,8 +13877,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -14649,28 +13888,28 @@ Set default bind types
 
 ```php
 public function where(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
 Sets conditions for the query
+
 
 ## Mvc\Model\Query\Exceptions\AmbiguousColumn
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsambiguouscolumn-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $phql)`
 
 ### Methods
 
@@ -14678,25 +13917,25 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $phql
+    string $name,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\AmbiguousJoinRelation
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsambiguousjoinrelation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"from","default":null},{"type":"string","name":"join","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $from, string $join, string $phql)`
 
 ### Methods
 
@@ -14704,26 +13943,26 @@ Class
 
 ```php
 public function __construct(
-string $from,
-string $join,
-string $phql
+    string $from,
+    string $join,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbindparameternotinplaceholders-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"wildcard","default":null}]}>
-</ApiItem>
+- `public __construct(string $wildcard)`
 
 ### Methods
 
@@ -14733,20 +13972,20 @@ Class
 public function __construct( string $wildcard );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\BindTypeRequiresArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbindtyperequiresarray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -14756,20 +13995,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\BindValueRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbindvaluerequired-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -14779,20 +14018,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbuilderbuildercolumnnotinmap-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"column","default":null}]}>
-</ApiItem>
+- `public __construct(string $column)`
 
 ### Methods
 
@@ -14802,20 +14041,20 @@ Class
 public function __construct( string $column );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbuilderbuilderconditioninvalid-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -14825,20 +14064,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\ModelRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbuildermodelrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -14848,20 +14087,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbuildernoprimarykey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -14871,20 +14110,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsbuilderoperatornotavailable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"operator","default":null}]}>
-</ApiItem>
+- `public __construct(string $operator)`
 
 ### Methods
 
@@ -14894,20 +14133,20 @@ Class
 public function __construct( string $operator );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ColumnNotInDomain
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscolumnnotindomain-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"model","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $model, string $phql)`
 
 ### Methods
 
@@ -14915,26 +14154,26 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $model,
-string $phql
+    string $name,
+    string $model,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscolumnnotinselectedmodels-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"tag","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $tag, string $phql)`
 
 ### Methods
 
@@ -14942,26 +14181,26 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $tag,
-string $phql
+    string $name,
+    string $tag,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\CorruptedAst
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscorruptedast-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -14971,20 +14210,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedDeleteAst
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscorrupteddeleteast-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -14994,20 +14233,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedInsertAst
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscorruptedinsertast-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15017,20 +14256,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedSelectAst
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscorruptedselectast-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15040,20 +14279,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedUpdateAst
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionscorruptedupdateast-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15063,20 +14302,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsdeletemultiplenotsupported-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15086,20 +14325,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\DuplicateAlias
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsduplicatealias-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $phql)`
 
 ### Methods
 
@@ -15107,25 +14346,25 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $phql
+    string $name,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsemptyarrayplaceholdervalue-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -15135,20 +14374,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InsertColumnCountMismatch
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinsertcolumncountmismatch-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15158,20 +14397,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidCachedResultset
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidcachedresultset-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15181,20 +14420,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidCachingOptions
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidcachingoptions-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15204,20 +14443,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidColumnDefinition
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidcolumndefinition-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15227,20 +14466,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidInjectedManager
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidinjectedmanager-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15250,20 +14489,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidInjectedMetadata
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidinjectedmetadata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15273,20 +14512,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidQueryCacheService
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidquerycacheservice-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15296,20 +14535,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidResultsetClass
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidresultsetclass-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -15319,20 +14558,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidResultsetRowClass
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsinvalidresultsetrowclass-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -15342,20 +14581,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsjoinaliasalreadyused-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"alias","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $alias, string $phql)`
 
 ### Methods
 
@@ -15363,25 +14602,25 @@ Class
 
 ```php
 public function __construct(
-string $alias,
-string $phql
+    string $alias,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\JoinFieldCountMismatch
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsjoinfieldcountmismatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"join","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $model, string $join, string $phql)`
 
 ### Methods
 
@@ -15389,26 +14628,26 @@ Class
 
 ```php
 public function __construct(
-string $model,
-string $join,
-string $phql
+    string $model,
+    string $join,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\MissingCacheKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmissingcachekey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15418,20 +14657,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MissingMetaData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmissingmetadata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15441,20 +14680,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MissingModelAttribute
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmissingmodelattribute-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"attribute","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $model, string $attribute, string $phql)`
 
 ### Methods
 
@@ -15462,26 +14701,26 @@ Class
 
 ```php
 public function __construct(
-string $model,
-string $attribute,
-string $phql
+    string $model,
+    string $attribute,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\MissingModelsManager
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmissingmodelsmanager-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15491,20 +14730,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MixedDatabaseSystems
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmixeddatabasesystems-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15514,20 +14753,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ModelSourceNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmodelsourcenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $phql)`
 
 ### Methods
 
@@ -15535,25 +14774,25 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $phql
+    string $name,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\ModelsListNotLoaded
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmodelslistnotloaded-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15563,20 +14802,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsmultiplesqlstatementsnotsupported-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15586,20 +14825,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\NoModelForAlias
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsnomodelforalias-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $model, string $phql)`
 
 ### Methods
 
@@ -15607,25 +14846,25 @@ Class
 
 ```php
 public function __construct(
-string $model,
-string $phql
+    string $model,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\PhqlColumnNotInMap
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsphqlcolumnnotinmap-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"fieldName","default":null}]}>
-</ApiItem>
+- `public __construct(string $fieldName)`
 
 ### Methods
 
@@ -15635,20 +14874,20 @@ Class
 public function __construct( string $fieldName );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ReadConnectionMissing
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsreadconnectionmissing-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15658,20 +14897,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\RelationshipNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsrelationshipnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"relationship","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $model, string $relationship, string $phql)`
 
 ### Methods
 
@@ -15679,26 +14918,26 @@ Class
 
 ```php
 public function __construct(
-string $model,
-string $relationship,
-string $phql
+    string $model,
+    string $relationship,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\ResultsetClassNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsresultsetclassnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -15708,20 +14947,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ResultsetNonCacheable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsresultsetnoncacheable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15731,20 +14970,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsresultsetrowclassnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -15754,20 +14993,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownBindType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknownbindtype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -15777,20 +15016,20 @@ Class
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownColumnType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknowncolumntype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -15800,20 +15039,20 @@ Class
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownJoinType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknownjointype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $type, string $phql)`
 
 ### Methods
 
@@ -15821,25 +15060,25 @@ Class
 
 ```php
 public function __construct(
-string $type,
-string $phql
+    string $type,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\UnknownModelOrAlias
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknownmodeloralias-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"tag","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $model, string $tag, string $phql)`
 
 ### Methods
 
@@ -15847,26 +15086,26 @@ Class
 
 ```php
 public function __construct(
-string $model,
-string $tag,
-string $phql
+    string $model,
+    string $tag,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\UnknownPhqlExpression
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknownphqlexpression-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15876,20 +15115,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknownphqlexpressiontype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -15899,20 +15138,20 @@ Class
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownPhqlStatement
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunknownphqlstatement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -15922,20 +15161,20 @@ Class
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnsafeIdentifier
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsunsafeidentifier-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"identifier","default":null},{"type":"string","name":"phql","default":null}]}>
-</ApiItem>
+- `public __construct(string $identifier, string $phql)`
 
 ### Methods
 
@@ -15943,25 +15182,25 @@ Class
 
 ```php
 public function __construct(
-string $identifier,
-string $phql
+    string $identifier,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionsupdatemultiplenotsupported-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15971,20 +15210,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\WriteConnectionMissing
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`**
 
 `Phalcon\Mvc\Model\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelqueryexceptionswriteconnectionmissing-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -15993,6 +15232,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\Model\Query\Lang
 
@@ -16014,7 +15254,7 @@ parser with a very low memory footprint that is also thread-safe.
 use Phalcon\Mvc\Model\Query\Lang;
 
 $intermediate = Lang::parsePHQL(
-"SELECT r.* FROM Invoices r LIMIT 10"
+    "SELECT r.* FROM Invoices r LIMIT 10"
 );
 ```
 
@@ -16022,9 +15262,7 @@ $intermediate = Lang::parsePHQL(
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelquerylang-parsephql" visibility="public" name="parsePHQL" returnType="array" params={[{"type":"string","name":"phql","default":null}]}>
-Parses a PHQL statement returning an intermediate representation (IR)
-</ApiItem>
+- `public parsePHQL(string $phql): array` — Parses a PHQL statement returning an intermediate representation (IR)
 
 ### Methods
 
@@ -16035,6 +15273,7 @@ public static function parsePHQL( string $phql ): array;
 ```
 
 Parses a PHQL statement returning an intermediate representation (IR)
+
 
 ## Mvc\Model\Query\Status
 
@@ -16047,24 +15286,24 @@ model which finally executes the operations when it fails
 
 ```php
 $phql = "UPDATE Invoices
- SET inv_title = :inv_title:,
-     inv_status_flag = :inv_status_flag:,
-     inv_total = :inv_total:
- WHERE inv_id = :inv_id:";
+     SET inv_title = :inv_title:,
+         inv_status_flag = :inv_status_flag:,
+         inv_total = :inv_total:
+     WHERE inv_id = :inv_id:";
 
 $status = $app->modelsManager->executeQuery(
-$phql,
-[
-    "inv_id"          => 100,
-    "inv_title"       => "Test Invoice",
-    "inv_status_flag" => 1,
-    "inv_total"       => 1959,
-]
+    $phql,
+    [
+        "inv_id"          => 100,
+        "inv_title"       => "Test Invoice",
+        "inv_status_flag" => 1,
+        "inv_total"       => 1959,
+    ]
 );
 
 // Check if the update was successful
 if ($status->success()) {
-echo "OK";
+    echo "OK";
 }
 ```
 
@@ -16074,25 +15313,19 @@ echo "OK";
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelquerystatus-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"bool","name":"success","default":null},{"type":"ModelInterface|null","name":"model","default":"null"}]}>
-Phalcon\Mvc\Model\Query\Status
-</ApiItem>
-<ApiItem href="#mvcmodelquerystatus-getmessages" visibility="public" name="getMessages" returnType="MessageInterface[]" params={[]}>
-Returns the messages produced because of a failed operation
-</ApiItem>
-<ApiItem href="#mvcmodelquerystatus-getmodel" visibility="public" name="getModel" returnType="ModelInterface|null" params={[]}>
-Returns the model that executed the action
-</ApiItem>
-<ApiItem href="#mvcmodelquerystatus-success" visibility="public" name="success" returnType="bool" params={[]}>
-Allows to check if the executed operation was successful
-</ApiItem>
+- `public __construct(bool $success, ModelInterface|null $model = null)` — Phalcon\Mvc\Model\Query\Status
+
+- `public getMessages(): MessageInterface[]` — Returns the messages produced because of a failed operation
+
+- `public getModel(): ModelInterface|null` — Returns the model that executed the action
+
+- `public success(): bool` — Allows to check if the executed operation was successful
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="model" type="ModelInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="success" type="bool" default="">
-</ApiItem>
+- `protected ModelInterface $model`
+
+- `protected bool $success`
 
 ### Methods
 
@@ -16100,8 +15333,8 @@ Allows to check if the executed operation was successful
 
 ```php
 public function __construct(
-bool $success,
-ModelInterface|null $model = null
+    bool $success,
+    ModelInterface|null $model = null
 );
 ```
 
@@ -16131,6 +15364,7 @@ public function success(): bool;
 
 Allows to check if the executed operation was successful
 
+
 ## Mvc\Model\Query\StatusInterface
 
 Interface
@@ -16143,15 +15377,11 @@ Interface for Phalcon\Mvc\Model\Query\Status
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelquerystatusinterface-getmessages" visibility="public" name="getMessages" returnType="MessageInterface[]" params={[]}>
-Returns the messages produced by an operation failed
-</ApiItem>
-<ApiItem href="#mvcmodelquerystatusinterface-getmodel" visibility="public" name="getModel" returnType="ModelInterface|null" params={[]}>
-Returns the model which executed the action
-</ApiItem>
-<ApiItem href="#mvcmodelquerystatusinterface-success" visibility="public" name="success" returnType="bool" params={[]}>
-Allows to check if the executed operation was successful
-</ApiItem>
+- `public getMessages(): MessageInterface[]` — Returns the messages produced by an operation failed
+
+- `public getModel(): ModelInterface|null` — Returns the model which executed the action
+
+- `public success(): bool` — Allows to check if the executed operation was successful
 
 ### Methods
 
@@ -16179,6 +15409,7 @@ public function success(): bool;
 
 Allows to check if the executed operation was successful
 
+
 ## Mvc\Model\Relation
 
 Class
@@ -16191,92 +15422,73 @@ This class represents a relationship between two models
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelrelation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"type","default":null},{"type":"string","name":"referencedModel","default":null},{"type":"mixed","name":"fields","default":null},{"type":"mixed","name":"referencedFields","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\Model\Relation constructor
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getfields" visibility="public" name="getFields" returnType="" params={[]}>
-Returns the fields
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getforeignkey" visibility="public" name="getForeignKey" returnType="" params={[]}>
-Returns the foreign key configuration
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getintermediatefields" visibility="public" name="getIntermediateFields" returnType="" params={[]}>
-Gets the intermediate fields for has-*-through relations
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getintermediatemodel" visibility="public" name="getIntermediateModel" returnType="string" params={[]}>
-Gets the intermediate model for has-*-through relations
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getintermediatereferencedfields" visibility="public" name="getIntermediateReferencedFields" returnType="" params={[]}>
-Gets the intermediate referenced fields for has-*-through relations
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getoption" visibility="public" name="getOption" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Returns an option by the specified name
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Returns the options
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getparams" visibility="public" name="getParams" returnType="" params={[]}>
-Returns parameters that must be always used when the related records are obtained
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getreferencedfields" visibility="public" name="getReferencedFields" returnType="" params={[]}>
-Returns the referenced fields
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-getreferencedmodel" visibility="public" name="getReferencedModel" returnType="string" params={[]}>
-Returns the referenced model
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-Returns the relation type
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-isforeignkey" visibility="public" name="isForeignKey" returnType="bool" params={[]}>
-Check whether the relation act as a foreign key
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-isreusable" visibility="public" name="isReusable" returnType="bool" params={[]}>
-Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-isthrough" visibility="public" name="isThrough" returnType="bool" params={[]}>
-Check whether the relation is a 'many-to-many' relation or not
-</ApiItem>
-<ApiItem href="#mvcmodelrelation-setintermediaterelation" visibility="public" name="setIntermediateRelation" returnType="" params={[{"type":"mixed","name":"intermediateFields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null}]}>
-Sets the intermediate model data for has-*-through relations
-</ApiItem>
+- `public __construct(int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [])` — Phalcon\Mvc\Model\Relation constructor
+
+- `public getFields()` — Returns the fields
+
+- `public getForeignKey()` — Returns the foreign key configuration
+
+- `public getIntermediateFields()` — Gets the intermediate fields for has-\*-through relations
+
+- `public getIntermediateModel(): string` — Gets the intermediate model for has-\*-through relations
+
+- `public getIntermediateReferencedFields()` — Gets the intermediate referenced fields for has-\*-through relations
+
+- `public getOption(string $name)` — Returns an option by the specified name
+
+- `public getOptions(): array` — Returns the options
+
+- `public getParams()` — Returns parameters that must be always used when the related records are obtained
+
+- `public getReferencedFields()` — Returns the referenced fields
+
+- `public getReferencedModel(): string` — Returns the referenced model
+
+- `public getType(): int` — Returns the relation type
+
+- `public isForeignKey(): bool` — Check whether the relation act as a foreign key
+
+- `public isReusable(): bool` — Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+
+- `public isThrough(): bool` — Check whether the relation is a 'many-to-many' relation or not
+
+- `public setIntermediateRelation(mixed $intermediateFields, string $intermediateModel, mixed $intermediateReferencedFields)` — Sets the intermediate model data for has-\*-through relations
 
 ### Constants
 
-<ApiItem kind="constant" name="ACTION_CASCADE" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="ACTION_RESTRICT" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="BELONGS_TO" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="HAS_MANY" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="HAS_MANY_THROUGH" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="HAS_ONE" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="HAS_ONE_THROUGH" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="NO_ACTION" type="int" default="0">
-</ApiItem>
+- `const int ACTION_CASCADE = 2`
+
+- `const int ACTION_RESTRICT = 1`
+
+- `const int BELONGS_TO = 0`
+
+- `const int HAS_MANY = 2`
+
+- `const int HAS_MANY_THROUGH = 4`
+
+- `const int HAS_ONE = 1`
+
+- `const int HAS_ONE_THROUGH = 3`
+
+- `const int NO_ACTION = 0`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="fields" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="intermediateFields" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="intermediateModel" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="intermediateReferencedFields" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="referencedFields" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="referencedModel" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="int" default="">
-</ApiItem>
+- `protected array|string $fields`
+
+- `protected array|string $intermediateFields`
+
+- `protected string|null $intermediateModel = null`
+
+- `protected array|string $intermediateReferencedFields`
+
+- `protected array $options = []`
+
+- `protected array|string $referencedFields`
+
+- `protected string $referencedModel`
+
+- `protected int $type`
 
 ### Methods
 
@@ -16284,11 +15496,11 @@ Sets the intermediate model data for has-*-through relations
 
 ```php
 public function __construct(
-int $type,
-string $referencedModel,
-mixed $fields,
-mixed $referencedFields,
-array $options = []
+    int $type,
+    string $referencedModel,
+    mixed $fields,
+    mixed $referencedFields,
+    array $options = []
 );
 ```
 
@@ -16411,13 +15623,14 @@ Check whether the relation is a 'many-to-many' relation or not
 
 ```php
 public function setIntermediateRelation(
-mixed $intermediateFields,
-string $intermediateModel,
-mixed $intermediateReferencedFields
+    mixed $intermediateFields,
+    string $intermediateModel,
+    mixed $intermediateReferencedFields
 );
 ```
 
 Sets the intermediate model data for has-*-through relations
+
 
 ## Mvc\Model\RelationInterface
 
@@ -16431,51 +15644,35 @@ Interface for Phalcon\Mvc\Model\Relation
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelrelationinterface-getfields" visibility="public" name="getFields" returnType="" params={[]}>
-Returns the fields
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getforeignkey" visibility="public" name="getForeignKey" returnType="" params={[]}>
-Returns the foreign key configuration
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getintermediatefields" visibility="public" name="getIntermediateFields" returnType="" params={[]}>
-Gets the intermediate fields for has-*-through relations
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getintermediatemodel" visibility="public" name="getIntermediateModel" returnType="string" params={[]}>
-Gets the intermediate model for has-*-through relations
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getintermediatereferencedfields" visibility="public" name="getIntermediateReferencedFields" returnType="" params={[]}>
-Gets the intermediate referenced fields for has-*-through relations
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getoption" visibility="public" name="getOption" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-Returns an option by the specified name
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Returns the options
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getparams" visibility="public" name="getParams" returnType="" params={[]}>
-Returns parameters that must be always used when the related records are obtained
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getreferencedfields" visibility="public" name="getReferencedFields" returnType="" params={[]}>
-Returns the referenced fields
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-getreferencedmodel" visibility="public" name="getReferencedModel" returnType="string" params={[]}>
-Returns the referenced model
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-Returns the relations type
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-isforeignkey" visibility="public" name="isForeignKey" returnType="bool" params={[]}>
-Check whether the relation act as a foreign key
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-isreusable" visibility="public" name="isReusable" returnType="bool" params={[]}>
-Check if records returned by getting belongs-to/has-many are implicitly
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-isthrough" visibility="public" name="isThrough" returnType="bool" params={[]}>
-Check whether the relation is a 'many-to-many' relation or not
-</ApiItem>
-<ApiItem href="#mvcmodelrelationinterface-setintermediaterelation" visibility="public" name="setIntermediateRelation" returnType="" params={[{"type":"mixed","name":"intermediateFields","default":null},{"type":"string","name":"intermediateModel","default":null},{"type":"mixed","name":"intermediateReferencedFields","default":null}]}>
-Sets the intermediate model data for has-*-through relations
-</ApiItem>
+- `public getFields()` — Returns the fields
+
+- `public getForeignKey()` — Returns the foreign key configuration
+
+- `public getIntermediateFields()` — Gets the intermediate fields for has-\*-through relations
+
+- `public getIntermediateModel(): string` — Gets the intermediate model for has-\*-through relations
+
+- `public getIntermediateReferencedFields()` — Gets the intermediate referenced fields for has-\*-through relations
+
+- `public getOption(string $name)` — Returns an option by the specified name
+
+- `public getOptions(): array` — Returns the options
+
+- `public getParams()` — Returns parameters that must be always used when the related records are obtained
+
+- `public getReferencedFields()` — Returns the referenced fields
+
+- `public getReferencedModel(): string` — Returns the referenced model
+
+- `public getType(): int` — Returns the relations type
+
+- `public isForeignKey(): bool` — Check whether the relation act as a foreign key
+
+- `public isReusable(): bool` — Check if records returned by getting belongs-to/has-many are implicitly
+
+- `public isThrough(): bool` — Check whether the relation is a 'many-to-many' relation or not
+
+- `public setIntermediateRelation(mixed $intermediateFields, string $intermediateModel, mixed $intermediateReferencedFields)` — Sets the intermediate model data for has-\*-through relations
 
 ### Methods
 
@@ -16597,13 +15794,14 @@ Check whether the relation is a 'many-to-many' relation or not
 
 ```php
 public function setIntermediateRelation(
-mixed $intermediateFields,
-string $intermediateModel,
-mixed $intermediateReferencedFields
+    mixed $intermediateFields,
+    string $intermediateModel,
+    mixed $intermediateReferencedFields
 );
 ```
 
 Sets the intermediate model data for has-*-through relations
+
 
 ## Mvc\Model\ResultInterface
 
@@ -16617,9 +15815,7 @@ All single objects passed as base objects to Resultsets must implement this inte
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelresultinterface-setdirtystate" visibility="public" name="setDirtyState" returnType="bool|ModelInterface" params={[{"type":"int","name":"dirtyState","default":null}]}>
-Sets the object's state
-</ApiItem>
+- `public setDirtyState(int $dirtyState): bool|ModelInterface` — Sets the object's state
 
 ### Methods
 
@@ -16630,6 +15826,7 @@ public function setDirtyState( int $dirtyState ): bool|ModelInterface;
 ```
 
 Sets the object's state
+
 
 ## Mvc\Model\Resultset
 
@@ -16645,32 +15842,32 @@ were before serializing.
 
 // Using a standard foreach
 $invoices = Invoices::find(
-[
-    "inv_status_flag = 1",
-    "order" => "inv_title",
-]
+    [
+        "inv_status_flag = 1",
+        "order" => "inv_title",
+    ]
 );
 
 foreach ($invoices as invoice) {
-echo invoice->inv_title, "\n";
+    echo invoice->inv_title, "\n";
 }
 
 // Using a while
 $invoices = Invoices::find(
-[
-    "inv_status_flag = 1",
-    "order" => "inv_title",
-]
+    [
+        "inv_status_flag = 1",
+        "order" => "inv_title",
+    ]
 );
 
 $invoices->rewind();
 
 while ($invoices->valid()) {
-$invoice = $invoices->current();
+    $invoice = $invoices->current();
 
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 
-$invoices->next();
+    $invoices->next();
 }
 ```
 @template TKey of int
@@ -16679,132 +15876,102 @@ $invoices->next();
 @implements ArrayAccess&lt;TKey, TValue>
 
 - **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `\Iterator`, `\SeekableIterator`, `\Countable`, `\ArrayAccess`, `\JsonSerializable`
-- [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
-- [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
+  - [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
+  - [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
 
 `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Enum` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable` · `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor` · `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService` · `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `SeekableIterator`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelresultset-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"result","default":null},{"type":"mixed","name":"cache","default":"null"}]}>
-Phalcon\Mvc\Model\Resultset constructor
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-count" visibility="public" name="count" returnType="int" params={[]}>
-Counts how many rows are in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"Closure|null","name":"conditionCallback","default":"null"}]}>
-Deletes every record in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-filter" visibility="public" name="filter" returnType="ModelInterface[]" params={[{"type":"callable","name":"filter","default":null}]}>
-Filters a resultset returning only those the developer requires
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-getcache" visibility="public" name="getCache" returnType="CacheInterface|null" params={[]}>
-Returns the associated cache for the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-getfirst" visibility="public" name="getFirst" returnType="mixed|null" params={[]}>
-Get first row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-gethydratemode" visibility="public" name="getHydrateMode" returnType="int" params={[]}>
-Returns the current hydration mode
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-getlast" visibility="public" name="getLast" returnType="ModelInterface|null" params={[]}>
-Get last row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-getmessages" visibility="public" name="getMessages" returnType="MessageInterface[]" params={[]}>
-Returns the error messages produced by a batch operation
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-getresult" visibility="public" name="getResult" returnType="mixed" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-Returns the internal type of data retrieval that the resultset is using
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-isfresh" visibility="public" name="isFresh" returnType="bool" params={[]}>
-Tell if the resultset if fresh or an old one cached
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Returns serialised model objects as array for json_encode.
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-key" visibility="public" name="key" returnType="int|null" params={[]}>
-Gets pointer number of active row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-materialize" visibility="public" name="materialize" returnType="void" params={[]}>
-Fetches every remaining row of the underlying cursor into memory,
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-next" visibility="public" name="next" returnType="void" params={[]}>
-Moves cursor to next row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"index","default":null}]}>
-Checks whether offset exists in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"index","default":null}]}>
-Gets row in a specific position of the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
-Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-refresh" visibility="public" name="refresh" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-rewind" visibility="public" name="rewind" returnType="void" params={[]}>
-Rewinds resultset to its beginning
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-seek" visibility="public" name="seek" returnType="void" params={[{"type":"mixed","name":"position","default":null}]}>
-Changes the internal pointer to a specific position in the resultset.
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-sethydratemode" visibility="public" name="setHydrateMode" returnType="ResultsetInterface" params={[{"type":"int","name":"hydrateMode","default":null}]}>
-Sets the hydration mode in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-setisfresh" visibility="public" name="setIsFresh" returnType="ResultsetInterface" params={[{"type":"bool","name":"isFresh","default":null}]}>
-Set if the resultset is fresh or an old one cached
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-update" visibility="public" name="update" returnType="bool" params={[{"type":"mixed","name":"data","default":null},{"type":"Closure|null","name":"conditionCallback","default":"null"}]}>
-Updates every record in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultset-valid" visibility="public" name="valid" returnType="bool" params={[]}>
-Check whether internal resource has rows to fetch
-</ApiItem>
+- `public __construct(mixed $result, mixed $cache = null)` — Phalcon\Mvc\Model\Resultset constructor
+
+- `public count(): int` — Counts how many rows are in the resultset
+
+- `public delete(Closure|null $conditionCallback = null): bool` — Deletes every record in the resultset
+
+- `public filter(callable $filter): ModelInterface[]` — Filters a resultset returning only those the developer requires
+
+- `public getCache(): CacheInterface|null` — Returns the associated cache for the resultset
+
+- `public getFirst(): mixed|null` — Get first row in the resultset
+
+- `public getHydrateMode(): int` — Returns the current hydration mode
+
+- `public getLast(): ModelInterface|null` — Get last row in the resultset
+
+- `public getMessages(): MessageInterface[]` — Returns the error messages produced by a batch operation
+
+- `public getResult(): mixed`
+
+- `public getType(): int` — Returns the internal type of data retrieval that the resultset is using
+
+- `public isFresh(): bool` — Tell if the resultset if fresh or an old one cached
+
+- `public jsonSerialize(): array` — Returns serialised model objects as array for json\_encode.
+
+- `public key(): int|null` — Gets pointer number of active row in the resultset
+
+- `public materialize(): void` — Fetches every remaining row of the underlying cursor into memory,
+
+- `public next(): void` — Moves cursor to next row in the resultset
+
+- `public offsetExists(mixed $index): bool` — Checks whether offset exists in the resultset
+
+- `public offsetGet(mixed $index): mixed` — Gets row in a specific position of the resultset
+
+- `public offsetSet(mixed $offset, mixed $value): void` — Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+- `public offsetUnset(mixed $offset): void` — Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+
+- `public refresh(): bool`
+
+- `public rewind(): void` — Rewinds resultset to its beginning
+
+- `public seek(mixed $position): void` — Changes the internal pointer to a specific position in the resultset.
+
+- `public setHydrateMode(int $hydrateMode): ResultsetInterface` — Sets the hydration mode in the resultset
+
+- `public setIsFresh(bool $isFresh): ResultsetInterface` — Set if the resultset is fresh or an old one cached
+
+- `public update(mixed $data, Closure|null $conditionCallback = null): bool` — Updates every record in the resultset
+
+- `public valid(): bool` — Check whether internal resource has rows to fetch
 
 ### Constants
 
-<ApiItem kind="constant" name="HYDRATE_ARRAYS" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="HYDRATE_OBJECTS" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="HYDRATE_RECORDS" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="TYPE_RESULT_FULL" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="TYPE_RESULT_PARTIAL" type="int" default="1">
-</ApiItem>
+- `const int HYDRATE_ARRAYS = 1`
+
+- `const int HYDRATE_OBJECTS = 2`
+
+- `const int HYDRATE_RECORDS = 0`
+
+- `const int TYPE_RESULT_FULL = 0`
+
+- `const int TYPE_RESULT_PARTIAL = 1`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="activeRow" type="mixed|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cache" type="CacheInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="count" type="int|null" default="null">
-Number of rows, or null while it has not been worked out yet. Resolved
-lazily by count() - asking the driver up front costs SQLite an extra
-statement on every single result-set.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="errorMessages" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hydrateMode" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isFresh" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pointer" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="result" type="ResultInterface|bool" default="">
-Phalcon\Db\ResultInterface or false for empty resultset
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="row" type="mixed|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rows" type="array|null" default="null">
-</ApiItem>
+- `protected mixed|null $activeRow = null`
+
+- `protected CacheInterface|null $cache = null`
+
+- `protected int|null $count = null` — Number of rows, or null while it has not been worked out yet. Resolved
+  lazily by count() - asking the driver up front costs SQLite an extra
+  statement on every single result-set.
+
+- `protected array $errorMessages = []`
+
+- `protected int $hydrateMode = 0`
+
+- `protected bool $isFresh = true`
+
+- `protected int $pointer = 0`
+
+- `protected ResultInterface|bool $result` — Phalcon\Db\ResultInterface or false for empty resultset
+
+- `protected mixed|null $row = null`
+
+- `protected array|null $rows = null`
 
 ### Methods
 
@@ -16812,8 +15979,8 @@ Phalcon\Db\ResultInterface or false for empty resultset
 
 ```php
 public function __construct(
-mixed $result,
-mixed $cache = null
+    mixed $result,
+    mixed $cache = null
 );
 ```
 
@@ -16845,11 +16012,11 @@ Filters a resultset returning only those the developer requires
 
 ```php
 $filtered = $invoices->filter(
-function ($invoice) {
-    if ($invoice->inv_id < 3) {
-        return $invoice;
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
+        }
     }
-}
 );
 ```
 
@@ -16875,18 +16042,18 @@ $manager = $model->getModelsManager();
 
 // \Invoices
 $manager->createQuery('SELECT * FROM Invoices')
-    ->execute()
-    ->getFirst();
+        ->execute()
+        ->getFirst();
 
 // \Phalcon\Mvc\Model\Row
 $manager->createQuery('SELECT r.inv_id FROM Invoices AS r')
-    ->execute()
-    ->getFirst();
+        ->execute()
+        ->getFirst();
 
 // NULL
 $manager->createQuery('SELECT r.inv_id FROM Invoices AS r WHERE r.inv_title = "NON-EXISTENT"')
-    ->execute()
-    ->getFirst();
+        ->execute()
+        ->getFirst();
 ```
 
 <h4 id="mvcmodelresultset-gethydratemode"><code>getHydrateMode()</code></h4>
@@ -17000,8 +16167,8 @@ Gets row in a specific position of the resultset
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -17058,8 +16225,8 @@ Set if the resultset is fresh or an old one cached
 
 ```php
 public function update(
-mixed $data,
-Closure|null $conditionCallback = null
+    mixed $data,
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
@@ -17077,6 +16244,7 @@ Driven by the row the cursor is parked on rather than by the count, so
 that a plain traversal never has to ask the driver how many rows there
 are - on SQLite that answer costs a second statement.
 
+
 ## Mvc\Model\ResultsetInterface
 
 Interface
@@ -17089,45 +16257,31 @@ Interface for Phalcon\Mvc\Model\Resultset
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelresultsetinterface-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"Closure|null","name":"conditionCallback","default":"null"}]}>
-Deletes every record in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-filter" visibility="public" name="filter" returnType="ModelInterface[]" params={[{"type":"callable","name":"filter","default":null}]}>
-Filters a resultset returning only those the developer requires
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-getcache" visibility="public" name="getCache" returnType="mixed|null" params={[]}>
-Returns the associated cache for the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-getfirst" visibility="public" name="getFirst" returnType="mixed|null" params={[]}>
-Get first row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-gethydratemode" visibility="public" name="getHydrateMode" returnType="int" params={[]}>
-Returns the current hydration mode
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-getlast" visibility="public" name="getLast" returnType="ModelInterface|null" params={[]}>
-Get last row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-getmessages" visibility="public" name="getMessages" returnType="MessageInterface[]" params={[]}>
-Returns the error messages produced by a batch operation
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-Returns the internal type of data retrieval that the resultset is using
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-isfresh" visibility="public" name="isFresh" returnType="bool" params={[]}>
-Tell if the resultset is fresh or an old one cached
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-sethydratemode" visibility="public" name="setHydrateMode" returnType="ResultsetInterface" params={[{"type":"int","name":"hydrateMode","default":null}]}>
-Sets the hydration mode in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-setisfresh" visibility="public" name="setIsFresh" returnType="ResultsetInterface" params={[{"type":"bool","name":"isFresh","default":null}]}>
-Set if the resultset is fresh or an old one cached
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns a complete resultset as an array, if the resultset has a big
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetinterface-update" visibility="public" name="update" returnType="bool" params={[{"type":"mixed","name":"data","default":null},{"type":"Closure|null","name":"conditionCallback","default":"null"}]}>
-Updates every record in the resultset
-</ApiItem>
+- `public delete(Closure|null $conditionCallback = null): bool` — Deletes every record in the resultset
+
+- `public filter(callable $filter): ModelInterface[]` — Filters a resultset returning only those the developer requires
+
+- `public getCache(): mixed|null` — Returns the associated cache for the resultset
+
+- `public getFirst(): mixed|null` — Get first row in the resultset
+
+- `public getHydrateMode(): int` — Returns the current hydration mode
+
+- `public getLast(): ModelInterface|null` — Get last row in the resultset
+
+- `public getMessages(): MessageInterface[]` — Returns the error messages produced by a batch operation
+
+- `public getType(): int` — Returns the internal type of data retrieval that the resultset is using
+
+- `public isFresh(): bool` — Tell if the resultset is fresh or an old one cached
+
+- `public setHydrateMode(int $hydrateMode): ResultsetInterface` — Sets the hydration mode in the resultset
+
+- `public setIsFresh(bool $isFresh): ResultsetInterface` — Set if the resultset is fresh or an old one cached
+
+- `public toArray(): array` — Returns a complete resultset as an array, if the resultset has a big
+
+- `public update(mixed $data, Closure|null $conditionCallback = null): bool` — Updates every record in the resultset
 
 ### Methods
 
@@ -17149,11 +16303,11 @@ Filters a resultset returning only those the developer requires
 
 ```php
 $filtered = $invoices->filter(
-function ($invoice) {
-    if ($invoice->inv_id < 3) {
-        return $invoice;
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
+        }
     }
-}
 );
 ```
 
@@ -17242,12 +16396,13 @@ number of rows it could consume more memory than currently it does.
 
 ```php
 public function update(
-mixed $data,
-Closure|null $conditionCallback = null
+    mixed $data,
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
 Updates every record in the resultset
+
 
 ## Mvc\Model\Resultset\Complex
 
@@ -17260,42 +16415,34 @@ This class builds every complex row as it is required
 @template TValue of mixed
 
 - [`Phalcon\Mvc\Model\Resultset`](#mvcmodelresultset)
-- **`Phalcon\Mvc\Model\Resultset\Complex`**
+  - **`Phalcon\Mvc\Model\Resultset\Complex`**
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\CorruptColumnType` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `stdClass`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelresultsetcomplex-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"columnTypes","default":null},{"type":"ResultInterface|null","name":"result","default":"null"},{"type":"mixed","name":"cache","default":"null"},{"type":"string","name":"resultsetRowClass","default":"\"\""}]}>
-Phalcon\Mvc\Model\Resultset\Complex constructor
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetcomplex-__serialize" visibility="public" name="__serialize" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetcomplex-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetcomplex-current" visibility="public" name="current" returnType="mixed" params={[]}>
-Returns current row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetcomplex-serialize" visibility="public" name="serialize" returnType="string" params={[]}>
-Serializing a resultset will dump all related rows into a big array,
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetcomplex-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns a complete resultset as an array, if the resultset has a big
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetcomplex-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
-Unserializing a resultset will allow to only works on the rows present
-</ApiItem>
+- `public __construct(mixed $columnTypes, ResultInterface|null $result = null, mixed $cache = null, string $resultsetRowClass = "")` — Phalcon\Mvc\Model\Resultset\Complex constructor
+
+- `public __serialize(): array`
+
+- `public __unserialize(array $data): void`
+
+- `public current(): mixed` — Returns current row in the resultset
+
+- `public serialize(): string` — Serializing a resultset will dump all related rows into a big array,
+
+- `public toArray(): array` — Returns a complete resultset as an array, if the resultset has a big
+
+- `public unserialize(mixed $data): void` — Unserializing a resultset will allow to only works on the rows present
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="columnTypes" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="disableHydration" type="bool" default="false">
-Unserialized result-set hydrated all rows already. unserialize() sets
-disableHydration to true
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resultsetRowClass" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected array $columnTypes`
+
+- `protected bool $disableHydration = false` — Unserialized result-set hydrated all rows already. unserialize() sets
+  disableHydration to true
+
+- `protected string $resultsetRowClass = ""`
 
 ### Methods
 
@@ -17303,10 +16450,10 @@ disableHydration to true
 
 ```php
 public function __construct(
-mixed $columnTypes,
-ResultInterface|null $result = null,
-mixed $cache = null,
-string $resultsetRowClass = ""
+    mixed $columnTypes,
+    ResultInterface|null $result = null,
+    mixed $cache = null,
+    string $resultsetRowClass = ""
 );
 ```
 
@@ -17359,6 +16506,7 @@ public function unserialize( mixed $data ): void;
 Unserializing a resultset will allow to only works on the rows present
 in the saved state
 
+
 ## Mvc\Model\Resultset\Simple
 
 Class
@@ -17370,48 +16518,39 @@ This class builds every complete object as it is required
 @template TValue of \Phalcon\Mvc\ModelInterface
 
 - [`Phalcon\Mvc\Model\Resultset`](#mvcmodelresultset)
-- **`Phalcon\Mvc\Model\Resultset\Simple`**
+  - **`Phalcon\Mvc\Model\Resultset\Simple`**
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelresultsetsimple-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"columnMap","default":null},{"type":"mixed","name":"model","default":null},{"type":"mixed","name":"result","default":null},{"type":"mixed","name":"cache","default":"null"},{"type":"bool","name":"keepSnapshots","default":"false"}]}>
-Phalcon\Mvc\Model\Resultset\Simple constructor
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-__serialize" visibility="public" name="__serialize" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-current" visibility="public" name="current" returnType="ModelInterface|Row|null" params={[]}>
-Returns current row in the resultset
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-serialize" visibility="public" name="serialize" returnType="string" params={[]}>
-Serializing a resultset will dump all related rows into a big array
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-seteagermap" visibility="public" name="setEagerMap" returnType="void" params={[{"type":"array","name":"eagerMap","default":null}]}>
-Attaches a pre-loaded relation map, applied to every record as it is
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-slicerows" visibility="public" name="sliceRows" returnType="Simple" params={[{"type":"array","name":"indexes","default":null}]}>
-Builds a new resultset of the same concrete class over the rows at the
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-toarray" visibility="public" name="toArray" returnType="array" params={[{"type":"bool","name":"renameColumns","default":"true"}]}>
-Returns a complete resultset as an array, if the resultset has a big
-</ApiItem>
-<ApiItem href="#mvcmodelresultsetsimple-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
-Unserializing a resultset will allow to only works on the rows present in
-</ApiItem>
+- `public __construct(mixed $columnMap, mixed $model, mixed $result, mixed $cache = null, bool $keepSnapshots = false)` — Phalcon\Mvc\Model\Resultset\Simple constructor
+
+- `public __serialize(): array`
+
+- `public __unserialize(array $data): void`
+
+- `public current(): ModelInterface|Row|null` — Returns current row in the resultset
+
+- `public serialize(): string` — Serializing a resultset will dump all related rows into a big array
+
+- `public setEagerMap(array $eagerMap): void` — Attaches a pre-loaded relation map, applied to every record as it is
+
+- `public sliceRows(array $indexes): Simple` — Builds a new resultset of the same concrete class over the rows at the
+
+- `public toArray(bool $renameColumns = true): array` — Returns a complete resultset as an array, if the resultset has a big
+
+- `public unserialize(mixed $data): void` — Unserializing a resultset will allow to only works on the rows present in
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="columnMap" type="array|string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eagerMap" type="array|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="keepSnapshots" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="model" type="ModelInterface|Row" default="">
-</ApiItem>
+- `protected array|string $columnMap`
+
+- `protected array|null $eagerMap = null`
+
+- `protected bool $keepSnapshots = false`
+
+- `protected ModelInterface|Row $model`
 
 ### Methods
 
@@ -17419,11 +16558,11 @@ Unserializing a resultset will allow to only works on the rows present in
 
 ```php
 public function __construct(
-mixed $columnMap,
-mixed $model,
-mixed $result,
-mixed $cache = null,
-bool $keepSnapshots = false
+    mixed $columnMap,
+    mixed $model,
+    mixed $result,
+    mixed $cache = null,
+    bool $keepSnapshots = false
 );
 ```
 
@@ -17500,6 +16639,7 @@ public function unserialize( mixed $data ): void;
 Unserializing a resultset will allow to only works on the rows present in
 the saved state
 
+
 ## Mvc\Model\Row
 
 Class
@@ -17508,39 +16648,29 @@ This component allows Phalcon\Mvc\Model to return rows without an associated ent
 This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
 - `\stdClass`
-- **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\ArrayAccess`, `\JsonSerializable`
+  - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\ArrayAccess`, `\JsonSerializable`
 
 `ArrayAccess` · `JsonSerializable` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\IndexNotInRow` · `Phalcon\Mvc\Model\Exceptions\RowIsImmutable`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelrow-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Serializes the object for json_encode
-</ApiItem>
-<ApiItem href="#mvcmodelrow-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"index","default":null}]}>
-Checks whether offset exists in the row. Returns true when the property
-</ApiItem>
-<ApiItem href="#mvcmodelrow-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"index","default":null}]}>
-Gets a record in a specific position of the row
-</ApiItem>
-<ApiItem href="#mvcmodelrow-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"offset","default":null},{"type":"mixed","name":"value","default":null}]}>
-Rows cannot be changed. It has only been implemented to meet the
-</ApiItem>
-<ApiItem href="#mvcmodelrow-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
-Rows cannot be changed. It has only been implemented to meet the
-</ApiItem>
-<ApiItem href="#mvcmodelrow-readattribute" visibility="public" name="readAttribute" returnType="" params={[{"type":"string","name":"attribute","default":null}]}>
-Reads an attribute value by its name
-</ApiItem>
-<ApiItem href="#mvcmodelrow-setdirtystate" visibility="public" name="setDirtyState" returnType="ModelInterface|bool" params={[{"type":"int","name":"dirtyState","default":null}]}>
-Set the current object's state
-</ApiItem>
-<ApiItem href="#mvcmodelrow-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the instance as an array representation
-</ApiItem>
-<ApiItem href="#mvcmodelrow-writeattribute" visibility="public" name="writeAttribute" returnType="void" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Writes an attribute value by its name
-</ApiItem>
+- `public jsonSerialize(): array` — Serializes the object for json\_encode
+
+- `public offsetExists(mixed $index): bool` — Checks whether offset exists in the row. Returns true when the property
+
+- `public offsetGet(mixed $index): mixed` — Gets a record in a specific position of the row
+
+- `public offsetSet(mixed $offset, mixed $value): void` — Rows cannot be changed. It has only been implemented to meet the
+
+- `public offsetUnset(mixed $offset): void` — Rows cannot be changed. It has only been implemented to meet the
+
+- `public readAttribute(string $attribute)` — Reads an attribute value by its name
+
+- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Set the current object's state
+
+- `public toArray(): array` — Returns the instance as an array representation
+
+- `public writeAttribute(string $attribute, mixed $value): void` — Writes an attribute value by its name
 
 ### Methods
 
@@ -17574,8 +16704,8 @@ Gets a record in a specific position of the row
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -17623,8 +16753,8 @@ Returns the instance as an array representation
 
 ```php
 public function writeAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): void;
 ```
 
@@ -17633,6 +16763,7 @@ Writes an attribute value by its name
 ```php
 $invoice->writeAttribute("inv_title", "Test Invoice");
 ```
+
 
 ## Mvc\Model\Transaction
 
@@ -17648,34 +16779,34 @@ use Phalcon\Mvc\Model\Transaction\Failed;
 use Phalcon\Mvc\Model\Transaction\Manager;
 
 try {
-$manager = new Manager();
+    $manager = new Manager();
 
-$transaction = $manager->get();
+    $transaction = $manager->get();
 
-$invoice = new Invoices();
+    $invoice = new Invoices();
 
-$invoice->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-$invoice->inv_title    = "Test Invoice";
-$invoice->inv_created_at = date("Y-m-d");
+    $invoice->inv_title    = "Test Invoice";
+    $invoice->inv_created_at = date("Y-m-d");
 
-if ($invoice->save() === false) {
-    $transaction->rollback("Can't save invoice");
-}
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
+    }
 
-$product = new Products();
+    $product = new Products();
 
-$product->setTransaction($transaction);
+    $product->setTransaction($transaction);
 
-$product->prd_name = "Widget";
+    $product->prd_name = "Widget";
 
-if ($product->save() === false) {
-    $transaction->rollback("Can't save product");
-}
+    if ($product->save() === false) {
+        $transaction->rollback("Can't save product");
+    }
 
-$transaction->commit();
+    $transaction->commit();
 } catch(Failed $e) {
-echo "Failed, reason: ", $e->getMessage();
+    echo "Failed, reason: ", $e->getMessage();
 }
 ```
 
@@ -17685,64 +16816,49 @@ echo "Failed, reason: ", $e->getMessage();
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeltransaction-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DiInterface","name":"container","default":null},{"type":"bool","name":"autoBegin","default":"false"},{"type":"string","name":"service","default":"\"db\""}]}>
-Phalcon\Mvc\Model\Transaction constructor
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-begin" visibility="public" name="begin" returnType="bool" params={[]}>
-Starts the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-commit" visibility="public" name="commit" returnType="bool" params={[]}>
-Commits the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-getconnection" visibility="public" name="getConnection" returnType="AdapterInterface" params={[]}>
-Returns the connection related to transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-getmessages" visibility="public" name="getMessages" returnType="array" params={[]}>
-Returns validations messages from last save try
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-ismanaged" visibility="public" name="isManaged" returnType="bool" params={[]}>
-Checks whether transaction is managed by a transaction manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-isvalid" visibility="public" name="isValid" returnType="bool" params={[]}>
-Checks whether internal connection is under an active transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-rollback" visibility="public" name="rollback" returnType="bool" params={[{"type":"string|null","name":"rollbackMessage","default":"null"},{"type":"ModelInterface|null","name":"rollbackRecord","default":"null"}]}>
-Rollbacks the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-setisnewtransaction" visibility="public" name="setIsNewTransaction" returnType="void" params={[{"type":"bool","name":"isNew","default":null}]}>
-Sets if is a reused transaction or new once
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-setrollbackonabort" visibility="public" name="setRollbackOnAbort" returnType="void" params={[{"type":"bool","name":"rollbackOnAbort","default":null}]}>
-Sets flag to rollback on abort the HTTP connection
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-setrollbackedrecord" visibility="public" name="setRollbackedRecord" returnType="void" params={[{"type":"ModelInterface","name":"record","default":null}]}>
-Sets object which generates rollback action
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-settransactionmanager" visibility="public" name="setTransactionManager" returnType="void" params={[{"type":"ManagerInterface","name":"manager","default":null}]}>
-Sets transaction manager related to the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransaction-throwrollbackexception" visibility="public" name="throwRollbackException" returnType="TransactionInterface" params={[{"type":"bool","name":"status","default":null}]}>
-Enables throwing exception
-</ApiItem>
+- `public __construct(DiInterface $container, bool $autoBegin = false, string $service = "db")` — Phalcon\Mvc\Model\Transaction constructor
+
+- `public begin(): bool` — Starts the transaction
+
+- `public commit(): bool` — Commits the transaction
+
+- `public getConnection(): AdapterInterface` — Returns the connection related to transaction
+
+- `public getMessages(): array` — Returns validations messages from last save try
+
+- `public isManaged(): bool` — Checks whether transaction is managed by a transaction manager
+
+- `public isValid(): bool` — Checks whether internal connection is under an active transaction
+
+- `public rollback(string|null $rollbackMessage = null, ModelInterface|null $rollbackRecord = null): bool` — Rollbacks the transaction
+
+- `public setIsNewTransaction(bool $isNew): void` — Sets if is a reused transaction or new once
+
+- `public setRollbackOnAbort(bool $rollbackOnAbort): void` — Sets flag to rollback on abort the HTTP connection
+
+- `public setRollbackedRecord(ModelInterface $record): void` — Sets object which generates rollback action
+
+- `public setTransactionManager(ManagerInterface $manager): void` — Sets transaction manager related to the transaction
+
+- `public throwRollbackException(bool $status): TransactionInterface` — Enables throwing exception
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="activeTransaction" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="connection" type="AdapterInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isNewTransaction" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="manager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rollbackOnAbort" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rollbackRecord" type="ModelInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rollbackThrowException" type="bool" default="false">
-</ApiItem>
+- `protected bool $activeTransaction = false`
+
+- `protected AdapterInterface $connection`
+
+- `protected bool $isNewTransaction = true`
+
+- `protected ManagerInterface|null $manager = null`
+
+- `protected array $messages = []`
+
+- `protected bool $rollbackOnAbort = false`
+
+- `protected ModelInterface|null $rollbackRecord = null`
+
+- `protected bool $rollbackThrowException = false`
 
 ### Methods
 
@@ -17750,9 +16866,9 @@ Enables throwing exception
 
 ```php
 public function __construct(
-DiInterface $container,
-bool $autoBegin = false,
-string $service = "db"
+    DiInterface $container,
+    bool $autoBegin = false,
+    string $service = "db"
 );
 ```
 
@@ -17810,8 +16926,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-string|null $rollbackMessage = null,
-ModelInterface|null $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -17857,6 +16973,7 @@ public function throwRollbackException( bool $status ): TransactionInterface;
 
 Enables throwing exception
 
+
 ## Mvc\Model\TransactionInterface
 
 Interface
@@ -17869,42 +16986,29 @@ Interface for Phalcon\Mvc\Model\Transaction
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeltransactioninterface-begin" visibility="public" name="begin" returnType="bool" params={[]}>
-Starts the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-commit" visibility="public" name="commit" returnType="bool" params={[]}>
-Commits the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-getconnection" visibility="public" name="getConnection" returnType="\Phalcon\Db\Adapter\AdapterInterface" params={[]}>
-Returns connection related to transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-getmessages" visibility="public" name="getMessages" returnType="array" params={[]}>
-Returns validations messages from last save try
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-ismanaged" visibility="public" name="isManaged" returnType="bool" params={[]}>
-Checks whether transaction is managed by a transaction manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-isvalid" visibility="public" name="isValid" returnType="bool" params={[]}>
-Checks whether internal connection is under an active transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-rollback" visibility="public" name="rollback" returnType="bool" params={[{"type":"string|null","name":"rollbackMessage","default":"null"},{"type":"ModelInterface|null","name":"rollbackRecord","default":"null"}]}>
-Rollbacks the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-setisnewtransaction" visibility="public" name="setIsNewTransaction" returnType="void" params={[{"type":"bool","name":"isNew","default":null}]}>
-Sets if is a reused transaction or new once
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-setrollbackonabort" visibility="public" name="setRollbackOnAbort" returnType="void" params={[{"type":"bool","name":"rollbackOnAbort","default":null}]}>
-Sets flag to rollback on abort the HTTP connection
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-setrollbackedrecord" visibility="public" name="setRollbackedRecord" returnType="void" params={[{"type":"ModelInterface","name":"record","default":null}]}>
-Sets object which generates rollback action
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-settransactionmanager" visibility="public" name="setTransactionManager" returnType="void" params={[{"type":"ManagerInterface","name":"manager","default":null}]}>
-Sets transaction manager related to the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactioninterface-throwrollbackexception" visibility="public" name="throwRollbackException" returnType="TransactionInterface" params={[{"type":"bool","name":"status","default":null}]}>
-Enables throwing exception
-</ApiItem>
+- `public begin(): bool` — Starts the transaction
+
+- `public commit(): bool` — Commits the transaction
+
+- `public getConnection(): \Phalcon\Db\Adapter\AdapterInterface` — Returns connection related to transaction
+
+- `public getMessages(): array` — Returns validations messages from last save try
+
+- `public isManaged(): bool` — Checks whether transaction is managed by a transaction manager
+
+- `public isValid(): bool` — Checks whether internal connection is under an active transaction
+
+- `public rollback(string|null $rollbackMessage = null, ModelInterface|null $rollbackRecord = null): bool` — Rollbacks the transaction
+
+- `public setIsNewTransaction(bool $isNew): void` — Sets if is a reused transaction or new once
+
+- `public setRollbackOnAbort(bool $rollbackOnAbort): void` — Sets flag to rollback on abort the HTTP connection
+
+- `public setRollbackedRecord(ModelInterface $record): void` — Sets object which generates rollback action
+
+- `public setTransactionManager(ManagerInterface $manager): void` — Sets transaction manager related to the transaction
+
+- `public throwRollbackException(bool $status): TransactionInterface` — Enables throwing exception
 
 ### Methods
 
@@ -17960,8 +17064,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-string|null $rollbackMessage = null,
-ModelInterface|null $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -18007,6 +17111,7 @@ public function throwRollbackException( bool $status ): TransactionInterface;
 
 Enables throwing exception
 
+
 ## Mvc\Model\Transaction\Exception
 
 Class
@@ -18014,9 +17119,10 @@ Class
 Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Transaction\Exception`**
-- [`Phalcon\Mvc\Model\Transaction\Failed`](#mvcmodeltransactionfailed)
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\Transaction\Exception`**
+      - [`Phalcon\Mvc\Model\Transaction\Failed`](#mvcmodeltransactionfailed)
+
 
 ## Mvc\Model\Transaction\Failed
 
@@ -18027,28 +17133,23 @@ Phalcon\Mvc\Model\Transaction\Failed
 This class will be thrown to exit a try/catch block for isolated transactions
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
-- **`Phalcon\Mvc\Model\Transaction\Failed`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
+      - **`Phalcon\Mvc\Model\Transaction\Failed`**
 
 `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeltransactionfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null},{"type":"ModelInterface|null","name":"record","default":"null"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionfailed-getrecord" visibility="public" name="getRecord" returnType="ModelInterface|null" params={[]}>
-Returns validation record messages which stop the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionfailed-getrecordmessages" visibility="public" name="getRecordMessages" returnType="array|string" params={[]}>
-Returns validation record messages which stop the transaction
-</ApiItem>
+- `public __construct(string $message, ModelInterface|null $record = null)` — Constructor
+
+- `public getRecord(): ModelInterface|null` — Returns validation record messages which stop the transaction
+
+- `public getRecordMessages(): array|string` — Returns validation record messages which stop the transaction
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="record" type="ModelInterface|null" default="null">
-</ApiItem>
+- `protected ModelInterface|null $record = null`
 
 ### Methods
 
@@ -18056,8 +17157,8 @@ Returns validation record messages which stop the transaction
 
 ```php
 public function __construct(
-string $message,
-ModelInterface|null $record = null
+    string $message,
+    ModelInterface|null $record = null
 );
 ```
 
@@ -18078,6 +17179,7 @@ public function getRecordMessages(): array|string;
 ```
 
 Returns validation record messages which stop the transaction
+
 
 ## Mvc\Model\Transaction\Manager
 
@@ -18108,7 +17210,7 @@ try {
    $invoice->inv_created_at = date("Y-m-d");
 
    if ($invoice->save() === false) {
-   $transaction->rollback("Can't save invoice");
+       $transaction->rollback("Can't save invoice");
    }
 
    $product = new Products();
@@ -18118,7 +17220,7 @@ try {
    $product->prd_name = "Widget";
 
    if ($product->save() === false) {
-   $transaction->rollback("Can't save product");
+       $transaction->rollback("Can't save product");
    }
 
    $transaction->commit();
@@ -18133,72 +17235,53 @@ try {
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeltransactionmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Phalcon\Mvc\Model\Transaction\Manager constructor
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-collecttransactions" visibility="public" name="collectTransactions" returnType="void" params={[]}>
-Remove all the transactions from the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-commit" visibility="public" name="commit" returnType="" params={[]}>
-Commits active transactions within the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-get" visibility="public" name="get" returnType="TransactionInterface" params={[{"type":"bool","name":"autoBegin","default":"true"}]}>
-Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the dependency injection container
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-getdbservice" visibility="public" name="getDbService" returnType="string" params={[]}>
-Returns the database service used to isolate the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-getorcreatetransaction" visibility="public" name="getOrCreateTransaction" returnType="TransactionInterface" params={[{"type":"bool","name":"autoBegin","default":"true"}]}>
-Create/Returns a new transaction or an existing one
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-getrollbackpendent" visibility="public" name="getRollbackPendent" returnType="bool" params={[]}>
-Check if the transaction manager is registering a shutdown function to
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-has" visibility="public" name="has" returnType="bool" params={[]}>
-Checks whether the manager has an active transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-notifycommit" visibility="public" name="notifyCommit" returnType="void" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Notifies the manager about a committed transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-notifyrollback" visibility="public" name="notifyRollback" returnType="void" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Notifies the manager about a rollbacked transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-rollback" visibility="public" name="rollback" returnType="void" params={[{"type":"bool","name":"collect","default":"true"}]}>
-Rollbacks active transactions within the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-rollbackpendent" visibility="public" name="rollbackPendent" returnType="void" params={[]}>
-Rollbacks active transactions within the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the dependency injection container
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-setdbservice" visibility="public" name="setDbService" returnType="ManagerInterface" params={[{"type":"string","name":"service","default":null}]}>
-Sets the database service used to run the isolated transactions
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-setrollbackpendent" visibility="public" name="setRollbackPendent" returnType="ManagerInterface" params={[{"type":"bool","name":"rollbackPendent","default":null}]}>
-Set if the transaction manager must register a shutdown function to clean
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanager-collecttransaction" visibility="protected" name="collectTransaction" returnType="void" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Removes transactions from the TransactionManager
-</ApiItem>
+- `public __construct(DiInterface|null $container = null)` — Phalcon\Mvc\Model\Transaction\Manager constructor
+
+- `public collectTransactions(): void` — Remove all the transactions from the manager
+
+- `public commit()` — Commits active transactions within the manager
+
+- `public get(bool $autoBegin = true): TransactionInterface` — Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
+
+- `public getDI(): DiInterface` — Returns the dependency injection container
+
+- `public getDbService(): string` — Returns the database service used to isolate the transaction
+
+- `public getOrCreateTransaction(bool $autoBegin = true): TransactionInterface` — Create/Returns a new transaction or an existing one
+
+- `public getRollbackPendent(): bool` — Check if the transaction manager is registering a shutdown function to
+
+- `public has(): bool` — Checks whether the manager has an active transaction
+
+- `public notifyCommit(TransactionInterface $transaction): void` — Notifies the manager about a committed transaction
+
+- `public notifyRollback(TransactionInterface $transaction): void` — Notifies the manager about a rollbacked transaction
+
+- `public rollback(bool $collect = true): void` — Rollbacks active transactions within the manager
+
+- `public rollbackPendent(): void` — Rollbacks active transactions within the manager
+
+- `public setDI(DiInterface $container): void` — Sets the dependency injection container
+
+- `public setDbService(string $service): ManagerInterface` — Sets the database service used to run the isolated transactions
+
+- `public setRollbackPendent(bool $rollbackPendent): ManagerInterface` — Set if the transaction manager must register a shutdown function to clean
+
+- `protected collectTransaction(TransactionInterface $transaction): void` — Removes transactions from the TransactionManager
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="initialized" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="number" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="rollbackPendent" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="service" type="string" default="&quot;db&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="transactions" type="array" default="[]">
-</ApiItem>
+- `protected DiInterface $container`
+
+- `protected bool $initialized = false`
+
+- `protected int $number = 0`
+
+- `protected bool $rollbackPendent = true`
+
+- `protected string $service = "db"`
+
+- `protected array $transactions = []`
 
 ### Methods
 
@@ -18342,6 +17425,7 @@ protected function collectTransaction( TransactionInterface $transaction ): void
 
 Removes transactions from the TransactionManager
 
+
 ## Mvc\Model\Transaction\ManagerInterface
 
 Interface
@@ -18356,42 +17440,29 @@ Interface for Phalcon\Mvc\Model\Transaction\Manager
 
 ### Method Summary
 
-<ApiItem href="#mvcmodeltransactionmanagerinterface-collecttransactions" visibility="public" name="collectTransactions" returnType="void" params={[]}>
-Remove all the transactions from the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-commit" visibility="public" name="commit" returnType="" params={[]}>
-Commits active transactions within the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-get" visibility="public" name="get" returnType="TransactionInterface" params={[{"type":"bool","name":"autoBegin","default":"true"}]}>
-Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-getdbservice" visibility="public" name="getDbService" returnType="string" params={[]}>
-Returns the database service used to isolate the transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-getrollbackpendent" visibility="public" name="getRollbackPendent" returnType="bool" params={[]}>
-Check if the transaction manager is registering a shutdown function to
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-has" visibility="public" name="has" returnType="bool" params={[]}>
-Checks whether manager has an active transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-notifycommit" visibility="public" name="notifyCommit" returnType="void" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Notifies the manager about a committed transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-notifyrollback" visibility="public" name="notifyRollback" returnType="void" params={[{"type":"TransactionInterface","name":"transaction","default":null}]}>
-Notifies the manager about a rollbacked transaction
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-rollback" visibility="public" name="rollback" returnType="void" params={[{"type":"bool","name":"collect","default":"false"}]}>
-Rollbacks active transactions within the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-rollbackpendent" visibility="public" name="rollbackPendent" returnType="void" params={[]}>
-Rollbacks active transactions within the manager
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-setdbservice" visibility="public" name="setDbService" returnType="ManagerInterface" params={[{"type":"string","name":"service","default":null}]}>
-Sets the database service used to run the isolated transactions
-</ApiItem>
-<ApiItem href="#mvcmodeltransactionmanagerinterface-setrollbackpendent" visibility="public" name="setRollbackPendent" returnType="ManagerInterface" params={[{"type":"bool","name":"rollbackPendent","default":null}]}>
-Set if the transaction manager must register a shutdown function to clean up pendent transactions
-</ApiItem>
+- `public collectTransactions(): void` — Remove all the transactions from the manager
+
+- `public commit()` — Commits active transactions within the manager
+
+- `public get(bool $autoBegin = true): TransactionInterface` — Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
+
+- `public getDbService(): string` — Returns the database service used to isolate the transaction
+
+- `public getRollbackPendent(): bool` — Check if the transaction manager is registering a shutdown function to
+
+- `public has(): bool` — Checks whether manager has an active transaction
+
+- `public notifyCommit(TransactionInterface $transaction): void` — Notifies the manager about a committed transaction
+
+- `public notifyRollback(TransactionInterface $transaction): void` — Notifies the manager about a rollbacked transaction
+
+- `public rollback(bool $collect = false): void` — Rollbacks active transactions within the manager
+
+- `public rollbackPendent(): void` — Rollbacks active transactions within the manager
+
+- `public setDbService(string $service): ManagerInterface` — Sets the database service used to run the isolated transactions
+
+- `public setRollbackPendent(bool $rollbackPendent): ManagerInterface` — Set if the transaction manager must register a shutdown function to clean up pendent transactions
 
 ### Methods
 
@@ -18493,6 +17564,7 @@ public function setRollbackPendent( bool $rollbackPendent ): ManagerInterface;
 
 Set if the transaction manager must register a shutdown function to clean up pendent transactions
 
+
 ## Mvc\Model\ValidationFailed
 
 Class
@@ -18503,29 +17575,24 @@ This exception is generated when a model fails to save a record
 Phalcon\Mvc\Model must be set up to have this behavior
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\ValidationFailed`**
+  - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+    - **`Phalcon\Mvc\Model\ValidationFailed`**
 
 `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
-<ApiItem href="#mvcmodelvalidationfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ModelInterface","name":"model","default":null},{"type":"array","name":"validationMessages","default":null}]}>
-Phalcon\Mvc\Model\ValidationFailed constructor
-</ApiItem>
-<ApiItem href="#mvcmodelvalidationfailed-getmessages" visibility="public" name="getMessages" returnType="Message[]" params={[]}>
-Returns the complete group of messages produced in the validation
-</ApiItem>
-<ApiItem href="#mvcmodelvalidationfailed-getmodel" visibility="public" name="getModel" returnType="ModelInterface" params={[]}>
-Returns the model that generated the messages
-</ApiItem>
+- `public __construct(ModelInterface $model, array $validationMessages)` — Phalcon\Mvc\Model\ValidationFailed constructor
+
+- `public getMessages(): Message[]` — Returns the complete group of messages produced in the validation
+
+- `public getModel(): ModelInterface` — Returns the model that generated the messages
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="model" type="ModelInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="validationMessages" type="array" default="[]">
-</ApiItem>
+- `protected ModelInterface $model`
+
+- `protected array $validationMessages = []`
 
 ### Methods
 
@@ -18533,8 +17600,8 @@ Returns the model that generated the messages
 
 ```php
 public function __construct(
-ModelInterface $model,
-array $validationMessages
+    ModelInterface $model,
+    array $validationMessages
 );
 ```
 
@@ -18556,6 +17623,7 @@ public function getModel(): ModelInterface;
 
 Returns the model that generated the messages
 
+
 ## Mvc\ModuleDefinitionInterface
 
 Interface
@@ -18568,12 +17636,9 @@ This interface must be implemented by class module definitions
 
 ### Method Summary
 
-<ApiItem href="#mvcmoduledefinitioninterface-registerautoloaders" visibility="public" name="registerAutoloaders" returnType="" params={[{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Registers an autoloader related to the module
-</ApiItem>
-<ApiItem href="#mvcmoduledefinitioninterface-registerservices" visibility="public" name="registerServices" returnType="" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Registers services related to the module
-</ApiItem>
+- `public registerAutoloaders(DiInterface|null $container = null)` — Registers an autoloader related to the module
+
+- `public registerServices(DiInterface $container)` — Registers services related to the module
 
 ### Methods
 
@@ -18593,6 +17658,7 @@ public function registerServices( DiInterface $container );
 
 Registers services related to the module
 
+
 ## Mvc\Router
 
 Class
@@ -18608,322 +17674,258 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-"/documentation/{chapter}/{name}\.{type:[a-z]+}",
-[
-    "controller" => "documentation",
-    "action"     => "show",
-]
+    "/documentation/{chapter}/{name}\.{type:[a-z]+}",
+    [
+        "controller" => "documentation",
+        "action"     => "show",
+    ]
 );
 
 $router->handle(
-"/documentation/1/examples.html"
+    "/documentation/1/examples.html"
 );
 
 echo $router->getControllerName();
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+      - [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
 
 `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"bool","name":"defaultRoutes","default":"true"}]}>
-Phalcon\Mvc\Router constructor
-</ApiItem>
-<ApiItem href="#mvcrouter-add" visibility="public" name="add" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router without any HTTP constraint
-</ApiItem>
-<ApiItem href="#mvcrouter-addconnect" visibility="public" name="addConnect" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is CONNECT
-</ApiItem>
-<ApiItem href="#mvcrouter-adddelete" visibility="public" name="addDelete" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is DELETE
-</ApiItem>
-<ApiItem href="#mvcrouter-addget" visibility="public" name="addGet" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is GET
-</ApiItem>
-<ApiItem href="#mvcrouter-addhead" visibility="public" name="addHead" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is HEAD
-</ApiItem>
-<ApiItem href="#mvcrouter-addoptions" visibility="public" name="addOptions" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Add a route to the router that only match if the HTTP method is OPTIONS
-</ApiItem>
-<ApiItem href="#mvcrouter-addpatch" visibility="public" name="addPatch" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is PATCH
-</ApiItem>
-<ApiItem href="#mvcrouter-addpost" visibility="public" name="addPost" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is POST
-</ApiItem>
-<ApiItem href="#mvcrouter-addpurge" visibility="public" name="addPurge" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is PURGE
-</ApiItem>
-<ApiItem href="#mvcrouter-addput" visibility="public" name="addPut" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is PUT
-</ApiItem>
-<ApiItem href="#mvcrouter-addtrace" visibility="public" name="addTrace" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is TRACE
-</ApiItem>
-<ApiItem href="#mvcrouter-attach" visibility="public" name="attach" returnType="static" params={[{"type":"RouteInterface","name":"route","default":null},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Attach Route object to the routes stack.
-</ApiItem>
-<ApiItem href="#mvcrouter-builddispatcherdump" visibility="public" name="buildDispatcherDump" returnType="array" params={[]}>
-Produces a pure-data array describing every piece of state needed
-</ApiItem>
-<ApiItem href="#mvcrouter-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Removes all the pre-defined routes
-</ApiItem>
-<ApiItem href="#mvcrouter-dumpdispatcher" visibility="public" name="dumpDispatcher" returnType="void" params={[{"type":"string","name":"path","default":null}]}>
-File-shaped helper around buildDispatcherDump(). Writes the dump as
-</ApiItem>
-<ApiItem href="#mvcrouter-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
-Returns the processed action name
-</ApiItem>
-<ApiItem href="#mvcrouter-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
-Returns the processed controller name
-</ApiItem>
-<ApiItem href="#mvcrouter-getdefaults" visibility="public" name="getDefaults" returnType="array" params={[]}>
-Returns an array of default parameters
-</ApiItem>
-<ApiItem href="#mvcrouter-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcrouter-getkeyrouteids" visibility="public" name="getKeyRouteIds" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcrouter-getkeyroutenames" visibility="public" name="getKeyRouteNames" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcrouter-getmatchedroute" visibility="public" name="getMatchedRoute" returnType="RouteInterface|null" params={[]}>
-Returns the route that matches the handled URI
-</ApiItem>
-<ApiItem href="#mvcrouter-getmatches" visibility="public" name="getMatches" returnType="array" params={[]}>
-Returns the sub expressions in the regular expression matched
-</ApiItem>
-<ApiItem href="#mvcrouter-getmethodroutes" visibility="public" name="getMethodRoutes" returnType="array" params={[]}>
-Returns the routes indexed by HTTP method.
-</ApiItem>
-<ApiItem href="#mvcrouter-getmodulename" visibility="public" name="getModuleName" returnType="string" params={[]}>
-Returns the processed module name
-</ApiItem>
-<ApiItem href="#mvcrouter-getnamespacename" visibility="public" name="getNamespaceName" returnType="string" params={[]}>
-Returns the processed namespace name
-</ApiItem>
-<ApiItem href="#mvcrouter-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
-Returns the processed parameters
-</ApiItem>
-<ApiItem href="#mvcrouter-getrewriteuri" visibility="public" name="getRewriteUri" returnType="string" params={[]}>
-Get rewrite info. This info is read from $_GET["_url"].
-</ApiItem>
-<ApiItem href="#mvcrouter-getroutebyid" visibility="public" name="getRouteById" returnType="RouteInterface|bool" params={[{"type":"mixed","name":"routeId","default":null}]}>
-Returns a route object by its id
-</ApiItem>
-<ApiItem href="#mvcrouter-getroutebyname" visibility="public" name="getRouteByName" returnType="bool|RouteInterface" params={[{"type":"string","name":"name","default":null}]}>
-Returns a route object by its name
-</ApiItem>
-<ApiItem href="#mvcrouter-getroutes" visibility="public" name="getRoutes" returnType="RouteInterface[]" params={[]}>
-Returns all the routes defined in the router
-</ApiItem>
-<ApiItem href="#mvcrouter-handle" visibility="public" name="handle" returnType="void" params={[{"type":"string","name":"uri","default":null}]}>
-Handles routing information received from the rewrite engine
-</ApiItem>
-<ApiItem href="#mvcrouter-isexactcontrollername" visibility="public" name="isExactControllerName" returnType="bool" params={[]}>
-Returns whether controller name should not be mangled
-</ApiItem>
-<ApiItem href="#mvcrouter-loaddispatcher" visibility="public" name="loadDispatcher" returnType="void" params={[{"type":"string","name":"path","default":null}]}>
-File-shaped helper around loadDispatcherFromArray(). Includes the
-</ApiItem>
-<ApiItem href="#mvcrouter-loaddispatcherfromarray" visibility="public" name="loadDispatcherFromArray" returnType="void" params={[{"type":"array","name":"dump","default":null}]}>
-Inverse of buildDispatcherDump(). Reconstructs every Route from the
-</ApiItem>
-<ApiItem href="#mvcrouter-loadfromconfig" visibility="public" name="loadFromConfig" returnType="static" params={[{"type":"mixed","name":"config","default":null}]}>
-Loads routes from an array or Phalcon\Config\Config instance.
-</ApiItem>
-<ApiItem href="#mvcrouter-mount" visibility="public" name="mount" returnType="static" params={[{"type":"GroupInterface","name":"group","default":null}]}>
-Mounts a group of routes in the router
-</ApiItem>
-<ApiItem href="#mvcrouter-notfound" visibility="public" name="notFound" returnType="static" params={[{"type":"mixed","name":"paths","default":null}]}>
-Set a group of paths to be returned when none of the defined routes are
-</ApiItem>
-<ApiItem href="#mvcrouter-removeextraslashes" visibility="public" name="removeExtraSlashes" returnType="static" params={[{"type":"bool","name":"remove","default":null}]}>
-Set whether router must remove the extra slashes in the handled routes
-</ApiItem>
-<ApiItem href="#mvcrouter-setdefaultaction" visibility="public" name="setDefaultAction" returnType="static" params={[{"type":"string","name":"actionName","default":null}]}>
-Sets the default action name
-</ApiItem>
-<ApiItem href="#mvcrouter-setdefaultcontroller" visibility="public" name="setDefaultController" returnType="static" params={[{"type":"string","name":"controllerName","default":null}]}>
-Sets the default controller name
-</ApiItem>
-<ApiItem href="#mvcrouter-setdefaultmodule" visibility="public" name="setDefaultModule" returnType="static" params={[{"type":"string","name":"moduleName","default":null}]}>
-Sets the name of the default module
-</ApiItem>
-<ApiItem href="#mvcrouter-setdefaultnamespace" visibility="public" name="setDefaultNamespace" returnType="static" params={[{"type":"string","name":"namespaceName","default":null}]}>
-Sets the name of the default namespace
-</ApiItem>
-<ApiItem href="#mvcrouter-setdefaults" visibility="public" name="setDefaults" returnType="static" params={[{"type":"array","name":"defaults","default":null}]}>
-Sets an array of default paths. If a route is missing a path the router
-</ApiItem>
-<ApiItem href="#mvcrouter-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvcrouter-setkeyrouteids" visibility="public" name="setKeyRouteIds" returnType="static" params={[{"type":"array","name":"routeIds","default":null}]}>
-</ApiItem>
-<ApiItem href="#mvcrouter-setkeyroutenames" visibility="public" name="setKeyRouteNames" returnType="static" params={[{"type":"array","name":"routeNames","default":null}]}>
-</ApiItem>
-<ApiItem href="#mvcrouter-seturisource" visibility="public" name="setUriSource" returnType="static" params={[{"type":"int","name":"uriSource","default":null}]}>
-Sets the URI source. One of the URI_SOURCE_* constants
-</ApiItem>
-<ApiItem href="#mvcrouter-usecache" visibility="public" name="useCache" returnType="void" params={[{"type":"CacheAdapterInterface","name":"cache","default":null},{"type":"string","name":"key","default":"\"phalcon.router.dispatcher\""}]}>
-Cache-instance convenience wrapper. On cache hit, restores the
-</ApiItem>
-<ApiItem href="#mvcrouter-wasmatched" visibility="public" name="wasMatched" returnType="bool" params={[]}>
-Checks if the router matches any of the defined routes
-</ApiItem>
-<ApiItem href="#mvcrouter-addroutefromconfig" visibility="protected" name="addRouteFromConfig" returnType="void" params={[{"type":"array","name":"routeData","default":null}]}>
-Adds a single route from a config array entry. Used by loadFromConfig.
-</ApiItem>
-<ApiItem href="#mvcrouter-extractrealuri" visibility="protected" name="extractRealUri" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
-</ApiItem>
-<ApiItem href="#mvcrouter-mountgroupfromconfig" visibility="protected" name="mountGroupFromConfig" returnType="void" params={[{"type":"array","name":"groupData","default":null}]}>
-Builds a Group from a config entry and mounts it. Used by loadFromConfig.
-</ApiItem>
-<ApiItem href="#mvcrouter-rebuildmethodindex" visibility="protected" name="rebuildMethodIndex" returnType="void" params={[]}>
-Rebuilds the HTTP-method index from the current routes array.
-</ApiItem>
+- `public __construct(bool $defaultRoutes = true)` — Phalcon\Mvc\Router constructor
+
+- `public add(string $pattern, mixed $paths = null, mixed $httpMethods = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router without any HTTP constraint
+
+- `public addConnect(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is CONNECT
+
+- `public addDelete(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is DELETE
+
+- `public addGet(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is GET
+
+- `public addHead(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is HEAD
+
+- `public addOptions(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Add a route to the router that only match if the HTTP method is OPTIONS
+
+- `public addPatch(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is PATCH
+
+- `public addPost(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is POST
+
+- `public addPurge(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is PURGE
+
+- `public addPut(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is PUT
+
+- `public addTrace(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is TRACE
+
+- `public attach(RouteInterface $route, int $position = Router::POSITION_LAST): static` — Attach Route object to the routes stack.
+
+- `public buildDispatcherDump(): array` — Produces a pure-data array describing every piece of state needed
+
+- `public clear(): void` — Removes all the pre-defined routes
+
+- `public dumpDispatcher(string $path): void` — File-shaped helper around buildDispatcherDump(). Writes the dump as
+
+- `public getActionName(): string` — Returns the processed action name
+
+- `public getControllerName(): string` — Returns the processed controller name
+
+- `public getDefaults(): array` — Returns an array of default parameters
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public getKeyRouteIds(): array`
+
+- `public getKeyRouteNames(): array`
+
+- `public getMatchedRoute(): RouteInterface|null` — Returns the route that matches the handled URI
+
+- `public getMatches(): array` — Returns the sub expressions in the regular expression matched
+
+- `public getMethodRoutes(): array` — Returns the routes indexed by HTTP method.
+
+- `public getModuleName(): string` — Returns the processed module name
+
+- `public getNamespaceName(): string` — Returns the processed namespace name
+
+- `public getParams(): array` — Returns the processed parameters
+
+- `public getRewriteUri(): string` — Get rewrite info. This info is read from $\_GET\["\_url"].
+
+- `public getRouteById(mixed $routeId): RouteInterface|bool` — Returns a route object by its id
+
+- `public getRouteByName(string $name): bool|RouteInterface` — Returns a route object by its name
+
+- `public getRoutes(): RouteInterface[]` — Returns all the routes defined in the router
+
+- `public handle(string $uri): void` — Handles routing information received from the rewrite engine
+
+- `public isExactControllerName(): bool` — Returns whether controller name should not be mangled
+
+- `public loadDispatcher(string $path): void` — File-shaped helper around loadDispatcherFromArray(). Includes the
+
+- `public loadDispatcherFromArray(array $dump): void` — Inverse of buildDispatcherDump(). Reconstructs every Route from the
+
+- `public loadFromConfig(mixed $config): static` — Loads routes from an array or Phalcon\Config\Config instance.
+
+- `public mount(GroupInterface $group): static` — Mounts a group of routes in the router
+
+- `public notFound(mixed $paths): static` — Set a group of paths to be returned when none of the defined routes are
+
+- `public removeExtraSlashes(bool $remove): static` — Set whether router must remove the extra slashes in the handled routes
+
+- `public setDefaultAction(string $actionName): static` — Sets the default action name
+
+- `public setDefaultController(string $controllerName): static` — Sets the default controller name
+
+- `public setDefaultModule(string $moduleName): static` — Sets the name of the default module
+
+- `public setDefaultNamespace(string $namespaceName): static` — Sets the name of the default namespace
+
+- `public setDefaults(array $defaults): static` — Sets an array of default paths. If a route is missing a path the router
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `public setKeyRouteIds(array $routeIds): static`
+
+- `public setKeyRouteNames(array $routeNames): static`
+
+- `public setUriSource(int $uriSource): static` — Sets the URI source. One of the URI\_SOURCE\_\* constants
+
+- `public useCache(CacheAdapterInterface $cache, string $key = "phalcon.router.dispatcher"): void` — Cache-instance convenience wrapper. On cache hit, restores the
+
+- `public wasMatched(): bool` — Checks if the router matches any of the defined routes
+
+- `protected addRouteFromConfig(array $routeData): void` — Adds a single route from a config array entry. Used by loadFromConfig.
+
+- `protected extractRealUri(string $uri): string`
+
+- `protected mountGroupFromConfig(array $groupData): void` — Builds a Group from a config entry and mounts it. Used by loadFromConfig.
+
+- `protected rebuildMethodIndex(): void` — Rebuilds the HTTP-method index from the current routes array.
 
 ### Constants
 
-<ApiItem kind="constant" name="POSITION_FIRST" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="POSITION_LAST" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="REGEX_CHUNK_SIZE" type="int" default="10">
-Number of alternatives per combined-regex chunk. Empirically derived
-(FastRoute uses ~10) - keeps each chunk below PCRE's optimizer cliff.
-</ApiItem>
-<ApiItem kind="constant" name="URI_SOURCE_GET_URL" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="URI_SOURCE_SERVER_REQUEST_URI" type="int" default="1">
-</ApiItem>
+- `const int POSITION_FIRST = 0`
+
+- `const int POSITION_LAST = 1`
+
+- `const int REGEX_CHUNK_SIZE = 10` — Number of alternatives per combined-regex chunk. Empirically derived
+  (FastRoute uses \~10) - keeps each chunk below PCRE's optimizer cliff.
+
+- `const int URI_SOURCE_GET_URL = 0`
+
+- `const int URI_SOURCE_SERVER_REQUEST_URI = 1`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="action" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="candidatesByMethod" type="array" default="[]">
-Pre-merged per-method candidate buckets in attach order. For each HTTP
-method seen on any registered route, the bucket contains the
-method-specific routes followed by the "*" (no-constraint) routes.
-The "*" key itself holds only the no-constraint routes - used when the
-request method has no specific bucket.
+- `protected string $action = ""`
 
-Built in rebuildMethodIndex(); consumed by handle() in reverse.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="combinedRegexByMethod" type="array" default="[]">
-Combined PCRE pattern per method bucket (chunked list of strings).
-Each chunk uses (?|...) branch reset and (*:N) mark labels. Built
-only when the bucket has no hostname routes and all patterns are
-the standard `#^...$#u` shape.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="combinedRegexDisabled" type="array" default="[]">
-Boolean per method bucket: true when the combined regex cannot be
-built (hostname route present, exotic pattern shape, etc.).
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="combinedRegexMarkMap" type="array" default="[]">
-Map from MARK label back to the route index in
-candidatesByMethod[method]. One per chunk.
+- `protected array $candidatesByMethod = []` — Pre-merged per-method candidate buckets in attach order. For each HTTP
+  method seen on any registered route, the bucket contains the
+  method-specific routes followed by the "*" (no-constraint) routes.
+  The "*" key itself holds only the no-constraint routes - used when the
+  request method has no specific bucket.
 
-  combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="controller" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultAction" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultController" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultModule" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultNamespace" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultParams" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hostnameByMethod" type="array" default="[]">
-Per-method buckets of routes with hostname constraints, grouped by
-raw hostname string. Routes are referenced by their index into
-candidatesByMethod[method]. Built in rebuildMethodIndex().
+  Built in rebuildMethodIndex(); consumed by handle() in reverse.
 
-Shape: hostnameByMethod[method][hostname] = list of route indices.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hostnameLessByMethod" type="array" default="[]">
-Per-method indices of routes without a hostname constraint, in
-attach order.
+- `protected array $combinedRegexByMethod = []` — Combined PCRE pattern per method bucket (chunked list of strings).
+  Each chunk uses (?|...) branch reset and (\*:N) mark labels. Built
+  only when the bucket has no hostname routes and all patterns are
+  the standard `#^...$#u` shape.
 
-Shape: hostnameLessByMethod[method] = list of route indices into
-candidatesByMethod[method].
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="keyRouteIds" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="keyRouteNames" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="matchedRoute" type="RouteInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="matches" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="methodRoutes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="methodRoutesDirty" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="module" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="namespaceName" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="notFoundPaths" type="array|string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="params" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pendingCache" type="CacheAdapterInterface|null" default="null">
-Lazy-write cache target set by useCache(). When non-null, handle()
-writes buildDispatcherDump() to this cache after a successful
-rebuild on cache miss, then clears the property to skip subsequent
-writes.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pendingCacheKey" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="removeExtraSlashes" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="routeMeta" type="array" default="[]">
-Single-source per-route metadata cache. One entry per route, keyed
-by the route's intrinsic id. Replaces the previous per-method-bucket
-replication of metadata arrays. Built once in rebuildMethodIndex().
+- `protected array $combinedRegexDisabled = []` — Boolean per method bucket: true when the combined regex cannot be
+  built (hostname route present, exotic pattern shape, etc.).
 
-Shape: routeMeta[routeId] = [
-    "pattern":     string,        // compiled pattern
-    "isRegex":     bool,
-    "hostname":    string|null,
-    "hostRegex":   string|null,
-    "beforeMatch": callable|null
+- `protected array $combinedRegexMarkMap = []` — Map from MARK label back to the route index in
+  candidatesByMethod\[method]. One per chunk.
+
+  combinedRegexMarkMap\[method]\[chunkIdx]\[markLabel] = routeIdx
+
+- `protected string $controller = ""`
+
+- `protected string $defaultAction = ""`
+
+- `protected string $defaultController = ""`
+
+- `protected string $defaultModule = ""`
+
+- `protected string $defaultNamespace = ""`
+
+- `protected array $defaultParams = []`
+
+- `protected ManagerInterface|null $eventsManager = null`
+
+- `protected array $hostnameByMethod = []` — Per-method buckets of routes with hostname constraints, grouped by
+  raw hostname string. Routes are referenced by their index into
+  candidatesByMethod\[method]. Built in rebuildMethodIndex().
+
+  Shape: hostnameByMethod\[method]\[hostname] = list of route indices.
+
+- `protected array $hostnameLessByMethod = []` — Per-method indices of routes without a hostname constraint, in
+  attach order.
+
+  Shape: hostnameLessByMethod\[method] = list of route indices into
+  candidatesByMethod\[method].
+
+- `protected array $keyRouteIds = []`
+
+- `protected array $keyRouteNames = []`
+
+- `protected RouteInterface|null $matchedRoute = null`
+
+- `protected array $matches = []`
+
+- `protected array $methodRoutes = []`
+
+- `protected bool $methodRoutesDirty = true`
+
+- `protected string $module = ""`
+
+- `protected string $namespaceName = ""`
+
+- `protected array|string|null $notFoundPaths = null`
+
+- `protected array $params = []`
+
+- `protected CacheAdapterInterface|null $pendingCache = null` — Lazy-write cache target set by useCache(). When non-null, handle()
+  writes buildDispatcherDump() to this cache after a successful
+  rebuild on cache miss, then clears the property to skip subsequent
+  writes.
+
+- `protected string $pendingCacheKey = ""`
+
+- `protected bool $removeExtraSlashes = false`
+
+- `protected array $routeMeta = []` — Single-source per-route metadata cache. One entry per route, keyed
+  by the route's intrinsic id. Replaces the previous per-method-bucket
+  replication of metadata arrays. Built once in rebuildMethodIndex().
+
+  Shape: routeMeta\[routeId] = \[
+  "pattern":     string,        // compiled pattern
+  "isRegex":     bool,
+  "hostname":    string|null,
+  "hostRegex":   string|null,
+  "beforeMatch": callable|null
   ]
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="routes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="staticByMethod" type="array" default="[]">
-Static-route hash, populated by rebuildMethodIndex(). For each method
-bucket (including "*"), maps URI => list of routes whose compiled
-pattern is a literal string equal to that URI.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="staticShadowedByMethod" type="array" default="[]">
-Shadow-detection map. If staticShadowedByMethod[method][uri] is set,
-the static URI in that bucket is shadowed by a later-attached regex
-route - the fast path MUST NOT be used; fall through to the dynamic
-loop so the regex wins (reverse-iteration semantics).
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uriSource" type="int" default="self::URI_SOURCE_GET_URL">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="wasMatched" type="bool" default="false">
-</ApiItem>
+
+- `protected array $routes = []`
+
+- `protected array $staticByMethod = []` — Static-route hash, populated by rebuildMethodIndex(). For each method
+  bucket (including "\*"), maps URI => list of routes whose compiled
+  pattern is a literal string equal to that URI.
+
+- `protected array $staticShadowedByMethod = []` — Shadow-detection map. If staticShadowedByMethod\[method]\[uri] is set,
+  the static URI in that bucket is shadowed by a later-attached regex
+  route - the fast path MUST NOT be used; fall through to the dynamic
+  loop so the regex wins (reverse-iteration semantics).
+
+- `protected int $uriSource = self::URI_SOURCE_GET_URL`
+
+- `protected bool $wasMatched = false`
 
 ### Methods
 
@@ -18939,10 +17941,10 @@ Phalcon\Mvc\Router constructor
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -18954,16 +17956,16 @@ use Phalcon\Mvc\Router;
 $router->add("/about", "About::index");
 
 $router->add(
-"/about",
-"About::index",
-["GET", "POST"]
+    "/about",
+    "About::index",
+    ["GET", "POST"]
 );
 
 $router->add(
-"/about",
-"About::index",
-["GET", "POST"],
-Router::POSITION_FIRST
+    "/about",
+    "About::index",
+    ["GET", "POST"],
+    Router::POSITION_FIRST
 );
 ```
 
@@ -18971,9 +17973,9 @@ Router::POSITION_FIRST
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -18983,9 +17985,9 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -18995,9 +17997,9 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19007,9 +18009,9 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19019,9 +18021,9 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19031,9 +18033,9 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19043,9 +18045,9 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19055,9 +18057,9 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19068,9 +18070,9 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19080,9 +18082,9 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19092,8 +18094,8 @@ Adds a route to the router that only match if the HTTP method is TRACE
 
 ```php
 public function attach(
-RouteInterface $route,
-int $position = Router::POSITION_LAST
+    RouteInterface $route,
+    int $position = Router::POSITION_LAST
 ): static;
 ```
 
@@ -19104,14 +18106,14 @@ use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Router\Route;
 
 class CustomRoute extends Route {
- // ...
+     // ...
 }
 
 $router = new Router();
 
 $router->attach(
-new CustomRoute("/about", "About::index", ["GET", "HEAD"]),
-Router::POSITION_FIRST
+    new CustomRoute("/about", "About::index", ["GET", "HEAD"]),
+    Router::POSITION_FIRST
 );
 ```
 
@@ -19323,15 +18325,15 @@ Loads routes from an array or Phalcon\Config\Config instance.
 
 ```php
 $router->loadFromConfig(
-[
-    'routes' => [
-        [
-            'method'  => 'get',
-            'pattern' => '/users',
-            'paths'   => 'Users::index',
+    [
+        'routes' => [
+            [
+                'method'  => 'get',
+                'pattern' => '/users',
+                'paths'   => 'Users::index',
+            ],
         ],
-    ],
-]
+    ]
 );
 ```
 
@@ -19406,10 +18408,10 @@ route
 
 ```php
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 ```
 
@@ -19443,7 +18445,7 @@ Sets the URI source. One of the URI_SOURCE_* constants
 
 ```php
 $router->setUriSource(
-Router::URI_SOURCE_SERVER_REQUEST_URI
+    Router::URI_SOURCE_SERVER_REQUEST_URI
 );
 ```
 
@@ -19451,8 +18453,8 @@ Router::URI_SOURCE_SERVER_REQUEST_URI
 
 ```php
 public function useCache(
-CacheAdapterInterface $cache,
-string $key = "phalcon.router.dispatcher"
+    CacheAdapterInterface $cache,
+    string $key = "phalcon.router.dispatcher"
 ): void;
 ```
 
@@ -19500,6 +18502,7 @@ protected function rebuildMethodIndex(): void;
 Rebuilds the HTTP-method index from the current routes array.
 Routes with no HTTP method constraint are filed under "*".
 
+
 ## Mvc\RouterInterface
 
 Interface
@@ -19512,99 +18515,67 @@ Interface for Phalcon\Mvc\Router
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterinterface-add" visibility="public" name="add" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router on any HTTP method
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addconnect" visibility="public" name="addConnect" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is CONNECT
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-adddelete" visibility="public" name="addDelete" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is DELETE
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addget" visibility="public" name="addGet" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is GET
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addhead" visibility="public" name="addHead" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is HEAD
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addoptions" visibility="public" name="addOptions" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Add a route to the router that only match if the HTTP method is OPTIONS
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addpatch" visibility="public" name="addPatch" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is PATCH
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addpost" visibility="public" name="addPost" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is POST
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addpurge" visibility="public" name="addPurge" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is PURGE
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addput" visibility="public" name="addPut" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is PUT
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-addtrace" visibility="public" name="addTrace" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Adds a route to the router that only match if the HTTP method is TRACE
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-attach" visibility="public" name="attach" returnType="RouterInterface" params={[{"type":"RouteInterface","name":"route","default":null},{"type":"int","name":"position","default":"Router::POSITION_LAST"}]}>
-Attach Route object to the routes stack.
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Removes all the defined routes
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
-Returns processed action name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
-Returns processed controller name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getmatchedroute" visibility="public" name="getMatchedRoute" returnType="RouteInterface|null" params={[]}>
-Returns the route that matches the handled URI
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getmatches" visibility="public" name="getMatches" returnType="array" params={[]}>
-Return the sub expressions in the regular expression matched
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getmodulename" visibility="public" name="getModuleName" returnType="string" params={[]}>
-Returns processed module name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getnamespacename" visibility="public" name="getNamespaceName" returnType="string" params={[]}>
-Returns processed namespace name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
-Returns processed extra params
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getroutebyid" visibility="public" name="getRouteById" returnType="RouteInterface|bool" params={[{"type":"mixed","name":"routeId","default":null}]}>
-Returns a route object by its id
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getroutebyname" visibility="public" name="getRouteByName" returnType="RouteInterface|bool" params={[{"type":"string","name":"name","default":null}]}>
-Returns a route object by its name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-getroutes" visibility="public" name="getRoutes" returnType="RouteInterface[]" params={[]}>
-Return all the routes defined in the router
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-handle" visibility="public" name="handle" returnType="void" params={[{"type":"string","name":"uri","default":null}]}>
-Handles routing information received from the rewrite engine
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-loadfromconfig" visibility="public" name="loadFromConfig" returnType="RouterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
-Loads routes from an array or Phalcon\Config\Config instance.
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-mount" visibility="public" name="mount" returnType="RouterInterface" params={[{"type":"GroupInterface","name":"group","default":null}]}>
-Mounts a group of routes in the router
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-setdefaultaction" visibility="public" name="setDefaultAction" returnType="RouterInterface" params={[{"type":"string","name":"actionName","default":null}]}>
-Sets the default action name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-setdefaultcontroller" visibility="public" name="setDefaultController" returnType="RouterInterface" params={[{"type":"string","name":"controllerName","default":null}]}>
-Sets the default controller name
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-setdefaultmodule" visibility="public" name="setDefaultModule" returnType="RouterInterface" params={[{"type":"string","name":"moduleName","default":null}]}>
-Sets the name of the default module
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-setdefaults" visibility="public" name="setDefaults" returnType="RouterInterface" params={[{"type":"array","name":"defaults","default":null}]}>
-Sets an array of default paths
-</ApiItem>
-<ApiItem href="#mvcrouterinterface-wasmatched" visibility="public" name="wasMatched" returnType="bool" params={[]}>
-Check if the router matches any of the defined routes
-</ApiItem>
+- `public add(string $pattern, mixed $paths = null, mixed $httpMethods = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router on any HTTP method
+
+- `public addConnect(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is CONNECT
+
+- `public addDelete(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is DELETE
+
+- `public addGet(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is GET
+
+- `public addHead(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is HEAD
+
+- `public addOptions(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Add a route to the router that only match if the HTTP method is OPTIONS
+
+- `public addPatch(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is PATCH
+
+- `public addPost(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is POST
+
+- `public addPurge(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is PURGE
+
+- `public addPut(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is PUT
+
+- `public addTrace(string $pattern, mixed $paths = null, int $position = Router::POSITION_LAST): RouteInterface` — Adds a route to the router that only match if the HTTP method is TRACE
+
+- `public attach(RouteInterface $route, int $position = Router::POSITION_LAST): RouterInterface` — Attach Route object to the routes stack.
+
+- `public clear(): void` — Removes all the defined routes
+
+- `public getActionName(): string` — Returns processed action name
+
+- `public getControllerName(): string` — Returns processed controller name
+
+- `public getMatchedRoute(): RouteInterface|null` — Returns the route that matches the handled URI
+
+- `public getMatches(): array` — Return the sub expressions in the regular expression matched
+
+- `public getModuleName(): string` — Returns processed module name
+
+- `public getNamespaceName(): string` — Returns processed namespace name
+
+- `public getParams(): array` — Returns processed extra params
+
+- `public getRouteById(mixed $routeId): RouteInterface|bool` — Returns a route object by its id
+
+- `public getRouteByName(string $name): RouteInterface|bool` — Returns a route object by its name
+
+- `public getRoutes(): RouteInterface[]` — Return all the routes defined in the router
+
+- `public handle(string $uri): void` — Handles routing information received from the rewrite engine
+
+- `public loadFromConfig(mixed $config): RouterInterface` — Loads routes from an array or Phalcon\Config\Config instance.
+
+- `public mount(GroupInterface $group): RouterInterface` — Mounts a group of routes in the router
+
+- `public setDefaultAction(string $actionName): RouterInterface` — Sets the default action name
+
+- `public setDefaultController(string $controllerName): RouterInterface` — Sets the default controller name
+
+- `public setDefaultModule(string $moduleName): RouterInterface` — Sets the name of the default module
+
+- `public setDefaults(array $defaults): RouterInterface` — Sets an array of default paths
+
+- `public wasMatched(): bool` — Check if the router matches any of the defined routes
 
 ### Methods
 
@@ -19612,10 +18583,10 @@ Check if the router matches any of the defined routes
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19625,9 +18596,9 @@ Adds a route to the router on any HTTP method
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19637,9 +18608,9 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19649,9 +18620,9 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19661,9 +18632,9 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19673,9 +18644,9 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19685,9 +18656,9 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19697,9 +18668,9 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19709,9 +18680,9 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19722,9 +18693,9 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19734,9 +18705,9 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -19746,8 +18717,8 @@ Adds a route to the router that only match if the HTTP method is TRACE
 
 ```php
 public function attach(
-RouteInterface $route,
-int $position = Router::POSITION_LAST
+    RouteInterface $route,
+    int $position = Router::POSITION_LAST
 ): RouterInterface;
 ```
 
@@ -19905,6 +18876,7 @@ public function wasMatched(): bool;
 
 Check if the router matches any of the defined routes
 
+
 ## Mvc\Router\Annotations
 
 Class
@@ -19917,73 +18889,61 @@ A router that reads routes annotations from classes/resources
 use Phalcon\Mvc\Router\Annotations;
 
 $di->setShared(
-"router",
-function() {
-    // Use the annotations router
-    $router = new Annotations(false);
+    "router",
+    function() {
+        // Use the annotations router
+        $router = new Annotations(false);
 
-    // This will do the same as above but only if the handled uri starts with /invoices
-    $router->addResource("Invoices", "/invoices");
+        // This will do the same as above but only if the handled uri starts with /invoices
+        $router->addResource("Invoices", "/invoices");
 
-    return $router;
-}
+        return $router;
+    }
 );
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Mvc\Router`](#mvcrouter)
-- **`Phalcon\Mvc\Router\Annotations`**
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
+    - [`Phalcon\Mvc\Router`](#mvcrouter)
+      - **`Phalcon\Mvc\Router\Annotations`**
 
 `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterannotations-addmoduleresource" visibility="public" name="addModuleResource" returnType="static" params={[{"type":"string","name":"module","default":null},{"type":"string","name":"handler","default":null},{"type":"string|null","name":"prefix","default":"null"}]}>
-Adds a resource to the annotations handler
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-addresource" visibility="public" name="addResource" returnType="static" params={[{"type":"string","name":"handler","default":null},{"type":"string|null","name":"prefix","default":"null"}]}>
-Adds a resource to the annotations handler
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-getactionpreformatcallback" visibility="public" name="getActionPreformatCallback" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-getresources" visibility="public" name="getResources" returnType="array" params={[]}>
-Return the registered resources
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-handle" visibility="public" name="handle" returnType="void" params={[{"type":"string","name":"uri","default":null}]}>
-Produce the routing parameters from the rewrite information
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-processactionannotation" visibility="public" name="processActionAnnotation" returnType="void" params={[{"type":"string","name":"module","default":null},{"type":"string","name":"namespaceName","default":null},{"type":"string","name":"controller","default":null},{"type":"string","name":"action","default":null},{"type":"Annotation","name":"annotation","default":null}]}>
-Checks for annotations in the public methods of the controller
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-processcontrollerannotation" visibility="public" name="processControllerAnnotation" returnType="" params={[{"type":"string","name":"handler","default":null},{"type":"Annotation","name":"annotation","default":null}]}>
-Checks for annotations in the controller docblock
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-setactionpreformatcallback" visibility="public" name="setActionPreformatCallback" returnType="self" params={[{"type":"mixed","name":"callback","default":"null"}]}>
-Sets the action preformat callback
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-setactionsuffix" visibility="public" name="setActionSuffix" returnType="self" params={[{"type":"string","name":"actionSuffix","default":null}]}>
-Changes the action method suffix
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-setcontrollersuffix" visibility="public" name="setControllerSuffix" returnType="self" params={[{"type":"string","name":"controllerSuffix","default":null}]}>
-Changes the controller class suffix
-</ApiItem>
-<ApiItem href="#mvcrouterannotations-resolveargument" visibility="protected" name="resolveArgument" returnType="mixed" params={[{"type":"Annotation","name":"annotation","default":null},{"type":"string","name":"name","default":null}]}>
-Returns the argument at position 0, or the named one when position 0
-</ApiItem>
+- `public addModuleResource(string $module, string $handler, string|null $prefix = null): static` — Adds a resource to the annotations handler
+
+- `public addResource(string $handler, string|null $prefix = null): static` — Adds a resource to the annotations handler
+
+- `public getActionPreformatCallback()`
+
+- `public getResources(): array` — Return the registered resources
+
+- `public handle(string $uri): void` — Produce the routing parameters from the rewrite information
+
+- `public processActionAnnotation(string $module, string $namespaceName, string $controller, string $action, Annotation $annotation): void` — Checks for annotations in the public methods of the controller
+
+- `public processControllerAnnotation(string $handler, Annotation $annotation)` — Checks for annotations in the controller docblock
+
+- `public setActionPreformatCallback(mixed $callback = null): self` — Sets the action preformat callback
+
+- `public setActionSuffix(string $actionSuffix): self` — Changes the action method suffix
+
+- `public setControllerSuffix(string $controllerSuffix): self` — Changes the controller class suffix
+
+- `protected resolveArgument(Annotation $annotation, string $name): mixed` — Returns the argument at position 0, or the named one when position 0
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="actionPreformatCallback" type="callable|string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="actionSuffix" type="string" default="&quot;Action&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="controllerSuffix" type="string" default="&quot;Controller&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="handlers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="routePrefix" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected callable|string|null $actionPreformatCallback = null`
+
+- `protected string $actionSuffix = "Action"`
+
+- `protected string $controllerSuffix = "Controller"`
+
+- `protected array $handlers = []`
+
+- `protected string $routePrefix = ""`
 
 ### Methods
 
@@ -19991,9 +18951,9 @@ Returns the argument at position 0, or the named one when position 0
 
 ```php
 public function addModuleResource(
-string $module,
-string $handler,
-string|null $prefix = null
+    string $module,
+    string $handler,
+    string|null $prefix = null
 ): static;
 ```
 
@@ -20005,8 +18965,8 @@ The class is located in a module
 
 ```php
 public function addResource(
-string $handler,
-string|null $prefix = null
+    string $handler,
+    string|null $prefix = null
 ): static;
 ```
 
@@ -20039,11 +18999,11 @@ Produce the routing parameters from the rewrite information
 
 ```php
 public function processActionAnnotation(
-string $module,
-string $namespaceName,
-string $controller,
-string $action,
-Annotation $annotation
+    string $module,
+    string $namespaceName,
+    string $controller,
+    string $action,
+    Annotation $annotation
 ): void;
 ```
 
@@ -20053,8 +19013,8 @@ Checks for annotations in the public methods of the controller
 
 ```php
 public function processControllerAnnotation(
-string $handler,
-Annotation $annotation
+    string $handler,
+    Annotation $annotation
 );
 ```
 
@@ -20072,17 +19032,17 @@ $action here already without suffix 'Action'
 ```php
 // Array as callback
 $annotationRouter->setActionPreformatCallback(
- [
-     new Uncamelize(),
-     '__invoke'
- ]
+     [
+         new Uncamelize(),
+         '__invoke'
+     ]
  );
 
 // Function as callback
 $annotationRouter->setActionPreformatCallback(
-function ($action) {
-    return $action;
-}
+    function ($action) {
+        return $action;
+    }
 );
 
 // String as callback
@@ -20112,8 +19072,8 @@ Changes the controller class suffix
 
 ```php
 protected function resolveArgument(
-Annotation $annotation,
-string $name
+    Annotation $annotation,
+    string $name
 ): mixed;
 ```
 
@@ -20124,6 +19084,7 @@ A docblock puts the value at position 0. An attribute puts it at
 position 0 too, unless the developer writes the name as a named
 argument.
 
+
 ## Mvc\Router\Exception
 
 Class
@@ -20131,38 +19092,38 @@ Class
 Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 - `\Exception`
-- **`Phalcon\Mvc\Router\Exception`**
-- [`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`](#mvcrouterexceptionsannotationsserviceunavailable)
-- [`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`](#mvcrouterexceptionsbeforematchnotcallable)
-- [`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`](#mvcrouterexceptionsconfigkeymustbearray)
-- [`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`](#mvcrouterexceptionsemptygroupofroutes)
-- [`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`](#mvcrouterexceptionsgrouproutesmustbearray)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`](#mvcrouterexceptionsinvalidcallbackparameter)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`](#mvcrouterexceptionsinvalidconfigsource)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`](#mvcrouterexceptionsinvalidnotfoundpaths)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`](#mvcrouterexceptionsinvalidroutepaths)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`](#mvcrouterexceptionsinvalidrouteposition)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`](#mvcrouterexceptionsinvalidrouterfactoryconfig)
-- [`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`](#mvcrouterexceptionsmissinggrouproutekey)
-- [`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`](#mvcrouterexceptionsmissingrouteconfigkey)
-- [`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`](#mvcrouterexceptionsrequestserviceunavailable)
-- [`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`](#mvcrouterexceptionsunknownhttpmethod)
-- [`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`](#mvcrouterexceptionswrongpathskey)
+  - **`Phalcon\Mvc\Router\Exception`**
+    - [`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`](#mvcrouterexceptionsannotationsserviceunavailable)
+    - [`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`](#mvcrouterexceptionsbeforematchnotcallable)
+    - [`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`](#mvcrouterexceptionsconfigkeymustbearray)
+    - [`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`](#mvcrouterexceptionsemptygroupofroutes)
+    - [`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`](#mvcrouterexceptionsgrouproutesmustbearray)
+    - [`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`](#mvcrouterexceptionsinvalidcallbackparameter)
+    - [`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`](#mvcrouterexceptionsinvalidconfigsource)
+    - [`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`](#mvcrouterexceptionsinvalidnotfoundpaths)
+    - [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`](#mvcrouterexceptionsinvalidroutepaths)
+    - [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`](#mvcrouterexceptionsinvalidrouteposition)
+    - [`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`](#mvcrouterexceptionsinvalidrouterfactoryconfig)
+    - [`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`](#mvcrouterexceptionsmissinggrouproutekey)
+    - [`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`](#mvcrouterexceptionsmissingrouteconfigkey)
+    - [`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`](#mvcrouterexceptionsrequestserviceunavailable)
+    - [`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`](#mvcrouterexceptionsunknownhttpmethod)
+    - [`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`](#mvcrouterexceptionswrongpathskey)
+
 
 ## Mvc\Router\Exceptions\AnnotationsServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsannotationsserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20172,20 +19133,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\BeforeMatchNotCallable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsbeforematchnotcallable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20195,20 +19156,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\ConfigKeyMustBeArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsconfigkeymustbearray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $key)`
 
 ### Methods
 
@@ -20218,20 +19179,20 @@ Class
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Router\Exceptions\EmptyGroupOfRoutes
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsemptygroupofroutes-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20241,20 +19202,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\GroupRoutesMustBeArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsgrouproutesmustbearray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20264,20 +19225,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidCallbackParameter
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsinvalidcallbackparameter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20287,20 +19248,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidConfigSource
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsinvalidconfigsource-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20310,20 +19271,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidNotFoundPaths
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsinvalidnotfoundpaths-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20333,20 +19294,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidRoutePaths
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsinvalidroutepaths-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20356,20 +19317,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidRoutePosition
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsinvalidrouteposition-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20379,20 +19340,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidRouterFactoryConfig
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsinvalidrouterfactoryconfig-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20402,20 +19363,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\MissingGroupRouteKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsmissinggrouproutekey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $key)`
 
 ### Methods
 
@@ -20425,20 +19386,20 @@ Class
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Router\Exceptions\MissingRouteConfigKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsmissingrouteconfigkey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $key)`
 
 ### Methods
 
@@ -20448,20 +19409,20 @@ Class
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Router\Exceptions\RequestServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsrequestserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -20471,20 +19432,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\UnknownHttpMethod
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionsunknownhttpmethod-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"method","default":null}]}>
-</ApiItem>
+- `public __construct(string $method)`
 
 ### Methods
 
@@ -20494,20 +19455,20 @@ Class
 public function __construct( string $method );
 ```
 
+
 ## Mvc\Router\Exceptions\WrongPathsKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`**
+  - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+    - **`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`**
 
 `Phalcon\Mvc\Router\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterexceptionswrongpathskey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"part","default":null}]}>
-</ApiItem>
+- `public __construct(string $part)`
 
 ### Methods
 
@@ -20516,6 +19477,7 @@ Class
 ```php
 public function __construct( string $part );
 ```
+
 
 ## Mvc\Router\Group
 
@@ -20528,10 +19490,10 @@ $router = new \Phalcon\Mvc\Router();
 
 //Create a group with a common module and controller
 $blog = new Group(
-[
-    "module"     => "blog",
-    "controller" => "index",
-]
+    [
+        "module"     => "blog",
+        "controller" => "index",
+    ]
 );
 
 //All the routes start with /blog
@@ -20539,27 +19501,27 @@ $blog->setPrefix("/blog");
 
 //Add a route to the group
 $blog->add(
-"/save",
-[
-    "action" => "save",
-]
+    "/save",
+    [
+        "action" => "save",
+    ]
 );
 
 //Add another route to the group
 $blog->add(
-"/edit/{id}",
-[
-    "action" => "edit",
-]
+    "/edit/{id}",
+    [
+        "action" => "edit",
+    ]
 );
 
 //This route maps to a controller different than the default
 $blog->add(
-"/blog",
-[
-    "controller" => "about",
-    "action"     => "index",
-]
+    "/blog",
+    [
+        "controller" => "about",
+        "action"     => "index",
+    ]
 );
 
 //Add the group to the router
@@ -20572,88 +19534,63 @@ $router->mount($blog);
 
 ### Method Summary
 
-<ApiItem href="#mvcroutergroup-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"paths","default":"null"}]}>
-Phalcon\Mvc\Router\Group constructor
-</ApiItem>
-<ApiItem href="#mvcroutergroup-add" visibility="public" name="add" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"}]}>
-Adds a route to the router on any HTTP method
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addconnect" visibility="public" name="addConnect" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is CONNECT
-</ApiItem>
-<ApiItem href="#mvcroutergroup-adddelete" visibility="public" name="addDelete" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is DELETE
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addget" visibility="public" name="addGet" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is GET
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addhead" visibility="public" name="addHead" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is HEAD
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addoptions" visibility="public" name="addOptions" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Add a route to the router that only match if the HTTP method is OPTIONS
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addpatch" visibility="public" name="addPatch" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is PATCH
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addpost" visibility="public" name="addPost" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is POST
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addpurge" visibility="public" name="addPurge" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is PURGE
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addput" visibility="public" name="addPut" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is PUT
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addtrace" visibility="public" name="addTrace" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is TRACE
-</ApiItem>
-<ApiItem href="#mvcroutergroup-beforematch" visibility="public" name="beforeMatch" returnType="GroupInterface" params={[{"type":"callable","name":"beforeMatch","default":null}]}>
-Sets a callback that is called if the route is matched.
-</ApiItem>
-<ApiItem href="#mvcroutergroup-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Removes all the pre-defined routes
-</ApiItem>
-<ApiItem href="#mvcroutergroup-getbeforematch" visibility="public" name="getBeforeMatch" returnType="callable|null" params={[]}>
-Returns the 'before match' callback if any
-</ApiItem>
-<ApiItem href="#mvcroutergroup-gethostname" visibility="public" name="getHostname" returnType="string|null" params={[]}>
-Returns the hostname restriction
-</ApiItem>
-<ApiItem href="#mvcroutergroup-getpaths" visibility="public" name="getPaths" returnType="array|string|null" params={[]}>
-Returns the common paths defined for this group
-</ApiItem>
-<ApiItem href="#mvcroutergroup-getprefix" visibility="public" name="getPrefix" returnType="string|null" params={[]}>
-Returns the common prefix for all the routes
-</ApiItem>
-<ApiItem href="#mvcroutergroup-getroutes" visibility="public" name="getRoutes" returnType="RouteInterface[]" params={[]}>
-Returns the routes added to the group
-</ApiItem>
-<ApiItem href="#mvcroutergroup-sethostname" visibility="public" name="setHostname" returnType="GroupInterface" params={[{"type":"string","name":"hostname","default":null}]}>
-Set a hostname restriction for all the routes in the group
-</ApiItem>
-<ApiItem href="#mvcroutergroup-setpaths" visibility="public" name="setPaths" returnType="GroupInterface" params={[{"type":"mixed","name":"paths","default":null}]}>
-Set common paths for all the routes in the group
-</ApiItem>
-<ApiItem href="#mvcroutergroup-setprefix" visibility="public" name="setPrefix" returnType="GroupInterface" params={[{"type":"string","name":"prefix","default":null}]}>
-Set a common uri prefix for all the routes in this group
-</ApiItem>
-<ApiItem href="#mvcroutergroup-addroute" visibility="protected" name="addRoute" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"}]}>
-Adds a route applying the common attributes
-</ApiItem>
+- `public __construct(mixed $paths = null)` — Phalcon\Mvc\Router\Group constructor
+
+- `public add(string $pattern, mixed $paths = null, mixed $httpMethods = null): RouteInterface` — Adds a route to the router on any HTTP method
+
+- `public addConnect(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is CONNECT
+
+- `public addDelete(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is DELETE
+
+- `public addGet(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is GET
+
+- `public addHead(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is HEAD
+
+- `public addOptions(string $pattern, mixed $paths = null): RouteInterface` — Add a route to the router that only match if the HTTP method is OPTIONS
+
+- `public addPatch(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is PATCH
+
+- `public addPost(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is POST
+
+- `public addPurge(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is PURGE
+
+- `public addPut(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is PUT
+
+- `public addTrace(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is TRACE
+
+- `public beforeMatch(callable $beforeMatch): GroupInterface` — Sets a callback that is called if the route is matched.
+
+- `public clear(): void` — Removes all the pre-defined routes
+
+- `public getBeforeMatch(): callable|null` — Returns the 'before match' callback if any
+
+- `public getHostname(): string|null` — Returns the hostname restriction
+
+- `public getPaths(): array|string|null` — Returns the common paths defined for this group
+
+- `public getPrefix(): string|null` — Returns the common prefix for all the routes
+
+- `public getRoutes(): RouteInterface[]` — Returns the routes added to the group
+
+- `public setHostname(string $hostname): GroupInterface` — Set a hostname restriction for all the routes in the group
+
+- `public setPaths(mixed $paths): GroupInterface` — Set common paths for all the routes in the group
+
+- `public setPrefix(string $prefix): GroupInterface` — Set a common uri prefix for all the routes in this group
+
+- `protected addRoute(string $pattern, mixed $paths = null, mixed $httpMethods = null): RouteInterface` — Adds a route applying the common attributes
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="beforeMatch" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hostname" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="paths" type="array|string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="routes" type="array" default="[]">
-</ApiItem>
+- `protected callable|null $beforeMatch = null`
+
+- `protected string|null $hostname = null`
+
+- `protected array|string|null $paths = null`
+
+- `protected string|null $prefix = null`
+
+- `protected array $routes = []`
 
 ### Methods
 
@@ -20669,9 +19606,9 @@ Phalcon\Mvc\Router\Group constructor
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -20685,8 +19622,8 @@ $router->add("/about", "About::index");
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20696,8 +19633,8 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20707,8 +19644,8 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20718,8 +19655,8 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20729,8 +19666,8 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20740,8 +19677,8 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20751,8 +19688,8 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20762,8 +19699,8 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20773,8 +19710,8 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20784,8 +19721,8 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -20877,13 +19814,14 @@ Set a common uri prefix for all the routes in this group
 
 ```php
 protected function addRoute(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 ): RouteInterface;
 ```
 
 Adds a route applying the common attributes
+
 
 ## Mvc\Router\GroupInterface
 
@@ -20894,10 +19832,10 @@ $router = new \Phalcon\Mvc\Router();
 
 // Create a group with a common module and controller
 $blog = new Group(
-[
-    "module"     => "blog",
-    "controller" => "index",
-]
+    [
+        "module"     => "blog",
+        "controller" => "index",
+    ]
 );
 
 // All the routes start with /blog
@@ -20905,27 +19843,27 @@ $blog->setPrefix("/blog");
 
 // Add a route to the group
 $blog->add(
-"/save",
-[
-    "action" => "save",
-]
+    "/save",
+    [
+        "action" => "save",
+    ]
 );
 
 // Add another route to the group
 $blog->add(
-"/edit/{id}",
-[
-    "action" => "edit",
-]
+    "/edit/{id}",
+    [
+        "action" => "edit",
+    ]
 );
 
 // This route maps to a controller different than the default
 $blog->add(
-"/blog",
-[
-    "controller" => "about",
-    "action"     => "index",
-]
+    "/blog",
+    [
+        "controller" => "about",
+        "action"     => "index",
+    ]
 );
 
 // Add the group to the router
@@ -20938,69 +19876,47 @@ $router->mount($blog);
 
 ### Method Summary
 
-<ApiItem href="#mvcroutergroupinterface-add" visibility="public" name="add" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"}]}>
-Adds a route to the router on any HTTP method
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addconnect" visibility="public" name="addConnect" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is CONNECT
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-adddelete" visibility="public" name="addDelete" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is DELETE
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addget" visibility="public" name="addGet" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is GET
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addhead" visibility="public" name="addHead" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is HEAD
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addoptions" visibility="public" name="addOptions" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Add a route to the router that only match if the HTTP method is OPTIONS
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addpatch" visibility="public" name="addPatch" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is PATCH
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addpost" visibility="public" name="addPost" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is POST
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addpurge" visibility="public" name="addPurge" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is PURGE
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addput" visibility="public" name="addPut" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is PUT
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-addtrace" visibility="public" name="addTrace" returnType="RouteInterface" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Adds a route to the router that only match if the HTTP method is TRACE
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-beforematch" visibility="public" name="beforeMatch" returnType="GroupInterface" params={[{"type":"callable","name":"beforeMatch","default":null}]}>
-Sets a callback that is called if the route is matched.
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Removes all the pre-defined routes
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-getbeforematch" visibility="public" name="getBeforeMatch" returnType="callable|null" params={[]}>
-Returns the 'before match' callback if any
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-gethostname" visibility="public" name="getHostname" returnType="string|null" params={[]}>
-Returns the hostname restriction
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-getpaths" visibility="public" name="getPaths" returnType="array|string|null" params={[]}>
-Returns the common paths defined for this group
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-getprefix" visibility="public" name="getPrefix" returnType="string|null" params={[]}>
-Returns the common prefix for all the routes
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-getroutes" visibility="public" name="getRoutes" returnType="RouteInterface[]" params={[]}>
-Returns the routes added to the group
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-sethostname" visibility="public" name="setHostname" returnType="GroupInterface" params={[{"type":"string","name":"hostname","default":null}]}>
-Set a hostname restriction for all the routes in the group
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-setpaths" visibility="public" name="setPaths" returnType="GroupInterface" params={[{"type":"mixed","name":"paths","default":null}]}>
-Set common paths for all the routes in the group
-</ApiItem>
-<ApiItem href="#mvcroutergroupinterface-setprefix" visibility="public" name="setPrefix" returnType="GroupInterface" params={[{"type":"string","name":"prefix","default":null}]}>
-Set a common uri prefix for all the routes in this group
-</ApiItem>
+- `public add(string $pattern, mixed $paths = null, mixed $httpMethods = null): RouteInterface` — Adds a route to the router on any HTTP method
+
+- `public addConnect(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is CONNECT
+
+- `public addDelete(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is DELETE
+
+- `public addGet(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is GET
+
+- `public addHead(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is HEAD
+
+- `public addOptions(string $pattern, mixed $paths = null): RouteInterface` — Add a route to the router that only match if the HTTP method is OPTIONS
+
+- `public addPatch(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is PATCH
+
+- `public addPost(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is POST
+
+- `public addPurge(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is PURGE
+
+- `public addPut(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is PUT
+
+- `public addTrace(string $pattern, mixed $paths = null): RouteInterface` — Adds a route to the router that only match if the HTTP method is TRACE
+
+- `public beforeMatch(callable $beforeMatch): GroupInterface` — Sets a callback that is called if the route is matched.
+
+- `public clear(): void` — Removes all the pre-defined routes
+
+- `public getBeforeMatch(): callable|null` — Returns the 'before match' callback if any
+
+- `public getHostname(): string|null` — Returns the hostname restriction
+
+- `public getPaths(): array|string|null` — Returns the common paths defined for this group
+
+- `public getPrefix(): string|null` — Returns the common prefix for all the routes
+
+- `public getRoutes(): RouteInterface[]` — Returns the routes added to the group
+
+- `public setHostname(string $hostname): GroupInterface` — Set a hostname restriction for all the routes in the group
+
+- `public setPaths(mixed $paths): GroupInterface` — Set common paths for all the routes in the group
+
+- `public setPrefix(string $prefix): GroupInterface` — Set a common uri prefix for all the routes in this group
 
 ### Methods
 
@@ -21008,9 +19924,9 @@ Set a common uri prefix for all the routes in this group
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -21024,8 +19940,8 @@ router->add("/about", "About::index");
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21035,8 +19951,8 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21046,8 +19962,8 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21057,8 +19973,8 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21068,8 +19984,8 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21079,8 +19995,8 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21090,8 +20006,8 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21101,8 +20017,8 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21112,8 +20028,8 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21123,8 +20039,8 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -21212,6 +20128,7 @@ public function setPrefix( string $prefix ): GroupInterface;
 
 Set a common uri prefix for all the routes in this group
 
+
 ## Mvc\Router\Route
 
 Class
@@ -21224,122 +20141,91 @@ This class represents every route added to the router
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterroute-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"},{"type":"mixed","name":"httpMethods","default":"null"}]}>
-Phalcon\Mvc\Router\Route constructor
-</ApiItem>
-<ApiItem href="#mvcrouterroute-beforematch" visibility="public" name="beforeMatch" returnType="RouteInterface" params={[{"type":"callable","name":"callback","default":null}]}>
-Sets a callback that is called if the route is matched.
-</ApiItem>
-<ApiItem href="#mvcrouterroute-compilepattern" visibility="public" name="compilePattern" returnType="string" params={[{"type":"string","name":"pattern","default":null}]}>
-Replaces placeholders from pattern returning a valid PCRE regular expression
-</ApiItem>
-<ApiItem href="#mvcrouterroute-convert" visibility="public" name="convert" returnType="RouteInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"converter","default":null}]}>
-\{@inheritdoc\}
-</ApiItem>
-<ApiItem href="#mvcrouterroute-extractnamedparams" visibility="public" name="extractNamedParams" returnType="array|bool" params={[{"type":"string","name":"pattern","default":null}]}>
-Extracts parameters from a string
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getbeforematch" visibility="public" name="getBeforeMatch" returnType="callable|null" params={[]}>
-Returns the 'before match' callback if any
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getcompiledhostname" visibility="public" name="getCompiledHostName" returnType="string|null" params={[]}>
-Returns the compiled hostname regex, or null when the hostname is
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getcompiledpattern" visibility="public" name="getCompiledPattern" returnType="string" params={[]}>
-Returns the route's compiled pattern
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getconverters" visibility="public" name="getConverters" returnType="array" params={[]}>
-Returns the router converter
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getgroup" visibility="public" name="getGroup" returnType="GroupInterface|null" params={[]}>
-Returns the group associated with the route
-</ApiItem>
-<ApiItem href="#mvcrouterroute-gethostname" visibility="public" name="getHostname" returnType="string|null" params={[]}>
-Returns the hostname restriction if any
-</ApiItem>
-<ApiItem href="#mvcrouterroute-gethttpmethods" visibility="public" name="getHttpMethods" returnType="array|string|null" params={[]}>
-Returns the HTTP methods that constraint matching the route
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getmatch" visibility="public" name="getMatch" returnType="callable|null" params={[]}>
-Returns the 'match' callback if any
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getname" visibility="public" name="getName" returnType="string|null" params={[]}>
-Returns the route's name
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getpaths" visibility="public" name="getPaths" returnType="array" params={[]}>
-Returns the paths
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getpattern" visibility="public" name="getPattern" returnType="string" params={[]}>
-Returns the route's pattern
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getreversedpaths" visibility="public" name="getReversedPaths" returnType="array" params={[]}>
-Returns the paths using positions as keys and names as values
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getrouteid" visibility="public" name="getRouteId" returnType="string" params={[]}>
-Returns the route's id
-</ApiItem>
-<ApiItem href="#mvcrouterroute-getroutepaths" visibility="public" name="getRoutePaths" returnType="array" params={[{"type":"mixed","name":"paths","default":"null"}]}>
-Returns routePaths
-</ApiItem>
-<ApiItem href="#mvcrouterroute-match" visibility="public" name="match" returnType="RouteInterface" params={[{"type":"mixed","name":"callback","default":null}]}>
-Allows to set a callback to handle the request directly in the route
-</ApiItem>
-<ApiItem href="#mvcrouterroute-reconfigure" visibility="public" name="reConfigure" returnType="void" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Reconfigure the route adding a new pattern and a set of paths
-</ApiItem>
-<ApiItem href="#mvcrouterroute-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal route id generator
-</ApiItem>
-<ApiItem href="#mvcrouterroute-setgroup" visibility="public" name="setGroup" returnType="RouteInterface" params={[{"type":"GroupInterface","name":"group","default":null}]}>
-Sets the group associated with the route
-</ApiItem>
-<ApiItem href="#mvcrouterroute-sethostname" visibility="public" name="setHostname" returnType="RouteInterface" params={[{"type":"string","name":"hostname","default":null}]}>
-Sets a hostname restriction to the route
-</ApiItem>
-<ApiItem href="#mvcrouterroute-sethttpmethods" visibility="public" name="setHttpMethods" returnType="RouteInterface" params={[{"type":"mixed","name":"httpMethods","default":null}]}>
-Sets a set of HTTP methods that constraint the matching of the route (alias of via)
-</ApiItem>
-<ApiItem href="#mvcrouterroute-setname" visibility="public" name="setName" returnType="RouteInterface" params={[{"type":"string","name":"name","default":null}]}>
-Sets the route's name
-</ApiItem>
-<ApiItem href="#mvcrouterroute-setrouteid" visibility="public" name="setRouteId" returnType="RouteInterface" params={[{"type":"string","name":"routeId","default":null}]}>
-Sets the route's id. Intended for restoring cached routes - most
-</ApiItem>
-<ApiItem href="#mvcrouterroute-via" visibility="public" name="via" returnType="RouteInterface" params={[{"type":"mixed","name":"httpMethods","default":null}]}>
-Set one or more HTTP methods that constraint the matching of the route
-</ApiItem>
+- `public __construct(string $pattern, mixed $paths = null, mixed $httpMethods = null)` — Phalcon\Mvc\Router\Route constructor
+
+- `public beforeMatch(callable $callback): RouteInterface` — Sets a callback that is called if the route is matched.
+
+- `public compilePattern(string $pattern): string` — Replaces placeholders from pattern returning a valid PCRE regular expression
+
+- `public convert(string $name, mixed $converter): RouteInterface` — \{@inheritdoc}
+
+- `public extractNamedParams(string $pattern): array|bool` — Extracts parameters from a string
+
+- `public getBeforeMatch(): callable|null` — Returns the 'before match' callback if any
+
+- `public getCompiledHostName(): string|null` — Returns the compiled hostname regex, or null when the hostname is
+
+- `public getCompiledPattern(): string` — Returns the route's compiled pattern
+
+- `public getConverters(): array` — Returns the router converter
+
+- `public getGroup(): GroupInterface|null` — Returns the group associated with the route
+
+- `public getHostname(): string|null` — Returns the hostname restriction if any
+
+- `public getHttpMethods(): array|string|null` — Returns the HTTP methods that constraint matching the route
+
+- `public getMatch(): callable|null` — Returns the 'match' callback if any
+
+- `public getName(): string|null` — Returns the route's name
+
+- `public getPaths(): array` — Returns the paths
+
+- `public getPattern(): string` — Returns the route's pattern
+
+- `public getReversedPaths(): array` — Returns the paths using positions as keys and names as values
+
+- `public getRouteId(): string` — Returns the route's id
+
+- `public getRoutePaths(mixed $paths = null): array` — Returns routePaths
+
+- `public match(mixed $callback): RouteInterface` — Allows to set a callback to handle the request directly in the route
+
+- `public reConfigure(string $pattern, mixed $paths = null): void` — Reconfigure the route adding a new pattern and a set of paths
+
+- `public reset(): void` — Resets the internal route id generator
+
+- `public setGroup(GroupInterface $group): RouteInterface` — Sets the group associated with the route
+
+- `public setHostname(string $hostname): RouteInterface` — Sets a hostname restriction to the route
+
+- `public setHttpMethods(mixed $httpMethods): RouteInterface` — Sets a set of HTTP methods that constraint the matching of the route (alias of via)
+
+- `public setName(string $name): RouteInterface` — Sets the route's name
+
+- `public setRouteId(string $routeId): RouteInterface` — Sets the route's id. Intended for restoring cached routes - most
+
+- `public via(mixed $httpMethods): RouteInterface` — Set one or more HTTP methods that constraint the matching of the route
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="beforeMatch" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="compiledHostName" type="string|null|false" default="false">
-Cached compiled hostname regex. `false` means "not yet computed";
-`null` means "hostname is literal - use string equality"; any string
-means "use this as the PCRE pattern."
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="compiledPattern" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="converters" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="group" type="GroupInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hostname" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="match" type="callable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="methods" type="array|string|null" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="name" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="paths" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pattern" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="routeId" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uniqueId" type="int" default="0">
-</ApiItem>
+- `protected callable|null $beforeMatch = null`
+
+- `protected string|null|false $compiledHostName = false` — Cached compiled hostname regex. `false` means "not yet computed";
+  `null` means "hostname is literal - use string equality"; any string
+  means "use this as the PCRE pattern."
+
+- `protected string|null $compiledPattern = null`
+
+- `protected array $converters = []`
+
+- `protected GroupInterface|null $group = null`
+
+- `protected string|null $hostname = null`
+
+- `protected callable|null $match = null`
+
+- `protected array|string|null $methods = []`
+
+- `protected string|null $name = null`
+
+- `protected array $paths = []`
+
+- `protected string $pattern`
+
+- `protected string $routeId = ""`
+
+- `protected int $uniqueId = 0`
 
 ### Methods
 
@@ -21347,9 +20233,9 @@ means "use this as the PCRE pattern."
 
 ```php
 public function __construct(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 );
 ```
 
@@ -21367,20 +20253,20 @@ If the callback returns false the route is treated as not matched
 
 ```php
 $router->add(
-"/login",
-[
-    "module"     => "admin",
-    "controller" => "session",
-]
+    "/login",
+    [
+        "module"     => "admin",
+        "controller" => "session",
+    ]
 )->beforeMatch(
-function ($uri, $route) {
-    // Check if the request was made with Ajax
-    if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
-        return false;
-    }
+    function ($uri, $route) {
+        // Check if the request was made with Ajax
+        if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
+            return false;
+        }
 
-    return true;
-}
+        return true;
+    }
 );
 ```
 
@@ -21396,8 +20282,8 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
 public function convert(
-string $name,
-mixed $converter
+    string $name,
+    mixed $converter
 ): RouteInterface;
 ```
 
@@ -21537,12 +20423,12 @@ Allows to set a callback to handle the request directly in the route
 
 ```php
 $router->add(
-"/help",
-[]
+    "/help",
+    []
 )->match(
-function () {
-    return $this->getResponse()->redirect("https://support.google.com/", true);
-}
+    function () {
+        return $this->getResponse()->redirect("https://support.google.com/", true);
+    }
 );
 ```
 
@@ -21550,8 +20436,8 @@ function () {
 
 ```php
 public function reConfigure(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): void;
 ```
 
@@ -21597,10 +20483,10 @@ Sets a set of HTTP methods that constraint the matching of the route (alias of v
 $route->setHttpMethods("GET");
 
 $route->setHttpMethods(
-[
-    "GET",
-    "POST",
-]
+    [
+        "GET",
+        "POST",
+    ]
 );
 ```
 
@@ -21614,10 +20500,10 @@ Sets the route's name
 
 ```php
 $router->add(
-"/about",
-[
-    "controller" => "about",
-]
+    "/about",
+    [
+        "controller" => "about",
+    ]
 )->setName("about");
 ```
 
@@ -21643,12 +20529,13 @@ Set one or more HTTP methods that constraint the matching of the route
 $route->via("GET");
 
 $route->via(
-[
-    "GET",
-    "POST",
-]
+    [
+        "GET",
+        "POST",
+    ]
 );
 ```
+
 
 ## Mvc\Router\RouteInterface
 
@@ -21662,57 +20549,39 @@ Interface for Phalcon\Mvc\Router\Route
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterrouteinterface-compilepattern" visibility="public" name="compilePattern" returnType="string" params={[{"type":"string","name":"pattern","default":null}]}>
-Replaces placeholders from pattern returning a valid PCRE regular expression
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-convert" visibility="public" name="convert" returnType="RouteInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"converter","default":null}]}>
-Adds a converter to perform an additional transformation for certain parameter.
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-getcompiledpattern" visibility="public" name="getCompiledPattern" returnType="string" params={[]}>
-Returns the route's pattern
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-gethostname" visibility="public" name="getHostname" returnType="string|null" params={[]}>
-Returns the hostname restriction if any
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-gethttpmethods" visibility="public" name="getHttpMethods" returnType="array|string|null" params={[]}>
-Returns the HTTP methods that constraint matching the route
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-getname" visibility="public" name="getName" returnType="string|null" params={[]}>
-Returns the route's name
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-getpaths" visibility="public" name="getPaths" returnType="array" params={[]}>
-Returns the paths
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-getpattern" visibility="public" name="getPattern" returnType="string" params={[]}>
-Returns the route's pattern
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-getreversedpaths" visibility="public" name="getReversedPaths" returnType="array" params={[]}>
-Returns the paths using positions as keys and names as values
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-getrouteid" visibility="public" name="getRouteId" returnType="string" params={[]}>
-Returns the route's id
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-reconfigure" visibility="public" name="reConfigure" returnType="void" params={[{"type":"string","name":"pattern","default":null},{"type":"mixed","name":"paths","default":"null"}]}>
-Reconfigure the route adding a new pattern and a set of paths
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal route id generator
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-sethostname" visibility="public" name="setHostname" returnType="RouteInterface" params={[{"type":"string","name":"hostname","default":null}]}>
-Sets a hostname restriction to the route
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-sethttpmethods" visibility="public" name="setHttpMethods" returnType="RouteInterface" params={[{"type":"mixed","name":"httpMethods","default":null}]}>
-Sets a set of HTTP methods that constraint the matching of the route
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-setname" visibility="public" name="setName" returnType="RouteInterface" params={[{"type":"string","name":"name","default":null}]}>
-Sets the route's name
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-setrouteid" visibility="public" name="setRouteId" returnType="RouteInterface" params={[{"type":"string","name":"routeId","default":null}]}>
-Sets the route's id (intended for restoring cached routes)
-</ApiItem>
-<ApiItem href="#mvcrouterrouteinterface-via" visibility="public" name="via" returnType="RouteInterface" params={[{"type":"mixed","name":"httpMethods","default":null}]}>
-Set one or more HTTP methods that constraint the matching of the route
-</ApiItem>
+- `public compilePattern(string $pattern): string` — Replaces placeholders from pattern returning a valid PCRE regular expression
+
+- `public convert(string $name, mixed $converter): RouteInterface` — Adds a converter to perform an additional transformation for certain parameter.
+
+- `public getCompiledPattern(): string` — Returns the route's pattern
+
+- `public getHostname(): string|null` — Returns the hostname restriction if any
+
+- `public getHttpMethods(): array|string|null` — Returns the HTTP methods that constraint matching the route
+
+- `public getName(): string|null` — Returns the route's name
+
+- `public getPaths(): array` — Returns the paths
+
+- `public getPattern(): string` — Returns the route's pattern
+
+- `public getReversedPaths(): array` — Returns the paths using positions as keys and names as values
+
+- `public getRouteId(): string` — Returns the route's id
+
+- `public reConfigure(string $pattern, mixed $paths = null): void` — Reconfigure the route adding a new pattern and a set of paths
+
+- `public reset(): void` — Resets the internal route id generator
+
+- `public setHostname(string $hostname): RouteInterface` — Sets a hostname restriction to the route
+
+- `public setHttpMethods(mixed $httpMethods): RouteInterface` — Sets a set of HTTP methods that constraint the matching of the route
+
+- `public setName(string $name): RouteInterface` — Sets the route's name
+
+- `public setRouteId(string $routeId): RouteInterface` — Sets the route's id (intended for restoring cached routes)
+
+- `public via(mixed $httpMethods): RouteInterface` — Set one or more HTTP methods that constraint the matching of the route
 
 ### Methods
 
@@ -21728,8 +20597,8 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
 public function convert(
-string $name,
-mixed $converter
+    string $name,
+    mixed $converter
 ): RouteInterface;
 ```
 
@@ -21803,8 +20672,8 @@ Returns the route's id
 
 ```php
 public function reConfigure(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): void;
 ```
 
@@ -21858,6 +20727,7 @@ public function via( mixed $httpMethods ): RouteInterface;
 
 Set one or more HTTP methods that constraint the matching of the route
 
+
 ## Mvc\Router\RouterFactory
 
 Class
@@ -21871,12 +20741,12 @@ Router::loadFromConfig.
 use Phalcon\Mvc\Router\RouterFactory;
 
 $router = (new RouterFactory())->load(
-[
-    'defaultRoutes' => false,
-    'routes' => [
-        ['method' => 'get', 'pattern' => '/users', 'paths' => 'Users::index']
+    [
+        'defaultRoutes' => false,
+        'routes' => [
+            ['method' => 'get', 'pattern' => '/users', 'paths' => 'Users::index']
+        ]
     ]
-]
 );
 ```
 
@@ -21886,12 +20756,9 @@ $router = (new RouterFactory())->load(
 
 ### Method Summary
 
-<ApiItem href="#mvcrouterrouterfactory-load" visibility="public" name="load" returnType="RouterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
-Builds a Router from a config array or ConfigInterface and loads routes.
-</ApiItem>
-<ApiItem href="#mvcrouterrouterfactory-newinstance" visibility="public" name="newInstance" returnType="RouterInterface" params={[{"type":"bool","name":"defaultRoutes","default":"true"}]}>
-Returns a bare Router instance.
-</ApiItem>
+- `public load(mixed $config): RouterInterface` — Builds a Router from a config array or ConfigInterface and loads routes.
+
+- `public newInstance(bool $defaultRoutes = true): RouterInterface` — Returns a bare Router instance.
 
 ### Methods
 
@@ -21911,6 +20778,7 @@ public function newInstance( bool $defaultRoutes = true ): RouterInterface;
 
 Returns a bare Router instance.
 
+
 ## Mvc\Url
 
 Class
@@ -21923,62 +20791,51 @@ echo $url->get("products/edit/1");
 
 // Generate a URL for a predefined route
 echo $url->get(
-[
-    "for"   => "blog-post",
-    "title" => "some-cool-stuff",
-    "year"  => "2012",
-]
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2012",
+    ]
 );
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.22/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\ReduceSlashes`
 
 ### Method Summary
 
-<ApiItem href="#mvcurl-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"RouterInterface|null","name":"router","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#mvcurl-get" visibility="public" name="get" returnType="string" params={[{"type":"mixed","name":"uri","default":"null"},{"type":"mixed","name":"arguments","default":"null"},{"type":"bool|null","name":"local","default":"null"},{"type":"mixed","name":"baseUri","default":"null"},{"type":"bool","name":"replaceArgs","default":"false"}]}>
-Generates a URL
-</ApiItem>
-<ApiItem href="#mvcurl-getbasepath" visibility="public" name="getBasePath" returnType="string|null" params={[]}>
-Returns the base path
-</ApiItem>
-<ApiItem href="#mvcurl-getbaseuri" visibility="public" name="getBaseUri" returnType="string" params={[]}>
-Returns the prefix for all the generated urls. By default /
-</ApiItem>
-<ApiItem href="#mvcurl-getstatic" visibility="public" name="getStatic" returnType="string" params={[{"type":"mixed","name":"uri","default":"null"}]}>
-Generates a URL for a static resource
-</ApiItem>
-<ApiItem href="#mvcurl-getstaticbaseuri" visibility="public" name="getStaticBaseUri" returnType="string" params={[]}>
-Returns the prefix for all the generated static urls. By default /
-</ApiItem>
-<ApiItem href="#mvcurl-path" visibility="public" name="path" returnType="string" params={[{"type":"string|null","name":"path","default":"null"}]}>
-Generates a local path
-</ApiItem>
-<ApiItem href="#mvcurl-setbasepath" visibility="public" name="setBasePath" returnType="UrlInterface" params={[{"type":"string","name":"basePath","default":null}]}>
-Sets a base path for all the generated paths
-</ApiItem>
-<ApiItem href="#mvcurl-setbaseuri" visibility="public" name="setBaseUri" returnType="UrlInterface" params={[{"type":"string","name":"baseUri","default":null}]}>
-Sets a prefix for all the URIs to be generated
-</ApiItem>
-<ApiItem href="#mvcurl-setstaticbaseuri" visibility="public" name="setStaticBaseUri" returnType="UrlInterface" params={[{"type":"string","name":"staticBaseUri","default":null}]}>
-Sets a prefix for all static URLs generated
-</ApiItem>
+- `public __construct(RouterInterface|null $router = null)`
+
+- `public get(mixed $uri = null, mixed $arguments = null, bool|null $local = null, mixed $baseUri = null, bool $replaceArgs = false): string` — Generates a URL
+
+- `public getBasePath(): string|null` — Returns the base path
+
+- `public getBaseUri(): string` — Returns the prefix for all the generated urls. By default /
+
+- `public getStatic(mixed $uri = null): string` — Generates a URL for a static resource
+
+- `public getStaticBaseUri(): string` — Returns the prefix for all the generated static urls. By default /
+
+- `public path(string|null $path = null): string` — Generates a local path
+
+- `public setBasePath(string $basePath): UrlInterface` — Sets a base path for all the generated paths
+
+- `public setBaseUri(string $baseUri): UrlInterface` — Sets a prefix for all the URIs to be generated
+
+- `public setStaticBaseUri(string $staticBaseUri): UrlInterface` — Sets a prefix for all static URLs generated
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="basePath" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="baseUri" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="router" type="RouterInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="staticBaseUri" type="string|null" default="null">
-</ApiItem>
+- `protected string|null $basePath = null`
+
+- `protected string|null $baseUri = null`
+
+- `protected RouterInterface|null $router = null`
+
+- `protected string|null $staticBaseUri = null`
 
 ### Methods
 
@@ -21992,11 +20849,11 @@ public function __construct( RouterInterface|null $router = null );
 
 ```php
 public function get(
-mixed $uri = null,
-mixed $arguments = null,
-bool|null $local = null,
-mixed $baseUri = null,
-bool $replaceArgs = false
+    mixed $uri = null,
+    mixed $arguments = null,
+    bool|null $local = null,
+    mixed $baseUri = null,
+    bool $replaceArgs = false
 ): string;
 ```
 
@@ -22008,40 +20865,40 @@ echo $url->get("products/edit/1");
 
 // Generate a URL for a predefined route
 echo $url->get(
-[
-    "for"   => "blog-post",
-    "title" => "some-cool-stuff",
-    "year"  => "2015",
-]
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2015",
+    ]
 );
 
 // Generate a URL with GET arguments (/show/products?id=1&name=Carrots)
 echo $url->get(
-"show/products",
-[
-    "id"   => 1,
-    "name" => "Carrots",
-]
+    "show/products",
+    [
+        "id"   => 1,
+        "name" => "Carrots",
+    ]
 );
 
 // A URI that already carries a scheme is detected as remote and is
 // returned untouched. The third parameter is only honored when it is
 // explicitly true - a false reads the same as leaving it out.
 echo $url->get(
-"https://phalcon.io/",
-null,
-false
+    "https://phalcon.io/",
+    null,
+    false
 );
 
 // Override existing query string keys instead of appending duplicates.
 // Without the fifth argument: "http://example.com?page=1&page=5".
 // With it set to true:        "http://example.com?page=5".
 echo $url->get(
-"http://example.com?page=1",
-["page" => 5],
-null,
-null,
-true
+    "http://example.com?page=1",
+    ["page" => 5],
+    null,
+    null,
+    true
 );
 ```
 
@@ -22075,9 +20932,9 @@ echo $url->getStatic("img/logo.png");
 
 // Generate a URL for a static predefined route
 echo $url->getStatic(
-[
-    "for" => "logo-cdn",
-]
+    [
+        "for" => "logo-cdn",
+    ]
 );
 ```
 
@@ -22135,6 +20992,7 @@ Sets a prefix for all static URLs generated
 $url->setStaticBaseUri("/invo/");
 ```
 
+
 ## Mvc\Url\Exception
 
 Class
@@ -22142,25 +21000,25 @@ Class
 Exceptions thrown in Phalcon\Mvc\Url will use this class
 
 - `\Exception`
-- **`Phalcon\Mvc\Url\Exception`**
-- [`Phalcon\Mvc\Url\Exceptions\MissingRouteName`](#mvcurlexceptionsmissingroutename)
-- [`Phalcon\Mvc\Url\Exceptions\RouteNotFound`](#mvcurlexceptionsroutenotfound)
-- [`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`](#mvcurlexceptionsrouterserviceunavailable)
+  - **`Phalcon\Mvc\Url\Exception`**
+    - [`Phalcon\Mvc\Url\Exceptions\MissingRouteName`](#mvcurlexceptionsmissingroutename)
+    - [`Phalcon\Mvc\Url\Exceptions\RouteNotFound`](#mvcurlexceptionsroutenotfound)
+    - [`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`](#mvcurlexceptionsrouterserviceunavailable)
+
 
 ## Mvc\Url\Exceptions\MissingRouteName
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
-- **`Phalcon\Mvc\Url\Exceptions\MissingRouteName`**
+  - [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
+    - **`Phalcon\Mvc\Url\Exceptions\MissingRouteName`**
 
 `Phalcon\Mvc\Url\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcurlexceptionsmissingroutename-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -22170,20 +21028,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\Url\Exceptions\RouteNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
-- **`Phalcon\Mvc\Url\Exceptions\RouteNotFound`**
+  - [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
+    - **`Phalcon\Mvc\Url\Exceptions\RouteNotFound`**
 
 `Phalcon\Mvc\Url\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcurlexceptionsroutenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -22193,20 +21051,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Url\Exceptions\RouterServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
-- **`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`**
+  - [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
+    - **`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`**
 
 `Phalcon\Mvc\Url\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcurlexceptionsrouterserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -22215,6 +21073,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\Url\UrlInterface
 
@@ -22226,24 +21085,17 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 
 ### Method Summary
 
-<ApiItem href="#mvcurlurlinterface-get" visibility="public" name="get" returnType="string" params={[{"type":"mixed","name":"uri","default":"null"},{"type":"mixed","name":"arguments","default":"null"},{"type":"bool|null","name":"local","default":"null"},{"type":"mixed","name":"baseUri","default":"null"},{"type":"bool","name":"replaceArgs","default":"false"}]}>
-Generates a URL
-</ApiItem>
-<ApiItem href="#mvcurlurlinterface-getbasepath" visibility="public" name="getBasePath" returnType="string|null" params={[]}>
-Returns a base path
-</ApiItem>
-<ApiItem href="#mvcurlurlinterface-getbaseuri" visibility="public" name="getBaseUri" returnType="string" params={[]}>
-Returns the prefix for all the generated urls. By default, /
-</ApiItem>
-<ApiItem href="#mvcurlurlinterface-path" visibility="public" name="path" returnType="string" params={[{"type":"string|null","name":"path","default":"null"}]}>
-Generates a local path
-</ApiItem>
-<ApiItem href="#mvcurlurlinterface-setbasepath" visibility="public" name="setBasePath" returnType="UrlInterface" params={[{"type":"string","name":"basePath","default":null}]}>
-Sets a base paths for all the generated paths
-</ApiItem>
-<ApiItem href="#mvcurlurlinterface-setbaseuri" visibility="public" name="setBaseUri" returnType="UrlInterface" params={[{"type":"string","name":"baseUri","default":null}]}>
-Sets a prefix to all the urls generated
-</ApiItem>
+- `public get(mixed $uri = null, mixed $arguments = null, bool|null $local = null, mixed $baseUri = null, bool $replaceArgs = false): string` — Generates a URL
+
+- `public getBasePath(): string|null` — Returns a base path
+
+- `public getBaseUri(): string` — Returns the prefix for all the generated urls. By default, /
+
+- `public path(string|null $path = null): string` — Generates a local path
+
+- `public setBasePath(string $basePath): UrlInterface` — Sets a base paths for all the generated paths
+
+- `public setBaseUri(string $baseUri): UrlInterface` — Sets a prefix to all the urls generated
 
 ### Methods
 
@@ -22251,11 +21103,11 @@ Sets a prefix to all the urls generated
 
 ```php
 public function get(
-mixed $uri = null,
-mixed $arguments = null,
-bool|null $local = null,
-mixed $baseUri = null,
-bool $replaceArgs = false
+    mixed $uri = null,
+    mixed $arguments = null,
+    bool|null $local = null,
+    mixed $baseUri = null,
+    bool $replaceArgs = false
 ): string;
 ```
 
@@ -22301,6 +21153,7 @@ public function setBaseUri( string $baseUri ): UrlInterface;
 
 Sets a prefix to all the urls generated
 
+
 ## Mvc\View
 
 Class
@@ -22329,228 +21182,170 @@ echo $view->getContent();
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
 `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcview-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\View constructor
-</ApiItem>
-<ApiItem href="#mvcview-__get" visibility="public" name="__get" returnType="mixed|null" params={[{"type":"string","name":"key","default":null}]}>
-Magic method to retrieve a variable passed to the view
-</ApiItem>
-<ApiItem href="#mvcview-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Magic method to retrieve if a variable is set in the view
-</ApiItem>
-<ApiItem href="#mvcview-__set" visibility="public" name="__set" returnType="" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Magic method to pass variables to the views
-</ApiItem>
-<ApiItem href="#mvcview-cleantemplateafter" visibility="public" name="cleanTemplateAfter" returnType="static" params={[]}>
-Resets any template before layouts
-</ApiItem>
-<ApiItem href="#mvcview-cleantemplatebefore" visibility="public" name="cleanTemplateBefore" returnType="static" params={[]}>
-Resets any "template before" layouts
-</ApiItem>
-<ApiItem href="#mvcview-disable" visibility="public" name="disable" returnType="static" params={[]}>
-Disables the auto-rendering process
-</ApiItem>
-<ApiItem href="#mvcview-disablelevel" visibility="public" name="disableLevel" returnType="static" params={[{"type":"mixed","name":"level","default":null}]}>
-Disables a specific level of rendering
-</ApiItem>
-<ApiItem href="#mvcview-enable" visibility="public" name="enable" returnType="static" params={[]}>
-Enables the auto-rendering process
-</ApiItem>
-<ApiItem href="#mvcview-exists" visibility="public" name="exists" returnType="bool" params={[{"type":"string","name":"view","default":null}]}>
-Checks whether view exists
-</ApiItem>
-<ApiItem href="#mvcview-finish" visibility="public" name="finish" returnType="static" params={[]}>
-Finishes the render process by stopping the output buffering
-</ApiItem>
-<ApiItem href="#mvcview-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
-Gets the name of the action rendered
-</ApiItem>
-<ApiItem href="#mvcview-getactiverenderpath" visibility="public" name="getActiveRenderPath" returnType="string|array" params={[]}>
-Returns the path (or paths) of the views that are currently rendered
-</ApiItem>
-<ApiItem href="#mvcview-getbasepath" visibility="public" name="getBasePath" returnType="string" params={[]}>
-Gets base path
-</ApiItem>
-<ApiItem href="#mvcview-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
-Gets the name of the controller rendered
-</ApiItem>
-<ApiItem href="#mvcview-getcurrentrenderlevel" visibility="public" name="getCurrentRenderLevel" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcview-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcview-getlayout" visibility="public" name="getLayout" returnType="string|null" params={[]}>
-Returns the name of the main view
-</ApiItem>
-<ApiItem href="#mvcview-getlayoutsdir" visibility="public" name="getLayoutsDir" returnType="string" params={[]}>
-Gets the current layouts sub-directory
-</ApiItem>
-<ApiItem href="#mvcview-getmainview" visibility="public" name="getMainView" returnType="string" params={[]}>
-Returns the name of the main view
-</ApiItem>
-<ApiItem href="#mvcview-getpartial" visibility="public" name="getPartial" returnType="string" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Renders a partial view
-</ApiItem>
-<ApiItem href="#mvcview-getpartialsdir" visibility="public" name="getPartialsDir" returnType="string" params={[]}>
-Gets the current partials sub-directory
-</ApiItem>
-<ApiItem href="#mvcview-getrender" visibility="public" name="getRender" returnType="string" params={[{"type":"string","name":"controllerName","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"params","default":"[]"},{"type":"mixed","name":"configCallback","default":"null"}]}>
-Perform the automatic rendering returning the output as a string
-</ApiItem>
-<ApiItem href="#mvcview-getrenderlevel" visibility="public" name="getRenderLevel" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcview-getviewsdir" visibility="public" name="getViewsDir" returnType="array|string" params={[]}>
-Gets views directory
-</ApiItem>
-<ApiItem href="#mvcview-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"view","default":null}]}>
-Checks whether view exists
-</ApiItem>
-<ApiItem href="#mvcview-isdisabled" visibility="public" name="isDisabled" returnType="bool" params={[]}>
-Whether automatic rendering is enabled
-</ApiItem>
-<ApiItem href="#mvcview-partial" visibility="public" name="partial" returnType="" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Renders a partial view
-</ApiItem>
-<ApiItem href="#mvcview-pick" visibility="public" name="pick" returnType="static" params={[{"type":"mixed","name":"renderView","default":null}]}>
-Choose a different view to render instead of last-controller/last-action
-</ApiItem>
-<ApiItem href="#mvcview-processrender" visibility="public" name="processRender" returnType="bool" params={[{"type":"string","name":"controllerName","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"params","default":"[]"},{"type":"bool","name":"fireEvents","default":"true"}]}>
-Processes the view and templates; Fires events if needed
-</ApiItem>
-<ApiItem href="#mvcview-registerengines" visibility="public" name="registerEngines" returnType="static" params={[{"type":"array","name":"engines","default":null}]}>
-Register templating engines
-</ApiItem>
-<ApiItem href="#mvcview-render" visibility="public" name="render" returnType="static|false" params={[{"type":"string","name":"controllerName","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"params","default":"[]"}]}>
-Executes render process from dispatching data
-</ApiItem>
-<ApiItem href="#mvcview-reset" visibility="public" name="reset" returnType="static" params={[]}>
-Resets the view component to its factory default values
-</ApiItem>
-<ApiItem href="#mvcview-setbasepath" visibility="public" name="setBasePath" returnType="static" params={[{"type":"string","name":"basePath","default":null}]}>
-Sets base path. Depending of your platform, always add a trailing slash
-</ApiItem>
-<ApiItem href="#mvcview-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvcview-setlayout" visibility="public" name="setLayout" returnType="static" params={[{"type":"string","name":"layout","default":null}]}>
-Change the layout to be used instead of using the name of the latest
-</ApiItem>
-<ApiItem href="#mvcview-setlayoutsdir" visibility="public" name="setLayoutsDir" returnType="static" params={[{"type":"string","name":"layoutsDir","default":null}]}>
-Sets the layouts sub-directory. Must be a directory under the views
-</ApiItem>
-<ApiItem href="#mvcview-setmainview" visibility="public" name="setMainView" returnType="static" params={[{"type":"string","name":"viewPath","default":null}]}>
-Sets default view name. Must be a file without extension in the views
-</ApiItem>
-<ApiItem href="#mvcview-setparamtoview" visibility="public" name="setParamToView" returnType="static" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Adds parameters to views (alias of setVar)
-</ApiItem>
-<ApiItem href="#mvcview-setpartialsdir" visibility="public" name="setPartialsDir" returnType="static" params={[{"type":"string","name":"partialsDir","default":null}]}>
-Sets a partials sub-directory. Must be a directory under the views
-</ApiItem>
-<ApiItem href="#mvcview-setrenderlevel" visibility="public" name="setRenderLevel" returnType="static" params={[{"type":"int","name":"level","default":null}]}>
-Sets the render level for the view
-</ApiItem>
-<ApiItem href="#mvcview-settemplateafter" visibility="public" name="setTemplateAfter" returnType="static" params={[{"type":"mixed","name":"templateAfter","default":null}]}>
-Sets a "template after" controller layout
-</ApiItem>
-<ApiItem href="#mvcview-settemplatebefore" visibility="public" name="setTemplateBefore" returnType="static" params={[{"type":"mixed","name":"templateBefore","default":null}]}>
-Sets a template before the controller layout
-</ApiItem>
-<ApiItem href="#mvcview-setvars" visibility="public" name="setVars" returnType="static" params={[{"type":"array","name":"params","default":null},{"type":"bool","name":"merge","default":"true"}]}>
-Set all the render params
-</ApiItem>
-<ApiItem href="#mvcview-setviewsdir" visibility="public" name="setViewsDir" returnType="static" params={[{"type":"mixed","name":"viewsDir","default":null}]}>
-Sets the views directory. Depending of your platform,
-</ApiItem>
-<ApiItem href="#mvcview-start" visibility="public" name="start" returnType="static" params={[]}>
-Starts rendering process enabling the output buffering
-</ApiItem>
-<ApiItem href="#mvcview-tostring" visibility="public" name="toString" returnType="string" params={[{"type":"string","name":"controllerName","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"params","default":"[]"}]}>
-Renders the view and returns it as a string
-</ApiItem>
-<ApiItem href="#mvcview-enginerender" visibility="protected" name="engineRender" returnType="" params={[{"type":"array","name":"engines","default":null},{"type":"string","name":"viewPath","default":null},{"type":"bool","name":"silence","default":null},{"type":"bool","name":"mustClean","default":"true"}]}>
-Checks whether view exists on registered extensions and render it
-</ApiItem>
-<ApiItem href="#mvcview-getviewsdirs" visibility="protected" name="getViewsDirs" returnType="array" params={[]}>
-Gets views directories
-</ApiItem>
-<ApiItem href="#mvcview-isabsolutepath" visibility="protected" name="isAbsolutePath" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-Checks if a path is absolute or not
-</ApiItem>
-<ApiItem href="#mvcview-loadtemplateengines" visibility="protected" name="loadTemplateEngines" returnType="array" params={[]}>
-Loads registered template engines, if none is registered it will use
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Mvc\View constructor
+
+- `public __get(string $key): mixed|null` — Magic method to retrieve a variable passed to the view
+
+- `public __isset(string $key): bool` — Magic method to retrieve if a variable is set in the view
+
+- `public __set(string $key, mixed $value)` — Magic method to pass variables to the views
+
+- `public cleanTemplateAfter(): static` — Resets any template before layouts
+
+- `public cleanTemplateBefore(): static` — Resets any "template before" layouts
+
+- `public disable(): static` — Disables the auto-rendering process
+
+- `public disableLevel(mixed $level): static` — Disables a specific level of rendering
+
+- `public enable(): static` — Enables the auto-rendering process
+
+- `public exists(string $view): bool` — Checks whether view exists
+
+- `public finish(): static` — Finishes the render process by stopping the output buffering
+
+- `public getActionName(): string` — Gets the name of the action rendered
+
+- `public getActiveRenderPath(): string|array` — Returns the path (or paths) of the views that are currently rendered
+
+- `public getBasePath(): string` — Gets base path
+
+- `public getControllerName(): string` — Gets the name of the controller rendered
+
+- `public getCurrentRenderLevel(): int`
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public getLayout(): string|null` — Returns the name of the main view
+
+- `public getLayoutsDir(): string` — Gets the current layouts sub-directory
+
+- `public getMainView(): string` — Returns the name of the main view
+
+- `public getPartial(string $partialPath, mixed $params = null): string` — Renders a partial view
+
+- `public getPartialsDir(): string` — Gets the current partials sub-directory
+
+- `public getRender(string $controllerName, string $actionName, array $params = [], mixed $configCallback = null): string` — Perform the automatic rendering returning the output as a string
+
+- `public getRenderLevel(): int`
+
+- `public getViewsDir(): array|string` — Gets views directory
+
+- `public has(string $view): bool` — Checks whether view exists
+
+- `public isDisabled(): bool` — Whether automatic rendering is enabled
+
+- `public partial(string $partialPath, mixed $params = null)` — Renders a partial view
+
+- `public pick(mixed $renderView): static` — Choose a different view to render instead of last-controller/last-action
+
+- `public processRender(string $controllerName, string $actionName, array $params = [], bool $fireEvents = true): bool` — Processes the view and templates; Fires events if needed
+
+- `public registerEngines(array $engines): static` — Register templating engines
+
+- `public render(string $controllerName, string $actionName, array $params = []): static|false` — Executes render process from dispatching data
+
+- `public reset(): static` — Resets the view component to its factory default values
+
+- `public setBasePath(string $basePath): static` — Sets base path. Depending of your platform, always add a trailing slash
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `public setLayout(string $layout): static` — Change the layout to be used instead of using the name of the latest
+
+- `public setLayoutsDir(string $layoutsDir): static` — Sets the layouts sub-directory. Must be a directory under the views
+
+- `public setMainView(string $viewPath): static` — Sets default view name. Must be a file without extension in the views
+
+- `public setParamToView(string $key, mixed $value): static` — Adds parameters to views (alias of setVar)
+
+- `public setPartialsDir(string $partialsDir): static` — Sets a partials sub-directory. Must be a directory under the views
+
+- `public setRenderLevel(int $level): static` — Sets the render level for the view
+
+- `public setTemplateAfter(mixed $templateAfter): static` — Sets a "template after" controller layout
+
+- `public setTemplateBefore(mixed $templateBefore): static` — Sets a template before the controller layout
+
+- `public setVars(array $params, bool $merge = true): static` — Set all the render params
+
+- `public setViewsDir(mixed $viewsDir): static` — Sets the views directory. Depending of your platform,
+
+- `public start(): static` — Starts rendering process enabling the output buffering
+
+- `public toString(string $controllerName, string $actionName, array $params = []): string` — Renders the view and returns it as a string
+
+- `protected engineRender(array $engines, string $viewPath, bool $silence, bool $mustClean = true)` — Checks whether view exists on registered extensions and render it
+
+- `protected getViewsDirs(): array` — Gets views directories
+
+- `protected isAbsolutePath(string $path)` — Checks if a path is absolute or not
+
+- `protected loadTemplateEngines(): array` — Loads registered template engines, if none is registered it will use
 
 ### Constants
 
-<ApiItem kind="constant" name="LEVEL_ACTION_VIEW" type="int" default="1">
-Render Level: To the action view
-</ApiItem>
-<ApiItem kind="constant" name="LEVEL_AFTER_TEMPLATE" type="int" default="4">
-Render Level: Render to the templates "after"
-</ApiItem>
-<ApiItem kind="constant" name="LEVEL_BEFORE_TEMPLATE" type="int" default="2">
-Render Level: To the templates "before"
-</ApiItem>
-<ApiItem kind="constant" name="LEVEL_LAYOUT" type="int" default="3">
-Render Level: To the controller layout
-</ApiItem>
-<ApiItem kind="constant" name="LEVEL_MAIN_LAYOUT" type="int" default="5">
-Render Level: To the main layout
-</ApiItem>
-<ApiItem kind="constant" name="LEVEL_NO_RENDER" type="int" default="0">
-Render Level: No render any view
-</ApiItem>
+- `const int LEVEL_ACTION_VIEW = 1` — Render Level: To the action view
+
+- `const int LEVEL_AFTER_TEMPLATE = 4` — Render Level: Render to the templates "after"
+
+- `const int LEVEL_BEFORE_TEMPLATE = 2` — Render Level: To the templates "before"
+
+- `const int LEVEL_LAYOUT = 3` — Render Level: To the controller layout
+
+- `const int LEVEL_MAIN_LAYOUT = 5` — Render Level: To the main layout
+
+- `const int LEVEL_NO_RENDER = 0` — Render Level: No render any view
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="actionName" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeRenderPaths" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="basePath" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="controllerName" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="currentRenderLevel" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="disabled" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="disabledLevels" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="engines" type="array|bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="layout" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="layoutsDir" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="mainView" type="string" default="&quot;index&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="params" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="partialsDir" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pickView" type="array|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="renderLevel" type="int" default="5">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="templatesAfter" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="templatesBefore" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="viewsDirs" type="array" default="[]">
-</ApiItem>
+- `protected string $actionName`
+
+- `protected array $activeRenderPaths`
+
+- `protected string $basePath = ""`
+
+- `protected string $controllerName`
+
+- `protected int $currentRenderLevel = 0`
+
+- `protected bool $disabled = false`
+
+- `protected array $disabledLevels = []`
+
+- `protected array|bool $engines = false`
+
+- `protected ManagerInterface|null $eventsManager = null`
+
+- `protected string|null $layout = null`
+
+- `protected string $layoutsDir = ""`
+
+- `protected string $mainView = "index"`
+
+- `protected array $options = []`
+
+- `protected array $params = []`
+
+- `protected string $partialsDir = ""`
+
+- `protected array|null $pickView`
+
+- `protected int $renderLevel = 5`
+
+- `protected array $templatesAfter = []`
+
+- `protected array $templatesBefore = []`
+
+- `protected array $viewsDirs = []`
 
 ### Methods
 
@@ -22590,8 +21385,8 @@ echo isset($this->view->products);
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 );
 ```
 
@@ -22636,7 +21431,7 @@ Disables a specific level of rendering
 ```php
 // Render all levels except ACTION level
 $this->view->disableLevel(
-View::LEVEL_ACTION_VIEW
+    View::LEVEL_ACTION_VIEW
 );
 ```
 
@@ -22738,8 +21533,8 @@ Returns the name of the main view
 
 ```php
 public function getPartial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): string;
 ```
 
@@ -22753,10 +21548,10 @@ echo $this->getPartial("shared/footer");
 ```php
 // Retrieve the contents of a partial with arguments
 echo $this->getPartial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -22772,10 +21567,10 @@ Gets the current partials sub-directory
 
 ```php
 public function getRender(
-string $controllerName,
-string $actionName,
-array $params = [],
-mixed $configCallback = null
+    string $controllerName,
+    string $actionName,
+    array $params = [],
+    mixed $configCallback = null
 ): string;
 ```
 
@@ -22783,11 +21578,11 @@ Perform the automatic rendering returning the output as a string
 
 ```php
 $template = $this->view->getRender(
-"products",
-"show",
-[
-    "products" => $products,
-]
+    "products",
+    "show",
+    [
+        "products" => $products,
+    ]
 );
 ```
 
@@ -22825,8 +21620,8 @@ Whether automatic rendering is enabled
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 );
 ```
 
@@ -22840,10 +21635,10 @@ $this->partial("shared/footer");
 ```php
 // Show a partial inside another view with parameters
 $this->partial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -22860,13 +21655,13 @@ use Phalcon\Mvc\Controller;
 
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    // Do some save stuff...
+    public function saveAction()
+    {
+        // Do some save stuff...
 
-    // Then show the list view
-    $this->view->pick("products/list");
-}
+        // Then show the list view
+        $this->view->pick("products/list");
+    }
 }
 ```
 
@@ -22874,10 +21669,10 @@ public function saveAction()
 
 ```php
 public function processRender(
-string $controllerName,
-string $actionName,
-array $params = [],
-bool $fireEvents = true
+    string $controllerName,
+    string $actionName,
+    array $params = [],
+    bool $fireEvents = true
 ): bool;
 ```
 
@@ -22893,11 +21688,11 @@ Register templating engines
 
 ```php
 $this->view->registerEngines(
-[
-    ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
-    ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
-    ".mhtml" => \MyCustomEngine::class,
-]
+    [
+        ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
+        ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
+        ".mhtml" => \MyCustomEngine::class,
+    ]
 );
 ```
 
@@ -22905,9 +21700,9 @@ $this->view->registerEngines(
 
 ```php
 public function render(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): static|false;
 ```
 
@@ -22992,8 +21787,8 @@ $this->view->setMainView("base");
 
 ```php
 public function setParamToView(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 
@@ -23028,7 +21823,7 @@ Sets the render level for the view
 ```php
 // Render the view related to the controller only
 $this->view->setRenderLevel(
-View::LEVEL_LAYOUT
+    View::LEVEL_LAYOUT
 );
 ```
 
@@ -23052,8 +21847,8 @@ Sets a template before the controller layout
 
 ```php
 public function setVars(
-array $params,
-bool $merge = true
+    array $params,
+    bool $merge = true
 ): static;
 ```
 
@@ -23061,9 +21856,9 @@ Set all the render params
 
 ```php
 $this->view->setVars(
-[
-    "products" => $products,
-]
+    [
+        "products" => $products,
+    ]
 );
 ```
 
@@ -23088,9 +21883,9 @@ Starts rendering process enabling the output buffering
 
 ```php
 public function toString(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): string;
 ```
 
@@ -23100,10 +21895,10 @@ Renders the view and returns it as a string
 
 ```php
 protected function engineRender(
-array $engines,
-string $viewPath,
-bool $silence,
-bool $mustClean = true
+    array $engines,
+    string $viewPath,
+    bool $silence,
+    bool $mustClean = true
 );
 ```
 
@@ -23134,6 +21929,7 @@ protected function loadTemplateEngines(): array;
 Loads registered template engines, if none is registered it will use
 Phalcon\Mvc\View\Engine\Php
 
+
 ## Mvc\ViewBaseInterface
 
 Interface
@@ -23141,36 +21937,27 @@ Interface
 Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
 - **`Phalcon\Mvc\ViewBaseInterface`**
-- [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface)
+  - [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface)
 
 `Phalcon\Cache\Adapter\AdapterInterface`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewbaseinterface-getcontent" visibility="public" name="getContent" returnType="string" params={[]}>
-Returns cached output from another view stage
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-getparamstoview" visibility="public" name="getParamsToView" returnType="array" params={[]}>
-Returns parameters to views
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-getviewsdir" visibility="public" name="getViewsDir" returnType="array|string" params={[]}>
-Gets views directory
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-partial" visibility="public" name="partial" returnType="" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Renders a partial view
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-setcontent" visibility="public" name="setContent" returnType="" params={[{"type":"string","name":"content","default":null}]}>
-Externally sets the view content
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-setparamtoview" visibility="public" name="setParamToView" returnType="" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Adds parameters to views (alias of setVar)
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-setvar" visibility="public" name="setVar" returnType="" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Adds parameters to views
-</ApiItem>
-<ApiItem href="#mvcviewbaseinterface-setviewsdir" visibility="public" name="setViewsDir" returnType="" params={[{"type":"string","name":"viewsDir","default":null}]}>
-Sets views directory. Depending of your platform, always add a trailing
-</ApiItem>
+- `public getContent(): string` — Returns cached output from another view stage
+
+- `public getParamsToView(): array` — Returns parameters to views
+
+- `public getViewsDir(): array|string` — Gets views directory
+
+- `public partial(string $partialPath, mixed $params = null)` — Renders a partial view
+
+- `public setContent(string $content)` — Externally sets the view content
+
+- `public setParamToView(string $key, mixed $value)` — Adds parameters to views (alias of setVar)
+
+- `public setVar(string $key, mixed $value)` — Adds parameters to views
+
+- `public setViewsDir(string $viewsDir)` — Sets views directory. Depending of your platform, always add a trailing
 
 ### Methods
 
@@ -23202,8 +21989,8 @@ Gets views directory
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 );
 ```
 
@@ -23221,8 +22008,8 @@ Externally sets the view content
 
 ```php
 public function setParamToView(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 );
 ```
 
@@ -23232,8 +22019,8 @@ Adds parameters to views (alias of setVar)
 
 ```php
 public function setVar(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 );
 ```
 
@@ -23248,6 +22035,7 @@ public function setViewsDir( string $viewsDir );
 Sets views directory. Depending of your platform, always add a trailing
 slash or backslash
 
+
 ## Mvc\ViewInterface
 
 Interface
@@ -23255,91 +22043,63 @@ Interface
 Interface for Phalcon\Mvc\View
 
 - [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface)
-- **`Phalcon\Mvc\ViewInterface`**
+  - **`Phalcon\Mvc\ViewInterface`**
 
 ### Method Summary
 
-<ApiItem href="#mvcviewinterface-cleantemplateafter" visibility="public" name="cleanTemplateAfter" returnType="" params={[]}>
-Resets any template before layouts
-</ApiItem>
-<ApiItem href="#mvcviewinterface-cleantemplatebefore" visibility="public" name="cleanTemplateBefore" returnType="" params={[]}>
-Resets any template before layouts
-</ApiItem>
-<ApiItem href="#mvcviewinterface-disable" visibility="public" name="disable" returnType="" params={[]}>
-Disables the auto-rendering process
-</ApiItem>
-<ApiItem href="#mvcviewinterface-enable" visibility="public" name="enable" returnType="" params={[]}>
-Enables the auto-rendering process
-</ApiItem>
-<ApiItem href="#mvcviewinterface-finish" visibility="public" name="finish" returnType="" params={[]}>
-Finishes the render process by stopping the output buffering
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
-Gets the name of the action rendered
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getactiverenderpath" visibility="public" name="getActiveRenderPath" returnType="array|string" params={[]}>
-Returns the path of the view that is currently rendered
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getbasepath" visibility="public" name="getBasePath" returnType="string" params={[]}>
-Gets base path
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
-Gets the name of the controller rendered
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getlayout" visibility="public" name="getLayout" returnType="string|null" params={[]}>
-Returns the name of the main view
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getlayoutsdir" visibility="public" name="getLayoutsDir" returnType="string" params={[]}>
-Gets the current layouts sub-directory
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getmainview" visibility="public" name="getMainView" returnType="string" params={[]}>
-Returns the name of the main view
-</ApiItem>
-<ApiItem href="#mvcviewinterface-getpartialsdir" visibility="public" name="getPartialsDir" returnType="string" params={[]}>
-Gets the current partials sub-directory
-</ApiItem>
-<ApiItem href="#mvcviewinterface-isdisabled" visibility="public" name="isDisabled" returnType="bool" params={[]}>
-Whether the automatic rendering is disabled
-</ApiItem>
-<ApiItem href="#mvcviewinterface-pick" visibility="public" name="pick" returnType="" params={[{"type":"string","name":"renderView","default":null}]}>
-Choose a view different to render than last-controller/last-action
-</ApiItem>
-<ApiItem href="#mvcviewinterface-registerengines" visibility="public" name="registerEngines" returnType="" params={[{"type":"array","name":"engines","default":null}]}>
-Register templating engines
-</ApiItem>
-<ApiItem href="#mvcviewinterface-render" visibility="public" name="render" returnType="ViewInterface|bool" params={[{"type":"string","name":"controllerName","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"params","default":"[]"}]}>
-Executes render process from dispatching data
-</ApiItem>
-<ApiItem href="#mvcviewinterface-reset" visibility="public" name="reset" returnType="" params={[]}>
-Resets the view component to its factory default values
-</ApiItem>
-<ApiItem href="#mvcviewinterface-setbasepath" visibility="public" name="setBasePath" returnType="" params={[{"type":"string","name":"basePath","default":null}]}>
-Sets base path. Depending of your platform, always add a trailing slash
-</ApiItem>
-<ApiItem href="#mvcviewinterface-setlayout" visibility="public" name="setLayout" returnType="" params={[{"type":"string","name":"layout","default":null}]}>
-Change the layout to be used instead of using the name of the latest
-</ApiItem>
-<ApiItem href="#mvcviewinterface-setlayoutsdir" visibility="public" name="setLayoutsDir" returnType="" params={[{"type":"string","name":"layoutsDir","default":null}]}>
-Sets the layouts sub-directory. Must be a directory under the views
-</ApiItem>
-<ApiItem href="#mvcviewinterface-setmainview" visibility="public" name="setMainView" returnType="" params={[{"type":"string","name":"viewPath","default":null}]}>
-Sets default view name. Must be a file without extension in the views
-</ApiItem>
-<ApiItem href="#mvcviewinterface-setpartialsdir" visibility="public" name="setPartialsDir" returnType="" params={[{"type":"string","name":"partialsDir","default":null}]}>
-Sets a partials sub-directory. Must be a directory under the views
-</ApiItem>
-<ApiItem href="#mvcviewinterface-setrenderlevel" visibility="public" name="setRenderLevel" returnType="ViewInterface" params={[{"type":"int","name":"level","default":null}]}>
-Sets the render level for the view
-</ApiItem>
-<ApiItem href="#mvcviewinterface-settemplateafter" visibility="public" name="setTemplateAfter" returnType="" params={[{"type":"mixed","name":"templateAfter","default":null}]}>
-Appends template after controller layout
-</ApiItem>
-<ApiItem href="#mvcviewinterface-settemplatebefore" visibility="public" name="setTemplateBefore" returnType="" params={[{"type":"mixed","name":"templateBefore","default":null}]}>
-Appends template before controller layout
-</ApiItem>
-<ApiItem href="#mvcviewinterface-start" visibility="public" name="start" returnType="" params={[]}>
-Starts rendering process enabling the output buffering
-</ApiItem>
+- `public cleanTemplateAfter()` — Resets any template before layouts
+
+- `public cleanTemplateBefore()` — Resets any template before layouts
+
+- `public disable()` — Disables the auto-rendering process
+
+- `public enable()` — Enables the auto-rendering process
+
+- `public finish()` — Finishes the render process by stopping the output buffering
+
+- `public getActionName(): string` — Gets the name of the action rendered
+
+- `public getActiveRenderPath(): array|string` — Returns the path of the view that is currently rendered
+
+- `public getBasePath(): string` — Gets base path
+
+- `public getControllerName(): string` — Gets the name of the controller rendered
+
+- `public getLayout(): string|null` — Returns the name of the main view
+
+- `public getLayoutsDir(): string` — Gets the current layouts sub-directory
+
+- `public getMainView(): string` — Returns the name of the main view
+
+- `public getPartialsDir(): string` — Gets the current partials sub-directory
+
+- `public isDisabled(): bool` — Whether the automatic rendering is disabled
+
+- `public pick(string $renderView)` — Choose a view different to render than last-controller/last-action
+
+- `public registerEngines(array $engines)` — Register templating engines
+
+- `public render(string $controllerName, string $actionName, array $params = []): ViewInterface|bool` — Executes render process from dispatching data
+
+- `public reset()` — Resets the view component to its factory default values
+
+- `public setBasePath(string $basePath)` — Sets base path. Depending of your platform, always add a trailing slash
+
+- `public setLayout(string $layout)` — Change the layout to be used instead of using the name of the latest
+
+- `public setLayoutsDir(string $layoutsDir)` — Sets the layouts sub-directory. Must be a directory under the views
+
+- `public setMainView(string $viewPath)` — Sets default view name. Must be a file without extension in the views
+
+- `public setPartialsDir(string $partialsDir)` — Sets a partials sub-directory. Must be a directory under the views
+
+- `public setRenderLevel(int $level): ViewInterface` — Sets the render level for the view
+
+- `public setTemplateAfter(mixed $templateAfter)` — Appends template after controller layout
+
+- `public setTemplateBefore(mixed $templateBefore)` — Appends template before controller layout
+
+- `public start()` — Starts rendering process enabling the output buffering
 
 ### Methods
 
@@ -23475,9 +22235,9 @@ Register templating engines
 
 ```php
 public function render(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): ViewInterface|bool;
 ```
 
@@ -23570,6 +22330,7 @@ public function start();
 
 Starts rendering process enabling the output buffering
 
+
 ## Mvc\View\Engine\AbstractEngine
 
 Abstract
@@ -23578,43 +22339,34 @@ All the template engine adapters must inherit this class. This provides
 basic interfacing between the engine and the Phalcon\Mvc\View component.
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
-- [`Phalcon\Mvc\View\Engine\Volt`](#mvcviewenginevolt)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+      - [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
+      - [`Phalcon\Mvc\View\Engine\Volt`](#mvcviewenginevolt)
 
 `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewengineabstractengine-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ViewBaseInterface","name":"view","default":null},{"type":"DiInterface|null","name":"container","default":"null"}]}>
-Phalcon\Mvc\View\Engine constructor
-</ApiItem>
-<ApiItem href="#mvcviewengineabstractengine-getcontent" visibility="public" name="getContent" returnType="string" params={[]}>
-Returns cached output on another view stage
-</ApiItem>
-<ApiItem href="#mvcviewengineabstractengine-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcviewengineabstractengine-getview" visibility="public" name="getView" returnType="ViewBaseInterface" params={[]}>
-Returns the view component related to the adapter
-</ApiItem>
-<ApiItem href="#mvcviewengineabstractengine-partial" visibility="public" name="partial" returnType="void" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Renders a partial inside another view
-</ApiItem>
-<ApiItem href="#mvcviewengineabstractengine-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvcviewengineabstractengine-firemanagerevent" visibility="protected" name="fireManagerEvent" returnType="mixed|bool" params={[{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancellable","default":"true"}]}>
-Helper method to fire an event
-</ApiItem>
+- `public __construct(ViewBaseInterface $view, DiInterface|null $container = null)` — Phalcon\Mvc\View\Engine constructor
+
+- `public getContent(): string` — Returns cached output on another view stage
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public getView(): ViewBaseInterface` — Returns the view component related to the adapter
+
+- `public partial(string $partialPath, mixed $params = null): void` — Renders a partial inside another view
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `protected fireManagerEvent(string $eventName, mixed $data = null, bool $cancellable = true): mixed|bool` — Helper method to fire an event
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="view" type="ViewBaseInterface" default="">
-</ApiItem>
+- `protected ManagerInterface|null $eventsManager = null`
+
+- `protected ViewBaseInterface $view`
 
 ### Methods
 
@@ -23622,8 +22374,8 @@ Helper method to fire an event
 
 ```php
 public function __construct(
-ViewBaseInterface $view,
-DiInterface|null $container = null
+    ViewBaseInterface $view,
+    DiInterface|null $container = null
 );
 ```
 
@@ -23657,8 +22409,8 @@ Returns the view component related to the adapter
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): void;
 ```
 
@@ -23676,13 +22428,14 @@ Sets the events manager
 
 ```php
 protected function fireManagerEvent(
-string $eventName,
-mixed $data = null,
-bool $cancellable = true
+    string $eventName,
+    mixed $data = null,
+    bool $cancellable = true
 ): mixed|bool;
 ```
 
 Helper method to fire an event
+
 
 ## Mvc\View\Engine\EngineInterface
 
@@ -23694,15 +22447,11 @@ Interface for Phalcon\Mvc\View engine adapters
 
 ### Method Summary
 
-<ApiItem href="#mvcviewengineengineinterface-getcontent" visibility="public" name="getContent" returnType="string" params={[]}>
-Returns cached output on another view stage
-</ApiItem>
-<ApiItem href="#mvcviewengineengineinterface-partial" visibility="public" name="partial" returnType="void" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Renders a partial inside another view
-</ApiItem>
-<ApiItem href="#mvcviewengineengineinterface-render" visibility="public" name="render" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"params","default":null},{"type":"bool","name":"mustClean","default":"false"}]}>
-Renders a view using the template engine
-</ApiItem>
+- `public getContent(): string` — Returns cached output on another view stage
+
+- `public partial(string $partialPath, mixed $params = null): void` — Renders a partial inside another view
+
+- `public render(string $path, mixed $params, bool $mustClean = false)` — Renders a view using the template engine
 
 ### Methods
 
@@ -23718,8 +22467,8 @@ Returns cached output on another view stage
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): void;
 ```
 
@@ -23729,15 +22478,16 @@ Renders a partial inside another view
 
 ```php
 public function render(
-string $path,
-mixed $params,
-bool $mustClean = false
+    string $path,
+    mixed $params,
+    bool $mustClean = false
 );
 ```
 
 Renders a view using the template engine
 
 TODO: Change params to array type
+
 
 ## Mvc\View\Engine\Php
 
@@ -23746,15 +22496,13 @@ Class
 Adapter to use PHP itself as templating engine
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
-- **`Phalcon\Mvc\View\Engine\Php`**
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
+      - **`Phalcon\Mvc\View\Engine\Php`**
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginephp-render" visibility="public" name="render" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"params","default":null},{"type":"bool","name":"mustClean","default":"false"}]}>
-Renders a view using the template engine
-</ApiItem>
+- `public render(string $path, mixed $params, bool $mustClean = false)` — Renders a view using the template engine
 
 ### Methods
 
@@ -23762,13 +22510,14 @@ Renders a view using the template engine
 
 ```php
 public function render(
-string $path,
-mixed $params,
-bool $mustClean = false
+    string $path,
+    mixed $params,
+    bool $mustClean = false
 );
 ```
 
 Renders a view using the template engine
+
 
 ## Mvc\View\Engine\Volt
 
@@ -23777,64 +22526,49 @@ Class
 Designer friendly and fast template engine for PHP written in Zephir/C
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
-- **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
+      - **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface)
 
 `Countable` · `Iterator` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevolt-callmacro" visibility="public" name="callMacro" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":"[]"}]}>
-Checks if a macro is defined and calls it
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-convertencoding" visibility="public" name="convertEncoding" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"from","default":null},{"type":"string","name":"to","default":null}]}>
-Performs a string conversion
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-getcompiler" visibility="public" name="getCompiler" returnType="Compiler" params={[]}>
-Returns the Volt's compiler
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Return Volt's options
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-isincluded" visibility="public" name="isIncluded" returnType="bool" params={[{"type":"mixed","name":"needle","default":null},{"type":"mixed","name":"haystack","default":null}]}>
-Checks if the needle is included in the haystack
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-length" visibility="public" name="length" returnType="int" params={[{"type":"mixed","name":"item","default":null}]}>
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-preload" visibility="public" name="preload" returnType="string" params={[{"type":"mixed","name":"parameters","default":null}]}>
-Parses the preload element passed and sets the necessary link headers
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-render" visibility="public" name="render" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"params","default":null},{"type":"bool","name":"mustClean","default":"false"}]}>
-Renders a view using the template engine
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-setoptions" visibility="public" name="setOptions" returnType="" params={[{"type":"array","name":"options","default":null}]}>
-Set Volt's options
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-slice" visibility="public" name="slice" returnType="" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"start","default":"0"},{"type":"mixed","name":"end","default":"null"}]}>
-Extracts a slice from a string/array/traversable object value
-</ApiItem>
-<ApiItem href="#mvcviewenginevolt-sort" visibility="public" name="sort" returnType="array" params={[{"type":"array","name":"value","default":null}]}>
-Sorts an array
-</ApiItem>
+- `public callMacro(string $name, array $arguments = []): mixed` — Checks if a macro is defined and calls it
+
+- `public convertEncoding(string $text, string $from, string $to): string` — Performs a string conversion
+
+- `public getCompiler(): Compiler` — Returns the Volt's compiler
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public getOptions(): array` — Return Volt's options
+
+- `public isIncluded(mixed $needle, mixed $haystack): bool` — Checks if the needle is included in the haystack
+
+- `public length(mixed $item): int` — Length filter. If an array/object is passed a count is performed otherwise a strlen/mb\_strlen
+
+- `public preload(mixed $parameters): string` — Parses the preload element passed and sets the necessary link headers
+
+- `public render(string $path, mixed $params, bool $mustClean = false)` — Renders a view using the template engine
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `public setOptions(array $options)` — Set Volt's options
+
+- `public slice(mixed $value, int $start = 0, mixed $end = null)` — Extracts a slice from a string/array/traversable object value
+
+- `public sort(array $value): array` — Sorts an array
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="compiler" type="Compiler" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="macros" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
+- `protected Compiler $compiler`
+
+- `protected ManagerInterface|null $eventsManager = null`
+
+- `protected array $macros = []`
+
+- `protected array $options = []`
 
 ### Methods
 
@@ -23842,8 +22576,8 @@ Sorts an array
 
 ```php
 public function callMacro(
-string $name,
-array $arguments = []
+    string $name,
+    array $arguments = []
 ): mixed;
 ```
 
@@ -23856,9 +22590,9 @@ Checks if a macro is defined and calls it
 
 ```php
 public function convertEncoding(
-string $text,
-string $from,
-string $to
+    string $text,
+    string $from,
+    string $to
 ): string;
 ```
 
@@ -23892,8 +22626,8 @@ Return Volt's options
 
 ```php
 public function isIncluded(
-mixed $needle,
-mixed $haystack
+    mixed $needle,
+    mixed $haystack
 ): bool;
 ```
 
@@ -23921,9 +22655,9 @@ Parses the preload element passed and sets the necessary link headers
 
 ```php
 public function render(
-string $path,
-mixed $params,
-bool $mustClean = false
+    string $path,
+    mixed $params,
+    bool $mustClean = false
 );
 ```
 
@@ -23949,9 +22683,9 @@ Set Volt's options
 
 ```php
 public function slice(
-mixed $value,
-int $start = 0,
-mixed $end = null
+    mixed $value,
+    int $start = 0,
+    mixed $end = null
 );
 ```
 
@@ -23964,6 +22698,7 @@ public function sort( array $value ): array;
 ```
 
 Sorts an array
+
 
 ## Mvc\View\Engine\Volt\Compiler
 
@@ -23985,188 +22720,139 @@ require $compiler->getCompiledTemplatePath();
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltcompiler-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ViewBaseInterface|null","name":"view","default":"null"}]}>
-Phalcon\Mvc\View\Engine\Volt\Compiler
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-addextension" visibility="public" name="addExtension" returnType="static" params={[{"type":"mixed","name":"extension","default":null}]}>
-Registers a Volt's extension
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-addfilter" visibility="public" name="addFilter" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Register a new filter in the compiler
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-addfunction" visibility="public" name="addFunction" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Register a new function in the compiler
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-attributereader" visibility="public" name="attributeReader" returnType="string" params={[{"type":"array","name":"expr","default":null}]}>
-Resolves attribute reading
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compile" visibility="public" name="compile" returnType="" params={[{"type":"string","name":"templatePath","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a template into a file applying the compiler options
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileautoescape" visibility="public" name="compileAutoEscape" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"extendsMode","default":null}]}>
-Compiles a "autoescape" statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilecall" visibility="public" name="compileCall" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"extendsMode","default":null}]}>
-Compiles calls to macros
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilecase" visibility="public" name="compileCase" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"caseClause","default":"true"}]}>
-Compiles a "case"/"default" clause returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compiledo" visibility="public" name="compileDo" returnType="string" params={[{"type":"array","name":"statement","default":null}]}>
-Compiles a "do" statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileecho" visibility="public" name="compileEcho" returnType="string" params={[{"type":"array","name":"statement","default":null}]}>
-Compiles a `{{` `}}` statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileelseif" visibility="public" name="compileElseIf" returnType="string" params={[{"type":"array","name":"statement","default":null}]}>
-Compiles a "elseif" statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilefile" visibility="public" name="compileFile" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"compiledPath","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a template into a file forcing the destination path
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileforelse" visibility="public" name="compileForElse" returnType="string" params={[]}>
-Generates a 'forelse' PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileforeach" visibility="public" name="compileForeach" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a "foreach" intermediate code representation into plain PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileif" visibility="public" name="compileIf" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a 'if' statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileinclude" visibility="public" name="compileInclude" returnType="string" params={[{"type":"array","name":"statement","default":null}]}>
-Compiles a 'include' statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilemacro" visibility="public" name="compileMacro" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"extendsMode","default":null}]}>
-Compiles macros
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilereturn" visibility="public" name="compileReturn" returnType="string" params={[{"type":"array","name":"statement","default":null}]}>
-Compiles a "return" statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileset" visibility="public" name="compileSet" returnType="string" params={[{"type":"array","name":"statement","default":null}]}>
-Compiles a "set" statement returning PHP code. The method accepts an
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilestring" visibility="public" name="compileString" returnType="string" params={[{"type":"string","name":"viewCode","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a template into a string
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compileswitch" visibility="public" name="compileSwitch" returnType="string" params={[{"type":"array","name":"statement","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a 'switch' statement returning PHP code
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-expression" visibility="public" name="expression" returnType="string" params={[{"type":"array","name":"expr","default":null},{"type":"bool","name":"doubleQuotes","default":"false"}]}>
-Resolves an expression node in an AST volt tree
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-fireextensionevent" visibility="public" name="fireExtensionEvent" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":"[]"}]}>
-Fires an event to registered extensions
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-functioncall" visibility="public" name="functionCall" returnType="string" params={[{"type":"array","name":"expr","default":null},{"type":"bool","name":"doubleQuotes","default":"false"}]}>
-Resolves function intermediate code into PHP function calls
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getcompiledtemplatepath" visibility="public" name="getCompiledTemplatePath" returnType="string" params={[]}>
-Returns the path to the last compiled template
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the internal dependency injector
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getextensions" visibility="public" name="getExtensions" returnType="array" params={[]}>
-Returns the list of extensions registered in Volt
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getfilters" visibility="public" name="getFilters" returnType="array" params={[]}>
-Register the user registered filters
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getfunctions" visibility="public" name="getFunctions" returnType="array" params={[]}>
-Register the user registered functions
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getoption" visibility="public" name="getOption" returnType="string|null" params={[{"type":"string","name":"option","default":null}]}>
-Returns a compiler's option
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Returns the compiler options
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-gettemplatepath" visibility="public" name="getTemplatePath" returnType="string" params={[]}>
-Returns the path that is currently being compiled
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getuniqueprefix" visibility="public" name="getUniquePrefix" returnType="string" params={[]}>
-Return a unique prefix to be used as prefix for compiled variables and
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"viewCode","default":null}]}>
-Parses a Volt template returning its intermediate representation
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-resolvetest" visibility="public" name="resolveTest" returnType="string" params={[{"type":"array","name":"test","default":null},{"type":"string","name":"left","default":null}]}>
-Resolves filter intermediate code into a valid PHP expression
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the dependency injector
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-setoption" visibility="public" name="setOption" returnType="static" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a single compiler option
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-setoptions" visibility="public" name="setOptions" returnType="static" params={[{"type":"array","name":"options","default":null}]}>
-Sets the compiler options
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-setuniqueprefix" visibility="public" name="setUniquePrefix" returnType="static" params={[{"type":"string","name":"prefix","default":null}]}>
-Set a unique prefix to be used as prefix for compiled variables
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-compilesource" visibility="protected" name="compileSource" returnType="array|string" params={[{"type":"string","name":"viewCode","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Compiles a Volt source code returning a PHP plain version
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-getfinalpath" visibility="protected" name="getFinalPath" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-Gets the final path with VIEW
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-resolvefilter" visibility="protected" name="resolveFilter" returnType="string" params={[{"type":"array","name":"filter","default":null},{"type":"string","name":"left","default":null}]}>
-Resolves filter intermediate code into PHP function calls
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-statementlist" visibility="protected" name="statementList" returnType="string" params={[{"type":"array","name":"statements","default":null},{"type":"bool","name":"extendsMode","default":"false"}]}>
-Traverses a statement list compiling each of its nodes
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltcompiler-statementlistorextends" visibility="protected" name="statementListOrExtends" returnType="" params={[{"type":"mixed","name":"statements","default":null}]}>
-Compiles a block of statements
-</ApiItem>
+- `public __construct(ViewBaseInterface|null $view = null)` — Phalcon\Mvc\View\Engine\Volt\Compiler
+
+- `public addExtension(mixed $extension): static` — Registers a Volt's extension
+
+- `public addFilter(string $name, mixed $definition): static` — Register a new filter in the compiler
+
+- `public addFunction(string $name, mixed $definition): static` — Register a new function in the compiler
+
+- `public attributeReader(array $expr): string` — Resolves attribute reading
+
+- `public compile(string $templatePath, bool $extendsMode = false)` — Compiles a template into a file applying the compiler options
+
+- `public compileAutoEscape(array $statement, bool $extendsMode): string` — Compiles a "autoescape" statement returning PHP code
+
+- `public compileCall(array $statement, bool $extendsMode): string` — Compiles calls to macros
+
+- `public compileCase(array $statement, bool $caseClause = true): string` — Compiles a "case"/"default" clause returning PHP code
+
+- `public compileDo(array $statement): string` — Compiles a "do" statement returning PHP code
+
+- `public compileEcho(array $statement): string` — Compiles a `{{` `}}` statement returning PHP code
+
+- `public compileElseIf(array $statement): string` — Compiles a "elseif" statement returning PHP code
+
+- `public compileFile(string $path, string $compiledPath, bool $extendsMode = false)` — Compiles a template into a file forcing the destination path
+
+- `public compileForElse(): string` — Generates a 'forelse' PHP code
+
+- `public compileForeach(array $statement, bool $extendsMode = false): string` — Compiles a "foreach" intermediate code representation into plain PHP code
+
+- `public compileIf(array $statement, bool $extendsMode = false): string` — Compiles a 'if' statement returning PHP code
+
+- `public compileInclude(array $statement): string` — Compiles a 'include' statement returning PHP code
+
+- `public compileMacro(array $statement, bool $extendsMode): string` — Compiles macros
+
+- `public compileReturn(array $statement): string` — Compiles a "return" statement returning PHP code
+
+- `public compileSet(array $statement): string` — Compiles a "set" statement returning PHP code. The method accepts an
+
+- `public compileString(string $viewCode, bool $extendsMode = false): string` — Compiles a template into a string
+
+- `public compileSwitch(array $statement, bool $extendsMode = false): string` — Compiles a 'switch' statement returning PHP code
+
+- `public expression(array $expr, bool $doubleQuotes = false): string` — Resolves an expression node in an AST volt tree
+
+- `public fireExtensionEvent(string $name, array $arguments = [])` — Fires an event to registered extensions
+
+- `public functionCall(array $expr, bool $doubleQuotes = false): string` — Resolves function intermediate code into PHP function calls
+
+- `public getCompiledTemplatePath(): string` — Returns the path to the last compiled template
+
+- `public getDI(): DiInterface` — Returns the internal dependency injector
+
+- `public getExtensions(): array` — Returns the list of extensions registered in Volt
+
+- `public getFilters(): array` — Register the user registered filters
+
+- `public getFunctions(): array` — Register the user registered functions
+
+- `public getOption(string $option): string|null` — Returns a compiler's option
+
+- `public getOptions(): array` — Returns the compiler options
+
+- `public getTemplatePath(): string` — Returns the path that is currently being compiled
+
+- `public getUniquePrefix(): string` — Return a unique prefix to be used as prefix for compiled variables and
+
+- `public parse(string $viewCode): array` — Parses a Volt template returning its intermediate representation
+
+- `public resolveTest(array $test, string $left): string` — Resolves filter intermediate code into a valid PHP expression
+
+- `public setDI(DiInterface $container): void` — Sets the dependency injector
+
+- `public setOption(string $option, mixed $value): static` — Sets a single compiler option
+
+- `public setOptions(array $options): static` — Sets the compiler options
+
+- `public setUniquePrefix(string $prefix): static` — Set a unique prefix to be used as prefix for compiled variables
+
+- `protected compileSource(string $viewCode, bool $extendsMode = false): array|string` — Compiles a Volt source code returning a PHP plain version
+
+- `protected getFinalPath(string $path)` — Gets the final path with VIEW
+
+- `protected resolveFilter(array $filter, string $left): string` — Resolves filter intermediate code into PHP function calls
+
+- `protected statementList(array $statements, bool $extendsMode = false): string` — Traverses a statement list compiling each of its nodes
+
+- `protected statementListOrExtends(mixed $statements)` — Compiles a block of statements
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="autoescape" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="blockLevel" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="blocks" type="array|null" default="">
-TODO: Make array only?
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="compiledTemplatePath" type="string|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="DiInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="currentBlock" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="currentPath" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="exprLevel" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="extended" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="extendedBlocks" type="array|bool" default="">
-TODO: Make it always array
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="extensions" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="filters" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="forElsePointers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="foreachLevel" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="functions" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="level" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="loopPointers" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="macros" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="view" type="ViewBaseInterface|null" default="">
-</ApiItem>
+- `protected bool $autoescape = false`
+
+- `protected int $blockLevel = 0`
+
+- `protected array|null $blocks` — TODO: Make array only?
+
+- `protected string|null $compiledTemplatePath`
+
+- `protected DiInterface|null $container = null`
+
+- `protected string|null $currentBlock = null`
+
+- `protected string|null $currentPath = null`
+
+- `protected int $exprLevel = 0`
+
+- `protected bool $extended = false`
+
+- `protected array|bool $extendedBlocks` — TODO: Make it always array
+
+- `protected array $extensions = []`
+
+- `protected array $filters = []`
+
+- `protected array $forElsePointers = []`
+
+- `protected int $foreachLevel = 0`
+
+- `protected array $functions = []`
+
+- `protected int $level = 0`
+
+- `protected array $loopPointers = []`
+
+- `protected array $macros = []`
+
+- `protected array $options = []`
+
+- `protected string $prefix = ""`
+
+- `protected ViewBaseInterface|null $view`
 
 ### Methods
 
@@ -24190,8 +22876,8 @@ Registers a Volt's extension
 
 ```php
 public function addFilter(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): static;
 ```
 
@@ -24201,8 +22887,8 @@ Register a new filter in the compiler
 
 ```php
 public function addFunction(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): static;
 ```
 
@@ -24220,8 +22906,8 @@ Resolves attribute reading
 
 ```php
 public function compile(
-string $templatePath,
-bool $extendsMode = false
+    string $templatePath,
+    bool $extendsMode = false
 );
 ```
 
@@ -24238,8 +22924,8 @@ require $compiler->getCompiledTemplatePath();
 
 ```php
 public function compileAutoEscape(
-array $statement,
-bool $extendsMode
+    array $statement,
+    bool $extendsMode
 ): string;
 ```
 
@@ -24249,8 +22935,8 @@ Compiles a "autoescape" statement returning PHP code
 
 ```php
 public function compileCall(
-array $statement,
-bool $extendsMode
+    array $statement,
+    bool $extendsMode
 ): string;
 ```
 
@@ -24260,8 +22946,8 @@ Compiles calls to macros
 
 ```php
 public function compileCase(
-array $statement,
-bool $caseClause = true
+    array $statement,
+    bool $caseClause = true
 ): string;
 ```
 
@@ -24295,9 +22981,9 @@ Compiles a "elseif" statement returning PHP code
 
 ```php
 public function compileFile(
-string $path,
-string $compiledPath,
-bool $extendsMode = false
+    string $path,
+    string $compiledPath,
+    bool $extendsMode = false
 );
 ```
 
@@ -24305,8 +22991,8 @@ Compiles a template into a file forcing the destination path
 
 ```php
 $compiler->compileFile(
-"views/layouts/main.volt",
-"views/layouts/main.volt.php"
+    "views/layouts/main.volt",
+    "views/layouts/main.volt.php"
 );
 ```
 
@@ -24322,8 +23008,8 @@ Generates a 'forelse' PHP code
 
 ```php
 public function compileForeach(
-array $statement,
-bool $extendsMode = false
+    array $statement,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -24333,8 +23019,8 @@ Compiles a "foreach" intermediate code representation into plain PHP code
 
 ```php
 public function compileIf(
-array $statement,
-bool $extendsMode = false
+    array $statement,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -24352,8 +23038,8 @@ Compiles a 'include' statement returning PHP code
 
 ```php
 public function compileMacro(
-array $statement,
-bool $extendsMode
+    array $statement,
+    bool $extendsMode
 ): string;
 ```
 
@@ -24387,38 +23073,38 @@ $compiler = new Compiler();
 
 // {% set a = ['first': 1] %}
 $source = [
-"type" => 306,
-"assignments" => [
-    [
-        "variable" => [
-            "type" => 265,
-            "value" => "a",
-            "file" => "eval code",
-            "line" => 1
-        ],
-        "op" => 61,
-        "expr" => [
-            "type" => 360,
-            "left" => [
-                [
-                    "expr" => [
-                        "type" => 258,
-                        "value" => "1",
+    "type" => 306,
+    "assignments" => [
+        [
+            "variable" => [
+                "type" => 265,
+                "value" => "a",
+                "file" => "eval code",
+                "line" => 1
+            ],
+            "op" => 61,
+            "expr" => [
+                "type" => 360,
+                "left" => [
+                    [
+                        "expr" => [
+                            "type" => 258,
+                            "value" => "1",
+                            "file" => "eval code",
+                            "line" => 1
+                        ],
+                        "name" => "first",
                         "file" => "eval code",
                         "line" => 1
-                    ],
-                    "name" => "first",
-                    "file" => "eval code",
-                    "line" => 1
-                ]
+                    ]
+                ],
+                "file" => "eval code",
+                "line" => 1
             ],
             "file" => "eval code",
             "line" => 1
-        ],
-        "file" => "eval code",
-        "line" => 1
+        ]
     ]
-]
 ];
 
 echo $compiler->compileSet($source);
@@ -24429,8 +23115,8 @@ echo $compiler->compileSet($source);
 
 ```php
 public function compileString(
-string $viewCode,
-bool $extendsMode = false
+    string $viewCode,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -24444,8 +23130,8 @@ echo $compiler->compileString('{{ "hello world" }}');
 
 ```php
 public function compileSwitch(
-array $statement,
-bool $extendsMode = false
+    array $statement,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -24455,8 +23141,8 @@ Compiles a 'switch' statement returning PHP code
 
 ```php
 final public function expression(
-array $expr,
-bool $doubleQuotes = false
+    array $expr,
+    bool $doubleQuotes = false
 ): string;
 ```
 
@@ -24466,8 +23152,8 @@ Resolves an expression node in an AST volt tree
 
 ```php
 final public function fireExtensionEvent(
-string $name,
-array $arguments = []
+    string $name,
+    array $arguments = []
 );
 ```
 
@@ -24477,8 +23163,8 @@ Fires an event to registered extensions
 
 ```php
 public function functionCall(
-array $expr,
-bool $doubleQuotes = false
+    array $expr,
+    bool $doubleQuotes = false
 ): string;
 ```
 
@@ -24567,7 +23253,7 @@ Parses a Volt template returning its intermediate representation
 
 ```php
 print_r(
-$compiler->parse("{{ 3 + 2 }}")
+    $compiler->parse("{{ 3 + 2 }}")
 );
 ```
 
@@ -24575,8 +23261,8 @@ $compiler->parse("{{ 3 + 2 }}")
 
 ```php
 public function resolveTest(
-array $test,
-string $left
+    array $test,
+    string $left
 ): string;
 ```
 
@@ -24594,8 +23280,8 @@ Sets the dependency injector
 
 ```php
 public function setOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): static;
 ```
 
@@ -24621,8 +23307,8 @@ Set a unique prefix to be used as prefix for compiled variables
 
 ```php
 protected function compileSource(
-string $viewCode,
-bool $extendsMode = false
+    string $viewCode,
+    bool $extendsMode = false
 ): array|string;
 ```
 
@@ -24640,8 +23326,8 @@ Gets the final path with VIEW
 
 ```php
 final protected function resolveFilter(
-array $filter,
-string $left
+    array $filter,
+    string $left
 ): string;
 ```
 
@@ -24651,8 +23337,8 @@ Resolves filter intermediate code into PHP function calls
 
 ```php
 final protected function statementList(
-array $statements,
-bool $extendsMode = false
+    array $statements,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -24666,6 +23352,7 @@ final protected function statementListOrExtends( mixed $statements );
 
 Compiles a block of statements
 
+
 ## Mvc\View\Engine\Volt\Exception
 
 Class
@@ -24673,47 +23360,44 @@ Class
 Class for exceptions thrown by Phalcon\Mvc\View
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exception`**
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`](#mvcviewenginevoltexceptionscannotopencompiledfile)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`](#mvcviewenginevoltexceptionscorruptedstatement)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`](#mvcviewenginevoltexceptionscorruptedstatementwithdata)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`](#mvcviewenginevoltexceptionsinvalidcompilationprefix)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`](#mvcviewenginevoltexceptionsinvalidextension)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`](#mvcviewenginevoltexceptionsinvalidhaystack)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`](#mvcviewenginevoltexceptionsinvalidintermediaterepresentation)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`](#mvcviewenginevoltexceptionsinvalidoptiontype)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`](#mvcviewenginevoltexceptionsinvalidpathclosurereturn)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`](#mvcviewenginevoltexceptionsinvalidpathtype)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`](#mvcviewenginevoltexceptionsinvalidstatement)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`](#mvcviewenginevoltexceptionsinvaliduserfilterdefinition)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`](#mvcviewenginevoltexceptionsinvaliduserfunctiondefinition)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`](#mvcviewenginevoltexceptionsmacroalreadydefined)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`](#mvcviewenginevoltexceptionsmacronotfound)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`](#mvcviewenginevoltexceptionsmbstringrequired)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`](#mvcviewenginevoltexceptionstemplatefilenotfound)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`](#mvcviewenginevoltexceptionstemplatefilenotopenable)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`](#mvcviewenginevoltexceptionstemplatepathcollision)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`](#mvcviewenginevoltexceptionsunknownvoltexpression)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`](#mvcviewenginevoltexceptionsunknownvoltfilter)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`](#mvcviewenginevoltexceptionsunknownvoltfiltertype)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`](#mvcviewenginevoltexceptionsunknownvoltstatement)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`](#mvcviewenginevoltexceptionsvoltdirectorynotwritable)
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Engine\Volt\Exception`**
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`](#mvcviewenginevoltexceptionscannotopencompiledfile)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`](#mvcviewenginevoltexceptionscorruptedstatement)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`](#mvcviewenginevoltexceptionscorruptedstatementwithdata)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`](#mvcviewenginevoltexceptionsinvalidcompilationprefix)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`](#mvcviewenginevoltexceptionsinvalidextension)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`](#mvcviewenginevoltexceptionsinvalidhaystack)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`](#mvcviewenginevoltexceptionsinvalidintermediaterepresentation)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`](#mvcviewenginevoltexceptionsinvalidoptiontype)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`](#mvcviewenginevoltexceptionsinvalidpathclosurereturn)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`](#mvcviewenginevoltexceptionsinvalidpathtype)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`](#mvcviewenginevoltexceptionsinvalidstatement)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`](#mvcviewenginevoltexceptionsinvaliduserfilterdefinition)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`](#mvcviewenginevoltexceptionsinvaliduserfunctiondefinition)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`](#mvcviewenginevoltexceptionsmacroalreadydefined)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`](#mvcviewenginevoltexceptionsmacronotfound)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`](#mvcviewenginevoltexceptionsmbstringrequired)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`](#mvcviewenginevoltexceptionstemplatefilenotfound)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`](#mvcviewenginevoltexceptionstemplatefilenotopenable)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`](#mvcviewenginevoltexceptionstemplatepathcollision)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`](#mvcviewenginevoltexceptionsunknownvoltexpression)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`](#mvcviewenginevoltexceptionsunknownvoltfilter)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`](#mvcviewenginevoltexceptionsunknownvoltfiltertype)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`](#mvcviewenginevoltexceptionsunknownvoltstatement)
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`](#mvcviewenginevoltexceptionsvoltdirectorynotwritable)
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexception-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":"\"\""},{"type":"array","name":"statement","default":"[]"},{"type":"int","name":"code","default":"0"},{"type":"\\Exception|null","name":"previous","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#mvcviewenginevoltexception-getstatement" visibility="public" name="getStatement" returnType="array" params={[]}>
-Gets currently parsed statement (if any).
-</ApiItem>
+- `public __construct(string $message = "", array $statement = [], int $code = 0, \Exception|null $previous = null)`
+
+- `public getStatement(): array` — Gets currently parsed statement (if any).
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="statement" type="array" default="[]">
-</ApiItem>
+- `protected array $statement = []`
 
 ### Methods
 
@@ -24721,10 +23405,10 @@ Gets currently parsed statement (if any).
 
 ```php
 public function __construct(
-string $message = "",
-array $statement = [],
-int $code = 0,
-\Exception|null $previous = null
+    string $message = "",
+    array $statement = [],
+    int $code = 0,
+    \Exception|null $previous = null
 );
 ```
 
@@ -24736,21 +23420,21 @@ public function getStatement(): array;
 
 Gets currently parsed statement (if any).
 
+
 ## Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionscannotopencompiledfile-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -24760,21 +23444,21 @@ Class
 public function __construct( string $path );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\CorruptedStatement
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionscorruptedstatement-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24784,21 +23468,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`**
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionscorruptedstatementwithdata-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"statement","default":null}]}>
-</ApiItem>
+- `public __construct(array $statement)`
 
 ### Methods
 
@@ -24808,21 +23492,21 @@ Class
 public function __construct( array $statement );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidcompilationprefix-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24832,21 +23516,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidExtension
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidextension-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24856,21 +23540,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidHaystack
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidhaystack-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24880,21 +23564,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidintermediaterepresentation-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24904,21 +23588,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidOptionType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidoptiontype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"option","default":null},{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $option, string $type)`
 
 ### Methods
 
@@ -24926,26 +23610,26 @@ Class
 
 ```php
 public function __construct(
-string $option,
-string $type
+    string $option,
+    string $type
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidpathclosurereturn-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24955,21 +23639,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidPathType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidpathtype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -24979,21 +23663,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidStatement
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`**
 
 `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvalidstatement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null},{"type":"array","name":"statement","default":null}]}>
-</ApiItem>
+- `public __construct(string $file, int $line, array $statement)`
 
 ### Methods
 
@@ -25001,27 +23685,27 @@ Class
 
 ```php
 public function __construct(
-string $file,
-int $line,
-array $statement
+    string $file,
+    int $line,
+    array $statement
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvaliduserfilterdefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $file, int $line)`
 
 ### Methods
 
@@ -25029,27 +23713,27 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $file,
-int $line
+    string $name,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsinvaliduserfunctiondefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $file, int $line)`
 
 ### Methods
 
@@ -25057,27 +23741,27 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $file,
-int $line
+    string $name,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsmacroalreadydefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -25087,21 +23771,21 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\MacroNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsmacronotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -25111,21 +23795,21 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\MbstringRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsmbstringrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25135,21 +23819,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionstemplatefilenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -25159,21 +23843,21 @@ Class
 public function __construct( string $path );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionstemplatefilenotopenable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -25183,21 +23867,21 @@ Class
 public function __construct( string $path );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionstemplatepathcollision-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25207,21 +23891,21 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsunknownvoltexpression-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"type","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-</ApiItem>
+- `public __construct(int $type, string $file, int $line)`
 
 ### Methods
 
@@ -25229,27 +23913,27 @@ Class
 
 ```php
 public function __construct(
-int $type,
-string $file,
-int $line
+    int $type,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsunknownvoltfilter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-</ApiItem>
+- `public __construct(string $name, string $file, int $line)`
 
 ### Methods
 
@@ -25257,27 +23941,27 @@ Class
 
 ```php
 public function __construct(
-string $name,
-string $file,
-int $line
+    string $name,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsunknownvoltfiltertype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-</ApiItem>
+- `public __construct(string $file, int $line)`
 
 ### Methods
 
@@ -25285,26 +23969,26 @@ Class
 
 ```php
 public function __construct(
-string $file,
-int $line
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsunknownvoltstatement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"type","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-</ApiItem>
+- `public __construct(int $type, string $file, int $line)`
 
 ### Methods
 
@@ -25312,27 +23996,27 @@ Class
 
 ```php
 public function __construct(
-int $type,
-string $file,
-int $line
+    int $type,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`**
 
 `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewenginevoltexceptionsvoltdirectorynotwritable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25342,6 +24026,7 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Exception
 
 Class
@@ -25349,30 +24034,30 @@ Class
 Class for exceptions thrown by Phalcon\Mvc\View
 
 - `\Exception`
-- **`Phalcon\Mvc\View\Exception`**
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- [`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`](#mvcviewexceptionsinvalidengineregistration)
-- [`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`](#mvcviewexceptionsinvalidviewsdirtype)
-- [`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`](#mvcviewexceptionssimpleviewnotfound)
-- [`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`](#mvcviewexceptionssimpleviewservicesunavailable)
-- [`Phalcon\Mvc\View\Exceptions\ViewNotFound`](#mvcviewexceptionsviewnotfound)
-- [`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`](#mvcviewexceptionsviewservicesunavailable)
-- [`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`](#mvcviewexceptionsviewsdiritemmustbestring)
+  - **`Phalcon\Mvc\View\Exception`**
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+    - [`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`](#mvcviewexceptionsinvalidengineregistration)
+    - [`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`](#mvcviewexceptionsinvalidviewsdirtype)
+    - [`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`](#mvcviewexceptionssimpleviewnotfound)
+    - [`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`](#mvcviewexceptionssimpleviewservicesunavailable)
+    - [`Phalcon\Mvc\View\Exceptions\ViewNotFound`](#mvcviewexceptionsviewnotfound)
+    - [`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`](#mvcviewexceptionsviewservicesunavailable)
+    - [`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`](#mvcviewexceptionsviewsdiritemmustbestring)
+
 
 ## Mvc\View\Exceptions\InvalidEngineRegistration
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionsinvalidengineregistration-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"extension","default":null}]}>
-</ApiItem>
+- `public __construct(string $extension)`
 
 ### Methods
 
@@ -25382,20 +24067,20 @@ Class
 public function __construct( string $extension );
 ```
 
+
 ## Mvc\View\Exceptions\InvalidViewsDirType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionsinvalidviewsdirtype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25405,20 +24090,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Exceptions\SimpleViewNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionssimpleviewnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"viewsDirPath","default":null}]}>
-</ApiItem>
+- `public __construct(string $viewsDirPath)`
 
 ### Methods
 
@@ -25428,20 +24113,20 @@ Class
 public function __construct( string $viewsDirPath );
 ```
 
+
 ## Mvc\View\Exceptions\SimpleViewServicesUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionssimpleviewservicesunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25451,20 +24136,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Exceptions\ViewNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\ViewNotFound`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\ViewNotFound`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionsviewnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"viewPath","default":null}]}>
-</ApiItem>
+- `public __construct(string $viewPath)`
 
 ### Methods
 
@@ -25474,20 +24159,20 @@ Class
 public function __construct( string $viewPath );
 ```
 
+
 ## Mvc\View\Exceptions\ViewServicesUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionsviewservicesunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25497,20 +24182,20 @@ Class
 public function __construct();
 ```
 
+
 ## Mvc\View\Exceptions\ViewsDirItemMustBeString
 
 Class
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`**
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - **`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`**
 
 `Phalcon\Mvc\View\Exception`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewexceptionsviewsdiritemmustbestring-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -25519,6 +24204,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\View\Simple
 
@@ -25533,87 +24219,70 @@ $view = new View();
 
 // Render a view
 echo $view->render(
-"templates/my-view",
-[
-    "some" => $param,
-]
+    "templates/my-view",
+    [
+        "some" => $param,
+    ]
 );
 
 // Or with filename with extension
 echo $view->render(
-"templates/my-view.volt",
-[
-    "parameter" => $here,
-]
+    "templates/my-view.volt",
+    [
+        "parameter" => $here,
+    ]
 );
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](/5.22/api/phalcon_contracts/#contractsviewrenderer)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](/5.22/api/phalcon_events/#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](/5.22/api/phalcon_contracts/#contractsviewrenderer)
 
 `Closure` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 
 ### Method Summary
 
-<ApiItem href="#mvcviewsimple-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Mvc\View\Simple constructor
-</ApiItem>
-<ApiItem href="#mvcviewsimple-__get" visibility="public" name="__get" returnType="mixed|null" params={[{"type":"string","name":"key","default":null}]}>
-Magic method to retrieve a variable passed to the view
-</ApiItem>
-<ApiItem href="#mvcviewsimple-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Magic method to pass variables to the views
-</ApiItem>
-<ApiItem href="#mvcviewsimple-getactiverenderpath" visibility="public" name="getActiveRenderPath" returnType="string" params={[]}>
-Returns the path of the view that is currently rendered
-</ApiItem>
-<ApiItem href="#mvcviewsimple-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal event manager
-</ApiItem>
-<ApiItem href="#mvcviewsimple-getviewsdir" visibility="public" name="getViewsDir" returnType="string" params={[]}>
-Gets views directory
-</ApiItem>
-<ApiItem href="#mvcviewsimple-partial" visibility="public" name="partial" returnType="void" params={[{"type":"string","name":"partialPath","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Renders a partial view
-</ApiItem>
-<ApiItem href="#mvcviewsimple-registerengines" visibility="public" name="registerEngines" returnType="void" params={[{"type":"array","name":"engines","default":null}]}>
-Register templating engines
-</ApiItem>
-<ApiItem href="#mvcviewsimple-render" visibility="public" name="render" returnType="string" params={[{"type":"string","name":"path","default":null},{"type":"array","name":"params","default":"[]"}]}>
-Renders a view
-</ApiItem>
-<ApiItem href="#mvcviewsimple-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
-<ApiItem href="#mvcviewsimple-setparamtoview" visibility="public" name="setParamToView" returnType="static" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Adds parameters to views (alias of setVar)
-</ApiItem>
-<ApiItem href="#mvcviewsimple-setvars" visibility="public" name="setVars" returnType="static" params={[{"type":"array","name":"params","default":null},{"type":"bool","name":"merge","default":"true"}]}>
-Set all the render params
-</ApiItem>
-<ApiItem href="#mvcviewsimple-setviewsdir" visibility="public" name="setViewsDir" returnType="void" params={[{"type":"string","name":"viewsDir","default":null}]}>
-Sets views directory
-</ApiItem>
-<ApiItem href="#mvcviewsimple-internalrender" visibility="protected" name="internalRender" returnType="void" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"params","default":null}]}>
-Tries to render the view with every engine registered in the component
-</ApiItem>
-<ApiItem href="#mvcviewsimple-loadtemplateengines" visibility="protected" name="loadTemplateEngines" returnType="array" params={[]}>
-Loads registered template engines, if none are registered it will use
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Mvc\View\Simple constructor
+
+- `public __get(string $key): mixed|null` — Magic method to retrieve a variable passed to the view
+
+- `public __set(string $key, mixed $value): void` — Magic method to pass variables to the views
+
+- `public getActiveRenderPath(): string` — Returns the path of the view that is currently rendered
+
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal event manager
+
+- `public getViewsDir(): string` — Gets views directory
+
+- `public partial(string $partialPath, mixed $params = null): void` — Renders a partial view
+
+- `public registerEngines(array $engines): void` — Register templating engines
+
+- `public render(string $path, array $params = []): string` — Renders a view
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
+
+- `public setParamToView(string $key, mixed $value): static` — Adds parameters to views (alias of setVar)
+
+- `public setVars(array $params, bool $merge = true): static` — Set all the render params
+
+- `public setViewsDir(string $viewsDir): void` — Sets views directory
+
+- `protected internalRender(string $path, mixed $params): void` — Tries to render the view with every engine registered in the component
+
+- `protected loadTemplateEngines(): array` — Loads registered template engines, if none are registered it will use
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="activeRenderPath" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="engines" type="EngineInterface[]|false" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="eventsManager" type="ManagerInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="viewsDir" type="string" default="">
-</ApiItem>
+- `protected string $activeRenderPath`
+
+- `protected EngineInterface[]|false $engines = false`
+
+- `protected ManagerInterface|null $eventsManager = null`
+
+- `protected array $options = []`
+
+- `protected string $viewsDir`
 
 ### Methods
 
@@ -25641,8 +24310,8 @@ echo $this->view->products;
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -25680,8 +24349,8 @@ Gets views directory
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): void;
 ```
 
@@ -25695,10 +24364,10 @@ $this->partial("shared/footer");
 ```php
 // Show a partial inside another view with parameters
 $this->partial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -25712,11 +24381,11 @@ Register templating engines
 
 ```php
 $this->view->registerEngines(
-[
-    ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
-    ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
-    ".mhtml" => \MyCustomEngine::class,
-]
+    [
+        ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
+        ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
+        ".mhtml" => \MyCustomEngine::class,
+    ]
 );
 ```
 
@@ -25724,8 +24393,8 @@ $this->view->registerEngines(
 
 ```php
 public function render(
-string $path,
-array $params = []
+    string $path,
+    array $params = []
 ): string;
 ```
 
@@ -25743,8 +24412,8 @@ Sets the events manager
 
 ```php
 public function setParamToView(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 
@@ -25758,8 +24427,8 @@ $this->view->setParamToView("products", $products);
 
 ```php
 public function setVars(
-array $params,
-bool $merge = true
+    array $params,
+    bool $merge = true
 ): static;
 ```
 
@@ -25767,9 +24436,9 @@ Set all the render params
 
 ```php
 $this->view->setVars(
-[
-    "products" => $products,
-]
+    [
+        "products" => $products,
+    ]
 );
 ```
 
@@ -25785,8 +24454,8 @@ Sets views directory
 
 ```php
 final protected function internalRender(
-string $path,
-mixed $params
+    string $path,
+    mixed $params
 ): void;
 ```
 
@@ -25800,6 +24469,7 @@ protected function loadTemplateEngines(): array;
 
 Loads registered template engines, if none are registered it will use
 Phalcon\Mvc\View\Engine\Php
+
 
 ## Mvc\View\Traits\ViewParamsTrait
 
@@ -25815,34 +24485,25 @@ Shared view parameter and content accessors
 
 ### Method Summary
 
-<ApiItem href="#mvcviewtraitsviewparamstrait-getcontent" visibility="public" name="getContent" returnType="string" params={[]}>
-Returns output from another view stage
-</ApiItem>
-<ApiItem href="#mvcviewtraitsviewparamstrait-getparamstoview" visibility="public" name="getParamsToView" returnType="array" params={[]}>
-Returns parameters to views
-</ApiItem>
-<ApiItem href="#mvcviewtraitsviewparamstrait-getregisteredengines" visibility="public" name="getRegisteredEngines" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#mvcviewtraitsviewparamstrait-getvar" visibility="public" name="getVar" returnType="mixed|null" params={[{"type":"string","name":"key","default":null}]}>
-Returns a parameter previously set in the view
-</ApiItem>
-<ApiItem href="#mvcviewtraitsviewparamstrait-setcontent" visibility="public" name="setContent" returnType="static" params={[{"type":"string","name":"content","default":null}]}>
-Externally sets the view content
-</ApiItem>
-<ApiItem href="#mvcviewtraitsviewparamstrait-setvar" visibility="public" name="setVar" returnType="static" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a single view parameter
-</ApiItem>
+- `public getContent(): string` — Returns output from another view stage
+
+- `public getParamsToView(): array` — Returns parameters to views
+
+- `public getRegisteredEngines(): array`
+
+- `public getVar(string $key): mixed|null` — Returns a parameter previously set in the view
+
+- `public setContent(string $content): static` — Externally sets the view content
+
+- `public setVar(string $key, mixed $value): static` — Set a single view parameter
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="content" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="registeredEngines" type="array" default="null">
-@todo Use a default [] once Zephir supports array trait defaults
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="viewParams" type="array" default="null">
-@todo Use a default [] once Zephir supports array trait defaults
-</ApiItem>
+- `protected string $content = ""`
+
+- `protected array $registeredEngines = null` — @todo Use a default \[] once Zephir supports array trait defaults
+
+- `protected array $viewParams = null` — @todo Use a default \[] once Zephir supports array trait defaults
 
 ### Methods
 
@@ -25892,8 +24553,8 @@ $this->view->setContent("<h1>hello</h1>");
 
 ```php
 public function setVar(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 

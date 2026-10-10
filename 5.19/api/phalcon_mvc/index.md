@@ -29,33 +29,33 @@ use Phalcon\Mvc\Application;
 
 class MyApp extends Application
 {
-/**
- * Register the services here to make them general or register
- * in the ModuleDefinition to make them module-specific
- *\/
-protected function registerServices()
-{
+    /**
+     * Register the services here to make them general or register
+     * in the ModuleDefinition to make them module-specific
+     *\/
+    protected function registerServices()
+    {
 
-}
+    }
 
-/**
- * This method registers all the modules in the application
- *\/
-public function main()
-{
-    $this->registerModules(
-        [
-            "frontend" => [
-                "className" => "Multiple\\Frontend\\Module",
-                "path"      => "../apps/frontend/Module.php",
-            ],
-            "backend" => [
-                "className" => "Multiple\\Backend\\Module",
-                "path"      => "../apps/backend/Module.php",
-            ],
-        ]
-    );
-}
+    /**
+     * This method registers all the modules in the application
+     *\/
+    public function main()
+    {
+        $this->registerModules(
+            [
+                "frontend" => [
+                    "className" => "Multiple\\Frontend\\Module",
+                    "path"      => "../apps/frontend/Module.php",
+                ],
+                "backend" => [
+                    "className" => "Multiple\\Backend\\Module",
+                    "path"      => "../apps/backend/Module.php",
+                ],
+            ]
+        );
+    }
 }
 
 $application = new MyApp();
@@ -66,13 +66,14 @@ $application->main();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- [`Phalcon\Application\AbstractApplication`](/5.19/api/phalcon_application/#applicationabstractapplication)
-- **`Phalcon\Mvc\Application`**
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - [`Phalcon\Application\AbstractApplication`](/5.19/api/phalcon_application/#applicationabstractapplication)
+            - **`Phalcon\Mvc\Application`**
 
 </div>
 
 __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Application\Exception` · `Phalcon\Mvc\Application\Exceptions\ContainerRequired` · `Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition` · `Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -160,6 +161,7 @@ public function useImplicitView( bool $implicitView ): static;
 By default. The view is implicitly buffering all the output
 You can full disable the view component using this method
 
+
 ## Mvc\Application\Exception
 
 <span class="badge badge--class">Class</span>
@@ -172,13 +174,14 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- **`Phalcon\Mvc\Application\Exception`**
-- [`Phalcon\Mvc\Application\Exceptions\ContainerRequired`](#mvcapplicationexceptionscontainerrequired)
-- [`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`](#mvcapplicationexceptionsinvalidmoduledefinition)
-- [`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`](#mvcapplicationexceptionsmoduledefinitionpathnotfound)
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - **`Phalcon\Mvc\Application\Exception`**
+            - [`Phalcon\Mvc\Application\Exceptions\ContainerRequired`](#mvcapplicationexceptionscontainerrequired)
+            - [`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`](#mvcapplicationexceptionsinvalidmoduledefinition)
+            - [`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`](#mvcapplicationexceptionsmoduledefinitionpathnotfound)
 
 </div>
+
 
 ## Mvc\Application\Exceptions\ContainerRequired
 
@@ -188,13 +191,14 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
-- **`Phalcon\Mvc\Application\Exceptions\ContainerRequired`**
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
+            - **`Phalcon\Mvc\Application\Exceptions\ContainerRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Application\Exception`
+
 
 ### Method Summary
 
@@ -215,6 +219,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Application\Exceptions\InvalidModuleDefinition
 
 <span class="badge badge--class">Class</span>
@@ -223,13 +228,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
-- **`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`**
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
+            - **`Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Application\Exception`
+
 
 ### Method Summary
 
@@ -248,10 +254,11 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 
 ```php
 public function __construct(
-string|null $name = null,
-string|null $reason = null
+    string|null $name = null,
+    string|null $reason = null
 );
 ```
+
 
 ## Mvc\Application\Exceptions\ModuleDefinitionPathNotFound
 
@@ -261,13 +268,14 @@ string|null $reason = null
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
-- **`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`**
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - [`Phalcon\Mvc\Application\Exception`](#mvcapplicationexception)
+            - **`Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Application\Exception`
+
 
 ### Method Summary
 
@@ -287,6 +295,7 @@ __Uses__ `Phalcon\Mvc\Application\Exception`
 ```php
 public function __construct( string $path );
 ```
+
 
 ## Mvc\Controller
 
@@ -308,39 +317,40 @@ presentation.
 
 class PeopleController extends \Phalcon\Mvc\Controller
 {
-// This action will be executed by default
-public function indexAction()
-{
+    // This action will be executed by default
+    public function indexAction()
+    {
 
-}
+    }
 
-public function findAction()
-{
+    public function findAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Forwards flow to the index action
-    return $this->dispatcher->forward(
-        [
-            "controller" => "people",
-            "action"     => "index",
-        ]
-    );
-}
+    public function saveAction()
+    {
+        // Forwards flow to the index action
+        return $this->dispatcher->forward(
+            [
+                "controller" => "people",
+                "action"     => "index",
+            ]
+        );
+    }
 }
 ```
 
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Mvc\Controller`** - implements [`Phalcon\Mvc\ControllerInterface`](#mvccontrollerinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
 
 </div>
 
 __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface`
+
 
 ### Method Summary
 
@@ -404,13 +414,14 @@ Sets the events manager
 
 ```php
 protected function fireManagerEvent(
-string $eventName,
-mixed $data = null,
-bool $cancellable = true
+    string $eventName,
+    mixed $data = null,
+    bool $cancellable = true
 ): mixed|bool;
 ```
 
 Helper method to fire an event
+
 
 ## Mvc\ControllerInterface
 
@@ -426,6 +437,7 @@ Interface for controller handlers
 - **`Phalcon\Mvc\ControllerInterface`**
 
 </div>
+
 
 ## Mvc\Controller\BindModelInterface
 
@@ -465,6 +477,7 @@ public static function getModelName(): string;
 
 Return the model name associated with this controller
 
+
 ## Mvc\Dispatcher
 
 <span class="badge badge--class">Class</span>
@@ -492,13 +505,14 @@ $controller = $dispatcher->dispatch();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Dispatcher\AbstractDispatcher`](/5.19/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
-- **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - [`Phalcon\Dispatcher\AbstractDispatcher`](/5.19/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
+            - **`Phalcon\Mvc\Dispatcher`** - implements [`Phalcon\Mvc\DispatcherInterface`](#mvcdispatcherinterface)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Dispatcher\DispatcherTypes` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Dispatcher\Exception` · `Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`
+
 
 ### Method Summary
 
@@ -609,20 +623,20 @@ use App\Frontend\Bootstrap as Frontend;
 
 // Registering modules
 $modules = [
-"frontend" => [
-    "className" => Frontend::class,
-    "path"      => __DIR__ . "/app/Modules/Frontend/Bootstrap.php",
-    "metadata"  => [
-        "controllersNamespace" => "App\Frontend\Controllers",
+    "frontend" => [
+        "className" => Frontend::class,
+        "path"      => __DIR__ . "/app/Modules/Frontend/Bootstrap.php",
+        "metadata"  => [
+            "controllersNamespace" => "App\Frontend\Controllers",
+        ],
     ],
-],
-"backend" => [
-    "className" => Backend::class,
-    "path"      => __DIR__ . "/app/Modules/Backend/Bootstrap.php",
-    "metadata"  => [
-        "controllersNamespace" => "App\Backend\Controllers",
+    "backend" => [
+        "className" => Backend::class,
+        "path"      => __DIR__ . "/app/Modules/Backend/Bootstrap.php",
+        "metadata"  => [
+            "controllersNamespace" => "App\Backend\Controllers",
+        ],
     ],
-],
 ];
 
 $application->registerModules($modules);
@@ -631,27 +645,27 @@ $application->registerModules($modules);
 $eventsManager  = $di->getShared("eventsManager");
 
 $eventsManager->attach(
-"dispatch:beforeForward",
-function(Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
-    $metadata = $modules[$forward["module"]]["metadata"];
+    "dispatch:beforeForward",
+    function(Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
+        $metadata = $modules[$forward["module"]]["metadata"];
 
-    $dispatcher->setModuleName(
-        $forward["module"]
-    );
+        $dispatcher->setModuleName(
+            $forward["module"]
+        );
 
-    $dispatcher->setNamespaceName(
-        $metadata["controllersNamespace"]
-    );
-}
+        $dispatcher->setNamespaceName(
+            $metadata["controllersNamespace"]
+        );
+    }
 );
 
 // Forward
 $this->dispatcher->forward(
-[
-    "module"     => "backend",
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "module"     => "backend",
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 ```
 
@@ -737,12 +751,13 @@ Handles a user exception
 
 ```php
 protected function throwDispatchException(
-string $message,
-int $exceptionCode = 0
+    string $message,
+    int $exceptionCode = 0
 );
 ```
 
 Throws an internal exception
+
 
 ## Mvc\DispatcherInterface
 
@@ -756,12 +771,14 @@ Interface for Phalcon\Mvc\Dispatcher
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](/5.19/api/phalcon_contracts/#contractsdispatcherdispatcher)
-- [`Phalcon\Contracts\Mvc\Dispatcher`](/5.19/api/phalcon_contracts/#contractsmvcdispatcher)
-- **`Phalcon\Mvc\DispatcherInterface`**
+    - [`Phalcon\Contracts\Mvc\Dispatcher`](/5.19/api/phalcon_contracts/#contractsmvcdispatcher)
+        - **`Phalcon\Mvc\DispatcherInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Mvc\Dispatcher`
+
+
 
 ## Mvc\Dispatcher\Exception
 
@@ -775,11 +792,12 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](/5.19/api/phalcon_dispatcher/#dispatcherexception)
-- **`Phalcon\Mvc\Dispatcher\Exception`**
-- [`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`](#mvcdispatcherexceptionsresponseserviceunavailable)
+    - [`Phalcon\Dispatcher\Exception`](/5.19/api/phalcon_dispatcher/#dispatcherexception)
+        - **`Phalcon\Mvc\Dispatcher\Exception`**
+            - [`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`](#mvcdispatcherexceptionsresponseserviceunavailable)
 
 </div>
+
 
 ## Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable
 
@@ -789,13 +807,14 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](/5.19/api/phalcon_dispatcher/#dispatcherexception)
-- [`Phalcon\Mvc\Dispatcher\Exception`](#mvcdispatcherexception)
-- **`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`**
+    - [`Phalcon\Dispatcher\Exception`](/5.19/api/phalcon_dispatcher/#dispatcherexception)
+        - [`Phalcon\Mvc\Dispatcher\Exception`](#mvcdispatcherexception)
+            - **`Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Dispatcher\Exception`
+
 
 ### Method Summary
 
@@ -815,6 +834,7 @@ __Uses__ `Phalcon\Mvc\Dispatcher\Exception`
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\EntityInterface
 
@@ -863,12 +883,13 @@ Reads an attribute value by its name
 
 ```php
 public function writeAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 );
 ```
 
 Writes an attribute value by its name
+
 
 ## Mvc\Micro
 
@@ -886,10 +907,10 @@ prototypes in a practical way.
 $app = new \Phalcon\Mvc\Micro();
 
 $app->get(
-"/say/welcome/{name}",
-function ($name) {
-    echo "<h1>Welcome $name!</h1>";
-}
+    "/say/welcome/{name}",
+    function ($name) {
+        echo "<h1>Welcome $name!</h1>";
+    }
 );
 
 $app->handle("/say/welcome/Phalcon");
@@ -898,12 +919,13 @@ $app->handle("/say/welcome/Phalcon");
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\Micro`** - implements `\ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Mvc\Micro`** - implements `\ArrayAccess`, [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
 
 </div>
 
 __Uses__ `ArrayAccess` · `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Injectable` · `Phalcon\Di\ServiceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Micro\Collection` · `Phalcon\Mvc\Micro\CollectionInterface` · `Phalcon\Mvc\Micro\Exception` · `Phalcon\Mvc\Micro\Exceptions\ContainerRequired` · `Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler` · `Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler` · `Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount` · `Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler` · `Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable` · `Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable` · `Phalcon\Mvc\Micro\LazyLoader` · `Phalcon\Mvc\Micro\MiddlewareInterface` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Throwable`
+
 
 ### Method Summary
 
@@ -1252,8 +1274,8 @@ Appends a before middleware to be called before execute the route
 
 ```php
 public function delete(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1280,8 +1302,8 @@ Appends a 'finish' middleware to be called when the request is finished
 
 ```php
 public function get(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1379,8 +1401,8 @@ Checks if a service is registered in the DI
 
 ```php
 public function head(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1390,8 +1412,8 @@ Maps a route to a handler that only matches if the HTTP method is HEAD
 
 ```php
 public function map(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1434,7 +1456,7 @@ using the array syntax
 
 ```php
 var_dump(
-$app["request"]
+    $app["request"]
 );
 ```
 
@@ -1442,8 +1464,8 @@ $app["request"]
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -1467,8 +1489,8 @@ syntax
 
 ```php
 public function options(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1478,8 +1500,8 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 ```php
 public function patch(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1489,8 +1511,8 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 
 ```php
 public function post(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1500,8 +1522,8 @@ Maps a route to a handler that only matches if the HTTP method is POST
 
 ```php
 public function put(
-string $routePattern,
-mixed $handler
+    string $routePattern,
+    mixed $handler
 ): RouteInterface;
 ```
 
@@ -1535,8 +1557,8 @@ Sets the events manager
 
 ```php
 public function setModelBinder(
-BinderInterface $modelBinder,
-mixed $cache = null
+    BinderInterface $modelBinder,
+    mixed $cache = null
 ): static;
 ```
 
@@ -1546,8 +1568,8 @@ Sets model binder
 $micro = new Micro($di);
 
 $micro->setModelBinder(
-new Binder(),
-'cache'
+    new Binder(),
+    'cache'
 );
 ```
 
@@ -1564,9 +1586,9 @@ response handler
 
 ```php
 public function setService(
-string $serviceName,
-mixed $definition,
-bool $isShared = false
+    string $serviceName,
+    mixed $definition,
+    bool $isShared = false
 ): ServiceInterface;
 ```
 
@@ -1580,6 +1602,7 @@ public function stop(): void;
 
 Stops the middleware execution avoiding than other middlewares be
 executed
+
 
 ## Mvc\Micro\Collection
 
@@ -1596,7 +1619,7 @@ $app = new \Phalcon\Mvc\Micro();
 $collection = new Collection();
 
 $collection->setHandler(
-new PostsController()
+    new PostsController()
 );
 
 $collection->get("/posts/edit/{id}", "edit");
@@ -1750,9 +1773,9 @@ $app->mount($collection);
 
 ```php
 public function delete(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1762,9 +1785,9 @@ Maps a route to a handler that only matches if the HTTP method is DELETE.
 
 ```php
 public function get(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1798,9 +1821,9 @@ Returns the collection prefix if any
 
 ```php
 public function head(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1818,9 +1841,9 @@ Returns if the main handler must be lazy loaded
 
 ```php
 public function map(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1830,10 +1853,10 @@ Maps a route to a handler.
 
 ```php
 public function mapVia(
-string $routePattern,
-callable $handler,
-mixed $method,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    mixed $method,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1841,10 +1864,10 @@ Maps a route to a handler via methods.
 
 ```php
 $collection->mapVia(
-"/test",
-"indexAction",
-["POST", "GET"],
-"test"
+    "/test",
+    "indexAction",
+    ["POST", "GET"],
+    "test"
 );
 ```
 
@@ -1852,9 +1875,9 @@ $collection->mapVia(
 
 ```php
 public function options(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1865,9 +1888,9 @@ OPTIONS.
 
 ```php
 public function patch(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1877,9 +1900,9 @@ Maps a route to a handler that only matches if the HTTP method is PATCH.
 
 ```php
 public function post(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1889,9 +1912,9 @@ Maps a route to a handler that only matches if the HTTP method is POST.
 
 ```php
 public function put(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -1901,8 +1924,8 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 
 ```php
 public function setHandler(
-mixed $handler,
-bool $isLazy = false
+    mixed $handler,
+    bool $isLazy = false
 ): CollectionInterface;
 ```
 
@@ -1930,14 +1953,15 @@ Sets a prefix for all routes added to the collection
 
 ```php
 protected function addMap(
-mixed $method,
-string $routePattern,
-callable $handler,
-string|null $name = null
+    mixed $method,
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): void;
 ```
 
 Internal function to add a handler to the group.
+
 
 ## Mvc\Micro\CollectionInterface
 
@@ -2057,9 +2081,9 @@ Interface for Phalcon\Mvc\Micro\Collection
 
 ```php
 public function delete(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2069,9 +2093,9 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 
 ```php
 public function get(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2105,9 +2129,9 @@ Returns the collection prefix if any
 
 ```php
 public function head(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2125,9 +2149,9 @@ Returns if the main handler must be lazy loaded
 
 ```php
 public function map(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2137,9 +2161,9 @@ Maps a route to a handler
 
 ```php
 public function options(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2149,9 +2173,9 @@ Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 ```php
 public function patch(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2161,9 +2185,9 @@ Maps a route to a handler that only matches if the HTTP method is PATCH
 
 ```php
 public function post(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2173,9 +2197,9 @@ Maps a route to a handler that only matches if the HTTP method is POST
 
 ```php
 public function put(
-string $routePattern,
-callable $handler,
-string|null $name = null
+    string $routePattern,
+    callable $handler,
+    string|null $name = null
 ): CollectionInterface;
 ```
 
@@ -2185,8 +2209,8 @@ Maps a route to a handler that only matches if the HTTP method is PUT
 
 ```php
 public function setHandler(
-mixed $handler,
-bool $isLazy = false
+    mixed $handler,
+    bool $isLazy = false
 ): CollectionInterface;
 ```
 
@@ -2208,6 +2232,7 @@ public function setPrefix( string $prefix ): CollectionInterface;
 
 Sets a prefix for all routes added to the collection
 
+
 ## Mvc\Micro\Exception
 
 <span class="badge badge--class">Class</span>
@@ -2218,19 +2243,20 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Mvc\Micro\Exception`**
-- [`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`](#mvcmicroexceptionscontainerrequired)
-- [`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`](#mvcmicroexceptionserrorhandlernotcallable)
-- [`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`](#mvcmicroexceptionshandlernotcallable)
-- [`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`](#mvcmicroexceptionsinvalidregisteredhandler)
-- [`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`](#mvcmicroexceptionslazyhandlernotfound)
-- [`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`](#mvcmicroexceptionsmissingcollectionmainhandler)
-- [`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`](#mvcmicroexceptionsnohandlerstomount)
-- [`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`](#mvcmicroexceptionsnomatchedroutehandler)
-- [`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`](#mvcmicroexceptionsnotfoundhandlernotcallable)
-- [`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`](#mvcmicroexceptionsresponsehandlernotcallable)
+    - **`Phalcon\Mvc\Micro\Exception`**
+        - [`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`](#mvcmicroexceptionscontainerrequired)
+        - [`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`](#mvcmicroexceptionserrorhandlernotcallable)
+        - [`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`](#mvcmicroexceptionshandlernotcallable)
+        - [`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`](#mvcmicroexceptionsinvalidregisteredhandler)
+        - [`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`](#mvcmicroexceptionslazyhandlernotfound)
+        - [`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`](#mvcmicroexceptionsmissingcollectionmainhandler)
+        - [`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`](#mvcmicroexceptionsnohandlerstomount)
+        - [`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`](#mvcmicroexceptionsnomatchedroutehandler)
+        - [`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`](#mvcmicroexceptionsnotfoundhandlernotcallable)
+        - [`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`](#mvcmicroexceptionsresponsehandlernotcallable)
 
 </div>
+
 
 ## Mvc\Micro\Exceptions\ContainerRequired
 
@@ -2240,12 +2266,13 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\ContainerRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2266,6 +2293,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\ErrorHandlerNotCallable
 
 <span class="badge badge--class">Class</span>
@@ -2274,12 +2302,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2300,6 +2329,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\HandlerNotCallable
 
 <span class="badge badge--class">Class</span>
@@ -2308,12 +2338,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2334,6 +2365,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Micro\Exceptions\InvalidRegisteredHandler
 
 <span class="badge badge--class">Class</span>
@@ -2342,12 +2374,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2368,6 +2401,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\LazyHandlerNotFound
 
 <span class="badge badge--class">Class</span>
@@ -2376,12 +2410,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2402,6 +2437,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct( string $definition );
 ```
 
+
 ## Mvc\Micro\Exceptions\MissingCollectionMainHandler
 
 <span class="badge badge--class">Class</span>
@@ -2410,12 +2446,13 @@ public function __construct( string $definition );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2436,6 +2473,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\NoHandlersToMount
 
 <span class="badge badge--class">Class</span>
@@ -2444,12 +2482,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2470,6 +2509,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\NoMatchedRouteHandler
 
 <span class="badge badge--class">Class</span>
@@ -2478,12 +2518,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2504,6 +2545,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\NotFoundHandlerNotCallable
 
 <span class="badge badge--class">Class</span>
@@ -2512,12 +2554,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2538,6 +2581,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\Exceptions\ResponseHandlerNotCallable
 
 <span class="badge badge--class">Class</span>
@@ -2546,12 +2590,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
-- **`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`**
+    - [`Phalcon\Mvc\Micro\Exception`](#mvcmicroexception)
+        - **`Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exception`
+
 
 ### Method Summary
 
@@ -2572,6 +2617,7 @@ __Uses__ `Phalcon\Mvc\Micro\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Micro\LazyLoader
 
 <span class="badge badge--class">Class</span>
@@ -2588,6 +2634,7 @@ Lazy-Load of handlers for Mvc\Micro using auto-loading
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound` · `Phalcon\Mvc\Model\BinderInterface`
+
 
 ### Method Summary
 
@@ -2645,9 +2692,9 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 
 ```php
 public function callMethod(
-string $method,
-mixed $arguments,
-BinderInterface|null $modelBinder = null
+    string $method,
+    mixed $arguments,
+    BinderInterface|null $modelBinder = null
 );
 ```
 
@@ -2665,6 +2712,7 @@ public function getDefinition(): string;
 public function getHandler(): object|null;
 ```
 
+
 ## Mvc\Micro\MiddlewareInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -2679,6 +2727,7 @@ Allows to implement Phalcon\Mvc\Micro middleware in classes
 </div>
 
 __Uses__ `Phalcon\Mvc\Micro`
+
 
 ### Method Summary
 
@@ -2701,6 +2750,7 @@ public function call( Micro $application );
 ```
 
 Calls the middleware
+
 
 ## Mvc\Model
 
@@ -2731,15 +2781,15 @@ $invoice->inv_title = "Test Invoice";
 $invoice->inv_total = 1952;
 
 if ($invoice->save() === false) {
-echo "Umh, We can store invoices: ";
+    echo "Umh, We can store invoices: ";
 
-$messages = $invoice->getMessages();
+    $messages = $invoice->getMessages();
 
-foreach ($messages as $message) {
-    echo $message;
-}
+    foreach ($messages as $message) {
+        echo $message;
+    }
 } else {
-echo "Great, a new invoice was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -2763,12 +2813,13 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Mvc\Model`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\ModelInterface`](#mvcmodelinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\JsonSerializable`
 
 </div>
 
 __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\Enum` · `Phalcon\Db\Geometry\WkbParser` · `Phalcon\Db\RawValue` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Messages\Message` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\BehaviorInterface` · `Phalcon\Mvc\Model\Criteria` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Eager\PathTree` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject` · `Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap` · `Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap` · `Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns` · `Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey` · `Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter` · `Phalcon\Mvc\Model\Exceptions\InvalidFindParameters` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService` · `Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService` · `Phalcon\Mvc\Model\Exceptions\MethodNotFound` · `Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet` · `Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired` · `Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible` · `Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh` · `Phalcon\Mvc\Model\Exceptions\RecordNotPersisted` · `Phalcon\Mvc\Model\Exceptions\RelationNotDefined` · `Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray` · `Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled` · `Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset` · `Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled` · `Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\ValidationFailed` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
+
 
 ### Method Summary
 
@@ -3511,8 +3562,8 @@ __Uses__ `JsonSerializable` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon
 
 ```php
 public function __call(
-string $method,
-array $arguments
+    string $method,
+    array $arguments
 );
 ```
 
@@ -3522,8 +3573,8 @@ Handles method calls when a method is not implemented
 
 ```php
 public static function __callStatic(
-string $method,
-array $arguments
+    string $method,
+    array $arguments
 );
 ```
 
@@ -3533,9 +3584,9 @@ Handles method calls when a static method is not implemented
 
 ```php
 final public function __construct(
-mixed $data = null,
-DiInterface|null $container = null,
-ManagerInterface|null $modelsManager = null
+    mixed $data = null,
+    DiInterface|null $container = null,
+    ManagerInterface|null $modelsManager = null
 );
 ```
 
@@ -3570,8 +3621,8 @@ Serializes a model
 
 ```php
 public function __set(
-string $property,
-mixed $value
+    string $property,
+    mixed $value
 );
 ```
 
@@ -3599,30 +3650,30 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->addBehavior(
-        new Timestampable(
-            [
-                "beforeCreate" => [
-                    "field"  => "created_at",
-                    "format" => "Y-m-d",
-                ],
-            ]
-        )
-    );
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeCreate" => [
+                        "field"  => "created_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
 
-    $this->addBehavior(
-        new Timestampable(
-            [
-                "beforeUpdate" => [
-                    "field"  => "updated_at",
-                    "format" => "Y-m-d",
-                ],
-            ]
-        )
-    );
-}
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    "beforeUpdate" => [
+                        "field"  => "updated_at",
+                        "format" => "Y-m-d",
+                    ],
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -3640,16 +3691,16 @@ use Phalcon\Messages\Message as Message;
 
 class Invoices extends Model
 {
-public function beforeSave()
-{
-    if ($this->name === "Peter") {
-        $message = new Message(
-            "Sorry, but an invoice cannot be named Peter"
-        );
+    public function beforeSave()
+    {
+        if ($this->name === "Peter") {
+            $message = new Message(
+                "Sorry, but an invoice cannot be named Peter"
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
+        }
     }
-}
 }
 ```
 
@@ -3665,9 +3716,9 @@ Append messages to this model from another Model.
 
 ```php
 public function assign(
-array $data,
-mixed $whiteList = null,
-mixed $dataColumnMap = null
+    array $data,
+    mixed $whiteList = null,
+    mixed $dataColumnMap = null
 ): ModelInterface;
 ```
 
@@ -3675,30 +3726,30 @@ Assigns values to a model from an array
 
 ```php
 $invoice->assign(
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 
 // Assign by db row, column map needed
 $invoice->assign(
-$dbRow,
-[
-    "db_type" => "type",
-    "db_name" => "name",
-    "db_year" => "year",
-]
+    $dbRow,
+    [
+        "db_type" => "type",
+        "db_name" => "name",
+        "db_year" => "year",
+    ]
 );
 
 // Allow assign only name and year
 $invoice->assign(
-$_POST,
-[
-    "name",
-    "year",
-]
+    $_POST,
+    [
+        "name",
+        "year",
+    ]
 );
 
 // By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
@@ -3706,11 +3757,11 @@ $_POST,
 ini_set("phalcon.orm.disable_assign_setters", true);
 
 $invoice->assign(
-$_POST,
-[
-    "name",
-    "year",
-]
+    $_POST,
+    [
+        "name",
+        "year",
+    ]
 );
 ```
 
@@ -3730,19 +3781,19 @@ contain the average of each group.
 ```php
 // What's the average price of invoices?
 $average = Invoices::average(
-[
-    "column" => "inv_total",
-]
+    [
+        "column" => "inv_total",
+    ]
 );
 
 echo "The average price is ", $average, "\n";
 
 // What's the average price of paid invoices?
 $average = Invoices::average(
-[
-    "inv_status_flag = 1",
-    "column" => "inv_total",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "inv_total",
+    ]
 );
 
 echo "The average price of paid invoices is ", $average, "\n";
@@ -3752,9 +3803,9 @@ echo "The average price of paid invoices is ", $average, "\n";
 
 ```php
 public static function cloneResult(
-ModelInterface $base,
-array $data,
-int $dirtyState = 0
+    ModelInterface $base,
+    array $data,
+    int $dirtyState = 0
 ): ModelInterface;
 ```
 
@@ -3762,12 +3813,12 @@ Assigns values to a model from an array returning a new model
 
 ```php
 $invoice = Phalcon\Mvc\Model::cloneResult(
-new Invoices(),
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    new Invoices(),
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 ```
 
@@ -3775,11 +3826,11 @@ new Invoices(),
 
 ```php
 public static function cloneResultMap(
-mixed $base,
-array $data,
-mixed $columnMap,
-int $dirtyState = 0,
-bool|null $keepSnapshots = null
+    mixed $base,
+    array $data,
+    mixed $columnMap,
+    int $dirtyState = 0,
+    bool|null $keepSnapshots = null
 ): ModelInterface;
 ```
 
@@ -3787,12 +3838,12 @@ Assigns values to a model from an array, returning a new model.
 
 ```php
 $invoice = \Phalcon\Mvc\Model::cloneResultMap(
-new Invoices(),
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    new Invoices(),
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 ```
 
@@ -3800,9 +3851,9 @@ new Invoices(),
 
 ```php
 public static function cloneResultMapHydrate(
-array $data,
-mixed $columnMap,
-int $hydrationMode
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode
 );
 ```
 
@@ -3856,11 +3907,11 @@ $invoice->create();
 $invoice = new Invoices();
 
 $invoice->assign(
-[
-    "type" => "mechanical",
-    "name" => "Test Invoice",
-    "year" => 1952,
-]
+    [
+        "type" => "mechanical",
+        "name" => "Test Invoice",
+        "year" => 1952,
+    ]
 );
 
 $invoice->create();
@@ -3882,7 +3933,7 @@ $invoice->delete();
 $invoices = Invoices::find("inv_status_flag = 1");
 
 foreach ($invoices as $invoice) {
-$invoice->delete();
+    $invoice->delete();
 }
 ```
 
@@ -3905,7 +3956,7 @@ Returns a simple representation of the object that can be used with
 
 ```php
 var_dump(
-$invoice->dump()
+    $invoice->dump()
 );
 ```
 
@@ -3925,34 +3976,34 @@ echo "There are ", count($invoices), "\n";
 
 // How many paid invoices are there?
 $invoices = Invoices::find(
-"inv_status_flag = 1"
+    "inv_status_flag = 1"
 );
 
 echo "There are ", count($invoices), "\n";
 
 // Get and print virtual invoices ordered by name
 $invoices = Invoices::find(
-[
-    "type = 'virtual'",
-    "order" => "name",
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 // Get first 100 virtual invoices ordered by name
 $invoices = Invoices::find(
-[
-    "type = 'virtual'",
-    "order" => "name",
-    "limit" => 100,
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+        "limit" => 100,
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 // encapsulate find it into an running transaction esp. useful for application unit-tests
@@ -3965,30 +4016,30 @@ $newInvoices = new Invoices();
 $newInvoices->setTransaction($myTransaction);
 
 $newInvoices->assign(
-[
-    'name' => 'test',
-    'type' => 'mechanical',
-    'year' => 1944,
-]
+    [
+        'name' => 'test',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
 );
 
 $newInvoices->save();
 
 $resultInsideTransaction = Invoices::find(
-[
-    'name' => 'test',
-    Model::TRANSACTION_INDEX => $myTransaction,
-]
+    [
+        'name' => 'test',
+        Model::TRANSACTION_INDEX => $myTransaction,
+    ]
 );
 
 $resultOutsideTransaction = Invoices::find(['name' => 'test']);
 
 foreach ($setInsideTransaction as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 foreach ($setOutsideTransaction as $invoice) {
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 }
 
 // reverts all not commited changes
@@ -4004,69 +4055,69 @@ $myTransaction2->begin();
 $firstNewInvoices = new Invoices();
 $firstNewInvoices->setTransaction($myTransaction1);
 $firstNewInvoices->assign(
-[
-    'name' => 'first-transaction-invoice',
-    'type' => 'mechanical',
-    'year' => 1944,
-]
+    [
+        'name' => 'first-transaction-invoice',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
 );
 $firstNewInvoices->save();
 
 $secondNewInvoices = new Invoices();
 $secondNewInvoices->setTransaction($myTransaction2);
 $secondNewInvoices->assign(
-[
-    'name' => 'second-transaction-invoice',
-    'type' => 'fictional',
-    'year' => 1984,
-]
+    [
+        'name' => 'second-transaction-invoice',
+        'type' => 'fictional',
+        'year' => 1984,
+    ]
 );
 $secondNewInvoices->save();
 
 // this transaction will find the invoice.
 $resultInFirstTransaction = Invoices::find(
-[
-    'name'                   => 'first-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction1,
-]
+    [
+        'name'                   => 'first-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction1,
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultInSecondTransaction = Invoices::find(
-[
-    'name'                   => 'first-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction2,
-]
+    [
+        'name'                   => 'first-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction2,
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultOutsideAnyExplicitTransaction = Invoices::find(
-[
-    'name' => 'first-transaction-invoice',
-]
+    [
+        'name' => 'first-transaction-invoice',
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultInFirstTransaction = Invoices::find(
-[
-    'name'                   => 'second-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction2,
-]
+    [
+        'name'                   => 'second-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction2,
+    ]
 );
 
 // this transaction will find the invoice.
 $resultInSecondTransaction = Invoices::find(
-[
-    'name'                   => 'second-transaction-invoice',
-    Model::TRANSACTION_INDEX => $myTransaction1,
-]
+    [
+        'name'                   => 'second-transaction-invoice',
+        Model::TRANSACTION_INDEX => $myTransaction1,
+    ]
 );
 
 // this transaction won't find the invoice.
 $resultOutsideAnyExplicitTransaction = Invoices::find(
-[
-    'name' => 'second-transaction-invoice',
-]
+    [
+        'name' => 'second-transaction-invoice',
+    ]
 );
 
 $transaction1->rollback();
@@ -4089,17 +4140,17 @@ echo "The invoice name is ", $invoice->inv_title;
 
 // What's the first paid invoice in invoices table?
 $invoice = Invoices::findFirst(
-"inv_status_flag = 1"
+    "inv_status_flag = 1"
 );
 
 echo "The first paid invoice name is ", $invoice->inv_title;
 
 // Get first virtual invoice ordered by name
 $invoice = Invoices::findFirst(
-[
-    "type = 'virtual'",
-    "order" => "name",
-]
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
 );
 
 echo "The first virtual invoice name is ", $invoice->inv_title;
@@ -4111,25 +4162,25 @@ $myTransaction->begin();
 $newInvoices = new Invoices();
 $newInvoices->setTransaction($myTransaction);
 $newInvoices->assign(
-[
-    'name' => 'test',
-    'type' => 'mechanical',
-    'year' => 1944,
-]
+    [
+        'name' => 'test',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
 );
 $newInvoices->save();
 
 $findsAInvoices = Invoices::findFirst(
-[
-    'name'                   => 'test',
-    Model::TRANSACTION_INDEX => $myTransaction,
-]
+    [
+        'name'                   => 'test',
+        Model::TRANSACTION_INDEX => $myTransaction,
+    ]
 );
 
 $doesNotFindAInvoices = Invoices::findFirst(
-[
-    'name' => 'test',
-]
+    [
+        'name' => 'test',
+    ]
 );
 
 var_dump($findAInvoices);
@@ -4138,9 +4189,9 @@ var_dump($doesNotFindAInvoices);
 $transaction->commit();
 
 $doesFindTheInvoicesNow = Invoices::findFirst(
-[
-    'name' => 'test',
-]
+    [
+        'name' => 'test',
+    ]
 );
 ```
 
@@ -4214,15 +4265,15 @@ $invoice->inv_title = "Test Invoice";
 $invoice->inv_total = 1952;
 
 if ($invoice->save() === false) {
-echo "Umh, We can't store invoices right now ";
+    echo "Umh, We can't store invoices right now ";
 
-$messages = $invoice->getMessages();
+    $messages = $invoice->getMessages();
 
-foreach ($messages as $message) {
-    echo $message;
-}
+    foreach ($messages as $message) {
+        echo $message;
+    }
 } else {
-echo "Great, a new invoice was saved successfully!";
+    echo "Great, a new invoice was saved successfully!";
 }
 ```
 
@@ -4280,8 +4331,8 @@ related the model
 
 ```php
 public function getRelated(
-string $alias,
-mixed $arguments = null
+    string $alias,
+    mixed $arguments = null
 );
 ```
 
@@ -4359,8 +4410,8 @@ data related to the model
 
 ```php
 public function hasChanged(
-mixed $fieldName = null,
-bool $allFields = false
+    mixed $fieldName = null,
+    bool $allFields = false
 ): bool;
 ```
 
@@ -4395,8 +4446,8 @@ Checks if the object has internal snapshot data
 
 ```php
 public function hasUpdated(
-mixed $fieldName = null,
-bool $allFields = false
+    mixed $fieldName = null,
+    bool $allFields = false
 ): bool;
 ```
 
@@ -4452,19 +4503,19 @@ the specified conditions
 ```php
 // What is the maximum invoice id?
 $id = Invoices::maximum(
-[
-    "column" => "id",
-]
+    [
+        "column" => "id",
+    ]
 );
 
 echo "The maximum invoice id is: ", $id, "\n";
 
 // What is the maximum id of paid invoices?
 $sum = Invoices::maximum(
-[
-    "inv_status_flag = 1",
-    "column" => "id",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "id",
+    ]
 );
 
 echo "The maximum invoice id of paid invoices is ", $id, "\n";
@@ -4482,19 +4533,19 @@ the specified conditions
 ```php
 // What is the minimum invoice id?
 $id = Invoices::minimum(
-[
-    "column" => "id",
-]
+    [
+        "column" => "id",
+    ]
 );
 
 echo "The minimum invoice id is: ", $id;
 
 // What is the minimum id of paid invoices?
 $sum = Invoices::minimum(
-[
-    "inv_status_flag = 1",
-    "column" => "id",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "id",
+    ]
 );
 
 echo "The minimum invoice id of paid invoices is ", $id;
@@ -4592,8 +4643,8 @@ Sets a custom events manager
 
 ```php
 public function setOldSnapshotData(
-array $data,
-mixed $columnMap = null
+    array $data,
+    mixed $columnMap = null
 );
 ```
 
@@ -4613,8 +4664,8 @@ Sets the DependencyInjection connection service name used to read data
 
 ```php
 public function setRelated(
-string $alias,
-mixed $records
+    string $alias,
+    mixed $records
 ): ModelInterface;
 ```
 
@@ -4629,8 +4680,8 @@ not mark the record dirty: the value lands in `related`, never in
 
 ```php
 public function setSnapshotData(
-array $data,
-mixed $columnMap = null
+    array $data,
+    mixed $columnMap = null
 ): void;
 ```
 
@@ -4642,8 +4693,8 @@ set up to keep snapshot data
 
 ```php
 public function setSync(
-mixed $elements = null,
-bool $enabled = true
+    mixed $elements = null,
+    bool $enabled = true
 ): ModelInterface;
 ```
 
@@ -4681,34 +4732,34 @@ use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 
 try {
-$txManager = new TxManager();
+    $txManager = new TxManager();
 
-$transaction = $txManager->get();
+    $transaction = $txManager->get();
 
-$invoice = new Invoices();
+    $invoice = new Invoices();
 
-$invoice->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-$invoice->inv_title       = "WALL·E";
-$invoice->created_at = date("Y-m-d");
+    $invoice->inv_title       = "WALL·E";
+    $invoice->created_at = date("Y-m-d");
 
-if ($invoice->save() === false) {
-    $transaction->rollback("Can't save invoice");
-}
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
+    }
 
-$invoicePart = new OrdersProducts();
+    $invoicePart = new OrdersProducts();
 
-$invoicePart->setTransaction($transaction);
+    $invoicePart->setTransaction($transaction);
 
-$invoicePart->type = "head";
+    $invoicePart->type = "head";
 
-if ($invoicePart->save() === false) {
-    $transaction->rollback("Invoices part cannot be saved");
-}
+    if ($invoicePart->save() === false) {
+        $transaction->rollback("Invoices part cannot be saved");
+    }
 
-$transaction->commit();
+    $transaction->commit();
 } catch (TxFailed $e) {
-echo "Failed, reason: ", $e->getMessage();
+    echo "Failed, reason: ", $e->getMessage();
 }
 ```
 
@@ -4754,19 +4805,19 @@ specified conditions
 ```php
 // How much are all invoices?
 $sum = Invoices::sum(
-[
-    "column" => "inv_total",
-]
+    [
+        "column" => "inv_total",
+    ]
 );
 
 echo "The total price of invoices is ", $sum, "\n";
 
 // How much are paid invoices?
 $sum = Invoices::sum(
-[
-    "inv_status_flag = 1",
-    "column" => "inv_total",
-]
+    [
+        "inv_status_flag = 1",
+        "column" => "inv_total",
+    ]
 );
 
 echo "The total price of paid invoices is  ", $sum, "\n";
@@ -4776,8 +4827,8 @@ echo "The total price of paid invoices is  ", $sum, "\n";
 
 ```php
 public function toArray(
-mixed $columns = null,
-mixed $useGetter = true
+    mixed $columns = null,
+    mixed $useGetter = true
 ): array;
 ```
 
@@ -4785,7 +4836,7 @@ Returns the instance as an array representation
 
 ```php
 print_r(
-$invoice->toArray()
+    $invoice->toArray()
 );
 ```
 
@@ -4840,24 +4891,24 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->validate(
-        "status",
-        new ExclusionIn(
-            [
-                "domain" => [
-                    "A",
-                    "I",
-                ],
-            ]
-        )
-    );
+        $validator->validate(
+            "status",
+            new ExclusionIn(
+                [
+                    "domain" => [
+                        "A",
+                        "I",
+                    ],
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -4865,8 +4916,8 @@ public function validation()
 
 ```php
 public function writeAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): void;
 ```
 
@@ -4890,14 +4941,14 @@ generated UPDATE statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->allowEmptyStringValues(
-        [
-            "name",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->allowEmptyStringValues(
+            [
+                "name",
+            ]
+        );
+    }
 }
 ```
 
@@ -4905,10 +4956,10 @@ public function initialize()
 
 ```php
 protected function belongsTo(
-mixed $fields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -4917,14 +4968,14 @@ Setup a reverse 1-1 or n-1 relation between two models
 ```php
 class OrdersProducts extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        "oxp_ord_id",
-        Invoices::class,
-        "id"
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            "oxp_ord_id",
+            Invoices::class,
+            "id"
+        );
+    }
 }
 ```
 
@@ -4977,10 +5028,10 @@ related records along with freshly added one
 
 ```php
 protected function doLowInsert(
-MetaDataInterface $metaData,
-AdapterInterface $connection,
-mixed $table,
-mixed $identityField
+    MetaDataInterface $metaData,
+    AdapterInterface $connection,
+    mixed $table,
+    mixed $identityField
 ): bool;
 ```
 
@@ -4990,9 +5041,9 @@ Sends a pre-build INSERT SQL statement to the relational database system
 
 ```php
 protected function doLowUpdate(
-MetaDataInterface $metaData,
-AdapterInterface $connection,
-mixed $table
+    MetaDataInterface $metaData,
+    AdapterInterface $connection,
+    mixed $table
 ): bool;
 ```
 
@@ -5002,9 +5053,9 @@ Sends a pre-build UPDATE SQL statement to the relational database system
 
 ```php
 protected function getRelatedRecords(
-string $modelName,
-string $method,
-array $arguments
+    string $modelName,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -5015,9 +5066,9 @@ Returns false if the relation is non-existent.
 
 ```php
 protected static function groupResult(
-string $functionName,
-string $alias,
-mixed $parameters = null
+    string $functionName,
+    string $alias,
+    mixed $parameters = null
 ): mixed;
 ```
 
@@ -5027,8 +5078,8 @@ Generate a PHQL SELECT statement for an aggregate
 
 ```php
 protected function has(
-MetaDataInterface $metaData,
-AdapterInterface $connection
+    MetaDataInterface $metaData,
+    AdapterInterface $connection
 ): bool;
 ```
 
@@ -5038,10 +5089,10 @@ Checks whether the current record already exists
 
 ```php
 protected function hasMany(
-mixed $fields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -5050,14 +5101,14 @@ Setup a 1-n relation between two models
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->hasMany(
-        "id",
-        OrdersProducts::class,
-        "oxp_ord_id"
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            "id",
+            OrdersProducts::class,
+            "oxp_ord_id"
+        );
+    }
 }
 ```
 
@@ -5065,13 +5116,13 @@ public function initialize()
 
 ```php
 protected function hasManyToMany(
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -5081,18 +5132,18 @@ relation
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    // Setup a many-to-many relation to Parts through OrdersProducts
-    $this->hasManyToMany(
-        "id",
-        OrdersProducts::class,
-        "oxp_ord_id",
-        "oxp_prd_id",
-        Products::class,
-        "id",
-    );
-}
+    public function initialize()
+    {
+        // Setup a many-to-many relation to Parts through OrdersProducts
+        $this->hasManyToMany(
+            "id",
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
+            "id",
+        );
+    }
 }
 ```
 
@@ -5100,10 +5151,10 @@ public function initialize()
 
 ```php
 protected function hasOne(
-mixed $fields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -5112,14 +5163,14 @@ Setup a 1-1 relation between two models
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->hasOne(
-        "id",
-        InvoicesDescription::class,
-        "oxp_ord_id"
-    );
-}
+    public function initialize()
+    {
+        $this->hasOne(
+            "id",
+            InvoicesDescription::class,
+            "oxp_ord_id"
+        );
+    }
 }
 ```
 
@@ -5127,13 +5178,13 @@ public function initialize()
 
 ```php
 protected function hasOneThrough(
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referenceModel,
-mixed $referencedFields,
-array $options = []
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referenceModel,
+    mixed $referencedFields,
+    array $options = []
 ): Relation;
 ```
 
@@ -5143,18 +5194,18 @@ relation
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    // Setup a 1-1 relation to one item from Parts through OrdersProducts
-    $this->hasOneThrough(
-        "id",
-        OrdersProducts::class,
-        "oxp_ord_id",
-        "oxp_prd_id",
-        Products::class,
-        "id",
-    );
-}
+    public function initialize()
+    {
+        // Setup a 1-1 relation to one item from Parts through OrdersProducts
+        $this->hasOneThrough(
+            "id",
+            OrdersProducts::class,
+            "oxp_ord_id",
+            "oxp_prd_id",
+            Products::class,
+            "id",
+        );
+    }
 }
 ```
 
@@ -5162,8 +5213,8 @@ public function initialize()
 
 ```php
 protected final static function invokeFinder(
-string $method,
-array $arguments
+    string $method,
+    array $arguments
 );
 ```
 
@@ -5182,10 +5233,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->keepSnapshots(true);
-}
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 ```
 
@@ -5193,8 +5244,8 @@ public function initialize()
 
 ```php
 final protected function possibleSetter(
-string $property,
-mixed $value
+    string $property,
+    mixed $value
 ): bool;
 ```
 
@@ -5204,8 +5255,8 @@ Check for, and attempt to use, possible setter.
 
 ```php
 protected function postSave(
-bool $success,
-bool $exists
+    bool $success,
+    bool $exists
 ): bool;
 ```
 
@@ -5215,9 +5266,9 @@ Executes internal events after save a record
 
 ```php
 protected function postSaveRelatedRecords(
-AdapterInterface $connection,
-mixed $related,
-CollectionInterface $visited
+    AdapterInterface $connection,
+    mixed $related,
+    CollectionInterface $visited
 ): bool;
 ```
 
@@ -5227,9 +5278,9 @@ Save the related records assigned in the has-one/has-many relations
 
 ```php
 protected function preSave(
-MetaDataInterface $metaData,
-bool $exists,
-mixed $identityField
+    MetaDataInterface $metaData,
+    bool $exists,
+    mixed $identityField
 ): bool;
 ```
 
@@ -5239,9 +5290,9 @@ Executes internal hooks before save a record
 
 ```php
 protected function preSaveRelatedRecords(
-AdapterInterface $connection,
-mixed $related,
-CollectionInterface $visited
+    AdapterInterface $connection,
+    mixed $related,
+    CollectionInterface $visited
 ): bool;
 ```
 
@@ -5275,14 +5326,14 @@ generated INSERT/UPDATE statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->skipAttributes(
-        [
-            "price",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributes(
+            [
+                "price",
+            ]
+        );
+    }
 }
 ```
 
@@ -5298,14 +5349,14 @@ generated INSERT statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->skipAttributesOnCreate(
-        [
-            "created_at",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributesOnCreate(
+            [
+                "created_at",
+            ]
+        );
+    }
 }
 ```
 
@@ -5321,14 +5372,14 @@ generated UPDATE statement
 ```php
 class Invoices extends \Phalcon\Mvc\Model
 {
-public function initialize()
-{
-    $this->skipAttributesOnUpdate(
-        [
-            "modified_in",
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->skipAttributesOnUpdate(
+            [
+                "modified_in",
+            ]
+        );
+    }
 }
 ```
 
@@ -5345,10 +5396,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->useDynamicUpdate(true);
-}
+    public function initialize()
+    {
+        $this->useDynamicUpdate(true);
+    }
 }
 ```
 
@@ -5367,26 +5418,27 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        "status",
-        new ExclusionIn(
-            [
-                "domain" => [
-                    "A",
-                    "I",
-                ],
-            ]
-        )
-    );
+        $validator->add(
+            "status",
+            new ExclusionIn(
+                [
+                    "domain" => [
+                        "A",
+                        "I",
+                    ],
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
+
 
 ## Mvc\ModelInterface
 
@@ -5406,6 +5458,7 @@ Interface for Phalcon\Mvc\Model
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model\CriteriaInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Mvc\Model\ResultInterface` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\TransactionInterface`
+
 
 ### Method Summary
 
@@ -5665,9 +5718,9 @@ Appends a customized message on the validation process
 
 ```php
 public function assign(
-array $data,
-mixed $whiteList = null,
-mixed $dataColumnMap = null
+    array $data,
+    mixed $whiteList = null,
+    mixed $dataColumnMap = null
 ): ModelInterface;
 ```
 
@@ -5686,9 +5739,9 @@ conditions
 
 ```php
 public static function cloneResult(
-ModelInterface $base,
-array $data,
-int $dirtyState = 0
+    ModelInterface $base,
+    array $data,
+    int $dirtyState = 0
 ): ModelInterface;
 ```
 
@@ -5698,11 +5751,11 @@ Assigns values to a model from an array returning a new model
 
 ```php
 public static function cloneResultMap(
-mixed $base,
-array $data,
-mixed $columnMap,
-int $dirtyState = 0,
-bool $keepSnapshots = false
+    mixed $base,
+    array $data,
+    mixed $columnMap,
+    int $dirtyState = 0,
+    bool $keepSnapshots = false
 ): ModelInterface;
 ```
 
@@ -5712,9 +5765,9 @@ Assigns values to a model from an array returning a new model
 
 ```php
 public static function cloneResultMapHydrate(
-array $data,
-mixed $columnMap,
-int $hydrationMode
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode
 );
 ```
 
@@ -5851,8 +5904,8 @@ Returns DependencyInjection connection service used to read data
 
 ```php
 public function getRelated(
-string $alias,
-mixed $arguments = null
+    string $alias,
+    mixed $arguments = null
 );
 ```
 
@@ -5962,8 +6015,8 @@ Sets the DependencyInjection connection service used to read data
 
 ```php
 public function setSnapshotData(
-array $data,
-mixed $columnMap = null
+    array $data,
+    mixed $columnMap = null
 ): void;
 ```
 
@@ -5974,8 +6027,8 @@ snapshot data when the model was set up to keep snapshot data
 
 ```php
 public function setSync(
-mixed $elements = null,
-bool $enabled = true
+    mixed $elements = null,
+    bool $enabled = true
 ): ModelInterface;
 ```
 
@@ -6032,6 +6085,7 @@ public function validationHasFailed(): bool;
 
 Check whether validation process has generated any messages
 
+
 ## Mvc\Model\Behavior
 
 <span class="badge badge--abstract">Abstract</span>
@@ -6044,12 +6098,13 @@ This is an optional base class for ORM behaviors
 <div class="api-tree">
 
 - **`Phalcon\Mvc\Model\Behavior`** - implements [`Phalcon\Mvc\Model\BehaviorInterface`](#mvcmodelbehaviorinterface)
-- [`Phalcon\Mvc\Model\Behavior\SoftDelete`](#mvcmodelbehaviorsoftdelete)
-- [`Phalcon\Mvc\Model\Behavior\Timestampable`](#mvcmodelbehaviortimestampable)
+    - [`Phalcon\Mvc\Model\Behavior\SoftDelete`](#mvcmodelbehaviorsoftdelete)
+    - [`Phalcon\Mvc\Model\Behavior\Timestampable`](#mvcmodelbehaviortimestampable)
 
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -6108,9 +6163,9 @@ Phalcon\Mvc\Model\Behavior
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $method,
-array $arguments = []
+    ModelInterface $model,
+    string $method,
+    array $arguments = []
 );
 ```
 
@@ -6120,8 +6175,8 @@ Acts as fallbacks when a missing method is called on the model
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
@@ -6145,6 +6200,7 @@ protected function mustTakeAction( string $eventName ): bool;
 
 Checks whether the behavior must take action on certain event
 
+
 ## Mvc\Model\BehaviorInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -6161,6 +6217,7 @@ Interface for Phalcon\Mvc\Model\Behavior
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -6185,9 +6242,9 @@ __Uses__ `Phalcon\Mvc\ModelInterface`
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $method,
-array $arguments = []
+    ModelInterface $model,
+    string $method,
+    array $arguments = []
 );
 ```
 
@@ -6197,12 +6254,13 @@ Calls a method when it's missing in the model
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
 This method receives the notifications from the EventsManager
+
 
 ## Mvc\Model\Behavior\Exceptions\MissingRequiredOption
 
@@ -6212,12 +6270,13 @@ This method receives the notifications from the EventsManager
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -6238,6 +6297,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $option );
 ```
 
+
 ## Mvc\Model\Behavior\SoftDelete
 
 <span class="badge badge--class">Class</span>
@@ -6251,11 +6311,12 @@ changing the value of a flag column
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\Behavior`](#mvcmodelbehavior)
-- **`Phalcon\Mvc\Model\Behavior\SoftDelete`**
+    - **`Phalcon\Mvc\Model\Behavior\SoftDelete`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -6275,12 +6336,13 @@ __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalco
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
 Listens for notifications from the models manager
+
 
 ## Mvc\Model\Behavior\Timestampable
 
@@ -6295,11 +6357,12 @@ record is created or updated
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\Behavior`](#mvcmodelbehavior)
-- **`Phalcon\Mvc\Model\Behavior\Timestampable`**
+    - **`Phalcon\Mvc\Model\Behavior\Timestampable`**
 
 </div>
 
 __Uses__ `Closure` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavior` · `Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption` · `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -6319,12 +6382,13 @@ __Uses__ `Closure` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Behavio
 
 ```php
 public function notify(
-string $type,
-ModelInterface $model
+    string $type,
+    ModelInterface $model
 );
 ```
 
 Listens for notifications from the models manager
+
 
 ## Mvc\Model\Binder
 
@@ -6342,6 +6406,7 @@ This is an class for binding models into params for handler
 </div>
 
 __Uses__ `Closure` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Mvc\Controller\BindModelInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Binder\BindableInterface` · `Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable` · `Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn` · `Phalcon\Mvc\Model\Exceptions\MissingMethodName` · `Phalcon\Mvc\Model\Exceptions\MissingModelClassName` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType`
+
 
 ### Method Summary
 
@@ -6446,10 +6511,10 @@ Phalcon\Mvc\Model\Binder constructor
 
 ```php
 public function bindToHandler(
-object $handler,
-array $params,
-string $cacheKey,
-string|null $methodName = null
+    object $handler,
+    array $params,
+    string $cacheKey,
+    string|null $methodName = null
 ): array;
 ```
 
@@ -6493,8 +6558,8 @@ Gets cache instance
 
 ```php
 protected function findBoundModel(
-mixed $paramValue,
-string $className
+    mixed $paramValue,
+    string $className
 ): mixed|bool;
 ```
 
@@ -6512,14 +6577,15 @@ Get params classes from cache by key
 
 ```php
 protected function getParamsFromReflection(
-object $handler,
-array $params,
-string $cacheKey,
-string $methodName
+    object $handler,
+    array $params,
+    string $cacheKey,
+    string $methodName
 ): array;
 ```
 
 Get modified params for handler using reflection
+
 
 ## Mvc\Model\BinderInterface
 
@@ -6537,6 +6603,7 @@ Interface for Phalcon\Mvc\Model\Binder
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
+
 
 ### Method Summary
 
@@ -6575,10 +6642,10 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
 
 ```php
 public function bindToHandler(
-object $handler,
-array $params,
-string $cacheKey,
-string|null $methodName = null
+    object $handler,
+    array $params,
+    string $cacheKey,
+    string|null $methodName = null
 ): array;
 ```
 
@@ -6607,6 +6674,7 @@ public function setCache( AdapterInterface $cache ): BinderInterface;
 ```
 
 Sets cache instance
+
 
 ## Mvc\Model\Binder\BindableInterface
 
@@ -6647,6 +6715,7 @@ public function getModelName(): string|array;
 Return the model name or models names and parameters keys associated with
 this class
 
+
 ## Mvc\Model\Criteria
 
 <span class="badge badge--class">Class</span>
@@ -6660,12 +6729,12 @@ object-oriented interface.
 <?php
 
 $invoices = Invoices::query()
-->where("inv_cst_id = :customerId:")
-->andWhere("inv_created_date < '2000-01-01'")
-->bind(["customerId" => 1])
-->limit(5, 10)
-->orderBy("inv_title")
-->execute();
+    ->where("inv_cst_id = :customerId:")
+    ->andWhere("inv_created_date < '2000-01-01'")
+    ->bind(["customerId" => 1])
+    ->limit(5, 10)
+    ->orderBy("inv_title")
+    ->execute();
 ```
 
 <div class="api-tree">
@@ -6675,6 +6744,7 @@ $invoices = Invoices::query()
 </div>
 
 __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidModelName` · `Phalcon\Mvc\Model\Query\BuilderInterface`
+
 
 ### Method Summary
 
@@ -6951,9 +7021,9 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 
 ```php
 public function andWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -6963,9 +7033,9 @@ Appends a condition to the current conditions using an AND operator
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -6979,8 +7049,8 @@ $criteria->betweenWhere("price", 100.25, 200.50);
 
 ```php
 public function bind(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): CriteriaInterface;
 ```
 
@@ -7030,28 +7100,28 @@ $criteria->columns("id, category");
 
 // Array, one column per element
 $criteria->columns(
-[
-    "inv_id",
-    "inv_total",
-]
+    [
+        "inv_id",
+        "inv_total",
+    ]
 );
 
 // Array with named key. The name of the key acts as an
 // alias (`AS` clause)
 $criteria->columns(
-[
-    "inv_cst_id",
-    "total_invoices" => "COUNT(*)",
-]
+    [
+        "inv_cst_id",
+        "total_invoices" => "COUNT(*)",
+    ]
 );
 
 // Different models
 $criteria->columns(
-[
-    "\Phalcon\Models\Invoices.*",
-    "\Phalcon\Models\Customers.cst_name_first",
-    "\Phalcon\Models\Customers.cst_name_last",
-]
+    [
+        "\Phalcon\Models\Invoices.*",
+        "\Phalcon\Models\Customers.cst_name_first",
+        "\Phalcon\Models\Customers.cst_name_last",
+    ]
 );
 ```
 
@@ -7075,9 +7145,9 @@ Creates a query builder from criteria.
 <?php
 
 $invoices = Invoices::query()
-->where("inv_cst_id = :customerId:")
-->bind(["customerId" => 1])
-->createBuilder();
+    ->where("inv_cst_id = :customerId:")
+    ->bind(["customerId" => 1])
+    ->createBuilder();
 ```
 
 <h4 id="mvcmodelcriteria-distinct"><code>distinct()</code></h4>
@@ -7098,9 +7168,9 @@ Pre-loads the named relations when the criteria is executed
 
 ```php
 $invoices = Invoices::query()
-->eager(["customer"])
-->where("inv_total > 100")
-->execute();
+    ->eager(["customer"])
+    ->where("inv_total > 100")
+    ->execute();
 ```
 
 execute() forwards the parameters to Model::find(), which owns the
@@ -7131,10 +7201,10 @@ Adds the "for_update" parameter to the criteria
 
 ```php
 public static function fromInput(
-DiInterface $container,
-string $modelName,
-array $data,
-string $operator = "AND"
+    DiInterface $container,
+    string $modelName,
+    array $data,
+    string $operator = "AND"
 ): CriteriaInterface;
 ```
 
@@ -7244,8 +7314,8 @@ Adds the having clause to the criteria
 
 ```php
 public function inWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -7259,9 +7329,9 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 ```php
 public function innerJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -7271,18 +7341,18 @@ Adds an INNER join to the query
 <?php
 
 $criteria->innerJoin(
-Invoices::class
+    Invoices::class
 );
 
 $criteria->innerJoin(
-Invoices::class,
-"inv_cst_id = Customers.cst_id"
+    Invoices::class,
+    "inv_cst_id = Customers.cst_id"
 );
 
 $criteria->innerJoin(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -7290,10 +7360,10 @@ Invoices::class,
 
 ```php
 public function join(
-string $model,
-mixed $conditions = null,
-mixed $alias = null,
-mixed $type = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null,
+    mixed $type = null
 ): CriteriaInterface;
 ```
 
@@ -7303,25 +7373,25 @@ Adds an INNER join to the query
 <?php
 
 $criteria->join(
-Invoices::class
+    Invoices::class
 );
 
 $criteria->join(
-Invoices::class,
-"inv_cst_id = Customers.cst_id"
+    Invoices::class,
+    "inv_cst_id = Customers.cst_id"
 );
 
 $criteria->join(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 
 $criteria->join(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i",
-"LEFT"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i",
+    "LEFT"
 );
 ```
 
@@ -7329,9 +7399,9 @@ Invoices::class,
 
 ```php
 public function leftJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -7341,9 +7411,9 @@ Adds a LEFT join to the query
 <?php
 
 $criteria->leftJoin(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -7351,8 +7421,8 @@ Invoices::class,
 
 ```php
 public function limit(
-int $limit,
-int $offset = 0
+    int $limit,
+    int $offset = 0
 ): CriteriaInterface;
 ```
 
@@ -7368,9 +7438,9 @@ $criteria->limit("100", "200");
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -7384,8 +7454,8 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 ```php
 public function notInWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -7399,9 +7469,9 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 ```php
 public function orWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7419,9 +7489,9 @@ Adds the order-by clause to the criteria
 
 ```php
 public function rightJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -7431,9 +7501,9 @@ Adds a RIGHT join to the query
 <?php
 
 $criteria->rightJoin(
-Invoices::class,
-"i.inv_cst_id = Customers.cst_id",
-"i"
+    Invoices::class,
+    "i.inv_cst_id = Customers.cst_id",
+    "i"
 );
 ```
 
@@ -7465,13 +7535,14 @@ Adds the "shared_lock" parameter to the criteria
 
 ```php
 public function where(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
 Sets the conditions parameter in the criteria
+
 
 ## Mvc\Model\CriteriaInterface
 
@@ -7489,6 +7560,7 @@ Interface for Phalcon\Mvc\Model\Criteria
 </div>
 
 __Uses__ `Phalcon\Di\DiInterface`
+
 
 ### Method Summary
 
@@ -7693,9 +7765,9 @@ __Uses__ `Phalcon\Di\DiInterface`
 
 ```php
 public function andWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7705,9 +7777,9 @@ Appends a condition to the current conditions using an AND operator
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -7872,8 +7944,8 @@ Adds the having clause to the criteria
 
 ```php
 public function inWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -7887,9 +7959,9 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 ```php
 public function innerJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -7897,18 +7969,18 @@ Adds an INNER join to the query
 
 ```php
 $criteria->innerJoin(
-Orders::class
+    Orders::class
 );
 
 $criteria->innerJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id"
 );
 
 $criteria->innerJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id",
-"r"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -7916,9 +7988,9 @@ Orders::class,
 
 ```php
 public function leftJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -7926,9 +7998,9 @@ Adds a LEFT join to the query
 
 ```php
 $criteria->leftJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id",
-"r"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -7936,8 +8008,8 @@ Orders::class,
 
 ```php
 public function limit(
-int $limit,
-int $offset = 0
+    int $limit,
+    int $offset = 0
 ): CriteriaInterface;
 ```
 
@@ -7947,9 +8019,9 @@ Sets the limit parameter to the criteria
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): CriteriaInterface;
 ```
 
@@ -7963,8 +8035,8 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 ```php
 public function notInWhere(
-string $expr,
-array $values
+    string $expr,
+    array $values
 ): CriteriaInterface;
 ```
 
@@ -7978,9 +8050,9 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 ```php
 public function orWhere(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
@@ -7998,9 +8070,9 @@ Adds the order-by parameter to the criteria
 
 ```php
 public function rightJoin(
-string $model,
-mixed $conditions = null,
-mixed $alias = null
+    string $model,
+    mixed $conditions = null,
+    mixed $alias = null
 ): CriteriaInterface;
 ```
 
@@ -8008,9 +8080,9 @@ Adds a RIGHT join to the query
 
 ```php
 $criteria->rightJoin(
-Orders::class,
-"r.ord_id = OrdersProducts.oxp_ord_id",
-"r"
+    Orders::class,
+    "r.ord_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -8034,13 +8106,14 @@ Sets the "shared_lock" parameter to the criteria
 
 ```php
 public function where(
-string $conditions,
-mixed $bindParams = null,
-mixed $bindTypes = null
+    string $conditions,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 ): CriteriaInterface;
 ```
 
 Sets the conditions parameter in the criteria
+
 
 ## Mvc\Model\Eager\Loader
 
@@ -8058,6 +8131,7 @@ are hydrated.
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded` · `Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn` · `Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\ManagerInterface` · `Phalcon\Mvc\Model\Relation` · `Phalcon\Mvc\Model\RelationInterface` · `Phalcon\Mvc\Model\Resultset\Simple`
+
 
 ### Method Summary
 
@@ -8162,8 +8236,8 @@ public function __construct( ManagerInterface $manager );
 
 ```php
 public static function apply(
-mixed $record,
-array $eagerMap
+    mixed $record,
+    array $eagerMap
 ): void;
 ```
 
@@ -8193,9 +8267,9 @@ values are length-prefixed so ["a|b", "c"] cannot collide with
 
 ```php
 public function loadResultset(
-Simple $resultset,
-string $modelName,
-array $tree
+    Simple $resultset,
+    string $modelName,
+    array $tree
 ): void;
 ```
 
@@ -8211,9 +8285,9 @@ and gives the key values without a second pass over the cursor.
 
 ```php
 protected function buildMap(
-array $parents,
-string $modelName,
-array $tree
+    array $parents,
+    string $modelName,
+    array $tree
 ): array;
 ```
 
@@ -8223,10 +8297,10 @@ Builds one level of the map.
 
 ```php
 protected function buildNode(
-RelationInterface $relation,
-string $alias,
-array $parents,
-array $node
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
 ): array;
 ```
 
@@ -8236,10 +8310,10 @@ Builds a single map node: one query, indexed by the referenced field.
 
 ```php
 protected function buildThroughNode(
-RelationInterface $relation,
-string $alias,
-array $parents,
-array $node
+    RelationInterface $relation,
+    string $alias,
+    array $parents,
+    array $node
 ): array;
 ```
 
@@ -8255,9 +8329,9 @@ multiplication an inner join would cause.
 
 ```php
 protected function collectKeys(
-array $parents,
-array $fields,
-string $alias
+    array $parents,
+    array $fields,
+    string $alias
 ): array;
 ```
 
@@ -8267,10 +8341,10 @@ Distinct, non-null local key tuples across the parent set.
 
 ```php
 protected function fetchReferenced(
-RelationInterface $relation,
-string $alias,
-array $keys,
-array $options
+    RelationInterface $relation,
+    string $alias,
+    array $keys,
+    array $options
 ): Simple;
 ```
 
@@ -8291,12 +8365,13 @@ downstream.
 
 ```php
 protected function recordKey(
-mixed $record,
-array $fields
+    mixed $record,
+    array $fields
 ): string;
 ```
 
 Lookup key for an already-hydrated record.
+
 
 ## Mvc\Model\Eager\PathTree
 
@@ -8318,6 +8393,7 @@ this tree, not the number of elements supplied.
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exceptions\InvalidEagerPath` · `Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`
+
 
 ### Method Summary
 
@@ -8349,6 +8425,7 @@ __Uses__ `Phalcon\Mvc\Model\Exceptions\InvalidEagerPath` · `Phalcon\Mvc\Model\E
 public static function parse( array $spec ): array;
 ```
 
+
 ## Mvc\Model\Exception
 
 <span class="badge badge--class">Class</span>
@@ -8361,132 +8438,133 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Mvc\Model\Exception`**
-- [`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`](#mvcmodelbehaviorexceptionsmissingrequiredoption)
-- [`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`](#mvcmodelexceptionsbelongstorequiresobject)
-- [`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`](#mvcmodelexceptionsbindtypenotdefined)
-- [`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`](#mvcmodelexceptionscannotresolveattribute)
-- [`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`](#mvcmodelexceptionscolumnnotinmap)
-- [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`](#mvcmodelexceptionscolumnnotintablecolumns)
-- [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`](#mvcmodelexceptionscolumnnotintablemap)
-- [`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`](#mvcmodelexceptionscorruptcolumntype)
-- [`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`](#mvcmodelexceptionscursorisimmutable)
-- [`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`](#mvcmodelexceptionsdatatypenotdefined)
-- [`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`](#mvcmodelexceptionseagerrowlimitexceeded)
-- [`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`](#mvcmodelexceptionshandlermustimplementbindable)
-- [`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`](#mvcmodelexceptionsidentitynotincolumnmap)
-- [`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`](#mvcmodelexceptionsidentitynotintablecolumns)
-- [`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`](#mvcmodelexceptionsindexnotincursor)
-- [`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`](#mvcmodelexceptionsindexnotinrow)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`](#mvcmodelexceptionsinvalidconnectionservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidContainer`](#mvcmodelexceptionsinvalidcontainer)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`](#mvcmodelexceptionsinvaliddumpresultkey)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`](#mvcmodelexceptionsinvalideagerparameter)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`](#mvcmodelexceptionsinvalideagerpath)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`](#mvcmodelexceptionsinvalidfindparameters)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`](#mvcmodelexceptionsinvalidgetmodelnamereturn)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidModelName`](#mvcmodelexceptionsinvalidmodelname)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`](#mvcmodelexceptionsinvalidmodelsmanagerservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`](#mvcmodelexceptionsinvalidmodelsmetadataservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`](#mvcmodelexceptionsinvalidresultsetcacheservice)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`](#mvcmodelexceptionsinvalidreturnedrecord)
-- [`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`](#mvcmodelexceptionsinvalidserializationdata)
-- [`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`](#mvcmodelexceptionsmanagerormservicesunavailable)
-- [`Phalcon\Mvc\Model\Exceptions\MethodNotFound`](#mvcmodelexceptionsmethodnotfound)
-- [`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`](#mvcmodelexceptionsmissingeagerkeycolumn)
-- [`Phalcon\Mvc\Model\Exceptions\MissingMethodName`](#mvcmodelexceptionsmissingmethodname)
-- [`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`](#mvcmodelexceptionsmissingmodelclassname)
-- [`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`](#mvcmodelexceptionsmodelcouldnotload)
-- [`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`](#mvcmodelexceptionsmodelormservicesunavailable)
-- [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`](#mvcmodelexceptionsprimarykeyattributenotset)
-- [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`](#mvcmodelexceptionsprimarykeyrequired)
-- [`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`](#mvcmodelexceptionspropertynotaccessible)
-- [`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`](#mvcmodelexceptionsrecordcannotrefresh)
-- [`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`](#mvcmodelexceptionsrecordnotpersisted)
-- [`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`](#mvcmodelexceptionsreferencedfieldsmismatch)
-- [`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`](#mvcmodelexceptionsrelationaliasmustbestring)
-- [`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`](#mvcmodelexceptionsrelationnotdefined)
-- [`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`](#mvcmodelexceptionsrelationrequiresobjectorarray)
-- [`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`](#mvcmodelexceptionsresultsetcolumnnotinmap)
-- [`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`](#mvcmodelexceptionsrowisimmutable)
-- [`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`](#mvcmodelexceptionssnapshotsdisabled)
-- [`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`](#mvcmodelexceptionsstaticmethodrequiresoneargument)
-- [`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`](#mvcmodelexceptionsunknowneagerrelation)
-- [`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`](#mvcmodelexceptionsunknownrelationtype)
-- [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`](#mvcmodelexceptionsunsupportedeagerhydration)
-- [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`](#mvcmodelexceptionsunsupportedeageroption)
-- [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`](#mvcmodelexceptionsunsupportedeagerresultset)
-- [`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`](#mvcmodelexceptionsupdatesnapshotdisabled)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`](#mvcmodelmetadataexceptionscannotobtaintablecolumns)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`](#mvcmodelmetadataexceptionscolumnmapnotarray)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`](#mvcmodelmetadataexceptionscontainerrequired)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`](#mvcmodelmetadataexceptionscorruptedmetadata)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`](#mvcmodelmetadataexceptionsinvalidcontainer)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`](#mvcmodelmetadataexceptionsinvalidmetadataformodel)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`](#mvcmodelmetadataexceptionsmetadatadirectorynotwritable)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`](#mvcmodelmetadataexceptionsmetadatastrategyfailed)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`](#mvcmodelmetadataexceptionsnoannotationsforclass)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`](#mvcmodelmetadataexceptionsnopropertyannotationsforclass)
-- [`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`](#mvcmodelmetadataexceptionstablenotindatabase)
-- [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`](#mvcmodelqueryexceptionsambiguouscolumn)
-- [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`](#mvcmodelqueryexceptionsambiguousjoinrelation)
-- [`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`](#mvcmodelqueryexceptionsbindparameternotinplaceholders)
-- [`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`](#mvcmodelqueryexceptionsbindtyperequiresarray)
-- [`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`](#mvcmodelqueryexceptionsbindvaluerequired)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`](#mvcmodelqueryexceptionsbuilderbuildercolumnnotinmap)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`](#mvcmodelqueryexceptionsbuilderbuilderconditioninvalid)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`](#mvcmodelqueryexceptionsbuildermodelrequired)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`](#mvcmodelqueryexceptionsbuildernoprimarykey)
-- [`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`](#mvcmodelqueryexceptionsbuilderoperatornotavailable)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`](#mvcmodelqueryexceptionscolumnnotindomain)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`](#mvcmodelqueryexceptionscolumnnotinselectedmodels)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`](#mvcmodelqueryexceptionscorruptedast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`](#mvcmodelqueryexceptionscorrupteddeleteast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`](#mvcmodelqueryexceptionscorruptedinsertast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`](#mvcmodelqueryexceptionscorruptedselectast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`](#mvcmodelqueryexceptionscorruptedupdateast)
-- [`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`](#mvcmodelqueryexceptionsdeletemultiplenotsupported)
-- [`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`](#mvcmodelqueryexceptionsduplicatealias)
-- [`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`](#mvcmodelqueryexceptionsemptyarrayplaceholdervalue)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`](#mvcmodelqueryexceptionsinsertcolumncountmismatch)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`](#mvcmodelqueryexceptionsinvalidcachedresultset)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`](#mvcmodelqueryexceptionsinvalidcachingoptions)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`](#mvcmodelqueryexceptionsinvalidcolumndefinition)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`](#mvcmodelqueryexceptionsinvalidinjectedmanager)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`](#mvcmodelqueryexceptionsinvalidinjectedmetadata)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`](#mvcmodelqueryexceptionsinvalidquerycacheservice)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`](#mvcmodelqueryexceptionsinvalidresultsetclass)
-- [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`](#mvcmodelqueryexceptionsinvalidresultsetrowclass)
-- [`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`](#mvcmodelqueryexceptionsjoinaliasalreadyused)
-- [`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`](#mvcmodelqueryexceptionsjoinfieldcountmismatch)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`](#mvcmodelqueryexceptionsmissingcachekey)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`](#mvcmodelqueryexceptionsmissingmetadata)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`](#mvcmodelqueryexceptionsmissingmodelattribute)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`](#mvcmodelqueryexceptionsmissingmodelsmanager)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`](#mvcmodelqueryexceptionsmixeddatabasesystems)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`](#mvcmodelqueryexceptionsmodelsourcenotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`](#mvcmodelqueryexceptionsmodelslistnotloaded)
-- [`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`](#mvcmodelqueryexceptionsmultiplesqlstatementsnotsupported)
-- [`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`](#mvcmodelqueryexceptionsnomodelforalias)
-- [`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`](#mvcmodelqueryexceptionsphqlcolumnnotinmap)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`](#mvcmodelqueryexceptionsreadconnectionmissing)
-- [`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`](#mvcmodelqueryexceptionsrelationshipnotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`](#mvcmodelqueryexceptionsresultsetclassnotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`](#mvcmodelqueryexceptionsresultsetnoncacheable)
-- [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`](#mvcmodelqueryexceptionsresultsetrowclassnotfound)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`](#mvcmodelqueryexceptionsunknownbindtype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`](#mvcmodelqueryexceptionsunknowncolumntype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`](#mvcmodelqueryexceptionsunknownjointype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`](#mvcmodelqueryexceptionsunknownmodeloralias)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`](#mvcmodelqueryexceptionsunknownphqlexpression)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`](#mvcmodelqueryexceptionsunknownphqlexpressiontype)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`](#mvcmodelqueryexceptionsunknownphqlstatement)
-- [`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`](#mvcmodelqueryexceptionsupdatemultiplenotsupported)
-- [`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`](#mvcmodelqueryexceptionswriteconnectionmissing)
-- [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
-- [`Phalcon\Mvc\Model\ValidationFailed`](#mvcmodelvalidationfailed)
+    - **`Phalcon\Mvc\Model\Exception`**
+        - [`Phalcon\Mvc\Model\Behavior\Exceptions\MissingRequiredOption`](#mvcmodelbehaviorexceptionsmissingrequiredoption)
+        - [`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`](#mvcmodelexceptionsbelongstorequiresobject)
+        - [`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`](#mvcmodelexceptionsbindtypenotdefined)
+        - [`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`](#mvcmodelexceptionscannotresolveattribute)
+        - [`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`](#mvcmodelexceptionscolumnnotinmap)
+        - [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`](#mvcmodelexceptionscolumnnotintablecolumns)
+        - [`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`](#mvcmodelexceptionscolumnnotintablemap)
+        - [`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`](#mvcmodelexceptionscorruptcolumntype)
+        - [`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`](#mvcmodelexceptionscursorisimmutable)
+        - [`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`](#mvcmodelexceptionsdatatypenotdefined)
+        - [`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`](#mvcmodelexceptionseagerrowlimitexceeded)
+        - [`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`](#mvcmodelexceptionshandlermustimplementbindable)
+        - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`](#mvcmodelexceptionsidentitynotincolumnmap)
+        - [`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`](#mvcmodelexceptionsidentitynotintablecolumns)
+        - [`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`](#mvcmodelexceptionsindexnotincursor)
+        - [`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`](#mvcmodelexceptionsindexnotinrow)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`](#mvcmodelexceptionsinvalidconnectionservice)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidContainer`](#mvcmodelexceptionsinvalidcontainer)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`](#mvcmodelexceptionsinvaliddumpresultkey)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`](#mvcmodelexceptionsinvalideagerparameter)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`](#mvcmodelexceptionsinvalideagerpath)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`](#mvcmodelexceptionsinvalidfindparameters)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`](#mvcmodelexceptionsinvalidgetmodelnamereturn)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidModelName`](#mvcmodelexceptionsinvalidmodelname)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`](#mvcmodelexceptionsinvalidmodelsmanagerservice)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`](#mvcmodelexceptionsinvalidmodelsmetadataservice)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`](#mvcmodelexceptionsinvalidresultsetcacheservice)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`](#mvcmodelexceptionsinvalidreturnedrecord)
+        - [`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`](#mvcmodelexceptionsinvalidserializationdata)
+        - [`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`](#mvcmodelexceptionsmanagerormservicesunavailable)
+        - [`Phalcon\Mvc\Model\Exceptions\MethodNotFound`](#mvcmodelexceptionsmethodnotfound)
+        - [`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`](#mvcmodelexceptionsmissingeagerkeycolumn)
+        - [`Phalcon\Mvc\Model\Exceptions\MissingMethodName`](#mvcmodelexceptionsmissingmethodname)
+        - [`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`](#mvcmodelexceptionsmissingmodelclassname)
+        - [`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`](#mvcmodelexceptionsmodelcouldnotload)
+        - [`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`](#mvcmodelexceptionsmodelormservicesunavailable)
+        - [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`](#mvcmodelexceptionsprimarykeyattributenotset)
+        - [`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`](#mvcmodelexceptionsprimarykeyrequired)
+        - [`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`](#mvcmodelexceptionspropertynotaccessible)
+        - [`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`](#mvcmodelexceptionsrecordcannotrefresh)
+        - [`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`](#mvcmodelexceptionsrecordnotpersisted)
+        - [`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`](#mvcmodelexceptionsreferencedfieldsmismatch)
+        - [`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`](#mvcmodelexceptionsrelationaliasmustbestring)
+        - [`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`](#mvcmodelexceptionsrelationnotdefined)
+        - [`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`](#mvcmodelexceptionsrelationrequiresobjectorarray)
+        - [`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`](#mvcmodelexceptionsresultsetcolumnnotinmap)
+        - [`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`](#mvcmodelexceptionsrowisimmutable)
+        - [`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`](#mvcmodelexceptionssnapshotsdisabled)
+        - [`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`](#mvcmodelexceptionsstaticmethodrequiresoneargument)
+        - [`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`](#mvcmodelexceptionsunknowneagerrelation)
+        - [`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`](#mvcmodelexceptionsunknownrelationtype)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`](#mvcmodelexceptionsunsupportedeagerhydration)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`](#mvcmodelexceptionsunsupportedeageroption)
+        - [`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`](#mvcmodelexceptionsunsupportedeagerresultset)
+        - [`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`](#mvcmodelexceptionsupdatesnapshotdisabled)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`](#mvcmodelmetadataexceptionscannotobtaintablecolumns)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`](#mvcmodelmetadataexceptionscolumnmapnotarray)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`](#mvcmodelmetadataexceptionscontainerrequired)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`](#mvcmodelmetadataexceptionscorruptedmetadata)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`](#mvcmodelmetadataexceptionsinvalidcontainer)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`](#mvcmodelmetadataexceptionsinvalidmetadataformodel)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`](#mvcmodelmetadataexceptionsmetadatadirectorynotwritable)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`](#mvcmodelmetadataexceptionsmetadatastrategyfailed)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`](#mvcmodelmetadataexceptionsnoannotationsforclass)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`](#mvcmodelmetadataexceptionsnopropertyannotationsforclass)
+        - [`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`](#mvcmodelmetadataexceptionstablenotindatabase)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`](#mvcmodelqueryexceptionsambiguouscolumn)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`](#mvcmodelqueryexceptionsambiguousjoinrelation)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`](#mvcmodelqueryexceptionsbindparameternotinplaceholders)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`](#mvcmodelqueryexceptionsbindtyperequiresarray)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`](#mvcmodelqueryexceptionsbindvaluerequired)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`](#mvcmodelqueryexceptionsbuilderbuildercolumnnotinmap)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`](#mvcmodelqueryexceptionsbuilderbuilderconditioninvalid)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`](#mvcmodelqueryexceptionsbuildermodelrequired)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`](#mvcmodelqueryexceptionsbuildernoprimarykey)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`](#mvcmodelqueryexceptionsbuilderoperatornotavailable)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`](#mvcmodelqueryexceptionscolumnnotindomain)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`](#mvcmodelqueryexceptionscolumnnotinselectedmodels)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`](#mvcmodelqueryexceptionscorruptedast)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`](#mvcmodelqueryexceptionscorrupteddeleteast)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`](#mvcmodelqueryexceptionscorruptedinsertast)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`](#mvcmodelqueryexceptionscorruptedselectast)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`](#mvcmodelqueryexceptionscorruptedupdateast)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`](#mvcmodelqueryexceptionsdeletemultiplenotsupported)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`](#mvcmodelqueryexceptionsduplicatealias)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`](#mvcmodelqueryexceptionsemptyarrayplaceholdervalue)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`](#mvcmodelqueryexceptionsinsertcolumncountmismatch)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`](#mvcmodelqueryexceptionsinvalidcachedresultset)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`](#mvcmodelqueryexceptionsinvalidcachingoptions)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`](#mvcmodelqueryexceptionsinvalidcolumndefinition)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`](#mvcmodelqueryexceptionsinvalidinjectedmanager)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`](#mvcmodelqueryexceptionsinvalidinjectedmetadata)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`](#mvcmodelqueryexceptionsinvalidquerycacheservice)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`](#mvcmodelqueryexceptionsinvalidresultsetclass)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`](#mvcmodelqueryexceptionsinvalidresultsetrowclass)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`](#mvcmodelqueryexceptionsjoinaliasalreadyused)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`](#mvcmodelqueryexceptionsjoinfieldcountmismatch)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`](#mvcmodelqueryexceptionsmissingcachekey)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`](#mvcmodelqueryexceptionsmissingmetadata)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`](#mvcmodelqueryexceptionsmissingmodelattribute)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`](#mvcmodelqueryexceptionsmissingmodelsmanager)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`](#mvcmodelqueryexceptionsmixeddatabasesystems)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`](#mvcmodelqueryexceptionsmodelsourcenotfound)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`](#mvcmodelqueryexceptionsmodelslistnotloaded)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`](#mvcmodelqueryexceptionsmultiplesqlstatementsnotsupported)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`](#mvcmodelqueryexceptionsnomodelforalias)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`](#mvcmodelqueryexceptionsphqlcolumnnotinmap)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`](#mvcmodelqueryexceptionsreadconnectionmissing)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`](#mvcmodelqueryexceptionsrelationshipnotfound)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`](#mvcmodelqueryexceptionsresultsetclassnotfound)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`](#mvcmodelqueryexceptionsresultsetnoncacheable)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`](#mvcmodelqueryexceptionsresultsetrowclassnotfound)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`](#mvcmodelqueryexceptionsunknownbindtype)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`](#mvcmodelqueryexceptionsunknowncolumntype)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`](#mvcmodelqueryexceptionsunknownjointype)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`](#mvcmodelqueryexceptionsunknownmodeloralias)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`](#mvcmodelqueryexceptionsunknownphqlexpression)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`](#mvcmodelqueryexceptionsunknownphqlexpressiontype)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`](#mvcmodelqueryexceptionsunknownphqlstatement)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`](#mvcmodelqueryexceptionsupdatemultiplenotsupported)
+        - [`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`](#mvcmodelqueryexceptionswriteconnectionmissing)
+        - [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
+        - [`Phalcon\Mvc\Model\ValidationFailed`](#mvcmodelvalidationfailed)
 
 </div>
+
 
 ## Mvc\Model\Exceptions\BelongsToRequiresObject
 
@@ -8496,12 +8574,13 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8520,10 +8599,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $className,
-string $relationName
+    string $className,
+    string $relationName
 );
 ```
+
 
 ## Mvc\Model\Exceptions\BindTypeNotDefined
 
@@ -8533,12 +8613,13 @@ string $relationName
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8557,10 +8638,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\CannotResolveAttribute
 
@@ -8570,12 +8652,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\CannotResolveAttribute`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8594,10 +8677,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $attribute,
-string $className
+    string $attribute,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ColumnNotInMap
 
@@ -8607,12 +8691,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ColumnNotInMap`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8631,10 +8716,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ColumnNotInTableColumns
 
@@ -8644,12 +8730,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableColumns`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8668,10 +8755,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ColumnNotInTableMap
 
@@ -8681,12 +8769,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8705,10 +8794,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\CorruptColumnType
 
@@ -8718,12 +8808,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\CorruptColumnType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8744,6 +8835,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\CursorIsImmutable
 
 <span class="badge badge--class">Class</span>
@@ -8752,12 +8844,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\CursorIsImmutable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8778,6 +8871,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\DataTypeNotDefined
 
 <span class="badge badge--class">Class</span>
@@ -8786,12 +8880,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8810,10 +8905,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $column,
-string $className
+    string $column,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\EagerRowLimitExceeded
 
@@ -8823,12 +8919,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8847,11 +8944,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $modelName,
-int $rowCount,
-int $limit
+    string $modelName,
+    int $rowCount,
+    int $limit
 );
 ```
+
 
 ## Mvc\Model\Exceptions\HandlerMustImplementBindable
 
@@ -8861,12 +8959,13 @@ int $limit
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\HandlerMustImplementBindable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8887,6 +8986,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\IdentityNotInColumnMap
 
 <span class="badge badge--class">Class</span>
@@ -8895,12 +8995,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8919,10 +9020,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $identityField,
-string $className
+    string $identityField,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\IdentityNotInTableColumns
 
@@ -8932,12 +9034,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8956,10 +9059,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $identityField,
-string $className
+    string $identityField,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\IndexNotInCursor
 
@@ -8969,12 +9073,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\IndexNotInCursor`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -8995,6 +9100,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\IndexNotInRow
 
 <span class="badge badge--class">Class</span>
@@ -9003,12 +9109,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\IndexNotInRow`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9029,6 +9136,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidConnectionService
 
 <span class="badge badge--class">Class</span>
@@ -9037,12 +9145,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidConnectionService`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9063,6 +9172,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidContainer
 
 <span class="badge badge--class">Class</span>
@@ -9071,12 +9181,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidContainer`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidContainer`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9097,6 +9208,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidDumpResultKey
 
 <span class="badge badge--class">Class</span>
@@ -9105,12 +9217,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9131,6 +9244,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidEagerParameter
 
 <span class="badge badge--class">Class</span>
@@ -9139,12 +9253,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9165,6 +9280,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidEagerPath
 
 <span class="badge badge--class">Class</span>
@@ -9173,12 +9289,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidEagerPath`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9199,6 +9316,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidFindParameters
 
 <span class="badge badge--class">Class</span>
@@ -9207,12 +9325,13 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidFindParameters`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9233,6 +9352,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidGetModelNameReturn
 
 <span class="badge badge--class">Class</span>
@@ -9241,12 +9361,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidGetModelNameReturn`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9267,6 +9388,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidModelName
 
 <span class="badge badge--class">Class</span>
@@ -9275,12 +9397,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidModelName`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidModelName`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9301,6 +9424,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidModelsManagerService
 
 <span class="badge badge--class">Class</span>
@@ -9309,12 +9433,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9335,6 +9460,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidModelsMetadataService
 
 <span class="badge badge--class">Class</span>
@@ -9343,12 +9469,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9369,6 +9496,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidResultsetCacheService
 
 <span class="badge badge--class">Class</span>
@@ -9377,12 +9505,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9403,6 +9532,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidReturnedRecord
 
 <span class="badge badge--class">Class</span>
@@ -9411,12 +9541,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9437,6 +9568,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\InvalidSerializationData
 
 <span class="badge badge--class">Class</span>
@@ -9445,12 +9577,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\InvalidSerializationData`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9471,6 +9604,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\ManagerOrmServicesUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -9479,12 +9613,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9505,6 +9640,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\MethodNotFound
 
 <span class="badge badge--class">Class</span>
@@ -9513,12 +9649,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MethodNotFound`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\MethodNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9537,10 +9674,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $method,
-string $modelName
+    string $method,
+    string $modelName
 );
 ```
+
 
 ## Mvc\Model\Exceptions\MissingEagerKeyColumn
 
@@ -9550,12 +9688,13 @@ string $modelName
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9574,10 +9713,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $alias,
-string $column
+    string $alias,
+    string $column
 );
 ```
+
 
 ## Mvc\Model\Exceptions\MissingMethodName
 
@@ -9587,12 +9727,13 @@ string $column
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MissingMethodName`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\MissingMethodName`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9613,6 +9754,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\MissingModelClassName
 
 <span class="badge badge--class">Class</span>
@@ -9621,12 +9763,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\MissingModelClassName`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9647,6 +9790,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $paramKey );
 ```
 
+
 ## Mvc\Model\Exceptions\ModelCouldNotLoad
 
 <span class="badge badge--class">Class</span>
@@ -9655,12 +9799,13 @@ public function __construct( string $paramKey );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9681,6 +9826,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $modelName );
 ```
 
+
 ## Mvc\Model\Exceptions\ModelOrmServicesUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -9689,12 +9835,13 @@ public function __construct( string $modelName );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ModelOrmServicesUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9715,6 +9862,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet
 
 <span class="badge badge--class">Class</span>
@@ -9723,12 +9871,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyAttributeNotSet`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9747,10 +9896,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $attribute,
-string $className
+    string $attribute,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\PrimaryKeyRequired
 
@@ -9760,12 +9910,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\PrimaryKeyRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9786,6 +9937,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\PropertyNotAccessible
 
 <span class="badge badge--class">Class</span>
@@ -9794,12 +9946,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\PropertyNotAccessible`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9818,10 +9971,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $property,
-string $className
+    string $property,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RecordCannotRefresh
 
@@ -9831,12 +9985,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\RecordCannotRefresh`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9857,6 +10012,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\RecordNotPersisted
 
 <span class="badge badge--class">Class</span>
@@ -9865,12 +10021,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\RecordNotPersisted`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9891,6 +10048,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\ReferencedFieldsMismatch
 
 <span class="badge badge--class">Class</span>
@@ -9899,12 +10057,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9923,11 +10082,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $relationType,
-string $entityName,
-string $referencedEntity
+    string $relationType,
+    string $entityName,
+    string $referencedEntity
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RelationAliasMustBeString
 
@@ -9937,12 +10097,13 @@ string $referencedEntity
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9961,11 +10122,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $relationType,
-string $entityName,
-string $referencedEntity
+    string $relationType,
+    string $entityName,
+    string $referencedEntity
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RelationNotDefined
 
@@ -9975,12 +10137,13 @@ string $referencedEntity
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\RelationNotDefined`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -9999,10 +10162,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $className,
-string $alias
+    string $className,
+    string $alias
 );
 ```
+
 
 ## Mvc\Model\Exceptions\RelationRequiresObjectOrArray
 
@@ -10012,12 +10176,13 @@ string $alias
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10036,10 +10201,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $className,
-string $relationName
+    string $className,
+    string $relationName
 );
 ```
+
 
 ## Mvc\Model\Exceptions\ResultsetColumnNotInMap
 
@@ -10049,12 +10215,13 @@ string $relationName
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10075,6 +10242,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Model\Exceptions\RowIsImmutable
 
 <span class="badge badge--class">Class</span>
@@ -10083,12 +10251,13 @@ public function __construct( string $key );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\RowIsImmutable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10109,6 +10278,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\SnapshotsDisabled
 
 <span class="badge badge--class">Class</span>
@@ -10117,12 +10287,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10143,6 +10314,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\StaticMethodRequiresOneArgument
 
 <span class="badge badge--class">Class</span>
@@ -10151,12 +10323,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10175,10 +10348,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $method,
-string $className
+    string $method,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\Exceptions\UnknownEagerRelation
 
@@ -10188,12 +10362,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10212,10 +10387,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $modelName,
-string $alias
+    string $modelName,
+    string $alias
 );
 ```
+
 
 ## Mvc\Model\Exceptions\UnknownRelationType
 
@@ -10225,12 +10401,13 @@ string $alias
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnknownRelationType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10251,6 +10428,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\UnsupportedEagerHydration
 
 <span class="badge badge--class">Class</span>
@@ -10259,12 +10437,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10285,6 +10464,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Exceptions\UnsupportedEagerOption
 
 <span class="badge badge--class">Class</span>
@@ -10293,12 +10473,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10319,6 +10500,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $option );
 ```
 
+
 ## Mvc\Model\Exceptions\UnsupportedEagerResultset
 
 <span class="badge badge--class">Class</span>
@@ -10327,12 +10509,13 @@ public function __construct( string $option );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10353,6 +10536,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Exceptions\UpdateSnapshotDisabled
 
 <span class="badge badge--class">Class</span>
@@ -10361,12 +10545,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -10386,6 +10571,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 ```php
 public function __construct( string $className );
 ```
+
 
 ## Mvc\Model\Hydration\CaseInsensitiveColumnMap
 
@@ -10417,12 +10603,13 @@ public function __construct( string $className );
 
 ```php
 public static function caseInsensitiveColumnMap(
-mixed $columnMap,
-mixed $key
+    mixed $columnMap,
+    mixed $key
 ): string;
 ```
 
 Attempts to find key case-insensitively
+
 
 ## Mvc\Model\Hydration\CloneResultMapHydrate
 
@@ -10436,6 +10623,7 @@ Attempts to find key case-insensitively
 </div>
 
 __Uses__ `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -10455,14 +10643,15 @@ __Uses__ `Phalcon\Mvc\Model` · `Phalcon\Mvc\Model\Exceptions\ColumnNotInMap` ·
 
 ```php
 public static function cloneResultMapHydrate(
-array $data,
-mixed $columnMap,
-int $hydrationMode,
-string $calledClass = "Phalcon\\Mvc\\Model"
+    array $data,
+    mixed $columnMap,
+    int $hydrationMode,
+    string $calledClass = "Phalcon\\Mvc\\Model"
 );
 ```
 
 Returns an hydrated result based on the data and the column map
+
 
 ## Mvc\Model\Manager
 
@@ -10484,10 +10673,10 @@ use Phalcon\Mvc\Model\Manager as ModelsManager;
 $di = new Di();
 
 $di->set(
-"modelsManager",
-function() {
-    return new ModelsManager();
-}
+    "modelsManager",
+    function() {
+        return new ModelsManager();
+    }
 );
 
 $invoice = new Invoices($di);
@@ -10500,6 +10689,7 @@ $invoice = new Invoices($di);
 </div>
 
 __Uses__ `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionProperty`
+
 
 ### Method Summary
 
@@ -11140,8 +11330,8 @@ Destroys the current PHQL cache
 
 ```php
 public function addBehavior(
-ModelInterface $model,
-BehaviorInterface $behavior
+    ModelInterface $model,
+    BehaviorInterface $behavior
 ): void;
 ```
 
@@ -11151,11 +11341,11 @@ Binds a behavior to a model
 
 ```php
 public function addBelongsTo(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -11165,11 +11355,11 @@ Setup a relation reverse many to one between two models
 
 ```php
 public function addHasMany(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -11179,14 +11369,14 @@ Setup a relation 1-n between two models
 
 ```php
 public function addHasManyToMany(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -11196,11 +11386,11 @@ Setups a relation n-m between two models
 
 ```php
 public function addHasOne(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -11210,14 +11400,14 @@ Setup a 1-1 relation between two models
 
 ```php
 public function addHasOneThrough(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -11251,9 +11441,9 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 ```php
 public function executeQuery(
-string $phql,
-mixed $placeholders = null,
-mixed $types = null
+    string $phql,
+    mixed $placeholders = null,
+    mixed $types = null
 ): mixed;
 ```
 
@@ -11283,8 +11473,8 @@ $manager->executeQuery('DELETE FROM Invoices WHERE inv_id = :id:', ['id' => 1]);
 
 ```php
 public function existsBelongsTo(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11294,8 +11484,8 @@ Checks whether a model has a belongsTo relation with another model
 
 ```php
 public function existsHasMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11305,8 +11495,8 @@ Checks whether a model has a hasMany relation with another model
 
 ```php
 public function existsHasManyToMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11316,8 +11506,8 @@ Checks whether a model has a hasManyToMany relation with another model
 
 ```php
 public function existsHasOne(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11327,8 +11517,8 @@ Checks whether a model has a hasOne relation with another model
 
 ```php
 public function existsHasOneThrough(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11344,7 +11534,7 @@ Gets all the belongsTo relations defined in a model
 
 ```php
 $relations = $modelsManager->getBelongsTo(
-new Invoices()
+    new Invoices()
 );
 ```
 
@@ -11352,11 +11542,11 @@ new Invoices()
 
 ```php
 public function getBelongsToRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -11374,8 +11564,8 @@ Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
 
 ```php
 public function getConnectionService(
-ModelInterface $model,
-array $connectionServices
+    ModelInterface $model,
+    array $connectionServices
 ): string;
 ```
 
@@ -11419,11 +11609,11 @@ Gets hasMany relations defined on a model
 
 ```php
 public function getHasManyRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -11457,11 +11647,11 @@ Gets hasOne relations defined on a model
 
 ```php
 public function getHasOneRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ModelInterface|bool;
 ```
 
@@ -11535,8 +11725,8 @@ Returns the connection service name used to read data related to a model
 
 ```php
 public function getRelationByAlias(
-string $modelName,
-string $alias
+    string $modelName,
+    string $alias
 ): RelationInterface|bool;
 ```
 
@@ -11546,10 +11736,10 @@ Returns a relation by its alias
 
 ```php
 public function getRelationRecords(
-RelationInterface $relation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    RelationInterface $relation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 );
 ```
 
@@ -11567,8 +11757,8 @@ Query all the relationships defined on a model
 
 ```php
 public function getRelationsBetween(
-string $first,
-string $second
+    string $first,
+    string $second
 ): RelationInterface[]|bool;
 ```
 
@@ -11578,8 +11768,8 @@ Query the first relationship defined between two models
 
 ```php
 public function getReusableRecords(
-string $modelName,
-string $key
+    string $modelName,
+    string $key
 );
 ```
 
@@ -11605,8 +11795,8 @@ Returns the connection service name used to write data related to a model
 
 ```php
 public function hasBelongsTo(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11616,8 +11806,8 @@ Checks whether a model has a belongsTo relation with another model
 
 ```php
 public function hasHasMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11627,8 +11817,8 @@ Checks whether a model has a hasMany relation with another model
 
 ```php
 public function hasHasManyToMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11638,8 +11828,8 @@ Checks whether a model has a hasManyToMany relation with another model
 
 ```php
 public function hasHasOne(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11649,8 +11839,8 @@ Checks whether a model has a hasOne relation with another model
 
 ```php
 public function hasHasOneThrough(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -11692,8 +11882,8 @@ Checks if a model is using dynamic update instead of all-field update
 
 ```php
 final public function isVisibleModelProperty(
-ModelInterface $model,
-string $property
+    ModelInterface $model,
+    string $property
 ): bool;
 ```
 
@@ -11701,8 +11891,8 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-new Invoices(),
-"name"
+    new Invoices(),
+    "name"
 );
 ```
 
@@ -11710,8 +11900,8 @@ new Invoices(),
 
 ```php
 public function keepSnapshots(
-ModelInterface $model,
-bool $keepSnapshots
+    ModelInterface $model,
+    bool $keepSnapshots
 ): void;
 ```
 
@@ -11729,8 +11919,8 @@ Loads a model throwing an exception if it does not exist
 
 ```php
 final public static function mergeFindParameters(
-mixed $findParamsOne,
-mixed $findParamsTwo
+    mixed $findParamsOne,
+    mixed $findParamsTwo
 ): array;
 ```
 
@@ -11748,9 +11938,9 @@ loaders can reuse the merge instead of duplicating these semantics.
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $eventName,
-mixed $data
+    ModelInterface $model,
+    string $eventName,
+    mixed $data
 );
 ```
 
@@ -11762,8 +11952,8 @@ meaning that a least one was implemented
 
 ```php
 public function notifyEvent(
-string $eventName,
-ModelInterface $model
+    string $eventName,
+    ModelInterface $model
 );
 ```
 
@@ -11785,8 +11975,8 @@ subsequent reads to the write connection.
 
 ```php
 public function removeBehavior(
-ModelInterface $model,
-string $behaviorClass
+    ModelInterface $model,
+    string $behaviorClass
 ): void;
 ```
 
@@ -11806,8 +11996,8 @@ manager instance is reused across requests.
 
 ```php
 public function setConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -11817,8 +12007,8 @@ Sets both write and read connection service for a model
 
 ```php
 public function setCustomEventsManager(
-ModelInterface $model,
-EventsManagerInterface $eventsManager
+    ModelInterface $model,
+    EventsManagerInterface $eventsManager
 ): void;
 ```
 
@@ -11852,14 +12042,14 @@ Sets the prefix for all model sources.
 use Phalcon\Mvc\Model\Manager;
 
 $di->set(
-"modelsManager",
-function () {
-    $modelsManager = new Manager();
+    "modelsManager",
+    function () {
+        $modelsManager = new Manager();
 
-    $modelsManager->setModelPrefix("wp_");
+        $modelsManager->setModelPrefix("wp_");
 
-    return $modelsManager;
-}
+        return $modelsManager;
+    }
 );
 
 $invoices = new Invoices();
@@ -11873,8 +12063,8 @@ $param string $prefix
 
 ```php
 public function setModelSchema(
-ModelInterface $model,
-string $schema
+    ModelInterface $model,
+    string $schema
 ): void;
 ```
 
@@ -11884,8 +12074,8 @@ Sets the mapped schema for a model
 
 ```php
 public function setModelSource(
-ModelInterface $model,
-string $source
+    ModelInterface $model,
+    string $source
 ): void;
 ```
 
@@ -11895,8 +12085,8 @@ Sets the mapped source for a model
 
 ```php
 public function setReadConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -11906,9 +12096,9 @@ Sets read connection service for a model
 
 ```php
 public function setReusableRecords(
-string $modelName,
-string $key,
-mixed $records
+    string $modelName,
+    string $key,
+    mixed $records
 ): void;
 ```
 
@@ -11928,8 +12118,8 @@ further reads for that write service use the write connection.
 
 ```php
 public function setWriteConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -11939,8 +12129,8 @@ Sets write connection service for a model
 
 ```php
 public function useDynamicUpdate(
-ModelInterface $model,
-bool $dynamicUpdate
+    ModelInterface $model,
+    bool $dynamicUpdate
 ): void;
 ```
 
@@ -11952,13 +12142,14 @@ Sets if a model must use dynamic update instead of the all-field update
 
 ```php
 protected function getConnection(
-ModelInterface $model,
-array $connectionServices
+    ModelInterface $model,
+    array $connectionServices
 ): AdapterInterface;
 ```
 
 Returns the connection to read or write data related to a model
 depending on the connection services.
+
 
 ## Mvc\Model\ManagerInterface
 
@@ -11976,6 +12167,7 @@ Interface for Phalcon\Mvc\Model\Manager
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface`
+
 
 ### Method Summary
 
@@ -12332,8 +12524,8 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Mvc\ModelInterface` �
 
 ```php
 public function addBehavior(
-ModelInterface $model,
-BehaviorInterface $behavior
+    ModelInterface $model,
+    BehaviorInterface $behavior
 ): void;
 ```
 
@@ -12343,11 +12535,11 @@ Binds a behavior to a model
 
 ```php
 public function addBelongsTo(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -12357,11 +12549,11 @@ Setup a relation reverse 1-1  between two models
 
 ```php
 public function addHasMany(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -12371,14 +12563,14 @@ Setup a relation 1-n between two models
 
 ```php
 public function addHasManyToMany(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -12388,11 +12580,11 @@ Setups a relation n-m between two models
 
 ```php
 public function addHasOne(
-ModelInterface $model,
-mixed $fields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -12402,14 +12594,14 @@ Setup a 1-1 relation between two models
 
 ```php
 public function addHasOneThrough(
-ModelInterface $model,
-mixed $fields,
-string $intermediateModel,
-mixed $intermediateFields,
-mixed $intermediateReferencedFields,
-string $referencedModel,
-mixed $referencedFields,
-array $options = []
+    ModelInterface $model,
+    mixed $fields,
+    string $intermediateModel,
+    mixed $intermediateFields,
+    mixed $intermediateReferencedFields,
+    string $referencedModel,
+    mixed $referencedFields,
+    array $options = []
 ): RelationInterface;
 ```
 
@@ -12443,9 +12635,9 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 ```php
 public function executeQuery(
-string $phql,
-mixed $placeholders = null,
-mixed $types = null
+    string $phql,
+    mixed $placeholders = null,
+    mixed $types = null
 ): mixed;
 ```
 
@@ -12463,11 +12655,11 @@ Gets belongsTo relations defined on a model
 
 ```php
 public function getBelongsToRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -12493,11 +12685,11 @@ Gets hasMany relations defined on a model
 
 ```php
 public function getHasManyRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ResultsetInterface|bool;
 ```
 
@@ -12531,11 +12723,11 @@ Gets hasOne relations defined on a model
 
 ```php
 public function getHasOneRecords(
-string $modelName,
-string $modelRelation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    string $modelName,
+    string $modelRelation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 ): ModelInterface|bool;
 ```
 
@@ -12601,8 +12793,8 @@ Returns the connection service name used to read data related to a model
 
 ```php
 public function getRelationByAlias(
-string $modelName,
-string $alias
+    string $modelName,
+    string $alias
 ): RelationInterface|bool;
 ```
 
@@ -12612,10 +12804,10 @@ Returns a relation by its alias
 
 ```php
 public function getRelationRecords(
-RelationInterface $relation,
-ModelInterface $record,
-mixed $parameters = null,
-string|null $method = null
+    RelationInterface $relation,
+    ModelInterface $record,
+    mixed $parameters = null,
+    string|null $method = null
 );
 ```
 
@@ -12633,8 +12825,8 @@ Query all the relationships defined on a model
 
 ```php
 public function getRelationsBetween(
-string $first,
-string $second
+    string $first,
+    string $second
 ): RelationInterface[]|bool;
 ```
 
@@ -12644,8 +12836,8 @@ Query the relations between two models
 
 ```php
 public function getReusableRecords(
-string $modelName,
-string $key
+    string $modelName,
+    string $key
 );
 ```
 
@@ -12671,8 +12863,8 @@ Returns the connection service name used to write data related to a model
 
 ```php
 public function hasBelongsTo(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -12682,8 +12874,8 @@ Checks whether a model has a belongsTo relation with another model
 
 ```php
 public function hasHasMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -12693,8 +12885,8 @@ Checks whether a model has a hasMany relation with another model
 
 ```php
 public function hasHasManyToMany(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -12704,8 +12896,8 @@ Checks whether a model has a hasManyToMany relation with another model
 
 ```php
 public function hasHasOne(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -12715,8 +12907,8 @@ Checks whether a model has a hasOne relation with another model
 
 ```php
 public function hasHasOneThrough(
-string $modelName,
-string $modelRelation
+    string $modelName,
+    string $modelRelation
 ): bool;
 ```
 
@@ -12758,8 +12950,8 @@ Checks if a model is using dynamic update instead of all-field update
 
 ```php
 public function isVisibleModelProperty(
-ModelInterface $model,
-string $property
+    ModelInterface $model,
+    string $property
 ): bool;
 ```
 
@@ -12767,8 +12959,8 @@ Check whether a model property is declared as public.
 
 ```php
 $isPublic = $manager->isVisibleModelProperty(
-new Invoices(),
-"name"
+    new Invoices(),
+    "name"
 );
 ```
 
@@ -12776,8 +12968,8 @@ new Invoices(),
 
 ```php
 public function keepSnapshots(
-ModelInterface $model,
-bool $keepSnapshots
+    ModelInterface $model,
+    bool $keepSnapshots
 ): void;
 ```
 
@@ -12795,9 +12987,9 @@ Loads a model throwing an exception if it does not exist
 
 ```php
 public function missingMethod(
-ModelInterface $model,
-string $eventName,
-mixed $data
+    ModelInterface $model,
+    string $eventName,
+    mixed $data
 );
 ```
 
@@ -12809,8 +13001,8 @@ meaning that a least one is implemented
 
 ```php
 public function notifyEvent(
-string $eventName,
-ModelInterface $model
+    string $eventName,
+    ModelInterface $model
 );
 ```
 
@@ -12830,8 +13022,8 @@ current request cycle (sticky connections)
 
 ```php
 public function removeBehavior(
-ModelInterface $model,
-string $behaviorClass
+    ModelInterface $model,
+    string $behaviorClass
 ): void;
 ```
 
@@ -12849,8 +13041,8 @@ Clears the per-request sticky write tracking
 
 ```php
 public function setConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -12860,8 +13052,8 @@ Sets both write and read connection service for a model
 
 ```php
 public function setModelSchema(
-ModelInterface $model,
-string $schema
+    ModelInterface $model,
+    string $schema
 ): void;
 ```
 
@@ -12871,8 +13063,8 @@ Sets the mapped schema for a model
 
 ```php
 public function setModelSource(
-ModelInterface $model,
-string $source
+    ModelInterface $model,
+    string $source
 ): void;
 ```
 
@@ -12882,8 +13074,8 @@ Sets the mapped source for a model
 
 ```php
 public function setReadConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 ): void;
 ```
 
@@ -12893,9 +13085,9 @@ Sets read connection service for a model
 
 ```php
 public function setReusableRecords(
-string $modelName,
-string $key,
-mixed $records
+    string $modelName,
+    string $key,
+    mixed $records
 ): void;
 ```
 
@@ -12913,8 +13105,8 @@ Enables or disables sticky connections
 
 ```php
 public function setWriteConnectionService(
-ModelInterface $model,
-string $connectionService
+    ModelInterface $model,
+    string $connectionService
 );
 ```
 
@@ -12924,12 +13116,13 @@ Sets write connection service for a model
 
 ```php
 public function useDynamicUpdate(
-ModelInterface $model,
-bool $dynamicUpdate
+    ModelInterface $model,
+    bool $dynamicUpdate
 ): void;
 ```
 
 Sets if a model must use dynamic update instead of the all-field update
+
 
 ## Mvc\Model\MetaData
 
@@ -12949,7 +13142,7 @@ A standard Phalcon\Mvc\Model\MetaData can be used to query model attributes:
 $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
 
 $attributes = $metaData->getAttributes(
-new Invoices()
+    new Invoices()
 );
 
 print_r($attributes);
@@ -12992,15 +13185,16 @@ is defined:
 <div class="api-tree">
 
 - **`Phalcon\Mvc\Model\MetaData`** - implements [`Phalcon\Di\InjectionAwareInterface`](/5.19/api/phalcon_di/#diinjectionawareinterface), [`Phalcon\Mvc\Model\MetaDataInterface`](#mvcmodelmetadatainterface)
-- [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
-- [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
-- [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
-- [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
-- [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
+    - [`Phalcon\Mvc\Model\MetaData\Apcu`](#mvcmodelmetadataapcu)
+    - [`Phalcon\Mvc\Model\MetaData\Libmemcached`](#mvcmodelmetadatalibmemcached)
+    - [`Phalcon\Mvc\Model\MetaData\Memory`](#mvcmodelmetadatamemory)
+    - [`Phalcon\Mvc\Model\MetaData\Redis`](#mvcmodelmetadataredis)
+    - [`Phalcon\Mvc\Model\MetaData\Stream`](#mvcmodelmetadatastream)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired` · `Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed` · `Phalcon\Mvc\Model\MetaData\Strategy\Introspection` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+
 
 ### Method Summary
 
@@ -13367,9 +13561,9 @@ Returns table attributes names (fields)
 
 ```php
 print_r(
-$metaData->getAttributes(
-    new Invoices()
-)
+    $metaData->getAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13383,9 +13577,9 @@ Returns attributes that must be ignored from the INSERT SQL generation
 
 ```php
 print_r(
-$metaData->getAutomaticCreateAttributes(
-    new Invoices()
-)
+    $metaData->getAutomaticCreateAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13399,9 +13593,9 @@ Returns attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 print_r(
-$metaData->getAutomaticUpdateAttributes(
-    new Invoices()
-)
+    $metaData->getAutomaticUpdateAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13415,9 +13609,9 @@ Returns attributes and their bind data types
 
 ```php
 print_r(
-$metaData->getBindTypes(
-    new Invoices()
-)
+    $metaData->getBindTypes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13431,9 +13625,9 @@ Returns the column map if any
 
 ```php
 print_r(
-$metaData->getColumnMap(
-    new Invoices()
-)
+    $metaData->getColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -13463,9 +13657,9 @@ Returns attributes and their data types
 
 ```php
 print_r(
-$metaData->getDataTypes(
-    new Invoices()
-)
+    $metaData->getDataTypes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13479,9 +13673,9 @@ Returns attributes which types are numerical
 
 ```php
 print_r(
-$metaData->getDataTypesNumeric(
-    new Invoices()
-)
+    $metaData->getDataTypesNumeric(
+        new Invoices()
+    )
 );
 ```
 
@@ -13495,9 +13689,9 @@ Returns attributes (which have default values) and their default values
 
 ```php
 print_r(
-$metaData->getDefaultValues(
-    new Invoices()
-)
+    $metaData->getDefaultValues(
+        new Invoices()
+    )
 );
 ```
 
@@ -13511,9 +13705,9 @@ Returns attributes allow empty strings
 
 ```php
 print_r(
-$metaData->getEmptyStringAttributes(
-    new Invoices()
-)
+    $metaData->getEmptyStringAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13527,9 +13721,9 @@ Returns the name of identity field (if one is present)
 
 ```php
 print_r(
-$metaData->getIdentityField(
-    new Invoices()
-)
+    $metaData->getIdentityField(
+        new Invoices()
+    )
 );
 ```
 
@@ -13545,8 +13739,8 @@ Returns a MetaData Unique key for meta-data is created using className
 
 ```php
 public function getModelUUID(
-ModelInterface $model,
-array $row
+    ModelInterface $model,
+    array $row
 ): string|null;
 ```
 
@@ -13562,9 +13756,9 @@ Returns an array of fields which are not part of the primary key
 
 ```php
 print_r(
-$metaData->getNonPrimaryKeyAttributes(
-    new Invoices()
-)
+    $metaData->getNonPrimaryKeyAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13578,9 +13772,9 @@ Returns an array of not null attributes
 
 ```php
 print_r(
-$metaData->getNotNullAttributes(
-    new Invoices()
-)
+    $metaData->getNotNullAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13594,9 +13788,9 @@ Returns an array of fields which are part of the primary key
 
 ```php
 print_r(
-$metaData->getPrimaryKeyAttributes(
-    new Invoices()
-)
+    $metaData->getPrimaryKeyAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -13610,9 +13804,9 @@ Returns the reverse column map if any
 
 ```php
 print_r(
-$metaData->getReverseColumnMap(
-    new Invoices()
-)
+    $metaData->getReverseColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -13628,8 +13822,8 @@ Return the strategy to obtain the meta-data
 
 ```php
 public function hasAttribute(
-ModelInterface $model,
-string $attribute
+    ModelInterface $model,
+    string $attribute
 ): bool;
 ```
 
@@ -13637,10 +13831,10 @@ Check if a model has certain attribute
 
 ```php
 var_dump(
-$metaData->hasAttribute(
-    new Invoices(),
-    "name"
-)
+    $metaData->hasAttribute(
+        new Invoices(),
+        "name"
+    )
 );
 ```
 
@@ -13654,7 +13848,7 @@ Checks if the internal meta-data container is empty
 
 ```php
 var_dump(
-$metaData->isEmpty()
+    $metaData->isEmpty()
 );
 ```
 
@@ -13662,8 +13856,8 @@ $metaData->isEmpty()
 
 ```php
 public function modelEquals(
-ModelInterface $first,
-ModelInterface $other
+    ModelInterface $first,
+    ModelInterface $other
 ): bool;
 ```
 
@@ -13687,9 +13881,9 @@ Reads the ordered/reversed column map for certain model
 
 ```php
 print_r(
-$metaData->readColumnMap(
-    new Invoices()
-)
+    $metaData->readColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -13697,8 +13891,8 @@ $metaData->readColumnMap(
 
 ```php
 final public function readColumnMapIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|null;
 ```
 
@@ -13706,10 +13900,10 @@ Reads column-map information for certain model using a MODEL_* constant
 
 ```php
 print_r(
-$metaData->readColumnMapIndex(
-    new Invoices(),
-    MetaData::MODELS_REVERSE_COLUMN_MAP
-)
+    $metaData->readColumnMapIndex(
+        new Invoices(),
+        MetaData::MODELS_REVERSE_COLUMN_MAP
+    )
 );
 ```
 
@@ -13723,9 +13917,9 @@ Reads the complete meta-data for certain model
 
 ```php
 print_r(
-$metaData->readMetaData(
-    new Invoices()
-)
+    $metaData->readMetaData(
+        new Invoices()
+    )
 );
 ```
 
@@ -13733,8 +13927,8 @@ $metaData->readMetaData(
 
 ```php
 final public function readMetaDataIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|string|null;
 ```
 
@@ -13742,10 +13936,10 @@ Reads meta-data for certain model
 
 ```php
 print_r(
-$metaData->readMetaDataIndex(
-    new Invoices(),
-    0
-)
+    $metaData->readMetaDataIndex(
+        new Invoices(),
+        0
+    )
 );
 ```
 
@@ -13765,8 +13959,8 @@ $metaData->reset();
 
 ```php
 public function setAutomaticCreateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -13774,10 +13968,10 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 $metaData->setAutomaticCreateAttributes(
-new Invoices(),
-[
-    "created_at" => true,
-]
+    new Invoices(),
+    [
+        "created_at" => true,
+    ]
 );
 ```
 
@@ -13785,8 +13979,8 @@ new Invoices(),
 
 ```php
 public function setAutomaticUpdateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -13794,10 +13988,10 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
-new Invoices(),
-[
-    "modified_at" => true,
-]
+    new Invoices(),
+    [
+        "modified_at" => true,
+    ]
 );
 ```
 
@@ -13813,8 +14007,8 @@ Sets the DependencyInjector container
 
 ```php
 public function setEmptyStringAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -13822,10 +14016,10 @@ Set the attributes that allow empty string values
 
 ```php
 $metaData->setEmptyStringAttributes(
-new Invoices(),
-[
-    "name" => true,
-]
+    new Invoices(),
+    [
+        "name" => true,
+    ]
 );
 ```
 
@@ -13841,8 +14035,8 @@ Set the meta-data extraction strategy
 
 ```php
 public function write(
-string $key,
-array $data
+    string $key,
+    array $data
 ): void;
 ```
 
@@ -13852,9 +14046,9 @@ Writes the metadata to adapter
 
 ```php
 final public function writeMetaDataIndex(
-ModelInterface $model,
-int $index,
-mixed $data
+    ModelInterface $model,
+    int $index,
+    mixed $data
 ): void;
 ```
 
@@ -13862,13 +14056,13 @@ Writes meta-data for certain model using a MODEL_* constant
 
 ```php
 print_r(
-$metaData->writeColumnMapIndex(
-    new Invoices(),
-    MetaData::MODELS_REVERSE_COLUMN_MAP,
-    [
-        "leName" => "name",
-    ]
-)
+    $metaData->writeColumnMapIndex(
+        new Invoices(),
+        MetaData::MODELS_REVERSE_COLUMN_MAP,
+        [
+            "leName" => "name",
+        ]
+    )
 );
 ```
 
@@ -13878,10 +14072,10 @@ $metaData->writeColumnMapIndex(
 
 ```php
 final protected function initialize(
-ModelInterface $model,
-mixed $key,
-mixed $table,
-mixed $schema
+    ModelInterface $model,
+    mixed $key,
+    mixed $table,
+    mixed $schema
 );
 ```
 
@@ -13891,8 +14085,8 @@ Initialize old behavior for compatability
 
 ```php
 final protected function initializeColumnMap(
-ModelInterface $model,
-mixed $key
+    ModelInterface $model,
+    mixed $key
 ): bool;
 ```
 
@@ -13902,12 +14096,13 @@ Initialize ColumnMap for a certain table
 
 ```php
 final protected function initializeMetaData(
-ModelInterface $model,
-mixed $key
+    ModelInterface $model,
+    mixed $key
 ): bool;
 ```
 
 Initialize the metadata for certain table
+
 
 ## Mvc\Model\MetaDataInterface
 
@@ -13925,6 +14120,7 @@ Interface for Phalcon\Mvc\Model\MetaData
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface`
+
 
 ### Method Summary
 
@@ -14228,8 +14424,8 @@ Return the strategy to obtain the meta-data
 
 ```php
 public function hasAttribute(
-ModelInterface $model,
-string $attribute
+    ModelInterface $model,
+    string $attribute
 ): bool;
 ```
 
@@ -14263,8 +14459,8 @@ Reads the ordered/reversed column map for certain model
 
 ```php
 public function readColumnMapIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|null;
 ```
 
@@ -14282,8 +14478,8 @@ Reads meta-data for certain model
 
 ```php
 public function readMetaDataIndex(
-ModelInterface $model,
-int $index
+    ModelInterface $model,
+    int $index
 ): array|string|null;
 ```
 
@@ -14301,8 +14497,8 @@ Resets internal meta-data in order to regenerate it
 
 ```php
 public function setAutomaticCreateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 );
 ```
 
@@ -14312,8 +14508,8 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 public function setAutomaticUpdateAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 );
 ```
 
@@ -14323,8 +14519,8 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 public function setEmptyStringAttributes(
-ModelInterface $model,
-array $attributes
+    ModelInterface $model,
+    array $attributes
 ): void;
 ```
 
@@ -14342,8 +14538,8 @@ Set the meta-data extraction strategy
 
 ```php
 public function write(
-string $key,
-array $data
+    string $key,
+    array $data
 ): void;
 ```
 
@@ -14353,13 +14549,14 @@ Writes meta-data to the adapter
 
 ```php
 public function writeMetaDataIndex(
-ModelInterface $model,
-int $index,
-mixed $data
+    ModelInterface $model,
+    int $index,
+    mixed $data
 );
 ```
 
 Writes meta-data for certain model using a MODEL_* constant
+
 
 ## Mvc\Model\MetaData\Apcu
 
@@ -14376,21 +14573,22 @@ You can query the meta-data by printing apcu_fetch('$PMM$') or apcu_fetch('$PMM$
 
 ```php
 $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
-[
-    "prefix"   => "my-app-id",
-    "lifetime" => 86400,
-]
+    [
+        "prefix"   => "my-app-id",
+        "lifetime" => 86400,
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Apcu`**
+    - **`Phalcon\Mvc\Model\MetaData\Apcu`**
 
 </div>
 
 __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+
 
 ### Method Summary
 
@@ -14410,12 +14608,13 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array|null $options = null
+    AdapterFactory $factory,
+    array|null $options = null
 );
 ```
 
 Phalcon\Mvc\Model\MetaData\Apcu constructor
+
 
 ## Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns
 
@@ -14425,12 +14624,13 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14449,10 +14649,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $completeTable,
-string $className
+    string $completeTable,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\MetaData\Exceptions\ColumnMapNotArray
 
@@ -14462,12 +14663,13 @@ string $className
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14488,6 +14690,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\ContainerRequired
 
 <span class="badge badge--class">Class</span>
@@ -14496,12 +14699,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14522,6 +14726,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\CorruptedMetaData
 
 <span class="badge badge--class">Class</span>
@@ -14530,12 +14735,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\CorruptedMetaData`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14556,6 +14762,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\InvalidContainer
 
 <span class="badge badge--class">Class</span>
@@ -14564,12 +14771,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14590,6 +14798,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel
 
 <span class="badge badge--class">Class</span>
@@ -14598,12 +14807,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\InvalidMetaDataForModel`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14624,6 +14834,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $modelName );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable
 
 <span class="badge badge--class">Class</span>
@@ -14632,12 +14843,13 @@ public function __construct( string $modelName );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14658,6 +14870,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed
 
 <span class="badge badge--class">Class</span>
@@ -14666,12 +14879,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataStrategyFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14692,6 +14906,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $message );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass
 
 <span class="badge badge--class">Class</span>
@@ -14700,12 +14915,13 @@ public function __construct( string $message );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14726,6 +14942,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass
 
 <span class="badge badge--class">Class</span>
@@ -14734,12 +14951,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14760,6 +14978,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\MetaData\Exceptions\TableNotInDatabase
 
 <span class="badge badge--class">Class</span>
@@ -14768,12 +14987,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -14792,10 +15012,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $completeTable,
-string $className
+    string $completeTable,
+    string $className
 );
 ```
+
 
 ## Mvc\Model\MetaData\Libmemcached
 
@@ -14811,11 +15032,12 @@ By default meta-data is stored for 48 hours (172800 seconds)
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
+    - **`Phalcon\Mvc\Model\MetaData\Libmemcached`**
 
 </div>
 
 __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+
 
 ### Method Summary
 
@@ -14841,8 +15063,8 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
@@ -14856,6 +15078,7 @@ public function reset(): void;
 
 Flush Memcache data and resets internal meta-data in order to regenerate it
 
+
 ## Mvc\Model\MetaData\Memory
 
 <span class="badge badge--class">Class</span>
@@ -14868,11 +15091,12 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Memory`**
+    - **`Phalcon\Mvc\Model\MetaData\Memory`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\MetaData`
+
 
 ### Method Summary
 
@@ -14907,12 +15131,13 @@ Reads the meta-data from temporal memory
 
 ```php
 public function write(
-mixed $key,
-array $data
+    mixed $key,
+    array $data
 ): void;
 ```
 
 Writes the meta-data to temporal memory
+
 
 ## Mvc\Model\MetaData\Redis
 
@@ -14929,24 +15154,25 @@ By default meta-data is stored for 48 hours (172800 seconds)
 use Phalcon\Mvc\Model\MetaData\Redis;
 
 $metaData = new Redis(
-[
-    "host"       => "127.0.0.1",
-    "port"       => 6379,
-    "persistent" => 0,
-    "lifetime"   => 172800,
-    "index"      => 2,
-]
+    [
+        "host"       => "127.0.0.1",
+        "port"       => 6379,
+        "persistent" => 0,
+        "lifetime"   => 172800,
+        "index"      => 2,
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Redis`**
+    - **`Phalcon\Mvc\Model\MetaData\Redis`**
 
 </div>
 
 __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
+
 
 ### Method Summary
 
@@ -14972,8 +15198,8 @@ __Uses__ `Phalcon\Cache\AdapterFactory` · `Phalcon\Mvc\Model\MetaData`
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
@@ -14987,6 +15213,7 @@ public function reset(): void;
 
 Flush Redis data and resets internal meta-data in order to regenerate it
 
+
 ## Mvc\Model\MetaData\Strategy\Annotations
 
 <span class="badge badge--class">Class</span>
@@ -14999,6 +15226,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 </div>
 
 __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass` · `Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass`
+
 
 ### Method Summary
 
@@ -15025,8 +15253,8 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelIn
 
 ```php
 final public function getColumnMaps(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
@@ -15036,12 +15264,13 @@ Read the model's column map, this can't be inferred
 
 ```php
 final public function getMetaData(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
 The meta-data is obtained by reading the column descriptions from the database information schema
+
 
 ## Mvc\Model\MetaData\Strategy\Introspection
 
@@ -15057,6 +15286,7 @@ Queries the table meta-data in order to introspect the model's metadata
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\CannotObtainTableColumns` · `Phalcon\Mvc\Model\MetaData\Exceptions\ColumnMapNotArray` · `Phalcon\Mvc\Model\MetaData\Exceptions\TableNotInDatabase`
+
 
 ### Method Summary
 
@@ -15083,8 +15313,8 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 
 ```php
 final public function getColumnMaps(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
@@ -15094,12 +15324,13 @@ Read the model's column map, this can't be inferred
 
 ```php
 final public function getMetaData(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
 The meta-data is obtained by reading the column descriptions from the database information schema
+
 
 ## Mvc\Model\MetaData\Strategy\StrategyInterface
 
@@ -15113,6 +15344,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 </div>
 
 __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -15139,8 +15371,8 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface`
 
 ```php
 public function getColumnMaps(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
@@ -15152,12 +15384,13 @@ Read the model's column map, this can't be inferred
 
 ```php
 public function getMetaData(
-ModelInterface $model,
-DiInterface $container
+    ModelInterface $model,
+    DiInterface $container
 ): array;
 ```
 
 The meta-data is obtained by reading the column descriptions from the database information schema
+
 
 ## Mvc\Model\MetaData\Stream
 
@@ -15170,20 +15403,21 @@ Stores model meta-data in PHP files.
 
 ```php
 $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
-[
-    "metaDataDir" => "app/cache/metadata/",
-]
+    [
+        "metaDataDir" => "app/cache/metadata/",
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\MetaData`](#mvcmodelmetadata)
-- **`Phalcon\Mvc\Model\MetaData\Stream`**
+    - **`Phalcon\Mvc\Model\MetaData\Stream`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\MetaData` · `Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable` · `Phalcon\Support\Settings` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -15241,12 +15475,13 @@ Reads meta-data from files
 
 ```php
 public function write(
-mixed $key,
-array $data
+    mixed $key,
+    array $data
 ): void;
 ```
 
 Writes the meta-data to files
+
 
 ## Mvc\Model\Query
 
@@ -15259,19 +15494,19 @@ This class takes a PHQL intermediate representation and executes it.
 
 ```php
 $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
-     WHERE b.name = :name: ORDER BY c.name";
+         WHERE b.name = :name: ORDER BY c.name";
 
 $result = $manager->executeQuery(
-$phql,
-[
-    "name" => "Lamborghini",
-]
+    $phql,
+    [
+        "name" => "Lamborghini",
+    ]
 );
 
 foreach ($result as $row) {
-echo "Name: ",  $row->cars->name, "\n";
-echo "Price: ", $row->cars->price, "\n";
-echo "Taxes: ", $row->taxes, "\n";
+    echo "Name: ",  $row->cars->name, "\n";
+    echo "Price: ", $row->cars->price, "\n";
+    echo "Taxes: ", $row->taxes, "\n";
 }
 
 // with transaction
@@ -15309,6 +15544,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 </div>
 
 __Uses__ `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Column` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ResultInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn` · `Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation` · `Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders` · `Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray` · `Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain` · `Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst` · `Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst` · `Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias` · `Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue` · `Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass` · `Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass` · `Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed` · `Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch` · `Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey` · `Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute` · `Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager` · `Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems` · `Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded` · `Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias` · `Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing` · `Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable` · `Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType` · `Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement` · `Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported` · `Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing` · `Phalcon\Mvc\Model\Query\Lang` · `Phalcon\Mvc\Model\Query\Status` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Resultset\Complex` · `Phalcon\Mvc\Model\Resultset\Simple` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -15789,9 +16025,9 @@ __Uses__ `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Adapter\AdapterInterface`
 
 ```php
 public function __construct(
-string|null $phql = null,
-DiInterface|null $container = null,
-array $options = []
+    string|null $phql = null,
+    DiInterface|null $container = null,
+    array $options = []
 );
 ```
 
@@ -15817,8 +16053,8 @@ Destroys the internal PHQL cache
 
 ```php
 public function execute(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 );
 ```
 
@@ -15886,8 +16122,8 @@ Phalcon\Mvc\Model\Row is used.
 
 ```php
 public function getSingleResult(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 ): ModelInterface;
 ```
 
@@ -15904,9 +16140,9 @@ and arrays with bound parameters and their types (only works in SELECT statement
 
 ```php
 [
-'sql' => 'SELECT * FROM co_invoices WHERE inv_cst_id = :cst_id',
-'bind' => ['cst_id' => 123],
-'bindTypes => ['cst_id' => 1] // 1 corresponds to int
+    'sql' => 'SELECT * FROM co_invoices WHERE inv_cst_id = :cst_id',
+    'bind' => ['cst_id' => 123],
+    'bindTypes => ['cst_id' => 1] // 1 corresponds to int
 ]
 ```
 
@@ -15947,8 +16183,8 @@ Phalcon\Mvc\Model\Query
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -15958,8 +16194,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -16030,9 +16266,9 @@ returned
 
 ```php
 final protected function executeDelete(
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): StatusInterface;
 ```
 
@@ -16043,9 +16279,9 @@ Phalcon\Mvc\Model\Query\Status
 
 ```php
 final protected function executeInsert(
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): StatusInterface;
 ```
 
@@ -16056,10 +16292,10 @@ Phalcon\Mvc\Model\Query\Status
 
 ```php
 final protected function executeSelect(
-array $intermediate,
-array $bindParams,
-array $bindTypes,
-bool $simulate = false
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes,
+    bool $simulate = false
 ): ResultsetInterface|array;
 ```
 
@@ -16070,9 +16306,9 @@ Phalcon\Mvc\Model\Resultset
 
 ```php
 final protected function executeUpdate(
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): StatusInterface;
 ```
 
@@ -16099,8 +16335,8 @@ Resolves an expression in a single call argument
 
 ```php
 final protected function getExpression(
-array $expr,
-bool $quoting = true
+    array $expr,
+    bool $quoting = true
 ): array;
 ```
 
@@ -16126,8 +16362,8 @@ Returns a processed group clause for a SELECT statement
 
 ```php
 final protected function getJoin(
-ManagerInterface $manager,
-array $join
+    ManagerInterface $manager,
+    array $join
 ): array;
 ```
 
@@ -16162,11 +16398,11 @@ Returns a processed limit clause for a SELECT statement
 
 ```php
 final protected function getMultiJoin(
-string $joinType,
-mixed $joinSource,
-string $modelAlias,
-string $joinAlias,
-RelationInterface $relation
+    string $joinType,
+    mixed $joinSource,
+    string $modelAlias,
+    string $joinAlias,
+    RelationInterface $relation
 ): array;
 ```
 
@@ -16193,10 +16429,10 @@ expression
 
 ```php
 protected function getReadConnection(
-ModelInterface $model,
-array|null $intermediate = null,
-array $bindParams = [],
-array $bindTypes = []
+    ModelInterface $model,
+    array|null $intermediate = null,
+    array $bindParams = [],
+    array $bindTypes = []
 ): AdapterInterface;
 ```
 
@@ -16207,10 +16443,10 @@ inside the query object
 
 ```php
 final protected function getRelatedRecords(
-ModelInterface $model,
-array $intermediate,
-array $bindParams,
-array $bindTypes
+    ModelInterface $model,
+    array $intermediate,
+    array $bindParams,
+    array $bindTypes
 ): ResultsetInterface;
 ```
 
@@ -16229,11 +16465,11 @@ used to determine if the resultset produced is simple or complex
 
 ```php
 final protected function getSingleJoin(
-string $joinType,
-mixed $joinSource,
-string $modelAlias,
-string $joinAlias,
-RelationInterface $relation
+    string $joinType,
+    mixed $joinSource,
+    string $modelAlias,
+    string $joinAlias,
+    RelationInterface $relation
 ): array;
 ```
 
@@ -16243,8 +16479,8 @@ Resolves joins involving has-one/belongs-to/has-many relations
 
 ```php
 final protected function getTable(
-ManagerInterface $manager,
-array $qualifiedName
+    ManagerInterface $manager,
+    array $qualifiedName
 );
 ```
 
@@ -16254,10 +16490,10 @@ Resolves a table in a SELECT statement checking if the model exists
 
 ```php
 protected function getWriteConnection(
-ModelInterface $model,
-array|null $intermediate = null,
-array $bindParams = [],
-array $bindTypes = []
+    ModelInterface $model,
+    array|null $intermediate = null,
+    array $bindParams = [],
+    array $bindTypes = []
 ): AdapterInterface;
 ```
 
@@ -16286,8 +16522,8 @@ later
 
 ```php
 final protected function prepareSelect(
-mixed $ast = null,
-bool $merge = false
+    mixed $ast = null,
+    bool $merge = false
 ): array;
 ```
 
@@ -16314,6 +16550,7 @@ string only, so a model that switches its schema or source at
 runtime (for instance via setSchema()/setSource() in initialize())
 would otherwise see the value frozen at first parse. See #17020.
 
+
 ## Mvc\Model\QueryInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -16330,6 +16567,7 @@ Interface for Phalcon\Mvc\Model\Query
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -16429,8 +16667,8 @@ Sets the cache parameters of the query
 
 ```php
 public function execute(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 );
 ```
 
@@ -16464,8 +16702,8 @@ Returns the current cache options
 
 ```php
 public function getSingleResult(
-array $bindParams = [],
-array $bindTypes = []
+    array $bindParams = [],
+    array $bindTypes = []
 ): ModelInterface;
 ```
 
@@ -16500,8 +16738,8 @@ intermediate representation that could be executed by Phalcon\Mvc\Model\Query
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -16511,8 +16749,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): QueryInterface;
 ```
 
@@ -16534,6 +16772,7 @@ public function setUniqueRow( bool $uniqueRow ): QueryInterface;
 
 Tells to the query if only the first row in the resultset must be returned
 
+
 ## Mvc\Model\Query\Builder
 
 <span class="badge badge--class">Class</span>
@@ -16543,30 +16782,30 @@ Helps to create PHQL queries using an OO interface
 
 ```php
 $params = [
-"models"     => [
-    Users::class,
-],
-"columns"    => ["id", "name", "status"],
-"conditions" => [
-    [
-        "created > :min: AND created < :max:",
+    "models"     => [
+        Users::class,
+    ],
+    "columns"    => ["id", "name", "status"],
+    "conditions" => [
         [
-            "min" => "2013-01-01",
-            "max" => "2014-01-01",
-        ],
-        [
-            "min" => PDO::PARAM_STR,
-            "max" => PDO::PARAM_STR,
+            "created > :min: AND created < :max:",
+            [
+                "min" => "2013-01-01",
+                "max" => "2014-01-01",
+            ],
+            [
+                "min" => PDO::PARAM_STR,
+                "max" => PDO::PARAM_STR,
+            ],
         ],
     ],
-],
-// or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
-"group"      => ["id", "name"],
-"having"     => "name = 'Kamil'",
-"order"      => ["name", "id"],
-"limit"      => 20,
-"offset"     => 20,
-// or "limit" => [20, 20],
+    // or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
+    "group"      => ["id", "name"],
+    "having"     => "name = 'Kamil'",
+    "order"      => ["name", "id"],
+    "limit"      => 20,
+    "offset"     => 20,
+    // or "limit" => [20, 20],
 ];
 
 $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
@@ -16579,6 +16818,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 </div>
 
 __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Query` · `Phalcon\Mvc\Model\QueryInterface` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey` · `Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -17001,8 +17241,8 @@ __Uses__ `Phalcon\Db\Column` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `
 
 ```php
 public function __construct(
-mixed $params = null,
-DiInterface|null $container = null
+    mixed $params = null,
+    DiInterface|null $container = null
 );
 ```
 
@@ -17012,8 +17252,8 @@ Phalcon\Mvc\Model\Query\Builder constructor
 
 ```php
 public function addFrom(
-string $model,
-string|null $alias = null
+    string $model,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17022,13 +17262,13 @@ Add a model to take part of the query
 ```php
 // Load data from models Invoices
 $builder->addFrom(
-Invoices::class
+    Invoices::class
 );
 
 // Load data from model 'Invoices' using 'r' as alias in PHQL
 $builder->addFrom(
-Invoices::class,
-"r"
+    Invoices::class,
+    "r"
 );
 ```
 
@@ -17036,9 +17276,9 @@ Invoices::class,
 
 ```php
 public function andHaving(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -17048,10 +17288,10 @@ Appends a condition to the current HAVING conditions clause using a AND operator
 $builder->andHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->andHaving(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 100,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 100,
+    ]
 );
 ```
 
@@ -17059,9 +17299,9 @@ $builder->andHaving(
 
 ```php
 public function andWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -17071,11 +17311,11 @@ Appends a condition to the current WHERE conditions using a AND operator
 $builder->andWhere("name = 'Peter'");
 
 $builder->andWhere(
-"name = :name: AND id > :id:",
-[
-    "name" => "Peter",
-    "id"   => 100,
-]
+    "name = :name: AND id > :id:",
+    [
+        "name" => "Peter",
+        "id"   => 100,
+    ]
 );
 ```
 
@@ -17091,10 +17331,10 @@ Automatically escapes identifiers but only if they need to be escaped.
 
 ```php
 public function betweenHaving(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17108,10 +17348,10 @@ $builder->betweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17146,28 +17386,28 @@ $builder->columns("id, category");
 
 // Array, one column per element
 $builder->columns(
-[
-    "inv_id",
-    "inv_total",
-]
+    [
+        "inv_id",
+        "inv_total",
+    ]
 );
 
 // Array with named key. The name of the key acts as an
 // alias (`AS` clause)
 $builder->columns(
-[
-    "inv_cst_id",
-    "total_invoices" => "COUNT(*)",
-]
+    [
+        "inv_cst_id",
+        "total_invoices" => "COUNT(*)",
+    ]
 );
 
 // Different models
 $builder->columns(
-[
-    "\Phalcon\Models\Invoices.*",
-    "\Phalcon\Models\Customers.cst_name_first",
-    "\Phalcon\Models\Customers.cst_name_last",
-]
+    [
+        "\Phalcon\Models\Invoices.*",
+        "\Phalcon\Models\Customers.cst_name_first",
+        "\Phalcon\Models\Customers.cst_name_last",
+    ]
 );
 ```
 
@@ -17206,21 +17446,21 @@ Sets the models who makes part of the query
 
 ```php
 $builder->from(
-Invoices::class
+    Invoices::class
 );
 
 $builder->from(
-[
-    Invoices::class,
-    OrdersProducts::class,
-]
+    [
+        Invoices::class,
+        OrdersProducts::class,
+    ]
 );
 
 $builder->from(
-[
-    "r"  => Invoices::class,
-    "rp" => OrdersProducts::class,
-]
+    [
+        "r"  => Invoices::class,
+        "rp" => OrdersProducts::class,
+    ]
 );
 ```
 
@@ -17372,9 +17612,9 @@ Sets a GROUP BY clause
 
 ```php
 $builder->groupBy(
-[
-    "Invoices.inv_title",
-]
+    [
+        "Invoices.inv_title",
+    ]
 );
 ```
 
@@ -17385,9 +17625,9 @@ treats both as "no GROUP BY".
 
 ```php
 public function having(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -17397,10 +17637,10 @@ Sets the HAVING condition clause
 $builder->having("SUM(Invoices.inv_total) > 0");
 
 $builder->having(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 100,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 100,
+    ]
 );
 ```
 
@@ -17408,9 +17648,9 @@ $builder->having(
 
 ```php
 public function inHaving(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17424,9 +17664,9 @@ $builder->inHaving("SUM(Invoices.inv_total)", [100, 200]);
 
 ```php
 public function inWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17434,8 +17674,8 @@ Appends an IN condition to the current WHERE conditions
 
 ```php
 $builder->inWhere(
-"id",
-[1, 2, 3]
+    "id",
+    [1, 2, 3]
 );
 ```
 
@@ -17443,9 +17683,9 @@ $builder->inWhere(
 
 ```php
 public function innerJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17454,20 +17694,20 @@ Adds an INNER join to the query
 ```php
 // Inner Join model 'Invoices' with automatic conditions and alias
 $builder->innerJoin(
-Invoices::class
+    Invoices::class
 );
 
 // Inner Join model 'Invoices' specifying conditions
 $builder->innerJoin(
-Invoices::class,
-"Invoices.inv_id = OrdersProducts.oxp_ord_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
 // Inner Join model 'Invoices' specifying conditions and alias
 $builder->innerJoin(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -17475,10 +17715,10 @@ Invoices::class,
 
 ```php
 public function join(
-string $model,
-string|null $conditions = null,
-string|null $alias = null,
-string|null $type = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null,
+    string|null $type = null
 ): BuilderInterface;
 ```
 
@@ -17487,28 +17727,28 @@ Adds an :type: join (by default type - INNER) to the query
 ```php
 // Inner Join model 'Invoices' with automatic conditions and alias
 $builder->join(
-Invoices::class
+    Invoices::class
 );
 
 // Inner Join model 'Invoices' specifying conditions
 $builder->join(
-Invoices::class,
-"Invoices.inv_id = OrdersProducts.oxp_ord_id"
+    Invoices::class,
+    "Invoices.inv_id = OrdersProducts.oxp_ord_id"
 );
 
 // Inner Join model 'Invoices' specifying conditions and alias
 $builder->join(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 
 // Left Join model 'Invoices' specifying conditions, alias and type of join
 $builder->join(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r",
-"LEFT"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r",
+    "LEFT"
 );
 ```
 
@@ -17516,9 +17756,9 @@ Invoices::class,
 
 ```php
 public function leftJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17526,9 +17766,9 @@ Adds a LEFT join to the query
 
 ```php
 $builder->leftJoin(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -17536,8 +17776,8 @@ Invoices::class,
 
 ```php
 public function limit(
-int $limit,
-mixed $offset = null
+    int $limit,
+    mixed $offset = null
 ): BuilderInterface;
 ```
 
@@ -17553,10 +17793,10 @@ $builder->limit("100", "20");
 
 ```php
 public function notBetweenHaving(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17570,10 +17810,10 @@ $builder->notBetweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17587,9 +17827,9 @@ $builder->notBetweenWhere("price", 100.25, 200.50);
 
 ```php
 public function notInHaving(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17603,9 +17843,9 @@ $builder->notInHaving("SUM(Invoices.inv_total)", [100, 200]);
 
 ```php
 public function notInWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -17631,9 +17871,9 @@ $builder->offset(30);
 
 ```php
 public function orHaving(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -17643,10 +17883,10 @@ Appends a condition to the current HAVING conditions clause using an OR operator
 $builder->orHaving("SUM(Invoices.inv_total) > 0");
 
 $builder->orHaving(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 100,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 100,
+    ]
 );
 ```
 
@@ -17654,9 +17894,9 @@ $builder->orHaving(
 
 ```php
 public function orWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -17666,11 +17906,11 @@ Appends a condition to the current conditions using an OR operator
 $builder->orWhere("name = 'Peter'");
 
 $builder->orWhere(
-"name = :name: AND id > :id:",
-[
-    "name" => "Peter",
-    "id"   => 100,
-]
+    "name = :name: AND id > :id:",
+    [
+        "name" => "Peter",
+        "id"   => 100,
+    ]
 );
 ```
 
@@ -17692,9 +17932,9 @@ $builder->orderBy(["Invoices.inv_title DESC"]);
 
 ```php
 public function rightJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -17702,9 +17942,9 @@ Adds a RIGHT join to the query
 
 ```php
 $builder->rightJoin(
-Invoices::class,
-"r.inv_id = OrdersProducts.oxp_ord_id",
-"r"
+    Invoices::class,
+    "r.inv_id = OrdersProducts.oxp_ord_id",
+    "r"
 );
 ```
 
@@ -17712,8 +17952,8 @@ Invoices::class,
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -17723,8 +17963,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -17753,9 +17993,9 @@ Phalcon\Mvc\Model\Query when the query is built.
 
 ```php
 public function where(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -17767,11 +18007,11 @@ $builder->where(100);
 $builder->where("name = 'Peter'");
 
 $builder->where(
-"name = :name: AND id > :id:",
-[
-    "name" => "Peter",
-    "id"   => 100,
-]
+    "name = :name: AND id > :id:",
+    [
+        "name" => "Peter",
+        "id"   => 100,
+    ]
 );
 ```
 
@@ -17781,11 +18021,11 @@ $builder->where(
 
 ```php
 protected function conditionBetween(
-string $clause,
-string $operator,
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $clause,
+    string $operator,
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): BuilderInterface;
 ```
 
@@ -17795,10 +18035,10 @@ Appends a BETWEEN condition
 
 ```php
 protected function conditionIn(
-string $clause,
-string $operator,
-string $expr,
-array $values
+    string $clause,
+    string $operator,
+    string $expr,
+    array $values
 ): BuilderInterface;
 ```
 
@@ -17808,11 +18048,11 @@ Appends an IN condition
 
 ```php
 protected function conditionNotBetween(
-string $clause,
-string $operator,
-string $expr,
-mixed $minimum,
-mixed $maximum
+    string $clause,
+    string $operator,
+    string $expr,
+    mixed $minimum,
+    mixed $maximum
 ): BuilderInterface;
 ```
 
@@ -17822,14 +18062,15 @@ Appends a NOT BETWEEN condition
 
 ```php
 protected function conditionNotIn(
-string $clause,
-string $operator,
-string $expr,
-array $values
+    string $clause,
+    string $operator,
+    string $expr,
+    array $values
 ): BuilderInterface;
 ```
 
 Appends a NOT IN condition
+
 
 ## Mvc\Model\Query\BuilderInterface
 
@@ -17845,6 +18086,7 @@ Interface for Phalcon\Mvc\Model\Query\Builder
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\QueryInterface`
+
 
 ### Method Summary
 
@@ -18095,8 +18337,8 @@ __Uses__ `Phalcon\Mvc\Model\QueryInterface`
 
 ```php
 public function addFrom(
-string $model,
-string|null $alias = null
+    string $model,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18106,9 +18348,9 @@ Add a model to take part of the query
 
 ```php
 public function andWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -18118,10 +18360,10 @@ Appends a condition to the current conditions using a AND operator
 
 ```php
 public function betweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -18152,27 +18394,27 @@ $builder->columns("id, name");
 
 // Array, one column per element
 $builder->columns(
-[
-    "id",
-    "name",
-]
+    [
+        "id",
+        "name",
+    ]
 );
 
 // Array, named keys. The name of the key acts as an alias (`AS` clause)
 $builder->columns(
-[
-    "name",
-    "number" => "COUNT(*)",
-]
+    [
+        "name",
+        "number" => "COUNT(*)",
+    ]
 );
 
 // Different models
 $builder->columns(
-[
-    "\Phalcon\Models\Invoices.*",
-    "\Phalcon\Models\Customers.cst_name_first",
-    "\Phalcon\Models\Customers.cst_name_last",
-]
+    [
+        "\Phalcon\Models\Invoices.*",
+        "\Phalcon\Models\Customers.cst_name_first",
+        "\Phalcon\Models\Customers.cst_name_last",
+    ]
 );
 ```
 
@@ -18341,9 +18583,9 @@ Sets a GROUP BY clause
 
 ```php
 public function having(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -18353,9 +18595,9 @@ Sets a HAVING condition clause
 
 ```php
 public function inWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -18365,9 +18607,9 @@ Appends an IN condition to the current conditions
 
 ```php
 public function innerJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18377,9 +18619,9 @@ Adds an INNER join to the query
 
 ```php
 public function join(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18389,9 +18631,9 @@ Adds an :type: join (by default type - INNER) to the query
 
 ```php
 public function leftJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18401,8 +18643,8 @@ Adds a LEFT join to the query
 
 ```php
 public function limit(
-int $limit,
-mixed $offset = null
+    int $limit,
+    mixed $offset = null
 ): BuilderInterface;
 ```
 
@@ -18412,10 +18654,10 @@ Sets a LIMIT clause
 
 ```php
 public function notBetweenWhere(
-string $expr,
-mixed $minimum,
-mixed $maximum,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    mixed $minimum,
+    mixed $maximum,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -18425,9 +18667,9 @@ Appends a NOT BETWEEN condition to the current conditions
 
 ```php
 public function notInWhere(
-string $expr,
-array $values,
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr,
+    array $values,
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface;
 ```
 
@@ -18445,9 +18687,9 @@ Sets an OFFSET clause
 
 ```php
 public function orWhere(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
@@ -18465,9 +18707,9 @@ Sets an ORDER BY condition clause
 
 ```php
 public function rightJoin(
-string $model,
-string|null $conditions = null,
-string|null $alias = null
+    string $model,
+    string|null $conditions = null,
+    string|null $alias = null
 ): BuilderInterface;
 ```
 
@@ -18477,8 +18719,8 @@ Adds a RIGHT join to the query
 
 ```php
 public function setBindParams(
-array $bindParams,
-bool $merge = false
+    array $bindParams,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -18488,8 +18730,8 @@ Set default bind parameters
 
 ```php
 public function setBindTypes(
-array $bindTypes,
-bool $merge = false
+    array $bindTypes,
+    bool $merge = false
 ): BuilderInterface;
 ```
 
@@ -18499,13 +18741,14 @@ Set default bind types
 
 ```php
 public function where(
-string $conditions,
-array $bindParams = [],
-array $bindTypes = []
+    string $conditions,
+    array $bindParams = [],
+    array $bindTypes = []
 ): BuilderInterface;
 ```
 
 Sets conditions for the query
+
 
 ## Mvc\Model\Query\Exceptions\AmbiguousColumn
 
@@ -18515,12 +18758,13 @@ Sets conditions for the query
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18539,10 +18783,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $phql
+    string $name,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\AmbiguousJoinRelation
 
@@ -18552,12 +18797,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18576,11 +18822,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $from,
-string $join,
-string $phql
+    string $from,
+    string $join,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders
 
@@ -18590,12 +18837,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18616,6 +18864,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $wildcard );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\BindTypeRequiresArray
 
 <span class="badge badge--class">Class</span>
@@ -18624,12 +18873,13 @@ public function __construct( string $wildcard );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18650,6 +18900,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\BindValueRequired
 
 <span class="badge badge--class">Class</span>
@@ -18658,12 +18909,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18684,6 +18936,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap
 
 <span class="badge badge--class">Class</span>
@@ -18692,12 +18945,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18718,6 +18972,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $column );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid
 
 <span class="badge badge--class">Class</span>
@@ -18726,12 +18981,13 @@ public function __construct( string $column );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18752,6 +19008,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\ModelRequired
 
 <span class="badge badge--class">Class</span>
@@ -18760,12 +19017,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18786,6 +19044,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey
 
 <span class="badge badge--class">Class</span>
@@ -18794,12 +19053,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18820,6 +19080,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable
 
 <span class="badge badge--class">Class</span>
@@ -18828,12 +19089,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18854,6 +19116,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $operator );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ColumnNotInDomain
 
 <span class="badge badge--class">Class</span>
@@ -18862,12 +19125,13 @@ public function __construct( string $operator );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18886,11 +19150,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $model,
-string $phql
+    string $name,
+    string $model,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels
 
@@ -18900,12 +19165,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18924,11 +19190,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $tag,
-string $phql
+    string $name,
+    string $tag,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\CorruptedAst
 
@@ -18938,12 +19205,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18964,6 +19232,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedDeleteAst
 
 <span class="badge badge--class">Class</span>
@@ -18972,12 +19241,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -18998,6 +19268,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedInsertAst
 
 <span class="badge badge--class">Class</span>
@@ -19006,12 +19277,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19032,6 +19304,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedSelectAst
 
 <span class="badge badge--class">Class</span>
@@ -19040,12 +19313,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19066,6 +19340,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\CorruptedUpdateAst
 
 <span class="badge badge--class">Class</span>
@@ -19074,12 +19349,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19100,6 +19376,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -19108,12 +19385,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19134,6 +19412,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\DuplicateAlias
 
 <span class="badge badge--class">Class</span>
@@ -19142,12 +19421,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19166,10 +19446,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $phql
+    string $name,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue
 
@@ -19179,12 +19460,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19205,6 +19487,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InsertColumnCountMismatch
 
 <span class="badge badge--class">Class</span>
@@ -19213,12 +19496,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19239,6 +19523,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidCachedResultset
 
 <span class="badge badge--class">Class</span>
@@ -19247,12 +19532,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19273,6 +19559,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidCachingOptions
 
 <span class="badge badge--class">Class</span>
@@ -19281,12 +19568,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19307,6 +19595,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidColumnDefinition
 
 <span class="badge badge--class">Class</span>
@@ -19315,12 +19604,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19341,6 +19631,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidInjectedManager
 
 <span class="badge badge--class">Class</span>
@@ -19349,12 +19640,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19375,6 +19667,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidInjectedMetadata
 
 <span class="badge badge--class">Class</span>
@@ -19383,12 +19676,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19409,6 +19703,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidQueryCacheService
 
 <span class="badge badge--class">Class</span>
@@ -19417,12 +19712,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19443,6 +19739,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidResultsetClass
 
 <span class="badge badge--class">Class</span>
@@ -19451,12 +19748,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19477,6 +19775,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\InvalidResultsetRowClass
 
 <span class="badge badge--class">Class</span>
@@ -19485,12 +19784,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19511,6 +19811,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed
 
 <span class="badge badge--class">Class</span>
@@ -19519,12 +19820,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19543,10 +19845,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $alias,
-string $phql
+    string $alias,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\JoinFieldCountMismatch
 
@@ -19556,12 +19859,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19580,11 +19884,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $model,
-string $join,
-string $phql
+    string $model,
+    string $join,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\MissingCacheKey
 
@@ -19594,12 +19899,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19620,6 +19926,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MissingMetaData
 
 <span class="badge badge--class">Class</span>
@@ -19628,12 +19935,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19654,6 +19962,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MissingModelAttribute
 
 <span class="badge badge--class">Class</span>
@@ -19662,12 +19971,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19686,11 +19996,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $model,
-string $attribute,
-string $phql
+    string $model,
+    string $attribute,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\MissingModelsManager
 
@@ -19700,12 +20011,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19726,6 +20038,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MixedDatabaseSystems
 
 <span class="badge badge--class">Class</span>
@@ -19734,12 +20047,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19760,6 +20074,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ModelSourceNotFound
 
 <span class="badge badge--class">Class</span>
@@ -19768,12 +20083,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19792,10 +20108,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $phql
+    string $name,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\ModelsListNotLoaded
 
@@ -19805,12 +20122,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19831,6 +20149,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -19839,12 +20158,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19865,6 +20185,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\NoModelForAlias
 
 <span class="badge badge--class">Class</span>
@@ -19873,12 +20194,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19897,10 +20219,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $model,
-string $phql
+    string $model,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\PhqlColumnNotInMap
 
@@ -19910,12 +20233,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19936,6 +20260,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $fieldName );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ReadConnectionMissing
 
 <span class="badge badge--class">Class</span>
@@ -19944,12 +20269,13 @@ public function __construct( string $fieldName );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -19970,6 +20296,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\RelationshipNotFound
 
 <span class="badge badge--class">Class</span>
@@ -19978,12 +20305,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20002,11 +20330,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $model,
-string $relationship,
-string $phql
+    string $model,
+    string $relationship,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\ResultsetClassNotFound
 
@@ -20016,12 +20345,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20042,6 +20372,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ResultsetNonCacheable
 
 <span class="badge badge--class">Class</span>
@@ -20050,12 +20381,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20076,6 +20408,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound
 
 <span class="badge badge--class">Class</span>
@@ -20084,12 +20417,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20110,6 +20444,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownBindType
 
 <span class="badge badge--class">Class</span>
@@ -20118,12 +20453,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20144,6 +20480,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownColumnType
 
 <span class="badge badge--class">Class</span>
@@ -20152,12 +20489,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20178,6 +20516,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownJoinType
 
 <span class="badge badge--class">Class</span>
@@ -20186,12 +20525,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20210,10 +20550,11 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $type,
-string $phql
+    string $type,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\UnknownModelOrAlias
 
@@ -20223,12 +20564,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20247,11 +20589,12 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 
 ```php
 public function __construct(
-string $model,
-string $tag,
-string $phql
+    string $model,
+    string $tag,
+    string $phql
 );
 ```
+
 
 ## Mvc\Model\Query\Exceptions\UnknownPhqlExpression
 
@@ -20261,12 +20604,13 @@ string $phql
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20287,6 +20631,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType
 
 <span class="badge badge--class">Class</span>
@@ -20295,12 +20640,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20321,6 +20667,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UnknownPhqlStatement
 
 <span class="badge badge--class">Class</span>
@@ -20329,12 +20676,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20355,6 +20703,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported
 
 <span class="badge badge--class">Class</span>
@@ -20363,12 +20712,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20389,6 +20739,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Model\Query\Exceptions\WriteConnectionMissing
 
 <span class="badge badge--class">Class</span>
@@ -20397,12 +20748,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\Exception`
+
 
 ### Method Summary
 
@@ -20422,6 +20774,7 @@ __Uses__ `Phalcon\Mvc\Model\Exception`
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\Model\Query\Lang
 
@@ -20444,7 +20797,7 @@ parser with a very low memory footprint that is also thread-safe.
 use Phalcon\Mvc\Model\Query\Lang;
 
 $intermediate = Lang::parsePHQL(
-"SELECT r.* FROM Invoices r LIMIT 10"
+    "SELECT r.* FROM Invoices r LIMIT 10"
 );
 ```
 
@@ -20477,6 +20830,7 @@ public static function parsePHQL( string $phql ): array;
 
 Parses a PHQL statement returning an intermediate representation (IR)
 
+
 ## Mvc\Model\Query\Status
 
 <span class="badge badge--class">Class</span>
@@ -20491,18 +20845,18 @@ model which finally executes the operations when it fails
 $phql = "UPDATE Invoices SET inv_title = :inv_title:, inv_status_flag = :inv_status_flag:, inv_total = :inv_total: WHERE inv_id = :inv_id:";
 
 $status = $app->modelsManager->executeQuery(
-$phql,
-[
-    "inv_id"          => 100,
-    "inv_title"       => "Test Invoice",
-    "inv_status_flag" => 1,
-    "inv_total"       => 1959,
-]
+    $phql,
+    [
+        "inv_id"          => 100,
+        "inv_title"       => "Test Invoice",
+        "inv_status_flag" => 1,
+        "inv_total"       => 1959,
+    ]
 );
 
 // Check if the update was successful
 if ($status->success()) {
-echo "OK";
+    echo "OK";
 }
 ```
 
@@ -20513,6 +20867,7 @@ echo "OK";
 </div>
 
 __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -20565,8 +20920,8 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 
 ```php
 public function __construct(
-bool $success,
-ModelInterface|null $model = null
+    bool $success,
+    ModelInterface|null $model = null
 );
 ```
 
@@ -20596,6 +20951,7 @@ public function success(): bool;
 
 Allows to check if the executed operation was successful
 
+
 ## Mvc\Model\Query\StatusInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -20610,6 +20966,7 @@ Interface for Phalcon\Mvc\Model\Query\Status
 </div>
 
 __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -20661,6 +21018,7 @@ public function success(): bool;
 ```
 
 Allows to check if the executed operation was successful
+
 
 ## Mvc\Model\Relation
 
@@ -20859,11 +21217,11 @@ This class represents a relationship between two models
 
 ```php
 public function __construct(
-int $type,
-string $referencedModel,
-mixed $fields,
-mixed $referencedFields,
-array $options = []
+    int $type,
+    string $referencedModel,
+    mixed $fields,
+    mixed $referencedFields,
+    array $options = []
 );
 ```
 
@@ -20986,13 +21344,14 @@ Check whether the relation is a 'many-to-many' relation or not
 
 ```php
 public function setIntermediateRelation(
-mixed $intermediateFields,
-string $intermediateModel,
-mixed $intermediateReferencedFields
+    mixed $intermediateFields,
+    string $intermediateModel,
+    mixed $intermediateReferencedFields
 );
 ```
 
 Sets the intermediate model data for has-*-through relations
+
 
 ## Mvc\Model\RelationInterface
 
@@ -21217,13 +21576,14 @@ Check whether the relation is a 'many-to-many' relation or not
 
 ```php
 public function setIntermediateRelation(
-mixed $intermediateFields,
-string $intermediateModel,
-mixed $intermediateReferencedFields
+    mixed $intermediateFields,
+    string $intermediateModel,
+    mixed $intermediateReferencedFields
 );
 ```
 
 Sets the intermediate model data for has-*-through relations
+
 
 ## Mvc\Model\ResultInterface
 
@@ -21241,6 +21601,7 @@ All single objects passed as base objects to Resultsets must implement this inte
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -21265,6 +21626,7 @@ public function setDirtyState( int $dirtyState ): ModelInterface|bool;
 
 Sets the object's state
 
+
 ## Mvc\Model\Resultset
 
 <span class="badge badge--abstract">Abstract</span>
@@ -21281,32 +21643,32 @@ serializing.
 
 // Using a standard foreach
 $invoices = Invoices::find(
-[
-    "inv_status_flag = 1",
-    "order" => "inv_title",
-]
+    [
+        "inv_status_flag = 1",
+        "order" => "inv_title",
+    ]
 );
 
 foreach ($invoices as invoice) {
-echo invoice->inv_title, "\n";
+    echo invoice->inv_title, "\n";
 }
 
 // Using a while
 $invoices = Invoices::find(
-[
-    "inv_status_flag = 1",
-    "order" => "inv_title",
-]
+    [
+        "inv_status_flag = 1",
+        "order" => "inv_title",
+    ]
 );
 
 $invoices->rewind();
 
 while ($invoices->valid()) {
-$invoice = $invoices->current();
+    $invoice = $invoices->current();
 
-echo $invoice->inv_title, "\n";
+    echo $invoice->inv_title, "\n";
 
-$invoices->next();
+    $invoices->next();
 }
 ```
 @template TKey
@@ -21317,12 +21679,13 @@ $invoices->next();
 <div class="api-tree">
 
 - **`Phalcon\Mvc\Model\Resultset`** - implements [`Phalcon\Mvc\Model\ResultsetInterface`](#mvcmodelresultsetinterface), `\Iterator`, `\SeekableIterator`, `\Countable`, `\ArrayAccess`, `\JsonSerializable`
-- [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
-- [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
+    - [`Phalcon\Mvc\Model\Resultset\Complex`](#mvcmodelresultsetcomplex)
+    - [`Phalcon\Mvc\Model\Resultset\Simple`](#mvcmodelresultsetsimple)
 
 </div>
 
 __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSerializable` · `Phalcon\Cache\CacheInterface` · `Phalcon\Db\Enum` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\CursorIsImmutable` · `Phalcon\Mvc\Model\Exceptions\IndexNotInCursor` · `Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService` · `Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `SeekableIterator`
+
 
 ### Method Summary
 
@@ -21578,8 +21941,8 @@ __Uses__ `ArrayAccess` · `Closure` · `Countable` · `Iterator` · `JsonSeriali
 
 ```php
 public function __construct(
-mixed $result,
-mixed $cache = null
+    mixed $result,
+    mixed $cache = null
 );
 ```
 
@@ -21611,11 +21974,11 @@ Filters a resultset returning only those the developer requires
 
 ```php
 $filtered = $invoices->filter(
-function ($invoice) {
-    if ($invoice->inv_id < 3) {
-        return $invoice;
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
+        }
     }
-}
 );
 ```
 
@@ -21641,18 +22004,18 @@ $manager = $model->getModelsManager();
 
 // \Invoices
 $manager->createQuery('SELECT * FROM Invoices')
-    ->execute()
-    ->getFirst();
+        ->execute()
+        ->getFirst();
 
 // \Phalcon\Mvc\Model\Row
 $manager->createQuery('SELECT r.inv_id FROM Invoices AS r')
-    ->execute()
-    ->getFirst();
+        ->execute()
+        ->getFirst();
 
 // NULL
 $manager->createQuery('SELECT r.inv_id FROM Invoices AS r WHERE r.inv_title = "NON-EXISTENT"')
-    ->execute()
-    ->getFirst();
+        ->execute()
+        ->getFirst();
 ```
 
 <h4 id="mvcmodelresultset-gethydratemode"><code>getHydrateMode()</code></h4>
@@ -21766,8 +22129,8 @@ Gets row in a specific position of the resultset
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -21824,8 +22187,8 @@ Set if the resultset is fresh or an old one cached
 
 ```php
 public function update(
-mixed $data,
-Closure|null $conditionCallback = null
+    mixed $data,
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
@@ -21843,6 +22206,7 @@ Driven by the row the cursor is parked on rather than by the count, so
 that a plain traversal never has to ask the driver how many rows there
 are - on SQLite that answer costs a second statement.
 
+
 ## Mvc\Model\ResultsetInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -21859,6 +22223,7 @@ Interface for Phalcon\Mvc\Model\Resultset
 </div>
 
 __Uses__ `Closure` · `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -21965,11 +22330,11 @@ Filters a resultset returning only those the developer requires
 
 ```php
 $filtered = $invoices->filter(
-function ($invoice) {
-    if ($invoice->inv_id < 3) {
-        return $invoice;
+    function ($invoice) {
+        if ($invoice->inv_id < 3) {
+            return $invoice;
+        }
     }
-}
 );
 ```
 
@@ -22058,12 +22423,13 @@ it could consume more memory than currently it does.
 
 ```php
 public function update(
-mixed $data,
-Closure|null $conditionCallback = null
+    mixed $data,
+    Closure|null $conditionCallback = null
 ): bool;
 ```
 
 Updates every record in the resultset
+
 
 ## Mvc\Model\Resultset\Complex
 
@@ -22081,11 +22447,12 @@ This class builds every complex row as it is required
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\Resultset`](#mvcmodelresultset)
-- **`Phalcon\Mvc\Model\Resultset\Complex`**
+    - **`Phalcon\Mvc\Model\Resultset\Complex`**
 
 </div>
 
 __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\CorruptColumnType` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings` · `stdClass`
+
 
 ### Method Summary
 
@@ -22160,10 +22527,10 @@ __Uses__ `Phalcon\Db\ResultInterface` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 
 ```php
 public function __construct(
-mixed $columnTypes,
-ResultInterface|null $result = null,
-mixed $cache = null,
-string $resultsetRowClass = ""
+    mixed $columnTypes,
+    ResultInterface|null $result = null,
+    mixed $cache = null,
+    string $resultsetRowClass = ""
 );
 ```
 
@@ -22215,6 +22582,7 @@ public function unserialize( mixed $data ): void;
 
 Unserializing a resultset will allow to only works on the rows present in the saved state
 
+
 ## Mvc\Model\Resultset\Simple
 
 <span class="badge badge--class">Class</span>
@@ -22231,11 +22599,12 @@ This class builds every complete object as it is required
 <div class="api-tree">
 
 - [`Phalcon\Mvc\Model\Resultset`](#mvcmodelresultset)
-- **`Phalcon\Mvc\Model\Resultset\Simple`**
+    - **`Phalcon\Mvc\Model\Resultset\Simple`**
 
 </div>
 
 __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Eager\Loader` · `Phalcon\Mvc\Model\Exception` · `Phalcon\Mvc\Model\Exceptions\InvalidContainer` · `Phalcon\Mvc\Model\Exceptions\InvalidSerializationData` · `Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap` · `Phalcon\Mvc\Model\Resultset` · `Phalcon\Mvc\Model\Row` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -22326,11 +22695,11 @@ __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Model` · `
 
 ```php
 public function __construct(
-mixed $columnMap,
-mixed $model,
-mixed $result,
-mixed $cache = null,
-bool $keepSnapshots = false
+    mixed $columnMap,
+    mixed $model,
+    mixed $result,
+    mixed $cache = null,
+    bool $keepSnapshots = false
 );
 ```
 
@@ -22407,6 +22776,7 @@ public function unserialize( mixed $data ): void;
 Unserializing a resultset will allow to only works on the rows present in
 the saved state
 
+
 ## Mvc\Model\Row
 
 <span class="badge badge--class">Class</span>
@@ -22418,11 +22788,12 @@ This objects implements the ArrayAccess interface to allow access the object as 
 <div class="api-tree">
 
 - `\stdClass`
-- **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\ArrayAccess`, `\JsonSerializable`
+    - **`Phalcon\Mvc\Model\Row`** - implements [`Phalcon\Mvc\EntityInterface`](#mvcentityinterface), [`Phalcon\Mvc\Model\ResultInterface`](#mvcmodelresultinterface), `\ArrayAccess`, `\JsonSerializable`
 
 </div>
 
 __Uses__ `ArrayAccess` · `JsonSerializable` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\IndexNotInRow` · `Phalcon\Mvc\Model\Exceptions\RowIsImmutable`
+
 
 ### Method Summary
 
@@ -22516,8 +22887,8 @@ Gets a record in a specific position of the row
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -22563,8 +22934,8 @@ Returns the instance as an array representation
 
 ```php
 public function writeAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): void;
 ```
 
@@ -22573,6 +22944,7 @@ Writes an attribute value by its name
 ```php
 $invoice->writeAttribute("inv_title", "Test Invoice");
 ```
+
 
 ## Mvc\Model\Transaction
 
@@ -22589,34 +22961,34 @@ use Phalcon\Mvc\Model\Transaction\Failed;
 use Phalcon\Mvc\Model\Transaction\Manager;
 
 try {
-$manager = new Manager();
+    $manager = new Manager();
 
-$transaction = $manager->get();
+    $transaction = $manager->get();
 
-$invoice = new Invoices();
+    $invoice = new Invoices();
 
-$invoice->setTransaction($transaction);
+    $invoice->setTransaction($transaction);
 
-$invoice->inv_title    = "Test Invoice";
-$invoice->inv_created_at = date("Y-m-d");
+    $invoice->inv_title    = "Test Invoice";
+    $invoice->inv_created_at = date("Y-m-d");
 
-if ($invoice->save() === false) {
-    $transaction->rollback("Can't save invoice");
-}
+    if ($invoice->save() === false) {
+        $transaction->rollback("Can't save invoice");
+    }
 
-$product = new Products();
+    $product = new Products();
 
-$product->setTransaction($transaction);
+    $product->setTransaction($transaction);
 
-$product->prd_name = "Widget";
+    $product->prd_name = "Widget";
 
-if ($product->save() === false) {
-    $transaction->rollback("Can't save product");
-}
+    if ($product->save() === false) {
+        $transaction->rollback("Can't save product");
+    }
 
-$transaction->commit();
+    $transaction->commit();
 } catch(Failed $e) {
-echo "Failed, reason: ", $e->getMessage();
+    echo "Failed, reason: ", $e->getMessage();
 }
 ```
 
@@ -22627,6 +22999,7 @@ echo "Failed, reason: ", $e->getMessage();
 </div>
 
 __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\TransactionInterface` · `Phalcon\Mvc\Model\Transaction\Failed` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+
 
 ### Method Summary
 
@@ -22763,9 +23136,9 @@ __Uses__ `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `P
 
 ```php
 public function __construct(
-DiInterface $container,
-bool $autoBegin = false,
-string $service = "db"
+    DiInterface $container,
+    bool $autoBegin = false,
+    string $service = "db"
 );
 ```
 
@@ -22823,8 +23196,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-string|null $rollbackMessage = null,
-ModelInterface|null $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -22870,6 +23243,7 @@ public function throwRollbackException( bool $status ): TransactionInterface;
 
 Enables throwing exception
 
+
 ## Mvc\Model\TransactionInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -22884,6 +23258,7 @@ Interface for Phalcon\Mvc\Model\Transaction
 </div>
 
 __Uses__ `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Transaction\ManagerInterface`
+
 
 ### Method Summary
 
@@ -23018,8 +23393,8 @@ Checks whether internal connection is under an active transaction
 
 ```php
 public function rollback(
-string|null $rollbackMessage = null,
-ModelInterface|null $rollbackRecord = null
+    string|null $rollbackMessage = null,
+    ModelInterface|null $rollbackRecord = null
 ): bool;
 ```
 
@@ -23065,6 +23440,7 @@ public function throwRollbackException( bool $status ): TransactionInterface;
 
 Enables throwing exception
 
+
 ## Mvc\Model\Transaction\Exception
 
 <span class="badge badge--class">Class</span>
@@ -23077,11 +23453,12 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\Transaction\Exception`**
-- [`Phalcon\Mvc\Model\Transaction\Failed`](#mvcmodeltransactionfailed)
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\Transaction\Exception`**
+            - [`Phalcon\Mvc\Model\Transaction\Failed`](#mvcmodeltransactionfailed)
 
 </div>
+
 
 ## Mvc\Model\Transaction\Failed
 
@@ -23095,13 +23472,14 @@ This class will be thrown to exit a try/catch block for isolated transactions
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
-- **`Phalcon\Mvc\Model\Transaction\Failed`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - [`Phalcon\Mvc\Model\Transaction\Exception`](#mvcmodeltransactionexception)
+            - **`Phalcon\Mvc\Model\Transaction\Failed`**
 
 </div>
 
 __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -23143,8 +23521,8 @@ __Uses__ `Phalcon\Messages\MessageInterface` · `Phalcon\Mvc\ModelInterface`
 
 ```php
 public function __construct(
-string $message,
-ModelInterface|null $record = null
+    string $message,
+    ModelInterface|null $record = null
 );
 ```
 
@@ -23165,6 +23543,7 @@ public function getRecordMessages(): array|string;
 ```
 
 Returns validation record messages which stop the transaction
+
 
 ## Mvc\Model\Transaction\Manager
 
@@ -23196,7 +23575,7 @@ try {
    $invoice->inv_created_at = date("Y-m-d");
 
    if ($invoice->save() === false) {
-   $transaction->rollback("Can't save invoice");
+       $transaction->rollback("Can't save invoice");
    }
 
    $product = new Products();
@@ -23206,7 +23585,7 @@ try {
    $product->prd_name = "Widget";
 
    if ($product->save() === false) {
-   $transaction->rollback("Can't save product");
+       $transaction->rollback("Can't save product");
    }
 
    $transaction->commit();
@@ -23222,6 +23601,7 @@ try {
 </div>
 
 __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Transaction` · `Phalcon\Mvc\Model\TransactionInterface`
+
 
 ### Method Summary
 
@@ -23509,6 +23889,7 @@ protected function collectTransaction( TransactionInterface $transaction ): void
 
 Removes transactions from the TransactionManager
 
+
 ## Mvc\Model\Transaction\ManagerInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -23525,6 +23906,7 @@ Interface for Phalcon\Mvc\Model\Transaction\Manager
 </div>
 
 __Uses__ `Phalcon\Mvc\Model\TransactionInterface`
+
 
 ### Method Summary
 
@@ -23703,6 +24085,7 @@ public function setRollbackPendent( bool $rollbackPendent ): ManagerInterface;
 
 Set if the transaction manager must register a shutdown function to clean up pendent transactions
 
+
 ## Mvc\Model\ValidationFailed
 
 <span class="badge badge--class">Class</span>
@@ -23716,12 +24099,13 @@ Phalcon\Mvc\Model must be set up to have this behavior
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
-- **`Phalcon\Mvc\Model\ValidationFailed`**
+    - [`Phalcon\Mvc\Model\Exception`](#mvcmodelexception)
+        - **`Phalcon\Mvc\Model\ValidationFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -23768,8 +24152,8 @@ __Uses__ `Phalcon\Messages\Message` · `Phalcon\Mvc\ModelInterface`
 
 ```php
 public function __construct(
-ModelInterface $model,
-array $validationMessages
+    ModelInterface $model,
+    array $validationMessages
 );
 ```
 
@@ -23791,6 +24175,7 @@ public function getModel(): ModelInterface;
 
 Returns the model that generated the messages
 
+
 ## Mvc\ModuleDefinitionInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -23805,6 +24190,7 @@ This interface must be implemented by class module definitions
 </div>
 
 __Uses__ `Phalcon\Di\DiInterface`
+
 
 ### Method Summary
 
@@ -23841,6 +24227,7 @@ public function registerServices( DiInterface $container );
 
 Registers services related to the module
 
+
 ## Mvc\Router
 
 <span class="badge badge--class">Class</span>
@@ -23859,15 +24246,15 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-"/documentation/{chapter}/{name}\.{type:[a-z]+}",
-[
-    "controller" => "documentation",
-    "action"     => "show",
-]
+    "/documentation/{chapter}/{name}\.{type:[a-z]+}",
+    [
+        "controller" => "documentation",
+        "action"     => "show",
+    ]
 );
 
 $router->handle(
-"/documentation/1/examples.html"
+    "/documentation/1/examples.html"
 );
 
 echo $router->getControllerName();
@@ -23876,13 +24263,14 @@ echo $router->getControllerName();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Mvc\Router`** - implements [`Phalcon\Mvc\RouterInterface`](#mvcrouterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+            - [`Phalcon\Mvc\Router\Annotations`](#mvcrouterannotations)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInterface` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Http\RequestInterface` · `Phalcon\Mvc\Router\Exception` · `Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray` · `Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes` · `Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray` · `Phalcon\Mvc\Router\Exceptions\InvalidConfigSource` · `Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths` · `Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition` · `Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey` · `Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey` · `Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod` · `Phalcon\Mvc\Router\Exceptions\WrongPathsKey` · `Phalcon\Mvc\Router\Group` · `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\Route` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -24242,181 +24630,220 @@ __Uses__ `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Config\ConfigInter
 ### Properties
 
 <div class="api-list">
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$action</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">array</code>
+
 <code class="sig"><span class="sv">$candidatesByMethod</span><span class="sm"> = []</span></code>
+
 <span class="desc">Pre-merged per-method candidate buckets in attach order. For each HTTP method seen on any registered route, the bucket contains the method-specific routes followed by the &quot;*&quot; (no-constraint) routes. The &quot;*&quot; key itself holds only the no-constraint routes - used when the request method has no specific bucket. Built in rebuildMethodIndex(); consumed by handle() in reverse.</span>
+
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$combinedRegexByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Combined PCRE pattern per method bucket (chunked list of strings). Each chunk uses (?|...) branch reset and (*:N) mark labels. Built only when the bucket meets gating: no hostname routes; standard pattern shape.</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$combinedRegexDisabled</span><span class="sm"> = []</span></code>
 <span class="desc">Boolean per method bucket: true when the combined regex cannot be built (hostname route present, exotic pattern shape, etc.).</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$combinedRegexMarkMap</span><span class="sm"> = []</span></code>
 <span class="desc">Map from MARK label back to the route index in candidatesByMethod[method]. One per chunk. combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$controller</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultAction</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultController</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultModule</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$defaultNamespace</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$defaultParams</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ManagerInterface|null</code>
 <code class="sig"><span class="sv">$eventsManager</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$hostnameByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Per-method buckets of routes with hostname constraints, grouped by raw hostname string. Routes are referenced by their index into candidatesByMethod[method]. Built in rebuildMethodIndex(). Shape: hostnameByMethod[method][hostname] = list of route indices.</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$hostnameLessByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Per-method indices of routes without a hostname constraint, in attach order. Shape: hostnameLessByMethod[method] = list of route indices into candidatesByMethod[method].</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$keyRouteIds</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$keyRouteNames</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">RouteInterface|null</code>
 <code class="sig"><span class="sv">$matchedRoute</span><span class="sm"> = null</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$matches</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$methodRoutes</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$methodRoutesDirty</span><span class="sm"> = true</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$module</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$namespaceName</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array|string|null</code>
 <code class="sig"><span class="sv">$notFoundPaths</span><span class="sm"> = null</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$params</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">CacheAdapterInterface|null</code>
 <code class="sig"><span class="sv">$pendingCache</span><span class="sm"> = null</span></code>
 <span class="desc">Lazy-write cache target set by useCache(). When non-null, handle() writes buildDispatcherDump() to this cache after a successful rebuild on cache miss, then clears the property to skip subsequent writes.</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sv">$pendingCacheKey</span><span class="sm"> = &quot;&quot;</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$removeExtraSlashes</span><span class="sm"> = false</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$routeMeta</span><span class="sm"> = []</span></code>
 <span class="desc">Single-source per-route metadata cache. One entry per route, keyed by the route&#039;s intrinsic id. Replaces the previous per-method-bucket replication of metadata arrays. Built once in rebuildMethodIndex(). Shape: routeMeta[routeId] = [ &quot;pattern&quot;:     string,        // compiled pattern &quot;isRegex&quot;:     bool, &quot;hostname&quot;:    string|null, &quot;hostRegex&quot;:   string|null, &quot;beforeMatch&quot;: callable|null ]</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$routes</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$staticByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Static-route hash, populated by rebuildMethodIndex(). For each method bucket (including &quot;*&quot;), maps URI =&gt; list of routes whose compiled pattern is a literal string equal to that URI.</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$staticShadowedByMethod</span><span class="sm"> = []</span></code>
 <span class="desc">Shadow-detection map. If staticShadowedByMethod[method][uri] is set, the static URI in that bucket is shadowed by a later-attached regex route - the fast path MUST NOT be used; fall through to the dynamic loop so the regex wins (reverse-iteration semantics).</span>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sv">$uriSource</span><span class="sm"> = self::URI_SOURCE_GET_URL</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$wasMatched</span><span class="sm"> = false</span></code>
 </div>
+
 </div>
 
 ### Methods
@@ -24435,10 +24862,10 @@ Phalcon\Mvc\Router constructor
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24450,16 +24877,16 @@ use Phalcon\Mvc\Router;
 $router->add("/about", "About::index");
 
 $router->add(
-"/about",
-"About::index",
-["GET", "POST"]
+    "/about",
+    "About::index",
+    ["GET", "POST"]
 );
 
 $router->add(
-"/about",
-"About::index",
-["GET", "POST"],
-Router::POSITION_FIRST
+    "/about",
+    "About::index",
+    ["GET", "POST"],
+    Router::POSITION_FIRST
 );
 ```
 
@@ -24467,9 +24894,9 @@ Router::POSITION_FIRST
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24479,9 +24906,9 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24491,9 +24918,9 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24503,9 +24930,9 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24515,9 +24942,9 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24527,9 +24954,9 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24539,9 +24966,9 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24551,9 +24978,9 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24564,9 +24991,9 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24576,9 +25003,9 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -24588,8 +25015,8 @@ Adds a route to the router that only match if the HTTP method is TRACE
 
 ```php
 public function attach(
-RouteInterface $route,
-int $position = Router::POSITION_LAST
+    RouteInterface $route,
+    int $position = Router::POSITION_LAST
 ): static;
 ```
 
@@ -24600,14 +25027,14 @@ use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Router\Route;
 
 class CustomRoute extends Route {
- // ...
+     // ...
 }
 
 $router = new Router();
 
 $router->attach(
-new CustomRoute("/about", "About::index", ["GET", "HEAD"]),
-Router::POSITION_FIRST
+    new CustomRoute("/about", "About::index", ["GET", "HEAD"]),
+    Router::POSITION_FIRST
 );
 ```
 
@@ -24819,15 +25246,15 @@ Loads routes from an array or Phalcon\Config\Config instance.
 
 ```php
 $router->loadFromConfig(
- [
-     'routes' => [
-         [
-             'method'  => 'get',
-             'pattern' => '/users',
-             'paths'   => 'Users::index',
+     [
+         'routes' => [
+             [
+                 'method'  => 'get',
+                 'pattern' => '/users',
+                 'paths'   => 'Users::index',
+             ],
          ],
-     ],
- ]
+     ]
  );
 ```
 
@@ -24902,10 +25329,10 @@ route
 
 ```php
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 ```
 
@@ -24939,7 +25366,7 @@ Sets the URI source. One of the URI_SOURCE_* constants
 
 ```php
 $router->setUriSource(
-Router::URI_SOURCE_SERVER_REQUEST_URI
+    Router::URI_SOURCE_SERVER_REQUEST_URI
 );
 ```
 
@@ -24947,8 +25374,8 @@ Router::URI_SOURCE_SERVER_REQUEST_URI
 
 ```php
 public function useCache(
-CacheAdapterInterface $cache,
-string $key = "phalcon.router.dispatcher"
+    CacheAdapterInterface $cache,
+    string $key = "phalcon.router.dispatcher"
 ): void;
 ```
 
@@ -24998,6 +25425,7 @@ protected function rebuildMethodIndex(): void;
 Rebuilds the HTTP-method index from the current routes array.
 Routes with no HTTP method constraint are filed under "*".
 
+
 ## Mvc\RouterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -25012,6 +25440,7 @@ Interface for Phalcon\Mvc\Router
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterface`
+
 
 ### Method Summary
 
@@ -25212,10 +25641,10 @@ __Uses__ `Phalcon\Mvc\Router\GroupInterface` · `Phalcon\Mvc\Router\RouteInterfa
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25225,9 +25654,9 @@ Adds a route to the router on any HTTP method
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25237,9 +25666,9 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25249,9 +25678,9 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25261,9 +25690,9 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25273,9 +25702,9 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25285,9 +25714,9 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25297,9 +25726,9 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25309,9 +25738,9 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25322,9 +25751,9 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25334,9 +25763,9 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null,
-int $position = Router::POSITION_LAST
+    string $pattern,
+    mixed $paths = null,
+    int $position = Router::POSITION_LAST
 ): RouteInterface;
 ```
 
@@ -25346,8 +25775,8 @@ Adds a route to the router that only match if the HTTP method is TRACE
 
 ```php
 public function attach(
-RouteInterface $route,
-int $position = Router::POSITION_LAST
+    RouteInterface $route,
+    int $position = Router::POSITION_LAST
 ): RouterInterface;
 ```
 
@@ -25505,6 +25934,7 @@ public function wasMatched(): bool;
 
 Check if the router matches any of the defined routes
 
+
 ## Mvc\Router\Annotations
 
 <span class="badge badge--class">Class</span>
@@ -25518,29 +25948,30 @@ A router that reads routes annotations from classes/resources
 use Phalcon\Mvc\Router\Annotations;
 
 $di->setShared(
-"router",
-function() {
-    // Use the annotations router
-    $router = new Annotations(false);
+    "router",
+    function() {
+        // Use the annotations router
+        $router = new Annotations(false);
 
-    // This will do the same as above but only if the handled uri starts with /invoices
-    $router->addResource("Invoices", "/invoices");
+        // This will do the same as above but only if the handled uri starts with /invoices
+        $router->addResource("Invoices", "/invoices");
 
-    return $router;
-}
+        return $router;
+    }
 );
 ```
 
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Mvc\Router`](#mvcrouter)
-- **`Phalcon\Mvc\Router\Annotations`**
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - [`Phalcon\Mvc\Router`](#mvcrouter)
+            - **`Phalcon\Mvc\Router\Annotations`**
 
 </div>
 
 __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable` · `Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`
+
 
 ### Method Summary
 
@@ -25642,9 +26073,9 @@ __Uses__ `Phalcon\Annotations\Annotation` · `Phalcon\Di\DiInterface` · `Phalco
 
 ```php
 public function addModuleResource(
-string $module,
-string $handler,
-string|null $prefix = null
+    string $module,
+    string $handler,
+    string|null $prefix = null
 ): static;
 ```
 
@@ -25656,8 +26087,8 @@ The class is located in a module
 
 ```php
 public function addResource(
-string $handler,
-string|null $prefix = null
+    string $handler,
+    string|null $prefix = null
 ): static;
 ```
 
@@ -25690,11 +26121,11 @@ Produce the routing parameters from the rewrite information
 
 ```php
 public function processActionAnnotation(
-string $module,
-string $namespaceName,
-string $controller,
-string $action,
-Annotation $annotation
+    string $module,
+    string $namespaceName,
+    string $controller,
+    string $action,
+    Annotation $annotation
 ): void;
 ```
 
@@ -25704,8 +26135,8 @@ Checks for annotations in the public methods of the controller
 
 ```php
 public function processControllerAnnotation(
-string $handler,
-Annotation $annotation
+    string $handler,
+    Annotation $annotation
 );
 ```
 
@@ -25723,17 +26154,17 @@ $action here already without suffix 'Action'
 ```php
 // Array as callback
 $annotationRouter->setActionPreformatCallback(
- [
-     new Uncamelize(),
-     '__invoke'
- ]
+     [
+         new Uncamelize(),
+         '__invoke'
+     ]
  );
 
 // Function as callback
 $annotationRouter->setActionPreformatCallback(
-function ($action) {
-    return $action;
-}
+    function ($action) {
+        return $action;
+    }
 );
 
 // String as callback
@@ -25759,6 +26190,7 @@ public function setControllerSuffix( string $controllerSuffix ): self;
 
 Changes the controller class suffix
 
+
 ## Mvc\Router\Exception
 
 <span class="badge badge--class">Class</span>
@@ -25771,25 +26203,26 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Mvc\Router\Exception`**
-- [`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`](#mvcrouterexceptionsannotationsserviceunavailable)
-- [`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`](#mvcrouterexceptionsbeforematchnotcallable)
-- [`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`](#mvcrouterexceptionsconfigkeymustbearray)
-- [`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`](#mvcrouterexceptionsemptygroupofroutes)
-- [`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`](#mvcrouterexceptionsgrouproutesmustbearray)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`](#mvcrouterexceptionsinvalidcallbackparameter)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`](#mvcrouterexceptionsinvalidconfigsource)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`](#mvcrouterexceptionsinvalidnotfoundpaths)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`](#mvcrouterexceptionsinvalidroutepaths)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`](#mvcrouterexceptionsinvalidrouteposition)
-- [`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`](#mvcrouterexceptionsinvalidrouterfactoryconfig)
-- [`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`](#mvcrouterexceptionsmissinggrouproutekey)
-- [`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`](#mvcrouterexceptionsmissingrouteconfigkey)
-- [`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`](#mvcrouterexceptionsrequestserviceunavailable)
-- [`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`](#mvcrouterexceptionsunknownhttpmethod)
-- [`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`](#mvcrouterexceptionswrongpathskey)
+    - **`Phalcon\Mvc\Router\Exception`**
+        - [`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`](#mvcrouterexceptionsannotationsserviceunavailable)
+        - [`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`](#mvcrouterexceptionsbeforematchnotcallable)
+        - [`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`](#mvcrouterexceptionsconfigkeymustbearray)
+        - [`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`](#mvcrouterexceptionsemptygroupofroutes)
+        - [`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`](#mvcrouterexceptionsgrouproutesmustbearray)
+        - [`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`](#mvcrouterexceptionsinvalidcallbackparameter)
+        - [`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`](#mvcrouterexceptionsinvalidconfigsource)
+        - [`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`](#mvcrouterexceptionsinvalidnotfoundpaths)
+        - [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`](#mvcrouterexceptionsinvalidroutepaths)
+        - [`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`](#mvcrouterexceptionsinvalidrouteposition)
+        - [`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`](#mvcrouterexceptionsinvalidrouterfactoryconfig)
+        - [`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`](#mvcrouterexceptionsmissinggrouproutekey)
+        - [`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`](#mvcrouterexceptionsmissingrouteconfigkey)
+        - [`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`](#mvcrouterexceptionsrequestserviceunavailable)
+        - [`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`](#mvcrouterexceptionsunknownhttpmethod)
+        - [`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`](#mvcrouterexceptionswrongpathskey)
 
 </div>
+
 
 ## Mvc\Router\Exceptions\AnnotationsServiceUnavailable
 
@@ -25799,12 +26232,13 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -25825,6 +26259,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\BeforeMatchNotCallable
 
 <span class="badge badge--class">Class</span>
@@ -25833,12 +26268,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\BeforeMatchNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -25859,6 +26295,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\ConfigKeyMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -25867,12 +26304,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\ConfigKeyMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -25893,6 +26331,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Router\Exceptions\EmptyGroupOfRoutes
 
 <span class="badge badge--class">Class</span>
@@ -25901,12 +26340,13 @@ public function __construct( string $key );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\EmptyGroupOfRoutes`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -25927,6 +26367,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\GroupRoutesMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -25935,12 +26376,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\GroupRoutesMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -25961,6 +26403,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidCallbackParameter
 
 <span class="badge badge--class">Class</span>
@@ -25969,12 +26412,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -25995,6 +26439,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidConfigSource
 
 <span class="badge badge--class">Class</span>
@@ -26003,12 +26448,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\InvalidConfigSource`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26029,6 +26475,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidNotFoundPaths
 
 <span class="badge badge--class">Class</span>
@@ -26037,12 +26484,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\InvalidNotFoundPaths`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26063,6 +26511,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidRoutePaths
 
 <span class="badge badge--class">Class</span>
@@ -26071,12 +26520,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26097,6 +26547,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidRoutePosition
 
 <span class="badge badge--class">Class</span>
@@ -26105,12 +26556,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\InvalidRoutePosition`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26131,6 +26583,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\InvalidRouterFactoryConfig
 
 <span class="badge badge--class">Class</span>
@@ -26139,12 +26592,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26165,6 +26619,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\MissingGroupRouteKey
 
 <span class="badge badge--class">Class</span>
@@ -26173,12 +26628,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\MissingGroupRouteKey`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26199,6 +26655,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Router\Exceptions\MissingRouteConfigKey
 
 <span class="badge badge--class">Class</span>
@@ -26207,12 +26664,13 @@ public function __construct( string $key );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\MissingRouteConfigKey`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26233,6 +26691,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct( string $key );
 ```
 
+
 ## Mvc\Router\Exceptions\RequestServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -26241,12 +26700,13 @@ public function __construct( string $key );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\RequestServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26267,6 +26727,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Router\Exceptions\UnknownHttpMethod
 
 <span class="badge badge--class">Class</span>
@@ -26275,12 +26736,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\UnknownHttpMethod`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26301,6 +26763,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct( string $method );
 ```
 
+
 ## Mvc\Router\Exceptions\WrongPathsKey
 
 <span class="badge badge--class">Class</span>
@@ -26309,12 +26772,13 @@ public function __construct( string $method );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
-- **`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`**
+    - [`Phalcon\Mvc\Router\Exception`](#mvcrouterexception)
+        - **`Phalcon\Mvc\Router\Exceptions\WrongPathsKey`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exception`
+
 
 ### Method Summary
 
@@ -26335,6 +26799,7 @@ __Uses__ `Phalcon\Mvc\Router\Exception`
 public function __construct( string $part );
 ```
 
+
 ## Mvc\Router\Group
 
 <span class="badge badge--class">Class</span>
@@ -26347,10 +26812,10 @@ $router = new \Phalcon\Mvc\Router();
 
 //Create a group with a common module and controller
 $blog = new Group(
-[
-    "module"     => "blog",
-    "controller" => "index",
-]
+    [
+        "module"     => "blog",
+        "controller" => "index",
+    ]
 );
 
 //All the routes start with /blog
@@ -26358,27 +26823,27 @@ $blog->setPrefix("/blog");
 
 //Add a route to the group
 $blog->add(
-"/save",
-[
-    "action" => "save",
-]
+    "/save",
+    [
+        "action" => "save",
+    ]
 );
 
 //Add another route to the group
 $blog->add(
-"/edit/{id}",
-[
-    "action" => "edit",
-]
+    "/edit/{id}",
+    [
+        "action" => "edit",
+    ]
 );
 
 //This route maps to a controller different than the default
 $blog->add(
-"/blog",
-[
-    "controller" => "about",
-    "action"     => "index",
-]
+    "/blog",
+    [
+        "controller" => "about",
+        "action"     => "index",
+    ]
 );
 
 //Add the group to the router
@@ -26579,9 +27044,9 @@ Phalcon\Mvc\Router\Group constructor
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -26595,8 +27060,8 @@ $router->add("/about", "About::index");
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26606,8 +27071,8 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26617,8 +27082,8 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26628,8 +27093,8 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26639,8 +27104,8 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26650,8 +27115,8 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26661,8 +27126,8 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26672,8 +27137,8 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26683,8 +27148,8 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26694,8 +27159,8 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -26789,13 +27254,14 @@ Set a common uri prefix for all the routes in this group
 
 ```php
 protected function addRoute(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 ): RouteInterface;
 ```
 
 Adds a route applying the common attributes
+
 
 ## Mvc\Router\GroupInterface
 
@@ -26807,10 +27273,10 @@ $router = new \Phalcon\Mvc\Router();
 
 // Create a group with a common module and controller
 $blog = new Group(
-[
-    "module"     => "blog",
-    "controller" => "index",
-]
+    [
+        "module"     => "blog",
+        "controller" => "index",
+    ]
 );
 
 // All the routes start with /blog
@@ -26818,27 +27284,27 @@ $blog->setPrefix("/blog");
 
 // Add a route to the group
 $blog->add(
-"/save",
-[
-    "action" => "save",
-]
+    "/save",
+    [
+        "action" => "save",
+    ]
 );
 
 // Add another route to the group
 $blog->add(
-"/edit/{id}",
-[
-    "action" => "edit",
-]
+    "/edit/{id}",
+    [
+        "action" => "edit",
+    ]
 );
 
 // This route maps to a controller different than the default
 $blog->add(
-"/blog",
-[
-    "controller" => "about",
-    "action"     => "index",
-]
+    "/blog",
+    [
+        "controller" => "about",
+        "action"     => "index",
+    ]
 );
 
 // Add the group to the router
@@ -26990,9 +27456,9 @@ $router->mount($blog);
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 ): RouteInterface;
 ```
 
@@ -27006,8 +27472,8 @@ router->add("/about", "About::index");
 
 ```php
 public function addConnect(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27017,8 +27483,8 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 ```php
 public function addDelete(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27028,8 +27494,8 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 ```php
 public function addGet(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27039,8 +27505,8 @@ Adds a route to the router that only match if the HTTP method is GET
 
 ```php
 public function addHead(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27050,8 +27516,8 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 ```php
 public function addOptions(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27061,8 +27527,8 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 ```php
 public function addPatch(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27072,8 +27538,8 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 ```php
 public function addPost(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27083,8 +27549,8 @@ Adds a route to the router that only match if the HTTP method is POST
 
 ```php
 public function addPurge(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27094,8 +27560,8 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 ```php
 public function addPut(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27105,8 +27571,8 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 ```php
 public function addTrace(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -27194,6 +27660,7 @@ public function setPrefix( string $prefix ): GroupInterface;
 
 Set a common uri prefix for all the routes in this group
 
+
 ## Mvc\Router\Route
 
 <span class="badge badge--class">Class</span>
@@ -27208,6 +27675,7 @@ This class represents every route added to the router
 </div>
 
 __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
+
 
 ### Method Summary
 
@@ -27460,9 +27928,9 @@ __Uses__ `Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths`
 
 ```php
 public function __construct(
-string $pattern,
-mixed $paths = null,
-mixed $httpMethods = null
+    string $pattern,
+    mixed $paths = null,
+    mixed $httpMethods = null
 );
 ```
 
@@ -27480,20 +27948,20 @@ If the callback returns false the route is treated as not matched
 
 ```php
 $router->add(
-"/login",
-[
-    "module"     => "admin",
-    "controller" => "session",
-]
+    "/login",
+    [
+        "module"     => "admin",
+        "controller" => "session",
+    ]
 )->beforeMatch(
-function ($uri, $route) {
-    // Check if the request was made with Ajax
-    if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
-        return false;
-    }
+    function ($uri, $route) {
+        // Check if the request was made with Ajax
+        if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
+            return false;
+        }
 
-    return true;
-}
+        return true;
+    }
 );
 ```
 
@@ -27509,8 +27977,8 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
 public function convert(
-string $name,
-mixed $converter
+    string $name,
+    mixed $converter
 ): RouteInterface;
 ```
 
@@ -27650,12 +28118,12 @@ Allows to set a callback to handle the request directly in the route
 
 ```php
 $router->add(
-"/help",
-[]
+    "/help",
+    []
 )->match(
-function () {
-    return $this->getResponse()->redirect("https://support.google.com/", true);
-}
+    function () {
+        return $this->getResponse()->redirect("https://support.google.com/", true);
+    }
 );
 ```
 
@@ -27663,8 +28131,8 @@ function () {
 
 ```php
 public function reConfigure(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): void;
 ```
 
@@ -27710,10 +28178,10 @@ Sets a set of HTTP methods that constraint the matching of the route (alias of v
 $route->setHttpMethods("GET");
 
 $route->setHttpMethods(
-[
-    "GET",
-    "POST",
-]
+    [
+        "GET",
+        "POST",
+    ]
 );
 ```
 
@@ -27727,10 +28195,10 @@ Sets the route's name
 
 ```php
 $router->add(
-"/about",
-[
-    "controller" => "about",
-]
+    "/about",
+    [
+        "controller" => "about",
+    ]
 )->setName("about");
 ```
 
@@ -27756,12 +28224,13 @@ Set one or more HTTP methods that constraint the matching of the route
 $route->via("GET");
 
 $route->via(
-[
-    "GET",
-    "POST",
-]
+    [
+        "GET",
+        "POST",
+    ]
 );
 ```
+
 
 ## Mvc\Router\RouteInterface
 
@@ -27899,8 +28368,8 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
 public function convert(
-string $name,
-mixed $converter
+    string $name,
+    mixed $converter
 ): RouteInterface;
 ```
 
@@ -27974,8 +28443,8 @@ Returns the route's id
 
 ```php
 public function reConfigure(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): void;
 ```
 
@@ -28029,6 +28498,7 @@ public function via( mixed $httpMethods ): RouteInterface;
 
 Set one or more HTTP methods that constraint the matching of the route
 
+
 ## Mvc\Router\RouterFactory
 
 <span class="badge badge--class">Class</span>
@@ -28043,12 +28513,12 @@ Router::loadFromConfig.
 use Phalcon\Mvc\Router\RouterFactory;
 
 $router = (new RouterFactory())->load(
-[
-    "defaultRoutes" : false,
-    "routes" : [
-        ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+    [
+        "defaultRoutes" : false,
+        "routes" : [
+            ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+        ]
     ]
-]
 );
 ```
 
@@ -28059,6 +28529,7 @@ $router = (new RouterFactory())->load(
 </div>
 
 __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig`
+
 
 ### Method Summary
 
@@ -28097,6 +28568,7 @@ public function newInstance( bool $defaultRoutes = true ): RouterInterface;
 
 Returns a bare Router instance.
 
+
 ## Mvc\Url
 
 <span class="badge badge--class">Class</span>
@@ -28110,23 +28582,24 @@ echo $url->get("products/edit/1");
 
 // Generate a URL for a predefined route
 echo $url->get(
-[
-    "for"   => "blog-post",
-    "title" => "some-cool-stuff",
-    "year"  => "2012",
-]
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2012",
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Mvc\Url`** - implements [`Phalcon\Mvc\Url\UrlInterface`](#mvcurlurlinterface)
 
 </div>
 
 __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface` · `Phalcon\Mvc\Url\Exception` · `Phalcon\Mvc\Url\Exceptions\MissingRouteName` · `Phalcon\Mvc\Url\Exceptions\RouteNotFound` · `Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\ReduceSlashes`
+
 
 ### Method Summary
 
@@ -28230,11 +28703,11 @@ public function __construct( RouterInterface|null $router = null );
 
 ```php
 public function get(
-mixed $uri = null,
-mixed $arguments = null,
-bool|null $local = null,
-mixed $baseUri = null,
-bool $replaceArgs = false
+    mixed $uri = null,
+    mixed $arguments = null,
+    bool|null $local = null,
+    mixed $baseUri = null,
+    bool $replaceArgs = false
 ): string;
 ```
 
@@ -28246,40 +28719,40 @@ echo $url->get("products/edit/1");
 
 // Generate a URL for a predefined route
 echo $url->get(
-[
-    "for"   => "blog-post",
-    "title" => "some-cool-stuff",
-    "year"  => "2015",
-]
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2015",
+    ]
 );
 
 // Generate a URL with GET arguments (/show/products?id=1&name=Carrots)
 echo $url->get(
-"show/products",
-[
-    "id"   => 1,
-    "name" => "Carrots",
-]
+    "show/products",
+    [
+        "id"   => 1,
+        "name" => "Carrots",
+    ]
 );
 
 // A URI that already carries a scheme is detected as remote and is
 // returned untouched. The third parameter is only honored when it is
 // explicitly true - a false reads the same as leaving it out.
 echo $url->get(
-"https://phalcon.io/",
-null,
-false
+    "https://phalcon.io/",
+    null,
+    false
 );
 
 // Override existing query string keys instead of appending duplicates.
 // Without the fifth argument: "http://example.com?page=1&page=5".
 // With it set to true:        "http://example.com?page=5".
 echo $url->get(
-"http://example.com?page=1",
-["page" => 5],
-null,
-null,
-true
+    "http://example.com?page=1",
+    ["page" => 5],
+    null,
+    null,
+    true
 );
 ```
 
@@ -28313,9 +28786,9 @@ echo $url->getStatic("img/logo.png");
 
 // Generate a URL for a static predefined route
 echo $url->getStatic(
-[
-    "for" => "logo-cdn",
-]
+    [
+        "for" => "logo-cdn",
+    ]
 );
 ```
 
@@ -28373,6 +28846,7 @@ Sets a prefix for all static URLs generated
 $url->setStaticBaseUri("/invo/");
 ```
 
+
 ## Mvc\Url\Exception
 
 <span class="badge badge--class">Class</span>
@@ -28385,12 +28859,13 @@ Exceptions thrown in Phalcon\Mvc\Url will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Mvc\Url\Exception`**
-- [`Phalcon\Mvc\Url\Exceptions\MissingRouteName`](#mvcurlexceptionsmissingroutename)
-- [`Phalcon\Mvc\Url\Exceptions\RouteNotFound`](#mvcurlexceptionsroutenotfound)
-- [`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`](#mvcurlexceptionsrouterserviceunavailable)
+    - **`Phalcon\Mvc\Url\Exception`**
+        - [`Phalcon\Mvc\Url\Exceptions\MissingRouteName`](#mvcurlexceptionsmissingroutename)
+        - [`Phalcon\Mvc\Url\Exceptions\RouteNotFound`](#mvcurlexceptionsroutenotfound)
+        - [`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`](#mvcurlexceptionsrouterserviceunavailable)
 
 </div>
+
 
 ## Mvc\Url\Exceptions\MissingRouteName
 
@@ -28400,12 +28875,13 @@ Exceptions thrown in Phalcon\Mvc\Url will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
-- **`Phalcon\Mvc\Url\Exceptions\MissingRouteName`**
+    - [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
+        - **`Phalcon\Mvc\Url\Exceptions\MissingRouteName`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Url\Exception`
+
 
 ### Method Summary
 
@@ -28426,6 +28902,7 @@ __Uses__ `Phalcon\Mvc\Url\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\Url\Exceptions\RouteNotFound
 
 <span class="badge badge--class">Class</span>
@@ -28434,12 +28911,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
-- **`Phalcon\Mvc\Url\Exceptions\RouteNotFound`**
+    - [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
+        - **`Phalcon\Mvc\Url\Exceptions\RouteNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Url\Exception`
+
 
 ### Method Summary
 
@@ -28460,6 +28938,7 @@ __Uses__ `Phalcon\Mvc\Url\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Mvc\Url\Exceptions\RouterServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -28468,12 +28947,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
-- **`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`**
+    - [`Phalcon\Mvc\Url\Exception`](#mvcurlexception)
+        - **`Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\Url\Exception`
+
 
 ### Method Summary
 
@@ -28493,6 +28973,7 @@ __Uses__ `Phalcon\Mvc\Url\Exception`
 ```php
 public function __construct();
 ```
+
 
 ## Mvc\Url\UrlInterface
 
@@ -28556,11 +29037,11 @@ Interface for Phalcon\Mvc\Url\UrlInterface
 
 ```php
 public function get(
-mixed $uri = null,
-mixed $arguments = null,
-bool|null $local = null,
-mixed $baseUri = null,
-bool $replaceArgs = false
+    mixed $uri = null,
+    mixed $arguments = null,
+    bool|null $local = null,
+    mixed $baseUri = null,
+    bool $replaceArgs = false
 ): string;
 ```
 
@@ -28606,6 +29087,7 @@ public function setBaseUri( string $baseUri ): UrlInterface;
 
 Sets a prefix to all the urls generated
 
+
 ## Mvc\View
 
 <span class="badge badge--class">Class</span>
@@ -28637,12 +29119,13 @@ echo $view->getContent();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Mvc\View`** - implements [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
 
 </div>
 
 __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exception` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\InvalidViewsDirType` · `Phalcon\Mvc\View\Exceptions\ViewNotFound` · `Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable` · `Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+
 
 ### Method Summary
 
@@ -29128,8 +29611,8 @@ echo isset($this->view->products);
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 );
 ```
 
@@ -29174,7 +29657,7 @@ Disables a specific level of rendering
 ```php
 // Render all levels except ACTION level
 $this->view->disableLevel(
-View::LEVEL_ACTION_VIEW
+    View::LEVEL_ACTION_VIEW
 );
 ```
 
@@ -29276,8 +29759,8 @@ Returns the name of the main view
 
 ```php
 public function getPartial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): string;
 ```
 
@@ -29291,10 +29774,10 @@ echo $this->getPartial("shared/footer");
 ```php
 // Retrieve the contents of a partial with arguments
 echo $this->getPartial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -29310,10 +29793,10 @@ Gets the current partials sub-directory
 
 ```php
 public function getRender(
-string $controllerName,
-string $actionName,
-array $params = [],
-mixed $configCallback = null
+    string $controllerName,
+    string $actionName,
+    array $params = [],
+    mixed $configCallback = null
 ): string;
 ```
 
@@ -29321,11 +29804,11 @@ Perform the automatic rendering returning the output as a string
 
 ```php
 $template = $this->view->getRender(
-"products",
-"show",
-[
-    "products" => $products,
-]
+    "products",
+    "show",
+    [
+        "products" => $products,
+    ]
 );
 ```
 
@@ -29363,8 +29846,8 @@ Whether automatic rendering is enabled
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 );
 ```
 
@@ -29378,10 +29861,10 @@ $this->partial("shared/footer");
 ```php
 // Show a partial inside another view with parameters
 $this->partial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -29398,13 +29881,13 @@ use Phalcon\Mvc\Controller;
 
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    // Do some save stuff...
+    public function saveAction()
+    {
+        // Do some save stuff...
 
-    // Then show the list view
-    $this->view->pick("products/list");
-}
+        // Then show the list view
+        $this->view->pick("products/list");
+    }
 }
 ```
 
@@ -29412,10 +29895,10 @@ public function saveAction()
 
 ```php
 public function processRender(
-string $controllerName,
-string $actionName,
-array $params = [],
-bool $fireEvents = true
+    string $controllerName,
+    string $actionName,
+    array $params = [],
+    bool $fireEvents = true
 ): bool;
 ```
 
@@ -29431,11 +29914,11 @@ Register templating engines
 
 ```php
 $this->view->registerEngines(
-[
-    ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
-    ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
-    ".mhtml" => \MyCustomEngine::class,
-]
+    [
+        ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
+        ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
+        ".mhtml" => \MyCustomEngine::class,
+    ]
 );
 ```
 
@@ -29443,9 +29926,9 @@ $this->view->registerEngines(
 
 ```php
 public function render(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): static|false;
 ```
 
@@ -29530,8 +30013,8 @@ $this->view->setMainView("base");
 
 ```php
 public function setParamToView(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 
@@ -29566,7 +30049,7 @@ Sets the render level for the view
 ```php
 // Render the view related to the controller only
 $this->view->setRenderLevel(
-View::LEVEL_LAYOUT
+    View::LEVEL_LAYOUT
 );
 ```
 
@@ -29590,8 +30073,8 @@ Sets a template before the controller layout
 
 ```php
 public function setVars(
-array $params,
-bool $merge = true
+    array $params,
+    bool $merge = true
 ): static;
 ```
 
@@ -29599,9 +30082,9 @@ Set all the render params
 
 ```php
 $this->view->setVars(
-[
-    "products" => $products,
-]
+    [
+        "products" => $products,
+    ]
 );
 ```
 
@@ -29626,9 +30109,9 @@ Starts rendering process enabling the output buffering
 
 ```php
 public function toString(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): string;
 ```
 
@@ -29640,10 +30123,10 @@ Renders the view and returns it as a string
 
 ```php
 protected function engineRender(
-array $engines,
-string $viewPath,
-bool $silence,
-bool $mustClean = true
+    array $engines,
+    string $viewPath,
+    bool $silence,
+    bool $mustClean = true
 );
 ```
 
@@ -29674,6 +30157,7 @@ protected function loadTemplateEngines(): array;
 Loads registered template engines, if none is registered it will use
 Phalcon\Mvc\View\Engine\Php
 
+
 ## Mvc\ViewBaseInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -29684,11 +30168,12 @@ Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 <div class="api-tree">
 
 - **`Phalcon\Mvc\ViewBaseInterface`**
-- [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface)
+    - [`Phalcon\Mvc\ViewInterface`](#mvcviewinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cache\Adapter\AdapterInterface`
+
 
 ### Method Summary
 
@@ -29770,8 +30255,8 @@ Gets views directory
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 );
 ```
 
@@ -29789,8 +30274,8 @@ Externally sets the view content
 
 ```php
 public function setParamToView(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 );
 ```
 
@@ -29800,8 +30285,8 @@ Adds parameters to views (alias of setVar)
 
 ```php
 public function setVar(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 );
 ```
 
@@ -29816,6 +30301,7 @@ public function setViewsDir( string $viewsDir );
 Sets views directory. Depending of your platform, always add a trailing
 slash or backslash
 
+
 ## Mvc\ViewInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -29826,7 +30312,7 @@ Interface for Phalcon\Mvc\View
 <div class="api-tree">
 
 - [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface)
-- **`Phalcon\Mvc\ViewInterface`**
+    - **`Phalcon\Mvc\ViewInterface`**
 
 </div>
 
@@ -30117,9 +30603,9 @@ Register templating engines
 
 ```php
 public function render(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): ViewInterface|bool;
 ```
 
@@ -30212,6 +30698,7 @@ public function start();
 
 Starts rendering process enabling the output buffering
 
+
 ## Mvc\View\Engine\AbstractEngine
 
 <span class="badge badge--abstract">Abstract</span>
@@ -30223,14 +30710,15 @@ basic interfacing between the engine and the Phalcon\Mvc\View component.
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
-- [`Phalcon\Mvc\View\Engine\Volt`](#mvcviewenginevolt)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Mvc\View\Engine\AbstractEngine`** - implements [`Phalcon\Mvc\View\Engine\EngineInterface`](#mvcviewengineengineinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+            - [`Phalcon\Mvc\View\Engine\Php`](#mvcviewenginephp)
+            - [`Phalcon\Mvc\View\Engine\Volt`](#mvcviewenginevolt)
 
 </div>
 
 __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface`
+
 
 ### Method Summary
 
@@ -30301,8 +30789,8 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\
 
 ```php
 public function __construct(
-ViewBaseInterface $view,
-DiInterface|null $container = null
+    ViewBaseInterface $view,
+    DiInterface|null $container = null
 );
 ```
 
@@ -30336,8 +30824,8 @@ Returns the view component related to the adapter
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): void;
 ```
 
@@ -30357,13 +30845,14 @@ Sets the events manager
 
 ```php
 protected function fireManagerEvent(
-string $eventName,
-mixed $data = null,
-bool $cancellable = true
+    string $eventName,
+    mixed $data = null,
+    bool $cancellable = true
 ): mixed|bool;
 ```
 
 Helper method to fire an event
+
 
 ## Mvc\View\Engine\EngineInterface
 
@@ -30416,8 +30905,8 @@ Returns cached output on another view stage
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): void;
 ```
 
@@ -30427,15 +30916,16 @@ Renders a partial inside another view
 
 ```php
 public function render(
-string $path,
-mixed $params,
-bool $mustClean = false
+    string $path,
+    mixed $params,
+    bool $mustClean = false
 );
 ```
 
 Renders a view using the template engine
 
 TODO: Change params to array type
+
 
 ## Mvc\View\Engine\Php
 
@@ -30447,9 +30937,9 @@ Adapter to use PHP itself as templating engine
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
-- **`Phalcon\Mvc\View\Engine\Php`**
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
+            - **`Phalcon\Mvc\View\Engine\Php`**
 
 </div>
 
@@ -30471,13 +30961,14 @@ Adapter to use PHP itself as templating engine
 
 ```php
 public function render(
-string $path,
-mixed $params,
-bool $mustClean = false
+    string $path,
+    mixed $params,
+    bool $mustClean = false
 );
 ```
 
 Renders a view using the template engine
+
 
 ## Mvc\View\Engine\Volt
 
@@ -30489,13 +30980,14 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
-- **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - [`Phalcon\Mvc\View\Engine\AbstractEngine`](#mvcviewengineabstractengine)
+            - **`Phalcon\Mvc\View\Engine\Volt`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
 
 </div>
 
 __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\View\Engine\Volt\Compiler` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired` · `Phalcon\Mvc\View\Exception` · `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -30610,8 +31102,8 @@ __Uses__ `Phalcon\Di\DiInterface` · `Phalcon\Events\EventsAwareInterface` · `P
 
 ```php
 public function callMacro(
-string $name,
-array $arguments = []
+    string $name,
+    array $arguments = []
 ): mixed;
 ```
 
@@ -30624,9 +31116,9 @@ Checks if a macro is defined and calls it
 
 ```php
 public function convertEncoding(
-string $text,
-string $from,
-string $to
+    string $text,
+    string $from,
+    string $to
 ): string;
 ```
 
@@ -30660,8 +31152,8 @@ Return Volt's options
 
 ```php
 public function isIncluded(
-mixed $needle,
-mixed $haystack
+    mixed $needle,
+    mixed $haystack
 ): bool;
 ```
 
@@ -30688,9 +31180,9 @@ Parses the preload element passed and sets the necessary link headers
 
 ```php
 public function render(
-string $path,
-mixed $params,
-bool $mustClean = false
+    string $path,
+    mixed $params,
+    bool $mustClean = false
 );
 ```
 
@@ -30716,9 +31208,9 @@ Set Volt's options
 
 ```php
 public function slice(
-mixed $value,
-int $start = 0,
-mixed $end = null
+    mixed $value,
+    int $start = 0,
+    mixed $end = null
 );
 ```
 
@@ -30731,6 +31223,7 @@ public function sort( array $value ): array;
 ```
 
 Sorts an array
+
 
 ## Mvc\View\Engine\Volt\Compiler
 
@@ -30754,6 +31247,7 @@ require $compiler->getCompiledTemplatePath();
 </div>
 
 __Uses__ `Closure` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Tag` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -31160,8 +31654,8 @@ Registers a Volt's extension
 
 ```php
 public function addFilter(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): static;
 ```
 
@@ -31171,8 +31665,8 @@ Register a new filter in the compiler
 
 ```php
 public function addFunction(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): static;
 ```
 
@@ -31190,8 +31684,8 @@ Resolves attribute reading
 
 ```php
 public function compile(
-string $templatePath,
-bool $extendsMode = false
+    string $templatePath,
+    bool $extendsMode = false
 );
 ```
 
@@ -31208,8 +31702,8 @@ require $compiler->getCompiledTemplatePath();
 
 ```php
 public function compileAutoEscape(
-array $statement,
-bool $extendsMode
+    array $statement,
+    bool $extendsMode
 ): string;
 ```
 
@@ -31219,8 +31713,8 @@ Compiles a "autoescape" statement returning PHP code
 
 ```php
 public function compileCall(
-array $statement,
-bool $extendsMode
+    array $statement,
+    bool $extendsMode
 ): string;
 ```
 
@@ -31230,8 +31724,8 @@ Compiles calls to macros
 
 ```php
 public function compileCase(
-array $statement,
-bool $caseClause = true
+    array $statement,
+    bool $caseClause = true
 ): string;
 ```
 
@@ -31265,9 +31759,9 @@ Compiles a "elseif" statement returning PHP code
 
 ```php
 public function compileFile(
-string $path,
-string $compiledPath,
-bool $extendsMode = false
+    string $path,
+    string $compiledPath,
+    bool $extendsMode = false
 );
 ```
 
@@ -31275,8 +31769,8 @@ Compiles a template into a file forcing the destination path
 
 ```php
 $compiler->compileFile(
-"views/layouts/main.volt",
-"views/layouts/main.volt.php"
+    "views/layouts/main.volt",
+    "views/layouts/main.volt.php"
 );
 ```
 
@@ -31292,8 +31786,8 @@ Generates a 'forelse' PHP code
 
 ```php
 public function compileForeach(
-array $statement,
-bool $extendsMode = false
+    array $statement,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -31303,8 +31797,8 @@ Compiles a "foreach" intermediate code representation into plain PHP code
 
 ```php
 public function compileIf(
-array $statement,
-bool $extendsMode = false
+    array $statement,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -31322,8 +31816,8 @@ Compiles a 'include' statement returning PHP code
 
 ```php
 public function compileMacro(
-array $statement,
-bool $extendsMode
+    array $statement,
+    bool $extendsMode
 ): string;
 ```
 
@@ -31358,38 +31852,38 @@ $compiler = new Compiler();
 // {% set a = ['first': 1] %}
 
 $source = [
-"type" => 306,
-"assignments" => [
-    [
-        "variable" => [
-            "type" => 265,
-            "value" => "a",
-            "file" => "eval code",
-            "line" => 1
-        ],
-        "op" => 61,
-        "expr" => [
-            "type" => 360,
-            "left" => [
-                [
-                    "expr" => [
-                        "type" => 258,
-                        "value" => "1",
+    "type" => 306,
+    "assignments" => [
+        [
+            "variable" => [
+                "type" => 265,
+                "value" => "a",
+                "file" => "eval code",
+                "line" => 1
+            ],
+            "op" => 61,
+            "expr" => [
+                "type" => 360,
+                "left" => [
+                    [
+                        "expr" => [
+                            "type" => 258,
+                            "value" => "1",
+                            "file" => "eval code",
+                            "line" => 1
+                        ],
+                        "name" => "first",
                         "file" => "eval code",
                         "line" => 1
-                    ],
-                    "name" => "first",
-                    "file" => "eval code",
-                    "line" => 1
-                ]
+                    ]
+                ],
+                "file" => "eval code",
+                "line" => 1
             ],
             "file" => "eval code",
             "line" => 1
-        ],
-        "file" => "eval code",
-        "line" => 1
+        ]
     ]
-]
 ];
 
 echo $compiler->compileSet($source);
@@ -31400,8 +31894,8 @@ echo $compiler->compileSet($source);
 
 ```php
 public function compileString(
-string $viewCode,
-bool $extendsMode = false
+    string $viewCode,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -31415,8 +31909,8 @@ echo $compiler->compileString('{{ "hello world" }}');
 
 ```php
 public function compileSwitch(
-array $statement,
-bool $extendsMode = false
+    array $statement,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -31426,8 +31920,8 @@ Compiles a 'switch' statement returning PHP code
 
 ```php
 final public function expression(
-array $expr,
-bool $doubleQuotes = false
+    array $expr,
+    bool $doubleQuotes = false
 ): string;
 ```
 
@@ -31437,8 +31931,8 @@ Resolves an expression node in an AST volt tree
 
 ```php
 final public function fireExtensionEvent(
-string $name,
-array $arguments = []
+    string $name,
+    array $arguments = []
 );
 ```
 
@@ -31448,8 +31942,8 @@ Fires an event to registered extensions
 
 ```php
 public function functionCall(
-array $expr,
-bool $doubleQuotes = false
+    array $expr,
+    bool $doubleQuotes = false
 ): string;
 ```
 
@@ -31538,7 +32032,7 @@ Parses a Volt template returning its intermediate representation
 
 ```php
 print_r(
-$compiler->parse("{{ 3 + 2 }}")
+    $compiler->parse("{{ 3 + 2 }}")
 );
 ```
 
@@ -31546,8 +32040,8 @@ $compiler->parse("{{ 3 + 2 }}")
 
 ```php
 public function resolveTest(
-array $test,
-string $left
+    array $test,
+    string $left
 ): string;
 ```
 
@@ -31565,8 +32059,8 @@ Sets the dependency injector
 
 ```php
 public function setOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): static;
 ```
 
@@ -31594,8 +32088,8 @@ Set a unique prefix to be used as prefix for compiled variables
 
 ```php
 protected function compileSource(
-string $viewCode,
-bool $extendsMode = false
+    string $viewCode,
+    bool $extendsMode = false
 ): array|string;
 ```
 
@@ -31613,8 +32107,8 @@ Gets the final path with VIEW
 
 ```php
 final protected function resolveFilter(
-array $filter,
-string $left
+    array $filter,
+    string $left
 ): string;
 ```
 
@@ -31624,8 +32118,8 @@ Resolves filter intermediate code into PHP function calls
 
 ```php
 final protected function statementList(
-array $statements,
-bool $extendsMode = false
+    array $statements,
+    bool $extendsMode = false
 ): string;
 ```
 
@@ -31639,6 +32133,7 @@ final protected function statementListOrExtends( mixed $statements );
 
 Compiles a block of statements
 
+
 ## Mvc\View\Engine\Volt\Exception
 
 <span class="badge badge--class">Class</span>
@@ -31649,36 +32144,37 @@ Class for exceptions thrown by Phalcon\Mvc\View
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exception`**
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`](#mvcviewenginevoltexceptionscannotopencompiledfile)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`](#mvcviewenginevoltexceptionscorruptedstatement)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`](#mvcviewenginevoltexceptionscorruptedstatementwithdata)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`](#mvcviewenginevoltexceptionsinvalidcompilationprefix)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`](#mvcviewenginevoltexceptionsinvalidextension)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`](#mvcviewenginevoltexceptionsinvalidhaystack)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`](#mvcviewenginevoltexceptionsinvalidintermediaterepresentation)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`](#mvcviewenginevoltexceptionsinvalidoptiontype)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`](#mvcviewenginevoltexceptionsinvalidpathclosurereturn)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`](#mvcviewenginevoltexceptionsinvalidpathtype)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`](#mvcviewenginevoltexceptionsinvalidstatement)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`](#mvcviewenginevoltexceptionsinvaliduserfilterdefinition)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`](#mvcviewenginevoltexceptionsinvaliduserfunctiondefinition)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`](#mvcviewenginevoltexceptionsmacroalreadydefined)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`](#mvcviewenginevoltexceptionsmacronotfound)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`](#mvcviewenginevoltexceptionsmbstringrequired)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`](#mvcviewenginevoltexceptionstemplatefilenotfound)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`](#mvcviewenginevoltexceptionstemplatefilenotopenable)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`](#mvcviewenginevoltexceptionstemplatepathcollision)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`](#mvcviewenginevoltexceptionsunknownvoltexpression)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`](#mvcviewenginevoltexceptionsunknownvoltfilter)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`](#mvcviewenginevoltexceptionsunknownvoltfiltertype)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`](#mvcviewenginevoltexceptionsunknownvoltstatement)
-- [`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`](#mvcviewenginevoltexceptionsvoltdirectorynotwritable)
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Engine\Volt\Exception`**
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`](#mvcviewenginevoltexceptionscannotopencompiledfile)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`](#mvcviewenginevoltexceptionscorruptedstatement)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`](#mvcviewenginevoltexceptionscorruptedstatementwithdata)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`](#mvcviewenginevoltexceptionsinvalidcompilationprefix)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`](#mvcviewenginevoltexceptionsinvalidextension)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`](#mvcviewenginevoltexceptionsinvalidhaystack)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`](#mvcviewenginevoltexceptionsinvalidintermediaterepresentation)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`](#mvcviewenginevoltexceptionsinvalidoptiontype)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`](#mvcviewenginevoltexceptionsinvalidpathclosurereturn)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`](#mvcviewenginevoltexceptionsinvalidpathtype)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`](#mvcviewenginevoltexceptionsinvalidstatement)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`](#mvcviewenginevoltexceptionsinvaliduserfilterdefinition)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`](#mvcviewenginevoltexceptionsinvaliduserfunctiondefinition)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`](#mvcviewenginevoltexceptionsmacroalreadydefined)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`](#mvcviewenginevoltexceptionsmacronotfound)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`](#mvcviewenginevoltexceptionsmbstringrequired)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`](#mvcviewenginevoltexceptionstemplatefilenotfound)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`](#mvcviewenginevoltexceptionstemplatefilenotopenable)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`](#mvcviewenginevoltexceptionstemplatepathcollision)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`](#mvcviewenginevoltexceptionsunknownvoltexpression)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`](#mvcviewenginevoltexceptionsunknownvoltfilter)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`](#mvcviewenginevoltexceptionsunknownvoltfiltertype)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`](#mvcviewenginevoltexceptionsunknownvoltstatement)
+            - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`](#mvcviewenginevoltexceptionsvoltdirectorynotwritable)
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -31713,10 +32209,10 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 
 ```php
 public function __construct(
-string $message = "",
-array $statement = [],
-int $code = 0,
-\Exception|null $previous = null
+    string $message = "",
+    array $statement = [],
+    int $code = 0,
+    \Exception|null $previous = null
 );
 ```
 
@@ -31728,6 +32224,7 @@ public function getStatement(): array;
 
 Gets currently parsed statement (if any).
 
+
 ## Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile
 
 <span class="badge badge--class">Class</span>
@@ -31736,13 +32233,14 @@ Gets currently parsed statement (if any).
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31763,6 +32261,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\CorruptedStatement
 
 <span class="badge badge--class">Class</span>
@@ -31771,13 +32270,14 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31798,6 +32298,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData
 
 <span class="badge badge--class">Class</span>
@@ -31806,13 +32307,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31833,6 +32335,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct( array $statement );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix
 
 <span class="badge badge--class">Class</span>
@@ -31841,13 +32344,14 @@ public function __construct( array $statement );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31868,6 +32372,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidExtension
 
 <span class="badge badge--class">Class</span>
@@ -31876,13 +32381,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31903,6 +32409,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidHaystack
 
 <span class="badge badge--class">Class</span>
@@ -31911,13 +32418,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31938,6 +32446,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation
 
 <span class="badge badge--class">Class</span>
@@ -31946,13 +32455,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -31973,6 +32483,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidOptionType
 
 <span class="badge badge--class">Class</span>
@@ -31981,13 +32492,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32006,10 +32518,11 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-string $option,
-string $type
+    string $option,
+    string $type
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn
 
@@ -32019,13 +32532,14 @@ string $type
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32046,6 +32560,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidPathType
 
 <span class="badge badge--class">Class</span>
@@ -32054,13 +32569,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32081,6 +32597,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\InvalidStatement
 
 <span class="badge badge--class">Class</span>
@@ -32089,13 +32606,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32114,11 +32632,12 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-string $file,
-int $line,
-array $statement
+    string $file,
+    int $line,
+    array $statement
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition
 
@@ -32128,13 +32647,14 @@ array $statement
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32153,11 +32673,12 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $file,
-int $line
+    string $name,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition
 
@@ -32167,13 +32688,14 @@ int $line
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32192,11 +32714,12 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $file,
-int $line
+    string $name,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined
 
@@ -32206,13 +32729,14 @@ int $line
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32233,6 +32757,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\MacroNotFound
 
 <span class="badge badge--class">Class</span>
@@ -32241,13 +32766,14 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32268,6 +32794,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\MbstringRequired
 
 <span class="badge badge--class">Class</span>
@@ -32276,13 +32803,14 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32303,6 +32831,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound
 
 <span class="badge badge--class">Class</span>
@@ -32311,13 +32840,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32338,6 +32868,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable
 
 <span class="badge badge--class">Class</span>
@@ -32346,13 +32877,14 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32373,6 +32905,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision
 
 <span class="badge badge--class">Class</span>
@@ -32381,13 +32914,14 @@ public function __construct( string $path );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32408,6 +32942,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression
 
 <span class="badge badge--class">Class</span>
@@ -32416,13 +32951,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32441,11 +32977,12 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-int $type,
-string $file,
-int $line
+    int $type,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter
 
@@ -32455,13 +32992,14 @@ int $line
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32480,11 +33018,12 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-string $name,
-string $file,
-int $line
+    string $name,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType
 
@@ -32494,13 +33033,14 @@ int $line
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32519,10 +33059,11 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-string $file,
-int $line
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement
 
@@ -32532,13 +33073,14 @@ int $line
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32557,11 +33099,12 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 
 ```php
 public function __construct(
-int $type,
-string $file,
-int $line
+    int $type,
+    string $file,
+    int $line
 );
 ```
+
 
 ## Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable
 
@@ -32571,13 +33114,14 @@ int $line
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- **`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+            - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
+
 
 ### Method Summary
 
@@ -32598,6 +33142,7 @@ __Uses__ `Phalcon\Mvc\View\Engine\Volt\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Exception
 
 <span class="badge badge--class">Class</span>
@@ -32610,17 +33155,18 @@ Class for exceptions thrown by Phalcon\Mvc\View
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Mvc\View\Exception`**
-- [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
-- [`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`](#mvcviewexceptionsinvalidengineregistration)
-- [`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`](#mvcviewexceptionsinvalidviewsdirtype)
-- [`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`](#mvcviewexceptionssimpleviewnotfound)
-- [`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`](#mvcviewexceptionssimpleviewservicesunavailable)
-- [`Phalcon\Mvc\View\Exceptions\ViewNotFound`](#mvcviewexceptionsviewnotfound)
-- [`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`](#mvcviewexceptionsviewservicesunavailable)
-- [`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`](#mvcviewexceptionsviewsdiritemmustbestring)
+    - **`Phalcon\Mvc\View\Exception`**
+        - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+        - [`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`](#mvcviewexceptionsinvalidengineregistration)
+        - [`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`](#mvcviewexceptionsinvalidviewsdirtype)
+        - [`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`](#mvcviewexceptionssimpleviewnotfound)
+        - [`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`](#mvcviewexceptionssimpleviewservicesunavailable)
+        - [`Phalcon\Mvc\View\Exceptions\ViewNotFound`](#mvcviewexceptionsviewnotfound)
+        - [`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`](#mvcviewexceptionsviewservicesunavailable)
+        - [`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`](#mvcviewexceptionsviewsdiritemmustbestring)
 
 </div>
+
 
 ## Mvc\View\Exceptions\InvalidEngineRegistration
 
@@ -32630,12 +33176,13 @@ Class for exceptions thrown by Phalcon\Mvc\View
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32656,6 +33203,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct( string $extension );
 ```
 
+
 ## Mvc\View\Exceptions\InvalidViewsDirType
 
 <span class="badge badge--class">Class</span>
@@ -32664,12 +33212,13 @@ public function __construct( string $extension );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\InvalidViewsDirType`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32690,6 +33239,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Exceptions\SimpleViewNotFound
 
 <span class="badge badge--class">Class</span>
@@ -32698,12 +33248,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\SimpleViewNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32724,6 +33275,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct( string $viewsDirPath );
 ```
 
+
 ## Mvc\View\Exceptions\SimpleViewServicesUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -32732,12 +33284,13 @@ public function __construct( string $viewsDirPath );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32758,6 +33311,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Exceptions\ViewNotFound
 
 <span class="badge badge--class">Class</span>
@@ -32766,12 +33320,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\ViewNotFound`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\ViewNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32792,6 +33347,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct( string $viewPath );
 ```
 
+
 ## Mvc\View\Exceptions\ViewServicesUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -32800,12 +33356,13 @@ public function __construct( string $viewPath );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\ViewServicesUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32826,6 +33383,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Exceptions\ViewsDirItemMustBeString
 
 <span class="badge badge--class">Class</span>
@@ -32834,12 +33392,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
-- **`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`**
+    - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+        - **`Phalcon\Mvc\View\Exceptions\ViewsDirItemMustBeString`**
 
 </div>
 
 __Uses__ `Phalcon\Mvc\View\Exception`
+
 
 ### Method Summary
 
@@ -32860,6 +33419,7 @@ __Uses__ `Phalcon\Mvc\View\Exception`
 public function __construct();
 ```
 
+
 ## Mvc\View\Simple
 
 <span class="badge badge--class">Class</span>
@@ -32874,30 +33434,31 @@ $view = new View();
 
 // Render a view
 echo $view->render(
-"templates/my-view",
-[
-    "some" => $param,
-]
+    "templates/my-view",
+    [
+        "some" => $param,
+    ]
 );
 
 // Or with filename with extension
 echo $view->render(
-"templates/my-view.volt",
-[
-    "parameter" => $here,
-]
+    "templates/my-view.volt",
+    [
+        "parameter" => $here,
+    ]
 );
 ```
 
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](/5.19/api/phalcon_contracts/#contractsviewrenderer)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Mvc\View\Simple`** - implements [`Phalcon\Mvc\ViewBaseInterface`](#mvcviewbaseinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface), [`Phalcon\Contracts\View\Renderer`](/5.19/api/phalcon_contracts/#contractsviewrenderer)
 
 </div>
 
 __Uses__ `Closure` · `Phalcon\Contracts\View\Renderer` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\EngineInterface` · `Phalcon\Mvc\View\Engine\Php` · `Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration` · `Phalcon\Mvc\View\Exceptions\SimpleViewNotFound` · `Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable` · `Phalcon\Mvc\View\Traits\ViewParamsTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+
 
 ### Method Summary
 
@@ -33051,8 +33612,8 @@ echo $this->view->products;
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -33090,8 +33651,8 @@ Gets views directory
 
 ```php
 public function partial(
-string $partialPath,
-mixed $params = null
+    string $partialPath,
+    mixed $params = null
 ): void;
 ```
 
@@ -33105,10 +33666,10 @@ $this->partial("shared/footer");
 ```php
 // Show a partial inside another view with parameters
 $this->partial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -33122,11 +33683,11 @@ Register templating engines
 
 ```php
 $this->view->registerEngines(
-[
-    ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
-    ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
-    ".mhtml" => \MyCustomEngine::class,
-]
+    [
+        ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
+        ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
+        ".mhtml" => \MyCustomEngine::class,
+    ]
 );
 ```
 
@@ -33134,8 +33695,8 @@ $this->view->registerEngines(
 
 ```php
 public function render(
-string $path,
-array $params = []
+    string $path,
+    array $params = []
 ): string;
 ```
 
@@ -33153,8 +33714,8 @@ Sets the events manager
 
 ```php
 public function setParamToView(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 
@@ -33168,8 +33729,8 @@ $this->view->setParamToView("products", $products);
 
 ```php
 public function setVars(
-array $params,
-bool $merge = true
+    array $params,
+    bool $merge = true
 ): static;
 ```
 
@@ -33177,9 +33738,9 @@ Set all the render params
 
 ```php
 $this->view->setVars(
-[
-    "products" => $products,
-]
+    [
+        "products" => $products,
+    ]
 );
 ```
 
@@ -33197,8 +33758,8 @@ Sets views directory
 
 ```php
 final protected function internalRender(
-string $path,
-mixed $params
+    string $path,
+    mixed $params
 ): void;
 ```
 
@@ -33212,6 +33773,7 @@ protected function loadTemplateEngines(): array;
 
 Loads registered template engines, if none are registered it will use
 Phalcon\Mvc\View\Engine\Php
+
 
 ## Mvc\View\Traits\ViewParamsTrait
 
@@ -33229,6 +33791,7 @@ Shared view parameter and content accessors
 </div>
 
 __Used by__ [`Phalcon\Mvc\View`](#mvcview) · [`Phalcon\Mvc\View\Simple`](#mvcviewsimple)
+
 
 ### Method Summary
 
@@ -33342,8 +33905,8 @@ $this->view->setContent("<h1>hello</h1>");
 
 ```php
 public function setVar(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 

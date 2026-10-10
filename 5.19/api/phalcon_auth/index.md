@@ -31,13 +31,14 @@ dispatches in the same request until it is replaced.
 <div class="api-tree">
 
 - **`Phalcon\Auth\AbstractAuthDispatcherListener`**
-- [`Phalcon\Auth\Cli\AuthDispatcherListener`](#authcliauthdispatcherlistener)
-- [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
-- [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
+    - [`Phalcon\Auth\Cli\AuthDispatcherListener`](#authcliauthdispatcherlistener)
+    - [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
+    - [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Manager`
+
 
 ### Method Summary
 
@@ -86,9 +87,9 @@ public function __construct( Manager $manager );
 
 ```php
 protected function enforce(
-string $actionName,
-array $context = [],
-mixed $forwardHandler = null
+    string $actionName,
+    array $context = [],
+    mixed $forwardHandler = null
 ): bool;
 ```
 
@@ -108,6 +109,7 @@ abstract protected function getActionType(): string;
 Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 'route').
 
+
 ## Auth\Access\AbstractAccess
 
 <span class="badge badge--abstract">Abstract</span>
@@ -116,13 +118,14 @@ Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 <div class="api-tree">
 
 - **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](/5.19/api/phalcon_contracts/#contractsauthaccessaccess)
-- [`Phalcon\Auth\Access\Acl`](#authaccessacl)
-- [`Phalcon\Auth\Access\Auth`](#authaccessauth)
-- [`Phalcon\Auth\Access\Guest`](#authaccessguest)
+    - [`Phalcon\Auth\Access\Acl`](#authaccessacl)
+    - [`Phalcon\Auth\Access\Auth`](#authaccessauth)
+    - [`Phalcon\Auth\Access\Guest`](#authaccessguest)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Guard\Guard`
+
 
 ### Method Summary
 
@@ -200,9 +203,9 @@ public function getOnlyActions(): array;
 
 ```php
 public function isAllowed(
-Guard $guard,
-string $actionName,
-array $context = []
+    Guard $guard,
+    string $actionName,
+    array $context = []
 ): bool;
 ```
 
@@ -234,6 +237,7 @@ abstract protected function allowedIf( Guard $guard ): bool;
 
 Whether the gate's base condition holds for the given identity.
 
+
 ## Auth\Access\AccessLocator
 
 <span class="badge badge--class">Class</span>
@@ -250,11 +254,12 @@ class builder).
 <div class="api-tree">
 
 - [`Phalcon\Support\AbstractLocator`](/5.19/api/phalcon_support/#supportabstractlocator)
-- **`Phalcon\Auth\Access\AccessLocator`**
+    - **`Phalcon\Auth\Access\AccessLocator`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
+
 
 ### Method Summary
 
@@ -320,6 +325,7 @@ protected function getInterfaceClass(): string;
 protected function getServices(): array;
 ```
 
+
 ## Auth\Access\Acl
 
 <span class="badge badge--class">Class</span>
@@ -342,11 +348,12 @@ other user is rejected with an exception.
 <div class="api-tree">
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
-- **`Phalcon\Auth\Access\Acl`**
+    - **`Phalcon\Auth\Access\Acl`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard`
+
 
 ### Method Summary
 
@@ -401,8 +408,8 @@ __Uses__ `Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterfa
 
 ```php
 public function __construct(
-AdapterInterface $acl,
-array $options = []
+    AdapterInterface $acl,
+    array $options = []
 );
 ```
 
@@ -410,9 +417,9 @@ array $options = []
 
 ```php
 public function isAllowed(
-Guard $guard,
-string $actionName,
-array $context = []
+    Guard $guard,
+    string $actionName,
+    array $context = []
 ): bool;
 ```
 
@@ -433,6 +440,7 @@ satisfy the abstract.
 protected function resolveRole( Guard $guard ): string;
 ```
 
+
 ## Auth\Access\Auth
 
 <span class="badge badge--class">Class</span>
@@ -441,11 +449,12 @@ protected function resolveRole( Guard $guard ): string;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
-- **`Phalcon\Auth\Access\Auth`**
+    - **`Phalcon\Auth\Access\Auth`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
+
 
 ### Method Summary
 
@@ -467,6 +476,7 @@ __Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
 protected function allowedIf( Guard $guard ): bool;
 ```
 
+
 ## Auth\Access\Guest
 
 <span class="badge badge--class">Class</span>
@@ -475,11 +485,12 @@ protected function allowedIf( Guard $guard ): bool;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
-- **`Phalcon\Auth\Access\Guest`**
+    - **`Phalcon\Auth\Access\Guest`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
+
 
 ### Method Summary
 
@@ -501,6 +512,7 @@ __Uses__ `Phalcon\Contracts\Auth\Guard\Guard`
 protected function allowedIf( Guard $guard ): bool;
 ```
 
+
 ## Auth\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
@@ -511,12 +523,13 @@ protected function allowedIf( Guard $guard ): bool;
 <div class="api-tree">
 
 - **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](/5.19/api/phalcon_contracts/#contractsauthadapteradapter)
-- [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
-- [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
+    - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
+    - [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+
 
 ### Method Summary
 
@@ -584,8 +597,8 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Ada
 
 ```php
 public function __construct(
-Security $hasher,
-AdapterConfig $config
+    Security $hasher,
+    AdapterConfig $config
 );
 ```
 
@@ -609,8 +622,8 @@ Returns the model class name, if configured.
 
 ```php
 public function validateCredentials(
-AuthUser $user,
-array $credentials
+    AuthUser $user,
+    array $credentials
 ): bool;
 ```
 
@@ -630,6 +643,7 @@ Runs a throwaway password verification against a fixed dummy hash so the
 user-not-found path performs the same hash work as a found path. Call it
 when a credential lookup misses to keep response time constant.
 
+
 ## Auth\Adapter\AbstractArrayAdapter
 
 <span class="badge badge--abstract">Abstract</span>
@@ -646,13 +660,14 @@ guard, and a default linear retrieveById - is shared here.
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- **`Phalcon\Auth\Adapter\AbstractArrayAdapter`**
-- [`Phalcon\Auth\Adapter\Memory`](#authadaptermemory)
-- [`Phalcon\Auth\Adapter\Stream`](#authadapterstream)
+    - **`Phalcon\Auth\Adapter\AbstractArrayAdapter`**
+        - [`Phalcon\Auth\Adapter\Memory`](#authadaptermemory)
+        - [`Phalcon\Auth\Adapter\Stream`](#authadapterstream)
 
 </div>
 
 __Uses__ `Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthUser`
+
 
 ### Method Summary
 
@@ -753,14 +768,15 @@ where they come from (config array, JSON file, etc.).
 
 ```php
 protected function matchesRow(
-array $row,
-array $credentials
+    array $row,
+    array $credentials
 ): bool;
 ```
 
 Per-key match of a row against credentials, skipping 'password'. Values
 are compared as strings so typed row values (e.g. int id, bool active)
 match the string input that arrives from an HTTP request.
+
 
 ## Auth\Adapter\AdapterLocator
 
@@ -777,11 +793,12 @@ to be used here.
 <div class="api-tree">
 
 - [`Phalcon\Support\AbstractLocator`](/5.19/api/phalcon_support/#supportabstractlocator)
-- **`Phalcon\Auth\Adapter\AdapterLocator`**
+    - **`Phalcon\Auth\Adapter\AdapterLocator`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
+
 
 ### Method Summary
 
@@ -825,6 +842,7 @@ protected function getInterfaceClass(): string;
 protected function getServices(): array;
 ```
 
+
 ## Auth\Adapter\Config\AbstractAdapterConfig
 
 <span class="badge badge--abstract">Abstract</span>
@@ -837,13 +855,14 @@ extending this.
 <div class="api-tree">
 
 - **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](/5.19/api/phalcon_contracts/#contractsauthadapteradapterconfig)
-- [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
-- [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
-- [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
+    - [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
+    - [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
+    - [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
 
 </div>
 
 __Uses__ `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig`
+
 
 ### Method Summary
 
@@ -864,6 +883,7 @@ __Uses__ `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contr
 public function __construct( string|null $model = null );
 ```
 
+
 ## Auth\Adapter\Config\MemoryAdapterConfig
 
 <span class="badge badge--class">Class</span>
@@ -872,7 +892,7 @@ public function __construct( string|null $model = null );
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-- **`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`**
+    - **`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`**
 
 </div>
 
@@ -908,8 +928,8 @@ public function __construct( string|null $model = null );
 
 ```php
 public function __construct(
-array $users = [],
-string|null $model = null
+    array $users = [],
+    string|null $model = null
 );
 ```
 
@@ -919,6 +939,7 @@ string|null $model = null
 public function getUsers(): array;
 ```
 
+
 ## Auth\Adapter\Config\ModelAdapterConfig
 
 <span class="badge badge--class">Class</span>
@@ -927,11 +948,12 @@ public function getUsers(): array;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-- **`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`**
+    - **`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
+
 
 ### Method Summary
 
@@ -970,8 +992,8 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 
 ```php
 public function __construct(
-string $model,
-string $idColumn = "id"
+    string $model,
+    string $idColumn = "id"
 );
 ```
 
@@ -987,6 +1009,7 @@ public function getIdColumn(): string;
 public function getModel(): string;
 ```
 
+
 ## Auth\Adapter\Config\StreamAdapterConfig
 
 <span class="badge badge--class">Class</span>
@@ -995,11 +1018,12 @@ public function getModel(): string;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-- **`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`**
+    - **`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
+
 
 ### Method Summary
 
@@ -1033,8 +1057,8 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 
 ```php
 public function __construct(
-string $file,
-string|null $model = null
+    string $file,
+    string|null $model = null
 );
 ```
 
@@ -1043,6 +1067,7 @@ string|null $model = null
 ```php
 public function getFile(): string;
 ```
+
 
 ## Auth\Adapter\Config\Traits\ModelConfigTrait
 
@@ -1058,6 +1083,7 @@ Shared model-name state and accessor for auth adapter configurations.
 </div>
 
 __Used by__ [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
+
 
 ### Method Summary
 
@@ -1089,6 +1115,7 @@ __Used by__ [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterco
 public function getModel(): string|null;
 ```
 
+
 ## Auth\Adapter\Memory
 
 <span class="badge badge--class">Class</span>
@@ -1101,12 +1128,13 @@ In-memory adapter - useful for tests and small read-only user lists.
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
-- **`Phalcon\Auth\Adapter\Memory`**
+    - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
+        - **`Phalcon\Auth\Adapter\Memory`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
+
 
 ### Method Summary
 
@@ -1141,8 +1169,8 @@ __Uses__ `Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Inte
 
 ```php
 public function __construct(
-Security $hasher,
-MemoryAdapterConfig $config
+    Security $hasher,
+    MemoryAdapterConfig $config
 );
 ```
 
@@ -1150,8 +1178,8 @@ MemoryAdapterConfig $config
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -1171,6 +1199,7 @@ Overridden for O(1) lookup via the id index built in the constructor.
 protected function loadUsers(): array;
 ```
 
+
 ## Auth\Adapter\Model
 
 <span class="badge badge--class">Class</span>
@@ -1183,11 +1212,12 @@ Phalcon Model-backed adapter.
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/5.19/api/phalcon_contracts/#contractsauthadapterrememberadapter)
+    - **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/5.19/api/phalcon_contracts/#contractsauthadapterrememberadapter)
 
 </div>
 
 __Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Mvc\ModelInterface`
+
 
 ### Method Summary
 
@@ -1234,8 +1264,8 @@ __Uses__ `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Excep
 
 ```php
 public function __construct(
-Security $hasher,
-ModelAdapterConfig $config
+    Security $hasher,
+    ModelAdapterConfig $config
 );
 ```
 
@@ -1251,8 +1281,8 @@ Create and persist a new remember token for the user.
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -1274,13 +1304,14 @@ public function retrieveById( mixed $id ): AuthUser|null;
 
 ```php
 public function retrieveByToken(
-mixed $id,
-string $token,
-string|null $userAgent = null
+    mixed $id,
+    string $token,
+    string|null $userAgent = null
 ): AuthUser|null;
 ```
 
 Retrieve a user by the remember-me cookie payload.
+
 
 ## Auth\Adapter\Stream
 
@@ -1297,12 +1328,13 @@ The file must contain a JSON array of user records:
 <div class="api-tree">
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
-- **`Phalcon\Auth\Adapter\Stream`**
+    - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
+        - **`Phalcon\Auth\Adapter\Stream`**
 
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -1332,8 +1364,8 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapte
 
 ```php
 public function __construct(
-Security $hasher,
-StreamAdapterConfig $config
+    Security $hasher,
+    StreamAdapterConfig $config
 );
 ```
 
@@ -1341,8 +1373,8 @@ StreamAdapterConfig $config
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -1356,6 +1388,7 @@ protected function loadUsers(): array;
 
 Loads and decodes the JSON users file. Re-read on every call - if you
 need caching, wrap it.
+
 
 ## Auth\AuthUser
 
@@ -1372,6 +1405,7 @@ when no application model class is configured.
 </div>
 
 __Uses__ `Phalcon\Auth\Exceptions\DataMustContainIdKey` · `Phalcon\Contracts\Auth\AuthUser`
+
 
 ### Method Summary
 
@@ -1438,6 +1472,7 @@ public function toArray(): array;
 
 Returns the underlying data array.
 
+
 ## Auth\Cli\AuthDispatcherListener
 
 <span class="badge badge--class">Class</span>
@@ -1446,11 +1481,12 @@ Returns the underlying data array.
 <div class="api-tree">
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
-- **`Phalcon\Auth\Cli\AuthDispatcherListener`**
+    - **`Phalcon\Auth\Cli\AuthDispatcherListener`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Cli\Dispatcher` · `Phalcon\Events\Event`
+
 
 ### Method Summary
 
@@ -1475,8 +1511,8 @@ __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exceptio
 
 ```php
 public function beforeExecuteRoute(
-Event $event,
-Dispatcher $dispatcher
+    Event $event,
+    Dispatcher $dispatcher
 ): bool;
 ```
 
@@ -1488,6 +1524,7 @@ Dispatcher $dispatcher
 protected function getActionType(): string;
 ```
 
+
 ## Auth\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1498,27 +1535,28 @@ Exceptions thrown in Phalcon\Auth will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Auth\Exception`**
-- [`Phalcon\Auth\Exceptions\AccessDenied`](#authexceptionsaccessdenied)
-- [`Phalcon\Auth\Exceptions\AccessNotRegistered`](#authexceptionsaccessnotregistered)
-- [`Phalcon\Auth\Exceptions\ActiveAccessRequired`](#authexceptionsactiveaccessrequired)
-- [`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`](#authexceptionsconfigrequiresnonemptyvalue)
-- [`Phalcon\Auth\Exceptions\DataMustContainIdKey`](#authexceptionsdatamustcontainidkey)
-- [`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`](#authexceptionsdefaultguardnotregistered)
-- [`Phalcon\Auth\Exceptions\DoesNotImplement`](#authexceptionsdoesnotimplement)
-- [`Phalcon\Auth\Exceptions\FileCannotRead`](#authexceptionsfilecannotread)
-- [`Phalcon\Auth\Exceptions\FileDoesNotContainJson`](#authexceptionsfiledoesnotcontainjson)
-- [`Phalcon\Auth\Exceptions\FileDoesNotExist`](#authexceptionsfiledoesnotexist)
-- [`Phalcon\Auth\Exceptions\FileNotValidJson`](#authexceptionsfilenotvalidjson)
-- [`Phalcon\Auth\Exceptions\GuardNotDefined`](#authexceptionsguardnotdefined)
-- [`Phalcon\Auth\Exceptions\MissingHandlerContext`](#authexceptionsmissinghandlercontext)
-- [`Phalcon\Auth\Exceptions\OptionRequiresArray`](#authexceptionsoptionrequiresarray)
-- [`Phalcon\Auth\Exceptions\OptionRequiresString`](#authexceptionsoptionrequiresstring)
-- [`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`](#authexceptionssessionnamesmustdiffer)
-- [`Phalcon\Auth\Exceptions\UnknownAdapter`](#authexceptionsunknownadapter)
-- [`Phalcon\Auth\Exceptions\UnknownGuard`](#authexceptionsunknownguard)
+    - **`Phalcon\Auth\Exception`**
+        - [`Phalcon\Auth\Exceptions\AccessDenied`](#authexceptionsaccessdenied)
+        - [`Phalcon\Auth\Exceptions\AccessNotRegistered`](#authexceptionsaccessnotregistered)
+        - [`Phalcon\Auth\Exceptions\ActiveAccessRequired`](#authexceptionsactiveaccessrequired)
+        - [`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`](#authexceptionsconfigrequiresnonemptyvalue)
+        - [`Phalcon\Auth\Exceptions\DataMustContainIdKey`](#authexceptionsdatamustcontainidkey)
+        - [`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`](#authexceptionsdefaultguardnotregistered)
+        - [`Phalcon\Auth\Exceptions\DoesNotImplement`](#authexceptionsdoesnotimplement)
+        - [`Phalcon\Auth\Exceptions\FileCannotRead`](#authexceptionsfilecannotread)
+        - [`Phalcon\Auth\Exceptions\FileDoesNotContainJson`](#authexceptionsfiledoesnotcontainjson)
+        - [`Phalcon\Auth\Exceptions\FileDoesNotExist`](#authexceptionsfiledoesnotexist)
+        - [`Phalcon\Auth\Exceptions\FileNotValidJson`](#authexceptionsfilenotvalidjson)
+        - [`Phalcon\Auth\Exceptions\GuardNotDefined`](#authexceptionsguardnotdefined)
+        - [`Phalcon\Auth\Exceptions\MissingHandlerContext`](#authexceptionsmissinghandlercontext)
+        - [`Phalcon\Auth\Exceptions\OptionRequiresArray`](#authexceptionsoptionrequiresarray)
+        - [`Phalcon\Auth\Exceptions\OptionRequiresString`](#authexceptionsoptionrequiresstring)
+        - [`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`](#authexceptionssessionnamesmustdiffer)
+        - [`Phalcon\Auth\Exceptions\UnknownAdapter`](#authexceptionsunknownadapter)
+        - [`Phalcon\Auth\Exceptions\UnknownGuard`](#authexceptionsunknownguard)
 
 </div>
+
 
 ## Auth\Exceptions\AccessDenied
 
@@ -1530,12 +1568,13 @@ Access denied exception
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\AccessDenied`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\AccessDenied`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1554,10 +1593,11 @@ __Uses__ `Phalcon\Auth\Exception`
 
 ```php
 public function __construct(
-string $type,
-string $name
+    string $type,
+    string $name
 );
 ```
+
 
 ## Auth\Exceptions\AccessNotRegistered
 
@@ -1569,12 +1609,13 @@ Access gate name is not registered
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\AccessNotRegistered`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\AccessNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1595,6 +1636,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Auth\Exceptions\ActiveAccessRequired
 
 <span class="badge badge--class">Class</span>
@@ -1605,12 +1647,13 @@ No active access has been set on the manager
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\ActiveAccessRequired`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\ActiveAccessRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1631,6 +1674,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\ConfigRequiresNonEmptyValue
 
 <span class="badge badge--class">Class</span>
@@ -1641,12 +1685,13 @@ Config requires non-empty value
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1671,9 +1716,9 @@ __Uses__ `Phalcon\Auth\Exception`
 
 ```php
 public function __construct(
-string $configName,
-string $configKey,
-string $suffix = ""
+    string $configName,
+    string $configKey,
+    string $suffix = ""
 );
 ```
 
@@ -1681,10 +1726,10 @@ string $suffix = ""
 
 ```php
 public static function assert(
-mixed $value,
-string $configName,
-string $configKey,
-string $suffix = ""
+    mixed $value,
+    string $configName,
+    string $configKey,
+    string $suffix = ""
 ): void;
 ```
 
@@ -1692,6 +1737,7 @@ Throws when the value is an empty string. A null value is treated as
 "not provided" and passes, so optional settings can reuse the same
 guard; callers that require presence reject null earlier. Keeps the
 empty-value check shared by every config class in one place.
+
 
 ## Auth\Exceptions\DataMustContainIdKey
 
@@ -1703,12 +1749,13 @@ AuthUser data must contain "id"
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\DataMustContainIdKey`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\DataMustContainIdKey`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1729,6 +1776,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\DefaultGuardNotRegistered
 
 <span class="badge badge--class">Class</span>
@@ -1739,12 +1787,13 @@ No default guard registered
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1765,6 +1814,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\DoesNotImplement
 
 <span class="badge badge--class">Class</span>
@@ -1775,12 +1825,13 @@ Does not implement interface
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\DoesNotImplement`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\DoesNotImplement`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1805,8 +1856,8 @@ __Uses__ `Phalcon\Auth\Exception`
 
 ```php
 public function __construct(
-string $type,
-string $name
+    string $type,
+    string $name
 );
 ```
 
@@ -1814,16 +1865,17 @@ string $name
 
 ```php
 public static function assert(
-mixed $value,
-string $interfaceName,
-string $type,
-string $name
+    mixed $value,
+    string $interfaceName,
+    string $type,
+    string $name
 ): void;
 ```
 
 Throws when value is not an instance of the given interface. Keeps the
 "must implement" guard shared across adapters, guards and the manager
 in one place.
+
 
 ## Auth\Exceptions\FileCannotRead
 
@@ -1835,12 +1887,13 @@ Cannot read file
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileCannotRead`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\FileCannotRead`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1861,6 +1914,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Auth\Exceptions\FileDoesNotContainJson
 
 <span class="badge badge--class">Class</span>
@@ -1871,12 +1925,13 @@ File does not contain a JSON array
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileDoesNotContainJson`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\FileDoesNotContainJson`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1897,6 +1952,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Auth\Exceptions\FileDoesNotExist
 
 <span class="badge badge--class">Class</span>
@@ -1907,12 +1963,13 @@ File does not exist
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileDoesNotExist`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\FileDoesNotExist`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -1933,6 +1990,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $path );
 ```
 
+
 ## Auth\Exceptions\FileNotValidJson
 
 <span class="badge badge--class">Class</span>
@@ -1943,12 +2001,13 @@ Not a valid JSON
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileNotValidJson`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\FileNotValidJson`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Throwable`
+
 
 ### Method Summary
 
@@ -1967,10 +2026,11 @@ __Uses__ `Phalcon\Auth\Exception` · `Throwable`
 
 ```php
 public function __construct(
-string $path,
-Throwable $ex
+    string $path,
+    Throwable $ex
 );
 ```
+
 
 ## Auth\Exceptions\GuardNotDefined
 
@@ -1982,12 +2042,13 @@ Guard name is not defined on the manager
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\GuardNotDefined`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\GuardNotDefined`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2008,6 +2069,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Auth\Exceptions\MissingHandlerContext
 
 <span class="badge badge--class">Class</span>
@@ -2018,12 +2080,13 @@ The Acl access gate is missing the required 'handler' context key
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\MissingHandlerContext`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\MissingHandlerContext`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2044,6 +2107,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\OptionRequiresArray
 
 <span class="badge badge--class">Class</span>
@@ -2054,12 +2118,13 @@ Option must be a non-empty array
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\OptionRequiresArray`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\OptionRequiresArray`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2078,10 +2143,11 @@ __Uses__ `Phalcon\Auth\Exception`
 
 ```php
 public function __construct(
-string $context,
-string $key
+    string $context,
+    string $key
 );
 ```
+
 
 ## Auth\Exceptions\OptionRequiresString
 
@@ -2093,12 +2159,13 @@ Option must be a non-empty string
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\OptionRequiresString`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\OptionRequiresString`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2117,10 +2184,11 @@ __Uses__ `Phalcon\Auth\Exception`
 
 ```php
 public function __construct(
-string $context,
-string $key
+    string $context,
+    string $key
 );
 ```
+
 
 ## Auth\Exceptions\SessionNamesMustDiffer
 
@@ -2132,12 +2200,13 @@ Session guard 'name' and 'rememberName' must differ
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2158,6 +2227,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\UnknownAdapter
 
 <span class="badge badge--class">Class</span>
@@ -2168,12 +2238,13 @@ Unknown auth adapter requested from the factory
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\UnknownAdapter`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\UnknownAdapter`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2194,6 +2265,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Auth\Exceptions\UnknownGuard
 
 <span class="badge badge--class">Class</span>
@@ -2204,12 +2276,13 @@ Unknown auth guard type requested from the factory
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\UnknownGuard`**
+    - [`Phalcon\Auth\Exception`](#authexception)
+        - **`Phalcon\Auth\Exceptions\UnknownGuard`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception`
+
 
 ### Method Summary
 
@@ -2230,6 +2303,7 @@ __Uses__ `Phalcon\Auth\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Auth\Guard\AbstractGuard
 
 <span class="badge badge--abstract">Abstract</span>
@@ -2240,12 +2314,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](/5.19/api/phalcon_contracts/#contractsauthguardguard)
-- [`Phalcon\Auth\Guard\Session`](#authguardsession)
-- [`Phalcon\Auth\Guard\Token`](#authguardtoken)
+    - [`Phalcon\Auth\Guard\Session`](#authguardsession)
+    - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+
 
 ### Method Summary
 
@@ -2341,8 +2416,8 @@ __Uses__ `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Aut
 
 ```php
 public function __construct(
-Adapter $adapter,
-GuardConfig $config
+    Adapter $adapter,
+    GuardConfig $config
 );
 ```
 
@@ -2408,12 +2483,13 @@ public function setUser( AuthUser $user ): static;
 
 ```php
 protected function hasValidCredentials(
-mixed $user,
-array $credentials
+    mixed $user,
+    array $credentials
 ): bool;
 ```
 
 user should be ?AuthUser
+
 
 ## Auth\Guard\Config\AbstractGuardConfig
 
@@ -2423,12 +2499,14 @@ user should be ?AuthUser
 <div class="api-tree">
 
 - **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](/5.19/api/phalcon_contracts/#contractsauthguardguardconfig)
-- [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
-- [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
+    - [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
+    - [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Auth\Guard\GuardConfig`
+
+
 
 ## Auth\Guard\Config\SessionGuardConfig
 
@@ -2444,11 +2522,12 @@ full name explicitly.
 <div class="api-tree">
 
 - [`Phalcon\Auth\Guard\Config\AbstractGuardConfig`](#authguardconfigabstractguardconfig)
-- **`Phalcon\Auth\Guard\Config\SessionGuardConfig`**
+    - **`Phalcon\Auth\Guard\Config\SessionGuardConfig`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue` · `Phalcon\Auth\Exceptions\SessionNamesMustDiffer`
+
 
 ### Method Summary
 
@@ -2492,10 +2571,10 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 
 ```php
 public function __construct(
-string|null $suffix = null,
-string|null $name = null,
-string|null $rememberName = null,
-int|null $rememberTtl = null
+    string|null $suffix = null,
+    string|null $name = null,
+    string|null $rememberName = null,
+    int|null $rememberTtl = null
 );
 ```
 
@@ -2517,6 +2596,7 @@ public function getRememberName(): string;
 public function getRememberTtl(): int;
 ```
 
+
 ## Auth\Guard\Config\TokenGuardConfig
 
 <span class="badge badge--class">Class</span>
@@ -2525,11 +2605,12 @@ public function getRememberTtl(): int;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Guard\Config\AbstractGuardConfig`](#authguardconfigabstractguardconfig)
-- **`Phalcon\Auth\Guard\Config\TokenGuardConfig`**
+    - **`Phalcon\Auth\Guard\Config\TokenGuardConfig`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
+
 
 ### Method Summary
 
@@ -2573,8 +2654,8 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonE
 
 ```php
 public function __construct(
-string $inputKey,
-string $storageKey
+    string $inputKey,
+    string $storageKey
 );
 ```
 
@@ -2590,6 +2671,7 @@ public function getInputKey(): string;
 public function getStorageKey(): string;
 ```
 
+
 ## Auth\Guard\GuardLocator
 
 <span class="badge badge--class">Class</span>
@@ -2604,11 +2686,12 @@ Phalcon\Di\Di, register the guards in it before resolution.
 <div class="api-tree">
 
 - [`Phalcon\Support\AbstractLocator`](/5.19/api/phalcon_support/#supportabstractlocator)
-- **`Phalcon\Auth\Guard\GuardLocator`**
+    - **`Phalcon\Auth\Guard\GuardLocator`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
+
 
 ### Method Summary
 
@@ -2652,6 +2735,7 @@ protected function getInterfaceClass(): string;
 protected function getServices(): array;
 ```
 
+
 ## Auth\Guard\Session
 
 <span class="badge badge--class">Class</span>
@@ -2662,11 +2746,12 @@ protected function getServices(): array;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-- **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/5.19/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/5.19/api/phalcon_contracts/#contractsauthguardbasicauth)
+    - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/5.19/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/5.19/api/phalcon_contracts/#contractsauthguardbasicauth)
 
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
+
 
 ### Method Summary
 
@@ -2810,12 +2895,12 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` 
 
 ```php
 public function __construct(
-Adapter $adapter,
-RequestInterface $request,
-CookiesInterface $cookies,
-SessionManagerInterface $session,
-SessionGuardConfig|null $config = null,
-ClockInterface|null $clock = null
+    Adapter $adapter,
+    RequestInterface $request,
+    CookiesInterface $cookies,
+    SessionManagerInterface $session,
+    SessionGuardConfig|null $config = null,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -2823,8 +2908,8 @@ ClockInterface|null $clock = null
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -2832,8 +2917,8 @@ bool $remember = false
 
 ```php
 public function basic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): bool;
 ```
 
@@ -2841,9 +2926,9 @@ array $extraConditions = []
 
 ```php
 public static function fromOptions(
-Adapter $adapter,
-mixed $container,
-array $options
+    Adapter $adapter,
+    mixed $container,
+    array $options
 ): static;
 ```
 
@@ -2863,8 +2948,8 @@ public function getRememberName(): string;
 
 ```php
 public function login(
-AuthUser $user,
-bool $remember = false
+    AuthUser $user,
+    bool $remember = false
 ): void;
 ```
 
@@ -2872,8 +2957,8 @@ bool $remember = false
 
 ```php
 public function loginById(
-mixed $id,
-bool $remember = false
+    mixed $id,
+    bool $remember = false
 ): AuthUser|false;
 ```
 
@@ -2893,8 +2978,8 @@ public function once( array $credentials = [] ): bool;
 
 ```php
 public function onceBasic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): AuthUser|false;
 ```
 
@@ -2922,8 +3007,8 @@ public function viaRemember(): bool;
 
 ```php
 protected function attemptBasic(
-string $field,
-array $extraConditions = []
+    string $field,
+    array $extraConditions = []
 ): bool;
 ```
 
@@ -2957,6 +3042,7 @@ protected function rememberUser( AuthUser $user ): void;
 protected function userFromRecaller( UserRemember $recaller ): AuthUser|null;
 ```
 
+
 ## Auth\Guard\Token
 
 <span class="badge badge--class">Class</span>
@@ -2967,11 +3053,12 @@ protected function userFromRecaller( UserRemember $recaller ): AuthUser|null;
 <div class="api-tree">
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-- **`Phalcon\Auth\Guard\Token`**
+    - **`Phalcon\Auth\Guard\Token`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Http\RequestInterface`
+
 
 ### Method Summary
 
@@ -3025,9 +3112,9 @@ __Uses__ `Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\
 
 ```php
 public function __construct(
-Adapter $adapter,
-RequestInterface $request,
-TokenGuardConfig $config
+    Adapter $adapter,
+    RequestInterface $request,
+    TokenGuardConfig $config
 );
 ```
 
@@ -3035,9 +3122,9 @@ TokenGuardConfig $config
 
 ```php
 public static function fromOptions(
-Adapter $adapter,
-mixed $container,
-array $options
+    Adapter $adapter,
+    mixed $container,
+    array $options
 ): static;
 ```
 
@@ -3065,6 +3152,7 @@ public function user(): AuthUser|null;
 public function validate( array $credentials = [] ): bool;
 ```
 
+
 ## Auth\Guard\UserRemember
 
 <span class="badge badge--final">Final</span>
@@ -3079,6 +3167,7 @@ Value object representing the contents of a remember-me cookie.
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Support\Helper\Json\Decode`
+
 
 ### Method Summary
 
@@ -3157,6 +3246,7 @@ public function getToken(): string;
 public function getUserAgent(): string;
 ```
 
+
 ## Auth\Internal\ContainerResolver
 
 <span class="badge badge--final">Final</span>
@@ -3181,6 +3271,7 @@ callers and userland catch a single exception family.
 </div>
 
 __Uses__ `Phalcon\Container\Exceptions\Exception` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `TypeError`
+
 
 ### Method Summary
 
@@ -3233,9 +3324,9 @@ Validates that the value is a supported container.
 
 ```php
 public static function requireService(
-mixed $container,
-array $candidates,
-string $context
+    mixed $container,
+    array $candidates,
+    string $context
 ): object;
 ```
 
@@ -3248,12 +3339,12 @@ setups.
 
 ```php
 public static function resolveCandidate(
-mixed $container,
-array $options,
-string $key,
-string $fqn,
-string $shortName,
-string $context
+    mixed $container,
+    array $options,
+    string $key,
+    string $fqn,
+    string $shortName,
+    string $context
 ): object;
 ```
 
@@ -3266,8 +3357,8 @@ container key may vary, using the options override or the
 
 ```php
 public static function resolveFresh(
-mixed $container,
-string $name
+    mixed $container,
+    string $name
 ): object;
 ```
 
@@ -3280,16 +3371,17 @@ still built via the class builder.
 
 ```php
 public static function serviceCandidates(
-array $options,
-string $key,
-string $fqn,
-string $shortName
+    array $options,
+    string $key,
+    string $fqn,
+    string $shortName
 ): array;
 ```
 
 Builds the ordered candidate list for a framework service:
 an explicit override from options['services'][key] if present,
 otherwise the interface FQN followed by the conventional short name.
+
 
 ## Auth\Internal\Options
 
@@ -3306,6 +3398,7 @@ implementations. Not part of the public API.
 </div>
 
 __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArray` · `Phalcon\Auth\Exceptions\OptionRequiresString`
+
 
 ### Method Summary
 
@@ -3340,9 +3433,9 @@ __Uses__ `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\OptionRequiresArra
 
 ```php
 public static function arrayOption(
-array $options,
-string $key,
-array $defaultValue
+    array $options,
+    string $key,
+    array $defaultValue
 ): array;
 ```
 
@@ -3350,9 +3443,9 @@ array $defaultValue
 
 ```php
 public static function requireArray(
-array $options,
-string $key,
-string $context
+    array $options,
+    string $key,
+    string $context
 ): array;
 ```
 
@@ -3360,9 +3453,9 @@ string $context
 
 ```php
 public static function requireString(
-array $options,
-string $key,
-string $context
+    array $options,
+    string $key,
+    string $context
 ): string;
 ```
 
@@ -3370,10 +3463,11 @@ string $context
 
 ```php
 public static function stringOrNull(
-array $options,
-string $key
+    array $options,
+    string $key
 ): string|null;
 ```
+
 
 ## Auth\Manager
 
@@ -3392,6 +3486,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 </div>
 
 __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Exceptions\AccessNotRegistered` · `Phalcon\Auth\Exceptions\ActiveAccessRequired` · `Phalcon\Auth\Exceptions\DefaultGuardNotRegistered` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\GuardNotDefined` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\Manager`
+
 
 ### Method Summary
 
@@ -3543,9 +3638,9 @@ public function addAccessList( array $accessList ): self;
 
 ```php
 public function addGuard(
-string $nameGuard,
-Guard $guard,
-bool $isDefault = false
+    string $nameGuard,
+    Guard $guard,
+    bool $isDefault = false
 ): self;
 ```
 
@@ -3553,8 +3648,8 @@ bool $isDefault = false
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -3642,6 +3737,7 @@ public function user(): AuthUser|null;
 public function validate( array $credentials = [] ): bool;
 ```
 
+
 ## Auth\ManagerFactory
 
 <span class="badge badge--class">Class</span>
@@ -3693,6 +3789,7 @@ not separately constructed copies.
 </div>
 
 __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLocator` · `Phalcon\Auth\Exceptions\UnknownAdapter` · `Phalcon\Auth\Exceptions\UnknownGuard` · `Phalcon\Auth\Guard\GuardLocator` · `Phalcon\Auth\Internal\Options` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security` · `Phalcon\Traits\Factory\ConfigTrait`
+
 
 ### Method Summary
 
@@ -3761,11 +3858,11 @@ __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Auth\Adapter\AdapterLoc
 
 ```php
 public function __construct(
-Security $hasher,
-mixed $container,
-AdapterLocator|null $adapterLocator = null,
-GuardLocator|null $guardLocator = null,
-AccessLocator|null $accessLocator = null
+    Security $hasher,
+    mixed $container,
+    AdapterLocator|null $adapterLocator = null,
+    GuardLocator|null $guardLocator = null,
+    AccessLocator|null $accessLocator = null
 );
 ```
 
@@ -3781,8 +3878,8 @@ public function load( mixed $config ): Manager;
 
 ```php
 protected function buildAdapter(
-AdapterLocator $locator,
-array $cfg
+    AdapterLocator $locator,
+    array $cfg
 ): Adapter;
 ```
 
@@ -3790,10 +3887,10 @@ array $cfg
 
 ```php
 protected function buildGuard(
-GuardLocator $locator,
-string $type,
-Adapter $adapter,
-array $options
+    GuardLocator $locator,
+    string $type,
+    Adapter $adapter,
+    array $options
 ): Guard;
 ```
 
@@ -3802,6 +3899,7 @@ array $options
 ```php
 protected function getExceptionClass(): string;
 ```
+
 
 ## Auth\Micro\AuthMicroListener
 
@@ -3824,11 +3922,12 @@ No-op when no active access has been set on the manager.
 <div class="api-tree">
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
-- **`Phalcon\Auth\Micro\AuthMicroListener`**
+    - **`Phalcon\Auth\Micro\AuthMicroListener`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Events\Event` · `Phalcon\Mvc\Micro` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface`
+
 
 ### Method Summary
 
@@ -3867,8 +3966,8 @@ __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exceptio
 
 ```php
 public function __construct(
-Manager $manager,
-string $componentName = "Micro"
+    Manager $manager,
+    string $componentName = "Micro"
 );
 ```
 
@@ -3876,8 +3975,8 @@ string $componentName = "Micro"
 
 ```php
 public function beforeExecuteRoute(
-Event $event,
-Micro $application
+    Event $event,
+    Micro $application
 ): bool;
 ```
 
@@ -3888,6 +3987,7 @@ Micro $application
 ```php
 protected function getActionType(): string;
 ```
+
 
 ## Auth\Mvc\AuthDispatcherListener
 
@@ -3904,11 +4004,12 @@ No-op when no active access has been set on the manager.
 <div class="api-tree">
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
-- **`Phalcon\Auth\Mvc\AuthDispatcherListener`**
+    - **`Phalcon\Auth\Mvc\AuthDispatcherListener`**
 
 </div>
 
 __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Events\Event` · `Phalcon\Mvc\Dispatcher`
+
 
 ### Method Summary
 
@@ -3933,8 +4034,8 @@ __Uses__ `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exceptio
 
 ```php
 public function beforeExecuteRoute(
-Event $event,
-Dispatcher $dispatcher
+    Event $event,
+    Dispatcher $dispatcher
 ): bool;
 ```
 

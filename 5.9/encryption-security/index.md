@@ -74,47 +74,47 @@ use Phalcon\Encryption\Security;
  */
 class SessionController extends Controller
 {
-public function loginAction()
-{
-    $login    = $this->request->getPost('login');
-    $password = $this->request->getPost('password');
+    public function loginAction()
+    {
+        $login    = $this->request->getPost('login');
+        $password = $this->request->getPost('password');
 
-    $user = Users::findFirst(
-        [
-            'conditions' => 'login = :login:',
-            'bind'       => [
-                'login' => $login,
-            ],
-        ]
-    );
+        $user = Users::findFirst(
+            [
+                'conditions' => 'login = :login:',
+                'bind'       => [
+                    'login' => $login,
+                ],
+            ]
+        );
 
-    if (false !== $user) {
-        $check = $this
-            ->security
-            ->checkHash($password, $user->password);
-
-        if (true === $check) {
-            // OK
+        if (false !== $user) {
+            $check = $this
+                ->security
+                ->checkHash($password, $user->password);
+            
+            if (true === $check) {
+                // OK
+            }
+        } else {
+            $this->security->hash(rand());
         }
-    } else {
-        $this->security->hash(rand());
+
+        // ERROR
     }
 
-    // ERROR
-}
+    public function registerAction()
+    {
+        $login    = $this->request->getPost('login', 'string');
+        $password = $this->request->getPost('password', 'string');
 
-public function registerAction()
-{
-    $login    = $this->request->getPost('login', 'string');
-    $password = $this->request->getPost('password', 'string');
+        $user = new Users();
 
-    $user = new Users();
+        $user->login    = $login;
+        $user->password = $this->security->hash($password);
 
-    $user->login    = $login;
-    $user->password = $this->security->hash($password);
-
-    $user->save();
-}
+        $user->save();
+    }
 
 }
 ```
@@ -181,18 +181,19 @@ $password = 'password1';
 $security = new Security();
 $security->setDefaultHash(Security::CRYPT_ARGON2I);
 $hashed   = $security->hash(
-'Phalcon', 
-[
-    'memory_cost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
-    'time_cost'   => PASSWORD_ARGON2_DEFAULT_TIME_COST,
-    'threads'     => PASSWORD_ARGON2_DEFAULT_THREADS,
-]
+    'Phalcon', 
+    [
+        'memory_cost' => PASSWORD_ARGON2_DEFAULT_MEMORY_COST,
+        'time_cost'   => PASSWORD_ARGON2_DEFAULT_TIME_COST,
+        'threads'     => PASSWORD_ARGON2_DEFAULT_THREADS,
+    ]
 );
 
 echo $security->checkHash($password, $hashed); // true / false
 ```
 
 If no options are set, the defaults will be used.
+
 
 ## Exceptions
 Any exceptions thrown in the Security component will be of type [Phalcon\Encryption\Security\Exception][security-exception]. You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
@@ -205,14 +206,14 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $this->security->hash('123');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            $this->security->hash('123');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -224,11 +225,11 @@ The idea is to prevent the form values from being sent outside our application. 
 ```php
 <form method='post' action='session/login'>
 
-<!-- Login and password inputs ... -->
+    <!-- Login and password inputs ... -->
 
-<input type='hidden' 
-       name='<?php echo $this->security->getTokenKey() ?>'
-       value='<?php echo $this->security->getToken() ?>'/>
+    <input type='hidden' 
+           name='<?php echo $this->security->getTokenKey() ?>'
+           value='<?php echo $this->security->getToken() ?>'/>
 
 </form>
 ```
@@ -246,14 +247,14 @@ use Phalcon\Mvc\Controller;
  */
 class SessionController extends Controller
 {
-public function loginAction()
-{
-    if ($this->request->isPost()) {
-        if ($this->security->checkToken()) {
-            // OK
+    public function loginAction()
+    {
+        if ($this->request->isPost()) {
+            if ($this->security->checkToken()) {
+                // OK
+            }
         }
     }
-}
 }
 ```
 
@@ -500,15 +501,15 @@ use Phalcon\Encryption\Security;
 $container = new FactoryDefault();
 
 $container->set(
-'security',
-function () {
-    $security = new Security();
+    'security',
+    function () {
+        $security = new Security();
 
-    $security->setWorkFactor(12);
+        $security->setWorkFactor(12);
 
-    return $security;
-},
-true
+        return $security;
+    },
+    true
 );
 ```
 In the above example, the `setWorkFactor()` sets the password hashing factor to 12 rounds.
@@ -526,10 +527,10 @@ use Phalcon\Encryption\Security;
  */
 class MyController extends Controller
 {
-private function getHash(string $password): string
-{
-    return $this->security->hash($password);
-}
+    private function getHash(string $password): string
+    {
+        return $this->security->hash($password);
+    }
 }
 ```
 

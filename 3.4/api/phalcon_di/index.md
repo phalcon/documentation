@@ -40,41 +40,54 @@ $di->set("request", Request::class, true);
 
 // Using an anonymous function
 $di->setShared(
-"request",
-function () {
-    return new Request();
-}
+    "request",
+    function () {
+        return new Request();
+    }
 );
 
 $request = $di->getRequest();
 
 ```
 
+
 ## Methods
 public  **__construct** ()
 
 Phalcon\Di constructor
 
+
+
 public  **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager)
 
 Sets the internal event manager
+
+
 
 public  **getInternalEventsManager** ()
 
 Returns the internal event manager
 
+
+
 public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 Registers a service in the services container
+
+
 
 public  **setShared** (*mixed* $name, *mixed* $definition)
 
 Registers an "always shared" service in the services container
 
+
+
 public  **remove** (*mixed* $name)
 
 Removes a service in the services container
 It also removes any shared instance created for the service
+
+
 
 public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
@@ -82,42 +95,62 @@ Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
 with the same name
 
+
+
 public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/3.4/api/phalcon_di/) $rawDefinition)
 
 Sets a service using a raw Phalcon\Di\Service definition
+
+
 
 public  **getRaw** (*mixed* $name)
 
 Returns a service definition without resolving
 
+
+
 public  **getService** (*mixed* $name)
 
 Returns a Phalcon\Di\Service instance
 
+
+
 public  **get** (*mixed* $name, [*mixed* $parameters])
 
 Resolves the service based on its configuration
+
+
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters])
 
 Resolves a service, the resolved service is stored in the DI, subsequent
 requests for this service will return the same instance
 
+
+
 public  **has** (*mixed* $name)
 
 Check whether the DI contains a service by a name
+
+
 
 public  **wasFreshInstance** ()
 
 Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
+
+
 public  **getServices** ()
 
 Return the services registered in the DI
 
+
+
 public  **offsetExists** (*mixed* $name)
 
 Check if a service is registered using the array syntax
+
+
 
 public  **offsetSet** (*mixed* $name, *mixed* $definition)
 
@@ -130,6 +163,8 @@ $di["request"] = new \Phalcon\Http\Request();
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $name)
 
 Allows to obtain a shared service using the array syntax
@@ -141,13 +176,19 @@ var_dump($di["request"]);
 
 ```
 
+
+
 public  **offsetUnset** (*mixed* $name)
 
 Removes a service from the services container using the array syntax
 
+
+
 public  **__call** (*mixed* $method, [*mixed* $arguments])
 
 Magic method to get or set services using setters/getters
+
+
 
 public  **register** ([Phalcon\Di\ServiceProviderInterface](/3.4/api/phalcon_di/) $provider)
 
@@ -161,27 +202,35 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di)
-{
-    $di->setShared('service', function () {
-        // ...
-    });
-}
+    public function register(DiInterface $di)
+    {
+        $di->setShared('service', function () {
+            // ...
+        });
+    }
 }
 
 ```
+
+
 
 public static  **setDefault** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 Set a default dependency injection container to be obtained into static methods
 
+
+
 public static  **getDefault** ()
 
 Return the latest DI created
 
+
+
 public static  **reset** ()
 
 Resets the internal default DI
+
+
 
 public  **loadFromYaml** (*mixed* $filePath, [*array* $callbacks])
 
@@ -191,12 +240,12 @@ Loads services from a yaml file.
 <?php
 
 $di->loadFromYaml(
-"path/services.yaml",
-[
-    "!approot" => function ($value) {
-        return dirname(__DIR__) . $value;
-    }
-]
+    "path/services.yaml",
+    [
+        "!approot" => function ($value) {
+            return dirname(__DIR__) . $value;
+        }
+    ]
 );
 
 ```
@@ -206,19 +255,21 @@ And the services can be specified in the file as:
 <?php
 
 myComponent:
-className: \Acme\Components\MyComponent
-shared: true
+    className: \Acme\Components\MyComponent
+    shared: true
 
 group:
-className: \Acme\Group
-arguments:
-    - type: service
-      name: myComponent
+    className: \Acme\Group
+    arguments:
+        - type: service
+          name: myComponent
 
 user:
    className: \Acme\User
 
 ```
+
+
 
 public  **loadFromPhp** (*mixed* $filePath)
 
@@ -236,29 +287,34 @@ And the services can be specified in the file as:
 <?php
 
 return [
- 'myComponent' => [
-     'className' => '\Acme\Components\MyComponent',
-     'shared' => true,
- ],
- 'group' => [
-     'className' => '\Acme\Group',
-     'arguments' => [
-         [
-             'type' => 'service',
-             'service' => 'myComponent',
+     'myComponent' => [
+         'className' => '\Acme\Components\MyComponent',
+         'shared' => true,
+     ],
+     'group' => [
+         'className' => '\Acme\Group',
+         'arguments' => [
+             [
+                 'type' => 'service',
+                 'service' => 'myComponent',
+             ],
          ],
      ],
- ],
- 'user' => [
-     'className' => '\Acme\User',
- ],
+     'user' => [
+         'className' => '\Acme\User',
+     ],
 ];
 
 ```
 
+
+
 protected  **loadFromConfig** ([Phalcon\Config](/3.4/api/phalcon_config/) $config)
 
 Loads services from a Config object.
+
+
+
 
 <hr />
 
@@ -275,45 +331,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -329,31 +407,44 @@ This is a variant of the standard Phalcon\Di. By default it automatically
 registers all the services provided by the framework. Thanks to this, the developer does not need
 to register each service individually providing a full stack framework
 
+
 ## Methods
 public  **__construct** ()
 
 Phalcon\Di\FactoryDefault constructor
 
+
+
 public  **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Sets the internal event manager
+
+
 
 public  **getInternalEventsManager** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Registers a service in the services container
+
+
 
 public  **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Registers an "always shared" service in the services container
 
+
+
 public  **remove** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Removes a service in the services container
 It also removes any shared instance created for the service
+
+
 
 public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -361,42 +452,62 @@ Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
 with the same name
 
+
+
 public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/3.4/api/phalcon_di/) $rawDefinition) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Sets a service using a raw Phalcon\Di\Service definition
+
+
 
 public  **getRaw** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Returns a service definition without resolving
 
+
+
 public  **getService** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Returns a Phalcon\Di\Service instance
 
+
+
 public  **get** (*mixed* $name, [*mixed* $parameters]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Resolves the service based on its configuration
+
+
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Resolves a service, the resolved service is stored in the DI, subsequent
 requests for this service will return the same instance
 
+
+
 public  **has** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Check whether the DI contains a service by a name
+
+
 
 public  **wasFreshInstance** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
+
+
 public  **getServices** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Return the services registered in the DI
 
+
+
 public  **offsetExists** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Check if a service is registered using the array syntax
+
+
 
 public  **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -409,6 +520,8 @@ $di["request"] = new \Phalcon\Http\Request();
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Allows to obtain a shared service using the array syntax
@@ -420,13 +533,19 @@ var_dump($di["request"]);
 
 ```
 
+
+
 public  **offsetUnset** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Removes a service from the services container using the array syntax
 
+
+
 public  **__call** (*mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Magic method to get or set services using setters/getters
+
+
 
 public  **register** ([Phalcon\Di\ServiceProviderInterface](/3.4/api/phalcon_di/) $provider) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -440,27 +559,35 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di)
-{
-    $di->setShared('service', function () {
-        // ...
-    });
-}
+    public function register(DiInterface $di)
+    {
+        $di->setShared('service', function () {
+            // ...
+        });
+    }
 }
 
 ```
+
+
 
 public static  **setDefault** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Set a default dependency injection container to be obtained into static methods
 
+
+
 public static  **getDefault** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Return the latest DI created
 
+
+
 public static  **reset** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Resets the internal default DI
+
+
 
 public  **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -470,12 +597,12 @@ Loads services from a yaml file.
 <?php
 
 $di->loadFromYaml(
-"path/services.yaml",
-[
-    "!approot" => function ($value) {
-        return dirname(__DIR__) . $value;
-    }
-]
+    "path/services.yaml",
+    [
+        "!approot" => function ($value) {
+            return dirname(__DIR__) . $value;
+        }
+    ]
 );
 
 ```
@@ -485,19 +612,21 @@ And the services can be specified in the file as:
 <?php
 
 myComponent:
-className: \Acme\Components\MyComponent
-shared: true
+    className: \Acme\Components\MyComponent
+    shared: true
 
 group:
-className: \Acme\Group
-arguments:
-    - type: service
-      name: myComponent
+    className: \Acme\Group
+    arguments:
+        - type: service
+          name: myComponent
 
 user:
    className: \Acme\User
 
 ```
+
+
 
 public  **loadFromPhp** (*mixed* $filePath) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -515,29 +644,34 @@ And the services can be specified in the file as:
 <?php
 
 return [
- 'myComponent' => [
-     'className' => '\Acme\Components\MyComponent',
-     'shared' => true,
- ],
- 'group' => [
-     'className' => '\Acme\Group',
-     'arguments' => [
-         [
-             'type' => 'service',
-             'service' => 'myComponent',
+     'myComponent' => [
+         'className' => '\Acme\Components\MyComponent',
+         'shared' => true,
+     ],
+     'group' => [
+         'className' => '\Acme\Group',
+         'arguments' => [
+             [
+                 'type' => 'service',
+                 'service' => 'myComponent',
+             ],
          ],
      ],
- ],
- 'user' => [
-     'className' => '\Acme\User',
- ],
+     'user' => [
+         'className' => '\Acme\User',
+     ],
 ];
 
 ```
 
+
+
 protected  **loadFromConfig** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Loads services from a Config object.
+
+
+
 
 <hr />
 
@@ -554,31 +688,44 @@ registers all the services provided by the framework.
 Thanks to this, the developer does not need to register each service individually.
 This class is specially suitable for CLI applications
 
+
 ## Methods
 public  **__construct** ()
 
 Phalcon\Di\FactoryDefault\Cli constructor
 
+
+
 public  **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Sets the internal event manager
+
+
 
 public  **getInternalEventsManager** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Registers a service in the services container
+
+
 
 public  **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Registers an "always shared" service in the services container
 
+
+
 public  **remove** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Removes a service in the services container
 It also removes any shared instance created for the service
+
+
 
 public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -586,42 +733,62 @@ Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
 with the same name
 
+
+
 public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/3.4/api/phalcon_di/) $rawDefinition) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Sets a service using a raw Phalcon\Di\Service definition
+
+
 
 public  **getRaw** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Returns a service definition without resolving
 
+
+
 public  **getService** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Returns a Phalcon\Di\Service instance
 
+
+
 public  **get** (*mixed* $name, [*mixed* $parameters]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Resolves the service based on its configuration
+
+
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Resolves a service, the resolved service is stored in the DI, subsequent
 requests for this service will return the same instance
 
+
+
 public  **has** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Check whether the DI contains a service by a name
+
+
 
 public  **wasFreshInstance** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
+
+
 public  **getServices** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Return the services registered in the DI
 
+
+
 public  **offsetExists** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Check if a service is registered using the array syntax
+
+
 
 public  **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -634,6 +801,8 @@ $di["request"] = new \Phalcon\Http\Request();
 
 ```
 
+
+
 public  **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Allows to obtain a shared service using the array syntax
@@ -645,13 +814,19 @@ var_dump($di["request"]);
 
 ```
 
+
+
 public  **offsetUnset** (*mixed* $name) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Removes a service from the services container using the array syntax
 
+
+
 public  **__call** (*mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Magic method to get or set services using setters/getters
+
+
 
 public  **register** ([Phalcon\Di\ServiceProviderInterface](/3.4/api/phalcon_di/) $provider) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -665,27 +840,35 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di)
-{
-    $di->setShared('service', function () {
-        // ...
-    });
-}
+    public function register(DiInterface $di)
+    {
+        $di->setShared('service', function () {
+            // ...
+        });
+    }
 }
 
 ```
+
+
 
 public static  **setDefault** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Set a default dependency injection container to be obtained into static methods
 
+
+
 public static  **getDefault** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Return the latest DI created
 
+
+
 public static  **reset** () inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Resets the internal default DI
+
+
 
 public  **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -695,12 +878,12 @@ Loads services from a yaml file.
 <?php
 
 $di->loadFromYaml(
-"path/services.yaml",
-[
-    "!approot" => function ($value) {
-        return dirname(__DIR__) . $value;
-    }
-]
+    "path/services.yaml",
+    [
+        "!approot" => function ($value) {
+            return dirname(__DIR__) . $value;
+        }
+    ]
 );
 
 ```
@@ -710,19 +893,21 @@ And the services can be specified in the file as:
 <?php
 
 myComponent:
-className: \Acme\Components\MyComponent
-shared: true
+    className: \Acme\Components\MyComponent
+    shared: true
 
 group:
-className: \Acme\Group
-arguments:
-    - type: service
-      name: myComponent
+    className: \Acme\Group
+    arguments:
+        - type: service
+          name: myComponent
 
 user:
    className: \Acme\User
 
 ```
+
+
 
 public  **loadFromPhp** (*mixed* $filePath) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
@@ -740,29 +925,34 @@ And the services can be specified in the file as:
 <?php
 
 return [
- 'myComponent' => [
-     'className' => '\Acme\Components\MyComponent',
-     'shared' => true,
- ],
- 'group' => [
-     'className' => '\Acme\Group',
-     'arguments' => [
-         [
-             'type' => 'service',
-             'service' => 'myComponent',
+     'myComponent' => [
+         'className' => '\Acme\Components\MyComponent',
+         'shared' => true,
+     ],
+     'group' => [
+         'className' => '\Acme\Group',
+         'arguments' => [
+             [
+                 'type' => 'service',
+                 'service' => 'myComponent',
+             ],
          ],
      ],
- ],
- 'user' => [
-     'className' => '\Acme\User',
- ],
+     'user' => [
+         'className' => '\Acme\User',
+     ],
 ];
 
 ```
 
+
+
 protected  **loadFromConfig** ([Phalcon\Config](/3.4/api/phalcon_config/) $config) inherited from [Phalcon\Di](/3.4/api/phalcon_di/)
 
 Loads services from a Config object.
+
+
+
 
 <hr />
 
@@ -775,26 +965,37 @@ Loads services from a Config object.
 This class allows to access services in the services container by just only accessing a public property
 with the same name of a registered service
 
+
 ## Methods
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 Sets the dependency injector
 
+
+
 public  **getDI** ()
 
 Returns the internal dependency injector
+
+
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager)
 
 Sets the event manager
 
+
+
 public  **getEventsManager** ()
 
 Returns the internal event manager
 
+
+
 public  **__get** (*string* $propertyName)
 
 Magic method __get to easily get access to services through the name of them
+
+
 
 <hr />
 
@@ -807,9 +1008,12 @@ abstract public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $depende
 
 ...
 
+
 abstract public  **getDI** ()
 
 ...
+
+
 
 <hr />
 
@@ -825,8 +1029,8 @@ Represents individually a service in the services container
 <?php
 
 $service = new \Phalcon\Di\Service(
-"request",
-"Phalcon\Http\Request"
+    "request",
+    "Phalcon\Http\Request"
 );
 
 $request = service->resolve();
@@ -835,49 +1039,76 @@ $request = service->resolve();
 ## Methods
 final public  **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
+
+
+
+
 public  **getName** ()
 
 Returns the service's name
+
+
 
 public  **setShared** (*mixed* $shared)
 
 Sets if the service is shared or not
 
+
+
 public  **isShared** ()
 
 Check whether the service is shared or not
+
+
 
 public  **setSharedInstance** (*mixed* $sharedInstance)
 
 Sets/Resets the shared instance related to the service
 
+
+
 public  **setDefinition** (*mixed* $definition)
 
 Set the service definition
+
+
 
 public *mixed* **getDefinition** ()
 
 Returns the service definition
 
+
+
 public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector])
 
 Resolves the service
+
+
 
 public  **setParameter** (*mixed* $position, *array* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
+
+
 public *array* **getParameter** (*int* $position)
 
 Returns a parameter in a specific position
+
+
 
 public  **isResolved** ()
 
 Returns true if the service was resolved
 
+
+
 public static  **__set_state** (*array* $attributes)
 
 Restore the internal state of a service
+
+
+
 
 <hr />
 
@@ -887,18 +1118,26 @@ Restore the internal state of a service
 
 This class builds instances based on complex definitions
 
+
 ## Methods
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector, *int* $position, *array* $argument)
 
 Resolves a constructor/call parameter
 
+
+
 private  **_buildParameters** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector, *array* $arguments)
 
 Resolves an array of parameters
 
+
+
 public *mixed* **build** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector, *array* $definition, [*array* $parameters])
 
 Builds a service using a complex service definition
+
+
+
 
 <hr />
 
@@ -911,33 +1150,42 @@ abstract public  **getName** ()
 
 ...
 
+
 abstract public  **setShared** (*mixed* $shared)
 
 ...
+
 
 abstract public  **isShared** ()
 
 ...
 
+
 abstract public  **setDefinition** (*mixed* $definition)
 
 ...
+
 
 abstract public  **getDefinition** ()
 
 ...
 
+
 abstract public  **resolve** ([*mixed* $parameters], [[Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector])
 
 ...
+
 
 abstract public  **setParameter** (*mixed* $position, *array* $parameter)
 
 ...
 
+
 abstract public static  **__set_state** (*array* $attributes)
 
 ...
+
+
 
 <hr />
 
@@ -949,6 +1197,8 @@ abstract public static  **__set_state** (*array* $attributes)
 abstract public  **register** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $di)
 
 ...
+
+
 
 <hr />
 
@@ -963,73 +1213,91 @@ abstract public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 ...
 
+
 abstract public  **setShared** (*mixed* $name, *mixed* $definition)
 
 ...
+
 
 abstract public  **remove** (*mixed* $name)
 
 ...
 
+
 abstract public  **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 ...
+
 
 abstract public  **get** (*mixed* $name, [*mixed* $parameters])
 
 ...
 
+
 abstract public  **getShared** (*mixed* $name, [*mixed* $parameters])
 
 ...
+
 
 abstract public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/3.4/api/phalcon_di/) $rawDefinition)
 
 ...
 
+
 abstract public  **getRaw** (*mixed* $name)
 
 ...
+
 
 abstract public  **getService** (*mixed* $name)
 
 ...
 
+
 abstract public  **has** (*mixed* $name)
 
 ...
+
 
 abstract public  **wasFreshInstance** ()
 
 ...
 
+
 abstract public  **getServices** ()
 
 ...
+
 
 abstract public static  **setDefault** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 ...
 
+
 abstract public static  **getDefault** ()
 
 ...
+
 
 abstract public static  **reset** ()
 
 ...
 
+
 abstract public  **offsetExists** (*mixed* $offset) inherited from [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
 ...
+
 
 abstract public  **offsetGet** (*mixed* $offset) inherited from [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
 ...
 
+
 abstract public  **offsetSet** (*mixed* $offset, *mixed* $value) inherited from [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
 ...
+
 
 abstract public  **offsetUnset** (*mixed* $offset) inherited from [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 

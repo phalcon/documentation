@@ -30,12 +30,12 @@ both property/array access and higher-order operations like `filter()`, `map()`,
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -45,10 +45,10 @@ $collection = new Collection($data);
 
 ```php
 public function __construct(
-array $data = [],
-bool $insensitive = true,
-bool $strictNull = false,
-string | null $type = null
+    array $data = [],
+    bool $insensitive = true,
+    bool $strictNull = false,
+    string | null $type = null
 )
 ```
 
@@ -70,12 +70,12 @@ The simplest construction passes only the initial payload:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -93,12 +93,12 @@ Setting it to `false` makes every key comparison exact.
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data, false);
@@ -198,12 +198,12 @@ internal data wholesale:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -241,12 +241,12 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -266,9 +266,9 @@ echo $collection->get('year', 1987);       // 1987
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string | null $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string | null $cast = null
 ): mixed
 ```
 
@@ -314,12 +314,12 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -359,11 +359,11 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
 ];
 
 $collection = new Collection($data);
@@ -402,11 +402,11 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
 ];
 
 $collection = new Collection($data);
@@ -443,8 +443,8 @@ public function remove(string $element): void
 use Phalcon\Support\Collection;
 
 $data = [
-'Year'   => 1987,
-'colors' => ['red', 'green', 'blue'],
+    'Year'   => 1987,
+    'colors' => ['red', 'green', 'blue'],
 ];
 
 $collection = new Collection($data);
@@ -477,9 +477,9 @@ The following methods give you quick visibility into the collection without iter
 use Phalcon\Support\Collection;
 
 $collection = new Collection([
-'one'   => 1,
-'two'   => 2,
-'three' => 3,
+    'one'   => 1,
+    'two'   => 2,
+    'three' => 3,
 ]);
 
 echo $collection->count();   // 3
@@ -500,20 +500,20 @@ use Phalcon\Support\Collection;
 
 class User
 {
-public function __construct(
-    public string $name,
-    public int $age,
-) {}
+    public function __construct(
+        public string $name,
+        public int $age,
+    ) {}
 
-public function displayName(): string
-{
-    return strtoupper($this->name);
-}
+    public function displayName(): string
+    {
+        return strtoupper($this->name);
+    }
 }
 
 $users = new Collection([
-'alice' => new User('Alice', 30),
-'bob'   => new User('Bob', 25),
+    'alice' => new User('Alice', 30),
+    'bob'   => new User('Bob', 25),
 ]);
 
 print_r($users->column('age'));
@@ -527,8 +527,8 @@ print_r($users->column('displayName'));
 
 ```php
 $rows = new Collection([
-['id' => 1, 'name' => 'Alice'],
-['id' => 2, 'name' => 'Bob'],
+    ['id' => 1, 'name' => 'Alice'],
+    ['id' => 2, 'name' => 'Bob'],
 ]);
 
 print_r($rows->column('name')); // [0 => 'Alice', 1 => 'Bob']
@@ -554,12 +554,12 @@ use Phalcon\Support\Collection;
 $collection = new Collection(['one' => 1, 'two' => 2, 'three' => 3]);
 
 $collection
-->each(function ($value, $key) {
-    echo "$key => $value" . PHP_EOL;
-})
-->each(function ($value) {
-    // do something else
-});
+    ->each(function ($value, $key) {
+        echo "$key => $value" . PHP_EOL;
+    })
+    ->each(function ($value) {
+        // do something else
+    });
 ```
 
 ### `filter(callable $callback)`
@@ -573,14 +573,14 @@ Original keys are preserved.
 use Phalcon\Support\Collection;
 
 $collection = new Collection([
-'one'   => 1,
-'two'   => 2,
-'three' => 3,
-'four'  => 4,
+    'one'   => 1,
+    'two'   => 2,
+    'three' => 3,
+    'four'  => 4,
 ]);
 
 $even = $collection->filter(
-fn ($value) => $value % 2 === 0
+    fn ($value) => $value % 2 === 0
 );
 
 print_r($even->toArray()); // ['two' => 2, 'four' => 4]
@@ -598,7 +598,7 @@ use Phalcon\Support\Collection;
 $collection = new Collection(['one' => 1, 'two' => 2, 'three' => 3]);
 
 $squared = $collection->map(
-fn ($value) => $value * $value
+    fn ($value) => $value * $value
 );
 
 print_r($squared->toArray()); // ['one' => 1, 'two' => 4, 'three' => 9]
@@ -617,8 +617,8 @@ use Phalcon\Support\Collection;
 $collection = new Collection(['one' => 1, 'two' => 2, 'three' => 3]);
 
 $sum = $collection->reduce(
-fn ($acc, $value) => $acc + $value,
-0
+    fn ($acc, $value) => $acc + $value,
+    0
 );
 
 echo $sum; // 6
@@ -636,9 +636,9 @@ Without a callback, the comparison direction is controlled by `$order` (`SORT_AS
 use Phalcon\Support\Collection;
 
 $collection = new Collection([
-'c' => 30,
-'a' => 10,
-'b' => 20,
+    'c' => 30,
+    'a' => 10,
+    'b' => 20,
 ]);
 
 print_r($collection->sort()->toArray());
@@ -648,8 +648,8 @@ print_r($collection->sort(null, SORT_DESC)->toArray());
 // ['c' => 30, 'b' => 20, 'a' => 10]
 
 $byLength = $collection
-->map(fn ($v) => str_repeat('x', $v / 10))
-->sort(fn ($left, $right) => strlen($left) <=> strlen($right));
+    ->map(fn ($v) => str_repeat('x', $v / 10))
+    ->sort(fn ($left, $right) => strlen($left) <=> strlen($right));
 ```
 
 ### `where(string $propertyOrMethod, mixed $value)`
@@ -663,9 +663,9 @@ Returns a new collection containing only the items whose `$propertyOrMethod` (re
 use Phalcon\Support\Collection;
 
 $users = new Collection([
-['id' => 1, 'role' => 'admin'],
-['id' => 2, 'role' => 'user'],
-['id' => 3, 'role' => 'admin'],
+    ['id' => 1, 'role' => 'admin'],
+    ['id' => 2, 'role' => 'user'],
+    ['id' => 3, 'role' => 'admin'],
 ]);
 
 $admins = $users->where('role', 'admin');
@@ -696,7 +696,7 @@ $data = [
 $collection = new Collection($data);
 
 foreach ($collection as $key => $value) {
-echo $key . ' - ' . $value . PHP_EOL;
+    echo $key . ' - ' . $value . PHP_EOL;
 }
 ```
 
@@ -711,12 +711,12 @@ the collection.
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -741,12 +741,12 @@ case-sensitivity setting, the strict-null mode, and the type guard, not just the
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data, false, true, 'int');
@@ -776,12 +776,12 @@ echo $restored->getType(); // 'int' - guard preserved
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -811,12 +811,12 @@ You can pass any valid flags to the method according to your needs.
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -827,12 +827,12 @@ echo $collection->toJson();
 echo $collection->toJson(JSON_PRETTY_PRINT);
 /**
 {
-"colors": [
-    "red",
-    "green",
-    "blue"
-],
-"year": 1987
+    "colors": [
+        "red",
+        "green",
+        "blue"
+    ],
+    "year": 1987
 }
 */
 ```
@@ -853,12 +853,12 @@ This class has been renamed from `ReadOnly` in order to avoid collisions with PH
 use Phalcon\Support\Collection\ReadOnlyCollection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new ReadOnlyCollection($data);
@@ -889,65 +889,65 @@ use Phalcon\Contracts\Support\Collection as CollectionContract;
 
 class MyCollection implements CollectionContract
 {
-public function __get(string $element): mixed;
+    public function __get(string $element): mixed;
 
-public function __isset(string $element): bool;
+    public function __isset(string $element): bool;
 
-public function __set(string $element, mixed $value): void;
+    public function __set(string $element, mixed $value): void;
 
-public function __unset(string $element): void;
+    public function __unset(string $element): void;
 
-public function clear(): void;
+    public function clear(): void;
 
-public function column(string $propertyOrMethod): array;
+    public function column(string $propertyOrMethod): array;
 
-public function each(callable $callback): static;
+    public function each(callable $callback): static;
 
-public function filter(callable $callback): static;
+    public function filter(callable $callback): static;
 
-public function first(): mixed;
+    public function first(): mixed;
 
-public function get(
-    string $element,
-    mixed $defaultValue = null,
-    ?string $cast = null
-): mixed;
+    public function get(
+        string $element,
+        mixed $defaultValue = null,
+        ?string $cast = null
+    ): mixed;
 
-public function getKeys(bool $insensitive = true): array;
+    public function getKeys(bool $insensitive = true): array;
 
-public function getType(): ?string;
+    public function getType(): ?string;
 
-public function getValues(): array;
+    public function getValues(): array;
 
-public function has(string $element): bool;
+    public function has(string $element): bool;
 
-public function init(array $data = []): void;
+    public function init(array $data = []): void;
 
-public function isEmpty(): bool;
+    public function isEmpty(): bool;
 
-public function keys(bool $insensitive = true): array;
+    public function keys(bool $insensitive = true): array;
 
-public function last(): mixed;
+    public function last(): mixed;
 
-public function map(callable $callback): static;
+    public function map(callable $callback): static;
 
-public function reduce(callable $callback, mixed $initial = null): mixed;
+    public function reduce(callable $callback, mixed $initial = null): mixed;
 
-public function remove(string $element): void;
+    public function remove(string $element): void;
 
-public function replace(array $data): void;
+    public function replace(array $data): void;
 
-public function set(string $element, mixed $value): void;
+    public function set(string $element, mixed $value): void;
 
-public function sort(?callable $callback = null, int $order = SORT_ASC): static;
+    public function sort(?callable $callback = null, int $order = SORT_ASC): static;
 
-public function toArray(): array;
+    public function toArray(): array;
 
-public function toJson(int $options = 4194383): string;
+    public function toJson(int $options = 4194383): string;
 
-public function values(): array;
+    public function values(): array;
 
-public function where(string $propertyOrMethod, mixed $value): static;
+    public function where(string $propertyOrMethod, mixed $value): static;
 }
 ```
 
@@ -970,12 +970,12 @@ namespace MyApp\Models;
 
 class Invoice
 {
-public function __construct(
-    public int $inv_id,
-    public string $inv_title,
-    public float $inv_total
-) {
-}
+    public function __construct(
+        public int $inv_id,
+        public string $inv_title,
+        public float $inv_total
+    ) {
+    }
 }
 ```
 
@@ -993,11 +993,11 @@ use Phalcon\Support\Collection;
  */
 class InvoicesCollection extends Collection
 {
-public function __construct(array $data = [])
-{
-    // Lock the type guard; the parent constructor enforces it
-    parent::__construct($data, false, true, Invoice::class);
-}
+    public function __construct(array $data = [])
+    {
+        // Lock the type guard; the parent constructor enforces it
+        parent::__construct($data, false, true, Invoice::class);
+    }
 }
 ```
 
@@ -1016,7 +1016,7 @@ $invoices->set('second', new Invoice(2, 'Globex', 200.00));
 
 // Psalm / PHPStan know $invoice is Invoice, not mixed
 foreach ($invoices as $invoice) {
-echo $invoice->inv_title, PHP_EOL;
+    echo $invoice->inv_title, PHP_EOL;
 }
 ```
 
@@ -1047,25 +1047,25 @@ use Phalcon\Support\Collection;
  */
 class InvoicesCollection extends Collection
 {
-public function __construct(array $data = [])
-{
-    parent::__construct([], false, true, Invoice::class);
+    public function __construct(array $data = [])
+    {
+        parent::__construct([], false, true, Invoice::class);
 
-    foreach ($data as $invoice) {
-        $this->set('', $invoice);
-    }
-}
-
-public function set(string $element, mixed $value): void
-{
-    if (!$value instanceof Invoice) {
-        throw new \InvalidArgumentException(
-            'InvoicesCollection only accepts Invoice instances'
-        );
+        foreach ($data as $invoice) {
+            $this->set('', $invoice);
+        }
     }
 
-    parent::set((string) $value->inv_id, $value);
-}
+    public function set(string $element, mixed $value): void
+    {
+        if (!$value instanceof Invoice) {
+            throw new \InvalidArgumentException(
+                'InvoicesCollection only accepts Invoice instances'
+            );
+        }
+
+        parent::set((string) $value->inv_id, $value);
+    }
 }
 ```
 
@@ -1078,9 +1078,9 @@ use MyApp\Models\Invoice;
 use MyApp\Models\InvoicesCollection;
 
 $invoices = new InvoicesCollection([
-new Invoice(101, 'ACME', 100.00),
-new Invoice(202, 'Globex', 200.00),
-new Invoice(303, 'Initech', 300.00),
+    new Invoice(101, 'ACME', 100.00),
+    new Invoice(202, 'Globex', 200.00),
+    new Invoice(303, 'Initech', 300.00),
 ]);
 
 // O(1) lookup by primary key - no `where()`, no `filter()`

@@ -23,12 +23,13 @@ Provide OO wrappers to manage a HTTP cookie.
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Http\Cookie`** - implements [`Phalcon\Http\Cookie\CookieInterface`](#httpcookiecookieinterface), `\Stringable`
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Http\Cookie`** - implements [`Phalcon\Http\Cookie\CookieInterface`](#httpcookiecookieinterface), `\Stringable`
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exception` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Traits\EncryptionAwareTrait` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Stringable`
+
 
 ### Method Summary
 
@@ -246,14 +247,14 @@ __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAwar
 
 ```php
 public function __construct(
-string $name,
-mixed $value = null,
-int $expire = 0,
-string $path = "/",
-bool $secure = false,
-string $domain = "",
-bool $httpOnly = false,
-array $options = []
+    string $name,
+    mixed $value = null,
+    int $expire = 0,
+    string $path = "/",
+    bool $secure = false,
+    string $domain = "",
+    bool $httpOnly = false,
+    array $options = []
 );
 ```
 
@@ -336,8 +337,8 @@ secure (HTTPS)
 
 ```php
 public function getValue(
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -457,6 +458,7 @@ protected function assertSignKeyIsLongEnough( string $signKey ): void;
 
 Assert the cookie's key is enough long.
 
+
 ## Http\Cookie\CookieInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -471,6 +473,7 @@ Interface for Phalcon\Http\Cookie
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\HttpTypes`
+
 
 ### Method Summary
 
@@ -664,8 +667,8 @@ secure (HTTPS)
 
 ```php
 public function getValue(
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -756,6 +759,7 @@ public function useEncryption( bool $useEncryption ): CookieInterface;
 
 Sets if the cookie must be encrypted/decrypted automatically
 
+
 ## Http\Cookie\Exception
 
 <span class="badge badge--class">Class</span>
@@ -768,13 +772,14 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Http\Cookie\Exception`**
-- [`Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort`](#httpcookieexceptionscookiekeytooshort)
-- [`Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired`](#httpcookieexceptionscryptinterfacerequired)
-- [`Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable`](#httpcookieexceptionscryptserviceunavailable)
-- [`Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable`](#httpcookieexceptionsfilterserviceunavailable)
+    - **`Phalcon\Http\Cookie\Exception`**
+        - [`Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort`](#httpcookieexceptionscookiekeytooshort)
+        - [`Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired`](#httpcookieexceptionscryptinterfacerequired)
+        - [`Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable`](#httpcookieexceptionscryptserviceunavailable)
+        - [`Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable`](#httpcookieexceptionsfilterserviceunavailable)
 
 </div>
+
 
 ## Http\Cookie\Exceptions\CookieKeyTooShort
 
@@ -784,12 +789,13 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
-- **`Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort`**
+    - [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
+        - **`Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Cookie\Exception`
+
 
 ### Method Summary
 
@@ -810,6 +816,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 public function __construct( int $length );
 ```
 
+
 ## Http\Cookie\Exceptions\CryptInterfaceRequired
 
 <span class="badge badge--class">Class</span>
@@ -818,12 +825,13 @@ public function __construct( int $length );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
-- **`Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired`**
+    - [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
+        - **`Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Cookie\Exception`
+
 
 ### Method Summary
 
@@ -844,6 +852,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 public function __construct();
 ```
 
+
 ## Http\Cookie\Exceptions\CryptServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -852,12 +861,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
-- **`Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable`**
+    - [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
+        - **`Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Cookie\Exception`
+
 
 ### Method Summary
 
@@ -878,6 +888,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 public function __construct();
 ```
 
+
 ## Http\Cookie\Exceptions\FilterServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -886,12 +897,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
-- **`Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable`**
+    - [`Phalcon\Http\Cookie\Exception`](#httpcookieexception)
+        - **`Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Cookie\Exception`
+
 
 ### Method Summary
 
@@ -911,6 +923,7 @@ __Uses__ `Phalcon\Http\Cookie\Exception`
 ```php
 public function __construct();
 ```
+
 
 ## Http\Message\RequestMethodInterface
 
@@ -973,6 +986,7 @@ Implementation of this file has been influenced by PHP FIG
 <code class="sig"><span class="sc">METHOD_TRACE</span><span class="sm"> = &quot;TRACE&quot;</span></code>
 </div>
 </div>
+
 
 ## Http\Message\ResponseStatusCodeInterface
 
@@ -1369,6 +1383,7 @@ Defines constants for common HTTP status code.
 </div>
 </div>
 
+
 ## Http\Request
 
 <span class="badge badge--class">Class</span>
@@ -1386,7 +1401,7 @@ use Phalcon\Http\Request;
 $request = new Request();
 
 if ($request->isPost() && $request->isAjax()) {
-echo "Request was made using POST and AJAX";
+    echo "Request was made using POST and AJAX";
 }
 
 // Retrieve SERVER variables
@@ -1402,472 +1417,555 @@ $request->getLanguages();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Http\Request`** - implements [`Phalcon\Http\RequestInterface`](#httprequestinterface), [`Phalcon\Http\Message\RequestMethodInterface`](#httpmessagerequestmethodinterface), [`Phalcon\Contracts\Http\AttributeRequest`](/5.19/api/phalcon_contracts/#contractshttpattributerequest)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Http\Request`** - implements [`Phalcon\Http\RequestInterface`](#httprequestinterface), [`Phalcon\Http\Message\RequestMethodInterface`](#httpmessagerequestmethodinterface), [`Phalcon\Contracts\Http\AttributeRequest`](/5.19/api/phalcon_contracts/#contractshttpattributerequest)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Request\Exception` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait` · `stdClass`
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#httprequest-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_REQUEST superglobal applying filters if</span>
 </a>
+
 <a class="api-item" href="#httprequest-getacceptablecontent">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAcceptableContent</span>()</code>
 <span class="desc">Gets an array with mime/types and their quality accepted by the</span>
 </a>
+
 <a class="api-item" href="#httprequest-getattributes">
 <code class="vis vis-public">public</code>
 <code class="ret">AttributeBag</code>
 <code class="sig"><span class="sf">getAttributes</span>()</code>
 <span class="desc">Returns the request attributes bag. Attributes are arbitrary,</span>
 </a>
+
 <a class="api-item" href="#httprequest-getbasicauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
 <code class="sig"><span class="sf">getBasicAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequest-getbestaccept">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestAccept</span>()</code>
 <span class="desc">Gets best mime/type accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequest-getbestcharset">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestCharset</span>()</code>
 <span class="desc">Gets best charset accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequest-getbestlanguage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestLanguage</span>()</code>
 <span class="desc">Gets the best language accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequest-getclientaddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
 <code class="sig"><span class="sf">getClientAddress</span>( <span class="st">bool</span> <span class="sv">$trustForwardedHeader</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets most possible client IP Address. This method searches in</span>
 </a>
+
 <a class="api-item" href="#httprequest-getclientcharsets">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getClientCharsets</span>()</code>
 <span class="desc">Gets a charsets array and their quality accepted by the browser/client</span>
 </a>
+
 <a class="api-item" href="#httprequest-getcontenttype">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">getContentType</span>()</code>
 <span class="desc">Gets content type which request has been made</span>
 </a>
+
 <a class="api-item" href="#httprequest-getdigestauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getDigestAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequest-getfiltereddata">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFilteredData</span>(<span class="prm"><span class="st">string</span> <span class="sv">$methodKey</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$method</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets filtered data</span>
 </a>
+
 <a class="api-item" href="#httprequest-getfilteredpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFilteredPatch</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a patch value always sanitized with the preset filters</span>
 </a>
+
 <a class="api-item" href="#httprequest-getfilteredpost">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFilteredPost</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a post value always sanitized with the preset filters</span>
 </a>
+
 <a class="api-item" href="#httprequest-getfilteredput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFilteredPut</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a put value always sanitized with the preset filters</span>
 </a>
+
 <a class="api-item" href="#httprequest-getfilteredquery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getFilteredQuery</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Retrieves a query/get value always sanitized with the preset filters</span>
 </a>
+
 <a class="api-item" href="#httprequest-gethttpreferer">
+
 <code class="vis vis-public">public</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">getHTTPReferer</span>()</code>
+
 <span class="desc">Gets web page that refers active request. ie: http://www.google.com</span>
+
 </a>
+
 <a class="api-item" href="#httprequest-getheader">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Gets HTTP header from request data</span>
 </a>
+
 <a class="api-item" href="#httprequest-getheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getHeaders</span>()</code>
 <span class="desc">Returns the available headers in the request</span>
 </a>
+
 <a class="api-item" href="#httprequest-gethttphost">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getHttpHost</span>()</code>
 <span class="desc">Gets host name used by the request.</span>
 </a>
+
 <a class="api-item" href="#httprequest-gethttpmethodparameteroverride">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">getHttpMethodParameterOverride</span>()</code>
 <span class="desc">Return the HTTP method parameter override flag</span>
 </a>
+
 <a class="api-item" href="#httprequest-getjsonrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">\stdClass|array|bool</code>
 <code class="sig"><span class="sf">getJsonRawBody</span>( <span class="st">bool</span> <span class="sv">$associative</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets decoded JSON HTTP raw request body</span>
 </a>
+
 <a class="api-item" href="#httprequest-getlanguages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getLanguages</span>()</code>
 <span class="desc">Gets languages array and their quality accepted by the browser/client</span>
 </a>
+
 <a class="api-item" href="#httprequest-getmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getMethod</span>()</code>
 <span class="desc">Gets HTTP method which request has been made</span>
 </a>
+
 <a class="api-item" href="#httprequest-getpatch">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getPatch</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from put request</span>
 </a>
+
 <a class="api-item" href="#httprequest-getport">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getPort</span>()</code>
 <span class="desc">Gets information about the port on which the request is made.</span>
 </a>
+
 <a class="api-item" href="#httprequest-getpost">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getPost</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_POST superglobal applying filters if needed</span>
 </a>
+
 <a class="api-item" href="#httprequest-getpreferredisolocalevariant">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getPreferredIsoLocaleVariant</span>()</code>
 <span class="desc">Gets the preferred ISO locale variant.</span>
 </a>
+
 <a class="api-item" href="#httprequest-getput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getPut</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the PUT request</span>
 </a>
+
 <a class="api-item" href="#httprequest-getquery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getQuery</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets variable from $_GET superglobal applying filters if needed.</span>
 </a>
+
 <a class="api-item" href="#httprequest-getrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getRawBody</span>()</code>
 <span class="desc">Gets HTTP raw request body</span>
 </a>
+
 <a class="api-item" href="#httprequest-getscheme">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getScheme</span>()</code>
 <span class="desc">Gets HTTP schema (http/https)</span>
 </a>
+
 <a class="api-item" href="#httprequest-getserver">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">getServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Gets variable from $_SERVER superglobal</span>
 </a>
+
 <a class="api-item" href="#httprequest-getserveraddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getServerAddress</span>()</code>
 <span class="desc">Gets active server address IP</span>
 </a>
+
 <a class="api-item" href="#httprequest-getservername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getServerName</span>()</code>
 <span class="desc">Gets active server name</span>
 </a>
+
 <a class="api-item" href="#httprequest-geturi">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getURI</span>( <span class="st">bool</span> <span class="sv">$onlyPath</span><span class="sm"> = false</span> )</code>
 <span class="desc">Gets HTTP URI which request has been made to</span>
 </a>
+
 <a class="api-item" href="#httprequest-getuploadedfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">FileInterface[]</code>
 <code class="sig"><span class="sf">getUploadedFiles</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$namedKeys</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets attached files as Phalcon\Http\Request\File instances</span>
 </a>
+
 <a class="api-item" href="#httprequest-getuseragent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getUserAgent</span>()</code>
 <span class="desc">Gets HTTP user agent used to make the request</span>
 </a>
+
 <a class="api-item" href="#httprequest-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_REQUEST superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-hasfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasFiles</span>()</code>
 <span class="desc">Returns if the request has files or not</span>
 </a>
+
 <a class="api-item" href="#httprequest-hasheader">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Checks whether headers has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-haspatch">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasPatch</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether the PATCH data has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-haspost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasPost</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_POST superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-hasput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasPut</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether the PUT data has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-hasquery">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasQuery</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_GET superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-hasserver">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Checks whether $_SERVER superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequest-isajax">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isAjax</span>()</code>
 <span class="desc">Checks whether request has been made using ajax</span>
 </a>
+
 <a class="api-item" href="#httprequest-isconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isConnect</span>()</code>
 <span class="desc">Checks whether HTTP method is CONNECT.</span>
 </a>
+
 <a class="api-item" href="#httprequest-isdelete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isDelete</span>()</code>
 <span class="desc">Checks whether HTTP method is DELETE.</span>
 </a>
+
 <a class="api-item" href="#httprequest-isget">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isGet</span>()</code>
 <span class="desc">Checks whether HTTP method is GET.</span>
 </a>
+
 <a class="api-item" href="#httprequest-ishead">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isHead</span>()</code>
 <span class="desc">Checks whether HTTP method is HEAD.</span>
 </a>
+
 <a class="api-item" href="#httprequest-isjson">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isJson</span>()</code>
 <span class="desc">Checks whether request content type contains json data</span>
 </a>
+
 <a class="api-item" href="#httprequest-ismethod">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$methods</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Check if HTTP method match any of the passed methods</span>
 </a>
+
 <a class="api-item" href="#httprequest-isoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isOptions</span>()</code>
 <span class="desc">Checks whether HTTP method is OPTIONS.</span>
 </a>
+
 <a class="api-item" href="#httprequest-ispatch">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPatch</span>()</code>
 <span class="desc">Checks whether HTTP method is PATCH.</span>
 </a>
+
 <a class="api-item" href="#httprequest-ispost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPost</span>()</code>
 <span class="desc">Checks whether HTTP method is POST.</span>
 </a>
+
 <a class="api-item" href="#httprequest-ispurge">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPurge</span>()</code>
 <span class="desc">Checks whether HTTP method is PURGE (Squid and Varnish support).</span>
 </a>
+
 <a class="api-item" href="#httprequest-isput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPut</span>()</code>
 <span class="desc">Checks whether HTTP method is PUT.</span>
 </a>
+
 <a class="api-item" href="#httprequest-issecure">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isSecure</span>()</code>
 <span class="desc">Checks whether request has been made using any secure layer</span>
 </a>
+
 <a class="api-item" href="#httprequest-issoap">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isSoap</span>()</code>
 <span class="desc">Checks whether request has been made using SOAP</span>
 </a>
+
 <a class="api-item" href="#httprequest-isstricthostcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isStrictHostCheck</span>()</code>
 <span class="desc">Checks if the <code>Request::getHttpHost</code> method will be use strict validation</span>
 </a>
+
 <a class="api-item" href="#httprequest-istrace">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isTrace</span>()</code>
 <span class="desc">Checks whether HTTP method is TRACE.</span>
 </a>
+
 <a class="api-item" href="#httprequest-isvalidhttpmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isValidHttpMethod</span>( <span class="st">string</span> <span class="sv">$method</span> )</code>
 <span class="desc">Checks if a method is a valid HTTP method</span>
 </a>
+
 <a class="api-item" href="#httprequest-numfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">numFiles</span>( <span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span> )</code>
 <span class="desc">Returns the number of files available</span>
 </a>
+
 <a class="api-item" href="#httprequest-sethttpmethodparameteroverride">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setHttpMethodParameterOverride</span>( <span class="st">bool</span> <span class="sv">$override</span> )</code>
 <span class="desc">Set the HTTP method parameter override flag</span>
 </a>
+
 <a class="api-item" href="#httprequest-setparameterfilters">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setParameterFilters</span>(<span class="prm"><span class="st">string</span> <span class="sv">$name</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$filters</span><span class="sm"> = []</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$scope</span><span class="sm"> = []</span></span>)</code>
 <span class="desc">Sets automatic sanitizers/filters for a particular field and for</span>
 </a>
+
 <a class="api-item" href="#httprequest-setstricthostcheck">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setStrictHostCheck</span>( <span class="st">bool</span> <span class="sv">$flag</span><span class="sm"> = true</span> )</code>
 <span class="desc">Sets if the <code>Request::getHttpHost</code> method must be use strict validation</span>
 </a>
+
 <a class="api-item" href="#httprequest-settrustedproxies">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setTrustedProxies</span>( <span class="st">array</span> <span class="sv">$trustedProxies</span> )</code>
 <span class="desc">Set a trusted proxy list for X-Forwarded-For header</span>
 </a>
+
 <a class="api-item" href="#httprequest-settrustedproxyheader">
 <code class="vis vis-public">public</code>
 <code class="ret">static</code>
 <code class="sig"><span class="sf">setTrustedProxyHeader</span>( <span class="st">string</span> <span class="sv">$trustedProxyHeader</span> )</code>
 <span class="desc">This header takes priority when parsing HTTP headers</span>
 </a>
+
 <a class="api-item" href="#httprequest-getbestquality">
 <code class="vis vis-protected">protected</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestQuality</span>(<span class="prm"><span class="st">array</span> <span class="sv">$qualityParts</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Process a request header and return the one with best quality</span>
 </a>
+
 <a class="api-item" href="#httprequest-gethelper">
 <code class="vis vis-protected">protected</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getHelper</span>(<span class="prm"><span class="st">array</span> <span class="sv">$source</span>,</span><span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Helper to get data from superglobals, applying filters if needed.</span>
 </a>
+
 <a class="api-item" href="#httprequest-getqualityheader">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getQualityHeader</span>(<span class="prm"><span class="st">string</span> <span class="sv">$serverIndex</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$name</span></span>)</code>
 <span class="desc">Process a request header and return an array of values with their</span>
 </a>
+
 <a class="api-item" href="#httprequest-hasfilehelper">
 <code class="vis vis-protected">protected</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">hasFileHelper</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$data</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$onlySuccessful</span></span>)</code>
 <span class="desc">Recursively counts file in an array of files</span>
 </a>
+
 <a class="api-item" href="#httprequest-isipaddressincidr">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isIpAddressInCIDR</span>(<span class="prm"><span class="st">string</span> <span class="sv">$ip</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$cidr</span></span>)</code>
 <span class="desc">Check if an IP address exists in CIDR range</span>
 </a>
+
 <a class="api-item" href="#httprequest-resolveauthorizationheaders">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">resolveAuthorizationHeaders</span>()</code>
 <span class="desc">Resolve authorization headers.</span>
 </a>
+
 <a class="api-item" href="#httprequest-smoothfiles">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">smoothFiles</span>(<span class="prm"><span class="st">array</span> <span class="sv">$names</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$types</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$tmp_names</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$sizes</span>,</span><span class="prm"><span class="st">array</span> <span class="sv">$errors</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$prefix</span></span>)</code>
 <span class="desc">Smooth out $_FILES to have plain array with all files uploaded</span>
 </a>
+
 </div>
 
 ### Properties
@@ -1928,11 +2026,11 @@ __Uses__ `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Http\Ht
 
 ```php
 public function get(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2027,15 +2125,15 @@ The user provided trusted header takes priority before checking X-Forwarded-For 
 Using trusted proxies list, user has to provide a trusted list of proxy IPs
 ```
 $request
-->setTrustedProxies($trustedProxies)
-->getClientAddress(true);
+    ->setTrustedProxies($trustedProxies)
+    ->getClientAddress(true);
 ```
 Using user provided trusted header, header should only ever contain 1 IP address, eg. HTTP_CLIENT_IP
 ```
 $request
-->setTrustedProxyHeader('HTTP_CLIENT_IP')
-->setTrustedProxies($trustedProxies)
-->getClientAddress(true);
+    ->setTrustedProxyHeader('HTTP_CLIENT_IP')
+    ->setTrustedProxies($trustedProxies)
+    ->getClientAddress(true);
 ```
 
 <h4 id="httprequest-getclientcharsets"><code>getClientCharsets()</code></h4>
@@ -2068,12 +2166,12 @@ $_SERVER["PHP_AUTH_DIGEST"]
 
 ```php
 public function getFilteredData(
-string $methodKey,
-string $method,
-string|null $name = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string $methodKey,
+    string $method,
+    string|null $name = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2083,10 +2181,10 @@ Gets filtered data
 
 ```php
 public function getFilteredPatch(
-string|null $name = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2096,10 +2194,10 @@ Retrieves a patch value always sanitized with the preset filters
 
 ```php
 public function getFilteredPost(
-string|null $name = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2109,10 +2207,10 @@ Retrieves a post value always sanitized with the preset filters
 
 ```php
 public function getFilteredPut(
-string|null $name = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2122,10 +2220,10 @@ Retrieves a put value always sanitized with the preset filters
 
 ```php
 public function getFilteredQuery(
-string|null $name = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2157,8 +2255,8 @@ Returns the available headers in the request
 
 ```php
 $_SERVER = [
-"PHP_AUTH_USER" => "phalcon",
-"PHP_AUTH_PW"   => "secret",
+    "PHP_AUTH_USER" => "phalcon",
+    "PHP_AUTH_PW"   => "secret",
 ];
 
 $headers = $request->getHeaders();
@@ -2250,11 +2348,11 @@ The method is always an uppercased string.
 
 ```php
 public function getPatch(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2280,11 +2378,11 @@ Gets information about the port on which the request is made.
 
 ```php
 public function getPost(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2320,11 +2418,11 @@ header.
 
 ```php
 public function getPut(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2342,11 +2440,11 @@ $userEmail = $request->getPut("user_email", "email");
 
 ```php
 public function getQuery(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2424,8 +2522,8 @@ $uri = $request->getURI(true);
 
 ```php
 public function getUploadedFiles(
-bool $onlySuccessful = false,
-bool $namedKeys = false
+    bool $onlySuccessful = false,
+    bool $namedKeys = false
 ): FileInterface[];
 ```
 
@@ -2559,8 +2657,8 @@ Checks whether request content type contains json data
 
 ```php
 public function isMethod(
-mixed $methods,
-bool $strict = false
+    mixed $methods,
+    bool $strict = false
 ): bool;
 ```
 
@@ -2676,9 +2774,9 @@ Set the HTTP method parameter override flag
 
 ```php
 public function setParameterFilters(
-string $name,
-array $filters = [],
-array $scope = []
+    string $name,
+    array $filters = [],
+    array $scope = []
 ): static;
 ```
 
@@ -2717,8 +2815,8 @@ The header return only 1 single IP address, prefixed with HTTP_ eg. HTTP_CLIENT_
 
 ```php
 protected function getBestQuality(
-array $qualityParts,
-string $name
+    array $qualityParts,
+    string $name
 ): string;
 ```
 
@@ -2728,12 +2826,12 @@ Process a request header and return the one with best quality
 
 ```php
 protected function getHelper(
-array $source,
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    array $source,
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -2744,8 +2842,8 @@ If no parameters are given the superglobal is returned.
 
 ```php
 protected function getQualityHeader(
-string $serverIndex,
-string $name
+    string $serverIndex,
+    string $name
 ): array;
 ```
 
@@ -2756,8 +2854,8 @@ qualities
 
 ```php
 protected function hasFileHelper(
-mixed $data,
-bool $onlySuccessful
+    mixed $data,
+    bool $onlySuccessful
 ): int;
 ```
 
@@ -2767,8 +2865,8 @@ Recursively counts file in an array of files
 
 ```php
 protected function isIpAddressInCIDR(
-string $ip,
-string $cidr
+    string $ip,
+    string $cidr
 ): bool;
 ```
 
@@ -2786,16 +2884,17 @@ Resolve authorization headers.
 
 ```php
 protected function smoothFiles(
-array $names,
-array $types,
-array $tmp_names,
-array $sizes,
-array $errors,
-string $prefix
+    array $names,
+    array $types,
+    array $tmp_names,
+    array $sizes,
+    array $errors,
+    string $prefix
 ): array;
 ```
 
 Smooth out $_FILES to have plain array with all files uploaded
+
 
 ## Http\RequestInterface
 
@@ -2807,315 +2906,372 @@ Interface for Phalcon\Http\Request
 <div class="api-tree">
 
 - **`Phalcon\Http\RequestInterface`**
-- [`Phalcon\Contracts\Http\AttributeRequest`](/5.19/api/phalcon_contracts/#contractshttpattributerequest)
+    - [`Phalcon\Contracts\Http\AttributeRequest`](/5.19/api/phalcon_contracts/#contractshttpattributerequest)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Http\Request\FileInterface` · `stdClass`
 
+
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#httprequestinterface-get">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">get</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Gets a variable from the $_REQUEST superglobal applying filters if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getacceptablecontent">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getAcceptableContent</span>()</code>
 <span class="desc">Return an array with mime/types and their quality accepted by the</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getbasicauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array|null</code>
 <code class="sig"><span class="sf">getBasicAuth</span>()</code>
 <span class="desc">Gets auth info accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getbestaccept">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestAccept</span>()</code>
 <span class="desc">Return the best mime/type accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getbestcharset">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestCharset</span>()</code>
 <span class="desc">Return the best charset accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getbestlanguage">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getBestLanguage</span>()</code>
 <span class="desc">Return the best language accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getclientaddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string|bool</code>
 <code class="sig"><span class="sf">getClientAddress</span>( <span class="st">bool</span> <span class="sv">$trustForwardedHeader</span><span class="sm"> = false</span> )</code>
 <span class="desc">Return the most possible client IPv4 Address. This method searches in</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getclientcharsets">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getClientCharsets</span>()</code>
 <span class="desc">Return a charset array and their quality accepted by the browser/client</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getcontenttype">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">getContentType</span>()</code>
 <span class="desc">Return the content type which request has been made</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getdigestauth">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getDigestAuth</span>()</code>
 <span class="desc">Return the auth info accepted by the browser/client from</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-gethttpreferer">
+
 <code class="vis vis-public">public</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">getHTTPReferer</span>()</code>
+
 <span class="desc">Return the web page that refers active request. ie: https://phalcon.io</span>
+
 </a>
+
 <a class="api-item" href="#httprequestinterface-getheader">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Return the HTTP header from request data</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getheaders">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getHeaders</span>()</code>
 <span class="desc">Returns the available headers in the request</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-gethttphost">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getHttpHost</span>()</code>
 <span class="desc">Return the host name used by the request.</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getjsonrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">array|bool|stdClass</code>
 <code class="sig"><span class="sf">getJsonRawBody</span>( <span class="st">bool</span> <span class="sv">$associative</span><span class="sm"> = false</span> )</code>
 <span class="desc">Return the decoded JSON HTTP raw request body</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getlanguages">
 <code class="vis vis-public">public</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sf">getLanguages</span>()</code>
 <span class="desc">Return the languages array and their quality accepted by the</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getmethod">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getMethod</span>()</code>
 <span class="desc">Return the HTTP method which request has been made</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getport">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">getPort</span>()</code>
 <span class="desc">Return the information about the port on which the request is made</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getpost">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getPost</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Return a variable from the $_POST superglobal applying filters if needed.</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getput">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getPut</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Return a variable from put request</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getquery">
 <code class="vis vis-public">public</code>
 <code class="ret">mixed</code>
 <code class="sig"><span class="sf">getQuery</span>(<span class="prm"><span class="st">string|null</span> <span class="sv">$name</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$filters</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">mixed</span> <span class="sv">$defaultValue</span><span class="sm"> = null</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$notAllowEmpty</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$noRecursive</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Return a variable from $_GET superglobal applying filters if needed.</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getrawbody">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getRawBody</span>()</code>
 <span class="desc">Return the HTTP raw request body</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getscheme">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getScheme</span>()</code>
 <span class="desc">Return the HTTP schema (http/https)</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getserver">
 <code class="vis vis-public">public</code>
 <code class="ret">string|null</code>
 <code class="sig"><span class="sf">getServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return a variable from $_SERVER superglobal</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getserveraddress">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getServerAddress</span>()</code>
 <span class="desc">Return the active server address IP</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getservername">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getServerName</span>()</code>
 <span class="desc">Return the active server name</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-geturi">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getURI</span>( <span class="st">bool</span> <span class="sv">$onlyPath</span><span class="sm"> = false</span> )</code>
 <span class="desc">Return the HTTP URI which request has been made to</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getuploadedfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">FileInterface[]</code>
 <code class="sig"><span class="sf">getUploadedFiles</span>(<span class="prm"><span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$namedKeys</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Return the attached files as Phalcon\Http\Request\FileInterface</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-getuseragent">
 <code class="vis vis-public">public</code>
 <code class="ret">string</code>
 <code class="sig"><span class="sf">getUserAgent</span>()</code>
 <span class="desc">Return the HTTP user agent used to make the request</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-has">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">has</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return whether the $_REQUEST superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-hasfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasFiles</span>()</code>
 <span class="desc">Return whether the request includes attached files</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-hasheader">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasHeader</span>( <span class="st">string</span> <span class="sv">$header</span> )</code>
 <span class="desc">Return whether the headers have a certain index</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-haspost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasPost</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return whether the $_POST superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-hasput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasPut</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return whether the PUT data has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-hasquery">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasQuery</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return whether the $_GET superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-hasserver">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">hasServer</span>( <span class="st">string</span> <span class="sv">$name</span> )</code>
 <span class="desc">Return whether the $_SERVER superglobal has certain index</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-isajax">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isAjax</span>()</code>
 <span class="desc">Return whether the request has been made using ajax. Checks if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-isconnect">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isConnect</span>()</code>
 <span class="desc">Return whether the HTTP method is CONNECT. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-isdelete">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isDelete</span>()</code>
 <span class="desc">Return whether the HTTP method is DELETE. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-isget">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isGet</span>()</code>
 <span class="desc">Return whether the HTTP method is GET. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-ishead">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isHead</span>()</code>
 <span class="desc">Return whether the HTTP method is HEAD. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-ismethod">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isMethod</span>(<span class="prm"><span class="st">mixed</span> <span class="sv">$methods</span>,</span><span class="prm"><span class="st">bool</span> <span class="sv">$strict</span><span class="sm"> = false</span></span>)</code>
 <span class="desc">Return if the current HTTP method matches any of the passed methods</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-isoptions">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isOptions</span>()</code>
 <span class="desc">Return whether the HTTP method is OPTIONS. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-ispost">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPost</span>()</code>
 <span class="desc">Return whether the HTTP method is POST. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-ispurge">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPurge</span>()</code>
 <span class="desc">Return whether the HTTP method is PURGE (Squid and Varnish support). if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-isput">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isPut</span>()</code>
 <span class="desc">Return whether the HTTP method is PUT. if</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-issecure">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isSecure</span>()</code>
 <span class="desc">Return whether the request has been made using any secure layer</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-issoap">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isSoap</span>()</code>
 <span class="desc">Return whether the request has been made using SOAP</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-istrace">
 <code class="vis vis-public">public</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sf">isTrace</span>()</code>
 <span class="desc">Return whether the HTTP method is TRACE.</span>
 </a>
+
 <a class="api-item" href="#httprequestinterface-numfiles">
 <code class="vis vis-public">public</code>
 <code class="ret">int</code>
 <code class="sig"><span class="sf">numFiles</span>( <span class="st">bool</span> <span class="sv">$onlySuccessful</span><span class="sm"> = false</span> )</code>
 <span class="desc">Returns the number of files available</span>
 </a>
+
 </div>
 
 ### Methods
@@ -3126,11 +3282,11 @@ __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Http\Request\FileInterfa
 
 ```php
 public function get(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -3254,8 +3410,8 @@ Returns the available headers in the request
 
 ```php
 $_SERVER = [
-"PHP_AUTH_USER" => "phalcon",
-"PHP_AUTH_PW"   => "secret",
+    "PHP_AUTH_USER" => "phalcon",
+    "PHP_AUTH_PW"   => "secret",
 ];
 
 $headers = $request->getHeaders();
@@ -3347,11 +3503,11 @@ Return the information about the port on which the request is made
 
 ```php
 public function getPost(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -3372,11 +3528,11 @@ $userEmail = $request->getPost("user_email", "email");
 
 ```php
 public function getPut(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -3396,11 +3552,11 @@ $userEmail = $request->getPut("user_email", "email");
 
 ```php
 public function getQuery(
-string|null $name = null,
-mixed $filters = null,
-mixed $defaultValue = null,
-bool $notAllowEmpty = false,
-bool $noRecursive = false
+    string|null $name = null,
+    mixed $filters = null,
+    mixed $defaultValue = null,
+    bool $notAllowEmpty = false,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -3480,8 +3636,8 @@ $uri = $request->getURI(true);
 
 ```php
 public function getUploadedFiles(
-bool $onlySuccessful = false,
-bool $namedKeys = false
+    bool $onlySuccessful = false,
+    bool $namedKeys = false
 ): FileInterface[];
 ```
 
@@ -3601,8 +3757,8 @@ $_SERVER["REQUEST_METHOD"] === "HEAD"
 
 ```php
 public function isMethod(
-mixed $methods,
-bool $strict = false
+    mixed $methods,
+    bool $strict = false
 ): bool;
 ```
 
@@ -3677,6 +3833,7 @@ public function numFiles( bool $onlySuccessful = false ): int;
 
 Returns the number of files available
 
+
 ## Http\Request\Bag\AbstractBag
 
 <span class="badge badge--abstract">Abstract</span>
@@ -3699,11 +3856,12 @@ could never be addressed by the caller.
 <div class="api-tree">
 
 - **`Phalcon\Http\Request\Bag\AbstractBag`** - implements `\ArrayAccess`, `\Countable`, `\IteratorAggregate`
-- [`Phalcon\Http\Request\Bag\AttributeBag`](#httprequestbagattributebag)
+    - [`Phalcon\Http\Request\Bag\AttributeBag`](#httprequestbagattributebag)
 
 </div>
 
 __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Http\Request\Exceptions\NullKeyException` · `Traversable`
+
 
 ### Method Summary
 
@@ -3865,8 +4023,8 @@ Returns the number of elements in the bag
 
 ```php
 public function get(
-mixed $key,
-mixed $defaultValue = null
+    mixed $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -3876,8 +4034,8 @@ Returns an element of the bag, or the default value if it is not set
 
 ```php
 public function getArray(
-mixed $key,
-array $defaultValue = []
+    mixed $key,
+    array $defaultValue = []
 ): array;
 ```
 
@@ -3888,8 +4046,8 @@ returned if the element is not set or is not an array
 
 ```php
 public function getBool(
-mixed $key,
-bool $defaultValue = false
+    mixed $key,
+    bool $defaultValue = false
 ): bool;
 ```
 
@@ -3900,8 +4058,8 @@ it is not set
 
 ```php
 public function getFloat(
-mixed $key,
-float $defaultValue = 0.0
+    mixed $key,
+    float $defaultValue = 0.0
 ): float;
 ```
 
@@ -3912,8 +4070,8 @@ it is not set
 
 ```php
 public function getInt(
-mixed $key,
-int $defaultValue = 0
+    mixed $key,
+    int $defaultValue = 0
 ): int;
 ```
 
@@ -3932,8 +4090,8 @@ Returns the iterator of the bag
 
 ```php
 public function getString(
-mixed $key,
-string $defaultValue = ""
+    mixed $key,
+    string $defaultValue = ""
 ): string;
 ```
 
@@ -3968,8 +4126,8 @@ Offset to retrieve
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -3995,8 +4153,8 @@ Removes an element from the bag
 
 ```php
 public function set(
-mixed $key,
-mixed $value
+    mixed $key,
+    mixed $value
 ): void;
 ```
 
@@ -4022,6 +4180,7 @@ protected function normalizeKey( mixed $key ): string;
 Normalizes a key for lookups and writes. Identity in the base;
 subclasses can override it to change key handling
 
+
 ## Http\Request\Bag\AttributeBag
 
 <span class="badge badge--class">Class</span>
@@ -4038,9 +4197,10 @@ distinct type so DI typing and IDE autocomplete stay precise.
 <div class="api-tree">
 
 - [`Phalcon\Http\Request\Bag\AbstractBag`](#httprequestbagabstractbag)
-- **`Phalcon\Http\Request\Bag\AttributeBag`**
+    - **`Phalcon\Http\Request\Bag\AttributeBag`**
 
 </div>
+
 
 ## Http\Request\Exception
 
@@ -4054,14 +4214,15 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Http\Request\Exception`**
-- [`Phalcon\Http\Request\Exceptions\FilterServiceUnavailable`](#httprequestexceptionsfilterserviceunavailable)
-- [`Phalcon\Http\Request\Exceptions\InvalidHttpMethod`](#httprequestexceptionsinvalidhttpmethod)
-- [`Phalcon\Http\Request\Exceptions\MissingFilters`](#httprequestexceptionsmissingfilters)
-- [`Phalcon\Http\Request\Exceptions\NullKeyException`](#httprequestexceptionsnullkeyexception)
-- [`Phalcon\Http\Request\Exceptions\SanitizerNotFound`](#httprequestexceptionssanitizernotfound)
+    - **`Phalcon\Http\Request\Exception`**
+        - [`Phalcon\Http\Request\Exceptions\FilterServiceUnavailable`](#httprequestexceptionsfilterserviceunavailable)
+        - [`Phalcon\Http\Request\Exceptions\InvalidHttpMethod`](#httprequestexceptionsinvalidhttpmethod)
+        - [`Phalcon\Http\Request\Exceptions\MissingFilters`](#httprequestexceptionsmissingfilters)
+        - [`Phalcon\Http\Request\Exceptions\NullKeyException`](#httprequestexceptionsnullkeyexception)
+        - [`Phalcon\Http\Request\Exceptions\SanitizerNotFound`](#httprequestexceptionssanitizernotfound)
 
 </div>
+
 
 ## Http\Request\Exceptions\FilterServiceUnavailable
 
@@ -4071,12 +4232,13 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Request\Exception`](#httprequestexception)
-- **`Phalcon\Http\Request\Exceptions\FilterServiceUnavailable`**
+    - [`Phalcon\Http\Request\Exception`](#httprequestexception)
+        - **`Phalcon\Http\Request\Exceptions\FilterServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Request\Exception`
+
 
 ### Method Summary
 
@@ -4097,6 +4259,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 public function __construct();
 ```
 
+
 ## Http\Request\Exceptions\InvalidHost
 
 <span class="badge badge--class">Class</span>
@@ -4105,11 +4268,12 @@ public function __construct();
 <div class="api-tree">
 
 - `\UnexpectedValueException`
-- **`Phalcon\Http\Request\Exceptions\InvalidHost`**
+    - **`Phalcon\Http\Request\Exceptions\InvalidHost`**
 
 </div>
 
 __Uses__ `UnexpectedValueException`
+
 
 ### Method Summary
 
@@ -4130,6 +4294,7 @@ __Uses__ `UnexpectedValueException`
 public function __construct( string $host );
 ```
 
+
 ## Http\Request\Exceptions\InvalidHttpMethod
 
 <span class="badge badge--class">Class</span>
@@ -4138,12 +4303,13 @@ public function __construct( string $host );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Request\Exception`](#httprequestexception)
-- **`Phalcon\Http\Request\Exceptions\InvalidHttpMethod`**
+    - [`Phalcon\Http\Request\Exception`](#httprequestexception)
+        - **`Phalcon\Http\Request\Exceptions\InvalidHttpMethod`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Request\Exception`
+
 
 ### Method Summary
 
@@ -4164,6 +4330,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 public function __construct( string $method );
 ```
 
+
 ## Http\Request\Exceptions\MissingFilters
 
 <span class="badge badge--class">Class</span>
@@ -4172,12 +4339,13 @@ public function __construct( string $method );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Request\Exception`](#httprequestexception)
-- **`Phalcon\Http\Request\Exceptions\MissingFilters`**
+    - [`Phalcon\Http\Request\Exception`](#httprequestexception)
+        - **`Phalcon\Http\Request\Exceptions\MissingFilters`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Request\Exception`
+
 
 ### Method Summary
 
@@ -4198,6 +4366,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Http\Request\Exceptions\NullKeyException
 
 <span class="badge badge--class">Class</span>
@@ -4210,12 +4379,13 @@ auto-indexed write could never be addressed by the caller.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Request\Exception`](#httprequestexception)
-- **`Phalcon\Http\Request\Exceptions\NullKeyException`**
+    - [`Phalcon\Http\Request\Exception`](#httprequestexception)
+        - **`Phalcon\Http\Request\Exceptions\NullKeyException`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Request\Exception`
+
 
 ### Method Summary
 
@@ -4236,6 +4406,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 public function __construct();
 ```
 
+
 ## Http\Request\Exceptions\SanitizerNotFound
 
 <span class="badge badge--class">Class</span>
@@ -4244,12 +4415,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Request\Exception`](#httprequestexception)
-- **`Phalcon\Http\Request\Exceptions\SanitizerNotFound`**
+    - [`Phalcon\Http\Request\Exception`](#httprequestexception)
+        - **`Phalcon\Http\Request\Exceptions\SanitizerNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Request\Exception`
+
 
 ### Method Summary
 
@@ -4270,6 +4442,7 @@ __Uses__ `Phalcon\Http\Request\Exception`
 public function __construct( string $sanitizer );
 ```
 
+
 ## Http\Request\File
 
 <span class="badge badge--class">Class</span>
@@ -4284,16 +4457,16 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function uploadAction()
-{
-    // Check if the user has uploaded files
-    if ($this->request->hasFiles() == true) {
-        // Print the real file names and their sizes
-        foreach ($this->request->getUploadedFiles() as $file) {
-            echo $file->getName(), " ", $file->getSize(), "\n";
+    public function uploadAction()
+    {
+        // Check if the user has uploaded files
+        if ($this->request->hasFiles() == true) {
+            // Print the real file names and their sizes
+            foreach ($this->request->getUploadedFiles() as $file) {
+                echo $file->getName(), " ", $file->getSize(), "\n";
+            }
         }
     }
-}
 }
 ```
 
@@ -4304,6 +4477,7 @@ public function uploadAction()
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+
 
 ### Method Summary
 
@@ -4425,8 +4599,8 @@ __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Traits\Support\Helper\Ar
 
 ```php
 public function __construct(
-array $file,
-string $key = ""
+    array $file,
+    string $key = ""
 );
 ```
 
@@ -4506,6 +4680,7 @@ public function moveTo( string $destination ): bool;
 ```
 
 Moves the temporary file to a destination within the application
+
 
 ## Http\Request\FileInterface
 
@@ -4628,6 +4803,7 @@ public function moveTo( string $destination ): bool;
 
 Move the temporary file to a destination
 
+
 ## Http\Response
 
 <span class="badge badge--class">Class</span>
@@ -4653,6 +4829,7 @@ $response->send();
 </div>
 
 __Uses__ `DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Http\Traits\StatusPhrasesTrait` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\UrlTrait`
+
 
 ### Method Summary
 
@@ -4898,9 +5075,9 @@ __Uses__ `DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterf
 
 ```php
 public function __construct(
-string|null $content = null,
-mixed $code = null,
-mixed $status = null
+    string|null $content = null,
+    mixed $code = null,
+    mixed $status = null
 );
 ```
 
@@ -4994,9 +5171,9 @@ Check if the response is already sent
 
 ```php
 public function redirect(
-mixed $location = null,
-bool $externalRedirect = false,
-int $statusCode = 302
+    mixed $location = null,
+    bool $externalRedirect = false,
+    int $statusCode = 302
 ): ResponseInterface;
 ```
 
@@ -5010,11 +5187,11 @@ $response->redirect("http://www.example.com/new-location", true, 301);
 
 // Making a redirection based on a named route
 $response->redirect(
-[
-    "for"        => "index-lang",
-    "lang"       => "jp",
-    "controller" => "index",
-]
+    [
+        "for"        => "index-lang",
+        "lang"       => "jp",
+        "controller" => "index",
+    ]
 );
 ```
 
@@ -5102,8 +5279,8 @@ $response->setContentLength(2048);
 
 ```php
 public function setContentType(
-string $contentType,
-string|null $charset = null
+    string $contentType,
+    string|null $charset = null
 ): ResponseInterface;
 ```
 
@@ -5140,9 +5317,9 @@ Set a custom ETag
 
 ```php
 $response->setEtag(
-md5(
-    time()
-)
+    md5(
+        time()
+    )
 );
 ```
 
@@ -5156,7 +5333,7 @@ Sets an Expires header in the response that allows to use the HTTP cache
 
 ```php
 $this->response->setExpires(
-new DateTime()
+    new DateTime()
 );
 ```
 
@@ -5164,9 +5341,9 @@ new DateTime()
 
 ```php
 public function setFileToSend(
-string $filePath,
-mixed $attachmentName = null,
-bool $attachment = true
+    string $filePath,
+    mixed $attachmentName = null,
+    bool $attachment = true
 ): ResponseInterface;
 ```
 
@@ -5176,8 +5353,8 @@ Sets an attached file to be sent at the end of the request
 
 ```php
 public function setHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): ResponseInterface;
 ```
 
@@ -5199,9 +5376,9 @@ Sets a headers bag for the response externally
 
 ```php
 public function setJsonContent(
-mixed $content,
-int $jsonOptions = 0,
-int $depth = 512
+    mixed $content,
+    int $jsonOptions = 0,
+    int $depth = 512
 ): ResponseInterface;
 ```
 
@@ -5210,9 +5387,9 @@ and also sets default header: Content-Type: "application/json; charset=UTF-8"
 
 ```php
 $response->setJsonContent(
-[
-    "status" => "OK",
-]
+    [
+        "status" => "OK",
+    ]
 );
 ```
 
@@ -5226,7 +5403,7 @@ Sets Last-Modified header
 
 ```php
 $this->response->setLastModified(
-new DateTime()
+    new DateTime()
 );
 ```
 
@@ -5254,8 +5431,8 @@ $response->setRawHeader("HTTP/1.1 404 Not Found");
 
 ```php
 public function setStatusCode(
-int $code,
-string|null $message = null
+    int $code,
+    string|null $message = null
 ): ResponseInterface;
 ```
 
@@ -5264,6 +5441,7 @@ Sets the HTTP response code
 ```php
 $response->setStatusCode(404, "Not Found");
 ```
+
 
 ## Http\ResponseInterface
 
@@ -5281,6 +5459,7 @@ Interface for Phalcon\Http\Response
 </div>
 
 __Uses__ `DateTime` · `Phalcon\Http\Response\HeadersInterface`
+
 
 ### Method Summary
 
@@ -5469,9 +5648,9 @@ Checks if the response was already sent
 
 ```php
 public function redirect(
-string|null $location = null,
-bool $externalRedirect = false,
-int $statusCode = 302
+    string|null $location = null,
+    bool $externalRedirect = false,
+    int $statusCode = 302
 ): ResponseInterface;
 ```
 
@@ -5529,8 +5708,8 @@ Sets the response content-length
 
 ```php
 public function setContentType(
-string $contentType,
-string|null $charset = null
+    string $contentType,
+    string|null $charset = null
 ): ResponseInterface;
 ```
 
@@ -5550,8 +5729,8 @@ Sets output expire time header
 
 ```php
 public function setFileToSend(
-string $filePath,
-string|null $attachmentName = null
+    string $filePath,
+    string|null $attachmentName = null
 ): ResponseInterface;
 ```
 
@@ -5563,8 +5742,8 @@ Sets an attached file to be sent at the end of the request
 
 ```php
 public function setHeader(
-string $name,
-string $value
+    string $name,
+    string $value
 ): ResponseInterface;
 ```
 
@@ -5580,9 +5759,9 @@ Sets HTTP response body. The parameter is automatically converted to JSON
 
 ```php
 $response->setJsonContent(
-[
-    "status" => "OK",
-]
+    [
+        "status" => "OK",
+    ]
 );
 ```
 
@@ -5608,14 +5787,15 @@ Send a raw header to the response
 
 ```php
 public function setStatusCode(
-int $code,
-string|null $message = null
+    int $code,
+    string|null $message = null
 ): ResponseInterface;
 ```
 
 Sets the HTTP response code
 
 @todo change $message to only string
+
 
 ## Http\Response\Cookies
 
@@ -5638,47 +5818,48 @@ use Phalcon\Http\Response\Cookies;
 $di = new Di();
 
 $di->set(
-'crypt',
-function () {
-    $crypt = new Crypt();
+    'crypt',
+    function () {
+        $crypt = new Crypt();
 
-    // The `$key' should have been previously generated in a
-    // cryptographically safe way.
-    $key =
-    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+        // The `$key' should have been previously generated in a
+        // cryptographically safe way.
+        $key =
+        "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
 
-    $crypt->setKey($key);
+        $crypt->setKey($key);
 
-    return $crypt;
-}
+        return $crypt;
+    }
 );
 
 $di->set(
-'cookies',
-function () {
-    $cookies = new Cookies();
+    'cookies',
+    function () {
+        $cookies = new Cookies();
 
-    // The `$key' MUST be at least 32 characters long and generated
-    // using a cryptographically secure pseudo random generator.
-    $key =
-    "#1dj8$=dp?.ak//j1V$~%*0XaK\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
+        // The `$key' MUST be at least 32 characters long and generated
+        // using a cryptographically secure pseudo random generator.
+        $key =
+        "#1dj8$=dp?.ak//j1V$~%*0XaK\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
 
-    $cookies->setSignKey($key);
+        $cookies->setSignKey($key);
 
-    return $cookies;
-}
+        return $cookies;
+    }
 );
 ```
 
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Http\Response\Cookies`** - implements [`Phalcon\Http\Response\CookiesInterface`](#httpresponsecookiesinterface)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Http\Response\Cookies`** - implements [`Phalcon\Http\Response\CookiesInterface`](#httpresponsecookiesinterface)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Http\Cookie` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exception` · `Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable` · `Phalcon\Http\Traits\EncryptionAwareTrait`
+
 
 ### Method Summary
 
@@ -5784,8 +5965,8 @@ __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAwar
 
 ```php
 public function __construct(
-bool $useEncryption = true,
-string|null $signKey = null
+    bool $useEncryption = true,
+    string|null $signKey = null
 );
 ```
 
@@ -5854,14 +6035,14 @@ Cookies aren't sent if headers are sent in the current request
 
 ```php
 public function set(
-string $name,
-mixed $value = null,
-int $expire = 0,
-string $path = "/",
-bool $secure = false,
-string $domain = "",
-bool $httpOnly = false,
-array $options = []
+    string $name,
+    mixed $value = null,
+    int $expire = 0,
+    string $path = "/",
+    bool $secure = false,
+    string $domain = "",
+    bool $httpOnly = false,
+    array $options = []
 ): CookiesInterface;
 ```
 
@@ -5877,9 +6058,9 @@ $tomorrow = $now->modify('tomorrow');
 
 $cookies = new Cookies();
 $cookies->set(
-'remember-me',
-json_encode(['user_id' => 1]),
-(int) $tomorrow->format('U'),
+    'remember-me',
+    json_encode(['user_id' => 1]),
+    (int) $tomorrow->format('U'),
 );
 ```
 
@@ -5906,6 +6087,7 @@ public function useEncryption( bool $useEncryption ): CookiesInterface;
 
 Set if cookies in the bag must be automatically encrypted/decrypted
 
+
 ## Http\Response\CookiesInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5920,6 +6102,7 @@ Interface for Phalcon\Http\Response\Cookies
 </div>
 
 __Uses__ `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Http\Cookie\CookieInterface`
+
 
 ### Method Summary
 
@@ -6031,14 +6214,14 @@ Sends the cookies to the client
 
 ```php
 public function set(
-string $name,
-mixed $value = null,
-int $expire = 0,
-string $path = "/",
-bool $secure = false,
-string $domain = "",
-bool $httpOnly = false,
-array $options = []
+    string $name,
+    mixed $value = null,
+    int $expire = 0,
+    string $path = "/",
+    bool $secure = false,
+    string $domain = "",
+    bool $httpOnly = false,
+    array $options = []
 ): CookiesInterface;
 ```
 
@@ -6052,6 +6235,7 @@ public function useEncryption( bool $useEncryption ): CookiesInterface;
 
 Set if cookies in the bag must be automatically encrypted/decrypted
 
+
 ## Http\Response\Exception
 
 <span class="badge badge--class">Class</span>
@@ -6064,13 +6248,14 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Http\Response\Exception`**
-- [`Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage`](#httpresponseexceptionsnonstandardstatuscoderequiresmessage)
-- [`Phalcon\Http\Response\Exceptions\ResponseAlreadySent`](#httpresponseexceptionsresponsealreadysent)
-- [`Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable`](#httpresponseexceptionsresponseserviceunavailable)
-- [`Phalcon\Http\Response\Exceptions\UrlServiceUnavailable`](#httpresponseexceptionsurlserviceunavailable)
+    - **`Phalcon\Http\Response\Exception`**
+        - [`Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage`](#httpresponseexceptionsnonstandardstatuscoderequiresmessage)
+        - [`Phalcon\Http\Response\Exceptions\ResponseAlreadySent`](#httpresponseexceptionsresponsealreadysent)
+        - [`Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable`](#httpresponseexceptionsresponseserviceunavailable)
+        - [`Phalcon\Http\Response\Exceptions\UrlServiceUnavailable`](#httpresponseexceptionsurlserviceunavailable)
 
 </div>
+
 
 ## Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage
 
@@ -6080,12 +6265,13 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Response\Exception`](#httpresponseexception)
-- **`Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage`**
+    - [`Phalcon\Http\Response\Exception`](#httpresponseexception)
+        - **`Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Response\Exception`
+
 
 ### Method Summary
 
@@ -6106,6 +6292,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 public function __construct();
 ```
 
+
 ## Http\Response\Exceptions\ResponseAlreadySent
 
 <span class="badge badge--class">Class</span>
@@ -6114,12 +6301,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Response\Exception`](#httpresponseexception)
-- **`Phalcon\Http\Response\Exceptions\ResponseAlreadySent`**
+    - [`Phalcon\Http\Response\Exception`](#httpresponseexception)
+        - **`Phalcon\Http\Response\Exceptions\ResponseAlreadySent`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Response\Exception`
+
 
 ### Method Summary
 
@@ -6140,6 +6328,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 public function __construct();
 ```
 
+
 ## Http\Response\Exceptions\ResponseServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -6148,12 +6337,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Response\Exception`](#httpresponseexception)
-- **`Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable`**
+    - [`Phalcon\Http\Response\Exception`](#httpresponseexception)
+        - **`Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Response\Exception`
+
 
 ### Method Summary
 
@@ -6174,6 +6364,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 public function __construct();
 ```
 
+
 ## Http\Response\Exceptions\UrlServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -6182,12 +6373,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Http\Response\Exception`](#httpresponseexception)
-- **`Phalcon\Http\Response\Exceptions\UrlServiceUnavailable`**
+    - [`Phalcon\Http\Response\Exception`](#httpresponseexception)
+        - **`Phalcon\Http\Response\Exceptions\UrlServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Http\Response\Exception`
+
 
 ### Method Summary
 
@@ -6208,6 +6400,7 @@ __Uses__ `Phalcon\Http\Response\Exception`
 public function __construct();
 ```
 
+
 ## Http\Response\Headers
 
 <span class="badge badge--class">Class</span>
@@ -6224,6 +6417,7 @@ This class is a bag to manage the response headers
 </div>
 
 __Uses__ `IteratorAggregate` · `Phalcon\Contracts\Http\HttpTypes` · `Traversable`
+
 
 ### Method Summary
 
@@ -6366,8 +6560,8 @@ Sends the headers to the client
 
 ```php
 public function set(
-string $name,
-string $value
+    string $name,
+    string $value
 ): HeadersInterface;
 ```
 
@@ -6388,6 +6582,7 @@ public function toArray(): array;
 ```
 
 Returns the current headers as an array
+
 
 ## Http\Response\HeadersInterface
 
@@ -6483,8 +6678,8 @@ Sends the headers to the client
 
 ```php
 public function set(
-string $name,
-string $value
+    string $name,
+    string $value
 ): HeadersInterface;
 ```
 
@@ -6497,6 +6692,7 @@ public function setRaw( string $header ): HeadersInterface;
 ```
 
 Sets a raw header to be sent at the end of the request
+
 
 ## Http\Traits\EncryptionAwareTrait
 
@@ -6513,6 +6709,7 @@ cookie classes.
 </div>
 
 __Used by__ [`Phalcon\Http\Cookie`](#httpcookie) · [`Phalcon\Http\Response\Cookies`](#httpresponsecookies)
+
 
 ### Method Summary
 
@@ -6547,6 +6744,7 @@ public function isUsingEncryption(): bool;
 
 Check if implicit encryption is being used
 
+
 ## Http\Traits\StatusPhrasesTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -6562,7 +6760,9 @@ Status Phrases trait
 
 __Uses__ `Phalcon\Http\Message\ResponseStatusCodeInterface`
 
+
 __Used by__ [`Phalcon\Http\Response`](#httpresponse)
+
 
 ### Method Summary
 

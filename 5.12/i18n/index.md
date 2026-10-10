@@ -104,14 +104,14 @@ $collator = new Collator('es');
 $collator->setStrength(Collator::PRIMARY);
 
 var_dump(
-$collator->compare('una canción', 'una cancion')
+    $collator->compare('una canción', 'una cancion')
 );
 
 // Returns that the strings are not equal
 $collator->setStrength(Collator::DEFAULT_VALUE);
 
 var_dump(
-$collator->compare('una canción', 'una cancion')
+    $collator->compare('una canción', 'una cancion')
 );
 ```
 

@@ -33,15 +33,15 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function showAction($year, $postTitle)
-{
+    public function showAction($year, $postTitle)
+    {
 
-}
+    }
 }
 ```
 
@@ -57,15 +57,15 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function showAction($year = 2015, $postTitle = 'some default title')
-{
+    public function showAction($year = 2015, $postTitle = 'some default title')
+    {
 
-}
+    }
 }
 ```
 
@@ -78,18 +78,19 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function showAction()
-{
-    $year      = $this->dispatcher->getParam('year');
-    $postTitle = $this->dispatcher->getParam('postTitle');
-}
+    public function showAction()
+    {
+        $year      = $this->dispatcher->getParam('year');
+        $postTitle = $this->dispatcher->getParam('postTitle');
+    }
 }
 ```
+
 
 ## Dispatch Loop
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
@@ -101,25 +102,25 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function showAction($year, $postTitle)
-{
-    $this->flash->error(
-        "You don't have permission to access this area"
-    );
+    public function showAction($year, $postTitle)
+    {
+        $this->flash->error(
+            "You don't have permission to access this area"
+        );
 
-    // Forward flow to another action
-    $this->dispatcher->forward(
-        [
-            'controller' => 'users',
-            'action'     => 'signin',
-        ]
-    );
-}
+        // Forward flow to another action
+        $this->dispatcher->forward(
+            [
+                'controller' => 'users',
+                'action'     => 'signin',
+            ]
+        );
+    }
 }
 ```
 
@@ -132,19 +133,20 @@ use Phalcon\Mvc\Controller;
 
 class UsersController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function signinAction()
-{
+    public function signinAction()
+    {
 
-}
+    }
 }
 ```
 
 There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View](/3.4/api/phalcon_mvc_view/).
+
 
 ## Initializing Controllers
 [Phalcon\Mvc\Controller](/3.4/api/phalcon_mvc_controller/) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
@@ -156,21 +158,21 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public $settings;
+    public $settings;
 
-public function initialize()
-{
-    $this->settings = [
-        'mySetting' => 'value',
-    ];
-}
-
-public function saveAction()
-{
-    if ($this->settings['mySetting'] === 'value') {
-        // ...
+    public function initialize()
+    {
+        $this->settings = [
+            'mySetting' => 'value',
+        ];
     }
-}
+
+    public function saveAction()
+    {
+        if ($this->settings['mySetting'] === 'value') {
+            // ...
+        }
+    }
 }
 ```
 
@@ -187,10 +189,10 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function onConstruct()
-{
-    // ...
-}
+    public function onConstruct()
+    {
+        // ...
+    }
 }
 ```
 
@@ -209,13 +211,13 @@ use Phalcon\Di;
 $di = new Di();
 
 $di->set(
-'storage',
-function () {
-    return new Storage(
-        '/some/directory'
-    );
-},
-true
+    'storage',
+    function () {
+        return new Storage(
+            '/some/directory'
+        );
+    },
+    true
 );
 ```
 
@@ -228,27 +230,28 @@ use Phalcon\Mvc\Controller;
 
 class FilesController extends Controller
 {
-public function saveAction()
-{
-    // Injecting the service by just accessing the property with the same name
-    $this->storage->save('/some/file');
+    public function saveAction()
+    {
+        // Injecting the service by just accessing the property with the same name
+        $this->storage->save('/some/file');
 
-    // Accessing the service from the DI
-    $this->di->get('storage')->save('/some/file');
+        // Accessing the service from the DI
+        $this->di->get('storage')->save('/some/file');
 
-    // Another way to access the service using the magic getter
-    $this->di->getStorage()->save('/some/file');
+        // Another way to access the service using the magic getter
+        $this->di->getStorage()->save('/some/file');
 
-    // Another way to access the service using the magic getter
-    $this->getDi()->getStorage()->save('/some/file');
+        // Another way to access the service using the magic getter
+        $this->getDi()->getStorage()->save('/some/file');
 
-    // Using the array-syntax
-    $this->di['storage']->save('/some/file');
-}
+        // Using the array-syntax
+        $this->di['storage']->save('/some/file');
+    }
 }
 ```
 
 If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/3.4/di/) in the framework.
+
 
 ## Request and Response
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of [Phalcon\Http\Request](/3.4/api/phalcon_http/) and the `response` contains a [Phalcon\Http\Response](/3.4/api/phalcon_http/) representing what is going to be sent back to the client.
@@ -260,20 +263,20 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
-
-public function saveAction()
-{
-    // Check if request has made with POST
-    if ($this->request->isPost()) {
-        // Access POST data
-        $customerName = $this->request->getPost('name');
-        $customerBorn = $this->request->getPost('born');
     }
-}
+
+    public function saveAction()
+    {
+        // Check if request has made with POST
+        if ($this->request->isPost()) {
+            // Access POST data
+            $customerName = $this->request->getPost('name');
+            $customerBorn = $this->request->getPost('born');
+        }
+    }
 }
 ```
 
@@ -286,20 +289,21 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function notFoundAction()
-{
-    // Send a HTTP 404 response header
-    $this->response->setStatusCode(404, 'Not Found');
-}
+    public function notFoundAction()
+    {
+        // Send a HTTP 404 response header
+        $this->response->setStatusCode(404, 'Not Found');
+    }
 }
 ```
 
 Learn more about the HTTP environment in their dedicated articles [request](/3.4/request/) and [response](/3.4/response/).
+
 
 ## Session Data
 Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](/3.4/api/phalcon_session/) from any controller to encapsulate data that needs to be persistent:
@@ -311,17 +315,18 @@ use Phalcon\Mvc\Controller;
 
 class UserController extends Controller
 {
-public function indexAction()
-{
-    $this->persistent->name = 'Michael';
-}
+    public function indexAction()
+    {
+        $this->persistent->name = 'Michael';
+    }
 
-public function welcomeAction()
-{
-    echo 'Welcome, ', $this->persistent->name;
-}
+    public function welcomeAction()
+    {
+        echo 'Welcome, ', $this->persistent->name;
+    }
 }
 ```
+
 
 ## Using Services as Controllers
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
@@ -331,24 +336,25 @@ Services may act as controllers, controllers classes are always requested from t
 
 // Register a controller as a service
 $di->set(
-'IndexController',
-function () {
-    $component = new Component();
+    'IndexController',
+    function () {
+        $component = new Component();
 
-    return $component;
-}
+        return $component;
+    }
 );
 
 // Register a namespaced controller as a service
 $di->set(
-'Backend\Controllers\IndexController',
-function () {
-    $component = new Component();
+    'Backend\Controllers\IndexController',
+    function () {
+        $component = new Component();
 
-    return $component;
-}
+        return $component;
+    }
 );
 ```
+
 
 ## Events in Controllers
 Controllers automatically act as listeners for [dispatcher](/3.4/dispatcher/) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
@@ -360,29 +366,29 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function beforeExecuteRoute($dispatcher)
-{
-    // This is executed before every found action
-    if ($dispatcher->getActionName() === 'save') {
-        $this->flash->error(
-            "You don't have permission to save posts"
-        );
+    public function beforeExecuteRoute($dispatcher)
+    {
+        // This is executed before every found action
+        if ($dispatcher->getActionName() === 'save') {
+            $this->flash->error(
+                "You don't have permission to save posts"
+            );
 
-        $this->dispatcher->forward(
-            [
-                'controller' => 'home',
-                'action'     => 'index',
-            ]
-        );
+            $this->dispatcher->forward(
+                [
+                    'controller' => 'home',
+                    'action'     => 'index',
+                ]
+            );
 
-        return false;
+            return false;
+        }
     }
-}
 
-public function afterExecuteRoute($dispatcher)
-{
-    // Executed after every found action
-}
+    public function afterExecuteRoute($dispatcher)
+    {
+        // Executed after every found action
+    }
 }
 ```
 

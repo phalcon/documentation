@@ -11,6 +11,7 @@ version: "3.4"
 
 [Phalcon\Logger](/3.4/api/phalcon_logger/) is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the [Phalcon\Logger](/3.4/api/phalcon_logger/) for every logging need your application has, from debugging processes to tracing application flow.
 
+
 ## Adapters
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
@@ -21,6 +22,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 | [Phalcon\Logger\Adapter\Syslog](/3.4/api/phalcon_logger/)  | Logs to the system logger |
 | `Phalcon\Logger\Adapter\FirePHP` | Logs to the FirePHP       |
 
+
 ### Factory
 Loads Logger Adapter class using `adapter` option
 
@@ -30,12 +32,13 @@ Loads Logger Adapter class using `adapter` option
 use Phalcon\Logger\Factory;
 
 $options = [
-'name'    => 'log.txt',
-'adapter' => 'file',
+    'name'    => 'log.txt',
+    'adapter' => 'file',
 ];
 
 $logger = Factory::load($options);
 ```
+
 
 ## Creating a Log
 The example below shows how to create a log and add messages to it:
@@ -51,54 +54,54 @@ $logger = new FileAdapter('app/logs/test.log');
 // These are the different log levels available:
 
 $logger->critical(
-'This is a critical message'
+    'This is a critical message'
 );
 
 $logger->emergency(
-'This is an emergency message'
+    'This is an emergency message'
 );
 
 $logger->debug(
-'This is a debug message'
+    'This is a debug message'
 );
 
 $logger->error(
-'This is an error message'
+    'This is an error message'
 );
 
 $logger->info(
-'This is an info message'
+    'This is an info message'
 );
 
 $logger->notice(
-'This is a notice message'
+    'This is a notice message'
 );
 
 $logger->warning(
-'This is a warning message'
+    'This is a warning message'
 );
 
 $logger->alert(
-'This is an alert message'
+    'This is an alert message'
 );
 
 // You can also use the log() method with a Logger constant:
 $logger->log(
-'This is another error message',
-Logger::ERROR
+    'This is another error message',
+    Logger::ERROR
 );
 
 // If no constant is given, DEBUG is assumed.
 $logger->log(
-'This is a message'
+    'This is a message'
 );
 
 // You can also pass context parameters like this
 $logger->log(
-'This is a {message}', 
-[ 
-    'message' => 'parameter' 
-]
+    'This is a {message}', 
+    [ 
+        'message' => 'parameter' 
+    ]
 );
 ```
 
@@ -129,11 +132,12 @@ use Phalcon\Logger\Adapter\File as FileAdapter;
 $logger = new FileAdapter('app/logs/test.log');
 
 $logger->setLogLevel(
-Logger::CRITICAL
+    Logger::CRITICAL
 );
 ```
 
 In the example above, only critical and emergency messages will get saved to the log. By default, everything is saved.
+
 
 ## Transactions
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
@@ -152,16 +156,17 @@ $logger->begin();
 // Add messages
 
 $logger->alert(
-'This is an alert'
+    'This is an alert'
 );
 
 $logger->error(
-'This is another error'
+    'This is another error'
 );
 
 // Commit messages to file
 $logger->commit();
 ```
+
 
 ## Logging to Multiple Handlers
 [Phalcon\Logger](/3.4/api/phalcon_logger/) can send messages to multiple handlers with a just single call:
@@ -176,29 +181,32 @@ use Phalcon\Logger\Adapter\Stream as StreamAdapter;
 
 $logger = new MultipleStream();
 
+
+
 $logger->push(
-new FileAdapter('test.log')
+    new FileAdapter('test.log')
 );
 
 $logger->push(
-new StreamAdapter('php://stdout')
+    new StreamAdapter('php://stdout')
 );
 
 $logger->log(
-'This is a message'
+    'This is a message'
 );
 
 $logger->log(
-'This is an error',
-Logger::ERROR
+    'This is an error',
+    Logger::ERROR
 );
 
 $logger->error(
-'This is another error'
+    'This is another error'
 );
 ```
 
 The messages are sent to the handlers in the order they were registered.
+
 
 ## Message Formatting
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
@@ -209,6 +217,7 @@ This component makes use of `formatters` to format messages before sending them 
 | [Phalcon\Logger\Formatter\Firephp](/3.4/api/phalcon_logger/) | Formats the messages so that they can be sent to FirePHP |
 | [Phalcon\Logger\Formatter\Json](/3.4/api/phalcon_logger/)    | Prepares a message to be encoded with JSON               |
 | [Phalcon\Logger\Formatter\Syslog](/3.4/api/phalcon_logger/)  | Prepares a message to be sent to syslog                  |
+
 
 ### Line Formatter
 Formats the messages using a one-line string. The default logging format is:
@@ -238,11 +247,14 @@ $formatter = new LineFormatter('%date% - %message%');
 $logger->setFormatter($formatter);
 ```
 
+
 ### Implementing your own formatters
 The [Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) interface must be implemented in order to create your own logger formatter or extend the existing ones.
 
+
 ## Adapters
 The following examples show the basic use of each adapter:
+
 
 ### Stream Logger
 The stream logger writes messages to a valid registered stream in PHP. A list of streams is available [here](https://php.net/manual/en/wrappers.php):
@@ -259,6 +271,7 @@ $logger = new StreamAdapter('compress.zlib://week.log.gz');
 $logger = new StreamAdapter('php://stderr');
 ```
 
+
 ### File Logger
 This logger uses plain files to log any kind of data. By default all logger files are opened using append mode which opens the files for writing only; placing the file pointer at the end of the file. If the file does not exist, an attempt will be made to create it. You can change this mode by passing additional options to the constructor:
 
@@ -269,12 +282,13 @@ use Phalcon\Logger\Adapter\File as FileAdapter;
 
 // Create the file logger in 'w' mode
 $logger = new FileAdapter(
-'app/logs/test.log',
-[
-    'mode' => 'w',
-]
+    'app/logs/test.log',
+    [
+        'mode' => 'w',
+    ]
 );
 ```
+
 
 ### Syslog Logger
 This logger sends messages to the system logger. The syslog behavior may vary from one operating system to another.
@@ -289,13 +303,14 @@ $logger = new SyslogAdapter(null);
 
 // Setting ident/mode/facility
 $logger = new SyslogAdapter(
-'ident-name',
-[
-    'option'   => LOG_NDELAY,
-    'facility' => LOG_MAIL,
-]
+    'ident-name',
+    [
+        'option'   => LOG_NDELAY,
+        'facility' => LOG_MAIL,
+    ]
 );
 ```
+
 
 ### FirePHP Logger
 This logger sends messages in HTTP response headers that are displayed by [FirePHP](https://www.firephp.org/), a [Firebug](https://getfirebug.com/) extension for Firefox.
@@ -309,18 +324,19 @@ use Phalcon\Logger\Adapter\Firephp as Firephp;
 $logger = new Firephp('');
 
 $logger->log(
-'This is a message'
+    'This is a message'
 );
 
 $logger->log(
-'This is an error',
-Logger::ERROR
+    'This is an error',
+    Logger::ERROR
 );
 
 $logger->error(
-'This is another error'
+    'This is another error'
 );
 ```
+
 
 ### Implementing your own adapters
 The [Phalcon\Logger\AdapterInterface](/3.4/api/phalcon_logger/) interface must be implemented in order to create your own logger adapters or extend the existing ones.

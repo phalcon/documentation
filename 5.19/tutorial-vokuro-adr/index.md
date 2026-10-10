@@ -64,15 +64,15 @@ The source follows the direction of a request. Each ring depends only on the one
 
 ```text
 src/
-Action/          one class per route (delivery)
-Responder/       turns a payload into a response (delivery)
-Middleware/      runs around the action (delivery)
-Forms/           renders form fields (delivery)
-Domain/          use cases, entities, value objects, collections
-Contracts/       the ports the domain depends on
-Application/     policy adapters (ACL, authorization, remember-me)
-Infrastructure/  technology-bound adapters (repositories, mail, http, view)
-AppFront.php     the composition root
+    Action/          one class per route (delivery)
+    Responder/       turns a payload into a response (delivery)
+    Middleware/      runs around the action (delivery)
+    Forms/           renders form fields (delivery)
+    Domain/          use cases, entities, value objects, collections
+    Contracts/       the ports the domain depends on
+    Application/     policy adapters (ACL, authorization, remember-me)
+    Infrastructure/  technology-bound adapters (repositories, mail, http, view)
+    AppFront.php     the composition root
 ```
 
 The delivery ring (`Action`, `Responder`, `Middleware`, `Forms`) speaks HTTP. The `Domain` does not. Everything the domain needs is a port in `Contracts`, and the adapters that satisfy those ports live in `Application` and `Infrastructure`.
@@ -83,12 +83,12 @@ A request travels **Action → Domain → Responder**:
 
 ```mermaid
 flowchart LR
-R[Request] --> M[Middleware]
-M --> A[Action]
-A --> D[Domain]
-D -- Payload --> A
-A --> P[Responder]
-P --> Resp[Response]
+    R[Request] --> M[Middleware]
+    M --> A[Action]
+    A --> D[Domain]
+    D -- Payload --> A
+    A --> P[Responder]
+    P --> Resp[Response]
 ```
 
 `AppFront` boots a container, the router maps the path to an action, the global and route middleware run, the action calls a domain and hands the returned payload to a responder, and the responder produces the response. The payload is the only thing that crosses the domain boundary.
@@ -113,18 +113,18 @@ use Vokuro\Responder\AuthResponder;
 
 final class GetSessionSignup implements Action
 {
-public function __construct(private AuthResponder $responder)
-{
-}
+    public function __construct(private AuthResponder $responder)
+    {
+    }
 
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    return ($this->responder->withTemplate('session/signup'))(
-        $request,
-        new Response(),
-        Payload::success()
-    );
-}
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        return ($this->responder->withTemplate('session/signup'))(
+            $request,
+            new Response(),
+            Payload::success()
+        );
+    }
 }
 ```
 
@@ -151,37 +151,37 @@ use Vokuro\Contracts\Repository\UserRepository;
 
 final class SignUp
 {
-public function __construct(
-    private UserRepository $users,
-    private EmailConfirmationRepository $confirmations,
-    private Security $security,
-    private Mailer $mailer
-) {
-}
-
-public function __invoke(Input $input): PayloadInterface
-{
-    $name  = trim((string) $input->get('name'));
-    $email = trim((string) $input->get('email'));
-
-    $messages = $this->validate(/* ... */);
-
-    if ([] !== $messages) {
-        return Payload::invalid($messages);
+    public function __construct(
+        private UserRepository $users,
+        private EmailConfirmationRepository $confirmations,
+        private Security $security,
+        private Mailer $mailer
+    ) {
     }
 
-    $userId = $this->users->add([
-        'name'     => $name,
-        'email'    => $email,
-        'password' => $this->security->hash((string) $input->get('password')),
-        // ...
-    ]);
+    public function __invoke(Input $input): PayloadInterface
+    {
+        $name  = trim((string) $input->get('name'));
+        $email = trim((string) $input->get('email'));
 
-    $this->confirm($userId, $name, $email);
+        $messages = $this->validate(/* ... */);
 
-    return Payload::created(['id' => $userId, 'email' => $email])
-        ->withMessages(['A confirmation mail has been sent to ' . $email]);
-}
+        if ([] !== $messages) {
+            return Payload::invalid($messages);
+        }
+
+        $userId = $this->users->add([
+            'name'     => $name,
+            'email'    => $email,
+            'password' => $this->security->hash((string) $input->get('password')),
+            // ...
+        ]);
+
+        $this->confirm($userId, $name, $email);
+
+        return Payload::created(['id' => $userId, 'email' => $email])
+            ->withMessages(['A confirmation mail has been sent to ' . $email]);
+    }
 }
 ```
 
@@ -236,25 +236,25 @@ use Phalcon\Http\ResponseInterface;
 
 final class AuthResponder implements Responder
 {
-public function __construct(private ViewResponder $responder)
-{
-}
+    public function __construct(private ViewResponder $responder)
+    {
+    }
 
-public function __invoke(
-    RequestInterface $request,
-    ResponseInterface $response,
-    Payload $payload
-): ResponseInterface {
-    return ($this->responder)($request, $response, $payload);
-}
+    public function __invoke(
+        RequestInterface $request,
+        ResponseInterface $response,
+        Payload $payload
+    ): ResponseInterface {
+        return ($this->responder)($request, $response, $payload);
+    }
 
-public function withTemplate(string $template): static
-{
-    $cloned            = clone $this;
-    $cloned->responder = $this->responder->withTemplate($template);
+    public function withTemplate(string $template): static
+    {
+        $cloned            = clone $this;
+        $cloned->responder = $this->responder->withTemplate($template);
 
-    return $cloned;
-}
+        return $cloned;
+    }
 }
 ```
 
@@ -314,14 +314,14 @@ use Phalcon\Forms\Form;
 
 class SignUpForm extends Form
 {
-public function initialize(): void
-{
-    $this->add(new Text('name'));
-    $this->add(new Text('email'));
-    $this->add(new Password('password'));
-    $this->add(new Password('confirmPassword'));
-    // terms check + submit ...
-}
+    public function initialize(): void
+    {
+        $this->add(new Text('name'));
+        $this->add(new Text('email'));
+        $this->add(new Password('password'));
+        $this->add(new Password('confirmPassword'));
+        // terms check + submit ...
+    }
 }
 ```
 
@@ -332,29 +332,29 @@ public function initialize(): void
 ```php
 final class PostSessionSignup implements Action
 {
-public function __construct(
-    private SignUp $domain,
-    private AuthResponder $responder,
-    private Csrf $csrf
-) {
-}
-
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    $payload = Payload::invalid(
-        ['csrf' => 'The form has expired, please try again']
-    );
-
-    if (true === $this->csrf->check($request)) {
-        $payload = ($this->domain)(Input::fromRequest($request));
+    public function __construct(
+        private SignUp $domain,
+        private AuthResponder $responder,
+        private Csrf $csrf
+    ) {
     }
 
-    return ($this->responder->withTemplate('session/signup'))(
-        $request,
-        new Response(),
-        $payload
-    );
-}
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        $payload = Payload::invalid(
+            ['csrf' => 'The form has expired, please try again']
+        );
+
+        if (true === $this->csrf->check($request)) {
+            $payload = ($this->domain)(Input::fromRequest($request));
+        }
+
+        return ($this->responder->withTemplate('session/signup'))(
+            $request,
+            new Response(),
+            $payload
+        );
+    }
 }
 ```
 

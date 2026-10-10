@@ -23,27 +23,27 @@ use Phalcon\Filter\Validation\Validator\Uniqueness;
 
 class Customers extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'cst_email',
-        new Uniqueness(
-            [
-                'message' => 'The customer email must be unique',
-            ]
-        )
-    );
+        $validator->add(
+            'cst_email',
+            new Uniqueness(
+                [
+                    'message' => 'The customer email must be unique',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
 ## Data Integrity
 Data integrity is essential in every application. You can implement validators in your models to introduce another layer of validation so that you can ensure that data is stored in your database that enforce your business rules. 
-
+ 
 The special `validation` event allows us to call built-in validators on the record. Phalcon exposes additional built-in validators that can be used at this stage of validation. All validators available are under the [Phalcon\Validation][filter-validation] namespace.
 
 ```php
@@ -58,35 +58,35 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 class Invoices extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'inv_status_flag',
-        new InclusionIn(
-            [
-                'domain'  => [
-                    'Paid',
-                    'Unpaid',
-                ],
-                'message' => 'The invoice must be ' .
-                             'either paid or unpaid',
-            ]
-        )
-    );
+        $validator->add(
+            'inv_status_flag',
+            new InclusionIn(
+                [
+                    'domain'  => [
+                        'Paid',
+                        'Unpaid',
+                    ],
+                    'message' => 'The invoice must be ' .
+                                 'either paid or unpaid',
+                ]
+            )
+        );
 
-    $validator->add(
-        'inv_number',
-        new Uniqueness(
-            [
-                'message' => 'The invoice number must be unique',
-            ]
-        )
-    );
+        $validator->add(
+            'inv_number',
+            new Uniqueness(
+                [
+                    'message' => 'The invoice number must be unique',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -105,13 +105,13 @@ Each message is an instance of [Phalcon\Messages\Message][messages-message] and 
 <?php
 
 if (false === $invoice->save()) {
-$messages = $invoice->getMessages();
+    $messages = $invoice->getMessages();
 
-foreach ($messages as $message) {
-    echo 'Message: ', $message->getMessage();
-    echo 'Field: ', $message->getField();
-    echo 'Type: ', $message->getType();
-}
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage();
+        echo 'Field: ', $message->getField();
+        echo 'Type: ', $message->getType();
+    }
 }
 ```
 
@@ -136,32 +136,32 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function getMessages()
-{
-    $messages = [];
+    public function getMessages()
+    {
+        $messages = [];
 
-    foreach (parent::getMessages() as $message) {
-        switch ($message->getType()) {
-            case 'InvalidCreateAttempt':
-                $messages[] = 'The record cannot be created '
-                            . 'because it already exists';
-                break;
+        foreach (parent::getMessages() as $message) {
+            switch ($message->getType()) {
+                case 'InvalidCreateAttempt':
+                    $messages[] = 'The record cannot be created '
+                                . 'because it already exists';
+                    break;
 
-            case 'InvalidUpdateAttempt':
-                $messages[] = "The record cannot be updated '
-                            . 'because it doesn't exist";
-                break;
+                case 'InvalidUpdateAttempt':
+                    $messages[] = "The record cannot be updated '
+                                . 'because it doesn't exist";
+                    break;
 
-            case 'PresenceOf':
-                $messages[] = 'The field ' 
-                            . $message->getField() 
-                            . ' is mandatory';
-                break;
+                case 'PresenceOf':
+                    $messages[] = 'The field ' 
+                                . $message->getField() 
+                                . ' is mandatory';
+                    break;
+            }
         }
-    }
 
-    return $messages;
-}
+        return $messages;
+    }
 }
 ```
 
@@ -172,6 +172,7 @@ Additional events are available when the data validation process finds any incon
 |--------------------------|---------------------|------------------------------------------------------------------------|
 | Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
 | Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+
 
 ## Custom
 The [validation][filter-validation] document explains in detail how you can create your own validators. You can use such validators and reuse them among several models. A validator also can be as simple as:
@@ -186,22 +187,22 @@ use Phalcon\Mvc\Model\Message;
 
 class Invoices extends Model
 {
-public function validation()
-{
-    if ('Unpaid' === $this->inv_type_flag) {
-        $message = new Message(
-            'Unpaid invoices are not allowed',
-            'inv_type_flag',
-            'UnpaidInvoiceType'
-        );
+    public function validation()
+    {
+        if ('Unpaid' === $this->inv_type_flag) {
+            $message = new Message(
+                'Unpaid invoices are not allowed',
+                'inv_type_flag',
+                'UnpaidInvoiceType'
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 }
 ```
 

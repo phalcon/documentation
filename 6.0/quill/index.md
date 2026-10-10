@@ -23,7 +23,7 @@ Quill has three parts:
 
 ```
 ZephirReader  (phalcon/zephir)   ─┐                      ┌─> MarkdownFormatter (mkdocs pages)
-                              ├>  Model -> toArray() ┤
+                                  ├>  Model -> toArray() ┤
 PhpReader     (nikic/php-parser) ─┘   (object graph)     └─> JsonFormatter     (model document)
 ```
 
@@ -55,15 +55,15 @@ This is the configuration [cphalcon][cphalcon] uses to document its Zephir sourc
 <?php
 
 return [
-'language'   => 'zephir',
-'source'     => 'phalcon',
-'output'     => 'nikos/docs/api',
-'assets'     => 'nikos/docs/assets/css',
-'repository' => 'phalcon/cphalcon',
-'branch'     => '5.0.x',
-'prefix'     => 'phalcon',
-'extension'  => 'zep',
-'namespace'  => 'Phalcon',
+    'language'   => 'zephir',
+    'source'     => 'phalcon',
+    'output'     => 'nikos/docs/api',
+    'assets'     => 'nikos/docs/assets/css',
+    'repository' => 'phalcon/cphalcon',
+    'branch'     => '5.0.x',
+    'prefix'     => 'phalcon',
+    'extension'  => 'zep',
+    'namespace'  => 'Phalcon',
 ];
 ```
 
@@ -73,15 +73,15 @@ The same file for a PHP project changes the reader, the source tree and the exte
 <?php
 
 return [
-'language'   => 'php',
-'source'     => 'src',
-'output'     => 'nikos/docs/api',
-'assets'     => 'nikos/docs/assets/css',
-'repository' => 'phalcon/phalcon',
-'branch'     => 'v6.0.x',
-'prefix'     => 'src',
-'extension'  => 'php',
-'namespace'  => 'Phalcon',
+    'language'   => 'php',
+    'source'     => 'src',
+    'output'     => 'nikos/docs/api',
+    'assets'     => 'nikos/docs/assets/css',
+    'repository' => 'phalcon/phalcon',
+    'branch'     => 'v6.0.x',
+    'prefix'     => 'src',
+    'extension'  => 'php',
+    'namespace'  => 'Phalcon',
 ];
 ```
 

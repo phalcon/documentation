@@ -23,11 +23,11 @@ $url->setBaseUri("/portal/");
 echo $url->get("invoices/edit/1"); // /portal/invoices/edit/1 
 
 echo $url->get(
-[
-    "for"   => "invoices-edit", // route name
-    "title" => "Edit Invoice",  // title
-    "id"    => 1,               // route parameter
-]                             
+    [
+        "for"   => "invoices-edit", // route name
+        "title" => "Edit Invoice",  // title
+        "id"    => 1,               // route parameter
+    ]                             
 );
 ```
 
@@ -71,7 +71,7 @@ use Phalcon\Mvc\Url;
 $url = new Url();
 
 if ($environment === 'production') {
-$this->setStaticBaseUri('https://assets.phalcon.io/');
+    $this->setStaticBaseUri('https://assets.phalcon.io/');
 }
 
 echo $url->getStatic('img/logo.png'); // https://assets.phalcon.io/img/logo.png
@@ -93,9 +93,9 @@ use Phalcon\Mvc\Url;
 $url = new Url();
 
 echo $url->getStatic(
-[
-    'for' => 'logo-cdn',
-]
+    [
+        'for' => 'logo-cdn',
+    ]
 );
 ```
 
@@ -157,10 +157,10 @@ use Phalcon\Mvc\Controller
  */
 class InvoicesController extends Controller
 {
-public function initialize()
-{
-    $this->url->setBaseUri('/portal/');
-}
+    public function initialize()
+    {
+        $this->url->setBaseUri('/portal/');
+    }
 }
 ```
 
@@ -193,15 +193,15 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router
-->add(
-    '/portal/invoices/edit/{id}',
-    [
-        'module'     => 'portal',
-        'controller' => 'invoices',
-        'action'     => 'edit',
-    ]
-)
-->setName('invoices-edit');
+    ->add(
+        '/portal/invoices/edit/{id}',
+        [
+            'module'     => 'portal',
+            'controller' => 'invoices',
+            'action'     => 'edit',
+        ]
+    )
+    ->setName('invoices-edit');
 ```
 
 You can now generate a URL which is defined in the `invoice-edit` named route, by passing an array to `get()` and using `for` keyword as a key and the name of the route as a value.
@@ -214,10 +214,10 @@ use Phalcon\Mvc\Url;
 $url = new Url();
 
 echo $url->get(
-[
-    'for' => 'invoices-edit',
-    'id'  => 1,
-]
+    [
+        'for' => 'invoices-edit',
+        'id'  => 1,
+    ]
 );
 ```
 
@@ -233,13 +233,13 @@ use Phalcon\Mvc\Url;
 $url = new Url();
 
 echo $url->get(
-[
-    'for' => 'invoices-edit',
-    'id'  => 1,
-], [
-    'is_paymented' => 'true',
-    'some_key'     => 'some_value'
-]
+    [
+        'for' => 'invoices-edit',
+        'id'  => 1,
+    ], [
+        'is_paymented' => 'true',
+        'some_key'     => 'some_value'
+    ]
 );
 
 // /portal/invoices/edit/1?is_paymented=true&some_key=some_value
@@ -359,15 +359,15 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        // Get some configuration values
-        $this->url->get('/portal/invoices/list');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            // Get some configuration values
+            $this->url->get('/portal/invoices/list');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -389,15 +389,15 @@ use Phalcon\Mvc\Url;
 $container = new FactoryDefault();
 
 $container->set(
-'url',
-function () {
-    $url = new Url();
+    'url',
+    function () {
+        $url = new Url();
 
-    $url->setBaseUri('/portal/');
+        $url->setBaseUri('/portal/');
 
-    return $url;
-},
-true
+        return $url;
+    },
+    true
 );
 ```
 
@@ -414,10 +414,10 @@ use Phalcon\Mvc\Url;
  */
 class MyController extends Controller
 {
-private function getUrl(): string
-{
-    return $this->url->get('/portal/invoices/link');
-}
+    private function getUrl(): string
+    {
+        return $this->url->get('/portal/invoices/link');
+    }
 }
 ```
 

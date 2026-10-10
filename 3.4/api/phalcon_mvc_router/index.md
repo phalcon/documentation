@@ -26,11 +26,11 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-"/documentation/{chapter}/{name}\.{type:[a-z]+}",
-[
-    "controller" => "documentation",
-    "action"     => "show",
-]
+    "/documentation/{chapter}/{name}\.{type:[a-z]+}",
+    [
+        "controller" => "documentation",
+        "action"     => "show",
+    ]
 );
 
 $router->handle();
@@ -38,6 +38,7 @@ $router->handle();
 echo $router->getControllerName();
 
 ```
+
 
 ## Constants
 *integer* **URI_SOURCE_GET_URL**
@@ -53,25 +54,37 @@ public  **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\Mvc\Router constructor
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 Sets the dependency injector
+
+
 
 public  **getDI** ()
 
 Returns the internal dependency injector
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager)
 
 Sets the events manager
+
+
 
 public  **getEventsManager** ()
 
 Returns the internal event manager
 
+
+
 public  **getRewriteUri** ()
 
 Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
+
+
 
 public  **setUriSource** (*mixed* $uriSource)
 
@@ -81,30 +94,42 @@ Sets the URI source. One of the URI_SOURCE_* constants
 <?php
 
 $router->setUriSource(
-Router::URI_SOURCE_SERVER_REQUEST_URI
+    Router::URI_SOURCE_SERVER_REQUEST_URI
 );
 
 ```
+
+
 
 public  **removeExtraSlashes** (*mixed* $remove)
 
 Set whether router must remove the extra slashes in the handled routes
 
+
+
 public  **setDefaultNamespace** (*mixed* $namespaceName)
 
 Sets the name of the default namespace
+
+
 
 public  **setDefaultModule** (*mixed* $moduleName)
 
 Sets the name of the default module
 
+
+
 public  **setDefaultController** (*mixed* $controllerName)
 
 Sets the default controller name
 
+
+
 public  **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
+
+
 
 public  **setDefaults** (*array* $defaults)
 
@@ -115,17 +140,21 @@ This method must not be used to set a 404 route
 <?php
 
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 
 ```
 
+
+
 public  **getDefaults** ()
 
 Returns an array of default parameters
+
+
 
 public  **handle** ([*mixed* $uri])
 
@@ -142,6 +171,8 @@ $router->handle("/posts/edit/1");
 
 ```
 
+
+
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
 Adds a route to the router without any HTTP constraint
@@ -157,105 +188,158 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 ```
 
+
+
 public  **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is GET
+
+
 
 public  **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is POST
 
+
+
 public  **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PUT
+
+
 
 public  **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
+
+
 public  **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is DELETE
+
+
 
 public  **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
+
+
 public  **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is HEAD
+
+
 
 public  **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
+
+
 public  **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is TRACE
+
+
 
 public  **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is CONNECT
 
+
+
 public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/3.4/api/phalcon_mvc_router/) $group)
 
 Mounts a group of routes in the router
+
+
 
 public  **notFound** (*mixed* $paths)
 
 Set a group of paths to be returned when none of the defined routes are matched
 
+
+
 public  **clear** ()
 
 Removes all the pre-defined routes
+
+
 
 public  **getNamespaceName** ()
 
 Returns the processed namespace name
 
+
+
 public  **getModuleName** ()
 
 Returns the processed module name
+
+
 
 public  **getControllerName** ()
 
 Returns the processed controller name
 
+
+
 public  **getActionName** ()
 
 Returns the processed action name
+
+
 
 public  **getParams** ()
 
 Returns the processed parameters
 
+
+
 public  **getMatchedRoute** ()
 
 Returns the route that matches the handled URI
+
+
 
 public  **getMatches** ()
 
 Returns the sub expressions in the regular expression matched
 
+
+
 public  **wasMatched** ()
 
 Checks if the router matches any of the defined routes
+
+
 
 public  **getRoutes** ()
 
 Returns all the routes defined in the router
 
+
+
 public  **getRouteById** (*mixed* $id)
 
 Returns a route object by its id
+
+
 
 public  **getRouteByName** (*mixed* $name)
 
 Returns a route object by its name
 
+
+
 public  **isExactControllerName** ()
 
 Returns whether controller name should not be mangled
+
+
+
 
 <hr />
 
@@ -275,19 +359,20 @@ A router that reads routes annotations from classes/resources
 use Phalcon\Mvc\Router\Annotations;
 
 $di->setShared(
-"router",
-function() {
-    // Use the annotations router
-    $router = new Annotations(false);
+    "router",
+    function() {
+        // Use the annotations router
+        $router = new Annotations(false);
 
-    // This will do the same as above but only if the handled uri starts with /robots
-    $router->addResource("Robots", "/robots");
+        // This will do the same as above but only if the handled uri starts with /robots
+        $router->addResource("Robots", "/robots");
 
-    return $router;
-}
+        return $router;
+    }
 );
 
 ```
+
 
 ## Constants
 *integer* **URI_SOURCE_GET_URL**
@@ -304,59 +389,87 @@ public  **addResource** (*mixed* $handler, [*mixed* $prefix])
 Adds a resource to the annotations handler
 A resource is a class that contains routing annotations
 
+
+
 public  **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
 Adds a resource to the annotations handler
 A resource is a class that contains routing annotations
 The class is located in a module
 
+
+
 public  **handle** ([*mixed* $uri])
 
 Produce the routing parameters from the rewrite information
+
+
 
 public  **processControllerAnnotation** (*mixed* $handler, [Phalcon\Annotations\Annotation](/3.4/api/phalcon_annotations/) $annotation)
 
 Checks for annotations in the controller docblock
 
+
+
 public  **processActionAnnotation** (*mixed* $module, *mixed* $namespaceName, *mixed* $controller, *mixed* $action, [Phalcon\Annotations\Annotation](/3.4/api/phalcon_annotations/) $annotation)
 
 Checks for annotations in the public methods of the controller
+
+
 
 public  **setControllerSuffix** (*mixed* $controllerSuffix)
 
 Changes the controller class suffix
 
+
+
 public  **setActionSuffix** (*mixed* $actionSuffix)
 
 Changes the action method suffix
+
+
 
 public  **getResources** ()
 
 Return the registered resources
 
+
+
 public  **__construct** ([*mixed* $defaultRoutes]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Phalcon\Mvc\Router constructor
+
+
 
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Sets the dependency injector
 
+
+
 public  **getDI** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the internal dependency injector
+
+
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Sets the events manager
 
+
+
 public  **getEventsManager** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the internal event manager
 
+
+
 public  **getRewriteUri** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
+
+
 
 public  **setUriSource** (*mixed* $uriSource) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
@@ -366,30 +479,42 @@ Sets the URI source. One of the URI_SOURCE_* constants
 <?php
 
 $router->setUriSource(
-Router::URI_SOURCE_SERVER_REQUEST_URI
+    Router::URI_SOURCE_SERVER_REQUEST_URI
 );
 
 ```
+
+
 
 public  **removeExtraSlashes** (*mixed* $remove) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Set whether router must remove the extra slashes in the handled routes
 
+
+
 public  **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Sets the name of the default namespace
+
+
 
 public  **setDefaultModule** (*mixed* $moduleName) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Sets the name of the default module
 
+
+
 public  **setDefaultController** (*mixed* $controllerName) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Sets the default controller name
 
+
+
 public  **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Sets the default action name
+
+
 
 public  **setDefaults** (*array* $defaults) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
@@ -400,17 +525,21 @@ This method must not be used to set a 404 route
 <?php
 
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 
 ```
 
+
+
 public  **getDefaults** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns an array of default parameters
+
+
 
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
@@ -427,105 +556,158 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 ```
 
+
+
 public  **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is GET
+
+
 
 public  **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is POST
 
+
+
 public  **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is PUT
+
+
 
 public  **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
+
+
 public  **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is DELETE
+
+
 
 public  **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
+
+
 public  **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is HEAD
+
+
 
 public  **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
+
+
 public  **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is TRACE
+
+
 
 public  **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Adds a route to the router that only match if the HTTP method is CONNECT
 
+
+
 public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/3.4/api/phalcon_mvc_router/) $group) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Mounts a group of routes in the router
+
+
 
 public  **notFound** (*mixed* $paths) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Set a group of paths to be returned when none of the defined routes are matched
 
+
+
 public  **clear** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Removes all the pre-defined routes
+
+
 
 public  **getNamespaceName** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the processed namespace name
 
+
+
 public  **getModuleName** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the processed module name
+
+
 
 public  **getControllerName** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the processed controller name
 
+
+
 public  **getActionName** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the processed action name
+
+
 
 public  **getParams** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the processed parameters
 
+
+
 public  **getMatchedRoute** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the route that matches the handled URI
+
+
 
 public  **getMatches** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns the sub expressions in the regular expression matched
 
+
+
 public  **wasMatched** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Checks if the router matches any of the defined routes
+
+
 
 public  **getRoutes** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns all the routes defined in the router
 
+
+
 public  **getRouteById** (*mixed* $id) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns a route object by its id
+
+
 
 public  **getRouteByName** (*mixed* $name) inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns a route object by its name
 
+
+
 public  **isExactControllerName** () inherited from [Phalcon\Mvc\Router](/3.4/api/phalcon_mvc_router/)
 
 Returns whether controller name should not be mangled
+
+
+
 
 <hr />
 
@@ -542,45 +724,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -599,10 +803,10 @@ $router = new \Phalcon\Mvc\Router();
 
 //Create a group with a common module and controller
 $blog = new Group(
-[
-    "module"     => "blog",
-    "controller" => "index",
-]
+    [
+        "module"     => "blog",
+        "controller" => "index",
+    ]
 );
 
 //All the routes start with /blog
@@ -610,27 +814,27 @@ $blog->setPrefix("/blog");
 
 //Add a route to the group
 $blog->add(
-"/save",
-[
-    "action" => "save",
-]
+    "/save",
+    [
+        "action" => "save",
+    ]
 );
 
 //Add another route to the group
 $blog->add(
-"/edit/{id}",
-[
-    "action" => "edit",
-]
+    "/edit/{id}",
+    [
+        "action" => "edit",
+    ]
 );
 
 //This route maps to a controller different than the default
 $blog->add(
-"/blog",
-[
-    "controller" => "about",
-    "action"     => "index",
-]
+    "/blog",
+    [
+        "controller" => "about",
+        "action"     => "index",
+    ]
 );
 
 //Add the group to the router
@@ -638,26 +842,37 @@ $router->mount($blog);
 
 ```
 
+
 ## Methods
 public  **__construct** ([*mixed* $paths])
 
 Phalcon\Mvc\Router\Group constructor
 
+
+
 public  **setHostname** (*mixed* $hostname)
 
 Set a hostname restriction for all the routes in the group
+
+
 
 public  **getHostname** ()
 
 Returns the hostname restriction
 
+
+
 public  **setPrefix** (*mixed* $prefix)
 
 Set a common uri prefix for all the routes in this group
 
+
+
 public  **getPrefix** ()
 
 Returns the common prefix for all the routes
+
+
 
 public  **beforeMatch** (*mixed* $beforeMatch)
 
@@ -665,21 +880,31 @@ Sets a callback that is called if the route is matched.
 The developer can implement any arbitrary conditions here
 If the callback returns false the route is treated as not matched
 
+
+
 public  **getBeforeMatch** ()
 
 Returns the 'before match' callback if any
+
+
 
 public  **setPaths** (*mixed* $paths)
 
 Set common paths for all the routes in the group
 
+
+
 public  **getPaths** ()
 
 Returns the common paths defined for this group
 
+
+
 public  **getRoutes** ()
 
 Returns the routes added to the group
+
+
 
 public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
@@ -692,41 +917,62 @@ $router->add("/about", "About::index");
 
 ```
 
+
+
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addGet** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is GET
+
+
 
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addPost** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is POST
 
+
+
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addPut** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PUT
+
+
 
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addPatch** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is PATCH
 
+
+
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addDelete** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is DELETE
+
+
 
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addOptions** (*string* $pattern, [*string/array* $paths])
 
 Add a route to the router that only match if the HTTP method is OPTIONS
 
+
+
 public [Phalcon\Mvc\Router\Route](/3.4/api/phalcon_mvc_router/) **addHead** (*string* $pattern, [*string/array* $paths])
 
 Adds a route to the router that only match if the HTTP method is HEAD
+
+
 
 public  **clear** ()
 
 Removes all the pre-defined routes
 
+
+
 protected  **_addRoute** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 Adds a route applying the common attributes
+
+
+
 
 <hr />
 
@@ -739,73 +985,92 @@ abstract public  **setHostname** (*mixed* $hostname)
 
 ...
 
+
 abstract public  **getHostname** ()
 
 ...
+
 
 abstract public  **setPrefix** (*mixed* $prefix)
 
 ...
 
+
 abstract public  **getPrefix** ()
 
 ...
+
 
 abstract public  **beforeMatch** (*mixed* $beforeMatch)
 
 ...
 
+
 abstract public  **getBeforeMatch** ()
 
 ...
+
 
 abstract public  **setPaths** (*mixed* $paths)
 
 ...
 
+
 abstract public  **getPaths** ()
 
 ...
+
 
 abstract public  **getRoutes** ()
 
 ...
 
+
 abstract public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 ...
+
 
 abstract public  **addGet** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addPost** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addPut** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addPatch** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addDelete** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addOptions** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addHead** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **clear** ()
 
 ...
+
+
 
 <hr />
 
@@ -817,14 +1082,19 @@ abstract public  **clear** ()
 
 This class represents every route added to the router
 
+
 ## Methods
 public  **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 Phalcon\Mvc\Router\Route constructor
 
+
+
 public  **compilePattern** (*mixed* $pattern)
 
 Replaces placeholders from pattern returning a valid PCRE regular expression
+
+
 
 public  **via** (*mixed* $httpMethods)
 
@@ -836,29 +1106,39 @@ Set one or more HTTP methods that constraint the matching of the route
 $route->via("GET");
 
 $route->via(
-[
-    "GET",
-    "POST",
-]
+    [
+        "GET",
+        "POST",
+    ]
 );
 
 ```
+
+
 
 public  **extractNamedParams** (*mixed* $pattern)
 
 Extracts parameters from a string
 
+
+
 public  **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
+
+
 
 public static  **getRoutePaths** ([*mixed* $paths])
 
 Returns routePaths
 
+
+
 public  **getName** ()
 
 Returns the route's name
+
+
 
 public  **setName** (*mixed* $name)
 
@@ -868,13 +1148,15 @@ Sets the route's name
 <?php
 
 $router->add(
-"/about",
-[
-    "controller" => "about",
-]
+    "/about",
+    [
+        "controller" => "about",
+    ]
 )->setName("about");
 
 ```
+
+
 
 public  **beforeMatch** (*mixed* $callback)
 
@@ -886,27 +1168,31 @@ If the callback returns false the route is treated as not matched
 <?php
 
 $router->add(
-"/login",
-[
-    "module"     => "admin",
-    "controller" => "session",
-]
+    "/login",
+    [
+        "module"     => "admin",
+        "controller" => "session",
+    ]
 )->beforeMatch(
-function ($uri, $route) {
-    // Check if the request was made with Ajax
-    if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
-        return false;
-    }
+    function ($uri, $route) {
+        // Check if the request was made with Ajax
+        if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
+            return false;
+        }
 
-    return true;
-}
+        return true;
+    }
 );
 
 ```
 
+
+
 public  **getBeforeMatch** ()
 
 Returns the 'before match' callback if any
+
+
 
 public  **match** (*mixed* $callback)
 
@@ -916,39 +1202,53 @@ Allows to set a callback to handle the request directly in the route
 <?php
 
 $router->add(
-"/help",
-[]
+    "/help",
+    []
 )->match(
-function () {
-    return $this->getResponse()->redirect("https://support.google.com/", true);
-}
+    function () {
+        return $this->getResponse()->redirect("https://support.google.com/", true);
+    }
 );
 
 ```
+
+
 
 public  **getMatch** ()
 
 Returns the 'match' callback if any
 
+
+
 public  **getRouteId** ()
 
 Returns the route's id
+
+
 
 public  **getPattern** ()
 
 Returns the route's pattern
 
+
+
 public  **getCompiledPattern** ()
 
 Returns the route's compiled pattern
+
+
 
 public  **getPaths** ()
 
 Returns the paths
 
+
+
 public  **getReversedPaths** ()
 
 Returns the paths using positions as keys and names as values
+
+
 
 public  **setHttpMethods** (*mixed* $httpMethods)
 
@@ -962,9 +1262,13 @@ $route->setHttpMethods(["GET", "POST"]);
 
 ```
 
+
+
 public  **getHttpMethods** ()
 
 Returns the HTTP methods that constraint matching the route
+
+
 
 public  **setHostname** (*mixed* $hostname)
 
@@ -977,29 +1281,44 @@ $route->setHostname("localhost");
 
 ```
 
+
+
 public  **getHostname** ()
 
 Returns the hostname restriction if any
+
+
 
 public  **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/3.4/api/phalcon_mvc_router/) $group)
 
 Sets the group associated with the route
 
+
+
 public  **getGroup** ()
 
 Returns the group associated with the route
+
+
 
 public  **convert** (*mixed* $name, *mixed* $converter)
 
 Adds a converter to perform an additional transformation for certain parameter
 
+
+
 public  **getConverters** ()
 
 Returns the router converter
 
+
+
 public static  **reset** ()
 
 Resets the internal route id generator
+
+
+
 
 <hr />
 
@@ -1012,61 +1331,77 @@ abstract public  **setHostname** (*mixed* $hostname)
 
 ...
 
+
 abstract public  **getHostname** ()
 
 ...
+
 
 abstract public  **compilePattern** (*mixed* $pattern)
 
 ...
 
+
 abstract public  **via** (*mixed* $httpMethods)
 
 ...
+
 
 abstract public  **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **getName** ()
 
 ...
+
 
 abstract public  **setName** (*mixed* $name)
 
 ...
 
+
 abstract public  **setHttpMethods** (*mixed* $httpMethods)
 
 ...
+
 
 abstract public  **getRouteId** ()
 
 ...
 
+
 abstract public  **getPattern** ()
 
 ...
+
 
 abstract public  **getCompiledPattern** ()
 
 ...
 
+
 abstract public  **getPaths** ()
 
 ...
+
 
 abstract public  **getReversedPaths** ()
 
 ...
 
+
 abstract public  **getHttpMethods** ()
 
 ...
 
+
 abstract public static  **reset** ()
 
 ...
+
+
 
 <hr />
 
@@ -1079,113 +1414,141 @@ abstract public  **setDefaultModule** (*mixed* $moduleName)
 
 ...
 
+
 abstract public  **setDefaultController** (*mixed* $controllerName)
 
 ...
+
 
 abstract public  **setDefaultAction** (*mixed* $actionName)
 
 ...
 
+
 abstract public  **setDefaults** (*array* $defaults)
 
 ...
+
 
 abstract public  **handle** ([*mixed* $uri])
 
 ...
 
+
 abstract public  **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 ...
+
 
 abstract public  **addGet** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addPost** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addPut** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addPatch** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addDelete** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addOptions** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addHead** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addPurge** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **addTrace** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
+
 abstract public  **addConnect** (*mixed* $pattern, [*mixed* $paths])
 
 ...
+
 
 abstract public  **mount** ([Phalcon\Mvc\Router\GroupInterface](/3.4/api/phalcon_mvc_router/) $group)
 
 ...
 
+
 abstract public  **clear** ()
 
 ...
+
 
 abstract public  **getModuleName** ()
 
 ...
 
+
 abstract public  **getNamespaceName** ()
 
 ...
+
 
 abstract public  **getControllerName** ()
 
 ...
 
+
 abstract public  **getActionName** ()
 
 ...
+
 
 abstract public  **getParams** ()
 
 ...
 
+
 abstract public  **getMatchedRoute** ()
 
 ...
+
 
 abstract public  **getMatches** ()
 
 ...
 
+
 abstract public  **wasMatched** ()
 
 ...
+
 
 abstract public  **getRoutes** ()
 
 ...
 
+
 abstract public  **getRouteById** (*mixed* $id)
 
 ...
+
 
 abstract public  **getRouteByName** (*mixed* $name)
 

@@ -24,12 +24,12 @@ version: "5.7"
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -44,12 +44,12 @@ You can construct the object as any other object in PHP. However, the constructo
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -64,12 +64,12 @@ When instantiating the object you can specify a second `bool` parameter, which w
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data, false);
@@ -86,12 +86,12 @@ You can also reuse the component, by repopulating it. `Phalcon\Support\Collectio
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -99,7 +99,7 @@ $collection = new Collection($data);
 echo $collection->count(); // 2
 
 $data = [
-'year' => 1987,
+    'year' => 1987,
 ];
 
 $collection->clear();
@@ -124,12 +124,12 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -148,9 +148,9 @@ echo $collection->get('year', 1987, true); // 1987
 
 ```php
 public function get(
-string $element, 
-mixed $defaultValue = null, 
-string $cast = null
+    string $element, 
+    mixed $defaultValue = null, 
+    string $cast = null
 ):  mixed
 ```
 
@@ -190,12 +190,12 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -232,11 +232,11 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
 ];
 
 $collection = new Collection($data);
@@ -269,11 +269,11 @@ The fastest way is by using the property syntax:
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
 ];
 
 $collection = new Collection($data);
@@ -311,7 +311,7 @@ $data = [
 $collection = new Collection($data);
 
 foreach ($collection as $key => $value) {
-echo $key . ' - ' . $value . PHP_EOL;
+    echo $key . ' - ' . $value . PHP_EOL;
 }
 ```
 
@@ -324,12 +324,12 @@ The implementation of the `\Countable` interface exposes the `count()` method, w
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -346,12 +346,12 @@ The `\Serializable` and `\JsonSerializable` interfaces expose methods that allow
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -361,7 +361,7 @@ echo $collection->serialize();
 //  i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}
 
 $serialized = 'a:2:{s:6:"colors";a:3:{i:0;s:3:"red";'
-. 'i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}';
+    . 'i:1;s:5:"green";i:2;s:4:"blue";}s:4:"year";i:1987;}';
 $collection->unserialize($serialized);
 
 echo $collection->jsonSerialize(); // $data
@@ -370,18 +370,19 @@ echo $collection->jsonSerialize(); // $data
 ## Transformations
 `Phalcon\Support\Collection` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
+
 ```php
 <?php
 
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -405,12 +406,12 @@ You can pass any valid flags to the method according to your needs.
 use Phalcon\Support\Collection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new Collection($data);
@@ -420,12 +421,12 @@ echo $collection->toJson();    // ["red","green","blue"],"year":1987}
 echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 /**
 {
-"colors": [
-    "red",
-    "green",
-    "blue"
-],
-"year": 1987
+    "colors": [
+        "red",
+        "green",
+        "blue"
+    ],
+    "year": 1987
 }
 */
 ```
@@ -443,12 +444,12 @@ This class has been renamed from `ReadOnly` in order to avoid collisions with PH
 use Phalcon\Support\Collection\ReadOnlyCollection;
 
 $data = [
-'colors' => [
-    'red',
-    'green',
-    'blue',
-],
-'year'   => 1987,
+    'colors' => [
+        'red',
+        'green',
+        'blue',
+    ],
+    'year'   => 1987,
 ];
 
 $collection = new ReadOnly($data);
@@ -470,40 +471,41 @@ use Phalcon\Support\Collection\CollectionInterface
 
 class MyCollection implements CollectionInterface
 {
-public function __get(string $element): mixed;
+    public function __get(string $element): mixed;
 
-public function __isset(string $element): bool;
+    public function __isset(string $element): bool;
 
-public function __set(string $element, mixed $value): void;
+    public function __set(string $element, mixed $value): void;
 
-public function __unset(string $element): void;
+    public function __unset(string $element): void;
 
-public function clear(): void;
+    public function clear(): void;
 
-public function get(
-    string $element, 
-    mixed $defaultValue = null, 
-    string $cast = null
-): mixed;
+    public function get(
+        string $element, 
+        mixed $defaultValue = null, 
+        string $cast = null
+    ): mixed;
 
-public function getKeys(bool $insensitive = true): array;
+    public function getKeys(bool $insensitive = true): array;
 
-public function getValues(): array;
+    public function getValues(): array;
 
-public function has(string $element): bool;
+    public function has(string $element): bool;
 
-public function init(array $data = []): void;
+    public function init(array $data = []): void;
 
-public function remove(string $element): void;
+    public function remove(string $element): void;
 
-public function set(string $element, var $value): void;
+    public function set(string $element, var $value): void;
 
-public function toArray(): array;
+    public function toArray(): array;
 
-public function toJson(int $options = 79): string;
+    public function toJson(int $options = 79): string;
 }
 
 ```
+
 
 [support-collection-collectioninterface]: /5.7/api/phalcon_support/#supportcollectioncollectioninterface--
 

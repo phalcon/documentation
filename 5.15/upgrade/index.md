@@ -174,8 +174,8 @@ functionality remains the same as in previous versions.
 
 ```php
 public function __construct(
-Phalcon\Html\TagFactory $tagFactory, 
-array $options = []
+    Phalcon\Html\TagFactory $tagFactory, 
+    array $options = []
 )
 ```
 
@@ -183,12 +183,12 @@ array $options = []
 
 ```php
 public function addCss(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): Manager
 ```
 
@@ -196,9 +196,9 @@ bool $autoVersion = false
 
 ```php 
 public function addInlineCss(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): Manager 
 ```
 
@@ -206,12 +206,12 @@ array $attributes = []
 
 ```php
 public function addJs(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): Manager
 ```
 
@@ -219,9 +219,9 @@ bool $autoVersion = false
 
 ```php 
 public function addInlineJs(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): Manager 
 ```
 
@@ -252,9 +252,9 @@ use Adapter\Another;
 $loader = new Loader(true);
 
 $loader
-->addNamespace('Base', './Namespaces/Base/')
-->addNamespace('Adapter', './Namespaces/Adapter/')
-->addNamespace('Namespaces', './Namespaces/')
+    ->addNamespace('Base', './Namespaces/Base/')
+    ->addNamespace('Adapter', './Namespaces/Adapter/')
+    ->addNamespace('Namespaces', './Namespaces/')
 ;
 
 $loader->autoload(Another::class);
@@ -1396,6 +1396,7 @@ If you wish to keep your Volt code the way it is, without changing method signat
 `form()` calls to `formLegacy()`. `formLegacy()` will use the `Phalcon\Tag` component as before. However, if you wish to
 use the new `Phalcon\Html\TagFactory` component, you can keep the method call as is (i.e. `form()` but you will need to
 change the signature of the helper method. [more...][volt-tag-helpers]
+
 
 [php-support]: https://www.php.net/supported-versions.php
 

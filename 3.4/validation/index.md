@@ -23,42 +23,43 @@ use Phalcon\Validation\Validator\PresenceOf;
 $validation = new Validation();
 
 $validation->add(
-'name',
-new PresenceOf(
-    [
-        'message' => 'The name is required',
-    ]
-)
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'The name is required',
+        ]
+    )
 );
 
 $validation->add(
-'email',
-new PresenceOf(
-    [
-        'message' => 'The e-mail is required',
-    ]
-)
+    'email',
+    new PresenceOf(
+        [
+            'message' => 'The e-mail is required',
+        ]
+    )
 );
 
 $validation->add(
-'email',
-new Email(
-    [
-        'message' => 'The e-mail is not valid',
-    ]
-)
+    'email',
+    new Email(
+        [
+            'message' => 'The e-mail is not valid',
+        ]
+    )
 );
 
 $messages = $validation->validate($_POST);
 
 if (count($messages)) {
-foreach ($messages as $message) {
-    echo $message, '<br>';
-}
+    foreach ($messages as $message) {
+        echo $message, '<br>';
+    }
 }
 ```
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
+
 
 ## Initializing Validation
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](/3.4/api/phalcon_validation/) object. You can put your validations in a separate file for better re-use code and organization:
@@ -72,35 +73,35 @@ use Phalcon\Validation\Validator\PresenceOf;
 
 class MyValidation extends Validation
 {
-public function initialize()
-{
-    $this->add(
-        'name',
-        new PresenceOf(
-            [
-                'message' => 'The name is required',
-            ]
-        )
-    );
+    public function initialize()
+    {
+        $this->add(
+            'name',
+            new PresenceOf(
+                [
+                    'message' => 'The name is required',
+                ]
+            )
+        );
 
-    $this->add(
-        'email',
-        new PresenceOf(
-            [
-                'message' => 'The e-mail is required',
-            ]
-        )
-    );
+        $this->add(
+            'email',
+            new PresenceOf(
+                [
+                    'message' => 'The e-mail is required',
+                ]
+            )
+        );
 
-    $this->add(
-        'email',
-        new Email(
-            [
-                'message' => 'The e-mail is not valid',
-            ]
-        )
-    );
-}
+        $this->add(
+            'email',
+            new Email(
+                [
+                    'message' => 'The e-mail is not valid',
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -114,11 +115,12 @@ $validation = new MyValidation();
 $messages = $validation->validate($_POST);
 
 if (count($messages)) {
-foreach ($messages as $message) {
-    echo $message, '<br>';
-}
+    foreach ($messages as $message) {
+        echo $message, '<br>';
+    }
 }
 ```
+
 
 ## Validators
 Phalcon exposes a set of built-in validators for this component:
@@ -156,37 +158,38 @@ use Phalcon\Validation\Validator;
 
 class IpValidator extends Validator
 {
-/**
- * Executes the validation
- *
- * @param Validation $validator
- * @param string     $attribute
- * @return boolean
- */
-public function validate(Validation $validator, $attribute)
-{
-    $value = $validator->getValue($attribute);
+    /**
+     * Executes the validation
+     *
+     * @param Validation $validator
+     * @param string     $attribute
+     * @return boolean
+     */
+    public function validate(Validation $validator, $attribute)
+    {
+        $value = $validator->getValue($attribute);
 
-    if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
-        $message = $this->getOption('message');
+        if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            $message = $this->getOption('message');
 
-        if (!$message) {
-            $message = 'The IP is not valid';
+            if (!$message) {
+                $message = 'The IP is not valid';
+            }
+
+            $validator->appendMessage(
+                new Message($message, $attribute, 'Ip')
+            );
+
+            return false;
         }
 
-        $validator->appendMessage(
-            new Message($message, $attribute, 'Ip')
-        );
-
-        return false;
+        return true;
     }
-
-    return true;
-}
 }
 ```
 
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
+
 
 ## Callback Validator
 By using [Phalcon\Validation\Validator\Callback](/3.4/api/phalcon_validation/) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
@@ -200,54 +203,55 @@ use \Phalcon\Validation\Validator\PresenceOf;
 
 $validation = new Validation();
 $validation->add(
-'amount',
-new Callback(
-    [
-        'callback' => function($data) {
-            return $data['amount'] % 2 == 0;
-        },
-        'message'  => 'Only even number of products are accepted'
-    ]
-)
+    'amount',
+    new Callback(
+        [
+            'callback' => function($data) {
+                return $data['amount'] % 2 == 0;
+            },
+            'message'  => 'Only even number of products are accepted'
+        ]
+    )
 );
 $validation->add(
-'amount',
-new Callback(
-    [
-        'callback' => function($data) {
-            if($data['amount'] % 2 == 0) {
-                return $data['amount'] != 2;
-            }
+    'amount',
+    new Callback(
+        [
+            'callback' => function($data) {
+                if($data['amount'] % 2 == 0) {
+                    return $data['amount'] != 2;
+                }
 
-            return true;
-        },
-        'message' => "You can't buy 2 products"
-    ]
-)
+                return true;
+            },
+            'message' => "You can't buy 2 products"
+        ]
+    )
 );
 $validation->add(
-'description',
-new Callback(
-    [
-        'callback' => function($data) {
-            if($data['amount'] >= 10) {
-                return new PresenceOf(
-                    [
-                        'message' => 'You must write why you need so big amount.'
-                    ]
-                );
-            }
+    'description',
+    new Callback(
+        [
+            'callback' => function($data) {
+                if($data['amount'] >= 10) {
+                    return new PresenceOf(
+                        [
+                            'message' => 'You must write why you need so big amount.'
+                        ]
+                    );
+                }
 
-            return true;
-        }
-    ]
-)
+                return true;
+            }
+        ]
+    )
 );
 
 $messages = $validation->validate(['amount' => 1]);  // will return message from first validator
 $messages = $validation->validate(['amount' => 2]);  // will return message from second validator
 $messages = $validation->validate(['amount' => 10]); // will return message from validator returned by third validator
 ```
+
 
 ## Validation Messages
 [Phalcon\Validation](/3.4/api/phalcon_validation/) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
@@ -260,11 +264,11 @@ Each message consists of an instance of the class [Phalcon\Validation\Message](/
 $messages = $validation->validate();
 
 if (count($messages)) {
-foreach ($messages as $message) {
-    echo 'Message: ', $message->getMessage(), "\n";
-    echo 'Field: ', $message->getField(), "\n";
-    echo 'Type: ', $message->getType(), "\n";
-}
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage(), "\n";
+        echo 'Field: ', $message->getField(), "\n";
+        echo 'Type: ', $message->getType(), "\n";
+    }
 }
 ```
 
@@ -276,12 +280,12 @@ You can pass a `message` parameter to change/translate the default message in ea
 use Phalcon\Validation\Validator\Email;
 
 $validation->add(
-'email',
-new Email(
-    [
-        'message' => 'The e-mail is not valid',
-    ]
-)
+    'email',
+    new Email(
+        [
+            'message' => 'The e-mail is not valid',
+        ]
+    )
 );
 ```
 
@@ -293,14 +297,15 @@ By default, the `getMessages()` method returns all the messages generated during
 $messages = $validation->validate();
 
 if (count($messages)) {
-// Filter only the messages generated for the field 'name'
-$filteredMessages = $messages->filter('name');
+    // Filter only the messages generated for the field 'name'
+    $filteredMessages = $messages->filter('name');
 
-foreach ($filteredMessages as $message) {
-    echo $message;
-}
+    foreach ($filteredMessages as $message) {
+        echo $message;
+    }
 }
 ```
+
 
 ## Filtering of Data
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
@@ -313,21 +318,21 @@ use Phalcon\Validation;
 $validation = new Validation();
 
 $validation->add(
-'name',
-new PresenceOf(
-    [
-        'message' => 'The name is required',
-    ]
-)
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'The name is required',
+        ]
+    )
 );
 
 $validation->add(
-'email',
-new PresenceOf(
-    [
-        'message' => 'The email is required',
-    ]
-)
+    'email',
+    new PresenceOf(
+        [
+            'message' => 'The email is required',
+        ]
+    )
 );
 
 // Filter any extra space
@@ -336,6 +341,7 @@ $validation->setFilters('email', 'trim');
 ```
 
 Filtering and sanitizing is performed using the [filter](/3.4/filter/) component. You can add more filters to this component or use the built-in ones.
+
 
 ## Validation Events
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
@@ -347,45 +353,46 @@ use Phalcon\Validation;
 
 class LoginValidation extends Validation
 {
-public function initialize()
-{
-    // ...
-}
-
-/**
- * Executed before validation
- *
- * @param array $data
- * @param object $entity
- * @param Phalcon\Validation\Message\Group $messages
- * @return bool
- */
-public function beforeValidation($data, $entity, $messages)
-{
-    if ($this->request->getHttpHost() !== 'admin.mydomain.com') {
-        $messages->appendMessage(
-            new Message('Only users can log on in the administration domain')
-        );
-
-        return false;
+    public function initialize()
+    {
+        // ...
     }
 
-    return true;
-}
+    /**
+     * Executed before validation
+     *
+     * @param array $data
+     * @param object $entity
+     * @param Phalcon\Validation\Message\Group $messages
+     * @return bool
+     */
+    public function beforeValidation($data, $entity, $messages)
+    {
+        if ($this->request->getHttpHost() !== 'admin.mydomain.com') {
+            $messages->appendMessage(
+                new Message('Only users can log on in the administration domain')
+            );
 
-/**
- * Executed after validation
- *
- * @param array $data
- * @param object $entity
- * @param Phalcon\Validation\Message\Group $messages
- */
-public function afterValidation($data, $entity, $messages)
-{
-    // ... Add additional messages or perform more validations
-}
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Executed after validation
+     *
+     * @param array $data
+     * @param object $entity
+     * @param Phalcon\Validation\Message\Group $messages
+     */
+    public function afterValidation($data, $entity, $messages)
+    {
+        // ... Add additional messages or perform more validations
+    }
 }
 ```
+
 
 ## Cancelling Validations
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
@@ -400,33 +407,33 @@ use Phalcon\Validation\Validator\PresenceOf;
 $validation = new Validation();
 
 $validation->add(
-'telephone',
-new PresenceOf(
-    [
-        'message'      => 'The telephone is required',
-        'cancelOnFail' => true,
-    ]
-)
+    'telephone',
+    new PresenceOf(
+        [
+            'message'      => 'The telephone is required',
+            'cancelOnFail' => true,
+        ]
+    )
 );
 
 $validation->add(
-'telephone',
-new Regex(
-    [
-        'message' => 'The telephone is required',
-        'pattern' => '/\+44 [0-9]+/',
-    ]
-)
+    'telephone',
+    new Regex(
+        [
+            'message' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/',
+        ]
+    )
 );
 
 $validation->add(
-'telephone',
-new StringLength(
-    [
-        'messageMinimum' => 'The telephone is too short',
-        'min'            => 2,
-    ]
-)
+    'telephone',
+    new StringLength(
+        [
+            'messageMinimum' => 'The telephone is too short',
+            'min'            => 2,
+        ]
+    )
 );
 ```
 
@@ -443,24 +450,25 @@ use Phalcon\Validation\Validator;
 
 class MyValidator extends Validator
 {
-/**
- * Executes the validation
- *
- * @param Phalcon\Validation $validator
- * @param string $attribute
- * @return boolean
- */
-public function validate(Validation $validator, $attribute)
-{
-    // If the attribute value is name we must stop the chain
-    if ($attribute === 'name') {
-        $validator->setOption('cancelOnFail', true);
-    }
+    /**
+     * Executes the validation
+     *
+     * @param Phalcon\Validation $validator
+     * @param string $attribute
+     * @return boolean
+     */
+    public function validate(Validation $validator, $attribute)
+    {
+        // If the attribute value is name we must stop the chain
+        if ($attribute === 'name') {
+            $validator->setOption('cancelOnFail', true);
+        }
 
-    // ...
-}
+        // ...
+    }
 }
 ```
+
 
 ## Avoid validating empty values
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
@@ -474,16 +482,17 @@ use Phalcon\Validation\Validator\Regex;
 $validation = new Validation();
 
 $validation->add(
-'telephone',
-new Regex(
-    [
-        'message'    => 'The telephone is required',
-        'pattern'    => '/\+44 [0-9]+/',
-        'allowEmpty' => true,
-    ]
-)
+    'telephone',
+    new Regex(
+        [
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+44 [0-9]+/',
+            'allowEmpty' => true,
+        ]
+    )
 );
 ```
+
 
 ## Recursive Validation
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
@@ -495,26 +504,26 @@ use Phalcon\Validation;
 
 class CompanyValidation extends Validation
 {
-/**
- * @var PhoneValidation
- */
-protected $phoneValidation;
+    /**
+     * @var PhoneValidation
+     */
+    protected $phoneValidation;
 
-public function initialize()
-{
-    $this->phoneValidation = new PhoneValidation();
-}
+    public function initialize()
+    {
+        $this->phoneValidation = new PhoneValidation();
+    }
 
-public function afterValidation($data, $entity, $messages)
-{
-    $phoneValidationMessages = $this->phoneValidation->validate(
-        $data['phone']
-    );
+    public function afterValidation($data, $entity, $messages)
+    {
+        $phoneValidationMessages = $this->phoneValidation->validate(
+            $data['phone']
+        );
 
-    $messages->appendMessages(
-        $phoneValidationMessages
-    );
-}
+        $messages->appendMessages(
+            $phoneValidationMessages
+        );
+    }
 }
 ```
 

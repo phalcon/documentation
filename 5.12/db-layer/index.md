@@ -23,6 +23,7 @@ This component makes use of adapters to encapsulate specific database system det
 | [Phalcon\Db\Adapter\Pdo\Postgresql][db-adapter-pdo-postgresql] | PostgreSQL is a powerful, open-source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
 | [Phalcon\Db\Adapter\Pdo\Sqlite][db-adapter-pdo-sqlite]         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
 
+
 ### Constants
 The [Phalcon\Db\Enum][db-enum] class exposes several constants that can be used on the DB layer.
 - `FETCH_ASSOC`      = `\Pdo::FETCH_ASSOC`
@@ -99,36 +100,36 @@ Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not
 
 ```php
 public function addColumn(
-string $tableName, 
-string $schemaName, 
-ColumnInterface $column
+    string $tableName, 
+    string $schemaName, 
+    ColumnInterface $column
 ): bool
 ```
 Adds a column to a table
 
 ```php
 public function addIndex(
-string $tableName, 
-string $schemaName,
-IndexInterface $index
+    string $tableName, 
+    string $schemaName,
+    IndexInterface $index
 ): bool
 ```
 Adds an index to a table
 
 ```php
 public function addForeignKey(
-string $tableName, 
-string $schemaName, 
-ReferenceInterface $reference
+    string $tableName, 
+    string $schemaName, 
+    ReferenceInterface $reference
 ): bool
 ```
 Adds a foreign key to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName, 
-string $schemaName, 
-IndexInterface $index
+    string $tableName, 
+    string $schemaName, 
+    IndexInterface $index
 ): bool
 ```
 Adds a primary key to a table
@@ -140,7 +141,7 @@ Returns the number of affected rows by the last `INSERT`/`UPDATE`/`DELETE` repor
 
 ```php
 public function begin(
-bool $nesting = true
+    bool $nesting = true
 ): bool
 ```
 Starts a transaction in the connection
@@ -152,133 +153,133 @@ Closes active connection returning success. Phalcon automatically closes and des
 
 ```php
 public function commit(
-bool $nesting = true
+    bool $nesting = true
 ): bool
 ```
 Commits the active transaction in the connection
 
 ```php
 public function connect(
-array $descriptor = []
+    array $descriptor = []
 ): void
 ```
 This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo][db-adapter-pdo-abstractpdo] constructor. Call it when you need to restore a database connection
 
 ```php
 public function createSavepoint(
-string $name
+    string $name
 ): bool
 ```
 Creates a new savepoint
 
 ```php
 public function createTable(
-string $tableName, 
-string $schemaName, 
-array $definition
+    string $tableName, 
+    string $schemaName, 
+    array $definition
 ): bool
 ```
 Creates a table
 
 ```php
 public function createView(
-string $viewName, 
-array $definition, 
-string $schemaName = null
+    string $viewName, 
+    array $definition, 
+    string $schemaName = null
 ): bool
 ```
 Creates a view
 
 ```php
 public function delete(
-mixed $table, 
-string $whereCondition = null, 
-array $placeholders = [], 
-array $dataTypes = []
+    mixed $table, 
+    string $whereCondition = null, 
+    array $placeholders = [], 
+    array $dataTypes = []
 ): bool
 ```
 Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
 public function describeColumns(
-string $table, 
-string $schema = null
+    string $table, 
+    string $schema = null
 ): ColumnInterface[]
 ```
 Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 public function describeIndexes(
-string $table, 
-    string $schema = null
+    string $table, 
+        string $schema = null
 ): IndexInterface[]
 ```
 Lists table indexes
 
 ```php
 public function describeReferences(
-string $table, 
-string $schema = null
+    string $table, 
+    string $schema = null
 ): ReferenceInterface[]
 ```
 Lists table references
 
 ```php
 public function dropColumn(
-string $tableName, 
-string $schemaName, 
-string $columnName
+    string $tableName, 
+    string $schemaName, 
+    string $columnName
 ): bool
 ```
 Drops a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName, 
-string $schemaName, 
-string $referenceName
+    string $tableName, 
+    string $schemaName, 
+    string $referenceName
 ): bool
 ```
 Drops a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName, 
-string $schemaName, 
-string $indexName
+    string $tableName, 
+    string $schemaName, 
+    string $indexName
 ): bool
 ```
 Drop an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName, 
-string $schemaName
+    string $tableName, 
+    string $schemaName
 ): bool
 ```
 Drops primary key from a table
 
 ```php
 public function dropTable(
-string $tableName, 
-string $schemaName = null, 
-bool $ifExists = true
+    string $tableName, 
+    string $schemaName = null, 
+    bool $ifExists = true
 ): bool
 ```
 Drops a table from a schema/database
 
 ```php
 public function dropView(
-string $viewName, 
-string $schemaName = null, 
-bool $ifExists = true
+    string $viewName, 
+    string $schemaName = null, 
+    bool $ifExists = true
 ): bool
 ```
 Drops a view
 
 ```php
 public function escapeIdentifier(
-mixed identifier
+    mixed identifier
 ): string
 ```
 Escapes a column/table/schema name.
@@ -290,74 +291,74 @@ Escapes a value to avoid SQL injections
 
 ```php
 public function execute(
-string $sqlStatement, 
-array $bindParams = [], 
-array $bindTypes = []
+    string $sqlStatement, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): bool
 ```
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server does not return any rows
 
 ```php
 public function fetchAll(
-string $sqlQuery, 
-int $fetchMode = 2, 
-array $bindParams = [], 
-array $bindTypes = []
+    string $sqlQuery, 
+    int $fetchMode = 2, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): array
 ```
 Dumps the complete result of a query into an array
 
 ```php
 public function fetchColumn(
-string $sqlQuery, 
-array $placeholders = [], 
-mixed $column = 0
+    string $sqlQuery, 
+    array $placeholders = [], 
+    mixed $column = 0
 ): string | bool
 ```
 Returns the nth field of the first row in a SQL query result
 
 ```php
 $invoicesCount = $connection
-->fetchColumn('SELECT count(*) FROM co_invoices')
+    ->fetchColumn('SELECT count(*) FROM co_invoices')
 print_r($invoicesCount)
 
 $invoice = $connection->fetchColumn(
-'SELECT inv_id, inv_title 
-FROM co_invoices
-ORDER BY inv_created_at DESC',
-[],
-1
+    'SELECT inv_id, inv_title 
+    FROM co_invoices
+    ORDER BY inv_created_at DESC',
+    [],
+    1
 )
 print_r($invoice)
 ```
 
 ```php
 public function fetchOne(
-string $sqlQuery, 
-int $fetchMode = 2, 
-array $bindParams = [], 
-array $bindTypes = []
+    string $sqlQuery, 
+    int $fetchMode = 2, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): array
 ```
 Returns the first row in an SQL query result
 
 ```php
 public function forUpdate(
-string $sqlQuery
+    string $sqlQuery
 ): string
 ```
 Returns a SQL modified with a FOR UPDATE clause
 
 ```php
 public function getColumnDefinition(
-ColumnInterface $column
+    ColumnInterface $column
 ): string
 ```
 Returns the SQL column definition from a column
 
 ```php
 public function getColumnList(
-mixed $columnList
+    mixed $columnList
 ): string
 ```
 Gets a list of columns
@@ -434,30 +435,30 @@ Returns the type of database system the adapter is used for
 
 ```php
 public function insert(
-string $table, 
-array $values, 
-mixed $fields = null, 
-mixed $dataTypes = null
+    string $table, 
+    array $values, 
+    mixed $fields = null, 
+    mixed $dataTypes = null
 ): bool
 ```
 Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 public function insertAsDict(
-string $table, 
-mixed $data, 
-mixed $dataTypes = null
+    string $table, 
+    mixed $data, 
+    mixed $dataTypes = null
 ): bool
 ```
 Inserts data into a table using custom RBDM SQL syntax
 
 ```php
 $success = $connection->insertAsDict(
-'co_invoices',
-[
-    'inv_cst_id' => 1,
-    'inv_title'  => 'Invoice for ACME Inc.',
-]
+    'co_invoices',
+    [
+        'inv_cst_id' => 1,
+        'inv_title'  => 'Invoice for ACME Inc.',
+    ]
 )
 
 // SQL
@@ -479,83 +480,83 @@ Check whether the connection is under a database transaction
 
 ```php
 public function lastInsertId(
-mixed $sequenceName = null
+    mixed $sequenceName = null
 ): string | bool
 ```
 Returns insert id for the auto_increment column inserted in the last SQL statement
 
 ```php
 public function limit(
-string $sqlQuery, 
-int $number
+    string $sqlQuery, 
+    int $number
 ): string
 ```
 Appends a LIMIT clause to sqlQuery argument
 
 ```php
 public function listTables(
-string $schemaName = null
+    string $schemaName = null
 ): array
 ```
 List all tables on a database
 
 ```php
 public function listViews(
-string $schemaName = null
+    string $schemaName = null
 ): array
 ```
 List all views on a database
 
 ```php
 public function modifyColumn(
-string $tableName, 
-string $schemaName, 
-ColumnInterface $column, 
-ColumnInterface $currentColumn = null
+    string $tableName, 
+    string $schemaName, 
+    ColumnInterface $column, 
+    ColumnInterface $currentColumn = null
 ): bool
 ```
 Modifies a table column based on a definition
 
 ```php
 public function query(
-string $sqlStatement, 
-array $bindParams = [], 
-array $bindTypes = []
+    string $sqlStatement, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): ResultInterface | bool
 ```
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server returns rows
 
 ```php
 public function releaseSavepoint(
-string $name
+    string $name
 ): bool
 ```
 Releases given savepoint
 
 ```php
 public function rollback(
-bool $nesting = true
+    bool $nesting = true
 ): bool
 ```
 Rollbacks the active transaction in the connection
 
 ```php
 public function rollbackSavepoint(
-string $name
+    string $name
 ): bool
 ```
 Rollbacks given savepoint
 
 ```php
 public function sharedLock(
-string $sqlQuery
+    string $sqlQuery
 ): string
 ```
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
 public function setNestedTransactionsWithSavepoints(
-bool $nestedTransactionsWithSavepoints
+    bool $nestedTransactionsWithSavepoints
 ): AdapterInterface
 ```
 Set if nested transactions should use savepoints
@@ -572,48 +573,48 @@ Check whether the database system requires a sequence to produce auto-numeric va
 
 ```php
 public function tableExists(
-string $tableName, 
-string $schemaName = null
+    string $tableName, 
+    string $schemaName = null
 ): bool
 ```
 Generates SQL checking for the existence of a `schema.table`
 
 ```php
 public function tableOptions(
-string $tableName, 
-string $schemaName = null
+    string $tableName, 
+    string $schemaName = null
 ): array
 ```
 Gets creation options from a table
 
 ```php
 public function update(
-string $table, 
-mixed $fields, 
-mixed $values, 
-mixed $whereCondition = null, 
-mixed $dataTypes = null
+    string $table, 
+    mixed $fields, 
+    mixed $values, 
+    mixed $whereCondition = null, 
+    mixed $dataTypes = null
 ): bool
 ```
 Updates data on a table using custom RDBMS SQL syntax
 
 ```php
 public function updateAsDict(
-string $table, 
-mixed $data, 
-mixed $whereCondition = null, 
-mixed $dataTypes = null
+    string $table, 
+    mixed $data, 
+    mixed $whereCondition = null, 
+    mixed $dataTypes = null
 ): bool
 ```
 Updates data on a table using custom RBDM SQL syntax. Another more convenient syntax
 
 ```php
 $success = $connection->updateAsDict(
-'co_invoices',
-[
-    'inv_title' => 'Invoice for ACME Inc.',
-],
-'inv_id = 1'
+    'co_invoices',
+    [
+        'inv_title' => 'Invoice for ACME Inc.',
+    ],
+    'inv_id = 1'
 )
 
 // SQL
@@ -629,8 +630,8 @@ Check whether the database system requires an explicit value for identity column
 
 ```php
 public function viewExists(
-string $viewName, 
-string $schemaName = null
+    string $viewName, 
+    string $schemaName = null
 ): bool
 ```
 Generates SQL checking for the existence of a schema view
@@ -645,9 +646,9 @@ Escaping identifiers is enabled by default. However, if you need to disable this
 <?php
 
 \Phalcon\Db::setup(
-[
-    'escapeIdentifiers' => false,
-]
+    [
+        'escapeIdentifiers' => false,
+    ]
 );
 ```
 
@@ -671,12 +672,12 @@ The example below shows how you can create a MySQL adapter with the `new` keywor
 use Phalcon\Db\Adapter\Pdo\MySQL;
 
 $connection = new MySQL(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'dbname'   => 'test',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'dbname'   => 'test',
+    ]
 );
 ```
 
@@ -687,15 +688,15 @@ use Phalcon\Db\Adapter\PdoFactory;
 
 $factory    = new PdoFactory();
 $connection = $factory
-->newInstance(
-    'mysql',
-    [
-        'host'     => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'dbname'   => 'test',
-    ]
-)
+    ->newInstance(
+        'mysql',
+        [
+            'host'     => 'localhost',
+            'username' => 'root',
+            'password' => '',
+            'dbname'   => 'test',
+        ]
+    )
 ;
 ```
 
@@ -727,10 +728,10 @@ $config = new Ini('config.ini');
 $container->set('config', $config);
 
 $container->set(
-'db', 
-function () {
-    return (new PdoFactory())->load($this->config->database);
-}
+    'db', 
+    function () {
+        return (new PdoFactory())->load($this->config->database);
+    }
 );
 ```
 
@@ -758,25 +759,25 @@ use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
 $dialect = new SqlDialect();
 
 $dialect->registerCustomFunction(
-'MATCH_AGAINST',
-function ($dialect, $expression) {
-    $arguments = $expression['arguments'];
-    return sprintf(
-        ' MATCH (%s) AGAINST (%s)',
-        $dialect->getSqlExpression($arguments[0]),
-        $dialect->getSqlExpression($arguments[1])
-     );
-}
+    'MATCH_AGAINST',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            ' MATCH (%s) AGAINST (%s)',
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
 );
 
 $connection = new Connection(
-[
-    'host'          => 'localhost',
-    'username'      => 'root',
-    'password'      => '',
-    'dbname'        => 'test',
-    'dialectClass'  => $dialect,
-]
+    [
+        'host'          => 'localhost',
+        'username'      => 'root',
+        'password'      => '',
+        'dbname'        => 'test',
+        'dialectClass'  => $dialect,
+    ]
 );
 ```
 
@@ -789,12 +790,12 @@ $phql = '
   SELECT *
   FROM   Invoices
   WHERE  MATCH_AGAINST(title, :pattern:)';
-
+  
 $posts = $modelsManager->executeQuery(
-$phql,
-[
-    'pattern' => $pattern,
-]
+    $phql,
+    [
+        'pattern' => $pattern,
+    ]
 );
 ```
 
@@ -829,25 +830,25 @@ use Phalcon\Db\Adapter\Pdo\Postgresql;
 use Phalcon\Db\Adapter\Pdo\Sqlite;
 
 $config = [
-'host'     => '127.0.0.1',
-'username' => 'mike',
-'password' => 'sigma',
-'dbname'   => 'test_db',
+    'host'     => '127.0.0.1',
+    'username' => 'mike',
+    'password' => 'sigma',
+    'dbname'   => 'test_db',
 ];
 
 $connection = new Mysql($config);
 
 $config = [
-'host'     => 'localhost',
-'username' => 'postgres',
-'password' => 'secret1',
-'dbname'   => 'template',
+    'host'     => 'localhost',
+    'username' => 'postgres',
+    'password' => 'secret1',
+    'dbname'   => 'template',
 ];
 
 $connection = new Postgresql($config);
 
 $config = [
-'dbname' => '/path/to/database.db',
+    'dbname' => '/path/to/database.db',
 ];
 $connection = new Sqlite($config);
 ```
@@ -862,16 +863,16 @@ You can set PDO options at connection time by passing the parameters `options`:
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $connection = new Mysql(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'sigma',
-    'dbname'   => 'test_db',
-    'options'  => [
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
-        PDO::ATTR_CASE               => PDO::CASE_LOWER,
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'sigma',
+        'dbname'   => 'test_db',
+        'options'  => [
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'",
+            PDO::ATTR_CASE               => PDO::CASE_LOWER,
+        ]
     ]
-]
 );
 ```
 
@@ -883,9 +884,9 @@ To insert a row in the database, you can use raw SQL or use the methods presente
 
 $sql     = "
 INSERT INTO `co_invoices` 
-( `inv_cst_id`, `inv_title` ) 
+    ( `inv_cst_id`, `inv_title` ) 
 VALUES 
-( 1, 'Invoice for ACME Inc.' )
+    ( 1, 'Invoice for ACME Inc.' )
 ";
 $success = $connection->execute($sql);
 ```
@@ -896,16 +897,16 @@ Raw SQL
 
 $sql     = '
 INSERT INTO `co_invoices` 
-( `inv_cst_id`, `inv_title` ) 
+    ( `inv_cst_id`, `inv_title` ) 
 VALUES 
-( ?, ? )
+    ( ?, ? )
 ';
 $success = $connection->execute(
-$sql,
-[
-    1,
-    'Invoice for ACME Inc.',
-]
+    $sql,
+    [
+        1,
+        'Invoice for ACME Inc.',
+    ]
 );
 ```
 Placeholders
@@ -914,15 +915,15 @@ Placeholders
 <?php
 
 $success = $connection->insert(
-'co_invoices',
-[
-    1,
-    'Invoice for ACME Inc.',
-],
-[
-    'inv_cst_id',
-    'inv_title', 
-]
+    'co_invoices',
+    [
+        1,
+        'Invoice for ACME Inc.',
+    ],
+    [
+        'inv_cst_id',
+        'inv_title', 
+    ]
 );
 ```
 Dynamic generation
@@ -931,11 +932,11 @@ Dynamic generation
 <?php
 
 $success = $connection->insertAsDict(
-'co_invoices',
-[
-    'inv_cst_id' => 1,
-    'inv_title'  => 'Invoice for ACME Inc.',
-]
+    'co_invoices',
+    [
+        'inv_cst_id' => 1,
+        'inv_title'  => 'Invoice for ACME Inc.',
+    ]
 );
 ```
 Dynamic generation (alternative syntax)
@@ -948,12 +949,12 @@ To update a row in the database, you can use raw SQL or use the methods presente
 
 $sql     = "
 UPDATE 
-`co_invoices` 
+    `co_invoices` 
 SET 
-`inv_cst_id`= 1, 
-`inv_title` = 'Invoice for ACME Inc.'
+    `inv_cst_id`= 1, 
+    `inv_title` = 'Invoice for ACME Inc.'
 WHERE
-`inv_id` = 4
+    `inv_id` = 4
 ";
 $success = $connection->execute($sql);
 ```
@@ -964,20 +965,20 @@ Raw SQL
 
 $sql     = "
 UPDATE 
-`co_invoices` 
+    `co_invoices` 
 SET 
-`inv_cst_id`= ?, 
-`inv_title` = ?
+    `inv_cst_id`= ?, 
+    `inv_title` = ?
 WHERE
-`inv_id` = ?
+    `inv_id` = ?
 ";
 $success = $connection->execute(
-$sql,
-[
-    1,
-    'Invoice for ACME Inc.',
-    4,
-]
+    $sql,
+    [
+        1,
+        'Invoice for ACME Inc.',
+        4,
+    ]
 );
 ```
 Placeholders
@@ -986,16 +987,16 @@ Placeholders
 <?php
 
 $success = $connection->update(
-'co_invoices',
-[
-    'inv_cst_id',
-    'inv_title',
-],
-[
-    1,
-    'Invoice for ACME Inc.',
-],
-'inv_id = 4'
+    'co_invoices',
+    [
+        'inv_cst_id',
+        'inv_title',
+    ],
+    [
+        1,
+        'Invoice for ACME Inc.',
+    ],
+    'inv_id = 4'
 );
 ```
 Dynamic generation
@@ -1008,12 +1009,12 @@ With the syntax above, the variables for the `where` part of the `update` (`inv_
 <?php
 
 $success = $connection->updateAsDict(
-'co_invoices',
-[
-    'inv_cst_id' => 1,
-    'inv_title'  => 'Invoice for ACME Inc.',
-],
-'inv_id = 4'
+    'co_invoices',
+    [
+        'inv_cst_id' => 1,
+        'inv_title'  => 'Invoice for ACME Inc.',
+    ],
+    'inv_id = 4'
 );
 ```
 Dynamic generation (alternative syntax)
@@ -1026,24 +1027,24 @@ With the syntax above, the variables for the `where` part of the `update` (`inv_
 <?php
 
 $success = $connection->update(
-'co_invoices',
-[
-    'inv_cst_id',
-    'inv_title',
-],
-[
-    1,
-    'Invoice for ACME Inc.',
-],
-[
-    'conditions' => 'id = ?',
-    'bind'       => [
-        4
+    'co_invoices',
+    [
+        'inv_cst_id',
+        'inv_title',
     ],
-    'bindTypes'  => [
-        \PDO::PARAM_INT
+    [
+        1,
+        'Invoice for ACME Inc.',
     ],
-]
+    [
+        'conditions' => 'id = ?',
+        'bind'       => [
+            4
+        ],
+        'bindTypes'  => [
+            \PDO::PARAM_INT
+        ],
+    ]
 );
 ```
 With conditionals escaped
@@ -1052,20 +1053,20 @@ With conditionals escaped
 <?php
 
 $success = $connection->updateAsDict(
-'co_invoices',
-[
-    'inv_cst_id' => 1,
-    'inv_title'  => 'Invoice for ACME Inc.',
-],
-[
-    'conditions' => 'id = ?',
-    'bind'       => [
-        4
+    'co_invoices',
+    [
+        'inv_cst_id' => 1,
+        'inv_title'  => 'Invoice for ACME Inc.',
     ],
-    'bindTypes'  => [
-        \PDO::PARAM_INT
-    ],
-]
+    [
+        'conditions' => 'id = ?',
+        'bind'       => [
+            4
+        ],
+        'bindTypes'  => [
+            \PDO::PARAM_INT
+        ],
+    ]
 );
 ```
 With conditionals escaped (alternative syntax)
@@ -1095,10 +1096,10 @@ WHERE
    `inv_id` = ?
 ';
 $success = $connection->execute(
-$sql, 
-[
-    4
-]
+    $sql, 
+    [
+        4
+    ]
 );
 ```
 Placeholders
@@ -1107,11 +1108,11 @@ Placeholders
 <?php
 
 $success = $connection->delete(
-'co_invoices',
-'inv_id = ?',
-[
-    4,
-]
+    'co_invoices',
+    'inv_id = ?',
+    [
+        4,
+    ]
 );
 ```
 Dynamic generation
@@ -1124,12 +1125,12 @@ The `Phalcon\Db` adapters provide several methods to query rows from tables. The
 
 $sql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-co_invoices
+    co_invoices
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 $result = $connection->query($sql);
 while ($invoice = $result->fetch()) {
@@ -1165,17 +1166,17 @@ There are many other constants that can be used similar to PDO:FETCH_* constants
 
 $sql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-co_invoices
+    co_invoices
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 $result = $connection->query($sql);
 
 $result->setFetchMode(
-Phalcon\Db\Enum::FETCH_NUM
+    Phalcon\Db\Enum::FETCH_NUM
 );
 
 while ($invoice = $result->fetch()) {
@@ -1200,12 +1201,12 @@ The `query()` method returns an instance of [Phalcon\Db\Result\Pdo][db-result-pd
 
 $sql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-co_invoices
+    co_invoices
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 $result = $connection->query($sql);
 
@@ -1228,21 +1229,21 @@ Bound parameters are also supported. Although there is a minimal performance imp
 
 $sql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-co_invoices
+    co_invoices
 WHERE
-inv_cst_id = ?
+    inv_cst_id = ?
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $result = $connection->query(
-$sql,
-[
-    4,
-]
+    $sql,
+    [
+        4,
+    ]
 );
 ```
 Binding with numeric placeholders
@@ -1252,20 +1253,20 @@ Binding with numeric placeholders
 
 $sql     = "
 UPDATE 
-`co_invoices` 
+    `co_invoices` 
 SET 
-`inv_cst_id`= :cstId, 
-`inv_title` = :title
+    `inv_cst_id`= :cstId, 
+    `inv_title` = :title
 WHERE
-`inv_id` = :id
+    `inv_id` = :id
 ";
 $success = $connection->query(
-$sql,
-[
-    'cstId' => 1,
-    'title' => 'Invoice for ACME Inc.',
-    'id'    => 4,
-]
+    $sql,
+    [
+        'cstId' => 1,
+        'title' => 'Invoice for ACME Inc.',
+        'id'    => 4,
+    ]
 );
 ```
 Binding with named placeholders
@@ -1279,21 +1280,21 @@ Also, you can pass your parameters directly to the `execute` or `query` methods.
 
 $sql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-co_invoices
+    co_invoices
 WHERE
-inv_cst_id = ?
+    inv_cst_id = ?
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $result = $connection->query(
-$sql,
-[
-    1 => 4,
-]
+    $sql,
+    [
+        1 => 4,
+    ]
 );
 ```
 Binding with PDO placeholders
@@ -1306,24 +1307,24 @@ Placeholders allowed you to bind parameters to avoid SQL injections:
 
 $phql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 WHERE
-inv_cst_id = :customerId:
+    inv_cst_id = :customerId:
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $invoices = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'customerId' => 4,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customerId' => 4,
+        ]
+    )
 ;
 ```
 
@@ -1338,25 +1339,25 @@ use Phalcon\Db\Column;
 
 $phql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 WHERE
-inv_cst_id = :customerId:
+    inv_cst_id = :customerId:
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $invoices = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'customerId' => 4,
-    ],
-    Column::BIND_PARAM_INT
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customerId' => 4,
+        ],
+        Column::BIND_PARAM_INT
+    )
 ;
 ```
 
@@ -1367,46 +1368,46 @@ You can use typed placeholders in your parameters, instead of specifying the bin
 
 $phql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 WHERE
-inv_cst_id = {customerId:int}
+    inv_cst_id = {customerId:int}
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $invoices = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'customerId' => 4,
-    ],
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customerId' => 4,
+        ],
+    )
 ;
 
 $phql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 WHERE
-inv_title <> {title:str}
+    inv_title <> {title:str}
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $invoices = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'title' => 'Invoice for ACME Inc',
-    ],
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'title' => 'Invoice for ACME Inc',
+        ],
+    )
 ;
 ```
 
@@ -1417,24 +1418,24 @@ You can also omit the type if you do not need to specify it:
 
 $phql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 WHERE
-inv_cst_id = {customerId}
+    inv_cst_id = {customerId}
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $invoices = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'customerId' => 4,
-    ],
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customerId' => 4,
+        ],
+    )
 ;
 ```
 
@@ -1445,24 +1446,24 @@ Typed placeholders are also more powerful since we can now bind a static array w
 
 $phql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 WHERE
-inv_cst_id IN ({ids:array})
+    inv_cst_id IN ({ids:array})
 ORDER BY 
-inv_created_at
+    inv_created_at
 ';
 
 $invoices = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'ids' => [1, 3, 5],
-    ],
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'ids' => [1, 3, 5],
+        ],
+    )
 ;
 ```
 
@@ -1489,19 +1490,19 @@ By default, bound parameters are not cast in the PHP userland to the specified b
 $number = '100';
 $phql   = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 LIMIT 
-{number:int}
+    {number:int}
 ';
 
 $invoices = $modelsManager->executeQuery(
-$phql,
-[
-    'number' => $number,
-]
+    $phql,
+    [
+        'number' => $number,
+    ]
 );
 ```
 
@@ -1523,19 +1524,19 @@ This happens because `'100'` is a string variable. It is easily fixable by casti
 $number = '100';
 $phql   = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-Invoices
+    Invoices
 LIMIT 
-{number:int}
+    {number:int}
 ';
 
 $invoices = $modelsManager->executeQuery(
-$phql,
-[
-    'number' => (int) $number,
-]
+    $phql,
+    [
+        'number' => (int) $number,
+    ]
 );
 ```
 
@@ -1545,9 +1546,9 @@ However, this solution requires that the developer pay special attention to how 
 <?php
 
 \Phalcon\Db::setup(
-[
-    'forceCasting' => true,
-]
+    [
+        'forceCasting' => true,
+    ]
 );
 ```
 
@@ -1571,9 +1572,9 @@ You can set up the ORM to automatically cast those types to their corresponding 
 use Phalcon\Mvc\Model;
 
 Model::setup(
-[
-    'castOnHydrate' => true,
-]
+    [
+        'castOnHydrate' => true,
+    ]
 );
 ```
 
@@ -1584,7 +1585,7 @@ This way you can use strict operators or make assumptions about the type of vari
 
 $invoice = Invoices::findFirst();
 if (11 === $invoice->inv_id) {
-echo $invoice->inv_title;
+    echo $invoice->inv_title;
 }
 ```
 
@@ -1599,15 +1600,15 @@ Working with transactions is supported the same way as with PDO. Using transacti
 <?php
 
 try {
-$connection->begin();
+    $connection->begin();
 
-$connection->execute('DELETE `co_invoices` WHERE `inv_id` = 1');
-$connection->execute('DELETE `co_invoices` WHERE `inv_id` = 2');
-$connection->execute('DELETE `co_invoices` WHERE `inv_id` = 3');
+    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 1');
+    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 2');
+    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 3');
 
-$connection->commit();
+    $connection->commit();
 } catch (Exception $e) {
-$connection->rollback();
+    $connection->rollback();
 }
 ```
 
@@ -1617,26 +1618,26 @@ In addition to standard transactions, the adapters offer provides built-in suppo
 <?php
 
 try {
-$connection->begin();
-
-$connection->execute('DELETE `co_invoices` WHERE `inv_id` = 1');
-
-try {
     $connection->begin();
 
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 2');
-    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 3');
+    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 1');
+
+    try {
+        $connection->begin();
+
+        $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 2');
+        $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 3');
+
+        $connection->commit();
+    } catch (Exception $e) {
+        $connection->rollback();
+    }
+
+    $connection->execute('DELETE `co_invoices` WHERE `inv_id` = 4');
 
     $connection->commit();
 } catch (Exception $e) {
     $connection->rollback();
-}
-
-$connection->execute('DELETE `co_invoices` WHERE `inv_id` = 4');
-
-$connection->commit();
-} catch (Exception $e) {
-$connection->rollback();
 }
 ```
 
@@ -1654,6 +1655,7 @@ The adapters also send events to an [Events Manager][events] if it is present. I
 | `rollbackTransaction` | Before a transaction is rolled back |    No    |
 | `rollbackSavepoint`   | Before a savepoint is rolled back   |    No    |
 
+
 If you bind an [Events Manager][events] to the database connection, all the events with the type `db` will be enabled and fired for the relevant listeners.
 
 ```php
@@ -1667,12 +1669,12 @@ $manager = new Manager();
 $manager->attach('db', $listener);
 
 $connection = new Mysql(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'tutorial',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'tutorial',
+    ]
 );
 
 $connection->setEventsManager($manager);
@@ -1686,16 +1688,16 @@ You can use the power of these events to shield your application from dangerous 
 use Phalcon\Events\Event;
 
 $manager->attach(
-'db:beforeQuery',
-function (Event $event, $connection) {
-    $sql = $connection->getSQLStatement();
+    'db:beforeQuery',
+    function (Event $event, $connection) {
+        $sql = $connection->getSQLStatement();
 
-    if (true === preg_match('/DROP|ALTER/i', $sql)) {
-        return false;
+        if (true === preg_match('/DROP|ALTER/i', $sql)) {
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 );
 ```
 
@@ -1713,36 +1715,36 @@ $manager  = new Manager();
 $profiler = new Profiler();
 
 $manager->attach(
-'db',
-function (Event $event, $connection) use ($profiler) {
-    if ($event->getType() === 'beforeQuery') {
-        $sql = $connection->getSQLStatement();
-        $profiler->startProfile($sql);
-    }
+    'db',
+    function (Event $event, $connection) use ($profiler) {
+        if ($event->getType() === 'beforeQuery') {
+            $sql = $connection->getSQLStatement();
+            $profiler->startProfile($sql);
+        }
 
-    if ($event->getType() === 'afterQuery') {
-        $profiler->stopProfile();
+        if ($event->getType() === 'afterQuery') {
+            $profiler->stopProfile();
+        }
     }
-}
 );
 
 $connection->setEventsManager($manager);
 
 $sql = '
 SELECT 
-inv_id,
-inv_title
+    inv_id,
+    inv_title
 FROM 
-co_invoices
+    co_invoices
 ';
 $connection->query($sql);
 
 $profile = $profiler->getLastProfile();
 
 echo 'SQL Statement: ', $profile->getSQLStatement(), PHP_EOL,
- 'Start Time: ', $profile->getInitialTime(), PHP_EOL,
- 'Final Time: ', $profile->getFinalTime(), PHP_EOL,
- 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), PHP_EOL;
+     'Start Time: ', $profile->getInitialTime(), PHP_EOL,
+     'Final Time: ', $profile->getFinalTime(), PHP_EOL,
+     'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), PHP_EOL;
 ```
 
 The profiler exposes the `getProfiles()` method, returning an array of `Phalcon\Db\Profiler\Item` objects. Each object contains relevant statistics, including calculations for seconds, microseconds, and nanoseconds.
@@ -1758,15 +1760,15 @@ use Phalcon\Db\Profiler\Item;
 
 class DbProfiler extends Profiler
 {
-public function beforeStartProfile(Item $profile)
-{
-    echo $profile->getSQLStatement();
-}
+    public function beforeStartProfile(Item $profile)
+    {
+        echo $profile->getSQLStatement();
+    }
 
-public function afterEndProfile(Item $profile)
-{
-    echo $profile->getTotalElapsedSeconds();
-}
+    public function afterEndProfile(Item $profile)
+    {
+        echo $profile->getTotalElapsedSeconds();
+    }
 }
 
 $manager  = new Manager();
@@ -1788,52 +1790,52 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/queries.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $manager = new Manager();
 
 $manager->attach(
-'db:beforeQuery',
-function (Event $event, $connection) use ($logger) {
-    $sql = $connection->getSQLStatement();
+    'db:beforeQuery',
+    function (Event $event, $connection) use ($logger) {
+        $sql = $connection->getSQLStatement();
 
-    $logger->info(
-        sprintf(
-            '%s - [%s]',
-            $connection->getSQLStatement(),
-            json_encode($connection->getSQLVariables())
-        )
-    );
-}
+        $logger->info(
+            sprintf(
+                '%s - [%s]',
+                $connection->getSQLStatement(),
+                json_encode($connection->getSQLVariables())
+            )
+        );
+    }
 );
 
 $connection->setEventsManager($manager);
 
 $connection->insert(
-'products',
-[
-    'Hot pepper',
-    3.50,
-],
-[
-    'name',
-    'price',
-]
+    'products',
+    [
+        'Hot pepper',
+        3.50,
+    ],
+    [
+        'name',
+        'price',
+    ]
 );
 $connection->insert(
-'co_invoices',
-[
-    1,
-    'Invoice for ACME Inc.',
-],
-[
-    'inv_cst_id',
-    'inv_title', 
-]
+    'co_invoices',
+    [
+        1,
+        'Invoice for ACME Inc.',
+    ],
+    [
+        'inv_cst_id',
+        'inv_title', 
+    ]
 );
 ```
 
@@ -1841,18 +1843,18 @@ As above, the file `/storage/logs/queries.log` will contain something like this:
 
 ```
 [2019-12-25 01:02:03][INFO] INSERT INTO `co_invoices` 
-SET (`inv_cst_id`, `inv_title`) 
-VALUES (1, 'Invoice for ACME Inc.')
+    SET (`inv_cst_id`, `inv_title`) 
+    VALUES (1, 'Invoice for ACME Inc.')
 ```
 
 The listener will also work with models and their operations. It will also include all bound parameters that the query uses at the end of the logged statement.
 
 ```
 [2019-12-25 01:02:03][INFO] SELECT `co_customers`.`cst_id`, 
-...,
-FROM `co_customers` 
-WHERE LOWER(`co_customers`.`cst_email`) = :cst_email 
-LIMIT :APL0 - [{"emp_email":"team@phalcon.ld","APL0":1}]
+    ...,
+    FROM `co_customers` 
+    WHERE LOWER(`co_customers`.`cst_email`) = :cst_email 
+    LIMIT :APL0 - [{"emp_email":"team@phalcon.ld","APL0":1}]
 ```
 
 ## Tables
@@ -1878,7 +1880,7 @@ Check if there is a table called `co_invoices` in the database.
 
 $fields = $connection->describeColumns('co_invoices');
 foreach ($fields as $field) {
-echo 'Column Type: ', $field['Type'];
+    echo 'Column Type: ', $field['Type'];
 }
 ```
 Print the name and data types of the `co_invoices` table
@@ -1888,9 +1890,9 @@ Print the name and data types of the `co_invoices` table
 
 $indexes = $connection->describeIndexes('co_invoices');
 foreach ($indexes as $index) {
-print_r(
-    $index->getColumns()
-);
+    print_r(
+        $index->getColumns()
+    );
 }
 ```
 Print the indexes in the `co_invoices` table
@@ -1900,9 +1902,9 @@ Print the indexes in the `co_invoices` table
 
 $references = $connection->describeReferences('co_invoices');
 foreach ($references as $reference) {
-print_r(
-    $reference->getReferencedColumns()
-);
+    print_r(
+        $reference->getReferencedColumns()
+    );
 }
 ```
 Print the foreign keys on the 'co_invoices' table
@@ -1940,38 +1942,38 @@ An example of how to create a table is shown below:
 use \Phalcon\Db\Column as Column;
 
 $connection->createTable(
-'co_invoices',
-null,
-[
-   'columns' => [
-        new Column(
-            'inv_id',
-            [
-                'type'          => Column::TYPE_INTEGER,
-                'size'          => 10,
-                'notNull'       => true,
-                'autoIncrement' => true,
-                'primary'       => true,
-            ]
-        ),
-        new Column(
-            'inv_cst_id',
-            [
-                'type'    => Column::TYPE_INTEGER,
-                'size'    => 11,
-                'notNull' => true,
-            ]
-        ),
-        new Column(
-            'inv_title',
-            [
-                'type'    => Column::TYPE_VARCHAR,
-                'size'    => 100,
-                'notNull' => true,
-            ]
-        ),
+    'co_invoices',
+    null,
+    [
+       'columns' => [
+            new Column(
+                'inv_id',
+                [
+                    'type'          => Column::TYPE_INTEGER,
+                    'size'          => 10,
+                    'notNull'       => true,
+                    'autoIncrement' => true,
+                    'primary'       => true,
+                ]
+            ),
+            new Column(
+                'inv_cst_id',
+                [
+                    'type'    => Column::TYPE_INTEGER,
+                    'size'    => 11,
+                    'notNull' => true,
+                ]
+            ),
+            new Column(
+                'inv_title',
+                [
+                    'type'    => Column::TYPE_VARCHAR,
+                    'size'    => 100,
+                    'notNull' => true,
+                ]
+            ),
+        ]
     ]
-]
 );
 ```
 
@@ -2019,37 +2021,38 @@ As your application grows, you might need to alter your database, as part of a r
 use Phalcon\Db\Column as Column;
 
 $connection->addColumn(
-'co_invoices',
-null,
-new Column(
-    'inv_status_flag',
-    [
-        'type'    => Column::TYPE_INTEGER,
-        'size'    => 1,
-        'notNull' => true,
-        'default' => 0,
-        'after'   => 'inv_cst_id',
-    ]
-)
+    'co_invoices',
+    null,
+    new Column(
+        'inv_status_flag',
+        [
+            'type'    => Column::TYPE_INTEGER,
+            'size'    => 1,
+            'notNull' => true,
+            'default' => 0,
+            'after'   => 'inv_cst_id',
+        ]
+    )
 );
 
+
 $connection->modifyColumn(
-'co_invoices',
-null,
-new Column(
-    'inv_status_flag',
-    [
-        'type'    => Column::TYPE_INTEGER,
-        'size'    => 2,
-        'notNull' => true,
-    ]
-)
+    'co_invoices',
+    null,
+    new Column(
+        'inv_status_flag',
+        [
+            'type'    => Column::TYPE_INTEGER,
+            'size'    => 2,
+            'notNull' => true,
+        ]
+    )
 );
 
 $connection->dropColumn(
-'co_invoices',
-null,
-'inv_status_flag'
+    'co_invoices',
+    null,
+    'inv_status_flag'
 );
 ```
 
@@ -2069,6 +2072,7 @@ Drop the table `co_invoices` from the active database
 $connection->dropTable('co_invoices', 'phalcon_db');
 ```
 Drop the table `co_invoices` from the database `phalcon_db`
+
 
 [pdo_quote]: https://www.php.net/manual/en/pdo.quote.php
 [nested_transactions]: https://en.wikipedia.org/wiki/Nested_transaction

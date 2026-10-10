@@ -17,21 +17,23 @@ All classes are prefixed with `Phalcon`
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Encryption`
 
 -   __Uses__
-
+    
     - `Phalcon\Encryption\Crypt\CryptInterface`
     - `Phalcon\Encryption\Crypt\Exception\Exception`
     - `Phalcon\Encryption\Crypt\Exception\Mismatch`
     - `Phalcon\Encryption\Crypt\PadFactory`
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `CryptInterface`
 
 Provides encryption capabilities to Phalcon applications.
@@ -51,6 +53,7 @@ $encrypted = $crypt->encrypt($input, $key);
 
 echo $crypt->decrypt($encrypted, $key);
 ```
+
 
 ### Constants
 ```php
@@ -139,6 +142,7 @@ public function __construct( string $cipher = static-constant-access, bool $useS
 ```
 Crypt constructor.
 
+
 ```php
 public function decrypt( string $input, string $key = null ): string;
 ```
@@ -146,15 +150,17 @@ Decrypts an encrypted text.
 
 ```php
 $encrypted = $crypt->decrypt(
-$encrypted,
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    $encrypted,
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
+
 
 ```php
 public function decryptBase64( string $input, string $key = null, bool $safe = bool ): string;
 ```
 Decrypt a text that is coded as a base64 string.
+
 
 ```php
 public function encrypt( string $input, string $key = null ): string;
@@ -163,55 +169,65 @@ Encrypts a text.
 
 ```php
 $encrypted = $crypt->encrypt(
-"Top secret",
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    "Top secret",
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
+
 
 ```php
 public function encryptBase64( string $input, string $key = null, bool $safe = bool ): string;
 ```
 Encrypts a text returning the result as a base64 string.
 
+
 ```php
 public function getAuthData(): string;
 ```
 Returns the auth data
+
 
 ```php
 public function getAuthTag(): string;
 ```
 Returns the auth tag
 
+
 ```php
 public function getAuthTagLength(): int;
 ```
 Returns the auth tag length
+
 
 ```php
 public function getAvailableCiphers(): array;
 ```
 Returns a list of available ciphers.
 
+
 ```php
 public function getAvailableHashAlgorithms(): array;
 ```
 Return a list of registered hashing algorithms suitable for hash_hmac.
+
 
 ```php
 public function getCipher(): string;
 ```
 Returns the current cipher
 
+
 ```php
 public function getHashAlgorithm(): string;
 ```
 Get the name of hashing algorithm.
 
+
 ```php
 public function getKey(): string;
 ```
 Returns the encryption key
+
 
 ```php
 public function isValidDecryptLength( string $input ): bool;
@@ -219,27 +235,36 @@ public function isValidDecryptLength( string $input ): bool;
 Returns if the input length for decryption is valid or not
 (number of bytes required by the cipher).
 
+
 ```php
 public function setAuthData( string $data ): CryptInterface;
 ```
+
+
 
 ```php
 public function setAuthTag( string $tag ): CryptInterface;
 ```
 
+
+
 ```php
 public function setAuthTagLength( int $length ): CryptInterface;
 ```
+
+
 
 ```php
 public function setCipher( string $cipher ): CryptInterface;
 ```
 Sets the cipher algorithm for data encryption and decryption.
 
+
 ```php
 public function setHashAlgorithm( string $hashAlgorithm ): CryptInterface;
 ```
 Set the name of hashing algorithm.
+
 
 ```php
 public function setKey( string $key ): CryptInterface;
@@ -258,26 +283,31 @@ Better (but still unsafe) ->
 Good key:
 "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 
+
 ```php
 public function setPadding( int $scheme ): CryptInterface;
 ```
 Changes the padding scheme used.
+
 
 ```php
 public function useSigning( bool $useSigning ): CryptInterface;
 ```
 Sets if the calculating message digest must used.
 
+
 ```php
 protected function checkCipherHashIsAvailable( string $cipher, string $type ): void;
 ```
 Checks if a cipher or a hash algorithm is available
+
 
 ```php
 protected function cryptPadText( string $input, string $mode, int $blockSize, int $paddingType ): string;
 ```
 Pads texts before encryption. See
 [cryptopad](https://www.di-mgt.com.au/cryptopad.html)
+
 
 ```php
 protected function cryptUnpadText( string $input, string $mode, int $blockSize, int $paddingType ): string;
@@ -287,55 +317,77 @@ Removes a padding from a text.
 If the function detects that the text was not padded, it will return it
 unmodified.
 
+
 ```php
 protected function decryptGcmCcmAuth( string $mode, string $cipherText, string $decryptKey, string $iv ): string;
 ```
+
+
 
 ```php
 protected function decryptGetUnpadded( string $mode, int $blockSize, string $decrypted ): string;
 ```
 
+
+
 ```php
 protected function encryptGcmCcm( string $mode, string $padded, string $encryptKey, string $iv ): string;
 ```
 
+
+
 ```php
 protected function encryptGetPadded( string $mode, string $input, int $blockSize ): string;
 ```
+
+
 
 ```php
 protected function initializeAvailableCiphers(): Crypt;
 ```
 Initialize available cipher algorithms.
 
+
 ```php
 protected function phpFunctionExists( string $name ): bool;
 ```
 @todo to be removed when we get traits
 
+
 ```php
 protected function phpOpensslCipherIvLength( string $cipher ): int | bool;
 ```
+
+
 
 ```php
 protected function phpOpensslRandomPseudoBytes( int $length );
 ```
 
+
+
+
+
 ## Encryption\Crypt\CryptInterface ![Interface](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/CryptInterface.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Interface for Phalcon\Crypt
+
 
 ### Methods
 
@@ -344,146 +396,178 @@ public function decrypt( string $input, string $key = null ): string;
 ```
 Decrypts a text
 
+
 ```php
 public function decryptBase64( string $input, string $key = null ): string;
 ```
 Decrypt a text that is coded as a base64 string
+
 
 ```php
 public function encrypt( string $input, string $key = null ): string;
 ```
 Encrypts a text
 
+
 ```php
 public function encryptBase64( string $input, string $key = null ): string;
 ```
 Encrypts a text returning the result as a base64 string
+
 
 ```php
 public function getAuthData(): string;
 ```
 Returns authentication data
 
+
 ```php
 public function getAuthTag(): string;
 ```
 Returns the authentication tag
+
 
 ```php
 public function getAuthTagLength(): int;
 ```
 Returns the authentication tag length
 
+
 ```php
 public function getAvailableCiphers(): array;
 ```
 Returns a list of available cyphers
+
 
 ```php
 public function getCipher(): string;
 ```
 Returns the current cipher
 
+
 ```php
 public function getKey(): string;
 ```
 Returns the encryption key
+
 
 ```php
 public function setAuthData( string $data ): CryptInterface;
 ```
 Sets authentication data
 
+
 ```php
 public function setAuthTag( string $tag ): CryptInterface;
 ```
 Sets the authentication tag
+
 
 ```php
 public function setAuthTagLength( int $length ): CryptInterface;
 ```
 Sets the authentication tag length
 
+
 ```php
 public function setCipher( string $cipher ): CryptInterface;
 ```
 Sets the cipher algorithm
+
 
 ```php
 public function setKey( string $key ): CryptInterface;
 ```
 Sets the encryption key
 
+
 ```php
 public function setPadding( int $scheme ): CryptInterface;
 ```
 Changes the padding scheme used.
+
 
 ```php
 public function useSigning( bool $useSigning ): CryptInterface;
 ```
 Sets if the calculating message digest must be used.
 
+
+
+
 ## Encryption\Crypt\Exception\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/Exception.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Exception`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
+    
 
 Exceptions thrown in Phalcon\Crypt use this class
+
+
 
 ## Encryption\Crypt\Exception\Mismatch 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Exception/Mismatch.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Exception`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `Exception`
 
 -   __Implements__
+    
 
 Exceptions thrown in Phalcon\Crypt will use this class.
+
+
 
 ## Encryption\Crypt\PadFactory 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/PadFactory.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt`
 
 -   __Uses__
-
+    
     - `Phalcon\Encryption\Crypt`
     - `Phalcon\Encryption\Crypt\Padding\PadInterface`
     - `Phalcon\Factory\AbstractFactory`
     - `Phalcon\Support\Helper\Arr\Get`
 
 -   __Extends__
-
+    
     `AbstractFactory`
 
 -   __Implements__
+    
 
 Class PadFactory
 
 @package Phalcon\Crypt
+
 
 ### Properties
 ```php
@@ -501,10 +585,12 @@ public function __construct( array $services = [] );
 ```
 AdapterFactory constructor.
 
+
 ```php
 public function newInstance( string $name ): PadInterface;
 ```
 Create a new instance of the adapter
+
 
 ```php
 public function padNumberToService( int $number ): string;
@@ -512,145 +598,195 @@ public function padNumberToService( int $number ): string;
 Gets a Crypt pad constant and returns the unique service name for the
 padding class
 
+
 ```php
 protected function getServices(): array;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\Ansi 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Ansi.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class Ansi
 
 @package Phalcon\Encryption\Crypt\Padding
 
+
 ### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\Iso10126 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Iso10126.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class Iso10126
 
 @package Phalcon\Encryption\Crypt\Padding
 
+
 ### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\IsoIek 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/IsoIek.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class IsoIek
 
 @package Phalcon\Encryption\Crypt\Padding
 
+
 ### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\Noop 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Noop.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class Noop
 
 @package Phalcon\Encryption\Crypt\Padding
 
+
 ### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
+
+
+
+
 
 ## Encryption\Crypt\Padding\PadInterface ![Interface](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/PadInterface.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Interface for Phalcon\Encryption\Crypt\Padding
+
 
 ### Methods
 
@@ -658,89 +794,119 @@ Interface for Phalcon\Encryption\Crypt\Padding
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\Pkcs7 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Pkcs7.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class Pkcs7
 
 @package Phalcon\Encryption\Crypt\Padding
 
+
 ### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\Space 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Space.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class Space
 
 @package Phalcon\Encryption\Crypt\Padding
 
+
 ### Methods
 
 ```php
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Crypt\Padding\Zero 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Crypt/Padding/Zero.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Crypt\Padding`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `PadInterface`
 
 Class Zero
 
 @package Phalcon\Encryption\Crypt\Padding
+
 
 ### Methods
 
@@ -748,20 +914,27 @@ Class Zero
 public function pad( int $paddingSize ): string;
 ```
 
+
+
 ```php
 public function unpad( string $input, int $blockSize ): int;
 ```
 
+
+
+
+
 ## Encryption\Security 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption`
 
 -   __Uses__
-
+    
     - `Phalcon\Di\AbstractInjectionAware`
     - `Phalcon\Di\DiInterface`
     - `Phalcon\Encryption\Security\Exception`
@@ -770,10 +943,11 @@ public function unpad( string $input, int $blockSize ): int;
     - `Phalcon\Session\ManagerInterface`
 
 -   __Extends__
-
+    
     `AbstractInjectionAware`
 
 -   __Implements__
+    
 
 This component provides a set of functions to improve the security in Phalcon
 applications
@@ -785,11 +959,12 @@ $password = $this->request->getPost("password");
 $user = Users::findFirstByLogin($login);
 
 if ($user) {
-if ($this->security->checkHash($password, $user->password)) {
-    // The password is valid
-}
+    if ($this->security->checkHash($password, $user->password)) {
+        // The password is valid
+    }
 }
 ```
+
 
 ### Constants
 ```php
@@ -874,11 +1049,13 @@ public function __construct( SessionInterface $session = null, RequestInterface 
 ```
 Security constructor.
 
+
 ```php
 public function checkHash( string $password, string $passwordHash, int $maxPassLength = int ): bool;
 ```
 Checks a plain text password and its hash version to check if the
 password matches
+
 
 ```php
 public function checkToken( string $tokenKey = null, mixed $tokenValue = null, bool $destroyIfValid = bool ): bool;
@@ -886,30 +1063,36 @@ public function checkToken( string $tokenKey = null, mixed $tokenValue = null, b
 Check if the CSRF token sent in the request is the same that the current
 in session
 
+
 ```php
 public function computeHmac( string $data, string $key, string $algo, bool $raw = bool ): string;
 ```
 Computes a HMAC
+
 
 ```php
 public function destroyToken(): Security;
 ```
 Removes the value of the CSRF token and key from session
 
+
 ```php
 public function getDefaultHash(): int;
 ```
 Returns the default hash
+
 
 ```php
 public function getHashInformation( string $hash ): array;
 ```
 Returns information regarding a hash
 
+
 ```php
 public function getRandom(): Random;
 ```
 Returns a secure random number generator instance
+
 
 ```php
 public function getRandomBytes(): int;
@@ -917,10 +1100,12 @@ public function getRandomBytes(): int;
 Returns a number of bytes to be generated by the openssl pseudo random
 generator
 
+
 ```php
 public function getRequestToken(): string | null;
 ```
 Returns the value of the CSRF token for the current request.
+
 
 ```php
 public function getSaltBytes( int $numberBytes = int ): string;
@@ -928,10 +1113,12 @@ public function getSaltBytes( int $numberBytes = int ): string;
 Generate a >22-length pseudo random string to be used as salt for
 passwords
 
+
 ```php
 public function getSessionToken(): string | null;
 ```
 Returns the value of the CSRF token in session
+
 
 ```php
 public function getToken(): string | null;
@@ -939,30 +1126,37 @@ public function getToken(): string | null;
 Generates a pseudo random token value to be used as input's value in a
 CSRF check
 
+
 ```php
 public function getTokenKey(): string | null;
 ```
 Generates a pseudo random token key to be used as input's name in a CSRF
 check
 
+
 ```php
 public function getWorkFactor(): int;
 ```
+
+
 
 ```php
 public function hash( string $password, array $options = [] ): string;
 ```
 Creates a password hash using bcrypt with a pseudo random salt
 
+
 ```php
 public function isLegacyHash( string $passwordHash ): bool;
 ```
 Checks if a password hash is a valid bcrypt's hash
 
+
 ```php
 public function setDefaultHash( int $defaultHash ): Security;
 ```
 Sets the default hash
+
 
 ```php
 public function setRandomBytes( int $randomBytes ): Security;
@@ -970,45 +1164,57 @@ public function setRandomBytes( int $randomBytes ): Security;
 Sets a number of bytes to be generated by the openssl pseudo random
 generator
 
+
 ```php
 public function setWorkFactor( int $workFactor ): Security;
 ```
 Sets the work factor
 
+
 ```php
 protected function getLocalService( string $name, string $property );
 ```
 
+
+
+
+
 ## Encryption\Security\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Exception.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__
+    
 
 Phalcon\Encryption\Security\Exception
 
 Exceptions thrown in Phalcon\Security will use this class
 
+
+
 ## Encryption\Security\JWT\Builder 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Builder.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT`
 
 -   __Uses__
-
+    
     - `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`
     - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
     - `Phalcon\Encryption\Security\JWT\Token\Enum`
@@ -1020,8 +1226,10 @@ Exceptions thrown in Phalcon\Security will use this class
     - `Phalcon\Support\Helper\Json\Encode`
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Builder
 
@@ -1033,6 +1241,7 @@ The builder offers
 @property SignerInterface     $signer
 
 @link https://tools.ietf.org/html/rfc7519
+
 
 ### Properties
 ```php
@@ -1070,67 +1279,96 @@ public function __construct( SignerInterface $signer );
 ```
 Builder constructor.
 
+
 ```php
 public function addClaim( string $name, mixed $value ): Builder;
 ```
 Adds a custom claim
+
 
 ```php
 public function addHeader( string $name, mixed $value ): Builder;
 ```
 Adds a custom claim
 
+
 ```php
 public function getAudience();
 ```
+
+
 
 ```php
 public function getClaims(): array;
 ```
 
+
+
 ```php
 public function getContentType(): string | null;
 ```
+
+
 
 ```php
 public function getExpirationTime(): int | null;
 ```
 
+
+
 ```php
 public function getHeaders(): array;
 ```
+
+
 
 ```php
 public function getId(): string | null;
 ```
 
+
+
 ```php
 public function getIssuedAt(): int | null;
 ```
+
+
 
 ```php
 public function getIssuer(): string | null;
 ```
 
+
+
 ```php
 public function getNotBefore(): int | null;
 ```
+
+
 
 ```php
 public function getPassphrase(): string;
 ```
 
+
+
 ```php
 public function getSubject(): string | null;
 ```
+
+
 
 ```php
 public function getToken(): Token;
 ```
 
+
+
 ```php
 public function init(): Builder;
 ```
+
+
 
 ```php
 public function setAudience( mixed $audience ): Builder;
@@ -1147,10 +1385,12 @@ single case-sensitive string containing a StringOrURI value.  The
 interpretation of audience values is generally application specific.
 Use of this claim is OPTIONAL.
 
+
 ```php
 public function setContentType( string $contentType ): Builder;
 ```
 Sets the content type header 'cty'
+
 
 ```php
 public function setExpirationTime( int $timestamp ): Builder;
@@ -1162,6 +1402,7 @@ MUST be before the expiration date/time listed in the "exp" claim.
 Implementers MAY provide for some small leeway, usually no more than
 a few minutes, to account for clock skew.  Its value MUST be a number
 containing a NumericDate value.  Use of this claim is OPTIONAL.
+
 
 ```php
 public function setId( string $id ): Builder;
@@ -1175,6 +1416,7 @@ produced by different issuers as well.  The "jti" claim can be used
 to prevent the JWT from being replayed.  The "jti" value is a case-
 sensitive string.  Use of this claim is OPTIONAL.
 
+
 ```php
 public function setIssuedAt( int $timestamp ): Builder;
 ```
@@ -1183,6 +1425,7 @@ issued.  This claim can be used to determine the age of the JWT.  Its
 value MUST be a number containing a NumericDate value.  Use of this
 claim is OPTIONAL.
 
+
 ```php
 public function setIssuer( string $issuer ): Builder;
 ```
@@ -1190,6 +1433,7 @@ The "iss" (issuer) claim identifies the principal that issued the
 JWT.  The processing of this claim is generally application specific.
 The "iss" value is a case-sensitive string containing a StringOrURI
 value.  Use of this claim is OPTIONAL.
+
 
 ```php
 public function setNotBefore( int $timestamp ): Builder;
@@ -1202,9 +1446,12 @@ provide for some small leeway, usually no more than a few minutes, to
 account for clock skew.  Its value MUST be a number containing a
 NumericDate value.  Use of this claim is OPTIONAL.
 
+
 ```php
 public function setPassphrase( string $passphrase ): Builder;
 ```
+
+
 
 ```php
 public function setSubject( string $subject ): Builder;
@@ -1217,68 +1464,84 @@ The processing of this claim is generally application specific.  The
 "sub" value is a case-sensitive string containing a StringOrURI
 value.  Use of this claim is OPTIONAL.
 
+
 ```php
 protected function setClaim( string $name, mixed $value ): Builder;
 ```
 Sets a registered claim
 
+
+
+
 ## Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/UnsupportedAlgorithmException.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Exceptions`
 
 -   __Uses__
-
+    
     - `Exception`
 
 -   __Extends__
-
+    
     `Exception`
 
 -   __Implements__
+    
 
 Exception thrown when the algorithm is not supported for JWT
+
+
 
 ## Encryption\Security\JWT\Exceptions\ValidatorException 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Exceptions/ValidatorException.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Exceptions`
 
 -   __Uses__
-
+    
     - `Exception`
 
 -   __Extends__
-
+    
     `Exception`
 
 -   __Implements__
+    
 
 Exception thrown when the validation does not pass for JWT
+
+
 
 ## Encryption\Security\JWT\Signer\AbstractSigner ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/AbstractSigner.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Signer`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `SignerInterface`
 
 Abstract class helping with the signer classes
+
 
 ### Properties
 ```php
@@ -1295,25 +1558,32 @@ protected $algorithm = ;
 public function getAlgorithm(): string;
 ```
 
+
+
+
+
 ## Encryption\Security\JWT\Signer\Hmac 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/Hmac.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Signer`
 
 -   __Uses__
-
+    
     - `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`
 
 -   __Extends__
-
+    
     `AbstractSigner`
 
 -   __Implements__
+    
 
 HMAC signing class
+
 
 ### Methods
 
@@ -1322,38 +1592,48 @@ public function __construct( string $algo = string );
 ```
 Hmac constructor.
 
+
 ```php
 public function getAlgHeader(): string;
 ```
 Return the value that is used for the "alg" header
+
 
 ```php
 public function sign( string $payload, string $passphrase ): string;
 ```
 Sign a payload using the passphrase
 
+
 ```php
 public function verify( string $source, string $payload, string $passphrase ): bool;
 ```
 Verify a passed source with a payload and passphrase
+
+
+
 
 ## Encryption\Security\JWT\Signer\None 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/None.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Signer`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
-
+    
     - `SignerInterface`
 
 No signing class
+
 
 ### Methods
 
@@ -1362,36 +1642,47 @@ public function getAlgHeader(): string;
 ```
 Return the value that is used for the "alg" header
 
+
 ```php
 public function getAlgorithm(): string;
 ```
 Return the algorithm used
+
 
 ```php
 public function sign( string $payload, string $passphrase ): string;
 ```
 Sign a payload using the passphrase
 
+
 ```php
 public function verify( string $source, string $payload, string $passphrase ): bool;
 ```
 Verify a passed source with a payload and passphrase
+
+
+
 
 ## Encryption\Security\JWT\Signer\SignerInterface ![Interface](/assets/images/interface-blue.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Signer/SignerInterface.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Signer`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Interface for JWT Signer classes
+
 
 ### Methods
 
@@ -1400,36 +1691,47 @@ public function getAlgHeader(): string;
 ```
 Return the value that is used for the "alg" header
 
+
 ```php
 public function getAlgorithm(): string;
 ```
 Return the algorithm used
+
 
 ```php
 public function sign( string $payload, string $passphrase ): string;
 ```
 Sign a payload using the passphrase
 
+
 ```php
 public function verify( string $source, string $payload, string $passphrase ): bool;
 ```
 Verify a passed source with a payload and passphrase
 
+
+
+
 ## Encryption\Security\JWT\Token\AbstractItem ![Abstract](/assets/images/abstract-green.svg) 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/AbstractItem.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Token`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Abstract helper class for Tokens
+
 
 ### Properties
 ```php
@@ -1446,23 +1748,32 @@ protected $data;
 public function getEncoded(): string;
 ```
 
+
+
+
+
 ## Encryption\Security\JWT\Token\Enum 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Enum.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Token`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Constants for Tokens. It offers constants for Headers as well as Claims
 
 @link https://tools.ietf.org/html/rfc7519
+
 
 ### Constants
 ```php
@@ -1478,23 +1789,28 @@ const SUBJECT = sub;
 const TYPE = typ;
 ```
 
+
 ## Encryption\Security\JWT\Token\Item 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Item.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Token`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `AbstractItem`
 
 -   __Implements__
+    
 
 Storage class for a Token Item
+
 
 ### Methods
 
@@ -1503,40 +1819,53 @@ public function __construct( array $payload, string $encoded );
 ```
 Item constructor.
 
+
 ```php
 public function get( string $name, mixed $defaultValue = null ): mixed | null;
 ```
+
+
 
 ```php
 public function getPayload(): array;
 ```
 
+
+
 ```php
 public function has( string $name ): bool;
 ```
 
+
+
+
+
 ## Encryption\Security\JWT\Token\Parser 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Parser.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Token`
 
 -   __Uses__
-
+    
     - `InvalidArgumentException`
     - `Phalcon\Support\Helper\Json\Decode`
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Token Parser class.
 
 It parses a token by validating if it is formed properly and splits it into
 three parts. The headers are decoded, then the claims and finally the
 signature. It returns a token object populated with the decoded information.
+
 
 ### Properties
 ```php
@@ -1553,28 +1882,37 @@ private $decode;
 public function __construct( Decode $decode = null );
 ```
 
+
+
 ```php
 public function parse( string $token ): Token;
 ```
 Parse a token and return it
 
+
+
+
 ## Encryption\Security\JWT\Token\Signature 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Signature.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Token`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `AbstractItem`
 
 -   __Implements__
+    
 
 Signature class containing the encoded data and the hash.
+
 
 ### Methods
 
@@ -1583,26 +1921,34 @@ public function __construct( string $hash = string, string $encoded = string );
 ```
 Signature constructor.
 
+
 ```php
 public function getHash(): string;
 ```
 
+
+
+
+
 ## Encryption\Security\JWT\Token\Token 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Token/Token.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT\Token`
 
 -   __Uses__
-
+    
     - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
     - `Phalcon\Encryption\Security\JWT\Validator`
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Token Class.
 
@@ -1610,6 +1956,7 @@ A container for Token related data. It stores the claims, headers, signature
 and payload. It also calculates and returns the token string.
 
 @link https://tools.ietf.org/html/rfc7519
+
 
 ### Properties
 ```php
@@ -1637,60 +1984,75 @@ public function __construct( Item $headers, Item $claims, Signature $signature )
 ```
 Token constructor.
 
+
 ```php
 public function getClaims(): Item;
 ```
 Return the registered claims
+
 
 ```php
 public function getHeaders(): Item;
 ```
 Return the registered headers
 
+
 ```php
 public function getPayload(): string;
 ```
 Return the payload
+
 
 ```php
 public function getSignature(): Signature;
 ```
 Return the signature
 
+
 ```php
 public function getToken(): string;
 ```
 Return the token
 
+
 ```php
 public function validate( Validator $validator ): array;
 ```
+
+
 
 ```php
 public function verify( SignerInterface $signer, string $key ): bool;
 ```
 Verify the signature
 
+
+
+
 ## Encryption\Security\JWT\Validator 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/JWT/Validator.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security\JWT`
 
 -   __Uses__
-
+    
     - `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`
     - `Phalcon\Encryption\Security\JWT\Signer\SignerInterface`
     - `Phalcon\Encryption\Security\JWT\Token\Enum`
     - `Phalcon\Encryption\Security\JWT\Token\Token`
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Class Validator
+
 
 ### Properties
 ```php
@@ -1723,74 +2085,92 @@ public function __construct( Token $token, int $timeShift = int );
 ```
 Validator constructor.
 
+
 ```php
 public function get( string $claim ): mixed | null;
 ```
 Return the value of a claim
+
 
 ```php
 public function getErrors(): array;
 ```
 Return an array with validation errors (if any)
 
+
 ```php
 public function set( string $claim, mixed $value ): Validator;
 ```
 Set the value of a claim, for comparison with the token values
+
 
 ```php
 public function setToken( Token $token ): Validator;
 ```
 Set the token to be validated
 
+
 ```php
 public function validateAudience( mixed $audience ): Validator;
 ```
 Validate the audience
+
 
 ```php
 public function validateExpiration( int $timestamp ): Validator;
 ```
 Validate the expiration time of the token
 
+
 ```php
 public function validateId( string $id ): Validator;
 ```
 Validate the id of the token
+
 
 ```php
 public function validateIssuedAt( int $timestamp ): Validator;
 ```
 Validate the issued at (iat) of the token
 
+
 ```php
 public function validateIssuer( string $issuer ): Validator;
 ```
 Validate the issuer of the token
+
 
 ```php
 public function validateNotBefore( int $timestamp ): Validator;
 ```
 Validate the notbefore (nbf) of the token
 
+
 ```php
 public function validateSignature( SignerInterface $signer, string $passphrase ): Validator;
 ```
 Validate the signature of the token
 
+
+
+
 ## Encryption\Security\Random 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Encryption/Security/Random.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Encryption\Security`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 Phalcon\Encryption\Security\Random
 
@@ -1856,6 +2236,7 @@ This class partially borrows SecureRandom library from Ruby
 
 @link https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
+
 ### Methods
 
 ```php
@@ -1880,6 +2261,7 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 @link   https://en.wikipedia.org/wiki/Base58
 @throws Exception If secure random number generator is not available or unexpected partial read
 
+
 ```php
 public function base62( int $len = null ): string;
 ```
@@ -1901,6 +2283,7 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 @see    \Phalcon\Encryption\Security\Random:base58
 @throws Exception If secure random number generator is not available or unexpected partial read
 
+
 ```php
 public function base64( int $len = null ): string;
 ```
@@ -1917,6 +2300,7 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 ```
 
 @throws Exception If secure random number generator is not available or unexpected partial read
+
 
 ```php
 public function base64Safe( int $len = null, bool $padding = bool ): string;
@@ -1940,6 +2324,7 @@ echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 @link https://www.ietf.org/rfc/rfc3548.txt
 @throws Exception If secure random number generator is not available or unexpected partial read
 
+
 ```php
 public function bytes( int $len = int ): string;
 ```
@@ -1961,6 +2346,7 @@ var_dump(bin2hex($bytes));
 
 @throws Exception If secure random number generator is not available or unexpected partial read
 
+
 ```php
 public function hex( int $len = null ): string;
 ```
@@ -1977,6 +2363,7 @@ echo $random->hex(10); // a29f470508d5ccb8e289
 
 @throws Exception If secure random number generator is not available or unexpected partial read
 
+
 ```php
 public function number( int $len ): int;
 ```
@@ -1991,6 +2378,7 @@ echo $random->number(16); // 8
 ```
 @throws Exception If secure random number generator is not available,
                   unexpected partial read or $len &lt;= 0
+
 
 ```php
 public function uuid(): string;
@@ -2015,6 +2403,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 @link https://www.ietf.org/rfc/rfc4122.txt
 @throws Exception If secure random number generator is not available or unexpected partial read
+
 
 ```php
 protected function base( string $alphabet, int $base, mixed $n = null ): string;

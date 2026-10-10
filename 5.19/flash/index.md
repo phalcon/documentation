@@ -52,9 +52,9 @@ use Phalcon\Session\Manager;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session->setAdapter($files);
 
@@ -113,46 +113,46 @@ use Vokuro\Models\ResetPasswords;
  */
 class SessionController extends Controller
 {
-/**
- * Starts a session in the admin backend
- */
-public function loginAction()
-{
-    $form = new LoginForm();
+    /**
+     * Starts a session in the admin backend
+     */
+    public function loginAction()
+    {
+        $form = new LoginForm();
 
-    try {
-        if (true !== $this->request->isPost()) {
-            // ....
-        } else {
-            $postData = $this->request->getPost();
-            if (true !== $form->isValid($postData)) {
-                // Flash
-                foreach ($form->getMessages() as $message) {
-                    $this->flashSession->error($message);
-                }
+        try {
+            if (true !== $this->request->isPost()) {
+                // ....
             } else {
-                $email    = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
-                $remember = $this->request->getPost('remember');
+                $postData = $this->request->getPost();
+                if (true !== $form->isValid($postData)) {
+                    // Flash
+                    foreach ($form->getMessages() as $message) {
+                        $this->flashSession->error($message);
+                    }
+                } else {
+                    $email    = $this->request->getPost('email');
+                    $password = $this->request->getPost('password');
+                    $remember = $this->request->getPost('remember');
 
-                $this->auth->check(
-                    [
-                        'email'    => $email,
-                        'password' => $password,
-                        'remember' => $remember,
-                    ]
-                );
-
-                return $this->response->redirect('users');
+                    $this->auth->check(
+                        [
+                            'email'    => $email,
+                            'password' => $password,
+                            'remember' => $remember,
+                        ]
+                    );
+                    
+                    return $this->response->redirect('users');
+                }
             }
+        } catch (AuthException $e) {
+            // Flash
+            $this->flashSession->error($e->getMessage());
         }
-    } catch (AuthException $e) {
-        // Flash
-        $this->flashSession->error($e->getMessage());
-    }
 
-    $this->view->form = $form;
-}
+        $this->view->form = $form;
+    }
 }
 ```
 
@@ -188,11 +188,11 @@ use Phalcon\Session\Manager;
 
 $session = new Manager();
 $session->setAdapter(
-new Stream(
-    [
-        'savePath' => '/tmp',
-    ]
-)
+    new Stream(
+        [
+            'savePath' => '/tmp',
+        ]
+    )
 );
 
 $escaper = new Escaper();
@@ -243,7 +243,7 @@ $escaper = new Escaper();
 $flash   = new Direct($escaper);
 
 var_dump(
-$flash->getCssClasses()
+    $flash->getCssClasses()
 );
 
 // [
@@ -253,11 +253,12 @@ $flash->getCssClasses()
 //     "warning" => "warningMessage",
 // ];
 
+
 $cssClasses = [
-'error'   => 'alert alert-danger',
-'success' => 'alert alert-success',
-'notice'  => 'alert alert-info',
-'warning' => 'alert alert-warning',
+    'error'   => 'alert alert-danger',
+    'success' => 'alert alert-success',
+    'notice'  => 'alert alert-info',
+    'warning' => 'alert alert-warning',
 ];
 
 $flash->setCssClasses($cssClasses);
@@ -328,10 +329,10 @@ $escaper = new Escaper();
 $flash   = new Direct($escaper);
 
 $iconClasses = [
-'error'   => 'alert alert-error',
-'success' => 'alert alert-success',
-'notice'  => 'alert alert-notice',
-'warning' => 'alert alert-warning',
+    'error'   => 'alert alert-error',
+    'success' => 'alert alert-success',
+    'notice'  => 'alert alert-notice',
+    'warning' => 'alert alert-warning',
 ];
 
 $flash->setCssIconClasses($iconClasses);
@@ -364,40 +365,40 @@ use Phalcon\Flash\Session;
 $container = new FactoryDefault();
 
 $container->set(
-'flashSession',
-function () {
-    $flash = new Session();
+    'flashSession',
+    function () {
+        $flash = new Session();
 
-    $flash->setCssClasses(
-        [
-            'error'   => 'error_message callout alert radius flashSession',
-            'success' => 'success_message callout success radius flashSession',
-            'warning' => 'warning_message callout warning radius flashSession',
-            'notice'  => 'notice_message callout secondary radius flashSession'
-        ]
-    );
+        $flash->setCssClasses(
+            [
+                'error'   => 'error_message callout alert radius flashSession',
+                'success' => 'success_message callout success radius flashSession',
+                'warning' => 'warning_message callout warning radius flashSession',
+                'notice'  => 'notice_message callout secondary radius flashSession'
+            ]
+        );
 
-    $flash->setCssIconClasses(
-        [
-            'error'   => 'fi-alert',
-            'success' => 'fi-check',
-            'notice'  => 'fi-star',
-            'warning' => 'fi-flag',
-        ]
-    );
+        $flash->setCssIconClasses(
+            [
+                'error'   => 'fi-alert',
+                'success' => 'fi-check',
+                'notice'  => 'fi-star',
+                'warning' => 'fi-flag',
+            ]
+        );
 
-    $template = '<div class="%cssClass%">
-<i class="%cssIconClass%"></i> %message%
-<button class="close-button" aria-label="Close" type="button" data-close>
-    <span aria-hidden="true">&times;</span>
-</button>
+        $template = '<div class="%cssClass%">
+    <i class="%cssIconClass%"></i> %message%
+    <button class="close-button" aria-label="Close" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>';
-    $flash->setCustomTemplate($template);
+        $flash->setCustomTemplate($template);
 
-    $flash->setAutoescape(false);
+        $flash->setAutoescape(false);
 
-    return $flash;
-}
+        return $flash;
+    }
 );
 ```
 
@@ -411,10 +412,10 @@ will produce the following HTML snippet in your view (when calling `$flashSessio
 
 ```html
 <div class="error_message callout alert radius flashSession">
-<i class="fi-alert"></i> An error has occurred. Please contact support.
-<button class="close-button" aria-label="Close" type="button" data-close>
-    <span aria-hidden="true">&times;</span>
-</button>
+    <i class="fi-alert"></i> An error has occurred. Please contact support.
+    <button class="close-button" aria-label="Close" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 ```
 
@@ -494,8 +495,8 @@ echo $flash->getImplicitFlush(); // true
 $flash->error('Error'); // No output
 
 echo $flash
-->setImplicitFlush(false) 
-->error('Error Message') // 'Error Message'
+    ->setImplicitFlush(false) 
+    ->error('Error Message') // 'Error Message'
 ;
 ```
 
@@ -527,8 +528,8 @@ $flash   = new Direct($escaper);
 echo $flash->getAutoescape(); // true
 
 $flash
-->setAutoescape(false)
-->error('<h1>Error</h1>')
+    ->setAutoescape(false)
+    ->error('<h1>Error</h1>')
 ;
 ```
 
@@ -561,10 +562,10 @@ $container = new Di();
 $escaper   = new Escaper();
 
 $container->set(
-'flash',
-function () use ($escaper) {
-    return new Direct($escaper);
-}
+    'flash',
+    function () use ($escaper) {
+        return new Direct($escaper);
+    }
 );
 ```
 
@@ -583,17 +584,17 @@ $container = new Di();
 $escaper   = new Escaper();
 $session   = new Manager();
 $files     = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session->setAdapter($files);
 
 $container->set(
-'flashSession',
-function () use ($escaper, $session) {
-    return new FlashSession($escaper, $session);
-}
+    'flashSession',
+    function () use ($escaper, $session) {
+        return new FlashSession($escaper, $session);
+    }
 );
 ```
 
@@ -618,15 +619,15 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    $this->flash->success('The post was correctly saved!');
-}
+    public function saveAction()
+    {
+        $this->flash->success('The post was correctly saved!');
+    }
 }
 ```
 

@@ -24,12 +24,12 @@ version: "4.2"
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -44,12 +44,12 @@ You can construct the object as any other object in PHP. However, the constructo
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -64,12 +64,12 @@ You can also reuse the component, by repopulating it. [Phalcon\Registry][registr
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -77,7 +77,7 @@ $collection = new Registry($data);
 echo $collection->count(); // 2
 
 $data = [
-'year' => 1776,
+    'year' => 1776,
 ];
 
 $collection->clear();
@@ -103,12 +103,12 @@ The fastest way is by using the property syntax:
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -127,9 +127,9 @@ echo $collection->get('year', 1776, true); // 1776
 
 ```php
 public function get(
-string $element, 
-mixed $defaultValue = null, 
-string $cast = null
+    string $element, 
+    mixed $defaultValue = null, 
+    string $cast = null
 ):  mixed
 ```
 
@@ -162,12 +162,12 @@ The fastest way is by using the property syntax:
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -204,11 +204,11 @@ The fastest way is by using the property syntax:
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
 ];
 
 $collection = new Registry($data);
@@ -241,11 +241,11 @@ The fastest way is by using the property syntax:
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
 ];
 
 $collection = new Registry($data);
@@ -275,18 +275,18 @@ Since the collection object implements `\IteratorAggregate`, you can iterate thr
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
 
 foreach ($collection as $key => $value) {
-echo $key . ' - ' . $value . PHP_EOL;
+    echo $key . ' - ' . $value . PHP_EOL;
 }
 ```
 
@@ -299,12 +299,12 @@ The implementation of the `\Countable` interface exposes the `count()` method, w
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -321,12 +321,12 @@ The `\Serializable` and `\JsonSerializable` interfaces expose methods that allow
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -342,18 +342,19 @@ echo $collection->jsonSerialize(); // $data
 ## Transformations
 [Phalcon\Registry][registry] also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
+	 
 ```php
 <?php
 
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -369,19 +370,19 @@ echo $collection->toArray(); // $data
 - `JSON_UNESCAPED_SLASHES`
 
 You can pass any valid flags to the method according to your needs.
-
+	 
 ```php
 <?php
 
 use Phalcon\Registry;
 
 $data = [
-'colors' => [
-    'red',
-    'white',
-    'blue',
-],
-'year'   => 1776,
+    'colors' => [
+        'red',
+        'white',
+        'blue',
+    ],
+    'year'   => 1776,
 ];
 
 $collection = new Registry($data);
@@ -391,12 +392,12 @@ echo $collection->toJson(); // ["red","white","blue"],"year":1776}
 echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 /**
 {
-"colors": [
-    "red",
-    "white",
-    "blue"
-],
-"year": 1776
+    "colors": [
+        "red",
+        "white",
+        "blue"
+    ],
+    "year": 1776
 }
 */
 ```

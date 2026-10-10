@@ -13,87 +13,129 @@ version: "3.4"
 
 Provides debug capabilities to Phalcon applications
 
+
 ## Methods
 public  **setUri** (*mixed* $uri)
 
 Change the base URI for static resources
 
+
+
 public  **setShowBackTrace** (*mixed* $showBackTrace)
 
 Sets if files the exception's backtrace must be showed
 
+
+
 public  **setShowFiles** (*mixed* $showFiles)
 
 Set if files part of the backtrace must be shown in the output
+
+
 
 public  **setShowFileFragment** (*mixed* $showFileFragment)
 
 Sets if files must be completely opened and showed in the output
 or just the fragment related to the exception
 
+
+
 public  **listen** ([*mixed* $exceptions], [*mixed* $lowSeverity])
 
 Listen for uncaught exceptions and unsilent notices or warnings
+
+
 
 public  **listenExceptions** ()
 
 Listen for uncaught exceptions
 
+
+
 public  **listenLowSeverity** ()
 
 Listen for unsilent notices or warnings
+
+
 
 public  **halt** ()
 
 Halts the request showing a backtrace
 
+
+
 public  **debugVar** (*mixed* $varz, [*mixed* $key])
 
 Adds a variable to the debug output
+
+
 
 public  **clearVars** ()
 
 Clears are variables added previously
 
+
+
 protected  **_escapeString** (*mixed* $value)
 
 Escapes a string with htmlentities
+
+
 
 protected  **_getArrayDump** (*array* $argument, [*mixed* $n])
 
 Produces a recursive representation of an array
 
+
+
 protected  **_getVarDump** (*mixed* $variable)
 
 Produces an string representation of a variable
+
+
 
 public  **getMajorVersion** ()
 
 Returns the major framework's version
 
+
+
 public  **getVersion** ()
 
 Generates a link to the current version documentation
+
+
 
 public  **getCssSources** ()
 
 Returns the css sources
 
+
+
 public  **getJsSources** ()
 
 Returns the javascript sources
+
+
 
 final protected  **showTraceItem** (*mixed* $n, *array* $trace)
 
 Shows a backtrace item
 
+
+
 public  **onUncaughtLowSeverity** (*mixed* $severity, *mixed* $message, *mixed* $file, *mixed* $line, *mixed* $context)
 
 Throws an exception when a notice or warning is raised
 
+
+
 public  **onUncaughtException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
 Handles uncaught exceptions
+
+
+
 
 <hr />
 
@@ -123,38 +165,53 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
+
 ## Methods
 public  **getDetailed** ()
 
 ...
 
+
 public  **setDetailed** (*mixed* $detailed)
 
 ...
+
 
 public  **__construct** ([*array* $styles], [*mixed* $detailed])
 
 Phalcon\Debug\Dump constructor
 
+
+
 public  **all** ()
 
 Alias of variables() method
+
+
 
 protected  **getStyle** (*mixed* $type)
 
 Get style for type
 
+
+
 public  **setStyles** ([*array* $styles])
 
 Set styles for vars type
+
+
 
 public  **one** (*mixed* $variable, [*mixed* $name])
 
 Alias of variable() method
 
+
+
 protected  **output** (*mixed* $variable, [*mixed* $name], [*mixed* $tab])
 
 Prepare an HTML string of information about a single variable.
+
+
 
 public  **variable** (*mixed* $variable, [*mixed* $name])
 
@@ -166,6 +223,8 @@ Returns an HTML string of information about a single variable.
 echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 ```
+
+
 
 public  **variables** ()
 
@@ -183,6 +242,8 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
+
+
 public  **toJson** (*mixed* $variable)
 
 Returns an JSON string of information about a single variable.
@@ -191,7 +252,7 @@ Returns an JSON string of information about a single variable.
 <?php
 
 $foo = [
-"key" => "value",
+    "key" => "value",
 ];
 
 echo (new \Phalcon\Debug\Dump())->toJson($foo);
@@ -202,6 +263,9 @@ $foo->bar = "buz";
 echo (new \Phalcon\Debug\Dump())->toJson($foo);
 
 ```
+
+
+
 
 <hr />
 
@@ -218,41 +282,60 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
+
+
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 

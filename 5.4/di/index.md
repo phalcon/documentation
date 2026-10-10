@@ -21,23 +21,23 @@ use Phalcon\Db\Adapter\Mysql;
 
 class InvoiceComponent
 {
-public function calculate()
-{
-    $connection = new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
+    public function calculate()
+    {
+        $connection = new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+        
+        $invoice = $connection->exec(
+            'SELECT * FROM Invoices WHERE inv_id = 1'
+        );
 
-    $invoice = $connection->exec(
-        'SELECT * FROM Invoices WHERE inv_id = 1'
-    );
-
-    // ...
-}
+        // ...
+    }
 }
 
 $invoice = new InvoiceComponent();
@@ -53,42 +53,42 @@ use Phalcon\Db\Adapter\Mysql;
 
 class InvoiceComponent
 {
-private $connection;
+    private $connection;
+    
+    public function calculate()
+    {
+        $invoice = $this
+            ->connection
+            ->exec(
+                'SELECT * FROM Invoices WHERE inv_id = 1'
+            )
+        ;
 
-public function calculate()
-{
-    $invoice = $this
-        ->connection
-        ->exec(
-            'SELECT * FROM Invoices WHERE inv_id = 1'
-        )
-    ;
+        // ...
+    }
 
-    // ...
-}
-
-public function setConnection(
-    Mysql $connection
-): InvoiceComponent {
-    $this->connection = $connection;
-
-    return $this;
-}
+    public function setConnection(
+        Mysql $connection
+    ): InvoiceComponent {
+        $this->connection = $connection;
+    
+        return $this;
+    }
 }
 
 $connection = new Mysql(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'tutorial',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'tutorial',
+    ]
 );
 
 $invoice = new InvoiceComponent();
 $invoice
-->setConnection($connection)
-->calculate()
+    ->setConnection($connection)
+    ->calculate()
 ;
 ```
 
@@ -103,48 +103,48 @@ use Phalcon\Db\Adapter\Mysql;
 
 class Registry
 {
-public static function getConnection(): Mysql
-{
-    return new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-}
+    public static function getConnection(): Mysql
+    {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
 }
 
 class InvoiceComponent
 {
-private $connection;
+    private $connection;
+    
+    public function calculate()
+    {
+        $invoice = $this
+            ->connection
+            ->exec(
+                'SELECT * FROM Invoices WHERE inv_id = 1'
+            )
+        ;
 
-public function calculate()
-{
-    $invoice = $this
-        ->connection
-        ->exec(
-            'SELECT * FROM Invoices WHERE inv_id = 1'
-        )
-    ;
+        // ...
+    }
 
-    // ...
-}
-
-public function setConnection(
-    Mysql $connection
-): InvoiceComponent {
-    $this->connection = $connection;
-
-    return $this;
-}
+    public function setConnection(
+        Mysql $connection
+    ): InvoiceComponent {
+        $this->connection = $connection;
+    
+        return $this;
+    }
 }
 
 $invoice = new InvoiceComponent();
 $invoice
-->setConnection(Registry::getConnection())
-->calculate()
+    ->setConnection(Registry::getConnection())
+    ->calculate()
 ;
 ```
 
@@ -157,70 +157,71 @@ use Phalcon\Db\Adapter\Mysql;
 
 class Registry
 {
-protected static $connection;
+    protected static $connection;
 
-public static function getNewConnection(): Mysql
-{
-    return self::createConnection();
-}
-
-public static function getSharedConnection(): Mysql
-{
-    if (self::$connection === null) {
-        self::$connection = self::createConnection();
+    public static function getNewConnection(): Mysql
+    {
+        return self::createConnection();
     }
 
-    return self::$connection;
+    public static function getSharedConnection(): Mysql
+    {
+        if (self::$connection === null) {
+            self::$connection = self::createConnection();
+        }
+
+        return self::$connection;
+    }
+
+    protected static function createConnection(): Mysql
+    {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tuturial',
+            ]
+        );
+    }
 }
 
-protected static function createConnection(): Mysql
-{
-    return new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tuturial',
-        ]
-    );
-}
-}
 
 class InvoiceComponent
 {
-private $connection;
+    private $connection;
+    
+    public function calculate()
+    {
+        $invoice = $this
+            ->connection
+            ->exec(
+                'SELECT * FROM Invoices WHERE inv_id = 1'
+            )
+        ;
 
-public function calculate()
-{
-    $invoice = $this
-        ->connection
-        ->exec(
-            'SELECT * FROM Invoices WHERE inv_id = 1'
-        )
-    ;
+        // ...
+    }
 
-    // ...
-}
-
-public function setConnection(
-    Mysql $connection
-): InvoiceComponent {
-    $this->connection = $connection;
-
-    return $this;
-}
+    public function setConnection(
+        Mysql $connection
+    ): InvoiceComponent {
+        $this->connection = $connection;
+    
+        return $this;
+    }
 }
 
 $invoice = new InvoiceComponent();
 $invoice
-->setConnection(Registry::getSharedConnection())
-->calculate()
+    ->setConnection(Registry::getSharedConnection())
+    ->calculate()
 ;
 
 $invoice = new InvoiceComponent();
 $invoice
-->setConnection(Registry::getNewConnection())
-->calculate()
+    ->setConnection(Registry::getNewConnection())
+    ->calculate()
 ;
 ```
 
@@ -238,19 +239,19 @@ $selector   = new Selector();
 $session    = new Session();
 
 $invoice =  new InvoiceComponent(
-$connection, 
-$session, 
-$fileSystem, 
-$filter, 
-$selector
+    $connection, 
+    $session, 
+    $fileSystem, 
+    $filter, 
+    $selector
 );
 
 $invoice
-->setConnection($connection)
-->setFileSystem($fileSystem)
-->setFilter($filter)
-->setSelector($selector)
-->setSession($session)
+    ->setConnection($connection)
+    ->setFileSystem($fileSystem)
+    ->setFilter($filter)
+    ->setSelector($selector)
+    ->setSession($session)
 ;
 ```
 
@@ -261,43 +262,43 @@ The problem of maintainability arises though here. If we have to create this obj
 
 class InvoiceComponent
 {
-private $connection;
-private $fileSystem;
-private $filter;
-private $selector;
-private $session;
+    private $connection;
+    private $fileSystem;
+    private $filter;
+    private $selector;
+    private $session;
+    
+    public function __construct(
+        Connection $connection,
+        FileSystem $fileSystem,
+        Filter $filter,
+        Selector $selector,
+        Session $session
+    
+    ) {
+        $this->connection = $connection;
+        $this->fileSystem = $fileSystem;
+        $this->filter     = $filter;
+        $this->selector   = $selector;
+        $this->session    = $session;
+    }
 
-public function __construct(
-    Connection $connection,
-    FileSystem $fileSystem,
-    Filter $filter,
-    Selector $selector,
-    Session $session
+    public static function factory()
+    {
+        $connection = new Connection();
+        $fileSystem = new FileSystem();
+        $filter     = new Filter();
+        $selector   = new Selector();
+        $session    = new Session();
 
-) {
-    $this->connection = $connection;
-    $this->fileSystem = $fileSystem;
-    $this->filter     = $filter;
-    $this->selector   = $selector;
-    $this->session    = $session;
-}
-
-public static function factory()
-{
-    $connection = new Connection();
-    $fileSystem = new FileSystem();
-    $filter     = new Filter();
-    $selector   = new Selector();
-    $session    = new Session();
-
-    return new self(
-        $connection, 
-        $fileSystem, 
-        $filter, 
-        $selector,
-        $session 
-    );
-}
+        return new self(
+            $connection, 
+            $fileSystem, 
+            $filter, 
+            $selector,
+            $session 
+        );
+    }
 }
 ```
 
@@ -312,65 +313,65 @@ use Phalcon\Di\DiInterface;
 
 class InvoiceComponent
 {
-protected $container;
+    protected $container;
 
-public function __construct(
-    DiInterface $container
-) {
-    $this->container = $container;
-}
+    public function __construct(
+        DiInterface $container
+    ) {
+        $this->container = $container;
+    }
 
-public function calculate()
-{
-    $connection = $this
-        ->container
-        ->get('db')
-    ;
-}
+    public function calculate()
+    {
+        $connection = $this
+            ->container
+            ->get('db')
+        ;
+    }
 
-public function view($id)
-{
-    $filter = $this
-        ->container
-        ->get('filter')
-    ;
+    public function view($id)
+    {
+        $filter = $this
+            ->container
+            ->get('filter')
+        ;
+        
+        $id = $filter->sanitize($id, null, 'int');
 
-    $id = $filter->sanitize($id, null, 'int');
-
-    $connection = $this
-        ->container
-        ->getShared('db')
-    ;
-}
+        $connection = $this
+            ->container
+            ->getShared('db')
+        ;
+    }
 }
 
 $container = new Di();
 $container->set(
-'db',
-function () {
-    return new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-}
+    'db',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
 );
 
 $container->set(
-'filter',
-function () {
-    return new Filter();
-}
+    'filter',
+    function () {
+        return new Filter();
+    }
 );
 
 $container->set(
-'session',
-function () {
-    return new Session();
-}
+    'session',
+    function () {
+        return new Session();
+    }
 );
 
 $invoice =  new InvoiceComponent($container);
@@ -387,25 +388,25 @@ Additionally, this pattern increases testability in the code, thus making it les
 
 ```php
 public function __call(
-string $method, 
-array $arguments = []
+    string $method, 
+    array $arguments = []
 ): mixed | null
 ```
 Magic method to get or set services using setters/getters
 
 ```php
 public function attempt(
-string $name, 
-mixed definition, 
-bool shared = false
+    string $name, 
+    mixed definition, 
+    bool shared = false
 ): ServiceInterface | bool
 ```
 Attempts to register a service in the services' container. Only is successful if a service hasn't been registered previously with the same name
 
 ```php
 public function get(
-string $name, 
-mixed parameters = null
+    string $name, 
+    mixed parameters = null
 ): mixed
 ```
 Resolves the service based on its configuration
@@ -437,8 +438,8 @@ Return the services registered in the DI
 
 ```php
 public function getShared( 
-string $name, 
-mixed parameters = null
+    string $name, 
+    mixed parameters = null
 ): mixed
 ```
 Returns a shared service. The service is first resolved, then the resolved service is stored in the DI. Subsequent requests for this service will return the same instance
@@ -451,31 +452,32 @@ Load services from a php config file.
 ```php
 // /app/config/services.php
 return [
- 'myComponent' => [
-     'className' => '\Acme\Components\MyComponent',
-     'shared'    => true,
- ],
- 'group'       => [
-     'className' => '\Acme\Group',
-     'arguments' => [
-         [
-             'type'    => 'service',
-             'service' => 'myComponent',
+     'myComponent' => [
+         'className' => '\Acme\Components\MyComponent',
+         'shared'    => true,
+     ],
+     'group'       => [
+         'className' => '\Acme\Group',
+         'arguments' => [
+             [
+                 'type'    => 'service',
+                 'service' => 'myComponent',
+             ],
          ],
      ],
- ],
- 'user'        => [
-     'className' => '\Acme\User',
- ],
+     'user'        => [
+         'className' => '\Acme\User',
+     ],
 ];
 
 $container->loadFromPhp("/app/config/services.php");
 ```
 
+
 ```php
 public function loadFromYaml(
-string $filePath, 
-array $callbacks = null
+    string $filePath, 
+    array $callbacks = null
 )
 ```
 Load services from a yaml file.
@@ -483,25 +485,26 @@ Load services from a yaml file.
 ```php
 // /app/config/services.yml
 myComponent:
-className: \Acme\Components\MyComponent
-shared: true
+    className: \Acme\Components\MyComponent
+    shared: true
 
 group:
-className: \Acme\Group
-arguments:
-    - type: service
-      name: myComponent
+    className: \Acme\Group
+    arguments:
+        - type: service
+          name: myComponent
 
 user:
    className: \Acme\User
 
+
 $container->loadFromYaml(
-"/app/config/services.yaml",
-[
-    "!approot" => function ($value) {
-        return dirname(__DIR__) . $value;
-    }
-]
+    "/app/config/services.yaml",
+    [
+        "!approot" => function ($value) {
+            return dirname(__DIR__) . $value;
+        }
+    ]
 );
 ```
 
@@ -549,15 +552,15 @@ use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $container)
-{
-    $container->setShared(
-        'service',
-        function () {
-            // ...
-        }
-    );
-}
+    public function register(DiInterface $container)
+    {
+        $container->setShared(
+            'service',
+            function () {
+                // ...
+            }
+        );
+    }
 }
 ```
 
@@ -573,9 +576,9 @@ Resets the internal default DI
 
 ```php
 public function set(
-string $name, 
-mixed $definition, 
-bool $shared = false
+    string $name, 
+    mixed $definition, 
+    bool $shared = false
 ): ServiceInterface
 ```
 Registers a service in the services container
@@ -587,23 +590,23 @@ Set a default dependency injection container
 
 ```php
 public function setInternalEventsManager(
-ManagerInterface $eventsManager
+    ManagerInterface $eventsManager
 )
 ```
 Sets the internal event manager
 
 ```php
 public function setService(
-string $name, 
-ServiceInterface $rawDefinition
+    string $name, 
+    ServiceInterface $rawDefinition
 ): ServiceInterface
 ```
 Sets a service using a raw Phalcon\Di\Service definition
 
 ```php
 public function setShared(
-string $name, 
-mixed $definition
+    string $name, 
+    mixed $definition
 ): ServiceInterface
 ```
 Registers an _always shared_ service in the services container
@@ -627,8 +630,8 @@ This type expects the name of a valid class, returning an object of the specifie
 use Phalcon\Http\Request;
 
 $container->set(
-'request',
-Request::class
+    'request',
+    Request::class
 );
 ```
 
@@ -641,8 +644,8 @@ This type expects an object. Due to the fact that object does not need to be res
 use Phalcon\Http\Request;
 
 $container->set(
-'request',
-new Request()
+    'request',
+    new Request()
 );
 ```
 
@@ -655,17 +658,17 @@ This method offers greater freedom to build the dependency as desired, however, 
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $container->set(
-'db',
-function () {
-    return new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-}
+    'db',
+    function () {
+        return new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
 );
 ```
 
@@ -678,26 +681,26 @@ use Phalcon\Config;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $config = new Config(
-[
-    'host'     => 'localhost',
-    'username' => 'user',
-    'password' => 'pass',
-    'dbname'   => 'tutorial',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'user',
+        'password' => 'pass',
+        'dbname'   => 'tutorial',
+    ]
 );
 
 $container->set(
-'db',
-function () use ($config) {
-    return new Mysql(
-        [
-            'host'     => $config->host,
-            'username' => $config->username,
-            'password' => $config->password,
-            'dbname'   => $config->name,
-        ]
-    );
-}
+    'db',
+    function () use ($config) {
+        return new Mysql(
+            [
+                'host'     => $config->host,
+                'username' => $config->username,
+                'password' => $config->password,
+                'dbname'   => $config->name,
+            ]
+        );
+    }
 );
 ```
 
@@ -710,33 +713,33 @@ use Phalcon\Config\Config;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $container->set(
-'config',
-function () {
-    return new Config(
-        [
-            'host'     => 'localhost',
-            'username' => 'user',
-            'password' => 'pass',
-            'dbname'   => 'tutorial',
-        ]
-    );
-}
+    'config',
+    function () {
+        return new Config(
+            [
+                'host'     => 'localhost',
+                'username' => 'user',
+                'password' => 'pass',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
 );
 
 $container->set(
-'db',
-function () {
-    $config = $this->get('config');
+    'db',
+    function () {
+        $config = $this->get('config');
 
-    return new Mysql(
-        [
-            'host'     => $config->host,
-            'username' => $config->username,
-            'password' => $config->password,
-            'dbname'   => $config->name,
-        ]
-    );
-}
+        return new Mysql(
+            [
+                'host'     => $config->host,
+                'username' => $config->username,
+                'password' => $config->password,
+                'dbname'   => $config->name,
+            ]
+        );
+    }
 );
 ```
 
@@ -753,34 +756,35 @@ If it is required to change the definition of a service without instantiating/re
 use Phalcon\Annotations\Adapter\Apcu;
 
 $container->set(
-'annotations',
-[
-    'className' => Apcu::class,
-    'arguments' => [
-        [
-            'type'  => 'parameter',
-            'name'  => 'prefix',
-            'value' => 'my-prefix',
+    'annotations',
+    [
+        'className' => Apcu::class,
+        'arguments' => [
+            [
+                'type'  => 'parameter',
+                'name'  => 'prefix',
+                'value' => 'my-prefix',
+            ],
+            [
+                'type'  => 'parameter',
+                'name'  => 'lifetime',
+                'value' => 3600,
+            ],
         ],
-        [
-            'type'  => 'parameter',
-            'name'  => 'lifetime',
-            'value' => 3600,
-        ],
-    ],
-]
+    ]
 );
 
+
 $container->set(
-'annotations',
-function () {
-    return new Apcu(
-        [
-            'prefix'   => 'my-prefix',
-            'lifetime' => 3600,
-        ]
-    );
-}
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'prefix'   => 'my-prefix',
+                'lifetime' => 3600,
+            ]
+        );
+    }
 );
 ```
 
@@ -792,20 +796,20 @@ Both service registrations above produce the same result. The array definition h
 use Phalcon\Annotations\Adapter\Memory;
 
 $container
-->getService('annotations')
-->setClassName(Memory::class)
+    ->getService('annotations')
+    ->setClassName(Memory::class)
 ;
 
 $container
-->getService('annotations')
-->setParameter(
-    1,
-    [
-        'type'  => 'parameter',
-        'name'  => 'lifetime',
-        'value' => 7200,
-    ]
-);
+    ->getService('annotations')
+    ->setParameter(
+        1,
+        [
+            'type'  => 'parameter',
+            'name'  => 'lifetime',
+            'value' => 7200,
+        ]
+    );
 ```
 
 ### Injections
@@ -823,21 +827,21 @@ use Phalcon\Http\Response;
 
 class Responder
 {
-/**
- * @var Response
- */
-protected $response;
+    /**
+     * @var Response
+     */
+    protected $response;
 
-/**
- * @var string
- */
-protected $contentType;
+    /**
+     * @var string
+     */
+    protected $contentType;
 
-public function __construct(Response $response, string $contentType)
-{
-    $this->response    = $response;
-    $this->contentType = $contentType;
-}
+    public function __construct(Response $response, string $contentType)
+    {
+        $this->response    = $response;
+        $this->contentType = $contentType;
+    }
 }
 ```
 
@@ -850,27 +854,27 @@ use MyApp\Http\Responder;
 use Phalcon\Http\Response;
 
 $container->set(
-'response',
-[
-    'className' => Response::class
-]
+    'response',
+    [
+        'className' => Response::class
+    ]
 );
 
 $container->set(
-'my-responder',
-[
-    'className' => Responder::class,
-    'arguments' => [
-        [
-            'type' => 'service',
-            'name' => 'response',
-        ],
-        [
-            'type'  => 'parameter',
-            'value' => 'application/json',
-        ],
+    'my-responder',
+    [
+        'className' => Responder::class,
+        'arguments' => [
+            [
+                'type' => 'service',
+                'name' => 'response',
+            ],
+            [
+                'type'  => 'parameter',
+                'value' => 'application/json',
+            ],
+        ]
     ]
-]
 );
 ```
 
@@ -888,25 +892,25 @@ use Phalcon\Http\Response;
 
 class Responder
 {
-/**
- * @var Response
- */
-protected $response;
+    /**
+     * @var Response
+     */
+    protected $response;
 
-/**
- * @var string
- */
-protected $contentType;
+    /**
+     * @var string
+     */
+    protected $contentType;
 
-public function setResponse(Response $response)
-{
-    $this->response = $response;
-}
+    public function setResponse(Response $response)
+    {
+        $this->response = $response;
+    }
 
-public function setContentType($contentType)
-{
-    $this->contentType = $contentType;
-}
+    public function setContentType($contentType)
+    {
+        $this->contentType = $contentType;
+    }
 }
 ```
 
@@ -919,37 +923,37 @@ use MyApp\Http\Responder;
 use Phalcon\Http\Response;
 
 $container->set(
-'response',
-[
-    'className' => Response::class,
-]
+    'response',
+    [
+        'className' => Response::class,
+    ]
 );
 
 $container->set(
-'my-responder',
-[
-    'className' => Responder::class,
-    'calls'     => [
-        [
-            'method'    => 'setResponse',
-            'arguments' => [
-                [
-                    'type' => 'service',
-                    'name' => 'response',
+    'my-responder',
+    [
+        'className' => Responder::class,
+        'calls'     => [
+            [
+                'method'    => 'setResponse',
+                'arguments' => [
+                    [
+                        'type' => 'service',
+                        'name' => 'response',
+                    ]
                 ]
-            ]
-        ],
-        [
-            'method'    => 'setContentType',
-            'arguments' => [
-                [
-                    'type'  => 'parameter',
-                    'value' => 'application/json',
+            ],
+            [
+                'method'    => 'setContentType',
+                'arguments' => [
+                    [
+                        'type'  => 'parameter',
+                        'value' => 'application/json',
+                    ]
                 ]
             ]
         ]
     ]
-]
 );
 ```
 
@@ -965,15 +969,15 @@ use Phalcon\Http\Response;
 
 class Responder
 {
-/**
- * @var Response
- */
-public $response;
-
-/**
- * @var string
- */
-public $contentType;
+    /**
+     * @var Response
+     */
+    public $response;
+    
+    /**
+     * @var string
+     */
+    public $contentType;
 }
 ```
 
@@ -986,33 +990,33 @@ use MyApp\Http\Responder;
 use Phalcon\Http\Response;
 
 $container->set(
-'response',
-[
-    'className' => Response::class,
-]
+    'response',
+    [
+        'className' => Response::class,
+    ]
 );
 
 $container->set(
-'my-responder',
-[
-    'className'  => Responder::class,
-    'properties' => [
-        [
-            'name'  => 'response',
-            'value' => [
-                'type' => 'service',
-                'name' => 'response',
+    'my-responder',
+    [
+        'className'  => Responder::class,
+        'properties' => [
+            [
+                'name'  => 'response',
+                'value' => [
+                    'type' => 'service',
+                    'name' => 'response',
+                ],
             ],
-        ],
-        [
-            'name'  => 'contentType',
-            'value' => [
-                'type'  => 'parameter',
-                'value' => 'application/json',
-            ],
+            [
+                'name'  => 'contentType',
+                'value' => [
+                    'type'  => 'parameter',
+                    'value' => 'application/json',
+                ],
+            ]
         ]
     ]
-]
 );
 ```
 
@@ -1040,13 +1044,13 @@ $container = new Di();
 $container['request'] = Request::class;
 
 $container['request'] = function () {
-return new Request();
+    return new Request();
 };
 
 $container['request'] = new Request();
 
 $container['request'] = [
-'className' => Request::class,
+    'className' => Request::class,
 ];
 ```
 
@@ -1063,7 +1067,7 @@ As shown in the above examples, each of the ways used to set/register a service 
 **YAML**
 
 This feature will load services by parsing a YAML file:
-
+ 
 ```yaml
 ; /app/config/services.yml
 
@@ -1089,17 +1093,17 @@ This approach requires that the module Yaml be installed. Please refer to [this 
 **PHP**
 
 You can also load services using a PHP array:
-
+ 
 ```php
 // /app/config/services.php
 
 use Phalcon\Config\Config;
 
 return [
-'config' => [
-    'className' => Config::class,
-    'shared'    => true,
-],
+    'config' => [
+        'className' => Config::class,
+        'shared'    => true,
+    ],
 ];
 ```
 
@@ -1140,10 +1144,10 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 use Phalcon\Annotations\Adapter\Stream;
 
 $annotations = $container->get(
-Stream::class,
-[
-    ['annotationsDir' => 'storage/cache/annotations'],
-]
+    Stream::class,
+    [
+        ['annotationsDir' => 'storage/cache/annotations'],
+    ]
 );
 ```
 
@@ -1165,19 +1169,19 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 
 $container->setShared(
-'session',
-function () {
-    $session = new Manager();
-    $files = new Stream(
-        [
-            'savePath' => '/tmp',
-        ]
-    );
-    $session->setAdapter($files);
-    $session->start();
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+        $session->setAdapter($files);
+        $session->start();
 
-    return $session;
-}
+        return $session;
+    }
 );
 
 $session = $container->get('session');
@@ -1196,20 +1200,20 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 
 $container->set(
-'session',
-function () {
-    $session = new Manager();
-    $files = new Stream(
-        [
-            'savePath' => '/tmp',
-        ]
-    );
-    $session->setAdapter($files);
-    $session->start();
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+        $session->setAdapter($files);
+        $session->start();
 
-    return $session;
-},
-true
+        return $session;
+    },
+    true
 );
 
 $session = $container->get('session');
@@ -1238,9 +1242,9 @@ $container->set('request', 'Phalcon\Http\Request');
 $requestService = $container->getService('request');
 
 $requestService->setDefinition(
-function () {
-    return new Request();
-}
+    function () {
+        return new Request();
+    }
 );
 
 $requestService->setShared(true);
@@ -1255,18 +1259,18 @@ When you request a service from the container, if it cannot be found by using th
 <?php
 
 $container->set(
-'IndexController',
-function () {
-    return new Component();
-},
-true
+    'IndexController',
+    function () {
+        return new Component();
+    },
+    true
 );
 
 $container->set(
-'IndexController',
-function () {
-    return new AnotherComponent();
-}
+    'IndexController',
+    function () {
+        return new AnotherComponent();
+    }
 );
 
 $component = $container->get('IndexController');
@@ -1285,20 +1289,20 @@ use Phalcon\Di\InjectionAwareInterface;
 
 class InvoiceComponent implements InjectionAwareInterface
 {
-/**
- * @var DiInterface
- */
-protected $container;
+    /**
+     * @var DiInterface
+     */
+    protected $container;
 
-public function setDi(DiInterface $container)
-{
-    $this->container = $container;
-}
+    public function setDi(DiInterface $container)
+    {
+        $this->container = $container;
+    }
 
-public function getDi(): DiInterface
-{
-    return $this->container;
-}
+    public function getDi(): DiInterface
+    {
+        return $this->container;
+    }
 }
 ```
 
@@ -1337,10 +1341,10 @@ You can better organize your application by moving the service registration to i
 <?php
 
 $container->set(
-'router',
-function () {
-    return include '/app/config/routes.php';
-}
+    'router',
+    function () {
+        return include '/app/config/routes.php';
+    }
 );
 ```
 
@@ -1368,10 +1372,10 @@ use Phalcon\Di\Di;
 
 class InvoicesComponent
 {
-public static function calculate()
-{
-    $connection = Di::getDefault()->getDb();
-}
+    public static function calculate()
+    {
+        $connection = Di::getDefault()->getDb();
+    }
 }
 ```
 
@@ -1385,9 +1389,9 @@ Another method of registering services is by putting each service in its own fil
 <?php
 
 return [
-MyApp\Providers\ConfigProvider::class,
-MyApp\Providers\RegistryProvider::class,
-MyApp\Providers\LoggerProvider::class,
+    MyApp\Providers\ConfigProvider::class,
+    MyApp\Providers\RegistryProvider::class,
+    MyApp\Providers\LoggerProvider::class,
 ];    
 ```
 
@@ -1403,20 +1407,20 @@ use Phalcon\Di\DiInterface;
 
 class ConfigProvider implements ServiceProviderInterface
 {
-/**
- * @param DiInterface $container
- */
-public function register(DiInterface $container)
-{
-    $container->setShared(
-        'config',
-        function () {
-            $data = require 'app/config/config.php';
+    /**
+     * @param DiInterface $container
+     */
+    public function register(DiInterface $container)
+    {
+        $container->setShared(
+            'config',
+            function () {
+                $data = require 'app/config/config.php';
 
-            return new Config($data);
-        }
-    );
-}
+                return new Config($data);
+            }
+        );
+    }
 }
 ```
 
@@ -1435,33 +1439,33 @@ use function microtime;
 
 class RegistryProvider implements ServiceProviderInterface
 {
-/**
- * {@inheritdoc}
- *
- * @param DiInterface $container
- */
-public function register(DiInterface $container)
-{
-    /** @var Config $config */
-    $config  = $container->getShared('config');
-    $devMode = $config->path('app.devMode', false);
+    /**
+     * {@inheritdoc}
+     *
+     * @param DiInterface $container
+     */
+    public function register(DiInterface $container)
+    {
+        /** @var Config $config */
+        $config  = $container->getShared('config');
+        $devMode = $config->path('app.devMode', false);
 
-    $container->setShared(
-        'registry',
-        function () use ($devMode) {
-            $registry = new Registry();
-            $registry->offsetSet('devMode', $devMode);
-            $registry->offsetSet('execution', microtime(true));
+        $container->setShared(
+            'registry',
+            function () use ($devMode) {
+                $registry = new Registry();
+                $registry->offsetSet('devMode', $devMode);
+                $registry->offsetSet('execution', microtime(true));
 
-            return $registry;
-        }
-    );
-}
+                return $registry;
+            }
+        );
+    }
 }
 ```
 
 `app/library/Providers/LoggerProvider.php`
-```php
+ ```php
 <?php
 
 namespace MyApp\Providers;
@@ -1473,29 +1477,29 @@ use Phalcon\Logger\Adapter\Stream;
 
 class LoggerProvider implements ServiceProviderInterface
 {
-use LoggerTrait;
+    use LoggerTrait;
 
-/**
- * @param DiInterface $container
- *
- * @throws \Exception
- */
-public function register(DiInterface $container)
-{
-    $container->setShared(
-        'logger', 
-        function () {
-            $adapter = new Stream('/storage/logs/main.log');
+    /**
+     * @param DiInterface $container
+     *
+     * @throws \Exception
+     */
+    public function register(DiInterface $container)
+    {
+        $container->setShared(
+            'logger', 
+            function () {
+                $adapter = new Stream('/storage/logs/main.log');
 
-            return new Logger(
-                'messages',
-                [
-                    'main' => $adapter,
-                ]
-            );
-        }
-    );
-}
+                return new Logger(
+                    'messages',
+                    [
+                        'main' => $adapter,
+                    ]
+                );
+            }
+        );
+    }
 }
 
 ```
@@ -1512,7 +1516,7 @@ $services = include('app/config/providers.php');
 $container = new Di();
 
 foreach ($services as $service) {
-$container->register(new $service());
+    $container->register(new $service());
 }
 ```
 
@@ -1577,10 +1581,10 @@ use Phalcon\Di\Di;
 use Phalcon\Di\Exception;
 
 try {
-$container = new Di();
-$component = $container->get('unknown-service');
+    $container = new Di();
+    $component = $container->get('unknown-service');
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 

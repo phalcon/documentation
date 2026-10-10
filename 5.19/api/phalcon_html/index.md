@@ -23,11 +23,12 @@ This class helps to work with HTML Attributes
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](/5.19/api/phalcon_support/#supportcollection)
-- **`Phalcon\Html\Attributes`** - implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
+    - **`Phalcon\Html\Attributes`** - implements [`Phalcon\Html\Attributes\RenderInterface`](#htmlattributesrenderinterface)
 
 </div>
 
 __Uses__ `Phalcon\Html\Attributes\RenderInterface` · `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Exceptions\AttributeNotRenderable` · `Phalcon\Support\Collection`
+
 
 ### Method Summary
 
@@ -82,6 +83,7 @@ protected function renderAttributes( array $attributes ): string;
 
 @todo remove this when we refactor forms. Maybe remove this class? Put it into traits
 
+
 ## Html\Attributes\AttributesInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -96,6 +98,7 @@ Html Attributes Interface
 </div>
 
 __Uses__ `Phalcon\Html\Attributes`
+
 
 ### Method Summary
 
@@ -134,6 +137,7 @@ public function setAttributes( Attributes $attributes ): AttributesInterface;
 
 Set Attributes
 
+
 ## Html\Attributes\RenderInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -169,6 +173,7 @@ public function render(): string;
 ```
 
 Generate a string representation
+
 
 ## Html\Breadcrumbs
 
@@ -242,8 +247,8 @@ in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
 ```php
 public function add(
-string $label,
-string $link = ""
+    string $label,
+    string $link = ""
 ): static;
 ```
 
@@ -324,6 +329,7 @@ public function toArray(): array;
 
 Returns the internal breadcrumbs array
 
+
 ## Html\Escaper
 
 <span class="badge badge--class">Class</span>
@@ -365,6 +371,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEscaper` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Escaper\HtmlEscaper` · `Phalcon\Html\Escaper\JsEscaper` · `Phalcon\Html\Escaper\UrlEscaper`
+
 
 ### Method Summary
 
@@ -567,9 +574,9 @@ __Uses__ `Phalcon\Html\Escaper\AttributeEscaper` · `Phalcon\Html\Escaper\CssEsc
 
 ```php
 public function __construct(
-string $encoding = "utf-8",
-int $flags = 11,
-bool $doubleEncode = true
+    string $encoding = "utf-8",
+    int $flags = 11,
+    bool $doubleEncode = true
 );
 ```
 
@@ -775,6 +782,7 @@ public function url( string $input ): string;
 
 Escapes a URL. Delegates to the configured `UrlEscaper`.
 
+
 ## Html\EscaperFactory
 
 <span class="badge badge--class">Class</span>
@@ -811,6 +819,7 @@ public function newInstance(): Escaper;
 
 Create a new instance of the object
 
+
 ## Html\Escaper\AbstractEscaper
 
 <span class="badge badge--abstract">Abstract</span>
@@ -824,15 +833,17 @@ Phalcon\Html\Escaper\Traits\EscaperTrait directly instead of extending this.
 <div class="api-tree">
 
 - **`Phalcon\Html\Escaper\AbstractEscaper`**
-- [`Phalcon\Html\Escaper\AttributeEscaper`](#htmlescaperattributeescaper)
-- [`Phalcon\Html\Escaper\CssEscaper`](#htmlescapercssescaper)
-- [`Phalcon\Html\Escaper\HtmlEscaper`](#htmlescaperhtmlescaper)
-- [`Phalcon\Html\Escaper\JsEscaper`](#htmlescaperjsescaper)
-- [`Phalcon\Html\Escaper\UrlEscaper`](#htmlescaperurlescaper)
+    - [`Phalcon\Html\Escaper\AttributeEscaper`](#htmlescaperattributeescaper)
+    - [`Phalcon\Html\Escaper\CssEscaper`](#htmlescapercssescaper)
+    - [`Phalcon\Html\Escaper\HtmlEscaper`](#htmlescaperhtmlescaper)
+    - [`Phalcon\Html\Escaper\JsEscaper`](#htmlescaperjsescaper)
+    - [`Phalcon\Html\Escaper\UrlEscaper`](#htmlescaperurlescaper)
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\Traits\EscaperTrait`
+
+
 
 ## Html\Escaper\AttributeEscaper
 
@@ -846,7 +857,7 @@ of attribute pairs. Boolean `true` becomes a bare key (e.g. `disabled`);
 <div class="api-tree">
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\AttributeEscaper`**
+    - **`Phalcon\Html\Escaper\AttributeEscaper`**
 
 </div>
 
@@ -897,6 +908,7 @@ protected function escapeValue( string $input ): string;
 
 Encodes a single key/value via `htmlspecialchars`.
 
+
 ## Html\Escaper\CssEscaper
 
 <span class="badge badge--class">Class</span>
@@ -908,7 +920,7 @@ characters with their hexadecimal escape sequence.
 <div class="api-tree">
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\CssEscaper`**
+    - **`Phalcon\Html\Escaper\CssEscaper`**
 
 </div>
 
@@ -942,6 +954,7 @@ public function __invoke( string $input ): string;
 ```php
 public function escape( string $input ): string;
 ```
+
 
 ## Html\Escaper\EscaperInterface
 
@@ -1094,6 +1107,7 @@ public function url( string $input ): string;
 
 Escapes a URL. Internally uses rawurlencode
 
+
 ## Html\Escaper\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1104,9 +1118,10 @@ Class Exception
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Html\Escaper\Exception`**
+    - **`Phalcon\Html\Escaper\Exception`**
 
 </div>
+
 
 ## Html\Escaper\HtmlEscaper
 
@@ -1118,7 +1133,7 @@ Escapes a string for use as HTML body content via `htmlspecialchars`.
 <div class="api-tree">
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\HtmlEscaper`**
+    - **`Phalcon\Html\Escaper\HtmlEscaper`**
 
 </div>
 
@@ -1153,6 +1168,7 @@ public function __invoke( string|null $input = null ): string;
 public function escape( string|null $input = null ): string;
 ```
 
+
 ## Html\Escaper\JsEscaper
 
 <span class="badge badge--class">Class</span>
@@ -1164,7 +1180,7 @@ non-alphanumeric characters with their hexadecimal escape sequence.
 <div class="api-tree">
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\JsEscaper`**
+    - **`Phalcon\Html\Escaper\JsEscaper`**
 
 </div>
 
@@ -1199,6 +1215,7 @@ public function __invoke( string $input ): string;
 public function escape( string $input ): string;
 ```
 
+
 ## Html\Escaper\Traits\EscaperTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -1219,6 +1236,7 @@ utilities used by the per-context escaper objects (`HtmlEscaper`,
 </div>
 
 __Used by__ [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
+
 
 ### Method Summary
 
@@ -1347,6 +1365,7 @@ public function setEncoding( string $encoding ): static;
 public function setFlags( int $flags ): static;
 ```
 
+
 ## Html\Escaper\UrlEscaper
 
 <span class="badge badge--class">Class</span>
@@ -1357,11 +1376,12 @@ Escapes a string for use as a URL component via `rawurlencode`.
 <div class="api-tree">
 
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
-- **`Phalcon\Html\Escaper\UrlEscaper`**
+    - **`Phalcon\Html\Escaper\UrlEscaper`**
 
 </div>
 
 __Uses__ `Phalcon\Traits\Php\UrlTrait`
+
 
 ### Method Summary
 
@@ -1394,6 +1414,7 @@ public function __invoke( string $input ): string;
 public function escape( string $input ): string;
 ```
 
+
 ## Html\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1406,12 +1427,13 @@ Exceptions thrown in Phalcon\Html will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Html\Exception`**
-- [`Phalcon\Html\Exceptions\AttributeNotRenderable`](#htmlexceptionsattributenotrenderable)
-- [`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`](#htmlexceptionsfriendlytitleconversionfailed)
-- [`Phalcon\Html\Exceptions\ServiceNotRegistered`](#htmlexceptionsservicenotregistered)
+    - **`Phalcon\Html\Exception`**
+        - [`Phalcon\Html\Exceptions\AttributeNotRenderable`](#htmlexceptionsattributenotrenderable)
+        - [`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`](#htmlexceptionsfriendlytitleconversionfailed)
+        - [`Phalcon\Html\Exceptions\ServiceNotRegistered`](#htmlexceptionsservicenotregistered)
 
 </div>
+
 
 ## Html\Exceptions\AttributeNotRenderable
 
@@ -1421,12 +1443,13 @@ Exceptions thrown in Phalcon\Html will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Html\Exception`](#htmlexception)
-- **`Phalcon\Html\Exceptions\AttributeNotRenderable`**
+    - [`Phalcon\Html\Exception`](#htmlexception)
+        - **`Phalcon\Html\Exceptions\AttributeNotRenderable`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -1445,10 +1468,11 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __construct(
-string $key,
-string $type
+    string $key,
+    string $type
 );
 ```
+
 
 ## Html\Exceptions\FriendlyTitleConversionFailed
 
@@ -1458,12 +1482,13 @@ string $type
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Html\Exception`](#htmlexception)
-- **`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`**
+    - [`Phalcon\Html\Exception`](#htmlexception)
+        - **`Phalcon\Html\Exceptions\FriendlyTitleConversionFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -1484,6 +1509,7 @@ __Uses__ `Phalcon\Html\Exception`
 public function __construct( string $message );
 ```
 
+
 ## Html\Exceptions\InvalidResultsetValue
 
 <span class="badge badge--class">Class</span>
@@ -1492,11 +1518,12 @@ public function __construct( string $message );
 <div class="api-tree">
 
 - `\InvalidArgumentException`
-- **`Phalcon\Html\Exceptions\InvalidResultsetValue`**
+    - **`Phalcon\Html\Exceptions\InvalidResultsetValue`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -1517,6 +1544,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Html\Exceptions\ServiceNotRegistered
 
 <span class="badge badge--class">Class</span>
@@ -1525,12 +1553,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Html\Exception`](#htmlexception)
-- **`Phalcon\Html\Exceptions\ServiceNotRegistered`**
+    - [`Phalcon\Html\Exception`](#htmlexception)
+        - **`Phalcon\Html\Exceptions\ServiceNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -1551,6 +1580,7 @@ __Uses__ `Phalcon\Html\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Html\Exceptions\UsingRequiresTwoValues
 
 <span class="badge badge--class">Class</span>
@@ -1559,11 +1589,12 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\InvalidArgumentException`
-- **`Phalcon\Html\Exceptions\UsingRequiresTwoValues`**
+    - **`Phalcon\Html\Exceptions\UsingRequiresTwoValues`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -1584,6 +1615,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Html\Helper\AbstractHelper
 
 <span class="badge badge--abstract">Abstract</span>
@@ -1597,29 +1629,30 @@ public function __construct();
 <div class="api-tree">
 
 - **`Phalcon\Html\Helper\AbstractHelper`**
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- [`Phalcon\Html\Helper\Anchor`](#htmlhelperanchor)
-- [`Phalcon\Html\Helper\Base`](#htmlhelperbase)
-- [`Phalcon\Html\Helper\Body`](#htmlhelperbody)
-- [`Phalcon\Html\Helper\Breadcrumbs`](#htmlhelperbreadcrumbs)
-- [`Phalcon\Html\Helper\Button`](#htmlhelperbutton)
-- [`Phalcon\Html\Helper\Close`](#htmlhelperclose)
-- [`Phalcon\Html\Helper\Element`](#htmlhelperelement)
-- [`Phalcon\Html\Helper\Form`](#htmlhelperform)
-- [`Phalcon\Html\Helper\FriendlyTitle`](#htmlhelperfriendlytitle)
-- [`Phalcon\Html\Helper\Img`](#htmlhelperimg)
-- [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- [`Phalcon\Html\Helper\Label`](#htmlhelperlabel)
-- [`Phalcon\Html\Helper\Preload`](#htmlhelperpreload)
-- [`Phalcon\Html\Helper\Tag`](#htmlhelpertag)
-- [`Phalcon\Html\Helper\Title`](#htmlhelpertitle)
-- [`Phalcon\Html\Helper\VoidTag`](#htmlhelpervoidtag)
+    - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+    - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+    - [`Phalcon\Html\Helper\Anchor`](#htmlhelperanchor)
+    - [`Phalcon\Html\Helper\Base`](#htmlhelperbase)
+    - [`Phalcon\Html\Helper\Body`](#htmlhelperbody)
+    - [`Phalcon\Html\Helper\Breadcrumbs`](#htmlhelperbreadcrumbs)
+    - [`Phalcon\Html\Helper\Button`](#htmlhelperbutton)
+    - [`Phalcon\Html\Helper\Close`](#htmlhelperclose)
+    - [`Phalcon\Html\Helper\Element`](#htmlhelperelement)
+    - [`Phalcon\Html\Helper\Form`](#htmlhelperform)
+    - [`Phalcon\Html\Helper\FriendlyTitle`](#htmlhelperfriendlytitle)
+    - [`Phalcon\Html\Helper\Img`](#htmlhelperimg)
+    - [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
+    - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+    - [`Phalcon\Html\Helper\Label`](#htmlhelperlabel)
+    - [`Phalcon\Html\Helper\Preload`](#htmlhelperpreload)
+    - [`Phalcon\Html\Helper\Tag`](#htmlhelpertag)
+    - [`Phalcon\Html\Helper\Title`](#htmlhelpertitle)
+    - [`Phalcon\Html\Helper\VoidTag`](#htmlhelpervoidtag)
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -1729,8 +1762,8 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null
 );
 ```
 
@@ -1742,8 +1775,8 @@ AbstractHelper constructor.
 
 ```php
 protected function close(
-string $tag,
-bool $raw = false
+    string $tag,
+    bool $raw = false
 ): string;
 ```
 
@@ -1761,9 +1794,9 @@ Replicates the indent x times as per indentLevel
 
 ```php
 protected function injectAttribute(
-string $key,
-string $value,
-array $attributes
+    string $key,
+    string $value,
+    array $attributes
 ): array;
 ```
 
@@ -1776,8 +1809,8 @@ sure that argument always wins.
 
 ```php
 protected function orderAttributes(
-array $overrides,
-array $attributes
+    array $overrides,
+    array $attributes
 ): array;
 ```
 
@@ -1787,8 +1820,8 @@ Keeps all the attributes sorted - same order all the time
 
 ```php
 protected function renderArrayElements(
-array $elements,
-string $delimiter
+    array $elements,
+    string $delimiter
 ): string;
 ```
 
@@ -1807,8 +1840,8 @@ Renders all the attributes
 
 ```php
 protected function renderElement(
-string $tag,
-array $attributes = []
+    string $tag,
+    array $attributes = []
 ): string;
 ```
 
@@ -1818,10 +1851,10 @@ Renders an element
 
 ```php
 protected function renderFullElement(
-string $tag,
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $tag,
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
@@ -1831,9 +1864,9 @@ Renders an element
 
 ```php
 protected function renderTag(
-string $tag,
-array $attributes = [],
-string $close = ""
+    string $tag,
+    array $attributes = [],
+    string $close = ""
 ): string;
 ```
 
@@ -1843,12 +1876,13 @@ Renders a tag
 
 ```php
 protected function selfClose(
-string $tag,
-array $attributes = []
+    string $tag,
+    array $attributes = []
 ): string;
 ```
 
 Produces a self close tag i.e. <img />
+
 
 ## Html\Helper\AbstractList
 
@@ -1860,13 +1894,14 @@ Class AbstractList
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\AbstractList`**
-- [`Phalcon\Html\Helper\Input\Select`](#htmlhelperinputselect)
-- [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
+    - **`Phalcon\Html\Helper\AbstractList`**
+        - [`Phalcon\Html\Helper\Input\Select`](#htmlhelperinputselect)
+        - [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -1917,9 +1952,9 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null,
-array $attributes = []
+    string $indent = "    ",
+    string|null $delimiter = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -1941,6 +1976,7 @@ abstract protected function getTag(): string;
 
 Returns the tag name.
 
+
 ## Html\Helper\AbstractSeries
 
 <span class="badge badge--abstract">Abstract</span>
@@ -1952,10 +1988,10 @@ Returns the tag name.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\AbstractSeries`**
-- [`Phalcon\Html\Helper\Meta`](#htmlhelpermeta)
-- [`Phalcon\Html\Helper\Script`](#htmlhelperscript)
-- [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
+    - **`Phalcon\Html\Helper\AbstractSeries`**
+        - [`Phalcon\Html\Helper\Meta`](#htmlhelpermeta)
+        - [`Phalcon\Html\Helper\Script`](#htmlhelperscript)
+        - [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
 
 </div>
 
@@ -2015,8 +2051,8 @@ Returns the tag name.
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null
+    string $indent = "    ",
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -2053,8 +2089,8 @@ Returns the tag name.
 
 ```php
 protected function pushOrPlace(
-array $entry,
-int $position = -1
+    array $entry,
+    int $position = -1
 ): void;
 ```
 
@@ -2064,6 +2100,7 @@ available auto-increment slot. When `position` is non-negative the entry
 is placed at that key, advancing past any already-occupied slots so
 existing entries are not overwritten. The store is ksort()ed in
 `__toString`, so positions act as a sort key, not a strict address.
+
 
 ## Html\Helper\Anchor
 
@@ -2077,11 +2114,12 @@ Class Anchor
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Anchor`**
+    - **`Phalcon\Html\Helper\Anchor`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2116,9 +2154,9 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -2126,14 +2164,15 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $href,
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $href,
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a &lt;a> tag
+
 
 ## Html\Helper\Base
 
@@ -2145,11 +2184,12 @@ Class Base
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Base`**
+    - **`Phalcon\Html\Helper\Base`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2170,12 +2210,13 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-string|null $href = null,
-array $attributes = []
+    string|null $href = null,
+    array $attributes = []
 ): string;
 ```
 
 Produce a `<base/>` tag.
+
 
 ## Html\Helper\Body
 
@@ -2187,11 +2228,12 @@ Class Body
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Body`**
+    - **`Phalcon\Html\Helper\Body`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2216,6 +2258,7 @@ public function __invoke( array $attributes = [] ): string;
 
 Produce a `<body>` tag.
 
+
 ## Html\Helper\Breadcrumbs
 
 <span class="badge badge--class">Class</span>
@@ -2228,11 +2271,12 @@ in `<li>` tags, while the whole string is enclosed in `<nav>` and `<ol>` tags.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Breadcrumbs`**
+    - **`Phalcon\Html\Helper\Breadcrumbs`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Interpolate`
+
 
 ### Method Summary
 
@@ -2342,8 +2386,8 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Url\UrlInterfac
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-UrlInterface|null $url = null
+    EscaperInterface $escaper,
+    UrlInterface|null $url = null
 );
 ```
 
@@ -2353,8 +2397,8 @@ AbstractHelper constructor.
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null
+    string $indent = "    ",
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -2364,10 +2408,10 @@ Sets the indent and delimiter and returns the object back.
 
 ```php
 public function add(
-string $text,
-string $link = "",
-string $icon = "",
-array $attributes = []
+    string $text,
+    string $link = "",
+    string $icon = "",
+    array $attributes = []
 ): static;
 ```
 
@@ -2490,9 +2534,9 @@ Set the separator.
 
 ```php
 public function setTemplate(
-string $main,
-string $line,
-string $last
+    string $main,
+    string $line,
+    string $last
 ): static;
 ```
 
@@ -2506,6 +2550,7 @@ public function toArray(): array;
 
 Returns the internal breadcrumbs array.
 
+
 ## Html\Helper\Button
 
 <span class="badge badge--class">Class</span>
@@ -2518,11 +2563,12 @@ Class Button
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Button`**
+    - **`Phalcon\Html\Helper\Button`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2557,9 +2603,9 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -2567,13 +2613,14 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a `<button>` tag.
+
 
 ## Html\Helper\Close
 
@@ -2585,7 +2632,7 @@ Class Close
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Close`**
+    - **`Phalcon\Html\Helper\Close`**
 
 </div>
 
@@ -2608,12 +2655,13 @@ Class Close
 
 ```php
 public function __invoke(
-string $tag,
-bool $raw = false
+    string $tag,
+    bool $raw = false
 ): string;
 ```
 
 Produce a `</...>` tag.
+
 
 ## Html\Helper\Doctype
 
@@ -2716,8 +2764,8 @@ public function __construct();
 
 ```php
 public function __invoke(
-int $type = self::HTML5,
-string $delimiter = "\n"
+    int $type = self::HTML5,
+    string $delimiter = "\n"
 ): static;
 ```
 
@@ -2735,6 +2783,7 @@ public function __toString(): string;
 public function getType(): int;
 ```
 
+
 ## Html\Helper\Element
 
 <span class="badge badge--class">Class</span>
@@ -2747,11 +2796,12 @@ Class Element
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Element`**
+    - **`Phalcon\Html\Helper\Element`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2786,9 +2836,9 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -2796,14 +2846,15 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $tag,
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $tag,
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a tag.
+
 
 ## Html\Helper\Form
 
@@ -2815,11 +2866,12 @@ Class Form
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Form`**
+    - **`Phalcon\Html\Helper\Form`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2844,6 +2896,7 @@ public function __invoke( array $attributes = [] ): string;
 
 Produce a `<form>` tag.
 
+
 ## Html\Helper\FriendlyTitle
 
 <span class="badge badge--class">Class</span>
@@ -2854,11 +2907,12 @@ Converts text to a URL-friendly slug.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\FriendlyTitle`**
+    - **`Phalcon\Html\Helper\FriendlyTitle`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception` · `Phalcon\Html\Exceptions\FriendlyTitleConversionFailed` · `Phalcon\Support\Helper\Str\Friendly`
+
 
 ### Method Summary
 
@@ -2898,12 +2952,13 @@ public function __construct( EscaperInterface $escaper );
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "-",
-bool $lowercase = true,
-mixed $replace = null
+    string $text,
+    string $separator = "-",
+    bool $lowercase = true,
+    mixed $replace = null
 ): string;
 ```
+
 
 ## Html\Helper\Img
 
@@ -2915,11 +2970,12 @@ Class Img
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Img`**
+    - **`Phalcon\Html\Helper\Img`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -2940,12 +2996,13 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-string $src,
-array $attributes = []
+    string $src,
+    array $attributes = []
 ): string;
 ```
 
 Produce a &lt;img> tag.
+
 
 ## Html\Helper\Input\AbstractChecked
 
@@ -2967,14 +3024,15 @@ mixed int/string form input round-trips correctly (e.g. `value=0` against
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- **`Phalcon\Html\Helper\Input\AbstractChecked`**
-- [`Phalcon\Html\Helper\Input\Checkbox`](#htmlhelperinputcheckbox)
-- [`Phalcon\Html\Helper\Input\Radio`](#htmlhelperinputradio)
+    - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+        - **`Phalcon\Html\Helper\Input\AbstractChecked`**
+            - [`Phalcon\Html\Helper\Input\Checkbox`](#htmlhelperinputcheckbox)
+            - [`Phalcon\Html\Helper\Input\Radio`](#htmlhelperinputradio)
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype`
+
 
 ### Method Summary
 
@@ -3037,8 +3095,8 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null
 );
 ```
 
@@ -3098,6 +3156,7 @@ protected function processUnchecked(): string;
 Returns the markup for the optional hidden companion input that lets
 a checkbox/radio submit a value when unchecked.
 
+
 ## Html\Helper\Input\AbstractGroup
 
 <span class="badge badge--abstract">Abstract</span>
@@ -3117,13 +3176,14 @@ The $checked parameter is resolved by the concrete subclass:
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Input\AbstractGroup`**
-- [`Phalcon\Html\Helper\Input\CheckboxGroup`](#htmlhelperinputcheckboxgroup)
-- [`Phalcon\Html\Helper\Input\RadioGroup`](#htmlhelperinputradiogroup)
+    - **`Phalcon\Html\Helper\Input\AbstractGroup`**
+        - [`Phalcon\Html\Helper\Input\CheckboxGroup`](#htmlhelperinputcheckboxgroup)
+        - [`Phalcon\Html\Helper\Input\RadioGroup`](#htmlhelperinputradiogroup)
 
 </div>
 
 __Uses__ `Phalcon\Html\Helper\AbstractHelper`
+
 
 ### Method Summary
 
@@ -3191,10 +3251,10 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper`
 
 ```php
 public function __invoke(
-string $name,
-array $options,
-mixed $checked = null,
-array $attributes = []
+    string $name,
+    array $options,
+    mixed $checked = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -3220,12 +3280,13 @@ Determines whether the given value is considered checked.
 
 ```php
 protected function renderItem(
-string $value,
-mixed $definition
+    string $value,
+    mixed $definition
 ): string;
 ```
 
 Renders a single input + optional label pair.
+
 
 ## Html\Helper\Input\AbstractInput
 
@@ -3241,14 +3302,15 @@ Class AbstractInput
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Input\AbstractInput`**
-- [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
-- [`Phalcon\Html\Helper\Input\Generic`](#htmlhelperinputgeneric)
-- [`Phalcon\Html\Helper\Input\Textarea`](#htmlhelperinputtextarea)
+    - **`Phalcon\Html\Helper\Input\AbstractInput`**
+        - [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
+        - [`Phalcon\Html\Helper\Input\Generic`](#htmlhelperinputgeneric)
+        - [`Phalcon\Html\Helper\Input\Textarea`](#htmlhelperinputtextarea)
 
 </div>
 
 __Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
+
 
 ### Method Summary
 
@@ -3294,9 +3356,9 @@ __Uses__ `Phalcon\Html\Helper\AbstractHelper` · `Phalcon\Html\Helper\Doctype`
 
 ```php
 public function __invoke(
-string $name,
-string|null $value = null,
-array $attributes = []
+    string $name,
+    string|null $value = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -3316,6 +3378,7 @@ public function setValue( string|null $value = null ): static;
 
 Sets the value of the element
 
+
 ## Html\Helper\Input\Checkbox
 
 <span class="badge badge--class">Class</span>
@@ -3327,9 +3390,9 @@ companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
-- **`Phalcon\Html\Helper\Input\Checkbox`**
+    - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+        - [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
+            - **`Phalcon\Html\Helper\Input\Checkbox`**
 
 </div>
 
@@ -3342,6 +3405,7 @@ companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 <code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;checkbox&quot;</span></code>
 </div>
 </div>
+
 
 ## Html\Helper\Input\CheckboxGroup
 
@@ -3356,8 +3420,8 @@ scalar value (treated as a one-element array).
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
-- **`Phalcon\Html\Helper\Input\CheckboxGroup`**
+    - [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
+        - **`Phalcon\Html\Helper\Input\CheckboxGroup`**
 
 </div>
 
@@ -3394,6 +3458,7 @@ protected function isChecked( string $value ): bool;
 
 Returns true when $value appears in the checked list.
 
+
 ## Html\Helper\Input\Generic
 
 <span class="badge badge--class">Class</span>
@@ -3408,12 +3473,13 @@ changed after construction via `setType()`.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- **`Phalcon\Html\Helper\Input\Generic`**
+    - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+        - **`Phalcon\Html\Helper\Input\Generic`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype`
+
 
 ### Method Summary
 
@@ -3438,9 +3504,9 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Helper\Doctype
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-string $type = "text"
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    string $type = "text"
 );
 ```
 
@@ -3451,6 +3517,7 @@ public function setType( string $type ): AbstractInput;
 ```
 
 Sets the type of the input.
+
 
 ## Html\Helper\Input\Radio
 
@@ -3463,9 +3530,9 @@ companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
-- **`Phalcon\Html\Helper\Input\Radio`**
+    - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+        - [`Phalcon\Html\Helper\Input\AbstractChecked`](#htmlhelperinputabstractchecked)
+            - **`Phalcon\Html\Helper\Input\Radio`**
 
 </div>
 
@@ -3478,6 +3545,7 @@ companion, loose-by-default `checked` match) lives in `AbstractChecked`.
 <code class="sig"><span class="sv">$type</span><span class="sm"> = &quot;radio&quot;</span></code>
 </div>
 </div>
+
 
 ## Html\Helper\Input\RadioGroup
 
@@ -3492,8 +3560,8 @@ option's value attribute.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
-- **`Phalcon\Html\Helper\Input\RadioGroup`**
+    - [`Phalcon\Html\Helper\Input\AbstractGroup`](#htmlhelperinputabstractgroup)
+        - **`Phalcon\Html\Helper\Input\RadioGroup`**
 
 </div>
 
@@ -3530,6 +3598,7 @@ protected function isChecked( string $value ): bool;
 
 Returns true when $value loosely equals the checked scalar.
 
+
 ## Html\Helper\Input\Select
 
 <span class="badge badge--class">Class</span>
@@ -3540,12 +3609,13 @@ Class Select
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- **`Phalcon\Html\Helper\Input\Select`**
+    - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+        - **`Phalcon\Html\Helper\Input\Select`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helper\AbstractList`
+
 
 ### Method Summary
 
@@ -3641,10 +3711,10 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Helpe
 
 ```php
 public function add(
-string $text,
-string|null $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    string|null $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): static;
 ```
 
@@ -3654,10 +3724,10 @@ Add an element to the list
 
 ```php
 public function addPlaceholder(
-string $text,
-string|null $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    string|null $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): static;
 ```
 
@@ -3678,8 +3748,8 @@ Optgroup entries: key = group label, value = [value => label] array.
 
 ```php
 public function optGroup(
-string|null $label = null,
-array $attributes = []
+    string|null $label = null,
+    array $attributes = []
 ): static;
 ```
 
@@ -3730,10 +3800,11 @@ protected function optGroupEnd(): string;
 
 ```php
 protected function optGroupStart(
-string $label,
-array $attributes
+    string $label,
+    array $attributes
 ): string;
 ```
+
 
 ## Html\Helper\Input\Select\ArrayData
 
@@ -3752,6 +3823,7 @@ array values define optgroups.
 </div>
 
 __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData`
+
 
 ### Method Summary
 
@@ -3795,8 +3867,8 @@ __Uses__ `Phalcon\Contracts\Html\Helper\Input\SelectData`
 
 ```php
 public function __construct(
-array $data = [],
-array $attributes = []
+    array $data = [],
+    array $attributes = []
 );
 ```
 
@@ -3812,6 +3884,7 @@ public function getAttributes(): array;
 public function getOptions(): array;
 ```
 
+
 ## Html\Helper\Input\Select\ResultsetData
 
 <span class="badge badge--class">Class</span>
@@ -3824,6 +3897,7 @@ public function getOptions(): array;
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Html\Exceptions\InvalidResultsetValue` · `Phalcon\Html\Exceptions\UsingRequiresTwoValues` · `Phalcon\Mvc\Model\ResultsetInterface`
+
 
 ### Method Summary
 
@@ -3894,9 +3968,9 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Html\Helper\Input\Sele
 
 ```php
 public function __construct(
-ResultsetInterface $resultset,
-array $using,
-array $attributesMap = []
+    ResultsetInterface $resultset,
+    array $using,
+    array $attributesMap = []
 );
 ```
 
@@ -3920,8 +3994,8 @@ public function getOptions(): array;
 
 ```php
 protected function readField(
-mixed $option,
-string $field
+    mixed $option,
+    string $field
 );
 ```
 
@@ -3939,6 +4013,7 @@ per-option resolved attribute map. Closures in `attributesMap`
 receive the current row; static values are passed through.
 `false` or `null` values skip the attribute entirely.
 
+
 ## Html\Helper\Input\Textarea
 
 <span class="badge badge--class">Class</span>
@@ -3949,12 +4024,13 @@ Class Textarea
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
-- **`Phalcon\Html\Helper\Input\Textarea`**
+    - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
+        - **`Phalcon\Html\Helper\Input\Textarea`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -3988,6 +4064,7 @@ public function __toString();
 
 Returns the HTML for the input.
 
+
 ## Html\Helper\Label
 
 <span class="badge badge--class">Class</span>
@@ -4000,11 +4077,12 @@ Class Label
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Label`**
+    - **`Phalcon\Html\Helper\Label`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4039,9 +4117,9 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exception`
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -4049,13 +4127,14 @@ bool $forceRaw = false
 
 ```php
 public function __invoke(
-string $label,
-array $attributes = [],
-bool $raw = false
+    string $label,
+    array $attributes = [],
+    bool $raw = false
 ): string;
 ```
 
 Produce a `<label>` tag.
+
 
 ## Html\Helper\Link
 
@@ -4067,9 +4146,9 @@ Creates &lt;link> tags
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
-- **`Phalcon\Html\Helper\Link`**
+    - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+        - [`Phalcon\Html\Helper\Style`](#htmlhelperstyle)
+            - **`Phalcon\Html\Helper\Link`**
 
 </div>
 
@@ -4103,9 +4182,9 @@ Creates &lt;link> tags
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -4117,8 +4196,8 @@ Add an element to the list
 
 ```php
 protected function getAttributes(
-string $url,
-array $attributes
+    string $url,
+    array $attributes
 ): array;
 ```
 
@@ -4130,6 +4209,7 @@ Returns the necessary attributes
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Meta
 
 <span class="badge badge--class">Class</span>
@@ -4140,12 +4220,13 @@ Class Meta
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- **`Phalcon\Html\Helper\Meta`**
+    - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+        - **`Phalcon\Html\Helper\Meta`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4186,8 +4267,8 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function add(
-array $attributes = [],
-int $position = -1
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -4197,9 +4278,9 @@ Add an element to the list
 
 ```php
 public function addHttp(
-string $httpEquiv,
-string $content,
-int $position = -1
+    string $httpEquiv,
+    string $content,
+    int $position = -1
 ): static;
 ```
 
@@ -4207,9 +4288,9 @@ int $position = -1
 
 ```php
 public function addName(
-string $name,
-string $content,
-int $position = -1
+    string $name,
+    string $content,
+    int $position = -1
 ): static;
 ```
 
@@ -4217,9 +4298,9 @@ int $position = -1
 
 ```php
 public function addProperty(
-string $name,
-string $content,
-int $position = -1
+    string $name,
+    string $content,
+    int $position = -1
 ): static;
 ```
 
@@ -4230,6 +4311,7 @@ int $position = -1
 ```php
 protected function getTag(): string;
 ```
+
 
 ## Html\Helper\Ol
 
@@ -4243,13 +4325,14 @@ Class Ol
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- **`Phalcon\Html\Helper\Ol`**
-- [`Phalcon\Html\Helper\Ul`](#htmlhelperul)
+    - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+        - **`Phalcon\Html\Helper\Ol`**
+            - [`Phalcon\Html\Helper\Ul`](#htmlhelperul)
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface`
+
 
 ### Method Summary
 
@@ -4289,9 +4372,9 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface`
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-Doctype|null $doctype = null,
-bool $forceRaw = false
+    EscaperInterface $escaper,
+    Doctype|null $doctype = null,
+    bool $forceRaw = false
 );
 ```
 
@@ -4299,9 +4382,9 @@ bool $forceRaw = false
 
 ```php
 public function add(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): static;
 ```
 
@@ -4315,6 +4398,7 @@ Add an element to the list
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Preload
 
 <span class="badge badge--class">Class</span>
@@ -4326,11 +4410,12 @@ If a ResponseInterface is provided, also sets the HTTP Link header.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Preload`**
+    - **`Phalcon\Html\Helper\Preload`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface`
+
 
 ### Method Summary
 
@@ -4364,8 +4449,8 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · 
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-ResponseInterface|null $response = null
+    EscaperInterface $escaper,
+    ResponseInterface|null $response = null
 );
 ```
 
@@ -4373,11 +4458,12 @@ ResponseInterface|null $response = null
 
 ```php
 public function __invoke(
-string $href,
-string $type = "style",
-array $attributes = []
+    string $href,
+    string $type = "style",
+    array $attributes = []
 ): string;
 ```
+
 
 ## Html\Helper\Script
 
@@ -4389,12 +4475,13 @@ Class Script
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- **`Phalcon\Html\Helper\Script`**
+    - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+        - **`Phalcon\Html\Helper\Script`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4438,9 +4525,9 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -4460,8 +4547,8 @@ markup as a `<script>...</script>` block in the asset stack.
 
 ```php
 public function endInternal(
-array $attributes = [],
-int $position = -1
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -4476,8 +4563,8 @@ is treated as raw HTML (it is JavaScript, not user-supplied text).
 
 ```php
 protected function getAttributes(
-string $url,
-array $attributes
+    string $url,
+    array $attributes
 ): array;
 ```
 
@@ -4489,6 +4576,7 @@ Returns the necessary attributes
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\Style
 
 <span class="badge badge--class">Class</span>
@@ -4499,13 +4587,14 @@ Class Style
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
-- **`Phalcon\Html\Helper\Style`**
-- [`Phalcon\Html\Helper\Link`](#htmlhelperlink)
+    - [`Phalcon\Html\Helper\AbstractSeries`](#htmlhelperabstractseries)
+        - **`Phalcon\Html\Helper\Style`**
+            - [`Phalcon\Html\Helper\Link`](#htmlhelperlink)
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4543,9 +4632,9 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): static;
 ```
 
@@ -4565,8 +4654,8 @@ Sets if this is a style or link tag
 
 ```php
 protected function getAttributes(
-string $url,
-array $attributes
+    string $url,
+    array $attributes
 ): array;
 ```
 
@@ -4577,6 +4666,7 @@ Returns the necessary attributes
 ```php
 protected function getTag(): string;
 ```
+
 
 ## Html\Helper\Tag
 
@@ -4591,11 +4681,12 @@ use `VoidTag`.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Tag`**
+    - **`Phalcon\Html\Helper\Tag`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4615,10 +4706,11 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
+
 
 ## Html\Helper\Title
 
@@ -4637,11 +4729,12 @@ Class Title
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\Title`**
+    - **`Phalcon\Html\Helper\Title`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4722,8 +4815,8 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-string $indent = "    ",
-string|null $delimiter = null
+    string $indent = "    ",
+    string|null $delimiter = null
 ): static;
 ```
 
@@ -4741,8 +4834,8 @@ Returns the title tags
 
 ```php
 public function append(
-string $text,
-bool $raw = false
+    string $text,
+    bool $raw = false
 ): static;
 ```
 
@@ -4760,8 +4853,8 @@ Returns the title
 
 ```php
 public function prepend(
-string $text,
-bool $raw = false
+    string $text,
+    bool $raw = false
 ): static;
 ```
 
@@ -4771,8 +4864,8 @@ Prepends text to current document title
 
 ```php
 public function set(
-string $text,
-bool $raw = false
+    string $text,
+    bool $raw = false
 ): static;
 ```
 
@@ -4782,12 +4875,13 @@ Sets the title
 
 ```php
 public function setSeparator(
-string $separator,
-bool $raw = false
+    string $separator,
+    bool $raw = false
 ): static;
 ```
 
 Sets the separator
+
 
 ## Html\Helper\Ul
 
@@ -4799,9 +4893,9 @@ Class Ul
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
-- [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
-- **`Phalcon\Html\Helper\Ul`**
+    - [`Phalcon\Html\Helper\AbstractList`](#htmlhelperabstractlist)
+        - [`Phalcon\Html\Helper\Ol`](#htmlhelperol)
+            - **`Phalcon\Html\Helper\Ul`**
 
 </div>
 
@@ -4825,6 +4919,7 @@ Class Ul
 protected function getTag(): string;
 ```
 
+
 ## Html\Helper\VoidTag
 
 <span class="badge badge--class">Class</span>
@@ -4837,11 +4932,12 @@ doctypes, matching the `Input/AbstractInput::__toString` convention.
 <div class="api-tree">
 
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
-- **`Phalcon\Html\Helper\VoidTag`**
+    - **`Phalcon\Html\Helper\VoidTag`**
 
 </div>
 
 __Uses__ `Phalcon\Html\Exception`
+
 
 ### Method Summary
 
@@ -4861,10 +4957,11 @@ __Uses__ `Phalcon\Html\Exception`
 
 ```php
 public function __invoke(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
+
 
 ## Html\Link\AbstractLink
 
@@ -4879,11 +4976,12 @@ array $attributes = []
 <div class="api-tree">
 
 - **`Phalcon\Html\Link\AbstractLink`**
-- [`Phalcon\Html\Link\Link`](#htmllinklink)
+    - [`Phalcon\Html\Link\Link`](#htmllinklink)
 
 </div>
 
 __Uses__ `Phalcon\Support\Collection`
+
 
 ### Method Summary
 
@@ -4983,9 +5081,9 @@ __Uses__ `Phalcon\Support\Collection`
 
 ```php
 public function __construct(
-string $rel = "",
-string $href = "",
-array $attributes = []
+    string $rel = "",
+    string $href = "",
+    array $attributes = []
 );
 ```
 
@@ -5040,8 +5138,8 @@ Returns whether this is a templated link.
 
 ```php
 protected function doWithAttribute(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): static;
 ```
 
@@ -5079,6 +5177,7 @@ Determines if a href is a templated link or not.
 
 @see https://tools.ietf.org/html/rfc6570
 
+
 ## Html\Link\AbstractLinkProvider
 
 <span class="badge badge--abstract">Abstract</span>
@@ -5089,11 +5188,12 @@ Determines if a href is a templated link or not.
 <div class="api-tree">
 
 - **`Phalcon\Html\Link\AbstractLinkProvider`**
-- [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
+    - [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
 
 </div>
 
 __Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+
 
 ### Method Summary
 
@@ -5215,6 +5315,7 @@ protected function getKey( mixed $link ): string;
 
 Returns the object hash key
 
+
 ## Html\Link\EvolvableLink
 
 <span class="badge badge--class">Class</span>
@@ -5225,12 +5326,13 @@ Class Phalcon\Html\Link\EvolvableLink
 <div class="api-tree">
 
 - [`Phalcon\Html\Link\AbstractLink`](#htmllinkabstractlink)
-- [`Phalcon\Html\Link\Link`](#htmllinklink)
-- **`Phalcon\Html\Link\EvolvableLink`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
+    - [`Phalcon\Html\Link\Link`](#htmllinklink)
+        - **`Phalcon\Html\Link\EvolvableLink`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
 
 </div>
 
 __Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
+
 
 ### Method Summary
 
@@ -5275,8 +5377,8 @@ __Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
 
 ```php
 public function withAttribute(
-mixed $attribute,
-mixed $value
+    mixed $attribute,
+    mixed $value
 ): static;
 ```
 
@@ -5329,6 +5431,7 @@ Returns an instance with the specified relationship excluded.
 If the specified rel is not present, this method MUST return
 normally without errors.
 
+
 ## Html\Link\EvolvableLinkProvider
 
 <span class="badge badge--class">Class</span>
@@ -5341,12 +5444,13 @@ Class Phalcon\Html\Link\EvolvableLinkProvider
 <div class="api-tree">
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
-- [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
-- **`Phalcon\Html\Link\EvolvableLinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
+    - [`Phalcon\Html\Link\LinkProvider`](#htmllinklinkprovider)
+        - **`Phalcon\Html\Link\EvolvableLinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
 
 </div>
 
 __Uses__ `Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface` · `Phalcon\Html\Link\Interfaces\LinkInterface`
+
 
 ### Method Summary
 
@@ -5393,6 +5497,7 @@ If the specified link is not present, this method MUST return normally
 without errors. The link is present if link is === identical to a link
 object already in the collection.
 
+
 ## Html\Link\Interfaces\EvolvableLinkInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5403,7 +5508,7 @@ An evolvable link value object.
 <div class="api-tree">
 
 - [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
-- **`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`**
+    - **`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`**
 
 </div>
 
@@ -5450,8 +5555,8 @@ An evolvable link value object.
 
 ```php
 public function withAttribute(
-string $attribute,
-string $value
+    string $attribute,
+    string $value
 ): EvolvableLinkInterface;
 ```
 
@@ -5504,6 +5609,7 @@ Returns an instance with the specified relationship excluded.
 If the specified rel is already not present, this method MUST return
 normally without errors.
 
+
 ## Html\Link\Interfaces\EvolvableLinkProviderInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5514,7 +5620,7 @@ An evolvable link provider value object.
 <div class="api-tree">
 
 - [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
-- **`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`**
+    - **`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`**
 
 </div>
 
@@ -5563,6 +5669,7 @@ If the specified link is not present, this method MUST return normally
 without errors. The link is present if $link is === identical to a link
 object already in the collection.
 
+
 ## Html\Link\Interfaces\LinkInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5573,7 +5680,7 @@ A readable link object.
 <div class="api-tree">
 
 - **`Phalcon\Html\Link\Interfaces\LinkInterface`**
-- [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
+    - [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
 
 </div>
 
@@ -5653,6 +5760,7 @@ public function isTemplated(): bool;
 
 Returns whether this is a templated link.
 
+
 ## Html\Link\Interfaces\LinkProviderInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5663,7 +5771,7 @@ A link provider object.
 <div class="api-tree">
 
 - **`Phalcon\Html\Link\Interfaces\LinkProviderInterface`**
-- [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
+    - [`Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface`](#htmllinkinterfacesevolvablelinkproviderinterface)
 
 </div>
 
@@ -5705,6 +5813,7 @@ public function getLinksByRel( string $rel ): array;
 Returns an array of LinkInterface objects that have a specific
 relationship.
 
+
 ## Html\Link\Link
 
 <span class="badge badge--class">Class</span>
@@ -5715,12 +5824,13 @@ Class Phalcon\Html\Link\Link
 <div class="api-tree">
 
 - [`Phalcon\Html\Link\AbstractLink`](#htmllinkabstractlink)
-- **`Phalcon\Html\Link\Link`** - implements [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
-- [`Phalcon\Html\Link\EvolvableLink`](#htmllinkevolvablelink)
+    - **`Phalcon\Html\Link\Link`** - implements [`Phalcon\Html\Link\Interfaces\LinkInterface`](#htmllinkinterfaceslinkinterface)
+        - [`Phalcon\Html\Link\EvolvableLink`](#htmllinkevolvablelink)
 
 </div>
 
 __Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface`
+
 
 ### Method Summary
 
@@ -5798,6 +5908,7 @@ public function isTemplated(): bool;
 
 Returns whether or not this is a templated link.
 
+
 ## Html\Link\LinkProvider
 
 <span class="badge badge--class">Class</span>
@@ -5808,12 +5919,13 @@ Returns whether or not this is a templated link.
 <div class="api-tree">
 
 - [`Phalcon\Html\Link\AbstractLinkProvider`](#htmllinkabstractlinkprovider)
-- **`Phalcon\Html\Link\LinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
-- [`Phalcon\Html\Link\EvolvableLinkProvider`](#htmllinkevolvablelinkprovider)
+    - **`Phalcon\Html\Link\LinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
+        - [`Phalcon\Html\Link\EvolvableLinkProvider`](#htmllinkevolvablelinkprovider)
 
 </div>
 
 __Uses__ `Phalcon\Html\Link\Interfaces\LinkInterface` · `Phalcon\Html\Link\Interfaces\LinkProviderInterface`
+
 
 ### Method Summary
 
@@ -5860,6 +5972,7 @@ The iterable may be an array or any PHP \Traversable object. If no links
 with that relationship are available, an empty array or \Traversable
 MUST be returned.
 
+
 ## Html\Link\Serializer\Header
 
 <span class="badge badge--class">Class</span>
@@ -5896,6 +6009,7 @@ public function serialize( array $links ): string|null;
 
 Serializes all the passed links to a HTTP link header
 
+
 ## Html\Link\Serializer\SerializerInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5931,6 +6045,7 @@ public function serialize( array $links ): string|null;
 ```
 
 Serializer method
+
 
 ## Html\TagFactory
 
@@ -6007,6 +6122,7 @@ Helpers are cached per name after first construction.
 
 __Uses__ `Closure` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exceptions\ServiceNotRegistered` · `Phalcon\Html\Helper\Anchor` · `Phalcon\Html\Helper\Base` · `Phalcon\Html\Helper\Body` · `Phalcon\Html\Helper\Breadcrumbs` · `Phalcon\Html\Helper\Button` · `Phalcon\Html\Helper\Close` · `Phalcon\Html\Helper\Doctype` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Form` · `Phalcon\Html\Helper\FriendlyTitle` · `Phalcon\Html\Helper\Img` · `Phalcon\Html\Helper\Input\Checkbox` · `Phalcon\Html\Helper\Input\CheckboxGroup` · `Phalcon\Html\Helper\Input\Generic` · `Phalcon\Html\Helper\Input\Radio` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\Helper\Input\Select` · `Phalcon\Html\Helper\Input\Textarea` · `Phalcon\Html\Helper\Label` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Meta` · `Phalcon\Html\Helper\Ol` · `Phalcon\Html\Helper\Preload` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\Helper\Style` · `Phalcon\Html\Helper\Tag` · `Phalcon\Html\Helper\Title` · `Phalcon\Html\Helper\Ul` · `Phalcon\Html\Helper\VoidTag` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url\UrlInterface`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -6068,8 +6184,8 @@ __Uses__ `Closure` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\E
 
 ```php
 public function __call(
-string $name,
-array $arguments
+    string $name,
+    array $arguments
 );
 ```
 
@@ -6079,10 +6195,10 @@ Magic call to make the helper objects available as methods.
 
 ```php
 public function __construct(
-EscaperInterface $escaper,
-array $services = [],
-ResponseInterface|null $response = null,
-UrlInterface|null $url = null
+    EscaperInterface $escaper,
+    array $services = [],
+    ResponseInterface|null $response = null,
+    UrlInterface|null $url = null
 );
 ```
 
@@ -6106,8 +6222,8 @@ Create or return a cached instance of the helper.
 
 ```php
 public function set(
-string $name,
-Closure $definition
+    string $name,
+    Closure $definition
 ): void;
 ```
 

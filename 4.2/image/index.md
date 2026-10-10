@@ -434,13 +434,13 @@ use Phalcon\Image\Adapter\Gd;
 $image = new Gd('image.jpg');
 
 $image->text(
-'Phalcon Framework',
-10,
-10,
-75,
-'000033',
-14,
-'/app/assets/fonts/titilium.tff'
+    'Phalcon Framework',
+    10,
+    10,
+    75,
+    '000033',
+    14,
+    '/app/assets/fonts/titilium.tff'
 );
 
 $image->save('text-image.jpg');
@@ -468,10 +468,10 @@ $offsetY = 10;
 $opacity = 70;
 
 $image->watermark(
-$watermark,
-$offsetX,
-$offsetY,
-$opacity
+    $watermark,
+    $offsetX,
+    $offsetY,
+    $opacity
 );
 
 $image->save('watermark-image.jpg');
@@ -497,10 +497,10 @@ $offsetY = ($image->getHeight() - $watermark->getHeight() - 10);
 $opacity = 70;
 
 $image->watermark(
-$watermark,
-$offsetX,
-$offsetY,
-$opacity
+    $watermark,
+    $offsetX,
+    $offsetY,
+    $opacity
 );
 
 $image->save('watermark-image.jpg');
@@ -508,6 +508,7 @@ $image->save('watermark-image.jpg');
 
 ## Factory 
 ### `newInstance`
+
 
 The [Phalcon\Image\ImageFactory][image-imagefactory] offers an easy way to create image adapter objects. There are two adapters already preset for you:
 
@@ -542,10 +543,10 @@ use Phalcon\Image\ImageFactory;
 
 $factory = new ImageFactory();
 $options = [
-'adapter' => 'gd',
-'file'    => 'image.jpg',
-'width'   => 400,
-'height'  => 200,
+    'adapter' => 'gd',
+    'file'    => 'image.jpg',
+    'width'   => 400,
+    'height'  => 200,
 ];
 
 $image = $factory->load($options);
@@ -563,17 +564,17 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $image = new Gd('image.jpg');
-        $image->pixelate(10);
+    public function index()
+    {
+        try {
+            $image = new Gd('image.jpg');
+            $image->pixelate(10);
 
-        $image->save('pixelated-image.jpg');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+            $image->save('pixelated-image.jpg');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -588,109 +589,110 @@ use Phalcon\Image\Enum;
 
 class MyImageAdapter implements AdapterInterface
 {
-/**
- * Manipulate the background
- */
-public function background(
-    string $color, 
-    int $opacity = 100
-);
+    /**
+     * Manipulate the background
+     */
+    public function background(
+        string $color, 
+        int $opacity = 100
+    );
 
-/**
- * Blur the image
- */
-public function blur(int $radius);
+    /**
+     * Blur the image
+     */
+    public function blur(int $radius);
 
-/**
- * Crop the image
- */
-public function crop(
-    int $width, 
-    int $height, 
-    int $offsetX = null, 
-    int $offsetY = null
-);
+    /**
+     * Crop the image
+     */
+    public function crop(
+        int $width, 
+        int $height, 
+        int $offsetX = null, 
+        int $offsetY = null
+    );
 
-/**
- * Flip the image
- */
-public function flip(int $direction);
+    /**
+     * Flip the image
+     */
+    public function flip(int $direction);
 
-/**
- * Add a mask to the image
- */
-public function mask(AdapterInterface $watermark);
+    /**
+     * Add a mask to the image
+     */
+    public function mask(AdapterInterface $watermark);
 
-/**
- * Pixelate the image
- */
-public function pixelate(int $amount);
+    /**
+     * Pixelate the image
+     */
+    public function pixelate(int $amount);
 
-/**
- * Add a reflection to the image
- */
-public function reflection(
-    int $height, 
-    int $opacity = 100, 
-    bool $fadeIn = false
-);
+    /**
+     * Add a reflection to the image
+     */
+    public function reflection(
+        int $height, 
+        int $opacity = 100, 
+        bool $fadeIn = false
+    );
 
-/**
- * Render the image
- */
-public function render(
-    string $ext = null, 
-    int $quality = 100
-);
+    /**
+     * Render the image
+     */
+    public function render(
+        string $ext = null, 
+        int $quality = 100
+    );
 
-/**
- * Resize the image
- */
-public function resize(
-    int $width = null, 
-    int $height = null, 
-    int $master = Enum::AUTO
-);
+    /**
+     * Resize the image
+     */
+    public function resize(
+        int $width = null, 
+        int $height = null, 
+        int $master = Enum::AUTO
+    );
 
-/**
- * Rotate the image
- */
-public function rotate(int degrees);
+    /**
+     * Rotate the image
+     */
+    public function rotate(int degrees);
 
-/**
- * Save the image
- */
-public function save(string $file = null, int $quality = 100);
+    /**
+     * Save the image
+     */
+    public function save(string $file = null, int $quality = 100);
 
-/**
- * Sharpen the image
- */
-public function sharpen(int $amount);
+    /**
+     * Sharpen the image
+     */
+    public function sharpen(int $amount);
 
-/**
- * Add text to the image
- */
-public function text(
-    string $text, 
-    int $offsetX = 0, 
-    int $offsetY = 0, 
-    int $opacity = 100, 
-    string $color = "000000", 
-    int $size = 12, 
-    string $fontfile = null
-);
+    /**
+     * Add text to the image
+     */
+    public function text(
+        string $text, 
+        int $offsetX = 0, 
+        int $offsetY = 0, 
+        int $opacity = 100, 
+        string $color = "000000", 
+        int $size = 12, 
+        string $fontfile = null
+    );
 
-/**
- * Add a watermark tot he image
- */
-public function watermark(
-    AdapterInterface $watermark, 
-    int $offsetX = 0, 
-    int $offsetY = 0, 
-    int $opacity = 100
-);
+    /**
+     * Add a watermark tot he image
+     */
+    public function watermark(
+        AdapterInterface $watermark, 
+        int $offsetX = 0, 
+        int $offsetY = 0, 
+        int $opacity = 100
+    );
 }
 ```
+
 
 [gd]: https://php.net/manual/en/book.image.php
 [imagick]: https://php.net/manual/en/book.imagick.php

@@ -13,47 +13,38 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Session\Adapter\AbstractAdapter
 
 Abstract
 
 - **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
-- [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
-- [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
+  - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
+  - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
 `Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapterabstractadapter-close" visibility="public" name="close" returnType="bool" params={[]}>
-Close
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Destroy
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-gc" visibility="public" name="gc" returnType="false|int" params={[{"type":"int","name":"max_lifetime","default":null}]}>
-Garbage Collector
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-open" visibility="public" name="open" returnType="bool" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"name","default":null}]}>
-Open
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
-Read
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-updatetimestamp" visibility="public" name="updateTimestamp" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
-Refresh the session lifetime without changing the session data
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-validateid" visibility="public" name="validateId" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Validate the session id (used when strict mode is enabled)
-</ApiItem>
-<ApiItem href="#sessionadapterabstractadapter-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
-Write
-</ApiItem>
+- `public close(): bool` — Close
+
+- `public destroy(string $id): bool` — Destroy
+
+- `public gc(int $max_lifetime): false|int` — Garbage Collector
+
+- `public open(string $path, string $name): bool` — Open
+
+- `public read(string $id): string` — Read
+
+- `public updateTimestamp(string $id, string $data): bool` — Refresh the session lifetime without changing the session data
+
+- `public validateId(string $id): bool` — Validate the session id (used when strict mode is enabled)
+
+- `public write(string $id, string $data): bool` — Write
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="adapter" type="AdapterInterface" default="">
-</ApiItem>
+- `protected AdapterInterface $adapter`
 
 ### Methods
 
@@ -85,8 +76,8 @@ Garbage Collector
 
 ```php
 public function open(
-string $path,
-string $name
+    string $path,
+    string $name
 ): bool;
 ```
 
@@ -104,8 +95,8 @@ Read
 
 ```php
 public function updateTimestamp(
-string $id,
-string $data
+    string $id,
+    string $data
 ): bool;
 ```
 
@@ -123,37 +114,38 @@ Validate the session id (used when strict mode is enabled)
 
 ```php
 public function write(
-string $id,
-string $data
+    string $id,
+    string $data
 ): bool;
 ```
 
 Write
+
 
 ## Session\Adapter\Exceptions\AdapterRuntimeError
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`**
 
 `Phalcon\Session\Exception`
+
 
 ## Session\Adapter\Exceptions\InvalidSavePath
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapterexceptionsinvalidsavepath-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -163,20 +155,20 @@ Class
 public function __construct();
 ```
 
+
 ## Session\Adapter\Exceptions\SavePathUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapterexceptionssavepathunavailable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -186,6 +178,7 @@ Class
 public function __construct( string $path );
 ```
 
+
 ## Session\Adapter\Libmemcached
 
 Class
@@ -193,15 +186,13 @@ Class
 Phalcon\Session\Adapter\Libmemcached
 
 - [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
-- **`Phalcon\Session\Adapter\Libmemcached`**
+  - **`Phalcon\Session\Adapter\Libmemcached`**
 
 `Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Storage\AdapterFactory`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapterlibmemcached-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Libmemcached constructor.
-</ApiItem>
+- `public __construct(AdapterFactory $factory, array $options = [])` — Libmemcached constructor.
 
 ### Methods
 
@@ -209,21 +200,22 @@ Libmemcached constructor.
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
 Libmemcached constructor.
 
-        ]
-    ],
-    'defaultSerializer' => 'Php',
-    'lifetime' => 3600,
-    'serializer' => null,
-    'prefix' => 'sess-memc-',
-    'stripPrefix' => false
 ]
+],
+'defaultSerializer' => 'Php',
+'lifetime' => 3600,
+'serializer' => null,
+'prefix' => 'sess-memc-',
+'stripPrefix' => false
+]
+
 
 ## Session\Adapter\Noop
 
@@ -245,36 +237,27 @@ $session->setAdapter(new Noop());
 ```
 
 - **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
-- [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
+  - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
 `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapternoop-close" visibility="public" name="close" returnType="bool" params={[]}>
-Close
-</ApiItem>
-<ApiItem href="#sessionadapternoop-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Destroy
-</ApiItem>
-<ApiItem href="#sessionadapternoop-gc" visibility="public" name="gc" returnType="false|int" params={[{"type":"int","name":"max_lifetime","default":null}]}>
-Garbage Collector
-</ApiItem>
-<ApiItem href="#sessionadapternoop-open" visibility="public" name="open" returnType="bool" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"name","default":null}]}>
-Open
-</ApiItem>
-<ApiItem href="#sessionadapternoop-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
-Read
-</ApiItem>
-<ApiItem href="#sessionadapternoop-updatetimestamp" visibility="public" name="updateTimestamp" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
-Refresh the session lifetime without changing the session data
-</ApiItem>
-<ApiItem href="#sessionadapternoop-validateid" visibility="public" name="validateId" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Validate the session id (used when strict mode is enabled)
-</ApiItem>
-<ApiItem href="#sessionadapternoop-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
-Write
-</ApiItem>
+- `public close(): bool` — Close
+
+- `public destroy(string $id): bool` — Destroy
+
+- `public gc(int $max_lifetime): false|int` — Garbage Collector
+
+- `public open(string $path, string $name): bool` — Open
+
+- `public read(string $id): string` — Read
+
+- `public updateTimestamp(string $id, string $data): bool` — Refresh the session lifetime without changing the session data
+
+- `public validateId(string $id): bool` — Validate the session id (used when strict mode is enabled)
+
+- `public write(string $id, string $data): bool` — Write
 
 ### Methods
 
@@ -306,8 +289,8 @@ Garbage Collector
 
 ```php
 public function open(
-string $path,
-string $name
+    string $path,
+    string $name
 ): bool;
 ```
 
@@ -325,8 +308,8 @@ Read
 
 ```php
 public function updateTimestamp(
-string $id,
-string $data
+    string $id,
+    string $data
 ): bool;
 ```
 
@@ -344,12 +327,13 @@ Validate the session id (used when strict mode is enabled)
 
 ```php
 public function write(
-string $id,
-string $data
+    string $id,
+    string $data
 ): bool;
 ```
 
 Write
+
 
 ## Session\Adapter\Redis
 
@@ -358,54 +342,45 @@ Class
 Phalcon\Session\Adapter\Redis
 
 - [`Phalcon\Session\Adapter\AbstractAdapter`](#sessionadapterabstractadapter)
-- **`Phalcon\Session\Adapter\Redis`**
+  - **`Phalcon\Session\Adapter\Redis`**
 
 `Exception` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Storage\AdapterFactory`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapterredis-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#sessionadapterredis-close" visibility="public" name="close" returnType="bool" params={[]}>
-Close - releases the session lock if one is held
-</ApiItem>
-<ApiItem href="#sessionadapterredis-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Destroy
-</ApiItem>
-<ApiItem href="#sessionadapterredis-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
-Read
-</ApiItem>
-<ApiItem href="#sessionadapterredis-acquirelock" visibility="protected" name="acquireLock" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Tries to acquire the session lock, pausing `lockWaitTime` microseconds
-</ApiItem>
-<ApiItem href="#sessionadapterredis-releaselock" visibility="protected" name="releaseLock" returnType="void" params={[]}>
-Releases the session lock - only when this instance still owns it
-</ApiItem>
+- `public __construct(AdapterFactory $factory, array $options = [])` — Constructor
+
+- `public close(): bool` — Close - releases the session lock if one is held
+
+- `public destroy(string $id): bool` — Destroy
+
+- `public read(string $id): string` — Read
+
+- `protected acquireLock(string $id): bool` — Tries to acquire the session lock, pausing `lockWaitTime` microseconds
+
+- `protected releaseLock(): void` — Releases the session lock - only when this instance still owns it
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="lockAcquired" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lockExpiry" type="int" default="30">
-Lock time-to-live in seconds. The lock is not refreshed during the
-request: a request that runs longer than this expiry loses its lock
-silently and a concurrent request may then acquire it (the token-guarded
-release still avoids deleting the newer lock). Raise this above the
-longest expected request to retain the lock for the whole request.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lockKey" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lockRetries" type="int" default="100">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lockToken" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lockWaitTime" type="int" default="50000">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lockingEnabled" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected bool $lockAcquired = false`
+
+- `protected int $lockExpiry = 30` — Lock time-to-live in seconds. The lock is not refreshed during the
+  request: a request that runs longer than this expiry loses its lock
+  silently and a concurrent request may then acquire it (the token-guarded
+  release still avoids deleting the newer lock). Raise this above the
+  longest expected request to retain the lock for the whole request.
+
+- `protected string $lockKey = ""`
+
+- `protected int $lockRetries = 100`
+
+- `protected string $lockToken = ""`
+
+- `protected int $lockWaitTime = 50000`
+
+- `protected bool $lockingEnabled = false`
+
+- `protected string $prefix = ""`
 
 ### Methods
 
@@ -413,8 +388,8 @@ longest expected request to retain the lock for the whole request.
 
 ```php
 public function __construct(
-AdapterFactory $factory,
-array $options = []
+    AdapterFactory $factory,
+    array $options = []
 );
 ```
 
@@ -461,6 +436,7 @@ protected function releaseLock(): void;
 
 Releases the session lock - only when this instance still owns it
 
+
 ## Session\Adapter\Stream
 
 Class
@@ -477,57 +453,45 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session->setAdapter($files);
 ```
 
 - [`Phalcon\Session\Adapter\Noop`](#sessionadapternoop)
-- **`Phalcon\Session\Adapter\Stream`**
+  - **`Phalcon\Session\Adapter\Stream`**
 
 `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 
 ### Method Summary
 
-<ApiItem href="#sessionadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#sessionadapterstream-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionadapterstream-gc" visibility="public" name="gc" returnType="false|int" params={[{"type":"int","name":"max_lifetime","default":null}]}>
-Garbage Collector
-</ApiItem>
-<ApiItem href="#sessionadapterstream-open" visibility="public" name="open" returnType="bool" params={[{"type":"string","name":"path","default":null},{"type":"string","name":"name","default":null}]}>
-Ignore the savePath and use local defined path
-</ApiItem>
-<ApiItem href="#sessionadapterstream-read" visibility="public" name="read" returnType="string" params={[{"type":"string","name":"id","default":null}]}>
-Reads data from the adapter
-</ApiItem>
-<ApiItem href="#sessionadapterstream-updatetimestamp" visibility="public" name="updateTimestamp" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
-Refresh the session file modification time without changing its data
-</ApiItem>
-<ApiItem href="#sessionadapterstream-validateid" visibility="public" name="validateId" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
-Validate the session id (used when strict mode is enabled)
-</ApiItem>
-<ApiItem href="#sessionadapterstream-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"string","name":"data","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionadapterstream-getglobfiles" visibility="protected" name="getGlobFiles" returnType="array|false" params={[{"type":"string","name":"pattern","default":null}]}>
-Gets the glob array or returns false on failure
-</ApiItem>
-<ApiItem href="#sessionadapterstream-getprefixedname" visibility="protected" name="getPrefixedName" returnType="string" params={[{"type":"mixed","name":"name","default":null}]}>
-Helper method to get the name prefixed
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public destroy(string $id): bool`
+
+- `public gc(int $max_lifetime): false|int` — Garbage Collector
+
+- `public open(string $path, string $name): bool` — Ignore the savePath and use local defined path
+
+- `public read(string $id): string` — Reads data from the adapter
+
+- `public updateTimestamp(string $id, string $data): bool` — Refresh the session file modification time without changing its data
+
+- `public validateId(string $id): bool` — Validate the session id (used when strict mode is enabled)
+
+- `public write(string $id, string $data): bool`
+
+- `protected getGlobFiles(string $pattern): array|false` — Gets the glob array or returns false on failure
+
+- `protected getPrefixedName(mixed $name): string` — Helper method to get the name prefixed
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-Session options
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
-Session prefix
-</ApiItem>
+- `protected array $options = []` — Session options
+
+- `protected string $prefix = ""` — Session prefix
 
 ### Methods
 
@@ -557,8 +521,8 @@ Garbage Collector
 
 ```php
 public function open(
-string $path,
-string $name
+    string $path,
+    string $name
 ): bool;
 ```
 
@@ -576,8 +540,8 @@ Reads data from the adapter
 
 ```php
 public function updateTimestamp(
-string $id,
-string $data
+    string $id,
+    string $data
 ): bool;
 ```
 
@@ -595,8 +559,8 @@ Validate the session id (used when strict mode is enabled)
 
 ```php
 public function write(
-string $id,
-string $data
+    string $id,
+    string $data
 ): bool;
 ```
 
@@ -615,6 +579,7 @@ protected function getPrefixedName( mixed $name ): string;
 ```
 
 Helper method to get the name prefixed
+
 
 ## Session\Bag
 
@@ -638,32 +603,25 @@ $user->age  = 22;
 @extends Collection&lt;mixed>
 
 - [`Phalcon\Support\Collection`](/5.20/api/phalcon_support/#supportcollection)
-- **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](/5.20/api/phalcon_di/#diinjectionawareinterface)
+  - **`Phalcon\Session\Bag`** - implements [`Phalcon\Session\BagInterface`](#sessionbaginterface), [`Phalcon\Di\InjectionAwareInterface`](/5.20/api/phalcon_di/#diinjectionawareinterface)
 
 `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
-<ApiItem href="#sessionbag-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ManagerInterface","name":"session","default":null},{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbag-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Destroys the session bag
-</ApiItem>
-<ApiItem href="#sessionbag-getdi" visibility="public" name="getDI" returnType="DiInterface" params={[]}>
-Returns the DependencyInjector container
-</ApiItem>
-<ApiItem href="#sessionbag-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
-Initialize internal array
-</ApiItem>
-<ApiItem href="#sessionbag-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Removes a property from the internal bag
-</ApiItem>
-<ApiItem href="#sessionbag-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a value in the session bag
-</ApiItem>
-<ApiItem href="#sessionbag-setdi" visibility="public" name="setDI" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
-Sets the DependencyInjector container
-</ApiItem>
+- `public __construct(ManagerInterface $session, string $name)`
+
+- `public clear(): void` — Destroys the session bag
+
+- `public getDI(): DiInterface` — Returns the DependencyInjector container
+
+- `public init(array $data = []): void` — Initialize internal array
+
+- `public remove(string $element): void` — Removes a property from the internal bag
+
+- `public set(string $element, mixed $value): void` — Sets a value in the session bag
+
+- `public setDI(DiInterface $container): void` — Sets the DependencyInjector container
 
 ### Methods
 
@@ -671,8 +629,8 @@ Sets the DependencyInjector container
 
 ```php
 public function __construct(
-ManagerInterface $session,
-string $name
+    ManagerInterface $session,
+    string $name
 );
 ```
 
@@ -712,8 +670,8 @@ Removes a property from the internal bag
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -727,6 +685,7 @@ public function setDI( DiInterface $container ): void;
 
 Sets the DependencyInjector container
 
+
 ## Session\BagInterface
 
 Interface
@@ -737,26 +696,25 @@ Interface for Phalcon\Session\Bag
 
 ### Method Summary
 
-<ApiItem href="#sessionbaginterface-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-clear" visibility="public" name="clear" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#sessionbaginterface-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
+- `public __get(string $element): mixed`
+
+- `public __isset(string $element): bool`
+
+- `public __set(string $element, mixed $value): void`
+
+- `public __unset(string $element): void`
+
+- `public clear(): void`
+
+- `public get(string $element, mixed $defaultValue = null, string|null $cast = null): mixed`
+
+- `public has(string $element): bool`
+
+- `public init(array $data = []): void`
+
+- `public remove(string $element): void`
+
+- `public set(string $element, mixed $value): void`
 
 ### Methods
 
@@ -776,8 +734,8 @@ public function __isset( string $element ): bool;
 
 ```php
 public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -797,9 +755,9 @@ public function clear(): void;
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string|null $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string|null $cast = null
 ): mixed;
 ```
 
@@ -825,10 +783,11 @@ public function remove( string $element ): void;
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
+
 
 ## Session\Exception
 
@@ -839,30 +798,30 @@ Phalcon\Session\Exception
 Exceptions thrown in Phalcon\Session will use this class
 
 - `\Exception`
-- **`Phalcon\Session\Exception`**
-- [`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`](#sessionadapterexceptionsadapterruntimeerror)
-- [`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`](#sessionadapterexceptionsinvalidsavepath)
-- [`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`](#sessionadapterexceptionssavepathunavailable)
-- [`Phalcon\Session\Exceptions\InvalidSessionAdapter`](#sessionexceptionsinvalidsessionadapter)
-- [`Phalcon\Session\Exceptions\InvalidSessionId`](#sessionexceptionsinvalidsessionid)
-- [`Phalcon\Session\Exceptions\InvalidSessionName`](#sessionexceptionsinvalidsessionname)
-- [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
-- [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
+  - **`Phalcon\Session\Exception`**
+    - [`Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError`](#sessionadapterexceptionsadapterruntimeerror)
+    - [`Phalcon\Session\Adapter\Exceptions\InvalidSavePath`](#sessionadapterexceptionsinvalidsavepath)
+    - [`Phalcon\Session\Adapter\Exceptions\SavePathUnavailable`](#sessionadapterexceptionssavepathunavailable)
+    - [`Phalcon\Session\Exceptions\InvalidSessionAdapter`](#sessionexceptionsinvalidsessionadapter)
+    - [`Phalcon\Session\Exceptions\InvalidSessionId`](#sessionexceptionsinvalidsessionid)
+    - [`Phalcon\Session\Exceptions\InvalidSessionName`](#sessionexceptionsinvalidsessionname)
+    - [`Phalcon\Session\Exceptions\SessionAlreadyStarted`](#sessionexceptionssessionalreadystarted)
+    - [`Phalcon\Session\Exceptions\SessionModificationDenied`](#sessionexceptionssessionmodificationdenied)
+
 
 ## Session\Exceptions\InvalidSessionAdapter
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\InvalidSessionAdapter`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Exceptions\InvalidSessionAdapter`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionexceptionsinvalidsessionadapter-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -872,20 +831,20 @@ Class
 public function __construct();
 ```
 
+
 ## Session\Exceptions\InvalidSessionId
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\InvalidSessionId`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Exceptions\InvalidSessionId`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionexceptionsinvalidsessionid-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -895,20 +854,20 @@ Class
 public function __construct();
 ```
 
+
 ## Session\Exceptions\InvalidSessionName
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\InvalidSessionName`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Exceptions\InvalidSessionName`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionexceptionsinvalidsessionname-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -918,20 +877,20 @@ Class
 public function __construct();
 ```
 
+
 ## Session\Exceptions\SessionAlreadyStarted
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\SessionAlreadyStarted`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Exceptions\SessionAlreadyStarted`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionexceptionssessionalreadystarted-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -941,20 +900,20 @@ Class
 public function __construct();
 ```
 
+
 ## Session\Exceptions\SessionModificationDenied
 
 Class
 
 - `\Exception`
-- [`Phalcon\Session\Exception`](#sessionexception)
-- **`Phalcon\Session\Exceptions\SessionModificationDenied`**
+  - [`Phalcon\Session\Exception`](#sessionexception)
+    - **`Phalcon\Session\Exceptions\SessionModificationDenied`**
 
 `Phalcon\Session\Exception`
 
 ### Method Summary
 
-<ApiItem href="#sessionexceptionssessionmodificationdenied-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -964,6 +923,7 @@ Class
 public function __construct();
 ```
 
+
 ## Session\Manager
 
 Class
@@ -971,79 +931,56 @@ Class
 Session manager class
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
 `InvalidArgumentException` · `Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
 
 ### Method Summary
 
-<ApiItem href="#sessionmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Manager constructor.
-</ApiItem>
-<ApiItem href="#sessionmanager-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
-Alias: Gets a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Alias: Check whether a session variable is set in an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Alias: Sets a session variable in an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
-Alias: Removes a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-destroy" visibility="public" name="destroy" returnType="void" params={[]}>
-Destroy/end a session
-</ApiItem>
-<ApiItem href="#sessionmanager-exists" visibility="public" name="exists" returnType="bool" params={[]}>
-Check whether the session has been started
-</ApiItem>
-<ApiItem href="#sessionmanager-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"remove","default":"false"}]}>
-Gets a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-getadapter" visibility="public" name="getAdapter" returnType="SessionHandlerInterface|null" params={[]}>
-Returns the stored session adapter
-</ApiItem>
-<ApiItem href="#sessionmanager-getid" visibility="public" name="getId" returnType="string" params={[]}>
-Returns the session id
-</ApiItem>
-<ApiItem href="#sessionmanager-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the name of the session
-</ApiItem>
-<ApiItem href="#sessionmanager-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Get internal options
-</ApiItem>
-<ApiItem href="#sessionmanager-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Check whether a session variable is set in an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-regenerateid" visibility="public" name="regenerateId" returnType="ManagerInterface" params={[{"type":"bool","name":"deleteOldSession","default":"true"}]}>
-Regenerates the session id via `session_regenerate_id()` (when the
-</ApiItem>
-<ApiItem href="#sessionmanager-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
-Removes a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a session variable in an application context
-</ApiItem>
-<ApiItem href="#sessionmanager-setadapter" visibility="public" name="setAdapter" returnType="ManagerInterface" params={[{"type":"SessionHandlerInterface","name":"adapter","default":null}]}>
-Set the adapter for the session
-</ApiItem>
-<ApiItem href="#sessionmanager-setid" visibility="public" name="setId" returnType="ManagerInterface" params={[{"type":"string","name":"sessionId","default":null}]}>
-Set session Id
-</ApiItem>
-<ApiItem href="#sessionmanager-setname" visibility="public" name="setName" returnType="ManagerInterface" params={[{"type":"string","name":"name","default":null}]}>
-Set the session name. Throw exception if the session has started
-</ApiItem>
-<ApiItem href="#sessionmanager-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
-Sets session's options
-</ApiItem>
-<ApiItem href="#sessionmanager-start" visibility="public" name="start" returnType="bool" params={[]}>
-Starts the session (if headers are already sent the session will not be
-</ApiItem>
-<ApiItem href="#sessionmanager-status" visibility="public" name="status" returnType="int" params={[]}>
-Returns the status of the current session.
-</ApiItem>
+- `public __construct(array $options = [])` — Manager constructor.
+
+- `public __get(string $key): mixed` — Alias: Gets a session variable from an application context
+
+- `public __isset(string $key): bool` — Alias: Check whether a session variable is set in an application context
+
+- `public __set(string $key, mixed $value): void` — Alias: Sets a session variable in an application context
+
+- `public __unset(string $key): void` — Alias: Removes a session variable from an application context
+
+- `public destroy(): void` — Destroy/end a session
+
+- `public exists(): bool` — Check whether the session has been started
+
+- `public get(string $key, mixed $defaultValue = null, bool $remove = false): mixed` — Gets a session variable from an application context
+
+- `public getAdapter(): SessionHandlerInterface|null` — Returns the stored session adapter
+
+- `public getId(): string` — Returns the session id
+
+- `public getName(): string` — Returns the name of the session
+
+- `public getOptions(): array` — Get internal options
+
+- `public has(string $key): bool` — Check whether a session variable is set in an application context
+
+- `public regenerateId(bool $deleteOldSession = true): ManagerInterface` — Regenerates the session id via `session_regenerate_id()` (when the
+
+- `public remove(string $key): void` — Removes a session variable from an application context
+
+- `public set(string $key, mixed $value): void` — Sets a session variable in an application context
+
+- `public setAdapter(SessionHandlerInterface $adapter): ManagerInterface` — Set the adapter for the session
+
+- `public setId(string $sessionId): ManagerInterface` — Set session Id
+
+- `public setName(string $name): ManagerInterface` — Set the session name. Throw exception if the session has started
+
+- `public setOptions(array $options): void` — Sets session's options
+
+- `public start(): bool` — Starts the session (if headers are already sent the session will not be
+
+- `public status(): int` — Returns the status of the current session.
 
 ### Methods
 
@@ -1075,8 +1012,8 @@ Alias: Check whether a session variable is set in an application context
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1110,9 +1047,9 @@ Check whether the session has been started
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null,
-bool $remove = false
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
 ): mixed;
 ```
 
@@ -1180,8 +1117,8 @@ Removes a session variable from an application context
 
 ```php
 public function set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1237,6 +1174,7 @@ public function status(): int;
 
 Returns the status of the current session.
 
+
 ## Session\ManagerInterface
 
 Interface
@@ -1249,78 +1187,55 @@ Interface for the Phalcon\Session\Manager
 
 ### Method Summary
 
-<ApiItem href="#sessionmanagerinterface-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
-Alias: Gets a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Alias: Check whether a session variable is set in an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Alias: Sets a session variable in an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
-Alias: Removes a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-destroy" visibility="public" name="destroy" returnType="void" params={[]}>
-Destroy/end a session
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-exists" visibility="public" name="exists" returnType="bool" params={[]}>
-Check whether the session has been started
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"bool","name":"remove","default":"false"}]}>
-Gets a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-getadapter" visibility="public" name="getAdapter" returnType="SessionHandlerInterface|null" params={[]}>
-Returns the stored session adapter
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-getid" visibility="public" name="getId" returnType="string" params={[]}>
-Returns the session id
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the name of the session
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Get internal options
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Check whether a session variable is set in an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-regenerateid" visibility="public" name="regenerateId" returnType="ManagerInterface" params={[{"type":"bool","name":"deleteOldSession","default":"true"}]}>
-Regenerates the session id using the adapter.
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
-Removes a session variable from an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a session variable in an application context
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-setadapter" visibility="public" name="setAdapter" returnType="ManagerInterface" params={[{"type":"SessionHandlerInterface","name":"adapter","default":null}]}>
-Set the adapter for the session
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-setid" visibility="public" name="setId" returnType="ManagerInterface" params={[{"type":"string","name":"sessionId","default":null}]}>
-Set session Id
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-setname" visibility="public" name="setName" returnType="ManagerInterface" params={[{"type":"string","name":"name","default":null}]}>
-Set the session name. Throw exception if the session has started
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
-Sets session's options
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-start" visibility="public" name="start" returnType="bool" params={[]}>
-Starts the session (if headers are already sent the session will not be
-</ApiItem>
-<ApiItem href="#sessionmanagerinterface-status" visibility="public" name="status" returnType="int" params={[]}>
-Returns the status of the current session.
-</ApiItem>
+- `public __get(string $key): mixed` — Alias: Gets a session variable from an application context
+
+- `public __isset(string $key): bool` — Alias: Check whether a session variable is set in an application context
+
+- `public __set(string $key, mixed $value): void` — Alias: Sets a session variable in an application context
+
+- `public __unset(string $key): void` — Alias: Removes a session variable from an application context
+
+- `public destroy(): void` — Destroy/end a session
+
+- `public exists(): bool` — Check whether the session has been started
+
+- `public get(string $key, mixed $defaultValue = null, bool $remove = false): mixed` — Gets a session variable from an application context
+
+- `public getAdapter(): SessionHandlerInterface|null` — Returns the stored session adapter
+
+- `public getId(): string` — Returns the session id
+
+- `public getName(): string` — Returns the name of the session
+
+- `public getOptions(): array` — Get internal options
+
+- `public has(string $key): bool` — Check whether a session variable is set in an application context
+
+- `public regenerateId(bool $deleteOldSession = true): ManagerInterface` — Regenerates the session id using the adapter.
+
+- `public remove(string $key): void` — Removes a session variable from an application context
+
+- `public set(string $key, mixed $value): void` — Sets a session variable in an application context
+
+- `public setAdapter(SessionHandlerInterface $adapter): ManagerInterface` — Set the adapter for the session
+
+- `public setId(string $sessionId): ManagerInterface` — Set session Id
+
+- `public setName(string $name): ManagerInterface` — Set the session name. Throw exception if the session has started
+
+- `public setOptions(array $options): void` — Sets session's options
+
+- `public start(): bool` — Starts the session (if headers are already sent the session will not be
+
+- `public status(): int` — Returns the status of the current session.
 
 ### Constants
 
-<ApiItem kind="constant" name="SESSION_ACTIVE" type="int" default="2">
-</ApiItem>
-<ApiItem kind="constant" name="SESSION_DISABLED" type="int" default="0">
-</ApiItem>
-<ApiItem kind="constant" name="SESSION_NONE" type="int" default="1">
-</ApiItem>
+- `const int SESSION_ACTIVE = 2`
+
+- `const int SESSION_DISABLED = 0`
+
+- `const int SESSION_NONE = 1`
 
 ### Methods
 
@@ -1344,8 +1259,8 @@ Alias: Check whether a session variable is set in an application context
 
 ```php
 public function __set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1379,9 +1294,9 @@ Check whether the session has been started
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null,
-bool $remove = false
+    string $key,
+    mixed $defaultValue = null,
+    bool $remove = false
 ): mixed;
 ```
 
@@ -1447,8 +1362,8 @@ Removes a session variable from an application context
 
 ```php
 public function set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 

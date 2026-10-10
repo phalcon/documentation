@@ -44,13 +44,13 @@ use Phalcon\Html\Link\Link;
 
 $href       = 'https://dev.phalcon.ld';
 $attributes = [
-'one'   => true,
-'two'   => 123,
-'three' => 'four',
-'five'  => [
-    'six',
-    'seven',
-],
+    'one'   => true,
+    'two'   => 123,
+    'three' => 'four',
+    'five'  => [
+        'six',
+        'seven',
+    ],
 ];
 
 $link = new Link('payment', $href, $attributes);
@@ -69,13 +69,14 @@ use Phalcon\Html\Link\Link;
 use Phalcon\Html\Link\LinkProvider;
 
 $links = [
-new Link('canonical', 'https://dev.phalcon.ld'),
-new Link('cite-as', 'https://test.phalcon.ld'),
+    new Link('canonical', 'https://dev.phalcon.ld'),
+    new Link('cite-as', 'https://test.phalcon.ld'),
 ];
 $link  = new LinkProvider($links);
 
+
 var_dump(
-$link->getLinksByRel('cite-as')
+    $link->getLinksByRel('cite-as')
 );
 
 // [
@@ -101,7 +102,7 @@ $link = new EvolvableLink('payment', $href, $attributes);
 $newInstance = $link->withAttribute('two', 'three');
 
 var_dump(
-$newInstance->getAttributes()
+    $newInstance->getAttributes()
 );
 
 //  [
@@ -123,13 +124,14 @@ use Phalcon\Html\Link\EvolvableLink;
 use Phalcon\Html\Link\EvolvableLinkProvider;
 
 $links = [
-new Link('canonical', 'https://dev.phalcon.ld'),
-new Link('cite-as', 'https://test.phalcon.ld'),
+    new Link('canonical', 'https://dev.phalcon.ld'),
+    new Link('cite-as', 'https://test.phalcon.ld'),
 ];
 $link  = new EvolvableLinkProvider($links);
 
+
 var_dump(
-$link->getLinksByRel('cite-as')
+    $link->getLinksByRel('cite-as')
 );
 
 // [
@@ -158,13 +160,14 @@ $link = new EvolvableLink('prefetch', '/images/apple-icon-114.png');
 echo $serializer->serialize([$link]);
 // </images/apple-icon-114.png>; rel="prefetch"';
 
+
 $links = [
-(new EvolvableLink('preload', '/1'))
-    ->withAttribute('as', 'image')
-    ->withAttribute('nopush', true),
-(new EvolvableLink('alternate', '/2'))
-    ->withRel('next')
-    ->withAttribute('hreflang', ['en', 'es'])
+    (new EvolvableLink('preload', '/1'))
+        ->withAttribute('as', 'image')
+        ->withAttribute('nopush', true),
+    (new EvolvableLink('alternate', '/2'))
+        ->withRel('next')
+        ->withAttribute('hreflang', ['en', 'es'])
 ];
 
 echo $serializer->serialize([$link]);
@@ -185,7 +188,7 @@ use Phalcon\Html\Link\Serializer\Header;
 $serializer = new Header();
 
 $link = (new EvolvableLink('preload', '/app.js'))
-->withAttribute('title', 'say "hi"');
+    ->withAttribute('title', 'say "hi"');
 
 echo $serializer->serialize([$link]);
 // </app.js>; rel="preload"; title="say \"hi\""
@@ -205,10 +208,10 @@ use Phalcon\Html\Link\Serializer\SerializerInterface;
 
 class Custom implements SerializerInterface 
 {
-public function serialize(array $links): ?string
-{
-    // ....
-}
+    public function serialize(array $links): ?string
+    {
+        // ....
+    }
 }
 ```
 

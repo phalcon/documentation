@@ -32,8 +32,8 @@ echo $stream->getContents(); // 'The MIT License (MIT) ...'
 
 ```php
 public function __construct(
-mixed $stream, 
-string $mode = "rb"
+    mixed $stream, 
+    string $mode = "rb"
 )
 ```
 The first parameter can be a string representing the location of the file on the file system or storage area. It can also be a resource, as returned by a method such as [fopen][fopen]. The second parameter is the open mode for the stream. The default mode is `rb`. For a list of available modes, you can check the documentation for [fopen][fopen].
@@ -91,7 +91,7 @@ $fileName = dataDir('assets/stream/mit.txt');
 $stream = new Stream($fileName, 'rb');
 
 var_dump(
-$stream->getMetadata()
+    $stream->getMetadata()
 );
 
 // [
@@ -261,9 +261,9 @@ Seek to a position in the stream. Uses [fseek()][fseek] internally. It accepts:
     - `SEEK_SET` Set position equal to offset bytes
     - `SEEK_CUR` Set position to current location plus offset
     - `SEEK_END` Set position to end-of-stream plus offset.
-
+ 
 If an error occurs, a `RuntimeException` will be thrown. 
-
+ 
 ```php
 <?php
 
@@ -305,8 +305,8 @@ use Phalcon\Http\Message\Stream;
 
 $stream = new Stream('php://memory', 'wb');
 $source = 'The above copyright notice and this permission '
-    . 'notice shall be included in all copies or '
-    . 'substantial portions of the Software.';
+        . 'notice shall be included in all copies or '
+        . 'substantial portions of the Software.';
 
 echo $stream->write($source); // 126
 ```

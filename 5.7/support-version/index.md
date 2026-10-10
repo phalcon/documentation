@@ -12,6 +12,7 @@ version: "5.7"
 ## Overview
 [Phalcon\Support\Version][version] is a small but handy class, that returns the current version of Phalcon installed in your system.
 
+
 ## Constants
 
 | Name                     |  Value  | Description                            |

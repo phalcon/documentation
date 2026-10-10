@@ -28,13 +28,14 @@ from a DI container, with support for both legacy Di and new Container.
 <div class="api-tree">
 
 - **`Phalcon\Support\AbstractLocator`**
-- [`Phalcon\Auth\Access\AccessLocator`](/5.17/api/phalcon_auth/#authaccessaccesslocator)
-- [`Phalcon\Auth\Adapter\AdapterLocator`](/5.17/api/phalcon_auth/#authadapteradapterlocator)
-- [`Phalcon\Auth\Guard\GuardLocator`](/5.17/api/phalcon_auth/#authguardguardlocator)
+    - [`Phalcon\Auth\Access\AccessLocator`](/5.17/api/phalcon_auth/#authaccessaccesslocator)
+    - [`Phalcon\Auth\Adapter\AdapterLocator`](/5.17/api/phalcon_auth/#authadapteradapterlocator)
+    - [`Phalcon\Auth\Guard\GuardLocator`](/5.17/api/phalcon_auth/#authguardguardlocator)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`
+
 
 ### Method Summary
 
@@ -122,8 +123,8 @@ __Uses__ `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInter
 
 ```php
 public function __construct(
-mixed $container,
-array $services = []
+    mixed $container,
+    array $services = []
 );
 ```
 
@@ -170,8 +171,8 @@ method to resolve a fresh instance; see `Auth\Access\AccessLocator`, which uses
 
 ```php
 public function register(
-string $name,
-string $definition
+    string $name,
+    string $definition
 ): static;
 ```
 
@@ -212,6 +213,7 @@ abstract protected function getServices(): array;
 
 Get the default services for this locator.
 
+
 ## Support\Collection
 
 <span class="badge badge--class">Class</span>
@@ -236,15 +238,16 @@ etc.
 <div class="api-tree">
 
 - **`Phalcon\Support\Collection`** - implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `Countable`, `JsonSerializable`
-- [`Phalcon\Config\Config`](/5.17/api/phalcon_config/#configconfig)
-- [`Phalcon\Html\Attributes`](/5.17/api/phalcon_html/#htmlattributes)
-- [`Phalcon\Session\Bag`](/5.17/api/phalcon_session/#sessionbag)
-- [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
-- [`Phalcon\Support\Registry`](#supportregistry)
+    - [`Phalcon\Config\Config`](/5.17/api/phalcon_config/#configconfig)
+    - [`Phalcon\Html\Attributes`](/5.17/api/phalcon_html/#htmlattributes)
+    - [`Phalcon\Session\Bag`](/5.17/api/phalcon_session/#sessionbag)
+    - [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
+    - [`Phalcon\Support\Registry`](#supportregistry)
 
 </div>
 
 __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `InvalidArgumentException` · `IteratorAggregate` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
+
 
 ### Method Summary
 
@@ -558,10 +561,10 @@ __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `InvalidArgumentExce
 
 ```php
 public function __construct(
-array $data = [],
-bool $insensitive = true,
-bool $strictNull = false,
-string $type = null
+    array $data = [],
+    bool $insensitive = true,
+    bool $strictNull = false,
+    string $type = null
 );
 ```
 
@@ -596,8 +599,8 @@ configuration flags so the round-trip restores full state.
 
 ```php
 public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -676,9 +679,9 @@ Returns the first value in the collection, or null if empty.
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string $cast = null
 ): mixed;
 ```
 
@@ -799,8 +802,8 @@ Offset to retrieve
 
 ```php
 public function offsetSet(
-mixed $element,
-mixed $value
+    mixed $element,
+    mixed $value
 ): void;
 ```
 
@@ -822,8 +825,8 @@ Offset to unset
 
 ```php
 public function reduce(
-callable $callback,
-mixed $initial = null
+    callable $callback,
+    mixed $initial = null
 ): mixed;
 ```
 
@@ -858,8 +861,8 @@ BC - delegate to __serialize()
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -869,8 +872,8 @@ Set an element in the collection
 
 ```php
 public function sort(
-mixed $callback = null,
-int $order = 4
+    mixed $callback = null,
+    int $order = 4
 ): static;
 ```
 
@@ -922,8 +925,8 @@ Returns the values of the internal array.
 
 ```php
 public function where(
-string $propertyOrMethod,
-mixed $value
+    string $propertyOrMethod,
+    mixed $value
 ): static;
 ```
 
@@ -945,8 +948,8 @@ configuration (insensitivity, strict-null, type) of the current one.
 
 ```php
 protected function extractValue(
-mixed $item,
-string $propertyOrMethod
+    mixed $item,
+    string $propertyOrMethod
 ): mixed;
 ```
 
@@ -967,8 +970,8 @@ lowercase
 
 ```php
 protected function setData(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -985,6 +988,7 @@ is null this is a no-op. Scalar tokens (`int`, `string`, `bool`,
 `float`, `array`, `object`) map to their `is_*` checks; anything else
 is treated as a class/interface name and tested with `instanceof`.
 
+
 ## Support\Collection\CollectionInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -995,13 +999,15 @@ Phalcon\Support\Collection\CollectionInterface
 <div class="api-tree">
 
 - `ArrayAccess`
-- [`Phalcon\Contracts\Support\Collection`](/5.17/api/phalcon_contracts/#contractssupportcollection)
-- **`Phalcon\Support\Collection\CollectionInterface`**
-- [`Phalcon\Config\ConfigInterface`](/5.17/api/phalcon_config/#configconfiginterface)
+    - [`Phalcon\Contracts\Support\Collection`](/5.17/api/phalcon_contracts/#contractssupportcollection)
+        - **`Phalcon\Support\Collection\CollectionInterface`**
+            - [`Phalcon\Config\ConfigInterface`](/5.17/api/phalcon_config/#configconfiginterface)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Support\Collection`
+
+
 
 ## Support\Collection\Exception
 
@@ -1013,13 +1019,15 @@ Exceptions for the Collection object
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- **`Phalcon\Support\Collection\Exception`**
-- [`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`](#supportcollectionexceptionsreadonlyviolation)
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - **`Phalcon\Support\Collection\Exception`**
+            - [`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`](#supportcollectionexceptionsreadonlyviolation)
 
 </div>
 
 __Uses__ `Phalcon\Support\Exception`
+
+
 
 ## Support\Collection\Exceptions\InvalidValueType
 
@@ -1029,11 +1037,12 @@ __Uses__ `Phalcon\Support\Exception`
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Support\Collection\Exceptions\InvalidValueType`**
+    - **`Phalcon\Support\Collection\Exceptions\InvalidValueType`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -1052,10 +1061,11 @@ __Uses__ `InvalidArgumentException`
 
 ```php
 public function __construct(
-string $type,
-mixed $value
+    string $type,
+    mixed $value
 );
 ```
+
 
 ## Support\Collection\Exceptions\ReadOnlyViolation
 
@@ -1065,13 +1075,14 @@ mixed $value
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
-- **`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`**
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
+            - **`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Collection\Exception`
+
 
 ### Method Summary
 
@@ -1092,6 +1103,7 @@ __Uses__ `Phalcon\Support\Collection\Exception`
 public function __construct();
 ```
 
+
 ## Support\Collection\ReadOnlyCollection
 
 <span class="badge badge--class">Class</span>
@@ -1102,11 +1114,12 @@ A read only Collection object
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](#supportcollection)
-- **`Phalcon\Support\Collection\ReadOnlyCollection`**
+    - **`Phalcon\Support\Collection\ReadOnlyCollection`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Collection` · `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`
+
 
 ### Method Summary
 
@@ -1170,10 +1183,10 @@ __Uses__ `Phalcon\Support\Collection` · `Phalcon\Support\Collection\Exceptions\
 
 ```php
 public function __construct(
-array $data = [],
-bool $insensitive = true,
-bool $strictNull = false,
-string $type = null
+    array $data = [],
+    bool $insensitive = true,
+    bool $strictNull = false,
+    string $type = null
 );
 ```
 
@@ -1222,12 +1235,13 @@ Replaces the collection data with a new array
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
 Set an element in the collection
+
 
 ## Support\Debug
 
@@ -1244,6 +1258,7 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 </div>
 
 __Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
+
 
 ### Method Summary
 
@@ -1371,56 +1386,71 @@ __Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Ex
 ### Properties
 
 <div class="api-list">
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$blacklist</span><span class="sm"> = [...]</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">array</code>
 <code class="sig"><span class="sv">$data</span><span class="sm"> = []</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$hideDocumentRoot</span><span class="sm"> = false</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$isActive</span><span class="sm"> = false</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">Renderer</code>
 <code class="sig"><span class="sv">$renderer</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">ReportBuilder</code>
 <code class="sig"><span class="sv">$reportBuilder</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$showBackTrace</span><span class="sm"> = true</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$showFileFragment</span><span class="sm"> = false</span></code>
 </div>
+
 <div class="api-item">
 <code class="vis vis-protected">protected</code>
 <code class="ret">bool</code>
 <code class="sig"><span class="sv">$showFiles</span><span class="sm"> = true</span></code>
 </div>
+
 <div class="api-item">
+
 <code class="vis vis-protected">protected</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sv">$uri</span><span class="sm"> = &quot;https://assets.phalcon.io/debug/5.0.x/&quot;</span></code>
+
 </div>
+
 </div>
 
 ### Methods
@@ -1493,8 +1523,8 @@ Halts the request showing a backtrace
 
 ```php
 public function listen(
-bool $exceptions = true,
-bool $lowSeverity = false
+    bool $exceptions = true,
+    bool $lowSeverity = false
 ): static;
 ```
 
@@ -1528,10 +1558,10 @@ Handles uncaught exceptions
 
 ```php
 public function onUncaughtLowSeverity(
-mixed $severity,
-mixed $message,
-mixed $file,
-mixed $line
+    mixed $severity,
+    mixed $message,
+    mixed $file,
+    mixed $line
 ): void;
 ```
 
@@ -1594,6 +1624,7 @@ public function setUri( string $uri ): static;
 
 Change the base URI for static resources
 
+
 ## Support\Debug\Dump
 
 <span class="badge badge--class">Class</span>
@@ -1622,6 +1653,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 </div>
 
 __Uses__ `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Helper\Json\Encode` · `Reflection` · `ReflectionClass` · `ReflectionProperty` · `stdClass`
+
 
 ### Method Summary
 
@@ -1743,8 +1775,8 @@ __Uses__ `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Di\DiInterf
 
 ```php
 public function __construct(
-array $styles = [],
-bool $detailed = false
+    array $styles = [],
+    bool $detailed = false
 );
 ```
 
@@ -1777,8 +1809,8 @@ otherwise).
 
 ```php
 public function one(
-mixed $variable,
-string $name = null
+    mixed $variable,
+    string $name = null
 ): string;
 ```
 
@@ -1802,8 +1834,8 @@ Set styles for vars type
 
 ```php
 public function setTemplate(
-string $name,
-string $template
+    string $name,
+    string $template
 ): static;
 ```
 
@@ -1819,7 +1851,7 @@ Returns an JSON string of information about a single variable.
 
 ```php
 $foo = [
-"key" => "value",
+    "key" => "value",
 ];
 
 echo (new \Phalcon\Debug\Dump())->toJson($foo);
@@ -1834,8 +1866,8 @@ echo (new \Phalcon\Debug\Dump())->toJson($foo);
 
 ```php
 public function variable(
-mixed $variable,
-string $name = null
+    mixed $variable,
+    string $name = null
 ): string;
 ```
 
@@ -1884,13 +1916,14 @@ Get style for type
 
 ```php
 protected function output(
-mixed $variable,
-string $name = null,
-int $tab = 1
+    mixed $variable,
+    string $name = null,
+    int $tab = 1
 ): string;
 ```
 
 Prepare an HTML string of information about a single variable.
+
 
 ## Support\Debug\Exception
 
@@ -1902,13 +1935,15 @@ Exceptions thrown in Phalcon\Debug will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- **`Phalcon\Support\Debug\Exception`**
-- [`Phalcon\Support\Debug\Exceptions\RequestHalted`](#supportdebugexceptionsrequesthalted)
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - **`Phalcon\Support\Debug\Exception`**
+            - [`Phalcon\Support\Debug\Exceptions\RequestHalted`](#supportdebugexceptionsrequesthalted)
 
 </div>
 
 __Uses__ `Phalcon\Support\Exception`
+
+
 
 ## Support\Debug\Exceptions\RequestHalted
 
@@ -1918,13 +1953,14 @@ __Uses__ `Phalcon\Support\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
-- **`Phalcon\Support\Debug\Exceptions\RequestHalted`**
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
+            - **`Phalcon\Support\Debug\Exceptions\RequestHalted`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Debug\Exception`
+
 
 ### Method Summary
 
@@ -1945,6 +1981,7 @@ __Uses__ `Phalcon\Support\Debug\Exception`
 public function __construct();
 ```
 
+
 ## Support\Debug\Exceptions\RuntimeWarning
 
 <span class="badge badge--class">Class</span>
@@ -1953,9 +1990,10 @@ public function __construct();
 <div class="api-tree">
 
 - `\ErrorException`
-- **`Phalcon\Support\Debug\Exceptions\RuntimeWarning`**
+    - **`Phalcon\Support\Debug\Exceptions\RuntimeWarning`**
 
 </div>
+
 
 ## Support\Debug\Renderer\HtmlRenderer
 
@@ -1974,6 +2012,7 @@ debug.css / debug.js assets.
 </div>
 
 __Uses__ `Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Version`
+
 
 ### Method Summary
 
@@ -2088,8 +2127,8 @@ public function render( ExceptionReport $report ): string;
 
 ```php
 public function setTemplate(
-string $name,
-string $template
+    string $name,
+    string $template
 ): static;
 ```
 
@@ -2117,8 +2156,8 @@ Escapes a string with htmlentities
 
 ```php
 protected function getArrayDump(
-array $argument,
-int $number = 0
+    array $argument,
+    int $number = 0
 ): string|null;
 ```
 
@@ -2131,6 +2170,7 @@ protected function getVarDump( mixed $variable ): string;
 ```
 
 Produces a string representation of a variable
+
 
 ## Support\Debug\ReportBuilder
 
@@ -2148,6 +2188,7 @@ logic.
 </div>
 
 __Uses__ `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+
 
 ### Method Summary
 
@@ -2167,15 +2208,16 @@ __Uses__ `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\
 
 ```php
 public function build(
-\Throwable $exception,
-array $blacklist,
-bool $showBackTrace,
-bool $showFiles,
-bool $showFileFragment,
-string $uri,
-array $data
+    \Throwable $exception,
+    array $blacklist,
+    bool $showBackTrace,
+    bool $showFiles,
+    bool $showFileFragment,
+    string $uri,
+    array $data
 ): ExceptionReport;
 ```
+
 
 ## Support\Debug\Report\BacktraceItem
 
@@ -2312,16 +2354,16 @@ Represents a single resolved frame of an exception backtrace.
 
 ```php
 public function __construct(
-string $functionName,
-mixed $type = null,
-mixed $className = null,
-mixed $classLink = null,
-mixed $functionLink = null,
-bool $hasArgs = false,
-array $args = [],
-mixed $file = null,
-mixed $line = null,
-mixed $fragment = null
+    string $functionName,
+    mixed $type = null,
+    mixed $className = null,
+    mixed $classLink = null,
+    mixed $functionLink = null,
+    bool $hasArgs = false,
+    array $args = [],
+    mixed $file = null,
+    mixed $line = null,
+    mixed $fragment = null
 );
 ```
 
@@ -2384,6 +2426,7 @@ public function getType(): string|null;
 ```php
 public function hasArgs(): bool;
 ```
+
 
 ## Support\Debug\Report\ExceptionReport
 
@@ -2591,12 +2634,12 @@ presentation logic.
 
 ```php
 public function __construct(
-string $className,
-string $message,
-string $file,
-int $line,
-bool $showBackTrace,
-string $uri
+    string $className,
+    string $message,
+    string $file,
+    int $line,
+    bool $showBackTrace,
+    string $uri
 );
 ```
 
@@ -2726,6 +2769,7 @@ public function setServer( array $server ): static;
 public function setVariables( array $variables ): static;
 ```
 
+
 ## Support\Exception
 
 <span class="badge badge--class">Class</span>
@@ -2736,12 +2780,13 @@ Exceptions thrown in Phalcon\Support will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Support\Exception`**
-- [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
-- [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
-- [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+    - **`Phalcon\Support\Exception`**
+        - [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
+        - [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
+        - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
 
 </div>
+
 
 ## Support\HelperFactory
 
@@ -2813,12 +2858,13 @@ ServiceLocator implementation for helpers
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.17/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Support\HelperFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Support\HelperFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Factory\AbstractFactory`
+
 
 ### Method Summary
 
@@ -2857,8 +2903,8 @@ __Uses__ `Phalcon\Factory\AbstractFactory`
 
 ```php
 public function __call(
-string $name,
-array $arguments
+    string $name,
+    array $arguments
 );
 ```
 
@@ -2892,6 +2938,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Support\Helper\Arr\AbstractArr
 
 <span class="badge badge--abstract">Abstract</span>
@@ -2906,19 +2953,21 @@ this.
 <div class="api-tree">
 
 - **`Phalcon\Support\Helper\Arr\AbstractArr`**
-- [`Phalcon\Support\Helper\Arr\Blacklist`](#supporthelperarrblacklist)
-- [`Phalcon\Support\Helper\Arr\Filter`](#supporthelperarrfilter)
-- [`Phalcon\Support\Helper\Arr\First`](#supporthelperarrfirst)
-- [`Phalcon\Support\Helper\Arr\FirstKey`](#supporthelperarrfirstkey)
-- [`Phalcon\Support\Helper\Arr\Last`](#supporthelperarrlast)
-- [`Phalcon\Support\Helper\Arr\LastKey`](#supporthelperarrlastkey)
-- [`Phalcon\Support\Helper\Arr\ValidateAll`](#supporthelperarrvalidateall)
-- [`Phalcon\Support\Helper\Arr\ValidateAny`](#supporthelperarrvalidateany)
-- [`Phalcon\Support\Helper\Arr\Whitelist`](#supporthelperarrwhitelist)
+    - [`Phalcon\Support\Helper\Arr\Blacklist`](#supporthelperarrblacklist)
+    - [`Phalcon\Support\Helper\Arr\Filter`](#supporthelperarrfilter)
+    - [`Phalcon\Support\Helper\Arr\First`](#supporthelperarrfirst)
+    - [`Phalcon\Support\Helper\Arr\FirstKey`](#supporthelperarrfirstkey)
+    - [`Phalcon\Support\Helper\Arr\Last`](#supporthelperarrlast)
+    - [`Phalcon\Support\Helper\Arr\LastKey`](#supporthelperarrlastkey)
+    - [`Phalcon\Support\Helper\Arr\ValidateAll`](#supporthelperarrvalidateall)
+    - [`Phalcon\Support\Helper\Arr\ValidateAny`](#supporthelperarrvalidateany)
+    - [`Phalcon\Support\Helper\Arr\Whitelist`](#supporthelperarrwhitelist)
 
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
+
+
 
 ## Support\Helper\Arr\Blacklist
 
@@ -2931,7 +2980,7 @@ by the keys obtained from the elements of a blacklist
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Blacklist`**
+    - **`Phalcon\Support\Helper\Arr\Blacklist`**
 
 </div>
 
@@ -2953,10 +3002,11 @@ by the keys obtained from the elements of a blacklist
 
 ```php
 public function __invoke(
-array $collection,
-array $blackList
+    array $collection,
+    array $blackList
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Chunk
 
@@ -2989,11 +3039,12 @@ Chunks an array into smaller arrays of a specified size.
 
 ```php
 public function __invoke(
-array $collection,
-int $size,
-bool $preserveKeys = false
+    array $collection,
+    int $size,
+    bool $preserveKeys = false
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Filter
 
@@ -3005,7 +3056,7 @@ Filters a collection using array_filter and using the callable (if defined)
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Filter`**
+    - **`Phalcon\Support\Helper\Arr\Filter`**
 
 </div>
 
@@ -3027,10 +3078,11 @@ Filters a collection using array_filter and using the callable (if defined)
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\First
 
@@ -3043,7 +3095,7 @@ element returned is the first that validates true
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\First`**
+    - **`Phalcon\Support\Helper\Arr\First`**
 
 </div>
 
@@ -3065,10 +3117,11 @@ element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\FirstKey
 
@@ -3081,7 +3134,7 @@ is passed, the element returned is the first that validates true
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\FirstKey`**
+    - **`Phalcon\Support\Helper\Arr\FirstKey`**
 
 </div>
 
@@ -3103,10 +3156,11 @@ is passed, the element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\Flatten
 
@@ -3140,10 +3194,11 @@ Flattens an array up to the one level depth, unless `$deep` is set to
 
 ```php
 public function __invoke(
-array $collection,
-bool $deep = false
+    array $collection,
+    bool $deep = false
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Get
 
@@ -3161,6 +3216,7 @@ It also allows for casting the returned value to a specific type using
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+
 
 ### Method Summary
 
@@ -3180,12 +3236,13 @@ __Uses__ `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ```php
 public function __invoke(
-array $collection,
-mixed $index,
-mixed $defaultValue = null,
-string $cast = null
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    string $cast = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\Group
 
@@ -3201,6 +3258,7 @@ Groups the elements of an array based on the passed callable
 </div>
 
 __Uses__ `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -3220,10 +3278,11 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait`
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method
+    array $collection,
+    mixed $method
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Has
 
@@ -3257,10 +3316,11 @@ Checks an array if it has an element with a specific key and returns
 
 ```php
 public function __invoke(
-array $collection,
-mixed $index
+    array $collection,
+    mixed $index
 ): bool;
 ```
+
 
 ## Support\Helper\Arr\IsUnique
 
@@ -3296,6 +3356,7 @@ values exist and false if values are all unique.
 public function __invoke( array $collection ): bool;
 ```
 
+
 ## Support\Helper\Arr\Last
 
 <span class="badge badge--class">Class</span>
@@ -3307,7 +3368,7 @@ element returned is the first that validates true
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Last`**
+    - **`Phalcon\Support\Helper\Arr\Last`**
 
 </div>
 
@@ -3329,10 +3390,11 @@ element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\LastKey
 
@@ -3345,7 +3407,7 @@ passed, the element returned is the first that validates true
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\LastKey`**
+    - **`Phalcon\Support\Helper\Arr\LastKey`**
 
 </div>
 
@@ -3367,10 +3429,11 @@ passed, the element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\Order
 
@@ -3418,12 +3481,13 @@ the ones used by `ksort` and `krsort`
 
 ```php
 public function __invoke(
-array $collection,
-mixed $attribute,
-int $order = self::ORDER_ASC,
-int $flags = 0
+    array $collection,
+    mixed $attribute,
+    int $order = self::ORDER_ASC,
+    int $flags = 0
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Pluck
 
@@ -3456,10 +3520,11 @@ Returns a subset of the collection based on the values of the collection
 
 ```php
 public function __invoke(
-array $collection,
-string $element
+    array $collection,
+    string $element
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Set
 
@@ -3492,11 +3557,12 @@ Sets an array element. Using a key is optional
 
 ```php
 public function __invoke(
-array $collection,
-mixed $value,
-mixed $index = null
+    array $collection,
+    mixed $value,
+    mixed $index = null
 ): array;
 ```
+
 
 ## Support\Helper\Arr\SliceLeft
 
@@ -3529,10 +3595,11 @@ Returns a new array with n elements removed from the left.
 
 ```php
 public function __invoke(
-array $collection,
-int $elements = 1
+    array $collection,
+    int $elements = 1
 ): array;
 ```
+
 
 ## Support\Helper\Arr\SliceRight
 
@@ -3565,10 +3632,11 @@ Returns a new array with n elements removed from the right.
 
 ```php
 public function __invoke(
-array $collection,
-int $elements = 1
+    array $collection,
+    int $elements = 1
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Split
 
@@ -3604,6 +3672,7 @@ as another
 public function __invoke( array $collection ): array;
 ```
 
+
 ## Support\Helper\Arr\ToObject
 
 <span class="badge badge--class">Class</span>
@@ -3637,6 +3706,7 @@ Returns the passed array as an object.
 public function __invoke( array $collection ): object;
 ```
 
+
 ## Support\Helper\Arr\ValidateAll
 
 <span class="badge badge--class">Class</span>
@@ -3648,7 +3718,7 @@ the collection, `false` otherwise.
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\ValidateAll`**
+    - **`Phalcon\Support\Helper\Arr\ValidateAll`**
 
 </div>
 
@@ -3670,10 +3740,11 @@ the collection, `false` otherwise.
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method
+    array $collection,
+    mixed $method
 ): bool;
 ```
+
 
 ## Support\Helper\Arr\ValidateAny
 
@@ -3686,7 +3757,7 @@ element of the collection, `false` otherwise.
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\ValidateAny`**
+    - **`Phalcon\Support\Helper\Arr\ValidateAny`**
 
 </div>
 
@@ -3708,10 +3779,11 @@ element of the collection, `false` otherwise.
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method
+    array $collection,
+    mixed $method
 ): bool;
 ```
+
 
 ## Support\Helper\Arr\Whitelist
 
@@ -3724,7 +3796,7 @@ obtained from the elements of a whitelist
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Whitelist`**
+    - **`Phalcon\Support\Helper\Arr\Whitelist`**
 
 </div>
 
@@ -3746,10 +3818,11 @@ obtained from the elements of a whitelist
 
 ```php
 public function __invoke(
-array $collection,
-array $whiteList
+    array $collection,
+    array $whiteList
 ): array;
 ```
+
 
 ## Support\Helper\Exception
 
@@ -3761,14 +3834,16 @@ Exceptions thrown in Phalcon\Support\Helper will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- **`Phalcon\Support\Helper\Exception`**
-- [`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`](#supporthelperstrexceptionsinsufficientarguments)
-- [`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`](#supporthelperstrexceptionsinvalidreplaceformat)
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - **`Phalcon\Support\Helper\Exception`**
+            - [`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`](#supporthelperstrexceptionsinsufficientarguments)
+            - [`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`](#supporthelperstrexceptionsinvalidreplaceformat)
 
 </div>
 
 __Uses__ `Phalcon\Support\Exception`
+
+
 
 ## Support\Helper\File\Basename
 
@@ -3788,12 +3863,19 @@ filenames beginning with a non-US-ASCII character.
 ### Method Summary
 
 <div class="api-list">
+
 <a class="api-item" href="#supporthelperfilebasename-__invoke">
+
 <code class="vis vis-public">public</code>
+
 <code class="ret">string</code>
+
 <code class="sig"><span class="sf">__invoke</span>(<span class="prm"><span class="st">string</span> <span class="sv">$uri</span>,</span><span class="prm"><span class="st">string</span> <span class="sv">$suffix</span><span class="sm"> = null</span></span>)</code>
+
 <span class="desc">@see https://bugs.php.net/bug.php?id=37738</span>
+
 </a>
+
 </div>
 
 ### Methods
@@ -3804,12 +3886,13 @@ filenames beginning with a non-US-ASCII character.
 
 ```php
 public function __invoke(
-string $uri,
-string $suffix = null
+    string $uri,
+    string $suffix = null
 ): string;
 ```
 
 @see https://bugs.php.net/bug.php?id=37738
+
 
 ## Support\Helper\Json\Decode
 
@@ -3836,6 +3919,7 @@ JsonDecodeError
 
 __Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError` · `Phalcon\Traits\Support\Helper\Json\DecodeTrait`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -3853,12 +3937,13 @@ __Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError` · `Phalcon\Tr
 
 ```php
 public function __invoke(
-string $data,
-bool $associative = false,
-int $depth = 512,
-int $options = 79
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 79
 );
 ```
+
 
 ## Support\Helper\Json\Encode
 
@@ -3887,6 +3972,7 @@ JsonEncodeError
 
 __Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError` · `Phalcon\Traits\Support\Helper\Json\EncodeTrait`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -3905,11 +3991,12 @@ __Uses__ `Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError` · `Phalcon\Tr
 
 ```php
 public function __invoke(
-mixed $data,
-int $options = 79,
-int $depth = 512
+    mixed $data,
+    int $options = 79,
+    int $depth = 512
 ): string;
 ```
+
 
 ## Support\Helper\Json\Exceptions\JsonDecodeError
 
@@ -3919,11 +4006,12 @@ int $depth = 512
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`**
+    - **`Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`**
 
 </div>
 
 __Uses__ `InvalidArgumentException` · `Throwable`
+
 
 ### Method Summary
 
@@ -3942,11 +4030,12 @@ __Uses__ `InvalidArgumentException` · `Throwable`
 
 ```php
 public function __construct(
-string $message = "",
-int $code = 0,
-Throwable $previous = null
+    string $message = "",
+    int $code = 0,
+    Throwable $previous = null
 );
 ```
+
 
 ## Support\Helper\Json\Exceptions\JsonEncodeError
 
@@ -3956,11 +4045,12 @@ Throwable $previous = null
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`**
+    - **`Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`**
 
 </div>
 
 __Uses__ `InvalidArgumentException` · `Throwable`
+
 
 ### Method Summary
 
@@ -3979,11 +4069,12 @@ __Uses__ `InvalidArgumentException` · `Throwable`
 
 ```php
 public function __construct(
-string $message = "",
-int $code = 0,
-Throwable $previous = null
+    string $message = "",
+    int $code = 0,
+    Throwable $previous = null
 );
 ```
+
 
 ## Support\Helper\Number\IsBetween
 
@@ -4016,11 +4107,12 @@ Checks if a number is within a range
 
 ```php
 public function __invoke(
-int $value,
-int $start,
-int $end
+    int $value,
+    int $start,
+    int $end
 ): bool;
 ```
+
 
 ## Support\Helper\Str\AbstractStr
 
@@ -4038,19 +4130,21 @@ Abstract class offering methods to help with the Str namespace.
 <div class="api-tree">
 
 - **`Phalcon\Support\Helper\Str\AbstractStr`**
-- [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
-- [`Phalcon\Support\Helper\Str\Decapitalize`](#supporthelperstrdecapitalize)
-- [`Phalcon\Support\Helper\Str\EndsWith`](#supporthelperstrendswith)
-- [`Phalcon\Support\Helper\Str\Friendly`](#supporthelperstrfriendly)
-- [`Phalcon\Support\Helper\Str\IsLower`](#supporthelperstrislower)
-- [`Phalcon\Support\Helper\Str\IsUpper`](#supporthelperstrisupper)
-- [`Phalcon\Support\Helper\Str\Lower`](#supporthelperstrlower)
-- [`Phalcon\Support\Helper\Str\StartsWith`](#supporthelperstrstartswith)
-- [`Phalcon\Support\Helper\Str\Upper`](#supporthelperstrupper)
+    - [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
+    - [`Phalcon\Support\Helper\Str\Decapitalize`](#supporthelperstrdecapitalize)
+    - [`Phalcon\Support\Helper\Str\EndsWith`](#supporthelperstrendswith)
+    - [`Phalcon\Support\Helper\Str\Friendly`](#supporthelperstrfriendly)
+    - [`Phalcon\Support\Helper\Str\IsLower`](#supporthelperstrislower)
+    - [`Phalcon\Support\Helper\Str\IsUpper`](#supporthelperstrisupper)
+    - [`Phalcon\Support\Helper\Str\Lower`](#supporthelperstrlower)
+    - [`Phalcon\Support\Helper\Str\StartsWith`](#supporthelperstrstartswith)
+    - [`Phalcon\Support\Helper\Str\Upper`](#supporthelperstrupper)
 
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
+
+
 
 ## Support\Helper\Str\Camelize
 
@@ -4066,6 +4160,7 @@ Converts strings to upperCamelCase or lowerCamelCase
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+
 
 ### Method Summary
 
@@ -4085,11 +4180,12 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 
 ```php
 public function __invoke(
-string $text,
-string $delimiters = null,
-bool $lowerFirst = false
+    string $text,
+    string $delimiters = null,
+    bool $lowerFirst = false
 ): string;
 ```
+
 
 ## Support\Helper\Str\Concat
 
@@ -4102,11 +4198,12 @@ places concatenation
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Concat`**
+    - **`Phalcon\Support\Helper\Str\Concat`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
+
 
 ### Method Summary
 
@@ -4126,10 +4223,11 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 
 ```php
 public function __invoke(
-string $delimiter,
-string $many
+    string $delimiter,
+    string $many
 ): string;
 ```
+
 
 ## Support\Helper\Str\CountVowels
 
@@ -4165,6 +4263,7 @@ to count the number of vowels (A, E, I, O, U) in a string.
 public function __invoke( string $text ): int;
 ```
 
+
 ## Support\Helper\Str\Decapitalize
 
 <span class="badge badge--class">Class</span>
@@ -4177,7 +4276,7 @@ string intact, or set it to true to convert to uppercase.
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Decapitalize`**
+    - **`Phalcon\Support\Helper\Str\Decapitalize`**
 
 </div>
 
@@ -4199,11 +4298,12 @@ string intact, or set it to true to convert to uppercase.
 
 ```php
 public function __invoke(
-string $text,
-bool $upperRest = false,
-string $encoding = "UTF-8"
+    string $text,
+    bool $upperRest = false,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Decrement
 
@@ -4237,10 +4337,11 @@ is already defined
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "_"
+    string $text,
+    string $separator = "_"
 ): string;
 ```
+
 
 ## Support\Helper\Str\DirFromFile
 
@@ -4257,6 +4358,7 @@ directory structure with the filename in the end
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait`
+
 
 ### Method Summary
 
@@ -4278,6 +4380,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait`
 public function __invoke( string $file ): string;
 ```
 
+
 ## Support\Helper\Str\DirSeparator
 
 <span class="badge badge--class">Class</span>
@@ -4293,6 +4396,7 @@ DIRECTORY_SEPARATOR
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+
 
 ### Method Summary
 
@@ -4314,6 +4418,7 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 public function __invoke( string $directory ): string;
 ```
 
+
 ## Support\Helper\Str\Dynamic
 
 <span class="badge badge--class">Class</span>
@@ -4330,6 +4435,7 @@ by the separator
 </div>
 
 __Uses__ `Phalcon\Support\Helper\Str\Exceptions\SyntaxError`
+
 
 ### Method Summary
 
@@ -4349,12 +4455,13 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\SyntaxError`
 
 ```php
 public function __invoke(
-string $text,
-string $leftDelimiter = "{",
-string $rightDelimiter = "}",
-string $separator = "|"
+    string $text,
+    string $leftDelimiter = "{",
+    string $rightDelimiter = "}",
+    string $separator = "|"
 ): string;
 ```
+
 
 ## Support\Helper\Str\EndsWith
 
@@ -4366,7 +4473,7 @@ Check if a string ends with a given string
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\EndsWith`**
+    - **`Phalcon\Support\Helper\Str\EndsWith`**
 
 </div>
 
@@ -4388,11 +4495,12 @@ Check if a string ends with a given string
 
 ```php
 public function __invoke(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Support\Helper\Str\Exceptions\InsufficientArguments
 
@@ -4402,13 +4510,14 @@ bool $ignoreCase = true
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
-- **`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`**
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+            - **`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Helper\Exception`
+
 
 ### Method Summary
 
@@ -4429,6 +4538,7 @@ __Uses__ `Phalcon\Support\Helper\Exception`
 public function __construct();
 ```
 
+
 ## Support\Helper\Str\Exceptions\InvalidReplaceFormat
 
 <span class="badge badge--class">Class</span>
@@ -4437,13 +4547,15 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
-- **`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`**
+    - [`Phalcon\Support\Exception`](#supportexception)
+        - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+            - **`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Helper\Exception`
+
+
 
 ## Support\Helper\Str\Exceptions\SyntaxError
 
@@ -4453,11 +4565,12 @@ __Uses__ `Phalcon\Support\Helper\Exception`
 <div class="api-tree">
 
 - `RuntimeException`
-- **`Phalcon\Support\Helper\Str\Exceptions\SyntaxError`**
+    - **`Phalcon\Support\Helper\Str\Exceptions\SyntaxError`**
 
 </div>
 
 __Uses__ `RuntimeException`
+
 
 ### Method Summary
 
@@ -4477,6 +4590,7 @@ __Uses__ `RuntimeException`
 ```php
 public function __construct( string $text );
 ```
+
 
 ## Support\Helper\Str\FirstBetween
 
@@ -4510,11 +4624,12 @@ parameter start and end.
 
 ```php
 public function __invoke(
-string $text,
-string $start,
-string $end
+    string $text,
+    string $start,
+    string $end
 ): string;
 ```
+
 
 ## Support\Helper\Str\Friendly
 
@@ -4528,11 +4643,12 @@ is passed, it will also be used to replace those characters with a space.
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Friendly`**
+    - **`Phalcon\Support\Helper\Str\Friendly`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
+
 
 ### Method Summary
 
@@ -4552,12 +4668,13 @@ __Uses__ `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "-",
-bool $lowercase = true,
-mixed $replace = null
+    string $text,
+    string $separator = "-",
+    bool $lowercase = true,
+    mixed $replace = null
 ): string;
 ```
+
 
 ## Support\Helper\Str\Humanize
 
@@ -4592,6 +4709,7 @@ Makes an underscored or dashed text human-readable
 public function __invoke( string $text ): string;
 ```
 
+
 ## Support\Helper\Str\Includes
 
 <span class="badge badge--class">Class</span>
@@ -4623,10 +4741,11 @@ Determines whether a string includes another string or not.
 
 ```php
 public function __invoke(
-string $haystack,
-string $needle
+    string $haystack,
+    string $needle
 ): bool;
 ```
+
 
 ## Support\Helper\Str\Increment
 
@@ -4660,10 +4779,11 @@ is already defined
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "_"
+    string $text,
+    string $separator = "_"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Interpolate
 
@@ -4683,6 +4803,7 @@ right and left tokens are `%`
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -4701,12 +4822,13 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ```php
 public function __invoke(
-string $message,
-array $context = [],
-string $leftToken = "%",
-string $rightToken = "%"
+    string $message,
+    array $context = [],
+    string $leftToken = "%",
+    string $rightToken = "%"
 ): string;
 ```
+
 
 ## Support\Helper\Str\IsAnagram
 
@@ -4740,10 +4862,11 @@ Compare two strings and returns `true` if both strings are anagram,
 
 ```php
 public function __invoke(
-string $first,
-string $second
+    string $first,
+    string $second
 ): bool;
 ```
+
 
 ## Support\Helper\Str\IsLower
 
@@ -4755,7 +4878,7 @@ Returns `true` if the given string is in lower case, `false` otherwise.
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\IsLower`**
+    - **`Phalcon\Support\Helper\Str\IsLower`**
 
 </div>
 
@@ -4777,10 +4900,11 @@ Returns `true` if the given string is in lower case, `false` otherwise.
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): bool;
 ```
+
 
 ## Support\Helper\Str\IsPalindrome
 
@@ -4815,6 +4939,7 @@ Returns `true` if the given string is a palindrome, `false` otherwise.
 public function __invoke( string $text ): bool;
 ```
 
+
 ## Support\Helper\Str\IsUpper
 
 <span class="badge badge--class">Class</span>
@@ -4825,7 +4950,7 @@ Returns `true` if the given string is in upper case, `false` otherwise.
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\IsUpper`**
+    - **`Phalcon\Support\Helper\Str\IsUpper`**
 
 </div>
 
@@ -4847,10 +4972,11 @@ Returns `true` if the given string is in upper case, `false` otherwise.
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): bool;
 ```
+
 
 ## Support\Helper\Str\KebabCase
 
@@ -4862,7 +4988,7 @@ Converts strings to kebab-case style
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
-- **`Phalcon\Support\Helper\Str\KebabCase`**
+    - **`Phalcon\Support\Helper\Str\KebabCase`**
 
 </div>
 
@@ -4884,10 +5010,11 @@ Converts strings to kebab-case style
 
 ```php
 public function __invoke(
-string $text,
-string $delimiters = null
+    string $text,
+    string $delimiters = null
 ): string;
 ```
+
 
 ## Support\Helper\Str\Len
 
@@ -4920,10 +5047,11 @@ Calculates the length of the string using `mb_strlen`
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): int;
 ```
+
 
 ## Support\Helper\Str\Lower
 
@@ -4935,7 +5063,7 @@ Converts a string to lowercase using mbstring
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Lower`**
+    - **`Phalcon\Support\Helper\Str\Lower`**
 
 </div>
 
@@ -4957,10 +5085,11 @@ Converts a string to lowercase using mbstring
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Helper\Str\PascalCase
 
@@ -4972,8 +5101,8 @@ Converts strings to PascalCase style
 <div class="api-tree">
 
 - **`Phalcon\Support\Helper\Str\PascalCase`**
-- [`Phalcon\Support\Helper\Str\KebabCase`](#supporthelperstrkebabcase)
-- [`Phalcon\Support\Helper\Str\SnakeCase`](#supporthelperstrsnakecase)
+    - [`Phalcon\Support\Helper\Str\KebabCase`](#supporthelperstrkebabcase)
+    - [`Phalcon\Support\Helper\Str\SnakeCase`](#supporthelperstrsnakecase)
 
 </div>
 
@@ -5000,8 +5129,8 @@ Converts strings to PascalCase style
 
 ```php
 public function __invoke(
-string $text,
-string $delimiters = null
+    string $text,
+    string $delimiters = null
 ): string;
 ```
 
@@ -5011,10 +5140,11 @@ string $delimiters = null
 
 ```php
 protected function processArray(
-string $text,
-string $delimiters = null
+    string $text,
+    string $delimiters = null
 ): array;
 ```
+
 
 ## Support\Helper\Str\Prefix
 
@@ -5047,10 +5177,11 @@ Prefixes the text with the supplied prefix
 
 ```php
 public function __invoke(
-mixed $text,
-string $prefix
+    mixed $text,
+    string $prefix
 ): string;
 ```
+
 
 ## Support\Helper\Str\Random
 
@@ -5119,10 +5250,11 @@ RANDOM_* constants
 
 ```php
 public function __invoke(
-int $type = self::RANDOM_ALNUM,
-int $length = 8
+    int $type = self::RANDOM_ALNUM,
+    int $length = 8
 ): string;
 ```
+
 
 ## Support\Helper\Str\ReduceSlashes
 
@@ -5157,6 +5289,7 @@ Reduces multiple slashes in a string to single slashes
 public function __invoke( string $text ): string;
 ```
 
+
 ## Support\Helper\Str\SnakeCase
 
 <span class="badge badge--class">Class</span>
@@ -5167,7 +5300,7 @@ Converts strings to snake_case style
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
-- **`Phalcon\Support\Helper\Str\SnakeCase`**
+    - **`Phalcon\Support\Helper\Str\SnakeCase`**
 
 </div>
 
@@ -5189,10 +5322,11 @@ Converts strings to snake_case style
 
 ```php
 public function __invoke(
-string $text,
-string $delimiters = null
+    string $text,
+    string $delimiters = null
 ): string;
 ```
+
 
 ## Support\Helper\Str\StartsWith
 
@@ -5204,7 +5338,7 @@ Check if a string starts with a given string
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\StartsWith`**
+    - **`Phalcon\Support\Helper\Str\StartsWith`**
 
 </div>
 
@@ -5226,11 +5360,12 @@ Check if a string starts with a given string
 
 ```php
 public function __invoke(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Support\Helper\Str\Suffix
 
@@ -5263,10 +5398,11 @@ Suffixes the text with the supplied suffix
 
 ```php
 public function __invoke(
-mixed $text,
-string $suffix
+    mixed $text,
+    string $suffix
 ): string;
 ```
+
 
 ## Support\Helper\Str\Ucwords
 
@@ -5299,10 +5435,11 @@ Capitalizes the first letter of each word
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Uncamelize
 
@@ -5318,6 +5455,7 @@ Converts strings to non camelized style
 </div>
 
 __Uses__ `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
+
 
 ### Method Summary
 
@@ -5337,10 +5475,11 @@ __Uses__ `Phalcon\Traits\Support\Helper\Str\UncamelizeTrait`
 
 ```php
 public function __invoke(
-string $text,
-string $delimiter = "_"
+    string $text,
+    string $delimiter = "_"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Underscore
 
@@ -5375,6 +5514,7 @@ Makes a text underscored instead of spaced
 public function __invoke( string $text ): string;
 ```
 
+
 ## Support\Helper\Str\Upper
 
 <span class="badge badge--class">Class</span>
@@ -5385,7 +5525,7 @@ Converts a string to uppercase using mbstring
 <div class="api-tree">
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Upper`**
+    - **`Phalcon\Support\Helper\Str\Upper`**
 
 </div>
 
@@ -5407,10 +5547,11 @@ Converts a string to uppercase using mbstring
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Registry
 
@@ -5467,11 +5608,12 @@ bypass relatively slow method calls.
 <div class="api-tree">
 
 - [`Phalcon\Support\Collection`](#supportcollection)
-- **`Phalcon\Support\Registry`**
+    - **`Phalcon\Support\Registry`**
 
 </div>
 
 __Uses__ `Phalcon\Support\Collection` · `Traversable`
+
 
 ### Method Summary
 
@@ -5641,8 +5783,8 @@ Magic isset to check whether an element exists or not
 
 ```php
 final public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -5678,9 +5820,9 @@ Count elements of an object
 
 ```php
 final public function get(
-string $element,
-mixed $defaultValue = null,
-string $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string $cast = null
 ): mixed;
 ```
 
@@ -5744,8 +5886,8 @@ Offset to retrieve
 
 ```php
 final public function offsetSet(
-mixed $element,
-mixed $value
+    mixed $element,
+    mixed $value
 ): void;
 ```
 
@@ -5785,8 +5927,8 @@ String representation of object
 
 ```php
 final public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -5823,6 +5965,7 @@ final public function unserialize( string $data ): void;
 Constructs the object
 
 @link https://php.net/manual/en/serializable.unserialize.php
+
 
 ## Support\Settings
 
@@ -5921,8 +6064,8 @@ fallback values (as configured in php.ini or .htaccess).
 
 ```php
 public static function set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -5932,6 +6075,7 @@ Does NOT call globals_set(), so the C-level struct is not modified and
 no other project sharing this PHP process is affected.
 
 Unknown keys are silently ignored.
+
 
 ## Support\Version
 
@@ -5984,31 +6128,57 @@ This class allows to get the installed version of the framework
 ### Constants
 
 <div class="api-list">
+
 <div class="api-item">
+
 <code class="ret">int</code>
+
 <code class="sig"><span class="sc">VERSION_MAJOR</span><span class="sm"> = 0</span></code>
+
 <span class="desc">The constant referencing the major version. Returns 0 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_MAJOR); </code>``</span>
+
 </div>
+
 <div class="api-item">
+
 <code class="ret">int</code>
+
 <code class="sig"><span class="sc">VERSION_MEDIUM</span><span class="sm"> = 1</span></code>
+
 <span class="desc">The constant referencing the major version. Returns 1 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_MEDIUM); </code>``</span>
+
 </div>
+
 <div class="api-item">
+
 <code class="ret">int</code>
+
 <code class="sig"><span class="sc">VERSION_MINOR</span><span class="sm"> = 2</span></code>
+
 <span class="desc">The constant referencing the major version. Returns 2 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_MINOR); </code>``</span>
+
 </div>
+
 <div class="api-item">
+
 <code class="ret">int</code>
+
 <code class="sig"><span class="sc">VERSION_SPECIAL</span><span class="sm"> = 3</span></code>
+
 <span class="desc">The constant referencing the major version. Returns 3 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_SPECIAL); </code>``</span>
+
 </div>
+
 <div class="api-item">
+
 <code class="ret">int</code>
+
 <code class="sig"><span class="sc">VERSION_SPECIAL_NUMBER</span><span class="sm"> = 4</span></code>
+
 <span class="desc">The constant referencing the major version. Returns 4 ``<code>php echo (new Phalcon\Support\Version()) -&gt;getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER); </code>``</span>
+
 </div>
+
 </div>
 
 ### Methods

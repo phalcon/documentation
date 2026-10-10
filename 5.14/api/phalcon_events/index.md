@@ -23,13 +23,14 @@ This abstract class offers access to the events manager
 <div class="api-tree">
 
 - **`Phalcon\Events\AbstractEventsAware`**
-- [`Phalcon\Acl\Adapter\AbstractAdapter`](/5.14/api/phalcon_acl/#acladapterabstractadapter)
-- [`Phalcon\Auth\Guard\AbstractGuard`](/5.14/api/phalcon_auth/#authguardabstractguard)
-- [`Phalcon\Autoload\Loader`](/5.14/api/phalcon_autoload/#autoloadloader)
+    - [`Phalcon\Acl\Adapter\AbstractAdapter`](/5.14/api/phalcon_acl/#acladapterabstractadapter)
+    - [`Phalcon\Auth\Guard\AbstractGuard`](/5.14/api/phalcon_auth/#authguardabstractguard)
+    - [`Phalcon\Autoload\Loader`](/5.14/api/phalcon_autoload/#autoloadloader)
 
 </div>
 
 __Uses__ `Phalcon\Events\ManagerInterface`
+
 
 ### Method Summary
 
@@ -90,13 +91,14 @@ Sets the events manager
 
 ```php
 protected function fireManagerEvent(
-string $eventName,
-mixed $data = null,
-bool $cancellable = true
+    string $eventName,
+    mixed $data = null,
+    bool $cancellable = true
 ): mixed|bool;
 ```
 
 Helper method to fire an event
+
 
 ## Events\Event
 
@@ -111,7 +113,7 @@ Phalcon\Events\Event;
 
 $event = new Event("db:afterQuery", $this, ["data" => "mydata"], true);
 if ($event->isCancelable()) {
-$event->stop();
+    $event->stop();
 }
 ```
 
@@ -122,6 +124,7 @@ $event->stop();
 </div>
 
 __Uses__ `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Events\Exceptions\EventNotCancelable` · `Phalcon\Events\Exceptions\InvalidEventSource`
+
 
 ### Method Summary
 
@@ -227,10 +230,10 @@ __Uses__ `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Events\Exceptions\Even
 
 ```php
 public function __construct(
-string $type,
-mixed $source = null,
-mixed $data = null,
-bool $cancelable = true
+    string $type,
+    mixed $source = null,
+    mixed $data = null,
+    bool $cancelable = true
 );
 ```
 
@@ -264,7 +267,7 @@ Check whether the event is cancelable.
 
 ```php
 if ($event->isCancelable()) {
-$event->stop();
+    $event->stop();
 }
 ```
 
@@ -311,9 +314,10 @@ Stops the event preventing propagation.
 
 ```php
 if ($event->isCancelable()) {
-$event->stop();
+    $event->stop();
 }
 ```
+
 
 ## Events\EventInterface
 
@@ -329,11 +333,13 @@ Phalcon\Events\EventInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Events\Event`](/5.14/api/phalcon_contracts/#contractseventsevent)
-- **`Phalcon\Events\EventInterface`**
+    - **`Phalcon\Events\EventInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Events\Event`
+
+
 
 ## Events\EventsAwareInterface
 
@@ -349,11 +355,13 @@ Phalcon\Events\EventsAwareInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Events\EventsAware`](/5.14/api/phalcon_contracts/#contractseventseventsaware)
-- **`Phalcon\Events\EventsAwareInterface`**
+    - **`Phalcon\Events\EventsAwareInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Events\EventsAware`
+
+
 
 ## Events\Exception
 
@@ -365,15 +373,16 @@ Exceptions thrown in Phalcon\Events will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Events\Exception`**
-- [`Phalcon\Events\Exceptions\EventNotCancelable`](#eventsexceptionseventnotcancelable)
-- [`Phalcon\Events\Exceptions\InvalidEventHandler`](#eventsexceptionsinvalideventhandler)
-- [`Phalcon\Events\Exceptions\InvalidEventSource`](#eventsexceptionsinvalideventsource)
-- [`Phalcon\Events\Exceptions\InvalidEventType`](#eventsexceptionsinvalideventtype)
-- [`Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`](#eventsexceptionsinvalidsubscriberconfiguration)
-- [`Phalcon\Events\Exceptions\NoListenersForEvent`](#eventsexceptionsnolistenersforevent)
+    - **`Phalcon\Events\Exception`**
+        - [`Phalcon\Events\Exceptions\EventNotCancelable`](#eventsexceptionseventnotcancelable)
+        - [`Phalcon\Events\Exceptions\InvalidEventHandler`](#eventsexceptionsinvalideventhandler)
+        - [`Phalcon\Events\Exceptions\InvalidEventSource`](#eventsexceptionsinvalideventsource)
+        - [`Phalcon\Events\Exceptions\InvalidEventType`](#eventsexceptionsinvalideventtype)
+        - [`Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`](#eventsexceptionsinvalidsubscriberconfiguration)
+        - [`Phalcon\Events\Exceptions\NoListenersForEvent`](#eventsexceptionsnolistenersforevent)
 
 </div>
+
 
 ## Events\Exceptions\EventNotCancelable
 
@@ -390,12 +399,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Events\Exception`](#eventsexception)
-- **`Phalcon\Events\Exceptions\EventNotCancelable`**
+    - [`Phalcon\Events\Exception`](#eventsexception)
+        - **`Phalcon\Events\Exceptions\EventNotCancelable`**
 
 </div>
 
 __Uses__ `Phalcon\Events\Exception`
+
 
 ### Method Summary
 
@@ -416,6 +426,7 @@ __Uses__ `Phalcon\Events\Exception`
 public function __construct();
 ```
 
+
 ## Events\Exceptions\InvalidEventHandler
 
 <span class="badge badge--class">Class</span>
@@ -431,12 +442,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Events\Exception`](#eventsexception)
-- **`Phalcon\Events\Exceptions\InvalidEventHandler`**
+    - [`Phalcon\Events\Exception`](#eventsexception)
+        - **`Phalcon\Events\Exceptions\InvalidEventHandler`**
 
 </div>
 
 __Uses__ `Phalcon\Events\Exception`
+
 
 ### Method Summary
 
@@ -457,6 +469,7 @@ __Uses__ `Phalcon\Events\Exception`
 public function __construct();
 ```
 
+
 ## Events\Exceptions\InvalidEventSource
 
 <span class="badge badge--class">Class</span>
@@ -472,12 +485,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Events\Exception`](#eventsexception)
-- **`Phalcon\Events\Exceptions\InvalidEventSource`**
+    - [`Phalcon\Events\Exception`](#eventsexception)
+        - **`Phalcon\Events\Exceptions\InvalidEventSource`**
 
 </div>
 
 __Uses__ `Phalcon\Events\Exception`
+
 
 ### Method Summary
 
@@ -496,10 +510,11 @@ __Uses__ `Phalcon\Events\Exception`
 
 ```php
 public function __construct(
-string $type,
-string $sourceType
+    string $type,
+    string $sourceType
 );
 ```
+
 
 ## Events\Exceptions\InvalidEventType
 
@@ -516,12 +531,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Events\Exception`](#eventsexception)
-- **`Phalcon\Events\Exceptions\InvalidEventType`**
+    - [`Phalcon\Events\Exception`](#eventsexception)
+        - **`Phalcon\Events\Exceptions\InvalidEventType`**
 
 </div>
 
 __Uses__ `Phalcon\Events\Exception`
+
 
 ### Method Summary
 
@@ -542,6 +558,7 @@ __Uses__ `Phalcon\Events\Exception`
 public function __construct( string $eventType );
 ```
 
+
 ## Events\Exceptions\InvalidSubscriberConfiguration
 
 <span class="badge badge--class">Class</span>
@@ -557,12 +574,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Events\Exception`](#eventsexception)
-- **`Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`**
+    - [`Phalcon\Events\Exception`](#eventsexception)
+        - **`Phalcon\Events\Exceptions\InvalidSubscriberConfiguration`**
 
 </div>
 
 __Uses__ `Phalcon\Events\Exception`
+
 
 ### Method Summary
 
@@ -583,6 +601,7 @@ __Uses__ `Phalcon\Events\Exception`
 public function __construct( string $eventName );
 ```
 
+
 ## Events\Exceptions\NoListenersForEvent
 
 <span class="badge badge--class">Class</span>
@@ -598,12 +617,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Events\Exception`](#eventsexception)
-- **`Phalcon\Events\Exceptions\NoListenersForEvent`**
+    - [`Phalcon\Events\Exception`](#eventsexception)
+        - **`Phalcon\Events\Exceptions\NoListenersForEvent`**
 
 </div>
 
 __Uses__ `Phalcon\Events\Exception`
+
 
 ### Method Summary
 
@@ -624,6 +644,7 @@ __Uses__ `Phalcon\Events\Exception`
 public function __construct( string $eventType );
 ```
 
+
 ## Events\Manager
 
 <span class="badge badge--class">Class</span>
@@ -641,6 +662,7 @@ conditional execution and much more.
 </div>
 
 __Uses__ `Closure` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent`
+
 
 ### Method Summary
 
@@ -928,9 +950,9 @@ Returns if priorities are enabled
 
 ```php
 final public function attach(
-string $eventType,
-mixed $handler,
-int $priority = self::DEFAULT_PRIORITY
+    string $eventType,
+    mixed $handler,
+    int $priority = self::DEFAULT_PRIORITY
 ): void;
 ```
 
@@ -961,8 +983,8 @@ by every registered listener in a single fire
 
 ```php
 public function detach(
-string $eventType,
-mixed $handler
+    string $eventType,
+    mixed $handler
 ): void;
 ```
 
@@ -980,9 +1002,9 @@ Removes all events from the EventsManager
 
 ```php
 public function dispatch(
-object $event,
-mixed $name = null,
-mixed $source = null
+    object $event,
+    mixed $name = null,
+    mixed $source = null
 );
 ```
 
@@ -1012,10 +1034,10 @@ lower priority.
 
 ```php
 public function fire(
-string $eventType,
-object $source,
-mixed $data = null,
-bool $cancelable = true
+    string $eventType,
+    object $source,
+    mixed $data = null,
+    bool $cancelable = true
 );
 ```
 
@@ -1030,10 +1052,10 @@ $eventsManager->fire("db", $connection);
 
 ```php
 public function fireAll(
-string $eventType,
-object $source,
-mixed $data = null,
-bool $cancelable = true
+    string $eventType,
+    object $source,
+    mixed $data = null,
+    bool $cancelable = true
 ): array;
 ```
 
@@ -1050,8 +1072,8 @@ $results = $eventsManager->fireAll("db:beforeQuery", $connection);
 
 ```php
 final public function fireQueue(
-array $queue,
-EventInterface $event
+    array $queue,
+    EventInterface $event
 );
 ```
 
@@ -1219,11 +1241,11 @@ when dispatching an event with zero matching listeners.
 
 ```php
 protected function afterFire(
-mixed $status,
-string $eventType,
-object $source,
-mixed $data = null,
-bool $cancelable = true
+    mixed $status,
+    string $eventType,
+    object $source,
+    mixed $data = null,
+    bool $cancelable = true
 ): mixed;
 ```
 
@@ -1240,10 +1262,10 @@ no-listener short-circuits in fire() return before reaching it.
 
 ```php
 protected function beforeFire(
-string $eventType,
-object $source,
-mixed $data = null,
-bool $cancelable = true
+    string $eventType,
+    object $source,
+    mixed $data = null,
+    bool $cancelable = true
 ): bool;
 ```
 
@@ -1254,6 +1276,7 @@ returning false, abort the dispatch entirely - for example to
 redirect a deferred event onto an external queue. Invoked before the
 no-listener short-circuits, so it sees every fire(), including those
 with no locally attached listeners.
+
 
 ## Events\ManagerInterface
 
@@ -1269,7 +1292,7 @@ Phalcon\Events\ManagerInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Events\Manager`](/5.14/api/phalcon_contracts/#contractseventsmanager)
-- **`Phalcon\Events\ManagerInterface`**
+    - **`Phalcon\Events\ManagerInterface`**
 
 </div>
 

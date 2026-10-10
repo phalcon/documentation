@@ -124,25 +124,25 @@ $factory = new TagFactory($escaper);
 
 // Register or override a helper with a zero-argument closure
 $factory->set(
-'a',
-function () use ($escaper, $factory) {
-    return new Anchor($escaper, $factory->newInstance('doctype'));
-}
+    'a',
+    function () use ($escaper, $factory) {
+        return new Anchor($escaper, $factory->newInstance('doctype'));
+    }
 );
 
 // The closure supplies any extra constructor arguments itself
 // (this is how `inputColor` is registered: Generic with type 'color')
 $factory->set(
-'inputColor',
-function () use ($escaper, $factory) {
-    return new Generic($escaper, $factory->newInstance('doctype'), 'color');
-}
+    'inputColor',
+    function () use ($escaper, $factory) {
+        return new Generic($escaper, $factory->newInstance('doctype'), 'color');
+    }
 );
 
 // Re-registering a name invalidates the previously cached instance
 $factory->set(
-'a',
-fn() => new Anchor($escaper, $factory->newInstance('doctype'))
+    'a',
+    fn() => new Anchor($escaper, $factory->newInstance('doctype'))
 );
 ```
 
@@ -180,285 +180,285 @@ If you do not wish to call `newInstance()`, you can always use the method call t
 
 ```php
 public function a(
-string $href, 
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $href, 
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function base(
-string $href, 
-array $attributes = []
+    string $href, 
+    array $attributes = []
 ): string
 
 public function body(
-array $attributes = []
+    array $attributes = []
 ): string
 
 public function breadcrumbs(
-string $indent = '    ',
-string $delimiter = "\n"
+    string $indent = '    ',
+    string $delimiter = "\n"
 ): Breadcrumbs
 
 public function button(
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function close(
-string $tag, 
-bool $raw = false
+    string $tag, 
+    bool $raw = false
 ): string
 
 public function doctype(
-int $flag, 
-string $delimiter
+    int $flag, 
+    string $delimiter
 ): Doctype
 
 public function element(
-string $tag, 
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $tag, 
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function form(
-array $attributes = []
+    array $attributes = []
 ): string
 
 public function img(
-string $src, 
-array $attributes = []
+    string $src, 
+    array $attributes = []
 ): string
 
 public function inputCheckbox(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Checkbox
 
 public function inputColor(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputDate(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputDateTime(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputDateTimeLocal(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputEmail(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputFile(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputHidden(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputImage(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputInput(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputMonth(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputNumeric(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputPassword(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputRadio(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Radio
 
 public function inputRange(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputSearch(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputSelect(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Select
 
 public function inputSubmit(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputTel(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputText(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputTextarea(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Textarea
 
 public function inputTime(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputUrl(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function inputWeek(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Generic
 
 public function label(
-string $label, 
-array $attributes = [], 
-bool $raw = false
+    string $label, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function link(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Link
 
 public function meta(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Meta
 
 public function ol(
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): Ol
 
 public function script(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Script
 
 public function style(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Style
 
 public function title(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Title
 
 public function ul(
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): Ul
 
 public function tag(
-string $tag, 
-array $attributes = []
+    string $tag, 
+    array $attributes = []
 ): string
 
 public function voidTag(
-string $tag, 
-array $attributes = []
+    string $tag, 
+    array $attributes = []
 ): string
 
 public function aRaw(
-string $href, 
-string $text, 
-array $attributes = []
+    string $href, 
+    string $text, 
+    array $attributes = []
 ): string
 
 public function buttonRaw(
-string $text, 
-array $attributes = []
+    string $text, 
+    array $attributes = []
 ): string
 
 public function elementRaw(
-string $tag, 
-string $text, 
-array $attributes = []
+    string $tag, 
+    string $text, 
+    array $attributes = []
 ): string
 
 public function labelRaw(
-string $label, 
-array $attributes = []
+    string $label, 
+    array $attributes = []
 ): string
 
 public function olRaw(
-string $text, 
-array $attributes = []
+    string $text, 
+    array $attributes = []
 ): Ol
 
 public function ulRaw(
-string $text, 
-array $attributes = []
+    string $text, 
+    array $attributes = []
 ): Ul
 ```
 
@@ -472,17 +472,17 @@ $container = new FactoryDefault();
 $result = $container->tag->a('https://phalcon.io', 'Phalcon Website');
 
 $image  = $container
-->tag
-->img('https://phalcon.io/img/phalcon.png')
+    ->tag
+    ->img('https://phalcon.io/img/phalcon.png')
 ;
 
 $result = $container
-->tag
-->a(
-    'https://phalcon.io', 
-    $image,
-    true
-)
+    ->tag
+    ->a(
+        'https://phalcon.io', 
+        $image,
+        true
+    )
 ;
 ```
 
@@ -531,9 +531,9 @@ use Phalcon\Html\Helper\Anchor;
 $escaper = new Escaper();
 $helper  = new Anchor($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('/myurl', 'click<>me', $options);
@@ -563,7 +563,7 @@ use Phalcon\Html\Helper\Base;
 $escaper = new Escaper();
 $helper  = new Base($escaper);
 $options = [
-'target' => '_blank',
+    'target' => '_blank',
 ];
 
 echo $helper('/myurl', $options);
@@ -596,8 +596,8 @@ Each of the words above (apart from the last one) are links to the respective pa
 
 ```php
 public function __invoke(
-string $indent = '    ',
-string $delimiter = PHP_EOL
+    string $indent = '    ',
+    string $delimiter = PHP_EOL
 ): static 
 ```
 
@@ -605,10 +605,10 @@ Sets the indent and delimiter and returns the object back
 
 ```php
 public function add(
-string $text,
-string $link = '',
-string $icon = '',
-array $attributes = []
+    string $text,
+    string $link = '',
+    string $icon = '',
+    array $attributes = []
 ): static 
 ```
 
@@ -703,9 +703,9 @@ Sets the separator
 
 ```php
 public function setTemplate(
-string $main,
-string $line,
-string $last
+    string $main,
+    string $line,
+    string $last
 ): static 
 ```
 
@@ -736,9 +736,9 @@ $breadcrumbs = $tagFactory->breadcrumbs();
 $breadcrumbs->setPrefix('/myapp');
 
 $breadcrumbs
-->add('Home', '/')
-->add('Admin', '/admin')
-->add('Invoices')
+    ->add('Home', '/')
+    ->add('Admin', '/admin')
+    ->add('Invoices')
 ;
 
 // Links rendered as /myapp/, /myapp/admin
@@ -760,9 +760,9 @@ $tagFactory = new TagFactory($container->get('escaper'), [], null, $url);
 $breadcrumbs = $tagFactory->breadcrumbs();
 
 $breadcrumbs
-->add('Home', '/')
-->add('Invoices', '/invoices')
-->add('View')
+    ->add('Home', '/')
+    ->add('Invoices', '/invoices')
+    ->add('View')
 ;
 
 echo $breadcrumbs->render();
@@ -830,28 +830,28 @@ $tagFactory = new TagFactory($escaper);
 
 $separator = '
 <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-<svg xmlns="http://www.w3.org/2000/svg" 
-     class="w-5 h-5" 
-     viewBox="0 0 20 20" 
-     fill="currentColor">
-    <path fill-rule="evenodd" 
-          d="M7.293 14.707a1 1 0 010-1.414L10.586 
-            10 7.293 6.707a1 1 0 011.414-1.414l4 
-            4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
-          clip-rule="evenodd" />
-</svg>
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         class="w-5 h-5" 
+         viewBox="0 0 20 20" 
+         fill="currentColor">
+        <path fill-rule="evenodd" 
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 
+                10 7.293 6.707a1 1 0 011.414-1.414l4 
+                4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+              clip-rule="evenodd" />
+    </svg>
 </span>
 ';
 
 $homeIcon = '
 <svg xmlns="http://www.w3.org/2000/svg" 
- class="w-5 h-5" viewBox="0 0 20 20" 
- fill="currentColor">
-<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 
-        0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 
-        0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 
-        0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
-        0 001.414-1.414l-7-7z" />
+     class="w-5 h-5" viewBox="0 0 20 20" 
+     fill="currentColor">
+    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 
+            0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 
+            0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 
+            0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
+            0 001.414-1.414l-7-7z" />
 </svg>
 ';
 
@@ -862,32 +862,32 @@ $mainTemplate = '
 ';
 $lineTemplate = '
 <a href="%link%"%attributes%>
-%icon%%text%
+    %icon%%text%
 </a>
 ';
 $lastTemplate = '
 <a href="%link%"%attributes%>
-%icon%%text%
+    %icon%%text%
 </a>
 ';
 
 $homeAttributes = [
-'class' => 'text-gray-600 dark:text-gray-200',
+    'class' => 'text-gray-600 dark:text-gray-200',
 ];
 $lineAttributes = [
-'class' => 'text-gray-600 dark:text-gray-200 hover:underline',
+    'class' => 'text-gray-600 dark:text-gray-200 hover:underline',
 ];
 $lastAttributes = [
-'class' => 'text-blue-600 dark:text-blue-400 hover:underline',
+    'class' => 'text-blue-600 dark:text-blue-400 hover:underline',
 ];
 
 $breadcrumbs
-->setTemplate($mainTemplate, $lineTemplate, $lastTemplate)
-->setSeparator($separator)
-->add('', '#', $homeIcon, $homeAttributes)
-->add('Admin', '#', '', $lineAttributes)
-->add('Invoices', '#', '', $lineAttributes)
-->add('Viewing Invoice [1234]', '#', '', $lastAttributes)
+    ->setTemplate($mainTemplate, $lineTemplate, $lastTemplate)
+    ->setSeparator($separator)
+    ->add('', '#', $homeIcon, $homeAttributes)
+    ->add('Admin', '#', '', $lineAttributes)
+    ->add('Invoices', '#', '', $lineAttributes)
+    ->add('Viewing Invoice [1234]', '#', '', $lastAttributes)
 ;
 
 echo $breadcrumbs->render();    
@@ -897,76 +897,76 @@ Output HTML:
 
 ```html
 <div class="flex items-center py-4 overflow-x-auto whitespace-nowrap">
-<a href="#" class="text-gray-600 dark:text-gray-200">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" 
-         fill="currentColor">
-        <path d="M10.707 2.293a1 1 
-            0 00-1.414 0l-7 7a1 1 
-            0 001.414 1.414L4 10.414V17a1 1 
-            0 001 1h2a1 1 0 001-1v-2a1 1 
-            0 011-1h2a1 1 0 011 1v2a1 1 
-            0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
-            0 001.414-1.414l-7-7z" />
-    </svg>
-</a>
+    <a href="#" class="text-gray-600 dark:text-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path d="M10.707 2.293a1 1 
+                0 00-1.414 0l-7 7a1 1 
+                0 001.414 1.414L4 10.414V17a1 1 
+                0 001 1h2a1 1 0 001-1v-2a1 1 
+                0 011-1h2a1 1 0 011 1v2a1 1 
+                0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
+                0 001.414-1.414l-7-7z" />
+        </svg>
+    </a>
 
-<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" 
-         fill="currentColor">
-        <path fill-rule="evenodd" 
-              d="M7.293 14.707a1 1 
-                0 010-1.414L10.586 10 7.293 6.707a1 1 
-                0 011.414-1.414l4 4a1 1 
-                0 010 1.414l-4 4a1 1 
-                0 01-1.414 0z" 
-              clip-rule="evenodd" />
-    </svg>
-</span>
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
 
-<a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
-    Admin
-</a>
+    <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+        Admin
+    </a>
 
-<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" 
-         fill="currentColor">
-        <path fill-rule="evenodd" 
-              d="M7.293 14.707a1 1 
-                0 010-1.414L10.586 10 7.293 6.707a1 1 
-                0 011.414-1.414l4 4a1 1 
-                0 010 1.414l-4 4a1 1 
-                0 01-1.414 0z" 
-              clip-rule="evenodd" />
-    </svg>
-</span>
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
 
-<a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
-    Invoices
-</a>
+    <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+        Invoices
+    </a>
 
-<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" 
-              d="M7.293 14.707a1 1 
-                0 010-1.414L10.586 10 7.293 6.707a1 1 
-                0 011.414-1.414l4 4a1 1 
-                0 010 1.414l-4 4a1 1 
-                0 01-1.414 0z" 
-              clip-rule="evenodd" />
-    </svg>
-</span>
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
 
-<a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">
-    Viewing Invoice [1234]
-</a>
+    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">
+        Viewing Invoice [1234]
+    </a>
 </div>
 ```
 
@@ -987,8 +987,8 @@ use Phalcon\Html\Helper\Body;
 $escaper = new Escaper();
 $helper  = new Body($escaper);
 $options = [
-'class' => 'my-class',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'id'    => 'my-id',
 ];
 
 echo $helper($options);
@@ -1018,9 +1018,9 @@ use Phalcon\Html\Helper\Button;
 $escaper = new Escaper();
 $helper  = new Button($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('click<>me', $options);
@@ -1098,9 +1098,9 @@ use Phalcon\Html\Helper\Element;
 $escaper = new Escaper();
 $helper  = new Element($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('address', 'click<>me', $options);
@@ -1129,11 +1129,11 @@ use Phalcon\Html\Helper\Form;
 $escaper = new Escaper();
 $helper  = new Form($escaper);
 $options = [
-'class'   => 'my-class',
-'name'    => 'my-name',
-'id'      => 'my-id',
-'method'  => 'post',
-'enctype' => 'multipart/form-data'
+    'class'   => 'my-class',
+    'name'    => 'my-name',
+    'id'      => 'my-id',
+    'method'  => 'post',
+    'enctype' => 'multipart/form-data'
 ];
 
 echo $helper($options);
@@ -1206,9 +1206,9 @@ use Phalcon\Html\Helper\Img;
 $escaper = new Escaper();
 $helper  = new Img($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('/my-url', $options);
@@ -1254,9 +1254,9 @@ use Phalcon\Html\Helper\Input\Checkbox;
 $escaper = new Escaper();
 $helper  = new Checkbox($escaper);
 $options = [
-'id'        => 'my-id',
-'unchecked' => 'no',
-'checked'   => 'yes',
+    'id'        => 'my-id',
+    'unchecked' => 'no',
+    'checked'   => 'yes',
 ];
 
 $result = $helper('my-name', 'yes', $options);
@@ -1301,9 +1301,9 @@ $escaper = new Escaper();
 $helper  = new CheckboxGroup($escaper);
 
 $options = [
-'admin'  => 'Administrator',
-'editor' => 'Editor',
-'viewer' => ['label' => 'Viewer', 'disabled' => 'disabled'],
+    'admin'  => 'Administrator',
+    'editor' => 'Editor',
+    'viewer' => ['label' => 'Viewer', 'disabled' => 'disabled'],
 ];
 
 echo $helper('roles', $options, ['admin', 'editor'], ['class' => 'role-input']);
@@ -1325,12 +1325,12 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 
 echo $container->tag->inputCheckboxGroup(
-'roles[]',
-[
-    'admin'  => 'Administrator',
-    'editor' => 'Editor',
-],
-'admin'
+    'roles[]',
+    [
+        'admin'  => 'Administrator',
+        'editor' => 'Editor',
+    ],
+    'admin'
 );
 ```
 
@@ -1365,9 +1365,9 @@ use Phalcon\Html\Helper\Input\Generic;
 $escaper = new Escaper();
 $helper  = new Generic($escaper, null, 'color');
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', 'test-value', $options);
@@ -1410,9 +1410,9 @@ use Phalcon\Di\FactoryDefault;
 
 $container = new FactoryDefault();
 $options   = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $container->tag->inputColor('test-name', 'test-value', $options);
@@ -1500,9 +1500,9 @@ use Phalcon\Html\Helper\Input\Radio;
 $escaper = new Escaper();
 $helper  = new Radio($escaper);
 $options = [
-'id'        => 'my-id',
-'unchecked' => 'no',
-'checked'   => 'yes',
+    'id'        => 'my-id',
+    'unchecked' => 'no',
+    'checked'   => 'yes',
 ];
 
 $result = $helper('my-name', 'yes', $options);
@@ -1544,8 +1544,8 @@ $escaper = new Escaper();
 $helper  = new RadioGroup($escaper);
 
 $options = [
-'1' => 'Single Date',
-'2' => 'Range',
+    '1' => 'Single Date',
+    '2' => 'Range',
 ];
 
 echo $helper('dateRange', $options, '2', ['class' => 'control-input']);
@@ -1565,12 +1565,12 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 
 echo $container->tag->inputRadioGroup(
-'plan',
-[
-    'free' => 'Free',
-    'pro'  => 'Pro',
-],
-'pro'
+    'plan',
+    [
+        'free' => 'Free',
+        'pro'  => 'Pro',
+    ],
+    'pro'
 );
 ```
 
@@ -1596,10 +1596,10 @@ The `inputSearch` factory name resolves to [Phalcon\Html\Helper\Input\Generic][h
 
 ```php
 public function add(
-string $text,
-string $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    string $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): Select
 ```
 
@@ -1607,10 +1607,10 @@ Add an element to the list
 
 ```php
 public function addPlaceholder(
-string $text,
-mixed $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    mixed $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): Select
 ```
 
@@ -1618,8 +1618,8 @@ Add a placeholder to the element
 
 ```php
 public function optGroup(
-string $label = null,
-array $attributes = []
+    string $label = null,
+    array $attributes = []
 ): Select
 ```
 
@@ -1659,28 +1659,28 @@ $escaper = new Escaper();
 $helper  = new Select($escaper);
 
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ];
-
+ 
 $result = $helper('    ', PHP_EOL, $options);
 $result
-->add("Ferrari", "1", ["class" => "active"])
-->add("Ford", "2")
-->add("Dodge", "3")
-->add("Toyota", "4")
-->optGroup(
-    'oneLabel',
-    [
-        'class' => 'form-input',
-    ]
-)
-->addPlaceholder(
-    'Choose & Car...',
-    "0",
-    [],
-    true,
-)
-->selected("3")
+    ->add("Ferrari", "1", ["class" => "active"])
+    ->add("Ford", "2")
+    ->add("Dodge", "3")
+    ->add("Toyota", "4")
+    ->optGroup(
+        'oneLabel',
+        [
+            'class' => 'form-input',
+        ]
+    )
+    ->addPlaceholder(
+        'Choose & Car...',
+        "0",
+        [],
+        true,
+    )
+    ->selected("3")
 ;
 
 echo $result;
@@ -1715,9 +1715,9 @@ $result  = $helper('    ', PHP_EOL);
 
 // Flat list
 $data = new ArrayData([
-'1' => 'Ferrari',
-'2' => 'Ford',
-'3' => 'Dodge',
+    '1' => 'Ferrari',
+    '2' => 'Ford',
+    '3' => 'Dodge',
 ]);
 
 $result->fromData($data)->selected('2');
@@ -1726,8 +1726,8 @@ echo $result;
 
 // With optgroups
 $grouped = new ArrayData([
-'European' => ['1' => 'Ferrari', '5' => 'BMW'],
-'American' => ['2' => 'Ford',    '3' => 'Dodge'],
+    'European' => ['1' => 'Ferrari', '5' => 'BMW'],
+    'American' => ['2' => 'Ford',    '3' => 'Dodge'],
 ]);
 
 $result = $helper('    ', PHP_EOL);
@@ -1744,14 +1744,14 @@ use Phalcon\Html\Helper\Input\Select\SelectDataInterface;
 
 class StatusData implements SelectDataInterface
 {
-public function getOptions(): array
-{
-    return [
-        'active'   => 'Active',
-        'inactive' => 'Inactive',
-        'pending'  => 'Pending',
-    ];
-}
+    public function getOptions(): array
+    {
+        return [
+            'active'   => 'Active',
+            'inactive' => 'Inactive',
+            'pending'  => 'Pending',
+        ];
+    }
 }
 ```
 
@@ -1786,9 +1786,9 @@ use Phalcon\Html\Helper\Input\TextArea;
 $escaper = new Escaper();
 $helper  = new TextArea($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('click<>me', $options);
@@ -1831,9 +1831,9 @@ use Phalcon\Html\Helper\Label;
 $escaper = new Escaper();
 $helper  = new Label($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper($options);
@@ -1867,8 +1867,8 @@ $helper  = new Link($escaper);
 
 $result = $helper();
 $result
-->add('https://phalcon.io/page/1', ['rel' => 'prev'])
-->add('https://phalcon.io/page/2', ['rel' => 'next'])
+    ->add('https://phalcon.io/page/1', ['rel' => 'prev'])
+    ->add('https://phalcon.io/page/2', ['rel' => 'next'])
 ;
 
 echo $result;
@@ -1923,14 +1923,14 @@ $helper  = new Meta($escaper);
 $result = $helper();
 
 $result
-->add(
-    [
-        "charset" => 'utf-8',
-    ]
-)
-->addHttp("X-UA-Compatible", "IE=edge")
-->addName("generator", "Phalcon")
-->addProperty("org:url", "https://phalcon.io")
+    ->add(
+        [
+            "charset" => 'utf-8',
+        ]
+    )
+    ->addHttp("X-UA-Compatible", "IE=edge")
+    ->addName("generator", "Phalcon")
+    ->addProperty("org:url", "https://phalcon.io")
 ;
 
 echo $result;
@@ -1953,9 +1953,9 @@ echo $result;
 
 ```php
 public function add(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): Ol
 ```
 
@@ -1970,16 +1970,16 @@ use Phalcon\Html\Helper\Ol;
 $escaper = new Escaper();
 $helper  = new Ol($escaper);
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ];
 
 $result = $helper('    ', PHP_EOL, $options);
 
 $result
-->add("Ferrari", "1", ["class" => "active"])
-->add("Ford", "2")
-->add("Dodge", "3")
-->add("Toyota", "4")
+    ->add("Ferrari", "1", ["class" => "active"])
+    ->add("Ford", "2")
+    ->add("Dodge", "3")
+    ->add("Toyota", "4")
 ;
 
 echo $result;
@@ -2050,9 +2050,9 @@ echo $factory->preload('/my-font.woff2', 'font');
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): Script
 ```
 
@@ -2066,8 +2066,8 @@ Starts an output buffer to capture inline JavaScript.
 
 ```php
 public function endInternal(
-array $attributes = [],
-int $position = -1
+    array $attributes = [],
+    int $position = -1
 ): Script
 ```
 
@@ -2085,8 +2085,8 @@ $helper  = new Script($escaper);
 $result = $helper();
 
 $result
-->add('/js/custom.js')
-->add('/js/print.js', ['ie' => 'active'])
+    ->add('/js/custom.js')
+    ->add('/js/print.js', ['ie' => 'active'])
 ;
 
 echo $result;
@@ -2110,9 +2110,9 @@ $helper = new Script(new Escaper());
 $result = $helper();
 
 $result
-->add('/js/a.js')                          // slot 0
-->add('/js/c.js', [], 5)                   // slot 5
-->add('/js/b.js')                          // slot 1 (next auto-increment)
+    ->add('/js/a.js')                          // slot 0
+    ->add('/js/c.js', [], 5)                   // slot 5
+    ->add('/js/b.js')                          // slot 1 (next auto-increment)
 ;
 
 echo $result;
@@ -2157,9 +2157,9 @@ echo $result;
 
 ```php
 public function add(
-string $url,
-array $attributes = [],
-int $position = -1
+    string $url,
+    array $attributes = [],
+    int $position = -1
 ): Style
 ```
 
@@ -2177,8 +2177,8 @@ $helper  = new Style($escaper);
 $result = $helper();
 
 $result
-->add('custom.css')
-->add('print.css', ['media' => 'print'])
+    ->add('custom.css')
+    ->add('print.css', ['media' => 'print'])
 ;
 
 echo $result;
@@ -2200,9 +2200,9 @@ $helper = new Style(new Escaper());
 $result = $helper();
 
 $result
-->add('reset.css')                       // slot 0
-->add('theme.css', [], 10)               // slot 10
-->add('layout.css')                      // slot 1
+    ->add('reset.css')                       // slot 0
+    ->add('theme.css', [], 10)               // slot 10
+    ->add('layout.css')                      // slot 1
 ;
 
 echo $result;
@@ -2270,8 +2270,8 @@ echo $container->tag->voidTag('my-custom-element', ['data-id' => '42']);
 
 ```php
 public function append(
-string $text, 
-bool $raw = false
+    string $text, 
+    bool $raw = false
 ): Title
 ```
 
@@ -2285,8 +2285,8 @@ Returns the title
 
 ```php
 public function set(
-string $text, 
-bool $raw = false
+    string $text, 
+    bool $raw = false
 ): Title
 ```
 
@@ -2294,8 +2294,8 @@ Sets the title
 
 ```php
 public function setSeparator(
-string $separator, 
-bool $raw = false
+    string $separator, 
+    bool $raw = false
 ): Title
 ```
 
@@ -2303,8 +2303,8 @@ Sets the separator
 
 ```php
 public function prepend(
-string $text, 
-bool $raw = false
+    string $text, 
+    bool $raw = false
 ): Title
 ```
 
@@ -2319,16 +2319,16 @@ use Phalcon\Html\Helper\Title;
 $escaper = new Escaper();
 $helper  = new Title($escaper);
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ];
 
 $result = $helper();
 
 $result
-->setSeparator(' | ')
-->set('<Dodge>')
-->append('< Ferrari', true)
-->prepend('Ford <')
+    ->setSeparator(' | ')
+    ->set('<Dodge>')
+    ->append('< Ferrari', true)
+    ->prepend('Ford <')
 ;
 
 echo $result->get();
@@ -2351,9 +2351,9 @@ echo $result;
 
 ```php
 public function add(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): Ol
 ```
 
@@ -2368,16 +2368,16 @@ use Phalcon\Html\Helper\Ul;
 $escaper = new Escaper();
 $helper  = new Ul($escaper);
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ];
 
 $result = $helper('    ', PHP_EOL, $options);
 
 $result
-->add("Ferrari", "1", ["class" => "active"])
-->add("Ford", "2")
-->add("Dodge", "3")
-->add("Toyota", "4")
+    ->add("Ferrari", "1", ["class" => "active"])
+    ->add("Ford", "2")
+    ->add("Dodge", "3")
+    ->add("Toyota", "4")
 ;
 
 echo $result;

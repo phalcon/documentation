@@ -13,6 +13,7 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Flash\AbstractFlash
 
 Abstract
@@ -26,99 +27,76 @@ $flash->error("Cannot open the file");
 ```
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
-- [`Phalcon\Flash\Direct`](#flashdirect)
-- [`Phalcon\Flash\Session`](#flashsession)
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
+    - **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
+      - [`Phalcon\Flash\Direct`](#flashdirect)
+      - [`Phalcon\Flash\Session`](#flashsession)
 
 `Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ### Method Summary
 
-<ApiItem href="#flashabstractflash-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface|null","name":"escaper","default":"null"},{"type":"SessionInterface|null","name":"session","default":"null"}]}>
-AbstractFlash constructor.
-</ApiItem>
-<ApiItem href="#flashabstractflash-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears accumulated messages when implicit flush is disabled
-</ApiItem>
-<ApiItem href="#flashabstractflash-error" visibility="public" name="error" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML error message
-</ApiItem>
-<ApiItem href="#flashabstractflash-getautoescape" visibility="public" name="getAutoescape" returnType="bool" params={[]}>
-Returns the flag that defines whether to automatically escape content or not
-</ApiItem>
-<ApiItem href="#flashabstractflash-getautomatichtml" visibility="public" name="getAutomaticHtml" returnType="bool" params={[]}>
-Returns the flag that defines whether to automatically use HTML or not
-</ApiItem>
-<ApiItem href="#flashabstractflash-getcssclasses" visibility="public" name="getCssClasses" returnType="array" params={[]}>
-Returns the array of the CSS classes for formatting messages. The key is
-</ApiItem>
-<ApiItem href="#flashabstractflash-getcssiconclasses" visibility="public" name="getCssIconClasses" returnType="array" params={[]}>
-Returns the array of the icon CSS classes for formatting messages. The
-</ApiItem>
-<ApiItem href="#flashabstractflash-getcustomtemplate" visibility="public" name="getCustomTemplate" returnType="string" params={[]}>
-Returns the custom template for formatting messages
-</ApiItem>
-<ApiItem href="#flashabstractflash-getescaperservice" visibility="public" name="getEscaperService" returnType="EscaperInterface" params={[]}>
-Returns the Escaper Service
-</ApiItem>
-<ApiItem href="#flashabstractflash-message" visibility="public" name="message" returnType="string|null" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"message","default":null}]}>
-Outputs a message. Delivery semantics differ per implementation:
-</ApiItem>
-<ApiItem href="#flashabstractflash-notice" visibility="public" name="notice" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML notice/information message
-</ApiItem>
-<ApiItem href="#flashabstractflash-outputmessage" visibility="public" name="outputMessage" returnType="string|null" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"message","default":null}]}>
-Outputs a message formatting it with HTML
-</ApiItem>
-<ApiItem href="#flashabstractflash-setautoescape" visibility="public" name="setAutoescape" returnType="static" params={[{"type":"bool","name":"autoescape","default":null}]}>
-Set the autoescape mode in generated HTML
-</ApiItem>
-<ApiItem href="#flashabstractflash-setautomatichtml" visibility="public" name="setAutomaticHtml" returnType="static" params={[{"type":"bool","name":"automaticHtml","default":null}]}>
-Set if the output must be implicitly formatted with HTML
-</ApiItem>
-<ApiItem href="#flashabstractflash-setcssclasses" visibility="public" name="setCssClasses" returnType="static" params={[{"type":"array","name":"cssClasses","default":null}]}>
-Set an array with CSS classes to format the messages
-</ApiItem>
-<ApiItem href="#flashabstractflash-setcssiconclasses" visibility="public" name="setCssIconClasses" returnType="static" params={[{"type":"array","name":"cssIconClasses","default":null}]}>
-Set an array with CSS classes to format the icon messages
-</ApiItem>
-<ApiItem href="#flashabstractflash-setcustomtemplate" visibility="public" name="setCustomTemplate" returnType="static" params={[{"type":"string","name":"customTemplate","default":null}]}>
-Set a custom template for showing the messages
-</ApiItem>
-<ApiItem href="#flashabstractflash-setescaperservice" visibility="public" name="setEscaperService" returnType="static" params={[{"type":"EscaperInterface","name":"escaperService","default":null}]}>
-Sets the Escaper Service
-</ApiItem>
-<ApiItem href="#flashabstractflash-setimplicitflush" visibility="public" name="setImplicitFlush" returnType="static" params={[{"type":"bool","name":"implicitFlush","default":null}]}>
-Set whether the output must be implicitly flushed to the output or
-</ApiItem>
-<ApiItem href="#flashabstractflash-success" visibility="public" name="success" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML success message
-</ApiItem>
-<ApiItem href="#flashabstractflash-warning" visibility="public" name="warning" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML warning message
-</ApiItem>
+- `public __construct(EscaperInterface|null $escaper = null, SessionInterface|null $session = null)` — AbstractFlash constructor.
+
+- `public clear(): void` — Clears accumulated messages when implicit flush is disabled
+
+- `public error(string $message): string|null` — Shows a HTML error message
+
+- `public getAutoescape(): bool` — Returns the flag that defines whether to automatically escape content or not
+
+- `public getAutomaticHtml(): bool` — Returns the flag that defines whether to automatically use HTML or not
+
+- `public getCssClasses(): array` — Returns the array of the CSS classes for formatting messages. The key is
+
+- `public getCssIconClasses(): array` — Returns the array of the icon CSS classes for formatting messages. The
+
+- `public getCustomTemplate(): string` — Returns the custom template for formatting messages
+
+- `public getEscaperService(): EscaperInterface` — Returns the Escaper Service
+
+- `public message(string $type, mixed $message): string|null` — Outputs a message. Delivery semantics differ per implementation:
+
+- `public notice(string $message): string|null` — Shows a HTML notice/information message
+
+- `public outputMessage(string $type, mixed $message): string|null` — Outputs a message formatting it with HTML
+
+- `public setAutoescape(bool $autoescape): static` — Set the autoescape mode in generated HTML
+
+- `public setAutomaticHtml(bool $automaticHtml): static` — Set if the output must be implicitly formatted with HTML
+
+- `public setCssClasses(array $cssClasses): static` — Set an array with CSS classes to format the messages
+
+- `public setCssIconClasses(array $cssIconClasses): static` — Set an array with CSS classes to format the icon messages
+
+- `public setCustomTemplate(string $customTemplate): static` — Set a custom template for showing the messages
+
+- `public setEscaperService(EscaperInterface $escaperService): static` — Sets the Escaper Service
+
+- `public setImplicitFlush(bool $implicitFlush): static` — Set whether the output must be implicitly flushed to the output or
+
+- `public success(string $message): string|null` — Shows a HTML success message
+
+- `public warning(string $message): string|null` — Shows a HTML warning message
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="autoescape" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="automaticHtml" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cssClasses" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cssIconClasses" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="customTemplate" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="escaperService" type="EscaperInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="implicitFlush" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="sessionService" type="SessionInterface|null" default="null">
-</ApiItem>
+- `protected bool $autoescape = true`
+
+- `protected bool $automaticHtml = true`
+
+- `protected array $cssClasses = []`
+
+- `protected array $cssIconClasses = []`
+
+- `protected string $customTemplate = ""`
+
+- `protected EscaperInterface|null $escaperService = null`
+
+- `protected bool $implicitFlush = true`
+
+- `protected array $messages = []`
+
+- `protected SessionInterface|null $sessionService = null`
 
 ### Methods
 
@@ -126,8 +104,8 @@ Shows a HTML warning message
 
 ```php
 public function __construct(
-EscaperInterface|null $escaper = null,
-SessionInterface|null $session = null
+    EscaperInterface|null $escaper = null,
+    SessionInterface|null $session = null
 );
 ```
 
@@ -207,8 +185,8 @@ Returns the Escaper Service
 
 ```php
 abstract public function message(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -232,8 +210,8 @@ $flash->notice("This is an information");
 
 ```php
 public function outputMessage(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -328,6 +306,7 @@ Shows a HTML warning message
 $flash->warning("Hey, this is important");
 ```
 
+
 ## Flash\Direct
 
 Class
@@ -337,18 +316,15 @@ Class Direct
 @package Phalcon\Flash
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-- **`Phalcon\Flash\Direct`**
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
+    - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+      - **`Phalcon\Flash\Direct`**
 
 ### Method Summary
 
-<ApiItem href="#flashdirect-message" visibility="public" name="message" returnType="string|null" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"message","default":null}]}>
-Outputs a message
-</ApiItem>
-<ApiItem href="#flashdirect-output" visibility="public" name="output" returnType="void" params={[{"type":"bool","name":"remove","default":"true"}]}>
-Prints the messages accumulated in the flasher
-</ApiItem>
+- `public message(string $type, mixed $message): string|null` — Outputs a message
+
+- `public output(bool $remove = true): void` — Prints the messages accumulated in the flasher
 
 ### Methods
 
@@ -356,8 +332,8 @@ Prints the messages accumulated in the flasher
 
 ```php
 public function message(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -371,6 +347,7 @@ public function output( bool $remove = true ): void;
 
 Prints the messages accumulated in the flasher
 
+
 ## Flash\Exception
 
 Class
@@ -378,25 +355,25 @@ Class
 Exceptions thrown in Phalcon\Flash classes will use this class
 
 - `\Exception`
-- **`Phalcon\Flash\Exception`**
-- [`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`](#flashexceptionsescaperserviceunavailable)
-- [`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`](#flashexceptionsflashmessagenotstringorarray)
-- [`Phalcon\Flash\Exceptions\SessionServiceUnavailable`](#flashexceptionssessionserviceunavailable)
+  - **`Phalcon\Flash\Exception`**
+    - [`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`](#flashexceptionsescaperserviceunavailable)
+    - [`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`](#flashexceptionsflashmessagenotstringorarray)
+    - [`Phalcon\Flash\Exceptions\SessionServiceUnavailable`](#flashexceptionssessionserviceunavailable)
+
 
 ## Flash\Exceptions\EscaperServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Flash\Exception`](#flashexception)
-- **`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`**
+  - [`Phalcon\Flash\Exception`](#flashexception)
+    - **`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`**
 
 `Phalcon\Flash\Exception`
 
 ### Method Summary
 
-<ApiItem href="#flashexceptionsescaperserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -406,20 +383,20 @@ Class
 public function __construct();
 ```
 
+
 ## Flash\Exceptions\FlashMessageNotStringOrArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Flash\Exception`](#flashexception)
-- **`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`**
+  - [`Phalcon\Flash\Exception`](#flashexception)
+    - **`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`**
 
 `Phalcon\Flash\Exception`
 
 ### Method Summary
 
-<ApiItem href="#flashexceptionsflashmessagenotstringorarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -429,20 +406,20 @@ Class
 public function __construct();
 ```
 
+
 ## Flash\Exceptions\SessionServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Flash\Exception`](#flashexception)
-- **`Phalcon\Flash\Exceptions\SessionServiceUnavailable`**
+  - [`Phalcon\Flash\Exception`](#flashexception)
+    - **`Phalcon\Flash\Exceptions\SessionServiceUnavailable`**
 
 `Phalcon\Flash\Exception`
 
 ### Method Summary
 
-<ApiItem href="#flashexceptionssessionserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -452,6 +429,7 @@ Class
 public function __construct();
 ```
 
+
 ## Flash\FlashInterface
 
 Interface
@@ -459,9 +437,10 @@ Interface
 Interface FlashInterface
 
 - [`Phalcon\Contracts\Flash\Flash`](/5.20/api/phalcon_contracts/#contractsflashflash)
-- **`Phalcon\Flash\FlashInterface`**
+  - **`Phalcon\Flash\FlashInterface`**
 
 `Phalcon\Contracts\Flash\Flash`
+
 
 ## Flash\Session
 
@@ -476,51 +455,39 @@ Class Session
 @package Phalcon\Flash
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-- **`Phalcon\Flash\Session`**
+  - [`Phalcon\Di\AbstractInjectionAware`](/5.20/api/phalcon_di/#diabstractinjectionaware)
+    - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+      - **`Phalcon\Flash\Session`**
 
 `Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
 
 ### Method Summary
 
-<ApiItem href="#flashsession-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"EscaperInterface|null","name":"escaper","default":"null"},{"type":"ManagerInterface|null","name":"session","default":"null"},{"type":"string|null","name":"sessionKey","default":"null"}]}>
-Session constructor.
-</ApiItem>
-<ApiItem href="#flashsession-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clear messages in the session messenger
-</ApiItem>
-<ApiItem href="#flashsession-getmessages" visibility="public" name="getMessages" returnType="array" params={[{"type":"mixed","name":"type","default":"null"},{"type":"bool","name":"remove","default":"true"}]}>
-Returns the messages in the session flasher
-</ApiItem>
-<ApiItem href="#flashsession-getsessionservice" visibility="public" name="getSessionService" returnType="ManagerInterface" params={[]}>
-Returns the Session Service
-</ApiItem>
-<ApiItem href="#flashsession-has" visibility="public" name="has" returnType="bool" params={[{"type":"string|null","name":"type","default":"null"}]}>
-Checks whether there are messages
-</ApiItem>
-<ApiItem href="#flashsession-message" visibility="public" name="message" returnType="string|null" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"message","default":null}]}>
-Adds a message to the session flasher
-</ApiItem>
-<ApiItem href="#flashsession-output" visibility="public" name="output" returnType="void" params={[{"type":"bool","name":"remove","default":"true"}]}>
-Prints the messages in the session flasher
-</ApiItem>
-<ApiItem href="#flashsession-getsessionmessages" visibility="protected" name="getSessionMessages" returnType="array" params={[{"type":"bool","name":"remove","default":null},{"type":"string|null","name":"type","default":"null"}]}>
-Returns the messages stored in session
-</ApiItem>
-<ApiItem href="#flashsession-setsessionmessages" visibility="protected" name="setSessionMessages" returnType="array" params={[{"type":"array","name":"messages","default":null}]}>
-Stores the messages in session
-</ApiItem>
+- `public __construct(EscaperInterface|null $escaper = null, ManagerInterface|null $session = null, string|null $sessionKey = null)` — Session constructor.
+
+- `public clear(): void` — Clear messages in the session messenger
+
+- `public getMessages(mixed $type = null, bool $remove = true): array` — Returns the messages in the session flasher
+
+- `public getSessionService(): ManagerInterface` — Returns the Session Service
+
+- `public has(string|null $type = null): bool` — Checks whether there are messages
+
+- `public message(string $type, mixed $message): string|null` — Adds a message to the session flasher
+
+- `public output(bool $remove = true): void` — Prints the messages in the session flasher
+
+- `protected getSessionMessages(bool $remove, string|null $type = null): array` — Returns the messages stored in session
+
+- `protected setSessionMessages(array $messages): array` — Stores the messages in session
 
 ### Constants
 
-<ApiItem kind="constant" name="SESSION_KEY" type="string" default="&quot;_flashMessages&quot;">
-</ApiItem>
+- `const string SESSION_KEY = "_flashMessages"`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="sessionKey" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $sessionKey = ""`
 
 ### Methods
 
@@ -528,9 +495,9 @@ Stores the messages in session
 
 ```php
 public function __construct(
-EscaperInterface|null $escaper = null,
-ManagerInterface|null $session = null,
-string|null $sessionKey = null
+    EscaperInterface|null $escaper = null,
+    ManagerInterface|null $session = null,
+    string|null $sessionKey = null
 );
 ```
 
@@ -548,8 +515,8 @@ Clear messages in the session messenger
 
 ```php
 public function getMessages(
-mixed $type = null,
-bool $remove = true
+    mixed $type = null,
+    bool $remove = true
 ): array;
 ```
 
@@ -575,8 +542,8 @@ Checks whether there are messages
 
 ```php
 public function message(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -594,8 +561,8 @@ Prints the messages in the session flasher
 
 ```php
 protected function getSessionMessages(
-bool $remove,
-string|null $type = null
+    bool $remove,
+    string|null $type = null
 ): array;
 ```
 

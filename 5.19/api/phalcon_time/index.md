@@ -26,6 +26,7 @@ All classes are prefixed with `Phalcon`
 
 __Uses__ `DateTimeImmutable`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -46,6 +47,7 @@ __Uses__ `DateTimeImmutable`
 public function now(): DateTimeImmutable;
 ```
 
+
 ## Time\Clock\Exception
 
 <span class="badge badge--class">Class</span>
@@ -54,10 +56,11 @@ public function now(): DateTimeImmutable;
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Time\Clock\Exception`**
-- [`Phalcon\Time\Clock\Exceptions\InvalidModifier`](#timeclockexceptionsinvalidmodifier)
+    - **`Phalcon\Time\Clock\Exception`**
+        - [`Phalcon\Time\Clock\Exceptions\InvalidModifier`](#timeclockexceptionsinvalidmodifier)
 
 </div>
+
 
 ## Time\Clock\Exceptions\InvalidModifier
 
@@ -67,12 +70,13 @@ public function now(): DateTimeImmutable;
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Time\Clock\Exception`](#timeclockexception)
-- **`Phalcon\Time\Clock\Exceptions\InvalidModifier`**
+    - [`Phalcon\Time\Clock\Exception`](#timeclockexception)
+        - **`Phalcon\Time\Clock\Exceptions\InvalidModifier`**
 
 </div>
 
 __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
+
 
 ### Method Summary
 
@@ -91,10 +95,11 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 
 ```php
 public function __construct(
-string $modifier,
-Throwable|null $ex = null
+    string $modifier,
+    Throwable|null $ex = null
 );
 ```
+
 
 ## Time\Clock\FrozenClock
 
@@ -108,6 +113,7 @@ Throwable|null $ex = null
 </div>
 
 __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Phalcon\Time\Clock\Exceptions\InvalidModifier` · `Throwable`
+
 
 ### Method Summary
 
@@ -198,6 +204,7 @@ public function set( DateTimeImmutable $now ): static;
 
 Sets the clock to a new value. All consumers receive the same modification
 
+
 ## Time\Clock\SystemClock
 
 <span class="badge badge--final">Final</span>
@@ -210,6 +217,7 @@ Sets the clock to a new value. All consumers receive the same modification
 </div>
 
 __Uses__ `DateTimeImmutable` · `DateTimeZone`
+
 
 ### Method Summary
 

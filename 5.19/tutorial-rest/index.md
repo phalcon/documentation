@@ -43,19 +43,19 @@ As the application is simple, we will not implement any full MVC environment to 
 
 ```php
 my-rest-api/
-models/
-    Robots.php
-index.php
-.htaccess
+    models/
+        Robots.php
+    index.php
+    .htaccess
 ```
 
 First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file ( application entry-point):
 
 ```apache
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
 
@@ -81,39 +81,39 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-'/api/robots',
-function () {
-}
+    '/api/robots',
+    function () {
+    }
 );
 
 $app->get(
-'/api/robots/search/{name}',
-function ($name) {
-}
+    '/api/robots/search/{name}',
+    function ($name) {
+    }
 );
 
 $app->get(
-'/api/robots/{id:[0-9]+}',
-function ($id) {
-}
+    '/api/robots/{id:[0-9]+}',
+    function ($id) {
+    }
 );
 
 $app->post(
-'/api/robots',
-function () {
-}
+    '/api/robots',
+    function () {
+    }
 );
 
 $app->put(
-'/api/robots/{id:[0-9]+}',
-function ($id) {
-}
+    '/api/robots/{id:[0-9]+}',
+    function ($id) {
+    }
 );
 
 $app->delete(
-'/api/robots/{id:[0-9]+}',
-function ($id) {
-}
+    '/api/robots/{id:[0-9]+}',
+    function ($id) {
+    }
 );
 
 $app->handle($_SERVER["REQUEST_URI"]);
@@ -146,43 +146,43 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 class Robots extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
-
-    $validator->add(
-        "type",
-        new InclusionIn(
-            [
-                'message' => 'Type must be "droid", "mechanical", or "virtual"',
-                'domain'  => [
-                    'droid',
-                    'mechanical',
-                    'virtual',
-                ],
-            ]
-        )
-    );
-
-    $validator->add(
-        'name',
-        new Uniqueness(
-            [
-                'field'   => 'name',
-                'message' => 'The robot name must be unique',
-            ]
-        )
-    );
-
-    if ($this->year < 0) {
-        $this->appendMessage(
-            new Message('The year cannot be less than zero')
+    public function validation()
+    {
+        $validator = new Validation();
+        
+        $validator->add(
+            "type",
+            new InclusionIn(
+                [
+                    'message' => 'Type must be "droid", "mechanical", or "virtual"',
+                    'domain'  => [
+                        'droid',
+                        'mechanical',
+                        'virtual',
+                    ],
+                ]
+            )
         );
-    }
 
-    // Validate the validator
-    return $this->validate($validator);
-}
+        $validator->add(
+            'name',
+            new Uniqueness(
+                [
+                    'field'   => 'name',
+                    'message' => 'The robot name must be unique',
+                ]
+            )
+        );
+
+        if ($this->year < 0) {
+            $this->appendMessage(
+                new Message('The year cannot be less than zero')
+            );
+        }
+        
+        // Validate the validator
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -204,25 +204,25 @@ use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp\Models' => __DIR__ . '/models/',
-]
+    [
+        'MyApp\Models' => __DIR__ . '/models/',
+    ]
 );
 $loader->register();
 
 $container = new FactoryDefault();
 $container->set(
-'db',
-function () {
-    return new PdoMysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'asimov',
-            'password' => 'zeroth',
-            'dbname'   => 'robotics',
-        ]
-    );
-}
+    'db',
+    function () {
+        return new PdoMysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'asimov',
+                'password' => 'zeroth',
+                'dbname'   => 'robotics',
+            ]
+        );
+    }
 );
 
 $app = new Micro($container);
@@ -240,29 +240,29 @@ The handler for `get()` and `/api/robots` becomes:
 <?php
 
 $app->get(
-'/api/robots',
-function () use ($app) {
-    $phql = 'SELECT id, name '
-          . 'FROM MyApp\Models\Robots '
-          . 'ORDER BY name'
-    ;
+    '/api/robots',
+    function () use ($app) {
+        $phql = 'SELECT id, name '
+              . 'FROM MyApp\Models\Robots '
+              . 'ORDER BY name'
+        ;
 
-    $robots = $app
-        ->modelsManager
-        ->executeQuery($phql)
-    ;
+        $robots = $app
+            ->modelsManager
+            ->executeQuery($phql)
+        ;
 
-    $data = [];
+        $data = [];
 
-    foreach ($robots as $robot) {
-        $data[] = [
-            'id'   => $robot->id,
-            'name' => $robot->name,
-        ];
+        foreach ($robots as $robot) {
+            $data[] = [
+                'id'   => $robot->id,
+                'name' => $robot->name,
+            ];
+        }
+
+        echo json_encode($data);
     }
-
-    echo json_encode($data);
-}
 );
 ```
 
@@ -277,36 +277,36 @@ We can get robots using their name or part of their name. This search feature wi
 
 // Searches for robots with $name in their name
 $app->get(
-'/api/robots/search/{name}',
-function ($name) use ($app) {
-    $phql = 'SELECT * '
-          . 'FROM MyApp\Models\Robots '
-          . 'WHERE name '
-          . 'LIKE :name: '
-          . 'ORDER BY name'
-    ;
+    '/api/robots/search/{name}',
+    function ($name) use ($app) {
+        $phql = 'SELECT * '
+              . 'FROM MyApp\Models\Robots '
+              . 'WHERE name '
+              . 'LIKE :name: '
+              . 'ORDER BY name'
+        ;
 
-    $robots = $app
-        ->modelsManager
-        ->executeQuery(
-            $phql,
-            [
-                'name' => '%' . $name . '%'
-            ]
-        )
-    ;
+        $robots = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'name' => '%' . $name . '%'
+                ]
+            )
+        ;
 
-    $data = [];
+        $data = [];
 
-    foreach ($robots as $robot) {
-        $data[] = [
-            'id'   => $robot->id,
-            'name' => $robot->name,
-        ];
+        foreach ($robots as $robot) {
+            $data[] = [
+                'id'   => $robot->id,
+                'name' => $robot->name,
+            ];
+        }
+
+        echo json_encode($data);
     }
-
-    echo json_encode($data);
-}
 );
 ```
 
@@ -322,45 +322,45 @@ The `index.php` changes again:
 use Phalcon\Http\Response;
 
 $app->get(
-'/api/robots/{id:[0-9]+}',
-function ($id) use ($app) {
-    $phql = 'SELECT * '
-          . 'FROM MyApp\Models\Robots '
-          . 'WHERE id = :id:'
-    ;
+    '/api/robots/{id:[0-9]+}',
+    function ($id) use ($app) {
+        $phql = 'SELECT * '
+              . 'FROM MyApp\Models\Robots '
+              . 'WHERE id = :id:'
+        ;
 
-    $robot = $app
-        ->modelsManager
-        ->executeQuery(
-            $phql,
-            [
-                'id' => $id,
-            ]
-        )
-        ->getFirst()
-    ;
-
-    $response = new Response();
-    if ($robot === false) {
-        $response->setJsonContent(
-            [
-                'status' => 'NOT-FOUND'
-            ]
-        );
-    } else {
-        $response->setJsonContent(
-            [
-                'status' => 'FOUND',
-                'data'   => [
-                    'id'   => $robot->id,
-                    'name' => $robot->name
+        $robot = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'id' => $id,
                 ]
-            ]
-        );
-    }
+            )
+            ->getFirst()
+        ;
 
-    return $response;
-}
+        $response = new Response();
+        if ($robot === false) {
+            $response->setJsonContent(
+                [
+                    'status' => 'NOT-FOUND'
+                ]
+            );
+        } else {
+            $response->setJsonContent(
+                [
+                    'status' => 'FOUND',
+                    'data'   => [
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    ]
+                ]
+            );
+        }
+
+        return $response;
+    }
 );
 ```
 
@@ -374,58 +374,58 @@ Our design allows users to submit data so that we can insert them into the datab
 use Phalcon\Http\Response;
 
 $app->post(
-'/api/robots',
-function () use ($app) {
-    $robot = $app->request->getJsonRawBody();
-    $phql  = 'INSERT INTO MyApp\Models\Robots '
-           . '(name, type, year) '
-           . 'VALUES '
-           . '(:name:, :type:, :year:)'
-    ;
+    '/api/robots',
+    function () use ($app) {
+        $robot = $app->request->getJsonRawBody();
+        $phql  = 'INSERT INTO MyApp\Models\Robots '
+               . '(name, type, year) '
+               . 'VALUES '
+               . '(:name:, :type:, :year:)'
+        ;
 
-    $status = $app
-        ->modelsManager
-        ->executeQuery(
-            $phql,
-            [
-                'name' => $robot->name,
-                'type' => $robot->type,
-                'year' => $robot->year,
-            ]
-        )
-    ;
+        $status = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'name' => $robot->name,
+                    'type' => $robot->type,
+                    'year' => $robot->year,
+                ]
+            )
+        ;
 
-    $response = new Response();
+        $response = new Response();
 
-    if ($status->success() === true) {
-        $response->setStatusCode(201, 'Created');
+        if ($status->success() === true) {
+            $response->setStatusCode(201, 'Created');
 
-        $robot->id = $status->getModel()->id;
+            $robot->id = $status->getModel()->id;
 
-        $response->setJsonContent(
-            [
-                'status' => 'OK',
-                'data'   => $robot,
-            ]
-        );
-    } else {
-        $response->setStatusCode(409, 'Conflict');
+            $response->setJsonContent(
+                [
+                    'status' => 'OK',
+                    'data'   => $robot,
+                ]
+            );
+        } else {
+            $response->setStatusCode(409, 'Conflict');
 
-        $errors = [];
-        foreach ($status->getMessages() as $message) {
-            $errors[] = $message->getMessage();
+            $errors = [];
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                [
+                    'status'   => 'ERROR',
+                    'messages' => $errors,
+                ]
+            );
         }
 
-        $response->setJsonContent(
-            [
-                'status'   => 'ERROR',
-                'messages' => $errors,
-            ]
-        );
+        return $response;
     }
-
-    return $response;
-}
 );
 ```
 
@@ -443,52 +443,52 @@ Updating data is similar to inserting. For this operation, we are using the `put
 use Phalcon\Http\Response;
 
 $app->put(
-'/api/robots/{id:[0-9]+}',
-function ($id) use ($app) {
-    $robot = $app->request->getJsonRawBody();
-    $phql  = 'UPDATE MyApp\Models\Robots '
-           . 'SET name = :name:, type = :type:, year = :year: '
-           . 'WHERE id = :id:';
+    '/api/robots/{id:[0-9]+}',
+    function ($id) use ($app) {
+        $robot = $app->request->getJsonRawBody();
+        $phql  = 'UPDATE MyApp\Models\Robots '
+               . 'SET name = :name:, type = :type:, year = :year: '
+               . 'WHERE id = :id:';
 
-    $status = $app
-        ->modelsManager
-        ->executeQuery(
-            $phql,
-            [
-                'id'   => $id,
-                'name' => $robot->name,
-                'type' => $robot->type,
-                'year' => $robot->year,
-            ]
-        )
-    ;
+        $status = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'id'   => $id,
+                    'name' => $robot->name,
+                    'type' => $robot->type,
+                    'year' => $robot->year,
+                ]
+            )
+        ;
 
-    $response = new Response();
+        $response = new Response();
 
-    if ($status->success() === true) {
-        $response->setJsonContent(
-            [
-                'status' => 'OK'
-            ]
-        );
-    } else {
-        $response->setStatusCode(409, 'Conflict');
+        if ($status->success() === true) {
+            $response->setJsonContent(
+                [
+                    'status' => 'OK'
+                ]
+            );
+        } else {
+            $response->setStatusCode(409, 'Conflict');
 
-        $errors = [];
-        foreach ($status->getMessages() as $message) {
-            $errors[] = $message->getMessage();
+            $errors = [];
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                [
+                    'status'   => 'ERROR',
+                    'messages' => $errors,
+                ]
+            );
         }
 
-        $response->setJsonContent(
-            [
-                'status'   => 'ERROR',
-                'messages' => $errors,
-            ]
-        );
+        return $response;
     }
-
-    return $response;
-}
 );
 ```
 
@@ -508,48 +508,48 @@ The `index.php` changes again:
 use Phalcon\Http\Response;
 
 $app->delete(
-'/api/robots/{id:[0-9]+}',
-function ($id) use ($app) {
-    $phql = 'DELETE '
-          . 'FROM MyApp\Models\Robots '
-          . 'WHERE id = :id:';
+    '/api/robots/{id:[0-9]+}',
+    function ($id) use ($app) {
+        $phql = 'DELETE '
+              . 'FROM MyApp\Models\Robots '
+              . 'WHERE id = :id:';
 
-    $status = $app
-        ->modelsManager
-        ->executeQuery(
-            $phql,
-            [
-                'id' => $id,
-            ]
-        )
-    ;
+        $status = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'id' => $id,
+                ]
+            )
+        ;
 
-    $response = new Response();
+        $response = new Response();
 
-    if ($status->success() === true) {
-        $response->setJsonContent(
-            [
-                'status' => 'OK'
-            ]
-        );
-    } else {
-        $response->setStatusCode(409, 'Conflict');
+        if ($status->success() === true) {
+            $response->setJsonContent(
+                [
+                    'status' => 'OK'
+                ]
+            );
+        } else {
+            $response->setStatusCode(409, 'Conflict');
 
-        $errors = [];
-        foreach ($status->getMessages() as $message) {
-            $errors[] = $message->getMessage();
+            $errors = [];
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                [
+                    'status'   => 'ERROR',
+                    'messages' => $errors,
+                ]
+            );
         }
 
-        $response->setJsonContent(
-            [
-                'status'   => 'ERROR',
-                'messages' => $errors,
-            ]
-        );
+        return $response;
     }
-
-    return $response;
-}
 );
 ```
 
@@ -581,11 +581,11 @@ You can of course set up your web server to run your application. For setup inst
 <?php
 
 $uri = urldecode(
-parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 
 if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
-return false;
+    return false;
 }
 
 $_GET['_url'] = $_SERVER['REQUEST_URI'];
@@ -649,7 +649,7 @@ Content-Type: text/html; charset=UTF-8
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' \
-https://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
 Date: Wed, 25 Dec 2019 01:02:03 GMT
@@ -664,7 +664,7 @@ Try to insert a new robot with the name of an existing robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' \
-https://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
 Date: Wed, 25 Dec 2019 01:02:03 GMT
@@ -679,7 +679,7 @@ Content-Type: text/html; charset=UTF-8
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}' \
-https://localhost/my-rest-api/api/robots/4
+    https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 409 Conflict
 Date: Wed, 25 Dec 2019 01:02:03 GMT
@@ -688,7 +688,7 @@ Content-Length: 104
 Content-Type: text/html; charset=UTF-8
 
 {"status":"ERROR","messages":["Value of field 'type' must be part of
-list: droid, mechanical, virtual"]}
+    list: droid, mechanical, virtual"]}
 ```
 
 **Delete** a robot:

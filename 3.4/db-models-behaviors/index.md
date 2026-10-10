@@ -21,11 +21,43 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 class Users extends Model
 {
-public $id;
+    public $id;
 
-public $name;
+    public $name;
 
-public $created_at;
+    public $created_at;
+
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    'beforeCreate' => [
+                        'field'  => 'created_at',
+                        'format' => 'Y-m-d',
+                    ]
+                ]
+            )
+        );
+    }
+}
+```
+
+The following built-in behaviors are provided by the framework:
+
+| Name           | Description                                                                                                |
+| -------------- | ---------------------------------------------------------------------------------------------------------- | 
+| Timestampable  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
+| SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+
+
+## Timestampable
+This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 public function initialize()
 {
@@ -39,37 +71,6 @@ public function initialize()
             ]
         )
     );
-}
-}
-```
-
-The following built-in behaviors are provided by the framework:
-
-| Name           | Description                                                                                                |
-| -------------- | ---------------------------------------------------------------------------------------------------------- | 
-| Timestampable  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
-| SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
-
-## Timestampable
-This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
-
-```php
-<?php
-
-use Phalcon\Mvc\Model\Behavior\Timestampable;
-
-public function initialize()
-{
-$this->addBehavior(
-    new Timestampable(
-        [
-            'beforeCreate' => [
-                'field'  => 'created_at',
-                'format' => 'Y-m-d',
-            ]
-        ]
-    )
-);
 }
 ```
 
@@ -85,26 +86,27 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 public function initialize()
 {
-$this->addBehavior(
-    new Timestampable(
-        [
-            'beforeCreate' => [
-                'field'  => 'created_at',
-                'format' => function () {
-                    $datetime = new Datetime(
-                        new DateTimeZone('Europe/Stockholm')
-                    );
+    $this->addBehavior(
+        new Timestampable(
+            [
+                'beforeCreate' => [
+                    'field'  => 'created_at',
+                    'format' => function () {
+                        $datetime = new Datetime(
+                            new DateTimeZone('Europe/Stockholm')
+                        );
 
-                    return $datetime->format('Y-m-d H:i:sP');
-                }
+                        return $datetime->format('Y-m-d H:i:sP');
+                    }
+                ]
             ]
-        ]
-    )
-);
+        )
+    );
 }
 ```
 
 If the option `format` is omitted a timestamp using the PHP's function [time](https://php.net/manual/en/function.time.php), will be used.
+
 
 ## SoftDelete
 This behavior can be used as follows:
@@ -117,24 +119,24 @@ use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 class Users extends Model
 {
-const DELETED     = 'D';
-const NOT_DELETED = 'N';
+    const DELETED     = 'D';
+    const NOT_DELETED = 'N';
 
-public $id;
-public $name;
-public $status;
+    public $id;
+    public $name;
+    public $status;
 
-public function initialize()
-{
-    $this->addBehavior(
-        new SoftDelete(
-            [
-                'field' => 'status',
-                'value' => Users::DELETED,
-            ]
-        )
-    );
-}
+    public function initialize()
+    {
+        $this->addBehavior(
+            new SoftDelete(
+                [
+                    'field' => 'status',
+                    'value' => Users::DELETED,
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -174,6 +176,7 @@ mysql> select * from users;
 
 Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
 
+
 ## Creating your own behaviors
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](/3.4/api/phalcon_mvc_model_behavior/). Also, [Phalcon\Mvc\Model\Behavior](/3.4/api/phalcon_mvc_model_behavior/) provides most of the methods needed to ease the implementation of behaviors.
 
@@ -187,28 +190,28 @@ use Phalcon\Mvc\Model\BehaviorInterface;
 
 class Blameable extends Behavior implements BehaviorInterface
 {
-public function notify($eventType, $model)
-{
-    switch ($eventType) {
+    public function notify($eventType, $model)
+    {
+        switch ($eventType) {
 
-        case 'afterCreate':
-        case 'afterDelete':
-        case 'afterUpdate':
+            case 'afterCreate':
+            case 'afterDelete':
+            case 'afterUpdate':
 
-            $userName = // ... get the current user from session
+                $userName = // ... get the current user from session
 
-            // Store in a log the username, event type and primary key
-            file_put_contents(
-                'logs/blamable-log.txt',
-                $userName . ' ' . $eventType . ' ' . $model->id
-            );
+                // Store in a log the username, event type and primary key
+                file_put_contents(
+                    'logs/blamable-log.txt',
+                    $userName . ' ' . $eventType . ' ' . $model->id
+                );
 
-            break;
+                break;
 
-        default:
-            /* ignore the rest of events */
+            default:
+                /* ignore the rest of events */
+        }
     }
-}
 }
 ```
 
@@ -221,12 +224,12 @@ use Phalcon\Mvc\Model;
 
 class Profiles extends Model
 {
-public function initialize()
-{
-    $this->addBehavior(
-        new Blameable()
-    );
-}
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Blameable()
+        );
+    }
 }
 ```
 
@@ -241,13 +244,13 @@ use Phalcon\Mvc\Model\BehaviorInterface;
 
 class Sluggable extends Behavior implements BehaviorInterface
 {
-public function missingMethod($model, $method, $arguments = [])
-{
-    // If the method is 'getSlug' convert the title
-    if ($method === 'getSlug') {
-        return Tag::friendlyTitle($model->title);
+    public function missingMethod($model, $method, $arguments = [])
+    {
+        // If the method is 'getSlug' convert the title
+        if ($method === 'getSlug') {
+            return Tag::friendlyTitle($model->title);
+        }
     }
-}
 }
 ```
 
@@ -259,6 +262,7 @@ Call that method on a model that implements Sluggable returns a SEO friendly tit
 $title = $post->getSlug();
 ```
 
+
 ## Using Traits as behaviors
 You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
@@ -267,15 +271,15 @@ You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-u
 
 trait MyTimestampable
 {
-public function beforeCreate()
-{
-    $this->created_at = date('r');
-}
+    public function beforeCreate()
+    {
+        $this->created_at = date('r');
+    }
 
-public function beforeUpdate()
-{
-    $this->updated_at = date('r');
-}
+    public function beforeUpdate()
+    {
+        $this->updated_at = date('r');
+    }
 }
 ```
 
@@ -288,7 +292,7 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-use MyTimestampable;
+    use MyTimestampable;
 }
 ```
 

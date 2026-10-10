@@ -40,28 +40,28 @@ use Phalcon\Support\AbstractLocator;
 
 interface PaymentGateway
 {
-public function charge(int $amountCents): bool;
+    public function charge(int $amountCents): bool;
 }
 
 final class PaymentGatewayLocator extends AbstractLocator
 {
-protected function getServices(): array
-{
-    return [
-        'stripe' => StripeGateway::class,
-        'paypal' => PaypalGateway::class,
-    ];
-}
+    protected function getServices(): array
+    {
+        return [
+            'stripe' => StripeGateway::class,
+            'paypal' => PaypalGateway::class,
+        ];
+    }
 
-protected function getInterfaceClass(): string
-{
-    return PaymentGateway::class;
-}
+    protected function getInterfaceClass(): string
+    {
+        return PaymentGateway::class;
+    }
 
-protected function getExceptionClass(): string
-{
-    return PaymentException::class;
-}
+    protected function getExceptionClass(): string
+    {
+        return PaymentException::class;
+    }
 }
 
 $container = new Container();
@@ -106,8 +106,8 @@ Extra mappings can also be supplied to the constructor as a second argument. The
 <?php
 
 $locator = new PaymentGatewayLocator(
-$container,
-['adyen' => AdyenGateway::class]
+    $container,
+    ['adyen' => AdyenGateway::class]
 );
 ```
 

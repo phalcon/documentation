@@ -11,6 +11,7 @@ version: "3.4"
 
 [Phalcon\Mvc\Url](/3.4/api/phalcon_mvc_url/) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
+
 ## Setting a base URI
 Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
@@ -53,16 +54,17 @@ Usually, this component must be registered in the Dependency Injector container,
 use Phalcon\Mvc\Url;
 
 $di->set(
-'url',
-function () {
-    $url = new Url();
+    'url',
+    function () {
+        $url = new Url();
 
-    $url->setBaseUri('/invo/');
+        $url->setBaseUri('/invo/');
 
-    return $url;
-}
+        return $url;
+    }
 );
 ```
+
 
 ## Generating URIs
 If you are using the [Router](/3.4/routing/) with its default behavior, your application is able to match routes based on the following pattern: 
@@ -83,14 +85,14 @@ Note that isn't necessary to prepend the base URI. If you have named routes you 
 <?php
 
 $router
-->add(
-    '/blog/{year}/{month}/{title}',
-    [
-        'controller' => 'posts',
-        'action'     => 'show',
-    ]
-)
-->setName('show-post');
+    ->add(
+        '/blog/{year}/{month}/{title}',
+        [
+            'controller' => 'posts',
+            'action'     => 'show',
+        ]
+    )
+    ->setName('show-post');
 ```
 
 A URL can be generated in the following way:
@@ -100,14 +102,15 @@ A URL can be generated in the following way:
 
 // This produces: /blog/2015/01/some-blog-post
 $url->get(
-[
-    'for'   => 'show-post',
-    'year'  => '2015',
-    'month' => '01',
-    'title' => 'some-blog-post',
-]
+    [
+        'for'   => 'show-post',
+        'year'  => '2015',
+        'month' => '01',
+        'title' => 'some-blog-post',
+    ]
 );
 ```
+
 
 ## Producing URLs without mod_rewrite
 You can use this component also to create URLs without mod_rewrite:
@@ -167,6 +170,7 @@ The produced routes would look like:
 echo $url->get('products/save');
 ```
 
+
 ## Producing URLs from Volt
 The function `url` is available in volt to generate URLs using this component:
 
@@ -183,6 +187,7 @@ Generate static routes:
 <link rel='stylesheet' href='{{ static_url('css/style.css') }}' type='text/css' />
 {% endraw %}
 ```
+
 
 ## Static vs. Dynamic URIs
 This component allow you to set up a different base URI for static resources in the application:
@@ -202,6 +207,7 @@ $url->setStaticBaseUri('http://static.mywebsite.com/');
 ```
 
 [Phalcon\Tag](/3.4/api/phalcon_tag/) will request both dynamic and static URIs using this component.
+
 
 ## Implementing your own URL Generator
 The [Phalcon\Mvc\UrlInterface](/3.4/api/phalcon_mvc_url/) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.

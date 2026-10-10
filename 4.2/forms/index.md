@@ -22,26 +22,26 @@ use Phalcon\Forms\Element\Select;
 $form = new Form();
 
 $form->add(
-new Text(
-    'nameLast'
-)
+    new Text(
+        'nameLast'
+    )
 );
 
 $form->add(
-new Text(
-    'nameFirst'
-)
+    new Text(
+        'nameFirst'
+    )
 );
 
 $form->add(
-new Select(
-    'phoneType',
-    [
-        1 => 'Home',
-        2 => 'Work',
-        3 => 'Mobile',
-    ]
-)
+    new Select(
+        'phoneType',
+        [
+            1 => 'Home',
+            2 => 'Work',
+            3 => 'Mobile',
+        ]
+    )
 );
 ```
 
@@ -49,38 +49,38 @@ In the template:
 
 ```php
 <h1>
-Contacts
+    Contacts
 </h1>
 
 <form method='post'>
 
-<p>
-    <label>
-        Last Name
-    </label>
+    <p>
+        <label>
+            Last Name
+        </label>
 
-    <?php echo $form->render('nameLast'); ?>
-</p>
+        <?php echo $form->render('nameLast'); ?>
+    </p>
 
-<p>
-    <label>
-        First Name
-    </label>
+    <p>
+        <label>
+            First Name
+        </label>
 
-    <?php echo $form->render('nameFirst'); ?>
-</p>
+        <?php echo $form->render('nameFirst'); ?>
+    </p>
 
-<p>
-    <label>
-        Gender
-    </label>
+    <p>
+        <label>
+            Gender
+        </label>
 
-    <?php echo $form->render('phoneType'); ?>
-</p>
+        <?php echo $form->render('phoneType'); ?>
+    </p>
 
-<p>
-    <input type='submit' value='Save' />
-</p>
+    <p>
+        <input type='submit' value='Save' />
+    </p>
 
 </form>
 ```
@@ -89,18 +89,18 @@ Each element in the form can be rendered as required by the developer. Internall
 
 ```php
 <p>
-<label>
-    Name
-</label>
+    <label>
+        Name
+    </label>
 
-<?php 
-    echo $form->render(
-        'nameFirst', 
-        [
-            'maxlength'   => 30, 
-            'placeholder' => 'First Name',
-        ]
-    ); ?>
+    <?php 
+        echo $form->render(
+            'nameFirst', 
+            [
+                'maxlength'   => 30, 
+                'placeholder' => 'First Name',
+            ]
+        ); ?>
 </p>
 ```
 
@@ -114,13 +114,13 @@ use Phalcon\Forms\Form;
 $form = new Form();
 
 $form->add(
-new Text(
-    'nameFirst',
-    [
-        'maxlength'   => 30, 
-        'placeholder' => 'First Name',
-    ]
-)
+    new Text(
+        'nameFirst',
+        [
+            'maxlength'   => 30, 
+            'placeholder' => 'First Name',
+        ]
+    )
 );
 ```
 
@@ -129,8 +129,8 @@ new Text(
 
 ```php
 public function __construct(
-mixed $entity = null, 
-array $userOptions = []
+    mixed $entity = null, 
+    array $userOptions = []
 )
 ```
 Constructor. Accepts optionally an `entity` object which will be read internally. If the properties of the object contain properties that match the names of the elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](/4.2/db-models/) or even a `\stdClass`. The second parameter is `userOptions` an optional array with user defined data.
@@ -147,54 +147,56 @@ use Phalcon\Forms\Element\Select;
 use Phalcon\Forms\Form;
 
 $form = new Form(
-null,
-[
-    'phoneTypes' => [
-        1 => 'Home',
-        2 => 'Work',
-        3 => 'Mobile',
-    ],
-]
+    null,
+    [
+        'phoneTypes' => [
+            1 => 'Home',
+            2 => 'Work',
+            3 => 'Mobile',
+        ],
+    ]
 );
 
 $form->add(
-new Text(
-    'nameLast'
-)
+    new Text(
+        'nameLast'
+    )
 );
 
 $form->add(
-new Text(
-    'nameFirst'
-)
+    new Text(
+        'nameFirst'
+    )
 );
 
 $options    = $this->getUserOptions();
 $phoneTypes = $options['phoneTypes'] ?? [];
 $form->add(
-new Select(
-    'phoneType',
-    $phoneTypes
-)
+    new Select(
+        'phoneType',
+        $phoneTypes
+    )
 );
 ```
 
 If the `entity` is passed and it is not an object, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
+
 ```php
 public function add(
-ElementInterface $element, 
-string $position = null, 
-bool $type = null
+    ElementInterface $element, 
+    string $position = null, 
+    bool $type = null
 ): Form
 ```
 Adds an element to the form. The first parameter is an `ElementInterface` object. The second parameter `position` (if defined) is the name of the existing element we are targeting. The third boolean parameter `type` if set to `true` the new element will be added before the element defined in `position`. If not set or set to `null`/`false`, the new element will be added after the one defined by the `position` parameter. 
 
+
 ```php
 public function bind(
-array $data, 
-mixed $entity, 
-array $whitelist = []
+    array $data, 
+    mixed $entity, 
+    array $whitelist = []
 ): Form
 ```
 Binds data to the entity. The first parameter `data` is an array of key/values. This usually is the `$_POST` array. The second parameter `entity` is an entity object. If the properties of the entity object contain properties that match the names of the `data`elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](/4.2/db-models/) or even a `\stdClass`. The third parameter `whitelist` is an array of whitelisted elements. Any element in the `whitelist` array that has the same name as an element in the `data` array will be ignored.
@@ -207,7 +209,7 @@ The `bind` method takes the first array (e.g `$_POST`) and an entity object (e.g
 $form->bind($_POST, $customer);
 
 if (true === $form->isValid()) {
-$customer->save();
+    $customer->save();
 }
 ```
 
@@ -265,10 +267,10 @@ Returns the messages generated in the validation.
 
 ```php
 if (false === $form->isValid($_POST)) {
-$messages = $form->getMessages();
-foreach ($messages as $message) {
-    echo $message, "<br>";
-}
+    $messages = $form->getMessages();
+    foreach ($messages as $message) {
+        echo $message, "<br>";
+    }
 }
 ```
 
@@ -284,8 +286,8 @@ Returns the validator object registered in the form
 
 ```php
 public function getUserOption(
-string option, 
-mixed defaultValue = null
+    string option, 
+    mixed defaultValue = null
 ): mixed
 ```
 Returns the value of an option if present. If the option is not present the `defaultValue` will be returned.
@@ -312,8 +314,8 @@ Check if messages were generated for a specific element
 
 ```php
 public function isValid(
-array $data = null, 
-object $entity = null
+    array $data = null, 
+    object $entity = null
 ): bool
 ```
 Validates the form. The first element is the data that has been provided by the user. This is usually the `$_POST` array. 
@@ -342,7 +344,7 @@ $customer = Customers::findFirst();
 $form = new Form($customer);
 
 if (true === $form->isValid($_POST, $customer)) {
-$customer->save();
+    $customer->save();
 }
 ```
 
@@ -353,8 +355,8 @@ Returns the current position/key in the iterator
 
 ```php
 public function label(
-string $name, 
-array $attributes = null
+    string $name, 
+    array $attributes = null
 ): string
 ```
 Generate the label of an element added to the form including HTML. The first parameter is the name of the element while the second one is an array with optional parameters that need to be added to the `<label>` HTML tag. Such parameter can be CSS classes for instance. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
@@ -366,8 +368,8 @@ Moves the internal iteration pointer to the next position
 
 ```php
 public function render(
-string $name, 
-array attributes = []
+    string $name, 
+    array attributes = []
 ): string
 ```
 Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for the element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
@@ -394,22 +396,22 @@ Sets the entity related to the model
 
 ```php
 public function setAttributes(
-Attributes> $attributes
+    Attributes> $attributes
 ): AttributesInterface
 ```
 Set form attributes collection
 
 ```php
 public function setValidation(
-ValidationInterface $validation
+    ValidationInterface $validation
 );
 ```
 Sets the validation object in the form.
 
 ```php
 public function setUserOption(
-string $option, 
-mixed $value
+    string $option, 
+    mixed $value
 ): Form
 ```
 Sets a user defined option for the form
@@ -437,36 +439,36 @@ use Phalcon\Forms\Form;
 
 class CustomersForm extends Form
 {
-public function initialize()
-{
-    $this->add(
-        new Text(
-            'nameLast'
-        )
-    );
-
-    $this->add(
-        new Text(
-            'nameFirst'
-        )
-    );
-
-    $this->add(
-        new Select(
-            'phoneType',
-            PhoneTypes::find(),
-            [
-                'emptyText'  => 'Select one...',
-                'emptyValue' => '',
-                'useEmpty'   => true,
-                'using'      => [
-                    'typ_id',
-                    'typ_name',
-                ],
-            ]
-        )
-    );
-}
+    public function initialize()
+    {
+        $this->add(
+            new Text(
+                'nameLast'
+            )
+        );
+        
+        $this->add(
+            new Text(
+                'nameFirst'
+            )
+        );
+        
+        $this->add(
+            new Select(
+                'phoneType',
+                PhoneTypes::find(),
+                [
+                    'emptyText'  => 'Select one...',
+                    'emptyValue' => '',
+                    'useEmpty'   => true,
+                    'using'      => [
+                        'typ_id',
+                        'typ_name',
+                    ],
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -482,31 +484,31 @@ use Phalcon\Forms\Form;
 
 class CustomersForm extends Form
 {
-public function initialize(
-    Customers $customer,
-    array $options
-) {
-    $mode = $options['mode'] ?? 'view';
-    if ('edit' === $mode) {
+    public function initialize(
+        Customers $customer,
+        array $options
+    ) {
+        $mode = $options['mode'] ?? 'view';
+        if ('edit' === $mode) {
+            $this->add(
+                new Hidden(
+                    'id'
+                )
+            );
+        }
+
         $this->add(
-            new Hidden(
-                'id'
+            new Text(
+                'nameLast'
+            )
+        );
+
+        $this->add(
+            new Text(
+                'nameFirst'
             )
         );
     }
-
-    $this->add(
-        new Text(
-            'nameLast'
-        )
-    );
-
-    $this->add(
-        new Text(
-            'nameFirst'
-        )
-    );
-}
 }
 ```
 
@@ -518,10 +520,10 @@ In the form's instantiation you will use:
 use MyApp\Models\Customers;
 
 $form = new CustomersForm(
-new Customers(),
-[
-    'mode' => 'edit',
-]
+    new Customers(),
+    [
+        'mode' => 'edit',
+    ]
 );
 ```
 The code above will check the `options` array during the `initialize` method. The code will check for the `mode` element in the array and if not present it will default to `view`. If the `mode` is `edit`, we are going to add a [Phalcon\Forms\Element\Hidden][forms-element-hidden] element with the entity's ID in the form. By using the `options` array we can create reusable forms and also pass in our form additional data that could be required.
@@ -539,15 +541,15 @@ $customer = Customers::findFirst();
 $form = new Form($customer);
 
 $form->add(
-new Text(
-    'nameFirst'
-)
+    new Text(
+        'nameFirst'
+    )
 );
 
 $form->add(
-new Text(
-    'nameLast'
-)
+    new Text(
+        'nameLast'
+    )
 );
 ```
 
@@ -571,7 +573,7 @@ $form = new Form($customer);
 $form->bind($_POST, $customer);
 
 if (true === $form->isValid()) {
-$customer->save();
+    $customer->save();
 }
 ```
 
@@ -584,9 +586,9 @@ We can also use a PHP class as an entity:
 
 class Preferences
 {
-public $timezone = 'Europe/Amsterdam';
+    public $timezone = 'Europe/Amsterdam';
 
-public $receiveEmails = 'No';
+    public $receiveEmails = 'No';
 }
 ```
 
@@ -596,29 +598,29 @@ Using this class as entity, allows the form to take the default values from it:
 <?php
 
 $form = new Form(
-new Preferences()
+    new Preferences()
 );
 
 $form->add(
-new Select(
-    'timezone',
-    [
-        'America/New_York'  => 'New York',
-        'Europe/Amsterdam'  => 'Amsterdam',
-        'America/Sao_Paulo' => 'Sao Paulo',
-        'Asia/Tokyo'        => 'Tokyo',
-    ]
-)
+    new Select(
+        'timezone',
+        [
+            'America/New_York'  => 'New York',
+            'Europe/Amsterdam'  => 'Amsterdam',
+            'America/Sao_Paulo' => 'Sao Paulo',
+            'Asia/Tokyo'        => 'Tokyo',
+        ]
+    )
 );
 
 $form->add(
-new Select(
-    'receiveEmails',
-    [
-        'Yes' => 'Yes, please!',
-        'No'  => 'No, thanks',
-    ]
-)
+    new Select(
+        'receiveEmails',
+        [
+            'Yes' => 'Yes, please!',
+            'No'  => 'No, thanks',
+        ]
+    )
 );
 ```
 
@@ -629,22 +631,23 @@ Entities can implement getters, which have a higher precedence than public prope
 
 class Preferences
 {
-public $timezone;
+    public $timezone;
 
-public $receiveEmails;
+    public $receiveEmails;
 
-public function getTimezone()
-{
-    return 'Europe/Amsterdam';
-}
+    public function getTimezone()
+    {
+        return 'Europe/Amsterdam';
+    }
 
-public function getReceiveEmails()
-{
-    return 'No';
-}
+    public function getReceiveEmails()
+    {
+        return 'No';
+    }
 }
 ```
 For the above entity class, the `getReceiveEmails` and `getTimezone` methods will be used instead of the `receiveEmails` and `timezone` properties. 
+
 
 ## Elements
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the `Phalcon\Forms\Element` namespace:
@@ -665,13 +668,13 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | [Phalcon\Forms\Element\TextArea][forms-element-textarea] | Generate `textarea` elements                |
 
 These elements use the [Phalcon\Tag](/4.2/tag/) component transparently.
-
+ 
 :::info[NOTE]
 For more information regarding HTML elements, you can check our [Tag document](/4.2/tag/)
 :::
 
 The [Phalcon\Forms\Element\Select][forms-element-select] supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and` emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
-
+ 
 You can also create your own elements by extending the [Phalcon\Forms\Element\ElementInterface][forms-element-elementinterface] interface.
 
 ```php
@@ -681,12 +684,12 @@ use Phalcon\Forms\Element;
 
 class MyElement extends Element
 {
-public function render($attributes = null)
-{
-    $html = '';// HTML
+    public function render($attributes = null)
+    {
+        $html = '';// HTML
 
-    return $html;
-}
+        return $html;
+    }
 }
 ```
 
@@ -703,16 +706,16 @@ $form = new Form();
 
 $name = new Text('nameLast');
 $name->setFilters(
-[
-    'string',
-    'trim',
-]
+    [
+        'string',
+        'trim',
+    ]
 );
 $form->add($name);
 
 $email = new Text('email');
 $email->setFilters(
-'email'
+    'email'
 );
 $form->add($email);
 ```
@@ -732,24 +735,24 @@ use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\StringLength;
 
 $name = new Text(
-'nameLast'
+    'nameLast'
 );
 
 $name->addValidator(
-new PresenceOf(
-    [
-        'message' => 'The name is required',
-    ]
-)
+    new PresenceOf(
+        [
+            'message' => 'The name is required',
+        ]
+    )
 );
 
 $name->addValidator(
-new StringLength(
-    [
-        'min'            => 10,
-        'messageMinimum' => 'The name is too short',
-    ]
-)
+    new StringLength(
+        [
+            'min'            => 10,
+            'messageMinimum' => 'The name is too short',
+        ]
+    )
 );
 
 $form->add($name);
@@ -761,11 +764,11 @@ Then you can validate the form according to the input entered by the user:
 <?php
 
 if (false === $form->isValid($_POST)) {
-$messages = $form->getMessages();
+    $messages = $form->getMessages();
 
-foreach ($messages as $message) {
-    echo $message, '<br>';
-}
+    foreach ($messages as $message) {
+        echo $message, '<br>';
+    }
 }
 ```
 
@@ -779,7 +782,7 @@ By default messages generated by all the elements in the form are joined so they
 $messages = $form->getMessagesFor('nameLast');
 
 foreach ($messages as $message) {
-echo $message, '<br>';
+    echo $message, '<br>';
 }
 ```
 
@@ -788,40 +791,40 @@ You can render the form with total flexibility, the following example shows how 
 
 ```php
 <form method='post'>
-<?php
+    <?php
 
-    // Traverse the form
-    foreach ($form as $element) {
-        // Get any generated messages for the current element
-        $messages = $form->getMessagesFor(
-            $element->getName()
-        );
+        // Traverse the form
+        foreach ($form as $element) {
+            // Get any generated messages for the current element
+            $messages = $form->getMessagesFor(
+                $element->getName()
+            );
 
-        if (count($messages)) {
-            // Print each element
-            echo '<div class="messages">';
+            if (count($messages)) {
+                // Print each element
+                echo '<div class="messages">';
 
-            foreach ($messages as $message) {
-                echo $message;
+                foreach ($messages as $message) {
+                    echo $message;
+                }
+
+                echo '</div>';
             }
 
-            echo '</div>';
+            echo '<p>';
+            echo '<label for="' . 
+                    $element->getName() .
+                 '">' .
+                 $element->getLabel() .
+                 '</label>' 
+             ;
+
+            echo $element;
+            echo '</p>';
         }
+    ?>
 
-        echo '<p>';
-        echo '<label for="' . 
-                $element->getName() .
-             '">' .
-             $element->getLabel() .
-             '</label>' 
-         ;
-
-        echo $element;
-        echo '</p>';
-    }
-?>
-
-<input type='submit' value='Send' />
+    <input type='submit' value='Send' />
 </form>
 ```
 
@@ -834,38 +837,38 @@ use Phalcon\Forms\Form;
 
 class ContactForm extends Form
 {
-public function initialize()
-{
-    // ...
-}
-
-public function renderDecorated($name)
-{
-    $element  = $this->get($name);
-    $messages = $this->getMessagesFor(
-        $element->getName()
-    );
-
-    if (count($messages)) {
-        echo "<div class='messages'>";
-
-        foreach ($messages as $message) {
-            echo $this->flash->error($message);
-        }
-
-        echo '</div>';
+    public function initialize()
+    {
+        // ...
     }
 
-    echo '<p>';
-    echo '<label for="' .
-            $element->getName() .
-         '">' .
-         $element->getLabel() .
-         '</label>';
+    public function renderDecorated($name)
+    {
+        $element  = $this->get($name);
+        $messages = $this->getMessagesFor(
+            $element->getName()
+        );
 
-    echo $element;
-    echo '</p>';
-}
+        if (count($messages)) {
+            echo "<div class='messages'>";
+
+            foreach ($messages as $message) {
+                echo $this->flash->error($message);
+            }
+
+            echo '</div>';
+        }
+
+        echo '<p>';
+        echo '<label for="' .
+                $element->getName() .
+             '">' .
+             $element->getLabel() .
+             '</label>';
+
+        echo $element;
+        echo '</p>';
+    }
 }
 ```
 
@@ -888,10 +891,10 @@ use Phalcon\Forms\Form;
 
 class ContactForm extends Form
 {
-public function beforeValidation()
-{
+    public function beforeValidation()
+    {
 
-}
+    }
 }
 ```
 
@@ -906,10 +909,10 @@ use Phalcon\Forms\Manager;
 
 $container = new FactoryDefault();
 $container->set(
-'forms',
-function () {
-    return new Manager();
-}
+    'forms',
+    function () {
+        return new Manager();
+    }
 );
 ```
 
@@ -919,11 +922,11 @@ Forms are added to the forms manager and referenced by a unique name:
 <?php
 
 $this
-->forms
-->set(
-    'login',
-    new LoginForm()
-)
+    ->forms
+    ->set(
+        'login',
+        new LoginForm()
+    )
 ;
 ```
 
@@ -954,14 +957,14 @@ use Phalcon\Mvc\Controller;
  */
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $this->forms->get('unknown-form');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            $this->forms->get('unknown-form');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -981,30 +984,30 @@ use Phalcon\Security;
  */
 class ContactForm extends Form
 {
-public function initialize()
-{
-    // Set the same form as entity
-    $this->setEntity($this);
+    public function initialize()
+    {
+        // Set the same form as entity
+        $this->setEntity($this);
 
-    // Add a text element to capture the 'email'
-    $this->add(
-        new Text(
-            'email'
-        )
-    );
+        // Add a text element to capture the 'email'
+        $this->add(
+            new Text(
+                'email'
+            )
+        );
 
-    // Add a text element to put a hidden CSRF
-    $this->add(
-        new Hidden(
-            'csrf'
-        )
-    );
-}
+        // Add a text element to put a hidden CSRF
+        $this->add(
+            new Hidden(
+                'csrf'
+            )
+        );
+    }
 
-public function getCsrf()
-{
-    return $this->security->getToken();
-}
+    public function getCsrf()
+    {
+        return $this->security->getToken();
+    }
 }
 ```
 

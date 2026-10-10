@@ -23,23 +23,28 @@ echo $url->get("products/edit/1");
 
 // Generate a URL for a predefined route
 echo $url->get(
-[
-    "for"   => "blog-post",
-    "title" => "some-cool-stuff",
-    "year"  => "2012",
-]
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2012",
+    ]
 );
 
 ```
+
 
 ## Methods
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 Sets the DependencyInjector container
 
+
+
 public  **getDI** ()
 
 Returns the DependencyInjector container
+
+
 
 public  **setBaseUri** (*mixed* $baseUri)
 
@@ -54,6 +59,8 @@ $url->setBaseUri("/invo/index.php/");
 
 ```
 
+
+
 public  **setStaticBaseUri** (*mixed* $staticBaseUri)
 
 Sets a prefix for all static URLs generated
@@ -65,13 +72,19 @@ $url->setStaticBaseUri("/invo/");
 
 ```
 
+
+
 public  **getBaseUri** ()
 
 Returns the prefix for all the generated urls. By default /
 
+
+
 public  **getStaticBaseUri** ()
 
 Returns the prefix for all the generated static urls. By default /
+
+
 
 public  **setBasePath** (*mixed* $basePath)
 
@@ -84,9 +97,13 @@ $url->setBasePath("/var/www/htdocs/");
 
 ```
 
+
+
 public  **getBasePath** ()
 
 Returns the base path
+
+
 
 public  **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local], [*mixed* $baseUri])
 
@@ -100,30 +117,32 @@ echo $url->get("products/edit/1");
 
 // Generate a URL for a predefined route
 echo $url->get(
-[
-    "for"   => "blog-post",
-    "title" => "some-cool-stuff",
-    "year"  => "2015",
-]
+    [
+        "for"   => "blog-post",
+        "title" => "some-cool-stuff",
+        "year"  => "2015",
+    ]
 );
 
 // Generate a URL with GET arguments (/show/products?id=1&name=Carrots)
 echo $url->get(
-"show/products",
-[
-    "id"   => 1,
-    "name" => "Carrots",
-]
+    "show/products",
+    [
+        "id"   => 1,
+        "name" => "Carrots",
+    ]
 );
 
 // Generate an absolute URL by setting the third parameter as false.
 echo $url->get(
-"https://phalcon.io/",
-null,
-false
+    "https://phalcon.io/",
+    null,
+    false
 );
 
 ```
+
+
 
 public  **getStatic** ([*mixed* $uri])
 
@@ -137,16 +156,21 @@ echo $url->getStatic("img/logo.png");
 
 // Generate a URL for a static predefined route
 echo $url->getStatic(
-[
-    "for" => "logo-cdn",
-]
+    [
+        "for" => "logo-cdn",
+    ]
 );
 
 ```
 
+
+
 public  **path** ([*mixed* $path])
 
 Generates a local path
+
+
+
 
 <hr />
 
@@ -163,45 +187,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -214,21 +260,26 @@ abstract public  **setBaseUri** (*mixed* $baseUri)
 
 ...
 
+
 abstract public  **getBaseUri** ()
 
 ...
+
 
 abstract public  **setBasePath** (*mixed* $basePath)
 
 ...
 
+
 abstract public  **getBasePath** ()
 
 ...
 
+
 abstract public  **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local])
 
 ...
+
 
 abstract public  **path** ([*mixed* $path])
 

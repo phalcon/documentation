@@ -57,6 +57,7 @@ We only accept bug reports, new feature requests and pull requests in GitHub. Fo
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests][tests] page for more information.
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory, etc.
 
+
 ## Pull Request Checklist
 
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance, `6.0.x`, and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.

@@ -1,0 +1,17 @@
+# Nimbus agent discovery (generated)
+/
+  Link: <https://docs.phalcon.io/.well-known/ard.json>; rel="ard"
+  Link: <https://docs.phalcon.io/llms.txt>; rel="describedby"; type="text/plain"
+  Link: <https://docs.phalcon.io/index.md>; rel="alternate"; type="text/markdown"
+
+/.well-known/ard.json
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+
+/.well-known/ai-catalog.json
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+
+/index.md
+  Content-Type: text/markdown; charset=utf-8
+# End Nimbus agent discovery

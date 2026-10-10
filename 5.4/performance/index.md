@@ -36,7 +36,7 @@ These are **recommendations** and good practices. You are by no means obligated 
 [Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture on what is really going on at any given time in your application, and thus guide you to areas where you application needs attention. Profiling should be continuous in a production application.
 
 It does have an overhead so that has to be taken into account. The most verbose profiling happens on every request, but it will all depend on your traffic. We certainly do not want to increase the load on the server just because we are profiling the application. A common way of profiling is one request per 100 or one per 1,000. After a while you will have enough data to draw conclusions as to where slowdowns occur, why peaks occurred etc.
-
+ 
 ### XDebug
 [XDebug][xdebug] offers a very handy profiler right out of the box. All you have to do is install the extension and enable profiling in your `php.ini`:
 
@@ -131,6 +131,7 @@ apc.shm_size = 32M  ;default
 As with the aforementioned opcache, make sure, the amount of RAM available suits your application.
 Alternatives to APCu would be [Redis][redis] or [Memcached][memcached] - although they need extra processes running
 on your server or another machine.
+
 
 ## Slow Tasks
 Based on the requirements of your application, there maybe times that you will need to perform long-running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is:

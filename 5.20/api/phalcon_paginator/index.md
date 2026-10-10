@@ -13,6 +13,7 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Paginator\Adapter\AbstractAdapter
 
 Abstract
@@ -20,48 +21,36 @@ Abstract
 Phalcon\Paginator\Adapter\AbstractAdapter
 
 - **`Phalcon\Paginator\Adapter\AbstractAdapter`** - implements [`Phalcon\Paginator\Adapter\AdapterInterface`](#paginatoradapteradapterinterface)
-- [`Phalcon\Paginator\Adapter\Model`](#paginatoradaptermodel)
-- [`Phalcon\Paginator\Adapter\NativeArray`](#paginatoradapternativearray)
-- [`Phalcon\Paginator\Adapter\QueryBuilder`](#paginatoradapterquerybuilder)
-- [`Phalcon\Paginator\Adapter\QueryBuilderCursor`](#paginatoradapterquerybuildercursor)
+  - [`Phalcon\Paginator\Adapter\Model`](#paginatoradaptermodel)
+  - [`Phalcon\Paginator\Adapter\NativeArray`](#paginatoradapternativearray)
+  - [`Phalcon\Paginator\Adapter\QueryBuilder`](#paginatoradapterquerybuilder)
+  - [`Phalcon\Paginator\Adapter\QueryBuilderCursor`](#paginatoradapterquerybuildercursor)
 
 `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<ApiItem href="#paginatoradapterabstractadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#paginatoradapterabstractadapter-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
-Get current rows limit
-</ApiItem>
-<ApiItem href="#paginatoradapterabstractadapter-setcurrentpage" visibility="public" name="setCurrentPage" returnType="AdapterInterface" params={[{"type":"int","name":"page","default":null}]}>
-Set the current page number
-</ApiItem>
-<ApiItem href="#paginatoradapterabstractadapter-setlimit" visibility="public" name="setLimit" returnType="AdapterInterface" params={[{"type":"int","name":"limit","default":null}]}>
-Set current rows limit
-</ApiItem>
-<ApiItem href="#paginatoradapterabstractadapter-setrepository" visibility="public" name="setRepository" returnType="AdapterInterface" params={[{"type":"RepositoryInterface","name":"repository","default":null}]}>
-Sets current repository for pagination
-</ApiItem>
-<ApiItem href="#paginatoradapterabstractadapter-getrepository" visibility="protected" name="getRepository" returnType="RepositoryInterface" params={[{"type":"array|null","name":"properties","default":"null"}]}>
-Gets current repository for pagination
-</ApiItem>
+- `public __construct(array $config)` — Constructor
+
+- `public getLimit(): int` — Get current rows limit
+
+- `public setCurrentPage(int $page): AdapterInterface` — Set the current page number
+
+- `public setLimit(int $limit): AdapterInterface` — Set current rows limit
+
+- `public setRepository(RepositoryInterface $repository): AdapterInterface` — Sets current repository for pagination
+
+- `protected getRepository(array|null $properties = null): RepositoryInterface` — Gets current repository for pagination
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="config" type="array" default="">
-Configuration of paginator
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="limitRows" type="int|null" default="null">
-Number of rows to show in the paginator. By default is null
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="page" type="int|null" default="null">
-Current page in paginate
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="repository" type="RepositoryInterface" default="">
-Repository for pagination
-</ApiItem>
+- `protected array $config` — Configuration of paginator
+
+- `protected int|null $limitRows = null` — Number of rows to show in the paginator. By default is null
+
+- `protected int|null $page = null` — Current page in paginate
+
+- `protected RepositoryInterface $repository` — Repository for pagination
 
 ### Methods
 
@@ -113,14 +102,16 @@ protected function getRepository( array|null $properties = null ): RepositoryInt
 
 Gets current repository for pagination
 
+
 ## Paginator\Adapter\AdapterInterface
 
 Interface
 
 - [`Phalcon\Contracts\Paginator\Adapter`](/5.20/api/phalcon_contracts/#contractspaginatoradapter)
-- **`Phalcon\Paginator\Adapter\AdapterInterface`**
+  - **`Phalcon\Paginator\Adapter\AdapterInterface`**
 
 `Phalcon\Contracts\Paginator\Adapter`
+
 
 ## Paginator\Adapter\Model
 
@@ -133,73 +124,70 @@ base.
 use Phalcon\Paginator\Adapter\Model;
 
 $paginator = new Model(
-[
-    "model" => Invoices::class,
-    "limit" => 25,
-    "page"  => $currentPage,
-]
+    [
+        "model" => Invoices::class,
+        "limit" => 25,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginator = new Model(
-[
-    "model" => Invoices::class,
-    "parameters" => [
-         "columns" => "inv_id, inv_title"
-    ],
-    "limit" => 12,
-    "page"  => $currentPage,
-]
+    [
+        "model" => Invoices::class,
+        "parameters" => [
+             "columns" => "inv_id, inv_title"
+        ],
+        "limit" => 12,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginator = new Model(
-[
-    "model" => Invoices::class,
-    "parameters" => [
-         "inv_status_flag = :flag:",
-         "bind" => [
-             "flag" => 1
-         ],
-         "order" => "inv_title"
-    ],
-    "limit" => 16,
-    "page"  => $currentPage,
-]
+    [
+        "model" => Invoices::class,
+        "parameters" => [
+             "inv_status_flag = :flag:",
+             "bind" => [
+                 "flag" => 1
+             ],
+             "order" => "inv_title"
+        ],
+        "limit" => 16,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginator = new Model(
-[
-    "model" => Invoices::class,
-    "parameters" => "(inv_id % 2) = 0",
-    "limit" => 8,
-    "page"  => $currentPage,
-]
+    [
+        "model" => Invoices::class,
+        "parameters" => "(inv_id % 2) = 0",
+        "limit" => 8,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginator = new Model(
-[
-    "model" => Invoices::class,
-    "parameters" => [ "(inv_id % 2) = 0" ],
-    "limit" => 8,
-    "page"  => $currentPage,
-]
+    [
+        "model" => Invoices::class,
+        "parameters" => [ "(inv_id % 2) = 0" ],
+        "limit" => 8,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginate = $paginator->paginate();
 ```
 
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
-- **`Phalcon\Paginator\Adapter\Model`**
+  - **`Phalcon\Paginator\Adapter\Model`**
 
 `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<ApiItem href="#paginatoradaptermodel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
-Phalcon\Paginator\Adapter\Model constructor
-</ApiItem>
-<ApiItem href="#paginatoradaptermodel-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
-Returns a slice of the resultset to show in the pagination
-</ApiItem>
+- `public __construct(array $config)` — Phalcon\Paginator\Adapter\Model constructor
+
+- `public paginate(): RepositoryInterface` — Returns a slice of the resultset to show in the pagination
 
 ### Methods
 
@@ -219,6 +207,7 @@ public function paginate(): RepositoryInterface;
 
 Returns a slice of the resultset to show in the pagination
 
+
 ## Paginator\Adapter\NativeArray
 
 Class
@@ -229,30 +218,28 @@ Pagination using a PHP array as source of data
 use Phalcon\Paginator\Adapter\NativeArray;
 
 $paginator = new NativeArray(
-[
-    "data"  => [
-        ["id" => 1, "name" => "Artichoke"],
-        ["id" => 2, "name" => "Carrots"],
-        ["id" => 3, "name" => "Beet"],
-        ["id" => 4, "name" => "Lettuce"],
-        ["id" => 5, "name" => ""],
-    ],
-    "limit" => 2,
-    "page"  => $currentPage,
-]
+    [
+        "data"  => [
+            ["id" => 1, "name" => "Artichoke"],
+            ["id" => 2, "name" => "Carrots"],
+            ["id" => 3, "name" => "Beet"],
+            ["id" => 4, "name" => "Lettuce"],
+            ["id" => 5, "name" => ""],
+        ],
+        "limit" => 2,
+        "page"  => $currentPage,
+    ]
 );
 ```
 
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
-- **`Phalcon\Paginator\Adapter\NativeArray`**
+  - **`Phalcon\Paginator\Adapter\NativeArray`**
 
 `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\PaginatorDataNotArray` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<ApiItem href="#paginatoradapternativearray-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
-Returns a slice of the resultset to show in the pagination
-</ApiItem>
+- `public paginate(): RepositoryInterface` — Returns a slice of the resultset to show in the pagination
 
 ### Methods
 
@@ -264,6 +251,7 @@ public function paginate(): RepositoryInterface;
 
 Returns a slice of the resultset to show in the pagination
 
+
 ## Paginator\Adapter\QueryBuilder
 
 Class
@@ -274,52 +262,43 @@ Pagination using a PHQL query builder as source of data
 use Phalcon\Paginator\Adapter\QueryBuilder;
 
 $builder = $this->modelsManager->createBuilder()
-            ->columns("inv_id, inv_title")
-            ->from(Invoices::class)
-            ->orderBy("inv_title");
+                ->columns("inv_id, inv_title")
+                ->from(Invoices::class)
+                ->orderBy("inv_title");
 
 $paginator = new QueryBuilder(
-[
-    "builder" => $builder,
-    "limit"   => 20,
-    "page"    => 1,
-]
+    [
+        "builder" => $builder,
+        "limit"   => 20,
+        "page"    => 1,
+    ]
 );
 ```
 
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
-- **`Phalcon\Paginator\Adapter\QueryBuilder`**
+  - **`Phalcon\Paginator\Adapter\QueryBuilder`**
 
 `Phalcon\Contracts\Db\Adapter\Adapter` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Db\Enum` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\BuilderModelNotDefined` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\MissingColumnsForHaving` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<ApiItem href="#paginatoradapterquerybuilder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
-Phalcon\Paginator\Adapter\QueryBuilder
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuilder-getcurrentpage" visibility="public" name="getCurrentPage" returnType="int" params={[]}>
-Get the current page number
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuilder-getquerybuilder" visibility="public" name="getQueryBuilder" returnType="Builder" params={[]}>
-Get query builder object
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuilder-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
-Returns a slice of the resultset to show in the pagination
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuilder-setquerybuilder" visibility="public" name="setQueryBuilder" returnType="static" params={[{"type":"Builder","name":"builder","default":null}]}>
-Set query builder object
-</ApiItem>
+- `public __construct(array $config)` — Phalcon\Paginator\Adapter\QueryBuilder
+
+- `public getCurrentPage(): int` — Get the current page number
+
+- `public getQueryBuilder(): Builder` — Get query builder object
+
+- `public paginate(): RepositoryInterface` — Returns a slice of the resultset to show in the pagination
+
+- `public setQueryBuilder(Builder $builder): static` — Set query builder object
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="builder" type="Builder" default="">
-Paginator's data
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="columns" type="paginator_columns|null" default="">
-Column list used only for COUNT rewriting when the builder carries a
-HAVING or GROUP BY clause. It supplies the columns for the subquery
-that counts the grouped/having result set and is ignored otherwise.
-</ApiItem>
+- `protected Builder $builder` — Paginator's data
+
+- `protected paginator_columns|null $columns` — Column list used only for COUNT rewriting when the builder carries a
+  HAVING or GROUP BY clause. It supplies the columns for the subquery
+  that counts the grouped/having result set and is ignored otherwise.
 
 ### Methods
 
@@ -368,6 +347,7 @@ public function setQueryBuilder( Builder $builder ): static;
 
 Set query builder object
 
+
 ## Paginator\Adapter\QueryBuilderCursor
 
 Class
@@ -393,17 +373,17 @@ Limitations:
 use Phalcon\Paginator\Adapter\QueryBuilderCursor;
 
 $builder = $this->modelsManager->createBuilder()
-            ->columns("inv_id, inv_title")
-            ->from(Invoices::class)
-            ->orderBy("inv_id");
+                ->columns("inv_id, inv_title")
+                ->from(Invoices::class)
+                ->orderBy("inv_id");
 
 $paginator = new QueryBuilderCursor(
-[
-    "builder"      => $builder,
-    "limit"        => 20,
-    "cursorColumn" => "inv_id",
-    "cursor"       => null,  // first page; pass $page->getNext() for subsequent pages
-]
+    [
+        "builder"      => $builder,
+        "limit"        => 20,
+        "cursorColumn" => "inv_id",
+        "cursor"       => null,  // first page; pass $page->getNext() for subsequent pages
+    ]
 );
 
 $page = $paginator->paginate();
@@ -413,48 +393,35 @@ $page = $paginator->paginate();
 ```
 
 - [`Phalcon\Paginator\Adapter\AbstractAdapter`](#paginatoradapterabstractadapter)
-- **`Phalcon\Paginator\Adapter\QueryBuilderCursor`**
+  - **`Phalcon\Paginator\Adapter\QueryBuilderCursor`**
 
 `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Paginator\Exceptions\InvalidBuilderInstance` · `Phalcon\Paginator\Exceptions\InvalidCursorColumn` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\RepositoryInterface`
 
 ### Method Summary
 
-<ApiItem href="#paginatoradapterquerybuildercursor-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":null}]}>
-Phalcon\Paginator\Adapter\QueryBuilderCursor
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-getcurrentpage" visibility="public" name="getCurrentPage" returnType="int" params={[]}>
-Get the current page number
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-getcursor" visibility="public" name="getCursor" returnType="mixed" params={[]}>
-Get the cursor value for the current page (null on first page)
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-getcursorcolumn" visibility="public" name="getCursorColumn" returnType="string" params={[]}>
-Get the cursor column name
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-getquerybuilder" visibility="public" name="getQueryBuilder" returnType="Builder" params={[]}>
-Get query builder object
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-paginate" visibility="public" name="paginate" returnType="RepositoryInterface" params={[]}>
-Returns a slice of the resultset to show in the pagination
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-setcursor" visibility="public" name="setCursor" returnType="static" params={[{"type":"mixed","name":"cursor","default":null}]}>
-Set the cursor value for the next paginate() call
-</ApiItem>
-<ApiItem href="#paginatoradapterquerybuildercursor-setquerybuilder" visibility="public" name="setQueryBuilder" returnType="static" params={[{"type":"Builder","name":"builder","default":null}]}>
-Set query builder object
-</ApiItem>
+- `public __construct(array $config)` — Phalcon\Paginator\Adapter\QueryBuilderCursor
+
+- `public getCurrentPage(): int` — Get the current page number
+
+- `public getCursor(): mixed` — Get the cursor value for the current page (null on first page)
+
+- `public getCursorColumn(): string` — Get the cursor column name
+
+- `public getQueryBuilder(): Builder` — Get query builder object
+
+- `public paginate(): RepositoryInterface` — Returns a slice of the resultset to show in the pagination
+
+- `public setCursor(mixed $cursor): static` — Set the cursor value for the next paginate() call
+
+- `public setQueryBuilder(Builder $builder): static` — Set query builder object
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="builder" type="Builder" default="">
-Paginator's data
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cursor" type="mixed" default="null">
-The cursor value for the current page (null = first page)
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cursorColumn" type="string" default="">
-The column used as the cursor (must be unique and indexed)
-</ApiItem>
+- `protected Builder $builder` — Paginator's data
+
+- `protected mixed $cursor = null` — The cursor value for the current page (null = first page)
+
+- `protected string $cursorColumn` — The column used as the cursor (must be unique and indexed)
 
 ### Methods
 
@@ -532,6 +499,7 @@ public function setQueryBuilder( Builder $builder ): static;
 
 Set query builder object
 
+
 ## Paginator\Exception
 
 Class
@@ -539,29 +507,29 @@ Class
 Exceptions thrown in Phalcon\Paginator will use this class
 
 - `\Exception`
-- **`Phalcon\Paginator\Exception`**
-- [`Phalcon\Paginator\Exceptions\BuilderModelNotDefined`](#paginatorexceptionsbuildermodelnotdefined)
-- [`Phalcon\Paginator\Exceptions\InvalidBuilderInstance`](#paginatorexceptionsinvalidbuilderinstance)
-- [`Phalcon\Paginator\Exceptions\InvalidCursorColumn`](#paginatorexceptionsinvalidcursorcolumn)
-- [`Phalcon\Paginator\Exceptions\InvalidLimit`](#paginatorexceptionsinvalidlimit)
-- [`Phalcon\Paginator\Exceptions\MissingColumnsForHaving`](#paginatorexceptionsmissingcolumnsforhaving)
-- [`Phalcon\Paginator\Exceptions\MissingRequiredParameter`](#paginatorexceptionsmissingrequiredparameter)
-- [`Phalcon\Paginator\Exceptions\PaginatorDataNotArray`](#paginatorexceptionspaginatordatanotarray)
+  - **`Phalcon\Paginator\Exception`**
+    - [`Phalcon\Paginator\Exceptions\BuilderModelNotDefined`](#paginatorexceptionsbuildermodelnotdefined)
+    - [`Phalcon\Paginator\Exceptions\InvalidBuilderInstance`](#paginatorexceptionsinvalidbuilderinstance)
+    - [`Phalcon\Paginator\Exceptions\InvalidCursorColumn`](#paginatorexceptionsinvalidcursorcolumn)
+    - [`Phalcon\Paginator\Exceptions\InvalidLimit`](#paginatorexceptionsinvalidlimit)
+    - [`Phalcon\Paginator\Exceptions\MissingColumnsForHaving`](#paginatorexceptionsmissingcolumnsforhaving)
+    - [`Phalcon\Paginator\Exceptions\MissingRequiredParameter`](#paginatorexceptionsmissingrequiredparameter)
+    - [`Phalcon\Paginator\Exceptions\PaginatorDataNotArray`](#paginatorexceptionspaginatordatanotarray)
+
 
 ## Paginator\Exceptions\BuilderModelNotDefined
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\BuilderModelNotDefined`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\BuilderModelNotDefined`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionsbuildermodelnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -571,20 +539,20 @@ Class
 public function __construct();
 ```
 
+
 ## Paginator\Exceptions\InvalidBuilderInstance
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\InvalidBuilderInstance`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\InvalidBuilderInstance`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionsinvalidbuilderinstance-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -594,20 +562,20 @@ Class
 public function __construct();
 ```
 
+
 ## Paginator\Exceptions\InvalidCursorColumn
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\InvalidCursorColumn`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\InvalidCursorColumn`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionsinvalidcursorcolumn-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -617,20 +585,20 @@ Class
 public function __construct();
 ```
 
+
 ## Paginator\Exceptions\InvalidLimit
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\InvalidLimit`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\InvalidLimit`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionsinvalidlimit-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -640,20 +608,20 @@ Class
 public function __construct();
 ```
 
+
 ## Paginator\Exceptions\MissingColumnsForHaving
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\MissingColumnsForHaving`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\MissingColumnsForHaving`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionsmissingcolumnsforhaving-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -663,22 +631,22 @@ Class
 public function __construct();
 ```
 
+
 ## Paginator\Exceptions\MissingRequiredParameter
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\MissingRequiredParameter`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\MissingRequiredParameter`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionsmissingrequiredparameter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"parameter","default":null}]}>
-</ApiItem>
-<ApiItem href="#paginatorexceptionsmissingrequiredparameter-getparameter" visibility="public" name="getParameter" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $parameter)`
+
+- `public getParameter(): string`
 
 ### Methods
 
@@ -694,20 +662,20 @@ public function __construct( string $parameter );
 public function getParameter(): string;
 ```
 
+
 ## Paginator\Exceptions\PaginatorDataNotArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Paginator\Exception`](#paginatorexception)
-- **`Phalcon\Paginator\Exceptions\PaginatorDataNotArray`**
+  - [`Phalcon\Paginator\Exception`](#paginatorexception)
+    - **`Phalcon\Paginator\Exceptions\PaginatorDataNotArray`**
 
 `Phalcon\Paginator\Exception`
 
 ### Method Summary
 
-<ApiItem href="#paginatorexceptionspaginatordatanotarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -717,32 +685,28 @@ Class
 public function __construct();
 ```
 
+
 ## Paginator\PaginatorFactory
 
 Class
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.20/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Paginator\PaginatorFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.20/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Paginator\PaginatorFactory`**
 
 `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#paginatorpaginatorfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-AdapterFactory constructor.
-</ApiItem>
-<ApiItem href="#paginatorpaginatorfactory-load" visibility="public" name="load" returnType="AdapterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
-Factory to create an instance from a Config object
-</ApiItem>
-<ApiItem href="#paginatorpaginatorfactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Create a new instance of the adapter
-</ApiItem>
-<ApiItem href="#paginatorpaginatorfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorpaginatorfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
+- `public __construct(array $services = [])` — AdapterFactory constructor.
+
+- `public load(mixed $config): AdapterInterface` — Factory to create an instance from a Config object
+
+- `public newInstance(string $name, array $options = []): AdapterInterface` — Create a new instance of the adapter
+
+- `protected getExceptionClass(): string`
+
+- `protected getServices(): array` — Returns the available adapters
 
 ### Methods
 
@@ -766,17 +730,17 @@ Factory to create an instance from a Config object
 use Phalcon\Paginator\PaginatorFactory;
 
 $builder = $this
- ->modelsManager
- ->createBuilder()
- ->columns("inv_id, inv_title")
- ->from(Invoices::class)
- ->orderBy("inv_title");
+     ->modelsManager
+     ->createBuilder()
+     ->columns("inv_id, inv_title")
+     ->from(Invoices::class)
+     ->orderBy("inv_title");
 
 $options = [
-"builder" => $builder,
-"limit"   => 20,
-"page"    => 1,
-"adapter" => "queryBuilder",
+    "builder" => $builder,
+    "limit"   => 20,
+    "page"    => 1,
+    "adapter" => "queryBuilder",
 ];
 
 $paginator = (new PaginatorFactory())->load($options);
@@ -786,8 +750,8 @@ $paginator = (new PaginatorFactory())->load($options);
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -807,6 +771,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Paginator\Repository
 
 Class
@@ -819,45 +784,41 @@ Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
 ### Method Summary
 
-<ApiItem href="#paginatorrepository-__get" visibility="public" name="__get" returnType="mixed|null" params={[{"type":"string","name":"property","default":null}]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getaliases" visibility="public" name="getAliases" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getcurrent" visibility="public" name="getCurrent" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getfirst" visibility="public" name="getFirst" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getitems" visibility="public" name="getItems" returnType="mixed" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getlast" visibility="public" name="getLast" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getnext" visibility="public" name="getNext" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getprevious" visibility="public" name="getPrevious" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-gettotalitems" visibility="public" name="getTotalItems" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-setaliases" visibility="public" name="setAliases" returnType="RepositoryInterface" params={[{"type":"array","name":"aliases","default":null}]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-setproperties" visibility="public" name="setProperties" returnType="RepositoryInterface" params={[{"type":"array","name":"properties","default":null}]}>
-</ApiItem>
-<ApiItem href="#paginatorrepository-getproperty" visibility="protected" name="getProperty" returnType="mixed" params={[{"type":"string","name":"property","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Gets value of property by name
-</ApiItem>
-<ApiItem href="#paginatorrepository-getrealnameproperty" visibility="protected" name="getRealNameProperty" returnType="string" params={[{"type":"string","name":"property","default":null}]}>
-Resolve alias property name
-</ApiItem>
+- `public __get(string $property): mixed|null`
+
+- `public getAliases(): array`
+
+- `public getCurrent(): int`
+
+- `public getFirst(): int`
+
+- `public getItems(): mixed`
+
+- `public getLast(): int`
+
+- `public getLimit(): int`
+
+- `public getNext(): int`
+
+- `public getPrevious(): int`
+
+- `public getTotalItems(): int`
+
+- `public jsonSerialize(): array`
+
+- `public setAliases(array $aliases): RepositoryInterface`
+
+- `public setProperties(array $properties): RepositoryInterface`
+
+- `protected getProperty(string $property, mixed $defaultValue = null): mixed` — Gets value of property by name
+
+- `protected getRealNameProperty(string $property): string` — Resolve alias property name
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="aliases" type="paginator_aliases" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="properties" type="paginator_properties" default="[]">
-</ApiItem>
+- `protected paginator_aliases $aliases = []`
+
+- `protected paginator_properties $properties = []`
 
 ### Methods
 
@@ -943,8 +904,8 @@ public function setProperties( array $properties ): RepositoryInterface;
 
 ```php
 protected function getProperty(
-string $property,
-mixed $defaultValue = null
+    string $property,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -962,12 +923,13 @@ protected function getRealNameProperty( string $property ): string;
 
 Resolve alias property name
 
+
 ## Paginator\RepositoryInterface
 
 Interface
 
 - [`Phalcon\Contracts\Paginator\Repository`](/5.20/api/phalcon_contracts/#contractspaginatorrepository)
-- **`Phalcon\Paginator\RepositoryInterface`**
+  - **`Phalcon\Paginator\RepositoryInterface`**
 
 `Phalcon\Contracts\Paginator\Repository`
 

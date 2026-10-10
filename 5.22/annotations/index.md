@@ -27,22 +27,22 @@ Annotations are extracted from docblocks in classes, methods, and properties. An
  */
 class Example
 {
-/**
- * This is a property with a special feature
- *
- * @SpecialFeature
- */
-protected $someProperty;
+    /**
+     * This is a property with a special feature
+     *
+     * @SpecialFeature
+     */
+    protected $someProperty;
 
-/**
- * This is a method
- *
- * @SpecialFeature
- */
-public function someMethod()
-{
-    // ...
-}
+    /**
+     * This is a method
+     *
+     * @SpecialFeature
+     */
+    public function someMethod()
+    {
+        // ...
+    }
 }
 ```
 
@@ -101,22 +101,22 @@ use Phalcon\Mvc\Model;
  */
 class Customers extends Model
 {
-/**
- * @Primary
- * @Identity
- * @Column(type="integer", nullable=false, column="cst_id")
- */
-public $id;
+    /**
+     * @Primary
+     * @Identity
+     * @Column(type="integer", nullable=false, column="cst_id")
+     */
+    public $id;
 
-/**
- * @Column(type="string", nullable=false, column="cst_name_first")
- */
-public $nameFirst;
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_first")
+     */
+    public $nameFirst;
 
-/**
- * @Column(type="string", nullable=false, column="cst_name_last")
- */
-public $nameLast;
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_last")
+     */
+    public $nameLast;
 }
 ```
 
@@ -227,8 +227,8 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 
 $container
-->getShared('annotations')
-->setReader(new AttributesReader())
+    ->getShared('annotations')
+    ->setReader(new AttributesReader())
 ;
 ```
 
@@ -279,16 +279,16 @@ use Phalcon\Mvc\Model;
 
 class Customers extends Model
 {
-#[Primary]
-#[Identity]
-#[Column(type: 'integer', nullable: false, column: 'cst_id')]
-public $id;
+    #[Primary]
+    #[Identity]
+    #[Column(type: 'integer', nullable: false, column: 'cst_id')]
+    public $id;
 
-#[Column(type: 'string', nullable: false, column: 'cst_name_first')]
-public $nameFirst;
+    #[Column(type: 'string', nullable: false, column: 'cst_name_first')]
+    public $nameFirst;
 
-#[Column(type: 'string', nullable: false, column: 'cst_name_last')]
-public $nameLast;
+    #[Column(type: 'string', nullable: false, column: 'cst_name_last')]
+    public $nameLast;
 }
 ```
 
@@ -367,16 +367,16 @@ use function str_starts_with;
 
 class AppAttributesReader extends AttributesReader
 {
-protected function resolveName(string $name): string
-{
-    if (str_starts_with($name, 'App\\Attributes\\')) {
-        $parts = explode('\\', $name);
+    protected function resolveName(string $name): string
+    {
+        if (str_starts_with($name, 'App\\Attributes\\')) {
+            $parts = explode('\\', $name);
 
-        return (string) array_pop($parts);
+            return (string) array_pop($parts);
+        }
+
+        return parent::resolveName($name);
     }
-
-    return parent::resolveName($name);
-}
 }
 ```
 
@@ -418,10 +418,10 @@ This component employs adapters to cache or not cache the parsed and processed a
 use Phalcon\Annotations\Adapter\Apcu;
 
 $adapter = new Apcu(
-[
-    'prefix'   => 'my-prefix',
-    'lifetime' => 3600,
-]
+    [
+        'prefix'   => 'my-prefix',
+        'lifetime' => 3600,
+    ]
 );
 ```
 
@@ -437,13 +437,13 @@ $pattern  = "/^_PHAN/";
 $iterator = new APCuIterator($pattern);
 
 if (true === is_object($iterator)) {
-return false;
+    return false;
 }
 
 foreach ($iterator as $item) {
-if (true !== apcu_delete($item["key"])) {
-    $result = false;
-}
+    if (true !== apcu_delete($item["key"])) {
+        $result = false;
+    }
 }
 
 return $result;
@@ -473,9 +473,9 @@ $adapter = new Memory();
 use Phalcon\Annotations\Adapter\Stream;
 
 $adapter = new Stream(
-[
-    'annotationsDir' => '/app/storage/cache/annotations',
-]
+    [
+        'annotationsDir' => '/app/storage/cache/annotations',
+    ]
 );
 ```
 
@@ -523,14 +523,14 @@ use Phalcon\Annotations\Adapter\Apcu;
 $container = new FactoryDefault();
 
 $container->set(
-'annotations',
-function () {
-    return new Apcu(
-        [
-            'lifetime' => 86400
-        ]
-    );
-}
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
 );
 ```
 
@@ -553,44 +553,44 @@ use MyApp\Components\Auth;
  */
 class BaseController extends Controller
 {
-/**
- * @param Event $event
- * @param Dispatcher $dispatcher
- *
- * @return bool
- */
-public function beforeExecuteRoute(
-    Dispatcher $dispatcher
-) {
-    $controllerName = $dispatcher->getControllerClass();
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExecuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
 
-    $annotations = $this
-        ->annotations
-        ->get($controllerName)
-    ;
+        $annotations = $this
+            ->annotations
+            ->get($controllerName)
+        ;
 
-    $exists = $annotations
-        ->getClassAnnotations()
-        ->has('Private')
-    ;
+        $exists = $annotations
+            ->getClassAnnotations()
+            ->has('Private')
+        ;
+        
+        if (!$exists) {
+            return true;
+        }
 
-    if (!$exists) {
-        return true;
+        if ($this->auth->isLoggedIn()) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
     }
-
-    if ($this->auth->isLoggedIn()) {
-        return true;
-    }
-
-    $dispatcher->forward(
-        [
-            'controller' => 'session',
-            'action'     => 'login',
-        ]
-    );
-
-    return false;
-}
 }
 ```
 
@@ -608,9 +608,9 @@ use MyApp\Controllers\BaseController;
  */
 class Invoices extends BaseController
 {
-public function indexAction()
-{
-}
+    public function indexAction()
+    {
+    }
 }
 ```
 
@@ -629,14 +629,14 @@ use Phalcon\Annotations\Adapter\Apcu;
 $container = new FactoryDefault();
 
 $container->set(
-'annotations',
-function () {
-    return new Apcu(
-        [
-            'lifetime' => 86400
-        ]
-    );
-}
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
 );
 ```
 
@@ -659,49 +659,49 @@ use MyApp\Components\Auth;
  */
 class BaseController extends Controller
 {
-/**
- * @param Event $event
- * @param Dispatcher $dispatcher
- *
- * @return bool
- */
-public function beforeExecuteRoute(
-    Dispatcher $dispatcher
-) {
-    $controllerName = $dispatcher->getControllerClass();
-    $actionName     = $dispatcher->getActionName() . 'Action';
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExecuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
+        $actionName     = $dispatcher->getActionName() . 'Action';
 
-    $data = $this
-        ->annotations
-        ->getMethod($controllerName, $actionName)
-    ;
-    $access    = $data->get('Access');
-    $aclGroups = $access->getArguments();
+        $data = $this
+            ->annotations
+            ->getMethod($controllerName, $actionName)
+        ;
+        $access    = $data->get('Access');
+        $aclGroups = $access->getArguments();
 
-    $user   = $this->acl->getUser();
-    $groups = $user->getRelated('groups');
+        $user   = $this->acl->getUser();
+        $groups = $user->getRelated('groups');
+        
+        $userGroups = [];
+        foreach ($groups as $group) {
+            $userGroups[] = $group->grp_name;
+        }
 
-    $userGroups = [];
-    foreach ($groups as $group) {
-        $userGroups[] = $group->grp_name;
+        $allowed = array_intersect($userGroups, $aclGroups);
+        $allowed = (count($allowed) > 0);
+        
+        if ($allowed) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
     }
-
-    $allowed = array_intersect($userGroups, $aclGroups);
-    $allowed = (count($allowed) > 0);
-
-    if ($allowed) {
-        return true;
-    }
-
-    $dispatcher->forward(
-        [
-            'controller' => 'session',
-            'action'     => 'login',
-        ]
-    );
-
-    return false;
-}
 }
 ```
 
@@ -719,37 +719,37 @@ use MyApp\Controllers\BaseController;
  */
 class Invoices extends BaseController
 {
-/**
- * @Access(
- *     'Administrators',
- *     'Accounting',
- *     'Users',
- *     'Guests'
- * )
- */
-public function indexAction()
-{
-}
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     *     'Users',
+     *     'Guests'
+     * )
+     */
+    public function indexAction()
+    {
+    }
 
-/**
- * @Access(
- *     'Administrators',
- *     'Accounting',
- * )
- */
-public function listAction()
-{
-}
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function listAction()
+    {
+    }
 
-/**
- * @Access(
- *     'Administrators',
- *     'Accounting',
- * )
- */
-public function viewAction()
-{
-}
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function viewAction()
+    {
+    }
 }
 ```
 
@@ -770,21 +770,21 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $adapter = new Memory();
+    public function index()
+    {
+        try {
+            $adapter = new Memory();
 
-        $reflector   = $adapter->get('Invoices');
-        $annotations = $reflector->getClassAnnotations();
+            $reflector   = $adapter->get('Invoices');
+            $annotations = $reflector->getClassAnnotations();
 
-        foreach ($annotations as $annotation) {
-            echo $annotation->getExpression('unknown-expression');
+            foreach ($annotations as $annotation) {
+                echo $annotation->getExpression('unknown-expression');
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
     }
-}
 }
 ```
 

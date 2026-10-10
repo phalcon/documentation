@@ -39,18 +39,18 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function viewAction($id)
-{
-    $invoice = Invoices::findFirst($id);
+    public function viewAction($id)
+    {
+        $invoice = Invoices::findFirst($id);
 
-    if ($invoice === null) {
-        $this->response->setStatusCode(404);
+        if ($invoice === null) {
+            $this->response->setStatusCode(404);
 
-        return $this->response->setJsonContent(['error' => 'Not found']);
+            return $this->response->setJsonContent(['error' => 'Not found']);
+        }
+
+        return $this->response->setJsonContent($invoice);
     }
-
-    return $this->response->setJsonContent($invoice);
-}
 }
 ```
 
@@ -72,14 +72,14 @@ use Phalcon\Contracts\ADR\Payload\Payload as PayloadInterface;
 
 final class ViewInvoice
 {
-public function __invoke(Input $input): PayloadInterface
-{
-    $invoice = Invoices::findFirst($input->get('id'));
+    public function __invoke(Input $input): PayloadInterface
+    {
+        $invoice = Invoices::findFirst($input->get('id'));
 
-    return $invoice === null
-        ? Payload::notFound(['id' => $input->get('id')])
-        : Payload::success($invoice);
-}
+        return $invoice === null
+            ? Payload::notFound(['id' => $input->get('id')])
+            : Payload::success($invoice);
+    }
 }
 ```
 
@@ -102,18 +102,18 @@ use Phalcon\Http\ResponseInterface;
 
 final class GetInvoices implements Action
 {
-public function __construct(
-    private ViewInvoice $domain,
-    private Responder $responder
-) {
-}
+    public function __construct(
+        private ViewInvoice $domain,
+        private Responder $responder
+    ) {
+    }
 
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    $payload = ($this->domain)(Input::fromRequest($request));
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        $payload = ($this->domain)(Input::fromRequest($request));
 
-    return ($this->responder)($request, new Response(), $payload);
-}
+        return ($this->responder)($request, new Response(), $payload);
+    }
 }
 ```
 
@@ -135,20 +135,20 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function viewAction($id)
-{
-    $invoice = Invoices::findFirst($id);
+    public function viewAction($id)
+    {
+        $invoice = Invoices::findFirst($id);
 
-    if ($invoice === null) {
-        $this->response->setStatusCode(404);
-        $this->view->pick('invoices/notFound');
+        if ($invoice === null) {
+            $this->response->setStatusCode(404);
+            $this->view->pick('invoices/notFound');
 
-        return;
+            return;
+        }
+
+        $this->view->setVar('invoice', $invoice);
+        $this->view->pick('invoices/view');
     }
-
-    $this->view->setVar('invoice', $invoice);
-    $this->view->pick('invoices/view');
-}
 }
 ```
 
@@ -169,22 +169,22 @@ use Phalcon\Http\ResponseInterface;
 
 final class GetInvoices implements Action
 {
-public function __construct(
-    private ViewInvoice $domain,
-    private ViewResponder $responder
-) {
-}
+    public function __construct(
+        private ViewInvoice $domain,
+        private ViewResponder $responder
+    ) {
+    }
 
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    $payload = ($this->domain)(Input::fromRequest($request));
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        $payload = ($this->domain)(Input::fromRequest($request));
 
-    return ($this->responder->withTemplate('invoices/view'))(
-        $request,
-        new Response(),
-        $payload
-    );
-}
+        return ($this->responder->withTemplate('invoices/view'))(
+            $request,
+            new Response(),
+            $payload
+        );
+    }
 }
 ```
 

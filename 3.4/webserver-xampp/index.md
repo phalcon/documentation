@@ -16,6 +16,7 @@ XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to do
 
 After downloading the Phalcon library you will have a zip file like the one shown below:
 
+
 Extract the library from the archive to get the Phalcon DLL
 
 Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
@@ -46,6 +47,7 @@ The following screencast is a step by step guide to install Phalcon on Windows:
           frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
   </iframe>
 </div>
+
 
 ## Related Guides
 * [General Installation](/3.4/installation/)

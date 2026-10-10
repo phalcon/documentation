@@ -29,31 +29,31 @@ Nanobox uses the [`boxfile.yml`][boxfile] to build and configure your app's runt
 run.config:
   engine: php
   engine.config:
-runtime: php-7.2
-document_root: public
-extensions:
-  - phalcon
+    runtime: php-7.2
+    document_root: public
+    extensions:
+      - phalcon
   extra_steps:
-#===========================================================================
-# PSR extension compilation
-- |
-  (
-    CURRENT_FOLDER=$(pwd)
-    rm -fR /tmp/php-psr
-    cd /tmp/build
-    git clone --depth=1 https://github.com/jbboehr/php-psr.git
-    cd php-psr
-    set -e
-    phpize
-    ./configure --with-php-config=$(which php-config)
-    make -j"$(getconf _NPROCESSORS_ONLN)"
-    make install
-    cd $CURRENT_FOLDER
-    rm -fR /tmp/php-psr
-    unset CURRENT_FOLDER
-  )
-- echo -e 'extension=psr.so' >> "/data/etc/php/dev_php.ini"
-- echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
+    #===========================================================================
+    # PSR extension compilation
+    - |
+      (
+        CURRENT_FOLDER=$(pwd)
+        rm -fR /tmp/php-psr
+        cd /tmp/build
+        git clone --depth=1 https://github.com/jbboehr/php-psr.git
+        cd php-psr
+        set -e
+        phpize
+        ./configure --with-php-config=$(which php-config)
+        make -j"$(getconf _NPROCESSORS_ONLN)"
+        make install
+        cd $CURRENT_FOLDER
+        rm -fR /tmp/php-psr
+        unset CURRENT_FOLDER
+      )
+    - echo -e 'extension=psr.so' >> "/data/etc/php/dev_php.ini"
+    - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
 ```
 
 This tells Nanobox to:
@@ -66,18 +66,18 @@ This tells Nanobox to:
 - Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
 
 Depending on the needs of your application, you might need to add additional extensions. For instance you might want to add `mbcrypt`, `igbinary`, `json`, `session` and `redis`. Your `extensions` section in the `boxfile.yml` will look like this:
-
+ 
 ```yaml
 run.config:
   engine: php
   engine.config:
-extensions:
-  - json
-  - mbstring
-  - igbinary
-  - session
-  - phalcon
-  - redis
+    extensions:
+      - json
+      - mbstring
+      - igbinary
+      - session
+      - phalcon
+      - redis
 ```
 
 :::warning[NOTE]
@@ -89,9 +89,9 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 
 ```json
 {
-"require-dev": {
-    "phalcon/devtools": "~3.0.3"
-}
+    "require-dev": {
+        "phalcon/devtools": "~3.0.3"
+    }
 }
 ```
 

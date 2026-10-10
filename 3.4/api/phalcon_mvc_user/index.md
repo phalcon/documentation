@@ -20,21 +20,32 @@ public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInject
 
 Sets the dependency injector
 
+
+
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
+
+
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the event manager
 
+
+
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Magic method __get
+
+
+
 
 <hr />
 
@@ -51,21 +62,32 @@ public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInject
 
 Sets the dependency injector
 
+
+
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
+
+
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the event manager
 
+
+
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Magic method __get
+
+
+
 
 <hr />
 
@@ -82,17 +104,25 @@ public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInject
 
 Sets the dependency injector
 
+
+
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
+
+
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the event manager
 
+
+
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
+
+
 
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 

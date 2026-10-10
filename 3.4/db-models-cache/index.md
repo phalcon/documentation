@@ -13,6 +13,7 @@ Every application is different. In most applications though, there is data that 
 
 This chapter explains the potential areas where it is possible to implement caching to improve performance. Phalcon gives developers the tools they need to implement cashing where their application needs it.
 
+
 ## Caching Resultsets
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
@@ -27,26 +28,26 @@ use Phalcon\Cache\Backend\Memcache as BackendMemcache;
 
 // Set the models cache service
 $di->set(
-'modelsCache',
-function () {
-    // Cache data for one day (default setting)
-    $frontCache = new FrontendData(
-        [
-            'lifetime' => 86400,
-        ]
-    );
+    'modelsCache',
+    function () {
+        // Cache data for one day (default setting)
+        $frontCache = new FrontendData(
+            [
+                'lifetime' => 86400,
+            ]
+        );
 
-    // Memcached connection settings
-    $cache = new BackendMemcache(
-        $frontCache,
-        [
-            'host' => 'localhost',
-            'port' => '11211',
-        ]
-    );
+        // Memcached connection settings
+        $cache = new BackendMemcache(
+            $frontCache,
+            [
+                'host' => 'localhost',
+                'port' => '11211',
+            ]
+        );
 
-    return $cache;
-}
+        return $cache;
+    }
 );
 ```
 
@@ -60,31 +61,31 @@ $products = Products::find();
 
 // Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
 $products = Products::find(
-[
-    'cache' => [
-        'key' => 'my-cache',
-    ],
-]
+    [
+        'cache' => [
+            'key' => 'my-cache',
+        ],
+    ]
 );
 
 // Cache the resultset for only for 5 minutes
 $products = Products::find(
-[
-    'cache' => [
-        'key'      => 'my-cache',
-        'lifetime' => 300,
-    ],
-]
+    [
+        'cache' => [
+            'key'      => 'my-cache',
+            'lifetime' => 300,
+        ],
+    ]
 );
 
 // Use the 'cache' service from the DI instead of 'modelsCache'
 $products = Products::find(
-[
-    'cache' => [
-        'key'     => 'my-cache',
-        'service' => 'cache',
-    ],
-]
+    [
+        'cache' => [
+            'key'     => 'my-cache',
+            'service' => 'cache',
+        ],
+    ]
 );
 ```
 
@@ -98,27 +99,28 @@ $post = Post::findFirst();
 
 // Get comments related to a post, also cache it
 $comments = $post->getComments(
-[
-    'cache' => [
-        'key' => 'my-key',
-    ],
-]
+    [
+        'cache' => [
+            'key' => 'my-key',
+        ],
+    ]
 );
 
 // Get comments related to a post, setting lifetime
 $comments = $post->getComments(
-[
-    'cache' => [
-        'key'      => 'my-key',
-        'lifetime' => 3600,
-    ],
-]
+    [
+        'cache' => [
+            'key'      => 'my-key',
+            'lifetime' => 3600,
+        ],
+    ]
 );
 ```
 
 When a cached resultset needs to be invalidated, you can simply delete it from the cache using the key specified as seen above.
 
 Which resultset to cache and for how long is up to the developer, after having evaluated the needs of the application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly. Additionally caching resultsets consumes processing cycles, therefore the cache that was intended to speed up the application actually slows it down. Resultsets that do not change frequently should be cached to minimize the database interactions. The decision on where to use caching and for how long is dictated by the application needs.
+
 
 ## Forcing Cache
 Earlier we saw how [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
@@ -128,12 +130,12 @@ Earlier we saw how [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) integrates w
 
 // Cache the resultset for only for 5 minutes
 $products = Products::find(
-[
-    'cache' => [
-        'key'      => 'my-cache',
-        'lifetime' => 300,
-    ],
-]
+    [
+        'cache' => [
+            'key'      => 'my-cache',
+            'lifetime' => 300,
+        ],
+    ]
 );
 ```
 
@@ -146,48 +148,48 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-/**
- * Implement a method that returns a string key based
- * on the query parameters
- */
-protected static function _createKey($parameters)
-{
-    $uniqueKey = [];
+    /**
+     * Implement a method that returns a string key based
+     * on the query parameters
+     */
+    protected static function _createKey($parameters)
+    {
+        $uniqueKey = [];
 
-    foreach ($parameters as $key => $value) {
-        if (is_scalar($value)) {
-            $uniqueKey[] = $key . ':' . $value;
-        } elseif (is_array($value)) {
-            $uniqueKey[] = $key . ':[' . self::_createKey($value) . ']';
+        foreach ($parameters as $key => $value) {
+            if (is_scalar($value)) {
+                $uniqueKey[] = $key . ':' . $value;
+            } elseif (is_array($value)) {
+                $uniqueKey[] = $key . ':[' . self::_createKey($value) . ']';
+            }
         }
+
+        return join(',', $uniqueKey);
     }
 
-    return join(',', $uniqueKey);
-}
+    public static function find($parameters = null)
+    {
+        // Convert the parameters to an array
+        if (!is_array($parameters)) {
+            $parameters = [$parameters];
+        }
 
-public static function find($parameters = null)
-{
-    // Convert the parameters to an array
-    if (!is_array($parameters)) {
-        $parameters = [$parameters];
+        // Check if a cache key wasn't passed
+        // and create the cache parameters
+        if (!isset($parameters['cache'])) {
+            $parameters['cache'] = [
+                'key'      => self::_createKey($parameters),
+                'lifetime' => 300,
+            ];
+        }
+
+        return parent::find($parameters);
     }
 
-    // Check if a cache key wasn't passed
-    // and create the cache parameters
-    if (!isset($parameters['cache'])) {
-        $parameters['cache'] = [
-            'key'      => self::_createKey($parameters),
-            'lifetime' => 300,
-        ];
+    public static function findFirst($parameters = null)
+    {
+        // ...
     }
-
-    return parent::find($parameters);
-}
-
-public static function findFirst($parameters = null)
-{
-    // ...
-}
 }
 ```
 
@@ -202,20 +204,20 @@ use Phalcon\Mvc\Model;
 
 class CacheableModel extends Model
 {
-protected static function _createKey($parameters)
-{
-    // ... Create a cache key based on the parameters
-}
+    protected static function _createKey($parameters)
+    {
+        // ... Create a cache key based on the parameters
+    }
 
-public static function find($parameters = null)
-{
-    // ... Custom caching strategy
-}
+    public static function find($parameters = null)
+    {
+        // ... Custom caching strategy
+    }
 
-public static function findFirst($parameters = null)
-{
-    // ... Custom caching strategy
-}
+    public static function findFirst($parameters = null)
+    {
+        // ... Custom caching strategy
+    }
 }
 ```
 
@@ -230,6 +232,7 @@ class Robots extends CacheableModel
 }
 ```
 
+
 ## Caching PHQL Queries
 Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -241,18 +244,19 @@ $phql = 'SELECT * FROM Cars WHERE name = :name:';
 $query = $this->modelsManager->createQuery($phql);
 
 $query->cache(
-[
-    'key'      => 'cars-by-name',
-    'lifetime' => 300,
-]
+    [
+        'key'      => 'cars-by-name',
+        'lifetime' => 300,
+    ]
 );
 
 $cars = $query->execute(
-[
-    'name' => 'Audi',
-]
+    [
+        'name' => 'Audi',
+    ]
 );
 ```
+
 
 ## Reusable Related Records
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
@@ -280,12 +284,12 @@ This example is very simple, a customer is queried and can be used as required, 
 $invoices = Invoices::find();
 
 foreach ($invoices as $invoice) {
-// Get the customer related to the invoice
-// SELECT * FROM customers WHERE id = ?;
-$customer = $invoice->customer;
+    // Get the customer related to the invoice
+    // SELECT * FROM customers WHERE id = ?;
+    $customer = $invoice->customer;
 
-// Print his/her name
-echo $customer->name, "\n";
+    // Print his/her name
+    echo $customer->name, "\n";
 }
 ```
 
@@ -298,21 +302,22 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        'customers_id',
-        'Customer',
-        'id',
-        [
-            'reusable' => true,
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'customers_id',
+            'Customer',
+            'id',
+            [
+                'reusable' => true,
+            ]
+        );
+    }
 }
 ```
 
 Note that this type of cache works in memory only, this means that cached data are released when the request is terminated.
+
 
 ## Caching Related Records
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
@@ -347,12 +352,13 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public static function findFirst($parameters = null)
-{
-    // ... Custom caching strategy
-}
+    public static function findFirst($parameters = null)
+    {
+        // ... Custom caching strategy
+    }
 }
 ```
+
 
 ## Caching Related Records Recursively
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
@@ -364,58 +370,58 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-protected static function _createKey($parameters)
-{
-    // ... Create a cache key based on the parameters
-}
+    protected static function _createKey($parameters)
+    {
+        // ... Create a cache key based on the parameters
+    }
 
-protected static function _getCache($key)
-{
-    // Returns data from a cache
-}
+    protected static function _getCache($key)
+    {
+        // Returns data from a cache
+    }
 
-protected static function _setCache($key, $results)
-{
-    // Stores data in the cache
-}
+    protected static function _setCache($key, $results)
+    {
+        // Stores data in the cache
+    }
 
-public static function find($parameters = null)
-{
-    // Create a unique key
-    $key = self::_createKey($parameters);
+    public static function find($parameters = null)
+    {
+        // Create a unique key
+        $key = self::_createKey($parameters);
 
-    // Check if there are data in the cache
-    $results = self::_getCache($key);
+        // Check if there are data in the cache
+        $results = self::_getCache($key);
 
-    // Valid data is an object
-    if (is_object($results)) {
+        // Valid data is an object
+        if (is_object($results)) {
+            return $results;
+        }
+
+        $results = [];
+
+        $invoices = parent::find($parameters);
+
+        foreach ($invoices as $invoice) {
+            // Query the related customer
+            $customer = $invoice->customer;
+
+            // Assign it to the record
+            $invoice->customer = $customer;
+
+            $results[] = $invoice;
+        }
+
+        // Store the invoices in the cache + their customers
+        self::_setCache($key, $results);
+
         return $results;
     }
 
-    $results = [];
-
-    $invoices = parent::find($parameters);
-
-    foreach ($invoices as $invoice) {
-        // Query the related customer
-        $customer = $invoice->customer;
-
-        // Assign it to the record
-        $invoice->customer = $customer;
-
-        $results[] = $invoice;
+    public function initialize()
+    {
+        // Add relations and initialize other stuff
     }
-
-    // Store the invoices in the cache + their customers
-    self::_setCache($key, $results);
-
-    return $results;
-}
-
-public function initialize()
-{
-    // Add relations and initialize other stuff
-}
 }
 ```
 
@@ -428,34 +434,35 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    // Add relations and initialize other stuff
-}
+    public function initialize()
+    {
+        // Add relations and initialize other stuff
+    }
 
-protected static function _createKey($conditions, $params)
-{
-    // ... Create a cache key based on the parameters
-}
+    protected static function _createKey($conditions, $params)
+    {
+        // ... Create a cache key based on the parameters
+    }
 
-public function getInvoicesCustomers($conditions, $params = null)
-{
-    $phql = 'SELECT Invoices.*, Customers.* FROM Invoices JOIN Customers WHERE ' . $conditions;
+    public function getInvoicesCustomers($conditions, $params = null)
+    {
+        $phql = 'SELECT Invoices.*, Customers.* FROM Invoices JOIN Customers WHERE ' . $conditions;
 
-    $query = $this->getModelsManager()->executeQuery($phql);
+        $query = $this->getModelsManager()->executeQuery($phql);
 
-    $query->cache(
-        [
-            'key'      => self::_createKey($conditions, $params),
-            'lifetime' => 300,
-        ]
-    );
+        $query->cache(
+            [
+                'key'      => self::_createKey($conditions, $params),
+                'lifetime' => 300,
+            ]
+        );
 
-    return $query->execute($params);
-}
+        return $query->execute($params);
+    }
 
 }
 ```
+
 
 ## Caching based on Conditions
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
@@ -475,25 +482,25 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public static function queryCache($initial, $final)
-{
-    if ($initial >= 1 && $final < 10000) {
-        $service = 'mongo1';
-    } elseif ($initial >= 10000 && $final <= 20000) {
-        $service = 'mongo2';
-    } elseif ($initial > 20000) {
-        $service = 'mongo3';
-    }
+    public static function queryCache($initial, $final)
+    {
+        if ($initial >= 1 && $final < 10000) {
+            $service = 'mongo1';
+        } elseif ($initial >= 10000 && $final <= 20000) {
+            $service = 'mongo2';
+        } elseif ($initial > 20000) {
+            $service = 'mongo3';
+        }
 
-    return self::find(
-        [
-            'id >= ' . $initial . ' AND id <= ' . $final,
-            'cache' => [
-                'service' => $service,
-            ],
-        ]
-    );
-}
+        return self::find(
+            [
+                'id >= ' . $initial . ' AND id <= ' . $final,
+                'cache' => [
+                    'service' => $service,
+                ],
+            ]
+        );
+    }
 }
 ```
 
@@ -507,11 +514,11 @@ $robots = Robots::find("id > 100 AND type = 'A'");
 $robots = Robots::find("(id > 100 AND type = 'A') AND id < 2000");
 
 $robots = Robots::find(
-[
-    "(id > ?0 AND type = 'A') AND id < ?1",
-    'bind'  => [100, 2000],
-    'order' => 'type',
-]
+    [
+        "(id > ?0 AND type = 'A') AND id < ?1",
+        'bind'  => [100, 2000],
+        'order' => 'type',
+    ]
 );
 ```
 
@@ -526,26 +533,26 @@ use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
 
 class CustomQueryBuilder extends QueryBuilder
 {
-public function getQuery()
-{
-    $query = new CustomQuery($this->getPhql());
+    public function getQuery()
+    {
+        $query = new CustomQuery($this->getPhql());
 
-    $query->setDI($this->getDI());
+        $query->setDI($this->getDI());
+        
+        if ( is_array($this->_bindParams) ) {
+            $query->setBindParams($this->_bindParams);
+        }
 
-    if ( is_array($this->_bindParams) ) {
-        $query->setBindParams($this->_bindParams);
+        if ( is_array($this->_bindTypes) ) {
+            $query->setBindTypes($this->_bindTypes);
+        }
+
+        if ( is_array($this->_sharedLock) ) {
+            $query->setSharedLock($this->_sharedLock);
+        }
+
+        return $query;
     }
-
-    if ( is_array($this->_bindTypes) ) {
-        $query->setBindTypes($this->_bindTypes);
-    }
-
-    if ( is_array($this->_sharedLock) ) {
-        $query->setSharedLock($this->_sharedLock);
-    }
-
-    return $query;
-}
 }
 ```
 
@@ -558,51 +565,51 @@ use Phalcon\Mvc\Model\Query as ModelQuery;
 
 class CustomQuery extends ModelQuery
 {
-/**
- * The execute method is overridden
- */
-public function execute($params = null, $types = null)
-{
-    // Parse the intermediate representation for the SELECT
-    $ir = $this->parse();
+    /**
+     * The execute method is overridden
+     */
+    public function execute($params = null, $types = null)
+    {
+        // Parse the intermediate representation for the SELECT
+        $ir = $this->parse();
 
-    if ( is_array($this->_bindParams) ) {
-        $params = array_merge($this->_bindParams, (array)$params);
-    }
+        if ( is_array($this->_bindParams) ) {
+            $params = array_merge($this->_bindParams, (array)$params);
+        }
 
-    if ( is_array($this->_bindTypes) ) {
-        $types = array_merge($this->_bindTypes, (array)$types);
-    }
+        if ( is_array($this->_bindTypes) ) {
+            $types = array_merge($this->_bindTypes, (array)$types);
+        }
 
-    // Check if the query has conditions
-    if (isset($ir['where'])) {
-        // The fields in the conditions can have any order
-        // We need to recursively check the conditions tree
-        // to find the info we're looking for
-        $visitor = new CustomNodeVisitor();
+        // Check if the query has conditions
+        if (isset($ir['where'])) {
+            // The fields in the conditions can have any order
+            // We need to recursively check the conditions tree
+            // to find the info we're looking for
+            $visitor = new CustomNodeVisitor();
 
-        // Recursively visits the nodes
-        $visitor->visit($ir['where']);
+            // Recursively visits the nodes
+            $visitor->visit($ir['where']);
 
-        $initial = $visitor->getInitial();
-        $final   = $visitor->getFinal();
+            $initial = $visitor->getInitial();
+            $final   = $visitor->getFinal();
 
-        // Select the cache according to the range
+            // Select the cache according to the range
+            // ...
+
+            // Check if the cache has data
+            // ...
+        }
+
+        // Execute the query
+        $result = $this->_executeSelect($ir, $params, $types);
+        $result = $this->_uniqueRow ? $result->getFirst() : $result;
+
+        // Cache the result
         // ...
 
-        // Check if the cache has data
-        // ...
+        return $result;
     }
-
-    // Execute the query
-    $result = $this->_executeSelect($ir, $params, $types);
-    $result = $this->_uniqueRow ? $result->getFirst() : $result;
-
-    // Cache the result
-    // ...
-
-    return $result;
-}
 }
 ```
 
@@ -613,69 +620,69 @@ Implementing a helper (`CustomNodeVisitor`) that recursively checks the conditio
 
 class CustomNodeVisitor
 {
-protected $_initial = 0;
+    protected $_initial = 0;
 
-protected $_final = 25000;
+    protected $_final = 25000;
 
-public function visit($node)
-{
-    switch ($node['type']) {
-        case 'binary-op':
-            $left  = $this->visit($node['left']);
-            $right = $this->visit($node['right']);
+    public function visit($node)
+    {
+        switch ($node['type']) {
+            case 'binary-op':
+                $left  = $this->visit($node['left']);
+                $right = $this->visit($node['right']);
 
-            if (!$left || !$right) {
+                if (!$left || !$right) {
+                    return false;
+                }
+
+                if ($left === 'id') {
+                    if ($node['op'] === '>') {
+                        $this->_initial = $right;
+                    }
+
+                    if ($node['op'] === '=') {
+                        $this->_initial = $right;
+                    }
+
+                    if ($node['op'] === '>=') {
+                        $this->_initial = $right;
+                    }
+
+                    if ($node['op'] === '<') {
+                        $this->_final = $right;
+                    }
+
+                    if ($node['op'] === '<=') {
+                        $this->_final = $right;
+                    }
+                }
+
+                break;
+
+            case 'qualified':
+                if ($node['name'] === 'id') {
+                    return 'id';
+                }
+
+                break;
+
+            case 'literal':
+                return $node['value'];
+
+            default:
                 return false;
-            }
-
-            if ($left === 'id') {
-                if ($node['op'] === '>') {
-                    $this->_initial = $right;
-                }
-
-                if ($node['op'] === '=') {
-                    $this->_initial = $right;
-                }
-
-                if ($node['op'] === '>=') {
-                    $this->_initial = $right;
-                }
-
-                if ($node['op'] === '<') {
-                    $this->_final = $right;
-                }
-
-                if ($node['op'] === '<=') {
-                    $this->_final = $right;
-                }
-            }
-
-            break;
-
-        case 'qualified':
-            if ($node['name'] === 'id') {
-                return 'id';
-            }
-
-            break;
-
-        case 'literal':
-            return $node['value'];
-
-        default:
-            return false;
+        }
     }
-}
 
-public function getInitial()
-{
-    return $this->_initial;
-}
+    public function getInitial()
+    {
+        return $this->_initial;
+    }
 
-public function getFinal()
-{
-    return $this->_final;
-}
+    public function getFinal()
+    {
+        return $this->_final;
+    }
 }
 ```
 
@@ -688,26 +695,27 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public static function find($parameters = null)
-{
-    if (!is_array($parameters)) {
-        $parameters = [$parameters];
+    public static function find($parameters = null)
+    {
+        if (!is_array($parameters)) {
+            $parameters = [$parameters];
+        }
+
+        $builder = new CustomQueryBuilder($parameters);
+
+        $builder->from(get_called_class());
+
+        $query = $builder->getQuery();
+
+        if (isset($parameters['bind'])) {
+            return $query->execute($parameters['bind']);
+        } else {
+            return $query->execute();
+        }
     }
-
-    $builder = new CustomQueryBuilder($parameters);
-
-    $builder->from(get_called_class());
-
-    $query = $builder->getQuery();
-
-    if (isset($parameters['bind'])) {
-        return $query->execute($parameters['bind']);
-    } else {
-        return $query->execute();
-    }
-}
 }
 ```
+
 
 ## Caching PHQL execution plan
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
@@ -716,11 +724,11 @@ As well as most moderns database systems PHQL internally caches the execution pl
 <?php
 
 for ($i = 1; $i <= 10; $i++) {
-$phql = 'SELECT * FROM Store\Robots WHERE id = ' . $i;
+    $phql = 'SELECT * FROM Store\Robots WHERE id = ' . $i;
 
-$robots = $this->modelsManager->executeQuery($phql);
+    $robots = $this->modelsManager->executeQuery($phql);
 
-// ...
+    // ...
 }
 ```
 
@@ -732,14 +740,14 @@ In the above example, ten plans were generated increasing the memory usage and p
 $phql = 'SELECT * FROM Store\Robots WHERE id = ?0';
 
 for ($i = 1; $i <= 10; $i++) {
-$robots = $this->modelsManager->executeQuery(
-    $phql,
-    [
-        $i,
-    ]
-);
+    $robots = $this->modelsManager->executeQuery(
+        $phql,
+        [
+            $i,
+        ]
+    );
 
-// ...
+    // ...
 }
 ```
 
@@ -753,14 +761,14 @@ $phql = 'SELECT * FROM Store\Robots WHERE id = ?0';
 $query = $this->modelsManager->createQuery($phql);
 
 for ($i = 1; $i <= 10; $i++) {
-$robots = $query->execute(
-    $phql,
-    [
-        $i,
-    ]
-);
+    $robots = $query->execute(
+        $phql,
+        [
+            $i,
+        ]
+    );
 
-// ...
+    // ...
 }
 ```
 

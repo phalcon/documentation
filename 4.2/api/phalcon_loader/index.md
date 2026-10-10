@@ -17,20 +17,21 @@ All classes are prefixed with `Phalcon`
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Loader.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Autoload`
 
 -   __Uses__
-
+    
     - `Phalcon\Events\AbstractEventsAware`
 
 -   __Extends__
-
+    
     `AbstractEventsAware`
 
 -   __Implements__
-
+    
 This component helps to load your project classes automatically based on some
 conventions
 
@@ -42,11 +43,11 @@ $loader = new Loader();
 
 // Register some namespaces
 $loader->registerNamespaces(
-[
-    "Example\\Base"    => "vendor/example/base/",
-    "Example\\Adapter" => "vendor/example/adapter/",
-    "Example"          => "vendor/example/",
-]
+    [
+        "Example\\Base"    => "vendor/example/base/",
+        "Example\\Adapter" => "vendor/example/adapter/",
+        "Example"          => "vendor/example/",
+    ]
 );
 
 // Register autoloader
@@ -55,6 +56,7 @@ $loader->register();
 // Requiring this class will automatically include file vendor/example/adapter/Some.php
 $adapter = new \Example\Adapter\Some();
 ```
+
 
 ## Properties
 ```php
@@ -115,65 +117,78 @@ public function autoLoad( string $className ): bool;
 ```
 Autoloads the registered classes
 
+
 ```php
 public function getCheckedPath(): string;
 ```
 Get the path the loader is checking for a path
+
 
 ```php
 public function getClasses(): array;
 ```
 Returns the class-map currently registered in the autoloader
 
+
 ```php
 public function getDirs(): array;
 ```
 Returns the directories currently registered in the autoloader
+
 
 ```php
 public function getEventsManager(): ManagerInterface;
 ```
 Returns the internal event manager
 
+
 ```php
 public function getExtensions(): array;
 ```
 Returns the file extensions registered in the loader
+
 
 ```php
 public function getFiles(): array;
 ```
 Returns the files currently registered in the autoloader
 
+
 ```php
 public function getFoundPath(): string;
 ```
 Get the path when a class was found
+
 
 ```php
 public function getNamespaces(): array;
 ```
 Returns the namespaces currently registered in the autoloader
 
+
 ```php
 public function loadFiles(): void;
 ```
 Checks if a file exists and then adds the file by doing virtual require
+
 
 ```php
 public function register( bool $prepend = bool ): Loader;
 ```
 Register the autoload method
 
+
 ```php
 public function registerClasses( array $classes, bool $merge = bool ): Loader;
 ```
 Register classes and their locations
 
+
 ```php
 public function registerDirs( array $directories, bool $merge = bool ): Loader;
 ```
 Register directories in which "not found" classes could be found
+
 
 ```php
 public function registerFiles( array $files, bool $merge = bool ): Loader;
@@ -181,21 +196,25 @@ public function registerFiles( array $files, bool $merge = bool ): Loader;
 Registers files that are "non-classes" hence need a "require". This is
 very useful for including files that only have functions
 
+
 ```php
 public function registerNamespaces( array $namespaces, bool $merge = bool ): Loader;
 ```
 Register namespaces and their related directories
+
 
 ```php
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 Sets the events manager
 
+
 ```php
 public function setExtensions( array $extensions ): Loader;
 ```
 Sets an array of file extensions that the loader must try in each attempt
 to locate the file
+
 
 ```php
 public function setFileCheckingCallback( mixed $callback = null ): Loader;
@@ -214,27 +233,35 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
+
 ```php
 public function unregister(): Loader;
 ```
 Unregister the autoload method
 
+
 ```php
 protected function prepareNamespace( array $namespaceName ): array;
 ```
 
+
+
+
+
 ## Loader\Exception 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Autoload/Exception.zep)
+
 
 -   __Namespace__
 
     - `Phalcon\Autoload`
 
 -   __Uses__
+    
 
 -   __Extends__
-
+    
     `\Exception`
 
 -   __Implements__

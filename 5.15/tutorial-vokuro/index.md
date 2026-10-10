@@ -109,7 +109,7 @@ root@c7b43060b115:/code $ php -v
 PHP 8.1.8 (cli) (built: Jul 12 2022 08:28:43) (NTS)
 Copyright (c) The PHP Group
 Zend Engine v4.1.8, Copyright (c) Zend Technologies
-with Xdebug v3.1.5, Copyright (c) 2002-2022, by Derick Rethans
+    with Xdebug v3.1.5, Copyright (c) 2002-2022, by Derick Rethans
 ```
 
 and Phalcon:
@@ -128,31 +128,31 @@ Looking at the structure of the application we have the following:
 
 ```bash
 vokuro/
-.ci
-configs
-db
-    migrations
-    seeds
-public
-resources
-src
-    Controllers
-    Forms
-    Models
-    Phalcon
-    Plugins
-    Providers
-tests
-themes
-    vokuro
-var
-    cache
-        acl
-        metaData
-        session
-        volt
-    logs
-vendor
+    .ci
+    configs
+    db
+        migrations
+        seeds
+    public
+    resources
+    src
+        Controllers
+        Forms
+        Models
+        Phalcon
+        Plugins
+        Providers
+    tests
+    themes
+        vokuro
+    var
+        cache
+            acl
+            metaData
+            session
+            volt
+        logs
+    vendor
 ```
 
 | Directory         | Description                                            |
@@ -327,12 +327,12 @@ Looking at `composer.json` the required packages are:
 
 ```json
 "require": {
-"php": ">=8.0",
-"ext-openssl": "*",
-"ext-phalcon": "~5.0.0",
-"robmorgan/phinx": "^0.11.1",
-"swiftmailer/swiftmailer": "^5.4",
-"vlucas/phpdotenv": "^3.4"
+    "php": ">=8.0",
+    "ext-openssl": "*",
+    "ext-phalcon": "~5.0.0",
+    "robmorgan/phinx": "^0.11.1",
+    "swiftmailer/swiftmailer": "^5.4",
+    "vlucas/phpdotenv": "^3.4"
 }
 ```
 
@@ -369,14 +369,14 @@ error_reporting(E_ALL);
 $rootPath = dirname(__DIR__);
 
 try {
-require_once $rootPath . '/vendor/autoload.php';
+    require_once $rootPath . '/vendor/autoload.php';
 
-Dotenv\Dotenv::create($rootPath)->load();
+    Dotenv\Dotenv::create($rootPath)->load();
 
-echo (new VokuroApplication($rootPath))->run();
+    echo (new VokuroApplication($rootPath))->run();
 } catch (Exception $e) {
-echo $e->getMessage(), '<br>';
-echo nl2br(htmlentities($e->getTraceAsString()));
+    echo $e->getMessage(), '<br>';
+    echo nl2br(htmlentities($e->getTraceAsString()));
 }
 ```
 
@@ -395,12 +395,12 @@ classes from the `src` folder.
 
 ```json
 "autoload": {
-"psr-4": {
-    "Vokuro\\": "app/"
-},
-"files": [
-    "app/Helpers.php"
-]
+    "psr-4": {
+        "Vokuro\\": "app/"
+    },
+    "files": [
+        "app/Helpers.php"
+    ]
 }
 ```
 
@@ -431,88 +431,88 @@ use Phalcon\Mvc\Application as MvcApplication;
 
 class Application
 {
-const APPLICATION_PROVIDER = 'bootstrap';
+    const APPLICATION_PROVIDER = 'bootstrap';
 
-/**
- * @var AbstractApplication
- */
-protected $app;
+    /**
+     * @var AbstractApplication
+     */
+    protected $app;
 
-/**
- * @var DiInterface
- */
-protected $di;
+    /**
+     * @var DiInterface
+     */
+    protected $di;
 
-/**
- * @var string
- */
-protected $rootPath;
+    /**
+     * @var string
+     */
+    protected $rootPath;
 
-/**
- * @param string $rootPath
- *
- * @throws Exception
- */
-public function __construct(string $rootPath)
-{
-    $this->di       = new FactoryDefault();
-    $this->app      = $this->createApplication();
-    $this->rootPath = $rootPath;
+    /**
+     * @param string $rootPath
+     *
+     * @throws Exception
+     */
+    public function __construct(string $rootPath)
+    {
+        $this->di       = new FactoryDefault();
+        $this->app      = $this->createApplication();
+        $this->rootPath = $rootPath;
 
-    $this->di->setShared(self::APPLICATION_PROVIDER, $this);
+        $this->di->setShared(self::APPLICATION_PROVIDER, $this);
 
-    $this->initializeProviders();
-}
-
-/**
- * @return string
- * @throws Exception
- */
-public function run(): string
-{
-    return (string) $this
-        ->app
-        ->handle($_SERVER['REQUEST_URI'])
-        ->getContent()
-    ;
-}
-
-/**
- * @return string
- */
-public function getRootPath(): string
-{
-    return $this->rootPath;
-}
-
-/**
- * @return AbstractApplication
- */
-protected function createApplication(): AbstractApplication
-{
-    return new MvcApplication($this->di);
-}
-
-/**
- * @throws Exception
- */
-protected function initializeProviders(): void
-{
-    $filename = $this->rootPath 
-             . '/configs/providers.php';
-    if (!file_exists($filename) || !is_readable($filename)) {
-        throw new Exception(
-            'File providers.php does not exist or is not readable.'
-        );
+        $this->initializeProviders();
     }
 
-    $providers = include_once $filename;
-    foreach ($providers as $providerClass) {
-        /** @var ServiceProviderInterface $provider */
-        $provider = new $providerClass;
-        $provider->register($this->di);
+    /**
+     * @return string
+     * @throws Exception
+     */
+    public function run(): string
+    {
+        return (string) $this
+            ->app
+            ->handle($_SERVER['REQUEST_URI'])
+            ->getContent()
+        ;
     }
-}
+
+    /**
+     * @return string
+     */
+    public function getRootPath(): string
+    {
+        return $this->rootPath;
+    }
+
+    /**
+     * @return AbstractApplication
+     */
+    protected function createApplication(): AbstractApplication
+    {
+        return new MvcApplication($this->di);
+    }
+
+    /**
+     * @throws Exception
+     */
+    protected function initializeProviders(): void
+    {
+        $filename = $this->rootPath 
+                 . '/configs/providers.php';
+        if (!file_exists($filename) || !is_readable($filename)) {
+            throw new Exception(
+                'File providers.php does not exist or is not readable.'
+            );
+        }
+
+        $providers = include_once $filename;
+        foreach ($providers as $providerClass) {
+            /** @var ServiceProviderInterface $provider */
+            $provider = new $providerClass;
+            $provider->register($this->di);
+        }
+    }
 }
 
 ```
@@ -594,37 +594,37 @@ use Phalcon\Mvc\Model;
 
 class SuccessLogins extends Model
 {
-/**
- * @var integer
- */
-public $id;
+    /**
+     * @var integer
+     */
+    public $id;
 
-/**
- * @var integer
- */
-public $usersId;
+    /**
+     * @var integer
+     */
+    public $usersId;
 
-/**
- * @var string
- */
-public $ipAddress;
+    /**
+     * @var string
+     */
+    public $ipAddress;
 
-/**
- * @var string
- */
-public $userAgent;
+    /**
+     * @var string
+     */
+    public $userAgent;
 
-public function initialize()
-{
-    $this->belongsTo(
-        'usersId', 
-        Users::class, 
-        'id', 
-        [
-            'alias' => 'user',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'usersId', 
+            Users::class, 
+            'id', 
+            [
+                'alias' => 'user',
+            ]
+        );
+    }
 }
 ```
 
@@ -849,14 +849,14 @@ use Vokuro\Models\Users;
  */
 class SessionController extends ControllerBase
 {
-public function signupAction()
-{
-    $form = new SignUpForm();
+    public function signupAction()
+    {
+        $form = new SignUpForm();
 
-    // ....
+        // ....
 
-    $this->view->setVar('form', $form);
-}
+        $this->view->setVar('form', $form);
+    }
 }
 ```
 
@@ -917,148 +917,148 @@ use Phalcon\Validation\Validator\StringLength;
 
 class SignUpForm extends Form
 {
-/**
- * @param string|null $entity
- * @param array       $options
- */
-public function initialize(
-    string $entity = null, 
-    array $options = []
-) {
-    $name = new Text('name');
-    $name->setLabel('Name');
-    $name->addValidators(
-        [
-            new PresenceOf(
-                [
-                    'message' => 'The name is required',
-                ]
-            ),
-        ]
-    );
-
-    $this->add($name);
-
-    $email = new Text('email');
-    $email->setLabel('E-Mail');
-    $email->addValidators(
-        [
-            new PresenceOf(
-                [
-                    'message' => 'The e-mail is required',
-                ]
-            ),
-            new Email(
-                [
-                    'message' => 'The e-mail is not valid',
-                ]
-            ),
-        ]
-    );
-
-    $this->add($email);
-
-    $password = new Password('password');
-    $password->setLabel('Password');
-    $password->addValidators(
-        [
-            new PresenceOf(
-                [
-                    'message' => 'The password is required',
-                ]
-            ),
-            new StringLength(
-                [
-                    'min'            => 8,
-                    'messageMinimum' => 'Password is too short. ' .
-                                        'Minimum 8 characters',
-                ]
-            ),
-            new Confirmation(
-                [
-                    'message' => "Password doesn't match " .
-                                 "confirmation",
-                    'with'    => 'confirmPassword',
-                ]
-            ),
-        ]
-    );
-
-    $this->add($password);
-
-    $confirmPassword = new Password('confirmPassword');
-    $confirmPassword->setLabel('Confirm Password');
-    $confirmPassword->addValidators(
-        [
-            new PresenceOf(
-                [
-                    'message' => 'The confirmation password ' .
-                                 'is required',
-                ]
-            ),
-        ]
-    );
-
-    $this->add($confirmPassword);
-
-    $terms = new Check(
-        'terms', 
-        [
-            'value' => 'yes',
-        ]
-    );
-
-    $terms->setLabel('Accept terms and conditions');
-    $terms->addValidator(
-        new Identical(
+    /**
+     * @param string|null $entity
+     * @param array       $options
+     */
+    public function initialize(
+        string $entity = null, 
+        array $options = []
+    ) {
+        $name = new Text('name');
+        $name->setLabel('Name');
+        $name->addValidators(
             [
-                'value'   => 'yes',
-                'message' => 'Terms and conditions must be ' .
-                             'accepted',
+                new PresenceOf(
+                    [
+                        'message' => 'The name is required',
+                    ]
+                ),
             ]
-        )
-    );
+        );
 
-    $this->add($terms);
+        $this->add($name);
 
-    $csrf = new Hidden('csrf');
-    $csrf->addValidator(
-        new Identical(
+        $email = new Text('email');
+        $email->setLabel('E-Mail');
+        $email->addValidators(
             [
-                'value'   => $this->security->getRequestToken(),
-                'message' => 'CSRF validation failed',
+                new PresenceOf(
+                    [
+                        'message' => 'The e-mail is required',
+                    ]
+                ),
+                new Email(
+                    [
+                        'message' => 'The e-mail is not valid',
+                    ]
+                ),
             ]
-        )
-    );
-    $csrf->clear();
+        );
 
-    $this->add($csrf);
+        $this->add($email);
 
-    $this->add(
-        new Submit(
-            'Sign Up', 
+        $password = new Password('password');
+        $password->setLabel('Password');
+        $password->addValidators(
             [
-                'class' => 'btn btn-success',
+                new PresenceOf(
+                    [
+                        'message' => 'The password is required',
+                    ]
+                ),
+                new StringLength(
+                    [
+                        'min'            => 8,
+                        'messageMinimum' => 'Password is too short. ' .
+                                            'Minimum 8 characters',
+                    ]
+                ),
+                new Confirmation(
+                    [
+                        'message' => "Password doesn't match " .
+                                     "confirmation",
+                        'with'    => 'confirmPassword',
+                    ]
+                ),
             ]
-        )
-    );
-}
+        );
 
-/**
- * @param string $name
- *
- * @return string
- */
-public function messages(string $name)
-{
-    if ($this->hasMessagesFor($name)) {
-        foreach ($this->getMessagesFor($name) as $message) {
-            return $message;
-        }
+        $this->add($password);
+
+        $confirmPassword = new Password('confirmPassword');
+        $confirmPassword->setLabel('Confirm Password');
+        $confirmPassword->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'The confirmation password ' .
+                                     'is required',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($confirmPassword);
+
+        $terms = new Check(
+            'terms', 
+            [
+                'value' => 'yes',
+            ]
+        );
+
+        $terms->setLabel('Accept terms and conditions');
+        $terms->addValidator(
+            new Identical(
+                [
+                    'value'   => 'yes',
+                    'message' => 'Terms and conditions must be ' .
+                                 'accepted',
+                ]
+            )
+        );
+
+        $this->add($terms);
+
+        $csrf = new Hidden('csrf');
+        $csrf->addValidator(
+            new Identical(
+                [
+                    'value'   => $this->security->getRequestToken(),
+                    'message' => 'CSRF validation failed',
+                ]
+            )
+        );
+        $csrf->clear();
+
+        $this->add($csrf);
+
+        $this->add(
+            new Submit(
+                'Sign Up', 
+                [
+                    'class' => 'btn btn-success',
+                ]
+            )
+        );
     }
 
-    return '';
-}
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
+    public function messages(string $name)
+    {
+        if ($this->hasMessagesFor($name)) {
+            foreach ($this->getMessagesFor($name) as $message) {
+                return $message;
+            }
+        }
+
+        return '';
+    }
 }
 ```
 
@@ -1083,18 +1083,18 @@ declare(strict_types=1);
 $email = new Text('email');
 $email->setLabel('E-Mail');
 $email->addValidators(
-[
-    new PresenceOf(
-        [
-            'message' => 'The e-mail is required',
-        ]
-    ),
-    new Email(
-        [
-            'message' => 'The e-mail is not valid',
-        ]
-    ),
-]
+    [
+        new PresenceOf(
+            [
+                'message' => 'The e-mail is required',
+            ]
+        ),
+        new Email(
+            [
+                'message' => 'The e-mail is not valid',
+            ]
+        ),
+    ]
 );
 
 $this->add($email);
@@ -1140,58 +1140,58 @@ Our view now needs to _render_ the elements:
 ```twig
 {# ... #}
 {% 
-set isEmailValidClass = form.messages('email') ? 
-    'form-control is-invalid' : 
-    'form-control' 
+    set isEmailValidClass = form.messages('email') ? 
+        'form-control is-invalid' : 
+        'form-control' 
 %}
 {# ... #}
 
 <h1 class="mt-3">Sign Up</h1>
 
 <form method="post">
-{# ... #}
+    {# ... #}
 
-<div class="form-group row">
-    {{ 
-        form.label(
-            'email', 
-            [
-                'class': 'col-sm-2 col-form-label'
-            ]
-        ) 
-    }}
-    <div class="col-sm-10">
+    <div class="form-group row">
         {{ 
-            form.render(
+            form.label(
                 'email', 
                 [
-                    'class': isEmailValidClass, 
-                    'placeholder': 'Email'
+                    'class': 'col-sm-2 col-form-label'
                 ]
             ) 
         }}
-        <div class="invalid-feedback">
-            {{ form.messages('email') }}
+        <div class="col-sm-10">
+            {{ 
+                form.render(
+                    'email', 
+                    [
+                        'class': isEmailValidClass, 
+                        'placeholder': 'Email'
+                    ]
+                ) 
+            }}
+            <div class="invalid-feedback">
+                {{ form.messages('email') }}
+            </div>
         </div>
     </div>
-</div>
 
-{# ... #}
-<div class="form-group row">
-    <div class="col-sm-10">
-        {{ 
-            form.render(
-                'csrf', 
-                [
-                    'value': security.getToken()
-                ]
-            ) 
-        }}
-        {{ form.messages('csrf') }}
+    {# ... #}
+    <div class="form-group row">
+        <div class="col-sm-10">
+            {{ 
+                form.render(
+                    'csrf', 
+                    [
+                        'value': security.getToken()
+                    ]
+                ) 
+            }}
+            {{ form.messages('csrf') }}
 
-        {{ form.render('Sign Up') }}
+            {{ form.render('Sign Up') }}
+        </div>
     </div>
-</div>
 </form>
 
 <hr>
@@ -1243,53 +1243,53 @@ use Vokuro\Models\Users;
  */
 class SessionController extends ControllerBase
 {
-public function signupAction()
-{
-    $form = new SignUpForm();
+    public function signupAction()
+    {
+        $form = new SignUpForm();
 
-    if (true === $this->request->isPost()) {
-        if (false !== $form->isValid($this->request->getPost())) {
-            $name     = $this
-                ->request
-                ->getPost('name', 'striptags')
-            ;
-            $email    = $this
-                ->request
-                ->getPost('email')
-            ;
-            $password = $this
-                ->request
-                ->getPost('password')
-            ;
-            $password = $this
-                ->security
-                ->hash($password)
-            ;
+        if (true === $this->request->isPost()) {
+            if (false !== $form->isValid($this->request->getPost())) {
+                $name     = $this
+                    ->request
+                    ->getPost('name', 'striptags')
+                ;
+                $email    = $this
+                    ->request
+                    ->getPost('email')
+                ;
+                $password = $this
+                    ->request
+                    ->getPost('password')
+                ;
+                $password = $this
+                    ->security
+                    ->hash($password)
+                ;
 
-            $user = new Users(
-                [
-                    'name'       => $name,
-                    'email'      => $email,
-                    'password'   => $password,
-                    'profilesId' => 2,
-                ]
-            );
+                $user = new Users(
+                    [
+                        'name'       => $name,
+                        'email'      => $email,
+                        'password'   => $password,
+                        'profilesId' => 2,
+                    ]
+                );
 
-            if ($user->save()) {
-                $this->dispatcher->forward([
-                    'controller' => 'index',
-                    'action'     => 'index',
-                ]);
-            }
+                if ($user->save()) {
+                    $this->dispatcher->forward([
+                        'controller' => 'index',
+                        'action'     => 'index',
+                    ]);
+                }
 
-            foreach ($user->getMessages() as $message) {
-                $this->flash->error((string) $message);
+                foreach ($user->getMessages() as $message) {
+                    $this->flash->error((string) $message);
+                }
             }
         }
-    }
 
-    $this->view->setVar('form', $form);
-}
+        $this->view->setVar('form', $form);
+    }
 }
 ```
 
@@ -1320,8 +1320,8 @@ sanitize them. The following example strips the tags from the submitted `name` s
 
 ```php
 $name     = $this
-->request
-->getPost('name', 'striptags')
+    ->request
+    ->getPost('name', 'striptags')
 ;
 ```
 
@@ -1331,8 +1331,8 @@ if someone compromises our database, at least they have no access to clear text 
 
 ```php
 $password = $this
-->security
-->hash($password)
+    ->security
+    ->hash($password)
 ;
 ```
 
@@ -1341,23 +1341,23 @@ sanitized data into it, and then calling `save`:
 
 ```php
 $user = new Users(
-[
-    'name'       => $name,
-    'email'      => $email,
-    'password'   => $password,
-    'profilesId' => 2,
-]
+    [
+        'name'       => $name,
+        'email'      => $email,
+        'password'   => $password,
+        'profilesId' => 2,
+    ]
 );
 
 if ($user->save()) {
-$this
-    ->dispatcher
-    ->forward(
-        [
-            'controller' => 'index',
-            'action'     => 'index',
-        ]
-    );
+    $this
+        ->dispatcher
+        ->forward(
+            [
+                'controller' => 'index',
+                'action'     => 'index',
+            ]
+        );
 }
 ```
 
@@ -1386,21 +1386,21 @@ use Vokuro\Models\SuccessLogins;
 use Vokuro\Models\Users;
 
 $user = Users::findFirst(
-[
-    'conditions' => 'id = :id:',
-    'bind'       => [
-        'id' => 7,
-    ] 
-]
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 7,
+        ] 
+    ]
 );
 
 $logins = SuccessLogin::find(
-[
-    'conditions' => 'userId = :userId:',
-    'bind'       => [
-        'userId' => 7,
-    ] 
-]
+    [
+        'conditions' => 'userId = :userId:',
+        'bind'       => [
+            'userId' => 7,
+        ] 
+    ]
 );
 ```
 
@@ -1416,12 +1416,12 @@ use Vokuro\Models\SuccessLogins;
 use Vokuro\Models\Users;
 
 $user = Users::findFirst(
-[
-    'conditions' => 'id = :id:',
-    'bind'       => [
-        'id' => 7,
-    ] 
-]
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 7,
+        ] 
+    ]
 );
 
 $logins = $user->successLogins;
@@ -1453,59 +1453,59 @@ use Phalcon\Validation\Validator\Uniqueness;
 
 class Users extends Model
 {
-// ...
+    // ...
 
-public function initialize()
-{
-    $this->belongsTo(
-        'profilesId', 
-        Profiles::class, 
-        'id', 
-        [
-            'alias'    => 'profile',
-            'reusable' => true,
-        ]
-    );
+    public function initialize()
+    {
+        $this->belongsTo(
+            'profilesId', 
+            Profiles::class, 
+            'id', 
+            [
+                'alias'    => 'profile',
+                'reusable' => true,
+            ]
+        );
 
-    $this->hasMany(
-        'id', 
-        SuccessLogins::class, 
-        'usersId', 
-        [
-            'alias'      => 'successLogins',
+        $this->hasMany(
+            'id', 
+            SuccessLogins::class, 
+            'usersId', 
+            [
+                'alias'      => 'successLogins',
+                'foreignKey' => [
+                    'message' => 'User cannot be deleted because ' .
+                                 'he/she has activity in the system',
+                ],
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            PasswordChanges::class, 
+            'usersId', 
+            [
+                'alias'      => 'passwordChanges',
+                'foreignKey' => [
+                    'message' => 'User cannot be deleted because ' .
+                                 'he/she has activity in the system',
+                ],
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            ResetPasswords::class, 
+            'usersId', [
+            'alias'      => 'resetPasswords',
             'foreignKey' => [
                 'message' => 'User cannot be deleted because ' .
                              'he/she has activity in the system',
             ],
-        ]
-    );
+        ]);
+    }
 
-    $this->hasMany(
-        'id', 
-        PasswordChanges::class, 
-        'usersId', 
-        [
-            'alias'      => 'passwordChanges',
-            'foreignKey' => [
-                'message' => 'User cannot be deleted because ' .
-                             'he/she has activity in the system',
-            ],
-        ]
-    );
-
-    $this->hasMany(
-        'id', 
-        ResetPasswords::class, 
-        'usersId', [
-        'alias'      => 'resetPasswords',
-        'foreignKey' => [
-            'message' => 'User cannot be deleted because ' .
-                         'he/she has activity in the system',
-        ],
-    ]);
-}
-
-// ...
+    // ...
 }
 ```
 
@@ -1536,35 +1536,35 @@ use Phalcon\Validation\Validator\Uniqueness;
 
 class Users extends Model
 {
-public function beforeValidationOnCreate()
-{
-    if (true === empty($this->password)) {
-        $tempPassword = preg_replace(
-            '/[^a-zA-Z0-9]/', 
-            '', 
-            base64_encode(openssl_random_pseudo_bytes(12))
-        );
+    public function beforeValidationOnCreate()
+    {
+        if (true === empty($this->password)) {
+            $tempPassword = preg_replace(
+                '/[^a-zA-Z0-9]/', 
+                '', 
+                base64_encode(openssl_random_pseudo_bytes(12))
+            );
 
-        $this->mustChangePassword = 'Y';
+            $this->mustChangePassword = 'Y';
 
-        $this->password = $this->getDI()
-                               ->getSecurity()
-                               ->hash($tempPassword)
-        ;
-    } else {
-        $this->mustChangePassword = 'N';
+            $this->password = $this->getDI()
+                                   ->getSecurity()
+                                   ->hash($tempPassword)
+            ;
+        } else {
+            $this->mustChangePassword = 'N';
+        }
+
+        if ($this->getDI()->get('config')->useMail) {
+            $this->active = 'N';
+        } else {
+            $this->active = 'Y';
+        }
+
+        $this->suspended = 'N';
+
+        $this->banned = 'N';
     }
-
-    if ($this->getDI()->get('config')->useMail) {
-        $this->active = 'N';
-    } else {
-        $this->active = 'Y';
-    }
-
-    $this->suspended = 'N';
-
-    $this->banned = 'N';
-}
 }
 ```
 
@@ -1589,25 +1589,25 @@ use Phalcon\Validation\Validator\Uniqueness;
 
 class Users extends Model
 {
-public function afterSave()
-{
-    if ($this->getDI()->get('config')->useMail) {
-        if ($this->active == 'N') {
-            $emailConfirmation          = new EmailConfirmations();
-            $emailConfirmation->usersId = $this->id;
+    public function afterSave()
+    {
+        if ($this->getDI()->get('config')->useMail) {
+            if ($this->active == 'N') {
+                $emailConfirmation          = new EmailConfirmations();
+                $emailConfirmation->usersId = $this->id;
 
-            if ($emailConfirmation->save()) {
-                $this->getDI()
-                     ->getFlash()
-                     ->notice(
-                        'A confirmation mail has ' .
-                        'been sent to ' . $this->email
-                    )
-                ;
+                if ($emailConfirmation->save()) {
+                    $this->getDI()
+                         ->getFlash()
+                         ->notice(
+                            'A confirmation mail has ' .
+                            'been sent to ' . $this->email
+                        )
+                    ;
+                }
             }
         }
     }
-}
 }
 ```
 
@@ -1638,21 +1638,21 @@ use Phalcon\Validation\Validator\Uniqueness;
 
 class Users extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'email', 
-        new Uniqueness(
-            [
-                "message" => "The email is already registered",
-            ]
-        )
-    );
+        $validator->add(
+            'email', 
+            new Uniqueness(
+                [
+                    "message" => "The email is already registered",
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 

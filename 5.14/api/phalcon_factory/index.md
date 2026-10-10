@@ -28,13 +28,14 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - **`Phalcon\Factory\AbstractConfigFactory`**
-- [`Phalcon\Cache\CacheFactory`](/5.14/api/phalcon_cache/#cachecachefactory)
-- [`Phalcon\Factory\AbstractFactory`](#factoryabstractfactory)
-- [`Phalcon\Logger\LoggerFactory`](/5.14/api/phalcon_logger/#loggerloggerfactory)
+    - [`Phalcon\Cache\CacheFactory`](/5.14/api/phalcon_cache/#cachecachefactory)
+    - [`Phalcon\Factory\AbstractFactory`](#factoryabstractfactory)
+    - [`Phalcon\Logger\LoggerFactory`](/5.14/api/phalcon_logger/#loggerloggerfactory)
 
 </div>
 
 __Uses__ `Phalcon\Config\ConfigInterface`
+
 
 ### Method Summary
 
@@ -80,8 +81,8 @@ Checks the config if it is a valid object
 
 ```php
 protected function checkConfigElement(
-array $config,
-string $element
+    array $config,
+    string $element
 ): array;
 ```
 
@@ -101,6 +102,7 @@ Returns the exception object for the child class
 protected function getExceptionClass(): string;
 ```
 
+
 ## Factory\AbstractFactory
 
 <span class="badge badge--abstract">Abstract</span>
@@ -116,25 +118,26 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](#factoryabstractconfigfactory)
-- **`Phalcon\Factory\AbstractFactory`**
-- [`Phalcon\Annotations\AnnotationsFactory`](/5.14/api/phalcon_annotations/#annotationsannotationsfactory)
-- [`Phalcon\Cache\AdapterFactory`](/5.14/api/phalcon_cache/#cacheadapterfactory)
-- [`Phalcon\Config\ConfigFactory`](/5.14/api/phalcon_config/#configconfigfactory)
-- [`Phalcon\Db\Adapter\PdoFactory`](/5.14/api/phalcon_db/#dbadapterpdofactory)
-- [`Phalcon\Encryption\Crypt\PadFactory`](/5.14/api/phalcon_encryption/#encryptioncryptpadfactory)
-- [`Phalcon\Filter\Validation\ValidatorFactory`](/5.14/api/phalcon_filter/#filtervalidationvalidatorfactory)
-- [`Phalcon\Image\ImageFactory`](/5.14/api/phalcon_image/#imageimagefactory)
-- [`Phalcon\Logger\AdapterFactory`](/5.14/api/phalcon_logger/#loggeradapterfactory)
-- [`Phalcon\Paginator\PaginatorFactory`](/5.14/api/phalcon_paginator/#paginatorpaginatorfactory)
-- [`Phalcon\Storage\AdapterFactory`](/5.14/api/phalcon_storage/#storageadapterfactory)
-- [`Phalcon\Storage\SerializerFactory`](/5.14/api/phalcon_storage/#storageserializerfactory)
-- [`Phalcon\Support\HelperFactory`](/5.14/api/phalcon_support/#supporthelperfactory)
-- [`Phalcon\Translate\InterpolatorFactory`](/5.14/api/phalcon_translate/#translateinterpolatorfactory)
-- [`Phalcon\Translate\TranslateFactory`](/5.14/api/phalcon_translate/#translatetranslatefactory)
+    - **`Phalcon\Factory\AbstractFactory`**
+        - [`Phalcon\Annotations\AnnotationsFactory`](/5.14/api/phalcon_annotations/#annotationsannotationsfactory)
+        - [`Phalcon\Cache\AdapterFactory`](/5.14/api/phalcon_cache/#cacheadapterfactory)
+        - [`Phalcon\Config\ConfigFactory`](/5.14/api/phalcon_config/#configconfigfactory)
+        - [`Phalcon\Db\Adapter\PdoFactory`](/5.14/api/phalcon_db/#dbadapterpdofactory)
+        - [`Phalcon\Encryption\Crypt\PadFactory`](/5.14/api/phalcon_encryption/#encryptioncryptpadfactory)
+        - [`Phalcon\Filter\Validation\ValidatorFactory`](/5.14/api/phalcon_filter/#filtervalidationvalidatorfactory)
+        - [`Phalcon\Image\ImageFactory`](/5.14/api/phalcon_image/#imageimagefactory)
+        - [`Phalcon\Logger\AdapterFactory`](/5.14/api/phalcon_logger/#loggeradapterfactory)
+        - [`Phalcon\Paginator\PaginatorFactory`](/5.14/api/phalcon_paginator/#paginatorpaginatorfactory)
+        - [`Phalcon\Storage\AdapterFactory`](/5.14/api/phalcon_storage/#storageadapterfactory)
+        - [`Phalcon\Storage\SerializerFactory`](/5.14/api/phalcon_storage/#storageserializerfactory)
+        - [`Phalcon\Support\HelperFactory`](/5.14/api/phalcon_support/#supporthelperfactory)
+        - [`Phalcon\Translate\InterpolatorFactory`](/5.14/api/phalcon_translate/#translateinterpolatorfactory)
+        - [`Phalcon\Translate\TranslateFactory`](/5.14/api/phalcon_translate/#translatetranslatefactory)
 
 </div>
 
 __Uses__ `Phalcon\Config\ConfigInterface`
+
 
 ### Method Summary
 
@@ -202,6 +205,7 @@ protected function init( array $services = [] ): void;
 
 Initialize services/add new services
 
+
 ## Factory\Exception
 
 <span class="badge badge--class">Class</span>
@@ -217,7 +221,7 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Factory\Exception`**
+    - **`Phalcon\Factory\Exception`**
 
 </div>
 

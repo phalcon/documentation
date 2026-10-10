@@ -13,6 +13,7 @@ version: "5.22"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Auth\AbstractAuthDispatcherListener
 
 Abstract
@@ -28,27 +29,23 @@ activated via Manager::access() persists across forwards and nested
 dispatches in the same request until it is replaced.
 
 - **`Phalcon\Auth\AbstractAuthDispatcherListener`**
-- [`Phalcon\Auth\Cli\AuthDispatcherListener`](#authcliauthdispatcherlistener)
-- [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
-- [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
+  - [`Phalcon\Auth\Cli\AuthDispatcherListener`](#authcliauthdispatcherlistener)
+  - [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
+  - [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
 
 `Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager`
 
 ### Method Summary
 
-<ApiItem href="#authabstractauthdispatcherlistener-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Manager","name":"manager","default":null}]}>
-</ApiItem>
-<ApiItem href="#authabstractauthdispatcherlistener-enforce" visibility="protected" name="enforce" returnType="bool" params={[{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"},{"type":"mixed","name":"forwardHandler","default":"null"}]}>
-Runs the access check for the given action name. Returns true when
-</ApiItem>
-<ApiItem href="#authabstractauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
-Returns the kind label used by AccessDenied (e.g. 'task', 'action',
-</ApiItem>
+- `public __construct(Manager $manager)`
+
+- `protected enforce(string $actionName, array $context = [], mixed $forwardHandler = null): bool` — Runs the access check for the given action name. Returns true when
+
+- `protected getActionType(): string` — Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="manager" type="Manager" default="">
-</ApiItem>
+- `protected Manager $manager`
 
 ### Methods
 
@@ -62,9 +59,9 @@ public function __construct( Manager $manager );
 
 ```php
 protected function enforce(
-string $actionName,
-array $context = [],
-mixed $forwardHandler = null
+    string $actionName,
+    array $context = [],
+    mixed $forwardHandler = null
 ): bool;
 ```
 
@@ -84,41 +81,39 @@ abstract protected function getActionType(): string;
 Returns the kind label used by AccessDenied (e.g. 'task', 'action',
 'route').
 
+
 ## Auth\Access\AbstractAccess
 
 Abstract
 
 - **`Phalcon\Auth\Access\AbstractAccess`** - implements [`Phalcon\Contracts\Auth\Access\Access`](/5.22/api/phalcon_contracts/#contractsauthaccessaccess)
-- [`Phalcon\Auth\Access\Acl`](#authaccessacl)
-- [`Phalcon\Auth\Access\Auth`](#authaccessauth)
-- [`Phalcon\Auth\Access\Guest`](#authaccessguest)
+  - [`Phalcon\Auth\Access\Acl`](#authaccessacl)
+  - [`Phalcon\Auth\Access\Auth`](#authaccessauth)
+  - [`Phalcon\Auth\Access\Guest`](#authaccessguest)
 
 `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
-<ApiItem href="#authaccessabstractaccess-getexceptactions" visibility="public" name="getExceptActions" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#authaccessabstractaccess-getonlyactions" visibility="public" name="getOnlyActions" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#authaccessabstractaccess-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"Guard","name":"guard","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authaccessabstractaccess-redirectto" visibility="public" name="redirectTo" returnType="array|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authaccessabstractaccess-setexceptactions" visibility="public" name="setExceptActions" returnType="void" params={[{"type":"array","name":"exceptActions","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authaccessabstractaccess-setonlyactions" visibility="public" name="setOnlyActions" returnType="void" params={[{"type":"array","name":"onlyActions","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authaccessabstractaccess-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
-Whether the gate's base condition holds for the given identity.
-</ApiItem>
+- `public getExceptActions(): array`
+
+- `public getOnlyActions(): array`
+
+- `public isAllowed(Guard $guard, string $actionName, array $context = []): bool`
+
+- `public redirectTo(): array|null`
+
+- `public setExceptActions(array $exceptActions = []): void`
+
+- `public setOnlyActions(array $onlyActions = []): void`
+
+- `protected allowedIf(Guard $guard): bool` — Whether the gate's base condition holds for the given identity.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="exceptActions" type="list&lt;string&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="onlyActions" type="list&lt;string&gt;" default="[]">
-</ApiItem>
+- `protected list<string> $exceptActions = []`
+
+- `protected list<string> $onlyActions = []`
 
 ### Methods
 
@@ -138,9 +133,9 @@ public function getOnlyActions(): array;
 
 ```php
 public function isAllowed(
-Guard $guard,
-string $actionName,
-array $context = []
+    Guard $guard,
+    string $actionName,
+    array $context = []
 ): bool;
 ```
 
@@ -170,6 +165,7 @@ abstract protected function allowedIf( Guard $guard ): bool;
 
 Whether the gate's base condition holds for the given identity.
 
+
 ## Auth\Access\AccessLocator
 
 Class
@@ -183,21 +179,19 @@ class builder).
 @extends AbstractLocator&lt;Access>
 
 - [`Phalcon\Support\AbstractLocator`](/5.22/api/phalcon_support/#supportabstractlocator)
-- **`Phalcon\Auth\Access\AccessLocator`**
+  - **`Phalcon\Auth\Access\AccessLocator`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Support\AbstractLocator`
 
 ### Method Summary
 
-<ApiItem href="#authaccessaccesslocator-newinstance" visibility="public" name="newInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
-Resolve a fresh gate instance from the container.
-</ApiItem>
-<ApiItem href="#authaccessaccesslocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authaccessaccesslocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authaccessaccesslocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-</ApiItem>
+- `public newInstance(string $name): object` — Resolve a fresh gate instance from the container.
+
+- `protected getExceptionClass(): string`
+
+- `protected getInterfaceClass(): string`
+
+- `protected getServices(): array`
 
 ### Methods
 
@@ -233,6 +227,7 @@ protected function getInterfaceClass(): string;
 protected function getServices(): array;
 ```
 
+
 ## Auth\Access\Acl
 
 Class
@@ -252,30 +247,27 @@ implementing Phalcon\Acl\RoleAwareInterface supplies its role name; any
 other user is rejected with an exception.
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
-- **`Phalcon\Auth\Access\Acl`**
+  - **`Phalcon\Auth\Access\Acl`**
 
 `Phalcon\Acl\Adapter\AdapterInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\MissingHandlerContext` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
-<ApiItem href="#authaccessacl-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterInterface","name":"acl","default":null},{"type":"array","name":"options","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authaccessacl-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"Guard","name":"guard","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authaccessacl-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
-Unused: this gate overrides isAllowed() in full. Fail closed to
-</ApiItem>
-<ApiItem href="#authaccessacl-resolverole" visibility="protected" name="resolveRole" returnType="string" params={[{"type":"Guard","name":"guard","default":null}]}>
-</ApiItem>
+- `public __construct(AdapterInterface $acl, array $options = [])`
+
+- `public isAllowed(Guard $guard, string $actionName, array $context = []): bool`
+
+- `protected allowedIf(Guard $guard): bool` — Unused: this gate overrides isAllowed() in full. Fail closed to
+
+- `protected resolveRole(Guard $guard): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="acl" type="AdapterInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="guestRole" type="string" default="&quot;guest&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="moduleSeparator" type="string" default="&quot;:&quot;">
-</ApiItem>
+- `protected AdapterInterface $acl`
+
+- `protected string $guestRole = "guest"`
+
+- `protected string $moduleSeparator = ":"`
 
 ### Methods
 
@@ -283,8 +275,8 @@ Unused: this gate overrides isAllowed() in full. Fail closed to
 
 ```php
 public function __construct(
-AdapterInterface $acl,
-array $options = []
+    AdapterInterface $acl,
+    array $options = []
 );
 ```
 
@@ -292,9 +284,9 @@ array $options = []
 
 ```php
 public function isAllowed(
-Guard $guard,
-string $actionName,
-array $context = []
+    Guard $guard,
+    string $actionName,
+    array $context = []
 ): bool;
 ```
 
@@ -313,19 +305,19 @@ satisfy the abstract.
 protected function resolveRole( Guard $guard ): string;
 ```
 
+
 ## Auth\Access\Auth
 
 Class
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
-- **`Phalcon\Auth\Access\Auth`**
+  - **`Phalcon\Auth\Access\Auth`**
 
 `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
-<ApiItem href="#authaccessauth-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
-</ApiItem>
+- `protected allowedIf(Guard $guard): bool`
 
 ### Methods
 
@@ -335,19 +327,19 @@ Class
 protected function allowedIf( Guard $guard ): bool;
 ```
 
+
 ## Auth\Access\Guest
 
 Class
 
 - [`Phalcon\Auth\Access\AbstractAccess`](#authaccessabstractaccess)
-- **`Phalcon\Auth\Access\Guest`**
+  - **`Phalcon\Auth\Access\Guest`**
 
 `Phalcon\Contracts\Auth\Guard\Guard`
 
 ### Method Summary
 
-<ApiItem href="#authaccessguest-allowedif" visibility="protected" name="allowedIf" returnType="bool" params={[{"type":"Guard","name":"guard","default":null}]}>
-</ApiItem>
+- `protected allowedIf(Guard $guard): bool`
 
 ### Methods
 
@@ -357,6 +349,7 @@ Class
 protected function allowedIf( Guard $guard ): bool;
 ```
 
+
 ## Auth\Adapter\AbstractAdapter
 
 Abstract
@@ -364,42 +357,34 @@ Abstract
 @template TConfig of AdapterConfig
 
 - **`Phalcon\Auth\Adapter\AbstractAdapter`** - implements [`Phalcon\Contracts\Auth\Adapter\Adapter`](/5.22/api/phalcon_contracts/#contractsauthadapteradapter)
-- [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
-- [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
+  - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
+  - [`Phalcon\Auth\Adapter\Model`](#authadaptermodel)
 
 `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
-<ApiItem href="#authadapterabstractadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"AdapterConfig","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadapterabstractadapter-getconfig" visibility="public" name="getConfig" returnType="AdapterConfig" params={[]}>
-Returns the adapter configuration object.
-</ApiItem>
-<ApiItem href="#authadapterabstractadapter-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
-Returns the model class name, if configured.
-</ApiItem>
-<ApiItem href="#authadapterabstractadapter-validatecredentials" visibility="public" name="validateCredentials" returnType="bool" params={[{"type":"AuthUser","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
-Validates the supplied plaintext password against the user's stored hash.
-</ApiItem>
-<ApiItem href="#authadapterabstractadapter-burnhash" visibility="protected" name="burnHash" returnType="void" params={[]}>
-Runs a throwaway password verification against a fixed dummy hash so the
-</ApiItem>
+- `public __construct(Security $hasher, AdapterConfig $config)`
+
+- `public getConfig(): AdapterConfig` — Returns the adapter configuration object.
+
+- `public getModel(): string|null` — Returns the model class name, if configured.
+
+- `public validateCredentials(AuthUser $user, array $credentials): bool` — Validates the supplied plaintext password against the user's stored hash.
+
+- `protected burnHash(): void` — Runs a throwaway password verification against a fixed dummy hash so the
 
 ### Constants
 
-<ApiItem kind="constant" name="DUMMY_HASH" type="string" default="&quot;$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW&quot;">
-Dummy bcrypt hash used to equalize timing on the user-not-found path so
-a failed lookup costs the same as a real password check (prevents
-login-timing user enumeration).
-</ApiItem>
+- `const string DUMMY_HASH = "$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW"` — Dummy bcrypt hash used to equalize timing on the user-not-found path so
+  a failed lookup costs the same as a real password check (prevents
+  login-timing user enumeration).
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="config" type="AdapterConfig" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasher" type="Security" default="">
-</ApiItem>
+- `protected AdapterConfig $config`
+
+- `protected Security $hasher`
 
 ### Methods
 
@@ -407,8 +392,8 @@ login-timing user enumeration).
 
 ```php
 public function __construct(
-Security $hasher,
-AdapterConfig $config
+    Security $hasher,
+    AdapterConfig $config
 );
 ```
 
@@ -432,8 +417,8 @@ Returns the model class name, if configured.
 
 ```php
 public function validateCredentials(
-AuthUser $user,
-array $credentials
+    AuthUser $user,
+    array $credentials
 ): bool;
 ```
 
@@ -451,6 +436,7 @@ Runs a throwaway password verification against a fixed dummy hash so the
 user-not-found path performs the same hash work as a found path. Call it
 when a credential lookup misses to keep response time constant.
 
+
 ## Auth\Adapter\AbstractArrayAdapter
 
 Abstract
@@ -464,32 +450,25 @@ guard, and a default linear retrieveById - is shared here.
 @extends AbstractAdapter&lt;TConfig>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- **`Phalcon\Auth\Adapter\AbstractArrayAdapter`**
-- [`Phalcon\Auth\Adapter\Memory`](#authadaptermemory)
-- [`Phalcon\Auth\Adapter\Stream`](#authadapterstream)
+  - **`Phalcon\Auth\Adapter\AbstractArrayAdapter`**
+    - [`Phalcon\Auth\Adapter\Memory`](#authadaptermemory)
+    - [`Phalcon\Auth\Adapter\Stream`](#authadapterstream)
 
 `Phalcon\Auth\AuthUser` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser`
 
 ### Method Summary
 
-<ApiItem href="#authadapterabstractarrayadapter-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUserContract|null" params={[{"type":"array","name":"credentials","default":null}]}>
-Walks the user list and returns the first row whose non-'password'
-</ApiItem>
-<ApiItem href="#authadapterabstractarrayadapter-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUserContract|null" params={[{"type":"mixed","name":"id","default":null}]}>
-Default linear-scan implementation. Memory overrides this for an O(1)
-</ApiItem>
-<ApiItem href="#authadapterabstractarrayadapter-hasidentifyingfield" visibility="protected" name="hasIdentifyingField" returnType="bool" params={[{"type":"array","name":"credentials","default":null}]}>
-Tests whether a credentials payload carries at least one identifying
-</ApiItem>
-<ApiItem href="#authadapterabstractarrayadapter-hydrate" visibility="protected" name="hydrate" returnType="AuthUserContract" params={[{"type":"array","name":"row","default":null}]}>
-Hydrates a raw user row into either the configured model class or a
-</ApiItem>
-<ApiItem href="#authadapterabstractarrayadapter-loadusers" visibility="protected" name="loadUsers" returnType="array" params={[]}>
-Returns the source list of user rows. Concrete subclasses decide
-</ApiItem>
-<ApiItem href="#authadapterabstractarrayadapter-matchesrow" visibility="protected" name="matchesRow" returnType="bool" params={[{"type":"array","name":"row","default":null},{"type":"array","name":"credentials","default":null}]}>
-Per-key match of a row against credentials, skipping 'password'. Values
-</ApiItem>
+- `public retrieveByCredentials(array $credentials): AuthUserContract|null` — Walks the user list and returns the first row whose non-'password'
+
+- `public retrieveById(mixed $id): AuthUserContract|null` — Default linear-scan implementation. Memory overrides this for an O(1)
+
+- `protected hasIdentifyingField(array $credentials): bool` — Tests whether a credentials payload carries at least one identifying
+
+- `protected hydrate(array $row): AuthUserContract` — Hydrates a raw user row into either the configured model class or a
+
+- `protected loadUsers(): array` — Returns the source list of user rows. Concrete subclasses decide
+
+- `protected matchesRow(array $row, array $credentials): bool` — Per-key match of a row against credentials, skipping 'password'. Values
 
 ### Methods
 
@@ -545,14 +524,15 @@ where they come from (config array, JSON file, etc.).
 
 ```php
 protected function matchesRow(
-array $row,
-array $credentials
+    array $row,
+    array $credentials
 ): bool;
 ```
 
 Per-key match of a row against credentials, skipping 'password'. Values
 are compared as strings so typed row values (e.g. int id, bool active)
 match the string input that arrives from an HTTP request.
+
 
 ## Auth\Adapter\AdapterLocator
 
@@ -566,18 +546,17 @@ to be used here.
 @extends AbstractLocator&lt;Adapter>
 
 - [`Phalcon\Support\AbstractLocator`](/5.22/api/phalcon_support/#supportabstractlocator)
-- **`Phalcon\Auth\Adapter\AdapterLocator`**
+  - **`Phalcon\Auth\Adapter\AdapterLocator`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Support\AbstractLocator`
 
 ### Method Summary
 
-<ApiItem href="#authadapteradapterlocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authadapteradapterlocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authadapteradapterlocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-</ApiItem>
+- `protected getExceptionClass(): string`
+
+- `protected getInterfaceClass(): string`
+
+- `protected getServices(): array`
 
 ### Methods
 
@@ -599,6 +578,7 @@ protected function getInterfaceClass(): string;
 protected function getServices(): array;
 ```
 
+
 ## Auth\Adapter\Config\AbstractAdapterConfig
 
 Abstract
@@ -608,16 +588,15 @@ Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait directly instead of
 extending this.
 
 - **`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`** - implements [`Phalcon\Contracts\Auth\Adapter\AdapterConfig`](/5.22/api/phalcon_contracts/#contractsauthadapteradapterconfig)
-- [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
-- [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
-- [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
+  - [`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`](#authadapterconfigmemoryadapterconfig)
+  - [`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`](#authadapterconfigmodeladapterconfig)
+  - [`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`](#authadapterconfigstreamadapterconfig)
 
 `Phalcon\Auth\Adapter\Config\Traits\ModelConfigTrait` · `Phalcon\Contracts\Auth\Adapter\AdapterConfig`
 
 ### Method Summary
 
-<ApiItem href="#authadapterconfigabstractadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"model","default":"null"}]}>
-</ApiItem>
+- `public __construct(string|null $model = null)`
 
 ### Methods
 
@@ -627,26 +606,25 @@ extending this.
 public function __construct( string|null $model = null );
 ```
 
+
 ## Auth\Adapter\Config\MemoryAdapterConfig
 
 Class
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-- **`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`**
+  - **`Phalcon\Auth\Adapter\Config\MemoryAdapterConfig`**
 
 `Phalcon\Contracts\Auth\AuthTypes`
 
 ### Method Summary
 
-<ApiItem href="#authadapterconfigmemoryadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"users","default":"[]"},{"type":"string|null","name":"model","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#authadapterconfigmemoryadapterconfig-getusers" visibility="public" name="getUsers" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(array $users = [], string|null $model = null)`
+
+- `public getUsers(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="users" type="array" default="[]">
-</ApiItem>
+- `protected array $users = []`
 
 ### Methods
 
@@ -654,8 +632,8 @@ Class
 
 ```php
 public function __construct(
-array $users = [],
-string|null $model = null
+    array $users = [],
+    string|null $model = null
 );
 ```
 
@@ -665,28 +643,27 @@ string|null $model = null
 public function getUsers(): array;
 ```
 
+
 ## Auth\Adapter\Config\ModelAdapterConfig
 
 Class
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-- **`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`**
+  - **`Phalcon\Auth\Adapter\Config\ModelAdapterConfig`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
 
 ### Method Summary
 
-<ApiItem href="#authadapterconfigmodeladapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"model","default":null},{"type":"string","name":"idColumn","default":"\"id\""}]}>
-</ApiItem>
-<ApiItem href="#authadapterconfigmodeladapterconfig-getidcolumn" visibility="public" name="getIdColumn" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authadapterconfigmodeladapterconfig-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
-</ApiItem>
+- `public __construct(string $model, string $idColumn = "id")`
+
+- `public getIdColumn(): string`
+
+- `public getModel(): string|null`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="idColumn" type="string" default="&quot;id&quot;">
-</ApiItem>
+- `protected string $idColumn = "id"`
 
 ### Methods
 
@@ -694,8 +671,8 @@ Class
 
 ```php
 public function __construct(
-string $model,
-string $idColumn = "id"
+    string $model,
+    string $idColumn = "id"
 );
 ```
 
@@ -711,26 +688,25 @@ public function getIdColumn(): string;
 public function getModel(): string|null;
 ```
 
+
 ## Auth\Adapter\Config\StreamAdapterConfig
 
 Class
 
 - [`Phalcon\Auth\Adapter\Config\AbstractAdapterConfig`](#authadapterconfigabstractadapterconfig)
-- **`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`**
+  - **`Phalcon\Auth\Adapter\Config\StreamAdapterConfig`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
 
 ### Method Summary
 
-<ApiItem href="#authadapterconfigstreamadapterconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"string|null","name":"model","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#authadapterconfigstreamadapterconfig-getfile" visibility="public" name="getFile" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $file, string|null $model = null)`
+
+- `public getFile(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="file" type="string" default="">
-</ApiItem>
+- `protected string $file`
 
 ### Methods
 
@@ -738,8 +714,8 @@ Class
 
 ```php
 public function __construct(
-string $file,
-string|null $model = null
+    string $file,
+    string|null $model = null
 );
 ```
 
@@ -748,6 +724,7 @@ string|null $model = null
 ```php
 public function getFile(): string;
 ```
+
 
 ## Auth\Adapter\Config\Traits\ModelConfigTrait
 
@@ -761,13 +738,11 @@ Shared model-name state and accessor for auth adapter configurations.
 
 ### Method Summary
 
-<ApiItem href="#authadapterconfigtraitsmodelconfigtrait-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
-</ApiItem>
+- `public getModel(): string|null`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="model" type="string|null" default="null">
-</ApiItem>
+- `protected string|null $model = null`
 
 ### Methods
 
@@ -776,6 +751,7 @@ Shared model-name state and accessor for auth adapter configurations.
 ```php
 public function getModel(): string|null;
 ```
+
 
 ## Auth\Adapter\Memory
 
@@ -786,22 +762,20 @@ In-memory adapter - useful for tests and small read-only user lists.
 @extends AbstractArrayAdapter&lt;MemoryAdapterConfig>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
-- **`Phalcon\Auth\Adapter\Memory`**
+  - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
+    - **`Phalcon\Auth\Adapter\Memory`**
 
 `Phalcon\Auth\Adapter\Config\MemoryAdapterConfig` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
-<ApiItem href="#authadaptermemory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"MemoryAdapterConfig","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadaptermemory-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadaptermemory-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null}]}>
-Overridden for O(1) lookup via the id index built in the constructor.
-</ApiItem>
-<ApiItem href="#authadaptermemory-loadusers" visibility="protected" name="loadUsers" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(Security $hasher, MemoryAdapterConfig $config)`
+
+- `public fromOptions(Security $hasher, array $options): static`
+
+- `public retrieveById(mixed $id): AuthUser|null` — Overridden for O(1) lookup via the id index built in the constructor.
+
+- `protected loadUsers(): array`
 
 ### Methods
 
@@ -809,8 +783,8 @@ Overridden for O(1) lookup via the id index built in the constructor.
 
 ```php
 public function __construct(
-Security $hasher,
-MemoryAdapterConfig $config
+    Security $hasher,
+    MemoryAdapterConfig $config
 );
 ```
 
@@ -818,8 +792,8 @@ MemoryAdapterConfig $config
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -837,6 +811,7 @@ Overridden for O(1) lookup via the id index built in the constructor.
 protected function loadUsers(): array;
 ```
 
+
 ## Auth\Adapter\Model
 
 Class
@@ -846,27 +821,23 @@ Phalcon Model-backed adapter.
 @extends AbstractAdapter&lt;ModelAdapterConfig>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/5.22/api/phalcon_contracts/#contractsauthadapterrememberadapter)
+  - **`Phalcon\Auth\Adapter\Model`** - implements [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](/5.22/api/phalcon_contracts/#contractsauthadapterrememberadapter)
 
 `Phalcon\Auth\Adapter\Config\ModelAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Exceptions\InvalidCredentialKey` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Mvc\ModelInterface`
 
 ### Method Summary
 
-<ApiItem href="#authadaptermodel-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"ModelAdapterConfig","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadaptermodel-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
-Create and persist a new remember token for the user.
-</ApiItem>
-<ApiItem href="#authadaptermodel-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadaptermodel-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUser|null" params={[{"type":"array","name":"credentials","default":null}]}>
-Find a user matching the given credentials (excluding 'password' key).
-</ApiItem>
-<ApiItem href="#authadaptermodel-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadaptermodel-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
-Retrieve a user by the remember-me cookie payload.
-</ApiItem>
+- `public __construct(Security $hasher, ModelAdapterConfig $config)`
+
+- `public createRememberToken(AuthUser $user): RememberToken` — Create and persist a new remember token for the user.
+
+- `public fromOptions(Security $hasher, array $options): static`
+
+- `public retrieveByCredentials(array $credentials): AuthUser|null` — Find a user matching the given credentials (excluding 'password' key).
+
+- `public retrieveById(mixed $id): AuthUser|null`
+
+- `public retrieveByToken(mixed $id, string $token, string|null $userAgent = null): AuthUser|null` — Retrieve a user by the remember-me cookie payload.
 
 ### Methods
 
@@ -874,8 +845,8 @@ Retrieve a user by the remember-me cookie payload.
 
 ```php
 public function __construct(
-Security $hasher,
-ModelAdapterConfig $config
+    Security $hasher,
+    ModelAdapterConfig $config
 );
 ```
 
@@ -891,8 +862,8 @@ Create and persist a new remember token for the user.
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -914,13 +885,14 @@ public function retrieveById( mixed $id ): AuthUser|null;
 
 ```php
 public function retrieveByToken(
-mixed $id,
-string $token,
-string|null $userAgent = null
+    mixed $id,
+    string $token,
+    string|null $userAgent = null
 ): AuthUser|null;
 ```
 
 Retrieve a user by the remember-me cookie payload.
+
 
 ## Auth\Adapter\Stream
 
@@ -934,20 +906,18 @@ The file must contain a JSON array of user records:
 @extends AbstractArrayAdapter&lt;StreamAdapterConfig>
 
 - [`Phalcon\Auth\Adapter\AbstractAdapter`](#authadapterabstractadapter)
-- [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
-- **`Phalcon\Auth\Adapter\Stream`**
+  - [`Phalcon\Auth\Adapter\AbstractArrayAdapter`](#authadapterabstractarrayadapter)
+    - **`Phalcon\Auth\Adapter\Stream`**
 
 `InvalidArgumentException` · `Phalcon\Auth\Adapter\Config\StreamAdapterConfig` · `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\FileCannotRead` · `Phalcon\Auth\Exceptions\FileDoesNotContainJson` · `Phalcon\Auth\Exceptions\FileDoesNotExist` · `Phalcon\Auth\Exceptions\FileNotValidJson` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#authadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"StreamAdapterConfig","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadapterstream-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
-</ApiItem>
-<ApiItem href="#authadapterstream-loadusers" visibility="protected" name="loadUsers" returnType="array" params={[]}>
-Loads and decodes the JSON users file. Re-read on every call - if you
-</ApiItem>
+- `public __construct(Security $hasher, StreamAdapterConfig $config)`
+
+- `public fromOptions(Security $hasher, array $options): static`
+
+- `protected loadUsers(): array` — Loads and decodes the JSON users file. Re-read on every call - if you
 
 ### Methods
 
@@ -955,8 +925,8 @@ Loads and decodes the JSON users file. Re-read on every call - if you
 
 ```php
 public function __construct(
-Security $hasher,
-StreamAdapterConfig $config
+    Security $hasher,
+    StreamAdapterConfig $config
 );
 ```
 
@@ -964,8 +934,8 @@ StreamAdapterConfig $config
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -977,6 +947,7 @@ protected function loadUsers(): array;
 
 Loads and decodes the JSON users file. Re-read on every call - if you
 need caching, wrap it.
+
 
 ## Auth\AuthUser
 
@@ -991,20 +962,17 @@ when no application model class is configured.
 
 ### Method Summary
 
-<ApiItem href="#authauthuser-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":null}]}>
-</ApiItem>
-<ApiItem href="#authauthuser-getauthidentifier" visibility="public" name="getAuthIdentifier" returnType="int|string" params={[]}>
-</ApiItem>
-<ApiItem href="#authauthuser-getauthpassword" visibility="public" name="getAuthPassword" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authauthuser-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the underlying data array.
-</ApiItem>
+- `public __construct(array $data)`
+
+- `public getAuthIdentifier(): int|string`
+
+- `public getAuthPassword(): string`
+
+- `public toArray(): array` — Returns the underlying data array.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="data" type="array" default="">
-</ApiItem>
+- `protected array $data`
 
 ### Methods
 
@@ -1034,21 +1002,21 @@ public function toArray(): array;
 
 Returns the underlying data array.
 
+
 ## Auth\Cli\AuthDispatcherListener
 
 Class
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
-- **`Phalcon\Auth\Cli\AuthDispatcherListener`**
+  - **`Phalcon\Auth\Cli\AuthDispatcherListener`**
 
 `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Cli\Dispatcher` · `Phalcon\Events\Event`
 
 ### Method Summary
 
-<ApiItem href="#authcliauthdispatcherlistener-beforeexecuteroute" visibility="public" name="beforeExecuteRoute" returnType="bool" params={[{"type":"Event","name":"event","default":null},{"type":"Dispatcher","name":"dispatcher","default":null}]}>
-</ApiItem>
-<ApiItem href="#authcliauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
-</ApiItem>
+- `public beforeExecuteRoute(Event $event, Dispatcher $dispatcher): bool`
+
+- `protected getActionType(): string`
 
 ### Methods
 
@@ -1056,8 +1024,8 @@ Class
 
 ```php
 public function beforeExecuteRoute(
-Event $event,
-Dispatcher $dispatcher
+    Event $event,
+    Dispatcher $dispatcher
 ): bool;
 ```
 
@@ -1067,6 +1035,7 @@ Dispatcher $dispatcher
 protected function getActionType(): string;
 ```
 
+
 ## Auth\Exception
 
 Class
@@ -1074,26 +1043,27 @@ Class
 Exceptions thrown in Phalcon\Auth will use this class
 
 - `\Exception`
-- **`Phalcon\Auth\Exception`**
-- [`Phalcon\Auth\Exceptions\AccessDenied`](#authexceptionsaccessdenied)
-- [`Phalcon\Auth\Exceptions\AccessNotRegistered`](#authexceptionsaccessnotregistered)
-- [`Phalcon\Auth\Exceptions\ActiveAccessRequired`](#authexceptionsactiveaccessrequired)
-- [`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`](#authexceptionsconfigrequiresnonemptyvalue)
-- [`Phalcon\Auth\Exceptions\DataMustContainIdKey`](#authexceptionsdatamustcontainidkey)
-- [`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`](#authexceptionsdefaultguardnotregistered)
-- [`Phalcon\Auth\Exceptions\DoesNotImplement`](#authexceptionsdoesnotimplement)
-- [`Phalcon\Auth\Exceptions\FileCannotRead`](#authexceptionsfilecannotread)
-- [`Phalcon\Auth\Exceptions\FileDoesNotContainJson`](#authexceptionsfiledoesnotcontainjson)
-- [`Phalcon\Auth\Exceptions\FileDoesNotExist`](#authexceptionsfiledoesnotexist)
-- [`Phalcon\Auth\Exceptions\FileNotValidJson`](#authexceptionsfilenotvalidjson)
-- [`Phalcon\Auth\Exceptions\GuardNotDefined`](#authexceptionsguardnotdefined)
-- [`Phalcon\Auth\Exceptions\InvalidCredentialKey`](#authexceptionsinvalidcredentialkey)
-- [`Phalcon\Auth\Exceptions\MissingHandlerContext`](#authexceptionsmissinghandlercontext)
-- [`Phalcon\Auth\Exceptions\OptionRequiresArray`](#authexceptionsoptionrequiresarray)
-- [`Phalcon\Auth\Exceptions\OptionRequiresString`](#authexceptionsoptionrequiresstring)
-- [`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`](#authexceptionssessionnamesmustdiffer)
-- [`Phalcon\Auth\Exceptions\UnknownAdapter`](#authexceptionsunknownadapter)
-- [`Phalcon\Auth\Exceptions\UnknownGuard`](#authexceptionsunknownguard)
+  - **`Phalcon\Auth\Exception`**
+    - [`Phalcon\Auth\Exceptions\AccessDenied`](#authexceptionsaccessdenied)
+    - [`Phalcon\Auth\Exceptions\AccessNotRegistered`](#authexceptionsaccessnotregistered)
+    - [`Phalcon\Auth\Exceptions\ActiveAccessRequired`](#authexceptionsactiveaccessrequired)
+    - [`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`](#authexceptionsconfigrequiresnonemptyvalue)
+    - [`Phalcon\Auth\Exceptions\DataMustContainIdKey`](#authexceptionsdatamustcontainidkey)
+    - [`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`](#authexceptionsdefaultguardnotregistered)
+    - [`Phalcon\Auth\Exceptions\DoesNotImplement`](#authexceptionsdoesnotimplement)
+    - [`Phalcon\Auth\Exceptions\FileCannotRead`](#authexceptionsfilecannotread)
+    - [`Phalcon\Auth\Exceptions\FileDoesNotContainJson`](#authexceptionsfiledoesnotcontainjson)
+    - [`Phalcon\Auth\Exceptions\FileDoesNotExist`](#authexceptionsfiledoesnotexist)
+    - [`Phalcon\Auth\Exceptions\FileNotValidJson`](#authexceptionsfilenotvalidjson)
+    - [`Phalcon\Auth\Exceptions\GuardNotDefined`](#authexceptionsguardnotdefined)
+    - [`Phalcon\Auth\Exceptions\InvalidCredentialKey`](#authexceptionsinvalidcredentialkey)
+    - [`Phalcon\Auth\Exceptions\MissingHandlerContext`](#authexceptionsmissinghandlercontext)
+    - [`Phalcon\Auth\Exceptions\OptionRequiresArray`](#authexceptionsoptionrequiresarray)
+    - [`Phalcon\Auth\Exceptions\OptionRequiresString`](#authexceptionsoptionrequiresstring)
+    - [`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`](#authexceptionssessionnamesmustdiffer)
+    - [`Phalcon\Auth\Exceptions\UnknownAdapter`](#authexceptionsunknownadapter)
+    - [`Phalcon\Auth\Exceptions\UnknownGuard`](#authexceptionsunknownguard)
+
 
 ## Auth\Exceptions\AccessDenied
 
@@ -1102,15 +1072,14 @@ Class
 Access denied exception
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\AccessDenied`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\AccessDenied`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsaccessdenied-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $type, string $name)`
 
 ### Methods
 
@@ -1118,10 +1087,11 @@ Access denied exception
 
 ```php
 public function __construct(
-string $type,
-string $name
+    string $type,
+    string $name
 );
 ```
+
 
 ## Auth\Exceptions\AccessNotRegistered
 
@@ -1130,15 +1100,14 @@ Class
 Access gate name is not registered
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\AccessNotRegistered`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\AccessNotRegistered`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsaccessnotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1148,6 +1117,7 @@ Access gate name is not registered
 public function __construct( string $name );
 ```
 
+
 ## Auth\Exceptions\ActiveAccessRequired
 
 Class
@@ -1155,15 +1125,14 @@ Class
 No active access has been set on the manager
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\ActiveAccessRequired`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\ActiveAccessRequired`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsactiveaccessrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1173,6 +1142,7 @@ No active access has been set on the manager
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\ConfigRequiresNonEmptyValue
 
 Class
@@ -1180,18 +1150,16 @@ Class
 Config requires non-empty value
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
-</ApiItem>
-<ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-assert" visibility="public" name="assert" returnType="void" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
-Throws when the value is an empty string. A null value is treated as
-</ApiItem>
+- `public __construct(string $configName, string $configKey, string $suffix = "")`
+
+- `public assert(mixed $value, string $configName, string $configKey, string $suffix = ""): void` — Throws when the value is an empty string. A null value is treated as
 
 ### Methods
 
@@ -1199,9 +1167,9 @@ Throws when the value is an empty string. A null value is treated as
 
 ```php
 public function __construct(
-string $configName,
-string $configKey,
-string $suffix = ""
+    string $configName,
+    string $configKey,
+    string $suffix = ""
 );
 ```
 
@@ -1209,10 +1177,10 @@ string $suffix = ""
 
 ```php
 public static function assert(
-mixed $value,
-string $configName,
-string $configKey,
-string $suffix = ""
+    mixed $value,
+    string $configName,
+    string $configKey,
+    string $suffix = ""
 ): void;
 ```
 
@@ -1221,6 +1189,7 @@ Throws when the value is an empty string. A null value is treated as
 guard; callers that require presence reject null earlier. Keeps the
 empty-value check shared by every config class in one place.
 
+
 ## Auth\Exceptions\DataMustContainIdKey
 
 Class
@@ -1228,15 +1197,14 @@ Class
 AuthUser data must contain "id"
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\DataMustContainIdKey`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\DataMustContainIdKey`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsdatamustcontainidkey-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1246,6 +1214,7 @@ AuthUser data must contain "id"
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\DefaultGuardNotRegistered
 
 Class
@@ -1253,15 +1222,14 @@ Class
 No default guard registered
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\DefaultGuardNotRegistered`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsdefaultguardnotregistered-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1271,6 +1239,7 @@ No default guard registered
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\DoesNotImplement
 
 Class
@@ -1278,18 +1247,16 @@ Class
 Does not implement interface
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\DoesNotImplement`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\DoesNotImplement`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsdoesnotimplement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#authexceptionsdoesnotimplement-assert" visibility="public" name="assert" returnType="void" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":null}]}>
-Throws when value is not an instance of the given interface. Keeps the
-</ApiItem>
+- `public __construct(string $type, string $name)`
+
+- `public assert(mixed $value, string $interfaceName, string $type, string $name): void` — Throws when value is not an instance of the given interface. Keeps the
 
 ### Methods
 
@@ -1297,8 +1264,8 @@ Throws when value is not an instance of the given interface. Keeps the
 
 ```php
 public function __construct(
-string $type,
-string $name
+    string $type,
+    string $name
 );
 ```
 
@@ -1306,16 +1273,17 @@ string $name
 
 ```php
 public static function assert(
-mixed $value,
-string $interfaceName,
-string $type,
-string $name
+    mixed $value,
+    string $interfaceName,
+    string $type,
+    string $name
 ): void;
 ```
 
 Throws when value is not an instance of the given interface. Keeps the
 "must implement" guard shared across adapters, guards and the manager
 in one place.
+
 
 ## Auth\Exceptions\FileCannotRead
 
@@ -1324,15 +1292,14 @@ Class
 Cannot read file
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileCannotRead`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\FileCannotRead`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsfilecannotread-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -1342,6 +1309,7 @@ Cannot read file
 public function __construct( string $path );
 ```
 
+
 ## Auth\Exceptions\FileDoesNotContainJson
 
 Class
@@ -1349,15 +1317,14 @@ Class
 File does not contain a JSON array
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileDoesNotContainJson`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\FileDoesNotContainJson`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsfiledoesnotcontainjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -1367,6 +1334,7 @@ File does not contain a JSON array
 public function __construct( string $path );
 ```
 
+
 ## Auth\Exceptions\FileDoesNotExist
 
 Class
@@ -1374,15 +1342,14 @@ Class
 File does not exist
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileDoesNotExist`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\FileDoesNotExist`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsfiledoesnotexist-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null}]}>
-</ApiItem>
+- `public __construct(string $path)`
 
 ### Methods
 
@@ -1392,6 +1359,7 @@ File does not exist
 public function __construct( string $path );
 ```
 
+
 ## Auth\Exceptions\FileNotValidJson
 
 Class
@@ -1399,15 +1367,14 @@ Class
 Not a valid JSON
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\FileNotValidJson`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\FileNotValidJson`**
 
 `Phalcon\Auth\Exception` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsfilenotvalidjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"path","default":null},{"type":"Throwable","name":"ex","default":null}]}>
-</ApiItem>
+- `public __construct(string $path, Throwable $ex)`
 
 ### Methods
 
@@ -1415,10 +1382,11 @@ Not a valid JSON
 
 ```php
 public function __construct(
-string $path,
-Throwable $ex
+    string $path,
+    Throwable $ex
 );
 ```
+
 
 ## Auth\Exceptions\GuardNotDefined
 
@@ -1427,15 +1395,14 @@ Class
 Guard name is not defined on the manager
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\GuardNotDefined`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\GuardNotDefined`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsguardnotdefined-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1445,6 +1412,7 @@ Guard name is not defined on the manager
 public function __construct( string $name );
 ```
 
+
 ## Auth\Exceptions\InvalidCredentialKey
 
 Class
@@ -1453,15 +1421,14 @@ A credential key is not a plain identifier and cannot be used as a query
 column
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\InvalidCredentialKey`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\InvalidCredentialKey`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsinvalidcredentialkey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $key)`
 
 ### Methods
 
@@ -1471,6 +1438,7 @@ column
 public function __construct( string $key );
 ```
 
+
 ## Auth\Exceptions\MissingHandlerContext
 
 Class
@@ -1478,15 +1446,14 @@ Class
 The Acl access gate is missing the required 'handler' context key
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\MissingHandlerContext`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\MissingHandlerContext`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsmissinghandlercontext-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1496,6 +1463,7 @@ The Acl access gate is missing the required 'handler' context key
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\OptionRequiresArray
 
 Class
@@ -1503,15 +1471,14 @@ Class
 Option must be a non-empty array
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\OptionRequiresArray`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\OptionRequiresArray`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsoptionrequiresarray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"context","default":null},{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $context, string $key)`
 
 ### Methods
 
@@ -1519,10 +1486,11 @@ Option must be a non-empty array
 
 ```php
 public function __construct(
-string $context,
-string $key
+    string $context,
+    string $key
 );
 ```
+
 
 ## Auth\Exceptions\OptionRequiresString
 
@@ -1531,15 +1499,14 @@ Class
 Option must be a non-empty string
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\OptionRequiresString`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\OptionRequiresString`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsoptionrequiresstring-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"context","default":null},{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(string $context, string $key)`
 
 ### Methods
 
@@ -1547,10 +1514,11 @@ Option must be a non-empty string
 
 ```php
 public function __construct(
-string $context,
-string $key
+    string $context,
+    string $key
 );
 ```
+
 
 ## Auth\Exceptions\SessionNamesMustDiffer
 
@@ -1559,15 +1527,14 @@ Class
 Session guard 'name' and 'rememberName' must differ
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\SessionNamesMustDiffer`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionssessionnamesmustdiffer-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1577,6 +1544,7 @@ Session guard 'name' and 'rememberName' must differ
 public function __construct();
 ```
 
+
 ## Auth\Exceptions\UnknownAdapter
 
 Class
@@ -1584,15 +1552,14 @@ Class
 Unknown auth adapter requested from the factory
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\UnknownAdapter`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\UnknownAdapter`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsunknownadapter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1602,6 +1569,7 @@ Unknown auth adapter requested from the factory
 public function __construct( string $name );
 ```
 
+
 ## Auth\Exceptions\UnknownGuard
 
 Class
@@ -1609,15 +1577,14 @@ Class
 Unknown auth guard type requested from the factory
 
 - `\Exception`
-- [`Phalcon\Auth\Exception`](#authexception)
-- **`Phalcon\Auth\Exceptions\UnknownGuard`**
+  - [`Phalcon\Auth\Exception`](#authexception)
+    - **`Phalcon\Auth\Exceptions\UnknownGuard`**
 
 `Phalcon\Auth\Exception`
 
 ### Method Summary
 
-<ApiItem href="#authexceptionsunknownguard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -1627,6 +1594,7 @@ Unknown auth guard type requested from the factory
 public function __construct( string $type );
 ```
 
+
 ## Auth\Guard\AbstractGuard
 
 Abstract
@@ -1634,48 +1602,44 @@ Abstract
 @template TConfig of GuardConfig
 
 - **`Phalcon\Auth\Guard\AbstractGuard`** - implements [`Phalcon\Contracts\Auth\Guard\Guard`](/5.22/api/phalcon_contracts/#contractsauthguardguard)
-- [`Phalcon\Auth\Guard\Session`](#authguardsession)
-- [`Phalcon\Auth\Guard\Token`](#authguardtoken)
+  - [`Phalcon\Auth\Guard\Session`](#authguardsession)
+  - [`Phalcon\Auth\Guard\Token`](#authguardtoken)
 
 `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Contracts\Auth\Guard\GuardConfig` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
 
 ### Method Summary
 
-<ApiItem href="#authguardabstractguard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"GuardConfig","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-check" visibility="public" name="check" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-getadapter" visibility="public" name="getAdapter" returnType="Adapter" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-getconfig" visibility="public" name="getConfig" returnType="GuardConfig" params={[]}>
-Returns the guard configuration object.
-</ApiItem>
-<ApiItem href="#authguardabstractguard-getlastuserattempted" visibility="public" name="getLastUserAttempted" returnType="AuthUser|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-guest" visibility="public" name="guest" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-hasuser" visibility="public" name="hasUser" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-setadapter" visibility="public" name="setAdapter" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-setuser" visibility="public" name="setUser" returnType="static" params={[{"type":"AuthUser","name":"user","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardabstractguard-hasvalidcredentials" visibility="protected" name="hasValidCredentials" returnType="bool" params={[{"type":"mixed","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
-user should be ?AuthUser
-</ApiItem>
+- `public __construct(Adapter $adapter, GuardConfig $config)`
+
+- `public check(): bool`
+
+- `public getAdapter(): Adapter`
+
+- `public getConfig(): GuardConfig` — Returns the guard configuration object.
+
+- `public getLastUserAttempted(): AuthUser|null`
+
+- `public guest(): bool`
+
+- `public hasUser(): bool`
+
+- `public id(): int|string|null`
+
+- `public setAdapter(Adapter $adapter): static`
+
+- `public setUser(AuthUser $user): static`
+
+- `protected hasValidCredentials(mixed $user, array $credentials): bool` — user should be ?AuthUser
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="adapter" type="Adapter" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="config" type="GuardConfig" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lastUserAttempted" type="AuthUser|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="user" type="AuthUser|null" default="null">
-</ApiItem>
+- `protected Adapter $adapter`
+
+- `protected GuardConfig $config`
+
+- `protected AuthUser|null $lastUserAttempted = null`
+
+- `protected AuthUser|null $user = null`
 
 ### Methods
 
@@ -1683,8 +1647,8 @@ user should be ?AuthUser
 
 ```php
 public function __construct(
-Adapter $adapter,
-GuardConfig $config
+    Adapter $adapter,
+    GuardConfig $config
 );
 ```
 
@@ -1748,22 +1712,24 @@ public function setUser( AuthUser $user ): static;
 
 ```php
 protected function hasValidCredentials(
-mixed $user,
-array $credentials
+    mixed $user,
+    array $credentials
 ): bool;
 ```
 
 user should be ?AuthUser
+
 
 ## Auth\Guard\Config\AbstractGuardConfig
 
 Abstract
 
 - **`Phalcon\Auth\Guard\Config\AbstractGuardConfig`** - implements [`Phalcon\Contracts\Auth\Guard\GuardConfig`](/5.22/api/phalcon_contracts/#contractsauthguardguardconfig)
-- [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
-- [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
+  - [`Phalcon\Auth\Guard\Config\SessionGuardConfig`](#authguardconfigsessionguardconfig)
+  - [`Phalcon\Auth\Guard\Config\TokenGuardConfig`](#authguardconfigtokenguardconfig)
 
 `Phalcon\Contracts\Auth\Guard\GuardConfig`
+
 
 ## Auth\Guard\Config\SessionGuardConfig
 
@@ -1776,29 +1742,25 @@ to derive 'auth_web' / 'remember_web' style names, or override either
 full name explicitly.
 
 - [`Phalcon\Auth\Guard\Config\AbstractGuardConfig`](#authguardconfigabstractguardconfig)
-- **`Phalcon\Auth\Guard\Config\SessionGuardConfig`**
+  - **`Phalcon\Auth\Guard\Config\SessionGuardConfig`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue` · `Phalcon\Auth\Exceptions\SessionNamesMustDiffer`
 
 ### Method Summary
 
-<ApiItem href="#authguardconfigsessionguardconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"suffix","default":"null"},{"type":"string|null","name":"name","default":"null"},{"type":"string|null","name":"rememberName","default":"null"},{"type":"int|null","name":"rememberTtl","default":"null"},{"type":"bool","name":"rememberSecure","default":"true"}]}>
-</ApiItem>
-<ApiItem href="#authguardconfigsessionguardconfig-getname" visibility="public" name="getName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardconfigsessionguardconfig-getremembername" visibility="public" name="getRememberName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardconfigsessionguardconfig-getremembersecure" visibility="public" name="getRememberSecure" returnType="bool" params={[]}>
-Whether the remember-me cookie carries the Secure flag. Defaults to
-</ApiItem>
-<ApiItem href="#authguardconfigsessionguardconfig-getrememberttl" visibility="public" name="getRememberTtl" returnType="int" params={[]}>
-</ApiItem>
+- `public __construct(string|null $suffix = null, string|null $name = null, string|null $rememberName = null, int|null $rememberTtl = null, bool $rememberSecure = true)`
+
+- `public getName(): string`
+
+- `public getRememberName(): string`
+
+- `public getRememberSecure(): bool` — Whether the remember-me cookie carries the Secure flag. Defaults to
+
+- `public getRememberTtl(): int`
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_REMEMBER_TTL" type="int" default="31536000">
-Default remember-me cookie lifetime, in seconds (365 days).
-</ApiItem>
+- `const int DEFAULT_REMEMBER_TTL = 31536000` — Default remember-me cookie lifetime, in seconds (365 days).
 
 ### Methods
 
@@ -1806,11 +1768,11 @@ Default remember-me cookie lifetime, in seconds (365 days).
 
 ```php
 public function __construct(
-string|null $suffix = null,
-string|null $name = null,
-string|null $rememberName = null,
-int|null $rememberTtl = null,
-bool $rememberSecure = true
+    string|null $suffix = null,
+    string|null $name = null,
+    string|null $rememberName = null,
+    int|null $rememberTtl = null,
+    bool $rememberSecure = true
 );
 ```
 
@@ -1842,30 +1804,29 @@ deployment that serves plain HTTP on purpose.
 public function getRememberTtl(): int;
 ```
 
+
 ## Auth\Guard\Config\TokenGuardConfig
 
 Class
 
 - [`Phalcon\Auth\Guard\Config\AbstractGuardConfig`](#authguardconfigabstractguardconfig)
-- **`Phalcon\Auth\Guard\Config\TokenGuardConfig`**
+  - **`Phalcon\Auth\Guard\Config\TokenGuardConfig`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue`
 
 ### Method Summary
 
-<ApiItem href="#authguardconfigtokenguardconfig-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"inputKey","default":null},{"type":"string","name":"storageKey","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardconfigtokenguardconfig-getinputkey" visibility="public" name="getInputKey" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardconfigtokenguardconfig-getstoragekey" visibility="public" name="getStorageKey" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $inputKey, string $storageKey)`
+
+- `public getInputKey(): string`
+
+- `public getStorageKey(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="inputKey" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="storageKey" type="string" default="">
-</ApiItem>
+- `protected string $inputKey`
+
+- `protected string $storageKey`
 
 ### Methods
 
@@ -1873,8 +1834,8 @@ Class
 
 ```php
 public function __construct(
-string $inputKey,
-string $storageKey
+    string $inputKey,
+    string $storageKey
 );
 ```
 
@@ -1890,6 +1851,7 @@ public function getInputKey(): string;
 public function getStorageKey(): string;
 ```
 
+
 ## Auth\Guard\GuardLocator
 
 Class
@@ -1901,18 +1863,17 @@ Phalcon\Di\Di, register the guards in it before resolution.
 @extends AbstractLocator&lt;Guard>
 
 - [`Phalcon\Support\AbstractLocator`](/5.22/api/phalcon_support/#supportabstractlocator)
-- **`Phalcon\Auth\Guard\GuardLocator`**
+  - **`Phalcon\Auth\Guard\GuardLocator`**
 
 `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Guard\Guard` · `Phalcon\Support\AbstractLocator`
 
 ### Method Summary
 
-<ApiItem href="#authguardguardlocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardguardlocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardguardlocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-</ApiItem>
+- `protected getExceptionClass(): string`
+
+- `protected getInterfaceClass(): string`
+
+- `protected getServices(): array`
 
 ### Methods
 
@@ -1934,6 +1895,7 @@ protected function getInterfaceClass(): string;
 protected function getServices(): array;
 ```
 
+
 ## Auth\Guard\Session
 
 Class
@@ -1941,65 +1903,63 @@ Class
 @extends AbstractGuard&lt;SessionGuardConfig>
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-- **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/5.22/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/5.22/api/phalcon_contracts/#contractsauthguardbasicauth)
+  - **`Phalcon\Auth\Guard\Session`** - implements [`Phalcon\Contracts\Auth\Guard\GuardStateful`](/5.22/api/phalcon_contracts/#contractsauthguardguardstateful), [`Phalcon\Contracts\Auth\Guard\BasicAuth`](/5.22/api/phalcon_contracts/#contractsauthguardbasicauth)
 
 `Phalcon\Auth\Exception` · `Phalcon\Auth\Exceptions\DoesNotImplement` · `Phalcon\Auth\Guard\Config\SessionGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\Adapter\RememberAdapter` · `Phalcon\Contracts\Auth\AuthRemember` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\Guard\BasicAuth` · `Phalcon\Contracts\Auth\Guard\GuardStateful` · `Phalcon\Contracts\Auth\RememberToken` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Time\Clock\ClockInterface` · `Phalcon\Time\Clock\SystemClock`
 
 ### Method Summary
 
-<ApiItem href="#authguardsession-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"RequestInterface","name":"request","default":null},{"type":"CookiesInterface","name":"cookies","default":null},{"type":"SessionManagerInterface","name":"session","default":null},{"type":"SessionGuardConfig|null","name":"config","default":"null"},{"type":"ClockInterface|null","name":"clock","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-basic" visibility="public" name="basic" returnType="bool" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-getname" visibility="public" name="getName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardsession-getremembername" visibility="public" name="getRememberName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardsession-login" visibility="public" name="login" returnType="void" params={[{"type":"AuthUser","name":"user","default":null},{"type":"bool","name":"remember","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-loginbyid" visibility="public" name="loginById" returnType="AuthUser|false" params={[{"type":"mixed","name":"id","default":null},{"type":"bool","name":"remember","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-logout" visibility="public" name="logout" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardsession-once" visibility="public" name="once" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-oncebasic" visibility="public" name="onceBasic" returnType="AuthUser|false" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardsession-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-viaremember" visibility="public" name="viaRemember" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardsession-attemptbasic" visibility="protected" name="attemptBasic" returnType="bool" params={[{"type":"string","name":"field","default":null},{"type":"array","name":"extraConditions","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-basiccredentials" visibility="protected" name="basicCredentials" returnType="array|null" params={[{"type":"string","name":"field","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-createremembertoken" visibility="protected" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-recaller" visibility="protected" name="recaller" returnType="UserRemember|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardsession-rememberuser" visibility="protected" name="rememberUser" returnType="void" params={[{"type":"AuthUser","name":"user","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardsession-userfromrecaller" visibility="protected" name="userFromRecaller" returnType="AuthUser|null" params={[{"type":"UserRemember","name":"recaller","default":null}]}>
-</ApiItem>
+- `public __construct(Adapter $adapter, RequestInterface $request, CookiesInterface $cookies, SessionManagerInterface $session, SessionGuardConfig|null $config = null, ClockInterface|null $clock = null)`
+
+- `public attempt(array $credentials = [], bool $remember = false): bool`
+
+- `public basic(string $field = "email", array $extraConditions = []): bool`
+
+- `public fromOptions(Adapter $adapter, mixed $container, array $options): static`
+
+- `public getName(): string`
+
+- `public getRememberName(): string`
+
+- `public login(AuthUser $user, bool $remember = false): void`
+
+- `public loginById(mixed $id, bool $remember = false): AuthUser|false`
+
+- `public logout(): void`
+
+- `public once(array $credentials = []): bool`
+
+- `public onceBasic(string $field = "email", array $extraConditions = []): AuthUser|false`
+
+- `public user(): AuthUser|null`
+
+- `public validate(array $credentials = []): bool`
+
+- `public viaRemember(): bool`
+
+- `protected attemptBasic(string $field, array $extraConditions = []): bool`
+
+- `protected basicCredentials(string $field): array|null`
+
+- `protected createRememberToken(AuthUser $user): RememberToken`
+
+- `protected recaller(): UserRemember|null`
+
+- `protected rememberUser(AuthUser $user): void`
+
+- `protected userFromRecaller(UserRemember $recaller): AuthUser|null`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="clock" type="ClockInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="cookies" type="CookiesInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="request" type="RequestInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="session" type="SessionManagerInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="viaRemember" type="bool" default="false">
-</ApiItem>
+- `protected ClockInterface $clock`
+
+- `protected CookiesInterface $cookies`
+
+- `protected RequestInterface $request`
+
+- `protected SessionManagerInterface $session`
+
+- `protected bool $viaRemember = false`
 
 ### Methods
 
@@ -2007,12 +1967,12 @@ Class
 
 ```php
 public function __construct(
-Adapter $adapter,
-RequestInterface $request,
-CookiesInterface $cookies,
-SessionManagerInterface $session,
-SessionGuardConfig|null $config = null,
-ClockInterface|null $clock = null
+    Adapter $adapter,
+    RequestInterface $request,
+    CookiesInterface $cookies,
+    SessionManagerInterface $session,
+    SessionGuardConfig|null $config = null,
+    ClockInterface|null $clock = null
 );
 ```
 
@@ -2020,8 +1980,8 @@ ClockInterface|null $clock = null
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -2029,8 +1989,8 @@ bool $remember = false
 
 ```php
 public function basic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): bool;
 ```
 
@@ -2038,9 +1998,9 @@ array $extraConditions = []
 
 ```php
 public static function fromOptions(
-Adapter $adapter,
-mixed $container,
-array $options
+    Adapter $adapter,
+    mixed $container,
+    array $options
 ): static;
 ```
 
@@ -2060,8 +2020,8 @@ public function getRememberName(): string;
 
 ```php
 public function login(
-AuthUser $user,
-bool $remember = false
+    AuthUser $user,
+    bool $remember = false
 ): void;
 ```
 
@@ -2069,8 +2029,8 @@ bool $remember = false
 
 ```php
 public function loginById(
-mixed $id,
-bool $remember = false
+    mixed $id,
+    bool $remember = false
 ): AuthUser|false;
 ```
 
@@ -2090,8 +2050,8 @@ public function once( array $credentials = [] ): bool;
 
 ```php
 public function onceBasic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): AuthUser|false;
 ```
 
@@ -2117,8 +2077,8 @@ public function viaRemember(): bool;
 
 ```php
 protected function attemptBasic(
-string $field,
-array $extraConditions = []
+    string $field,
+    array $extraConditions = []
 ): bool;
 ```
 
@@ -2152,6 +2112,7 @@ protected function rememberUser( AuthUser $user ): void;
 protected function userFromRecaller( UserRemember $recaller ): AuthUser|null;
 ```
 
+
 ## Auth\Guard\Token
 
 Class
@@ -2159,30 +2120,27 @@ Class
 @extends AbstractGuard&lt;TokenGuardConfig>
 
 - [`Phalcon\Auth\Guard\AbstractGuard`](#authguardabstractguard)
-- **`Phalcon\Auth\Guard\Token`**
+  - **`Phalcon\Auth\Guard\Token`**
 
 `Phalcon\Auth\Guard\Config\TokenGuardConfig` · `Phalcon\Auth\Internal\ContainerResolver` · `Phalcon\Auth\Internal\Options` · `Phalcon\Contracts\Auth\Adapter\Adapter` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Http\RequestInterface`
 
 ### Method Summary
 
-<ApiItem href="#authguardtoken-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"RequestInterface","name":"request","default":null},{"type":"TokenGuardConfig","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardtoken-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardtoken-gettokenforrequest" visibility="public" name="getTokenForRequest" returnType="string|null" params={[]}>
-Returns the bearer token for the request.
-</ApiItem>
-<ApiItem href="#authguardtoken-setrequest" visibility="public" name="setRequest" returnType="static" params={[{"type":"RequestInterface","name":"request","default":null}]}>
-</ApiItem>
-<ApiItem href="#authguardtoken-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authguardtoken-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
-</ApiItem>
+- `public __construct(Adapter $adapter, RequestInterface $request, TokenGuardConfig $config)`
+
+- `public fromOptions(Adapter $adapter, mixed $container, array $options): static`
+
+- `public getTokenForRequest(): string|null` — Returns the bearer token for the request.
+
+- `public setRequest(RequestInterface $request): static`
+
+- `public user(): AuthUser|null`
+
+- `public validate(array $credentials = []): bool`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="request" type="RequestInterface" default="">
-</ApiItem>
+- `protected RequestInterface $request`
 
 ### Methods
 
@@ -2190,9 +2148,9 @@ Returns the bearer token for the request.
 
 ```php
 public function __construct(
-Adapter $adapter,
-RequestInterface $request,
-TokenGuardConfig $config
+    Adapter $adapter,
+    RequestInterface $request,
+    TokenGuardConfig $config
 );
 ```
 
@@ -2200,9 +2158,9 @@ TokenGuardConfig $config
 
 ```php
 public static function fromOptions(
-Adapter $adapter,
-mixed $container,
-array $options
+    Adapter $adapter,
+    mixed $container,
+    array $options
 ): static;
 ```
 
@@ -2239,6 +2197,7 @@ public function user(): AuthUser|null;
 public function validate( array $credentials = [] ): bool;
 ```
 
+
 ## Auth\Guard\UserRemember
 
 Final
@@ -2251,24 +2210,21 @@ Value object representing the contents of a remember-me cookie.
 
 ### Method Summary
 
-<ApiItem href="#authguarduserremember-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"payload","default":null}]}>
-Accepts either the raw JSON cookie value (string) or the already
-</ApiItem>
-<ApiItem href="#authguarduserremember-getid" visibility="public" name="getId" returnType="int|string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authguarduserremember-gettoken" visibility="public" name="getToken" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#authguarduserremember-getuseragent" visibility="public" name="getUserAgent" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(mixed $payload)` — Accepts either the raw JSON cookie value (string) or the already
+
+- `public getId(): int|string|null`
+
+- `public getToken(): string`
+
+- `public getUserAgent(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="id" type="int|string|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="token" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="userAgent" type="string" default="">
-</ApiItem>
+- `protected int|string|null $id`
+
+- `protected string $token`
+
+- `protected string $userAgent`
 
 ### Methods
 
@@ -2300,6 +2256,7 @@ public function getToken(): string;
 public function getUserAgent(): string;
 ```
 
+
 ## Auth\Internal\ContainerResolver
 
 Final
@@ -2322,21 +2279,15 @@ callers and userland catch a single exception family.
 
 ### Method Summary
 
-<ApiItem href="#authinternalcontainerresolver-ensurecontainer" visibility="public" name="ensureContainer" returnType="void" params={[{"type":"mixed","name":"container","default":null}]}>
-Validates that the value is a supported container.
-</ApiItem>
-<ApiItem href="#authinternalcontainerresolver-requireservice" visibility="public" name="requireService" returnType="object" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"candidates","default":null},{"type":"string","name":"context","default":null}]}>
-Resolves the first candidate service name that the container can
-</ApiItem>
-<ApiItem href="#authinternalcontainerresolver-resolvecandidate" visibility="public" name="resolveCandidate" returnType="object" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"fqn","default":null},{"type":"string","name":"shortName","default":null},{"type":"string","name":"context","default":null}]}>
-Convenience composition of serviceCandidates() + requireService():
-</ApiItem>
-<ApiItem href="#authinternalcontainerresolver-resolvefresh" visibility="public" name="resolveFresh" returnType="object" params={[{"type":"mixed","name":"container","default":null},{"type":"string","name":"name","default":null}]}>
-Resolves a fresh instance: new() on the Container (bypasses the
-</ApiItem>
-<ApiItem href="#authinternalcontainerresolver-servicecandidates" visibility="public" name="serviceCandidates" returnType="array" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"fqn","default":null},{"type":"string","name":"shortName","default":null}]}>
-Builds the ordered candidate list for a framework service:
-</ApiItem>
+- `public ensureContainer(mixed $container): void` — Validates that the value is a supported container.
+
+- `public requireService(mixed $container, array $candidates, string $context): object` — Resolves the first candidate service name that the container can
+
+- `public resolveCandidate(mixed $container, array $options, string $key, string $fqn, string $shortName, string $context): object` — Convenience composition of serviceCandidates() + requireService():
+
+- `public resolveFresh(mixed $container, string $name): object` — Resolves a fresh instance: new() on the Container (bypasses the
+
+- `public serviceCandidates(array $options, string $key, string $fqn, string $shortName): array` — Builds the ordered candidate list for a framework service:
 
 ### Methods
 
@@ -2352,9 +2303,9 @@ Validates that the value is a supported container.
 
 ```php
 public static function requireService(
-mixed $container,
-array $candidates,
-string $context
+    mixed $container,
+    array $candidates,
+    string $context
 ): object;
 ```
 
@@ -2367,12 +2318,12 @@ setups.
 
 ```php
 public static function resolveCandidate(
-mixed $container,
-array $options,
-string $key,
-string $fqn,
-string $shortName,
-string $context
+    mixed $container,
+    array $options,
+    string $key,
+    string $fqn,
+    string $shortName,
+    string $context
 ): object;
 ```
 
@@ -2385,8 +2336,8 @@ container key may vary, using the options override or the
 
 ```php
 public static function resolveFresh(
-mixed $container,
-string $name
+    mixed $container,
+    string $name
 ): object;
 ```
 
@@ -2400,16 +2351,17 @@ unregistered but existing class is still built via the class builder.
 
 ```php
 public static function serviceCandidates(
-array $options,
-string $key,
-string $fqn,
-string $shortName
+    array $options,
+    string $key,
+    string $fqn,
+    string $shortName
 ): array;
 ```
 
 Builds the ordered candidate list for a framework service:
 an explicit override from options['services'][key] if present,
 otherwise the interface FQN followed by the conventional short name.
+
 
 ## Auth\Internal\Options
 
@@ -2424,14 +2376,13 @@ implementations. Not part of the public API.
 
 ### Method Summary
 
-<ApiItem href="#authinternaloptions-arrayoption" visibility="public" name="arrayOption" returnType="array" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"array","name":"defaultValue","default":null}]}>
-</ApiItem>
-<ApiItem href="#authinternaloptions-requirearray" visibility="public" name="requireArray" returnType="array" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#authinternaloptions-requirestring" visibility="public" name="requireString" returnType="string" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"context","default":null}]}>
-</ApiItem>
-<ApiItem href="#authinternaloptions-stringornull" visibility="public" name="stringOrNull" returnType="string|null" params={[{"type":"array","name":"options","default":null},{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public arrayOption(array $options, string $key, array $defaultValue): array`
+
+- `public requireArray(array $options, string $key, string $context): array`
+
+- `public requireString(array $options, string $key, string $context): string`
+
+- `public stringOrNull(array $options, string $key): string|null`
 
 ### Methods
 
@@ -2439,9 +2390,9 @@ implementations. Not part of the public API.
 
 ```php
 public static function arrayOption(
-array $options,
-string $key,
-array $defaultValue
+    array $options,
+    string $key,
+    array $defaultValue
 ): array;
 ```
 
@@ -2449,9 +2400,9 @@ array $defaultValue
 
 ```php
 public static function requireArray(
-array $options,
-string $key,
-string $context
+    array $options,
+    string $key,
+    string $context
 ): array;
 ```
 
@@ -2459,9 +2410,9 @@ string $context
 
 ```php
 public static function requireString(
-array $options,
-string $key,
-string $context
+    array $options,
+    string $key,
+    string $context
 ): string;
 ```
 
@@ -2469,10 +2420,11 @@ string $context
 
 ```php
 public static function stringOrNull(
-array $options,
-string $key
+    array $options,
+    string $key
 ): string|null;
 ```
+
 
 ## Auth\Manager
 
@@ -2489,55 +2441,53 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 
 ### Method Summary
 
-<ApiItem href="#authmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AccessLocator","name":"accessFactory","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-access" visibility="public" name="access" returnType="self" params={[{"type":"string","name":"accessName","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-addaccesslist" visibility="public" name="addAccessList" returnType="self" params={[{"type":"array","name":"accessList","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-addguard" visibility="public" name="addGuard" returnType="self" params={[{"type":"string","name":"nameGuard","default":null},{"type":"Guard","name":"guard","default":null},{"type":"bool","name":"isDefault","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#authmanager-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#authmanager-check" visibility="public" name="check" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-except" visibility="public" name="except" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-getaccess" visibility="public" name="getAccess" returnType="Access|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-getaccesslist" visibility="public" name="getAccessList" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-getdefaultguard" visibility="public" name="getDefaultGuard" returnType="Guard|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-getguards" visibility="public" name="getGuards" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-guard" visibility="public" name="guard" returnType="Guard" params={[{"type":"string|null","name":"name","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#authmanager-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-logout" visibility="public" name="logout" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-only" visibility="public" name="only" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-setaccess" visibility="public" name="setAccess" returnType="self" params={[{"type":"Access","name":"access","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-setdefaultguard" visibility="public" name="setDefaultGuard" returnType="self" params={[{"type":"Guard","name":"guard","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanager-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
-</ApiItem>
-<ApiItem href="#authmanager-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
-</ApiItem>
+- `public __construct(AccessLocator $accessFactory)`
+
+- `public access(string $accessName): self`
+
+- `public addAccessList(array $accessList): self`
+
+- `public addGuard(string $nameGuard, Guard $guard, bool $isDefault = false): self`
+
+- `public attempt(array $credentials = [], bool $remember = false): bool`
+
+- `public check(): bool`
+
+- `public except(string $actions): self`
+
+- `public getAccess(): Access|null`
+
+- `public getAccessList(): array`
+
+- `public getDefaultGuard(): Guard|null`
+
+- `public getGuards(): array`
+
+- `public guard(string|null $name = null): Guard`
+
+- `public id(): int|string|null`
+
+- `public logout(): void`
+
+- `public only(string $actions): self`
+
+- `public setAccess(Access $access): self`
+
+- `public setDefaultGuard(Guard $guard): self`
+
+- `public user(): AuthUser|null`
+
+- `public validate(array $credentials = []): bool`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="accessFactory" type="AccessLocator" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeAccess" type="Access|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultGuard" type="Guard|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="guards" type="array&lt;string, Guard&gt;" default="[]">
-</ApiItem>
+- `protected AccessLocator $accessFactory`
+
+- `protected Access|null $activeAccess = null`
+
+- `protected Guard|null $defaultGuard = null`
+
+- `protected array<string, Guard> $guards = []`
 
 ### Methods
 
@@ -2563,9 +2513,9 @@ public function addAccessList( array $accessList ): self;
 
 ```php
 public function addGuard(
-string $nameGuard,
-Guard $guard,
-bool $isDefault = false
+    string $nameGuard,
+    Guard $guard,
+    bool $isDefault = false
 ): self;
 ```
 
@@ -2573,8 +2523,8 @@ bool $isDefault = false
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -2662,6 +2612,7 @@ public function user(): AuthUser|null;
 public function validate( array $credentials = [] ): bool;
 ```
 
+
 ## Auth\ManagerFactory
 
 Class
@@ -2711,29 +2662,27 @@ not separately constructed copies.
 
 ### Method Summary
 
-<ApiItem href="#authmanagerfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Security","name":"hasher","default":null},{"type":"mixed","name":"container","default":null},{"type":"AdapterLocator|null","name":"adapterLocator","default":"null"},{"type":"GuardLocator|null","name":"guardLocator","default":"null"},{"type":"AccessLocator|null","name":"accessLocator","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#authmanagerfactory-load" visibility="public" name="load" returnType="Manager" params={[{"type":"mixed","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanagerfactory-buildadapter" visibility="protected" name="buildAdapter" returnType="Adapter" params={[{"type":"AdapterLocator","name":"locator","default":null},{"type":"array","name":"cfg","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanagerfactory-buildguard" visibility="protected" name="buildGuard" returnType="Guard" params={[{"type":"GuardLocator","name":"locator","default":null},{"type":"string","name":"type","default":null},{"type":"Adapter","name":"adapter","default":null},{"type":"array","name":"options","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmanagerfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(Security $hasher, mixed $container, AdapterLocator|null $adapterLocator = null, GuardLocator|null $guardLocator = null, AccessLocator|null $accessLocator = null)`
+
+- `public load(mixed $config): Manager`
+
+- `protected buildAdapter(AdapterLocator $locator, array $cfg): Adapter`
+
+- `protected buildGuard(GuardLocator $locator, string $type, Adapter $adapter, array $options): Guard`
+
+- `protected getExceptionClass(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="accessLocator" type="AccessLocator" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="adapterLocator" type="AdapterLocator" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="mixed" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="guardLocator" type="GuardLocator" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hasher" type="Security" default="">
-</ApiItem>
+- `protected AccessLocator $accessLocator`
+
+- `protected AdapterLocator $adapterLocator`
+
+- `protected mixed $container`
+
+- `protected GuardLocator $guardLocator`
+
+- `protected Security $hasher`
 
 ### Methods
 
@@ -2741,11 +2690,11 @@ not separately constructed copies.
 
 ```php
 public function __construct(
-Security $hasher,
-mixed $container,
-AdapterLocator|null $adapterLocator = null,
-GuardLocator|null $guardLocator = null,
-AccessLocator|null $accessLocator = null
+    Security $hasher,
+    mixed $container,
+    AdapterLocator|null $adapterLocator = null,
+    GuardLocator|null $guardLocator = null,
+    AccessLocator|null $accessLocator = null
 );
 ```
 
@@ -2759,8 +2708,8 @@ public function load( mixed $config ): Manager;
 
 ```php
 protected function buildAdapter(
-AdapterLocator $locator,
-array $cfg
+    AdapterLocator $locator,
+    array $cfg
 ): Adapter;
 ```
 
@@ -2768,10 +2717,10 @@ array $cfg
 
 ```php
 protected function buildGuard(
-GuardLocator $locator,
-string $type,
-Adapter $adapter,
-array $options
+    GuardLocator $locator,
+    string $type,
+    Adapter $adapter,
+    array $options
 ): Guard;
 ```
 
@@ -2780,6 +2729,7 @@ array $options
 ```php
 protected function getExceptionClass(): string;
 ```
+
 
 ## Auth\Micro\AuthMicroListener
 
@@ -2799,23 +2749,21 @@ forward mechanism.
 No-op when no active access has been set on the manager.
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
-- **`Phalcon\Auth\Micro\AuthMicroListener`**
+  - **`Phalcon\Auth\Micro\AuthMicroListener`**
 
 `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Events\Event` · `Phalcon\Mvc\Micro` · `Phalcon\Mvc\RouterInterface` · `Phalcon\Mvc\Router\RouteInterface`
 
 ### Method Summary
 
-<ApiItem href="#authmicroauthmicrolistener-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Manager","name":"manager","default":null},{"type":"string","name":"componentName","default":"\"Micro\""}]}>
-</ApiItem>
-<ApiItem href="#authmicroauthmicrolistener-beforeexecuteroute" visibility="public" name="beforeExecuteRoute" returnType="bool" params={[{"type":"Event","name":"event","default":null},{"type":"Micro","name":"application","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmicroauthmicrolistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(Manager $manager, string $componentName = "Micro")`
+
+- `public beforeExecuteRoute(Event $event, Micro $application): bool`
+
+- `protected getActionType(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="componentName" type="string" default="">
-</ApiItem>
+- `protected string $componentName`
 
 ### Methods
 
@@ -2823,8 +2771,8 @@ No-op when no active access has been set on the manager.
 
 ```php
 public function __construct(
-Manager $manager,
-string $componentName = "Micro"
+    Manager $manager,
+    string $componentName = "Micro"
 );
 ```
 
@@ -2832,8 +2780,8 @@ string $componentName = "Micro"
 
 ```php
 public function beforeExecuteRoute(
-Event $event,
-Micro $application
+    Event $event,
+    Micro $application
 ): bool;
 ```
 
@@ -2842,6 +2790,7 @@ Micro $application
 ```php
 protected function getActionType(): string;
 ```
+
 
 ## Auth\Mvc\AuthDispatcherListener
 
@@ -2855,16 +2804,15 @@ dispatch. Attach to the events manager:
 No-op when no active access has been set on the manager.
 
 - [`Phalcon\Auth\AbstractAuthDispatcherListener`](#authabstractauthdispatcherlistener)
-- **`Phalcon\Auth\Mvc\AuthDispatcherListener`**
+  - **`Phalcon\Auth\Mvc\AuthDispatcherListener`**
 
 `Phalcon\Auth\AbstractAuthDispatcherListener` · `Phalcon\Auth\Exception` · `Phalcon\Events\Event` · `Phalcon\Mvc\Dispatcher`
 
 ### Method Summary
 
-<ApiItem href="#authmvcauthdispatcherlistener-beforeexecuteroute" visibility="public" name="beforeExecuteRoute" returnType="bool" params={[{"type":"Event","name":"event","default":null},{"type":"Dispatcher","name":"dispatcher","default":null}]}>
-</ApiItem>
-<ApiItem href="#authmvcauthdispatcherlistener-getactiontype" visibility="protected" name="getActionType" returnType="string" params={[]}>
-</ApiItem>
+- `public beforeExecuteRoute(Event $event, Dispatcher $dispatcher): bool`
+
+- `protected getActionType(): string`
 
 ### Methods
 
@@ -2872,8 +2820,8 @@ No-op when no active access has been set on the manager.
 
 ```php
 public function beforeExecuteRoute(
-Event $event,
-Dispatcher $dispatcher
+    Event $event,
+    Dispatcher $dispatcher
 ): bool;
 ```
 

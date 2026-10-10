@@ -23,6 +23,6 @@ Developers do not need to know the C language to use Phalcon. Its interface is e
 Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
 
 > The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
-\{: .alert .alert-info \}
+> \{: .alert .alert-info }
 
 Source: https://docs.phalcon.io/3.4/introduction/index.mdx

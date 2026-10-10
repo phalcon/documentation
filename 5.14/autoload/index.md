@@ -44,10 +44,10 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $loader->register();
@@ -71,10 +71,10 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $loader->register();
@@ -92,16 +92,16 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $loader->register();
 
 if (true === $loader->isRegistered()) {
-$loader->unregister();
+    $loader->unregister();
 }
 ```
 
@@ -116,13 +116,13 @@ Consider the following example:
 <?php
 
 spl_autoload_register(
-function (string $className) {
-    $filepath = $className . '.php';
+    function (string $className) {
+        $filepath = $className . '.php';
 
-    if (file_exists($filepath)) {
-        require $filepath;
+        if (file_exists($filepath)) {
+            require $filepath;
+        }
     }
-}
 );
 ```
 
@@ -135,7 +135,7 @@ that points to a script containing malicious code, then your application will be
 $className = '../processes/important-process';
 
 if (class_exists($className)) {
-// ...
+    // ...
 }
 ```
 
@@ -164,11 +164,11 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'             => 'app/library',
-   'MyApp\Controllers' => 'app/controllers',
-   'MyApp\Models'      => 'app/models',
-]
+    [
+       'MyApp'             => 'app/library',
+       'MyApp\Controllers' => 'app/controllers',
+       'MyApp\Models'      => 'app/models',
+    ]
 );
 
 $loader->register();
@@ -211,17 +211,17 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'             => 'app/library',
-]
+    [
+       'MyApp'             => 'app/library',
+    ]
 );
 
 $loader->setNamespaces(
-[
-   'MyApp\Controllers' => 'app/controllers',
-   'MyApp\Models'      => 'app/models',
-],
-true
+    [
+       'MyApp\Controllers' => 'app/controllers',
+       'MyApp\Models'      => 'app/models',
+    ],
+    true
 );
 
 $loader->register();
@@ -260,13 +260,13 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setClasses(
-[
-    'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
-    'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
-    'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
-    'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
-    'MyApp\Models\Users'                => 'app/models/Users.php',
-]
+    [
+        'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
+        'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
+        'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
+        'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
+        'MyApp\Models\Users'                => 'app/models/Users.php',
+    ]
 );
 
 $loader->register();
@@ -288,19 +288,19 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setClasses(
-[
-    'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
-    'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
-    'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
-]
+    [
+        'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
+        'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
+        'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
+    ]
 );
 
 $loader->setClasses(
-[
-    'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
-    'MyApp\Models\Users'                => 'app/models/Users.php',
-],
-true
+    [
+        'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
+        'MyApp\Models\Users'                => 'app/models/Users.php',
+    ],
+    true
 );
 
 $loader->register();
@@ -313,11 +313,11 @@ the array of the registered classes. For the example above, `getClasses()` retur
 
 ```php
 [
-'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
-'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
-'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
-'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
-'MyApp\Models\Users'                => 'app/models/Users.php',
+    'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
+    'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
+    'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
+    'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
+    'MyApp\Models\Users'                => 'app/models/Users.php',
 ]
 ```
 
@@ -337,10 +337,10 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setFiles(
-[
-    'functions.php',
-    'arrayFunctions.php',
-]
+    [
+        'functions.php',
+        'arrayFunctions.php',
+    ]
 );
 
 $loader->register();
@@ -359,16 +359,16 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setFiles(
-[
-    'app/functions/functions.php',
-]
+    [
+        'app/functions/functions.php',
+    ]
 );
 
 $loader->setFiles(
-[
-    'app/functions/debug.php',
-],
-true
+    [
+        'app/functions/debug.php',
+    ],
+    true
 );
 
 $loader->register();
@@ -381,8 +381,8 @@ array of the registered files. For the example above, `getFiles()` returns:
 
 ```php
 [
-'app/functions/functions.php',
-'app/functions/debug.php',
+    'app/functions/functions.php',
+    'app/functions/debug.php',
 ]
 ```
 
@@ -410,11 +410,11 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setDirectories(
-[
-    'app/functions',
-    'app/controllers',
-    'app/models',
-]
+    [
+        'app/functions',
+        'app/controllers',
+        'app/models',
+    ]
 );
 
 $loader->register();
@@ -431,17 +431,17 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setDirectories(
-[
-    'app/functions',
-]
+    [
+        'app/functions',
+    ]
 );
 
 $loader->setDirectories(
-[
-    'app/controllers',
-    'app/models',
-],
-true
+    [
+        'app/controllers',
+        'app/models',
+    ],
+    true
 );
 
 $loader->register();
@@ -454,9 +454,9 @@ returns the array of the registered directories. For the example above, `getDirs
 
 ```php
 [
-'app/functions',
-'app/controllers',
-'app/models',
+    'app/functions',
+    'app/controllers',
+    'app/models',
 ]
 ```
 
@@ -474,17 +474,17 @@ use Phalcon\Autoload\Loader;
 $loader = new Loader();
 
 $loader->setExtensions(
-[
-    'php',
-    'inc',
-    'phb',
-]
+    [
+        'php',
+        'inc',
+        'phb',
+    ]
 );
 
 $loader->setDirectories(
-[
-    'app/functions',
-]
+    [
+        'app/functions',
+    ]
 );
 ```
 
@@ -505,7 +505,7 @@ The `setDirectories()`, `setExtensions()`, `setFiles()` registrations (and their
 <?php
 
 foreach ($loader->getDirectories() as $directory) {
-echo $directory, PHP_EOL;
+    echo $directory, PHP_EOL;
 }
 ```
 
@@ -515,8 +515,8 @@ Code that reads both key and value sees the value string in the key position:
 <?php
 
 foreach ($loader->getDirectories() as $key => $directory) {
-// $key === $directory
-echo $key, ' => ', $directory, PHP_EOL;
+    // $key === $directory
+    echo $key, ' => ', $directory, PHP_EOL;
 }
 ```
 
@@ -597,20 +597,20 @@ $eventsManager = new Manager();
 $loader        = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $eventsManager->attach(
-'loader:beforeCheckPath',
-function (
-    Event $event, 
-    Loader $loader
-) {
-    echo $loader->getCheckedPath();
-}
+    'loader:beforeCheckPath',
+    function (
+        Event $event, 
+        Loader $loader
+    ) {
+        echo $loader->getCheckedPath();
+    }
 );
 
 $loader->setEventsManager($eventsManager);
@@ -639,22 +639,22 @@ $eventsManager = new Manager();
 $loader        = new Loader();
 
 $loader->setNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $eventsManager->attach(
-'loader:beforeCheckPath',
-function (
-    Event $event, 
-    Loader $loader
-) {
-    if ('app/models' === $loader->getCheckedPath()) {
-        return false;
+    'loader:beforeCheckPath',
+    function (
+        Event $event, 
+        Loader $loader
+    ) {
+        if ('app/models' === $loader->getCheckedPath()) {
+            return false;
+        }
     }
-}
 );
 
 $loader->setEventsManager($eventsManager);
@@ -813,8 +813,8 @@ Register the autoload method
 
 ```php
 public function setClasses(
-array $classes, 
-bool $merge = false
+    array $classes, 
+    bool $merge = false
 ): Loader
 ```
 
@@ -822,8 +822,8 @@ Register classes and their locations
 
 ```php
 public function setDirectories(
-array $directories, 
-bool $merge = false
+    array $directories, 
+    bool $merge = false
 ): Loader
 ```
 
@@ -831,8 +831,8 @@ Register directories in which "not found" classes could be found
 
 ```php
 public function setExtensions(
-array $extensions, 
-bool $merge = false
+    array $extensions, 
+    bool $merge = false
 ): Loader
 ```
 
@@ -840,7 +840,7 @@ Sets an array of file extensions that the loader must try in each attempt to loc
 
 ```php
 public function setFileCheckingCallback(
-mixed $method = null
+    mixed $method = null
 ): Loader
 ```
 
@@ -848,8 +848,8 @@ Sets the file check callback.
 
 ```php
 public function setFiles(
-array $files, 
-bool $merge = false
+    array $files, 
+    bool $merge = false
 ): Loader
 ```
 
@@ -858,8 +858,8 @@ functions
 
 ```php
 public function setNamespaces(
-array namespaces, 
-bool merge = false
+    array namespaces, 
+    bool merge = false
 ): Loader
 ```
 

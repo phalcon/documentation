@@ -60,15 +60,15 @@ use Phalcon\ADR\Input\Input;
 
 final class InvoicesDto extends Input
 {
-public function id(): int
-{
-    return (int) $this->get('id');
-}
+    public function id(): int
+    {
+        return (int) $this->get('id');
+    }
 
-public function reference(): ?string
-{
-    return $this->get('reference');
-}
+    public function reference(): ?string
+    {
+        return $this->get('reference');
+    }
 }
 ```
 

@@ -24,71 +24,72 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 $validation = new Validation();
 
 $validation->add(
-'name',
-new PresenceOf(
-    [
-        'message' => 'The name is required',
-    ]
-)
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'The name is required',
+        ]
+    )
 );
 
 $validation->add(
-'email',
-new PresenceOf(
-    [
-        'message' => 'The e-mail is required',
-    ]
-)
+    'email',
+    new PresenceOf(
+        [
+            'message' => 'The e-mail is required',
+        ]
+    )
 );
 
 $validation->add(
-'email',
-new Email(
-    [
-        'message' => 'The e-mail is not valid',
-    ]
-)
+    'email',
+    new Email(
+        [
+            'message' => 'The e-mail is not valid',
+        ]
+    )
 );
 
 $messages = $validation->validate($_POST);
 
 if (count($messages)) {
-foreach ($messages as $message) {
-    echo $message, '<br>';
-}
+    foreach ($messages as $message) {
+        echo $message, '<br>';
+    }
 }
 ```
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
+
 ## Methods
 
 ```php
 public function __construct(
-array $validators = []
+    array $validators = []
 )
 ```
 
 ```php
 public function add(
-mixed $field, 
-ValidatorInterface $validator
+    mixed $field, 
+    ValidatorInterface $validator
 ): ValidationInterface
 ```
 Adds a validator to a field
 
 ```php
 public function appendMessage(
-MessageInterface $message
+    MessageInterface $message
 ): ValidationInterface
 ```
 Appends a message to the messages list
 
 ```php
 public function bind(
-object $entity, 
-array | object $data,
-array $whitelist = []
+    object $entity, 
+    array | object $data,
+    array $whitelist = []
 ): ValidationInterface
 ```
 Assigns the data to an entity. The entity is used to obtain the validation values. When `$whitelist` is supplied, only the fields listed in it will be assigned to the entity; all other fields are skipped.
@@ -100,14 +101,14 @@ Returns the bound entity
 
 ```php
 public function getFilters(
-string $field = null
+    string $field = null
 ): mixed | null
 ```
 Returns all the filters or a specific one
 
 ```php
 public function getLabel(
-string $field
+    string $field
 ): string
 ```
 Get a label for the field
@@ -124,10 +125,11 @@ Returns the validators added to the validation
 
 ```php
 public function getValue(
-string $field
+    string $field
 ): mixed | null
 ```
 Gets a value to validate in the array/object data source
+
 
 ```php
 public function getValueByEntity(mixed $entity, string $field): mixed | null
@@ -141,47 +143,47 @@ Gets the value to validate in the array/object data source
 
 ```php
 public function rule(
-mixed $field, 
-ValidatorInterface $validator
+    mixed $field, 
+    ValidatorInterface $validator
 ): ValidationInterface
 ```
 Alias of `add` method
 
 ```php
 public function rules(
-mixed $field, 
-array $validators
+    mixed $field, 
+    array $validators
 ): ValidationInterface
 ```
 Adds the validators to a field
 
 ```php
 public function setEntity(
-object $entity
+    object $entity
 ): void
 ```
 Sets the bound entity
 
 ```php
 public function setFilters(
-string $field, 
-array | string $filters
+    string $field, 
+    array | string $filters
 ): ValidationInterface
 ```
 Add filters to the field
 
 ```php
 public function setLabels(
-array $labels
+    array $labels
 ): void
 ```
 Adds labels for fields
 
 ```php
 public function validate(
-array | object $data = null, 
-object $entity = null,
-array $whitelist = []
+    array | object $data = null, 
+    object $entity = null,
+    array $whitelist = []
 ): Messages
 ```
 Validate a set of data according to a set of rules. When `$whitelist` is supplied, only the listed fields are bound to `$entity`; validation itself still runs over all configured fields.
@@ -203,9 +205,9 @@ $validation->add('name', new PresenceOf(['message' => 'Name is required']));
 $validation->validate(['name' => '']);
 
 if ($validation->fails()) {
-foreach ($validation->getMessages() as $message) {
-    echo $message, PHP_EOL;
-}
+    foreach ($validation->getMessages() as $message) {
+        echo $message, PHP_EOL;
+    }
 }
 ```
 
@@ -221,35 +223,35 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 
 class MyValidation extends Validation
 {
-public function initialize()
-{
-    $this->add(
-        'name',
-        new PresenceOf(
-            [
-                'message' => 'The name is required',
-            ]
-        )
-    );
+    public function initialize()
+    {
+        $this->add(
+            'name',
+            new PresenceOf(
+                [
+                    'message' => 'The name is required',
+                ]
+            )
+        );
 
-    $this->add(
-        'email',
-        new PresenceOf(
-            [
-                'message' => 'The e-mail is required',
-            ]
-        )
-    );
+        $this->add(
+            'email',
+            new PresenceOf(
+                [
+                    'message' => 'The e-mail is required',
+                ]
+            )
+        );
 
-    $this->add(
-        'email',
-        new Email(
-            [
-                'message' => 'The e-mail is not valid',
-            ]
-        )
-    );
-}
+        $this->add(
+            'email',
+            new Email(
+                [
+                    'message' => 'The e-mail is not valid',
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -263,9 +265,9 @@ $validation = new MyValidation();
 $messages = $validation->validate($_POST);
 
 if (count($messages)) {
-foreach ($messages as $message) {
-    echo $message, '<br>';
-}
+    foreach ($messages as $message) {
+        echo $message, '<br>';
+    }
 }
 ```
 
@@ -316,27 +318,27 @@ use Phalcon\Filter\Validation\Validator\Alnum;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new Alnum(
-    [
-        "message" => ":field must contain only alphanumeric characters",
-    ]
-)
+    "username",
+    new Alnum(
+        [
+            "message" => ":field must contain only alphanumeric characters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new Alnum(
     [
-        "message" => [
-            "username" => "username must contain only alphanumeric characters",
-            "name"     => "name must contain only alphanumeric characters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new Alnum(
+        [
+            "message" => [
+                "username" => "username must contain only alphanumeric characters",
+                "name"     => "name must contain only alphanumeric characters",
+            ],
+        ]
+    )
 );
 ```
 
@@ -352,27 +354,27 @@ use Phalcon\Filter\Validation\Validator\Alpha;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new Alpha(
-    [
-        "message" => ":field must contain only letters",
-    ]
-)
+    "username",
+    new Alpha(
+        [
+            "message" => ":field must contain only letters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new Alpha(
     [
-        "message" => [
-            "username" => "username must contain only letters",
-            "name"     => "name must contain only letters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new Alpha(
+        [
+            "message" => [
+                "username" => "username must contain only letters",
+                "name"     => "name must contain only letters",
+            ],
+        ]
+    )
 );
 ```
 
@@ -392,37 +394,37 @@ use Phalcon\Filter\Validation\Validator\Between;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Between(
-    [
-        "minimum" => 0,
-        "maximum" => 100,
-        "message" => "The price must be between 0 and 100",
-    ]
-)
+    "price",
+    new Between(
+        [
+            "minimum" => 0,
+            "maximum" => 100,
+            "message" => "The price must be between 0 and 100",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Between(
     [
-        "minimum" => [
-            "price"  => 0,
-            "amount" => 0,
-        ],
-        "maximum" => [
-            "price"  => 100,
-            "amount" => 50,
-        ],
-        "message" => [
-            "price"  => "The price must be between 0 and 100",
-            "amount" => "The amount must be between 0 and 50",
-        ],
-    ]
-)
+        "price",
+        "amount",
+    ],
+    new Between(
+        [
+            "minimum" => [
+                "price"  => 0,
+                "amount" => 0,
+            ],
+            "maximum" => [
+                "price"  => 100,
+                "amount" => 50,
+            ],
+            "message" => [
+                "price"  => "The price must be between 0 and 100",
+                "amount" => "The amount must be between 0 and 50",
+            ],
+        ]
+    )
 );
 ```
 
@@ -438,48 +440,48 @@ use \Phalcon\Filter\Validation\Validator\PresenceOf;
 
 $validation = new Validation();
 $validation->add(
-'amount',
-new Callback(
-    [
-        'callback' => function ($data) {
-            return $data['amount'] % 2 == 0;
-        },
-        'message'  => 'Only even number of products are accepted'
-    ]
-)
+    'amount',
+    new Callback(
+        [
+            'callback' => function ($data) {
+                return $data['amount'] % 2 == 0;
+            },
+            'message'  => 'Only even number of products are accepted'
+        ]
+    )
 );
 $validation->add(
-'amount',
-new Callback(
-    [
-        'callback' => function ($data) {
-            if ($data['amount'] % 2 == 0) {
-                return $data['amount'] != 2;
-            }
+    'amount',
+    new Callback(
+        [
+            'callback' => function ($data) {
+                if ($data['amount'] % 2 == 0) {
+                    return $data['amount'] != 2;
+                }
 
-            return true;
-        },
-        'message' => "You cannot buy 2 products"
-    ]
-)
+                return true;
+            },
+            'message' => "You cannot buy 2 products"
+        ]
+    )
 );
 $validation->add(
-'description',
-new Callback(
-    [
-        'callback' => function ($data) {
-            if ($data['amount'] >= 10) {
-                return new PresenceOf(
-                    [
-                        'message' => 'You must write why you need so big amount.'
-                    ]
-                );
-            }
+    'description',
+    new Callback(
+        [
+            'callback' => function ($data) {
+                if ($data['amount'] >= 10) {
+                    return new PresenceOf(
+                        [
+                            'message' => 'You must write why you need so big amount.'
+                        ]
+                    );
+                }
 
-            return true;
-        }
-    ]
-)
+                return true;
+            }
+        ]
+    )
 );
 
 // Validator #1
@@ -500,37 +502,37 @@ use Phalcon\Filter\Validation\Validator\Numericality;
 $validator = new Validation();
 
 $validator->add(
-["user", "admin"],
-new Callback(
-    [
-        "message" => "User cannot belong to two groups",
-        "callback" => function($data) {
-            if (!empty($data->getUser()) && 
-                !empty($data->getAdmin())) {
-                return false;
-            }
+    ["user", "admin"],
+    new Callback(
+        [
+            "message" => "User cannot belong to two groups",
+            "callback" => function($data) {
+                if (!empty($data->getUser()) && 
+                    !empty($data->getAdmin())) {
+                    return false;
+                }
 
-            return true;
-        }
-    ]
-)
+                return true;
+            }
+        ]
+    )
 );
 
 $validator->add(
-"amount",
-new Callback(
-    [
-        "callback" => function($data) {
-            if (!empty($data->getProduct())) {
-                return new Numericality(
-                    [
-                        "message" => "Amount must be a number."
-                    ]
-                );
+    "amount",
+    new Callback(
+        [
+            "callback" => function($data) {
+                if (!empty($data->getProduct())) {
+                    return new Numericality(
+                        [
+                            "message" => "Amount must be a number."
+                        ]
+                    );
+                }
             }
-        }
-    ]
-)
+        ]
+    )
 );
 ```
 
@@ -546,32 +548,32 @@ use Phalcon\Filter\Validation\Validator\Confirmation;
 $validator = new Validation();
 
 $validator->add(
-"password",
-new Confirmation(
-    [
-        "message" => "Password doesn't match confirmation",
-        "with"    => "confirmPassword",
-    ]
-)
+    "password",
+    new Confirmation(
+        [
+            "message" => "Password doesn't match confirmation",
+            "with"    => "confirmPassword",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "password",
-    "email",
-],
-new Confirmation(
     [
-        "message" => [
-            "password" => "Password doesn't match confirmation",
-            "email"    => "Email doesn't match confirmation",
-        ],
-        "with" => [
-            "password" => "confirmPassword",
-            "email"    => "confirmEmail",
-        ],
-    ]
-)
+        "password",
+        "email",
+    ],
+    new Confirmation(
+        [
+            "message" => [
+                "password" => "Password doesn't match confirmation",
+                "email"    => "Email doesn't match confirmation",
+            ],
+            "with" => [
+                "password" => "confirmPassword",
+                "email"    => "confirmEmail",
+            ],
+        ]
+    )
 );
 ```
 ### CreditCard
@@ -586,27 +588,27 @@ use Phalcon\Filter\Validation\Validator\CreditCard;
 $validator = new Validation();
 
 $validator->add(
-"creditCard",
-new CreditCard(
-    [
-        "message" => "The credit card number is not valid",
-    ]
-)
+    "creditCard",
+    new CreditCard(
+        [
+            "message" => "The credit card number is not valid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "creditCard",
-    "secondCreditCard",
-],
-new CreditCard(
     [
-        "message" => [
-            "creditCard"       => "The credit card number is not valid",
-            "secondCreditCard" => "The second credit card number is not valid",
-        ],
-    ]
-)
+        "creditCard",
+        "secondCreditCard",
+    ],
+    new CreditCard(
+        [
+            "message" => [
+                "creditCard"       => "The credit card number is not valid",
+                "secondCreditCard" => "The second credit card number is not valid",
+            ],
+        ]
+    )
 );
 ```
 
@@ -622,32 +624,32 @@ use Phalcon\Filter\Validation\Validator\Date as DateValidator;
 $validator = new Validation();
 
 $validator->add(
-"date",
-new DateValidator(
-    [
-        "format"  => "d-m-Y",
-        "message" => "The date is invalid",
-    ]
-)
+    "date",
+    new DateValidator(
+        [
+            "format"  => "d-m-Y",
+            "message" => "The date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "date",
-    "anotherDate",
-],
-new DateValidator(
     [
-        "format" => [
-            "date"        => "d-m-Y",
-            "anotherDate" => "Y-m-d",
-        ],
-        "message" => [
-            "date"        => "The date is invalid",
-            "anotherDate" => "The another date is invalid",
-        ],
-    ]
-)
+        "date",
+        "anotherDate",
+    ],
+    new DateValidator(
+        [
+            "format" => [
+                "date"        => "d-m-Y",
+                "anotherDate" => "Y-m-d",
+            ],
+            "message" => [
+                "date"        => "The date is invalid",
+                "anotherDate" => "The another date is invalid",
+            ],
+        ]
+    )
 );
 ```
 
@@ -663,27 +665,27 @@ use Phalcon\Filter\Validation\Validator\Digit;
 $validator = new Validation();
 
 $validator->add(
-"height",
-new Digit(
-    [
-        "message" => ":field must be numeric",
-    ]
-)
+    "height",
+    new Digit(
+        [
+            "message" => ":field must be numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "height",
-    "width",
-],
-new Digit(
     [
-        "message" => [
-            "height" => "height must be numeric",
-            "width"  => "width must be numeric",
-        ],
-    ]
-)
+        "height",
+        "width",
+    ],
+    new Digit(
+        [
+            "message" => [
+                "height" => "height must be numeric",
+                "width"  => "width must be numeric",
+            ],
+        ]
+    )
 );
 ```
 
@@ -699,37 +701,37 @@ use Phalcon\Filter\Validation\Validator\Email;
 $validator = new Validation();
 
 $validator->add(
-"email",
-new Email(
-    [
-        "message" => "The e-mail is not valid",
-    ]
-)
-);
-
-$validator->add(
-[
     "email",
-    "anotherEmail",
-],
-new Email(
-    [
-        "message" => [
-            "email"        => "The e-mail is not valid",
-            "anotherEmail" => "The another e-mail is not valid",
-        ],
-    ]
-)
+    new Email(
+        [
+            "message" => "The e-mail is not valid",
+        ]
+    )
 );
 
 $validator->add(
-"täst@example.com",
-new Email(
     [
-        "message" => "The e-mail is not valid",
-        "allowUTF8" => true,
-    ]
-)
+        "email",
+        "anotherEmail",
+    ],
+    new Email(
+        [
+            "message" => [
+                "email"        => "The e-mail is not valid",
+                "anotherEmail" => "The another e-mail is not valid",
+            ],
+        ]
+    )
+);
+
+$validator->add(
+    "täst@example.com",
+    new Email(
+        [
+            "message" => "The e-mail is not valid",
+            "allowUTF8" => true,
+        ]
+    )
 );
 ```
 
@@ -745,38 +747,38 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new ExclusionIn(
-    [
-        "message" => "The status must not be A or B",
-        "domain"  => [
-            "A",
-            "B",
-        ],
-    ]
-)
-);
-
-$validator->add(
-[
     "status",
-    "type",
-],
-new ExclusionIn(
-    [
-        "message" => [
-            "status" => "The status must not be A or B",
-            "type"   => "The type must not be 1 or "
-        ],
-        "domain" => [
-            "status" => [
+    new ExclusionIn(
+        [
+            "message" => "The status must not be A or B",
+            "domain"  => [
                 "A",
                 "B",
             ],
-            "type"   => [1, 2],
-        ],
-    ]
-)
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "status",
+        "type",
+    ],
+    new ExclusionIn(
+        [
+            "message" => [
+                "status" => "The status must not be A or B",
+                "type"   => "The type must not be 1 or "
+            ],
+            "domain" => [
+                "status" => [
+                    "A",
+                    "B",
+                ],
+                "type"   => [1, 2],
+            ],
+        ]
+    )
 );
 ```
 
@@ -792,60 +794,60 @@ use Phalcon\Filter\Validation\Validator\File;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new File(
-    [
-        "maxSize"              => "2M",
-        "messageSize"          => ":field exceeds the max size (:size)",
-        "allowedTypes"         => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "messageType"          => "Allowed file types are :types",
-        "maxResolution"        => "800x600",
-        "messageMaxResolution" => "Max resolution of :field is :resolution",
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new File(
-    [
-        "maxSize" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "messageSize" => [
-            "file"        => "file exceeds the max size 2M",
-            "anotherFile" => "anotherFile exceeds the max size 4M",
-        "allowedTypes" => [
-            "file"        => [
+    new File(
+        [
+            "maxSize"              => "2M",
+            "messageSize"          => ":field exceeds the max size (:size)",
+            "allowedTypes"         => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
+            "messageType"          => "Allowed file types are :types",
+            "maxResolution"        => "800x600",
+            "messageMaxResolution" => "Max resolution of :field is :resolution",
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new File(
+        [
+            "maxSize" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
             ],
-        ],
-        "messageType" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
-        ],
-        "maxResolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "messageMaxResolution" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+            "messageSize" => [
+                "file"        => "file exceeds the max size 2M",
+                "anotherFile" => "anotherFile exceeds the max size 4M",
+            "allowedTypes" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "messageType" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ],
+            "maxResolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "messageMaxResolution" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
@@ -861,41 +863,41 @@ use Phalcon\Filter\Validation\Validator\File\MimeType;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new MimeType(
-    [
-        "types" => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "message" => "Allowed file types are :types"
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new MimeType(
-    [
-        "types" => [
-            "file"        => [
+    new MimeType(
+        [
+            "types" => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
-            ],
-        ],
-        "message" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            "message" => "Allowed file types are :types"
         ]
-    ]
-)
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new MimeType(
+        [
+            "types" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "message" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ]
+        ]
+    )
 );
 ```
 
@@ -911,32 +913,32 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Equal;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Equal(
-    [
-        "resolution" => "800x600",
-        "message"    => "The resolution of the field :field has to be equal :resolution",
-    ]
-)
+    "file",
+    new Equal(
+        [
+            "resolution" => "800x600",
+            "message"    => "The resolution of the field :field has to be equal :resolution",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Equal(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "message" => [
-            "file"        => "Equal resolution of file has to be 800x600",
-            "anotherFile" => "Equal resolution of file has to be 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Equal(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "message" => [
+                "file"        => "Equal resolution of file has to be 800x600",
+                "anotherFile" => "Equal resolution of file has to be 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
@@ -952,37 +954,37 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Max;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Max(
-    [
-        "resolution"      => "800x600",
-        "message"  => "Max resolution of :field is :resolution",
-        "included" => true,
-    ]
-)
+    "file",
+    new Max(
+        [
+            "resolution"      => "800x600",
+            "message"  => "Max resolution of :field is :resolution",
+            "included" => true,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Max(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Max(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
@@ -998,37 +1000,37 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Min;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Min(
-    [
-        "resolution" => "800x600",
-        "message"    => "Min resolution of :field is :resolution",
-        "included"   => true,
-    ]
-)
+    "file",
+    new Min(
+        [
+            "resolution" => "800x600",
+            "message"    => "Min resolution of :field is :resolution",
+            "included"   => true,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Min(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "Min resolution of file is 800x600",
-            "anotherFile" => "Min resolution of file is 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Min(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "Min resolution of file is 800x600",
+                "anotherFile" => "Min resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
@@ -1044,37 +1046,37 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Equal(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the size (:size)",
-    ]
-)
+    "file",
+    new Equal(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Equal(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file does not have the correct size",
-            "anotherFile" => "anotherFile wrong size (4MB)",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Equal(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file does not have the correct size",
+                "anotherFile" => "anotherFile wrong size (4MB)",
+            ],
+        ]
+    )
 );
 ```
 
@@ -1090,37 +1092,37 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Max(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the max size (:size)",
-    ]
-)
+    "file",
+    new Max(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the max size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Max(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file exceeds the max size 2M",
-            "anotherFile" => "anotherFile exceeds the max size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Max(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file exceeds the max size 2M",
+                "anotherFile" => "anotherFile exceeds the max size 4M",
+            ],
+        ]
+    )
 );
 ```
 
@@ -1136,37 +1138,37 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Min(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the min size (:size)",
-    ]
-)
+    "file",
+    new Min(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the min size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Min(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file exceeds the min size 2M",
-            "anotherFile" => "anotherFile exceeds the min size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Min(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file exceeds the min size 2M",
+                "anotherFile" => "anotherFile exceeds the min size 4M",
+            ],
+        ]
+    )
 );
 ```
 
@@ -1182,32 +1184,32 @@ use Phalcon\Filter\Validation\Validator\Identical;
 $validator = new Validation();
 
 $validator->add(
-"terms",
-new Identical(
-    [
-        "accepted" => "yes",
-        "message" => "Terms and conditions must be accepted",
-    ]
-)
+    "terms",
+    new Identical(
+        [
+            "accepted" => "yes",
+            "message" => "Terms and conditions must be accepted",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "terms",
-    "otherTerms",
-],
-new Identical(
     [
-        "accepted" => [
-            "terms"        => "yes",
-            "otherTerms" => "yes",
-        ],
-        "message" => [
-            "terms"        => "Terms and conditions must be accepted",
-            "otherTerms" => "Other terms must be accepted",
-        ],
-    ]
-)
+        "terms",
+        "otherTerms",
+    ],
+    new Identical(
+        [
+            "accepted" => [
+                "terms"        => "yes",
+                "otherTerms" => "yes",
+            ],
+            "message" => [
+                "terms"        => "Terms and conditions must be accepted",
+                "otherTerms" => "Other terms must be accepted",
+            ],
+        ]
+    )
 );
 ```
 
@@ -1223,32 +1225,32 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new InclusionIn(
-    [
-        "message" => "The status must be A or B",
-        "domain"  => ["A", "B"],
-    ]
-)
+    "status",
+    new InclusionIn(
+        [
+            "message" => "The status must be A or B",
+            "domain"  => ["A", "B"],
+        ]
+    )
 );
 
 $validator->add(
-[
-    "status",
-    "type",
-],
-new InclusionIn(
     [
-        "message" => [
-            "status" => "The status must be A or B",
-            "type"   => "The status must be 1 or 2",
-        ],
-        "domain" => [
-            "status" => ["A", "B"],
-            "type"   => [1, 2],
+        "status",
+        "type",
+    ],
+    new InclusionIn(
+        [
+            "message" => [
+                "status" => "The status must be A or B",
+                "type"   => "The status must be 1 or 2",
+            ],
+            "domain" => [
+                "status" => ["A", "B"],
+                "type"   => [1, 2],
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
@@ -1264,50 +1266,50 @@ use Phalcon\Filter\Validation\Validator\Ip;
 $validator = new Validation();
 
 $validator->add(
-"ip_address",
-new Ip(
-    [
-        "message"       => ":field must contain only ip addresses",
-        // v6 and v4. The same if not specified
-        "version"       => IP::VERSION_4 | Ip::VERSION_6, 
-        // False if not specified. Ignored for v6
-        "allowReserved" => false,
-        // False if not specified
-        "allowPrivate"  => false,
-        "allowEmpty"    => false,
-    ]
-)
+    "ip_address",
+    new Ip(
+        [
+            "message"       => ":field must contain only ip addresses",
+            // v6 and v4. The same if not specified
+            "version"       => IP::VERSION_4 | Ip::VERSION_6, 
+            // False if not specified. Ignored for v6
+            "allowReserved" => false,
+            // False if not specified
+            "allowPrivate"  => false,
+            "allowEmpty"    => false,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "source_address",
-    "destination_address",
-],
-new Ip(
     [
-        "message" => [
-            "source_address"      => "source_address must be a valid IP address",
-            "destination_address" => "destination_address must be a valid IP address",
-        ],
-        "version" => [
-             "source_address"      => Ip::VERSION_4 | Ip::VERSION_6,
-             "destination_address" => Ip::VERSION_4,
-        ],
-        "allowReserved" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-        "allowPrivate" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-        "allowEmpty" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-    ]
-)
+        "source_address",
+        "destination_address",
+    ],
+    new Ip(
+        [
+            "message" => [
+                "source_address"      => "source_address must be a valid IP address",
+                "destination_address" => "destination_address must be a valid IP address",
+            ],
+            "version" => [
+                 "source_address"      => Ip::VERSION_4 | Ip::VERSION_6,
+                 "destination_address" => Ip::VERSION_4,
+            ],
+            "allowReserved" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+            "allowPrivate" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+            "allowEmpty" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+        ]
+    )
 );
 ```
 
@@ -1323,27 +1325,27 @@ use Phalcon\Filter\Validation\Validator\Numericality;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Numericality(
-    [
-        "message" => ":field is not numeric",
-    ]
-)
+    "price",
+    new Numericality(
+        [
+            "message" => ":field is not numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Numericality(
     [
-        "message" => [
-            "price"  => "price is not numeric",
-            "amount" => "amount is not numeric",
+        "price",
+        "amount",
+    ],
+    new Numericality(
+        [
+            "message" => [
+                "price"  => "price is not numeric",
+                "amount" => "amount is not numeric",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
@@ -1359,12 +1361,12 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 $validation = new Validation();
 
 $validation->add(
-'name',
-new PresenceOf(
-    [
-        'message' => 'The name is required',
-    ]
-)
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'The name is required',
+        ]
+    )
 );
 );
 ```
@@ -1381,13 +1383,13 @@ use Phalcon\Filter\Validation\Validator\Regex;
 $validation = new Validation();
 
 $validation->add(
-'telephone',
-new Regex(
-    [
-        'message' => 'The telephone is required',
-        'pattern' => '/\+1 [0-9]+/',
-    ]
-)
+    'telephone',
+    new Regex(
+        [
+            'message' => 'The telephone is required',
+            'pattern' => '/\+1 [0-9]+/',
+        ]
+    )
 );
 ```
 
@@ -1409,52 +1411,52 @@ use Phalcon\Filter\Validation\Validator\StringLength;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new StringLength(
-    [
-        "max"             => 50,
-        "min"             => 2,
-        "messageMaximum"  => "Name too long",
-        "messageMinimum"  => "Only initials please",
-        "includedMaximum" => true,
-        "includedMinimum" => false,
-    ]
-)
+    "name_last",
+    new StringLength(
+        [
+            "max"             => 50,
+            "min"             => 2,
+            "messageMaximum"  => "Name too long",
+            "messageMinimum"  => "Only initials please",
+            "includedMaximum" => true,
+            "includedMinimum" => false,
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new StringLength(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "messageMaximum" => [
-            "name_last"  => "Last name too short",
-            "name_first" => "First name too short",
-        ],
-        "messageMinimum" => [
-            "name_last"  => "Last name too long",
-            "name_first" => "First name too long",
-        ],
-        "includedMaximum" => [
-            "name_last"  => false,
-            "name_first" => true,
-        ],
-        "includedMinimum" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new StringLength(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "messageMaximum" => [
+                "name_last"  => "Last name too short",
+                "name_first" => "First name too short",
+            ],
+            "messageMinimum" => [
+                "name_last"  => "Last name too long",
+                "name_first" => "First name too long",
+            ],
+            "includedMaximum" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ],
+            "includedMinimum" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
@@ -1474,37 +1476,37 @@ use Phalcon\Filter\Validation\Validator\StringLength\Max;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new Max(
-    [
-        "max"      => 50,
-        "message"  => "Last name too long",
-        "included" => true
-    ]
-)
+    "name_last",
+    new Max(
+        [
+            "max"      => 50,
+            "message"  => "Last name too long",
+            "included" => true
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new Max(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "message" => [
-            "name_last"  => "Last name too long",
-            "name_first" => "First name too long",
-        ],
-        "included" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new Max(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "message" => [
+                "name_last"  => "Last name too long",
+                "name_first" => "First name too long",
+            ],
+            "included" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
@@ -1524,37 +1526,37 @@ use Phalcon\Filter\Validation\Validator\StringLength\Min;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new Min(
-    [
-        "min"     => 2,
-        "message" => "Only initials please",
-        "included" => true
-    ]
-)
+    "name_last",
+    new Min(
+        [
+            "min"     => 2,
+            "message" => "Only initials please",
+            "included" => true
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new Min(
     [
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "message" => [
-            "name_last"  => "Last name too short",
-            "name_first" => "First name too short",
-        ],
-        "included" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new Min(
+        [
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "message" => [
+                "name_last"  => "Last name too short",
+                "name_first" => "First name too short",
+            ],
+            "included" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
@@ -1571,13 +1573,13 @@ use Phalcon\Filter\Validation\Validator\Uniqueness;
 $validator = new Validation();
 
 $validator->add(
-"cst_email",
-new Uniqueness(
-    [
-        "model"   => new Customers(),
-        "message" => ":field must be unique",
-    ]
-)
+    "cst_email",
+    new Uniqueness(
+        [
+            "model"   => new Customers(),
+            "message" => ":field must be unique",
+        ]
+    )
 );
 ```
 
@@ -1587,13 +1589,13 @@ Different attributes from the field:
 <?php
 
 $validator->add(
-"cst_email",
-new Uniqueness(
-    [
-        "model"     => new Invoices(),
-        "attribute" => "nick",
-    ]
-)
+    "cst_email",
+    new Uniqueness(
+        [
+            "model"     => new Invoices(),
+            "attribute" => "nick",
+        ]
+    )
 );
 ```
 
@@ -1603,8 +1605,8 @@ In the model:
 <?php
 
 $validator->add(
-"cst_email",
-new Uniqueness()
+    "cst_email",
+    new Uniqueness()
 );
 ```
 
@@ -1614,11 +1616,11 @@ Combination of fields in the model:
 <?php
 
 $validator->add(
-[
-    "cst_name_last",
-    "cst_name_first",
-],
-new Uniqueness()
+    [
+        "cst_name_last",
+        "cst_name_first",
+    ],
+    new Uniqueness()
 );
 ```
 
@@ -1628,16 +1630,16 @@ It is possible to convert values before validation. This is useful in situations
 <?php
 
 $validator->add(
-"cst_email",
-new Uniqueness(
-    [
-        "convert" => function (array $values) {
-            $values["cst_email"] = trim($values["cst_email"]);
+    "cst_email",
+    new Uniqueness(
+        [
+            "convert" => function (array $values) {
+                $values["cst_email"] = trim($values["cst_email"]);
 
-            return $values;
-        }
-    ]
-)
+                return $values;
+            }
+        ]
+    )
 );
 ```
 
@@ -1647,12 +1649,12 @@ Single field
 <?php
 
 $validator->add(
-"cst_email",
-new Uniqueness(
-    [
-        "except" => "name@email.com"
-    ]
-)
+    "cst_email",
+    new Uniqueness(
+        [
+            "except" => "name@email.com"
+        ]
+    )
 );
 ```
 Multiple fields with keys (each except will be applied to the value defined by the key)
@@ -1660,15 +1662,15 @@ Multiple fields with keys (each except will be applied to the value defined by t
 <?php
 
 $validator->add(
-["cst_email", "cst_phone"],
-new Uniqueness(
-    [
-        "except" => [
-            "cst_email" => "name@email.com",
-            "cst_phone" => "82918304-3843",
+    ["cst_email", "cst_phone"],
+    new Uniqueness(
+        [
+            "except" => [
+                "cst_email" => "name@email.com",
+                "cst_phone" => "82918304-3843",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 Multiple fields without keys (each except will be applied to all values recursively)
@@ -1676,15 +1678,15 @@ Multiple fields without keys (each except will be applied to all values recursiv
 <?php
 
 $validator->add(
-["cst_email", "cmp_email"],
-new Uniqueness(
-    [
-        "except" => [
-            "name@email.com",
-            "company@email.com",
-        ],
-    ]
-)
+    ["cst_email", "cmp_email"],
+    new Uniqueness(
+        [
+            "except" => [
+                "name@email.com",
+                "company@email.com",
+            ],
+        ]
+    )
 );
 ```
 Multiple fields with single except (except will be applied to all values recursively)
@@ -1692,12 +1694,12 @@ Multiple fields with single except (except will be applied to all values recursi
 <?php
 
 $validator->add(
-["cst_email", "cmp_email"],
-new Uniqueness(
-    [
-        "except" => "name@email.com",
-    ]
-)
+    ["cst_email", "cmp_email"],
+    new Uniqueness(
+        [
+            "except" => "name@email.com",
+        ]
+    )
 );
 ```
 
@@ -1713,27 +1715,27 @@ use Phalcon\Filter\Validation\Validator\Url;
 $validator = new Validation();
 
 $validator->add(
-"url",
-new Url(
-    [
-        "message" => ":field must be a URL",
-    ]
-)
+    "url",
+    new Url(
+        [
+            "message" => ":field must be a URL",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "url",
-    "homepage",
-],
-new Url(
     [
-        "message" => [
-            "url"      => "url must be a url",
-            "homepage" => "homepage must be a url",
+        "url",
+        "homepage",
+    ],
+    new Url(
+        [
+            "message" => [
+                "url"      => "url must be a url",
+                "homepage" => "homepage must be a url",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
@@ -1748,53 +1750,53 @@ use Phalcon\Filter\Validation\Validator\Url;
 $validation = new Validation();
 
 $validation->add(
-'url',
-new Url(
-    [
-        'options' => FILTER_FLAG_PATH_REQUIRED
-    ]
-)
+    'url',
+    new Url(
+        [
+            'options' => FILTER_FLAG_PATH_REQUIRED
+        ]
+    )
 );
 
 $messages = $validation->validate(
-[
-    'url' => 'phalcon.io',
-]
+    [
+        'url' => 'phalcon.io',
+    ]
 );
 
 $validation->add(
-'url',
-new Url(
-    [
-        'options' => FILTER_FLAG_QUERY_REQUIRED
-    ]
-)
+    'url',
+    new Url(
+        [
+            'options' => FILTER_FLAG_QUERY_REQUIRED
+        ]
+    )
 );
 
 $messages = $validation->validate(
-[
-    'url' => 'https://',
-]
+    [
+        'url' => 'https://',
+    ]
 );
 
 $validation->add(
-'url',
-new Url(
-    [
-        'options' => [
-            'flags' => [
-                FILTER_FLAG_PATH_REQUIRED,
-                FILTER_FLAG_QUERY_REQUIRED,
+    'url',
+    new Url(
+        [
+            'options' => [
+                'flags' => [
+                    FILTER_FLAG_PATH_REQUIRED,
+                    FILTER_FLAG_QUERY_REQUIRED,
+                ],
             ],
-        ],
-    ]
-)
+        ]
+    )
 );
 
 $messages = $validation->validate(
-[
-    'url' => 'phalcon',
-]
+    [
+        'url' => 'phalcon',
+    ]
 );
 ```
 
@@ -1809,42 +1811,42 @@ use Phalcon\Filter\Validation\AbstractValidator;
 
 class IpValidator extends AbstractValidator
 {
-/**
- * Adding the default template error message
- *
- * @param array $options
- */
-public function __construct(array $options = [])
-{
-    $this->template = 'The IP :ip_address is not valid';
+    /**
+     * Adding the default template error message
+     *
+     * @param array $options
+     */
+    public function __construct(array $options = [])
+    {
+        $this->template = 'The IP :ip_address is not valid';
 
-    parent::__construct($options);
-}
-
-/**
- * Executes the validation
- *
- * @param Validation $validation
- * @param string     $field
- *
- * @return boolean
- */
-public function validate(Validation $validation, $field)
-{
-    $value = $validation->getValue($field);
-
-    if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
-        $replacements = [':ip_address' => $value];
-
-        $validation->appendMessage(
-            $this->messageFactory($validation, $field, $replacements)
-        );
-
-        return false;
+        parent::__construct($options);
     }
 
-    return true;
-}
+    /**
+     * Executes the validation
+     *
+     * @param Validation $validation
+     * @param string     $field
+     *
+     * @return boolean
+     */
+    public function validate(Validation $validation, $field)
+    {
+        $value = $validation->getValue($field);
+
+        if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            $replacements = [':ip_address' => $value];
+
+            $validation->appendMessage(
+                $this->messageFactory($validation, $field, $replacements)
+            );
+
+            return false;
+        }
+
+        return true;
+    }
 }
 ```
 
@@ -1861,11 +1863,11 @@ Each message consists of an instance of the class [Phalcon\Messages\Message][mes
 $messages = $validation->validate();
 
 if (count($messages)) {
-foreach ($messages as $message) {
-    echo 'Message: ', $message->getMessage(), "\n";
-    echo 'Field: ', $message->getField(), "\n";
-    echo 'Type: ', $message->getType(), "\n";
-}
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage(), "\n";
+        echo 'Field: ', $message->getField(), "\n";
+        echo 'Type: ', $message->getType(), "\n";
+    }
 }
 ```
 
@@ -1877,12 +1879,12 @@ You can pass a `message` parameter to change/translate the default message in ea
 use Phalcon\Filter\Validation\Validator\Email;
 
 $validation->add(
-'email',
-new Email(
-    [
-        'message' => 'The e-mail is not valid',
-    ]
-)
+    'email',
+    new Email(
+        [
+            'message' => 'The e-mail is not valid',
+        ]
+    )
 );
 ```
 
@@ -1894,11 +1896,11 @@ By default, the `getMessages()` method returns all the messages generated during
 $messages = $validation->validate();
 
 if (count($messages)) {
-$filteredMessages = $messages->filter('name');
+    $filteredMessages = $messages->filter('name');
 
-foreach ($filteredMessages as $message) {
-    echo $message;
-}
+    foreach ($filteredMessages as $message) {
+        echo $message;
+    }
 }
 ```
 
@@ -1921,9 +1923,9 @@ $entity = new stdClass();
 
 // Only 'name' and 'email' are assigned to $entity even though 'role' is in the data
 $messages = $validation->validate(
-['name' => 'Phalcon', 'email' => 'team@phalcon.io', 'role' => 'admin'],
-$entity,
-['name', 'email']
+    ['name' => 'Phalcon', 'email' => 'team@phalcon.io', 'role' => 'admin'],
+    $entity,
+    ['name', 'email']
 );
 ```
 
@@ -1938,21 +1940,21 @@ use Phalcon\Filter\Validation;
 $validation = new Validation();
 
 $validation->add(
-'name',
-new PresenceOf(
-    [
-        'message' => 'The name is required',
-    ]
-)
+    'name',
+    new PresenceOf(
+        [
+            'message' => 'The name is required',
+        ]
+    )
 );
 
 $validation->add(
-'email',
-new PresenceOf(
-    [
-        'message' => 'The email is required',
-    ]
-)
+    'email',
+    new PresenceOf(
+        [
+            'message' => 'The email is required',
+        ]
+    )
 );
 
 $validation->setFilters('name', 'trim');
@@ -1976,30 +1978,30 @@ use Phalcon\Filter\Validation;
  */
 class LoginValidation extends Validation
 {
-public function initialize()
-{
-    // ...
-}
-
-public function beforeValidation($data, $entity, $messages)
-{
-    if ($this->request->getHttpHost() !== 'admin.mydomain.com') {
-        $messages->appendMessage(
-            new Message(
-                'Only users can log on in the admin domain'
-            )
-        );
-
-        return false;
+    public function initialize()
+    {
+        // ...
     }
 
-    return true;
-}
+    public function beforeValidation($data, $entity, $messages)
+    {
+        if ($this->request->getHttpHost() !== 'admin.mydomain.com') {
+            $messages->appendMessage(
+                new Message(
+                    'Only users can log on in the admin domain'
+                )
+            );
 
-public function afterValidation($data, $entity, $messages)
-{
-    // ... Add additional messages or perform more validations
-}
+            return false;
+        }
+
+        return true;
+    }
+
+    public function afterValidation($data, $entity, $messages)
+    {
+        // ... Add additional messages or perform more validations
+    }
 }
 ```
 
@@ -2016,33 +2018,33 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 $validation = new Validation();
 
 $validation->add(
-'telephone',
-new PresenceOf(
-    [
-        'message'      => 'The telephone is required',
-        'cancelOnFail' => true,
-    ]
-)
+    'telephone',
+    new PresenceOf(
+        [
+            'message'      => 'The telephone is required',
+            'cancelOnFail' => true,
+        ]
+    )
 );
 
 $validation->add(
-'telephone',
-new Regex(
-    [
-        'message' => 'The telephone is required',
-        'pattern' => '/\+44 [0-9]+/',
-    ]
-)
+    'telephone',
+    new Regex(
+        [
+            'message' => 'The telephone is required',
+            'pattern' => '/\+44 [0-9]+/',
+        ]
+    )
 );
 
 $validation->add(
-'telephone',
-new StringLength(
-    [
-        'messageMinimum' => 'The telephone is too short',
-        'min'            => 2,
-    ]
-)
+    'telephone',
+    new StringLength(
+        [
+            'messageMinimum' => 'The telephone is too short',
+            'min'            => 2,
+        ]
+    )
 );
 ```
 
@@ -2059,15 +2061,15 @@ use Phalcon\Messages\Message;
 
 class MyValidator extends Validator
 {
-public function validate(Validation $validator, $attribute)
-{
-    // If the attribute value is `name` we must stop the chain
-    if ($attribute === 'name') {
-        $validator->setOption('cancelOnFail', true);
-    }
+    public function validate(Validation $validator, $attribute)
+    {
+        // If the attribute value is `name` we must stop the chain
+        if ($attribute === 'name') {
+            $validator->setOption('cancelOnFail', true);
+        }
 
-    // ...
-}
+        // ...
+    }
 }
 ```
 
@@ -2083,14 +2085,14 @@ use Phalcon\Filter\Validation\Validator\Regex;
 $validation = new Validation();
 
 $validation->add(
-'telephone',
-new Regex(
-    [
-        'message'    => 'The telephone is required',
-        'pattern'    => '/\+1 [0-9]+/',
-        'allowEmpty' => true,
-    ]
-)
+    'telephone',
+    new Regex(
+        [
+            'message'    => 'The telephone is required',
+            'pattern'    => '/\+1 [0-9]+/',
+            'allowEmpty' => true,
+        ]
+    )
 );
 ```
 
@@ -2106,26 +2108,26 @@ use Phalcon\Filter\Validation;
 
 class CompanyValidation extends Validation
 {
-/**
- * @var PhoneValidation
- */
-protected $phoneValidation;
+    /**
+     * @var PhoneValidation
+     */
+    protected $phoneValidation;
 
-public function initialize()
-{
-    $this->phoneValidation = new PhoneValidation();
-}
+    public function initialize()
+    {
+        $this->phoneValidation = new PhoneValidation();
+    }
 
-public function afterValidation($data, $entity, $messages)
-{
-    $phoneValidationMessages = $this->phoneValidation->validate(
-        $data['phone']
-    );
+    public function afterValidation($data, $entity, $messages)
+    {
+        $phoneValidationMessages = $this->phoneValidation->validate(
+            $data['phone']
+        );
 
-    $messages->appendMessages(
-        $phoneValidationMessages
-    );
-}
+        $messages->appendMessages(
+            $phoneValidationMessages
+        );
+    }
 }
 ```
 
@@ -2140,21 +2142,22 @@ use Phalcon\Filter\Validation\Exception;
 use Phalcon\Filter\Validation\Validator\InclusionIn;
 
 try {
-$validator = new Validation();
+    $validator = new Validation();
 
-$validator->add(
-    "status",
-    new InclusionIn(
-        [
-            "message" => "The status must be A or B",
-            "domain"  => false,
-        ]
-    )
-);
+    $validator->add(
+        "status",
+        new InclusionIn(
+            [
+                "message" => "The status must be A or B",
+                "domain"  => false,
+            ]
+        )
+    );
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
+
 
 [messages-message]: /5.12/api/phalcon_messages/#messagesmessage
 [messages-messages]: /5.12/api/phalcon_messages/#messagesmessages

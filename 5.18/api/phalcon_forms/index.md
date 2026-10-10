@@ -23,24 +23,25 @@ This is a base class for form elements
 <div class="api-tree">
 
 - **`Phalcon\Forms\Element\AbstractElement`** - implements [`Phalcon\Forms\Element\ElementInterface`](#formselementelementinterface)
-- [`Phalcon\Forms\Element\Check`](#formselementcheck)
-- [`Phalcon\Forms\Element\CheckGroup`](#formselementcheckgroup)
-- [`Phalcon\Forms\Element\Date`](#formselementdate)
-- [`Phalcon\Forms\Element\Email`](#formselementemail)
-- [`Phalcon\Forms\Element\File`](#formselementfile)
-- [`Phalcon\Forms\Element\Hidden`](#formselementhidden)
-- [`Phalcon\Forms\Element\Numeric`](#formselementnumeric)
-- [`Phalcon\Forms\Element\Password`](#formselementpassword)
-- [`Phalcon\Forms\Element\Radio`](#formselementradio)
-- [`Phalcon\Forms\Element\RadioGroup`](#formselementradiogroup)
-- [`Phalcon\Forms\Element\Select`](#formselementselect)
-- [`Phalcon\Forms\Element\Submit`](#formselementsubmit)
-- [`Phalcon\Forms\Element\Text`](#formselementtext)
-- [`Phalcon\Forms\Element\TextArea`](#formselementtextarea)
+    - [`Phalcon\Forms\Element\Check`](#formselementcheck)
+    - [`Phalcon\Forms\Element\CheckGroup`](#formselementcheckgroup)
+    - [`Phalcon\Forms\Element\Date`](#formselementdate)
+    - [`Phalcon\Forms\Element\Email`](#formselementemail)
+    - [`Phalcon\Forms\Element\File`](#formselementfile)
+    - [`Phalcon\Forms\Element\Hidden`](#formselementhidden)
+    - [`Phalcon\Forms\Element\Numeric`](#formselementnumeric)
+    - [`Phalcon\Forms\Element\Password`](#formselementpassword)
+    - [`Phalcon\Forms\Element\Radio`](#formselementradio)
+    - [`Phalcon\Forms\Element\RadioGroup`](#formselementradiogroup)
+    - [`Phalcon\Forms\Element\Select`](#formselementselect)
+    - [`Phalcon\Forms\Element\Submit`](#formselementsubmit)
+    - [`Phalcon\Forms\Element\Text`](#formselementtext)
+    - [`Phalcon\Forms\Element\TextArea`](#formselementtextarea)
 
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\FormElementNameRequired` · `Phalcon\Forms\Exceptions\InvalidFilterType` · `Phalcon\Forms\Form` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
+
 
 ### Method Summary
 
@@ -323,8 +324,8 @@ __Uses__ `InvalidArgumentException` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterfac
 
 ```php
 public function __construct(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 );
 ```
 
@@ -358,8 +359,8 @@ Adds a validator to the element
 
 ```php
 public function addValidators(
-array $validators,
-bool $merge = true
+    array $validators,
+    bool $merge = true
 ): ElementInterface;
 ```
 
@@ -385,8 +386,8 @@ Clears element to its default value
 
 ```php
 public function getAttribute(
-string $attribute,
-mixed $defaultValue = null
+    string $attribute,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -461,8 +462,8 @@ Returns the tagFactory; throws exception if not present
 
 ```php
 public function getUserOption(
-string $option,
-mixed $defaultValue = null
+    string $option,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -520,8 +521,8 @@ Renders the element widget returning HTML
 
 ```php
 public function setAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -596,8 +597,8 @@ Sets the TagFactory
 
 ```php
 public function setUserOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -621,6 +622,7 @@ protected function getLocalTagFactory(): TagFactory;
 
 Returns the tagFactory; throws exception if not present
 
+
 ## Forms\Element\Check
 
 <span class="badge badge--class">Class</span>
@@ -631,7 +633,7 @@ Component INPUT[type=check] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Check`**
+    - **`Phalcon\Forms\Element\Check`**
 
 </div>
 
@@ -710,6 +712,7 @@ data (the typical browser behavior for an unchecked input). Without
 this opt-in, an unchecked checkbox leaves the entity property
 untouched. See cphalcon issue #16982.
 
+
 ## Forms\Element\CheckGroup
 
 <span class="badge badge--class">Class</span>
@@ -728,11 +731,12 @@ or with per-item attributes:
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\CheckGroup`**
+    - **`Phalcon\Forms\Element\CheckGroup`**
 
 </div>
 
 __Uses__ `Phalcon\Html\TagFactory`
+
 
 ### Method Summary
 
@@ -780,9 +784,9 @@ __Uses__ `Phalcon\Html\TagFactory`
 
 ```php
 public function __construct(
-string $name,
-array $options = [],
-array $attributes = []
+    string $name,
+    array $options = [],
+    array $attributes = []
 );
 ```
 
@@ -812,6 +816,7 @@ public function setOptions( array $options ): ElementInterface;
 
 Sets the group options
 
+
 ## Forms\Element\Date
 
 <span class="badge badge--class">Class</span>
@@ -822,11 +827,12 @@ Component INPUT[type=date] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Date`**
+    - **`Phalcon\Forms\Element\Date`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -837,6 +843,7 @@ __Uses__ `Phalcon\Tag`
 <code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputDate&quot;</span></code>
 </div>
 </div>
+
 
 ## Forms\Element\ElementInterface
 
@@ -852,6 +859,7 @@ Interface for Phalcon\Forms\Element classes
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Form` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
+
 
 ### Method Summary
 
@@ -1061,8 +1069,8 @@ Adds a validator to the element
 
 ```php
 public function addValidators(
-array $validators,
-bool $merge = true
+    array $validators,
+    bool $merge = true
 ): ElementInterface;
 ```
 
@@ -1088,8 +1096,8 @@ Clears every element in the form to its default value
 
 ```php
 public function getAttribute(
-string $attribute,
-mixed $defaultValue = null
+    string $attribute,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -1156,8 +1164,8 @@ Returns the element's name
 
 ```php
 public function getUserOption(
-string $option,
-mixed $defaultValue = null
+    string $option,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -1215,8 +1223,8 @@ Renders the element widget
 
 ```php
 public function setAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -1283,8 +1291,8 @@ Sets the element's name
 
 ```php
 public function setUserOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -1298,6 +1306,7 @@ public function setUserOptions( array $options ): ElementInterface;
 
 Sets options for the element
 
+
 ## Forms\Element\Email
 
 <span class="badge badge--class">Class</span>
@@ -1308,11 +1317,12 @@ Component INPUT[type=email] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Email`**
+    - **`Phalcon\Forms\Element\Email`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1324,6 +1334,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Element\File
 
 <span class="badge badge--class">Class</span>
@@ -1334,11 +1345,12 @@ Component INPUT[type=file] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\File`**
+    - **`Phalcon\Forms\Element\File`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1350,6 +1362,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Element\Hidden
 
 <span class="badge badge--class">Class</span>
@@ -1360,11 +1373,12 @@ Component INPUT[type=hidden] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Hidden`**
+    - **`Phalcon\Forms\Element\Hidden`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1376,6 +1390,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Element\Numeric
 
 <span class="badge badge--class">Class</span>
@@ -1386,11 +1401,12 @@ Component INPUT[type=number] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Numeric`**
+    - **`Phalcon\Forms\Element\Numeric`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1402,6 +1418,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Element\Password
 
 <span class="badge badge--class">Class</span>
@@ -1412,11 +1429,12 @@ Component INPUT[type=password] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Password`**
+    - **`Phalcon\Forms\Element\Password`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1428,6 +1446,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Element\Radio
 
 <span class="badge badge--class">Class</span>
@@ -1438,11 +1457,12 @@ Component INPUT[type=radio] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Radio`**
+    - **`Phalcon\Forms\Element\Radio`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1453,6 +1473,7 @@ __Uses__ `Phalcon\Tag`
 <code class="sig"><span class="sv">$method</span><span class="sm"> = &quot;inputRadio&quot;</span></code>
 </div>
 </div>
+
 
 ## Forms\Element\RadioGroup
 
@@ -1469,11 +1490,12 @@ or with per-item attributes:
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\RadioGroup`**
+    - **`Phalcon\Forms\Element\RadioGroup`**
 
 </div>
 
 __Uses__ `Phalcon\Html\TagFactory`
+
 
 ### Method Summary
 
@@ -1521,9 +1543,9 @@ __Uses__ `Phalcon\Html\TagFactory`
 
 ```php
 public function __construct(
-string $name,
-array $options = [],
-array $attributes = []
+    string $name,
+    array $options = [],
+    array $attributes = []
 );
 ```
 
@@ -1553,6 +1575,7 @@ public function setOptions( array $options ): ElementInterface;
 
 Sets the group options
 
+
 ## Forms\Element\Select
 
 <span class="badge badge--class">Class</span>
@@ -1563,11 +1586,12 @@ Component SELECT (choice) for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Select`**
+    - **`Phalcon\Forms\Element\Select`**
 
 </div>
 
 __Uses__ `Phalcon\Tag\Select`
+
 
 ### Method Summary
 
@@ -1626,9 +1650,9 @@ __Uses__ `Phalcon\Tag\Select`
 
 ```php
 public function __construct(
-string $name,
-mixed $options = null,
-array $attributes = []
+    string $name,
+    mixed $options = null,
+    array $attributes = []
 );
 ```
 
@@ -1677,6 +1701,7 @@ protected function prepareAttributes( array $attributes = [] ): array;
 Returns an array of prepared attributes for Phalcon\Html\TagFactory
 helpers according to the element parameters
 
+
 ## Forms\Element\Submit
 
 <span class="badge badge--class">Class</span>
@@ -1687,11 +1712,12 @@ Component INPUT[type=submit] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Submit`**
+    - **`Phalcon\Forms\Element\Submit`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1703,6 +1729,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Element\Text
 
 <span class="badge badge--class">Class</span>
@@ -1713,11 +1740,13 @@ Component INPUT[type=text] for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Text`**
+    - **`Phalcon\Forms\Element\Text`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
+
 
 ## Forms\Element\TextArea
 
@@ -1729,11 +1758,12 @@ Component TEXTAREA for forms
 <div class="api-tree">
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\TextArea`**
+    - **`Phalcon\Forms\Element\TextArea`**
 
 </div>
 
 __Uses__ `Phalcon\Tag`
+
 
 ### Properties
 
@@ -1745,6 +1775,7 @@ __Uses__ `Phalcon\Tag`
 </div>
 </div>
 
+
 ## Forms\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1755,20 +1786,20 @@ Exceptions thrown in Phalcon\Forms will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Forms\Exception`**
-- [`Phalcon\Forms\Exceptions\ElementNotInForm`](#formsexceptionselementnotinform)
-- [`Phalcon\Forms\Exceptions\FormNotInLocator`](#formsexceptionsformnotinlocator)
-- [`Phalcon\Forms\Exceptions\FormNotRegistered`](#formsexceptionsformnotregistered)
-- [`Phalcon\Forms\Exceptions\InvalidEntity`](#formsexceptionsinvalidentity)
-- [`Phalcon\Forms\Exceptions\InvalidFilterType`](#formsexceptionsinvalidfiltertype)
-- [`Phalcon\Forms\Exceptions\InvalidJsonSchema`](#formsexceptionsinvalidjsonschema)
-- [`Phalcon\Forms\Exceptions\JsonSchemaNotArray`](#formsexceptionsjsonschemanotarray)
-- [`Phalcon\Forms\Exceptions\NoFormElements`](#formsexceptionsnoformelements)
-- [`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`](#formsexceptionsschemaentrymissingkey)
-- [`Phalcon\Forms\Exceptions\SchemaEntryNotArray`](#formsexceptionsschemaentrynotarray)
-- [`Phalcon\Forms\Exceptions\UnknownFormElementType`](#formsexceptionsunknownformelementtype)
-- [`Phalcon\Forms\Exceptions\YamlExtensionRequired`](#formsexceptionsyamlextensionrequired)
-- [`Phalcon\Forms\Exceptions\YamlSchemaNotArray`](#formsexceptionsyamlschemanotarray)
+    - **`Phalcon\Forms\Exception`**
+        - [`Phalcon\Forms\Exceptions\ElementNotInForm`](#formsexceptionselementnotinform)
+        - [`Phalcon\Forms\Exceptions\FormNotInLocator`](#formsexceptionsformnotinlocator)
+        - [`Phalcon\Forms\Exceptions\FormNotRegistered`](#formsexceptionsformnotregistered)
+        - [`Phalcon\Forms\Exceptions\InvalidEntity`](#formsexceptionsinvalidentity)
+        - [`Phalcon\Forms\Exceptions\InvalidFilterType`](#formsexceptionsinvalidfiltertype)
+        - [`Phalcon\Forms\Exceptions\InvalidJsonSchema`](#formsexceptionsinvalidjsonschema)
+        - [`Phalcon\Forms\Exceptions\JsonSchemaNotArray`](#formsexceptionsjsonschemanotarray)
+        - [`Phalcon\Forms\Exceptions\NoFormElements`](#formsexceptionsnoformelements)
+        - [`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`](#formsexceptionsschemaentrymissingkey)
+        - [`Phalcon\Forms\Exceptions\SchemaEntryNotArray`](#formsexceptionsschemaentrynotarray)
+        - [`Phalcon\Forms\Exceptions\UnknownFormElementType`](#formsexceptionsunknownformelementtype)
+        - [`Phalcon\Forms\Exceptions\YamlExtensionRequired`](#formsexceptionsyamlextensionrequired)
+        - [`Phalcon\Forms\Exceptions\YamlSchemaNotArray`](#formsexceptionsyamlschemanotarray)
 
 </div>
 
@@ -1803,6 +1834,7 @@ public static function tagFactoryNotFound(): self;
 public static function usingParameterRequired(): self;
 ```
 
+
 ## Forms\Exceptions\ElementNotInForm
 
 <span class="badge badge--class">Class</span>
@@ -1811,12 +1843,13 @@ public static function usingParameterRequired(): self;
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\ElementNotInForm`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\ElementNotInForm`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -1837,6 +1870,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Forms\Exceptions\FormElementNameRequired
 
 <span class="badge badge--class">Class</span>
@@ -1845,11 +1879,12 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Forms\Exceptions\FormElementNameRequired`**
+    - **`Phalcon\Forms\Exceptions\FormElementNameRequired`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -1870,6 +1905,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\FormNotInLocator
 
 <span class="badge badge--class">Class</span>
@@ -1878,12 +1914,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\FormNotInLocator`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\FormNotInLocator`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -1904,6 +1941,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Forms\Exceptions\FormNotRegistered
 
 <span class="badge badge--class">Class</span>
@@ -1912,12 +1950,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\FormNotRegistered`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\FormNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -1938,6 +1977,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct( string $name );
 ```
 
+
 ## Forms\Exceptions\InvalidEntity
 
 <span class="badge badge--class">Class</span>
@@ -1946,12 +1986,13 @@ public function __construct( string $name );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\InvalidEntity`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\InvalidEntity`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -1972,6 +2013,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\InvalidFilterType
 
 <span class="badge badge--class">Class</span>
@@ -1980,12 +2022,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\InvalidFilterType`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\InvalidFilterType`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2006,6 +2049,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\InvalidJsonSchema
 
 <span class="badge badge--class">Class</span>
@@ -2014,12 +2058,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\InvalidJsonSchema`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\InvalidJsonSchema`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2040,6 +2085,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct( string $detail );
 ```
 
+
 ## Forms\Exceptions\JsonSchemaNotArray
 
 <span class="badge badge--class">Class</span>
@@ -2048,12 +2094,13 @@ public function __construct( string $detail );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\JsonSchemaNotArray`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\JsonSchemaNotArray`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2074,6 +2121,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\NoFormElements
 
 <span class="badge badge--class">Class</span>
@@ -2082,12 +2130,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\NoFormElements`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\NoFormElements`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2108,6 +2157,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\SchemaEntryMissingKey
 
 <span class="badge badge--class">Class</span>
@@ -2116,12 +2166,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2140,10 +2191,11 @@ __Uses__ `Phalcon\Forms\Exception`
 
 ```php
 public function __construct(
-int $index,
-string $key
+    int $index,
+    string $key
 );
 ```
+
 
 ## Forms\Exceptions\SchemaEntryNotArray
 
@@ -2153,12 +2205,13 @@ string $key
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\SchemaEntryNotArray`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\SchemaEntryNotArray`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2179,6 +2232,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct( int $index );
 ```
 
+
 ## Forms\Exceptions\UnknownFormElementType
 
 <span class="badge badge--class">Class</span>
@@ -2187,12 +2241,13 @@ public function __construct( int $index );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\UnknownFormElementType`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\UnknownFormElementType`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2213,6 +2268,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct( string $type );
 ```
 
+
 ## Forms\Exceptions\YamlExtensionRequired
 
 <span class="badge badge--class">Class</span>
@@ -2221,12 +2277,13 @@ public function __construct( string $type );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\YamlExtensionRequired`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\YamlExtensionRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2247,6 +2304,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\YamlSchemaNotArray
 
 <span class="badge badge--class">Class</span>
@@ -2255,12 +2313,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\YamlSchemaNotArray`**
+    - [`Phalcon\Forms\Exception`](#formsexception)
+        - **`Phalcon\Forms\Exceptions\YamlSchemaNotArray`**
 
 </div>
 
 __Uses__ `Phalcon\Forms\Exception`
+
 
 ### Method Summary
 
@@ -2281,6 +2340,7 @@ __Uses__ `Phalcon\Forms\Exception`
 public function __construct();
 ```
 
+
 ## Forms\Form
 
 <span class="badge badge--class">Class</span>
@@ -2291,12 +2351,13 @@ This component allows to build forms using an object-oriented interface
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\Injectable`](/5.18/api/phalcon_di/#diinjectable)
-- **`Phalcon\Forms\Form`** - implements `Countable`, `Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/5.18/api/phalcon_html/#htmlattributesattributesinterface)
+    - [`Phalcon\Di\Injectable`](/5.18/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Forms\Form`** - implements `Countable`, `Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/5.18/api/phalcon_html/#htmlattributesattributesinterface)
 
 </div>
 
 __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Tag`
+
 
 ### Method Summary
 
@@ -2614,8 +2675,8 @@ __Uses__ `Countable` · `Iterator` · `Phalcon\Contracts\Forms\Schema` · `Phalc
 
 ```php
 public function __construct(
-mixed $entity = null,
-array $userOptions = []
+    mixed $entity = null,
+    array $userOptions = []
 );
 ```
 
@@ -2625,9 +2686,9 @@ Phalcon\Forms\Form constructor
 
 ```php
 public function add(
-ElementInterface $element,
-string $position = null,
-bool $type = null
+    ElementInterface $element,
+    string $position = null,
+    bool $type = null
 ): static;
 ```
 
@@ -2637,9 +2698,9 @@ Adds an element to the form
 
 ```php
 public function bind(
-array $data,
-mixed $entity = null,
-array $whitelist = []
+    array $data,
+    mixed $entity = null,
+    array $whitelist = []
 ): static;
 ```
 
@@ -2735,11 +2796,11 @@ Returns the messages generated in the validation.
 
 ```php
 if ($form->isValid($_POST) == false) {
-$messages = $form->getMessages();
+    $messages = $form->getMessages();
 
-foreach ($messages as $message) {
-    echo $message, "<br>";
-}
+    foreach ($messages as $message) {
+        echo $message, "<br>";
+    }
 }
 ```
 
@@ -2763,8 +2824,8 @@ Returns the tagFactory object
 
 ```php
 public function getUserOption(
-string $option,
-mixed $defaultValue = null
+    string $option,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2822,9 +2883,9 @@ Check if messages were generated for a specific element
 
 ```php
 public function isValid(
-mixed $data = null,
-mixed $entity = null,
-array $whitelist = []
+    mixed $data = null,
+    mixed $entity = null,
+    array $whitelist = []
 ): bool;
 ```
 
@@ -2842,8 +2903,8 @@ Returns the current position/key in the iterator
 
 ```php
 public function label(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
 
@@ -2853,8 +2914,8 @@ Generate the label of an element added to the form including HTML
 
 ```php
 public function load(
-Schema $schema,
-FormsLocator $locator
+    Schema $schema,
+    FormsLocator $locator
 ): static;
 ```
 
@@ -2884,8 +2945,8 @@ Removes an element from the form
 
 ```php
 public function render(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
 
@@ -2935,8 +2996,8 @@ Sets the tagFactory for the form
 
 ```php
 public function setUserOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): static;
 ```
 
@@ -2974,6 +3035,7 @@ public function valid(): bool;
 
 Check if the current element in the iterator is valid
 
+
 ## Forms\FormsLocator
 
 <span class="badge badge--class">Class</span>
@@ -2998,6 +3060,7 @@ types with `setElement()`.
 </div>
 
 __Uses__ `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`
+
 
 ### Method Summary
 
@@ -3063,8 +3126,8 @@ public function __construct( array $definitions = [] );
 
 ```php
 public function get(
-string $name,
-mixed $entity = null
+    string $name,
+    mixed $entity = null
 ): Form;
 ```
 
@@ -3101,8 +3164,8 @@ Checks whether an element type is registered.
 
 ```php
 public function set(
-string $name,
-mixed $factory
+    string $name,
+    mixed $factory
 ): void;
 ```
 
@@ -3116,8 +3179,8 @@ the next get() call rebuilds from the new factory.
 
 ```php
 public function setElement(
-string $type,
-mixed $factory
+    string $type,
+    mixed $factory
 ): void;
 ```
 
@@ -3138,6 +3201,7 @@ Returns the built-in element type factories.
 
 Each value is a callable: fn(string $name, array $options, array $attributes): ElementInterface
 
+
 ## Forms\Loader\ArrayLoader
 
 <span class="badge badge--class">Class</span>
@@ -3152,6 +3216,7 @@ Supplies form element definitions from a PHP array.
 </div>
 
 __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\SchemaEntryMissingKey` · `Phalcon\Forms\Exceptions\SchemaEntryNotArray`
+
 
 ### Method Summary
 
@@ -3204,10 +3269,11 @@ public function load(): array;
 
 ```php
 protected function validateDefinition(
-mixed $definition,
-int $index
+    mixed $definition,
+    int $index
 ): void;
 ```
+
 
 ## Forms\Loader\JsonLoader
 
@@ -3226,6 +3292,7 @@ disk first; otherwise the value is treated as a raw JSON string.
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\InvalidJsonSchema` · `Phalcon\Forms\Exceptions\JsonSchemaNotArray` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -3267,6 +3334,7 @@ public function __construct( string $source );
 public function load(): array;
 ```
 
+
 ## Forms\Loader\YamlLoader
 
 <span class="badge badge--class">Class</span>
@@ -3286,6 +3354,7 @@ directly; otherwise the value is treated as a raw YAML string.
 </div>
 
 __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\YamlExtensionRequired` · `Phalcon\Forms\Exceptions\YamlSchemaNotArray` · `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -3327,6 +3396,7 @@ public function __construct( string $source );
 public function load(): array;
 ```
 
+
 ## Forms\Manager
 
 <span class="badge badge--class">Class</span>
@@ -3341,6 +3411,7 @@ Forms Manager
 </div>
 
 __Uses__ `Phalcon\Contracts\Forms\Schema` · `Phalcon\Forms\Exceptions\FormNotRegistered` · `Phalcon\Forms\Form`
+
 
 ### Method Summary
 
@@ -3419,8 +3490,8 @@ Manager constructor.
 
 ```php
 public function create(
-string $name,
-mixed $entity = null
+    string $name,
+    mixed $entity = null
 ): Form;
 ```
 
@@ -3454,9 +3525,9 @@ Checks if a form is registered in the forms manager
 
 ```php
 public function loadForm(
-string $name,
-Schema $schema,
-mixed $entity = null
+    string $name,
+    Schema $schema,
+    mixed $entity = null
 ): Form;
 ```
 
@@ -3467,8 +3538,8 @@ and registers a factory in the locator for entity-aware retrieval.
 
 ```php
 public function set(
-string $name,
-Form $form
+    string $name,
+    Form $form
 ): static;
 ```
 

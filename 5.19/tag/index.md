@@ -53,7 +53,7 @@ The above example will produce:
 
 ```html
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 2.0//EN'
-'http://www.w3.org/MarkUp/DTD/xhtml2.dtd'>
+    'http://www.w3.org/MarkUp/DTD/xhtml2.dtd'>
 ```
 
 The default value is `HTML5` which generates:
@@ -102,10 +102,10 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 
 Tag::appendTitle('Will be replaced');
 Tag::appendTitle(
-[
-    ' Framework',
-    ' Rocks',
-]
+    [
+        ' Framework',
+        ' Rocks',
+    ]
 );
 
 echo Tag::getTitle(); // 'Phalcon Framework Rocks'
@@ -133,24 +133,24 @@ echo Tag::friendlyTitle('Phalcon Framework');
 // 'Phalcon-Framework';
 
 echo Tag::friendlyTitle(
-'Phalcon Framework',
-[
-    'separator' => '_',
-    'lowercase' => true,
-]
+    'Phalcon Framework',
+    [
+        'separator' => '_',
+        'lowercase' => true,
+    ]
 ); // 'phalcon_framework
 
 echo Tag::friendlyTitle(
-'Phalcon Framework',
-[
-    'separator' => '_',
-    'lowercase' => true,
-    'replace'   => [
-        'a' => 'x',
-        'e' => 'x',
-        'o' => 'x',
-    ] 
-]
+    'Phalcon Framework',
+    [
+        'separator' => '_',
+        'lowercase' => true,
+        'replace'   => [
+            'a' => 'x',
+            'e' => 'x',
+            'o' => 'x',
+        ] 
+    ]
 ); // 'phxlcxn_frxmxwxrk
 ```
 
@@ -216,10 +216,10 @@ echo Tag::getTitle(); // 'Phalcon Framework Rocks'
 
 Tag::prependTitle('Will be replaced');
 Tag::prependTitle(
-[
-    'Phalcon ',
-    'Framework ',
-]
+    [
+        'Phalcon ',
+        'Framework ',
+    ]
 );
 
 echo Tag::getTitle(); // 'Phalcon Framework Rocks'
@@ -291,10 +291,10 @@ Builds an HTML `input[type='check']` tag. Accepts an array with the attributes o
 use Phalcon\Tag;
 
 echo Tag::checkField(
-[
-    'terms',
-    'value' => 'Y',
-]
+    [
+        'terms',
+        'value' => 'Y',
+    ]
 );
 
 // <input type='checkbox' id='terms' name='terms' value='Y' />
@@ -304,10 +304,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->checkField(
-[
-    'terms', 
-    'value' => 'Y',
-]
+    [
+        'terms', 
+        'value' => 'Y',
+    ]
 ); ?>
 ```
 
@@ -327,10 +327,10 @@ Builds an HTML `input[type='color']` tag. Accepts an array with the attributes o
 use Phalcon\Tag;
 
 echo Tag::colorField(
-[
-    'background',
-    'class' => 'myclass',
-]
+    [
+        'background',
+        'class' => 'myclass',
+    ]
 );
 
 // <input type='color' id='background' name='background' class='myclass' />
@@ -340,10 +340,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->colorField(
-[
-    'background',
-    'class' => 'myclass',
-]
+    [
+        'background',
+        'class' => 'myclass',
+    ]
 ); ?>
 ```
 
@@ -363,10 +363,10 @@ Builds an HTML `input[type='date']` tag. Accepts an array with the attributes of
 use Phalcon\Tag;
 
 echo Tag::dateField(
-[
-    'born',
-    'value' => '1980-01-01',
-]
+    [
+        'born',
+        'value' => '1980-01-01',
+    ]
 );
 
 // <input type='date' id='born' name='born' value='1980-01-01' />
@@ -376,10 +376,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->dateField(
-[
-    'born',
-    'value' => '1980-01-01',
-]
+    [
+        'born',
+        'value' => '1980-01-01',
+    ]
 ); ?>
 ```
 
@@ -399,10 +399,10 @@ Builds an HTML `input[type='datetime']` tag. Accepts an array with the attribute
 use Phalcon\Tag;
 
 echo Tag::dateTimeField(
-[
-    'born',
-    'value' => '1980-01-01 01:02:03',
-]
+    [
+        'born',
+        'value' => '1980-01-01 01:02:03',
+    ]
 );
 
 // <input type='datetime' id='born' name='born' 
@@ -413,10 +413,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->dateTimeField(
-[
-    'born',
-    'value' => '1980-01-01 01:02:03',
-]
+    [
+        'born',
+        'value' => '1980-01-01 01:02:03',
+    ]
 ); ?>
 ```
 
@@ -436,10 +436,10 @@ Builds an HTML `input[type='datetime-local']` tag. Accepts an array with the att
 use Phalcon\Tag;
 
 echo Tag::dateTimeLocalField(
-[
-    'born',
-    'value' => '1980-01-01 01:02:03',
-]
+    [
+        'born',
+        'value' => '1980-01-01 01:02:03',
+    ]
 );
 
 // <input type='datetime-local' id='born' name='born' 
@@ -450,10 +450,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->dateTimeLocalField(
-[
-    'born',
-    'value' => '1980-01-01 01:02:03',
-]
+    [
+        'born',
+        'value' => '1980-01-01 01:02:03',
+    ]
 ); ?>
 ```
 
@@ -473,10 +473,10 @@ Builds an HTML `input[type='file']` tag. Accepts an array with the attributes of
 use Phalcon\Tag;
 
 echo Tag::fileField(
-[
-    'document',
-    'class' => 'input',
-]
+    [
+        'document',
+        'class' => 'input',
+    ]
 );
 
 // <input type='file' id='document' name='document' class='input' />
@@ -486,10 +486,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->fileField(
-[
-    'document',
-    'class' => 'input',
-]
+    [
+        'document',
+        'class' => 'input',
+    ]
 ); ?>
 ```
 
@@ -509,10 +509,10 @@ Builds an HTML `input[type='hidden']` tag. Accepts an array with the attributes 
 use Phalcon\Tag;
 
 echo Tag::hiddenField(
-[
-    'id',
-    'value' => '1234',
-]
+    [
+        'id',
+        'value' => '1234',
+    ]
 );
 
 // <input type='hidden' id='id' name='id' value='1234' />
@@ -522,10 +522,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->hiddenField(
-[
-    'id',
-    'value' => '1234',
-]
+    [
+        'id',
+        'value' => '1234',
+    ]
 ); ?>
 ```
 
@@ -545,9 +545,9 @@ Builds an HTML `input[type='image']` tag. Accepts an array with the attributes o
 use Phalcon\Tag;
 
 echo Tag::imageInput(
-[
-    'src' => '/img/button.png',
-]
+    [
+        'src' => '/img/button.png',
+    ]
 );
 
 // <input type='image' src='/img/button.png' />
@@ -557,9 +557,9 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->imageInput(
-[
-    'src' => '/img/button.png',
-]
+    [
+        'src' => '/img/button.png',
+    ]
 ); ?>
 ```
 
@@ -579,10 +579,10 @@ Builds an HTML `input[type='month']` tag. Accepts an array with the attributes o
 use Phalcon\Tag;
 
 echo Tag::monthField(
-[
-    'month',
-    'value' => '04',
-]
+    [
+        'month',
+        'value' => '04',
+    ]
 );
 
 // <input type='month' id='month' name='month' value='04' />
@@ -592,10 +592,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->monthField(
-[
-    'month',
-    'value' => '04',
-]
+    [
+        'month',
+        'value' => '04',
+    ]
 ); ?>
 ```
 
@@ -615,11 +615,11 @@ Builds an HTML `input[type='number']` tag. Accepts an array with the attributes 
 use Phalcon\Tag;
 
 echo Tag::numericField(
-[
-    'price',
-    'min' => '1',
-    'max' => '5',
-]
+    [
+        'price',
+        'min' => '1',
+        'max' => '5',
+    ]
 );
 
 // <input type='number' id='price' name='price' min='1' max='5' />
@@ -629,11 +629,11 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->numericField(
-[
-   'price',
-   'min' => '1',
-   'max' => '5',
-]
+    [
+       'price',
+       'min' => '1',
+       'max' => '5',
+    ]
 ); ?>
 ```
 
@@ -653,10 +653,10 @@ Builds an HTML `input[type='radio']` tag. Accepts an array with the attributes o
 use Phalcon\Tag;
 
 echo Tag::radioField(
-[
-    'gender',
-    'value' => 'Male',
-]
+    [
+        'gender',
+        'value' => 'Male',
+    ]
 );
 
 // <input type='radio' id='gender' name='gender' value='Male' />
@@ -666,10 +666,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->radioField(
-[
-    'gender',
-    'value' => 'Male',
-]
+    [
+        'gender',
+        'value' => 'Male',
+    ]
 ); ?>
 ```
 
@@ -689,11 +689,11 @@ Builds an HTML `input[type='range']` tag. Accepts an array with the attributes o
 use Phalcon\Tag;
 
 echo Tag::rangeField(
-[
-    'points',
-    'min' => '0',
-    'max' => '10',
-]
+    [
+        'points',
+        'min' => '0',
+        'max' => '10',
+    ]
 );
 
 // <input type='range' id='points' name='points' min='0' max='10' />
@@ -703,11 +703,11 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->rangeField(
-[
-    'points',
-    'min' => '0',
-    'max' => '10',
-]
+    [
+        'points',
+        'min' => '0',
+        'max' => '10',
+    ]
 ); ?>
 ```
 
@@ -727,10 +727,10 @@ Builds an HTML `input[type='search']` tag. Accepts an array with the attributes 
 use Phalcon\Tag;
 
 echo Tag::searchField(
-[
-    'search',
-    'q' => 'startpage',
-]
+    [
+        'search',
+        'q' => 'startpage',
+    ]
 );
 
 // <input type='search' id='search' name='search' q='startpage' />
@@ -740,10 +740,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->searchField(
-[
-    'search',
-    'q' => 'startpage',
-]
+    [
+        'search',
+        'q' => 'startpage',
+    ]
 ); ?>
 ```
 
@@ -763,9 +763,9 @@ Builds an HTML `input[type='submit']` tag. Accepts an array with the attributes 
 use Phalcon\Tag;
 
 echo Tag::submitButton(
-[
-    'Save',
-]
+    [
+        'Save',
+    ]
 );
 
 // <input type='submit' value='Save' />
@@ -775,9 +775,9 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->submitButton(
-[
-   'Save',
-]
+    [
+       'Save',
+    ]
 ); ?>
 ```
 
@@ -797,10 +797,10 @@ Builds an HTML `input[type='tel']` tag. Accepts an array with the attributes of 
 use Phalcon\Tag;
 
 echo Tag::telField(
-[
-    'mobile',
-    'size' => '12',
-]
+    [
+        'mobile',
+        'size' => '12',
+    ]
 );
 
 // <input type='tel' id='mobile' name='mobile' size='12' />
@@ -810,10 +810,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->telField(
-[
-   'mobile',
-   'size' => '12',
-]
+    [
+       'mobile',
+       'size' => '12',
+    ]
 ); ?>
 ```
 
@@ -833,10 +833,10 @@ Builds an HTML `input[type='password']` tag. Accepts an array with the attribute
 use Phalcon\Tag;
 
 echo Tag::passwordField(
-[
-    'password',
-    'size' => '30',
-]
+    [
+        'password',
+        'size' => '30',
+    ]
 );
 
 // <input type='password' id='password' name='password' size='30' />
@@ -846,10 +846,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->passwordField(
-[
-   'password',
-   'size' => '30',
-]
+    [
+       'password',
+       'size' => '30',
+    ]
 ); ?>
 ```
 
@@ -869,10 +869,10 @@ Builds an HTML `input[type='time']` tag. Accepts an array with the attributes of
 use Phalcon\Tag;
 
 echo Tag::timeField(
-[
-    'start',
-    'size' => '5',
-]
+    [
+        'start',
+        'size' => '5',
+    ]
 );
 
 // <input type='time' id='start' name='start' size='5' />
@@ -882,10 +882,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->timeField(
-[
-   'start',
-   'size' => '5',
-]
+    [
+       'start',
+       'size' => '5',
+    ]
 ); ?>
 ```
 
@@ -905,9 +905,9 @@ Builds an HTML `input[type='url']` tag. Accepts an array with the attributes of 
 use Phalcon\Tag;
 
 echo Tag::urlField(
-[
-    'homepage',
-]
+    [
+        'homepage',
+    ]
 );
 
 // <input type='url' id='homepage' name='homepage' />
@@ -917,9 +917,9 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->urlField(
-[
-   'homepage',
-]
+    [
+       'homepage',
+    ]
 ); ?>
 ```
 
@@ -939,10 +939,10 @@ Builds an HTML `input[type='week']` tag. Accepts an array with the attributes of
 use Phalcon\Tag;
 
 echo Tag::weekField(
-[
-    'week',
-    'size' => '2',
-]
+    [
+        'week',
+        'size' => '2',
+    ]
 );
 
 // <input type='week' id='week' name='week' size='2' />
@@ -952,10 +952,10 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->weekField(
-[
-   'week',
-   'size' => '2',
-]
+    [
+       'week',
+       'size' => '2',
+    ]
 ); ?>
 ```
 
@@ -977,17 +977,17 @@ Builds an HTML image tag. Accepts an array with the attributes of the element. T
 use Phalcon\Tag;
 
 echo Tag::image(
-[
-   'img/hello.gif',
-   'alt' => 'alternative text',
-]
+    [
+       'img/hello.gif',
+       'alt' => 'alternative text',
+    ]
 );
 
 // <img alt='alternative text' src='/your-app/img/hello.gif'>
 
 echo Tag::image(
    'https://static.mywebsite.com/img/bg.png',
-false
+    false
 );
 
 // <img src='https://static.mywebsite.com/img/bg.png'>
@@ -997,15 +997,15 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->image(
-[
-   'img/hello.gif',
-   'alt' => 'alternative text',
-]
+    [
+       'img/hello.gif',
+       'alt' => 'alternative text',
+    ]
 ); ?>
 
 <?php echo $this->tag->image(
    'https://static.mywebsite.com/img/bg.png',
-false
+    false
 ); ?>
 ```
 
@@ -1037,26 +1037,26 @@ use MyApp\Models\Invoices;
 use Phalcon\Tag;
 
 $resultset = Invoices::find(
-[
-    'conditions' => 'inv_status_flag = :status:',
-    'bind'       => [
-        'status' => Status::UNPAID,
+    [
+        'conditions' => 'inv_status_flag = :status:',
+        'bind'       => [
+            'status' => Status::UNPAID,
+        ]
     ]
-]
 );
 
 echo Tag::select(
-[
-    'invoiceId',
-    $resultset,
-    'using'      => [
-        'inv_id', 
-        'inv_title',
-    ],
-    'useEmpty'   => true,
-    'emptyText'  => 'Choose an Invoice to pay',
-    'emptyValue' => '0',
-]
+    [
+        'invoiceId',
+        $resultset,
+        'using'      => [
+            'inv_id', 
+            'inv_title',
+        ],
+        'useEmpty'   => true,
+        'emptyText'  => 'Choose an Invoice to pay',
+        'emptyValue' => '0',
+    ]
 );
 
 // <select id='invoiceId' name='invoiceId'>
@@ -1070,17 +1070,17 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->select(
-[
-    'invoiceId',
-    $resultset,
-    'using'      => [
-        'inv_id', 
-        'inv_title',
-    ],
-    'useEmpty'   => true,
-    'emptyText'  => 'Choose an Invoice to pay',
-    'emptyValue' => '0',
-]
+    [
+        'invoiceId',
+        $resultset,
+        'using'      => [
+            'inv_id', 
+            'inv_title',
+        ],
+        'useEmpty'   => true,
+        'emptyText'  => 'Choose an Invoice to pay',
+        'emptyValue' => '0',
+    ]
 ); ?>
 ```
 
@@ -1088,17 +1088,17 @@ Volt syntax:
 
 ```twig
 {{ select(
-[
-    'invoiceId',
-    $resultset,
-    'using'      : [
-        'inv_id', 
-        'inv_title',
-    ],
-    'useEmpty'   : true,
-    'emptyText'  : 'Choose an Invoice to pay',
-    'emptyValue' : '0',
-]
+    [
+        'invoiceId',
+        $resultset,
+        'using'      : [
+            'inv_id', 
+            'inv_title',
+        ],
+        'useEmpty'   : true,
+        'emptyText'  : 'Choose an Invoice to pay',
+        'emptyValue' : '0',
+    ]
 ) }}
 ```
 
@@ -1122,18 +1122,18 @@ use MyApp\Models\Invoices;
 use Phalcon\Tag;
 
 $resultset = [
-24 => 'Chocolates 24oz box',
-77 => 'Sugar 1 bag',
+    24 => 'Chocolates 24oz box',
+    77 => 'Sugar 1 bag',
 ];
 
 echo Tag::selectStatic(
-[
-    'invoiceId',
-    $resultset,
-    'useEmpty'   => true,
-    'emptyText'  => 'Choose an Invoice to pay',
-    'emptyValue' => '0',
-]
+    [
+        'invoiceId',
+        $resultset,
+        'useEmpty'   => true,
+        'emptyText'  => 'Choose an Invoice to pay',
+        'emptyValue' => '0',
+    ]
 );
 
 // <select id='invoiceId' name='invoiceId'>
@@ -1147,13 +1147,13 @@ HTML syntax:
 
 ```php
 <?php echo $this->tag->selectStatic(
-[
-    'invoiceId',
-    $resultset,
-    'useEmpty'   => true,
-    'emptyText'  => 'Choose an Invoice to pay',
-    'emptyValue' => '0',
-]
+    [
+        'invoiceId',
+        $resultset,
+        'useEmpty'   => true,
+        'emptyText'  => 'Choose an Invoice to pay',
+        'emptyValue' => '0',
+    ]
 ); ?>
 ```
 
@@ -1161,13 +1161,13 @@ Volt syntax:
 
 ```twig
 {{ select(
-[
-    'invoiceId',
-    $resultset,
-    'useEmpty'   : true,
-    'emptyText'  : 'Choose an Invoice to pay',
-    'emptyValue' : '0',
-]
+    [
+        'invoiceId',
+        $resultset,
+        'useEmpty'   : true,
+        'emptyText'  : 'Choose an Invoice to pay',
+        'emptyValue' : '0',
+    ]
 ) }}
 ```
 
@@ -1189,15 +1189,15 @@ The `tagHtml()` accepts the following parameters
 use Phalcon\Tag;
 
 echo Tag::tagHtml(
-'canvas', 
-[
-    'id'    => 'canvas1', 
-    'width' => '300', 
-    'class' => 'cnvclass',
-], 
-false, 
-true, 
-true
+    'canvas', 
+    [
+        'id'    => 'canvas1', 
+        'width' => '300', 
+        'class' => 'cnvclass',
+    ], 
+    false, 
+    true, 
+    true
 );
 
 echo 'This is my canvas';
@@ -1214,15 +1214,15 @@ HTML syntax:
 <?php 
 
 echo $this->tag->tagHtml(
-'canvas', 
-[
-    'id'    => 'canvas1', 
-    'width' => '300', 
-    'class' => 'cnvclass',
-], 
-false, 
-true, 
-true
+    'canvas', 
+    [
+        'id'    => 'canvas1', 
+        'width' => '300', 
+        'class' => 'cnvclass',
+    ], 
+    false, 
+    true, 
+    true
 );
 
 echo 'This is my canvas';
@@ -1235,7 +1235,7 @@ Volt syntax:
 
 ```twig
 {{ tag_html('canvas', ['id': 'canvas1', width': '300', 'class': 'cnvclass'], false, true, true) }}
-This is my canvas
+    This is my canvas
 {{ tag_html_close('canvas') }}
 
 ```
@@ -1257,19 +1257,19 @@ echo Tag::stylesheetLink('css/style.css');
 // <link rel='stylesheet' href='/css/style.css'>
 
 echo Tag::stylesheetLink(
-'https://fonts.googleapis.com/css?family=Rosario',
-false
+    'https://fonts.googleapis.com/css?family=Rosario',
+    false
 );
 // <link rel='stylesheet' 
 //       href='https://fonts.googleapis.com/css?family=Rosario' 
 //       type='text/css'>
 
 echo Tag::stylesheetLink(
-[
-    'href'  => 'https://fonts.googleapis.com/css?family=Rosario',
-    'class' => 'some-class',
-],
-false
+    [
+        'href'  => 'https://fonts.googleapis.com/css?family=Rosario',
+        'class' => 'some-class',
+    ],
+    false
 );
 // <link rel='stylesheet' 
 //       href='https://fonts.googleapis.com/css?family=Rosario' 
@@ -1284,18 +1284,18 @@ HTML syntax
 <?php 
 
 echo $this->tag->stylesheetLink(
-'https://fonts.googleapis.com/css?family=Rosario',
-false
+    'https://fonts.googleapis.com/css?family=Rosario',
+    false
 ); ?>
 
 <?php 
 
 echo $this->tag->stylesheetLink(
-[
-    'href'  => 'https://fonts.googleapis.com/css?family=Rosario',
-    'class' => 'some-class',
-],
-false
+    [
+        'href'  => 'https://fonts.googleapis.com/css?family=Rosario',
+        'class' => 'some-class',
+    ],
+    false
 ); ?>
 ```
 
@@ -1304,17 +1304,17 @@ Volt Syntax:
 ```php
 {{ stylesheet_link('css/style.css') }}
 {{ stylesheet_link(
-    'https://fonts.googleapis.com/css?family=Rosario', 
-    false
-) 
+        'https://fonts.googleapis.com/css?family=Rosario', 
+        false
+    ) 
 }}
 {{ stylesheet_link(
-    [
-        'href'  : 'https://fonts.googleapis.com/css?family=Rosario',
-        'class' : 'some-class',
-    ],
-    false
-) 
+        [
+            'href'  : 'https://fonts.googleapis.com/css?family=Rosario',
+            'class' : 'some-class',
+        ],
+        false
+    ) 
 }}
 ```
 
@@ -1331,18 +1331,18 @@ echo Tag::javascriptInclude('js/jquery.js');
 // <script src='/js/jquery.js' type='text/javascript'></script>
 
 echo Tag::javascriptInclude(
-'https://code.jquery.com/jquery/jquery.min.js',
-false
+    'https://code.jquery.com/jquery/jquery.min.js',
+    false
 );
 // <script src='https://code.jquery.com/jquery/jquery.min.js' 
 //         type='text/javascript'></script>
 
 echo Tag::javascriptInclude(
-[
-    'src'  => 'https://code.jquery.com/jquery/jquery.min.js',
-    'type' => 'application/javascript',
-],
-false
+    [
+        'src'  => 'https://code.jquery.com/jquery/jquery.min.js',
+        'type' => 'application/javascript',
+    ],
+    false
 );
 // <script src='https://code.jquery.com/jquery/jquery.min.js' 
 //         type='application/javascript'></script>
@@ -1356,18 +1356,18 @@ HTML syntax
 <?php 
 
 echo $this->tag->javascriptInclude(
-'https://fonts.googleapis.com/css?family=Rosario',
-false
+    'https://fonts.googleapis.com/css?family=Rosario',
+    false
 ); ?>
 
 <?php 
 
 echo $this->tag->javascriptInclude(
-[
-    'src'  => 'https://code.jquery.com/jquery/jquery.min.js',
-    'type' => 'application/javascript',
-],
-false
+    [
+        'src'  => 'https://code.jquery.com/jquery/jquery.min.js',
+        'type' => 'application/javascript',
+    ],
+    false
 ); ?>
 ```
 
@@ -1376,17 +1376,17 @@ Volt Syntax:
 ```php
 {{ javascript_include('js/jquery.js') }}
 {{ javascript_include(
-    'https://code.jquery.com/jquery/jquery.min.js', 
-    false
-) 
+        'https://code.jquery.com/jquery/jquery.min.js', 
+        false
+    ) 
 }}
 {{ javascript_include(
-    [
-        'src'  : 'https://code.jquery.com/jquery/jquery.min.js',
-        'type' : 'application/javascript',
-    ],
-    false
-) 
+        [
+            'src'  : 'https://code.jquery.com/jquery/jquery.min.js',
+            'type' : 'application/javascript',
+        ],
+        false
+    ) 
 }}
 ```
 
@@ -1412,11 +1412,11 @@ echo Tag::linkTo('signup/register', 'Register Here!');
 
 // <a href='/signup/register'>Register Here!</a>
 echo Tag::linkTo(
-[
-    'signup/register',
-    'Register Here!',
-    'class' => 'btn-primary',
-]
+    [
+        'signup/register',
+        'Register Here!',
+        'class' => 'btn-primary',
+    ]
 );
 // <a href='/signup/register' class='btn-primary'>Register Here!</a>
 
@@ -1424,11 +1424,11 @@ echo Tag::linkTo('https://phalcon.io/', 'Phalcon', false);
 // <a href='https://phalcon.io/'>Phalcon</a>
 
  echo Tag::linkTo(
-[
-    'https://phalcon.io/',
-    'Phalcon Home',
-    false,
-]
+    [
+        'https://phalcon.io/',
+        'Phalcon Home',
+        false,
+    ]
 );
 // <a href='https://phalcon.io/'>Phalcon Home</a>
 ```
@@ -1441,21 +1441,21 @@ HTML syntax:
 echo $this->tag->linkTo('signup/register', 'Register Here!');
 
 echo $this->tag->linkTo(
-[
-    'signup/register',
-    'Register Here!',
-    'class' => 'btn-primary',
-]
+    [
+        'signup/register',
+        'Register Here!',
+        'class' => 'btn-primary',
+    ]
 );
 
 echo $this->tag->linkTo('https://phalcon.io/', 'Phalcon', false);
 
  echo $this->tag->linkTo(
-[
-    'https://phalcon.io/',
-    'Phalcon Home',
-    false,
-]
+    [
+        'https://phalcon.io/',
+        'Phalcon Home',
+        false,
+    ]
 );
 
 ?>
@@ -1466,17 +1466,17 @@ Volt syntax:
 ```twig
 {{ link_to('signup/register', 'Register Here!') }}
 {{ link_to(
-'signup/register',
-'Register Here!',
-'class': 'btn-primary'
+    'signup/register',
+    'Register Here!',
+    'class': 'btn-primary'
 ) }}
 
 {{ link_to('https://phalcon.io/', 'Phalcon', false) }}
 
 {{ link_to(
-'https://phalcon.io/',
-'Phalcon Home',
-false
+    'https://phalcon.io/',
+    'Phalcon Home',
+    false
 ) }}
 ```
 
@@ -1488,14 +1488,14 @@ If you have named routes, you can use the `for` keyword in your parameter array 
 use Phalcon\Tag;
 
 echo Tag::linkTo(
-[
-    [   
-        'for'   => 'invoice-view', 
-        'title' => 12345, 
-        'name'  => 'invoice-12345'
-    ], 
-    'Show Invoice'
-]
+    [
+        [   
+            'for'   => 'invoice-view', 
+            'title' => 12345, 
+            'name'  => 'invoice-12345'
+        ], 
+        'Show Invoice'
+    ]
 );
 ```
 
@@ -1505,14 +1505,14 @@ HTML syntax:
 <?php 
 
 echo $this->tag->linkTo(
-[
-    [   
-        'for'   => 'invoice-view', 
-        'title' => 12345, 
-        'name'  => 'invoice-12345'
-    ], 
-    'Show Invoice'
-]
+    [
+        [   
+            'for'   => 'invoice-view', 
+            'title' => 12345, 
+            'name'  => 'invoice-12345'
+        ], 
+        'Show Invoice'
+    ]
 );
 
 ?>
@@ -1523,13 +1523,13 @@ Volt syntax:
 ```twig
 {{ link_to('signup/register', 'Register Here!') }}
 {{ link_to(
-[   
-    'for'   : 'invoice-view', 
-    'title' : 12345, 
-    'name'  : 'invoice-12345'
-], 
-'Show Invoice',
-'class': 'edit-btn'
+    [   
+        'for'   : 'invoice-view', 
+        'title' : 12345, 
+        'name'  : 'invoice-12345'
+    ], 
+    'Show Invoice',
+    'class': 'edit-btn'
 ) }}
 ```
 
@@ -1543,11 +1543,11 @@ Forms play an important role in any web application since they are used to colle
 use Phalcon\Tag;
 
 echo Tag::form(
-[
-    '/admin/invoices/create', 
-    'method' => 'post',
-    'class'  => 'input'
-]
+    [
+        '/admin/invoices/create', 
+        'method' => 'post',
+        'class'  => 'input'
+    ]
 );
 
 // <form action='admin/invoices/create' method='post' class='input'>
@@ -1565,11 +1565,11 @@ HTML syntax:
 <?php 
 
 echo $this->tag->form(
-[
-    '/admin/invoices/create', 
-    'method' => 'post',
-    'class'  => 'input'
-]
+    [
+        '/admin/invoices/create', 
+        'method' => 'post',
+        'class'  => 'input'
+    ]
 );
 
 // ...
@@ -1582,11 +1582,11 @@ Volt syntax:
 
 ```twig
 {{ form(
-[
-    '/admin/invoices/create', 
-    'method' : 'post',
-    'class'  : 'input'
-]
+    [
+        '/admin/invoices/create', 
+        'method' : 'post',
+        'class'  : 'input'
+    ]
 );
 
 {{ end_form() }}
@@ -1608,10 +1608,10 @@ use Phalcon\Tag;
 Tag::setDefault('framework', 'Phalcon');
 
 echo Tag::textField(
-[
-    'framework', 
-    'class'  => 'input'
-]
+    [
+        'framework', 
+        'class'  => 'input'
+    ]
 );
 
 // <input type='text' id='framework' name='framework' 
@@ -1628,27 +1628,27 @@ echo Tag::textField(
 use Phalcon\Tag;
 
 Tag::setDefaults(
-[
-    'framework' => 'Phalcon',
-    'version'   => '4.0',
-]
+    [
+        'framework' => 'Phalcon',
+        'version'   => '4.0',
+    ]
 );
 
 echo Tag::textField(
-[
-    'framework', 
-    'class'  => 'input'
-]
+    [
+        'framework', 
+        'class'  => 'input'
+    ]
 );
 
 // <input type='text' id='framework' name='framework' 
 //        value='Phalcon' class='class' />
 
 echo Tag::textField(
-[
-    'version', 
-    'class'  => 'input'
-]
+    [
+        'version', 
+        'class'  => 'input'
+    ]
 );
 
 // <input type='text' id='version' name='version' 
@@ -1665,17 +1665,17 @@ This method is called from every helper in this component, to find whether a val
 use Phalcon\Tag;
 
 Tag::setDefaults(
-[
-    'framework' => 'Phalcon',
-    'version'   => '4.0',
-]
+    [
+        'framework' => 'Phalcon',
+        'version'   => '4.0',
+    ]
 );
 
 echo Tag::getValue('framework'); // 'Phalcon'
 
 $_POST = [
-'framework' => 'Phalcon',
-'version'   => '4.0',
+    'framework' => 'Phalcon',
+    'version'   => '4.0',
 ];
 
 echo Tag::getValue('framework'); // 'Phalcon'
@@ -1691,17 +1691,17 @@ This method checks if a `value` in an element has already been set using `setDef
 use Phalcon\Tag;
 
 Tag::setDefaults(
-[
-    'framework' => 'Phalcon',
-    'version'   => '4.0',
-]
+    [
+        'framework' => 'Phalcon',
+        'version'   => '4.0',
+    ]
 );
 
 echo Tag::hasValue('framework'); // 'true'
 
 $_POST = [
-'framework' => 'Phalcon',
-'version'   => '4.0',
+    'framework' => 'Phalcon',
+    'version'   => '4.0',
 ];
 
 echo Tag::hasValue('framework'); // 'true'
@@ -1717,10 +1717,10 @@ echo Tag::hasValue('framework'); // 'true'
 use Phalcon\Tag;
 
 echo Tag::textField(
-[
-    'framework',
-    'value' => '<h1>hello</h1>', 
-]
+    [
+        'framework',
+        'value' => '<h1>hello</h1>', 
+    ]
 );
 
 // <input type="text" id="framework" name="framework" 
@@ -1729,10 +1729,10 @@ echo Tag::textField(
 Tag::setAutoescape(false);
 
 echo Tag::textField(
-[
-    'framework',
-    'value' => '<h1>hello</h1>', 
-]
+    [
+        'framework',
+        'value' => '<h1>hello</h1>', 
+    ]
 );
 
 // <input type="text" id="framework" name="framework" 
@@ -1756,10 +1756,10 @@ use Phalcon\Tag;
 $container = new Di();
 
 $container->set(
-'tag',
-function () use  {
-    return new Tag();
-}
+    'tag',
+    function () use  {
+        return new Tag();
+    }
 );
 ```
 
@@ -1778,10 +1778,10 @@ use Phalcon\Tag;
  */
 class SessionController extends Controller
 {
-public function indexAction()
-{
-    $this->tag->setTitle('Phalcon Framework');
-}
+    public function indexAction()
+    {
+        $this->tag->setTitle('Phalcon Framework');
+    }
 }
 ```
 
@@ -1803,51 +1803,51 @@ use Phalcon\Tag;
 
 class MyTags extends Tag
 {
-/**
- * Generates a widget to show an HTML5 audio tag
- *
- * @param array
- * @return string
- */
-public static function audioField($parameters)
-{
-    // Converting parameters to the array if it is not
-    if (true !== is_array($parameters)) {
-        $parameters = [$parameters];
-    }
-
-    // Determining attributes 'id' and 'name'
-    $parameters[0]      = $parameters[0] ?? $parameters['id'];
-    $id                 = $parameters[0];
-    $parameters['name'] = $parameters['name'] ?? $id;
-
-    // Determining widget value,
-    // \Phalcon\Tag::setDefault() allows to set the widget value
-    if (true === isset($parameters['value'])) {
-        $value = $parameters['value'];
-
-        unset($parameters['value']);
-    } else {
-        $value = self::getValue($id);
-    }
-
-    // Generate the tag code
-    $code = sprintf(
-        '<audio id="%s" value="%s" ',
-        $id,
-        $value
-    );
-
-    foreach ($parameters as $key => $attributeValue) {
-        if (!is_integer($key)) {
-            $code .= sprintf('%s="%s" ', $key, $attributeValue);
+    /**
+     * Generates a widget to show an HTML5 audio tag
+     *
+     * @param array
+     * @return string
+     */
+    public static function audioField($parameters)
+    {
+        // Converting parameters to the array if it is not
+        if (true !== is_array($parameters)) {
+            $parameters = [$parameters];
         }
+
+        // Determining attributes 'id' and 'name'
+        $parameters[0]      = $parameters[0] ?? $parameters['id'];
+        $id                 = $parameters[0];
+        $parameters['name'] = $parameters['name'] ?? $id;
+
+        // Determining widget value,
+        // \Phalcon\Tag::setDefault() allows to set the widget value
+        if (true === isset($parameters['value'])) {
+            $value = $parameters['value'];
+
+            unset($parameters['value']);
+        } else {
+            $value = self::getValue($id);
+        }
+
+        // Generate the tag code
+        $code = sprintf(
+            '<audio id="%s" value="%s" ',
+            $id,
+            $value
+        );
+
+        foreach ($parameters as $key => $attributeValue) {
+            if (!is_integer($key)) {
+                $code .= sprintf('%s="%s" ', $key, $attributeValue);
+            }
+        }
+
+        $code.=' />';
+
+        return $code;
     }
-
-    $code.=' />';
-
-    return $code;
-}
 }
 ```
 
@@ -1862,37 +1862,37 @@ use Phalcon\Di\FactoryDefault();
 use Phalcon\Exception as PhalconException;
 
 try {
-$loader = new Loader();
+    $loader = new Loader();
 
-$loader->setDirectories(
-    [
-        '../app/controllers',
-        '../app/models',
-        '../app/customhelpers', // Add the new helpers folder
-    ]
-);
+    $loader->setDirectories(
+        [
+            '../app/controllers',
+            '../app/models',
+            '../app/customhelpers', // Add the new helpers folder
+        ]
+    );
 
-$loader->register();
+    $loader->register();
 
-$di = new FactoryDefault();
+    $di = new FactoryDefault();
 
-// Assign our new tag a definition, so we can call it
-$di->set(
-    'MyTags',
-    function () {
-        return new MyTags();
-    }
-);
+    // Assign our new tag a definition, so we can call it
+    $di->set(
+        'MyTags',
+        function () {
+            return new MyTags();
+        }
+    );
 
-$application = new Application($di);
+    $application = new Application($di);
 
-$response = $application->handle(
-    $_SERVER['REQUEST_URI']
-);
+    $response = $application->handle(
+        $_SERVER['REQUEST_URI']
+    );
 
-$response->send();
+    $response->send();
 } catch (PhalconException $e) {
-echo 'PhalconException: ', $e->getMessage();
+    echo 'PhalconException: ', $e->getMessage();
 }
 ```
 
@@ -1902,11 +1902,11 @@ Now you are ready to use your new helper within your views:
 <?php
 
 echo MyTags::audioField(
-[
-    'name' => 'test',
-    'id'   => 'audio_test',
-    'src'  => '/path/to/audio.mp3',
-]
+    [
+        'name' => 'test',
+        'id'   => 'audio_test',
+        'src'  => '/path/to/audio.mp3',
+    ]
 );
 
 ?>

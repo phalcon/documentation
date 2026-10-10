@@ -11,23 +11,24 @@ version: "3.4"
 
 Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
 
+
 ## Project Structure
 Once you clone the project in your document root you'll see the following structure:
 
 ```bash
 vokuro/
-app/
-    config/
-    controllers/
-    forms/
-    library/
-    models/
-    views/
-cache/
-public/
-    css/
-    img/
-schemas/
+    app/
+        config/
+        controllers/
+        forms/
+        library/
+        models/
+        views/
+    cache/
+    public/
+        css/
+        img/
+    schemas/
 ```
 
 This project follows a quite similar structure to INVO. Once you open the application in your browser `http://localhost/vokuro` you'll see something like this:
@@ -35,6 +36,7 @@ This project follows a quite similar structure to INVO. Once you open the applic
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
 The application is divided into two parts, a frontend, where visitors can sign up the service and a backend where administrative users can manage registered users. Both frontend and backend are combined in a single module.
+
 
 ## Load Classes and Dependencies
 This project uses [Phalcon\Loader](/3.4/api/phalcon_loader/) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org/) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org/). Assuming you have it correctly installed, type the following command in the console:
@@ -48,12 +50,12 @@ Vökuró sends emails to confirm the sign up of registered users using Swift, th
 
 ```json
 {
-"require" : {
-    "php": ">=5.5.0",
-    "ext-phalcon": ">=3.0.0",
-    "swiftmailer/swiftmailer": "^5.4",
-    "amazonwebservices/aws-sdk-for-php": "~1.0"
-}
+    "require" : {
+        "php": ">=5.5.0",
+        "ext-phalcon": ">=3.0.0",
+        "swiftmailer/swiftmailer": "^5.4",
+        "amazonwebservices/aws-sdk-for-php": "~1.0"
+    }
 }
 ```
 
@@ -78,12 +80,12 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-    'Vokuro\Models'      => $config->application->modelsDir,
-    'Vokuro\Controllers' => $config->application->controllersDir,
-    'Vokuro\Forms'       => $config->application->formsDir,
-    'Vokuro'             => $config->application->libraryDir,
-]
+    [
+        'Vokuro\Models'      => $config->application->modelsDir,
+        'Vokuro\Controllers' => $config->application->controllersDir,
+        'Vokuro\Forms'       => $config->application->formsDir,
+        'Vokuro'             => $config->application->libraryDir,
+    ]
 );
 
 $loader->register();
@@ -100,9 +102,10 @@ namespace Vokuro\Controllers;
 
 class AboutController extends ControllerBase
 {
-// ...
+    // ...
 }
 ```
+
 
 ## Sign Up
 First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
@@ -116,14 +119,14 @@ use Vokuro\Forms\SignUpForm;
 
 class SessionController extends ControllerBase
 {
-public function signupAction()
-{
-    $form = new SignUpForm();
+    public function signupAction()
+    {
+        $form = new SignUpForm();
 
-    // ...
+        // ...
 
-    $this->view->form = $form;
-}
+        $this->view->form = $form;
+    }
 }
 ```
 
@@ -133,45 +136,45 @@ This action simply pass a form instance of `SignUpForm` to the view, which itsel
 {% raw %}
 {{ form('class': 'form-search') }}
 
-<h2>
-    Sign Up
-</h2>
+    <h2>
+        Sign Up
+    </h2>
 
-<p>{{ form.label('name') }}</p>
-<p>
-    {{ form.render('name') }}
-    {{ form.messages('name') }}
-</p>
+    <p>{{ form.label('name') }}</p>
+    <p>
+        {{ form.render('name') }}
+        {{ form.messages('name') }}
+    </p>
 
-<p>{{ form.label('email') }}</p>
-<p>
-    {{ form.render('email') }}
-    {{ form.messages('email') }}
-</p>
+    <p>{{ form.label('email') }}</p>
+    <p>
+        {{ form.render('email') }}
+        {{ form.messages('email') }}
+    </p>
 
-<p>{{ form.label('password') }}</p>
-<p>
-    {{ form.render('password') }}
-    {{ form.messages('password') }}
-</p>
+    <p>{{ form.label('password') }}</p>
+    <p>
+        {{ form.render('password') }}
+        {{ form.messages('password') }}
+    </p>
 
-<p>{{ form.label('confirmPassword') }}</p>
-<p>
-    {{ form.render('confirmPassword') }}
-    {{ form.messages('confirmPassword') }}
-</p>
+    <p>{{ form.label('confirmPassword') }}</p>
+    <p>
+        {{ form.render('confirmPassword') }}
+        {{ form.messages('confirmPassword') }}
+    </p>
 
-<p>
-    {{ form.render('terms') }} {{ form.label('terms') }}
-    {{ form.messages('terms') }}
-</p>
+    <p>
+        {{ form.render('terms') }} {{ form.label('terms') }}
+        {{ form.messages('terms') }}
+    </p>
 
-<p>{{ form.render('Sign Up') }}</p>
+    <p>{{ form.render('Sign Up') }}</p>
 
-{{ form.render('csrf', ['value': security.getToken()]) }}
-{{ form.messages('csrf') }}
+    {{ form.render('csrf', ['value': security.getToken()]) }}
+    {{ form.messages('csrf') }}
 
-<hr>
+    <hr>
 
 {{ endForm() }}
 {% endraw %}

@@ -30,6 +30,7 @@ This component is a class that you can extend to add more helpers.
 
 __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -555,8 +556,8 @@ Builds an HTML input[type="datetime-local"] tag
 
 ```php
 public static function displayTo(
-string $id,
-mixed $value
+    string $id,
+    mixed $value
 ): void;
 ```
 
@@ -598,10 +599,10 @@ Builds an HTML FORM tag
 
 ```php
 public static function friendlyTitle(
-string $text,
-string $separator = "-",
-bool $lowercase = true,
-mixed $replace = null
+    string $text,
+    string $separator = "-",
+    bool $lowercase = true,
+    mixed $replace = null
 ): string;
 ```
 
@@ -643,8 +644,8 @@ Returns an Escaper service from the default DI
 
 ```php
 public static function getTitle(
-bool $prepend = true,
-bool $append = true
+    bool $prepend = true,
+    bool $append = true
 ): string;
 ```
 
@@ -670,8 +671,8 @@ Returns a URL service from the default DI
 
 ```php
 public static function getValue(
-mixed $name,
-array $params = []
+    mixed $name,
+    array $params = []
 ): mixed;
 ```
 
@@ -699,8 +700,8 @@ Builds a HTML input[type="hidden"] tag
 
 ```php
 public static function image(
-mixed $parameters = null,
-bool $local = true
+    mixed $parameters = null,
+    bool $local = true
 ): string;
 ```
 
@@ -718,8 +719,8 @@ Builds an HTML input[type="image"] tag
 
 ```php
 public static function javascriptInclude(
-mixed $parameters = null,
-bool $local = true
+    mixed $parameters = null,
+    bool $local = true
 ): string;
 ```
 
@@ -729,9 +730,9 @@ Builds a SCRIPT[type="javascript"] tag
 
 ```php
 public static function linkTo(
-mixed $parameters,
-mixed $text = null,
-mixed $local = true
+    mixed $parameters,
+    mixed $text = null,
+    mixed $local = true
 ): string;
 ```
 
@@ -797,8 +798,8 @@ Builds an HTML input[type="range"] tag
 
 ```php
 public static function renderAttributes(
-string $code,
-array $attributes
+    string $code,
+    array $attributes
 ): string;
 ```
 
@@ -808,8 +809,8 @@ Renders parameters keeping order in their HTML attributes
 
 ```php
 public static function renderTitle(
-bool $prepend = true,
-bool $append = true
+    bool $prepend = true,
+    bool $append = true
 ): string;
 ```
 
@@ -836,8 +837,8 @@ Builds a HTML input[type="search"] tag
 
 ```php
 public static function select(
-mixed $parameters,
-mixed $data = null
+    mixed $parameters,
+    mixed $data = null
 ): string;
 ```
 
@@ -847,8 +848,8 @@ Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
 
 ```php
 public static function selectStatic(
-mixed $parameters,
-mixed $data = null
+    mixed $parameters,
+    mixed $data = null
 ): string;
 ```
 
@@ -874,8 +875,8 @@ Sets the dependency injector container.
 
 ```php
 public static function setDefault(
-string $id,
-mixed $value
+    string $id,
+    mixed $value
 ): void;
 ```
 
@@ -885,8 +886,8 @@ Assigns default values to generated tags by helpers
 
 ```php
 public static function setDefaults(
-array $values,
-bool $merge = false
+    array $values,
+    bool $merge = false
 ): void;
 ```
 
@@ -920,8 +921,8 @@ Set the title separator of view content
 
 ```php
 public static function stylesheetLink(
-mixed $parameters = null,
-bool $local = true
+    mixed $parameters = null,
+    bool $local = true
 ): string;
 ```
 
@@ -939,11 +940,11 @@ Builds an HTML input[type="submit"] tag
 
 ```php
 public static function tagHtml(
-string $tagName,
-mixed $parameters = null,
-bool $selfClose = false,
-bool $onlyStart = false,
-bool $useEol = false
+    string $tagName,
+    mixed $parameters = null,
+    bool $selfClose = false,
+    bool $onlyStart = false,
+    bool $useEol = false
 ): string;
 ```
 
@@ -953,8 +954,8 @@ Builds a HTML tag
 
 ```php
 public static function tagHtmlClose(
-string $tagName,
-bool $useEol = false
+    string $tagName,
+    bool $useEol = false
 ): string;
 ```
 
@@ -1027,9 +1028,9 @@ rather than aborting the helper.
 
 ```php
 final protected static function inputField(
-string $type,
-mixed $parameters,
-bool $asValue = false
+    string $type,
+    mixed $parameters,
+    bool $asValue = false
 ): string;
 ```
 
@@ -1039,8 +1040,8 @@ Builds generic INPUT tags
 
 ```php
 final protected static function inputFieldChecked(
-string $type,
-mixed $parameters
+    string $type,
+    mixed $parameters
 ): string;
 ```
 
@@ -1057,6 +1058,7 @@ URI needs. Parameter bags are user supplied, so a value that cannot be
 expressed as a string - an array, an object without `__toString()` -
 reads back as an empty string rather than aborting the helper.
 
+
 ## Tag\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1069,9 +1071,10 @@ Exceptions thrown in Phalcon\Tag will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Tag\Exception`**
+    - **`Phalcon\Tag\Exception`**
 
 </div>
+
 
 ## Tag\Select
 
@@ -1090,6 +1093,7 @@ Phalcon\Mvc\Model resultset
 </div>
 
 __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
+
 
 ### Method Summary
 
@@ -1121,8 +1125,8 @@ __Uses__ `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Mvc\Model\Resultset
 
 ```php
 public static function selectField(
-mixed $parameters,
-mixed $data = null
+    mixed $parameters,
+    mixed $data = null
 ): string;
 ```
 
@@ -1134,8 +1138,8 @@ Generates a SELECT tag
 
 ```php
 protected static function echoOption(
-string $value,
-bool $selected = false
+    string $value,
+    bool $selected = false
 ): string;
 ```
 

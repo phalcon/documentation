@@ -27,14 +27,14 @@ use Phalcon\Contracts\ADR\Payload\Payload as PayloadInterface;
 
 final class ViewInvoice
 {
-public function __invoke(Input $input): PayloadInterface
-{
-    $invoice = Invoices::findFirst($input->get('id'));
+    public function __invoke(Input $input): PayloadInterface
+    {
+        $invoice = Invoices::findFirst($input->get('id'));
 
-    return $invoice === null
-        ? Payload::notFound(['id' => $input->get('id')])
-        : Payload::success($invoice);
-}
+        return $invoice === null
+            ? Payload::notFound(['id' => $input->get('id')])
+            : Payload::success($invoice);
+    }
 }
 ```
 

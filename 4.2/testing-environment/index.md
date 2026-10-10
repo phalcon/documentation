@@ -85,7 +85,7 @@ How would you like to run nanobox?
   b) Via Docker Native
 
   Note : Mac users, we strongly recommend choosing (a) until Docker Native
-     resolves an issue causing slow speeds : https://bit.ly/2jYFfWQ
+         resolves an issue causing slow speeds : https://bit.ly/2jYFfWQ
 
 Answer: 
 ```
@@ -97,20 +97,21 @@ Once the whole process finishes, you will end up with a screen that looks like t
 ```bash
 Preparing environment :
 
-                               **
-                            ********
-                         ***************
-                      *********************
-                        *****************
-                      ::    *********    ::
-                         ::    ***    ::
-                       ++   :::   :::   ++
-                          ++   :::   ++
-                             ++   ++
-                                +
-                _  _ ____ _  _ ____ ___  ____ _  _
-                |\ | |__| |\ | |  | |__) |  |  \/
-                | \| |  | | \| |__| |__) |__| _/\_
+
+                                   **
+                                ********
+                             ***************
+                          *********************
+                            *****************
+                          ::    *********    ::
+                             ::    ***    ::
+                           ++   :::   :::   ++
+                              ++   :::   ++
+                                 ++   ++
+                                    +
+                    _  _ ____ _  _ ____ ___  ____ _  _
+                    |\ | |__| |\ | |  | |__) |  |  \/
+                    | \| |  | | \| |__| |__) |__| _/\_
 
 --------------------------------------------------------------------------------
 + You are in a Linux container
@@ -146,26 +147,26 @@ Arguments:
   command_name          The command name [default: "help"]
 
 Options:
-  --format=FORMAT   The output format (txt, xml, json, or md) [default: "txt"]
-  --raw             To output raw command help
+      --format=FORMAT   The output format (txt, xml, json, or md) [default: "txt"]
+      --raw             To output raw command help
   -h, --help            Display this help message
   -q, --quiet           Do not output any message
   -V, --version         Display this application version
-  --ansi            Force ANSI output
-  --no-ansi         Disable ANSI output
+      --ansi            Force ANSI output
+      --no-ansi         Disable ANSI output
   -n, --no-interaction  Do not ask any interactive question
-  --dumpversion     Print the Zephir version — and don't do anything else
+      --dumpversion     Print the Zephir version — and don't do anything else
   -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 
 Help:
   The help command displays help for a given command:
-
-php /data/bin/zephir help list
-
+  
+    php /data/bin/zephir help list
+  
   You can also output the help in other formats by using the --format option:
-
-php /data/bin/zephir help --format=xml list
-
+  
+    php /data/bin/zephir help --format=xml list
+  
   To display the list of available commands, please use the list command.
 ```
 
@@ -333,13 +334,13 @@ data.mongodb
 data.mysql
   IP      : 172.20.0.25
   User(s) :
-root - 9IqTGEVM2M
-nanobox - yXOMmf71NS
+    root - 9IqTGEVM2M
+    nanobox - yXOMmf71NS
 
 data.postgres
   IP      : 172.20.0.21
   User(s) :
-nanobox - exwjG6g6rm
+    nanobox - exwjG6g6rm
 
 data.redis
   IP      : 172.20.0.22
@@ -430,7 +431,9 @@ The database dumps are located under `tests/_data/assets/schemas`
 
 If you have any questions, feel free to join us in our [Discord][discord] server or our [Forum][forum].
 
+
 &lt;3 Phalcon Team
+
 
 [2003]: https://blog.phalcon.io/post/phalcon-2-0-the-future
 [cphalcon]: https://github.com/phalcon/cphalcon

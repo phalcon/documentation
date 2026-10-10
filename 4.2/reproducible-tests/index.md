@@ -29,41 +29,41 @@ $container = new FactoryDefault();
 
 // Register your custom services
 $container['session'] = function() {
-$session = new Manager();
-$adapter = new Files(
-    [
-        'save_path' => '/tmp',
-     ]
-);
+    $session = new Manager();
+    $adapter = new Files(
+        [
+            'save_path' => '/tmp',
+         ]
+    );
 
-$session->setHandler($adapter);
+    $session->setHandler($adapter);
 
-$session->start();
-
-return $session;
+    $session->start();
+    
+    return $session;
 };
 
 $container['cookies'] = function() {
-$cookies = new Cookies();
+    $cookies = new Cookies();
 
-$cookies->useEncryption(false);
-
-return $cookies;
+    $cookies->useEncryption(false);
+    
+    return $cookies;
 };
 
 class SomeClass extends Injectable
 {
-public function someMethod()
-{
-    $cookies = $this->getDI()->getCookies();
+    public function someMethod()
+    {
+        $cookies = $this->getDI()->getCookies();
 
-    $cookies->set(
-        'mycookie',
-        'test',
-        time() + 3600,
-        '/'
-    );
-}
+        $cookies->set(
+            'mycookie',
+            'test',
+            time() + 3600,
+            '/'
+        );
+    }
 }
 
 $class = new MyClass();
@@ -93,18 +93,18 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 $container = new FactoryDefault();
 
 $container->setShared(
-'db', 
-function () {
-    return new Mysql(
-        [
-            'host'     => '127.0.0.1',
-            'username' => 'root',
-            'password' => '',
-            'dbname'   => 'test',
-            'charset'  => 'utf8',
-        ]
-    );
-}
+    'db', 
+    function () {
+        return new Mysql(
+            [
+                'host'     => '127.0.0.1',
+                'username' => 'root',
+                'password' => '',
+                'dbname'   => 'test',
+                'charset'  => 'utf8',
+            ]
+        );
+    }
 );
 
 $result = $container['db']->query('SELECT * FROM customers');
@@ -133,7 +133,7 @@ $application->setDI($container);
 // register modules if any
 
 $response = $application->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 
 echo $response->getContent();
@@ -159,9 +159,9 @@ $application->setDI($container);
 
 class IndexController extends Controller
 {
-public function indexAction() { 
-      /* your content here */
-}
+    public function indexAction() { 
+          /* your content here */
+    }
 }
 
 class Users extends Model
@@ -169,7 +169,7 @@ class Users extends Model
 }
 
 $response = $application->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 
 echo $response->getContent();
@@ -193,7 +193,7 @@ $application = new Micro($container);
 // define your routes here
 
 $application->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -215,21 +215,21 @@ use Phalcon\Mvc\Model\Metadata\Memory as ModelsMetaData;
 $eventsManager = new EventsManager();
 $container     = new Di();
 $connection    = new Connection(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'dbname'   => 'test',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'dbname'   => 'test',
+    ]
 );
 
 $connection->setEventsManager($eventsManager);
 
 $eventsManager->attach(
-'db:beforeQuery',
-function ($event, $connection) {
-    echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
-}
+    'db:beforeQuery',
+    function ($event, $connection) {
+        echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
+    }
 );
 
 $container['db']             = $connection;
@@ -237,29 +237,29 @@ $container['modelsManager']  = new ModelsManager();
 $container['modelsMetadata'] = new ModelsMetadata();
 
 if (true !== $connection->tableExists('user', 'test')) {
-$connection->execute(
-    'CREATE TABLE user (id integer primary key auto_increment, email varchar(120) not null)'
-);
+    $connection->execute(
+        'CREATE TABLE user (id integer primary key auto_increment, email varchar(120) not null)'
+    );
 }
 
 class User extends Model
 {
-public $id;
+    public $id;
 
-public $email;
+    public $email;
 
-public static function createNewUserReturnId()
-{
-    $newUser = new User();
+    public static function createNewUserReturnId()
+    {
+        $newUser = new User();
 
-    $newUser->email = 'test';
+        $newUser->email = 'test';
 
-    if (false === $newUser->save()) {
-        return false;
+        if (false === $newUser->save()) {
+            return false;
+        }
+        
+        return $newUser->id;
     }
-
-    return $newUser->id;
-}
 }
 
 echo User::createNewUserReturnId();

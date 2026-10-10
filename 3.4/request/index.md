@@ -21,12 +21,13 @@ $request = new Request();
 
 // Check whether the request was made with method POST
 if ($request->isPost()) {
-// Check whether the request was made with Ajax
-if ($request->isAjax()) {
-    echo 'Request was made using POST and AJAX';
-}
+    // Check whether the request was made with Ajax
+    if ($request->isAjax()) {
+        echo 'Request was made using POST and AJAX';
+    }
 }
 ```
+
 
 ## Getting Values
 PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
@@ -56,6 +57,7 @@ $email = $request->getPost('user_email', 'email', 'some@example.com');
 $email = $request->getPost('user_email', null, 'some@example.com');
 ```
 
+
 ## Accessing the Request from Controllers
 The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](/3.4/api/phalcon_http/) object from a controller you will need to use the `$this->request` public property of the controller:
 
@@ -66,22 +68,23 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Check if request has made with POST
-    if ($this->request->isPost()) {
-        // Access POST data
-        $customerName = $this->request->getPost('name');
-        $customerBorn = $this->request->getPost('born');
+    public function saveAction()
+    {
+        // Check if request has made with POST
+        if ($this->request->isPost()) {
+            // Access POST data
+            $customerName = $this->request->getPost('name');
+            $customerBorn = $this->request->getPost('born');
+        }
     }
 }
-}
 ```
+
 
 ## Uploading Files
 Another common task is file uploading. [Phalcon\Http\Request](/3.4/api/phalcon_http/) offers an object-oriented way to achieve this task:
@@ -93,28 +96,29 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function uploadAction()
-{
-    // Check if the user has uploaded files
-    if ($this->request->hasFiles()) {
-        $files = $this->request->getUploadedFiles();
+    public function uploadAction()
+    {
+        // Check if the user has uploaded files
+        if ($this->request->hasFiles()) {
+            $files = $this->request->getUploadedFiles();
 
-        // Print the real file names and sizes
-        foreach ($files as $file) {
-            // Print file details
-            echo $file->getName(), ' ', $file->getSize(), '\n';
+            // Print the real file names and sizes
+            foreach ($files as $file) {
+                // Print file details
+                echo $file->getName(), ' ', $file->getSize(), '\n';
 
-            // Move the file into the application
-            $file->moveTo(
-                'files/' . $file->getName()
-            );
+                // Move the file into the application
+                $file->moveTo(
+                    'files/' . $file->getName()
+                );
+            }
         }
     }
-}
 }
 ```
 
 Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](/3.4/api/phalcon_http/) class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File>` encapsulates only the information related to each file uploaded with the request.
+
 
 ## Working with Headers
 As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
@@ -126,17 +130,17 @@ As mentioned above, request headers contain useful information that allow us to 
 $requestedWith = $request->getHeader('HTTP_X_REQUESTED_WITH');
 
 if ($requestedWith === 'XMLHttpRequest') {
-echo 'The request was made with Ajax';
+    echo 'The request was made with Ajax';
 }
 
 // Same as above
 if ($request->isAjax()) {
-echo 'The request was made with Ajax';
+    echo 'The request was made with Ajax';
 }
 
 // Check the request layer
 if ($request->isSecure()) {
-echo 'The request was made using a secure layer';
+    echo 'The request was made using a secure layer';
 }
 
 // Get the servers's IP address. ie. 192.168.0.100
@@ -159,9 +163,10 @@ $language = $request->getBestLanguage();
 
 // Check if a header exists
 if ($request->hasHeader('my-header')) {
-echo "Mary had a little lamb";
+    echo "Mary had a little lamb";
 }
 ```
+
 
 ## Events
 When using HTTP authorization, the `Authorization` header has the following format:
@@ -203,7 +208,7 @@ Result:
 ```bash
 Array
 (
-[Authorization] => Enigma Secret
+    [Authorization] => Enigma Secret
 )
 
 Type: Enigma
@@ -221,22 +226,22 @@ use Phalcon\Events\Manager;
 
 class NegotiateAuthorizationListener
 {
-public function afterAuthorizationResolve(Event $event, Request $request, array $data)
-{
-    if (empty($data['server']['CUSTOM_KERBEROS_AUTH'])) {
-        return false;
+    public function afterAuthorizationResolve(Event $event, Request $request, array $data)
+    {
+        if (empty($data['server']['CUSTOM_KERBEROS_AUTH'])) {
+            return false;
+        }
+
+        list($type,) = explode(' ', $data['server']['CUSTOM_KERBEROS_AUTH'], 2);
+
+        if (!$type || stripos($type, 'negotiate') !== 0) {
+            return false;
+        }
+
+        return [
+           'Authorization'=> $data['server']['CUSTOM_KERBEROS_AUTH'],
+        ];
     }
-
-    list($type,) = explode(' ', $data['server']['CUSTOM_KERBEROS_AUTH'], 2);
-
-    if (!$type || stripos($type, 'negotiate') !== 0) {
-        return false;
-    }
-
-    return [
-       'Authorization'=> $data['server']['CUSTOM_KERBEROS_AUTH'],
-    ];
-}
 }
 
 $_SERVER['CUSTOM_KERBEROS_AUTH'] = 'Negotiate a87421000492aa874209af8bc028';
@@ -244,10 +249,10 @@ $_SERVER['CUSTOM_KERBEROS_AUTH'] = 'Negotiate a87421000492aa874209af8bc028';
 $di = new Di();
 
 $di->set('eventsManager', function () {
-$manager = new Manager();
-$manager->attach('request', new NegotiateAuthorizationListener());
+    $manager = new Manager();
+    $manager->attach('request', new NegotiateAuthorizationListener());
 
-return $manager;
+    return $manager;
 });
 
 $request = new Request();
@@ -261,7 +266,7 @@ Result:
 ```bash
 Array
 (
-[Authorization] => Negotiate a87421000492aa874209af8bc028
+    [Authorization] => Negotiate a87421000492aa874209af8bc028
 )
 
 Type: Negotiate

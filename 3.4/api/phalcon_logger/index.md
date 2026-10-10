@@ -34,6 +34,7 @@ version: "3.4"
 
 *integer* **EMERGENCY**
 
+
 <hr />
 
 # Abstract class **Phalcon\Logger\Adapter**
@@ -44,78 +45,114 @@ version: "3.4"
 
 Base class for Phalcon\Logger adapters
 
+
 ## Methods
 public  **setLogLevel** (*mixed* $level)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
+
+
 public  **getLogLevel** ()
 
 Returns the current log level
+
+
 
 public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) $formatter)
 
 Sets the message formatter
 
+
+
 public  **begin** ()
 
 Starts a transaction
+
+
 
 public  **commit** ()
 
 Commits the internal transaction
 
+
+
 public  **rollback** ()
 
 Rollbacks the internal transaction
+
+
 
 public  **isTransaction** ()
 
 Returns the whether the logger is currently in an active transaction or not
 
+
+
 public  **critical** (*mixed* $message, [*array* $context])
 
 Sends/Writes a critical message to the log
+
+
 
 public  **emergency** (*mixed* $message, [*array* $context])
 
 Sends/Writes an emergency message to the log
 
+
+
 public  **debug** (*mixed* $message, [*array* $context])
 
 Sends/Writes a debug message to the log
+
+
 
 public  **error** (*mixed* $message, [*array* $context])
 
 Sends/Writes an error message to the log
 
+
+
 public  **info** (*mixed* $message, [*array* $context])
 
 Sends/Writes an info message to the log
+
+
 
 public  **notice** (*mixed* $message, [*array* $context])
 
 Sends/Writes a notice message to the log
 
+
+
 public  **warning** (*mixed* $message, [*array* $context])
 
 Sends/Writes a warning message to the log
+
+
 
 public  **alert** (*mixed* $message, [*array* $context])
 
 Sends/Writes an alert message to the log
 
+
+
 public  **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 Logs messages to the internal logger. Appends logs to the logger
+
+
 
 abstract public  **getFormatter** () inherited from [Phalcon\Logger\AdapterInterface](/3.4/api/phalcon_logger/)
 
 ...
 
+
 abstract public  **close** () inherited from [Phalcon\Logger\AdapterInterface](/3.4/api/phalcon_logger/)
 
 ...
+
+
 
 <hr />
 
@@ -142,94 +179,140 @@ $logger->close();
 
 ```
 
+
 ## Methods
 public  **getPath** ()
 
 File Path
 
+
+
 public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\Logger\Adapter\File constructor
+
+
 
 public  **getFormatter** ()
 
 Returns the internal formatter
 
+
+
 public  **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
 Writes the log to the file itself
+
+
 
 public  **close** ()
 
 Closes the logger
 
+
+
 public  **__wakeup** ()
 
 Opens the internal file handler after unserialization
+
+
 
 public  **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
+
+
 public  **getLogLevel** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the current log level
+
+
 
 public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) $formatter) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sets the message formatter
 
+
+
 public  **begin** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Starts a transaction
+
+
 
 public  **commit** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Commits the internal transaction
 
+
+
 public  **rollback** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Rollbacks the internal transaction
+
+
 
 public  **isTransaction** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the whether the logger is currently in an active transaction or not
 
+
+
 public  **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a critical message to the log
+
+
 
 public  **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an emergency message to the log
 
+
+
 public  **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a debug message to the log
+
+
 
 public  **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an error message to the log
 
+
+
 public  **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an info message to the log
+
+
 
 public  **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a notice message to the log
 
+
+
 public  **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a warning message to the log
+
+
 
 public  **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an alert message to the log
 
+
+
 public  **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Logs messages to the internal logger. Appends logs to the logger
+
+
+
 
 <hr />
 
@@ -256,82 +339,122 @@ $logger->error("This is another error");
 
 ```
 
+
 ## Methods
 public  **getFormatter** ()
 
 Returns the internal formatter
 
+
+
 public  **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
 Writes the log to the stream itself
+
+
 
 public  **close** ()
 
 Closes the logger
 
+
+
 public  **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
+
+
 
 public  **getLogLevel** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the current log level
 
+
+
 public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) $formatter) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sets the message formatter
+
+
 
 public  **begin** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Starts a transaction
 
+
+
 public  **commit** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Commits the internal transaction
+
+
 
 public  **rollback** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Rollbacks the internal transaction
 
+
+
 public  **isTransaction** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the whether the logger is currently in an active transaction or not
+
+
 
 public  **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a critical message to the log
 
+
+
 public  **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an emergency message to the log
+
+
 
 public  **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a debug message to the log
 
+
+
 public  **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an error message to the log
+
+
 
 public  **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an info message to the log
 
+
+
 public  **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a notice message to the log
+
+
 
 public  **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a warning message to the log
 
+
+
 public  **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an alert message to the log
 
+
+
 public  **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Logs messages to the internal logger. Appends logs to the logger
+
+
+
 
 <hr />
 
@@ -359,86 +482,128 @@ $logger->error("This is another error");
 
 ```
 
+
 ## Methods
 public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\Logger\Adapter\Stream constructor
 
+
+
 public  **getFormatter** ()
 
 Returns the internal formatter
+
+
 
 public  **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
 Writes the log to the stream itself
 
+
+
 public  **close** ()
 
 Closes the logger
+
+
 
 public  **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
+
+
 public  **getLogLevel** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the current log level
+
+
 
 public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) $formatter) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sets the message formatter
 
+
+
 public  **begin** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Starts a transaction
+
+
 
 public  **commit** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Commits the internal transaction
 
+
+
 public  **rollback** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Rollbacks the internal transaction
+
+
 
 public  **isTransaction** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the whether the logger is currently in an active transaction or not
 
+
+
 public  **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a critical message to the log
+
+
 
 public  **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an emergency message to the log
 
+
+
 public  **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a debug message to the log
+
+
 
 public  **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an error message to the log
 
+
+
 public  **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an info message to the log
+
+
 
 public  **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a notice message to the log
 
+
+
 public  **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a warning message to the log
+
+
 
 public  **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an alert message to the log
 
+
+
 public  **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Logs messages to the internal logger. Appends logs to the logger
+
+
+
 
 <hr />
 
@@ -460,11 +625,11 @@ use Phalcon\Logger\Adapter\Syslog;
 
 // LOG_USER is the only valid log type under Windows operating systems
 $logger = new Syslog(
-"ident",
-[
-    "option"   => LOG_CONS | LOG_NDELAY | LOG_PID,
-    "facility" => LOG_USER,
-]
+    "ident",
+    [
+        "option"   => LOG_CONS | LOG_NDELAY | LOG_PID,
+        "facility" => LOG_USER,
+    ]
 );
 
 $logger->log("This is a message");
@@ -473,86 +638,128 @@ $logger->error("This is another error");
 
 ```
 
+
 ## Methods
 public  **__construct** (*string* $name, [*array* $options])
 
 Phalcon\Logger\Adapter\Syslog constructor
 
+
+
 public  **getFormatter** ()
 
 Returns the internal formatter
+
+
 
 public  **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
 Writes the log to the stream itself
 
+
+
 public  **close** ()
 
 Closes the logger
+
+
 
 public  **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Filters the logs sent to the handlers that are less or equal than a specific level
 
+
+
 public  **getLogLevel** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the current log level
+
+
 
 public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) $formatter) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sets the message formatter
 
+
+
 public  **begin** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Starts a transaction
+
+
 
 public  **commit** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Commits the internal transaction
 
+
+
 public  **rollback** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Rollbacks the internal transaction
+
+
 
 public  **isTransaction** () inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Returns the whether the logger is currently in an active transaction or not
 
+
+
 public  **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a critical message to the log
+
+
 
 public  **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an emergency message to the log
 
+
+
 public  **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a debug message to the log
+
+
 
 public  **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an error message to the log
 
+
+
 public  **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an info message to the log
+
+
 
 public  **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a notice message to the log
 
+
+
 public  **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes a warning message to the log
+
+
 
 public  **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Sends/Writes an alert message to the log
 
+
+
 public  **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](/3.4/api/phalcon_logger/)
 
 Logs messages to the internal logger. Appends logs to the logger
+
+
+
 
 <hr />
 
@@ -565,65 +772,82 @@ abstract public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/
 
 ...
 
+
 abstract public  **getFormatter** ()
 
 ...
+
 
 abstract public  **setLogLevel** (*mixed* $level)
 
 ...
 
+
 abstract public  **getLogLevel** ()
 
 ...
+
 
 abstract public  **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 ...
 
+
 abstract public  **begin** ()
 
 ...
+
 
 abstract public  **commit** ()
 
 ...
 
+
 abstract public  **rollback** ()
 
 ...
+
 
 abstract public  **close** ()
 
 ...
 
+
 abstract public  **debug** (*mixed* $message, [*array* $context])
 
 ...
+
 
 abstract public  **error** (*mixed* $message, [*array* $context])
 
 ...
 
+
 abstract public  **info** (*mixed* $message, [*array* $context])
 
 ...
+
 
 abstract public  **notice** (*mixed* $message, [*array* $context])
 
 ...
 
+
 abstract public  **warning** (*mixed* $message, [*array* $context])
 
 ...
+
 
 abstract public  **alert** (*mixed* $message, [*array* $context])
 
 ...
 
+
 abstract public  **emergency** (*mixed* $message, [*array* $context])
 
 ...
+
+
 
 <hr />
 
@@ -640,45 +864,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -698,19 +944,26 @@ Loads Logger Adapter class using 'adapter' option
 use Phalcon\Logger\Factory;
 
 $options = [
-"name"    => "log.txt",
-"adapter" => "file",
+    "name"    => "log.txt",
+    "adapter" => "file",
 ];
 $logger = Factory::load($options);
 
 ```
 
+
 ## Methods
 public static  **load** ([Phalcon\Config](/3.4/api/phalcon_config/) | *array* $config)
+
+
+
+
 
 protected static  **loadClass** (*mixed* $namespace, *mixed* $config)
 
 ...
+
+
 
 <hr />
 
@@ -722,18 +975,25 @@ protected static  **loadClass** (*mixed* $namespace, *mixed* $config)
 
 This is a base class for logger formatters
 
+
 ## Methods
 public  **getTypeString** (*mixed* $type)
 
 Returns the string meaning of a logger constant
 
+
+
 public  **interpolate** (*string* $message, [*array* $context])
 
 Interpolates context values into the message placeholders
 
+
+
 abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from [Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/)
 
 ...
+
+
 
 <hr />
 
@@ -747,34 +1007,50 @@ abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp
 
 Formats messages so that they can be sent to FirePHP
 
+
 ## Methods
 public  **getTypeString** (*mixed* $type)
 
 Returns the string meaning of a logger constant
 
+
+
 public  **setShowBacktrace** ([*mixed* $isShow])
 
 Returns the string meaning of a logger constant
+
+
 
 public  **getShowBacktrace** ()
 
 Returns the string meaning of a logger constant
 
+
+
 public  **enableLabels** ([*mixed* $isEnable])
 
 Returns the string meaning of a logger constant
+
+
 
 public  **labelsEnabled** ()
 
 Returns the labels enabled
 
+
+
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sending it to the log
 
+
+
 public  **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Interpolates context values into the message placeholders
+
+
+
 
 <hr />
 
@@ -788,18 +1064,26 @@ Interpolates context values into the message placeholders
 
 Formats messages using JSON encoding
 
+
 ## Methods
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
 
+
+
 public  **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Returns the string meaning of a logger constant
 
+
+
 public  **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Interpolates context values into the message placeholders
+
+
+
 
 <hr />
 
@@ -813,38 +1097,56 @@ Interpolates context values into the message placeholders
 
 Formats messages using an one-line string
 
+
 ## Methods
 public  **getDateFormat** ()
 
 Default date format
 
+
+
 public  **setDateFormat** (*mixed* $dateFormat)
 
 Default date format
+
+
 
 public  **getFormat** ()
 
 Format applied to each message
 
+
+
 public  **setFormat** (*mixed* $format)
 
 Format applied to each message
+
+
 
 public  **__construct** ([*string* $format], [*string* $dateFormat])
 
 Phalcon\Logger\Formatter\Line construct
 
+
+
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
+
+
 
 public  **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Returns the string meaning of a logger constant
 
+
+
 public  **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Interpolates context values into the message placeholders
+
+
+
 
 <hr />
 
@@ -858,18 +1160,26 @@ Interpolates context values into the message placeholders
 
 Prepares a message to be used in a Syslog backend
 
+
 ## Methods
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
 Applies a format to a message before sent it to the internal log
 
+
+
 public  **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Returns the string meaning of a logger constant
 
+
+
 public  **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/3.4/api/phalcon_logger/)
 
 Interpolates context values into the message placeholders
+
+
+
 
 <hr />
 
@@ -882,6 +1192,8 @@ abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp
 
 ...
 
+
+
 <hr />
 
 # Class **Phalcon\Logger\Item**
@@ -890,26 +1202,37 @@ abstract public  **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp
 
 Represents each item in a logging transaction
 
+
 ## Methods
 public  **getType** ()
 
 Log type
 
+
+
 public  **getMessage** ()
 
 Log message
+
+
 
 public  **getTime** ()
 
 Log timestamp
 
+
+
 public  **getContext** ()
 
 ...
 
+
 public  **__construct** (*string* $message, *integer* $type, [*integer* $time], [*array* $context])
 
 Phalcon\Logger\Item constructor
+
+
+
 
 <hr />
 
@@ -919,62 +1242,88 @@ Phalcon\Logger\Item constructor
 
 Handles multiples logger handlers
 
+
 ## Methods
 public  **getLoggers** ()
 
 ...
 
+
 public  **getFormatter** ()
 
 ...
+
 
 public  **getLogLevel** ()
 
 ...
 
+
 public  **push** ([Phalcon\Logger\AdapterInterface](/3.4/api/phalcon_logger/) $logger)
 
 Pushes a logger to the logger tail
+
+
 
 public  **setFormatter** ([Phalcon\Logger\FormatterInterface](/3.4/api/phalcon_logger/) $formatter)
 
 Sets a global formatter
 
+
+
 public  **setLogLevel** (*mixed* $level)
 
 Sets a global level
+
+
 
 public  **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 Sends a message to each registered logger
 
+
+
 public  **critical** (*mixed* $message, [*array* $context])
 
 Sends/Writes an critical message to the log
+
+
 
 public  **emergency** (*mixed* $message, [*array* $context])
 
 Sends/Writes an emergency message to the log
 
+
+
 public  **debug** (*mixed* $message, [*array* $context])
 
 Sends/Writes a debug message to the log
+
+
 
 public  **error** (*mixed* $message, [*array* $context])
 
 Sends/Writes an error message to the log
 
+
+
 public  **info** (*mixed* $message, [*array* $context])
 
 Sends/Writes an info message to the log
+
+
 
 public  **notice** (*mixed* $message, [*array* $context])
 
 Sends/Writes a notice message to the log
 
+
+
 public  **warning** (*mixed* $message, [*array* $context])
 
 Sends/Writes a warning message to the log
+
+
 
 public  **alert** (*mixed* $message, [*array* $context])
 

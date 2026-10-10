@@ -266,14 +266,14 @@ use Phalcon\Mvc\Controller;
  */
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        echo $this->escaper->normalizeEncoding('ḂḃĊċḊḋḞḟĠġṀṁ');  
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            echo $this->escaper->normalizeEncoding('ḂḃĊċḊḋḞḟĠġṀṁ');  
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -291,10 +291,10 @@ use Phalcon\Escaper;
 $container = new Di();
 
 $container->set(
-'escaper',
-function () use  {
-    return new Escaper();
-}
+    'escaper',
+    function () use  {
+        return new Escaper();
+    }
 );
 ```
 
@@ -315,15 +315,15 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    echo $this->escaper->escapeHtml('The post was correctly saved!');
-}
+    public function saveAction()
+    {
+        echo $this->escaper->escapeHtml('The post was correctly saved!');
+    }
 }
 ```
 
@@ -339,48 +339,48 @@ use Phalcon\Escaper\EscaperInterface;
 
 class Custom extends EscaperInterface
 {
-/**
- * Escape CSS strings by replacing non-alphanumeric chars by their
- * hexadecimal representation
- */
-public function escapeCss(string $css): string;
+    /**
+     * Escape CSS strings by replacing non-alphanumeric chars by their
+     * hexadecimal representation
+     */
+    public function escapeCss(string $css): string;
 
-/**
- * Escapes a HTML string
- */
-public function escapeHtml(string $text): string;
+    /**
+     * Escapes a HTML string
+     */
+    public function escapeHtml(string $text): string;
 
-/**
- * Escapes a HTML attribute string
- */
-public function escapeHtmlAttr(string $text): string;
+    /**
+     * Escapes a HTML attribute string
+     */
+    public function escapeHtmlAttr(string $text): string;
 
-/**
- * Escape Javascript strings by replacing 
- * non-alphanumeric chars by their hexadecimal 
- * representation
- */
-public function escapeJs(string $js): string;
+    /**
+     * Escape Javascript strings by replacing 
+     * non-alphanumeric chars by their hexadecimal 
+     * representation
+     */
+    public function escapeJs(string $js): string;
 
-/**
- * Escapes a URL. Internally uses rawurlencode
- */
-public function escapeUrl(string $url): string;
+    /**
+     * Escapes a URL. Internally uses rawurlencode
+     */
+    public function escapeUrl(string $url): string;
 
-/**
- * Returns the internal encoding used by the escaper
- */
-public function getEncoding(): string;
+    /**
+     * Returns the internal encoding used by the escaper
+     */
+    public function getEncoding(): string;
 
-/**
- * Sets the encoding to be used by the escaper
- */
-public function setEncoding(string $encoding): void;
+    /**
+     * Sets the encoding to be used by the escaper
+     */
+    public function setEncoding(string $encoding): void;
 
-/**
- * Sets the HTML quoting type for htmlspecialchars
- */
-public function setHtmlQuoteType(int $quoteType): void;
+    /**
+     * Sets the HTML quoting type for htmlspecialchars
+     */
+    public function setHtmlQuoteType(int $quoteType): void;
 }
 ```
 

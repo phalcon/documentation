@@ -30,17 +30,17 @@ use Phalcon\Queue\Beanstalk;
 
 // Connect to the queue
 $queue = new Beanstalk(
-[
-    'host' => '192.168.0.21',
-    'port' => '11300',
-]
+    [
+        'host' => '192.168.0.21',
+        'port' => '11300',
+    ]
 );
 
 // Insert the job in the queue
 $queue->put(
-[
-    'processVideo' => 4871,
-]
+    [
+        'processVideo' => 4871,
+    ]
 );
 ```
 
@@ -60,14 +60,14 @@ Additional options as: time to run, priority and delay can be passed as second p
 
 // Insert the job in the queue with options
 $queue->put(
-[
-    'processVideo' => 4871,
-],
-[
-    'priority' => 250,
-    'delay'    => 10,
-    'ttr'      => 3600,
-]
+    [
+        'processVideo' => 4871,
+    ],
+    [
+        'priority' => 250,
+        'delay'    => 10,
+        'ttr'      => 3600,
+    ]
 );
 ```
 
@@ -85,11 +85,12 @@ Every job put into the queue returns a `job id` which you can use to track the s
 <?php
 
 $jobId = $queue->put(
-[
-    'processVideo' => 4871,
-]
+    [
+        'processVideo' => 4871,
+    ]
 );
 ```
+
 
 ## Retrieving Messages
 Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete the task:
@@ -98,11 +99,11 @@ Once a job is placed into the queue, those messages can be consumed by a backgro
 <?php
 
 while (($job = $queue->peekReady()) !== false) {
-$message = $job->getBody();
+    $message = $job->getBody();
 
-var_dump($message);
+    var_dump($message);
 
-$job->delete();
+    $job->delete();
 }
 ```
 
@@ -112,11 +113,11 @@ Jobs must be removed from the queue to avoid double processing. If multiple back
 <?php
 
 while (($job = $queue->reserve()) !== false) {
-$message = $job->getBody();
+    $message = $job->getBody();
 
-var_dump($message);
+    var_dump($message);
 
-$job->delete();
+    $job->delete();
 }
 ```
 

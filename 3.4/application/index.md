@@ -28,11 +28,11 @@ use Phalcon\Mvc\Application;
 $application = new Application($di);
 
 try {
-$response = $application->handle();
+    $response = $application->handle();
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo 'Exception: ', $e->getMessage();
+    echo 'Exception: ', $e->getMessage();
 }
 ```
 
@@ -43,6 +43,7 @@ The core of all the work of the controller occurs when `handle()` is invoked:
 
 $response = $application->handle();
 ```
+
 
 ## Manual bootstrapping
 If you do not wish to use [Phalcon\Mvc\Application](/3.4/api/phalcon_mvc_application/), the code above can be changed as follows:
@@ -62,15 +63,15 @@ $dispatcher = $di['dispatcher'];
 // Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
-$router->getControllerName()
+    $router->getControllerName()
 );
 
 $dispatcher->setActionName(
-$router->getActionName()
+    $router->getActionName()
 );
 
 $dispatcher->setParams(
-$router->getParams()
+    $router->getParams()
 );
 
 // Start the view
@@ -81,9 +82,9 @@ $dispatcher->dispatch();
 
 // Render the related views
 $view->render(
-$dispatcher->getControllerName(),
-$dispatcher->getActionName(),
-$dispatcher->getParams()
+    $dispatcher->getControllerName(),
+    $dispatcher->getActionName(),
+    $dispatcher->getParams()
 );
 
 // Finish the view
@@ -93,7 +94,7 @@ $response = $di['response'];
 
 // Pass the output of the view to the response
 $response->setContent(
-$view->getContent()
+    $view->getContent()
 );
 
 // Send the response
@@ -117,15 +118,15 @@ $dispatcher = $di['dispatcher'];
 // Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
-$router->getControllerName()
+    $router->getControllerName()
 );
 
 $dispatcher->setActionName(
-$router->getActionName()
+    $router->getActionName()
 );
 
 $dispatcher->setParams(
-$router->getParams()
+    $router->getParams()
 );
 
 // Dispatch the request
@@ -136,8 +137,8 @@ $response = $dispatcher->getReturnedValue();
 
 // Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
-// Send the response
-$response->send();
+    // Send the response
+    $response->send();
 }
 ```
 
@@ -158,29 +159,29 @@ $dispatcher = $di['dispatcher'];
 // Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
-$router->getControllerName()
+    $router->getControllerName()
 );
 
 $dispatcher->setActionName(
-$router->getActionName()
+    $router->getActionName()
 );
 
 $dispatcher->setParams(
-$router->getParams()
+    $router->getParams()
 );
 
 try {
-// Dispatch the request
-$dispatcher->dispatch();
+    // Dispatch the request
+    $dispatcher->dispatch();
 } catch (Exception $e) {
-// An exception has occurred, dispatch some controller/action aimed for that
+    // An exception has occurred, dispatch some controller/action aimed for that
 
-// Pass the processed router parameters to the dispatcher
-$dispatcher->setControllerName('errors');
-$dispatcher->setActionName('action503');
+    // Pass the processed router parameters to the dispatcher
+    $dispatcher->setControllerName('errors');
+    $dispatcher->setActionName('action503');
 
-// Dispatch the request
-$dispatcher->dispatch();
+    // Dispatch the request
+    $dispatcher->dispatch();
 }
 
 // Get the returned value by the last executed action
@@ -188,29 +189,31 @@ $response = $dispatcher->getReturnedValue();
 
 // Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
-// Send the response
-$response->send();
+    // Send the response
+    $response->send();
 }
 ```
 
 Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](/3.4/api/phalcon_mvc_application/), offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
+
 ## Single or Multi Module Applications
 With this component you can run various types of MVC structures:
+
 
 ### Single Module
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
 ```php
 single/
-app/
-    controllers/
-    models/
-    views/
-public/
-    css/
-    img/
-    js/
+    app/
+        controllers/
+        models/
+        views/
+    public/
+        css/
+        img/
+        js/
 ```
 
 If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
@@ -226,10 +229,10 @@ use Phalcon\Di\FactoryDefault;
 $loader = new Loader();
 
 $loader->registerDirs(
-[
-    '../apps/controllers/',
-    '../apps/models/',
-]
+    [
+        '../apps/controllers/',
+        '../apps/models/',
+    ]
 );
 
 $loader->register();
@@ -238,24 +241,24 @@ $di = new FactoryDefault();
 
 // Registering the view component
 $di->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../apps/views/');
+        $view->setViewsDir('../apps/views/');
 
-    return $view;
-}
+        return $view;
+    }
 );
 
 $application = new Application($di);
 
 try {
-$response = $application->handle();
+    $response = $application->handle();
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -274,10 +277,10 @@ $loader = new Loader();
 
 // Use autoloading with namespaces prefixes
 $loader->registerNamespaces(
-[
-    'Single\Controllers' => '../apps/controllers/',
-    'Single\Models'      => '../apps/models/',
-]
+    [
+        'Single\Controllers' => '../apps/controllers/',
+        'Single\Models'      => '../apps/models/',
+    ]
 );
 
 $loader->register();
@@ -286,38 +289,39 @@ $di = new FactoryDefault();
 
 // Register the default dispatcher's namespace for controllers
 $di->set(
-'dispatcher',
-function () {
-    $dispatcher = new Dispatcher();
+    'dispatcher',
+    function () {
+        $dispatcher = new Dispatcher();
 
-    $dispatcher->setDefaultNamespace('Single\Controllers');
+        $dispatcher->setDefaultNamespace('Single\Controllers');
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 
 // Register the view component
 $di->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../apps/views/');
+        $view->setViewsDir('../apps/views/');
 
-    return $view;
-}
+        return $view;
+    }
 );
 
 $application = new Application($di);
 
 try {
-$response = $application->handle();
+    $response = $application->handle();
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
+
 
 ### Multi Module
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
@@ -325,20 +329,20 @@ A multi-module application uses the same document root for more than one module.
 ```php
 multiple/
   apps/
-frontend/
-   controllers/
-   models/
-   views/
-   Module.php
-backend/
-   controllers/
-   models/
-   views/
-   Module.php
+    frontend/
+       controllers/
+       models/
+       views/
+       Module.php
+    backend/
+       controllers/
+       models/
+       views/
+       Module.php
   public/
-css/
-img/
-js/
+    css/
+    img/
+    js/
 ```
 Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
 
@@ -355,52 +359,52 @@ use Phalcon\Mvc\ModuleDefinitionInterface;
 
 class Module implements ModuleDefinitionInterface
 {
-/**
- * Register a specific autoloader for the module
- */
-public function registerAutoloaders(DiInterface $di = null)
-{
-    $loader = new Loader();
+    /**
+     * Register a specific autoloader for the module
+     */
+    public function registerAutoloaders(DiInterface $di = null)
+    {
+        $loader = new Loader();
 
-    $loader->registerNamespaces(
-        [
-            'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
-            'Multiple\Backend\Models'      => '../apps/backend/models/',
-        ]
-    );
+        $loader->registerNamespaces(
+            [
+                'Multiple\Backend\Controllers' => '../apps/backend/controllers/',
+                'Multiple\Backend\Models'      => '../apps/backend/models/',
+            ]
+        );
 
-    $loader->register();
-}
+        $loader->register();
+    }
 
-/**
- * Register specific services for the module
- */
-public function registerServices(DiInterface $di)
-{
-    // Registering a dispatcher
-    $di->set(
-        'dispatcher',
-        function () {
-            $dispatcher = new Dispatcher();
+    /**
+     * Register specific services for the module
+     */
+    public function registerServices(DiInterface $di)
+    {
+        // Registering a dispatcher
+        $di->set(
+            'dispatcher',
+            function () {
+                $dispatcher = new Dispatcher();
 
-            $dispatcher->setDefaultNamespace('Multiple\Backend\Controllers');
+                $dispatcher->setDefaultNamespace('Multiple\Backend\Controllers');
 
-            return $dispatcher;
-        }
-    );
+                return $dispatcher;
+            }
+        );
 
-    // Registering the view component
-    $di->set(
-        'view',
-        function () {
-            $view = new View();
+        // Registering the view component
+        $di->set(
+            'view',
+            function () {
+                $view = new View();
 
-            $view->setViewsDir('../apps/backend/views/');
+                $view->setViewsDir('../apps/backend/views/');
 
-            return $view;
-        }
-    );
-}
+                return $view;
+            }
+        );
+    }
 }
 ```
 
@@ -417,40 +421,40 @@ $di = new FactoryDefault();
 
 // Specify routes for modules
 $di->set(
-'router',
-function () {
-    $router = new Router();
+    'router',
+    function () {
+        $router = new Router();
 
-    $router->setDefaultModule('frontend');
+        $router->setDefaultModule('frontend');
 
-    $router->add(
-        '/login',
-        [
-            'module'     => 'backend',
-            'controller' => 'login',
-            'action'     => 'index',
-        ]
-    );
+        $router->add(
+            '/login',
+            [
+                'module'     => 'backend',
+                'controller' => 'login',
+                'action'     => 'index',
+            ]
+        );
 
-    $router->add(
-        '/admin/products/:action',
-        [
-            'module'     => 'backend',
-            'controller' => 'products',
-            'action'     => 1,
-        ]
-    );
+        $router->add(
+            '/admin/products/:action',
+            [
+                'module'     => 'backend',
+                'controller' => 'products',
+                'action'     => 1,
+            ]
+        );
 
-    $router->add(
-        '/products/:action',
-        [
-            'controller' => 'products',
-            'action'     => 1,
-        ]
-    );
+        $router->add(
+            '/products/:action',
+            [
+                'controller' => 'products',
+                'action'     => 1,
+            ]
+        );
 
-    return $router;
-}
+        return $router;
+    }
 );
 
 // Create an application
@@ -458,25 +462,25 @@ $application = new Application($di);
 
 // Register the installed modules
 $application->registerModules(
-[
-    'frontend' => [
-        'className' => 'Multiple\Frontend\Module',
-        'path'      => '../apps/frontend/Module.php',
-    ],
-    'backend'  => [
-        'className' => 'Multiple\Backend\Module',
-        'path'      => '../apps/backend/Module.php',
+    [
+        'frontend' => [
+            'className' => 'Multiple\Frontend\Module',
+            'path'      => '../apps/frontend/Module.php',
+        ],
+        'backend'  => [
+            'className' => 'Multiple\Backend\Module',
+            'path'      => '../apps/backend/Module.php',
+        ]
     ]
-]
 );
 
 try {
-// Handle the request
-$response = $application->handle();
+    // Handle the request
+    $response = $application->handle();
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -495,32 +499,33 @@ $view = new View();
 
 // Register the installed modules
 $application->registerModules(
-[
-    'frontend' => function ($di) use ($view) {
-        $di->setShared(
-            'view',
-            function () use ($view) {
-                $view->setViewsDir('../apps/frontend/views/');
+    [
+        'frontend' => function ($di) use ($view) {
+            $di->setShared(
+                'view',
+                function () use ($view) {
+                    $view->setViewsDir('../apps/frontend/views/');
 
-                return $view;
-            }
-        );
-    },
-    'backend' => function ($di) use ($view) {
-        $di->setShared(
-            'view',
-            function () use ($view) {
-                $view->setViewsDir('../apps/backend/views/');
+                    return $view;
+                }
+            );
+        },
+        'backend' => function ($di) use ($view) {
+            $di->setShared(
+                'view',
+                function () use ($view) {
+                    $view->setViewsDir('../apps/backend/views/');
 
-                return $view;
-            }
-        );
-    }
-]
+                    return $view;
+                }
+            );
+        }
+    ]
 );
 ```
 
 When [Phalcon\Mvc\Application](/3.4/api/phalcon_mvc_application/) have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class offering functions to set the module itself up. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by [Phalcon\Mvc\Application](/3.4/api/phalcon_mvc_application/) according to the module to be executed.
+
 
 ## Application Events
 [Phalcon\Mvc\Application](/3.4/api/phalcon_mvc_application/) is able to send events to the [EventsManager](/3.4/events/) (if it is present). Events are triggered using the type `application`. The following events are supported:
@@ -546,12 +551,13 @@ $eventsManager = new EventsManager();
 $application->setEventsManager($eventsManager);
 
 $eventsManager->attach(
-'application',
-function (Event $event, $application) {
-    // ...
-}
+    'application',
+    function (Event $event, $application) {
+        // ...
+    }
 );
 ```
+
 
 ## External Resources
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)

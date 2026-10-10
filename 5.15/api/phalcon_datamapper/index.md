@@ -24,11 +24,12 @@ methods
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](#datamapperpdoconnectionabstractconnection)
-- **`Phalcon\DataMapper\Pdo\Connection`**
+    - **`Phalcon\DataMapper\Pdo\Connection`**
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
 
 ### Method Summary
 
@@ -76,12 +77,12 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\Data
 
 ```php
 public function __construct(
-string $dsn,
-string $username = null,
-string $password = null,
-array $options = [],
-array $queries = [],
-ProfilerInterface $profiler = null
+    string $dsn,
+    string $username = null,
+    string $password = null,
+    array $options = [],
+    array $queries = [],
+    ProfilerInterface $profiler = null
 );
 ```
 
@@ -114,6 +115,7 @@ public function disconnect(): void;
 
 Disconnects from the database.
 
+
 ## DataMapper\Pdo\ConnectionLocator
 
 <span class="badge badge--class">Class</span>
@@ -128,6 +130,7 @@ Manages Connection instances for default, read, and write connections.
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`
+
 
 ### Method Summary
 
@@ -212,9 +215,9 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\Dat
 
 ```php
 public function __construct(
-ConnectionInterface $master,
-array $read = [],
-array $write = []
+    ConnectionInterface $master,
+    array $read = [],
+    array $write = []
 );
 ```
 
@@ -260,8 +263,8 @@ Sets the default connection factory.
 
 ```php
 public function setRead(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): static;
 ```
 
@@ -271,8 +274,8 @@ Sets a read connection factory by name.
 
 ```php
 public function setWrite(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): static;
 ```
 
@@ -284,12 +287,13 @@ Sets a write connection factory by name.
 
 ```php
 protected function getConnection(
-string $type,
-string $name = ""
+    string $type,
+    string $name = ""
 ): ConnectionInterface;
 ```
 
 Returns a connection by name.
+
 
 ## DataMapper\Pdo\ConnectionLocatorInterface
 
@@ -305,6 +309,7 @@ Locates PDO connections for default, read, and write databases.
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`
+
 
 ### Method Summary
 
@@ -391,8 +396,8 @@ Sets the default connection registry entry.
 
 ```php
 public function setRead(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): ConnectionLocatorInterface;
 ```
 
@@ -402,12 +407,13 @@ Sets a read connection registry entry by name.
 
 ```php
 public function setWrite(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): ConnectionLocatorInterface;
 ```
 
 Sets a write connection registry entry by name.
+
 
 ## DataMapper\Pdo\Connection\AbstractConnection
 
@@ -420,12 +426,13 @@ methods
 <div class="api-tree">
 
 - **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** — implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
-- [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
-- [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
+    - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
+    - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
 </div>
 
 __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
 
 ### Method Summary
 
@@ -669,8 +676,8 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownDr
 
 ```php
 public function __call(
-mixed $name,
-array $arguments
+    mixed $name,
+    array $arguments
 );
 ```
 
@@ -740,8 +747,8 @@ the profiler is enabled, the operation will be recorded.
 
 ```php
 public function fetchAffected(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): int;
 ```
 
@@ -751,8 +758,8 @@ Performs a statement and returns the number of affected rows.
 
 ```php
 public function fetchAll(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -763,8 +770,8 @@ returned as associative arrays.
 
 ```php
 public function fetchAssoc(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -780,9 +787,9 @@ intensive and should be avoided if possible.
 
 ```php
 public function fetchColumn(
-string $statement,
-array $values = [],
-int $column = 0
+    string $statement,
+    array $values = [],
+    int $column = 0
 ): array;
 ```
 
@@ -792,9 +799,9 @@ Fetches a column of rows as a sequential array (default first one).
 
 ```php
 public function fetchGroup(
-string $statement,
-array $values = [],
-int $flags = \PDO::FETCH_ASSOC
+    string $statement,
+    array $values = [],
+    int $flags = \PDO::FETCH_ASSOC
 ): array;
 ```
 
@@ -806,10 +813,10 @@ PDO::FETCH_ASSOC | PDO::FETCH_GROUP
 
 ```php
 public function fetchObject(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): object;
 ```
 
@@ -825,10 +832,10 @@ constructor, will override the values that have been injected by
 
 ```php
 public function fetchObjects(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): array;
 ```
 
@@ -845,8 +852,8 @@ constructor, will override the values that have been injected by
 
 ```php
 public function fetchOne(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -856,8 +863,8 @@ Fetches one row from the database as an associative array.
 
 ```php
 public function fetchPairs(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -868,8 +875,8 @@ the key, second column is the value).
 
 ```php
 public function fetchValue(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 );
 ```
 
@@ -954,8 +961,8 @@ is enabled, the operation will be recorded.
 
 ```php
 public function perform(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): \PDOStatement;
 ```
 
@@ -968,8 +975,8 @@ profiler is enabled, the operation will be recorded.
 
 ```php
 public function prepare(
-string $statement,
-array $options = []
+    string $statement,
+    array $options = []
 ): \PDOStatement|bool;
 ```
 
@@ -988,8 +995,8 @@ enabled, the operation will be recorded.
 
 ```php
 public function quote(
-mixed $value,
-int $type = \PDO::PARAM_STR
+    mixed $value,
+    int $type = \PDO::PARAM_STR
 ): string;
 ```
 
@@ -1010,8 +1017,8 @@ profiler is enabled, the operation will be recorded.
 
 ```php
 public function setAttribute(
-int $attribute,
-mixed $value
+    int $attribute,
+    mixed $value
 ): bool;
 ```
 
@@ -1031,10 +1038,10 @@ Sets the Profiler instance.
 
 ```php
 protected function fetchData(
-string $method,
-array $arguments,
-string $statement,
-array $values = []
+    string $method,
+    array $arguments,
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1044,13 +1051,14 @@ Helper method to get data from PDO based on the method passed
 
 ```php
 protected function performBind(
-\PDOStatement $statement,
-mixed $name,
-mixed $arguments
+    \PDOStatement $statement,
+    mixed $name,
+    mixed $arguments
 ): void;
 ```
 
 Bind a value using the proper PDO::PARAM_* type.
+
 
 ## DataMapper\Pdo\Connection\ConnectionInterface
 
@@ -1063,11 +1071,12 @@ methods
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Pdo\Connection\PdoInterface`](#datamapperpdoconnectionpdointerface)
-- **`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`**
+    - **`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`**
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
 
 ### Method Summary
 
@@ -1199,8 +1208,8 @@ Disconnects from the database.
 
 ```php
 public function fetchAffected(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): int;
 ```
 
@@ -1210,8 +1219,8 @@ Performs a statement and returns the number of affected rows.
 
 ```php
 public function fetchAll(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1222,8 +1231,8 @@ returned as associative arrays.
 
 ```php
 public function fetchAssoc(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1239,9 +1248,9 @@ intensive and should be avoided if possible.
 
 ```php
 public function fetchColumn(
-string $statement,
-array $values = [],
-int $column = 0
+    string $statement,
+    array $values = [],
+    int $column = 0
 ): array;
 ```
 
@@ -1251,9 +1260,9 @@ Fetches a column of rows as a sequential array (default first one).
 
 ```php
 public function fetchGroup(
-string $statement,
-array $values = [],
-int $flags = \PDO::FETCH_ASSOC
+    string $statement,
+    array $values = [],
+    int $flags = \PDO::FETCH_ASSOC
 ): array;
 ```
 
@@ -1265,10 +1274,10 @@ PDO::FETCH_ASSOC | PDO::FETCH_GROUP
 
 ```php
 public function fetchObject(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): object;
 ```
 
@@ -1284,10 +1293,10 @@ constructor, will override the values that have been injected by
 
 ```php
 public function fetchObjects(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): array;
 ```
 
@@ -1304,8 +1313,8 @@ constructor, will override the values that have been injected by
 
 ```php
 public function fetchOne(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1315,8 +1324,8 @@ Fetches one row from the database as an associative array.
 
 ```php
 public function fetchPairs(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1327,8 +1336,8 @@ the key, second column is the value).
 
 ```php
 public function fetchValue(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): mixed;
 ```
 
@@ -1362,8 +1371,8 @@ Is the PDO connection active?
 
 ```php
 public function perform(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): \PDOStatement;
 ```
 
@@ -1380,6 +1389,7 @@ public function setProfiler( ProfilerInterface $profiler );
 
 Sets the Profiler instance.
 
+
 ## DataMapper\Pdo\Connection\Decorated
 
 <span class="badge badge--class">Class</span>
@@ -1390,11 +1400,12 @@ Decorates an existing PDO instance with the extended methods.
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](#datamapperpdoconnectionabstractconnection)
-- **`Phalcon\DataMapper\Pdo\Connection\Decorated`**
+    - **`Phalcon\DataMapper\Pdo\Connection\Decorated`**
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+
 
 ### Method Summary
 
@@ -1426,8 +1437,8 @@ __Uses__ `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMap
 
 ```php
 public function __construct(
-\PDO $pdo,
-ProfilerInterface $profiler = null
+    \PDO $pdo,
+    ProfilerInterface $profiler = null
 );
 ```
 
@@ -1452,6 +1463,7 @@ public function disconnect(): void;
 
 Disconnects from the database; disallowed with decorated PDO connections.
 
+
 ## DataMapper\Pdo\Connection\PdoInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -1462,7 +1474,7 @@ An interface to the native PDO object.
 <div class="api-tree">
 
 - **`Phalcon\DataMapper\Pdo\Connection\PdoInterface`**
-- [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
+    - [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
 
 </div>
 
@@ -1641,8 +1653,8 @@ is enabled, the operation will be recorded.
 
 ```php
 public function prepare(
-string $statement,
-array $options = []
+    string $statement,
+    array $options = []
 ): \PDOStatement|bool;
 ```
 
@@ -1661,8 +1673,8 @@ enabled, the operation will be recorded.
 
 ```php
 public function quote(
-mixed $value,
-int $type = \PDO::PARAM_STR
+    mixed $value,
+    int $type = \PDO::PARAM_STR
 ): string;
 ```
 
@@ -1683,12 +1695,13 @@ profiler is enabled, the operation will be recorded.
 
 ```php
 public function setAttribute(
-int $attribute,
-mixed $value
+    int $attribute,
+    mixed $value
 ): bool;
 ```
 
 Set a database connection attribute
+
 
 ## DataMapper\Pdo\Exception\CannotDisconnect
 
@@ -1701,10 +1714,11 @@ created externally and then injected.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
-- **`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`**
+    - [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
+        - **`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`**
 
 </div>
+
 
 ## DataMapper\Pdo\Exception\ConnectionNotFound
 
@@ -1716,10 +1730,11 @@ Locator could not find a named connection.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
-- **`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`**
+    - [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
+        - **`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`**
 
 </div>
+
 
 ## DataMapper\Pdo\Exception\DriverNotSupported
 
@@ -1729,11 +1744,12 @@ Locator could not find a named connection.
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`**
+    - **`Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -1754,6 +1770,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct( string $driver );
 ```
 
+
 ## DataMapper\Pdo\Exception\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1764,11 +1781,12 @@ Base Exception class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\DataMapper\Pdo\Exception\Exception`**
-- [`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`](#datamapperpdoexceptioncannotdisconnect)
-- [`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`](#datamapperpdoexceptionconnectionnotfound)
+    - **`Phalcon\DataMapper\Pdo\Exception\Exception`**
+        - [`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`](#datamapperpdoexceptioncannotdisconnect)
+        - [`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`](#datamapperpdoexceptionconnectionnotfound)
 
 </div>
+
 
 ## DataMapper\Pdo\Exception\UnknownDriverMethod
 
@@ -1778,11 +1796,12 @@ Base Exception class
 <div class="api-tree">
 
 - `BadMethodCallException`
-- **`Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod`**
+    - **`Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod`**
 
 </div>
 
 __Uses__ `BadMethodCallException`
+
 
 ### Method Summary
 
@@ -1803,6 +1822,7 @@ __Uses__ `BadMethodCallException`
 public function __construct( string $message );
 ```
 
+
 ## DataMapper\Pdo\Exception\UnknownQueryMethod
 
 <span class="badge badge--class">Class</span>
@@ -1811,11 +1831,12 @@ public function __construct( string $message );
 <div class="api-tree">
 
 - `BadMethodCallException`
-- **`Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`**
+    - **`Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`**
 
 </div>
 
 __Uses__ `BadMethodCallException`
+
 
 ### Method Summary
 
@@ -1836,6 +1857,7 @@ __Uses__ `BadMethodCallException`
 public function __construct( string $method );
 ```
 
+
 ## DataMapper\Pdo\Profiler\MemoryLogger
 
 <span class="badge badge--class">Class</span>
@@ -1850,6 +1872,7 @@ A memory-based logger.
 </div>
 
 __Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\Noop` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface`
+
 
 ### Method Summary
 
@@ -1955,8 +1978,8 @@ __Uses__ `Phalcon\Logger\Adapter\AdapterInterface` · `Phalcon\Logger\Adapter\No
 
 ```php
 public function alert(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1964,8 +1987,8 @@ array $context = []
 
 ```php
 public function critical(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1973,8 +1996,8 @@ array $context = []
 
 ```php
 public function debug(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1982,8 +2005,8 @@ array $context = []
 
 ```php
 public function emergency(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1991,8 +2014,8 @@ array $context = []
 
 ```php
 public function error(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2040,8 +2063,8 @@ Returns the name of the logger
 
 ```php
 public function info(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2049,9 +2072,9 @@ array $context = []
 
 ```php
 public function log(
-mixed $level,
-string $message,
-array $context = []
+    mixed $level,
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2061,8 +2084,8 @@ Logs a message.
 
 ```php
 public function notice(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2070,8 +2093,8 @@ array $context = []
 
 ```php
 public function trace(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -2079,10 +2102,11 @@ array $context = []
 
 ```php
 public function warning(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
+
 
 ## DataMapper\Pdo\Profiler\Profiler
 
@@ -2098,6 +2122,7 @@ Sends query profiles to a logger.
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Exception\Exception` · `Phalcon\Logger\Enum` · `Phalcon\Logger\LoggerInterface` · `Phalcon\Support\Helper\Json\Encode`
+
 
 ### Method Summary
 
@@ -2209,8 +2234,8 @@ Constructor.
 
 ```php
 public function finish(
-string $statement = null,
-array $values = []
+    string $statement = null,
+    array $values = []
 ): void;
 ```
 
@@ -2280,6 +2305,7 @@ public function start( string $method ): void;
 
 Starts a profile entry.
 
+
 ## DataMapper\Pdo\Profiler\ProfilerInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -2294,6 +2320,7 @@ Interface to send query profiles to a logger.
 </div>
 
 __Uses__ `Phalcon\Logger\LoggerInterface`
+
 
 ### Method Summary
 
@@ -2362,8 +2389,8 @@ __Uses__ `Phalcon\Logger\LoggerInterface`
 
 ```php
 public function finish(
-string $statement = null,
-array $values = []
+    string $statement = null,
+    array $values = []
 ): void;
 ```
 
@@ -2433,6 +2460,7 @@ public function start( string $method ): void;
 
 Starts a profile entry.
 
+
 ## DataMapper\Query\AbstractConditions
 
 <span class="badge badge--abstract">Abstract</span>
@@ -2443,10 +2471,10 @@ Class AbstractConditions
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- **`Phalcon\DataMapper\Query\AbstractConditions`**
-- [`Phalcon\DataMapper\Query\Delete`](#datamapperquerydelete)
-- [`Phalcon\DataMapper\Query\Select`](#datamapperqueryselect)
-- [`Phalcon\DataMapper\Query\Update`](#datamapperqueryupdate)
+    - **`Phalcon\DataMapper\Query\AbstractConditions`**
+        - [`Phalcon\DataMapper\Query\Delete`](#datamapperquerydelete)
+        - [`Phalcon\DataMapper\Query\Select`](#datamapperqueryselect)
+        - [`Phalcon\DataMapper\Query\Update`](#datamapperqueryupdate)
 
 </div>
 
@@ -2564,9 +2592,9 @@ Class AbstractConditions
 
 ```php
 public function andWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2576,9 +2604,9 @@ Sets a `AND` for a `WHERE` condition
 
 ```php
 public function appendWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2604,9 +2632,9 @@ Sets the `OFFSET` clause
 
 ```php
 public function orWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2624,9 +2652,9 @@ Sets the `ORDER BY`
 
 ```php
 public function where(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2644,11 +2672,11 @@ public function whereEquals( array $columnsValues ): AbstractConditions;
 
 ```php
 protected function addCondition(
-string $store,
-string $andor,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $store,
+    string $andor,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): void;
 ```
 
@@ -2658,10 +2686,10 @@ Appends a conditional
 
 ```php
 protected function appendCondition(
-string $store,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $store,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): void;
 ```
 
@@ -2719,12 +2747,13 @@ Builds the `LIMIT` clause for MSSQLServer
 
 ```php
 protected function processValue(
-string $store,
-mixed $data
+    string $store,
+    mixed $data
 ): void;
 ```
 
 Processes a value (array or string) and merges it with the store
+
 
 ## DataMapper\Query\AbstractQuery
 
@@ -2736,12 +2765,13 @@ Class AbstractQuery
 <div class="api-tree">
 
 - **`Phalcon\DataMapper\Query\AbstractQuery`**
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- [`Phalcon\DataMapper\Query\Insert`](#datamapperqueryinsert)
+    - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+    - [`Phalcon\DataMapper\Query\Insert`](#datamapperqueryinsert)
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection`
+
 
 ### Method Summary
 
@@ -2899,8 +2929,8 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -2910,8 +2940,8 @@ AbstractQuery constructor.
 
 ```php
 public function bindInline(
-mixed $value,
-int $type = -1
+    mixed $value,
+    int $type = -1
 ): string;
 ```
 
@@ -2921,9 +2951,9 @@ Binds a value inline
 
 ```php
 public function bindValue(
-string $key,
-mixed $value,
-int $type = -1
+    string $key,
+    mixed $value,
+    int $type = -1
 ): AbstractQuery;
 ```
 
@@ -2965,8 +2995,8 @@ Performs a statement in the connection
 
 ```php
 public function quoteIdentifier(
-string $name,
-int $type = \PDO::PARAM_STR
+    string $name,
+    int $type = \PDO::PARAM_STR
 ): string;
 ```
 
@@ -3048,8 +3078,8 @@ Resets the where
 
 ```php
 public function setFlag(
-string $flag,
-bool $enable = true
+    string $flag,
+    bool $enable = true
 ): void;
 ```
 
@@ -3077,12 +3107,13 @@ Builds the `RETURNING` clause
 
 ```php
 protected function indent(
-array $collection,
-string $glue = ""
+    array $collection,
+    string $glue = ""
 ): string;
 ```
 
 Indents a collection
+
 
 ## DataMapper\Query\Bind
 
@@ -3166,8 +3197,8 @@ Class Bind
 
 ```php
 public function bindInline(
-mixed $value,
-int $type = -1
+    mixed $value,
+    int $type = -1
 ): string;
 ```
 
@@ -3183,9 +3214,9 @@ Removes a value from the store
 
 ```php
 public function setValue(
-string $key,
-mixed $value,
-int $type = -1
+    string $key,
+    mixed $value,
+    int $type = -1
 ): void;
 ```
 
@@ -3195,8 +3226,8 @@ Sets a value
 
 ```php
 public function setValues(
-array $values,
-int $type = -1
+    array $values,
+    int $type = -1
 ): void;
 ```
 
@@ -3224,12 +3255,13 @@ Auto detects the PDO type
 
 ```php
 protected function inlineArray(
-array $data,
-int $type
+    array $data,
+    int $type
 ): string;
 ```
 
 Processes an array - if passed as an `inline` parameter
+
 
 ## DataMapper\Query\Delete
 
@@ -3241,12 +3273,13 @@ Delete Query
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- **`Phalcon\DataMapper\Query\Delete`**
+    - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+        - **`Phalcon\DataMapper\Query\Delete`**
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection`
+
 
 ### Method Summary
 
@@ -3289,8 +3322,8 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -3326,6 +3359,7 @@ public function returning( array $columns ): Delete;
 
 Adds the `RETURNING` clause
 
+
 ## DataMapper\Query\Insert
 
 <span class="badge badge--class">Class</span>
@@ -3336,11 +3370,12 @@ Insert Query
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- **`Phalcon\DataMapper\Query\Insert`**
+    - **`Phalcon\DataMapper\Query\Insert`**
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection`
+
 
 ### Method Summary
 
@@ -3407,8 +3442,8 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -3418,9 +3453,9 @@ Insert constructor.
 
 ```php
 public function column(
-string $column,
-mixed $value = null,
-int $type = -1
+    string $column,
+    mixed $value = null,
+    int $type = -1
 ): Insert;
 ```
 
@@ -3476,12 +3511,13 @@ Adds the `RETURNING` clause
 
 ```php
 public function set(
-string $column,
-mixed $value = null
+    string $column,
+    mixed $value = null
 ): Insert;
 ```
 
 Sets a column = value condition
+
 
 ## DataMapper\Query\QueryFactory
 
@@ -3497,6 +3533,7 @@ QueryFactory
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection`
+
 
 ### Method Summary
 
@@ -3600,6 +3637,7 @@ public function newUpdate( Connection $connection ): Update;
 
 Create a new Update object
 
+
 ## DataMapper\Query\Select
 
 <span class="badge badge--class">Class</span>
@@ -3610,12 +3648,13 @@ Select Query
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- **`Phalcon\DataMapper\Query\Select`**
+    - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+        - **`Phalcon\DataMapper\Query\Select`**
 
 </div>
 
 __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
+
 
 ### Method Summary
 
@@ -3784,8 +3823,8 @@ __Uses__ `BadMethodCallException` · `Phalcon\DataMapper\Pdo\Exception\UnknownQu
 
 ```php
 public function __call(
-string $method,
-array $params
+    string $method,
+    array $params
 );
 ```
 
@@ -3795,9 +3834,9 @@ Proxied methods to the connection
 
 ```php
 public function andHaving(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3807,9 +3846,9 @@ Sets a `AND` for a `HAVING` condition
 
 ```php
 public function appendHaving(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3819,9 +3858,9 @@ Concatenates to the most recent `HAVING` clause
 
 ```php
 public function appendJoin(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3894,9 +3933,9 @@ Whether the query has columns or not
 
 ```php
 public function having(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3906,11 +3945,11 @@ Sets a `HAVING` condition
 
 ```php
 public function join(
-string $join,
-string $table,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $join,
+    string $table,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3920,9 +3959,9 @@ Sets a 'JOIN' condition
 
 ```php
 public function orHaving(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3970,6 +4009,7 @@ protected function getCurrentStatement( string $suffix = "" ): string;
 
 Statement builder
 
+
 ## DataMapper\Query\Update
 
 <span class="badge badge--class">Class</span>
@@ -3980,12 +4020,13 @@ Update Query
 <div class="api-tree">
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- **`Phalcon\DataMapper\Query\Update`**
+    - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+        - **`Phalcon\DataMapper\Query\Update`**
 
 </div>
 
 __Uses__ `Phalcon\DataMapper\Pdo\Connection`
+
 
 ### Method Summary
 
@@ -4052,8 +4093,8 @@ __Uses__ `Phalcon\DataMapper\Pdo\Connection`
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -4063,9 +4104,9 @@ Update constructor.
 
 ```php
 public function column(
-string $column,
-mixed $value = null,
-int $type = -1
+    string $column,
+    mixed $value = null,
+    int $type = -1
 ): Update;
 ```
 
@@ -4121,8 +4162,8 @@ Adds the `RETURNING` clause
 
 ```php
 public function set(
-string $column,
-mixed $value = null
+    string $column,
+    mixed $value = null
 ): Update;
 ```
 

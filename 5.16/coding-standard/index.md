@@ -64,15 +64,15 @@ namespace Phalcon\Acl;
 
 class Enum
 {
-/**
- * @var int
- */
-const ALLOW = 1;
+    /**
+     * @var int
+     */
+    const ALLOW = 1;
 
-/**
- * @var int
- */
-const DENY = 0;
+    /**
+     * @var int
+     */
+    const DENY = 0;
 }
 ```
 
@@ -91,18 +91,18 @@ use Phalcon\Acl\Adapter;
 
 class Memory extends Adapter
 {
-/**
- * @var string | null
- */
-protected activeKey = "";
+    /**
+     * @var string | null
+     */
+    protected activeKey = "";
 
-/**
- * @return string | null
- */
-public function getActiveKey() -> string | null
-{
-    return this->activeKey;
-}
+    /**
+     * @return string | null
+     */
+    public function getActiveKey() -> string | null
+    {
+        return this->activeKey;
+    }
 }
 ```
 

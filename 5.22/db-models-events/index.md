@@ -59,42 +59,42 @@ use Phalcon\Mvc\Model;
  */
 class Invoices extends Model
 {
-/**
- * @var int
- */
-public $inv_cst_id;
+    /**
+     * @var int
+     */
+    public $inv_cst_id;
 
-/**
- * @var string
- */
-public $inv_created_at;
+    /**
+     * @var string
+     */
+    public $inv_created_at;
 
-/**
- * @var int
- */
-public $inv_id;
+    /**
+     * @var int
+     */
+    public $inv_id;
 
-/**
- * @var string
- */
-public $inv_number;
+    /**
+     * @var string
+     */
+    public $inv_number;
 
-/**
- * @var string
- */
-public $inv_title;
+    /**
+     * @var string
+     */
+    public $inv_title;
 
-/**
- * @var float
- */
-public $inv_total;
+    /**
+     * @var float
+     */
+    public $inv_total;
 
-public function beforeValidationOnCreate()
-{
-    if ($this->inv_total < 1) {
-        $this->inv_total = 0;
+    public function beforeValidationOnCreate()
+    {
+        if ($this->inv_total < 1) {
+            $this->inv_total = 0;
+        }
     }
-}
 }
 
 ```
@@ -121,48 +121,48 @@ use function str_pad;
  */
 class Invoices extends Model
 {
-/**
- * @var int
- */
-public $inv_cst_id;
+    /**
+     * @var int
+     */
+    public $inv_cst_id;
 
-/**
- * @var string
- */
-public $inv_created_at;
+    /**
+     * @var string
+     */
+    public $inv_created_at;
 
-/**
- * @var int
- */
-public $inv_id;
+    /**
+     * @var int
+     */
+    public $inv_id;
 
-/**
- * @var string
- */
-public $inv_number;
+    /**
+     * @var string
+     */
+    public $inv_number;
 
-/**
- * @var string
- */
-public $inv_title;
+    /**
+     * @var string
+     */
+    public $inv_title;
 
-/**
- * @var float
- */
-public $inv_total;
+    /**
+     * @var float
+     */
+    public $inv_total;
 
-public function beforeCreate()
-{
-    $date     = date('YmdHis');
-    $customer = substr(
-        str_pad(
-            $this->inv_cst_id, 6, '0', STR_PAD_LEFT
-        ),
-        -6
-    );
+    public function beforeCreate()
+    {
+        $date     = date('YmdHis');
+        $customer = substr(
+            str_pad(
+                $this->inv_cst_id, 6, '0', STR_PAD_LEFT
+            ),
+            -6
+        );
 
-    $this->inv_number = 'INV-' . $customer . '-' . $date;
-}
+        $this->inv_number = 'INV-' . $customer . '-' . $date;
+    }
 }
 ```
 
@@ -190,53 +190,53 @@ use Phalcon\Events\Manager;
  */
 class Invoices extends Model
 {
-/**
- * @var int
- */
-public $inv_cst_id;
+    /**
+     * @var int
+     */
+    public $inv_cst_id;
 
-/**
- * @var string
- */
-public $inv_created_at;
+    /**
+     * @var string
+     */
+    public $inv_created_at;
 
-/**
- * @var int
- */
-public $inv_id;
+    /**
+     * @var int
+     */
+    public $inv_id;
 
-/**
- * @var string
- */
-public $inv_number;
+    /**
+     * @var string
+     */
+    public $inv_number;
 
-/**
- * @var string
- */
-public $inv_title;
+    /**
+     * @var string
+     */
+    public $inv_title;
 
-/**
- * @var float
- */
-public $inv_total;
+    /**
+     * @var float
+     */
+    public $inv_total;
 
-public function initialize()
-{
-    $eventsManager = new Manager();
+    public function initialize()
+    {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'model:beforeSave',
-        function (Event $event, $invoice) {
-            if ($invoice->inv_total < 1) {
-                return false;
+        $eventsManager->attach(
+            'model:beforeSave',
+            function (Event $event, $invoice) {
+                if ($invoice->inv_total < 1) {
+                    return false;
+                }
+
+                return true;
             }
+        );
 
-            return true;
-        }
-    );
-
-    $this->setEventsManager($eventsManager);
-}
+        $this->setEventsManager($eventsManager);
+    }
 }
 ```
 
@@ -267,28 +267,28 @@ use Phalcon\Mvc\Model\Manager as ModelsManager;
 
 $container = new FactoryDefault();
 $container->setShared(
-'modelsManager',
-function () {
-    $eventsManager = new Manager();
+    'modelsManager',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'model:beforeSave',
-        function (Event $event, $model) {
-            if (get_class($model) === Invoices::class) {
-                if ($model->inv_total < 1) {
-                    return false;
+        $eventsManager->attach(
+            'model:beforeSave',
+            function (Event $event, $model) {
+                if (get_class($model) === Invoices::class) {
+                    if ($model->inv_total < 1) {
+                        return false;
+                    }
                 }
+
+                return true;
             }
+        );
 
-            return true;
-        }
-    );
+        $modelsManager = new ModelsManager();
+        $modelsManager->setEventsManager($eventsManager);
 
-    $modelsManager = new ModelsManager();
-    $modelsManager->setEventsManager($eventsManager);
-
-    return $modelsManager;
-}
+        return $modelsManager;
+    }
 );
 ```
 
@@ -309,25 +309,25 @@ use Phalcon\Mvc\Model;
 
 class InvoiceAuditSubscriber implements Subscriber
 {
-public static function getSubscribedEvents(): array
-{
-    return [
-        'model:beforeCreate' => 'stampNumber',
-        'model:beforeSave'   => ['rejectZeroTotals', 150],
-    ];
-}
-
-public function stampNumber(Event $event, Model $invoice): void
-{
-    $invoice->inv_number = 'INV-' . date('YmdHis');
-}
-
-public function rejectZeroTotals(Event $event, Model $invoice)
-{
-    if ($invoice->inv_total < 1) {
-        return false;
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'model:beforeCreate' => 'stampNumber',
+            'model:beforeSave'   => ['rejectZeroTotals', 150],
+        ];
     }
-}
+
+    public function stampNumber(Event $event, Model $invoice): void
+    {
+        $invoice->inv_number = 'INV-' . date('YmdHis');
+    }
+
+    public function rejectZeroTotals(Event $event, Model $invoice)
+    {
+        if ($invoice->inv_total < 1) {
+            return false;
+        }
+    }
 }
 ```
 
@@ -360,39 +360,39 @@ use Phalcon\Logger\Adapter\Stream;
 
 $container = new FactoryDefault();
 $container->set(
-'db',
-function () {
-    $eventsManager = new Manager();
-    $adapter = new Stream('/storage/logs/db.log');
-    $logger  = new Logger(
-        'messages',
-        [
-            'main' => $adapter,
-        ]
-    );
+    'db',
+    function () {
+        $eventsManager = new Manager();
+        $adapter = new Stream('/storage/logs/db.log');
+        $logger  = new Logger(
+            'messages',
+            [
+                'main' => $adapter,
+            ]
+        );
 
-    $eventsManager->attach(
-        'db:beforeQuery',
-        function ($event, $connection) use ($logger) {
-            $logger->info(
-                $connection->getSQLStatement()
-            );
-        }
-    );
+        $eventsManager->attach(
+            'db:beforeQuery',
+            function ($event, $connection) use ($logger) {
+                $logger->info(
+                    $connection->getSQLStatement()
+                );
+            }
+        );
 
-    $connection = new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'phalcon',
-        ]
-    );
+        $connection = new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'phalcon',
+            ]
+        );
 
-    $connection->setEventsManager($eventsManager);
+        $connection->setEventsManager($eventsManager);
 
-    return $connection;
-}
+        return $connection;
+    }
 );
 ```
 
@@ -409,7 +409,7 @@ $invoice->inv_title  = 'Invoice for ACME Inc.';
 $invoice->inv_total  = 10000;
 
 if ($invoice->save() === false) {
-echo 'Cannot save robot';
+    echo 'Cannot save robot';
 }
 ```
 
@@ -433,47 +433,47 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $container = new FactoryDefault();
 $container->set(
-'profiler',
-function () {
-    return new Profiler();
-},
-true
+    'profiler',
+    function () {
+        return new Profiler();
+    },
+    true
 );
 
 $container->set(
-'db',
-function () use ($container) {
-    $manager  = new Manager();
-    $profiler = $container->getProfiler();
+    'db',
+    function () use ($container) {
+        $manager  = new Manager();
+        $profiler = $container->getProfiler();
 
-    $manager->attach(
-        'db',
-        function ($event, $connection) use ($profiler) {
-            if ($event->getType() === 'beforeQuery') {
-                $profiler->startProfile(
-                    $connection->getSQLStatement()
-                );
+        $manager->attach(
+            'db',
+            function ($event, $connection) use ($profiler) {
+                if ($event->getType() === 'beforeQuery') {
+                    $profiler->startProfile(
+                        $connection->getSQLStatement()
+                    );
+                }
+
+                if ($event->getType() === 'afterQuery') {
+                    $profiler->stopProfile();
+                }
             }
+        );
 
-            if ($event->getType() === 'afterQuery') {
-                $profiler->stopProfile();
-            }
-        }
-    );
+        $connection = new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'phalcon',
+            ]
+        );
 
-    $connection = new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'phalcon',
-        ]
-    );
+        $connection->setEventsManager($manager);
 
-    $connection->setEventsManager($manager);
-
-    return $connection;
-}
+        return $connection;
+    }
 );
 ```
 
@@ -486,32 +486,32 @@ use MyApp\Models\Invoices;
 
 Invoices::find();
 Invoices::find(
-[
-    'order' => 'inv_cst_id, inv_title',
-]
+    [
+        'order' => 'inv_cst_id, inv_title',
+    ]
 );
 Invoices::find(
-[
-    'limit' => 30,
-]
+    [
+        'limit' => 30,
+    ]
 );
 
 $profiles = $container->get('profiler')->getProfiles();
 
 foreach ($profiles as $profile) {
-echo 'SQL: ', 
-    $profile->getSQLStatement(), 
-    PHP_EOL,
-    'Start: ',
-    $profile->getInitialTime(),
-    PHP_EOL,
-    'Final: ',
-    $profile->getFinalTime(),
-    PHP_EOL,
-    'Elapsed: ',
-    $profile->getTotalElapsedSeconds(),
-    PHP_EOL
-;
+    echo 'SQL: ', 
+        $profile->getSQLStatement(), 
+        PHP_EOL,
+        'Start: ',
+        $profile->getInitialTime(),
+        PHP_EOL,
+        'Final: ',
+        $profile->getFinalTime(),
+        PHP_EOL,
+        'Elapsed: ',
+        $profile->getTotalElapsedSeconds(),
+        PHP_EOL
+    ;
 }
 ```
 

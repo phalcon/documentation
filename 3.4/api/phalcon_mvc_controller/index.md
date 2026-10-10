@@ -28,55 +28,69 @@ and passing that data on to the views for presentation.
 
 class PeopleController extends \Phalcon\Mvc\Controller
 {
-// This action will be executed by default
-public function indexAction()
-{
+    // This action will be executed by default
+    public function indexAction()
+    {
 
-}
+    }
 
-public function findAction()
-{
+    public function findAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Forwards flow to the index action
-    return $this->dispatcher->forward(
-        [
-            "controller" => "people",
-            "action"     => "index",
-        ]
-    );
-}
+    public function saveAction()
+    {
+        // Forwards flow to the index action
+        return $this->dispatcher->forward(
+            [
+                "controller" => "people",
+                "action"     => "index",
+            ]
+        );
+    }
 }
 
 ```
+
 
 ## Methods
 final public  **__construct** ()
 
 Phalcon\Mvc\Controller constructor
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the dependency injector
+
+
 
 public  **getDI** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal dependency injector
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Sets the event manager
+
+
 
 public  **getEventsManager** () inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Returns the internal event manager
 
+
+
 public  **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/3.4/api/phalcon_di/)
 
 Magic method __get
+
+
+
 
 <hr />
 
@@ -88,6 +102,8 @@ Magic method __get
 abstract public static  **getModelName** ()
 
 ...
+
+
 
 <hr />
 

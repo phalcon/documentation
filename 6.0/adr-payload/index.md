@@ -37,9 +37,9 @@ use Phalcon\ADR\Payload\Payload;
 use Phalcon\ADR\Payload\Status;
 
 $payload = (new Payload())
-->withStatus(Status::CREATED)
-->withResult($invoice)
-->withExtras(['location' => "/invoices/{$invoice->id}"]);
+    ->withStatus(Status::CREATED)
+    ->withResult($invoice)
+    ->withExtras(['location' => "/invoices/{$invoice->id}"]);
 ```
 
 The available mutators are `withStatus()`, `withResult()`, `withMessages()`, `withInput()`, `withExtras()`, and `withException()`. In practice you rarely call these directly; the factories do it for you.

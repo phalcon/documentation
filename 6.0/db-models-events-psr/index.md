@@ -57,9 +57,9 @@ use Phalcon\Mvc\Model;
 
 abstract class AbstractModelEvent implements PsrEventInterface
 {
-public function __construct(public Model $model)
-{
-}
+    public function __construct(public Model $model)
+    {
+    }
 }
 ```
 
@@ -77,17 +77,17 @@ use Psr\EventDispatcher\StoppableEventInterface;
 
 abstract class AbstractCancellableModelEvent extends AbstractModelEvent implements StoppableEventInterface
 {
-private bool $cancelled = false;
+    private bool $cancelled = false;
 
-public function cancel(): void
-{
-    $this->cancelled = true;
-}
+    public function cancel(): void
+    {
+        $this->cancelled = true;
+    }
 
-public function isPropagationStopped(): bool
-{
-    return $this->cancelled;
-}
+    public function isPropagationStopped(): bool
+    {
+        return $this->cancelled;
+    }
 }
 ```
 
@@ -164,26 +164,26 @@ namespace Phalcon\Db\Event;
 
 enum ModelEventNameEnum: string
 {
-case AFTER_CREATE                = 'afterCreate';
-case AFTER_DELETE                = 'afterDelete';
-case AFTER_FETCH                 = 'afterFetch';
-case AFTER_SAVE                  = 'afterSave';
-case AFTER_UPDATE                = 'afterUpdate';
-case AFTER_VALIDATION            = 'afterValidation';
-case AFTER_VALIDATION_ON_CREATE  = 'afterValidationOnCreate';
-case AFTER_VALIDATION_ON_UPDATE  = 'afterValidationOnUpdate';
-case BEFORE_CREATE               = 'beforeCreate';
-case BEFORE_DELETE               = 'beforeDelete';
-case BEFORE_SAVE                 = 'beforeSave';
-case BEFORE_UPDATE               = 'beforeUpdate';
-case BEFORE_VALIDATION           = 'beforeValidation';
-case BEFORE_VALIDATION_ON_CREATE = 'beforeValidationOnCreate';
-case BEFORE_VALIDATION_ON_UPDATE = 'beforeValidationOnUpdate';
-case NOT_DELETED                 = 'notDeleted';
-case NOT_SAVED                   = 'notSaved';
-case ON_VALIDATION_FAILS         = 'onValidationFails';
-case PREPARE_SAVE                = 'prepareSave';
-case VALIDATION                  = 'validation';
+    case AFTER_CREATE                = 'afterCreate';
+    case AFTER_DELETE                = 'afterDelete';
+    case AFTER_FETCH                 = 'afterFetch';
+    case AFTER_SAVE                  = 'afterSave';
+    case AFTER_UPDATE                = 'afterUpdate';
+    case AFTER_VALIDATION            = 'afterValidation';
+    case AFTER_VALIDATION_ON_CREATE  = 'afterValidationOnCreate';
+    case AFTER_VALIDATION_ON_UPDATE  = 'afterValidationOnUpdate';
+    case BEFORE_CREATE               = 'beforeCreate';
+    case BEFORE_DELETE               = 'beforeDelete';
+    case BEFORE_SAVE                 = 'beforeSave';
+    case BEFORE_UPDATE               = 'beforeUpdate';
+    case BEFORE_VALIDATION           = 'beforeValidation';
+    case BEFORE_VALIDATION_ON_CREATE = 'beforeValidationOnCreate';
+    case BEFORE_VALIDATION_ON_UPDATE = 'beforeValidationOnUpdate';
+    case NOT_DELETED                 = 'notDeleted';
+    case NOT_SAVED                   = 'notSaved';
+    case ON_VALIDATION_FAILS         = 'onValidationFails';
+    case PREPARE_SAVE                = 'prepareSave';
+    case VALIDATION                  = 'validation';
 }
 ```
 
@@ -203,19 +203,19 @@ use Phalcon\Mvc\Model;
 
 class Factory
 {
-public function __construct(protected Di $di)
-{
-}
-
-public function create($eventName, Model $model): ?PsrEventInterface
-{
-    try {
-        $className = ModelEventNameEnum::getEventClass($eventName);
-        return $this->di->get($className, [$model]);
-    } catch (UnknownEventTypeException $e) {
-        return null;
+    public function __construct(protected Di $di)
+    {
     }
-}
+
+    public function create($eventName, Model $model): ?PsrEventInterface
+    {
+        try {
+            $className = ModelEventNameEnum::getEventClass($eventName);
+            return $this->di->get($className, [$model]);
+        } catch (UnknownEventTypeException $e) {
+            return null;
+        }
+    }
 }
 ```
 
@@ -237,11 +237,11 @@ $eventsManager = new EventsManager();
 
 // Listen to afterCreate on Invoices specifically
 $eventsManager->attach(
-[Invoices::class, 'afterCreate'],
-function (AfterCreateEvent $event) {
-    $invoice = $event->model;
-    echo 'Invoice created: ' . $invoice->inv_number;
-}
+    [Invoices::class, 'afterCreate'],
+    function (AfterCreateEvent $event) {
+        $invoice = $event->model;
+        echo 'Invoice created: ' . $invoice->inv_number;
+    }
 );
 
 $invoice = new Invoices();
@@ -266,27 +266,27 @@ use Phalcon\Db\Event\AfterDeleteEvent;
 
 class InvoiceLifecycleListener
 {
-public function prepareSave(PrepareSaveEvent $event): void
-{
-    $invoice = $event->model;
-    // Auto-generate invoice number before saving
-    if (empty($invoice->inv_number)) {
-        $invoice->inv_number = 'INV-' . date('YmdHis');
+    public function prepareSave(PrepareSaveEvent $event): void
+    {
+        $invoice = $event->model;
+        // Auto-generate invoice number before saving
+        if (empty($invoice->inv_number)) {
+            $invoice->inv_number = 'INV-' . date('YmdHis');
+        }
     }
-}
 
-public function afterCreate(AfterCreateEvent $event): void
-{
-    $invoice = $event->model;
-    // Send notification about new invoice
-    error_log('New invoice created: ' . $invoice->inv_number);
-}
+    public function afterCreate(AfterCreateEvent $event): void
+    {
+        $invoice = $event->model;
+        // Send notification about new invoice
+        error_log('New invoice created: ' . $invoice->inv_number);
+    }
 
-public function afterDelete(AfterDeleteEvent $event): void
-{
-    $invoice = $event->model;
-    error_log('Invoice deleted: ' . $invoice->inv_number);
-}
+    public function afterDelete(AfterDeleteEvent $event): void
+    {
+        $invoice = $event->model;
+        error_log('Invoice deleted: ' . $invoice->inv_number);
+    }
 }
 ```
 
@@ -303,8 +303,8 @@ $eventsManager = new EventsManager();
 
 // Wildcard: listen to ALL events on Invoices
 $eventsManager->attach(
-Invoices::class,
-new InvoiceLifecycleListener()
+    Invoices::class,
+    new InvoiceLifecycleListener()
 );
 
 $invoice = new Invoices();
@@ -329,17 +329,17 @@ use Phalcon\Db\Event\AbstractModelEvent;
 
 class ModelEventLogger
 {
-public function __invoke(AbstractModelEvent $event): void
-{
-    error_log(
-        sprintf(
-            '[%s] %s on %s',
-            date('Y-m-d H:i:s'),
-            $event::class,
-            get_class($event->model)
-        )
-    );
-}
+    public function __invoke(AbstractModelEvent $event): void
+    {
+        error_log(
+            sprintf(
+                '[%s] %s on %s',
+                date('Y-m-d H:i:s'),
+                $event::class,
+                get_class($event->model)
+            )
+        );
+    }
 }
 ```
 
@@ -357,13 +357,13 @@ $eventsManager = new EventsManager();
 
 // Prevent creating invoices with zero total
 $eventsManager->attach(
-[Invoices::class, 'beforeCreate'],
-function (BeforeCreateEvent $event) {
-    if ($event->model->inv_total <= 0) {
-        // Cancel the create operation
-        $event->cancel();
+    [Invoices::class, 'beforeCreate'],
+    function (BeforeCreateEvent $event) {
+        if ($event->model->inv_total <= 0) {
+            // Cancel the create operation
+            $event->cancel();
+        }
     }
-}
 );
 
 $invoice = new Invoices();
@@ -389,7 +389,7 @@ namespace MyApp\Models;
 
 interface AuditableInterface
 {
-public function getFieldsToAudit(): ?array;
+    public function getFieldsToAudit(): ?array;
 }
 ```
 
@@ -403,27 +403,27 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model implements AuditableInterface
 {
-public int $inv_id;
-public int $inv_cst_id;
-public string $inv_title;
-public float $inv_total;
+    public int $inv_id;
+    public int $inv_cst_id;
+    public string $inv_title;
+    public float $inv_total;
 
-public function getFieldsToAudit(): ?array
-{
-    return ['inv_total', 'inv_title'];
-}
+    public function getFieldsToAudit(): ?array
+    {
+        return ['inv_total', 'inv_title'];
+    }
 }
 
 class Users extends Model implements AuditableInterface
 {
-public int $id;
-public string $email;
-public bool $is_active;
+    public int $id;
+    public string $email;
+    public bool $is_active;
 
-public function getFieldsToAudit(): ?array
-{
-    return ['email', 'is_active'];
-}
+    public function getFieldsToAudit(): ?array
+    {
+        return ['email', 'is_active'];
+    }
 }
 ```
 
@@ -439,15 +439,15 @@ $eventsManager = new EventsManager();
 
 // This fires for BOTH Invoices and Users (and any other AuditableInterface)
 $eventsManager->attach(
-[AuditableInterface::class, 'afterSave'],
-function (AfterSaveEvent $event) {
-    $model = $event->model;
-    if ($model instanceof AuditableInterface) {
-        $fields = $model->getFieldsToAudit();
-        // Write audit log for the changed fields...
-        error_log('Audit: ' . get_class($model) . ' saved. Tracking: ' . implode(', ', $fields));
+    [AuditableInterface::class, 'afterSave'],
+    function (AfterSaveEvent $event) {
+        $model = $event->model;
+        if ($model instanceof AuditableInterface) {
+            $fields = $model->getFieldsToAudit();
+            // Write audit log for the changed fields...
+            error_log('Audit: ' . get_class($model) . ' saved. Tracking: ' . implode(', ', $fields));
+        }
     }
-}
 );
 ```
 
@@ -463,10 +463,10 @@ use Phalcon\Db\Event\Factory as ModelEventFactory;
 $container = new Di();
 
 $container->setShared(
-'modelsEventFactory',
-function () use ($container) {
-    return new ModelEventFactory($container);
-}
+    'modelsEventFactory',
+    function () use ($container) {
+        return new ModelEventFactory($container);
+    }
 );
 ```
 
@@ -488,12 +488,12 @@ use Phalcon\Db\Event\NotSavedEvent;
 $container = new FactoryDefault();
 
 $container->set('db', function () {
-return new Mysql([
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'myapp',
-]);
+    return new Mysql([
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'myapp',
+    ]);
 });
 
 // Create events manager
@@ -502,38 +502,38 @@ $eventsManager = new EventsManager();
 // Listener class for Invoices
 class InvoiceEventHandler
 {
-public function prepareSave(PrepareSaveEvent $event): void
-{
-    $invoice = $event->model;
-    echo get_class($invoice) . " is being prepared for save\n";
-}
+    public function prepareSave(PrepareSaveEvent $event): void
+    {
+        $invoice = $event->model;
+        echo get_class($invoice) . " is being prepared for save\n";
+    }
 
-public function afterCreate(AfterCreateEvent $event): void
-{
-    $invoice = $event->model;
-    echo "Invoice #{$invoice->inv_id} created\n";
-}
+    public function afterCreate(AfterCreateEvent $event): void
+    {
+        $invoice = $event->model;
+        echo "Invoice #{$invoice->inv_id} created\n";
+    }
 
-public function afterSave(AfterSaveEvent $event): void
-{
-    $invoice = $event->model;
-    echo "Invoice #{$invoice->inv_id} saved\n";
-}
+    public function afterSave(AfterSaveEvent $event): void
+    {
+        $invoice = $event->model;
+        echo "Invoice #{$invoice->inv_id} saved\n";
+    }
 }
 
 // Attach handler to Invoice model events
 $eventsManager->attach(
-\MyApp\Models\Invoices::class,
-new InvoiceEventHandler()
+    \MyApp\Models\Invoices::class,
+    new InvoiceEventHandler()
 );
 
 // Also listen to save failures with a closure
 $eventsManager->attach(
-[\MyApp\Models\Invoices::class, 'notSaved'],
-function (NotSavedEvent $event) {
-    $invoice = $event->model;
-    error_log('Failed to save invoice: ' . implode(', ', $invoice->getMessages()));
-}
+    [\MyApp\Models\Invoices::class, 'notSaved'],
+    function (NotSavedEvent $event) {
+        $invoice = $event->model;
+        error_log('Failed to save invoice: ' . implode(', ', $invoice->getMessages()));
+    }
 );
 
 // Use the model
@@ -563,39 +563,39 @@ use Phalcon\Logger\Adapter\Stream;
 
 $container = new FactoryDefault();
 $container->set(
-'db',
-function () {
-    $eventsManager = new Manager();
-    $adapter = new Stream('/storage/logs/db.log');
-    $logger  = new Logger(
-        'messages',
-        [
-            'main' => $adapter,
-        ]
-    );
+    'db',
+    function () {
+        $eventsManager = new Manager();
+        $adapter = new Stream('/storage/logs/db.log');
+        $logger  = new Logger(
+            'messages',
+            [
+                'main' => $adapter,
+            ]
+        );
 
-    $eventsManager->attach(
-        'db:beforeQuery',
-        function ($event, $connection) use ($logger) {
-            $logger->info(
-                $connection->getSQLStatement()
-            );
-        }
-    );
+        $eventsManager->attach(
+            'db:beforeQuery',
+            function ($event, $connection) use ($logger) {
+                $logger->info(
+                    $connection->getSQLStatement()
+                );
+            }
+        );
 
-    $connection = new Mysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'phalcon',
-        ]
-    );
+        $connection = new Mysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'phalcon',
+            ]
+        );
 
-    $connection->setEventsManager($eventsManager);
+        $connection->setEventsManager($eventsManager);
 
-    return $connection;
-}
+        return $connection;
+    }
 );
 ```
 

@@ -11,6 +11,7 @@ version: "3.4"
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
+
 ## Integrating PHPUnit with Phalcon
 
 If you don't already have phpunit installed, you can do it by using the following composer command:
@@ -24,9 +25,9 @@ or by manually adding it to `composer.json`:
 ```json
 
 {
-"require-dev": {
-    "phpunit/phpunit": "^5.0"
-}
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    }
 }
 ```
 
@@ -39,6 +40,7 @@ tests/
 ```
 
 Next, we need a 'helper' file to bootstrap the application for unit testing.
+
 
 ## The PHPUnit helper file
 
@@ -57,7 +59,7 @@ error_reporting(E_ALL);
 define("ROOT_PATH", __DIR__);
 
 set_include_path(
-ROOT_PATH . PATH_SEPARATOR . get_include_path()
+    ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
 // Required for phalcon/incubator
@@ -68,9 +70,9 @@ include __DIR__ . "/../vendor/autoload.php";
 $loader = new Loader();
 
 $loader->registerDirs(
-[
-    ROOT_PATH,
-]
+    [
+        ROOT_PATH,
+    ]
 );
 
 $loader->register();
@@ -94,17 +96,19 @@ You can use the Incubator library by adding it as a dependency:
 composer require phalcon/incubator
 ```
 
+
 or by manually adding it to `composer.json`:
 
 ```json
 {
-"require": {
-    "phalcon/incubator": "^3.0"
-}
+    "require": {
+        "phalcon/incubator": "^3.0"
+    }
 }
 ```
 
 You can also clone the repository using the repo link above.
+
 
 ## The `phpunit.xml` file
 
@@ -114,24 +118,25 @@ Now, create a `phpunit.xml` file as follows:
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit bootstrap="./TestHelper.php"
-     backupGlobals="false"
-     backupStaticAttributes="false"
-     verbose="true"
-     colors="false"
-     convertErrorsToExceptions="true"
-     convertNoticesToExceptions="true"
-     convertWarningsToExceptions="true"
-     processIsolation="false"
-     stopOnFailure="false"
-     syntaxCheck="true">
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         verbose="true"
+         colors="false"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="true">
 
-<testsuite name="Phalcon - Testsuite">
-    <directory>./</directory>
-</testsuite>
+    <testsuite name="Phalcon - Testsuite">
+        <directory>./</directory>
+    </testsuite>
 </phpunit>
 ```
 
 Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run any tests under the `tests` directory.
+
 
 ## Sample Unit Test
 
@@ -149,38 +154,38 @@ use Phalcon\Test\UnitTestCase as PhalconTestCase;
 
 abstract class UnitTestCase extends PhalconTestCase
 {
-/**
- * @var bool
- */
-private $_loaded = false;
+    /**
+     * @var bool
+     */
+    private $_loaded = false;
 
-public function setUp()
-{
-    parent::setUp();
+    public function setUp()
+    {
+        parent::setUp();
 
-    // Load any additional services that might be required during testing
-    $di = Di::getDefault();
+        // Load any additional services that might be required during testing
+        $di = Di::getDefault();
 
-    // Get any DI components here. If you have a config, be sure to pass it to the parent
+        // Get any DI components here. If you have a config, be sure to pass it to the parent
 
-    $this->setDi($di);
+        $this->setDi($di);
 
-    $this->_loaded = true;
-}
-
-/**
- * Check if the test case is setup properly
- *
- * @throws \PHPUnit_Framework_IncompleteTestError;
- */
-public function __destruct()
-{
-    if (!$this->_loaded) {
-        throw new \PHPUnit_Framework_IncompleteTestError(
-            "Please run parent::setUp()."
-        );
+        $this->_loaded = true;
     }
-}
+
+    /**
+     * Check if the test case is setup properly
+     *
+     * @throws \PHPUnit_Framework_IncompleteTestError;
+     */
+    public function __destruct()
+    {
+        if (!$this->_loaded) {
+            throw new \PHPUnit_Framework_IncompleteTestError(
+                "Please run parent::setUp()."
+            );
+        }
+    }
 }
 ```
 
@@ -196,20 +201,20 @@ namespace Test;
  */
 class UnitTest extends \UnitTestCase
 {
-public function testTestCase()
-{
-    $this->assertEquals(
-        "works",
-        "works",
-        "This is OK"
-    );
+    public function testTestCase()
+    {
+        $this->assertEquals(
+            "works",
+            "works",
+            "This is OK"
+        );
 
-    $this->assertEquals(
-        "works",
-        "works1",
-        "This will fail"
-    );
-}
+        $this->assertEquals(
+            "works",
+            "works1",
+            "This will fail"
+        );
+    }
 }
 ```
 

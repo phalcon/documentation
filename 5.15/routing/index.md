@@ -23,15 +23,15 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-'/admin/invoices/list',
-[
-    'controller' => 'invoices',
-    'action'     => 'list',
-]
+    '/admin/invoices/list',
+    [
+        'controller' => 'invoices',
+        'action'     => 'list',
+    ]
 );
 
 $router->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -47,7 +47,7 @@ position of the route in the processing stack.
 
 ```php
 public function __construct(
-bool $defaultRoutes = true
+    bool $defaultRoutes = true
 )
 ```
 
@@ -55,10 +55,10 @@ Phalcon\Mvc\Router constructor
 
 ```php
 public function add(
-string $pattern, 
-mixed $paths = null, 
-mixed $httpMethods = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    mixed $httpMethods = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -70,24 +70,24 @@ use Phalcon\Mvc\Router;
 $router->add("/about", "About::index");
 
 $router->add(
-"/about",
-"About::index",
-["GET", "POST"]
+    "/about",
+    "About::index",
+    ["GET", "POST"]
 );
 
 $router->add(
-"/about",
-"About::index",
-["GET", "POST"],
-Router::POSITION_FIRST
+    "/about",
+    "About::index",
+    ["GET", "POST"],
+    Router::POSITION_FIRST
 );
 ```
 
 ```php
 public function addConnect(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -95,9 +95,9 @@ Adds a route to the router that only matches if the HTTP method is `CONNECT`
 
 ```php
 public function addDelete(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -105,9 +105,9 @@ Adds a route to the router that only matches if the HTTP method is `DELETE`
 
 ```php
 public function addGet(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -115,9 +115,9 @@ Adds a route to the router that only matches if the HTTP method is `GET`
 
 ```php
 public function addHead(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -125,9 +125,9 @@ Adds a route to the router that only matches if the HTTP method is `HEAD`
 
 ```php
 public function addOptions(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -135,9 +135,9 @@ Add a route to the router that only matches if the HTTP method is `OPTIONS`
 
 ```php
 public function addPatch(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -145,9 +145,9 @@ Adds a route to the router that only matches if the HTTP method is `PATCH`
 
 ```php
 public function addPost(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -155,9 +155,9 @@ Adds a route to the router that only matches if the HTTP method is `POST`
 
 ```php
 public function addPurge(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -165,9 +165,9 @@ Adds a route to the router that only matches if the HTTP method is `PURGE` (Squi
 
 ```php
 public function addPut(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -175,9 +175,9 @@ Adds a route to the router that only matches if the HTTP method is `PUT`
 
 ```php
 public function addTrace(
-string $pattern, 
-mixed $paths = null, 
-int $position = Router::POSITION_LAST
+    string $pattern, 
+    mixed $paths = null, 
+    int $position = Router::POSITION_LAST
 ): RouteInterface
 ```
 
@@ -185,8 +185,8 @@ Adds a route to the router that only matches if the HTTP method is `TRACE`
 
 ```php
 public function attach(
-RouteInterface $route, 
-int $position = Router::POSITION_LAST
+    RouteInterface $route, 
+    int $position = Router::POSITION_LAST
 ): RouterInterface
 ```
 
@@ -197,18 +197,18 @@ use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Router\Route;
 
 class CustomRoute extends Route {
- // ...
+     // ...
 }
 
 $router = new Router();
 
 $router->attach(
-new CustomRoute(
-    "/about", 
-    "About::index", 
-    ["GET", "HEAD"]
-),
-Router::POSITION_FIRST
+    new CustomRoute(
+        "/about", 
+        "About::index", 
+        ["GET", "HEAD"]
+    ),
+    Router::POSITION_FIRST
 );
 ```
 
@@ -262,7 +262,7 @@ Returns the processed parameters
 
 ```php
 public function getRouteById(
-mixed $id
+    mixed $id
 ): RouteInterface | bool
 ```
 
@@ -270,7 +270,7 @@ Returns a route object by its id
 
 ```php
 public function getRouteByName(
-string $name
+    string $name
 ): RouteInterface | bool
 ```
 
@@ -300,7 +300,7 @@ Returns whether the controller name should not be mangled
 
 ```php
 public function mount(
-GroupInterface $group
+    GroupInterface $group
 ): RouterInterface
 ```
 
@@ -308,7 +308,7 @@ Mounts a group of routes in the router
 
 ```php
 public function notFound(
-mixed $paths
+    mixed $paths
 ): RouterInterface
 ```
 
@@ -316,7 +316,7 @@ Set a group of paths to be returned when none of the defined routes are matched
 
 ```php
 public function removeExtraSlashes(
-bool $remove
+    bool $remove
 ): RouterInterface
 ```
 
@@ -324,7 +324,7 @@ Set whether the router must remove the extra slashes in the handled routes
 
 ```php
 public function setDefaultAction(
-string $actionName
+    string $actionName
 ): RouterInterface
 ```
 
@@ -332,7 +332,7 @@ Sets the default action name
 
 ```php
 public function setDefaultController(
-string $controllerName
+    string $controllerName
 ): RouterInterface
 ```
 
@@ -340,7 +340,7 @@ Sets the default controller name
 
 ```php
 public function setDefaultModule(
-string $moduleName
+    string $moduleName
 ): RouterInterface
 ```
 
@@ -348,7 +348,7 @@ Sets the name of the default module
 
 ```php
 public function setDefaultNamespace(
-string $namespaceName
+    string $namespaceName
 ): RouterInterface
 ```
 
@@ -356,7 +356,7 @@ Sets the name of the default namespace
 
 ```php
 public function setDefaults(
-array $defaults
+    array $defaults
 ): RouterInterface
 ```
 
@@ -365,10 +365,10 @@ be used to set a 404 route
 
 ```php
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 ```
 
@@ -397,23 +397,23 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-'/admin/invoices/list',
-[
-    'controller' => 'invoices',
-    'action'     => 'list',
-]
+    '/admin/invoices/list',
+    [
+        'controller' => 'invoices',
+        'action'     => 'list',
+    ]
 );
 
 $router->add(
-'/admin/customers/list',
-[
-    'controller' => 'customers',
-    'action'     => 'list',
-]
+    '/admin/customers/list',
+    [
+        'controller' => 'customers',
+        'action'     => 'list',
+    ]
 );
 
 $router->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -433,12 +433,12 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-'/admin/:controller/:action/:params',
-[
-    'controller' => 1,
-    'action'     => 2,
-    'params'     => 3,
-]
+    '/admin/:controller/:action/:params',
+    [
+        'controller' => 1,
+        'action'     => 2,
+        'params'     => 3,
+    ]
 );
 ```
 
@@ -490,16 +490,16 @@ The example below demonstrates how to define names to route parameters:
 <?php
 
 $router->add(
-//         1     /     2    /    3     /   4
-'/admin/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params',
-[
-    'controller' => 'invoices',
-    'action'     => 'view',
-    'year'       => 1, // ([0-9]{4})
-    'month'      => 2, // ([0-9]{2})
-    'day'        => 3, // ([0-9]{2})
-    'params'     => 4, // :params
-]
+    //         1     /     2    /    3     /   4
+    '/admin/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params',
+    [
+        'controller' => 'invoices',
+        'action'     => 'view',
+        'year'       => 1, // ([0-9]{4})
+        'month'      => 2, // ([0-9]{2})
+        'day'        => 3, // ([0-9]{2})
+        'params'     => 4, // :params
+    ]
 );
 ```
 
@@ -518,19 +518,19 @@ use Phalcon\Mvc\Dispatcher;
  */
 class InvoicesController extends Controller
 {
-public function viewAction()
-{
-    // year
-    $year = $this->dispatcher->getParam('year');
+    public function viewAction()
+    {
+        // year
+        $year = $this->dispatcher->getParam('year');
 
-    // month
-    $month = $this->dispatcher->getParam('month');
+        // month
+        $month = $this->dispatcher->getParam('month');
 
-    // day
-    $day = $this->dispatcher->getParam('day');
+        // day
+        $day = $this->dispatcher->getParam('day');
 
-    // ...
-}
+        // ...
+    }
 }
 ```
 
@@ -541,11 +541,11 @@ parameters as part of the pattern:
 <?php
 
 $router->add(
-'/admin/{year}/{month}/{day}/{invoiceNo:[0-9]+}',
-[
-    'controller' => 'invoices',
-    'action'     => 'view',
-]
+    '/admin/{year}/{month}/{day}/{invoiceNo:[0-9]+}',
+    [
+        'controller' => 'invoices',
+        'action'     => 'view',
+    ]
 );
 ```
 
@@ -562,22 +562,22 @@ use Phalcon\Mvc\Dispatcher;
  */
 class InvoicesController extends Controller
 {
-public function viewAction()
-{
-    // year
-    $year = $this->dispatcher->getParam('year');
+    public function viewAction()
+    {
+        // year
+        $year = $this->dispatcher->getParam('year');
 
-    // month
-    $month = $this->dispatcher->getParam('month');
+        // month
+        $month = $this->dispatcher->getParam('month');
 
-    // day 
-    $day = $this->dispatcher->getParam('day');
+        // day 
+        $day = $this->dispatcher->getParam('day');
 
-    // invoiceNo
-    $invoiceNo = $this->dispatcher->getParam('invoiceNo');
+        // invoiceNo
+        $invoiceNo = $this->dispatcher->getParam('invoiceNo');
 
-    // ...
-}
+        // ...
+    }
 }
 ```
 
@@ -590,20 +590,20 @@ result:
 <?php
 
 $router->add(
-'/admin/{year:[0-9]{4}}/{month:[0-9]{2}}/{day:[0-9]{2}}/:params',
-'Invoices::view'
+    '/admin/{year:[0-9]{4}}/{month:[0-9]{2}}/{day:[0-9]{2}}/:params',
+    'Invoices::view'
 );
 
 $router->add(
-'/admin/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params',
-[
-    'controller' => 'invoices',
-    'action'     => 'view',
-    'year'       => 1, // ([0-9]{4})
-    'month'      => 2, // ([0-9]{2})
-    'day'        => 3, // ([0-9]{2})
-    'params'     => 4, // :params
-]
+    '/admin/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params',
+    [
+        'controller' => 'invoices',
+        'action'     => 'view',
+        'year'       => 1, // ([0-9]{4})
+        'month'      => 2, // ([0-9]{2})
+        'day'        => 3, // ([0-9]{2})
+        'params'     => 4, // :params
+    ]
 );
 ```
 
@@ -616,14 +616,14 @@ to the route paths according to the position on which they were defined:
 <?php
 
 $router->add(
-'/admin/{year:[0-9]{4}}/([0-9]{2})/([0-9]{2})/:params',
-[
-    'controller' => 'invoices',
-    'action'     => 'view',
-    'month'      => 2, // ([0-9]{2}) // 2
-    'day'        => 3, // ([0-9]{2}) // 3
-    'params'     => 4, // :params    // 4
-]
+    '/admin/{year:[0-9]{4}}/([0-9]{2})/([0-9]{2})/:params',
+    [
+        'controller' => 'invoices',
+        'action'     => 'view',
+        'month'      => 2, // ([0-9]{2}) // 2
+        'day'        => 3, // ([0-9]{2}) // 3
+        'params'     => 4, // :params    // 4
+    ]
 );
 ```
 
@@ -642,13 +642,13 @@ use Phalcon\Mvc\Router;
 $router = new Router(false);
 
 $router->add(
-'/:module/:controller/:action/:params',
-[
-    'module'     => 1,
-    'controller' => 2,
-    'action'     => 3,
-    'params'     => 4,
-]
+    '/:module/:controller/:action/:params',
+    [
+        'module'     => 1,
+        'controller' => 2,
+        'action'     => 3,
+        'params'     => 4,
+    ]
 );
 ```
 
@@ -665,21 +665,21 @@ Or you can bind specific routes to specific modules:
 <?php
 
 $router->add(
-'/login',
-[
-    'module'     => 'session',
-    'controller' => 'login',
-    'action'     => 'index',
-]
+    '/login',
+    [
+        'module'     => 'session',
+        'controller' => 'login',
+        'action'     => 'index',
+    ]
 );
 
 $router->add(
-'/invoices/:action',
-[
-    'module'     => 'admin',
-    'controller' => 'invoices',
-    'action'     => 1,
-]
+    '/invoices/:action',
+    [
+        'module'     => 'admin',
+        'controller' => 'invoices',
+        'action'     => 1,
+    ]
 );
 ```
 
@@ -689,12 +689,12 @@ Or bind them to specific namespaces:
 <?php
 
 $router->add(
-'/:namespace/login',
-[
-    'namespace'  => 1,
-    'controller' => 'login',
-    'action'     => 'index',
-]
+    '/:namespace/login',
+    [
+        'namespace'  => 1,
+        'controller' => 'login',
+        'action'     => 'index',
+    ]
 );
 ```
 
@@ -704,12 +704,12 @@ The full namespace needs to be passed separately:
 <?php
 
 $router->add(
-'/login',
-[
-    'namespace'  => 'Admin\Controllers',
-    'controller' => 'login',
-    'action'     => 'index',
-]
+    '/login',
+    [
+        'namespace'  => 'Admin\Controllers',
+        'controller' => 'login',
+        'action'     => 'index',
+    ]
 );
 ```
 
@@ -723,25 +723,25 @@ route to a specific method. This is particularly useful when creating RESTful ap
 
 // GET
 $router->addGet(
-'/invoices/edit/{id}',
-'Invoices::edit'
+    '/invoices/edit/{id}',
+    'Invoices::edit'
 );
 
 // POST
 $router->addPost(
-'/invoices/save',
-'Invoices::save'
+    '/invoices/save',
+    'Invoices::save'
 );
 
 // POST/PUT
 $router->add(
-'/invoices/update',
-'Invoices::update'
+    '/invoices/update',
+    'Invoices::update'
 )->via(
-[
-    'POST',
-    'PUT',
-]
+    [
+        'POST',
+        'PUT',
+    ]
 );
 ```
 
@@ -754,18 +754,18 @@ the [dispatcher](/5.15/dispatcher/)
 <?php
 
 $route = $router->add(
-'/products/{slug:[a-z\-]+}',
-[
-    'controller' => 'products',
-    'action'     => 'show',
-]
+    '/products/{slug:[a-z\-]+}',
+    [
+        'controller' => 'products',
+        'action'     => 'show',
+    ]
 );
 
 $route->convert(
-'slug',
-function ($slug) {
-    return str_replace('-', '', $slug);
-}
+    'slug',
+    function ($slug) {
+        return str_replace('-', '', $slug);
+    }
 );
 ```
 
@@ -779,18 +779,18 @@ action directly.
 <?php
 
 $route = $router->add(
-'/products/{id}',
-[
-    'controller' => 'products',
-    'action'     => 'show',
-]
+    '/products/{id}',
+    [
+        'controller' => 'products',
+        'action'     => 'show',
+    ]
 );
 
 $route->convert(
-'id',
-function ($id) {
-    return Product::findFirstById($id);
-}
+    'id',
+    function ($id) {
+        return Product::findFirstById($id);
+    }
 );
 ```
 
@@ -809,34 +809,34 @@ use Phalcon\Mvc\Router\Group;
 
 $router   = new Router();
 $invoices = new RouterGroup(
-[
-    'module'     => 'admin',
-    'controller' => 'invoices',
-]
+    [
+        'module'     => 'admin',
+        'controller' => 'invoices',
+    ]
 );
 
 $invoices->setPrefix('/invoices');
 
 $invoices->add(
-'/list',
-[
-    'action' => 'list',
-]
+    '/list',
+    [
+        'action' => 'list',
+    ]
 );
 
 $invoices->add(
-'/edit/{id}',
-[
-    'action' => 'edit',
-]
+    '/edit/{id}',
+    [
+        'action' => 'edit',
+    ]
 );
 
 $invoices->add(
-'/view',
-[
-    'controller' => 'common',
-    'action'     => 'index',
-]
+    '/view',
+    [
+        'controller' => 'common',
+        'action'     => 'index',
+    ]
 );
 
 $router->mount($invoices);
@@ -856,39 +856,39 @@ use Phalcon\Mvc\Router\Group;
 
 class InvoicesRoutes extends Group
 {
-public function initialize()
-{
-    $this->setPaths(
-        [
-            'module'    => 'invoices',
-            'namespace' => 'Invoices\Controllers',
-        ]
-    );
+    public function initialize()
+    {
+        $this->setPaths(
+            [
+                'module'    => 'invoices',
+                'namespace' => 'Invoices\Controllers',
+            ]
+        );
 
-    $this->setPrefix('/invoices');
+        $this->setPrefix('/invoices');
 
-    $this->add(
-        '/list',
-        [
-            'action' => 'list',
-        ]
-    );
-
-    $this->add(
-        '/edit/{id}',
-        [
-            'action' => 'edit',
-        ]
-    );
-
-    $this->add(
-        '/view',
-        [
-            'controller' => 'common',
-            'action'     => 'index',
-        ]
-    );
-}
+        $this->add(
+            '/list',
+            [
+                'action' => 'list',
+            ]
+        );
+        
+        $this->add(
+            '/edit/{id}',
+            [
+                'action' => 'edit',
+            ]
+        );
+        
+        $this->add(
+            '/view',
+            [
+                'controller' => 'common',
+                'action'     => 'index',
+            ]
+        );
+    }
 }
 ```
 
@@ -898,7 +898,7 @@ Now we can mount the custom group class in the router:
 <?php
 
 $router->mount(
-new InvoicesRoutes()
+    new InvoicesRoutes()
 );
 ```
 
@@ -957,44 +957,44 @@ Each entry in `groups` builds a [`Phalcon\Mvc\Router\Group`][mvc-router-group] u
 use Phalcon\Mvc\Router\RouterFactory;
 
 $config = [
-'defaultRoutes'      => false,
-'removeExtraSlashes' => true,
-'defaults' => [
-    'namespace'  => 'MyApp\\Controllers',
-    'module'     => 'frontend',
-    'controller' => 'index',
-    'action'     => 'index',
-],
-'notFound' => [
-    'controller' => 'errors',
-    'action'     => 'show404',
-],
-'routes' => [
-    [
-        'method'  => 'get',  
-        'pattern' => '/',                  
-        'paths'   => 'Index::index',           
-        'name'    => 'home',
+    'defaultRoutes'      => false,
+    'removeExtraSlashes' => true,
+    'defaults' => [
+        'namespace'  => 'MyApp\\Controllers',
+        'module'     => 'frontend',
+        'controller' => 'index',
+        'action'     => 'index',
     ],
-    [
-        'method'  => 'get',  
-        'pattern' => '/about',             
-        'paths'   => 'About::index',           
-        'name'    => 'about',
+    'notFound' => [
+        'controller' => 'errors',
+        'action'     => 'show404',
     ],
-    [
-        'method'  => 'get',  
-        'pattern' => '/users/{id:[0-9]+}', 
-        'paths'   => 'Users::show',            
-        'name'    => 'user-show',
+    'routes' => [
+        [
+            'method'  => 'get',  
+            'pattern' => '/',                  
+            'paths'   => 'Index::index',           
+            'name'    => 'home',
+        ],
+        [
+            'method'  => 'get',  
+            'pattern' => '/about',             
+            'paths'   => 'About::index',           
+            'name'    => 'about',
+        ],
+        [
+            'method'  => 'get',  
+            'pattern' => '/users/{id:[0-9]+}', 
+            'paths'   => 'Users::show',            
+            'name'    => 'user-show',
+        ],
+        [
+            'method'  => 'post', 
+            'pattern' => '/users',             
+            'paths'   => 'Users::create',          
+            'name'    => 'user-create',
+        ],
     ],
-    [
-        'method'  => 'post', 
-        'pattern' => '/users',             
-        'paths'   => 'Users::create',          
-        'name'    => 'user-create',
-    ],
-],
 ];
 
 $router = (new RouterFactory())->load($config);
@@ -1017,23 +1017,23 @@ $router = new Router(false);
 $router->setEventsManager($eventsManager);
 
 $router->loadFromConfig([
-'routes' => [
-    [
-        'method'  => 'get',  
-        'pattern' => '/login',  
-        'paths'   => 'Session::login',
+    'routes' => [
+        [
+            'method'  => 'get',  
+            'pattern' => '/login',  
+            'paths'   => 'Session::login',
+        ],
+        [
+            'method'  => 'post', 
+            'pattern' => '/login',  
+            'paths'   => 'Session::start',
+        ],
+        [
+            'method'  => 'get',  
+            'pattern' => '/logout', 
+            'paths'   => 'Session::logout',
+        ],
     ],
-    [
-        'method'  => 'post', 
-        'pattern' => '/login',  
-        'paths'   => 'Session::start',
-    ],
-    [
-        'method'  => 'get',  
-        'pattern' => '/logout', 
-        'paths'   => 'Session::logout',
-    ],
-],
 ]);
 ```
 
@@ -1043,8 +1043,8 @@ The method is chainable - it returns the router itself - so you can keep composi
 <?php
 
 $router
-->loadFromConfig($baseRoutes)
-->loadFromConfig($adminRoutes)
+    ->loadFromConfig($baseRoutes)
+    ->loadFromConfig($adminRoutes)
 ;
 ```
 
@@ -1059,88 +1059,88 @@ the group's `hostname` is propagated to every child route:
 use Phalcon\Mvc\Router\RouterFactory;
 
 $config = [
-'defaultRoutes' => false,
-'groups' => [
-    [
-        'prefix'   => '/api/v1',
-        'hostname' => 'api.example.com',
-        'paths'    => [
-            'namespace' => 'MyApp\\Api\\V1\\Controllers',
+    'defaultRoutes' => false,
+    'groups' => [
+        [
+            'prefix'   => '/api/v1',
+            'hostname' => 'api.example.com',
+            'paths'    => [
+                'namespace' => 'MyApp\\Api\\V1\\Controllers',
+            ],
+            'routes' => [
+                [
+                    'method'  => 'get',    
+                    'pattern' => '/users',          
+                    'paths'   => [
+                        'controller' => 'users', 
+                        'action'     => 'index'],
+                    ,  
+                    'name'    => 'api-users-list',
+                ],
+                [
+                    'method'  => 'get',    
+                    'pattern' => '/users/{id}',     
+                    'paths'   => [
+                        'controller' => 'users', 
+                        'action'     => 'show'],,
+                       'na
+                       me' =>    'api-users-show',
+                   ],
+                [
+                    'method'  => 'post',   
+                    'pattern' => '/users',          
+                    'paths'   => [
+                        'controller' => 'users', 
+                        'action'     => 'create',
+                    ], 
+                    'name'    => 'api-users-create',
+                ],
+                [
+                    'method'  => 'put',    
+                    'pattern' => '/users/{id}',     
+                    'paths'   => [
+                        'controller' => 'users', 
+                        'action'     => 'update',
+                    ], 
+                    'name'    => 'api-users-update',
+                ],
+                [
+                    'method'  => 'delete', 
+                    'pattern' => '/users/{id}',     
+                    'paths'   => [
+                        'controller' => 'users', 
+                        'action'     => 'delete',
+                    ], 
+                    'name'    => 'api-users-delete',
+                ],
+            ],
         ],
-        'routes' => [
-            [
-                'method'  => 'get',    
-                'pattern' => '/users',          
-                'paths'   => [
-                    'controller' => 'users', 
-                    'action'     => 'index'],
-                ,  
-                'name'    => 'api-users-list',
+        [
+            'prefix' => '/admin',
+            'paths'  => [
+                'namespace' => 'MyApp\\Admin\\Controllers',
+                'module'    => 'admin',
             ],
-            [
-                'method'  => 'get',    
-                'pattern' => '/users/{id}',     
-                'paths'   => [
-                    'controller' => 'users', 
-                    'action'     => 'show'],,
-                   'na
-                   me' =>    'api-users-show',
-               ],
-            [
-                'method'  => 'post',   
-                'pattern' => '/users',          
-                'paths'   => [
-                    'controller' => 'users', 
-                    'action'     => 'create',
-                ], 
-                'name'    => 'api-users-create',
-            ],
-            [
-                'method'  => 'put',    
-                'pattern' => '/users/{id}',     
-                'paths'   => [
-                    'controller' => 'users', 
-                    'action'     => 'update',
-                ], 
-                'name'    => 'api-users-update',
-            ],
-            [
-                'method'  => 'delete', 
-                'pattern' => '/users/{id}',     
-                'paths'   => [
-                    'controller' => 'users', 
-                    'action'     => 'delete',
-                ], 
-                'name'    => 'api-users-delete',
+            'routes' => [
+                [
+                    'method'  => 'get', 
+                    'pattern' => '/dashboard', 
+                    'paths'   => [
+                        'controller' => 'dashboard', 
+                        'action'     => 'index',
+                    ]
+                ],
+                [
+                    'method'  => 'get', 
+                    'pattern' => '/reports',   
+                    'paths'   => [
+                        'controller' => 'reports',   
+                        'action'     => 'index',
+                    ]
+                ],
             ],
         ],
     ],
-    [
-        'prefix' => '/admin',
-        'paths'  => [
-            'namespace' => 'MyApp\\Admin\\Controllers',
-            'module'    => 'admin',
-        ],
-        'routes' => [
-            [
-                'method'  => 'get', 
-                'pattern' => '/dashboard', 
-                'paths'   => [
-                    'controller' => 'dashboard', 
-                    'action'     => 'index',
-                ]
-            ],
-            [
-                'method'  => 'get', 
-                'pattern' => '/reports',   
-                'paths'   => [
-                    'controller' => 'reports',   
-                    'action'     => 'index',
-                ]
-            ],
-        ],
-    ],
-],
 ];
 
 $router = (new RouterFactory())->load($config);
@@ -1158,24 +1158,24 @@ lets you keep your route definitions in a separate `.php`, `.ini`, `.json`, or `
 <?php
 
 return [
-'defaultRoutes' => false,
-'routes'        => [
-    [
-        'method'  => 'get',  
-        'pattern' => '/',         
-        'paths'   => 'Index::index',
+    'defaultRoutes' => false,
+    'routes'        => [
+        [
+            'method'  => 'get',  
+            'pattern' => '/',         
+            'paths'   => 'Index::index',
+        ],
+        [
+            'method'  => 'get',  
+            'pattern' => '/about',    
+            'paths'   => 'About::index',
+        ],
+        [
+            'method'  => 'post', 
+            'pattern' => '/contact',  
+            'paths'   => 'Contact::send',
+        ],
     ],
-    [
-        'method'  => 'get',  
-        'pattern' => '/about',    
-        'paths'   => 'About::index',
-    ],
-    [
-        'method'  => 'post', 
-        'pattern' => '/contact',  
-        'paths'   => 'Contact::send',
-    ],
-],
 ];
 ```
 
@@ -1200,10 +1200,10 @@ use Phalcon\Config\ConfigFactory;
 use Phalcon\Mvc\Router\RouterFactory;
 
 $config = (new ConfigFactory())->load(
-[
-    'adapter'  => 'json',
-    'filePath' => __DIR__ . '/config/routes.json',
-]
+    [
+        'adapter'  => 'json',
+        'filePath' => __DIR__ . '/config/routes.json',
+    ]
 );
 
 $router = (new RouterFactory())->load($config);
@@ -1221,10 +1221,10 @@ use Phalcon\Mvc\Router\RouterFactory;
 $config = require __DIR__ . '/config/routes.base.php';
 
 if ('production' !== getenv('APP_ENV')) {
-$config['routes'] = array_merge(
-    $config['routes'],
-    require __DIR__ . '/config/routes.debug.php'
-);
+    $config['routes'] = array_merge(
+        $config['routes'],
+        require __DIR__ . '/config/routes.debug.php'
+    );
 }
 
 $router = (new RouterFactory())->load($config);
@@ -1245,17 +1245,17 @@ use Phalcon\Mvc\Router\RouterFactory;
 
 class RouterProvider implements ServiceProviderInterface
 {
-public function register(DiInterface $di): void
-{
-    $di->setShared(
-        'router',
-        function () {
-            return (new RouterFactory())->load(
-                require __DIR__ . '/../../config/routes.php'
-            );
-        }
-    );
-}
+    public function register(DiInterface $di): void
+    {
+        $di->setShared(
+            'router',
+            function () {
+                return (new RouterFactory())->load(
+                    require __DIR__ . '/../../config/routes.php'
+                );
+            }
+        );
+    }
 }
 ```
 
@@ -1320,7 +1320,7 @@ $router = new Router();
 // ...
 
 $router->handle(
-$_GET["_url"]
+    $_GET["_url"]
 );
 
 echo $router->getControllerName();
@@ -1343,8 +1343,8 @@ uniquely in our application. This is especially useful if you want to create URL
 <?php
 
 $route = $router->add(
-'/admin/{year:[0-9]{4}}/{month:[0-9]{2}}/{day:[0-9]{2}}/{id:[0-9]{4}',
-'Invoices::view'
+    '/admin/{year:[0-9]{4}}/{month:[0-9]{2}}/{day:[0-9]{2}}/{id:[0-9]{4}',
+    'Invoices::view'
 );
 
 $route->setName('invoices-view');
@@ -1357,13 +1357,13 @@ Then, using for example the component [Phalcon\Url][mvc-url] we can build routes
 
 // /admin/2019/12/25/1234
 echo $url->get(
-[
-    'for'   => 'invoices-view',
-    'year'  => '2019',
-    'month' => '12',
-    'day'   => '25',
-    'id'    => '1234',
-]
+    [
+        'for'   => 'invoices-view',
+        'year'  => '2019',
+        'month' => '12',
+        'day'   => '25',
+        'id'    => '1234',
+    ]
 );
 ```
 
@@ -1402,11 +1402,11 @@ the initial page in your application
 <?php
 
 $router->add(
-'/',
-[
-    'controller' => 'index',
-    'action'     => 'index',
-]
+    '/',
+    [
+        'controller' => 'index',
+        'action'     => 'index',
+    ]
 );
 ```
 
@@ -1419,10 +1419,10 @@ method.
 <?php
 
 $router->notFound(
-[
-    'controller' => 'index',
-    'action'     => 'fourOhFour',
-]
+    [
+        'controller' => 'index',
+        'action'     => 'fourOhFour',
+    ]
 );
 ```
 
@@ -1444,10 +1444,10 @@ $router->setDefaultController('index');
 $router->setDefaultAction('index');
 
 $router->setDefaults(
-[
-    'controller' => 'index',
-    'action'     => 'index',
-]
+    [
+        'controller' => 'index',
+        'action'     => 'index',
+    ]
 );
 ```
 
@@ -1473,11 +1473,11 @@ Or, you can modify specific routes to optionally accept trailing slashes:
 <?php
 
 $route = $router->add(
-'/admin/:controller/status[/]{0,1}',
-[
-    'controller' => 2,
-    'action'     => 'status',
-]
+    '/admin/:controller/status[/]{0,1}',
+    [
+        'controller' => 2,
+        'action'     => 'status',
+    ]
 );
 ```
 
@@ -1492,23 +1492,23 @@ using the `beforeMatch` callback. If this function returns `false`, the route wi
 <?php
 
 $route = $router->add(
-'/login',
-[
-    'module'     => 'admin',
-    'controller' => 'session',
-]
+    '/login',
+    [
+        'module'     => 'admin',
+        'controller' => 'session',
+    ]
 );
 
 $route->beforeMatch(
-function ($uri, $route) {
-    if (true === isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
-        $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest'
-    ) {
-        return false;
-    }
+    function ($uri, $route) {
+        if (true === isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+            $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest'
+        ) {
+            return false;
+        }
 
-    return true;
-}
+        return true;
+    }
 );
 ```
 
@@ -1521,10 +1521,10 @@ You can create a filter class, to allow you to inject the same functionality in 
 
 class AjaxFilter
 {
-public function check()
-{
-    return $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
-}
+    public function check()
+    {
+        return $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+    }
 }
 ```
 
@@ -1534,18 +1534,18 @@ To set this up, we just add the class to the `beforeMatch` call.
 <?php
 
 $route = $router->add(
-'/login',
-[
-    'module'     => 'admin',
-    'controller' => 'session',
-]
+    '/login',
+    [
+        'module'     => 'admin',
+        'controller' => 'session',
+    ]
 );
 
 $route->beforeMatch(
-[
-    new AjaxFilter(),
-    'check'
-]
+    [
+        new AjaxFilter(),
+        'check'
+    ]
 );
 ```
 
@@ -1559,25 +1559,25 @@ use Phalcon\Http\Request;
 use Phalcon\Mvc\Router\Route;
 
 $route = $router->add(
-'/login',
-[
-    'module'     => 'admin',
-    'controller' => 'session',
-]
+    '/login',
+    [
+        'module'     => 'admin',
+        'controller' => 'session',
+    ]
 );
 
 $route->beforeMatch(
-function ($uri, $route) {
-    /**
-     * @var string     $uri
-     * @var Route       $route
-     * @var DiInterface $this
-     * @var Request     $request
-     */
-    $request = $this->getShared('request');
+    function ($uri, $route) {
+        /**
+         * @var string     $uri
+         * @var Route       $route
+         * @var DiInterface $this
+         * @var Request     $request
+         */
+        $request = $this->getShared('request');
 
-    return $request->isAjax();
-}
+        return $request->isAjax();
+    }
 );
 ```
 
@@ -1590,13 +1590,13 @@ or a group of routes can be restricted to only match the route if it originated 
 <?php
 
 $route = $router->add(
-'/admin/invoices/:action/:params',
-[
-    'module'     => 'admin',
-    'controller' => 'invoices',
-    'action'     => 1,
-    'params'     => 2,
-]
+    '/admin/invoices/:action/:params',
+    [
+        'module'     => 'admin',
+        'controller' => 'invoices',
+        'action'     => 1,
+        'params'     => 2,
+    ]
 );
 
 $route->setHostName('dev.phalcon.ld');
@@ -1608,13 +1608,13 @@ The hostname can also be passed as a regular expression:
 <?php
 
 $route = $router->add(
-'/admin/invoices/:action/:params',
-[
-    'module'     => 'admin',
-    'controller' => 'invoices',
-    'action'     => 1,
-    'params'     => 2,
-]
+    '/admin/invoices/:action/:params',
+    [
+        'module'     => 'admin',
+        'controller' => 'invoices',
+        'action'     => 1,
+        'params'     => 2,
+    ]
 );
 
 $route->setHostName('([a-z]+).phalcon.ld');
@@ -1628,34 +1628,34 @@ When using groups of routes, you can set the hostname constraints that apply to 
 use Phalcon\Mvc\Router\Group;
 
 $invoices = new Group(
-[
-    'module'     => 'admin',
-    'controller' => 'invoices',
-]
+    [
+        'module'     => 'admin',
+        'controller' => 'invoices',
+    ]
 );
 
 $invoices->setHostName('dev.phalcon.ld');
 $invoices->setPrefix('/invoices');
 
 $invoices->add(
-'/',
-[
-    'action' => 'index',
-]
+    '/',
+    [
+        'action' => 'index',
+    ]
 );
 
 $invoices->add(
-'/list',
-[
-    'action' => 'list',
-]
+    '/list',
+    [
+        'action' => 'list',
+    ]
 );
 
 $invoices->add(
-'/view/{id}',
-[
-    'action' => 'view',
-]
+    '/view/{id}',
+    [
+        'action' => 'view',
+    ]
 );
 
 $router->mount($invoices);
@@ -1671,32 +1671,32 @@ This component does not have any dependencies. As such you can create unit tests
 use Phalcon\Mvc\Router;
 
 $testRoutes = [
-'/',
-'/index',
-'/index/index',
-'/index/test',
-'/products',
-'/products/index/',
-'/products/show/101',
+    '/',
+    '/index',
+    '/index/index',
+    '/index/test',
+    '/products',
+    '/products/index/',
+    '/products/show/101',
 ];
 
 $router = new Router();
 
 foreach ($testRoutes as $testRoute) {
-// Handle the route
-$router->handle($testRoute);
+    // Handle the route
+    $router->handle($testRoute);
 
-echo 'Testing ', $testRoute, '<br>';
+    echo 'Testing ', $testRoute, '<br>';
 
-// Check if some route was matched
-if ($router->wasMatched()) {
-    echo 'Controller: ', $router->getControllerName(), '<br>';
-    echo 'Action: ', $router->getActionName(), '<br>';
-} else {
-    echo "The route wasn't matched by any route<br>";
-}
+    // Check if some route was matched
+    if ($router->wasMatched()) {
+        echo 'Controller: ', $router->getControllerName(), '<br>';
+        echo 'Action: ', $router->getActionName(), '<br>';
+    } else {
+        echo "The route wasn't matched by any route<br>";
+    }
 
-echo '<br>';
+    echo '<br>';
 }
 ```
 
@@ -1725,11 +1725,11 @@ you can write the routes directly in the controllers instead of adding them to r
 use Phalcon\Mvc\Router\Annotations;
 
 $container['router'] = function () {
-$router = new Annotations(false);
+    $router = new Annotations(false);
 
-$router->addResource('Invoices', '/admin/invoices');
+    $router->addResource('Invoices', '/admin/invoices');
 
-return $router;
+    return $router;
 };
 ```
 
@@ -1747,52 +1747,52 @@ The `InvoicesController` will need to have the following implementation:
  */
 class InvoicesController
 {
-/**
- * @Get(
- *     '/'
- * )
- */
-public function indexAction()
-{
+    /**
+     * @Get(
+     *     '/'
+     * )
+     */
+    public function indexAction()
+    {
 
-}
+    }
 
-/**
- * @Get(
- *     '/edit/{id:[0-9]+}',
- *     name='invoice-edit'
- * )
- */
-public function editAction($id)
-{
+    /**
+     * @Get(
+     *     '/edit/{id:[0-9]+}',
+     *     name='invoice-edit'
+     * )
+     */
+    public function editAction($id)
+    {
 
-}
+    }
 
-/**
- * @Route(
- *     '/save',
- *     methods={'POST', 'PUT'},
- *     name='invoice-save'
- * )
- */
-public function saveAction()
-{
+    /**
+     * @Route(
+     *     '/save',
+     *     methods={'POST', 'PUT'},
+     *     name='invoice-save'
+     * )
+     */
+    public function saveAction()
+    {
 
-}
+    }
 
-/**
- * @Route(
- *     '/delete/{id:[0-9]+}',
- *     methods='DELETE',
- *     converters={
- *         id='MyConverters::checkId'
- *     }
- * )
- */
-public function deleteAction($id)
-{
+    /**
+     * @Route(
+     *     '/delete/{id:[0-9]+}',
+     *     methods='DELETE',
+     *     converters={
+     *         id='MyConverters::checkId'
+     *     }
+     * )
+     */
+    public function deleteAction($id)
+    {
 
-}
+    }
 }
 ```
 
@@ -1825,15 +1825,15 @@ If you are using modules in your application, it is better to use the `addModule
 use Phalcon\Mvc\Router\Annotations;
 
 $container['router'] = function () {
-$router = new Annotations(false);
+    $router = new Annotations(false);
 
-$router->addModuleResource(
-    'admin', 
-    'Invoices', 
-    '/admin/invoices'
-);
+    $router->addModuleResource(
+        'admin', 
+        'Invoices', 
+        '/admin/invoices'
+    );
 
-return $router;
+    return $router;
 };
 ```
 
@@ -1868,12 +1868,12 @@ use [Phalcon Developer Tools][devtools]).
 <?php
 
 $container->set(
-'router',
-function () {
-    require __DIR__ . '/app/config/routes.php';
+    'router',
+    function () {
+        require __DIR__ . '/app/config/routes.php';
 
-    return $router;
-}
+        return $router;
+    }
 );
 ```
 
@@ -1887,19 +1887,19 @@ use Phalcon\Mvc\Router;
 $router = new Router();
 
 $router->add(
-'/login',
-[
-    'controller' => 'login',
-    'action'     => 'index',
-]
+    '/login',
+    [
+        'controller' => 'login',
+        'action'     => 'index',
+    ]
 );
 
 $router->add(
-'/invoices/:action',
-[
-    'controller' => 'invoices',
-    'action'     => 1,
-]
+    '/invoices/:action',
+    [
+        'controller' => 'invoices',
+        'action'     => 1,
+    ]
 );
 
 return $router;
@@ -1922,80 +1922,80 @@ The following are examples of custom routes:
 
 // '/system/admin/a/edit/7001'
 $router->add(
-'/system/:controller/a/:action/:params',
-[
-    'controller' => 1,
-    'action'     => 2,
-    'params'     => 3,
-]
+    '/system/:controller/a/:action/:params',
+    [
+        'controller' => 1,
+        'action'     => 2,
+        'params'     => 3,
+    ]
 );
 
 // '/en/news'
 $router->add(
-'/([a-z]{2})/:controller',
-[
-    'controller' => 2,
-    'action'     => 'index',
-    'language'   => 1,
-]
+    '/([a-z]{2})/:controller',
+    [
+        'controller' => 2,
+        'action'     => 'index',
+        'language'   => 1,
+    ]
 );
 
 // '/en/news'
 $router->add(
-'/{language:[a-z]{2}}/:controller',
-[
-    'controller' => 2,
-    'action'     => 'index',
-]
+    '/{language:[a-z]{2}}/:controller',
+    [
+        'controller' => 2,
+        'action'     => 'index',
+    ]
 );
 
 // '/admin/posts/edit/100'
 $router->add(
-'/admin/:controller/:action/:int',
-[
-    'controller' => 1,
-    'action'     => 2,
-    'id'         => 3,
-]
+    '/admin/:controller/:action/:int',
+    [
+        'controller' => 1,
+        'action'     => 2,
+        'id'         => 3,
+    ]
 );
 
 // '/posts/2015/02/some-cool-content'
 $router->add(
-'/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)',
-[
-    'controller' => 'posts',
-    'action'     => 'show',
-    'year'       => 1,
-    'month'      => 2,
-    'title'      => 3,
-]
+    '/posts/([0-9]{4})/([0-9]{2})/([a-z\-]+)',
+    [
+        'controller' => 'posts',
+        'action'     => 'show',
+        'year'       => 1,
+        'month'      => 2,
+        'title'      => 3,
+    ]
 );
 
 // '/manual/en/translate.adapter.html'
 $router->add(
-'/manual/([a-z]{2})/([a-z\.]+)\.html',
-[
-    'controller' => 'manual',
-    'action'     => 'show',
-    'language'   => 1,
-    'file'       => 2,
-]
+    '/manual/([a-z]{2})/([a-z\.]+)\.html',
+    [
+        'controller' => 'manual',
+        'action'     => 'show',
+        'language'   => 1,
+        'file'       => 2,
+    ]
 );
 
 // /feed/fr/hot-news.atom
 $router->add(
-'/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}',
-'Feed::get'
+    '/feed/{lang:[a-z]+}/{blog:[a-z\-]+}\.{type:[a-z\-]+}',
+    'Feed::get'
 );
 
 // /api/v1/users/peter.json
 $router->add(
-'/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
-[
-    'controller' => 'api',
-    'version'    => 1,
-    'format'     => 4,
-]
+    '/api/(v1|v2)/{method:[a-z]+}/{param:[a-z]+}\.(json|xml)',
+    [
+        'controller' => 'api',
+        'version'    => 1,
+        'format'     => 4,
+    ]
 );
 ```
 

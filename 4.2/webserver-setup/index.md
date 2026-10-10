@@ -40,11 +40,11 @@ The `.htrouter.php` file must contain:
 declare(strict_types=1);
 
 $uri = urldecode(
-parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 
 if ($uri !== '/' && file_exists(__DIR__ . '/public' . $uri)) {
-return false;
+    return false;
 }
 
 $_GET['_url'] = $_SERVER['REQUEST_URI'];
@@ -55,6 +55,7 @@ require_once __DIR__ . '/public/index.php';
 If your entry point is not `public/index.php`, then adjust the `.htrouter.php` file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to. 
 
 After executing the command above, navigating to `http://localhost:8000/` will show your site.
+
 
 ## PHP-FPM
 The [PHP-FPM][php_fpm] (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
@@ -83,83 +84,84 @@ You can use following potential configuration to set up nginx with Phalcon:
 
 ```
 server {
-# Port 80 will require nginx to be started with root permissions
-# Depending on how you install nginx to use port 80 you will need
-# to start the server with `sudo` ports about 1000 do not require
-# root privileges
-# listen      80;
+    # Port 80 will require nginx to be started with root permissions
+    # Depending on how you install nginx to use port 80 you will need
+    # to start the server with `sudo` ports about 1000 do not require
+    # root privileges
+    # listen      80;
 
-listen        8000;
-server_name   default;
+    listen        8000;
+    server_name   default;
 
-##########################
-# In production require SSL
-# listen 443 ssl default_server;
+    ##########################
+    # In production require SSL
+    # listen 443 ssl default_server;
 
-# ssl on;
-# ssl_session_timeout  5m;
-# ssl_protocols  SSLv2 SSLv3 TLSv1;
-# ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
-# ssl_prefer_server_ciphers   on;
+    # ssl on;
+    # ssl_session_timeout  5m;
+    # ssl_protocols  SSLv2 SSLv3 TLSv1;
+    # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    # ssl_prefer_server_ciphers   on;
 
-# These locations depend on where you store your certs
-# ssl_certificate        /var/nginx/certs/default.cert;
-# ssl_certificate_key    /var/nginx/certs/default.key;
-##########################
+    # These locations depend on where you store your certs
+    # ssl_certificate        /var/nginx/certs/default.cert;
+    # ssl_certificate_key    /var/nginx/certs/default.key;
+    ##########################
 
-# This is the folder that index.php is in
-root /var/www/default/public;
-index index.php index.html index.htm;
+    # This is the folder that index.php is in
+    root /var/www/default/public;
+    index index.php index.html index.htm;
 
-charset utf-8;
-client_max_body_size 100M;
-fastcgi_read_timeout 1800;
+    charset utf-8;
+    client_max_body_size 100M;
+    fastcgi_read_timeout 1800;
 
-# Represents the root of the domain
-# https://localhost:8000/[index.php]
-location / {
-    # Matches URLS `$_GET['_url']`
-    try_files $uri $uri/ /index.php?_url=$uri&$args;
-}
-
-# When the HTTP request does not match the above
-# and the file ends in .php
-location ~ [^/]\.php(/|$) {
-    # try_files $uri =404;
-
-    # Ubuntu and PHP7.0-fpm in socket mode
-    # This path is dependent on the version of PHP install
-    fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
-
-    # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
-    # You will need to configure FPM to listen on a standard port
-    # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
-    # fastcgi_pass  127.0.0.1:9000;
-
-    fastcgi_index /index.php;
-
-    include fastcgi_params;
-    fastcgi_split_path_info ^(.+?\.php)(/.*)$;
-    if (!-f $document_root$fastcgi_script_name) {
-        return 404;
+    # Represents the root of the domain
+    # https://localhost:8000/[index.php]
+    location / {
+        # Matches URLS `$_GET['_url']`
+        try_files $uri $uri/ /index.php?_url=$uri&$args;
     }
 
-    fastcgi_param PATH_INFO       $fastcgi_path_info;
-    # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
-    # and set php.ini cgi.fix_pathinfo=0
+    # When the HTTP request does not match the above
+    # and the file ends in .php
+    location ~ [^/]\.php(/|$) {
+        # try_files $uri =404;
 
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-}
+        # Ubuntu and PHP7.0-fpm in socket mode
+        # This path is dependent on the version of PHP install
+        fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
 
-location ~ /\.ht {
-    deny all;
-}
 
-location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-    expires       max;
-    log_not_found off;
-    access_log    off;
-}
+        # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
+        # You will need to configure FPM to listen on a standard port
+        # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
+        # fastcgi_pass  127.0.0.1:9000;
+
+        fastcgi_index /index.php;
+
+        include fastcgi_params;
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+        
+        fastcgi_param PATH_INFO       $fastcgi_path_info;
+        # fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        # and set php.ini cgi.fix_pathinfo=0
+        
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires       max;
+        log_not_found off;
+        access_log    off;
+    }
 }
 ```
 
@@ -181,14 +183,14 @@ The following are potential configurations you can use to set up Apache with Pha
 ```bash
 tutorial/
   app/
-controllers/
-models/
-views/
+    controllers/
+    models/
+    views/
   public/
-css/
-img/
-js/
-index.php
+    css/
+    img/
+    js/
+    index.php
 ```
 
 **Document root**
@@ -202,9 +204,9 @@ Note that using `.htaccess` files requires your apache installation to have the 
 # tutorial/.htaccess
 
 <IfModule mod_rewrite.c>
-RewriteEngine on
-RewriteRule   ^$ public/    [L]
-RewriteRule   ((?s).*) public/$1 [L]
+    RewriteEngine on
+    RewriteRule   ^$ public/    [L]
+    RewriteRule   ((?s).*) public/$1 [L]
 </IfModule>
 ```
 
@@ -214,10 +216,10 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
 # tutorial/public/.htaccess
 
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond   %{REQUEST_FILENAME} !-d
-RewriteCond   %{REQUEST_FILENAME} !-f
-RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+    RewriteEngine On
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
 
@@ -228,10 +230,10 @@ For users that are using the Persian letter 'م' (meem) in uri parameters, there
 # tutorial/public/.htaccess
 
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond   %{REQUEST_FILENAME} !-d
-RewriteCond   %{REQUEST_FILENAME} !-f
-RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
+    RewriteEngine On
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule   ^([0-9A-Za-z\x7f-\xff]*)$ index.php?params=$1 [L]
 </IfModule>
 ```
 
@@ -243,18 +245,18 @@ If you do not want to use `.htaccess` files, you can move the relevant directive
 ```
 <IfModule mod_rewrite.c>
 
-<Directory "/var/www/test">
-    RewriteEngine on
-    RewriteRule  ^$ public/    [L]
-    RewriteRule  ((?s).*) public/$1 [L]
-</Directory>
+    <Directory "/var/www/test">
+        RewriteEngine on
+        RewriteRule  ^$ public/    [L]
+        RewriteRule  ((?s).*) public/$1 [L]
+    </Directory>
 
-<Directory "/var/www/tutorial/public">
-    RewriteEngine On
-    RewriteCond   %{REQUEST_FILENAME} !-d
-    RewriteCond   %{REQUEST_FILENAME} !-f
-    RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
-</Directory>
+    <Directory "/var/www/tutorial/public">
+        RewriteEngine On
+        RewriteCond   %{REQUEST_FILENAME} !-d
+        RewriteCond   %{REQUEST_FILENAME} !-f
+        RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+    </Directory>
 
 </IfModule>
 ```
@@ -265,17 +267,17 @@ The configuration below is for when you want to install your application in a vi
 ```
 <VirtualHost *:80>
 
-ServerAdmin    admin@example.host
-DocumentRoot   "/var/vhosts/tutorial/public"
-DirectoryIndex index.php
-ServerName     example.host
-ServerAlias    www.example.host
+    ServerAdmin    admin@example.host
+    DocumentRoot   "/var/vhosts/tutorial/public"
+    DirectoryIndex index.php
+    ServerName     example.host
+    ServerAlias    www.example.host
 
-<Directory "/var/vhosts/tutorial/public">
-    Options       All
-    AllowOverride All
-    Require       all granted
-</Directory>
+    <Directory "/var/vhosts/tutorial/public">
+        Options       All
+        AllowOverride All
+        Require       all granted
+    </Directory>
 
 </VirtualHost>
 ```
@@ -292,11 +294,11 @@ You can use following potential configuration to set up lighttpd with Phalcon:
 
 ```nginx
 server.modules = (
-    "mod_indexfile",
-    "mod_access",
-    "mod_alias",
-    "mod_redirect",
-    "mod_rewrite",
+        "mod_indexfile",
+        "mod_access",
+        "mod_alias",
+        "mod_redirect",
+        "mod_rewrite",
 )
 
 server.document-root        = "/var/www/html/public"
@@ -339,9 +341,9 @@ include "/etc/lighttpd/conf-enabled/*.conf"
 
 #server.compat-module-load   = "disable"
 server.modules += (
-    "mod_compress",
-    "mod_dirlisting",
-    "mod_staticfile",
+        "mod_compress",
+        "mod_dirlisting",
+        "mod_staticfile",
 )
 
 url.rewrite-once = ( "^(/(?!(favicon.ico$|css/|js/|img/)).*)" => "/index.php?_url=$1" )
@@ -388,7 +390,7 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 ![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
 
 Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
-
+ 
 ```ini
  extension=php_phalcon.dll
 ```
@@ -533,6 +535,7 @@ Finally, make sure the behaviors have the following order:
 Execute the application in a browser:
 
 ![](/assets/images/content/webserver-cherokee-9.jpg)
+
 
 [apache]: https://httpd.apache.org/
 [cherokee]: https://www.cherokee-project.com/

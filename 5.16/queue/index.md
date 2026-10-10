@@ -39,23 +39,23 @@ use Phalcon\Contracts\Queue\Processor;
 
 class SendEmailProcessor implements Processor
 {
-public function process(Message $message, Context $context): string
-{
-    $payload = json_decode($message->getBody(), true);
+    public function process(Message $message, Context $context): string
+    {
+        $payload = json_decode($message->getBody(), true);
 
-    if (!isset($payload['to'])) {
-        return Processor::REJECT;   // malformed - drop it, no redelivery
+        if (!isset($payload['to'])) {
+            return Processor::REJECT;   // malformed - drop it, no redelivery
+        }
+
+        try {
+            // ... the real work ...
+            // $this->mailer->send($payload['to'], $payload['subject'], $payload['body']);
+        } catch (\Throwable $exception) {
+            return Processor::REQUEUE;  // transient failure - put it back
+        }
+
+        return Processor::ACK;          // handled - remove it
     }
-
-    try {
-        // ... the real work ...
-        // $this->mailer->send($payload['to'], $payload['subject'], $payload['body']);
-    } catch (\Throwable $exception) {
-        return Processor::REQUEUE;  // transient failure - put it back
-    }
-
-    return Processor::ACK;          // handled - remove it
-}
 }
 ```
 
@@ -71,24 +71,24 @@ use Phalcon\Queue\Consumer\WorkerOptions;
 
 // Build the Redis-backed context.
 $context = (new RedisConnectionFactory([
-'host'   => '127.0.0.1',
-'port'   => 6379,
-'prefix' => 'phalcon_queue:',
+    'host'   => '127.0.0.1',
+    'port'   => 6379,
+    'prefix' => 'phalcon_queue:',
 ]))->createContext();
 
 // Bind each queue to the processor that drains it.
 $consumer = new QueueConsumer($context);
 $consumer->bind(
-$context->createQueue('emails'),
-new SendEmailProcessor()
+    $context->createQueue('emails'),
+    new SendEmailProcessor()
 );
 
 // Stop after 1000 messages, one hour, or 128 MB - whichever comes first.
 $options = new WorkerOptions(
-1000, // maxMessages
-3600, // maxSeconds
-128,  // maxMemory (MB)
-30    // jitter (seconds)
+    1000, // maxMessages
+    3600, // maxSeconds
+    128,  // maxMemory (MB)
+    30    // jitter (seconds)
 );
 
 $processed = (new Worker($consumer, $options))->run();
@@ -107,14 +107,14 @@ $context = (new RedisConnectionFactory(['host' => '127.0.0.1']))->createContext(
 $queue   = $context->createQueue('emails');
 
 $context->createProducer()->send(
-$queue,
-$context->createMessage(
-    json_encode([
-        'to'      => 'someone@example.com',
-        'subject' => 'Welcome',
-        'body'    => 'Thanks for signing up.',
-    ])
-)
+    $queue,
+    $context->createMessage(
+        json_encode([
+            'to'      => 'someone@example.com',
+            'subject' => 'Welcome',
+            'body'    => 'Thanks for signing up.',
+        ])
+    )
 );
 ```
 
@@ -190,8 +190,8 @@ $queue   = $context->createQueue('emails');
 
 // produce
 $context->createProducer()->send(
-$queue,
-$context->createMessage('{"to":"someone@example.com"}')
+    $queue,
+    $context->createMessage('{"to":"someone@example.com"}')
 );
 
 // consume
@@ -199,8 +199,8 @@ $consumer = $context->createConsumer($queue);
 $message  = $consumer->receiveNoWait();
 
 if ($message !== null) {
-// ... handle $message->getBody() ...
-$consumer->acknowledge($message);
+    // ... handle $message->getBody() ...
+    $consumer->acknowledge($message);
 }
 ```
 
@@ -214,8 +214,8 @@ The Memory transport delivers immediately, so it does not support a delivery del
 use Phalcon\Queue\Adapter\Stream\StreamConnectionFactory;
 
 $context = (new StreamConnectionFactory([
-'storageDir'   => '/var/data/queues',
-'pollInterval' => 200,
+    'storageDir'   => '/var/data/queues',
+    'pollInterval' => 200,
 ]))->createContext();
 ```
 
@@ -233,11 +233,11 @@ Options: `storageDir` (defaults to the system temp directory) and `pollInterval`
 use Phalcon\Queue\Adapter\Redis\RedisConnectionFactory;
 
 $context = (new RedisConnectionFactory([
-'host'   => '127.0.0.1',
-'port'   => 6379,
-'index'  => 0,
-'auth'   => 'secret',
-'prefix' => 'phalcon_queue:',
+    'host'   => '127.0.0.1',
+    'port'   => 6379,
+    'index'  => 0,
+    'auth'   => 'secret',
+    'prefix' => 'phalcon_queue:',
 ]))->createContext();
 ```
 
@@ -247,8 +247,8 @@ Unlike Memory and Stream, the Redis transport **supports a delivery delay**. A d
 
 ```php
 $context->createProducer()
-->setDeliveryDelay(5000) // milliseconds
-->send($queue, $context->createMessage('later'));
+    ->setDeliveryDelay(5000) // milliseconds
+    ->send($queue, $context->createMessage('later'));
 ```
 
 The consumer's blocking `receive()` uses the native `BRPOP` (waking once a second to promote due delayed messages) instead of polling. Message priority and time to live are not supported - the matching setters throw `PriorityNotSupportedException` and `TimeToLiveNotSupportedException`.
@@ -261,9 +261,9 @@ The consumer's blocking `receive()` uses the native `BRPOP` (waking once a secon
 use Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory;
 
 $context = (new BeanstalkConnectionFactory([
-'host' => '127.0.0.1',
-'port' => 11300,
-'ttr'  => 86400,
+    'host' => '127.0.0.1',
+    'port' => 11300,
+    'ttr'  => 86400,
 ]))->createContext();
 ```
 
@@ -278,7 +278,7 @@ $consumer = $context->createConsumer($queue);
 $message  = $consumer->receive();
 
 if ($consumer instanceof \Phalcon\Contracts\Queue\VisibilityAware) {
-$consumer->touch($message); // I need more time
+    $consumer->touch($message); // I need more time
 }
 
 $consumer->acknowledge($message);
@@ -321,7 +321,7 @@ One `Worker` is one process. To process a queue in parallel, run the worker scri
 
 ```bash
 <task> emails sendEmailProcessor \
---max-messages=1000 --max-time=3600 --max-memory=128 --jitter=30
+    --max-messages=1000 --max-time=3600 --max-memory=128 --jitter=30
 ```
 
 ### Events
@@ -353,10 +353,10 @@ use Phalcon\Queue\QueueFactory;
 
 $factory = new QueueFactory();
 $context = $factory->load(
-[
-    'adapter' => 'memory',
-    'options' => [],
-]
+    [
+        'adapter' => 'memory',
+        'options' => [],
+    ]
 );
 ```
 
@@ -366,7 +366,7 @@ $context = $factory->load(
 
 ```php
 $context = $di->get('queueFactory')->load(
-$di->get('config')->queue
+    $di->get('config')->queue
 );
 ```
 
@@ -374,7 +374,7 @@ If you prefer a ready-built context available directly as a service, register on
 
 ```php
 $di->setShared('queue', function () use ($di) {
-return $di->get('queueFactory')->load($di->get('config')->queue);
+    return $di->get('queueFactory')->load($di->get('config')->queue);
 });
 ```
 

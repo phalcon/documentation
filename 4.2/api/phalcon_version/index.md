@@ -17,17 +17,22 @@ All classes are prefixed with `Phalcon`
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Support/Version.zep)
 
+
 -   __Namespace__
 
     - `Phalcon\Support`
 
 -   __Uses__
+    
 
 -   __Extends__
+    
 
 -   __Implements__
+    
 
 This class allows to get the installed version of the framework
+
 
 ### Constants
 ```php
@@ -49,6 +54,7 @@ Returns the active version (string)
 echo Phalcon\Version::get();
 ```
 
+
 ```php
 public static function getId(): string;
 ```
@@ -58,6 +64,7 @@ Returns the numeric active version
 echo Phalcon\Version::getId();
 ```
 
+
 ```php
 public static function getPart( int $part ): string;
 ```
@@ -66,9 +73,10 @@ it will return the full version
 
 ```php
 echo Phalcon\Version::getPart(
-Phalcon\Version::VERSION_MAJOR
+    Phalcon\Version::VERSION_MAJOR
 );
 ```
+
 
 ```php
 protected $static function _getVersion(): array;
@@ -84,6 +92,7 @@ E - Special release version i.e. RC1, Beta2 etc.
 
 @todo Remove in v5
 @deprecated Use getVersion()
+
 
 ```php
 protected $static function getVersion(): array;

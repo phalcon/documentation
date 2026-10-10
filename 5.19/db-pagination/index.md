@@ -19,20 +19,20 @@ A paginator is a component that helps with splitting a large amount of data grad
 declare(strict_types=1);
 
 use Phalcon\Paginator\Adapter\NativeArray;
-
+ 
 $currentPage = 2;
 $paginator   = new NativeArray(
-[
-    "data"  => [
-        ["id" => 1, "name" => "Artichoke"],
-        ["id" => 2, "name" => "Carrots"],
-        ["id" => 3, "name" => "Beet"],
-        ["id" => 4, "name" => "Lettuce"],
-        ["id" => 5, "name" => ""],
-    ],
-    "limit" => 2,
-    "page"  => $currentPage,
-]
+    [
+        "data"  => [
+            ["id" => 1, "name" => "Artichoke"],
+            ["id" => 2, "name" => "Carrots"],
+            ["id" => 3, "name" => "Beet"],
+            ["id" => 4, "name" => "Lettuce"],
+            ["id" => 5, "name" => ""],
+        ],
+        "limit" => 2,
+        "page"  => $currentPage,
+    ]
  );
 
 $paginate = $paginator->paginate();
@@ -102,18 +102,18 @@ use Phalcon\Paginator\Adapter\Model;
 
 $currentPage = 2;
 $paginator   = new Model(
-[
-    "model"      => Invoices::class,
-    "parameters" => [
-        "inv_cst_id = :cst_id:",
-          "bind" => [
-              "cst_id" => 1
-          ],
-          "order" => "inv_title"
-    ],
-    "limit"      => 25,
-    "page"       => $currentPage,
-]
+    [
+        "model"      => Invoices::class,
+        "parameters" => [
+            "inv_cst_id = :cst_id:",
+              "bind" => [
+                  "cst_id" => 1
+              ],
+              "order" => "inv_title"
+        ],
+        "limit"      => 25,
+        "page"       => $currentPage,
+    ]
 );
 
 $paginate = $paginator->paginate();
@@ -133,17 +133,17 @@ use Phalcon\Paginator\Adapter\NativeArray;
 
 $currentPage = 2;
 $paginator   = new NativeArray(
-[
-    "data"  => [
-        ["id" => 1, "name" => "Artichoke"],
-        ["id" => 2, "name" => "Carrots"],
-        ["id" => 3, "name" => "Beet"],
-        ["id" => 4, "name" => "Lettuce"],
-        ["id" => 5, "name" => ""],
-    ],
-    "limit" => 2,
-    "page"  => $currentPage,
-]
+    [
+        "data"  => [
+            ["id" => 1, "name" => "Artichoke"],
+            ["id" => 2, "name" => "Carrots"],
+            ["id" => 3, "name" => "Beet"],
+            ["id" => 4, "name" => "Lettuce"],
+            ["id" => 5, "name" => ""],
+        ],
+        "limit" => 2,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginate = $paginator->paginate();
@@ -161,18 +161,18 @@ use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\QueryBuilder;
 
 $builder = $this
-->modelsManager
-->createBuilder()
-->columns("inv_id, inv_title")
-->from(Invoices::class)
-->orderBy("inv_title");
+    ->modelsManager
+    ->createBuilder()
+    ->columns("inv_id, inv_title")
+    ->from(Invoices::class)
+    ->orderBy("inv_title");
 
 $paginator = new QueryBuilder(
-[
-    "builder" => $builder,
-    "limit"   => 20,
-    "page"    => 1,
-]
+    [
+        "builder" => $builder,
+        "limit"   => 20,
+        "page"    => 1,
+    ]
 );
 
 $paginate = $paginator->paginate();
@@ -211,18 +211,18 @@ use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\QueryBuilderCursor;
 
 $builder = $this
-->modelsManager
-->createBuilder()
-->columns("inv_id, inv_title, inv_status_flag")
-->from(Invoices::class)
-->orderBy("inv_id");
+    ->modelsManager
+    ->createBuilder()
+    ->columns("inv_id, inv_title, inv_status_flag")
+    ->from(Invoices::class)
+    ->orderBy("inv_id");
 
 $paginator = new QueryBuilderCursor(
-[
-    "builder"      => $builder,
-    "limit"        => 20,
-    "cursorColumn" => "inv_id",
-]
+    [
+        "builder"      => $builder,
+        "limit"        => 20,
+        "cursorColumn" => "inv_id",
+    ]
 );
 
 $page = $paginator->paginate();
@@ -245,31 +245,31 @@ use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\QueryBuilderCursor;
 
 $builder = $this
-->modelsManager
-->createBuilder()
-->from(Invoices::class)
-->orderBy("inv_id");
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->orderBy("inv_id");
 
 $paginator = new QueryBuilderCursor(
-[
-    "builder"      => $builder,
-    "limit"        => 20,
-    "cursorColumn" => "inv_id",
-]
+    [
+        "builder"      => $builder,
+        "limit"        => 20,
+        "cursorColumn" => "inv_id",
+    ]
 );
 
 // Page 1
 $page = $paginator->paginate();
 
 while ($page->getNext() !== 0) {
-$nextCursor = $page->getNext();   // capture before next paginate() call
+    $nextCursor = $page->getNext();   // capture before next paginate() call
 
-$paginator->setCursor($nextCursor);
-$page = $paginator->paginate();
+    $paginator->setCursor($nextCursor);
+    $page = $paginator->paginate();
 
-foreach ($page->getItems() as $item) {
-    echo $item["inv_id"] . " - " . $item["inv_title"] . PHP_EOL;
-}
+    foreach ($page->getItems() as $item) {
+        echo $item["inv_id"] . " - " . $item["inv_title"] . PHP_EOL;
+    }
 }
 ```
 
@@ -295,37 +295,37 @@ use Phalcon\Paginator\Adapter\QueryBuilderCursor;
  */
 class InvoicesController extends Controller
 {
-public function listAction(): void
-{
-    $cursor = $this->request->getQuery("cursor", "int", null);
+    public function listAction(): void
+    {
+        $cursor = $this->request->getQuery("cursor", "int", null);
 
-    $builder = $this
-        ->modelsManager
-        ->createBuilder()
-        ->columns("inv_id, inv_title, inv_status_flag")
-        ->from(Invoices::class)
-        ->orderBy("inv_id");
+        $builder = $this
+            ->modelsManager
+            ->createBuilder()
+            ->columns("inv_id, inv_title, inv_status_flag")
+            ->from(Invoices::class)
+            ->orderBy("inv_id");
 
-    $paginator = new QueryBuilderCursor(
-        [
-            "builder"      => $builder,
-            "limit"        => 20,
-            "cursorColumn" => "inv_id",
-            "cursor"       => $cursor,
-        ]
-    );
+        $paginator = new QueryBuilderCursor(
+            [
+                "builder"      => $builder,
+                "limit"        => 20,
+                "cursorColumn" => "inv_id",
+                "cursor"       => $cursor,
+            ]
+        );
 
-    $page  = $paginator->paginate();
-    $items = $page->getItems();
-    $next  = $page->getNext();      // 0 means last page
+        $page  = $paginator->paginate();
+        $items = $page->getItems();
+        $next  = $page->getNext();      // 0 means last page
 
-    $this->response->setJsonContent(
-        [
-            "data"       => $items,
-            "nextCursor" => $next ?: null,
-        ]
-    );
-}
+        $this->response->setJsonContent(
+            [
+                "data"       => $items,
+                "nextCursor" => $next ?: null,
+            ]
+        );
+    }
 }
 ```
 
@@ -382,17 +382,17 @@ use Phalcon\Paginator\Adapter\NativeArray;
 
 $currentPage = 2;
 $paginator   = new NativeArray(
-[
-    "data"  => [
-        ["id" => 1, "name" => "Artichoke"],
-        ["id" => 2, "name" => "Carrots"],
-        ["id" => 3, "name" => "Beet"],
-        ["id" => 4, "name" => "Lettuce"],
-        ["id" => 5, "name" => ""],
-    ],
-    "limit" => 2,
-    "page"  => $currentPage,
-]
+    [
+        "data"  => [
+            ["id" => 1, "name" => "Artichoke"],
+            ["id" => 2, "name" => "Carrots"],
+            ["id" => 3, "name" => "Beet"],
+            ["id" => 4, "name" => "Lettuce"],
+            ["id" => 5, "name" => ""],
+        ],
+        "limit" => 2,
+        "page"  => $currentPage,
+    ]
 );
 
 $paginate = $paginator->paginate();
@@ -438,30 +438,30 @@ use Phalcon\Paginator\Adapter\NativeArray;
 
 $repository = new Repository();
 $repository->setAliases(
-[
-    'myCurrentPage' => $repository::PROPERTY_CURRENT_PAGE,
-    'myFirstPage'   => $repository::PROPERTY_FIRST_PAGE,
-    'myLastPage'    => $repository::PROPERTY_LAST_PAGE,
-    'myLimit'       => $repository::PROPERTY_LIMIT,
-    'myNextPage'    => $repository::PROPERTY_NEXT_PAGE,
-    'myTotalItems'  => $repository::PROPERTY_TOTAL_ITEMS,
-]
+    [
+        'myCurrentPage' => $repository::PROPERTY_CURRENT_PAGE,
+        'myFirstPage'   => $repository::PROPERTY_FIRST_PAGE,
+        'myLastPage'    => $repository::PROPERTY_LAST_PAGE,
+        'myLimit'       => $repository::PROPERTY_LIMIT,
+        'myNextPage'    => $repository::PROPERTY_NEXT_PAGE,
+        'myTotalItems'  => $repository::PROPERTY_TOTAL_ITEMS,
+    ]
 );
 
 $currentPage = 2;
 $paginator   = new NativeArray(
-[
-    "data"       => [
-        ["id" => 1, "name" => "Artichoke"],
-        ["id" => 2, "name" => "Carrots"],
-        ["id" => 3, "name" => "Beet"],
-        ["id" => 4, "name" => "Lettuce"],
-        ["id" => 5, "name" => ""],
-    ],
-    "limit"      => 2,
-    "page"       => $currentPage,
-    'repository' => $repository,
-]
+    [
+        "data"       => [
+            ["id" => 1, "name" => "Artichoke"],
+            ["id" => 2, "name" => "Carrots"],
+            ["id" => 3, "name" => "Beet"],
+            ["id" => 4, "name" => "Lettuce"],
+            ["id" => 5, "name" => ""],
+        ],
+        "limit"      => 2,
+        "page"       => $currentPage,
+        'repository' => $repository,
+    ]
 );
 
 $paginate = $paginator->paginate();
@@ -499,17 +499,17 @@ use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
 
 $builder = $this
-->modelsManager
-->createBuilder()
-->columns('inv_id, inv_title')
-->from(Invoices::class)
-->orderBy('name')
+    ->modelsManager
+    ->createBuilder()
+    ->columns('inv_id, inv_title')
+    ->from(Invoices::class)
+    ->orderBy('name')
 ;
 
 $options = [
-'builder' => $builder,
-'limit'   => 20,
-'page'    => 1,
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
 ];
 
 $factory   = new PaginatorFactory();
@@ -527,20 +527,20 @@ declare(strict_types=1);
 
 use MyApp\Models\Invoices;
 use Phalcon\Paginator\PaginatorFactory;
-
+ 
 $builder = $this
-->modelsManager
-->createBuilder()
-->columns('inv_id, inv_title')
-->from(Invoices::class)
-->orderBy('inv_title')
+    ->modelsManager
+    ->createBuilder()
+    ->columns('inv_id, inv_title')
+    ->from(Invoices::class)
+    ->orderBy('inv_title')
 ;
 
 $options = [
-'builder' => $builder,
-'limit'   => 20,
-'page'    => 1,
-'adapter' => 'queryBuilder',
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
+    'adapter' => 'queryBuilder',
 ];
 
 $paginator = (new PaginatorFactory())->load($options);
@@ -579,22 +579,22 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
  */
 class InvoicesController extends Controller
 {
-public function listAction()
-{
-    $currentPage = $this->request->getQuery('page', 'int', 1);
-    $paginator   = new PaginatorModel(
-        [
-            'model'  => Invoices::class,
-            'limit' => 10,
-            'page'  => $currentPage,
-        ]
-    );
-
-    $page = $paginator->paginate();
-
-    $this->view->setVar('page', $page);
-
-}
+    public function listAction()
+    {
+        $currentPage = $this->request->getQuery('page', 'int', 1);
+        $paginator   = new PaginatorModel(
+            [
+                'model'  => Invoices::class,
+                'limit' => 10,
+                'page'  => $currentPage,
+            ]
+        );
+        
+        $page = $paginator->paginate();
+        
+        $this->view->setVar('page', $page);
+    
+    }
 }
 ```
 
@@ -602,18 +602,18 @@ In the example above `$currentPage` contains an integer, user-supplied variable,
 
 ```php
 <table>
-<tr>
-    <th>Id</th>
-    <th>Status</th>
-    <th>Title</th>
-</tr>
-<?php foreach ($page->getItems() as $item) { ?>
-<tr>
-    <td><?php echo $item['inv_id']; ?></td>
-    <td><?php echo ($item['inv_status_flag']) ? 'Paid' : ''; ?></td>
-    <td><?php echo $item['inv_title']; ?></td>
-</tr>
-<?php } ?>
+    <tr>
+        <th>Id</th>
+        <th>Status</th>
+        <th>Title</th>
+    </tr>
+    <?php foreach ($page->getItems() as $item) { ?>
+    <tr>
+        <td><?php echo $item['inv_id']; ?></td>
+        <td><?php echo ($item['inv_status_flag']) ? 'Paid' : ''; ?></td>
+        <td><?php echo $item['inv_title']; ?></td>
+    </tr>
+    <?php } ?>
 </table>
 ```
 
@@ -666,15 +666,15 @@ $factory = new PaginatorFactory();
 
 $currentPage = 2;
 $options     = [
-'data'  => [
-    ['id' => 1, 'name' => 'Artichoke'],
-    ['id' => 2, 'name' => 'Carrots'],
-    ['id' => 3, 'name' => 'Beet'],
-    ['id' => 4, 'name' => 'Lettuce'],
-    ['id' => 5, 'name' => ''],
-],
-'limit' => 2,
-'page'  => $currentPage,
+    'data'  => [
+        ['id' => 1, 'name' => 'Artichoke'],
+        ['id' => 2, 'name' => 'Carrots'],
+        ['id' => 3, 'name' => 'Beet'],
+        ['id' => 4, 'name' => 'Lettuce'],
+        ['id' => 5, 'name' => ''],
+    ],
+    'limit' => 2,
+    'page'  => $currentPage,
 ];
 
 $paginator = $factory->newInstance('nativeArray', $options);
@@ -691,15 +691,15 @@ $factory = new PaginatorFactory();
 
 $currentPage = 2;
 $builder     = $this
-->modelsManager
-->createBuilder()
-->columns('id, name')
-->from('Robots')
-->orderBy('name');
+    ->modelsManager
+    ->createBuilder()
+    ->columns('id, name')
+    ->from('Robots')
+    ->orderBy('name');
 $options = [
-'builder' => $builder,
-'limit'   => 20,
-'page'    => $currentPage,
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => $currentPage,
 ];
 
 $paginator = $factory->newInstance('queryBuilder', $options);
@@ -717,16 +717,16 @@ use Phalcon\Paginator\PaginatorFactory;
 $factory = new PaginatorFactory();
 
 $builder = $this
-->modelsManager
-->createBuilder()
-->columns('inv_id, inv_title')
-->from(Invoices::class)
-->orderBy('inv_id');
+    ->modelsManager
+    ->createBuilder()
+    ->columns('inv_id, inv_title')
+    ->from(Invoices::class)
+    ->orderBy('inv_id');
 
 $options = [
-'builder'      => $builder,
-'limit'        => 20,
-'cursorColumn' => 'inv_id',
+    'builder'      => $builder,
+    'limit'        => 20,
+    'cursorColumn' => 'inv_id',
 ];
 
 $paginator = $factory->newInstance('queryBuilderCursor', $options);
@@ -746,11 +746,11 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 $currentPage = 2;
 $paginator   = new PaginatorModel(
-[
-   'model'  => Invoices::class,
-   'limit' => 10,
-   'page'  => $currentPage,
-]
+    [
+       'model'  => Invoices::class,
+       'limit' => 10,
+       'page'  => $currentPage,
+    ]
 );
 ```
 
@@ -764,17 +764,17 @@ use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
 
 $currentPage = 2;
 $paginator   = new PaginatorArray(
-[
-    'data'  => [
-        ['id' => 1, 'name' => 'Artichoke'],
-        ['id' => 2, 'name' => 'Carrots'],
-        ['id' => 3, 'name' => 'Beet'],
-        ['id' => 4, 'name' => 'Lettuce'],
-        ['id' => 5, 'name' => ''],
-    ],
-    'limit' => 2,
-    'page'  => $currentPage,
-]
+    [
+        'data'  => [
+            ['id' => 1, 'name' => 'Artichoke'],
+            ['id' => 2, 'name' => 'Carrots'],
+            ['id' => 3, 'name' => 'Beet'],
+            ['id' => 4, 'name' => 'Lettuce'],
+            ['id' => 5, 'name' => ''],
+        ],
+        'limit' => 2,
+        'page'  => $currentPage,
+    ]
 );
 ```
 
@@ -789,18 +789,18 @@ use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
 $currentPage = 2;
 $builder     = $this
-->modelsManager
-->createBuilder()
-->columns('id, name')
-->from('Robots')
-->orderBy('name');
+    ->modelsManager
+    ->createBuilder()
+    ->columns('id, name')
+    ->from('Robots')
+    ->orderBy('name');
 
 $paginator = new PaginatorQueryBuilder(
-[
-    'builder' => $builder,
-    'limit'   => 20,
-    'page'    => $currentPage,
-]
+    [
+        'builder' => $builder,
+        'limit'   => 20,
+        'page'    => $currentPage,
+    ]
 );
 ```
 
@@ -814,18 +814,18 @@ use MyApp\Models\Invoices;
 use Phalcon\Paginator\Adapter\QueryBuilderCursor;
 
 $builder = $this
-->modelsManager
-->createBuilder()
-->columns('inv_id, inv_title')
-->from(Invoices::class)
-->orderBy('inv_id');
+    ->modelsManager
+    ->createBuilder()
+    ->columns('inv_id, inv_title')
+    ->from(Invoices::class)
+    ->orderBy('inv_id');
 
 $paginator = new QueryBuilderCursor(
-[
-    'builder'      => $builder,
-    'limit'        => 20,
-    'cursorColumn' => 'inv_id',
-]
+    [
+        'builder'      => $builder,
+        'limit'        => 20,
+        'cursorColumn' => 'inv_id',
+    ]
 );
 
 $page = $paginator->paginate();
@@ -844,25 +844,25 @@ use Phalcon\Paginator\RepositoryInterface;
 
 class MyPaginator implements PaginatorInterface
 {
-/**
- * Get current rows limit
- */
-public function getLimit(): int;
+    /**
+     * Get current rows limit
+     */
+    public function getLimit(): int;
 
-/**
- * Returns a slice of the resultset to show in the pagination
- */
-public function paginate(): RepositoryInterface;
+    /**
+     * Returns a slice of the resultset to show in the pagination
+     */
+    public function paginate(): RepositoryInterface;
 
-/**
- * Set the current page number
- */
-public function setCurrentPage(int $page);
+    /**
+     * Set the current page number
+     */
+    public function setCurrentPage(int $page);
 
-/**
- * Set current rows limit
- */
-public function setLimit(int $limit);
+    /**
+     * Set current rows limit
+     */
+    public function setLimit(int $limit);
 }
 ```
 
@@ -877,24 +877,24 @@ use Phalcon\Paginator\Adapter\NativeArray;
 use Phalcon\Paginator\Exception;
 
 try {
-$currentPage = 2;
-$paginator   = new NativeArray(
-    [
-        "data"  => [
-            ["id" => 1, "name" => "Artichoke"],
-            ["id" => 2, "name" => "Carrots"],
-            ["id" => 3, "name" => "Beet"],
-            ["id" => 4, "name" => "Lettuce"],
-            ["id" => 5, "name" => ""],
-        ],
-        "limit" => -5,
-        "page"  => $currentPage,
-    ]
-);
+    $currentPage = 2;
+    $paginator   = new NativeArray(
+        [
+            "data"  => [
+                ["id" => 1, "name" => "Artichoke"],
+                ["id" => 2, "name" => "Carrots"],
+                ["id" => 3, "name" => "Beet"],
+                ["id" => 4, "name" => "Lettuce"],
+                ["id" => 5, "name" => ""],
+            ],
+            "limit" => -5,
+            "page"  => $currentPage,
+        ]
+    );
 
-$paginate = $paginator->paginate();
+    $paginate = $paginator->paginate();
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 

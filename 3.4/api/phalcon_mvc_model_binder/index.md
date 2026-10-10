@@ -17,42 +17,62 @@ Phalcon\Mvc\Model\Binding
 
 This is an class for binding models into params for handler
 
+
 ## Methods
 public  **getBoundModels** ()
 
 Array for storing active bound models
 
+
+
 public  **getOriginalValues** ()
 
 Array for original values
+
+
 
 public  **__construct** ([[Phalcon\Cache\BackendInterface](/3.4/api/phalcon_cache/) $cache])
 
 Phalcon\Mvc\Model\Binder constructor
 
+
+
 public  **setCache** ([Phalcon\Cache\BackendInterface](/3.4/api/phalcon_cache/) $cache)
 
 Gets cache instance
+
+
 
 public  **getCache** ()
 
 Sets cache instance
 
+
+
 public  **bindToHandler** (*mixed* $handler, *array* $params, *mixed* $cacheKey, [*mixed* $methodName])
 
 Bind models into params in proper handler
+
+
 
 protected  **findBoundModel** (*mixed* $paramValue, *mixed* $className)
 
 Find the model by param value.
 
+
+
 protected  **getParamsFromCache** (*mixed* $cacheKey)
 
 Get params classes from cache by key
 
+
+
 protected  **getParamsFromReflection** (*mixed* $handler, *array* $params, *mixed* $cacheKey, *mixed* $methodName)
 
 Get modified params for handler using reflection
+
+
+
 
 <hr />
 
@@ -65,6 +85,8 @@ abstract public  **getModelName** ()
 
 ...
 
+
+
 <hr />
 
 # Interface **Phalcon\Mvc\Model\BinderInterface**
@@ -76,13 +98,16 @@ abstract public  **getBoundModels** ()
 
 ...
 
+
 abstract public  **getCache** ()
 
 ...
 
+
 abstract public  **setCache** ([Phalcon\Cache\BackendInterface](/3.4/api/phalcon_cache/) $cache)
 
 ...
+
 
 abstract public  **bindToHandler** (*mixed* $handler, *array* $params, *mixed* $cacheKey, [*mixed* $methodName])
 

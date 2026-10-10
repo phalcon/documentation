@@ -21,12 +21,13 @@ All classes are prefixed with `Phalcon`
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.17/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Storage\AdapterFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Storage\AdapterFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterInterface`
+
 
 ### Method Summary
 
@@ -63,8 +64,8 @@ __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Adapter\AdapterIn
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $services = []
+    SerializerFactory $factory,
+    array $services = []
 );
 ```
 
@@ -74,8 +75,8 @@ AdapterFactory constructor.
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -97,6 +98,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Storage\Adapter\AbstractAdapter
 
 <span class="badge badge--abstract">Abstract</span>
@@ -117,16 +119,17 @@ Class AbstractAdapter
 <div class="api-tree">
 
 - **`Phalcon\Storage\Adapter\AbstractAdapter`** - implements [`Phalcon\Storage\Adapter\AdapterInterface`](#storageadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.17/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Storage\Adapter\Apcu`](#storageadapterapcu)
-- [`Phalcon\Storage\Adapter\Libmemcached`](#storageadapterlibmemcached)
-- [`Phalcon\Storage\Adapter\Memory`](#storageadaptermemory)
-- [`Phalcon\Storage\Adapter\Redis`](#storageadapterredis)
-- [`Phalcon\Storage\Adapter\Stream`](#storageadapterstream)
-- [`Phalcon\Storage\Adapter\Weak`](#storageadapterweak)
+    - [`Phalcon\Storage\Adapter\Apcu`](#storageadapterapcu)
+    - [`Phalcon\Storage\Adapter\Libmemcached`](#storageadapterlibmemcached)
+    - [`Phalcon\Storage\Adapter\Memory`](#storageadaptermemory)
+    - [`Phalcon\Storage\Adapter\Redis`](#storageadapterredis)
+    - [`Phalcon\Storage\Adapter\Stream`](#storageadapterstream)
+    - [`Phalcon\Storage\Adapter\Weak`](#storageadapterweak)
 
 </div>
 
 __Uses__ `DateInterval` · `DateTime` · `Exception` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+
 
 ### Method Summary
 
@@ -411,8 +414,8 @@ Flushes/clears the cache
 
 ```php
 public function decrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -438,8 +441,8 @@ Deletes data from the adapter
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -513,8 +516,8 @@ Checks if an element exists in the cache
 
 ```php
 public function increment(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -524,9 +527,9 @@ Increments a stored number
 
 ```php
 public function set(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -556,8 +559,8 @@ Sets the event manager
 
 ```php
 protected function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -567,8 +570,8 @@ AbstractAdapter constructor.
 
 ```php
 abstract protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -594,8 +597,8 @@ Deletes multiple keys from the adapter
 
 ```php
 protected function doGet(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -617,8 +620,8 @@ Checks if an element exists in the cache
 
 ```php
 abstract protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -628,9 +631,9 @@ Increments a stored number
 
 ```php
 abstract protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -644,8 +647,8 @@ the `setForever()` method.
 
 ```php
 protected function fire(
-string $eventName,
-mixed $keys
+    string $eventName,
+    mixed $keys
 ): void;
 ```
 
@@ -655,8 +658,8 @@ Trigger an event for the eventsManager.
 
 ```php
 protected function getFilteredKeys(
-mixed $keys,
-string $prefix
+    mixed $keys,
+    string $prefix
 ): array;
 ```
 
@@ -700,8 +703,8 @@ Calculates the TTL for a cache item
 
 ```php
 protected function getUnserializedData(
-mixed $content,
-mixed $defaultValue = null
+    mixed $content,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -715,6 +718,7 @@ protected function initSerializer(): void;
 
 Initializes the serializer
 
+
 ## Storage\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -725,11 +729,12 @@ Interface for Phalcon\Logger adapters
 <div class="api-tree">
 
 - **`Phalcon\Storage\Adapter\AdapterInterface`**
-- [`Phalcon\Cache\Adapter\AdapterInterface`](/5.17/api/phalcon_cache/#cacheadapteradapterinterface)
+    - [`Phalcon\Cache\Adapter\AdapterInterface`](/5.17/api/phalcon_cache/#cacheadapteradapterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Storage\Serializer\SerializerInterface`
+
 
 ### Method Summary
 
@@ -824,8 +829,8 @@ Flushes/clears the cache
 
 ```php
 public function decrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -851,8 +856,8 @@ Deletes multiple data from the adapter
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -895,8 +900,8 @@ Checks if an element exists in the cache
 
 ```php
 public function increment(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -906,9 +911,9 @@ Increments a stored number
 
 ```php
 public function set(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -922,13 +927,14 @@ the `setForever()` method.
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
 Stores data in the adapter forever. The key needs to manually deleted
 from the adapter.
+
 
 ## Storage\Adapter\Apcu
 
@@ -947,12 +953,13 @@ Capabilities:
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- **`Phalcon\Storage\Adapter\Apcu`**
-- [`Phalcon\Cache\Adapter\Apcu`](/5.17/api/phalcon_cache/#cacheadapterapcu)
+    - **`Phalcon\Storage\Adapter\Apcu`**
+        - [`Phalcon\Cache\Adapter\Apcu`](/5.17/api/phalcon_cache/#cacheadapterapcu)
 
 </div>
 
 __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Traits\Php\ApcuTrait`
+
 
 ### Method Summary
 
@@ -1040,8 +1047,8 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -1067,8 +1074,8 @@ Stores data in the adapter
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
@@ -1081,8 +1088,8 @@ from the adapter.
 
 ```php
 protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1122,8 +1129,8 @@ Checks if an element exists in the cache
 
 ```php
 protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1133,9 +1140,9 @@ Increments a stored number
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -1144,6 +1151,7 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
+
 
 ## Storage\Adapter\Libmemcached
 
@@ -1161,12 +1169,13 @@ Capabilities:
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- **`Phalcon\Storage\Adapter\Libmemcached`**
-- [`Phalcon\Cache\Adapter\Libmemcached`](/5.17/api/phalcon_cache/#cacheadapterlibmemcached)
+    - **`Phalcon\Storage\Adapter\Libmemcached`**
+        - [`Phalcon\Cache\Adapter\Libmemcached`](/5.17/api/phalcon_cache/#cacheadapterlibmemcached)
 
 </div>
 
 __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+
 
 ### Method Summary
 
@@ -1256,8 +1265,8 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -1292,8 +1301,8 @@ Stores data in the adapter
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
@@ -1306,8 +1315,8 @@ from the adapter.
 
 ```php
 protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1341,8 +1350,8 @@ Checks if an element exists in the cache
 
 ```php
 protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1352,9 +1361,9 @@ Increments a stored number
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -1363,6 +1372,7 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
+
 
 ## Storage\Adapter\Memory
 
@@ -1384,12 +1394,13 @@ Capabilities:
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- **`Phalcon\Storage\Adapter\Memory`**
-- [`Phalcon\Cache\Adapter\Memory`](/5.17/api/phalcon_cache/#cacheadaptermemory)
+    - **`Phalcon\Storage\Adapter\Memory`**
+        - [`Phalcon\Cache\Adapter\Memory`](/5.17/api/phalcon_cache/#cacheadaptermemory)
 
 </div>
 
 __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+
 
 ### Method Summary
 
@@ -1489,8 +1500,8 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -1524,8 +1535,8 @@ Returns the configured store cap (0 = unlimited). See setMaxItems().
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
@@ -1549,8 +1560,8 @@ entry is evicted FIFO before a new key is stored.
 
 ```php
 protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1582,8 +1593,8 @@ Checks if an element exists in the cache
 
 ```php
 protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1593,9 +1604,9 @@ Increments a stored number
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -1604,6 +1615,7 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
+
 
 ## Storage\Adapter\Redis
 
@@ -1624,13 +1636,14 @@ Capabilities:
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- **`Phalcon\Storage\Adapter\Redis`**
-- [`Phalcon\Cache\Adapter\Redis`](/5.17/api/phalcon_cache/#cacheadapterredis)
-- [`Phalcon\Storage\Adapter\RedisCluster`](#storageadapterrediscluster)
+    - **`Phalcon\Storage\Adapter\Redis`**
+        - [`Phalcon\Cache\Adapter\Redis`](/5.17/api/phalcon_cache/#cacheadapterredis)
+        - [`Phalcon\Storage\Adapter\RedisCluster`](#storageadapterrediscluster)
 
 </div>
 
 __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+
 
 ### Method Summary
 
@@ -1720,8 +1733,8 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\Exception` · `Phalco
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -1756,8 +1769,8 @@ Stores data in the adapter
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
@@ -1770,8 +1783,8 @@ from the adapter.
 
 ```php
 protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1805,8 +1818,8 @@ Checks if an element exists in the cache
 
 ```php
 protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -1816,9 +1829,9 @@ Increments a stored number
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -1827,6 +1840,7 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
+
 
 ## Storage\Adapter\RedisCluster
 
@@ -1846,13 +1860,14 @@ Capabilities (in addition to Redis):
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- [`Phalcon\Storage\Adapter\Redis`](#storageadapterredis)
-- **`Phalcon\Storage\Adapter\RedisCluster`**
-- [`Phalcon\Cache\Adapter\RedisCluster`](/5.17/api/phalcon_cache/#cacheadapterrediscluster)
+    - [`Phalcon\Storage\Adapter\Redis`](#storageadapterredis)
+        - **`Phalcon\Storage\Adapter\RedisCluster`**
+            - [`Phalcon\Cache\Adapter\RedisCluster`](/5.17/api/phalcon_cache/#cacheadapterrediscluster)
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory`
+
 
 ### Method Summary
 
@@ -1900,8 +1915,8 @@ __Uses__ `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storag
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -1912,11 +1927,11 @@ If you are connecting with the cluster by offering a name, that is
 configured in redis.ini:
 
 ```
- # In redis.ini
- redis.clusters.seeds = "mycluster[]=localhost:7000&test[]=localhost:7001"
- redis.clusters.timeout = "mycluster=5"
- redis.clusters.read_timeout = "mycluster=10"
- redis.clusters.auth = "mycluster=password"
+# In redis.ini
+redis.clusters.seeds = "mycluster[]=localhost:7000&test[]=localhost:7001"
+redis.clusters.timeout = "mycluster=5"
+redis.clusters.read_timeout = "mycluster=10"
+redis.clusters.auth = "mycluster=password"
 ```
 you can use `$options = ["name" => "mycluster"]`.
 
@@ -1963,6 +1978,7 @@ RedisCluster::scan() iterates one node at a time, so the blocking KEYS
 command is retained here (phpredis routes it across the masters). The
 per-node SCAN migration is left to the storage redesign.
 
+
 ## Storage\Adapter\Stream
 
 <span class="badge badge--class">Class</span>
@@ -1982,12 +1998,13 @@ Capabilities:
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- **`Phalcon\Storage\Adapter\Stream`**
-- [`Phalcon\Cache\Adapter\Stream`](/5.17/api/phalcon_cache/#cacheadapterstream)
+    - **`Phalcon\Storage\Adapter\Stream`**
+        - [`Phalcon\Cache\Adapter\Stream`](/5.17/api/phalcon_cache/#cacheadapterstream)
 
 </div>
 
 __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator`
+
 
 ### Method Summary
 
@@ -2076,8 +2093,8 @@ __Uses__ `DateInterval` · `FilesystemIterator` · `Iterator` · `Phalcon\Storag
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -2103,8 +2120,8 @@ Stores data in the adapter
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
@@ -2117,8 +2134,8 @@ from the adapter.
 
 ```php
 protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -2136,8 +2153,8 @@ Deletes data from the adapter
 
 ```php
 protected function doGet(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2155,8 +2172,8 @@ Checks if an element exists in the cache and is not expired
 
 ```php
 protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -2166,9 +2183,9 @@ Increments a stored number
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -2177,6 +2194,7 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
+
 
 ## Storage\Adapter\Weak
 
@@ -2195,12 +2213,13 @@ Capabilities:
 <div class="api-tree">
 
 - [`Phalcon\Storage\Adapter\AbstractAdapter`](#storageadapterabstractadapter)
-- **`Phalcon\Storage\Adapter\Weak`**
-- [`Phalcon\Cache\Adapter\Weak`](/5.17/api/phalcon_cache/#cacheadapterweak)
+    - **`Phalcon\Storage\Adapter\Weak`**
+        - [`Phalcon\Cache\Adapter\Weak`](/5.17/api/phalcon_cache/#cacheadapterweak)
 
 </div>
 
 __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Exception`
+
 
 ### Method Summary
 
@@ -2300,8 +2319,8 @@ __Uses__ `DateInterval` · `Exception` · `Phalcon\Storage\SerializerFactory` ·
 
 ```php
 public function __construct(
-SerializerFactory $factory,
-array $options = []
+    SerializerFactory $factory,
+    array $options = []
 );
 ```
 
@@ -2335,8 +2354,8 @@ will never set a serializer, WeakReference cannot be serialized
 
 ```php
 public function setForever(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): bool;
 ```
 
@@ -2348,8 +2367,8 @@ For compatiblity only, there is no Forever with WeakReference.
 
 ```php
 protected function doDecrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -2367,8 +2386,8 @@ Deletes data from the adapter
 
 ```php
 protected function doGet(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2386,8 +2405,8 @@ Checks if an element exists in the cache
 
 ```php
 protected function doIncrement(
-string $key,
-int $value = 1
+    string $key,
+    int $value = 1
 ): int|bool;
 ```
 
@@ -2397,9 +2416,9 @@ Increments a stored number - not supported for WeakReference
 
 ```php
 protected function doSet(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -2408,6 +2427,7 @@ then the default TTL will be used, as set in this adapter. If the TTL
 is `0` or a negative number, a `delete()` will be issued, since this
 item has expired. If you need to set this key forever, you should use
 the `setForever()` method.
+
 
 ## Storage\Exception
 
@@ -2421,15 +2441,16 @@ Exceptions thrown in Phalcon\Storage will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Storage\Exception`**
-- [`Phalcon\Storage\Exceptions\AuthenticationFailed`](#storageexceptionsauthenticationfailed)
-- [`Phalcon\Storage\Exceptions\ClusterConnectionFailed`](#storageexceptionsclusterconnectionfailed)
-- [`Phalcon\Storage\Exceptions\ConnectionFailed`](#storageexceptionsconnectionfailed)
-- [`Phalcon\Storage\Exceptions\DatabaseSelectionFailed`](#storageexceptionsdatabaseselectionfailed)
-- [`Phalcon\Storage\Exceptions\InvalidConfiguration`](#storageexceptionsinvalidconfiguration)
-- [`Phalcon\Storage\Exceptions\StorageError`](#storageexceptionsstorageerror)
+    - **`Phalcon\Storage\Exception`**
+        - [`Phalcon\Storage\Exceptions\AuthenticationFailed`](#storageexceptionsauthenticationfailed)
+        - [`Phalcon\Storage\Exceptions\ClusterConnectionFailed`](#storageexceptionsclusterconnectionfailed)
+        - [`Phalcon\Storage\Exceptions\ConnectionFailed`](#storageexceptionsconnectionfailed)
+        - [`Phalcon\Storage\Exceptions\DatabaseSelectionFailed`](#storageexceptionsdatabaseselectionfailed)
+        - [`Phalcon\Storage\Exceptions\InvalidConfiguration`](#storageexceptionsinvalidconfiguration)
+        - [`Phalcon\Storage\Exceptions\StorageError`](#storageexceptionsstorageerror)
 
 </div>
+
 
 ## Storage\Exceptions\AuthenticationFailed
 
@@ -2439,12 +2460,13 @@ Exceptions thrown in Phalcon\Storage will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Storage\Exception`](#storageexception)
-- **`Phalcon\Storage\Exceptions\AuthenticationFailed`**
+    - [`Phalcon\Storage\Exception`](#storageexception)
+        - **`Phalcon\Storage\Exceptions\AuthenticationFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exception`
+
 
 ### Method Summary
 
@@ -2465,6 +2487,7 @@ __Uses__ `Phalcon\Storage\Exception`
 public function __construct();
 ```
 
+
 ## Storage\Exceptions\ClusterConnectionFailed
 
 <span class="badge badge--class">Class</span>
@@ -2473,12 +2496,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Storage\Exception`](#storageexception)
-- **`Phalcon\Storage\Exceptions\ClusterConnectionFailed`**
+    - [`Phalcon\Storage\Exception`](#storageexception)
+        - **`Phalcon\Storage\Exceptions\ClusterConnectionFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exception`
+
+
 
 ## Storage\Exceptions\ConnectionFailed
 
@@ -2488,12 +2513,14 @@ __Uses__ `Phalcon\Storage\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Storage\Exception`](#storageexception)
-- **`Phalcon\Storage\Exceptions\ConnectionFailed`**
+    - [`Phalcon\Storage\Exception`](#storageexception)
+        - **`Phalcon\Storage\Exceptions\ConnectionFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exception`
+
+
 
 ## Storage\Exceptions\DatabaseSelectionFailed
 
@@ -2503,12 +2530,13 @@ __Uses__ `Phalcon\Storage\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Storage\Exception`](#storageexception)
-- **`Phalcon\Storage\Exceptions\DatabaseSelectionFailed`**
+    - [`Phalcon\Storage\Exception`](#storageexception)
+        - **`Phalcon\Storage\Exceptions\DatabaseSelectionFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exception`
+
 
 ### Method Summary
 
@@ -2529,6 +2557,7 @@ __Uses__ `Phalcon\Storage\Exception`
 public function __construct();
 ```
 
+
 ## Storage\Exceptions\InvalidConfiguration
 
 <span class="badge badge--class">Class</span>
@@ -2537,12 +2566,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Storage\Exception`](#storageexception)
-- **`Phalcon\Storage\Exceptions\InvalidConfiguration`**
+    - [`Phalcon\Storage\Exception`](#storageexception)
+        - **`Phalcon\Storage\Exceptions\InvalidConfiguration`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exception`
+
+
 
 ## Storage\Exceptions\StorageError
 
@@ -2552,12 +2583,14 @@ __Uses__ `Phalcon\Storage\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Storage\Exception`](#storageexception)
-- **`Phalcon\Storage\Exceptions\StorageError`**
+    - [`Phalcon\Storage\Exception`](#storageexception)
+        - **`Phalcon\Storage\Exceptions\StorageError`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Exception`
+
+
 
 ## Storage\SerializerFactory
 
@@ -2567,12 +2600,13 @@ __Uses__ `Phalcon\Storage\Exception`
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.17/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Storage\SerializerFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.17/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Storage\SerializerFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Storage\Serializer\SerializerInterface`
+
 
 ### Method Summary
 
@@ -2634,6 +2668,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Storage\Serializer\AbstractSerializer
 
 <span class="badge badge--abstract">Abstract</span>
@@ -2645,11 +2680,11 @@ Returns the available adapters
 <div class="api-tree">
 
 - **`Phalcon\Storage\Serializer\AbstractSerializer`** - implements [`Phalcon\Storage\Serializer\SerializerInterface`](#storageserializerserializerinterface)
-- [`Phalcon\Storage\Serializer\Base64`](#storageserializerbase64)
-- [`Phalcon\Storage\Serializer\Igbinary`](#storageserializerigbinary)
-- [`Phalcon\Storage\Serializer\Json`](#storageserializerjson)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- [`Phalcon\Storage\Serializer\Php`](#storageserializerphp)
+    - [`Phalcon\Storage\Serializer\Base64`](#storageserializerbase64)
+    - [`Phalcon\Storage\Serializer\Igbinary`](#storageserializerigbinary)
+    - [`Phalcon\Storage\Serializer\Json`](#storageserializerjson)
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+    - [`Phalcon\Storage\Serializer\Php`](#storageserializerphp)
 
 </div>
 
@@ -2771,6 +2806,7 @@ protected function isSerializable( mixed $data ): bool;
 
 If this returns true, then the data is returned as is
 
+
 ## Storage\Serializer\Base64
 
 <span class="badge badge--class">Class</span>
@@ -2779,11 +2815,12 @@ If this returns true, then the data is returned as is
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- **`Phalcon\Storage\Serializer\Base64`**
+    - **`Phalcon\Storage\Serializer\Base64`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput` · `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\Base64Trait`
+
 
 ### Method Summary
 
@@ -2824,6 +2861,7 @@ Unserializes data
 
 @retrun void
 
+
 ## Storage\Serializer\Exceptions\InvalidSerializationInput
 
 <span class="badge badge--class">Class</span>
@@ -2832,7 +2870,7 @@ Unserializes data
 <div class="api-tree">
 
 - `\InvalidArgumentException`
-- **`Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput`**
+    - **`Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput`**
 
 </div>
 
@@ -2855,6 +2893,7 @@ Unserializes data
 public function __construct();
 ```
 
+
 ## Storage\Serializer\Exceptions\InvalidUnserializationInput
 
 <span class="badge badge--class">Class</span>
@@ -2863,7 +2902,7 @@ public function __construct();
 <div class="api-tree">
 
 - `\InvalidArgumentException`
-- **`Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`**
+    - **`Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput`**
 
 </div>
 
@@ -2886,6 +2925,7 @@ public function __construct();
 public function __construct();
 ```
 
+
 ## Storage\Serializer\Igbinary
 
 <span class="badge badge--class">Class</span>
@@ -2894,12 +2934,13 @@ public function __construct();
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- **`Phalcon\Storage\Serializer\Igbinary`**
-- [`Phalcon\Storage\Serializer\Msgpack`](#storageserializermsgpack)
+    - **`Phalcon\Storage\Serializer\Igbinary`**
+        - [`Phalcon\Storage\Serializer\Msgpack`](#storageserializermsgpack)
 
 </div>
 
 __Uses__ `Phalcon\Traits\Php\IgbinaryTrait`
+
 
 ### Method Summary
 
@@ -2967,6 +3008,7 @@ protected function doUnserialize( mixed $value );
 
 Unserialize
 
+
 ## Storage\Serializer\Json
 
 <span class="badge badge--class">Class</span>
@@ -2975,11 +3017,12 @@ Unserialize
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- **`Phalcon\Storage\Serializer\Json`**
+    - **`Phalcon\Storage\Serializer\Json`**
 
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode`
+
 
 ### Method Summary
 
@@ -3031,6 +3074,7 @@ public function unserialize( mixed $data ): void;
 
 Unserializes data
 
+
 ## Storage\Serializer\MemcachedIgbinary
 
 <span class="badge badge--class">Class</span>
@@ -3041,10 +3085,11 @@ Serializer using the built-in Memcached 'igbinary' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\MemcachedIgbinary`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\MemcachedIgbinary`**
 
 </div>
+
 
 ## Storage\Serializer\MemcachedJson
 
@@ -3056,10 +3101,11 @@ Serializer using the built-in Memcached 'json' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\MemcachedJson`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\MemcachedJson`**
 
 </div>
+
 
 ## Storage\Serializer\MemcachedPhp
 
@@ -3071,10 +3117,11 @@ Serializer using the built-in Memcached 'php' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\MemcachedPhp`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\MemcachedPhp`**
 
 </div>
+
 
 ## Storage\Serializer\Msgpack
 
@@ -3084,12 +3131,13 @@ Serializer using the built-in Memcached 'php' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\Igbinary`](#storageserializerigbinary)
-- **`Phalcon\Storage\Serializer\Msgpack`**
+    - [`Phalcon\Storage\Serializer\Igbinary`](#storageserializerigbinary)
+        - **`Phalcon\Storage\Serializer\Msgpack`**
 
 </div>
 
 __Uses__ `Phalcon\Traits\Php\MsgpackTrait`
+
 
 ### Method Summary
 
@@ -3124,6 +3172,7 @@ Serializes data
 protected function doUnserialize( mixed $value );
 ```
 
+
 ## Storage\Serializer\None
 
 <span class="badge badge--class">Class</span>
@@ -3132,15 +3181,15 @@ protected function doUnserialize( mixed $value );
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- **`Phalcon\Storage\Serializer\None`**
-- [`Phalcon\Storage\Serializer\MemcachedIgbinary`](#storageserializermemcachedigbinary)
-- [`Phalcon\Storage\Serializer\MemcachedJson`](#storageserializermemcachedjson)
-- [`Phalcon\Storage\Serializer\MemcachedPhp`](#storageserializermemcachedphp)
-- [`Phalcon\Storage\Serializer\RedisIgbinary`](#storageserializerredisigbinary)
-- [`Phalcon\Storage\Serializer\RedisJson`](#storageserializerredisjson)
-- [`Phalcon\Storage\Serializer\RedisMsgpack`](#storageserializerredismsgpack)
-- [`Phalcon\Storage\Serializer\RedisNone`](#storageserializerredisnone)
-- [`Phalcon\Storage\Serializer\RedisPhp`](#storageserializerredisphp)
+    - **`Phalcon\Storage\Serializer\None`**
+        - [`Phalcon\Storage\Serializer\MemcachedIgbinary`](#storageserializermemcachedigbinary)
+        - [`Phalcon\Storage\Serializer\MemcachedJson`](#storageserializermemcachedjson)
+        - [`Phalcon\Storage\Serializer\MemcachedPhp`](#storageserializermemcachedphp)
+        - [`Phalcon\Storage\Serializer\RedisIgbinary`](#storageserializerredisigbinary)
+        - [`Phalcon\Storage\Serializer\RedisJson`](#storageserializerredisjson)
+        - [`Phalcon\Storage\Serializer\RedisMsgpack`](#storageserializerredismsgpack)
+        - [`Phalcon\Storage\Serializer\RedisNone`](#storageserializerredisnone)
+        - [`Phalcon\Storage\Serializer\RedisPhp`](#storageserializerredisphp)
 
 </div>
 
@@ -3183,6 +3232,7 @@ Unserializes data
 
 @retrun void
 
+
 ## Storage\Serializer\Php
 
 <span class="badge badge--class">Class</span>
@@ -3191,11 +3241,12 @@ Unserializes data
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- **`Phalcon\Storage\Serializer\Php`**
+    - **`Phalcon\Storage\Serializer\Php`**
 
 </div>
 
 __Uses__ `Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput` · `Phalcon\Traits\Php\SerializeTrait`
+
 
 ### Method Summary
 
@@ -3234,6 +3285,7 @@ public function unserialize( mixed $data ): void;
 
 Unserializes data
 
+
 ## Storage\Serializer\RedisIgbinary
 
 <span class="badge badge--class">Class</span>
@@ -3244,10 +3296,11 @@ Serializer using the built-in Redis 'igbinary' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\RedisIgbinary`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\RedisIgbinary`**
 
 </div>
+
 
 ## Storage\Serializer\RedisJson
 
@@ -3259,10 +3312,11 @@ Serializer using the built-in Redis 'json' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\RedisJson`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\RedisJson`**
 
 </div>
+
 
 ## Storage\Serializer\RedisMsgpack
 
@@ -3274,10 +3328,11 @@ Serializer using the built-in Redis 'msgpack' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\RedisMsgpack`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\RedisMsgpack`**
 
 </div>
+
 
 ## Storage\Serializer\RedisNone
 
@@ -3289,10 +3344,11 @@ Serializer using the built-in Redis 'none' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\RedisNone`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\RedisNone`**
 
 </div>
+
 
 ## Storage\Serializer\RedisPhp
 
@@ -3304,10 +3360,11 @@ Serializer using the built-in Redis 'php' serializer
 <div class="api-tree">
 
 - [`Phalcon\Storage\Serializer\AbstractSerializer`](#storageserializerabstractserializer)
-- [`Phalcon\Storage\Serializer\None`](#storageserializernone)
-- **`Phalcon\Storage\Serializer\RedisPhp`**
+    - [`Phalcon\Storage\Serializer\None`](#storageserializernone)
+        - **`Phalcon\Storage\Serializer\RedisPhp`**
 
 </div>
+
 
 ## Storage\Serializer\SerializerInterface
 

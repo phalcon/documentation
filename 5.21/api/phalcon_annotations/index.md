@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Annotations\Adapter\AbstractAdapter
 
 Abstract
@@ -20,60 +21,46 @@ Abstract
 This is the base class for Phalcon\Annotations adapters
 
 - **`Phalcon\Annotations\Adapter\AbstractAdapter`** - implements [`Phalcon\Annotations\Adapter\AdapterInterface`](#annotationsadapteradapterinterface)
-- [`Phalcon\Annotations\Adapter\Apcu`](#annotationsadapterapcu)
-- [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
-- [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
+  - [`Phalcon\Annotations\Adapter\Apcu`](#annotationsadapterapcu)
+  - [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
+  - [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
 
 `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<ApiItem href="#annotationsadapterabstractadapter-get" visibility="public" name="get" returnType="Reflection" params={[{"type":"mixed","name":"className","default":null}]}>
-Parses or retrieves all the annotations found in a class
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getannotationslimit" visibility="public" name="getAnnotationsLimit" returnType="int" params={[]}>
-Returns the configured annotations-cache cap (0 = unlimited).
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getconstant" visibility="public" name="getConstant" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"constantName","default":null}]}>
-Returns the annotations found in a specific constant
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getconstants" visibility="public" name="getConstants" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the annotations found in all the class' constants
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getmethod" visibility="public" name="getMethod" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"methodName","default":null}]}>
-Returns the annotations found in a specific method
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getmethods" visibility="public" name="getMethods" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the annotations found in all the class' methods
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getproperties" visibility="public" name="getProperties" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the annotations found in all the class' properties
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getproperty" visibility="public" name="getProperty" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"propertyName","default":null}]}>
-Returns the annotations found in a specific property
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-getreader" visibility="public" name="getReader" returnType="ReaderInterface" params={[]}>
-Returns the annotation reader
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-setannotationslimit" visibility="public" name="setAnnotationsLimit" returnType="" params={[{"type":"int","name":"annotationsLimit","default":null}]}>
-Caps the number of class entries retained in the annotations
-</ApiItem>
-<ApiItem href="#annotationsadapterabstractadapter-setreader" visibility="public" name="setReader" returnType="" params={[{"type":"ReaderInterface","name":"reader","default":null}]}>
-Sets the annotations parser
-</ApiItem>
+- `public get(mixed $className): Reflection` — Parses or retrieves all the annotations found in a class
+
+- `public getAnnotationsLimit(): int` — Returns the configured annotations-cache cap (0 = unlimited).
+
+- `public getConstant(string $className, string $constantName): Collection` — Returns the annotations found in a specific constant
+
+- `public getConstants(string $className): array` — Returns the annotations found in all the class' constants
+
+- `public getMethod(string $className, string $methodName): Collection` — Returns the annotations found in a specific method
+
+- `public getMethods(string $className): array` — Returns the annotations found in all the class' methods
+
+- `public getProperties(string $className): array` — Returns the annotations found in all the class' properties
+
+- `public getProperty(string $className, string $propertyName): Collection` — Returns the annotations found in a specific property
+
+- `public getReader(): ReaderInterface` — Returns the annotation reader
+
+- `public setAnnotationsLimit(int $annotationsLimit)` — Caps the number of class entries retained in the annotations
+
+- `public setReader(ReaderInterface $reader)` — Sets the annotations parser
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="annotations" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="annotationsLimit" type="int" default="0">
-Maximum number of class annotation entries retained in the
-in-memory cache. 0 (default) keeps the original unbounded
-behavior; a positive value clears the cache when adding a new
-class would exceed it.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="reader" type="Reader" default="">
-</ApiItem>
+- `protected array $annotations = []`
+
+- `protected int $annotationsLimit = 0` — Maximum number of class annotation entries retained in the
+  in-memory cache. 0 (default) keeps the original unbounded
+  behavior; a positive value clears the cache when adding a new
+  class would exceed it.
+
+- `protected Reader $reader`
 
 ### Methods
 
@@ -98,8 +85,8 @@ See setAnnotationsLimit().
 
 ```php
 public function getConstant(
-string $className,
-string $constantName
+    string $className,
+    string $constantName
 ): Collection;
 ```
 
@@ -117,8 +104,8 @@ Returns the annotations found in all the class' constants
 
 ```php
 public function getMethod(
-string $className,
-string $methodName
+    string $className,
+    string $methodName
 ): Collection;
 ```
 
@@ -144,8 +131,8 @@ Returns the annotations found in all the class' properties
 
 ```php
 public function getProperty(
-string $className,
-string $propertyName
+    string $className,
+    string $propertyName
 ): Collection;
 ```
 
@@ -178,6 +165,7 @@ public function setReader( ReaderInterface $reader );
 
 Sets the annotations parser
 
+
 ## Annotations\Adapter\AdapterInterface
 
 Interface
@@ -190,33 +178,23 @@ This interface must be implemented by adapters in Phalcon\Annotations
 
 ### Method Summary
 
-<ApiItem href="#annotationsadapteradapterinterface-get" visibility="public" name="get" returnType="Reflection" params={[{"type":"string","name":"className","default":null}]}>
-Parses or retrieves all the annotations found in a class
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getconstant" visibility="public" name="getConstant" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"constantName","default":null}]}>
-Returns the annotations found in a specific constant
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getconstants" visibility="public" name="getConstants" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the annotations found in all the class' constants
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getmethod" visibility="public" name="getMethod" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"methodName","default":null}]}>
-Returns the annotations found in a specific method
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getmethods" visibility="public" name="getMethods" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the annotations found in all the class' methods
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getproperties" visibility="public" name="getProperties" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Returns the annotations found in all the class' methods
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getproperty" visibility="public" name="getProperty" returnType="Collection" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"propertyName","default":null}]}>
-Returns the annotations found in a specific property
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-getreader" visibility="public" name="getReader" returnType="ReaderInterface" params={[]}>
-Returns the annotation reader
-</ApiItem>
-<ApiItem href="#annotationsadapteradapterinterface-setreader" visibility="public" name="setReader" returnType="" params={[{"type":"ReaderInterface","name":"reader","default":null}]}>
-Sets the annotations parser
-</ApiItem>
+- `public get(string $className): Reflection` — Parses or retrieves all the annotations found in a class
+
+- `public getConstant(string $className, string $constantName): Collection` — Returns the annotations found in a specific constant
+
+- `public getConstants(string $className): array` — Returns the annotations found in all the class' constants
+
+- `public getMethod(string $className, string $methodName): Collection` — Returns the annotations found in a specific method
+
+- `public getMethods(string $className): array` — Returns the annotations found in all the class' methods
+
+- `public getProperties(string $className): array` — Returns the annotations found in all the class' methods
+
+- `public getProperty(string $className, string $propertyName): Collection` — Returns the annotations found in a specific property
+
+- `public getReader(): ReaderInterface` — Returns the annotation reader
+
+- `public setReader(ReaderInterface $reader)` — Sets the annotations parser
 
 ### Methods
 
@@ -232,8 +210,8 @@ Parses or retrieves all the annotations found in a class
 
 ```php
 public function getConstant(
-string $className,
-string $constantName
+    string $className,
+    string $constantName
 ): Collection;
 ```
 
@@ -251,8 +229,8 @@ Returns the annotations found in all the class' constants
 
 ```php
 public function getMethod(
-string $className,
-string $methodName
+    string $className,
+    string $methodName
 ): Collection;
 ```
 
@@ -278,8 +256,8 @@ Returns the annotations found in all the class' methods
 
 ```php
 public function getProperty(
-string $className,
-string $propertyName
+    string $className,
+    string $propertyName
 ): Collection;
 ```
 
@@ -301,6 +279,7 @@ public function setReader( ReaderInterface $reader );
 
 Sets the annotations parser
 
+
 ## Annotations\Adapter\Apcu
 
 Class
@@ -314,28 +293,23 @@ $annotations = new Apcu();
 ```
 
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
-- **`Phalcon\Annotations\Adapter\Apcu`**
+  - **`Phalcon\Annotations\Adapter\Apcu`**
 
 `Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<ApiItem href="#annotationsadapterapcu-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Annotations\Adapter\Apcu constructor
-</ApiItem>
-<ApiItem href="#annotationsadapterapcu-read" visibility="public" name="read" returnType="Reflection|bool" params={[{"type":"string","name":"key","default":null}]}>
-Reads parsed annotations from APCu
-</ApiItem>
-<ApiItem href="#annotationsadapterapcu-write" visibility="public" name="write" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"Reflection","name":"data","default":null}]}>
-Writes parsed annotations to APCu
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Annotations\Adapter\Apcu constructor
+
+- `public read(string $key): Reflection|bool` — Reads parsed annotations from APCu
+
+- `public write(string $key, Reflection $data): bool` — Writes parsed annotations to APCu
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="prefix" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="ttl" type="int" default="172800">
-</ApiItem>
+- `protected string $prefix = ""`
+
+- `protected int $ttl = 172800`
 
 ### Methods
 
@@ -359,12 +333,13 @@ Reads parsed annotations from APCu
 
 ```php
 public function write(
-string $key,
-Reflection $data
+    string $key,
+    Reflection $data
 ): bool;
 ```
 
 Writes parsed annotations to APCu
+
 
 ## Annotations\Adapter\Memory
 
@@ -374,25 +349,21 @@ Stores the parsed annotations in memory. This adapter is the suitable
 development/testing
 
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
-- **`Phalcon\Annotations\Adapter\Memory`**
+  - **`Phalcon\Annotations\Adapter\Memory`**
 
 `Phalcon\Annotations\Reflection`
 
 ### Method Summary
 
-<ApiItem href="#annotationsadaptermemory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#annotationsadaptermemory-read" visibility="public" name="read" returnType="Reflection|bool" params={[{"type":"string","name":"key","default":null}]}>
-Reads parsed annotations from memory
-</ApiItem>
-<ApiItem href="#annotationsadaptermemory-write" visibility="public" name="write" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"Reflection","name":"data","default":null}]}>
-Writes parsed annotations to memory
-</ApiItem>
+- `public __construct(array $options = [])`
+
+- `public read(string $key): Reflection|bool` — Reads parsed annotations from memory
+
+- `public write(string $key, Reflection $data): void` — Writes parsed annotations to memory
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="data" type="mixed" default="">
-</ApiItem>
+- `protected mixed $data`
 
 ### Methods
 
@@ -414,12 +385,13 @@ Reads parsed annotations from memory
 
 ```php
 public function write(
-string $key,
-Reflection $data
+    string $key,
+    Reflection $data
 ): void;
 ```
 
 Writes parsed annotations to memory
+
 
 ## Annotations\Adapter\Stream
 
@@ -431,33 +403,28 @@ Stores the parsed annotations in files. This adapter is suitable for production
 use Phalcon\Annotations\Adapter\Stream;
 
 $annotations = new Stream(
-[
-    "annotationsDir" => "app/cache/annotations/",
-]
+    [
+        "annotationsDir" => "app/cache/annotations/",
+    ]
 );
 ```
 
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
-- **`Phalcon\Annotations\Adapter\Stream`**
+  - **`Phalcon\Annotations\Adapter\Stream`**
 
 `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Traits\Php\FileTrait` · `RuntimeException`
 
 ### Method Summary
 
-<ApiItem href="#annotationsadapterstream-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Annotations\Adapter\Stream constructor
-</ApiItem>
-<ApiItem href="#annotationsadapterstream-read" visibility="public" name="read" returnType="Reflection|bool|int" params={[{"type":"string","name":"key","default":null}]}>
-Reads parsed annotations from files
-</ApiItem>
-<ApiItem href="#annotationsadapterstream-write" visibility="public" name="write" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"Reflection","name":"data","default":null}]}>
-Writes parsed annotations to files
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Annotations\Adapter\Stream constructor
+
+- `public read(string $key): Reflection|bool|int` — Reads parsed annotations from files
+
+- `public write(string $key, Reflection $data): void` — Writes parsed annotations to files
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="annotationsDir" type="string" default="&quot;./&quot;">
-</ApiItem>
+- `protected string $annotationsDir = "./"`
 
 ### Methods
 
@@ -481,12 +448,13 @@ Reads parsed annotations from files
 
 ```php
 public function write(
-string $key,
-Reflection $data
+    string $key,
+    Reflection $data
 ): void;
 ```
 
 Writes parsed annotations to files
+
 
 ## Annotations\Annotation
 
@@ -500,48 +468,33 @@ Represents a single annotation in an annotations collection
 
 ### Method Summary
 
-<ApiItem href="#annotationsannotation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":null}]}>
-Phalcon\Annotations\Annotation constructor
-</ApiItem>
-<ApiItem href="#annotationsannotation-getargument" visibility="public" name="getArgument" returnType="mixed|null" params={[{"type":"mixed","name":"position","default":null}]}>
-Returns an argument in a specific position
-</ApiItem>
-<ApiItem href="#annotationsannotation-getarguments" visibility="public" name="getArguments" returnType="array" params={[]}>
-Returns the expression arguments
-</ApiItem>
-<ApiItem href="#annotationsannotation-getexprarguments" visibility="public" name="getExprArguments" returnType="array" params={[]}>
-Returns the expression arguments without resolving
-</ApiItem>
-<ApiItem href="#annotationsannotation-getexpression" visibility="public" name="getExpression" returnType="mixed" params={[{"type":"array","name":"expr","default":null}]}>
-Resolves an annotation expression
-</ApiItem>
-<ApiItem href="#annotationsannotation-getname" visibility="public" name="getName" returnType="null|string" params={[]}>
-Returns the annotation's name
-</ApiItem>
-<ApiItem href="#annotationsannotation-getnamedargument" visibility="public" name="getNamedArgument" returnType="mixed|null" params={[{"type":"string","name":"name","default":null}]}>
-Returns a named argument
-</ApiItem>
-<ApiItem href="#annotationsannotation-getnamedparameter" visibility="public" name="getNamedParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-Returns a named parameter
-</ApiItem>
-<ApiItem href="#annotationsannotation-hasargument" visibility="public" name="hasArgument" returnType="bool" params={[{"type":"mixed","name":"position","default":null}]}>
-Returns an argument in a specific position
-</ApiItem>
-<ApiItem href="#annotationsannotation-numberarguments" visibility="public" name="numberArguments" returnType="int" params={[]}>
-Returns the number of arguments that the annotation has
-</ApiItem>
+- `public __construct(array $reflectionData)` — Phalcon\Annotations\Annotation constructor
+
+- `public getArgument(mixed $position): mixed|null` — Returns an argument in a specific position
+
+- `public getArguments(): array` — Returns the expression arguments
+
+- `public getExprArguments(): array` — Returns the expression arguments without resolving
+
+- `public getExpression(array $expr): mixed` — Resolves an annotation expression
+
+- `public getName(): null|string` — Returns the annotation's name
+
+- `public getNamedArgument(string $name): mixed|null` — Returns a named argument
+
+- `public getNamedParameter(string $name): mixed` — Returns a named parameter
+
+- `public hasArgument(mixed $position): bool` — Returns an argument in a specific position
+
+- `public numberArguments(): int` — Returns the number of arguments that the annotation has
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="[]">
-Annotation Arguments
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="exprArguments" type="array" default="[]">
-Annotation ExprArguments
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="name" type="string|null" default="">
-Annotation Name
-</ApiItem>
+- `protected array $arguments = []` — Annotation Arguments
+
+- `protected array $exprArguments = []` — Annotation ExprArguments
+
+- `protected string|null $name` — Annotation Name
 
 ### Methods
 
@@ -625,6 +578,7 @@ public function numberArguments(): int;
 
 Returns the number of arguments that the annotation has
 
+
 ## Annotations\AnnotationsFactory
 
 Class
@@ -632,27 +586,22 @@ Class
 Factory to create annotations components
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.21/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.21/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Annotations\AnnotationsFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.21/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Annotations\AnnotationsFactory`**
 
 `Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
-<ApiItem href="#annotationsannotationsfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-AdapterFactory constructor.
-</ApiItem>
-<ApiItem href="#annotationsannotationsfactory-load" visibility="public" name="load" returnType="mixed" params={[{"type":"mixed","name":"config","default":null}]}>
-Factory to create an instance from a Config object
-</ApiItem>
-<ApiItem href="#annotationsannotationsfactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Create a new instance of the adapter
-</ApiItem>
-<ApiItem href="#annotationsannotationsfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#annotationsannotationsfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
+- `public __construct(array $services = [])` — AdapterFactory constructor.
+
+- `public load(mixed $config): mixed` — Factory to create an instance from a Config object
+
+- `public newInstance(string $name, array $options = []): AdapterInterface` — Create a new instance of the adapter
+
+- `protected getExceptionClass(): string`
+
+- `protected getServices(): array` — Returns the available adapters
 
 ### Methods
 
@@ -676,8 +625,8 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): AdapterInterface;
 ```
 
@@ -697,6 +646,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Annotations\Collection
 
 Class
@@ -707,7 +657,7 @@ of annotations easily
 ```php
 // Traverse annotations
 foreach ($classAnnotations as $annotation) {
-echo "Name=", $annotation->getName(), PHP_EOL;
+    echo "Name=", $annotation->getName(), PHP_EOL;
 }
 
 // Check if the annotations has a specific
@@ -723,46 +673,33 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ### Method Summary
 
-<ApiItem href="#annotationscollection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":"[]"}]}>
-Phalcon\Annotations\Collection constructor
-</ApiItem>
-<ApiItem href="#annotationscollection-count" visibility="public" name="count" returnType="int" params={[]}>
-Returns the number of annotations in the collection
-</ApiItem>
-<ApiItem href="#annotationscollection-current" visibility="public" name="current" returnType="mixed" params={[]}>
-Returns the current annotation in the iterator
-</ApiItem>
-<ApiItem href="#annotationscollection-get" visibility="public" name="get" returnType="Annotation" params={[{"type":"string","name":"name","default":null}]}>
-Returns the first annotation that match a name
-</ApiItem>
-<ApiItem href="#annotationscollection-getall" visibility="public" name="getAll" returnType="Annotation[]" params={[{"type":"string","name":"name","default":null}]}>
-Returns all the annotations that match a name
-</ApiItem>
-<ApiItem href="#annotationscollection-getannotations" visibility="public" name="getAnnotations" returnType="Annotation[]" params={[]}>
-Returns the internal annotations as an array
-</ApiItem>
-<ApiItem href="#annotationscollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Check if an annotation exists in a collection
-</ApiItem>
-<ApiItem href="#annotationscollection-key" visibility="public" name="key" returnType="int" params={[]}>
-Returns the current position/key in the iterator
-</ApiItem>
-<ApiItem href="#annotationscollection-next" visibility="public" name="next" returnType="void" params={[]}>
-Moves the internal iteration pointer to the next position
-</ApiItem>
-<ApiItem href="#annotationscollection-rewind" visibility="public" name="rewind" returnType="void" params={[]}>
-Rewinds the internal iterator
-</ApiItem>
-<ApiItem href="#annotationscollection-valid" visibility="public" name="valid" returnType="bool" params={[]}>
-Check if the current annotation in the iterator is valid
-</ApiItem>
+- `public __construct(array $reflectionData = [])` — Phalcon\Annotations\Collection constructor
+
+- `public count(): int` — Returns the number of annotations in the collection
+
+- `public current(): mixed` — Returns the current annotation in the iterator
+
+- `public get(string $name): Annotation` — Returns the first annotation that match a name
+
+- `public getAll(string $name): Annotation[]` — Returns all the annotations that match a name
+
+- `public getAnnotations(): Annotation[]` — Returns the internal annotations as an array
+
+- `public has(string $name): bool` — Check if an annotation exists in a collection
+
+- `public key(): int` — Returns the current position/key in the iterator
+
+- `public next(): void` — Moves the internal iteration pointer to the next position
+
+- `public rewind(): void` — Rewinds the internal iterator
+
+- `public valid(): bool` — Check if the current annotation in the iterator is valid
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="annotations" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="position" type="int" default="0">
-</ApiItem>
+- `protected array $annotations`
+
+- `protected int $position = 0`
 
 ### Methods
 
@@ -854,6 +791,7 @@ public function valid(): bool;
 
 Check if the current annotation in the iterator is valid
 
+
 ## Annotations\Exception
 
 Class
@@ -861,25 +799,25 @@ Class
 Class for exceptions thrown by Phalcon\Annotations
 
 - `\Exception`
-- **`Phalcon\Annotations\Exception`**
-- [`Phalcon\Annotations\Exceptions\AnnotationNotFound`](#annotationsexceptionsannotationnotfound)
-- [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
-- [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
+  - **`Phalcon\Annotations\Exception`**
+    - [`Phalcon\Annotations\Exceptions\AnnotationNotFound`](#annotationsexceptionsannotationnotfound)
+    - [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
+    - [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
+
 
 ## Annotations\Exceptions\AnnotationNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Annotations\Exception`](#annotationsexception)
-- **`Phalcon\Annotations\Exceptions\AnnotationNotFound`**
+  - [`Phalcon\Annotations\Exception`](#annotationsexception)
+    - **`Phalcon\Annotations\Exceptions\AnnotationNotFound`**
 
 `Phalcon\Annotations\Exception`
 
 ### Method Summary
 
-<ApiItem href="#annotationsexceptionsannotationnotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -889,20 +827,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Annotations\Exceptions\AnnotationsDirectoryNotWritable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Annotations\Exception`](#annotationsexception)
-- **`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`**
+  - [`Phalcon\Annotations\Exception`](#annotationsexception)
+    - **`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`**
 
 `Phalcon\Annotations\Exception`
 
 ### Method Summary
 
-<ApiItem href="#annotationsexceptionsannotationsdirectorynotwritable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -912,19 +850,19 @@ Class
 public function __construct();
 ```
 
+
 ## Annotations\Exceptions\CannotReadAnnotationData
 
 Class
 
 - `\RuntimeException`
-- **`Phalcon\Annotations\Exceptions\CannotReadAnnotationData`**
+  - **`Phalcon\Annotations\Exceptions\CannotReadAnnotationData`**
 
 `RuntimeException`
 
 ### Method Summary
 
-<ApiItem href="#annotationsexceptionscannotreadannotationdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -934,20 +872,20 @@ Class
 public function __construct();
 ```
 
+
 ## Annotations\Exceptions\UnknownAnnotationExpression
 
 Class
 
 - `\Exception`
-- [`Phalcon\Annotations\Exception`](#annotationsexception)
-- **`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`**
+  - [`Phalcon\Annotations\Exception`](#annotationsexception)
+    - **`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`**
 
 `Phalcon\Annotations\Exception`
 
 ### Method Summary
 
-<ApiItem href="#annotationsexceptionsunknownannotationexpression-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -956,6 +894,7 @@ Class
 ```php
 public function __construct( string $type );
 ```
+
 
 ## Annotations\Reader
 
@@ -969,12 +908,9 @@ Parses docblocks returning an array with the found annotations
 
 ### Method Summary
 
-<ApiItem href="#annotationsreader-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Reads annotations from the class docblocks, its methods and/or properties
-</ApiItem>
-<ApiItem href="#annotationsreader-parsedocblock" visibility="public" name="parseDocBlock" returnType="array" params={[{"type":"string","name":"docBlock","default":null},{"type":"mixed","name":"file","default":"null"},{"type":"mixed","name":"line","default":"null"}]}>
-Parses a raw doc block returning the annotations found
-</ApiItem>
+- `public parse(string $className): array` — Reads annotations from the class docblocks, its methods and/or properties
+
+- `public parseDocBlock(string $docBlock, mixed $file = null, mixed $line = null): array` — Parses a raw doc block returning the annotations found
 
 ### Methods
 
@@ -990,13 +926,14 @@ Reads annotations from the class docblocks, its methods and/or properties
 
 ```php
 public static function parseDocBlock(
-string $docBlock,
-mixed $file = null,
-mixed $line = null
+    string $docBlock,
+    mixed $file = null,
+    mixed $line = null
 ): array;
 ```
 
 Parses a raw doc block returning the annotations found
+
 
 ## Annotations\ReaderInterface
 
@@ -1008,12 +945,9 @@ Parses docblocks returning an array with the found annotations
 
 ### Method Summary
 
-<ApiItem href="#annotationsreaderinterface-parse" visibility="public" name="parse" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-Reads annotations from the class docblocks, its constants, properties and methods
-</ApiItem>
-<ApiItem href="#annotationsreaderinterface-parsedocblock" visibility="public" name="parseDocBlock" returnType="array" params={[{"type":"string","name":"docBlock","default":null},{"type":"mixed","name":"file","default":"null"},{"type":"mixed","name":"line","default":"null"}]}>
-Parses a raw docblock returning the annotations found
-</ApiItem>
+- `public parse(string $className): array` — Reads annotations from the class docblocks, its constants, properties and methods
+
+- `public parseDocBlock(string $docBlock, mixed $file = null, mixed $line = null): array` — Parses a raw docblock returning the annotations found
 
 ### Methods
 
@@ -1029,13 +963,14 @@ Reads annotations from the class docblocks, its constants, properties and method
 
 ```php
 public static function parseDocBlock(
-string $docBlock,
-mixed $file = null,
-mixed $line = null
+    string $docBlock,
+    mixed $file = null,
+    mixed $line = null
 ): array;
 ```
 
 Parses a raw docblock returning the annotations found
+
 
 ## Annotations\Reflection
 
@@ -1062,36 +997,29 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ### Method Summary
 
-<ApiItem href="#annotationsreflection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#annotationsreflection-getclassannotations" visibility="public" name="getClassAnnotations" returnType="Collection|null" params={[]}>
-Returns the annotations found in the class docblock
-</ApiItem>
-<ApiItem href="#annotationsreflection-getconstantsannotations" visibility="public" name="getConstantsAnnotations" returnType="Collection[]" params={[]}>
-Returns the annotations found in the constants' docblocks
-</ApiItem>
-<ApiItem href="#annotationsreflection-getmethodsannotations" visibility="public" name="getMethodsAnnotations" returnType="Collection[]" params={[]}>
-Returns the annotations found in the methods' docblocks
-</ApiItem>
-<ApiItem href="#annotationsreflection-getpropertiesannotations" visibility="public" name="getPropertiesAnnotations" returnType="Collection[]" params={[]}>
-Returns the annotations found in the properties' docblocks
-</ApiItem>
-<ApiItem href="#annotationsreflection-getreflectiondata" visibility="public" name="getReflectionData" returnType="array" params={[]}>
-Returns the raw parsing intermediate definitions used to construct the
-</ApiItem>
+- `public __construct(array $reflectionData = [])`
+
+- `public getClassAnnotations(): Collection|null` — Returns the annotations found in the class docblock
+
+- `public getConstantsAnnotations(): Collection[]` — Returns the annotations found in the constants' docblocks
+
+- `public getMethodsAnnotations(): Collection[]` — Returns the annotations found in the methods' docblocks
+
+- `public getPropertiesAnnotations(): Collection[]` — Returns the annotations found in the properties' docblocks
+
+- `public getReflectionData(): array` — Returns the raw parsing intermediate definitions used to construct the
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="classAnnotations" type="Collection|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="constantAnnotations" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="methodAnnotations" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="propertyAnnotations" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="reflectionData" type="array" default="[]">
-</ApiItem>
+- `protected Collection|null $classAnnotations = null`
+
+- `protected array $constantAnnotations = []`
+
+- `protected array $methodAnnotations = []`
+
+- `protected array $propertyAnnotations = []`
+
+- `protected array $reflectionData = []`
 
 ### Methods
 

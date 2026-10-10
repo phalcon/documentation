@@ -25,22 +25,22 @@ Annotations are read from docblocks in classes, methods and properties. An annot
  */
 class Example
 {
-/**
- * This a property with a special feature
- *
- * @SpecialFeature
- */
-protected $someProperty;
+    /**
+     * This a property with a special feature
+     *
+     * @SpecialFeature
+     */
+    protected $someProperty;
 
-/**
- * This is a method
- *
- * @SpecialFeature
- */
-public function someMethod()
-{
-    // ...
-}
+    /**
+     * This is a method
+     *
+     * @SpecialFeature
+     */
+    public function someMethod()
+    {
+        // ...
+    }
 }
 ```
 
@@ -113,22 +113,22 @@ use Phalcon\Mvc\Model;
  */
 class Customers extends Model
 {
-/**
- * @Primary
- * @Identity
- * @Column(type="integer", nullable=false, column="cst_id")
- */
-public $id;
+    /**
+     * @Primary
+     * @Identity
+     * @Column(type="integer", nullable=false, column="cst_id")
+     */
+    public $id;
 
-/**
- * @Column(type="string", nullable=false, column="cst_name_first")
- */
-public $nameFirst;
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_first")
+     */
+    public $nameFirst;
 
-/**
- * @Column(type="string", nullable=false, column="cst_name_last")
- */
-public $nameLast;
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_last")
+     */
+    public $nameLast;
 }
 ```
 
@@ -211,10 +211,10 @@ This component makes use of adapters to cache or no cache the parsed and process
 use Phalcon\Annotations\Adapter\Apcu;
 
 $adapter = new Apcu(
-[
-    'prefix'   => 'my-prefix',
-    'lifetime' => 3600,
-]
+    [
+        'prefix'   => 'my-prefix',
+        'lifetime' => 3600,
+    ]
 );
 ```
 
@@ -230,13 +230,13 @@ $pattern  = "/^_PHAN/";
 $iterator = new APCuIterator($pattern);
 
 if (true === is_object($iterator)) {
-return false;
+    return false;
 }
 
 foreach ($iterator as $item) {
-if (true !== apcu_delete($item["key"])) {
-    $result = false;
-}
+    if (true !== apcu_delete($item["key"])) {
+        $result = false;
+    }
 }
 
 return $result;
@@ -263,9 +263,9 @@ $adapter = new Memory();
 use Phalcon\Annotations\Adapter\Stream;
 
 $adapter = new Stream(
-[
-    'annotationsDir' => '/app/storage/cache/annotations',
-]
+    [
+        'annotationsDir' => '/app/storage/cache/annotations',
+    ]
 );
 ```
 
@@ -292,8 +292,8 @@ The example below shows how you can create an Apcu annotations adapter:
 use Phalcon\Annotations\AnnotationsFactory;
 
 $options = [
-'prefix'   => 'my-prefix',
-'lifetime' => 3600,
+    'prefix'   => 'my-prefix',
+    'lifetime' => 3600,
 ];
 
 $factory = new AdapterFactory();
@@ -309,11 +309,11 @@ The [Phalcon\Annotations\AnnotationsFactory][annotations-annotationsfactory] als
 use Phalcon\Annotations\AnnotationsFactory;
 
 $options = [
-'adapter' => 'apcu',
-'options' => [
-    'prefix'   => 'my-prefix',
-    'lifetime' => 3600,
-]
+    'adapter' => 'apcu',
+    'options' => [
+        'prefix'   => 'my-prefix',
+        'lifetime' => 3600,
+    ]
 ];
 
 $factory = new AdapterFactory();
@@ -334,10 +334,10 @@ $reflector   = $adapter->get('Invoices');
 $annotations = $reflector->getClassAnnotations();
 
 foreach ($annotations as $annotation) {
-echo $annotation->getName(), PHP_EOL;
-echo $annotation->numberArguments(), PHP_EOL;
+    echo $annotation->getName(), PHP_EOL;
+    echo $annotation->numberArguments(), PHP_EOL;
 
-print_r($annotation->getArguments());
+    print_r($annotation->getArguments());
 }
 ```
 In the above example we first create the memory annotations adapter. We then call `get` on it to load the annotations from the `Invoices` class. The `getClassAnnotations` will return a [Phalcon\Annotations\Collection][annotations-collection] class. We iterate through the collection and print out the name (`getName`), the number arguments (`numberArguments`) and then we print all the arguments (`getArguments`) on screen.
@@ -356,21 +356,21 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $adapter = new Memory();
-
-        $reflector   = $adapter->get('Invoices');
-        $annotations = $reflector->getClassAnnotations();
-
-        foreach ($annotations as $annotation) {
-            echo $annotation->getExpression('unknown-expression');
+    public function index()
+    {
+        try {
+            $adapter = new Memory();
+            
+            $reflector   = $adapter->get('Invoices');
+            $annotations = $reflector->getClassAnnotations();
+            
+            foreach ($annotations as $annotation) {
+                echo $annotation->getExpression('unknown-expression');
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
         }
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
     }
-}
 }
 ```
 
@@ -391,14 +391,14 @@ use Phalcon\Annotations\Adapter\Apcu;
 $container = new FactoryDefault();
 
 $container->set(
-'annotations',
-function () {
-    return new Apcu(
-        [
-            'lifetime' => 86400
-        ]
-    );
-}
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
 );
 ```
 
@@ -421,44 +421,44 @@ use MyApp\Components\Auth;
  */
 class BaseController extends Controller
 {
-/**
- * @param Event $event
- * @param Dispatcher $dispatcher
- *
- * @return bool
- */
-public function beforeExceuteRoute(
-    Dispatcher $dispatcher
-) {
-    $controllerName = $dispatcher->getControllerClass();
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExceuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
 
-    $annotations = $this
-        ->annotations
-        ->get($controllerName)
-    ;
+        $annotations = $this
+            ->annotations
+            ->get($controllerName)
+        ;
 
-    $exists = $annotations
-        ->getClassAnnotations()
-        ->has('Private')
-    ;
+        $exists = $annotations
+            ->getClassAnnotations()
+            ->has('Private')
+        ;
+        
+        if (true !== $exists) {
+            return true;
+        }
 
-    if (true !== $exists) {
-        return true;
+        if (true === $this->auth->isLoggedIn()) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
     }
-
-    if (true === $this->auth->isLoggedIn()) {
-        return true;
-    }
-
-    $dispatcher->forward(
-        [
-            'controller' => 'session',
-            'action'     => 'login',
-        ]
-    );
-
-    return false;
-}
 }
 ```
 
@@ -480,9 +480,9 @@ use MyApp\Controllers\BaseController;
  */
 class Invoices extends BaseController
 {
-public function indexAction()
-{
-}
+    public function indexAction()
+    {
+    }
 }
 ```
 
@@ -501,14 +501,14 @@ use Phalcon\Annotations\Adapter\Apcu;
 $container = new FactoryDefault();
 
 $container->set(
-'annotations',
-function () {
-    return new Apcu(
-        [
-            'lifetime' => 86400
-        ]
-    );
-}
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
 );
 ```
 
@@ -531,50 +531,50 @@ use MyApp\Components\Auth;
  */
 class BaseController extends Controller
 {
-/**
- * @param Event $event
- * @param Dispatcher $dispatcher
- *
- * @return bool
- */
-public function beforeExceuteRoute(
-    Dispatcher $dispatcher
-) {
-    $controllerName = $dispatcher->getControllerClass();
-    $actionName     = $dispatcher->getActionName()
-                    . 'Action';
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExceuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
+        $actionName     = $dispatcher->getActionName()
+                        . 'Action';
 
-    $data = $this
-        ->annotations
-        ->getMethod($controllerName, $actionName)
-    ;
-    $access    = $data->get('Access');
-    $aclGroups = $access->getArguments();
+        $data = $this
+            ->annotations
+            ->getMethod($controllerName, $actionName)
+        ;
+        $access    = $data->get('Access');
+        $aclGroups = $access->getArguments();
 
-    $user   = $this->acl->getUser();
-    $groups = $user->getRelated('groups');
+        $user   = $this->acl->getUser();
+        $groups = $user->getRelated('groups');
+        
+        $userGroups = [];
+        foreach ($groups as $group) {
+            $userGroups[] = $group->grp_name;
+        }
 
-    $userGroups = [];
-    foreach ($groups as $group) {
-        $userGroups[] = $group->grp_name;
+        $allowed = array_intersect($userGroups, $aclGroups);
+        $allowed = (count($allowed) > 0);
+        
+        if (true === $allowed) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
     }
-
-    $allowed = array_intersect($userGroups, $aclGroups);
-    $allowed = (count($allowed) > 0);
-
-    if (true === $allowed) {
-        return true;
-    }
-
-    $dispatcher->forward(
-        [
-            'controller' => 'session',
-            'action'     => 'login',
-        ]
-    );
-
-    return false;
-}
 }
 ```
 
@@ -592,37 +592,37 @@ use MyApp\Controllers\BaseController;
  */
 class Invoices extends BaseController
 {
-/**
- * @Access(
- *     'Administrators',
- *     'Accounting',
- *     'Users',
- *     'Guests'
- * )
- */
-public function indexAction()
-{
-}
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     *     'Users',
+     *     'Guests'
+     * )
+     */
+    public function indexAction()
+    {
+    }
 
-/**
- * @Access(
- *     'Administrators',
- *     'Accounting',
- * )
- */
-public function listAction()
-{
-}
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function listAction()
+    {
+    }
 
-/**
- * @Access(
- *     'Administrators',
- *     'Accounting',
- * )
- */
-public function viewAction()
-{
-}
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function viewAction()
+    {
+    }
 }
 ```
 

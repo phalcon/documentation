@@ -67,27 +67,27 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
 
 $sql = '
-SELECT 
-    inv_id, 
-    inv_title 
-FROM 
-    co_invoices 
-WHERE 
-    inv_cst_id = :cst_id
+    SELECT 
+        inv_id, 
+        inv_title 
+    FROM 
+        co_invoices 
+    WHERE 
+        inv_cst_id = :cst_id
 ';
 
 $bind = [
-'cst_id' => 1
+    'cst_id' => 1
 ];
 
 $result = $connection->fetchAll($statement, $bind);
@@ -97,12 +97,12 @@ $result = $connection->fetchAll($statement, $bind);
 
 ```php
 public function __construct(
-string $dsn,
-string $username = null,
-string $password = null,
-array $options = [],
-array $queries = [],
-ProfilerInterface $profiler = null
+    string $dsn,
+    string $username = null,
+    string $password = null,
+    array $options = [],
+    array $queries = [],
+    ProfilerInterface $profiler = null
 )
 ```
 
@@ -184,9 +184,9 @@ is more resource intensive and should be avoided if possible.
 
 ```php
 public function fetchColumn(
-string $statement,
-array $values = [],
-int $column = 0
+    string $statement,
+    array $values = [],
+    int $column = 0
 ): array
 ```
 
@@ -194,9 +194,9 @@ Fetches a column of rows as a sequential array (default first one).
 
 ```php
 public function fetchGroup(
-string $statement,
-array $values = [],
-int $flags = \PDO::FETCH_ASSOC
+    string $statement,
+    array $values = [],
+    int $flags = \PDO::FETCH_ASSOC
 ): array 
 ```
 
@@ -205,10 +205,10 @@ are `PDO::FETCH_ASSOC` | `PDO::FETCH_GROUP`
 
 ```php
 public function fetchObject(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): object 
 ```
 
@@ -220,10 +220,10 @@ returned is `\stdClass`
 
 ```php
 public function fetchObjects(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): array {
 ```
 
@@ -309,8 +309,8 @@ Returns the last inserted autoincrement sequence value. If the profiler is enabl
 
 ```php
 public function perform(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): \PDOStatement
 ```
 
@@ -320,8 +320,8 @@ operation will be recorded.
 
 ```php
 public function prepare(
-string $statement,
-array $options = []
+    string $statement,
+    array $options = []
 ): \PDOStatement
 ```
 
@@ -361,10 +361,10 @@ Sets the Profiler instance.
 
 ```php
 protected function fetchData(
-string $method,
-array $arguments,
-string $statement,
-array $values = []
+    string $method,
+    array $arguments,
+    string $statement,
+    array $values = []
 ): array
 ```
 
@@ -372,9 +372,9 @@ Helper method to get data from PDO based on the method passed
 
 ```php
 protected function performBind(
-\PDOStatement $statement,
-mixed $name,
-mixed $arguments
+    \PDOStatement $statement,
+    mixed $name,
+    mixed $arguments
 ): void
 ```
 
@@ -408,11 +408,11 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
@@ -425,9 +425,9 @@ $locator = new ConnectionLocator($connection);
 
 ```php
 public function __construct(
-ConnectionInterface $master,
-array $read = [],
-array $write = []
+    ConnectionInterface $master,
+    array $read = [],
+    array $write = []
 )
 ```
 
@@ -461,8 +461,8 @@ Sets the default connection factory.
 
 ```php
 public function setRead(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ):  ConnectionLocatorInterface
 ```
 
@@ -470,8 +470,8 @@ Sets a read connection factory by name.
 
 ```php
 public function setWrite(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): ConnectionLocatorInterface
 ```
 
@@ -479,8 +479,8 @@ Sets a write connection factory by name.
 
 ```php
 protected function getConnection(
-string $type,
-string $name = ""
+    string $type,
+    string $name = ""
 ):  ConnectionInterface
 ```
 
@@ -501,13 +501,13 @@ connection. The master connection is the connection that will be used when read 
 <?php
 
 $locator = new ConnectionLocator(
-function () use ($options) {
-    return new Connection(
-        'mysql:host=10.4.6.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    function () use ($options) {
+        return new Connection(
+            'mysql:host=10.4.6.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 );
 ```
 
@@ -518,50 +518,50 @@ Now you can add as many read and write servers as required
 
 // Write: master
 $locator->addRead(
-'master',
-function () {
-    return new Connection(
-        'mysql:host=10.4.4.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    'master',
+    function () {
+        return new Connection(
+            'mysql:host=10.4.4.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 );
 
 // Read: slave01
 $locator->addRead(
-'slave01',
-function () {
-    return new Connection(
-        'mysql:host=10.4.8.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    'slave01',
+    function () {
+        return new Connection(
+            'mysql:host=10.4.8.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 );
 
 // Read: slave02
 $locator->addRead(
-'slave02',
-function () {
-    return new Connection(
-        'mysql:host=10.4.8.2;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    'slave02',
+    function () {
+        return new Connection(
+            'mysql:host=10.4.8.2;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 );
 
 // Read: slave03
 $locator->addRead(
-'slave03',
-function () {
-    return new Connection(
-        'mysql:host=10.4.8.3;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    'slave03',
+    function () {
+        return new Connection(
+            'mysql:host=10.4.8.3;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 );
 ```
 
@@ -575,50 +575,50 @@ locator as a service in a DI container.
 
 // Set up write connections
 $write = [
-'master' => function () {
-    return new Connection(
-        'mysql:host=10.4.4.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    'master' => function () {
+        return new Connection(
+            'mysql:host=10.4.4.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 ];
 
 // Set up read connections
 $read = [
-'slave01' => function () {
-    return new Connection(
-        'mysql:host=10.4.8.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-},
-'slave02' => function () {
-    return new Connection(
-        'mysql:host=10.4.8.2;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-},
-'slave03' => function () {
-    return new Connection(
-        'mysql:host=10.4.8.3;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-}
+    'slave01' => function () {
+        return new Connection(
+            'mysql:host=10.4.8.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    },
+    'slave02' => function () {
+        return new Connection(
+            'mysql:host=10.4.8.2;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    },
+    'slave03' => function () {
+        return new Connection(
+            'mysql:host=10.4.8.3;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    }
 ];
 
 $locator = new ConnectionLocator(
-function () use ($options) {
-    return new Connection(
-        'mysql:host=10.4.6.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
-        'username', 
-        'password'
-    );
-},
-$read,
-$write
+    function () use ($options) {
+        return new Connection(
+            'mysql:host=10.4.6.1;dbname=phalcon_db;charset=utf8mb4;port=3306',
+            'username', 
+            'password'
+        );
+    },
+    $read,
+    $write
 );
 ```
 
@@ -664,25 +664,25 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $profiler   = new Profiler(new MemoryLogger());
 $connection = new Connection(
-$dsn, 
-$username, 
-$password,
-[
-    PDO::ATTR_EMULATE_PREPARES => true, // PDO options
-],
-[
-    'SET NAMES utf8mb4', // startup queries
-],
-$profiler
+    $dsn, 
+    $username, 
+    $password,
+    [
+        PDO::ATTR_EMULATE_PREPARES => true, // PDO options
+    ],
+    [
+        'SET NAMES utf8mb4', // startup queries
+    ],
+    $profiler
 );
 
 // Same profiler as the one we created above
@@ -712,8 +712,8 @@ You can customize the message format using the `setLogFormat()` on the profiler
 <?php
 
 $connection
-->getProfiler()
-->setLogFormat("{duration}: {method} {statement}{values}")
+    ->getProfiler()
+    ->setLogFormat("{duration}: {method} {statement}{values}")
 ```
 
 The parameters available are:
@@ -796,11 +796,11 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
@@ -820,9 +820,9 @@ Delete constructor.
 
 ```php
 public function andWhere(
-string $condition, 
-mixed $value = null, 
-int $type = -1
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
 ): Delete
 ```
 
@@ -830,9 +830,9 @@ Sets a `AND` for a `WHERE` condition
 
 ```php
 public function appendWhere(
-string $condition, 
-mixed $value = null, 
-int $type = -1
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
 ): Delete
 ```
 
@@ -894,9 +894,9 @@ Sets the `ORDER BY`
 
 ```php
 public function orWhere(
-string $condition, 
-mixed $value = null, 
-int $type = -1
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
 ): Delete
 ```
 
@@ -910,8 +910,8 @@ Performs a statement in the connection
 
 ```php
 public function quoteIdentifier(
-string $name, 
-int $type = \PDO::PARAM_STR
+    string $name, 
+    int $type = \PDO::PARAM_STR
 ): string 
 ```
 
@@ -985,9 +985,9 @@ Sets a flag for the query such as "DISTINCT"
 
 ```php
 public function where(
-string $condition, 
-mixed $value = null, 
-int $type = -1
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
 ): Delete
 ```
 
@@ -1001,11 +1001,11 @@ sw
 
 ```php
 protected function addCondition(
-string $store, 
-string $andor, 
-string $condition, 
-mixed $value = null, 
-int $type = -1
+    string $store, 
+    string $andor, 
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
 ): void 
 ```
 
@@ -1013,10 +1013,10 @@ Appends a conditional
 
 ```php
 protected function appendCondition(
-string $store, 
-string $condition, 
-mixed $value = null, 
-int $type = -1
+    string $store, 
+    string $condition, 
+    mixed $value = null, 
+    int $type = -1
 ): void 
 ```
 
@@ -1102,11 +1102,11 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
@@ -1120,7 +1120,7 @@ The `from()` method is used to specify the table to delete data from.
 
 ```php
 $delete
-->from('co_invoices')
+    ->from('co_invoices')
 ; 
 
 $delete->perform();
@@ -1134,8 +1134,8 @@ The `where()` method(s) are used to specify conditions for the `DELETE` statemen
 
 ```php
 $delete
-->from('co_invoices')
-->where('inv_cst_id = ', 1)
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
 ; 
 
 $delete->perform();
@@ -1152,9 +1152,9 @@ Certain databases (in particular MySQL) accept `ORDER BY` on a delete. You can u
 
 ```php
 $delete
-->from('co_invoices')
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
 ; 
 
 $delete->perform();
@@ -1172,11 +1172,11 @@ methods to specify them.
 
 ```php
 $delete
-->from('co_invoices')
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
-->limit(10)
-->offset(40)
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
 ; 
 
 $delete->perform();
@@ -1194,12 +1194,12 @@ Some databases (notably PostgreSQL) accept a `RETURNING` clause. You can use the
 
 ```php
 $delete
-->from('co_invoices')
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
-->limit(10)
-->offset(40)
-->returning(['inv_id', 'inv_cst_id'])
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
 ; 
 
 $delete->perform();
@@ -1219,13 +1219,13 @@ You can set flags recognized by your database server using the `setFlag()` metho
 
 ```php
 $delete
-->from('co_invoices')
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
-->limit(10)
-->offset(40)
-->returning(['inv_id', 'inv_cst_id'])
-->setFlag('LOW_PRIORITY')
+    ->from('co_invoices')
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
+    ->setFlag('LOW_PRIORITY')
 ; 
 
 $delete->perform();
@@ -1424,11 +1424,11 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
@@ -1456,8 +1456,8 @@ used by `PDO`. This is set automatically for `string`, `integer`, `float` and `n
 
 ```php
 $insert
-->into('co_invoices')
-->column('inv_total', 100.12)
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
 ;
 
 $insert->perform();
@@ -1468,10 +1468,10 @@ The `columns()` method returns the object back, thus offering a fluent interface
 
 ```php
 $insert
-->into('co_invoices')
-->column('inv_cst_id', 2)
-->column('inv_total', 100.12);
-->column('inv_status_flag', 0, PDO::PARAM_BOOL)
+    ->into('co_invoices')
+    ->column('inv_cst_id', 2)
+    ->column('inv_total', 100.12);
+    ->column('inv_status_flag', 0, PDO::PARAM_BOOL)
 ;
 
 $insert->perform();
@@ -1492,13 +1492,13 @@ the value of that element will be the field name.
 
 ```php
 $insert
-->into('co_invoices')
-->columns(
-    [
-        'inv_cst_id' => 2, 
-        'inv_total'  => 100.12
-    ]
-)
+    ->into('co_invoices')
+    ->columns(
+        [
+            'inv_cst_id' => 2, 
+            'inv_total'  => 100.12
+        ]
+    )
 ;
 
 $insert->perform();
@@ -1523,9 +1523,9 @@ purpose, we can use the `set()` method.
 
 ```php
 $insert
-->into('co_invoices')
-->column('inv_total', 100.12)
-->set('inv_created_date', 'NOW()')
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+    ->set('inv_created_date', 'NOW()')
 ;
 
 $insert->perform();
@@ -1544,9 +1544,9 @@ The object can return the constructed statement by calling the `getStatement()` 
 
 ```php
 $insert
-->into('co_invoices')
-->column('inv_total', 100.12)
-->set('inv_created_date', 'NOW()')
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+    ->set('inv_created_date', 'NOW()')
 ;
 
 echo $insert->getStatement();
@@ -1566,33 +1566,33 @@ passing an array of fields to be returned.
 
 ```php
 $insert
-->into('co_invoices')
-->columns(
-    [
-        'inv_cst_id', 
-        'inv_total' => 100.12
-    ]
-)
-->set('inv_id', null)
-->set('inv_status_flag', 1)
-->set('inv_created_date', 'NOW()')
-->columns(
-    [
-        'inv_cst_id' => 1
-    ]
-)
-->returning(
-    [
-        'inv_id', 
-        'inv_cst_id'
-    ]
-)
-->returning(
-    [
-        'inv_total'
-    ]
-)
-->set('inv_created_date', 'NOW()')
+    ->into('co_invoices')
+    ->columns(
+        [
+            'inv_cst_id', 
+            'inv_total' => 100.12
+        ]
+    )
+    ->set('inv_id', null)
+    ->set('inv_status_flag', 1)
+    ->set('inv_created_date', 'NOW()')
+    ->columns(
+        [
+            'inv_cst_id' => 1
+        ]
+    )
+    ->returning(
+        [
+            'inv_id', 
+            'inv_cst_id'
+        ]
+    )
+    ->returning(
+        [
+            'inv_total'
+        ]
+    )
+    ->set('inv_created_date', 'NOW()')
 ;
 
 $insert->perform();
@@ -1619,10 +1619,10 @@ You can set flags recognized by your database server using the `setFlag()` metho
 
 ```php
 $insert
-->into('co_invoices')
-->column('inv_total', 100.12)
-->set('inv_created_date', 'NOW()')
-->setFlag('LOW_PRIORITY')
+    ->into('co_invoices')
+    ->column('inv_total', 100.12)
+    ->set('inv_created_date', 'NOW()')
+    ->setFlag('LOW_PRIORITY')
 ;
 
 $insert->perform();
@@ -1657,11 +1657,11 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
@@ -1688,10 +1688,10 @@ once the query is built:
 
 ```php
 $records = $select
-->from('co_invoices')
-->columns(['inv_id', 'inv_title'])
-->where('inv_cst_id = 1')
-->fetchAssoc()
+    ->from('co_invoices')
+    ->columns(['inv_id', 'inv_title'])
+    ->where('inv_cst_id = 1')
+    ->fetchAssoc()
 ;
 
 var_dump($records);
@@ -1714,12 +1714,12 @@ string, it will be used as an alias for the column.
 <?php
 
 $columns = [
-'inv_id', 
-'inv_cst_id', 
-'inv_status_flag', 
-'inv_title', 
-'inv_total', 
-'inv_created_at',
+    'inv_id', 
+    'inv_cst_id', 
+    'inv_status_flag', 
+    'inv_title', 
+    'inv_total', 
+    'inv_created_at',
 ];
 
 $select->columns($columns);
@@ -1739,12 +1739,12 @@ $select->columns($columns);
 <?php
 
 $columns = [
-'id'         => 'inv_id', 
-'customerId' => 'inv_cst_id', 
-'status'     => 'inv_status_flag', 
-'title'      => 'inv_title', 
-'total'      => 'inv_total', 
-'createdAt'  => 'inv_created_at',
+    'id'         => 'inv_id', 
+    'customerId' => 'inv_cst_id', 
+    'status'     => 'inv_status_flag', 
+    'title'      => 'inv_title', 
+    'total'      => 'inv_total', 
+    'createdAt'  => 'inv_created_at',
 ];
 
 $select->columns($columns);
@@ -1764,8 +1764,8 @@ $select->columns($columns);
 <?php
 
 $columns = [
-'customerId' => 'inv_cst_id', 
-'totalCount' => 'COUNT(inv_total)'
+    'customerId' => 'inv_cst_id', 
+    'totalCount' => 'COUNT(inv_total)'
 ];
 
 $select->columns($columns);
@@ -1785,7 +1785,7 @@ To add a FROM clause, use the `from()` method:
 <?php
 
 $select
-->from('co_invoices')
+    ->from('co_invoices')
 ;
 
 // SELECT * FROM co_invoices
@@ -1797,7 +1797,7 @@ $select
 <?php
 
 $select
-->from('co_invoices AS i')
+    ->from('co_invoices AS i')
 ;
 
 // SELECT * FROM co_invoices i
@@ -1813,8 +1813,8 @@ To add a JOIN clause, use the join() method:
 <?php
 
 $select
-->from('co_invoices')
-->join($select::JOIN_LEFT, 'co_customers', 'inv_cst_id = cst_id')
+    ->from('co_invoices')
+    ->join($select::JOIN_LEFT, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
 // SELECT * FROM co_invoices 
@@ -1827,8 +1827,8 @@ $select
 <?php
 
 $select
-->from('co_invoices')
-->join($select::JOIN_RIGHT, 'co_customers', 'inv_cst_id = cst_id')
+    ->from('co_invoices')
+    ->join($select::JOIN_RIGHT, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
 // SELECT * FROM co_invoices 
@@ -1841,8 +1841,8 @@ $select
 <?php
 
 $select
-->from('co_invoices')
-->join($select::JOIN_INNER, 'co_customers', 'inv_cst_id = cst_id')
+    ->from('co_invoices')
+    ->join($select::JOIN_INNER, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
 // SELECT * FROM co_invoices 
@@ -1855,8 +1855,8 @@ $select
 <?php
 
 $select
-->from('co_invoices AS i')
-->join($select::JOIN_NATURAL, 'co_customers', 'inv_cst_id = cst_id')
+    ->from('co_invoices AS i')
+    ->join($select::JOIN_NATURAL, 'co_customers', 'inv_cst_id = cst_id')
 ;
 
 // SELECT * FROM co_invoices 
@@ -1870,14 +1870,14 @@ $select
 
 $status = 1;
 $select
-->from('co_invoices')
-->join(
-    $select::JOIN_LEFT, 
-    'co_customers', 
-    'inv_cst_id = cst_id AND cst_status_flag = ',
-    $status
-)
-->appendJoin(' AND cst_name LIKE ', '%john%')
+    ->from('co_invoices')
+    ->join(
+        $select::JOIN_LEFT, 
+        'co_customers', 
+        'inv_cst_id = cst_id AND cst_status_flag = ',
+        $status
+    )
+    ->appendJoin(' AND cst_name LIKE ', '%john%')
 ;
 
 // SELECT * FROM co_invoices 
@@ -1898,8 +1898,8 @@ condition.
 
 $invoiceId = 1;
 $select
-->from('co_invoices')
-->where('inv_id > ', $invoiceId)
+    ->from('co_invoices')
+    ->where('inv_id > ', $invoiceId)
 ;
 
 // SELECT * FROM co_invoices 
@@ -1915,12 +1915,12 @@ $customerIds = [1, 2, 3];
 $status      = 1;
 $totalValue  = 100;
 $select
-->from('co_invoices')
-->where('inv_id > 1')
-->andWhere('inv_total > :total')
-->andWhere('inv_cst_id IN ', $customerIds)
-->appendWhere(' AND inv_status_flag = ' . $select->bindInline($status))
-->bindValue('total', $totalValue)
+    ->from('co_invoices')
+    ->where('inv_id > 1')
+    ->andWhere('inv_total > :total')
+    ->andWhere('inv_cst_id IN ', $customerIds)
+    ->appendWhere(' AND inv_status_flag = ' . $select->bindInline($status))
+    ->bindValue('total', $totalValue)
 ;
 
 // SELECT * FROM co_invoices 
@@ -1938,10 +1938,10 @@ $select
 $status      = 1;
 $totalValue  = 100;
 $select
-->from('co_invoices')
-->appendWhere('inv_total > ', $totalValue)
-->orWhere("inv_status_flag = :status")
-->bindValue('status', $status)
+    ->from('co_invoices')
+    ->appendWhere('inv_total > ', $totalValue)
+    ->orWhere("inv_status_flag = :status")
+    ->bindValue('status', $status)
 ;
 
 // SELECT * FROM co_invoices 
@@ -1965,15 +1965,15 @@ on an array of key-value pairs:
 
 $invoiceIds = [1, 2, 3];
 $select
-->from('co_invoices')
-->whereEquals(
-    [
-        'inv_id'     => $invoiceIds,
-        'inv_cst_id' => null,
-        'inv_title'  => 'ACME',
-        'inv_created_at = NOW()',
-    ]
-)
+    ->from('co_invoices')
+    ->whereEquals(
+        [
+            'inv_id'     => $invoiceIds,
+            'inv_cst_id' => null,
+            'inv_title'  => 'ACME',
+            'inv_created_at = NOW()',
+        ]
+    )
 ;
 
 // SELECT * FROM co_invoices 
@@ -1991,9 +1991,9 @@ To add `GROUP BY` expressions, use the `groupBy()` method and pass each expressi
 <?php
 
 $select
-->from('co_invoices')
-->groupBy('inv_cst_id')
-->groupBy('inv_status_flag')
+    ->from('co_invoices')
+    ->groupBy('inv_cst_id')
+    ->groupBy('inv_status_flag')
 ;
 
 // SELECT * FROM co_invoices 
@@ -2016,13 +2016,13 @@ To add `ORDER BY` expressions, use the `orderBy()` method and pass each expressi
 <?php
 
 $select
-->from('co_invoices')
-->orderBy(
-    [
-        'inv_cst_id',
-        'UPPER(inv_title) DESC',
-    ]
-)
+    ->from('co_invoices')
+    ->orderBy(
+        [
+            'inv_cst_id',
+            'UPPER(inv_title) DESC',
+        ]
+    )
 ;
 
 // SELECT * FROM co_invoices 
@@ -2037,17 +2037,17 @@ To set a `LIMIT` and `OFFSET`, use the `limit()` and `offset()` methods.
 <?php
 
 $select
-->from('co_invoices')
-->limit(10)
+    ->from('co_invoices')
+    ->limit(10)
 ;
 
 // SELECT * FROM co_invoices 
 //  LIMIT 10
 
 $select
-->from('co_invoices')
-->limit(10)
-->offset(50)
+    ->from('co_invoices')
+    ->limit(10)
+    ->offset(50)
 ;
 
 // SELECT * FROM co_invoices 
@@ -2062,9 +2062,9 @@ Alternatively, you can limit by "pages" using the `page()` and `perPage()` metho
 <?php
 
 $select
-->from('co_invoices')
-->page(5)
-->perPage(10)
+    ->from('co_invoices')
+    ->page(5)
+    ->perPage(10)
 ;
 
 // SELECT * FROM co_invoices 
@@ -2079,14 +2079,14 @@ You can set the `DISTINCT` clause as follows:
 <?php
 
 $select
-->distinct()
-->from('co_invoices')
-->columns(
-    [
-        'inv_id', 
-        'inc_cst_id'
-    ]
-)
+    ->distinct()
+    ->from('co_invoices')
+    ->columns(
+        [
+            'inv_id', 
+            'inc_cst_id'
+        ]
+    )
 ;
 
 // SELECT DISTINCT inv_id, inc_cst_id
@@ -2105,16 +2105,16 @@ You can set the `FOR UPDATE` clause as follows:
 <?php
 
 $select
-->from('co_invoices')
-->forUpdate()
+    ->from('co_invoices')
+    ->forUpdate()
 ;
 
 // SELECT * FROM co_invoices FOR UPDATE
 
 $select
-->from('co_invoices')
-->forUpdate()
-->forUpdate(false)
+    ->from('co_invoices')
+    ->forUpdate()
+    ->forUpdate(false)
 ;
 
 // SELECT * FROM co_invoices
@@ -2133,8 +2133,8 @@ You can set flags recognized by your database server using the `setFlag()` metho
 <?php
 
 $select
-->from('co_invoices')
-->setFlag('HIGH_PRIORITY')
+    ->from('co_invoices')
+    ->setFlag('HIGH_PRIORITY')
 ;
 
 // SELECT HIGH_PRIORITY * FROM co_invoices
@@ -2148,14 +2148,14 @@ To `UNION` or `UNION ALL` the current `Select` with a followup statement, call o
 <?php
 
 $select
-->from('co_invoices')
-->where('inv_id = 1')
-->union()
-->from('co_invoices')
-->where('inv_id = 2')
-->union()
-->from('co_invoices')
-->where('inv_id = 3')
+    ->from('co_invoices')
+    ->where('inv_id = 1')
+    ->union()
+    ->from('co_invoices')
+    ->where('inv_id = 2')
+    ->union()
+    ->from('co_invoices')
+    ->where('inv_id = 3')
 ;
 
 // SELECT * FROM co_invoices WHERE inv_id = 1
@@ -2165,11 +2165,11 @@ $select
 // SELECT * FROM co_invoices WHERE inv_id = 3
 
 $select
-->from('co_invoices')
-->where('inv_id = 1')
-->unionAll()
-->from('co_invoices')
-->where('inv_id = 2')
+    ->from('co_invoices')
+    ->where('inv_id = 1')
+    ->unionAll()
+    ->from('co_invoices')
+    ->where('inv_id = 2')
 ;
 
 // SELECT * FROM co_invoices WHERE inv_id = 1
@@ -2205,14 +2205,14 @@ the `FROM` condition, you will need to call the `getStatement()` method, to retu
 <?php
 
 $select
-->from(
-    $select
-        ->subSelect()
-        ->columns("inv_id")
-        ->from('co_invoices')
-        ->asAlias('inv')
-        ->getStatement()
-)
+    ->from(
+        $select
+            ->subSelect()
+            ->columns("inv_id")
+            ->from('co_invoices')
+            ->asAlias('inv')
+            ->getStatement()
+    )
 ;
 
 // SELECT *
@@ -2227,16 +2227,16 @@ When we need to pass parameters, we can just add them to the subselect.
 $invoiceId  = 1;
 $maxInvoice = 100;
 $select
-->from(
-    $select
-        ->subSelect()
-        ->columns('inv_id')
-        ->from('co_invoices')
-        ->where('inv_id > ', $invoiceId)
-        ->asAlias('inv')
-        ->getStatement()
-)
-->where('inv_id <', $maxInvoice)
+    ->from(
+        $select
+            ->subSelect()
+            ->columns('inv_id')
+            ->from('co_invoices')
+            ->where('inv_id > ', $invoiceId)
+            ->asAlias('inv')
+            ->getStatement()
+    )
+    ->where('inv_id <', $maxInvoice)
 ;
 
 // SELECT *
@@ -2250,15 +2250,15 @@ Subselects can be used also in `JOIN` and `WHERE` conditions as follows:
 <?php
 
 $select
-->from('co_invoices')
-->join(
-    'LEFT'
-    $select
-        ->subSelect()
-        ...
-        ->asAlias('subAlias')
-        ->getStatement()
-)
+    ->from('co_invoices')
+    ->join(
+        'LEFT'
+        $select
+            ->subSelect()
+            ...
+            ->asAlias('subAlias')
+            ->getStatement()
+    )
 ;
 ```
 
@@ -2270,25 +2270,25 @@ For `WHERE` in particular, you do not need to convert it to a string using `getS
 $customerId = 1;
 $total      = 100.0
 $select
-->columns(
-    [
-        'inv_id',
-        'inv_total'
-    ]   
-)
-->from('co_invoices')
-->where(
-    'inv_id IN '
-    $select
-        ->subSelect()
-        ->columns(
-            [
-                'cst_inv_id',
-            ]
-        )
-        ->from('co_customers')
-        ->where('inv_total > ', $total)
-)
+    ->columns(
+        [
+            'inv_id',
+            'inv_total'
+        ]   
+    )
+    ->from('co_invoices')
+    ->where(
+        'inv_id IN '
+        $select
+            ->subSelect()
+            ->columns(
+                [
+                    'cst_inv_id',
+                ]
+            )
+            ->from('co_customers')
+            ->where('inv_total > ', $total)
+    )
 ;
 
 // SELECT inv_id, inv_total
@@ -2302,9 +2302,9 @@ $select
 
 ```php
 public function andWhere(
-string condition,
-mixed $value = null,
-int $type = -1
+    string condition,
+    mixed $value = null,
+    int $type = -1
 ): Update
 ```
 
@@ -2312,9 +2312,9 @@ Sets a `AND` for a `WHERE` condition
 
 ```php
 public function appendWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Update
 ```
 
@@ -2328,9 +2328,9 @@ Binds a value inline
 
 ```php
 public function bindValue(
-string $key,
-mixed $value,
-int $type = -1
+    string $key,
+    mixed $value,
+    int $type = -1
 ): Update
 ```
 
@@ -2344,9 +2344,9 @@ Binds an array of values
 
 ```php
 public function column(
-string $column, 
-mixed $value = null, 
-int $type = -1
+    string $column, 
+    mixed $value = null, 
+    int $type = -1
 ): Update
 ```
 
@@ -2402,9 +2402,9 @@ Sets the `ORDER BY`
 
 ```php
 public function orWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Update
 ```
 
@@ -2418,8 +2418,8 @@ Performs a statement in the connection
 
 ```php
 public function quoteIdentifier(
-string $name,
-int $type = \PDO::PARAM_STR
+    string $name,
+    int $type = \PDO::PARAM_STR
 ): string
 ```
 
@@ -2499,9 +2499,9 @@ Sets a flag for the query such as "DISTINCT"
 
 ```php
 public function where(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Update
 ```
 
@@ -2515,11 +2515,11 @@ Sets a `WHERE` condition with equality
 
 ```php
 protected function addCondition(
-string $store,
-string $andor,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $store,
+    string $andor,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): void
 ```
 
@@ -2527,10 +2527,10 @@ Appends a conditional
 
 ```php
 protected function appendCondition(
-string $store,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $store,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): void
 ```
 
@@ -2616,11 +2616,11 @@ $username = 'phalcon';
 $password = 'secret';
 
 $dsn = sprintf(
-"mysql:host=%s;dbname=%s;charset=%s;port=%s",
-$host,
-$database,
-$charset,
-$port
+    "mysql:host=%s;dbname=%s;charset=%s;port=%s",
+    $host,
+    $database,
+    $charset,
+    $port
 );
 
 $connection = new Connection($dsn, $username, $password);
@@ -2634,7 +2634,7 @@ The `table()` method is used to specify the table to insert data to.
 
 ```php
 $update
-->table('co_invoices');
+    ->table('co_invoices');
 
 $update->perform();
 // UPDATE co_invoices
@@ -2646,10 +2646,10 @@ You can use the `column()` method to set a new value to a particular column.
 
 ```php
 $update
-->table('co_invoices');
-->column('inv_cst_id', 2)
-->column('inv_total', 100.12);
-->column('inv_status_flag', 0, PDO::PARAM_BOOL)
+    ->table('co_invoices');
+    ->column('inv_cst_id', 2)
+    ->column('inv_total', 100.12);
+    ->column('inv_status_flag', 0, PDO::PARAM_BOOL)
 ;
 
 $update->perform();
@@ -2668,14 +2668,14 @@ keys are the field names and the array values are the desired values to update.
 
 ```php
 $update
-->table('co_invoices');
-->columns(
-    [
-        'inv_cst_id'      => 2,
-        'inv_total'       => 100.12,
-        'inv_status_flag' => 0,
-    ]
-)
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
 ;
 
 $update->perform();
@@ -2699,16 +2699,16 @@ Certain databases (in particular MySQL) accept `ORDER BY` on a delete. You can u
 
 ```php
 $update
-->table('co_invoices');
-->columns(
-    [
-        'inv_cst_id'      => 2,
-        'inv_total'       => 100.12,
-        'inv_status_flag' => 0,
-    ]
-)
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
 ; 
 
 $update->perform();
@@ -2728,18 +2728,18 @@ methods to specify them.
 
 ```php
 $update
-->table('co_invoices');
-->columns(
-    [
-        'inv_cst_id'      => 2,
-        'inv_total'       => 100.12,
-        'inv_status_flag' => 0,
-    ]
-)
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
-->limit(10)
-->offset(40)
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
 ; 
 
 $update->perform();
@@ -2760,19 +2760,19 @@ passing an array of fields to be returned.
 
 ```php
 $update
-->table('co_invoices');
-->columns(
-    [
-        'inv_cst_id'      => 2,
-        'inv_total'       => 100.12,
-        'inv_status_flag' => 0,
-    ]
-)
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
-->limit(10)
-->offset(40)
-->returning(['inv_id', 'inv_cst_id'])
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
 ; 
 
 $update->perform();
@@ -2793,20 +2793,20 @@ You can set flags recognized by your database server using the `setFlag()` metho
 
 ```php
 $update
-->table('co_invoices');
-->columns(
-    [
-        'inv_cst_id'      => 2,
-        'inv_total'       => 100.12,
-        'inv_status_flag' => 0,
-    ]
-)
-->where('inv_cst_id = ', 1)
-->orderBy('inv_id')
-->limit(10)
-->offset(40)
-->returning(['inv_id', 'inv_cst_id'])
-->setFlag('LOW_PRIORITY')
+    ->table('co_invoices');
+    ->columns(
+        [
+            'inv_cst_id'      => 2,
+            'inv_total'       => 100.12,
+            'inv_status_flag' => 0,
+        ]
+    )
+    ->where('inv_cst_id = ', 1)
+    ->orderBy('inv_id')
+    ->limit(10)
+    ->offset(40)
+    ->returning(['inv_id', 'inv_cst_id'])
+    ->setFlag('LOW_PRIORITY')
 ; 
 
 $update->perform();

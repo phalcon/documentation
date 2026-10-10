@@ -35,6 +35,7 @@ The remaining dependencies for the project are installed using composer.
 ## Providers
 Setting up the 
 
+
 ## Controllers
 ## Models
 ## Routes
@@ -74,6 +75,9 @@ Setting up the
 
 ## CLI
 
+
+ 
+
 In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:
 
 * `GET` to retrieve and search data
@@ -100,19 +104,19 @@ The following file structure is more than enough:
 
 ```php
 my-rest-api/
-models/
-    Robots.php
-index.php
-.htaccess
+    models/
+        Robots.php
+    index.php
+    .htaccess
 ```
 
 First, we need a `.htaccess` file that contains all the rules to rewrite the request URIs to the `index.php` file (application entry-point):
 
 ```apache
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
 </IfModule>
 ```
 
@@ -128,7 +132,7 @@ $app = new Micro();
 // Define the routes here
 
 $app->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -143,54 +147,54 @@ $app = new Micro();
 
 // Retrieves all robots
 $app->get(
-'/api/robots',
-function () {
-    // Operation to fetch all the robots
-}
+    '/api/robots',
+    function () {
+        // Operation to fetch all the robots
+    }
 );
 
 // Searches for robots with $name in their name
 $app->get(
-'/api/robots/search/{name}',
-function ($name) {
-    // Operation to fetch robot with name $name
-}
+    '/api/robots/search/{name}',
+    function ($name) {
+        // Operation to fetch robot with name $name
+    }
 );
 
 // Retrieves robots based on primary key
 $app->get(
-'/api/robots/{id:[0-9]+}',
-function ($id) {
-    // Operation to fetch robot with id $id
-}
+    '/api/robots/{id:[0-9]+}',
+    function ($id) {
+        // Operation to fetch robot with id $id
+    }
 );
 
 // Adds a new robot
 $app->post(
-'/api/robots',
-function () {
-    // Operation to create a fresh robot
-}
+    '/api/robots',
+    function () {
+        // Operation to create a fresh robot
+    }
 );
 
 // Updates robots based on primary key
 $app->put(
-'/api/robots/{id:[0-9]+}',
-function ($id) {
-    // Operation to update a robot with id $id
-}
+    '/api/robots/{id:[0-9]+}',
+    function ($id) {
+        // Operation to update a robot with id $id
+    }
 );
 
 // Deletes robots based on primary key
 $app->delete(
-'/api/robots/{id:[0-9]+}',
-function ($id) {
-    // Operation to delete the robot with id $id
-}
+    '/api/robots/{id:[0-9]+}',
+    function ($id) {
+        // Operation to delete the robot with id $id
+    }
 );
 
 $app->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -214,46 +218,46 @@ use Phalcon\Validation\Validator\InclusionIn;
 
 class Robots extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
-
-    // Type must be: droid, mechanical or virtual
-    $validator->add(
-        "type",
-        new InclusionIn(
-            [
-                'message' => 'Type must be "droid", "mechanical", or "virtual"',
-                'domain' => [
-                    'droid',
-                    'mechanical',
-                    'virtual',
-                ],
-            ]
-        )
-    );
-
-    // Robot name must be unique
-    $validator->add(
-        'name',
-        new Uniqueness(
-            [
-                'field'   => 'name',
-                'message' => 'The robot name must be unique',
-            ]
-        )
-    );
-
-    // Year cannot be less than zero
-    if ($this->year < 0) {
-        $this->appendMessage(
-            new Message('The year cannot be less than zero')
+    public function validation()
+    {
+        $validator = new Validation();
+        
+        // Type must be: droid, mechanical or virtual
+        $validator->add(
+            "type",
+            new InclusionIn(
+                [
+                    'message' => 'Type must be "droid", "mechanical", or "virtual"',
+                    'domain' => [
+                        'droid',
+                        'mechanical',
+                        'virtual',
+                    ],
+                ]
+            )
         );
-    }
 
-    // Validate the valididator
-    return $this->validate($validator);
-}
+        // Robot name must be unique
+        $validator->add(
+            'name',
+            new Uniqueness(
+                [
+                    'field'   => 'name',
+                    'message' => 'The robot name must be unique',
+                ]
+            )
+        );
+
+        // Year cannot be less than zero
+        if ($this->year < 0) {
+            $this->appendMessage(
+                new Message('The year cannot be less than zero')
+            );
+        }
+
+        // Validate the valididator
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -271,9 +275,9 @@ use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-    'Store\Toys' => __DIR__ . '/models/',
-]
+    [
+        'Store\Toys' => __DIR__ . '/models/',
+    ]
 );
 
 $loader->register();
@@ -282,17 +286,17 @@ $di = new FactoryDefault();
 
 // Set up the database service
 $di->set(
-'db',
-function () {
-    return new PdoMysql(
-        [
-            'host'     => 'localhost',
-            'username' => 'asimov',
-            'password' => 'zeroth',
-            'dbname'   => 'robotics',
-        ]
-    );
-}
+    'db',
+    function () {
+        return new PdoMysql(
+            [
+                'host'     => 'localhost',
+                'username' => 'asimov',
+                'password' => 'zeroth',
+                'dbname'   => 'robotics',
+            ]
+        );
+    }
 );
 
 // Create and bind the DI to the application
@@ -307,23 +311,23 @@ The first `handler` that we will implement is which by method GET returns all av
 
 // Retrieves all robots
 $app->get(
-'/api/robots',
-function () use ($app) {
-    $phql = 'SELECT * FROM Store\Toys\Robots ORDER BY name';
+    '/api/robots',
+    function () use ($app) {
+        $phql = 'SELECT * FROM Store\Toys\Robots ORDER BY name';
 
-    $robots = $app->modelsManager->executeQuery($phql);
+        $robots = $app->modelsManager->executeQuery($phql);
 
-    $data = [];
+        $data = [];
 
-    foreach ($robots as $robot) {
-        $data[] = [
-            'id'   => $robot->id,
-            'name' => $robot->name,
-        ];
+        foreach ($robots as $robot) {
+            $data[] = [
+                'id'   => $robot->id,
+                'name' => $robot->name,
+            ];
+        }
+
+        echo json_encode($data);
     }
-
-    echo json_encode($data);
-}
 );
 ```
 
@@ -336,28 +340,28 @@ The searching by name handler would look like:
 
 // Searches for robots with $name in their name
 $app->get(
-'/api/robots/search/{name}',
-function ($name) use ($app) {
-    $phql = 'SELECT * FROM Store\Toys\Robots WHERE name LIKE :name: ORDER BY name';
+    '/api/robots/search/{name}',
+    function ($name) use ($app) {
+        $phql = 'SELECT * FROM Store\Toys\Robots WHERE name LIKE :name: ORDER BY name';
 
-    $robots = $app->modelsManager->executeQuery(
-        $phql,
-        [
-            'name' => '%' . $name . '%'
-        ]
-    );
+        $robots = $app->modelsManager->executeQuery(
+            $phql,
+            [
+                'name' => '%' . $name . '%'
+            ]
+        );
 
-    $data = [];
+        $data = [];
 
-    foreach ($robots as $robot) {
-        $data[] = [
-            'id'   => $robot->id,
-            'name' => $robot->name,
-        ];
+        foreach ($robots as $robot) {
+            $data[] = [
+                'id'   => $robot->id,
+                'name' => $robot->name,
+            ];
+        }
+
+        echo json_encode($data);
     }
-
-    echo json_encode($data);
-}
 );
 ```
 
@@ -370,40 +374,42 @@ use Phalcon\Http\Response;
 
 // Retrieves robots based on primary key
 $app->get(
-'/api/robots/{id:[0-9]+}',
-function ($id) use ($app) {
-    $phql = 'SELECT * FROM Store\Toys\Robots WHERE id = :id:';
+    '/api/robots/{id:[0-9]+}',
+    function ($id) use ($app) {
+        $phql = 'SELECT * FROM Store\Toys\Robots WHERE id = :id:';
 
-    $robot = $app->modelsManager->executeQuery(
-        $phql,
-        [
-            'id' => $id,
-        ]
-    )->getFirst();
-
-    // Create a response
-    $response = new Response();
-
-    if ($robot === false) {
-        $response->setJsonContent(
+        $robot = $app->modelsManager->executeQuery(
+            $phql,
             [
-                'status' => 'NOT-FOUND'
+                'id' => $id,
             ]
-        );
-    } else {
-        $response->setJsonContent(
-            [
-                'status' => 'FOUND',
-                'data'   => [
-                    'id'   => $robot->id,
-                    'name' => $robot->name
+        )->getFirst();
+
+
+
+        // Create a response
+        $response = new Response();
+
+        if ($robot === false) {
+            $response->setJsonContent(
+                [
+                    'status' => 'NOT-FOUND'
                 ]
-            ]
-        );
-    }
+            );
+        } else {
+            $response->setJsonContent(
+                [
+                    'status' => 'FOUND',
+                    'data'   => [
+                        'id'   => $robot->id,
+                        'name' => $robot->name
+                    ]
+                ]
+            );
+        }
 
-    return $response;
-}
+        return $response;
+    }
 );
 ```
 
@@ -417,58 +423,58 @@ use Phalcon\Http\Response;
 
 // Adds a new robot
 $app->post(
-'/api/robots',
-function () use ($app) {
-    $robot = $app->request->getJsonRawBody();
+    '/api/robots',
+    function () use ($app) {
+        $robot = $app->request->getJsonRawBody();
 
-    $phql = 'INSERT INTO Store\Toys\Robots (name, type, year) VALUES (:name:, :type:, :year:)';
+        $phql = 'INSERT INTO Store\Toys\Robots (name, type, year) VALUES (:name:, :type:, :year:)';
 
-    $status = $app->modelsManager->executeQuery(
-        $phql,
-        [
-            'name' => $robot->name,
-            'type' => $robot->type,
-            'year' => $robot->year,
-        ]
-    );
-
-    // Create a response
-    $response = new Response();
-
-    // Check if the insertion was successful
-    if ($status->success() === true) {
-        // Change the HTTP status
-        $response->setStatusCode(201, 'Created');
-
-        $robot->id = $status->getModel()->id;
-
-        $response->setJsonContent(
+        $status = $app->modelsManager->executeQuery(
+            $phql,
             [
-                'status' => 'OK',
-                'data'   => $robot,
+                'name' => $robot->name,
+                'type' => $robot->type,
+                'year' => $robot->year,
             ]
         );
-    } else {
-        // Change the HTTP status
-        $response->setStatusCode(409, 'Conflict');
 
-        // Send errors to the client
-        $errors = [];
+        // Create a response
+        $response = new Response();
 
-        foreach ($status->getMessages() as $message) {
-            $errors[] = $message->getMessage();
+        // Check if the insertion was successful
+        if ($status->success() === true) {
+            // Change the HTTP status
+            $response->setStatusCode(201, 'Created');
+
+            $robot->id = $status->getModel()->id;
+
+            $response->setJsonContent(
+                [
+                    'status' => 'OK',
+                    'data'   => $robot,
+                ]
+            );
+        } else {
+            // Change the HTTP status
+            $response->setStatusCode(409, 'Conflict');
+
+            // Send errors to the client
+            $errors = [];
+
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                [
+                    'status'   => 'ERROR',
+                    'messages' => $errors,
+                ]
+            );
         }
 
-        $response->setJsonContent(
-            [
-                'status'   => 'ERROR',
-                'messages' => $errors,
-            ]
-        );
+        return $response;
     }
-
-    return $response;
-}
 );
 ```
 
@@ -482,52 +488,52 @@ use Phalcon\Http\Response;
 
 // Updates robots based on primary key
 $app->put(
-'/api/robots/{id:[0-9]+}',
-function ($id) use ($app) {
-    $robot = $app->request->getJsonRawBody();
+    '/api/robots/{id:[0-9]+}',
+    function ($id) use ($app) {
+        $robot = $app->request->getJsonRawBody();
 
-    $phql = 'UPDATE Store\Toys\Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:';
+        $phql = 'UPDATE Store\Toys\Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:';
 
-    $status = $app->modelsManager->executeQuery(
-        $phql,
-        [
-            'id'   => $id,
-            'name' => $robot->name,
-            'type' => $robot->type,
-            'year' => $robot->year,
-        ]
-    );
-
-    // Create a response
-    $response = new Response();
-
-    // Check if the insertion was successful
-    if ($status->success() === true) {
-        $response->setJsonContent(
+        $status = $app->modelsManager->executeQuery(
+            $phql,
             [
-                'status' => 'OK'
+                'id'   => $id,
+                'name' => $robot->name,
+                'type' => $robot->type,
+                'year' => $robot->year,
             ]
         );
-    } else {
-        // Change the HTTP status
-        $response->setStatusCode(409, 'Conflict');
 
-        $errors = [];
+        // Create a response
+        $response = new Response();
 
-        foreach ($status->getMessages() as $message) {
-            $errors[] = $message->getMessage();
+        // Check if the insertion was successful
+        if ($status->success() === true) {
+            $response->setJsonContent(
+                [
+                    'status' => 'OK'
+                ]
+            );
+        } else {
+            // Change the HTTP status
+            $response->setStatusCode(409, 'Conflict');
+
+            $errors = [];
+
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                [
+                    'status'   => 'ERROR',
+                    'messages' => $errors,
+                ]
+            );
         }
 
-        $response->setJsonContent(
-            [
-                'status'   => 'ERROR',
-                'messages' => $errors,
-            ]
-        );
+        return $response;
     }
-
-    return $response;
-}
 );
 ```
 
@@ -541,46 +547,46 @@ use Phalcon\Http\Response;
 
 // Deletes robots based on primary key
 $app->delete(
-'/api/robots/{id:[0-9]+}',
-function ($id) use ($app) {
-    $phql = 'DELETE FROM Store\Toys\Robots WHERE id = :id:';
+    '/api/robots/{id:[0-9]+}',
+    function ($id) use ($app) {
+        $phql = 'DELETE FROM Store\Toys\Robots WHERE id = :id:';
 
-    $status = $app->modelsManager->executeQuery(
-        $phql,
-        [
-            'id' => $id,
-        ]
-    );
-
-    // Create a response
-    $response = new Response();
-
-    if ($status->success() === true) {
-        $response->setJsonContent(
+        $status = $app->modelsManager->executeQuery(
+            $phql,
             [
-                'status' => 'OK'
+                'id' => $id,
             ]
         );
-    } else {
-        // Change the HTTP status
-        $response->setStatusCode(409, 'Conflict');
 
-        $errors = [];
+        // Create a response
+        $response = new Response();
 
-        foreach ($status->getMessages() as $message) {
-            $errors[] = $message->getMessage();
+        if ($status->success() === true) {
+            $response->setJsonContent(
+                [
+                    'status' => 'OK'
+                ]
+            );
+        } else {
+            // Change the HTTP status
+            $response->setStatusCode(409, 'Conflict');
+
+            $errors = [];
+
+            foreach ($status->getMessages() as $message) {
+                $errors[] = $message->getMessage();
+            }
+
+            $response->setJsonContent(
+                [
+                    'status'   => 'ERROR',
+                    'messages' => $errors,
+                ]
+            );
         }
 
-        $response->setJsonContent(
-            [
-                'status'   => 'ERROR',
-                'messages' => $errors,
-            ]
-        );
+        return $response;
     }
-
-    return $response;
-}
 );
 ```
 
@@ -647,7 +653,7 @@ Insert a new robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-https://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
 Date: Tue, 21 Jul 2015 07:15:09 GMT
@@ -662,7 +668,7 @@ Try to insert a new robot with the name of an existing robot:
 
 ```bash
 curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
-https://localhost/my-rest-api/api/robots
+    https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 07:18:28 GMT
@@ -677,7 +683,7 @@ Or update a robot with an unknown type:
 
 ```bash
 curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
-https://localhost/my-rest-api/api/robots/4
+    https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 409 Conflict
 Date: Tue, 21 Jul 2015 08:48:01 GMT
@@ -686,7 +692,7 @@ Content-Length: 104
 Content-Type: text/html; charset=UTF-8
 
 {"status":"ERROR","messages":["Value of field 'type' must be part of
-list: droid, mechanical, virtual"]}
+    list: droid, mechanical, virtual"]}
 ```
 
 Finally, delete a robot:

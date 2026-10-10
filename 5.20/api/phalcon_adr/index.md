@@ -13,6 +13,7 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## ADR\Application
 
 Final
@@ -31,54 +32,41 @@ parameters need to be declared via `define()`.
 
 ### Method Summary
 
-<ApiItem href="#adrapplication-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Container|null","name":"container","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#adrapplication-bind" visibility="public" name="bind" returnType="static" params={[{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"concrete","default":null}]}>
-Bind an interface to a concrete class.
-</ApiItem>
-<ApiItem href="#adrapplication-define" visibility="public" name="define" returnType="static" params={[{"type":"string","name":"className","default":null},{"type":"array","name":"parameters","default":"[]"}]}>
-Register a class together with explicit values for its constructor
-</ApiItem>
-<ApiItem href="#adrapplication-extend" visibility="public" name="extend" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"Closure","name":"extender","default":null}]}>
-Register a post-build extender (decorator) for a service.
-</ApiItem>
-<ApiItem href="#adrapplication-factory" visibility="public" name="factory" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"Closure","name":"factory","default":null}]}>
-Register a factory closure for a service.
-</ApiItem>
-<ApiItem href="#adrapplication-getcontainer" visibility="public" name="getContainer" returnType="Container" params={[]}>
-Returns the underlying container for definition-level access.
-</ApiItem>
-<ApiItem href="#adrapplication-handle" visibility="public" name="handle" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
-Routes the request, writes the matched attributes onto it, dispatches
-</ApiItem>
-<ApiItem href="#adrapplication-securewith" visibility="public" name="secureWith" returnType="static" params={[{"type":"string","name":"guard","default":null},{"type":"string","name":"prefix","default":null}]}>
-Attach a guard (middleware) to every Action under a namespace prefix.
-</ApiItem>
-<ApiItem href="#adrapplication-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-Register a service with a raw definition (class-string, closure or value).
-</ApiItem>
-<ApiItem href="#adrapplication-setactiondirectory" visibility="public" name="setActionDirectory" returnType="static" params={[{"type":"string","name":"actionDirectory","default":null}]}>
-Set the filesystem root that backs the base namespace.
-</ApiItem>
-<ApiItem href="#adrapplication-setbasenamespace" visibility="public" name="setBaseNamespace" returnType="static" params={[{"type":"string","name":"baseNamespace","default":null}]}>
-Set the base namespace the convention router derives Actions from.
-</ApiItem>
-<ApiItem href="#adrapplication-setwordseparator" visibility="public" name="setWordSeparator" returnType="static" params={[{"type":"string","name":"wordSeparator","default":null}]}>
-Set the single delimiter between words in a path segment.
-</ApiItem>
+- `public __construct(Container|null $container = null)`
+
+- `public bind(string $interfaceName, string $concrete): static` — Bind an interface to a concrete class.
+
+- `public define(string $className, array $parameters = []): static` — Register a class together with explicit values for its constructor
+
+- `public extend(string $name, Closure $extender): static` — Register a post-build extender (decorator) for a service.
+
+- `public factory(string $name, Closure $factory): static` — Register a factory closure for a service.
+
+- `public getContainer(): Container` — Returns the underlying container for definition-level access.
+
+- `public handle(AttributeRequest $request): ResponseInterface` — Routes the request, writes the matched attributes onto it, dispatches
+
+- `public secureWith(string $guard, string $prefix): static` — Attach a guard (middleware) to every Action under a namespace prefix.
+
+- `public set(string $name, mixed $definition): static` — Register a service with a raw definition (class-string, closure or value).
+
+- `public setActionDirectory(string $actionDirectory): static` — Set the filesystem root that backs the base namespace.
+
+- `public setBaseNamespace(string $baseNamespace): static` — Set the base namespace the convention router derives Actions from.
+
+- `public setWordSeparator(string $wordSeparator): static` — Set the single delimiter between words in a path segment.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="actionDirectory" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="baseNamespace" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="container" type="Container" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="middlewareMap" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="wordSeparator" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $actionDirectory = ""`
+
+- `protected string $baseNamespace = ""`
+
+- `protected Container $container`
+
+- `protected array $middlewareMap = []`
+
+- `protected string $wordSeparator = ""`
 
 ### Methods
 
@@ -92,8 +80,8 @@ public function __construct( Container|null $container = null );
 
 ```php
 public function bind(
-string $interfaceName,
-string $concrete
+    string $interfaceName,
+    string $concrete
 ): static;
 ```
 
@@ -103,8 +91,8 @@ Bind an interface to a concrete class.
 
 ```php
 public function define(
-string $className,
-array $parameters = []
+    string $className,
+    array $parameters = []
 ): static;
 ```
 
@@ -117,8 +105,8 @@ parameters. Type-hinted dependencies autowire; only the supplied
 
 ```php
 public function extend(
-string $name,
-Closure $extender
+    string $name,
+    Closure $extender
 ): static;
 ```
 
@@ -128,8 +116,8 @@ Register a post-build extender (decorator) for a service.
 
 ```php
 public function factory(
-string $name,
-Closure $factory
+    string $name,
+    Closure $factory
 ): static;
 ```
 
@@ -158,8 +146,8 @@ so nothing escapes uncaught.
 
 ```php
 public function secureWith(
-string $guard,
-string $prefix
+    string $guard,
+    string $prefix
 ): static;
 ```
 
@@ -169,8 +157,8 @@ Attach a guard (middleware) to every Action under a namespace prefix.
 
 ```php
 public function set(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): static;
 ```
 
@@ -200,6 +188,7 @@ public function setWordSeparator( string $wordSeparator ): static;
 
 Set the single delimiter between words in a path segment.
 
+
 ## ADR\Container\AdrProvider
 
 Class
@@ -216,8 +205,7 @@ binds the ADR contracts behind them.
 
 ### Method Summary
 
-<ApiItem href="#adrcontaineradrprovider-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
-</ApiItem>
+- `public provide(Collection $services): void`
 
 ### Methods
 
@@ -226,6 +214,7 @@ binds the ADR contracts behind them.
 ```php
 public function provide( Collection $services ): void;
 ```
+
 
 ## ADR\Dispatcher
 
@@ -245,25 +234,23 @@ adapter. Everything else is constructor-injected.
 
 ### Method Summary
 
-<ApiItem href="#adrdispatcher-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"IocContainer","name":"container","default":null},{"type":"Manager","name":"events","default":null},{"type":"array","name":"globalMiddleware","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrdispatcher-dispatch" visibility="public" name="dispatch" returnType="ResponseInterface" params={[{"type":"string","name":"actionClass","default":null},{"type":"AttributeRequest","name":"request","default":null},{"type":"array","name":"routeMiddleware","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrdispatcher-resolveall" visibility="protected" name="resolveAll" returnType="array" params={[{"type":"array","name":"classes","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrdispatcher-resolveglobal" visibility="protected" name="resolveGlobal" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(IocContainer $container, Manager $events, array $globalMiddleware = [])`
+
+- `public dispatch(string $actionClass, AttributeRequest $request, array $routeMiddleware = []): ResponseInterface`
+
+- `protected resolveAll(array $classes): array`
+
+- `protected resolveGlobal(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="container" type="IocContainer" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="events" type="Manager" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="globalMiddleware" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="resolvedGlobal" type="list&lt;Middleware&gt;|null" default="null">
-</ApiItem>
+- `protected IocContainer $container`
+
+- `protected Manager $events`
+
+- `protected array $globalMiddleware = []`
+
+- `protected list<Middleware>|null $resolvedGlobal = null`
 
 ### Methods
 
@@ -271,9 +258,9 @@ adapter. Everything else is constructor-injected.
 
 ```php
 public function __construct(
-IocContainer $container,
-Manager $events,
-array $globalMiddleware = []
+    IocContainer $container,
+    Manager $events,
+    array $globalMiddleware = []
 );
 ```
 
@@ -281,9 +268,9 @@ array $globalMiddleware = []
 
 ```php
 public function dispatch(
-string $actionClass,
-AttributeRequest $request,
-array $routeMiddleware = []
+    string $actionClass,
+    AttributeRequest $request,
+    array $routeMiddleware = []
 ): ResponseInterface;
 ```
 
@@ -299,6 +286,7 @@ protected function resolveAll( array $classes ): array;
 protected function resolveGlobal(): array;
 ```
 
+
 ## ADR\Emitter\SapiEmitter
 
 Class
@@ -312,8 +300,7 @@ Refuses to emit once headers have already been sent.
 
 ### Method Summary
 
-<ApiItem href="#adremittersapiemitter-emit" visibility="public" name="emit" returnType="void" params={[{"type":"ResponseInterface","name":"response","default":null}]}>
-</ApiItem>
+- `public emit(ResponseInterface $response): void`
 
 ### Methods
 
@@ -322,6 +309,7 @@ Refuses to emit once headers have already been sent.
 ```php
 public function emit( ResponseInterface $response ): void;
 ```
+
 
 ## ADR\ErrorResponder
 
@@ -341,30 +329,27 @@ ancestor chain, so map ordering never matters.
 
 ### Method Summary
 
-<ApiItem href="#adrerrorresponder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Responder","name":"chain","default":null},{"type":"Logger","name":"logger","default":null},{"type":"bool","name":"debug","default":"false"},{"type":"array","name":"exceptionMap","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrerrorresponder-handle" visibility="public" name="handle" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Throwable","name":"exception","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrerrorresponder-correlationid" visibility="protected" name="correlationId" returnType="string" params={[{"type":"RequestInterface","name":"request","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrerrorresponder-defaultmap" visibility="protected" name="defaultMap" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#adrerrorresponder-details" visibility="protected" name="details" returnType="array" params={[{"type":"Throwable","name":"exception","default":null},{"type":"string","name":"ref","default":null},{"type":"string","name":"status","default":"Status::ERROR"}]}>
-</ApiItem>
-<ApiItem href="#adrerrorresponder-reason" visibility="protected" name="reason" returnType="string" params={[{"type":"string","name":"status","default":null}]}>
-The message that goes with the status. Reporting `Internal Server Error`
-</ApiItem>
+- `public __construct(Responder $chain, Logger $logger, bool $debug = false, array $exceptionMap = [])`
+
+- `public handle(RequestInterface $request, ResponseInterface $response, Throwable $exception): ResponseInterface`
+
+- `protected correlationId(RequestInterface $request): string`
+
+- `protected defaultMap(): array`
+
+- `protected details(Throwable $exception, string $ref, string $status = Status::ERROR): array`
+
+- `protected reason(string $status): string` — The message that goes with the status. Reporting `Internal Server Error`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="chain" type="Responder" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="debug" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="exceptionMap" type="array" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="logger" type="Logger" default="">
-</ApiItem>
+- `protected Responder $chain`
+
+- `protected bool $debug = false`
+
+- `protected array $exceptionMap`
+
+- `protected Logger $logger`
 
 ### Methods
 
@@ -372,10 +357,10 @@ The message that goes with the status. Reporting `Internal Server Error`
 
 ```php
 public function __construct(
-Responder $chain,
-Logger $logger,
-bool $debug = false,
-array $exceptionMap = []
+    Responder $chain,
+    Logger $logger,
+    bool $debug = false,
+    array $exceptionMap = []
 );
 ```
 
@@ -383,9 +368,9 @@ array $exceptionMap = []
 
 ```php
 public function handle(
-RequestInterface $request,
-ResponseInterface $response,
-Throwable $exception
+    RequestInterface $request,
+    ResponseInterface $response,
+    Throwable $exception
 ): ResponseInterface;
 ```
 
@@ -405,9 +390,9 @@ protected function defaultMap(): array;
 
 ```php
 protected function details(
-Throwable $exception,
-string $ref,
-string $status = Status::ERROR
+    Throwable $exception,
+    string $ref,
+    string $status = Status::ERROR
 ): array;
 ```
 
@@ -419,6 +404,7 @@ protected function reason( string $status ): string;
 
 The message that goes with the status. Reporting `Internal Server Error`
 next to a `404` tells the client the opposite of what happened.
+
 
 ## ADR\EventfulHandler
 
@@ -433,17 +419,15 @@ Action's execution.
 
 ### Method Summary
 
-<ApiItem href="#adreventfulhandler-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Action","name":"action","default":null},{"type":"Manager","name":"events","default":null}]}>
-</ApiItem>
-<ApiItem href="#adreventfulhandler-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
-</ApiItem>
+- `public __construct(Action $action, Manager $events)`
+
+- `public __invoke(AttributeRequest $request): ResponseInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="action" type="Action" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="events" type="Manager" default="">
-</ApiItem>
+- `protected Action $action`
+
+- `protected Manager $events`
 
 ### Methods
 
@@ -451,8 +435,8 @@ Action's execution.
 
 ```php
 public function __construct(
-Action $action,
-Manager $events
+    Action $action,
+    Manager $events
 );
 ```
 
@@ -461,6 +445,7 @@ Manager $events
 ```php
 public function __invoke( AttributeRequest $request ): ResponseInterface;
 ```
+
 
 ## ADR\Events\Event
 
@@ -472,18 +457,18 @@ The ADR event vocabulary, fired through the native events manager.
 
 ### Constants
 
-<ApiItem kind="constant" name="ADR_AFTER_EXECUTE_ACTION" type="string" default="&quot;adr:afterExecuteAction&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="ADR_BEFORE_EXECUTE_ACTION" type="string" default="&quot;adr:beforeExecuteAction&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="APPLICATION_AFTER_HANDLE" type="string" default="&quot;application:afterHandle&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="APPLICATION_BEFORE_HANDLE" type="string" default="&quot;application:beforeHandle&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PIPELINE_AFTER_DISPATCH" type="string" default="&quot;pipeline:afterDispatch&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PIPELINE_BEFORE_DISPATCH" type="string" default="&quot;pipeline:beforeDispatch&quot;">
-</ApiItem>
+- `const string ADR_AFTER_EXECUTE_ACTION = "adr:afterExecuteAction"`
+
+- `const string ADR_BEFORE_EXECUTE_ACTION = "adr:beforeExecuteAction"`
+
+- `const string APPLICATION_AFTER_HANDLE = "application:afterHandle"`
+
+- `const string APPLICATION_BEFORE_HANDLE = "application:beforeHandle"`
+
+- `const string PIPELINE_AFTER_DISPATCH = "pipeline:afterDispatch"`
+
+- `const string PIPELINE_BEFORE_DISPATCH = "pipeline:beforeDispatch"`
+
 
 ## ADR\Exceptions\ActionDirectoryNotSet
 
@@ -493,13 +478,12 @@ Thrown when the router is asked to match without an action directory; the
 convention cannot resolve sub-namespaces without one.
 
 - `\Exception`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`**
+  - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+    - **`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`**
 
 ### Method Summary
 
-<ApiItem href="#adrexceptionsactiondirectorynotset-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -509,6 +493,7 @@ convention cannot resolve sub-namespaces without one.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\Exception
 
 Class
@@ -517,15 +502,16 @@ Generic exception for the ADR component, and the base for every typed ADR
 exception.
 
 - `\Exception`
-- **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](/5.20/api/phalcon_contracts/#contractsadrexceptionsadrthrowable)
-- [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
-- [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
-- [`Phalcon\ADR\Exceptions\MethodNotAllowed`](#adrexceptionsmethodnotallowed)
-- [`Phalcon\ADR\Exceptions\NotAnAction`](#adrexceptionsnotanaction)
-- [`Phalcon\ADR\Exceptions\OutputAlreadySent`](#adrexceptionsoutputalreadysent)
-- [`Phalcon\ADR\Exceptions\RouteNotFound`](#adrexceptionsroutenotfound)
+  - **`Phalcon\ADR\Exceptions\Exception`** - implements [`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`](/5.20/api/phalcon_contracts/#contractsadrexceptionsadrthrowable)
+    - [`Phalcon\ADR\Exceptions\ActionDirectoryNotSet`](#adrexceptionsactiondirectorynotset)
+    - [`Phalcon\ADR\Exceptions\HeadersAlreadySent`](#adrexceptionsheadersalreadysent)
+    - [`Phalcon\ADR\Exceptions\MethodNotAllowed`](#adrexceptionsmethodnotallowed)
+    - [`Phalcon\ADR\Exceptions\NotAnAction`](#adrexceptionsnotanaction)
+    - [`Phalcon\ADR\Exceptions\OutputAlreadySent`](#adrexceptionsoutputalreadysent)
+    - [`Phalcon\ADR\Exceptions\RouteNotFound`](#adrexceptionsroutenotfound)
 
 `Exception` · `Phalcon\Contracts\ADR\Exceptions\ADRThrowable`
+
 
 ## ADR\Exceptions\HeadersAlreadySent
 
@@ -535,13 +521,12 @@ Thrown when the emitter is asked to send a response after headers have
 already been sent.
 
 - `\Exception`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\HeadersAlreadySent`**
+  - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+    - **`Phalcon\ADR\Exceptions\HeadersAlreadySent`**
 
 ### Method Summary
 
-<ApiItem href="#adrexceptionsheadersalreadysent-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -551,6 +536,7 @@ already been sent.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\MethodNotAllowed
 
 Class
@@ -558,13 +544,12 @@ Class
 Thrown when a route matches the path but not the request method.
 
 - `\Exception`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\MethodNotAllowed`**
+  - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+    - **`Phalcon\ADR\Exceptions\MethodNotAllowed`**
 
 ### Method Summary
 
-<ApiItem href="#adrexceptionsmethodnotallowed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -574,6 +559,7 @@ Thrown when a route matches the path but not the request method.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\NotAnAction
 
 Class
@@ -581,13 +567,12 @@ Class
 Thrown when the dispatcher resolves a class that is not an ADR Action.
 
 - `\Exception`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\NotAnAction`**
+  - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+    - **`Phalcon\ADR\Exceptions\NotAnAction`**
 
 ### Method Summary
 
-<ApiItem href="#adrexceptionsnotanaction-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":"\"\""}]}>
-</ApiItem>
+- `public __construct(string $className = "")`
 
 ### Methods
 
@@ -597,6 +582,7 @@ Thrown when the dispatcher resolves a class that is not an ADR Action.
 public function __construct( string $className = "" );
 ```
 
+
 ## ADR\Exceptions\OutputAlreadySent
 
 Class
@@ -605,13 +591,12 @@ Thrown when the emitter is asked to send a response after output has already
 been sent.
 
 - `\Exception`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\OutputAlreadySent`**
+  - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+    - **`Phalcon\ADR\Exceptions\OutputAlreadySent`**
 
 ### Method Summary
 
-<ApiItem href="#adrexceptionsoutputalreadysent-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -621,6 +606,7 @@ been sent.
 public function __construct();
 ```
 
+
 ## ADR\Exceptions\RouteNotFound
 
 Class
@@ -628,13 +614,12 @@ Class
 Thrown when no route matches the request.
 
 - `\Exception`
-- [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
-- **`Phalcon\ADR\Exceptions\RouteNotFound`**
+  - [`Phalcon\ADR\Exceptions\Exception`](#adrexceptionsexception)
+    - **`Phalcon\ADR\Exceptions\RouteNotFound`**
 
 ### Method Summary
 
-<ApiItem href="#adrexceptionsroutenotfound-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -643,6 +628,7 @@ Thrown when no route matches the request.
 ```php
 public function __construct();
 ```
+
 
 ## ADR\Front\AbstractHttpFront
 
@@ -654,37 +640,33 @@ response. Userland front controllers override `loadEnvironment()`,
 `exit((new AppFront(dirname(__DIR__)))->run());`.
 
 - **`Phalcon\ADR\Front\AbstractHttpFront`** - implements [`Phalcon\Contracts\Front\FrontController`](/5.20/api/phalcon_contracts/#contractsfrontfrontcontroller)
-- [`Phalcon\ADR\Front\HttpFront`](#adrfronthttpfront)
+  - [`Phalcon\ADR\Front\HttpFront`](#adrfronthttpfront)
 
 `Phalcon\ADR\Application` · `Phalcon\ADR\Container\AdrProvider` · `Phalcon\Container\Container` · `Phalcon\Contracts\ADR\Application` · `Phalcon\Contracts\ADR\Emitter\Emitter` · `Phalcon\Contracts\Front\FrontController` · `Phalcon\Contracts\Http\AttributeRequest` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#adrfrontabstracthttpfront-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"projectRoot","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-boot" visibility="public" name="boot" returnType="Container" params={[]}>
-Builds the container, loads the environment and registers the providers,
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-run" visibility="public" name="run" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-buildcontainer" visibility="protected" name="buildContainer" returnType="Container" params={[]}>
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-getapplication" visibility="protected" name="getApplication" returnType="ApplicationInterface" params={[{"type":"Container","name":"container","default":null}]}>
-Builds the Application the front will hand the request to. Override to
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-handlebooterror" visibility="protected" name="handleBootError" returnType="int" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-loadenvironment" visibility="protected" name="loadEnvironment" returnType="void" params={[{"type":"Container","name":"container","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrfrontabstracthttpfront-registerproviders" visibility="protected" name="registerProviders" returnType="void" params={[{"type":"Container","name":"container","default":null}]}>
-</ApiItem>
+- `public __construct(string $projectRoot)`
+
+- `public boot(): Container` — Builds the container, loads the environment and registers the providers,
+
+- `public run(): int`
+
+- `protected buildContainer(): Container`
+
+- `protected getApplication(Container $container): ApplicationInterface` — Builds the Application the front will hand the request to. Override to
+
+- `protected handleBootError(\Throwable $exception): int`
+
+- `protected loadEnvironment(Container $container): void`
+
+- `protected registerProviders(Container $container): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="container" type="Container|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="projectRoot" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected Container|null $container = null`
+
+- `protected string $projectRoot = ""`
 
 ### Methods
 
@@ -745,6 +727,7 @@ protected function loadEnvironment( Container $container ): void;
 protected function registerProviders( Container $container ): void;
 ```
 
+
 ## ADR\Front\HttpFront
 
 Class
@@ -754,7 +737,8 @@ application with the framework defaults; subclass to override
 `loadEnvironment()` or `registerProviders()`.
 
 - [`Phalcon\ADR\Front\AbstractHttpFront`](#adrfrontabstracthttpfront)
-- **`Phalcon\ADR\Front\HttpFront`**
+  - **`Phalcon\ADR\Front\HttpFront`**
+
 
 ## ADR\Input\Input
 
@@ -773,23 +757,21 @@ input value object: the factories use late static binding, so a subclass's
 
 ### Method Summary
 
-<ApiItem href="#adrinputinput-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrinputinput-fromarray" visibility="public" name="fromArray" returnType="static" params={[{"type":"array","name":"data","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrinputinput-fromrequest" visibility="public" name="fromRequest" returnType="static" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrinputinput-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#adrinputinput-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrinputinput-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(array $data = [])`
+
+- `public fromArray(array $data): static`
+
+- `public fromRequest(AttributeRequest $request): static`
+
+- `public get(string $key, mixed $defaultValue = null): mixed`
+
+- `public has(string $key): bool`
+
+- `public toArray(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
-</ApiItem>
+- `protected array $data = []`
 
 ### Methods
 
@@ -815,8 +797,8 @@ public static function fromRequest( AttributeRequest $request ): static;
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -831,6 +813,7 @@ public function has( string $key ): bool;
 ```php
 public function toArray(): array;
 ```
+
 
 ## ADR\Middleware\CorsMiddleware
 
@@ -847,27 +830,25 @@ a wildcard origin. Preflight `OPTIONS` requests are answered directly.
 
 ### Method Summary
 
-<ApiItem href="#adrmiddlewarecorsmiddleware-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"config","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrmiddlewarecorsmiddleware-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null},{"type":"Handler","name":"next","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrmiddlewarecorsmiddleware-applyheaders" visibility="protected" name="applyHeaders" returnType="void" params={[{"type":"ResponseInterface","name":"response","default":null},{"type":"string","name":"origin","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrmiddlewarecorsmiddleware-isallowed" visibility="protected" name="isAllowed" returnType="bool" params={[{"type":"string","name":"origin","default":null}]}>
-</ApiItem>
+- `public __construct(array $config = [])`
+
+- `public __invoke(AttributeRequest $request, Handler $next): ResponseInterface`
+
+- `protected applyHeaders(ResponseInterface $response, string $origin): void`
+
+- `protected isAllowed(string $origin): bool`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="allowCredentials" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="allowedHeaders" type="list&lt;string&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="allowedMethods" type="list&lt;string&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="allowedOrigins" type="list&lt;string&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="maxAge" type="int" default="0">
-</ApiItem>
+- `protected bool $allowCredentials = false`
+
+- `protected list<string> $allowedHeaders = []`
+
+- `protected list<string> $allowedMethods = []`
+
+- `protected list<string> $allowedOrigins = []`
+
+- `protected int $maxAge = 0`
 
 ### Methods
 
@@ -881,8 +862,8 @@ public function __construct( array $config = [] );
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
 
@@ -890,8 +871,8 @@ Handler $next
 
 ```php
 protected function applyHeaders(
-ResponseInterface $response,
-string $origin
+    ResponseInterface $response,
+    string $origin
 ): void;
 ```
 
@@ -900,6 +881,7 @@ string $origin
 ```php
 protected function isAllowed( string $origin ): bool;
 ```
+
 
 ## ADR\Middleware\MethodOverrideMiddleware
 
@@ -919,13 +901,11 @@ method.
 
 ### Method Summary
 
-<ApiItem href="#adrmiddlewaremethodoverridemiddleware-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null},{"type":"Handler","name":"next","default":null}]}>
-</ApiItem>
+- `public __invoke(AttributeRequest $request, Handler $next): ResponseInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="allowed" type="array" default="[...]">
-</ApiItem>
+- `protected array $allowed = [...]`
 
 ### Methods
 
@@ -933,10 +913,11 @@ method.
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## ADR\Middleware\RequestIdMiddleware
 
@@ -951,8 +932,7 @@ generating it, exposing it on the request attributes and the response.
 
 ### Method Summary
 
-<ApiItem href="#adrmiddlewarerequestidmiddleware-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null},{"type":"Handler","name":"next","default":null}]}>
-</ApiItem>
+- `public __invoke(AttributeRequest $request, Handler $next): ResponseInterface`
 
 ### Methods
 
@@ -960,10 +940,11 @@ generating it, exposing it on the request attributes and the response.
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## ADR\Middleware\TimingMiddleware
 
@@ -978,8 +959,7 @@ took to produce the response.
 
 ### Method Summary
 
-<ApiItem href="#adrmiddlewaretimingmiddleware-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null},{"type":"Handler","name":"next","default":null}]}>
-</ApiItem>
+- `public __invoke(AttributeRequest $request, Handler $next): ResponseInterface`
 
 ### Methods
 
@@ -987,10 +967,11 @@ took to produce the response.
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## ADR\Payload\Payload
 
@@ -1008,114 +989,81 @@ commonly used statuses.
 
 ### Method Summary
 
-<ApiItem href="#adrpayloadpayload-accepted" visibility="public" name="accepted" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `ACCEPTED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-authenticated" visibility="public" name="authenticated" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `AUTHENTICATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-authorized" visibility="public" name="authorized" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `AUTHORIZED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-created" visibility="public" name="created" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `CREATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-deleted" visibility="public" name="deleted" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `DELETED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-error" visibility="public" name="error" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `ERROR` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-forbidden" visibility="public" name="forbidden" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_AUTHORIZED` status (authenticated but
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-found" visibility="public" name="found" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `FOUND` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
-Gets the exception thrown in the domain layer, if any.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
-Gets the arbitrary extra domain information.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
-Gets the domain input.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
-Gets the domain messages.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-getresult" visibility="public" name="getResult" returnType="mixed" params={[]}>
-Gets the domain result.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
-Gets the payload status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-invalid" visibility="public" name="invalid" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_VALID` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-notaccepted" visibility="public" name="notAccepted" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_ACCEPTED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-notcreated" visibility="public" name="notCreated" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_CREATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-notdeleted" visibility="public" name="notDeleted" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_DELETED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-notfound" visibility="public" name="notFound" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_FOUND` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-notupdated" visibility="public" name="notUpdated" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_UPDATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-processing" visibility="public" name="processing" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `PROCESSING` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-success" visibility="public" name="success" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `SUCCESS` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-unauthenticated" visibility="public" name="unauthenticated" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_AUTHENTICATED` status (identity not
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-updated" visibility="public" name="updated" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `UPDATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-valid" visibility="public" name="valid" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `VALID` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-withexception" visibility="public" name="withException" returnType="PayloadContract" params={[{"type":"Throwable","name":"exception","default":null}]}>
-Returns a copy of the payload with the given exception.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-withextras" visibility="public" name="withExtras" returnType="PayloadContract" params={[{"type":"mixed","name":"extras","default":null}]}>
-Returns a copy of the payload with the given extras.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-withinput" visibility="public" name="withInput" returnType="PayloadContract" params={[{"type":"mixed","name":"input","default":null}]}>
-Returns a copy of the payload with the given input.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-withmessages" visibility="public" name="withMessages" returnType="PayloadContract" params={[{"type":"mixed","name":"messages","default":null}]}>
-Returns a copy of the payload with the given messages.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-withresult" visibility="public" name="withResult" returnType="PayloadContract" params={[{"type":"mixed","name":"result","default":null}]}>
-Returns a copy of the payload with the given result.
-</ApiItem>
-<ApiItem href="#adrpayloadpayload-withstatus" visibility="public" name="withStatus" returnType="PayloadContract" params={[{"type":"mixed","name":"status","default":null}]}>
-Returns a copy of the payload with the given status.
-</ApiItem>
+- `public accepted(mixed $result = null): PayloadContract` — Creates a payload with the `ACCEPTED` status.
+
+- `public authenticated(mixed $result = null): PayloadContract` — Creates a payload with the `AUTHENTICATED` status.
+
+- `public authorized(mixed $result = null): PayloadContract` — Creates a payload with the `AUTHORIZED` status.
+
+- `public created(mixed $result = null): PayloadContract` — Creates a payload with the `CREATED` status.
+
+- `public deleted(mixed $result = null): PayloadContract` — Creates a payload with the `DELETED` status.
+
+- `public error(mixed $messages = null): PayloadContract` — Creates a payload with the `ERROR` status.
+
+- `public forbidden(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_AUTHORIZED` status (authenticated but
+
+- `public found(mixed $result = null): PayloadContract` — Creates a payload with the `FOUND` status.
+
+- `public getException(): Throwable|null` — Gets the exception thrown in the domain layer, if any.
+
+- `public getExtras(): mixed` — Gets the arbitrary extra domain information.
+
+- `public getInput(): mixed` — Gets the domain input.
+
+- `public getMessages(): mixed` — Gets the domain messages.
+
+- `public getResult(): mixed` — Gets the domain result.
+
+- `public getStatus(): mixed` — Gets the payload status.
+
+- `public invalid(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_VALID` status.
+
+- `public notAccepted(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_ACCEPTED` status.
+
+- `public notCreated(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_CREATED` status.
+
+- `public notDeleted(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_DELETED` status.
+
+- `public notFound(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_FOUND` status.
+
+- `public notUpdated(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_UPDATED` status.
+
+- `public processing(mixed $result = null): PayloadContract` — Creates a payload with the `PROCESSING` status.
+
+- `public success(mixed $result = null): PayloadContract` — Creates a payload with the `SUCCESS` status.
+
+- `public unauthenticated(mixed $messages = null): PayloadContract` — Creates a payload with the `NOT_AUTHENTICATED` status (identity not
+
+- `public updated(mixed $result = null): PayloadContract` — Creates a payload with the `UPDATED` status.
+
+- `public valid(mixed $result = null): PayloadContract` — Creates a payload with the `VALID` status.
+
+- `public withException(Throwable $exception): PayloadContract` — Returns a copy of the payload with the given exception.
+
+- `public withExtras(mixed $extras): PayloadContract` — Returns a copy of the payload with the given extras.
+
+- `public withInput(mixed $input): PayloadContract` — Returns a copy of the payload with the given input.
+
+- `public withMessages(mixed $messages): PayloadContract` — Returns a copy of the payload with the given messages.
+
+- `public withResult(mixed $result): PayloadContract` — Returns a copy of the payload with the given result.
+
+- `public withStatus(mixed $status): PayloadContract` — Returns a copy of the payload with the given status.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="exception" type="Throwable|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="extras" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="input" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="result" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="status" type="mixed" default="null">
-</ApiItem>
+- `protected Throwable|null $exception = null`
+
+- `protected mixed $extras = null`
+
+- `protected mixed $input = null`
+
+- `protected mixed $messages = null`
+
+- `protected mixed $result = null`
+
+- `protected mixed $status = null`
 
 ### Methods
 
@@ -1369,6 +1317,7 @@ public function withStatus( mixed $status ): PayloadContract;
 
 Returns a copy of the payload with the given status.
 
+
 ## ADR\Payload\PayloadFactory
 
 Class
@@ -1385,63 +1334,43 @@ directly.
 
 ### Method Summary
 
-<ApiItem href="#adrpayloadpayloadfactory-accepted" visibility="public" name="accepted" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `ACCEPTED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-authenticated" visibility="public" name="authenticated" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `AUTHENTICATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-authorized" visibility="public" name="authorized" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `AUTHORIZED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-created" visibility="public" name="created" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `CREATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-deleted" visibility="public" name="deleted" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `DELETED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-error" visibility="public" name="error" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `ERROR` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-forbidden" visibility="public" name="forbidden" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_AUTHORIZED` status (HTTP 403).
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-found" visibility="public" name="found" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `FOUND` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-invalid" visibility="public" name="invalid" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_VALID` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-notaccepted" visibility="public" name="notAccepted" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_ACCEPTED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-notcreated" visibility="public" name="notCreated" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_CREATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-notdeleted" visibility="public" name="notDeleted" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_DELETED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-notfound" visibility="public" name="notFound" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_FOUND` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-notupdated" visibility="public" name="notUpdated" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_UPDATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-processing" visibility="public" name="processing" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `PROCESSING` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-success" visibility="public" name="success" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `SUCCESS` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-unauthenticated" visibility="public" name="unauthenticated" returnType="PayloadInterface" params={[{"type":"mixed","name":"messages","default":"null"}]}>
-Creates a payload with the `NOT_AUTHENTICATED` status (HTTP 401).
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-updated" visibility="public" name="updated" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `UPDATED` status.
-</ApiItem>
-<ApiItem href="#adrpayloadpayloadfactory-valid" visibility="public" name="valid" returnType="PayloadInterface" params={[{"type":"mixed","name":"result","default":"null"}]}>
-Creates a payload with the `VALID` status.
-</ApiItem>
+- `public accepted(mixed $result = null): PayloadInterface` — Creates a payload with the `ACCEPTED` status.
+
+- `public authenticated(mixed $result = null): PayloadInterface` — Creates a payload with the `AUTHENTICATED` status.
+
+- `public authorized(mixed $result = null): PayloadInterface` — Creates a payload with the `AUTHORIZED` status.
+
+- `public created(mixed $result = null): PayloadInterface` — Creates a payload with the `CREATED` status.
+
+- `public deleted(mixed $result = null): PayloadInterface` — Creates a payload with the `DELETED` status.
+
+- `public error(mixed $messages = null): PayloadInterface` — Creates a payload with the `ERROR` status.
+
+- `public forbidden(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_AUTHORIZED` status (HTTP 403).
+
+- `public found(mixed $result = null): PayloadInterface` — Creates a payload with the `FOUND` status.
+
+- `public invalid(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_VALID` status.
+
+- `public notAccepted(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_ACCEPTED` status.
+
+- `public notCreated(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_CREATED` status.
+
+- `public notDeleted(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_DELETED` status.
+
+- `public notFound(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_FOUND` status.
+
+- `public notUpdated(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_UPDATED` status.
+
+- `public processing(mixed $result = null): PayloadInterface` — Creates a payload with the `PROCESSING` status.
+
+- `public success(mixed $result = null): PayloadInterface` — Creates a payload with the `SUCCESS` status.
+
+- `public unauthenticated(mixed $messages = null): PayloadInterface` — Creates a payload with the `NOT_AUTHENTICATED` status (HTTP 401).
+
+- `public updated(mixed $result = null): PayloadInterface` — Creates a payload with the `UPDATED` status.
+
+- `public valid(mixed $result = null): PayloadInterface` — Creates a payload with the `VALID` status.
 
 ### Methods
 
@@ -1597,6 +1526,7 @@ public function valid( mixed $result = null ): PayloadInterface;
 
 Creates a payload with the `VALID` status.
 
+
 ## ADR\Payload\Status
 
 Class
@@ -1618,48 +1548,48 @@ lineage:
 
 ### Constants
 
-<ApiItem kind="constant" name="ACCEPTED" type="string" default="&quot;ACCEPTED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AUTHENTICATED" type="string" default="&quot;AUTHENTICATED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AUTHORIZED" type="string" default="&quot;AUTHORIZED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="CREATED" type="string" default="&quot;CREATED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="DELETED" type="string" default="&quot;DELETED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="ERROR" type="string" default="&quot;ERROR&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FAILURE" type="string" default="&quot;FAILURE&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FOUND" type="string" default="&quot;FOUND&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="METHOD_NOT_ALLOWED" type="string" default="&quot;METHOD_NOT_ALLOWED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_ACCEPTED" type="string" default="&quot;NOT_ACCEPTED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_AUTHENTICATED" type="string" default="&quot;NOT_AUTHENTICATED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_AUTHORIZED" type="string" default="&quot;NOT_AUTHORIZED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_CREATED" type="string" default="&quot;NOT_CREATED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_DELETED" type="string" default="&quot;NOT_DELETED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_FOUND" type="string" default="&quot;NOT_FOUND&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_UPDATED" type="string" default="&quot;NOT_UPDATED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NOT_VALID" type="string" default="&quot;NOT_VALID&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROCESSING" type="string" default="&quot;PROCESSING&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="SUCCESS" type="string" default="&quot;SUCCESS&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="UPDATED" type="string" default="&quot;UPDATED&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="VALID" type="string" default="&quot;VALID&quot;">
-</ApiItem>
+- `const string ACCEPTED = "ACCEPTED"`
+
+- `const string AUTHENTICATED = "AUTHENTICATED"`
+
+- `const string AUTHORIZED = "AUTHORIZED"`
+
+- `const string CREATED = "CREATED"`
+
+- `const string DELETED = "DELETED"`
+
+- `const string ERROR = "ERROR"`
+
+- `const string FAILURE = "FAILURE"`
+
+- `const string FOUND = "FOUND"`
+
+- `const string METHOD_NOT_ALLOWED = "METHOD_NOT_ALLOWED"`
+
+- `const string NOT_ACCEPTED = "NOT_ACCEPTED"`
+
+- `const string NOT_AUTHENTICATED = "NOT_AUTHENTICATED"`
+
+- `const string NOT_AUTHORIZED = "NOT_AUTHORIZED"`
+
+- `const string NOT_CREATED = "NOT_CREATED"`
+
+- `const string NOT_DELETED = "NOT_DELETED"`
+
+- `const string NOT_FOUND = "NOT_FOUND"`
+
+- `const string NOT_UPDATED = "NOT_UPDATED"`
+
+- `const string NOT_VALID = "NOT_VALID"`
+
+- `const string PROCESSING = "PROCESSING"`
+
+- `const string SUCCESS = "SUCCESS"`
+
+- `const string UPDATED = "UPDATED"`
+
+- `const string VALID = "VALID"`
+
 
 ## ADR\Pipeline
 
@@ -1677,19 +1607,17 @@ When the middleware is exhausted it invokes the terminal handler (the Action).
 
 ### Method Summary
 
-<ApiItem href="#adrpipeline-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"middleware","default":null},{"type":"Handler","name":"terminal","default":null},{"type":"int","name":"index","default":"0"}]}>
-</ApiItem>
-<ApiItem href="#adrpipeline-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
-</ApiItem>
+- `public __construct(array $middleware, Handler $terminal, int $index = 0)`
+
+- `public __invoke(AttributeRequest $request): ResponseInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="index" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="middleware" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="terminal" type="Handler" default="">
-</ApiItem>
+- `protected int $index = 0`
+
+- `protected array $middleware = []`
+
+- `protected Handler $terminal`
 
 ### Methods
 
@@ -1697,9 +1625,9 @@ When the middleware is exhausted it invokes the terminal handler (the Action).
 
 ```php
 public function __construct(
-array $middleware,
-Handler $terminal,
-int $index = 0
+    array $middleware,
+    Handler $terminal,
+    int $index = 0
 );
 ```
 
@@ -1709,6 +1637,7 @@ int $index = 0
 public function __invoke( AttributeRequest $request ): ResponseInterface;
 ```
 
+
 ## ADR\Responder\AbstractFormattedResponder
 
 Abstract
@@ -1717,14 +1646,13 @@ Base for content-type responders: composes Status, Redirect and Format
 responders into a chain. Subclasses bind the formatter(s).
 
 - [`Phalcon\ADR\Responder\ChainResponder`](#adrresponderchainresponder)
-- **`Phalcon\ADR\Responder\AbstractFormattedResponder`**
-- [`Phalcon\ADR\Responder\JsonResponder`](#adrresponderjsonresponder)
-- [`Phalcon\ADR\Responder\TextResponder`](#adrrespondertextresponder)
+  - **`Phalcon\ADR\Responder\AbstractFormattedResponder`**
+    - [`Phalcon\ADR\Responder\JsonResponder`](#adrresponderjsonresponder)
+    - [`Phalcon\ADR\Responder\TextResponder`](#adrrespondertextresponder)
 
 ### Method Summary
 
-<ApiItem href="#adrresponderabstractformattedresponder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"formatters","default":"[]"}]}>
-</ApiItem>
+- `public __construct(array $formatters = [])`
 
 ### Methods
 
@@ -1734,6 +1662,7 @@ responders into a chain. Subclasses bind the formatter(s).
 public function __construct( array $formatters = [] );
 ```
 
+
 ## ADR\Responder\ChainResponder
 
 Class
@@ -1742,23 +1671,21 @@ Composes single-purpose responders. Each link receives the request, the
 response threaded so far, and the payload, and returns the response.
 
 - **`Phalcon\ADR\Responder\ChainResponder`** - implements [`Phalcon\Contracts\ADR\Responder\Responder`](/5.20/api/phalcon_contracts/#contractsadrresponderresponder)
-- [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
+  - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
 
 `Phalcon\Contracts\ADR\Payload\Payload` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<ApiItem href="#adrresponderchainresponder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"links","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrresponderchainresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderchainresponder-with" visibility="public" name="with" returnType="ChainResponder" params={[{"type":"Responder","name":"link","default":null}]}>
-</ApiItem>
+- `public __construct(array $links = [])`
+
+- `public __invoke(RequestInterface $request, ResponseInterface $response, Payload $payload): ResponseInterface`
+
+- `public with(Responder $link): ChainResponder`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="links" type="Responder[]" default="[]">
-</ApiItem>
+- `protected Responder[] $links = []`
 
 ### Methods
 
@@ -1772,9 +1699,9 @@ public function __construct( array $links = [] );
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
 
@@ -1783,6 +1710,7 @@ Payload $payload
 ```php
 public function with( Responder $link ): ChainResponder;
 ```
+
 
 ## ADR\Responder\FormatResponder
 
@@ -1800,15 +1728,13 @@ formatter, so the content type and body are never left unset.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderformatresponder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"formatters","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrresponderformatresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
+- `public __construct(array $formatters = [])`
+
+- `public __invoke(RequestInterface $request, ResponseInterface $response, Payload $payload): ResponseInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="formatters" type="array" default="[]">
-</ApiItem>
+- `protected array $formatters = []`
 
 ### Methods
 
@@ -1822,11 +1748,12 @@ public function __construct( array $formatters = [] );
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\Formatter\JsonFormatter
 
@@ -1840,12 +1767,11 @@ Renders a payload as JSON.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderformatterjsonformatter-accepts" visibility="public" name="accepts" returnType="bool" params={[{"type":"string","name":"acceptHeader","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderformatterjsonformatter-contenttype" visibility="public" name="contentType" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#adrresponderformatterjsonformatter-format" visibility="public" name="format" returnType="string" params={[{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
+- `public accepts(string $acceptHeader): bool`
+
+- `public contentType(): string`
+
+- `public format(Payload $payload): string`
 
 ### Methods
 
@@ -1867,6 +1793,7 @@ public function contentType(): string;
 public function format( Payload $payload ): string;
 ```
 
+
 ## ADR\Responder\Formatter\TextFormatter
 
 Class
@@ -1879,12 +1806,11 @@ Renders a payload as plain text.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderformattertextformatter-accepts" visibility="public" name="accepts" returnType="bool" params={[{"type":"string","name":"acceptHeader","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderformattertextformatter-contenttype" visibility="public" name="contentType" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#adrresponderformattertextformatter-format" visibility="public" name="format" returnType="string" params={[{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
+- `public accepts(string $acceptHeader): bool`
+
+- `public contentType(): string`
+
+- `public format(Payload $payload): string`
 
 ### Methods
 
@@ -1906,6 +1832,7 @@ public function contentType(): string;
 public function format( Payload $payload ): string;
 ```
 
+
 ## ADR\Responder\JsonResponder
 
 Class
@@ -1913,15 +1840,14 @@ Class
 A formatted responder bound to the JSON formatter.
 
 - [`Phalcon\ADR\Responder\ChainResponder`](#adrresponderchainresponder)
-- [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
-- **`Phalcon\ADR\Responder\JsonResponder`**
+  - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
+    - **`Phalcon\ADR\Responder\JsonResponder`**
 
 `Phalcon\ADR\Responder\Formatter\JsonFormatter`
 
 ### Method Summary
 
-<ApiItem href="#adrresponderjsonresponder-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1930,6 +1856,7 @@ A formatted responder bound to the JSON formatter.
 ```php
 public function __construct();
 ```
+
 
 ## ADR\Responder\Redirect
 
@@ -1942,30 +1869,27 @@ RedirectResponder turns it into a `Location` header and status code.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderredirect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"url","default":null},{"type":"int","name":"status","default":"302"},{"type":"bool","name":"external","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#adrresponderredirect-external" visibility="public" name="external" returnType="bool" params={[]}>
-Whether the target is an explicit external redirect. Internal (the
-</ApiItem>
-<ApiItem href="#adrresponderredirect-permanent" visibility="public" name="permanent" returnType="Redirect" params={[{"type":"string","name":"url","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderredirect-seeother" visibility="public" name="seeOther" returnType="Redirect" params={[{"type":"string","name":"url","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderredirect-status" visibility="public" name="status" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#adrresponderredirect-temporary" visibility="public" name="temporary" returnType="Redirect" params={[{"type":"string","name":"url","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderredirect-url" visibility="public" name="url" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $url, int $status = 302, bool $external = false)`
+
+- `public external(): bool` — Whether the target is an explicit external redirect. Internal (the
+
+- `public permanent(string $url): Redirect`
+
+- `public seeOther(string $url): Redirect`
+
+- `public status(): int`
+
+- `public temporary(string $url): Redirect`
+
+- `public url(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="external" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="status" type="int" default="302">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="url" type="string" default="">
-</ApiItem>
+- `protected bool $external = false`
+
+- `protected int $status = 302`
+
+- `protected string $url`
 
 ### Methods
 
@@ -1973,9 +1897,9 @@ Whether the target is an explicit external redirect. Internal (the
 
 ```php
 public function __construct(
-string $url,
-int $status = 302,
-bool $external = false
+    string $url,
+    int $status = 302,
+    bool $external = false
 );
 ```
 
@@ -2019,6 +1943,7 @@ public static function temporary( string $url ): Redirect;
 public function url(): string;
 ```
 
+
 ## ADR\Responder\RedirectResponder
 
 Class
@@ -2033,8 +1958,7 @@ redirect.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderredirectresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
+- `public __invoke(RequestInterface $request, ResponseInterface $response, Payload $payload): ResponseInterface`
 
 ### Methods
 
@@ -2042,11 +1966,12 @@ redirect.
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\StatusMapper
 
@@ -2064,16 +1989,13 @@ silent 200. Every entry can be overridden through the constructor.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderstatusmapper-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"overrides","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#adrresponderstatusmapper-tohttpcode" visibility="public" name="toHttpCode" returnType="int" params={[{"type":"string","name":"status","default":null}]}>
-Returns the HTTP status code for the given domain status.
-</ApiItem>
+- `public __construct(array $overrides = [])`
+
+- `public toHttpCode(string $status): int` — Returns the HTTP status code for the given domain status.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="map" type="array" default="">
-</ApiItem>
+- `protected array $map`
 
 ### Methods
 
@@ -2093,6 +2015,7 @@ Returns the HTTP status code for the given domain status.
 
 An unmapped status resolves to 500 (server error), never a silent 200.
 
+
 ## ADR\Responder\StatusResponder
 
 Class
@@ -2105,15 +2028,13 @@ Sets the response HTTP status code from the payload status, via StatusMapper.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderstatusresponder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"StatusMapper|null","name":"mapper","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#adrresponderstatusresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
+- `public __construct(StatusMapper|null $mapper = null)`
+
+- `public __invoke(RequestInterface $request, ResponseInterface $response, Payload $payload): ResponseInterface`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="mapper" type="StatusMapper" default="">
-</ApiItem>
+- `protected StatusMapper $mapper`
 
 ### Methods
 
@@ -2127,11 +2048,12 @@ public function __construct( StatusMapper|null $mapper = null );
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## ADR\Responder\TextResponder
 
@@ -2140,15 +2062,14 @@ Class
 A formatted responder bound to the text formatter.
 
 - [`Phalcon\ADR\Responder\ChainResponder`](#adrresponderchainresponder)
-- [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
-- **`Phalcon\ADR\Responder\TextResponder`**
+  - [`Phalcon\ADR\Responder\AbstractFormattedResponder`](#adrresponderabstractformattedresponder)
+    - **`Phalcon\ADR\Responder\TextResponder`**
 
 `Phalcon\ADR\Responder\Formatter\TextFormatter`
 
 ### Method Summary
 
-<ApiItem href="#adrrespondertextresponder-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2157,6 +2078,7 @@ A formatted responder bound to the text formatter.
 ```php
 public function __construct();
 ```
+
 
 ## ADR\Responder\ViewResponder
 
@@ -2175,25 +2097,21 @@ MVC view.
 
 ### Method Summary
 
-<ApiItem href="#adrresponderviewresponder-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Renderer","name":"renderer","default":null},{"type":"StatusMapper","name":"statusMapper","default":null},{"type":"string","name":"template","default":"\"\""}]}>
-</ApiItem>
-<ApiItem href="#adrresponderviewresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrresponderviewresponder-withtemplate" visibility="public" name="withTemplate" returnType="static" params={[{"type":"string","name":"template","default":null}]}>
-Returns a copy of the responder bound to the given template. The action
-</ApiItem>
-<ApiItem href="#adrresponderviewresponder-viewdata" visibility="protected" name="viewData" returnType="array" params={[{"type":"Payload","name":"payload","default":null}]}>
-Flattens the payload into the variables handed to the template. The
-</ApiItem>
+- `public __construct(Renderer $renderer, StatusMapper $statusMapper, string $template = "")`
+
+- `public __invoke(RequestInterface $request, ResponseInterface $response, Payload $payload): ResponseInterface`
+
+- `public withTemplate(string $template): static` — Returns a copy of the responder bound to the given template. The action
+
+- `protected viewData(Payload $payload): array` — Flattens the payload into the variables handed to the template. The
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="renderer" type="Renderer" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="statusMapper" type="StatusMapper" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="template" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected Renderer $renderer`
+
+- `protected StatusMapper $statusMapper`
+
+- `protected string $template = ""`
 
 ### Methods
 
@@ -2201,9 +2119,9 @@ Flattens the payload into the variables handed to the template. The
 
 ```php
 public function __construct(
-Renderer $renderer,
-StatusMapper $statusMapper,
-string $template = ""
+    Renderer $renderer,
+    StatusMapper $statusMapper,
+    string $template = ""
 );
 ```
 
@@ -2211,9 +2129,9 @@ string $template = ""
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
 
@@ -2236,6 +2154,7 @@ Flattens the payload into the variables handed to the template. The
 extras travel as they are, so an action can hand the view whatever the
 result should not carry.
 
+
 ## ADR\Router\AttributeFilter
 
 Final
@@ -2253,10 +2172,9 @@ segments pass through under their positional keys. An Action without
 
 ### Method Summary
 
-<ApiItem href="#adrrouterattributefilter-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"actionClass","default":null},{"type":"array","name":"attributes","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterattributefilter-cast" visibility="protected" name="cast" returnType="float|int|string" params={[{"type":"string","name":"value","default":null},{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public filter(string $actionClass, array $attributes): array`
+
+- `protected cast(string $value, string $type): float|int|string`
 
 ### Methods
 
@@ -2264,8 +2182,8 @@ segments pass through under their positional keys. An Action without
 
 ```php
 public function filter(
-string $actionClass,
-array $attributes
+    string $actionClass,
+    array $attributes
 ): array;
 ```
 
@@ -2273,10 +2191,11 @@ array $attributes
 
 ```php
 protected function cast(
-string $value,
-string $type
+    string $value,
+    string $type
 ): float|int|string;
 ```
+
 
 ## ADR\Router\Router
 
@@ -2292,11 +2211,11 @@ pipeline. No route table.
 Every static path segment is a namespace segment, and the class name is the
 verb followed by all of those segments concatenated:
 
-    GET  /                      -> Get
-    GET  /profiles              -> Profiles\GetProfiles
-    GET  /company/all           -> Company\All\GetCompanyAll
-    GET  /company/all/7         -> Company\All\GetCompanyAll  with ["7"]
-    POST /session/forgot-password -> Session\ForgotPassword\PostSessionForgotPassword
+GET  /                      -> Get
+GET  /profiles              -> Profiles\GetProfiles
+GET  /company/all           -> Company\All\GetCompanyAll
+GET  /company/all/7         -> Company\All\GetCompanyAll  with \["7"]
+POST /session/forgot-password -> Session\ForgotPassword\PostSessionForgotPassword
 
 ## Guarantees
 
@@ -2339,59 +2258,51 @@ RFC 9110 both leave path structure entirely to the origin server.
 
 ### Method Summary
 
-<ApiItem href="#adrrouterrouter-candidatesfor" visibility="public" name="candidatesFor" returnType="array" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
-Every Action class this router would try for the given method and path,
-</ApiItem>
-<ApiItem href="#adrrouterrouter-classfor" visibility="public" name="classFor" returnType="string" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
-The class this convention names for a fully static path, derived without
-</ApiItem>
-<ApiItem href="#adrrouterrouter-match" visibility="public" name="match" returnType="RouterMatchInterface|null" params={[{"type":"RequestInterface","name":"request","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-methodfor" visibility="public" name="methodFor" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-pathfor" visibility="public" name="pathFor" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-setactiondirectory" visibility="public" name="setActionDirectory" returnType="RouterInterface" params={[{"type":"string","name":"actionDirectory","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-setbasenamespace" visibility="public" name="setBaseNamespace" returnType="RouterInterface" params={[{"type":"string","name":"baseNamespace","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-setmiddlewaremap" visibility="public" name="setMiddlewareMap" returnType="RouterInterface" params={[{"type":"array","name":"middlewareMap","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-setwordseparator" visibility="public" name="setWordSeparator" returnType="RouterInterface" params={[{"type":"string","name":"wordSeparator","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-actionparams" visibility="protected" name="actionParams" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-An Action's declared positional parameters, or an empty array when it
-</ApiItem>
-<ApiItem href="#adrrouterrouter-camelize" visibility="protected" name="camelize" returnType="string" params={[{"type":"string","name":"segment","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-decamelize" visibility="protected" name="decamelize" returnType="string" params={[{"type":"string","name":"part","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-derivecandidates" visibility="protected" name="deriveCandidates" returnType="array" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
-The single derivation of the routing convention.
-</ApiItem>
-<ApiItem href="#adrrouterrouter-hassubnamespace" visibility="protected" name="hasSubNamespace" returnType="bool" params={[{"type":"string","name":"subNamespace","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-locate" visibility="protected" name="locate" returnType="array|null" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-middlewarefor" visibility="protected" name="middlewareFor" returnType="array" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
-<ApiItem href="#adrrouterrouter-verbof" visibility="protected" name="verbOf" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
-The class-name-form verb the given Action class carries, or null when the
-</ApiItem>
-<ApiItem href="#adrrouterrouter-verbs" visibility="protected" name="verbs" returnType="array" params={[]}>
-The HTTP verbs the convention recognizes, in class-name form.
-</ApiItem>
+- `public candidatesFor(string $method, string $path): array` — Every Action class this router would try for the given method and path,
+
+- `public classFor(string $method, string $path): string` — The class this convention names for a fully static path, derived without
+
+- `public match(RequestInterface $request): RouterMatchInterface|null`
+
+- `public methodFor(string $className): string|null`
+
+- `public pathFor(string $className): string|null`
+
+- `public setActionDirectory(string $actionDirectory): RouterInterface`
+
+- `public setBaseNamespace(string $baseNamespace): RouterInterface`
+
+- `public setMiddlewareMap(array $middlewareMap): RouterInterface`
+
+- `public setWordSeparator(string $wordSeparator): RouterInterface`
+
+- `protected actionParams(string $className): array` — An Action's declared positional parameters, or an empty array when it
+
+- `protected camelize(string $segment): string`
+
+- `protected decamelize(string $part): string`
+
+- `protected deriveCandidates(string $method, string $path): array` — The single derivation of the routing convention.
+
+- `protected hasSubNamespace(string $subNamespace): bool`
+
+- `protected locate(string $method, string $path): array|null`
+
+- `protected middlewareFor(string $className): array`
+
+- `protected verbOf(string $className): string|null` — The class-name-form verb the given Action class carries, or null when the
+
+- `protected verbs(): array` — The HTTP verbs the convention recognizes, in class-name form.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="actionDirectory" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="baseNamespace" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="middlewareMap" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="wordSeparator" type="string" default="&quot;-&quot;">
-</ApiItem>
+- `protected string $actionDirectory = ""`
+
+- `protected string $baseNamespace = ""`
+
+- `protected array $middlewareMap = []`
+
+- `protected string $wordSeparator = "-"`
 
 ### Methods
 
@@ -2399,8 +2310,8 @@ The HTTP verbs the convention recognizes, in class-name form.
 
 ```php
 public function candidatesFor(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array;
 ```
 
@@ -2413,8 +2324,8 @@ action directory.
 
 ```php
 public function classFor(
-string $method,
-string $path
+    string $method,
+    string $path
 ): string;
 ```
 
@@ -2502,8 +2413,8 @@ protected function decamelize( string $part ): string;
 
 ```php
 protected function deriveCandidates(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array;
 ```
 
@@ -2529,8 +2440,8 @@ protected function hasSubNamespace( string $subNamespace ): bool;
 
 ```php
 protected function locate(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array|null;
 ```
 
@@ -2564,6 +2475,7 @@ protected function verbs(): array;
 
 The HTTP verbs the convention recognizes, in class-name form.
 
+
 ## ADR\Router\RouterMatch
 
 Final
@@ -2576,27 +2488,25 @@ Immutable result of a successful route match.
 
 ### Method Summary
 
-<ApiItem href="#adrrouterroutermatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"action","default":null},{"type":"array","name":"attributes","default":"[]"},{"type":"array","name":"middleware","default":"[]"},{"type":"string|null","name":"name","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#adrrouterroutermatch-getaction" visibility="public" name="getAction" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#adrrouterroutermatch-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#adrrouterroutermatch-getmiddleware" visibility="public" name="getMiddleware" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#adrrouterroutermatch-getname" visibility="public" name="getName" returnType="string|null" params={[]}>
-</ApiItem>
+- `public __construct(string $action, array $attributes = [], array $middleware = [], string|null $name = null)`
+
+- `public getAction(): string`
+
+- `public getAttributes(): array`
+
+- `public getMiddleware(): array`
+
+- `public getName(): string|null`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="action" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="attributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="middleware" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="name" type="string|null" default="null">
-</ApiItem>
+- `protected string $action = ""`
+
+- `protected array $attributes = []`
+
+- `protected array $middleware = []`
+
+- `protected string|null $name = null`
 
 ### Methods
 
@@ -2604,10 +2514,10 @@ Immutable result of a successful route match.
 
 ```php
 public function __construct(
-string $action,
-array $attributes = [],
-array $middleware = [],
-string|null $name = null
+    string $action,
+    array $attributes = [],
+    array $middleware = [],
+    string|null $name = null
 );
 ```
 

@@ -33,9 +33,9 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session->setAdapter($files);
 ```
@@ -71,9 +71,9 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session->setAdapter($files);
 
@@ -92,13 +92,13 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 // ....
 
@@ -117,22 +117,22 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 var_dump(
-$session->exists()
+    $session->exists()
 );
 // `false`
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 var_dump(
-$session->exists()
+    $session->exists()
 );
 // `true`
 ```
@@ -149,14 +149,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 $session->regenerateId();
 ```
@@ -173,14 +173,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 echo $session->get('userId');
 echo $session->userId;
@@ -198,18 +198,18 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 echo $session->has('userId');
 var_dump(
-isset($session->userId)
+    isset($session->userId)
 );
 ```
 
@@ -231,14 +231,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session
-->setAdapter($files)
-->setId('phalcon-id')
-->start();
+    ->setAdapter($files)
+    ->setId('phalcon-id')
+    ->start();
 
 echo $session->getId(); // 'phalcon-id'
 ```
@@ -261,14 +261,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session
-->setAdapter($files)
-->setName('phalcon-app')
-->start();
+    ->setAdapter($files)
+    ->setName('phalcon-app')
+    ->start();
 
 echo $session->getName(); // 'phalcon-app'
 ```
@@ -285,18 +285,18 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager('id-1');
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 $session->setOptions(
-[
-    'uniqueId' => 'id-2'
-]   
+    [
+        'uniqueId' => 'id-2'
+    ]   
 );
 ```
 
@@ -314,14 +314,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 $session->set('userId', 12345);
 $session->userId = 12345;
@@ -339,14 +339,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 $session->remove('userId');
 unset($session->userId);
@@ -384,14 +384,14 @@ use Phalcon\Storage\AdapterFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $options = [
-'client'  => [],
-'servers' => [
-    [
-        'host'   => '127.0.0.1',
-        'port'   => 11211,
-        'weight' => 0,
+    'client'  => [],
+    'servers' => [
+        [
+            'host'   => '127.0.0.1',
+            'port'   => 11211,
+            'weight' => 0,
+        ],
     ],
-],
 ];
 
 $session           = new Manager();
@@ -400,8 +400,8 @@ $factory           = new AdapterFactory($serializerFactory);
 $libmemcached      = new Libmemcached($factory, $options);
 
 $session
-->setAdapter($libmemcached)
-->start();
+    ->setAdapter($libmemcached)
+    ->start();
 ```
 
 ### Noop
@@ -416,8 +416,8 @@ use Phalcon\Session\Adapter\Noop;
 
 $session = new Manager();
 $session
-->setAdapter(new Noop())
-->start();
+    ->setAdapter(new Noop())
+    ->start();
 ```
 
 ### Redis
@@ -450,9 +450,9 @@ use Phalcon\Storage\AdapterFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $options = [
-'host'  => '127.0.0.1',
-'port'  => 6379,
-'index' => '1',
+    'host'  => '127.0.0.1',
+    'port'  => 6379,
+    'index' => '1',
 ];
 
 $session           = new Manager();
@@ -461,8 +461,8 @@ $factory           = new AdapterFactory($serializerFactory);
 $redis             = new Redis($factory, $options);
 
 $session
-->setAdapter($redis)
-->start();
+    ->setAdapter($redis)
+    ->start();
 ```
 
 ### Stream
@@ -477,14 +477,14 @@ use Phalcon\Session\Adapter\Stream;
 
 $session = new Manager();
 $files = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 ```
 
 ### Custom
@@ -500,35 +500,35 @@ use SessionHandlerInterface;
 
 class Custom implements SessionHandlerInterface
 {
-public function close(): bool
-{
-    // ...
-}
+    public function close(): bool
+    {
+        // ...
+    }
 
-public function destroy(string $id): bool
-{
-    // ...
-}
+    public function destroy(string $id): bool
+    {
+        // ...
+    }
 
-public function gc(int $max_lifetime): int | false
-{
-    // ...
-}
+    public function gc(int $max_lifetime): int | false
+    {
+        // ...
+    }
 
-public function open(string $path, string $name): bool
-{
-    // ...
-}
+    public function open(string $path, string $name): bool
+    {
+        // ...
+    }
 
-public function read(string $id): string
-{
-    // ...
-}
+    public function read(string $id): string
+    {
+        // ...
+    }
 
-public function write(string $id, string $data): bool
-{
-    // ...
-}
+    public function write(string $id, string $data): bool
+    {
+        // ...
+    }
 }
 ```
 
@@ -559,14 +559,14 @@ ini_set('session.use_strict_mode', '1');
 
 $session = new Manager();
 $files   = new Stream(
-[
-    'savePath' => '/tmp',
-]
+    [
+        'savePath' => '/tmp',
+    ]
 );
 
 $session
-->setAdapter($files)
-->start();
+    ->setAdapter($files)
+    ->start();
 
 // Read-only request: the data is unchanged at shutdown, so PHP calls
 // updateTimestamp() - the session file is touched, not rewritten.
@@ -601,11 +601,11 @@ use Phalcon\Storage\AdapterFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $options = [
-'host'           => '127.0.0.1',
-'port'           => 6379,
-'index'          => '1',
-'lockingEnabled' => true,
-'lockExpiry'     => 60,
+    'host'           => '127.0.0.1',
+    'port'           => 6379,
+    'index'          => '1',
+    'lockingEnabled' => true,
+    'lockExpiry'     => 60,
 ];
 
 $session           = new Manager();
@@ -614,8 +614,8 @@ $factory           = new AdapterFactory($serializerFactory);
 $redis             = new Redis($factory, $options);
 
 $session
-->setAdapter($redis)
-->start();
+    ->setAdapter($redis)
+    ->start();
 ```
 
 The lock is a Redis key derived from the session id - `sess-reds-<id>-lock` with the default prefix - created with `SET NX EX`. The key carries a lifetime of `lockExpiry` seconds, so a process that dies without releasing the lock cannot block the session past that point. The lock is not refreshed while the request runs, so a request that outlives `lockExpiry` loses its lock silently. Set `lockExpiry` higher than the longest expected request time: when the lock expires while its request is still running, another request can acquire it and the protection lapses for that overlap.
@@ -668,21 +668,21 @@ use Phalcon\Session\Adapter\Stream;
 $container = new Di();
 
 $container->set(
-'session',
-function () {
-    $session = new Manager();
-    $files = new Stream(
-        [
-            'savePath' => '/tmp',
-        ]
-    );
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
 
-    $session
-        ->setAdapter($files)
-        ->start();
+        $session
+            ->setAdapter($files)
+            ->start();
 
-    return $session;
-}
+        return $session;
+    }
 );
 ```
 
@@ -699,11 +699,11 @@ use Phalcon\Session\Manager;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
-    // Set a session variable
-    $this->session->set('user-name', 'Dark Helmet');
-}
+    public function indexAction()
+    {
+        // Set a session variable
+        $this->session->set('user-name', 'Dark Helmet');
+    }
 }
 ```
 
@@ -726,19 +726,19 @@ use Phalcon\Session\Manager;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
-    // Set a session variable
-    $this->persistent->name = 'Dark Helmet';
-    $this->session->name    = 'Princess Vespa';
-}
+    public function indexAction()
+    {
+        // Set a session variable
+        $this->persistent->name = 'Dark Helmet';
+        $this->session->name    = 'Princess Vespa';
+    }
 
-public function echoAction()
-{
-    // Set a session variable
-    echo $this->persistent->name; // 'Dark Helmet';
-    echo $this->session->name;    // 'Princess Vespa';
-}
+    public function echoAction()
+    {
+        // Set a session variable
+        echo $this->persistent->name; // 'Dark Helmet';
+        echo $this->session->name;    // 'Princess Vespa';
+    }
 }
 ```
 
@@ -757,18 +757,18 @@ use Phalcon\Session\Manager;
  */
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
-    // Set a session variable
-    $this->persistent->name = 'President Skroob';
-}
+    public function indexAction()
+    {
+        // Set a session variable
+        $this->persistent->name = 'President Skroob';
+    }
 
-public function echoAction()
-{
-    // Set a session variable
-    echo $this->persistent->name; // 'President Skroob';
-    echo $this->session->name;    // 'Princess Vespa';
-}
+    public function echoAction()
+    {
+        // Set a session variable
+        echo $this->persistent->name; // 'President Skroob';
+        echo $this->session->name;    // 'Princess Vespa';
+    }
 }
 ```
 
@@ -788,14 +788,14 @@ use Phalcon\Mvc\Controller;
  */
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $this->session->set('key', 'value');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            $this->session->set('key', 'value');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 

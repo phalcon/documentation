@@ -24,7 +24,7 @@ or by manually adding it to `composer.json`:
 ```json
 {
   "require-dev": {
-"phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^9.0"
   }
 }
 ```
@@ -45,9 +45,9 @@ In order to autoload our test directory, we must add our test namespace to compo
 ```json
 {
   "autoload-dev": {
-"psr-4": {
-  "Tests\\": "tests"
-}
+    "psr-4": {
+      "Tests\\": "tests"
+    }
   }
 }
 ```
@@ -62,18 +62,18 @@ Modify the `phpunit.xml` below to fit your needs and save it in your project roo
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit backupGlobals="false"
-     backupStaticAttributes="false"
-     verbose="true"
-     colors="true"
-     convertErrorsToExceptions="true"
-     convertNoticesToExceptions="true"
-     convertWarningsToExceptions="true"
-     processIsolation="false"
-     stopOnFailure="false">
+         backupStaticAttributes="false"
+         verbose="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
 
-<testsuite name="Phalcon - Unit Test">
-    <directory>./tests/Unit</directory>
-</testsuite>
+    <testsuite name="Phalcon - Unit Test">
+        <directory>./tests/Unit</directory>
+    </testsuite>
 </phpunit>
 ```
 
@@ -91,9 +91,9 @@ or by manually adding it to `composer.json`:
 
 ```json
 {
-"require-dev": {
-    "phalcon/incubator-test": "^v1.0.0-alpha.1"
-}
+    "require-dev": {
+        "phalcon/incubator-test": "^v1.0.0-alpha.1"
+    }
 }
 ```
 
@@ -120,28 +120,28 @@ use PHPUnit\Framework\IncompleteTestError;
 
 abstract class AbstractUnitTest extends UnitTestCase
 {
-private bool $loaded = false;
+    private bool $loaded = false;
 
-protected function setUp(): void
-{
-    parent::setUp();
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-    $di = new FactoryDefault();
+        $di = new FactoryDefault();
 
-    Di::reset();
-    Di::setDefault($di);
+        Di::reset();
+        Di::setDefault($di);
 
-    $this->loaded = true;
-}
-
-public function __destruct()
-{
-    if (!$this->loaded) {
-        throw new IncompleteTestError(
-            "Please run parent::setUp()."
-        );
+        $this->loaded = true;
     }
-}
+
+    public function __destruct()
+    {
+        if (!$this->loaded) {
+            throw new IncompleteTestError(
+                "Please run parent::setUp()."
+            );
+        }
+    }
 }
 ```
 
@@ -158,32 +158,32 @@ namespace Tests\Unit;
 
 class UnitTest extends AbstractUnitTest
 {
-public function testTestCase(): void
-{
-    $this->assertEquals(
-        "roman",
-        "roman",
-        "This will pass"
-    );
+    public function testTestCase(): void
+    {
+        $this->assertEquals(
+            "roman",
+            "roman",
+            "This will pass"
+        );
 
-    $this->assertEquals(
-        "hope",
-        "ava",
-        "This will fail"
-    );
-}
+        $this->assertEquals(
+            "hope",
+            "ava",
+            "This will fail"
+        );
+    }
 }
 ```
 
 If you need to overload the `setUp` method, it is important you call the parent or Phalcon will not properly initialize.
 
 ```php
-protected function setUp(): void
-{
-    parent::setUp();
-
-    //...
-}
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        //...
+    }
 ````
 
 ### Running Unit Tests

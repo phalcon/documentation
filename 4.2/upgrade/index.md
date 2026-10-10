@@ -68,6 +68,7 @@ php -m | grep phalcon
 ### Exceptions
 - Changed catch `Exception` to `Throwable`
 
+
 - - -
 
 #Components
@@ -173,8 +174,8 @@ $serializerFactory = new SerializerFactory();
 $adapterFactory    = new AdapterFactory($serializerFactory);
 
 $options = [
-'defaultSerializer' => 'Json',
-'lifetime'          => 7200
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200
 ];
 
 $adapter = $adapterFactory->newInstance('apcu', $options);
@@ -194,18 +195,18 @@ use Phalcon\Storage\Serializer\SerializerFactory;
 $container = new Di();
 
 $container->set(
-'cache',
-function () {
-    $options = [
-        'defaultSerializer' => 'Json',
-        'lifetime'          => 7200
-    ];
+    'cache',
+    function () {
+        $options = [
+            'defaultSerializer' => 'Json',
+            'lifetime'          => 7200
+        ];
+        
+        $adapter = (new AdapterFactory(new SerializerFactory()))
+                    ->newInstance('apcu', $options); 
 
-    $adapter = (new AdapterFactory(new SerializerFactory()))
-                ->newInstance('apcu', $options); 
-
-    return new Cache($adapter);
-}
+        return new Cache($adapter);
+    }
 );
 ```
 
@@ -223,18 +224,18 @@ use Phalcon\Cli\Task;
 
 class MainTask extends Task
 {
-public function testAction(string $yourName, string $myName)
-{
-    echo sprintf(
-        'Hello %s!' . PHP_EOL,
-        $yourName
-    );
+    public function testAction(string $yourName, string $myName)
+    {
+        echo sprintf(
+            'Hello %s!' . PHP_EOL,
+            $yourName
+        );
 
-    echo sprintf(
-        'Best regards, %s' . PHP_EOL,
-        $myName
-    );
-}
+        echo sprintf(
+            'Best regards, %s' . PHP_EOL,
+            $myName
+        );
+    }
 }
 ```
 ### Cli\Console
@@ -388,11 +389,11 @@ use Phalcon\Filter\FilterFactory;
 $container = new Di();
 
 $container->set(
-'filter',
-function () {
-    $factory = new FilterFactory();
-    return $factory->newInstance();
-}
+    'filter',
+    function () {
+        $factory = new FilterFactory();
+        return $factory->newInstance();
+    }
 );
 ```
 
@@ -484,6 +485,7 @@ echo Enum::VERTICAL;   // prints  12
 ```
 - - -
 
+
 ## Logger
 
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](/4.2/logger/)
@@ -504,10 +506,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/logs/application.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -525,18 +527,18 @@ use Phalcon\Logger\Adapter\Stream;
 $container = new Di();
 
 $container->set(
-'logger',
-function () {
-    $adapter = new Stream('/logs/application.log');
-    $logger  = new Logger(
-        'messages',
-        [
-            'main' => $adapter,
-        ]
-    );
+    'logger',
+    function () {
+        $adapter = new Stream('/logs/application.log');
+        $logger  = new Logger(
+            'messages',
+            [
+                'main' => $adapter,
+            ]
+        );
 
-    return $logger;
-}
+        return $logger;
+    }
 );
 ```
 
@@ -554,12 +556,12 @@ $adapter2 = new Stream('/remote/second-log.log');
 $adapter3 = new Stream('/manager/third-log.log');
 
 $logger = new Logger(
-'messages',
-[
-    'local'   => $adapter1,
-    'remote'  => $adapter2,
-    'manager' => $adapter3,
-]
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
 );
 
 // Log to all adapters
@@ -600,11 +602,11 @@ use Phalcon\Mvc\Model;
 
 class Users
 {
-public function initialize()
-{
-    $this->setSource('Users');
-    // ....
-}
+    public function initialize()
+    {
+        $this->setSource('Users');
+        // ....
+    }
 }
 ```
 
@@ -707,7 +709,7 @@ $criteria->limit(10, null);
 
 ### Mvc\Router\RouteInterface
 - Added response handler to `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, to allow use of a custom response handler.
-
+    
 ### Mvc\User
 - Removed `Phalcon\Mvc\User\Component` - use `Phalcon\Di\Injectable` instead
 - Removed `Phalcon\Mvc\User\Module` - use `Phalcon\Di\Injectable` instead
@@ -741,27 +743,27 @@ use Phalcon\Mvc\Router\Group;
 $group = new Group();
 
 $group->addConnect(
-'/api',
-[
-    'controller' => 'api',
-    'action'     => 'connect',
-]
+    '/api',
+    [
+        'controller' => 'api',
+        'action'     => 'connect',
+    ]
 );
 
 $group->addPurge(
-'/api',
-[
-    'controller' => 'api',
-    'action'     => 'purge',
-]
+    '/api',
+    [
+        'controller' => 'api',
+        'action'     => 'purge',
+    ]
 );
 
 $group->addTrace(
-'/api',
-[
-    'controller' => 'api',
-    'action'     => 'trace',
-]
+    '/api',
+    [
+        'controller' => 'api',
+        'action'     => 'trace',
+    ]
 );
 ```
 
@@ -864,6 +866,7 @@ View caching along with the `viewCache` service have been removed from the frame
 ![](/assets/images/status-changes-required-red.svg) [![](/assets/images/status-docs.svg)](/4.2/url/)
 
 The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functionality remains the same.  
+
 
 ## Cheat Sheet
 
@@ -1112,6 +1115,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Logger\Formatter\Syslog  | Removed    |                                            |
 | Phalcon\Logger\Multiple          | Removed    |                                            |
 
+
 ### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
 | 3.4.x                 | State      | 4.0.x                      |
@@ -1240,6 +1244,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                                            | New        | Phalcon\Validation\Validator\File\Size\Min         |
 |                                            | New        | Phalcon\Validation\Validator\StringLength\Max      |
 |                                            | New        | Phalcon\Validation\Validator\StringLength\Min      |
+
 
 [php-support]: https://www.php.net/supported-versions.php
 [psr-3]: https://www.php-fig.org/psr/psr-3/

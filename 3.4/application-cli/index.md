@@ -11,6 +11,7 @@ version: "3.4"
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
+
 ## Structure
 
 A minimal structure of a CLI application will look like this:
@@ -18,6 +19,7 @@ A minimal structure of a CLI application will look like this:
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
 * `app/cli.php` &lt;-- main bootstrap file
+
 
 ## Creating a Bootstrap
 
@@ -41,9 +43,9 @@ $di = new CliDI();
 $loader = new Loader();
 
 $loader->registerDirs(
-[
-    __DIR__ . '/tasks',
-]
+    [
+        __DIR__ . '/tasks',
+    ]
 );
 
 $loader->register();
@@ -52,9 +54,9 @@ $loader->register();
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
-$config = include $configFile;
+    $config = include $configFile;
 
-$di->set('config', $config);
+    $di->set('config', $config);
 }
 
 // Create a console application
@@ -68,29 +70,29 @@ $console->setDI($di);
 $arguments = [];
 
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 
 try {
-// Handle incoming arguments
-$console->handle($arguments);
+    // Handle incoming arguments
+    $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-// Do Phalcon related stuff here
-// ..
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    // Do Phalcon related stuff here
+    // ..
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (\Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (\Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -99,6 +101,7 @@ This piece of code can be run using:
 ```bash
 php app/cli.php
 ```
+
 
 ## Tasks
 
@@ -113,12 +116,13 @@ use Phalcon\Cli\Task;
 
 class MainTask extends Task
 {
-public function mainAction()
-{
-    echo 'This is the default task and the default action' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        echo 'This is the default task and the default action' . PHP_EOL;
+    }
 }
 ```
+
 
 ## Processing action parameters
 
@@ -133,24 +137,24 @@ use Phalcon\Cli\Task;
 
 class MainTask extends Task
 {
-public function mainAction()
-{
-    echo 'This is the default task and the default action' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        echo 'This is the default task and the default action' . PHP_EOL;
+    }
 
-/**
- * @param array $params
- */
-public function testAction(array $params)
-{
-    echo sprintf('hello %s', $params[0]);
+    /**
+     * @param array $params
+     */
+    public function testAction(array $params)
+    {
+        echo sprintf('hello %s', $params[0]);
 
-    echo PHP_EOL;
+        echo PHP_EOL;
 
-    echo sprintf('best regards, %s', $params[1]);
+        echo sprintf('best regards, %s', $params[1]);
 
-    echo PHP_EOL;
-}
+        echo PHP_EOL;
+    }
 }
 ```
 
@@ -163,6 +167,7 @@ hello world
 best regards, universe
 ```
 
+
 ## Running tasks in a chain
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
@@ -173,19 +178,19 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
 $di->setShared("console", $console);
 
 try {
-// Handle incoming arguments
-$console->handle($arguments);
+    // Handle incoming arguments
+    $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-// Do Phalcon related stuff here
-// ..
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    // Do Phalcon related stuff here
+    // ..
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (\Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (\Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -197,22 +202,22 @@ use Phalcon\Cli\Task;
 
 class MainTask extends Task
 {
-public function mainAction()
-{
-    echo "This is the default task and the default action" . PHP_EOL;
+    public function mainAction()
+    {
+        echo "This is the default task and the default action" . PHP_EOL;
 
-    $this->console->handle(
-        [
-            "task"   => "main",
-            "action" => "test",
-        ]
-    );
-}
+        $this->console->handle(
+            [
+                "task"   => "main",
+                "action" => "test",
+            ]
+        );
+    }
 
-public function testAction()
-{
-    echo "I will get printed too!" . PHP_EOL;
-}
+    public function testAction()
+    {
+        echo "I will get printed too!" . PHP_EOL;
+    }
 }
 ```
 

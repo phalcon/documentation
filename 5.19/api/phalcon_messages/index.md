@@ -23,11 +23,12 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Messages\Exception`**
-- [`Phalcon\Messages\Exceptions\MessageNotObject`](#messagesexceptionsmessagenotobject)
-- [`Phalcon\Messages\Exceptions\MessagesNotIterable`](#messagesexceptionsmessagesnotiterable)
+    - **`Phalcon\Messages\Exception`**
+        - [`Phalcon\Messages\Exceptions\MessageNotObject`](#messagesexceptionsmessagenotobject)
+        - [`Phalcon\Messages\Exceptions\MessagesNotIterable`](#messagesexceptionsmessagesnotiterable)
 
 </div>
+
 
 ## Messages\Exceptions\MessageNotObject
 
@@ -37,12 +38,13 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Messages\Exception`](#messagesexception)
-- **`Phalcon\Messages\Exceptions\MessageNotObject`**
+    - [`Phalcon\Messages\Exception`](#messagesexception)
+        - **`Phalcon\Messages\Exceptions\MessageNotObject`**
 
 </div>
 
 __Uses__ `Phalcon\Messages\Exception`
+
 
 ### Method Summary
 
@@ -63,6 +65,7 @@ __Uses__ `Phalcon\Messages\Exception`
 public function __construct();
 ```
 
+
 ## Messages\Exceptions\MessagesNotIterable
 
 <span class="badge badge--class">Class</span>
@@ -71,12 +74,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Messages\Exception`](#messagesexception)
-- **`Phalcon\Messages\Exceptions\MessagesNotIterable`**
+    - [`Phalcon\Messages\Exception`](#messagesexception)
+        - **`Phalcon\Messages\Exceptions\MessagesNotIterable`**
 
 </div>
 
 __Uses__ `Phalcon\Messages\Exception`
+
 
 ### Method Summary
 
@@ -97,6 +101,7 @@ __Uses__ `Phalcon\Messages\Exception`
 public function __construct();
 ```
 
+
 ## Messages\Message
 
 <span class="badge badge--class">Class</span>
@@ -113,6 +118,7 @@ Stores a message from various components
 </div>
 
 __Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\MessagesTypes`
+
 
 ### Method Summary
 
@@ -229,11 +235,11 @@ __Uses__ `JsonSerializable` · `Phalcon\Contracts\Messages\MessagesTypes`
 
 ```php
 public function __construct(
-string $message,
-string $field = "",
-string $type = "",
-int $code = 0,
-array $metaData = []
+    string $message,
+    string $field = "",
+    string $type = "",
+    int $code = 0,
+    array $metaData = []
 );
 ```
 
@@ -325,6 +331,7 @@ public function setType( string $type ): MessageInterface;
 
 Sets message type
 
+
 ## Messages\MessageInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -339,6 +346,7 @@ Interface for Phalcon\Messages\Message
 </div>
 
 __Uses__ `Phalcon\Contracts\Messages\MessagesTypes`
+
 
 ### Method Summary
 
@@ -503,6 +511,7 @@ public function setType( string $type ): MessageInterface;
 
 Sets message type
 
+
 ## Messages\Messages
 
 <span class="badge badge--class">Class</span>
@@ -524,6 +533,7 @@ must take part in iteration.
 </div>
 
 __Uses__ `Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
+
 
 ### Method Summary
 
@@ -580,7 +590,7 @@ Appends a message to the collection
 
 ```php
 $messages->appendMessage(
-new \Phalcon\Messages\Message("This is a message")
+    new \Phalcon\Messages\Message("This is a message")
 );
 ```
 
@@ -623,6 +633,7 @@ $data = $messages->jsonSerialize();
 echo json_encode($data);
 ```
 
+
 ## Messages\Traits\MessagesHelperTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -638,7 +649,9 @@ Trait MessagesHelperTrait
 
 __Uses__ `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessageNotObject` · `Phalcon\Messages\MessageInterface`
 
+
 __Used by__ [`Phalcon\Messages\Messages`](#messagesmessages)
+
 
 ### Method Summary
 
@@ -766,7 +779,7 @@ Checks if an index exists
 
 ```php
 var_dump(
-isset($message["database"])
+    isset($message["database"])
 );
 ```
 
@@ -780,7 +793,7 @@ Gets an attribute a message using the array syntax
 
 ```php
 print_r(
-$messages[0]
+    $messages[0]
 );
 ```
 
@@ -788,8 +801,8 @@ $messages[0]
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 

@@ -24,12 +24,13 @@ Phalcon\Storage\AdapterFactory.
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.18/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.18/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Queue\AdapterFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.18/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Queue\AdapterFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory` · `Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory` · `Phalcon\Queue\Adapter\Redis\RedisConnectionFactory` · `Phalcon\Queue\Adapter\Stream\StreamConnectionFactory` · `Phalcon\Queue\Exceptions\Exception`
+
 
 ### Method Summary
 
@@ -74,8 +75,8 @@ AdapterFactory constructor.
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): ConnectionFactoryInterface;
 ```
 
@@ -97,6 +98,7 @@ protected function getServices(): array;
 
 Returns the available adapters.
 
+
 ## Queue\Adapter\AbstractConsumer
 
 <span class="badge badge--abstract">Abstract</span>
@@ -112,14 +114,15 @@ override `receive()` instead of polling.
 <div class="api-tree">
 
 - **`Phalcon\Queue\Adapter\AbstractConsumer`** - implements [`Phalcon\Contracts\Queue\Consumer`](/5.18/api/phalcon_contracts/#contractsqueueconsumer)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`](#queueadapterbeanstalkbeanstalkconsumer)
-- [`Phalcon\Queue\Adapter\Memory\MemoryConsumer`](#queueadaptermemorymemoryconsumer)
-- [`Phalcon\Queue\Adapter\Redis\RedisConsumer`](#queueadapterredisredisconsumer)
-- [`Phalcon\Queue\Adapter\Stream\StreamConsumer`](#queueadapterstreamstreamconsumer)
+    - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`](#queueadapterbeanstalkbeanstalkconsumer)
+    - [`Phalcon\Queue\Adapter\Memory\MemoryConsumer`](#queueadaptermemorymemoryconsumer)
+    - [`Phalcon\Queue\Adapter\Redis\RedisConsumer`](#queueadapterredisredisconsumer)
+    - [`Phalcon\Queue\Adapter\Stream\StreamConsumer`](#queueadapterstreamstreamconsumer)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue`
+
 
 ### Method Summary
 
@@ -221,8 +224,8 @@ Receives a message without blocking, or null when none is ready.
 
 ```php
 abstract public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
 
@@ -235,6 +238,7 @@ public function setPollInterval( int $pollInterval ): void;
 ```
 
 Sets the poll interval (in milliseconds) used by `receive()`.
+
 
 ## Queue\Adapter\AbstractContext
 
@@ -250,14 +254,15 @@ subscription consumer) and the storage operations.
 <div class="api-tree">
 
 - **`Phalcon\Queue\Adapter\AbstractContext`** - implements [`Phalcon\Contracts\Queue\Context`](/5.18/api/phalcon_contracts/#contractsqueuecontext)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`](#queueadapterbeanstalkbeanstalkcontext)
-- [`Phalcon\Queue\Adapter\Memory\MemoryContext`](#queueadaptermemorymemorycontext)
-- [`Phalcon\Queue\Adapter\Redis\RedisContext`](#queueadapterredisrediscontext)
-- [`Phalcon\Queue\Adapter\Stream\StreamContext`](#queueadapterstreamstreamcontext)
+    - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`](#queueadapterbeanstalkbeanstalkcontext)
+    - [`Phalcon\Queue\Adapter\Memory\MemoryContext`](#queueadaptermemorymemorycontext)
+    - [`Phalcon\Queue\Adapter\Redis\RedisContext`](#queueadapterredisrediscontext)
+    - [`Phalcon\Queue\Adapter\Stream\StreamContext`](#queueadapterstreamstreamcontext)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\Topic`
+
 
 ### Method Summary
 
@@ -310,6 +315,7 @@ public function createTopic( string $topicName ): TopicInterface;
 
 Creates a topic destination by name.
 
+
 ## Queue\Adapter\AbstractMessage
 
 <span class="badge badge--abstract">Abstract</span>
@@ -323,14 +329,16 @@ Phalcon\Queue\Adapter\Traits\MessageTrait directly instead of extending this.
 <div class="api-tree">
 
 - **`Phalcon\Queue\Adapter\AbstractMessage`** - implements [`Phalcon\Contracts\Queue\Message`](/5.18/api/phalcon_contracts/#contractsqueuemessage)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`](#queueadapterbeanstalkbeanstalkmessage)
-- [`Phalcon\Queue\Adapter\Memory\MemoryMessage`](#queueadaptermemorymemorymessage)
-- [`Phalcon\Queue\Adapter\Redis\RedisMessage`](#queueadapterredisredismessage)
-- [`Phalcon\Queue\Adapter\Stream\StreamMessage`](#queueadapterstreamstreammessage)
+    - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`](#queueadapterbeanstalkbeanstalkmessage)
+    - [`Phalcon\Queue\Adapter\Memory\MemoryMessage`](#queueadaptermemorymemorymessage)
+    - [`Phalcon\Queue\Adapter\Redis\RedisMessage`](#queueadapterredisredismessage)
+    - [`Phalcon\Queue\Adapter\Stream\StreamMessage`](#queueadapterstreamstreammessage)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Queue\Adapter\Traits\MessageTrait`
+
+
 
 ## Queue\Adapter\AbstractProducer
 
@@ -346,14 +354,15 @@ and implements `send()`.
 <div class="api-tree">
 
 - **`Phalcon\Queue\Adapter\AbstractProducer`** - implements [`Phalcon\Contracts\Queue\Producer`](/5.18/api/phalcon_contracts/#contractsqueueproducer)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`](#queueadapterbeanstalkbeanstalkproducer)
-- [`Phalcon\Queue\Adapter\Memory\MemoryProducer`](#queueadaptermemorymemoryproducer)
-- [`Phalcon\Queue\Adapter\Redis\RedisProducer`](#queueadapterredisredisproducer)
-- [`Phalcon\Queue\Adapter\Stream\StreamProducer`](#queueadapterstreamstreamproducer)
+    - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`](#queueadapterbeanstalkbeanstalkproducer)
+    - [`Phalcon\Queue\Adapter\Memory\MemoryProducer`](#queueadaptermemorymemoryproducer)
+    - [`Phalcon\Queue\Adapter\Redis\RedisProducer`](#queueadapterredisredisproducer)
+    - [`Phalcon\Queue\Adapter\Stream\StreamProducer`](#queueadapterstreamstreamproducer)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException` · `Phalcon\Queue\Exceptions\PriorityNotSupportedException` · `Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`
+
 
 ### Method Summary
 
@@ -421,8 +430,8 @@ public function getTimeToLive(): int|null;
 
 ```php
 abstract public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
 
@@ -444,6 +453,7 @@ public function setPriority( mixed $priority = null ): ProducerInterface;
 public function setTimeToLive( mixed $timeToLive = null ): ProducerInterface;
 ```
 
+
 ## Queue\Adapter\AbstractSubscriptionConsumer
 
 <span class="badge badge--abstract">Abstract</span>
@@ -458,14 +468,16 @@ extending this.
 <div class="api-tree">
 
 - **`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`** - implements [`Phalcon\Contracts\Queue\SubscriptionConsumer`](/5.18/api/phalcon_contracts/#contractsqueuesubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`](#queueadapterbeanstalkbeanstalksubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`](#queueadaptermemorymemorysubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`](#queueadapterredisredissubscriptionconsumer)
-- [`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`](#queueadapterstreamstreamsubscriptionconsumer)
+    - [`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`](#queueadapterbeanstalkbeanstalksubscriptionconsumer)
+    - [`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`](#queueadaptermemorymemorysubscriptionconsumer)
+    - [`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`](#queueadapterredisredissubscriptionconsumer)
+    - [`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`](#queueadapterstreamstreamsubscriptionconsumer)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\Traits\SubscriptionConsumerTrait`
+
+
 
 ## Queue\Adapter\Beanstalk\BeanstalkConnection
 
@@ -484,6 +496,7 @@ from the original Phalcon\Queue\Beanstalk transport.
 </div>
 
 __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -630,9 +643,9 @@ __Uses__ `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Traits\Php\FileTrait`
 
 ```php
 public function __construct(
-string $host = "127.0.0.1",
-int $port = 11300,
-bool $persistent = false
+    string $host = "127.0.0.1",
+    int $port = 11300,
+    bool $persistent = false
 );
 ```
 
@@ -640,8 +653,8 @@ bool $persistent = false
 
 ```php
 public function buryJob(
-string $id,
-int $priority
+    string $id,
+    int $priority
 ): bool;
 ```
 
@@ -683,10 +696,10 @@ Removes the named tube from the watch list for the connection.
 
 ```php
 public function put(
-string $data,
-int $priority,
-int $delay,
-int $ttr
+    string $data,
+    int $priority,
+    int $delay,
+    int $ttr
 ): int|bool;
 ```
 
@@ -714,9 +727,9 @@ Reads the latest status line and splits it into tokens.
 
 ```php
 public function releaseJob(
-string $id,
-int $priority,
-int $delay
+    string $id,
+    int $priority,
+    int $delay
 ): bool;
 ```
 
@@ -773,6 +786,7 @@ public function write( string $data ): bool|int;
 
 Writes data to the socket, connecting first when needed.
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkConnectionFactory
 
 <span class="badge badge--class">Class</span>
@@ -794,6 +808,7 @@ Options:
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+
 
 ### Method Summary
 
@@ -835,6 +850,7 @@ public function __construct( array $options = [] );
 public function createContext(): ContextInterface;
 ```
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkConsumer
 
 <span class="badge badge--class">Class</span>
@@ -849,11 +865,12 @@ buries it.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`** - implements [`Phalcon\Contracts\Queue\VisibilityAware`](/5.18/api/phalcon_contracts/#contractsqueuevisibilityaware)
+    - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkConsumer`** - implements [`Phalcon\Contracts\Queue\VisibilityAware`](/5.18/api/phalcon_contracts/#contractsqueuevisibilityaware)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\VisibilityAware` · `Phalcon\Queue\Adapter\AbstractConsumer` · `Phalcon\Queue\Adapter\MessageEnvelope`
+
 
 ### Method Summary
 
@@ -918,8 +935,8 @@ __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` ·
 
 ```php
 public function __construct(
-BeanstalkConnection $connection,
-QueueInterface $queue
+    BeanstalkConnection $connection,
+    QueueInterface $queue
 );
 ```
 
@@ -945,8 +962,8 @@ public function receiveNoWait(): MessageInterface|null;
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
 
@@ -957,6 +974,7 @@ public function touch( MessageInterface $message ): bool;
 ```
 
 Extends the time-to-run window of a reserved job (VisibilityAware).
+
 
 ## Queue\Adapter\Beanstalk\BeanstalkContext
 
@@ -972,11 +990,12 @@ AbstractContext.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`** - implements [`Phalcon\Contracts\Queue\Inspectable`](/5.18/api/phalcon_contracts/#contractsqueueinspectable)
+    - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkContext`** - implements [`Phalcon\Contracts\Queue\Inspectable`](/5.18/api/phalcon_contracts/#contractsqueueinspectable)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Inspectable` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -1081,11 +1100,11 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 
 ```php
 public function __construct(
-string $host,
-int $port,
-bool $persistent = false,
-int $ttr = 86400,
-int $pollInterval = 200
+    string $host,
+    int $port,
+    bool $persistent = false,
+    int $ttr = 86400,
+    int $pollInterval = 200
 );
 ```
 
@@ -1105,9 +1124,9 @@ public function createConsumer( DestinationInterface $destination ): ConsumerInt
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -1159,16 +1178,17 @@ public function purgeQueue( QueueInterface $queue ): void;
 
 ```php
 public function putMessage(
-string $tube,
-string $payload,
-int $priority,
-int $delay,
-int $ttr
+    string $tube,
+    string $payload,
+    int $priority,
+    int $delay,
+    int $ttr
 ): void;
 ```
 
 Puts a serialized payload on a tube via the shared connection.
 Internal transport API used by BeanstalkProducer.
+
 
 ## Queue\Adapter\Beanstalk\BeanstalkMessage
 
@@ -1182,11 +1202,12 @@ MessageTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`**
+    - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkMessage`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractMessage`
+
 
 ### Method Summary
 
@@ -1230,6 +1251,7 @@ public function getJobId(): string|null;
 public function setJobId( string $jobId ): void;
 ```
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkProducer
 
 <span class="badge badge--class">Class</span>
@@ -1243,11 +1265,12 @@ rejects it).
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`**
+    - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkProducer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -1341,8 +1364,8 @@ public function getPriority(): int|null;
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
 
@@ -1358,6 +1381,7 @@ public function setDeliveryDelay( mixed $deliveryDelay = null ): ProducerInterfa
 public function setPriority( mixed $priority = null ): ProducerInterface;
 ```
 
+
 ## Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer
 
 <span class="badge badge--class">Class</span>
@@ -1369,11 +1393,12 @@ lives in SubscriptionConsumerTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`**
+    - **`Phalcon\Queue\Adapter\Beanstalk\BeanstalkSubscriptionConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
+
 
 ### Method Summary
 
@@ -1403,10 +1428,11 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ```php
 public function __construct(
-BeanstalkContext $context,
-int $pollInterval = 200
+    BeanstalkContext $context,
+    int $pollInterval = 200
 );
 ```
+
 
 ## Queue\Adapter\GenericQueue
 
@@ -1424,6 +1450,7 @@ specific subclass.
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Queue`
+
 
 ### Method Summary
 
@@ -1471,6 +1498,7 @@ public function getQueueName(): string;
 
 Returns the queue name.
 
+
 ## Queue\Adapter\GenericTopic
 
 <span class="badge badge--class">Class</span>
@@ -1487,6 +1515,7 @@ specific subclass.
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Topic`
+
 
 ### Method Summary
 
@@ -1534,6 +1563,7 @@ public function getTopicName(): string;
 
 Returns the topic name.
 
+
 ## Queue\Adapter\Memory\MemoryConnectionFactory
 
 <span class="badge badge--class">Class</span>
@@ -1548,6 +1578,7 @@ Builds a MemoryContext. The Memory transport takes no options.
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+
 
 ### Method Summary
 
@@ -1595,6 +1626,7 @@ public function createContext(): ContextInterface;
 
 Creates a new in-process context.
 
+
 ## Queue\Adapter\Memory\MemoryConsumer
 
 <span class="badge badge--class">Class</span>
@@ -1606,11 +1638,12 @@ polling loop inherited from AbstractConsumer.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Memory\MemoryConsumer`**
+    - **`Phalcon\Queue\Adapter\Memory\MemoryConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Adapter\AbstractConsumer`
+
 
 ### Method Summary
 
@@ -1658,8 +1691,8 @@ __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` ·
 
 ```php
 public function __construct(
-MemoryContext $context,
-QueueInterface $queue
+    MemoryContext $context,
+    QueueInterface $queue
 );
 ```
 
@@ -1685,12 +1718,13 @@ Removes and returns the next message, or null when the queue is empty.
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
 
 Rejects the message. When requeue is true it is put back on the queue.
+
 
 ## Queue\Adapter\Memory\MemoryContext
 
@@ -1704,11 +1738,12 @@ createTopic / createTemporaryQueue) come from AbstractContext.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Memory\MemoryContext`**
+    - **`Phalcon\Queue\Adapter\Memory\MemoryContext`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -1798,9 +1833,9 @@ Creates a consumer for the given queue destination.
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -1843,13 +1878,14 @@ Removes all messages from the given queue.
 
 ```php
 public function pushMessage(
-string $queueName,
-MessageInterface $message
+    string $queueName,
+    MessageInterface $message
 ): void;
 ```
 
 Appends a message to the back of a queue.
 Internal transport API used by MemoryProducer.
+
 
 ## Queue\Adapter\Memory\MemoryMessage
 
@@ -1861,11 +1897,13 @@ In-process message. All behavior comes from MessageTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Memory\MemoryMessage`**
+    - **`Phalcon\Queue\Adapter\Memory\MemoryMessage`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractMessage`
+
+
 
 ## Queue\Adapter\Memory\MemoryProducer
 
@@ -1879,11 +1917,12 @@ not supported (the defaults from AbstractProducer reject them).
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Memory\MemoryProducer`**
+    - **`Phalcon\Queue\Adapter\Memory\MemoryProducer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -1923,10 +1962,11 @@ public function __construct( MemoryContext $context );
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
+
 
 ## Queue\Adapter\Memory\MemorySubscriptionConsumer
 
@@ -1939,11 +1979,12 @@ lives in SubscriptionConsumerTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`**
+    - **`Phalcon\Queue\Adapter\Memory\MemorySubscriptionConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
+
 
 ### Method Summary
 
@@ -1975,6 +2016,7 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 public function __construct( MemoryContext $context );
 ```
 
+
 ## Queue\Adapter\MessageEnvelope
 
 <span class="badge badge--class">Class</span>
@@ -1993,6 +2035,7 @@ adapter only supplies its own concrete message factory around `decode()`.
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Message`
+
 
 ### Method Summary
 
@@ -2032,6 +2075,7 @@ public static function encode( MessageInterface $message ): string;
 
 Serializes a message into its wire envelope.
 
+
 ## Queue\Adapter\QueueDestinationGuard
 
 <span class="badge badge--class">Class</span>
@@ -2049,6 +2093,7 @@ exception; this keeps that single rule in one place. The `action` verb
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Exceptions\InvalidDestinationException`
+
 
 ### Method Summary
 
@@ -2069,12 +2114,13 @@ __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Queue
 
 ```php
 public static function assertQueue(
-DestinationInterface $destination,
-string $action
+    DestinationInterface $destination,
+    string $action
 ): void;
 ```
 
 Throws InvalidDestinationException unless the destination is a queue.
+
 
 ## Queue\Adapter\Redis\RedisConnectionFactory
 
@@ -2104,6 +2150,7 @@ Options:
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Queue\Exceptions\Exception` · `Phalcon\Storage\Adapter\Redis` · `Phalcon\Storage\Exception` · `Phalcon\Storage\SerializerFactory`
+
 
 ### Method Summary
 
@@ -2145,6 +2192,7 @@ public function __construct( array $options = [] );
 public function createContext(): ContextInterface;
 ```
 
+
 ## Queue\Adapter\Redis\RedisConsumer
 
 <span class="badge badge--class">Class</span>
@@ -2157,11 +2205,12 @@ messages keep getting promoted) instead of the inherited polling loop.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Redis\RedisConsumer`**
+    - **`Phalcon\Queue\Adapter\Redis\RedisConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Adapter\AbstractConsumer`
+
 
 ### Method Summary
 
@@ -2211,8 +2260,8 @@ __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` ·
 
 ```php
 public function __construct(
-RedisContext $context,
-QueueInterface $queue
+    RedisContext $context,
+    QueueInterface $queue
 );
 ```
 
@@ -2240,10 +2289,11 @@ public function receiveNoWait(): MessageInterface|null;
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
+
 
 ## Queue\Adapter\Redis\RedisContext
 
@@ -2259,11 +2309,12 @@ destination factories come from AbstractContext.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Redis\RedisContext`**
+    - **`Phalcon\Queue\Adapter\Redis\RedisContext`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -2353,9 +2404,9 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 
 ```php
 public function __construct(
-mixed $redis,
-string $prefix = "phalcon_queue:",
-int $pollInterval = 200
+    mixed $redis,
+    string $prefix = "phalcon_queue:",
+    int $pollInterval = 200
 );
 ```
 
@@ -2363,8 +2414,8 @@ int $pollInterval = 200
 
 ```php
 public function blockingPop(
-string $queueName,
-int $timeout
+    string $queueName,
+    int $timeout
 ): MessageInterface|null;
 ```
 
@@ -2388,9 +2439,9 @@ public function createConsumer( DestinationInterface $destination ): ConsumerInt
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -2426,15 +2477,16 @@ public function purgeQueue( QueueInterface $queue ): void;
 
 ```php
 public function pushMessage(
-string $queueName,
-MessageInterface $message,
-int $delay = 0
+    string $queueName,
+    MessageInterface $message,
+    int $delay = 0
 ): void;
 ```
 
 Sends a message to a queue. With a positive delay (milliseconds) the
 message is parked in the delayed set; otherwise it is pushed onto the
 front of the list. Internal transport API used by RedisProducer.
+
 
 ## Queue\Adapter\Redis\RedisMessage
 
@@ -2446,11 +2498,13 @@ Redis-backed message. All behavior comes from MessageTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Redis\RedisMessage`**
+    - **`Phalcon\Queue\Adapter\Redis\RedisMessage`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractMessage`
+
+
 
 ## Queue\Adapter\Redis\RedisProducer
 
@@ -2464,11 +2518,12 @@ AbstractProducer reject them).
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Redis\RedisProducer`**
+    - **`Phalcon\Queue\Adapter\Redis\RedisProducer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -2530,8 +2585,8 @@ public function getDeliveryDelay(): int|null;
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
 
@@ -2540,6 +2595,7 @@ MessageInterface $message
 ```php
 public function setDeliveryDelay( mixed $deliveryDelay = null ): ProducerInterface;
 ```
+
 
 ## Queue\Adapter\Redis\RedisSubscriptionConsumer
 
@@ -2552,11 +2608,12 @@ in SubscriptionConsumerTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`**
+    - **`Phalcon\Queue\Adapter\Redis\RedisSubscriptionConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
+
 
 ### Method Summary
 
@@ -2586,10 +2643,11 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ```php
 public function __construct(
-RedisContext $context,
-int $pollInterval = 200
+    RedisContext $context,
+    int $pollInterval = 200
 );
 ```
+
 
 ## Queue\Adapter\Stream\StreamConnectionFactory
 
@@ -2609,6 +2667,7 @@ Options:
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context`
+
 
 ### Method Summary
 
@@ -2650,6 +2709,7 @@ public function __construct( array $options = [] );
 public function createContext(): ContextInterface;
 ```
 
+
 ## Queue\Adapter\Stream\StreamConsumer
 
 <span class="badge badge--class">Class</span>
@@ -2661,11 +2721,12 @@ polling loop inherited from AbstractConsumer.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractConsumer`](#queueadapterabstractconsumer)
-- **`Phalcon\Queue\Adapter\Stream\StreamConsumer`**
+    - **`Phalcon\Queue\Adapter\Stream\StreamConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Queue\Adapter\AbstractConsumer`
+
 
 ### Method Summary
 
@@ -2710,9 +2771,9 @@ __Uses__ `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Queue` ·
 
 ```php
 public function __construct(
-StreamContext $context,
-QueueInterface $queue,
-int $pollInterval = 200
+    StreamContext $context,
+    QueueInterface $queue,
+    int $pollInterval = 200
 );
 ```
 
@@ -2734,10 +2795,11 @@ public function receiveNoWait(): MessageInterface|null;
 
 ```php
 public function reject(
-MessageInterface $message,
-bool $requeue = false
+    MessageInterface $message,
+    bool $requeue = false
 ): void;
 ```
+
 
 ## Queue\Adapter\Stream\StreamContext
 
@@ -2752,11 +2814,12 @@ safe. The destination factories come from AbstractContext.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractContext`](#queueadapterabstractcontext)
-- **`Phalcon\Queue\Adapter\Stream\StreamContext`**
+    - **`Phalcon\Queue\Adapter\Stream\StreamContext`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Producer` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Contracts\Queue\SubscriptionConsumer` · `Phalcon\Queue\Adapter\AbstractContext` · `Phalcon\Queue\Adapter\MessageEnvelope` · `Phalcon\Queue\Adapter\QueueDestinationGuard` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -2834,8 +2897,8 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Destinat
 
 ```php
 public function __construct(
-string $storageDir,
-int $pollInterval = 200
+    string $storageDir,
+    int $pollInterval = 200
 );
 ```
 
@@ -2855,9 +2918,9 @@ public function createConsumer( DestinationInterface $destination ): ConsumerInt
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): MessageInterface;
 ```
 
@@ -2892,13 +2955,14 @@ public function purgeQueue( QueueInterface $queue ): void;
 
 ```php
 public function pushMessage(
-string $queueName,
-MessageInterface $message
+    string $queueName,
+    MessageInterface $message
 ): void;
 ```
 
 Appends a message to the back of a queue file.
 Internal transport API used by StreamProducer.
+
 
 ## Queue\Adapter\Stream\StreamMessage
 
@@ -2910,11 +2974,13 @@ Filesystem-backed message. All behavior comes from MessageTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
-- **`Phalcon\Queue\Adapter\Stream\StreamMessage`**
+    - **`Phalcon\Queue\Adapter\Stream\StreamMessage`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractMessage`
+
+
 
 ## Queue\Adapter\Stream\StreamProducer
 
@@ -2928,11 +2994,12 @@ live are not supported (the defaults from AbstractProducer reject them).
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractProducer`](#queueadapterabstractproducer)
-- **`Phalcon\Queue\Adapter\Stream\StreamProducer`**
+    - **`Phalcon\Queue\Adapter\Stream\StreamProducer`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Destination` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Queue\Adapter\AbstractProducer` · `Phalcon\Queue\Adapter\QueueDestinationGuard`
+
 
 ### Method Summary
 
@@ -2972,10 +3039,11 @@ public function __construct( StreamContext $context );
 
 ```php
 public function send(
-DestinationInterface $destination,
-MessageInterface $message
+    DestinationInterface $destination,
+    MessageInterface $message
 ): void;
 ```
+
 
 ## Queue\Adapter\Stream\StreamSubscriptionConsumer
 
@@ -2988,11 +3056,12 @@ lives in SubscriptionConsumerTrait.
 <div class="api-tree">
 
 - [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
-- **`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`**
+    - **`Phalcon\Queue\Adapter\Stream\StreamSubscriptionConsumer`**
 
 </div>
 
 __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
+
 
 ### Method Summary
 
@@ -3022,10 +3091,11 @@ __Uses__ `Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`
 
 ```php
 public function __construct(
-StreamContext $context,
-int $pollInterval = 200
+    StreamContext $context,
+    int $pollInterval = 200
 );
 ```
+
 
 ## Queue\Adapter\Traits\MessageTrait
 
@@ -3046,6 +3116,7 @@ for binary compatibility with the wider interop ecosystem.
 </div>
 
 __Used by__ [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessage)
+
 
 ### Method Summary
 
@@ -3212,9 +3283,9 @@ __Used by__ [`Phalcon\Queue\Adapter\AbstractMessage`](#queueadapterabstractmessa
 
 ```php
 public function __construct(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 );
 ```
 
@@ -3240,8 +3311,8 @@ Returns the correlation id used to correlate request/reply messages.
 
 ```php
 public function getHeader(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -3275,8 +3346,8 @@ Returns all application properties.
 
 ```php
 public function getProperty(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -3326,8 +3397,8 @@ Sets the correlation id.
 
 ```php
 public function setHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -3361,8 +3432,8 @@ Replaces all application properties.
 
 ```php
 public function setProperty(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -3392,6 +3463,7 @@ public function setTimestamp( int $timestamp ): void;
 
 Sets the timestamp (in milliseconds).
 
+
 ## Queue\Adapter\Traits\SubscriptionConsumerTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -3410,6 +3482,7 @@ keep just the constructor that captures their context and poll interval.
 </div>
 
 __Used by__ [`Phalcon\Queue\Adapter\AbstractSubscriptionConsumer`](#queueadapterabstractsubscriptionconsumer)
+
 
 ### Method Summary
 
@@ -3475,8 +3548,8 @@ returns false).
 
 ```php
 public function subscribe(
-\Phalcon\Contracts\Queue\Consumer $consumer,
-callable $callback
+    \Phalcon\Contracts\Queue\Consumer $consumer,
+    callable $callback
 ): void;
 ```
 
@@ -3497,6 +3570,7 @@ public function unsubscribeAll(): void;
 ```
 
 Removes every subscribed consumer.
+
 
 ## Queue\Cli\ConsumerTask
 
@@ -3520,13 +3594,14 @@ FactoryDefault.
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\Injectable`](/5.18/api/phalcon_di/#diinjectable)
-- [`Phalcon\Cli\Task`](/5.18/api/phalcon_cli/#clitask)
-- **`Phalcon\Queue\Cli\ConsumerTask`**
+    - [`Phalcon\Di\Injectable`](/5.18/api/phalcon_di/#diinjectable)
+        - [`Phalcon\Cli\Task`](/5.18/api/phalcon_cli/#clitask)
+            - **`Phalcon\Queue\Cli\ConsumerTask`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Task` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consumer\QueueConsumer` · `Phalcon\Queue\Consumer\Worker` · `Phalcon\Queue\Consumer\WorkerOptions`
+
 
 ### Method Summary
 
@@ -3548,6 +3623,7 @@ __Uses__ `Phalcon\Cli\Task` · `Phalcon\Di\DiInterface` · `Phalcon\Queue\Consum
 public function mainAction(): int;
 ```
 
+
 ## Queue\Consumer\BoundProcessor
 
 <span class="badge badge--class">Class</span>
@@ -3562,6 +3638,7 @@ Binds a processor to a queue, together with the consumer that reads it.
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Contracts\Queue\Queue`
+
 
 ### Method Summary
 
@@ -3615,9 +3692,9 @@ __Uses__ `Phalcon\Contracts\Queue\Consumer` · `Phalcon\Contracts\Queue\Processo
 
 ```php
 public function __construct(
-QueueInterface $queue,
-ProcessorInterface $processor,
-ConsumerInterface $consumer
+    QueueInterface $queue,
+    ProcessorInterface $processor,
+    ConsumerInterface $consumer
 );
 ```
 
@@ -3638,6 +3715,7 @@ public function getProcessor(): ProcessorInterface;
 ```php
 public function getQueue(): QueueInterface;
 ```
+
 
 ## Queue\Consumer\Events
 
@@ -3686,6 +3764,7 @@ Phalcon\Events\Manager. One public constant per event.
 </div>
 </div>
 
+
 ## Queue\Consumer\QueueConsumer
 
 <span class="badge badge--class">Class</span>
@@ -3701,11 +3780,12 @@ stop signal through `stop()` / `isStopRequested()`.
 <div class="api-tree">
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.18/api/phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Queue\Consumer\QueueConsumer`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.18/api/phalcon_events/#eventseventsawareinterface)
+    - **`Phalcon\Queue\Consumer\QueueConsumer`** - implements [`Phalcon\Events\EventsAwareInterface`](/5.18/api/phalcon_events/#eventseventsawareinterface)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\Message` · `Phalcon\Contracts\Queue\Processor` · `Phalcon\Contracts\Queue\Queue` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface`
+
 
 ### Method Summary
 
@@ -3805,8 +3885,8 @@ public function __construct( ContextInterface $context );
 
 ```php
 public function bind(
-QueueInterface $queue,
-ProcessorInterface $processor
+    QueueInterface $queue,
+    ProcessorInterface $processor
 ): QueueConsumer;
 ```
 
@@ -3873,6 +3953,7 @@ public function stop(): void;
 
 Requests the consumption loop to stop after the current message.
 
+
 ## Queue\Consumer\Worker
 
 <span class="badge badge--class">Class</span>
@@ -3891,6 +3972,7 @@ guillotine), because the stop flag is only checked between iterations.
 </div>
 
 __Uses__ `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -3936,8 +4018,8 @@ __Uses__ `Phalcon\Traits\Php\InfoTrait`
 
 ```php
 public function __construct(
-QueueConsumer $consumer,
-WorkerOptions $options = null
+    QueueConsumer $consumer,
+    WorkerOptions $options = null
 );
 ```
 
@@ -3957,6 +4039,7 @@ public function run(): int;
 
 Runs the worker until a lifetime bound trips or a stop is requested.
 Returns the number of messages processed.
+
 
 ## Queue\Consumer\WorkerOptions
 
@@ -4038,10 +4121,10 @@ The worker stops on whichever bound trips first.
 
 ```php
 public function __construct(
-int $maxMessages = 0,
-int $maxSeconds = 0,
-int $maxMemory = 0,
-int $jitter = 0
+    int $maxMessages = 0,
+    int $maxSeconds = 0,
+    int $maxMemory = 0,
+    int $jitter = 0
 );
 ```
 
@@ -4069,6 +4152,7 @@ public function getMaxMessages(): int;
 public function getMaxSeconds(): int;
 ```
 
+
 ## Queue\Exceptions\DeliveryDelayNotSupportedException
 
 <span class="badge badge--class">Class</span>
@@ -4079,8 +4163,8 @@ Thrown when the transport does not support a delivery delay.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`**
 
 </div>
 
@@ -4103,6 +4187,7 @@ Thrown when the transport does not support a delivery delay.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\Exception
 
 <span class="badge badge--class">Class</span>
@@ -4114,19 +4199,21 @@ queue exception.
 <div class="api-tree">
 
 - `BaseException`
-- **`Phalcon\Queue\Exceptions\Exception`** - implements [`Phalcon\Queue\Exceptions\QueueThrowable`](#queueexceptionsqueuethrowable)
-- [`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`](#queueexceptionsdeliverydelaynotsupportedexception)
-- [`Phalcon\Queue\Exceptions\InvalidDestinationException`](#queueexceptionsinvaliddestinationexception)
-- [`Phalcon\Queue\Exceptions\InvalidMessageException`](#queueexceptionsinvalidmessageexception)
-- [`Phalcon\Queue\Exceptions\PriorityNotSupportedException`](#queueexceptionsprioritynotsupportedexception)
-- [`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`](#queueexceptionspurgequeuenotsupportedexception)
-- [`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`](#queueexceptionssubscriptionconsumernotsupportedexception)
-- [`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`](#queueexceptionstemporaryqueuenotsupportedexception)
-- [`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`](#queueexceptionstimetolivenotsupportedexception)
+    - **`Phalcon\Queue\Exceptions\Exception`** - implements [`Phalcon\Queue\Exceptions\QueueThrowable`](#queueexceptionsqueuethrowable)
+        - [`Phalcon\Queue\Exceptions\DeliveryDelayNotSupportedException`](#queueexceptionsdeliverydelaynotsupportedexception)
+        - [`Phalcon\Queue\Exceptions\InvalidDestinationException`](#queueexceptionsinvaliddestinationexception)
+        - [`Phalcon\Queue\Exceptions\InvalidMessageException`](#queueexceptionsinvalidmessageexception)
+        - [`Phalcon\Queue\Exceptions\PriorityNotSupportedException`](#queueexceptionsprioritynotsupportedexception)
+        - [`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`](#queueexceptionspurgequeuenotsupportedexception)
+        - [`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`](#queueexceptionssubscriptionconsumernotsupportedexception)
+        - [`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`](#queueexceptionstemporaryqueuenotsupportedexception)
+        - [`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`](#queueexceptionstimetolivenotsupportedexception)
 
 </div>
 
 __Uses__ `Exception`
+
+
 
 ## Queue\Exceptions\InvalidDestinationException
 
@@ -4140,8 +4227,8 @@ Topic passed where a Queue is required. The action verb ("send to",
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\InvalidDestinationException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\InvalidDestinationException`**
 
 </div>
 
@@ -4164,6 +4251,7 @@ Topic passed where a Queue is required. The action verb ("send to",
 public function __construct( string $action );
 ```
 
+
 ## Queue\Exceptions\InvalidMessageException
 
 <span class="badge badge--class">Class</span>
@@ -4174,8 +4262,8 @@ Thrown when a message is not valid for the operation.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\InvalidMessageException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\InvalidMessageException`**
 
 </div>
 
@@ -4198,6 +4286,7 @@ Thrown when a message is not valid for the operation.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\PriorityNotSupportedException
 
 <span class="badge badge--class">Class</span>
@@ -4208,8 +4297,8 @@ Thrown when the transport does not support message priority.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\PriorityNotSupportedException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\PriorityNotSupportedException`**
 
 </div>
 
@@ -4232,6 +4321,7 @@ Thrown when the transport does not support message priority.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\PurgeQueueNotSupportedException
 
 <span class="badge badge--class">Class</span>
@@ -4242,8 +4332,8 @@ Thrown when the transport does not support purging a queue.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\PurgeQueueNotSupportedException`**
 
 </div>
 
@@ -4266,6 +4356,7 @@ Thrown when the transport does not support purging a queue.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\QueueThrowable
 
 <span class="badge badge--interface">Interface</span>
@@ -4277,9 +4368,10 @@ implements it, so callers can catch all queue errors with a single type.
 <div class="api-tree">
 
 - `\Throwable`
-- **`Phalcon\Queue\Exceptions\QueueThrowable`**
+    - **`Phalcon\Queue\Exceptions\QueueThrowable`**
 
 </div>
+
 
 ## Queue\Exceptions\SubscriptionConsumerNotSupportedException
 
@@ -4291,8 +4383,8 @@ Thrown when the transport does not support subscription consumers.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\SubscriptionConsumerNotSupportedException`**
 
 </div>
 
@@ -4315,6 +4407,7 @@ Thrown when the transport does not support subscription consumers.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\TemporaryQueueNotSupportedException
 
 <span class="badge badge--class">Class</span>
@@ -4325,8 +4418,8 @@ Thrown when the transport does not support temporary queues.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\TemporaryQueueNotSupportedException`**
 
 </div>
 
@@ -4349,6 +4442,7 @@ Thrown when the transport does not support temporary queues.
 public function __construct();
 ```
 
+
 ## Queue\Exceptions\TimeToLiveNotSupportedException
 
 <span class="badge badge--class">Class</span>
@@ -4359,8 +4453,8 @@ Thrown when the transport does not support a message time to live.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
-- **`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`**
+    - [`Phalcon\Queue\Exceptions\Exception`](#queueexceptionsexception)
+        - **`Phalcon\Queue\Exceptions\TimeToLiveNotSupportedException`**
 
 </div>
 
@@ -4383,6 +4477,7 @@ Thrown when the transport does not support a message time to live.
 public function __construct();
 ```
 
+
 ## Queue\QueueFactory
 
 <span class="badge badge--class">Class</span>
@@ -4394,11 +4489,12 @@ Phalcon\Cache\CacheFactory.
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.18/api/phalcon_factory/#factoryabstractconfigfactory)
-- **`Phalcon\Queue\QueueFactory`**
+    - **`Phalcon\Queue\QueueFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Queue\Context` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Queue\Exceptions\Exception`
+
 
 ### Method Summary
 
@@ -4462,8 +4558,8 @@ Builds a Context from a config array/object.
 
 ```php
 public function newInstance(
-string $name,
-array $options = []
+    string $name,
+    array $options = []
 ): ContextInterface;
 ```
 

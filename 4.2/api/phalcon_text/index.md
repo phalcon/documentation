@@ -17,6 +17,7 @@ All classes are prefixed with `Phalcon`
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/blob/4.2.x/phalcon/Text.zep)
 
+
 -   __Namespace__
 
     - `Phalcon`
@@ -27,9 +28,12 @@ All classes are prefixed with `Phalcon`
 
 -   __Extends__
 
+
 -   __Implements__
 
+
 Provides utilities to work with texts
+
 
 ### Constants
 ```php
@@ -54,6 +58,7 @@ echo Phalcon\Text::camelize("co_co-bon_go", "-"); // Co_coBon_go
 echo Phalcon\Text::camelize("co_co-bon_go", "_-"); // CoCoBonGo
 ```
 
+
 ```php
 public static function concat(): string;
 ```
@@ -62,16 +67,17 @@ places concatenation
 
 ```php
 $str = Phalcon\Text::concat(
-"/",
-"/tmp/",
-"/folder_1/",
-"/folder_2",
-"folder_3/"
+    "/",
+    "/tmp/",
+    "/folder_1/",
+    "/folder_2",
+    "folder_3/"
 );
 
 // /tmp/folder_1/folder_2/folder_3/
 echo $str;
 ```
+
 
 ```php
 public static function dynamic( string $text, string $leftDelimiter = string, string $rightDelimiter = string, string $separator = string ): string;
@@ -90,11 +96,12 @@ echo Phalcon\Text::dynamic("{Hi|Hello}, my name is a {Bob|Mark|Jon}!");
 
 // Hello my name is a Zyxep
 echo Phalcon\Text::dynamic(
-"[Hi/Hello], my name is a [Zyxep/Mark]!",
-"[", "]",
-"/"
+    "[Hi/Hello], my name is a [Zyxep/Mark]!",
+    "[", "]",
+    "/"
 );
 ```
+
 
 ```php
 public static function endsWith( string $text, string $end, bool $ignoreCase = bool ): bool;
@@ -107,6 +114,7 @@ echo Phalcon\Text::endsWith("Hello", "LLO", false); // false
 echo Phalcon\Text::endsWith("Hello", "LLO"); // true
 ```
 
+
 ```php
 public static function humanize( string $text ): string;
 ```
@@ -116,6 +124,7 @@ Makes an underscored or dashed phrase human-readable
 echo Phalcon\Text::humanize("start-a-horse"); // "start a horse"
 echo Phalcon\Text::humanize("five_cats"); // "five cats"
 ```
+
 
 ```php
 public static function increment( string $text, string $separator = string ): string;
@@ -128,6 +137,7 @@ echo Phalcon\Text::increment("a"); // "a_1"
 echo Phalcon\Text::increment("a_1"); // "a_2"
 ```
 
+
 ```php
 public static function lower( string $text, string $encoding = string ): string;
 ```
@@ -137,6 +147,7 @@ available
 ```php
 echo Phalcon\Text::lower("HELLO"); // hello
 ```
+
 
 ```php
 public static function random( int $type = int, long $length = int ): string;
@@ -151,6 +162,7 @@ use Phalcon\Text;
 echo Text::random(Text::RANDOM_ALNUM);
 ```
 
+
 ```php
 public static function reduceSlashes( string $text ): string;
 ```
@@ -164,6 +176,7 @@ echo Phalcon\Text::reduceSlashes("foo//bar/baz");
 echo Phalcon\Text::reduceSlashes("http://foo.bar///baz/buz");
 ```
 
+
 ```php
 public static function startsWith( string $text, string $start, bool $ignoreCase = bool ): bool;
 ```
@@ -175,6 +188,7 @@ echo Phalcon\Text::startsWith("Hello", "he", false); // false
 echo Phalcon\Text::startsWith("Hello", "he"); // true
 ```
 
+
 ```php
 public static function uncamelize( string $text, mixed $delimiter = null ): string;
 ```
@@ -185,6 +199,7 @@ echo Phalcon\Text::uncamelize("CocoBongo"); // coco_bongo
 echo Phalcon\Text::uncamelize("CocoBongo", "-"); // coco-bongo
 ```
 
+
 ```php
 public static function underscore( string $text ): string;
 ```
@@ -194,6 +209,7 @@ Makes a phrase underscored instead of spaced
 echo Phalcon\Text::underscore("look behind"); // "look_behind"
 echo Phalcon\Text::underscore("Awesome Phalcon"); // "Awesome_Phalcon"
 ```
+
 
 ```php
 public static function upper( string $text, string $encoding = string ): string;

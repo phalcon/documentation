@@ -39,8 +39,8 @@ use Phalcon\Container\Provider\Web;
 use Phalcon\Encryption\Security;
 
 $container = (new ContainerFactory())
-->addProvider(new Web())
-->newContainer();
+    ->addProvider(new Web())
+    ->newContainer();
 
 /**
  * Alternative 
@@ -51,31 +51,31 @@ $container = new Phalcon\Di\FactoryDefault();
 $factory = new ManagerFactory(new Security(), $container);
 
 $manager = $factory->load([
-'guards' => [
-    'web' => [
-        'type'    => 'session',
-        'default' => true,
-        'adapter' => [
-            'name'    => 'model',
-            'options' => ['model' => Users::class],
+    'guards' => [
+        'web' => [
+            'type'    => 'session',
+            'default' => true,
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+        ],
+        'api' => [
+            'type'    => 'token',
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+            'options' => [
+                'inputKey'   => 'api_token',
+                'storageKey' => 'api_token',
+            ],
         ],
     ],
-    'api' => [
-        'type'    => 'token',
-        'adapter' => [
-            'name'    => 'model',
-            'options' => ['model' => Users::class],
-        ],
-        'options' => [
-            'inputKey'   => 'api_token',
-            'storageKey' => 'api_token',
-        ],
+    'access' => [
+        'auth'  => Auth::class,
+        'guest' => Guest::class,
     ],
-],
-'access' => [
-    'auth'  => Auth::class,
-    'guest' => Guest::class,
-],
 ]);
 ```
 
@@ -123,10 +123,10 @@ $di = new FactoryDefault();
 // names, so the guards resolve them directly. Only the session manager has
 // to be added.
 $di->setShared('session', function () {
-$session = new SessionManager();
-$session->setAdapter(new Stream(['savePath' => '/var/app/cache/session']));
+    $session = new SessionManager();
+    $session->setAdapter(new Stream(['savePath' => '/var/app/cache/session']));
 
-return $session;
+    return $session;
 });
 
 $factory = new ManagerFactory(new Security(), $di);
@@ -140,23 +140,23 @@ To resolve a service from a custom container key, set the `services` override in
 <?php
 
 $config = [
-'guards' => [
-    'web' => [
-        'type'    => 'session',
-        'default' => true,
-        'adapter' => [
-            'name'    => 'model',
-            'options' => ['model' => Users::class],
-        ],
-        'options' => [
-            'services' => [
-                'request' => 'my_request_service',
-                'cookies' => 'my_cookies_service',
-                'session' => 'my_session_service',
+    'guards' => [
+        'web' => [
+            'type'    => 'session',
+            'default' => true,
+            'adapter' => [
+                'name'    => 'model',
+                'options' => ['model' => Users::class],
+            ],
+            'options' => [
+                'services' => [
+                    'request' => 'my_request_service',
+                    'cookies' => 'my_cookies_service',
+                    'session' => 'my_session_service',
+                ],
             ],
         ],
     ],
-],
 ];
 ```
 
@@ -171,8 +171,8 @@ The `Manager` is the entry point for both authentication and authorization. Auth
 
 // Authenticate against the default guard
 if ($manager->attempt(['email' => 'jane@example.com', 'password' => 's3cret'])) {
-$user = $manager->user();
-echo $user->getAuthIdentifier();
+    $user = $manager->user();
+    echo $user->getAuthIdentifier();
 }
 
 $manager->check();   // bool - is someone authenticated on the default guard
@@ -214,8 +214,8 @@ $session = $manager->guard('web');
 
 // Verify credentials, start a session, set a remember-me cookie
 $session->attempt(
-['email' => 'jane@example.com', 'password' => 's3cret'],
-true
+    ['email' => 'jane@example.com', 'password' => 's3cret'],
+    true
 );
 
 // Log a known user in by identifier
@@ -281,11 +281,11 @@ Adapters load user rows and verify passwords. All three share password verificat
 
 ```php
 'adapter' => [
-'name'    => 'model',
-'options' => [
-    'model'    => Users::class,
-    'idColumn' => 'id',        // optional, defaults to 'id'
-],
+    'name'    => 'model',
+    'options' => [
+        'model'    => Users::class,
+        'idColumn' => 'id',        // optional, defaults to 'id'
+    ],
 ],
 ```
 
@@ -301,13 +301,13 @@ The remember-me token is matched by your model's `getRememberToken()` implementa
 
 ```php
 'adapter' => [
-'name'    => 'memory',
-'options' => [
-    'users' => [
-        ['id' => 1, 'email' => 'jane@example.com', 'password' => '<hashed>'],
-        ['id' => 2, 'email' => 'john@example.com', 'password' => '<hashed>'],
+    'name'    => 'memory',
+    'options' => [
+        'users' => [
+            ['id' => 1, 'email' => 'jane@example.com', 'password' => '<hashed>'],
+            ['id' => 2, 'email' => 'john@example.com', 'password' => '<hashed>'],
+        ],
     ],
-],
 ],
 ```
 
@@ -317,17 +317,17 @@ The remember-me token is matched by your model's `getRememberToken()` implementa
 
 ```php
 'adapter' => [
-'name'    => 'stream',
-'options' => [
-    'file' => '/var/app/config/users.json',
-],
+    'name'    => 'stream',
+    'options' => [
+        'file' => '/var/app/config/users.json',
+    ],
 ],
 ```
 
 ```json
 [
-{"id": 1, "email": "jane@example.com", "password": "<hashed>"},
-{"id": 2, "email": "john@example.com", "password": "<hashed>"}
+    {"id": 1, "email": "jane@example.com", "password": "<hashed>"},
+    {"id": 2, "email": "john@example.com", "password": "<hashed>"}
 ]
 ```
 
@@ -418,20 +418,20 @@ use Phalcon\Mvc\Model;
 
 class Users extends Model implements AuthUser, RoleAwareInterface
 {
-public function getAuthIdentifier(): int | string
-{
-    return $this->id;
-}
+    public function getAuthIdentifier(): int | string
+    {
+        return $this->id;
+    }
 
-public function getAuthPassword(): string
-{
-    return $this->password;
-}
+    public function getAuthPassword(): string
+    {
+        return $this->password;
+    }
 
-public function getRoleName(): string
-{
-    return $this->role;
-}
+    public function getRoleName(): string
+    {
+        return $this->role;
+    }
 }
 ```
 
@@ -448,7 +448,7 @@ The gate reads two options:
 use Phalcon\Auth\Access\Acl;
 
 $manager->setAccess(
-new Acl($acl, ['guestRole' => 'anonymous', 'moduleSeparator' => '-'])
+    new Acl($acl, ['guestRole' => 'anonymous', 'moduleSeparator' => '-'])
 );
 ```
 
@@ -481,10 +481,10 @@ use Phalcon\Auth\Access\Auth;
 
 class RedirectToLogin extends Auth
 {
-public function redirectTo(): array | null
-{
-    return ['controller' => 'session', 'action' => 'login'];
-}
+    public function redirectTo(): array | null
+    {
+        return ['controller' => 'session', 'action' => 'login'];
+    }
 }
 ```
 
@@ -517,7 +517,7 @@ use Phalcon\Events\Manager as EventsManager;
 
 $eventsManager = new EventsManager();
 $eventsManager->attach('auth', function ($event, $guard) {
-// $event->getType(): beforeLogin, afterLogin, beforeLogout, afterLogout
+    // $event->getType(): beforeLogin, afterLogin, beforeLogout, afterLogout
 });
 
 $manager->guard('web')->setEventsManager($eventsManager);
@@ -545,12 +545,12 @@ use Phalcon\Auth\Exception;
 use Phalcon\Auth\Exceptions\AccessDenied;
 
 try {
-$manager->access('auth')->only('admin');
-// ... dispatch ...
+    $manager->access('auth')->only('admin');
+    // ... dispatch ...
 } catch (AccessDenied $ex) {
-// authorization denied for an action with no redirect target
+    // authorization denied for an action with no redirect target
 } catch (Exception $ex) {
-// any other auth failure
+    // any other auth failure
 }
 ```
 

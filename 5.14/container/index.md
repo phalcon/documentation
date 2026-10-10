@@ -71,10 +71,10 @@ use Phalcon\Container\Container;
 
 $container = new Container();
 $container->set('db', function (Container $c) {
-return new DatabaseConnection(
-    $c->get('db.host'),
-    (int) $c->get('db.port'),
-);
+    return new DatabaseConnection(
+        $c->get('db.host'),
+        (int) $c->get('db.port'),
+    );
 });
 ```
 
@@ -123,7 +123,7 @@ Returns `true` if the name is registered, cached, is a parameter, or is an autow
 <?php
 
 if ($container->has('mailer')) {
-$mailer = $container->get('mailer');
+    $mailer = $container->get('mailer');
 }
 ```
 
@@ -150,13 +150,13 @@ use Phalcon\Container\Definition\ServiceLifetime;
 $container = new Container();
 
 $container->set('session', Session::class)
-      ->setLifetime(ServiceLifetime::SCOPED);      // cleared per-request (default)
+          ->setLifetime(ServiceLifetime::SCOPED);      // cleared per-request (default)
 
 $container->set('config', AppConfig::class)
-      ->setLifetime(ServiceLifetime::SINGLETON);   // persists across requests
+          ->setLifetime(ServiceLifetime::SINGLETON);   // persists across requests
 
 $container->set('query', QueryBuilder::class)
-      ->setLifetime(ServiceLifetime::TRANSIENT);   // always a fresh instance
+          ->setLifetime(ServiceLifetime::TRANSIENT);   // always a fresh instance
 ```
 
 ---
@@ -172,7 +172,7 @@ use Phalcon\Container\Container;
 
 class LoggerAwareMailer
 {
-public function __construct(private FileLogger $logger) {}
+    public function __construct(private FileLogger $logger) {}
 }
 
 $container = new Container();
@@ -193,7 +193,7 @@ Autowiring can be disabled globally. `setAutowire()` returns the container, so i
 <?php
 
 $container->setAutowire(false)
-      ->setParameter('db.host', 'localhost');
+          ->setParameter('db.host', 'localhost');
 ```
 
 When disabled, only explicitly registered services are resolved.
@@ -213,8 +213,8 @@ use Phalcon\Container\Definition\ServiceLifetime;
 $container = new Container();
 
 $container->set('mailer', Mailer::class)
-      ->setLifetime(ServiceLifetime::TRANSIENT)
-      ->addTag('notification.sender');
+          ->setLifetime(ServiceLifetime::TRANSIENT)
+          ->addTag('notification.sender');
 ```
 
 ### The Freeze Pattern
@@ -236,8 +236,8 @@ use Phalcon\Container\Resolver\Lazy\Lazy;
 $container = new Container();
 
 $container->set('db', DatabaseConnection::class)
-      ->setArgument('host', Lazy::get('db.host'))
-      ->setArgument('port', Lazy::get('db.port'));
+          ->setArgument('host', Lazy::get('db.host'))
+          ->setArgument('port', Lazy::get('db.port'));
 ```
 
 ---
@@ -301,10 +301,10 @@ use Phalcon\Container\Resolver\Lazy\Lazy;
 $container = new Container();
 
 $container
-->setParameter('db.name', 'my_database')
-->setParameter('db.host', Lazy::env('DB_HOST'))
-->setParameter('db.port', Lazy::env('DB_PORT', 'int'))
-->setParameter('app.allowed_ips', Lazy::csEnv('ALLOWED_IPS'));
+    ->setParameter('db.name', 'my_database')
+    ->setParameter('db.host', Lazy::env('DB_HOST'))
+    ->setParameter('db.port', Lazy::env('DB_PORT', 'int'))
+    ->setParameter('app.allowed_ips', Lazy::csEnv('ALLOWED_IPS'));
 
 // Retrieve
 $host = $container->get('db.host');
@@ -351,12 +351,12 @@ use Phalcon\Container\Resolver\Lazy\Lazy;
 $container = new Container();
 
 $container
-->setParameter('db.host', Lazy::env('DB_HOST'))
-->setParameter('db.port', Lazy::env('DB_PORT', 'int'));
+    ->setParameter('db.host', Lazy::env('DB_HOST'))
+    ->setParameter('db.port', Lazy::env('DB_PORT', 'int'));
 
 $container->set('db', DatabaseConnection::class)
-      ->setArgument('host', Lazy::get('db.host'))
-      ->setArgument('port', Lazy::get('db.port'));
+          ->setArgument('host', Lazy::get('db.host'))
+          ->setArgument('port', Lazy::get('db.port'));
 
 // Static factory
 $container->setParameter('app.version', Lazy::staticCall(AppVersion::class, 'current', []));
@@ -380,15 +380,15 @@ use Phalcon\Container\Container;
 $container = new Container();
 
 $container->set('subscriber.email', EmailSubscriber::class)
-      ->addTag('event.subscriber');
+          ->addTag('event.subscriber');
 $container->set('subscriber.log', LogSubscriber::class)
-      ->addTag('event.subscriber');
+          ->addTag('event.subscriber');
 
 // Returns [EmailSubscriber instance, LogSubscriber instance]
 $subscribers = $container->getByTag('event.subscriber');
 
 foreach ($subscribers as $subscriber) {
-$subscriber->onEvent($event);
+    $subscriber->onEvent($event);
 }
 ```
 
@@ -407,15 +407,15 @@ $container = new Container();
 
 // On the definition - fluent, before first resolution
 $container->set('mailer', Mailer::class)
-      ->addExtender(function (Mailer $mailer, Container $c) {
-          $mailer->setLogger($c->get('logger'));
-          return $mailer;
-      });
+          ->addExtender(function (Mailer $mailer, Container $c) {
+              $mailer->setLogger($c->get('logger'));
+              return $mailer;
+          });
 
 // Via the container - after registration, before first resolution
 $container->extend('mailer', function (Mailer $mailer, Container $c) {
-$mailer->setDebug(true);
-return $mailer;
+    $mailer->setDebug(true);
+    return $mailer;
 });
 ```
 
@@ -436,21 +436,21 @@ use Phalcon\Container\Resolver\Lazy\Lazy;
 
 class DatabaseProvider implements Provider
 {
-public function provide(Collection $services): void
-{
-    $services
-        ->setParameter('db.host', Lazy::env('DB_HOST'))
-        ->setParameter('db.port', Lazy::env('DB_PORT', 'int'))
-        ->setParameter('db.name', Lazy::env('DB_NAME'));
+    public function provide(Collection $services): void
+    {
+        $services
+            ->setParameter('db.host', Lazy::env('DB_HOST'))
+            ->setParameter('db.port', Lazy::env('DB_PORT', 'int'))
+            ->setParameter('db.name', Lazy::env('DB_NAME'));
 
-    $services->set('db', function (object $c) {
-        return new DatabaseConnection(
-            $c->get('db.host'),
-            $c->get('db.port'),
-            $c->get('db.name'),
-        );
-    });
-}
+        $services->set('db', function (object $c) {
+            return new DatabaseConnection(
+                $c->get('db.host'),
+                $c->get('db.port'),
+                $c->get('db.name'),
+            );
+        });
+    }
 }
 ```
 
@@ -466,10 +466,10 @@ public function provide(Collection $services): void
 use Phalcon\Container\ContainerFactory;
 
 $container = (new ContainerFactory())
-->addProvider(new DatabaseProvider())
-->addProvider(new MailProvider())
-->addProvider(new CacheProvider())
-->newContainer();
+    ->addProvider(new DatabaseProvider())
+    ->addProvider(new MailProvider())
+    ->addProvider(new CacheProvider())
+    ->newContainer();
 ```
 
 `newContainer()` creates a fresh `Container`, calls `$provider->provide($container)` on each registered provider in order, and returns the fully configured container.
@@ -492,8 +492,8 @@ use Phalcon\Container\ContainerFactory;
 use Phalcon\Container\Provider\Web;
 
 $container = (new ContainerFactory())
-->addProvider(new Web())
-->newContainer();
+    ->addProvider(new Web())
+    ->newContainer();
 ```
 
 ---
@@ -515,11 +515,11 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\Url;
 
 $container = (new ContainerFactory())
-->addProvider(new RouterProvider())
-->addProvider(new ViewProvider())
-->addProvider(new DatabaseProvider())
-->addProvider(new MailProvider())
-->newContainer();
+    ->addProvider(new RouterProvider())
+    ->addProvider(new ViewProvider())
+    ->addProvider(new DatabaseProvider())
+    ->addProvider(new MailProvider())
+    ->newContainer();
 
 $application = new Application($container);
 
@@ -538,8 +538,8 @@ use Phalcon\Container\ContainerFactory;
 use Phalcon\Di\Di;
 
 $container = (new ContainerFactory())
-->addProvider(new AppServiceProvider())
-->newContainer();
+    ->addProvider(new AppServiceProvider())
+    ->newContainer();
 
 Di::setDefault($container);
 ```
@@ -564,25 +564,25 @@ use Phalcon\Http\Response;
 
 class MvcProvider implements Provider
 {
-public function provide(Collection $services): void
-{
-    $services->set('router', Router::class);
-    $services->set('dispatcher', Dispatcher::class);
-    $services->set('request', Request::class);
-    $services->set('response', Response::class);
+    public function provide(Collection $services): void
+    {
+        $services->set('router', Router::class);
+        $services->set('dispatcher', Dispatcher::class);
+        $services->set('request', Request::class);
+        $services->set('response', Response::class);
 
-    $services->set('view', function (object $c) {
-        $view = new View();
-        $view->setViewsDir(APP_PATH . '/views/');
-        return $view;
-    });
+        $services->set('view', function (object $c) {
+            $view = new View();
+            $view->setViewsDir(APP_PATH . '/views/');
+            return $view;
+        });
 
-    $services->set('url', function (object $c) {
-        $url = new Url();
-        $url->setBaseUri('/');
-        return $url;
-    });
-}
+        $services->set('url', function (object $c) {
+            $url = new Url();
+            $url->setBaseUri('/');
+            return $url;
+        });
+    }
 }
 ```
 
@@ -606,8 +606,8 @@ $container = new Container();
 
 // Inject pre-built instances — setInstance() is fluent
 $container
-->setInstance('request', $requestObject, ServiceLifetime::SCOPED)
-->setInstance('response', $responseObject, ServiceLifetime::SCOPED);
+    ->setInstance('request', $requestObject, ServiceLifetime::SCOPED)
+    ->setInstance('response', $responseObject, ServiceLifetime::SCOPED);
 
 // Clear all SCOPED instances at request end (Octane / Swoole pattern)
 $container->unsetInstances(ServiceLifetime::SCOPED);
@@ -632,11 +632,11 @@ use Phalcon\Container\Exceptions\ServiceNotFound;
 $container = new Container();
 
 try {
-$service = $container->get('unknown-service');
+    $service = $container->get('unknown-service');
 } catch (ServiceNotFound $ex) {
-echo 'Service not found: ' . $ex->getMessage();
+    echo 'Service not found: ' . $ex->getMessage();
 } catch (ContainerThrowable $ex) {
-echo 'Container error: ' . $ex->getMessage();
+    echo 'Container error: ' . $ex->getMessage();
 }
 ```
 

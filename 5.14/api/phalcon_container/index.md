@@ -53,6 +53,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Closure` · `Phalcon\Container\Definition\Processor\ClosureProcessor` · `Phalcon\Container\Definition\Processor\ObjectProcessor` · `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\Processor\StringProcessor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Definition\ServiceLifetime` · `Phalcon\Container\Exceptions\CannotExtendResolved` · `Phalcon\Container\Exceptions\CircularAliasFound` · `Phalcon\Container\Exceptions\InstanceNotFound` · `Phalcon\Container\Exceptions\NoProcessorFound` · `Phalcon\Container\Exceptions\ParameterNotFound` · `Phalcon\Container\Exceptions\ServiceNotFound` · `Phalcon\Container\Exceptions\ServiceNotRegistered` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\InjectionAwareInterface` · `ReflectionException`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -324,8 +325,8 @@ public function __construct();
 
 ```php
 public function bind(
-string $interfaceName,
-string $concrete
+    string $interfaceName,
+    string $concrete
 ): ServiceDefinition;
 ```
 
@@ -351,8 +352,8 @@ Resolve to a closure on a new()
 
 ```php
 public function extend(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): void;
 ```
 
@@ -498,8 +499,8 @@ Return a new service definition
 
 ```php
 public function set(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): ServiceDefinition;
 ```
 
@@ -509,8 +510,8 @@ Set a service
 
 ```php
 public function setAlias(
-string $name,
-string $alias
+    string $name,
+    string $alias
 ): static;
 ```
 
@@ -528,8 +529,8 @@ Set AutoWire
 
 ```php
 public function setDefinition(
-string $name,
-ServiceDefinition $definition
+    string $name,
+    ServiceDefinition $definition
 ): static;
 ```
 
@@ -539,9 +540,9 @@ Set a definition
 
 ```php
 public function setInstance(
-string $name,
-object $instance,
-string $lifetime
+    string $name,
+    object $instance,
+    string $lifetime
 ): static;
 ```
 
@@ -551,8 +552,8 @@ Set an instance
 
 ```php
 public function setParameter(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -562,8 +563,8 @@ Set a parameter
 
 ```php
 public function setTag(
-string $tag,
-string $serviceName
+    string $tag,
+    string $serviceName
 ): void;
 ```
 
@@ -609,6 +610,7 @@ public function unsetParameter( string $name ): void;
 
 Remove a parameter
 
+
 ## Container\ContainerFactory
 
 <span class="badge badge--class">Class</span>
@@ -648,6 +650,7 @@ copies will be replaced with the actual Composer dependencies.
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocContainerFactory` · `Phalcon\Contracts\Container\Service\Provider`
+
 
 ### Method Summary
 
@@ -695,6 +698,7 @@ public function newContainer(): Container;
 ```
 
 Returns a new container
+
 
 ## Container\Definition\DefinitionType
 
@@ -755,6 +759,7 @@ copies will be replaced with the actual Composer dependencies.
 </div>
 </div>
 
+
 ## Container\Definition\Processor\ClosureProcessor
 
 <span class="badge badge--class">Class</span>
@@ -795,6 +800,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -828,13 +834,14 @@ Wheteher the definition is a Closure
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the Closure
+
 
 ## Container\Definition\Processor\ObjectProcessor
 
@@ -876,6 +883,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -909,13 +917,14 @@ Whether the definition is an Object (not Closure)
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the Object
+
 
 ## Container\Definition\Processor\ParameterProcessor
 
@@ -957,6 +966,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Closure` · `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -990,13 +1000,14 @@ Whetehr the definition is a parameter
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the parameter
+
 
 ## Container\Definition\Processor\Processor
 
@@ -1037,6 +1048,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Phalcon\Container\Definition\ServiceDefinition`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -1070,13 +1082,14 @@ Can this definition be processed?
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the definition
+
 
 ## Container\Definition\Processor\StringProcessor
 
@@ -1118,6 +1131,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Phalcon\Container\Definition\DefinitionType` · `Phalcon\Container\Definition\ServiceDefinition`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -1151,13 +1165,14 @@ Whether the definition is a class string
 
 ```php
 public function process(
-string $name,
-mixed $definition,
-object $container
+    string $name,
+    mixed $definition,
+    object $container
 ): ServiceDefinition;
 ```
 
 Process the class string
+
 
 ## Container\Definition\ServiceDefinition
 
@@ -1198,6 +1213,7 @@ copies will be replaced with the actual Composer dependencies.
 </div>
 
 __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `ReflectionClass` · `ReflectionException`
+
 
 ### Method Summary
 
@@ -1460,9 +1476,9 @@ __Uses__ `Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\E
 
 ```php
 public function __construct(
-string $serviceName,
-string $type,
-mixed $raw = null
+    string $serviceName,
+    string $type,
+    mixed $raw = null
 );
 ```
 
@@ -1614,8 +1630,8 @@ Is it frozen
 
 ```php
 public function setArgument(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): static;
 ```
 
@@ -1703,6 +1719,7 @@ protected function checkFrozen(): void;
 
 Check if frozen
 
+
 ## Container\Definition\ServiceLifetime
 
 <span class="badge badge--class">Class</span>
@@ -1758,6 +1775,7 @@ copies will be replaced with the actual Composer dependencies.
 </div>
 </div>
 
+
 ## Container\Exceptions\CannotExtendResolved
 
 <span class="badge badge--class">Class</span>
@@ -1793,8 +1811,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\CannotExtendResolved`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\CannotExtendResolved`**
 
 </div>
 
@@ -1819,6 +1837,7 @@ public function __construct( string $name );
 ```
 
 Cannot extend a resolved service
+
 
 ## Container\Exceptions\CannotResolveParameter
 
@@ -1855,8 +1874,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\CannotResolveParameter`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\CannotResolveParameter`**
 
 </div>
 
@@ -1878,12 +1897,13 @@ copies will be replaced with the actual Composer dependencies.
 
 ```php
 public function __construct(
-string $param,
-string $className
+    string $param,
+    string $className
 );
 ```
 
 Cannot resolve a parameter
+
 
 ## Container\Exceptions\CircularAliasFound
 
@@ -1920,8 +1940,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\CircularAliasFound`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\CircularAliasFound`**
 
 </div>
 
@@ -1946,6 +1966,7 @@ public function __construct( string $name );
 ```
 
 Circular Alias found
+
 
 ## Container\Exceptions\ContainerThrowable
 
@@ -1981,12 +2002,14 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `Throwable`
-- [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/5.14/api/phalcon_contracts/#contractscontaineriociocthrowable)
-- **`Phalcon\Container\Exceptions\ContainerThrowable`** — extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/5.14/api/phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](/5.14/api/phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](/5.14/api/phalcon_contracts/#contractscontainerservicethrowable)
+    - [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/5.14/api/phalcon_contracts/#contractscontaineriociocthrowable)
+        - **`Phalcon\Container\Exceptions\ContainerThrowable`** — extends [`Phalcon\Contracts\Container\Ioc\IocThrowable`](/5.14/api/phalcon_contracts/#contractscontaineriociocthrowable), [`Phalcon\Contracts\Container\Resolver\ResolverThrowable`](/5.14/api/phalcon_contracts/#contractscontainerresolverresolverthrowable), [`Phalcon\Contracts\Container\Service\Throwable`](/5.14/api/phalcon_contracts/#contractscontainerservicethrowable)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Ioc\IocThrowable` · `Phalcon\Contracts\Container\Resolver\ResolverThrowable` · `Phalcon\Contracts\Container\Service\Throwable`
+
+
 
 ## Container\Exceptions\EnvNotDefined
 
@@ -2023,8 +2046,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\EnvNotDefined`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\EnvNotDefined`**
 
 </div>
 
@@ -2046,6 +2069,7 @@ copies will be replaced with the actual Composer dependencies.
 ```php
 public function __construct( string $varname );
 ```
+
 
 ## Container\Exceptions\Exception
 
@@ -2082,24 +2106,26 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- **`Phalcon\Container\Exceptions\Exception`** — implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
-- [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
-- [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
-- [`Phalcon\Container\Exceptions\CircularAliasFound`](#containerexceptionscircularaliasfound)
-- [`Phalcon\Container\Exceptions\EnvNotDefined`](#containerexceptionsenvnotdefined)
-- [`Phalcon\Container\Exceptions\FrozenDefinition`](#containerexceptionsfrozendefinition)
-- [`Phalcon\Container\Exceptions\InstanceNotFound`](#containerexceptionsinstancenotfound)
-- [`Phalcon\Container\Exceptions\InvalidExtender`](#containerexceptionsinvalidextender)
-- [`Phalcon\Container\Exceptions\NoClassSet`](#containerexceptionsnoclassset)
-- [`Phalcon\Container\Exceptions\NoFactorySet`](#containerexceptionsnofactoryset)
-- [`Phalcon\Container\Exceptions\NoProcessorFound`](#containerexceptionsnoprocessorfound)
-- [`Phalcon\Container\Exceptions\ParameterNotFound`](#containerexceptionsparameternotfound)
-- [`Phalcon\Container\Exceptions\ServiceNotFound`](#containerexceptionsservicenotfound)
-- [`Phalcon\Container\Exceptions\ServiceNotRegistered`](#containerexceptionsservicenotregistered)
+    - **`Phalcon\Container\Exceptions\Exception`** — implements [`Phalcon\Container\Exceptions\ContainerThrowable`](#containerexceptionscontainerthrowable)
+        - [`Phalcon\Container\Exceptions\CannotExtendResolved`](#containerexceptionscannotextendresolved)
+        - [`Phalcon\Container\Exceptions\CannotResolveParameter`](#containerexceptionscannotresolveparameter)
+        - [`Phalcon\Container\Exceptions\CircularAliasFound`](#containerexceptionscircularaliasfound)
+        - [`Phalcon\Container\Exceptions\EnvNotDefined`](#containerexceptionsenvnotdefined)
+        - [`Phalcon\Container\Exceptions\FrozenDefinition`](#containerexceptionsfrozendefinition)
+        - [`Phalcon\Container\Exceptions\InstanceNotFound`](#containerexceptionsinstancenotfound)
+        - [`Phalcon\Container\Exceptions\InvalidExtender`](#containerexceptionsinvalidextender)
+        - [`Phalcon\Container\Exceptions\NoClassSet`](#containerexceptionsnoclassset)
+        - [`Phalcon\Container\Exceptions\NoFactorySet`](#containerexceptionsnofactoryset)
+        - [`Phalcon\Container\Exceptions\NoProcessorFound`](#containerexceptionsnoprocessorfound)
+        - [`Phalcon\Container\Exceptions\ParameterNotFound`](#containerexceptionsparameternotfound)
+        - [`Phalcon\Container\Exceptions\ServiceNotFound`](#containerexceptionsservicenotfound)
+        - [`Phalcon\Container\Exceptions\ServiceNotRegistered`](#containerexceptionsservicenotregistered)
 
 </div>
 
 __Uses__ `Exception`
+
+
 
 ## Container\Exceptions\FrozenDefinition
 
@@ -2136,8 +2162,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\FrozenDefinition`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\FrozenDefinition`**
 
 </div>
 
@@ -2162,6 +2188,7 @@ public function __construct( string $name );
 ```
 
 Definition is frozen
+
 
 ## Container\Exceptions\InstanceNotFound
 
@@ -2198,8 +2225,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\InstanceNotFound`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\InstanceNotFound`**
 
 </div>
 
@@ -2221,6 +2248,7 @@ copies will be replaced with the actual Composer dependencies.
 ```php
 public function __construct( string $name );
 ```
+
 
 ## Container\Exceptions\InvalidExtender
 
@@ -2257,8 +2285,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\InvalidExtender`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\InvalidExtender`**
 
 </div>
 
@@ -2280,12 +2308,13 @@ copies will be replaced with the actual Composer dependencies.
 
 ```php
 public function __construct(
-string $service,
-string $key
+    string $service,
+    string $key
 );
 ```
 
 Invalid extender (not callable)
+
 
 ## Container\Exceptions\NoClassSet
 
@@ -2322,8 +2351,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\NoClassSet`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\NoClassSet`**
 
 </div>
 
@@ -2348,6 +2377,7 @@ public function __construct( string $name );
 ```
 
 No set for service
+
 
 ## Container\Exceptions\NoFactorySet
 
@@ -2384,8 +2414,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\NoFactorySet`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\NoFactorySet`**
 
 </div>
 
@@ -2410,6 +2440,7 @@ public function __construct( string $name );
 ```
 
 No factory for service
+
 
 ## Container\Exceptions\NoProcessorFound
 
@@ -2446,8 +2477,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\NoProcessorFound`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\NoProcessorFound`**
 
 </div>
 
@@ -2472,6 +2503,7 @@ public function __construct();
 ```
 
 No processor found
+
 
 ## Container\Exceptions\ParameterNotFound
 
@@ -2508,8 +2540,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\ParameterNotFound`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\ParameterNotFound`**
 
 </div>
 
@@ -2531,6 +2563,7 @@ copies will be replaced with the actual Composer dependencies.
 ```php
 public function __construct( string $name );
 ```
+
 
 ## Container\Exceptions\ServiceNotFound
 
@@ -2567,8 +2600,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\ServiceNotFound`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\ServiceNotFound`**
 
 </div>
 
@@ -2593,6 +2626,7 @@ public function __construct( string $name );
 ```
 
 Service not found
+
 
 ## Container\Exceptions\ServiceNotRegistered
 
@@ -2629,8 +2663,8 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - `BaseException`
-- [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
-- **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
+    - [`Phalcon\Container\Exceptions\Exception`](#containerexceptionsexception)
+        - **`Phalcon\Container\Exceptions\ServiceNotRegistered`**
 
 </div>
 
@@ -2655,6 +2689,7 @@ public function __construct( string $name );
 ```
 
 Service not registered
+
 
 ## Container\Provider\Cli
 
@@ -2696,6 +2731,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -2718,6 +2754,7 @@ public function provide( Collection $services ): void;
 ```
 
 Provider for commonly used CLI applications
+
 
 ## Container\Provider\Web
 
@@ -2759,6 +2796,7 @@ copies will be replaced with the actual Composer dependencies.
 
 __Uses__ `Phalcon\Auth\Access\AccessLocator` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Contracts\Container\Service\Provider` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -2781,6 +2819,7 @@ public function provide( Collection $services ): void;
 ```
 
 Provider for commonly used Web applications
+
 
 ## Container\Resolver\Lazy\ArrayValues
 
@@ -2817,11 +2856,12 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\ArrayValues`** — implements `ArrayAccess`, `Countable`, `IteratorAggregate`
+    - **`Phalcon\Container\Resolver\Lazy\ArrayValues`** — implements `ArrayAccess`, `Countable`, `IteratorAggregate`
 
 </div>
 
 __Uses__ `ArrayAccess` · `ArrayIterator` · `Countable` · `IteratorAggregate`
+
 
 ### Method Summary
 
@@ -2937,8 +2977,8 @@ public function offsetGet( mixed $offset ): mixed;
 
 ```php
 public function offsetSet(
-mixed $offset,
-mixed $value
+    mixed $offset,
+    mixed $value
 ): void;
 ```
 
@@ -2962,8 +3002,8 @@ Resolve to an array, where each element has itself been lazy-resolved.
 
 ```php
 protected function resolveValue(
-object $ioc,
-mixed $value
+    object $ioc,
+    mixed $value
 ): mixed;
 ```
 
@@ -2971,10 +3011,11 @@ mixed $value
 
 ```php
 protected function resolveValues(
-object $ioc,
-array $values
+    object $ioc,
+    array $values
 ): array;
 ```
+
 
 ## Container\Resolver\Lazy\Call
 
@@ -3011,7 +3052,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\Call`**
+    - **`Phalcon\Container\Resolver\Lazy\Call`**
 
 </div>
 
@@ -3058,6 +3099,7 @@ public function resolve( object $ioc ): mixed;
 
 Resolve the callable
 
+
 ## Container\Resolver\Lazy\CallableGet
 
 <span class="badge badge--class">Class</span>
@@ -3093,7 +3135,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\CallableGet`**
+    - **`Phalcon\Container\Resolver\Lazy\CallableGet`**
 
 </div>
 
@@ -3140,6 +3182,7 @@ public function resolve( object $ioc ): mixed;
 
 Resolve to a closure on a get()
 
+
 ## Container\Resolver\Lazy\CallableNew
 
 <span class="badge badge--class">Class</span>
@@ -3175,7 +3218,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\CallableNew`**
+    - **`Phalcon\Container\Resolver\Lazy\CallableNew`**
 
 </div>
 
@@ -3222,6 +3265,7 @@ public function resolve( object $ioc ): mixed;
 
 Resolve to a closure on a new()
 
+
 ## Container\Resolver\Lazy\CsEnv
 
 <span class="badge badge--class">Class</span>
@@ -3257,12 +3301,13 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
-- **`Phalcon\Container\Resolver\Lazy\CsEnv`**
+    - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
+        - **`Phalcon\Container\Resolver\Lazy\CsEnv`**
 
 </div>
 
 __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
+
 
 ### Method Summary
 
@@ -3286,6 +3331,7 @@ public function resolve( object $ioc ): array;
 ```
 
 Resolve the getEnv() from keys as a comma separated list
+
 
 ## Container\Resolver\Lazy\Env
 
@@ -3322,13 +3368,14 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\Env`**
-- [`Phalcon\Container\Resolver\Lazy\CsEnv`](#containerresolverlazycsenv)
-- [`Phalcon\Container\Resolver\Lazy\EnvDefault`](#containerresolverlazyenvdefault)
+    - **`Phalcon\Container\Resolver\Lazy\Env`**
+        - [`Phalcon\Container\Resolver\Lazy\CsEnv`](#containerresolverlazycsenv)
+        - [`Phalcon\Container\Resolver\Lazy\EnvDefault`](#containerresolverlazyenvdefault)
 
 </div>
 
 __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
+
 
 ### Method Summary
 
@@ -3380,8 +3427,8 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 
 ```php
 public function __construct(
-string $varname,
-string $vartype = null
+    string $varname,
+    string $vartype = null
 );
 ```
 
@@ -3410,6 +3457,7 @@ protected function getEnv(): string;
 ```
 
 Return the env value
+
 
 ## Container\Resolver\Lazy\EnvDefault
 
@@ -3446,12 +3494,13 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
-- **`Phalcon\Container\Resolver\Lazy\EnvDefault`**
+    - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
+        - **`Phalcon\Container\Resolver\Lazy\EnvDefault`**
 
 </div>
 
 __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
+
 
 ### Method Summary
 
@@ -3476,9 +3525,9 @@ __Uses__ `Phalcon\Container\Exceptions\EnvNotDefined`
 
 ```php
 public function __construct(
-string $varname,
-mixed $defaultValue,
-string $vartype = null
+    string $varname,
+    mixed $defaultValue,
+    string $vartype = null
 );
 ```
 
@@ -3489,6 +3538,7 @@ public function resolve( object $ioc ): mixed;
 ```
 
 Resolve an environment variable, returning the default if not defined
+
 
 ## Container\Resolver\Lazy\FunctionCall
 
@@ -3525,7 +3575,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\FunctionCall`**
+    - **`Phalcon\Container\Resolver\Lazy\FunctionCall`**
 
 </div>
 
@@ -3567,8 +3617,8 @@ copies will be replaced with the actual Composer dependencies.
 
 ```php
 public function __construct(
-string $functionName,
-array $arguments
+    string $functionName,
+    array $arguments
 );
 ```
 
@@ -3579,6 +3629,7 @@ public function resolve( object $ioc ): mixed;
 ```
 
 Resolve a function
+
 
 ## Container\Resolver\Lazy\Get
 
@@ -3615,7 +3666,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\Get`**
+    - **`Phalcon\Container\Resolver\Lazy\Get`**
 
 </div>
 
@@ -3662,6 +3713,7 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a shared instance
 
+
 ## Container\Resolver\Lazy\GetCall
 
 <span class="badge badge--class">Class</span>
@@ -3697,7 +3749,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\GetCall`**
+    - **`Phalcon\Container\Resolver\Lazy\GetCall`**
 
 </div>
 
@@ -3744,9 +3796,9 @@ copies will be replaced with the actual Composer dependencies.
 
 ```php
 public function __construct(
-mixed $id,
-string $method,
-array $arguments
+    mixed $id,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -3757,6 +3809,7 @@ public function resolve( object $ioc ): mixed;
 ```
 
 Resolve a shared instance method call
+
 
 ## Container\Resolver\Lazy\Lazy
 
@@ -3793,21 +3846,22 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - **`Phalcon\Container\Resolver\Lazy\Lazy`** — implements [`Phalcon\Contracts\Container\Resolver\Resolvable`](/5.14/api/phalcon_contracts/#contractscontainerresolverresolvable)
-- [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
-- [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
-- [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
-- [`Phalcon\Container\Resolver\Lazy\CallableNew`](#containerresolverlazycallablenew)
-- [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
-- [`Phalcon\Container\Resolver\Lazy\FunctionCall`](#containerresolverlazyfunctioncall)
-- [`Phalcon\Container\Resolver\Lazy\Get`](#containerresolverlazyget)
-- [`Phalcon\Container\Resolver\Lazy\GetCall`](#containerresolverlazygetcall)
-- [`Phalcon\Container\Resolver\Lazy\NewCall`](#containerresolverlazynewcall)
-- [`Phalcon\Container\Resolver\Lazy\NewInstance`](#containerresolverlazynewinstance)
-- [`Phalcon\Container\Resolver\Lazy\StaticCall`](#containerresolverlazystaticcall)
+    - [`Phalcon\Container\Resolver\Lazy\ArrayValues`](#containerresolverlazyarrayvalues)
+    - [`Phalcon\Container\Resolver\Lazy\Call`](#containerresolverlazycall)
+    - [`Phalcon\Container\Resolver\Lazy\CallableGet`](#containerresolverlazycallableget)
+    - [`Phalcon\Container\Resolver\Lazy\CallableNew`](#containerresolverlazycallablenew)
+    - [`Phalcon\Container\Resolver\Lazy\Env`](#containerresolverlazyenv)
+    - [`Phalcon\Container\Resolver\Lazy\FunctionCall`](#containerresolverlazyfunctioncall)
+    - [`Phalcon\Container\Resolver\Lazy\Get`](#containerresolverlazyget)
+    - [`Phalcon\Container\Resolver\Lazy\GetCall`](#containerresolverlazygetcall)
+    - [`Phalcon\Container\Resolver\Lazy\NewCall`](#containerresolverlazynewcall)
+    - [`Phalcon\Container\Resolver\Lazy\NewInstance`](#containerresolverlazynewinstance)
+    - [`Phalcon\Container\Resolver\Lazy\StaticCall`](#containerresolverlazystaticcall)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Container\Resolver\Resolvable`
+
 
 ### Method Summary
 
@@ -3856,8 +3910,8 @@ abstract public function resolve( object $ioc ): mixed;
 
 ```php
 protected function resolveArgument(
-object $ioc,
-mixed $argument
+    object $ioc,
+    mixed $argument
 ): mixed;
 ```
 
@@ -3865,10 +3919,11 @@ mixed $argument
 
 ```php
 protected function resolveArguments(
-object $ioc,
-array $arguments
+    object $ioc,
+    array $arguments
 ): array;
 ```
+
 
 ## Container\Resolver\Lazy\LazyFactory
 
@@ -4010,8 +4065,8 @@ public static function callableNew( string $id ): CallableNew;
 
 ```php
 public static function csEnv(
-string $name,
-string $type = null
+    string $name,
+    string $type = null
 ): CsEnv;
 ```
 
@@ -4019,8 +4074,8 @@ string $type = null
 
 ```php
 public static function env(
-string $name,
-string $type = null
+    string $name,
+    string $type = null
 ): Env;
 ```
 
@@ -4028,9 +4083,9 @@ string $type = null
 
 ```php
 public static function envDefault(
-string $name,
-mixed $defaultValue,
-string $type = null
+    string $name,
+    mixed $defaultValue,
+    string $type = null
 ): EnvDefault;
 ```
 
@@ -4038,8 +4093,8 @@ string $type = null
 
 ```php
 public static function functionCall(
-string $functionName,
-array $args
+    string $functionName,
+    array $args
 ): FunctionCall;
 ```
 
@@ -4053,9 +4108,9 @@ public static function get( string $id ): Get;
 
 ```php
 public static function getCall(
-string $id,
-string $method,
-array $args
+    string $id,
+    string $method,
+    array $args
 ): GetCall;
 ```
 
@@ -4063,9 +4118,9 @@ array $args
 
 ```php
 public static function newCall(
-string $id,
-string $method,
-array $args
+    string $id,
+    string $method,
+    array $args
 ): NewCall;
 ```
 
@@ -4079,11 +4134,12 @@ public static function newInstance( string $id ): NewInstance;
 
 ```php
 public static function staticCall(
-string $className,
-string $method,
-array $args
+    string $className,
+    string $method,
+    array $args
 ): StaticCall;
 ```
+
 
 ## Container\Resolver\Lazy\NewCall
 
@@ -4120,7 +4176,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\NewCall`**
+    - **`Phalcon\Container\Resolver\Lazy\NewCall`**
 
 </div>
 
@@ -4167,9 +4223,9 @@ copies will be replaced with the actual Composer dependencies.
 
 ```php
 public function __construct(
-mixed $id,
-string $method,
-array $arguments
+    mixed $id,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -4180,6 +4236,7 @@ public function resolve( object $ioc ): mixed;
 ```
 
 Resolve a new instance method call
+
 
 ## Container\Resolver\Lazy\NewInstance
 
@@ -4216,7 +4273,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\NewInstance`**
+    - **`Phalcon\Container\Resolver\Lazy\NewInstance`**
 
 </div>
 
@@ -4263,6 +4320,7 @@ public function resolve( object $ioc ): mixed;
 
 Resolve a new instance
 
+
 ## Container\Resolver\Lazy\StaticCall
 
 <span class="badge badge--class">Class</span>
@@ -4298,7 +4356,7 @@ copies will be replaced with the actual Composer dependencies.
 <div class="api-tree">
 
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
-- **`Phalcon\Container\Resolver\Lazy\StaticCall`**
+    - **`Phalcon\Container\Resolver\Lazy\StaticCall`**
 
 </div>
 
@@ -4345,9 +4403,9 @@ copies will be replaced with the actual Composer dependencies.
 
 ```php
 public function __construct(
-mixed $className,
-string $method,
-array $arguments
+    mixed $className,
+    string $method,
+    array $arguments
 );
 ```
 
@@ -4358,6 +4416,7 @@ public function resolve( object $ioc ): mixed;
 ```
 
 Resolve a static method call
+
 
 ## Container\Resolver\Resolver
 
@@ -4398,6 +4457,7 @@ copies will be replaced with the actual Composer dependencies.
 </div>
 
 __Uses__ `Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`
+
 
 ### Method Summary
 
@@ -4461,9 +4521,9 @@ Is this a resolvable class?
 
 ```php
 public function resolveCall(
-object $ioc,
-callable $callableObject,
-array $arguments
+    object $ioc,
+    callable $callableObject,
+    array $arguments
 ): mixed;
 ```
 
@@ -4473,9 +4533,9 @@ Resolve a call
 
 ```php
 public function resolveClass(
-object $ioc,
-string $className,
-array $arguments
+    object $ioc,
+    string $className,
+    array $arguments
 ): object;
 ```
 
@@ -4485,9 +4545,9 @@ Resolve a class
 
 ```php
 public function resolveMethod(
-object $ioc,
-ReflectionMethod $method,
-object $instance
+    object $ioc,
+    ReflectionMethod $method,
+    object $instance
 ): void;
 ```
 
@@ -4497,8 +4557,8 @@ Resolve a method
 
 ```php
 public function resolveParameter(
-object $ioc,
-ReflectionParameter $parameter
+    object $ioc,
+    ReflectionParameter $parameter
 ): mixed;
 ```
 
@@ -4508,9 +4568,9 @@ Resolve parameters
 
 ```php
 public function resolveParameters(
-object $ioc,
-array $parameters,
-array $arguments
+    object $ioc,
+    array $parameters,
+    array $arguments
 ): array;
 ```
 
@@ -4518,8 +4578,8 @@ array $arguments
 
 ```php
 public function resolveType(
-object $ioc,
-mixed $type
+    object $ioc,
+    mixed $type
 ): mixed;
 ```
 

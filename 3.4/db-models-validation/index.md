@@ -26,33 +26,33 @@ use Phalcon\Validation\Validator\InclusionIn;
 
 class Robots extends Model
 {
-public function validation()
-{
-    $validator = new Validation();
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'type',
-        new InclusionIn(
-            [
-                'domain' => [
-                    'Mechanical',
-                    'Virtual',
+        $validator->add(
+            'type',
+            new InclusionIn(
+                [
+                    'domain' => [
+                        'Mechanical',
+                        'Virtual',
+                    ]
                 ]
-            ]
-        )
-    );
+            )
+        );
 
-    $validator->add(
-        'name',
-        new Uniqueness(
-            [
-                'message' => 'The robot name must be unique',
-            ]
-        )
-    );
+        $validator->add(
+            'name',
+            new Uniqueness(
+                [
+                    'message' => 'The robot name must be unique',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 
@@ -74,24 +74,25 @@ use Phalcon\Mvc\Model\Message;
 
 class Robots extends Model
 {
-public function validation()
-{
-    if ($this->type === 'Old') {
-        $message = new Message(
-            'Sorry, old robots are not allowed anymore',
-            'type',
-            'MyType'
-        );
+    public function validation()
+    {
+        if ($this->type === 'Old') {
+            $message = new Message(
+                'Sorry, old robots are not allowed anymore',
+                'type',
+                'MyType'
+            );
 
-        $this->appendMessage($message);
+            $this->appendMessage($message);
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 }
 ```
+
 
 ## Validation Messages
 [Phalcon\Mvc\Model](/3.4/api/phalcon_mvc_model/) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
@@ -102,13 +103,13 @@ Each message is an instance of [Phalcon\Mvc\Model\Message](/3.4/api/phalcon_mvc_
 <?php
 
 if ($robot->save() === false) {
-$messages = $robot->getMessages();
+    $messages = $robot->getMessages();
 
-foreach ($messages as $message) {
-    echo 'Message: ', $message->getMessage();
-    echo 'Field: ', $message->getField();
-    echo 'Type: ', $message->getType();
-}
+    foreach ($messages as $message) {
+        echo 'Message: ', $message->getMessage();
+        echo 'Field: ', $message->getField();
+        echo 'Type: ', $message->getType();
+    }
 }
 ```
 
@@ -133,30 +134,31 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-public function getMessages()
-{
-    $messages = [];
+    public function getMessages()
+    {
+        $messages = [];
 
-    foreach (parent::getMessages() as $message) {
-        switch ($message->getType()) {
-            case 'InvalidCreateAttempt':
-                $messages[] = 'The record cannot be created because it already exists';
-                break;
+        foreach (parent::getMessages() as $message) {
+            switch ($message->getType()) {
+                case 'InvalidCreateAttempt':
+                    $messages[] = 'The record cannot be created because it already exists';
+                    break;
 
-            case 'InvalidUpdateAttempt':
-                $messages[] = "The record cannot be updated because it doesn't exist";
-                break;
+                case 'InvalidUpdateAttempt':
+                    $messages[] = "The record cannot be updated because it doesn't exist";
+                    break;
 
-            case 'PresenceOf':
-                $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                break;
+                case 'PresenceOf':
+                    $messages[] = 'The field ' . $message->getField() . ' is mandatory';
+                    break;
+            }
         }
-    }
 
-    return $messages;
-}
+        return $messages;
+    }
 }
 ```
+
 
 ## Validation Failed Events
 Another type of events are available when the data validation process finds any inconsistency:

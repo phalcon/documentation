@@ -27,45 +27,45 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
  */
 class InvoicesController extends Controller
 {
-public function saveAction()
-{
-    $this->db->begin();
+    public function saveAction()
+    {
+        $this->db->begin();
+        
+        try {
+            $customer = Customers::findFirst(
+                [
+                    'conditions' => 'cst_id = :cst_id:',
+                    'bind'       => [
+                        'cst_id' => 10,
+                    ]    
+                ]  
+            );
+            
+            $customer->cst_has_unpaid = true;
+            $result = $customer->save();
 
-    try {
-        $customer = Customers::findFirst(
-            [
-                'conditions' => 'cst_id = :cst_id:',
-                'bind'       => [
-                    'cst_id' => 10,
-                ]    
-            ]  
-        );
-
-        $customer->cst_has_unpaid = true;
-        $result = $customer->save();
-
-        if (false === $result) {
-            throw new \Exception('Error saving file');
+            if (false === $result) {
+                throw new \Exception('Error saving file');
+            }
+    
+            $invoice = new Invoices();
+            $invoice->inv_cst_id     = $customer->cst_id;
+            $invoice->inv_number     = 'INV-00001';
+            $invoice->inv_name       = 'Invoice for Goods';
+            $invoice->inv_created_at = date('Y-m-d');
+            
+            $result = $invoice->save();
+            
+            if (false === $result) {
+                throw new \Exception('Error saving file');
+            }
+    
+            $this->db->commit();
+        } catch (\Exception $ex) {
+            $this->db->rollback();
+            echo $ex->getMessage();
         }
-
-        $invoice = new Invoices();
-        $invoice->inv_cst_id     = $customer->cst_id;
-        $invoice->inv_number     = 'INV-00001';
-        $invoice->inv_name       = 'Invoice for Goods';
-        $invoice->inv_created_at = date('Y-m-d');
-
-        $result = $invoice->save();
-
-        if (false === $result) {
-            throw new \Exception('Error saving file');
-        }
-
-        $this->db->commit();
-    } catch (\Exception $ex) {
-        $this->db->rollback();
-        echo $ex->getMessage();
     }
-}
 }
 ```
 
@@ -108,38 +108,38 @@ $manager = new TxManager();
 $transaction = $manager->get();
 
 try {
-$customer = Customers::findFirst(
-    [
-        'conditions' => 'cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 10,
-        ]    
-    ]  
-);
+    $customer = Customers::findFirst(
+        [
+            'conditions' => 'cst_id = :cst_id:',
+            'bind'       => [
+                'cst_id' => 10,
+            ]    
+        ]  
+    );
+    
+    $customer->cst_has_unpaid = true;
+    $result = $customer->save();
 
-$customer->cst_has_unpaid = true;
-$result = $customer->save();
+    if (false === $result) {
+        throw new \Exception('Error saving file');
+    }
 
-if (false === $result) {
-    throw new \Exception('Error saving file');
-}
+    $invoice = new Invoices();
+    $invoice->inv_cst_id     = $customer->cst_id;
+    $invoice->inv_number     = 'INV-00001';
+    $invoice->inv_name       = 'Invoice for Goods';
+    $invoice->inv_created_at = date('Y-m-d');
+    
+    $result = $invoice->save();
+    
+    if (false === $result) {
+        throw new \Exception('Error saving file');
+    }
 
-$invoice = new Invoices();
-$invoice->inv_cst_id     = $customer->cst_id;
-$invoice->inv_number     = 'INV-00001';
-$invoice->inv_name       = 'Invoice for Goods';
-$invoice->inv_created_at = date('Y-m-d');
-
-$result = $invoice->save();
-
-if (false === $result) {
-    throw new \Exception('Error saving file');
-}
-
-$transaction->commit();
+    $transaction->commit();
 } catch (TxFailed $ex) {
-$transaction->rollback();
-echo $ex->getMessage();
+    $transaction->rollback();
+    echo $ex->getMessage();
 }
 ```
 
@@ -158,31 +158,31 @@ $manager = new TxManager();
 $transaction = $manager->get();
 
 try {
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 10,
-        ]    
-    ]  
-);
+    $invoices = Invoices::find(
+        [
+            'conditions' => 'inv_cst_id = :cst_id:',
+            'bind'       => [
+                'cst_id' => 10,
+            ]    
+        ]  
+    );
+    
+    foreach ($invoices as $invoice) {
+        $invoice->setTransaction($transaction);
+        if (false === $invoice->delete()) {
+            $messages = $invoice->getMessages();
 
-foreach ($invoices as $invoice) {
-    $invoice->setTransaction($transaction);
-    if (false === $invoice->delete()) {
-        $messages = $invoice->getMessages();
-
-        foreach ($messages as $message) {
-            $transaction->rollback(
-                $message->getMessage()
-            );
+            foreach ($messages as $message) {
+                $transaction->rollback(
+                    $message->getMessage()
+                );
+            }
         }
     }
-}
 
-$transaction->commit();
+    $transaction->commit();
 } catch (TxFailed $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 
@@ -190,6 +190,7 @@ echo $ex->getMessage();
 Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception][mvc-model-transaction-exception] or [Phalcon\Mvc\Model\Transaction\Failed][mvc-model-transaction-failed]. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 Additionally you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
+
 
 ```php
 <?php
@@ -202,36 +203,36 @@ $manager = new TxManager();
 
 // Request a transaction
 $transaction = $manager
-->get()
-->throwRollbackException(true)
+    ->get()
+    ->throwRollbackException(true)
 ;
 
 try {
-$invoices = Invoices::find(
-    [
-        'conditions' => 'inv_cst_id = :cst_id:',
-        'bind'       => [
-            'cst_id' => 10,
-        ]    
-    ]  
-);
+    $invoices = Invoices::find(
+        [
+            'conditions' => 'inv_cst_id = :cst_id:',
+            'bind'       => [
+                'cst_id' => 10,
+            ]    
+        ]  
+    );
+    
+    foreach ($invoices as $invoice) {
+        $invoice->setTransaction($transaction);
+        if (false === $invoice->delete()) {
+            $messages = $invoice->getMessages();
 
-foreach ($invoices as $invoice) {
-    $invoice->setTransaction($transaction);
-    if (false === $invoice->delete()) {
-        $messages = $invoice->getMessages();
-
-        foreach ($messages as $message) {
-            $transaction->rollback(
-                $message->getMessage()
-            );
+            foreach ($messages as $message) {
+                $transaction->rollback(
+                    $message->getMessage()
+                );
+            }
         }
     }
-}
 
-$transaction->commit();
+    $transaction->commit();
 } catch (TxFailed $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 
@@ -244,10 +245,10 @@ Transactions are reused no matter where the transaction object is retrieved. A n
 use Phalcon\Mvc\Model\Transaction\Manager;
 
 $container->setShared(
-'transactions',
-function () {
-    return new Manager();
-}
+    'transactions',
+    function () {
+        return new Manager();
+    }
 );
 ```
 
@@ -264,16 +265,16 @@ use Phalcon\Mvc\Model\Transaction\Manager;
  */
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    $manager = $this->di->getTransactions();
+    public function saveAction()
+    {
+        $manager = $this->di->getTransactions();
 
-    $manager = $this->transactions;
+        $manager = $this->transactions;
 
-    $transaction = $manager->get();
+        $transaction = $manager->get();
 
-    // ...
-}
+        // ...
+    }
 }
 ```
 

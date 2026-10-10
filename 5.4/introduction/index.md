@@ -39,28 +39,37 @@ Since this is a community driven project, you can share your thoughts and reques
 
 Feel free to connect with us using our social media accounts:
 
-- **:octicons-discussion-closed-16:\{ .lg .middle \} __Chat - QA__** — [Discord Chat][discord]
+- **:octicons-discussion-closed-16:\\\{ .lg .middle \\} \_\_Chat - QA\_\_**
 
-[Discussions][discussions]
-- **:octicons-question-16:\{ .lg .middle \} __Support__** — [GitHub Sponsors - Support Us][github_sponsors]
+  [Discord Chat][discord]
 
-[OpenCollective - Support Us][opencollective_sponsors]
-- **:octicons-megaphone-16:\{ .lg .middle \} __Social Media__** — [Telegram][telegram]
+  [Discussions][discussions]
+- **:octicons-question-16:\\\{ .lg .middle \\} \_\_Support\_\_**
 
-[Gab][gab]
+  [GitHub Sponsors - Support Us][github_sponsors]
 
-[MeWe][mewe]
+  [OpenCollective - Support Us][opencollective_sponsors]
+- **:octicons-megaphone-16:\\\{ .lg .middle \\} \_\_Social Media\_\_**
 
-[Reddit][reddit]
+  [Telegram][telegram]
 
-[Facebook][fb]
+  [Gab][gab]
 
-[Twitter][t]
-- **:octicons-video-16:\{ .lg .middle \} __Videos__** — [BitChute][bitchute]
+  [MeWe][mewe]
 
-[LBRY][lbry]
+  [Reddit][reddit]
 
-[YouTube][youtube]
+  [Facebook][fb]
+
+  [Twitter][t]
+- **:octicons-video-16:\\\{ .lg .middle \\} \_\_Videos\_\_**
+
+  [BitChute][bitchute]
+
+  [LBRY][lbry]
+
+  [YouTube][youtube]
+
 
 [github]: https://github.com/phalcon/cphalcon 
 [github_docs]: https://github.com/phalcon/docs

@@ -17,6 +17,7 @@ With this component you can load files from other projects or vendors, this auto
 
 [Phalcon\Loader](/3.4/api/phalcon_loader/) offers four options to autoload classes. You can use them one at a time or combine them.
 
+
 ## Security Layer
 [Phalcon\Loader](/3.4/api/phalcon_loader/) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
@@ -25,13 +26,13 @@ With this component you can load files from other projects or vendors, this auto
 
 // Basic autoloader
 spl_autoload_register(
-function ($className) {
-    $filepath = $className . '.php';
+    function ($className) {
+        $filepath = $className . '.php';
 
-    if (file_exists($filepath)) {
-        require $filepath;
+        if (file_exists($filepath)) {
+            require $filepath;
+        }
     }
-}
 );
 ```
 
@@ -46,13 +47,14 @@ $className = '../processes/important-process';
 
 // Check if the class exists triggering the auto-loader
 if (class_exists($className)) {
-// ...
+    // ...
 }
 ```
 
 If `../processes/important-process.php` is a valid file, an external user could execute the file without authorization.
 
 To avoid these or most sophisticated attacks, [Phalcon\Loader](/3.4/api/phalcon_loader/) removes invalid characters from the class name, reducing the possibility of being attacked.
+
 
 ## Registering Namespaces
 If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
@@ -67,11 +69,11 @@ $loader = new Loader();
 
 // Register some namespaces
 $loader->registerNamespaces(
-[
-   'Example\Base'    => 'vendor/example/base',
-   'Example\Adapter' => 'vendor/example/adapter',
-   'Example'         => 'vendor/example',
-]
+    [
+       'Example\Base'    => 'vendor/example/base',
+       'Example\Adapter' => 'vendor/example/adapter',
+       'Example'         => 'vendor/example',
+    ]
 );
 
 // Register autoloader
@@ -81,6 +83,7 @@ $loader->register();
 // file vendor/example/adapter/Some.php
 $some = new \Example\Adapter\Some();
 ```
+
 
 ## Registering Directories
 The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
@@ -95,12 +98,12 @@ $loader = new Loader();
 
 // Register some directories
 $loader->registerDirs(
-[
-    'library/MyComponent',
-    'library/OtherComponent/Other',
-    'vendor/example/adapters',
-    'vendor/example',
-]
+    [
+        'library/MyComponent',
+        'library/OtherComponent/Other',
+        'vendor/example/adapters',
+        'vendor/example',
+    ]
 );
 
 // Register autoloader
@@ -111,6 +114,7 @@ $loader->register();
 // i.e. library/OtherComponent/Other/Some.php
 $some = new \Some();
 ```
+
 
 ## Registering Classes
 The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading. However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make maintenance of the class list very cumbersome and it is not recommended.
@@ -125,10 +129,10 @@ $loader = new Loader();
 
 // Register some classes
 $loader->registerClasses(
-[
-    'Some'         => 'library/OtherComponent/Other/Some.php',
-    'Example\Base' => 'vendor/example/adapters/Example/BaseClass.php',
-]
+    [
+        'Some'         => 'library/OtherComponent/Other/Some.php',
+        'Example\Base' => 'vendor/example/adapters/Example/BaseClass.php',
+    ]
 );
 
 // Register autoloader
@@ -139,6 +143,7 @@ $loader->register();
 // i.e. library/OtherComponent/Other/Some.php
 $some = new \Some();
 ```
+
 
 ## Registering Files
 You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
@@ -153,10 +158,10 @@ $loader = new Loader();
 
 // Register some classes
 $loader->registerFiles(
-[
-    'functions.php',
-    'arrayFunctions.php',
-]
+    [
+        'functions.php',
+        'arrayFunctions.php',
+    ]
 );
 
 // Register autoloader
@@ -164,6 +169,7 @@ $loader->register();
 ```
 
 These files are automatically loaded in the `register()` method.
+
 
 ## Additional file extensions
 Some autoloading strategies such as  `prefixes`, `namespaces` or `directories` automatically append the `php` extension at the end of the checked file. If you are using additional extensions you could set it with the method `setExtensions`. Files are checked in the order as it were defined:
@@ -178,13 +184,14 @@ $loader = new Loader();
 
 // Set file extensions to check
 $loader->setExtensions(
-[
-    'php',
-    'inc',
-    'phb',
-]
+    [
+        'php',
+        'inc',
+        'phb',
+    ]
 );
 ```
+
 
 ## File checking callback
 You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback` method.
@@ -205,6 +212,7 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
+
 ## Modifying current strategies
 Additional auto-loading data can be added to existing values by passing `true` as the second parameter:
 
@@ -213,13 +221,14 @@ Additional auto-loading data can be added to existing values by passing `true` a
 
 // Adding more directories
 $loader->registerDirs(
-[
-    '../app/library',
-    '../app/plugins',
-],
-true
+    [
+        '../app/library',
+        '../app/plugins',
+    ],
+    true
 );
 ```
+
 
 ## Autoloading Events
 In the following example, the `EventsManager` is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
@@ -236,19 +245,19 @@ $eventsManager = new EventsManager();
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-    'Example\Base'    => 'vendor/example/base',
-    'Example\Adapter' => 'vendor/example/adapter',
-    'Example'         => 'vendor/example',
-]
+    [
+        'Example\Base'    => 'vendor/example/base',
+        'Example\Adapter' => 'vendor/example/adapter',
+        'Example'         => 'vendor/example',
+    ]
 );
 
 // Listen all the loader events
 $eventsManager->attach(
-'loader:beforeCheckPath',
-function (Event $event, Loader $loader) {
-    echo $loader->getCheckedPath();
-}
+    'loader:beforeCheckPath',
+    function (Event $event, Loader $loader) {
+        echo $loader->getCheckedPath();
+    }
 );
 
 $loader->setEventsManager($eventsManager);
@@ -263,6 +272,7 @@ Some events when returning boolean `false` could stop the active operation. The 
 | `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
 | `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
 | `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+
 
 ## Troubleshooting
 Some things to keep in mind when using the universal autoloader:

@@ -181,8 +181,8 @@ The [Assets][phalcon-assets] component has had changes to the interface as well 
 
 ```php
 public function __construct(
-Phalcon\Html\TagFactory $tagFactory,
-array $options = []
+    Phalcon\Html\TagFactory $tagFactory,
+    array $options = []
 )
 ```
 
@@ -190,12 +190,12 @@ array $options = []
 
 ```php
 public function addCss(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): Manager
 ```
 
@@ -203,9 +203,9 @@ bool $autoVersion = false
 
 ```php
 public function addInlineCss(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): Manager
 ```
 
@@ -213,12 +213,12 @@ array $attributes = []
 
 ```php
 public function addJs(
-string $path,
-bool $local = true,
-bool $filter = true,
-array $attributes = [],
-string $version = null,
-bool $autoVersion = false
+    string $path,
+    bool $local = true,
+    bool $filter = true,
+    array $attributes = [],
+    string $version = null,
+    bool $autoVersion = false
 ): Manager
 ```
 
@@ -226,9 +226,9 @@ bool $autoVersion = false
 
 ```php
 public function addInlineJs(
-string $content,
-bool $filter = true,
-array $attributes = []
+    string $content,
+    bool $filter = true,
+    array $attributes = []
 ): Manager
 ```
 
@@ -254,9 +254,9 @@ use Adapter\Another;
 $loader = new Loader(true);
 
 $loader
-->addNamespace('Base', './Namespaces/Base/')
-->addNamespace('Adapter', './Namespaces/Adapter/')
-->addNamespace('Namespaces', './Namespaces/')
+    ->addNamespace('Base', './Namespaces/Base/')
+    ->addNamespace('Adapter', './Namespaces/Adapter/')
+    ->addNamespace('Namespaces', './Namespaces/')
 ;
 
 $loader->autoload(Another::class);

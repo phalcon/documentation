@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Support\AbstractLocator
 
 Abstract
@@ -25,50 +26,39 @@ from a DI container, with support for both legacy Di and new Container.
 @template T of object
 
 - **`Phalcon\Support\AbstractLocator`**
-- [`Phalcon\Auth\Access\AccessLocator`](/5.21/api/phalcon_auth/#authaccessaccesslocator)
-- [`Phalcon\Auth\Adapter\AdapterLocator`](/5.21/api/phalcon_auth/#authadapteradapterlocator)
-- [`Phalcon\Auth\Guard\GuardLocator`](/5.21/api/phalcon_auth/#authguardguardlocator)
+  - [`Phalcon\Auth\Access\AccessLocator`](/5.21/api/phalcon_auth/#authaccessaccesslocator)
+  - [`Phalcon\Auth\Adapter\AdapterLocator`](/5.21/api/phalcon_auth/#authadapteradapterlocator)
+  - [`Phalcon\Auth\Guard\GuardLocator`](/5.21/api/phalcon_auth/#authguardguardlocator)
 
 `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#supportabstractlocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"services","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#supportabstractlocator-getall" visibility="public" name="getAll" returnType="array" params={[]}>
-Returns the full registered service map (defaults plus any added via
-</ApiItem>
-<ApiItem href="#supportabstractlocator-getclass" visibility="public" name="getClass" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns the class-string registered under the given name.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Whether a service with the given name is registered.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-newinstance" visibility="public" name="newInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
-Retrieve a service instance from the container.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-register" visibility="public" name="register" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"definition","default":null}]}>
-Register a service or override an existing one.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-Get the exception class to throw on errors.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-getinterfaceclass" visibility="protected" name="getInterfaceClass" returnType="string" params={[]}>
-Get the interface/class that all registered services must implement.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-getservice" visibility="protected" name="getService" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Get the service class name for a given name.
-</ApiItem>
-<ApiItem href="#supportabstractlocator-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Get the default services for this locator.
-</ApiItem>
+- `public __construct(mixed $container, array $services = [])`
+
+- `public getAll(): array` — Returns the full registered service map (defaults plus any added via
+
+- `public getClass(string $name): string` — Returns the class-string registered under the given name.
+
+- `public has(string $name): bool` — Whether a service with the given name is registered.
+
+- `public newInstance(string $name): object` — Retrieve a service instance from the container.
+
+- `public register(string $name, string $definition): static` — Register a service or override an existing one.
+
+- `protected getExceptionClass(): string` — Get the exception class to throw on errors.
+
+- `protected getInterfaceClass(): string` — Get the interface/class that all registered services must implement.
+
+- `protected getService(string $name): string` — Get the service class name for a given name.
+
+- `protected getServices(): array` — Get the default services for this locator.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="container" type="Collection|DiInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
-</ApiItem>
+- `protected Collection|DiInterface $container`
+
+- `protected array $services = []`
 
 ### Methods
 
@@ -76,8 +66,8 @@ Get the default services for this locator.
 
 ```php
 public function __construct(
-mixed $container,
-array $services = []
+    mixed $container,
+    array $services = []
 );
 ```
 
@@ -124,8 +114,8 @@ method to resolve a fresh instance; see `Auth\Access\AccessLocator`, which uses
 
 ```php
 public function register(
-string $name,
-string $definition
+    string $name,
+    string $definition
 ): static;
 ```
 
@@ -164,6 +154,7 @@ abstract protected function getServices(): array;
 
 Get the default services for this locator.
 
+
 ## Support\Collection
 
 Class
@@ -187,166 +178,118 @@ etc.
 @property string|null           $type
 
 - **`Phalcon\Support\Collection`** - implements [`Phalcon\Support\Collection\CollectionInterface`](#supportcollectioncollectioninterface), `\Countable`, `\JsonSerializable`
-- [`Phalcon\Config\Config`](/5.21/api/phalcon_config/#configconfig)
-- [`Phalcon\Html\Attributes`](/5.21/api/phalcon_html/#htmlattributes)
-- [`Phalcon\Session\Bag`](/5.21/api/phalcon_session/#sessionbag)
-- [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
-- [`Phalcon\Support\Registry`](#supportregistry)
+  - [`Phalcon\Config\Config`](/5.21/api/phalcon_config/#configconfig)
+  - [`Phalcon\Html\Attributes`](/5.21/api/phalcon_html/#htmlattributes)
+  - [`Phalcon\Session\Bag`](/5.21/api/phalcon_session/#sessionbag)
+  - [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
+  - [`Phalcon\Support\Registry`](#supportregistry)
 
 `ArrayIterator` · `Countable` · `InvalidArgumentException` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
 
 ### Method Summary
 
-<ApiItem href="#supportcollection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"},{"type":"bool","name":"insensitive","default":"true"},{"type":"bool","name":"strictNull","default":"false"},{"type":"string|null","name":"type","default":"null"}]}>
-Collection constructor.
-</ApiItem>
-<ApiItem href="#supportcollection-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
-Magic getter to get an element from the collection
-</ApiItem>
-<ApiItem href="#supportcollection-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-Magic isset to check whether an element exists or not
-</ApiItem>
-<ApiItem href="#supportcollection-__serialize" visibility="public" name="__serialize" returnType="array" params={[]}>
-Returns the state of the collection for serialization, including
-</ApiItem>
-<ApiItem href="#supportcollection-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Magic setter to assign values to an element
-</ApiItem>
-<ApiItem href="#supportcollection-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-Restores the collection state. Accepts both the structured format
-</ApiItem>
-<ApiItem href="#supportcollection-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Magic unset to remove an element from the collection
-</ApiItem>
-<ApiItem href="#supportcollection-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears the internal collection
-</ApiItem>
-<ApiItem href="#supportcollection-column" visibility="public" name="column" returnType="array" params={[{"type":"string","name":"propertyOrMethod","default":null}]}>
-Returns the values from a single property/method extracted from every
-</ApiItem>
-<ApiItem href="#supportcollection-count" visibility="public" name="count" returnType="int" params={[]}>
-Count elements of an object
-</ApiItem>
-<ApiItem href="#supportcollection-each" visibility="public" name="each" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
-Invokes the callback for every item in the collection. Returns the
-</ApiItem>
-<ApiItem href="#supportcollection-filter" visibility="public" name="filter" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
-Returns a new collection of items for which the callback returns true.
-</ApiItem>
-<ApiItem href="#supportcollection-first" visibility="public" name="first" returnType="mixed" params={[]}>
-Returns the first value in the collection, or null if empty.
-</ApiItem>
-<ApiItem href="#supportcollection-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
-Get the element from the collection
-</ApiItem>
-<ApiItem href="#supportcollection-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
-Returns the iterator of the class
-</ApiItem>
-<ApiItem href="#supportcollection-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
-Returns the keys (insensitive or not) of the collection.
-</ApiItem>
-<ApiItem href="#supportcollection-gettype" visibility="public" name="getType" returnType="string|null" params={[]}>
-Returns the configured runtime type guard, or null if none.
-</ApiItem>
-<ApiItem href="#supportcollection-getvalues" visibility="public" name="getValues" returnType="array" params={[]}>
-Returns the values of the internal array.
-</ApiItem>
-<ApiItem href="#supportcollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-Get the element from the collection
-</ApiItem>
-<ApiItem href="#supportcollection-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
-Initialize internal array
-</ApiItem>
-<ApiItem href="#supportcollection-isempty" visibility="public" name="isEmpty" returnType="bool" params={[]}>
-Return if the collection is empty
-</ApiItem>
-<ApiItem href="#supportcollection-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Specify data which should be serialized to JSON
-</ApiItem>
-<ApiItem href="#supportcollection-keys" visibility="public" name="keys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
-Returns the keys (insensitive or not) of the collection.
-</ApiItem>
-<ApiItem href="#supportcollection-last" visibility="public" name="last" returnType="mixed" params={[]}>
-Returns the last value in the collection, or null if empty.
-</ApiItem>
-<ApiItem href="#supportcollection-map" visibility="public" name="map" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
-Returns a new collection with the callback applied to every value.
-</ApiItem>
-<ApiItem href="#supportcollection-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"element","default":null}]}>
-Whether a offset exists
-</ApiItem>
-<ApiItem href="#supportcollection-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"element","default":null}]}>
-Offset to retrieve
-</ApiItem>
-<ApiItem href="#supportcollection-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Offset to set
-</ApiItem>
-<ApiItem href="#supportcollection-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"element","default":null}]}>
-Offset to unset
-</ApiItem>
-<ApiItem href="#supportcollection-reduce" visibility="public" name="reduce" returnType="mixed" params={[{"type":"callable","name":"callback","default":null},{"type":"mixed","name":"initial","default":"null"}]}>
-Reduces the collection to a single value using the callback. The
-</ApiItem>
-<ApiItem href="#supportcollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Delete the element from the collection
-</ApiItem>
-<ApiItem href="#supportcollection-replace" visibility="public" name="replace" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-Replaces the collection data with a new array, clearing existing data first
-</ApiItem>
-<ApiItem href="#supportcollection-serialize" visibility="public" name="serialize" returnType="string|null" params={[]}>
-BC - delegate to __serialize()
-</ApiItem>
-<ApiItem href="#supportcollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set an element in the collection
-</ApiItem>
-<ApiItem href="#supportcollection-sort" visibility="public" name="sort" returnType="static" params={[{"type":"mixed","name":"callback","default":"null"},{"type":"int","name":"order","default":"4"}]}>
-Returns a new collection sorted by value. Keys are preserved. When a
-</ApiItem>
-<ApiItem href="#supportcollection-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the object in an array format
-</ApiItem>
-<ApiItem href="#supportcollection-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":"4194383"}]}>
-Returns the object in a JSON format
-</ApiItem>
-<ApiItem href="#supportcollection-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"data","default":null}]}>
-BC - delegate to __unserialize()
-</ApiItem>
-<ApiItem href="#supportcollection-values" visibility="public" name="values" returnType="array" params={[]}>
-Returns the values of the internal array.
-</ApiItem>
-<ApiItem href="#supportcollection-where" visibility="public" name="where" returnType="static" params={[{"type":"string","name":"propertyOrMethod","default":null},{"type":"mixed","name":"value","default":null}]}>
-Returns a new collection containing only the items whose
-</ApiItem>
-<ApiItem href="#supportcollection-cloneempty" visibility="protected" name="cloneEmpty" returnType="static" params={[{"type":"array","name":"data","default":"[]"}]}>
-Builds a new collection of the same concrete class, carrying over the
-</ApiItem>
-<ApiItem href="#supportcollection-extractvalue" visibility="protected" name="extractValue" returnType="mixed" params={[{"type":"mixed","name":"item","default":null},{"type":"string","name":"propertyOrMethod","default":null}]}>
-Extracts a single value from an item. For arrays returns the keyed
-</ApiItem>
-<ApiItem href="#supportcollection-processkey" visibility="protected" name="processKey" returnType="string" params={[{"type":"string","name":"element","default":null}]}>
-Checks if we need insensitive keys and if so, converts the element to
-</ApiItem>
-<ApiItem href="#supportcollection-setdata" visibility="protected" name="setData" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Internal method to set data
-</ApiItem>
-<ApiItem href="#supportcollection-validatetype" visibility="protected" name="validateType" returnType="void" params={[{"type":"mixed","name":"value","default":null}]}>
-Validates the value against the configured `$type` guard. When `$type`
-</ApiItem>
+- `public __construct(array $data = [], bool $insensitive = true, bool $strictNull = false, string|null $type = null)` — Collection constructor.
+
+- `public __get(string $element): mixed` — Magic getter to get an element from the collection
+
+- `public __isset(string $element): bool` — Magic isset to check whether an element exists or not
+
+- `public __serialize(): array` — Returns the state of the collection for serialization, including
+
+- `public __set(string $element, mixed $value): void` — Magic setter to assign values to an element
+
+- `public __unserialize(array $data): void` — Restores the collection state. Accepts both the structured format
+
+- `public __unset(string $element): void` — Magic unset to remove an element from the collection
+
+- `public clear(): void` — Clears the internal collection
+
+- `public column(string $propertyOrMethod): array` — Returns the values from a single property/method extracted from every
+
+- `public count(): int` — Count elements of an object
+
+- `public each(callable $callback): static` — Invokes the callback for every item in the collection. Returns the
+
+- `public filter(callable $callback): static` — Returns a new collection of items for which the callback returns true.
+
+- `public first(): mixed` — Returns the first value in the collection, or null if empty.
+
+- `public get(string $element, mixed $defaultValue = null, string|null $cast = null): mixed` — Get the element from the collection
+
+- `public getIterator(): Traversable` — Returns the iterator of the class
+
+- `public getKeys(bool $insensitive = true): array` — Returns the keys (insensitive or not) of the collection.
+
+- `public getType(): string|null` — Returns the configured runtime type guard, or null if none.
+
+- `public getValues(): array` — Returns the values of the internal array.
+
+- `public has(string $element): bool` — Get the element from the collection
+
+- `public init(array $data = []): void` — Initialize internal array
+
+- `public isEmpty(): bool` — Return if the collection is empty
+
+- `public jsonSerialize(): array` — Specify data which should be serialized to JSON
+
+- `public keys(bool $insensitive = true): array` — Returns the keys (insensitive or not) of the collection.
+
+- `public last(): mixed` — Returns the last value in the collection, or null if empty.
+
+- `public map(callable $callback): static` — Returns a new collection with the callback applied to every value.
+
+- `public offsetExists(mixed $element): bool` — Whether a offset exists
+
+- `public offsetGet(mixed $element): mixed` — Offset to retrieve
+
+- `public offsetSet(mixed $element, mixed $value): void` — Offset to set
+
+- `public offsetUnset(mixed $element): void` — Offset to unset
+
+- `public reduce(callable $callback, mixed $initial = null): mixed` — Reduces the collection to a single value using the callback. The
+
+- `public remove(string $element): void` — Delete the element from the collection
+
+- `public replace(array $data): void` — Replaces the collection data with a new array, clearing existing data first
+
+- `public serialize(): string|null` — BC - delegate to \_\_serialize()
+
+- `public set(string $element, mixed $value): void` — Set an element in the collection
+
+- `public sort(mixed $callback = null, int $order = 4): static` — Returns a new collection sorted by value. Keys are preserved. When a
+
+- `public toArray(): array` — Returns the object in an array format
+
+- `public toJson(int $options = 4194383): string` — Returns the object in a JSON format
+
+- `public unserialize(string $data): void` — BC - delegate to \_\_unserialize()
+
+- `public values(): array` — Returns the values of the internal array.
+
+- `public where(string $propertyOrMethod, mixed $value): static` — Returns a new collection containing only the items whose
+
+- `protected cloneEmpty(array $data = []): static` — Builds a new collection of the same concrete class, carrying over the
+
+- `protected extractValue(mixed $item, string $propertyOrMethod): mixed` — Extracts a single value from an item. For arrays returns the keyed
+
+- `protected processKey(string $element): string` — Checks if we need insensitive keys and if so, converts the element to
+
+- `protected setData(string $element, mixed $value): void` — Internal method to set data
+
+- `protected validateType(mixed $value): void` — Validates the value against the configured `$type` guard. When `$type`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="data" type="array&lt;string, T&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="insensitive" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="lowerKeys" type="array&lt;string, string&gt;" default="[]">
-Maps the case-insensitive key back to the original one it was stored
-under.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="strictNull" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="string|null" default="null">
-</ApiItem>
+- `protected array<string, T> $data = []`
+
+- `protected bool $insensitive = true`
+
+- `protected array<string, string> $lowerKeys = []` — Maps the case-insensitive key back to the original one it was stored
+  under.
+
+- `protected bool $strictNull = false`
+
+- `protected string|null $type = null`
 
 ### Methods
 
@@ -354,10 +297,10 @@ under.
 
 ```php
 public function __construct(
-array $data = [],
-bool $insensitive = true,
-bool $strictNull = false,
-string|null $type = null
+    array $data = [],
+    bool $insensitive = true,
+    bool $strictNull = false,
+    string|null $type = null
 );
 ```
 
@@ -392,8 +335,8 @@ configuration flags so the round-trip restores full state.
 
 ```php
 public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -472,9 +415,9 @@ Returns the first value in the collection, or null if empty.
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string|null $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string|null $cast = null
 ): mixed;
 ```
 
@@ -589,8 +532,8 @@ Offset to retrieve
 
 ```php
 public function offsetSet(
-mixed $element,
-mixed $value
+    mixed $element,
+    mixed $value
 ): void;
 ```
 
@@ -608,8 +551,8 @@ Offset to unset
 
 ```php
 public function reduce(
-callable $callback,
-mixed $initial = null
+    callable $callback,
+    mixed $initial = null
 ): mixed;
 ```
 
@@ -644,8 +587,8 @@ BC - delegate to __serialize()
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -655,8 +598,8 @@ Set an element in the collection
 
 ```php
 public function sort(
-mixed $callback = null,
-int $order = 4
+    mixed $callback = null,
+    int $order = 4
 ): static;
 ```
 
@@ -708,8 +651,8 @@ Returns the values of the internal array.
 
 ```php
 public function where(
-string $propertyOrMethod,
-mixed $value
+    string $propertyOrMethod,
+    mixed $value
 ): static;
 ```
 
@@ -729,8 +672,8 @@ configuration (insensitivity, strict-null, type) of the current one.
 
 ```php
 protected function extractValue(
-mixed $item,
-string $propertyOrMethod
+    mixed $item,
+    string $propertyOrMethod
 ): mixed;
 ```
 
@@ -751,8 +694,8 @@ lowercase
 
 ```php
 protected function setData(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -769,6 +712,7 @@ is null this is a no-op. Scalar tokens (`int`, `string`, `bool`,
 `float`, `array`, `object`) map to their `is_*` checks; anything else
 is treated as a class/interface name and tested with `instanceof`.
 
+
 ## Support\Collection\CollectionInterface
 
 Interface
@@ -778,11 +722,12 @@ Phalcon\Support\Collection\CollectionInterface
 @extends CollectionContract&lt;T>
 
 - `\ArrayAccess`
-- [`Phalcon\Contracts\Support\Collection`](/5.21/api/phalcon_contracts/#contractssupportcollection)
-- **`Phalcon\Support\Collection\CollectionInterface`**
-- [`Phalcon\Config\ConfigInterface`](/5.21/api/phalcon_config/#configconfiginterface)
+  - [`Phalcon\Contracts\Support\Collection`](/5.21/api/phalcon_contracts/#contractssupportcollection)
+    - **`Phalcon\Support\Collection\CollectionInterface`**
+      - [`Phalcon\Config\ConfigInterface`](/5.21/api/phalcon_config/#configconfiginterface)
 
 `Phalcon\Contracts\Support\Collection`
+
 
 ## Support\Collection\Exception
 
@@ -791,25 +736,25 @@ Class
 Exceptions for the Collection object
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- **`Phalcon\Support\Collection\Exception`**
-- [`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`](#supportcollectionexceptionsreadonlyviolation)
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - **`Phalcon\Support\Collection\Exception`**
+      - [`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`](#supportcollectionexceptionsreadonlyviolation)
 
 `Phalcon\Support\Exception`
+
 
 ## Support\Collection\Exceptions\InvalidValueType
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Support\Collection\Exceptions\InvalidValueType`**
+  - **`Phalcon\Support\Collection\Exceptions\InvalidValueType`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#supportcollectionexceptionsinvalidvaluetype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
+- `public __construct(string $type, mixed $value)`
 
 ### Methods
 
@@ -817,26 +762,26 @@ Class
 
 ```php
 public function __construct(
-string $type,
-mixed $value
+    string $type,
+    mixed $value
 );
 ```
+
 
 ## Support\Collection\Exceptions\ReadOnlyViolation
 
 Class
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
-- **`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`**
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
+      - **`Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`**
 
 `Phalcon\Support\Collection\Exception`
 
 ### Method Summary
 
-<ApiItem href="#supportcollectionexceptionsreadonlyviolation-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -845,6 +790,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Support\Collection\ReadOnlyCollection
 
@@ -855,36 +801,29 @@ A read only Collection object
 @extends Collection&lt;T>
 
 - [`Phalcon\Support\Collection`](#supportcollection)
-- **`Phalcon\Support\Collection\ReadOnlyCollection`**
+  - **`Phalcon\Support\Collection\ReadOnlyCollection`**
 
 `Phalcon\Support\Collection` · `Phalcon\Support\Collection\Exceptions\ReadOnlyViolation`
 
 ### Method Summary
 
-<ApiItem href="#supportcollectionreadonlycollection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"},{"type":"bool","name":"insensitive","default":"true"},{"type":"bool","name":"strictNull","default":"false"},{"type":"string|null","name":"type","default":"null"}]}>
-ReadOnlyCollection constructor.
-</ApiItem>
-<ApiItem href="#supportcollectionreadonlycollection-__unserialize" visibility="public" name="__unserialize" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-Restores the collection state during unserialization.
-</ApiItem>
-<ApiItem href="#supportcollectionreadonlycollection-clear" visibility="public" name="clear" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#supportcollectionreadonlycollection-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#supportcollectionreadonlycollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Delete the element from the collection
-</ApiItem>
-<ApiItem href="#supportcollectionreadonlycollection-replace" visibility="public" name="replace" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-Replaces the collection data with a new array
-</ApiItem>
-<ApiItem href="#supportcollectionreadonlycollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set an element in the collection
-</ApiItem>
+- `public __construct(array $data = [], bool $insensitive = true, bool $strictNull = false, string|null $type = null)` — ReadOnlyCollection constructor.
+
+- `public __unserialize(array $data): void` — Restores the collection state during unserialization.
+
+- `public clear(): void`
+
+- `public init(array $data = []): void`
+
+- `public remove(string $element): void` — Delete the element from the collection
+
+- `public replace(array $data): void` — Replaces the collection data with a new array
+
+- `public set(string $element, mixed $value): void` — Set an element in the collection
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="constructed" type="bool" default="false">
-</ApiItem>
+- `protected bool $constructed = false`
 
 ### Methods
 
@@ -892,10 +831,10 @@ Set an element in the collection
 
 ```php
 public function __construct(
-array $data = [],
-bool $insensitive = true,
-bool $strictNull = false,
-string|null $type = null
+    array $data = [],
+    bool $insensitive = true,
+    bool $strictNull = false,
+    string|null $type = null
 );
 ```
 
@@ -944,12 +883,13 @@ Replaces the collection data with a new array
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
 Set an element in the collection
+
 
 ## Support\Debug
 
@@ -964,88 +904,67 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 
 ### Method Summary
 
-<ApiItem href="#supportdebug-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebug-clearvars" visibility="public" name="clearVars" returnType="static" params={[]}>
-Clears are variables added previously
-</ApiItem>
-<ApiItem href="#supportdebug-debugvar" visibility="public" name="debugVar" returnType="static" params={[{"type":"mixed","name":"variable","default":null}]}>
-Adds a variable to the debug output
-</ApiItem>
-<ApiItem href="#supportdebug-getcsssources" visibility="public" name="getCssSources" returnType="string" params={[]}>
-Returns the CSS sources
-</ApiItem>
-<ApiItem href="#supportdebug-getjssources" visibility="public" name="getJsSources" returnType="string" params={[]}>
-Returns the JavaScript sources
-</ApiItem>
-<ApiItem href="#supportdebug-getrenderer" visibility="public" name="getRenderer" returnType="Renderer" params={[]}>
-Returns the renderer used to produce the output
-</ApiItem>
-<ApiItem href="#supportdebug-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
-Generates a link to the current version documentation
-</ApiItem>
-<ApiItem href="#supportdebug-halt" visibility="public" name="halt" returnType="void" params={[]}>
-Halts the request showing a backtrace
-</ApiItem>
-<ApiItem href="#supportdebug-listen" visibility="public" name="listen" returnType="static" params={[{"type":"bool","name":"exceptions","default":"true"},{"type":"bool","name":"lowSeverity","default":"false"}]}>
-Listen for uncaught exceptions and non silent notices or warnings
-</ApiItem>
-<ApiItem href="#supportdebug-listenexceptions" visibility="public" name="listenExceptions" returnType="static" params={[]}>
-Listen for uncaught exceptions
-</ApiItem>
-<ApiItem href="#supportdebug-listenlowseverity" visibility="public" name="listenLowSeverity" returnType="static" params={[]}>
-Listen for non silent notices or warnings
-</ApiItem>
-<ApiItem href="#supportdebug-onuncaughtexception" visibility="public" name="onUncaughtException" returnType="bool" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
-Handles uncaught exceptions
-</ApiItem>
-<ApiItem href="#supportdebug-onuncaughtlowseverity" visibility="public" name="onUncaughtLowSeverity" returnType="void" params={[{"type":"int","name":"severity","default":null},{"type":"string","name":"message","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null}]}>
-Throws an exception when a notice or warning is raised
-</ApiItem>
-<ApiItem href="#supportdebug-renderhtml" visibility="public" name="renderHtml" returnType="string" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
-Render exception to html format.
-</ApiItem>
-<ApiItem href="#supportdebug-setblacklist" visibility="public" name="setBlacklist" returnType="static" params={[{"type":"array","name":"blacklist","default":null}]}>
-Sets if files the exception's backtrace must be showed
-</ApiItem>
-<ApiItem href="#supportdebug-setrenderer" visibility="public" name="setRenderer" returnType="static" params={[{"type":"Renderer","name":"renderer","default":null}]}>
-Sets the renderer used to produce the output
-</ApiItem>
-<ApiItem href="#supportdebug-setshowbacktrace" visibility="public" name="setShowBackTrace" returnType="static" params={[{"type":"bool","name":"showBackTrace","default":null}]}>
-Sets if files the exception's backtrace must be showed
-</ApiItem>
-<ApiItem href="#supportdebug-setshowfilefragment" visibility="public" name="setShowFileFragment" returnType="static" params={[{"type":"bool","name":"showFileFragment","default":null}]}>
-Sets if files must be completely opened and showed in the output
-</ApiItem>
-<ApiItem href="#supportdebug-setshowfiles" visibility="public" name="setShowFiles" returnType="static" params={[{"type":"bool","name":"showFiles","default":null}]}>
-Set if files part of the backtrace must be shown in the output
-</ApiItem>
-<ApiItem href="#supportdebug-seturi" visibility="public" name="setUri" returnType="static" params={[{"type":"string","name":"uri","default":null}]}>
-Change the base URI for static resources
-</ApiItem>
+- `public __construct()`
+
+- `public clearVars(): static` — Clears are variables added previously
+
+- `public debugVar(mixed $variable): static` — Adds a variable to the debug output
+
+- `public getCssSources(): string` — Returns the CSS sources
+
+- `public getJsSources(): string` — Returns the JavaScript sources
+
+- `public getRenderer(): Renderer` — Returns the renderer used to produce the output
+
+- `public getVersion(): string` — Generates a link to the current version documentation
+
+- `public halt(): void` — Halts the request showing a backtrace
+
+- `public listen(bool $exceptions = true, bool $lowSeverity = false): static` — Listen for uncaught exceptions and non silent notices or warnings
+
+- `public listenExceptions(): static` — Listen for uncaught exceptions
+
+- `public listenLowSeverity(): static` — Listen for non silent notices or warnings
+
+- `public onUncaughtException(\Throwable $exception): bool` — Handles uncaught exceptions
+
+- `public onUncaughtLowSeverity(int $severity, string $message, string $file, int $line): void` — Throws an exception when a notice or warning is raised
+
+- `public renderHtml(\Throwable $exception): string` — Render exception to html format.
+
+- `public setBlacklist(array $blacklist): static` — Sets if files the exception's backtrace must be showed
+
+- `public setRenderer(Renderer $renderer): static` — Sets the renderer used to produce the output
+
+- `public setShowBackTrace(bool $showBackTrace): static` — Sets if files the exception's backtrace must be showed
+
+- `public setShowFileFragment(bool $showFileFragment): static` — Sets if files must be completely opened and showed in the output
+
+- `public setShowFiles(bool $showFiles): static` — Set if files part of the backtrace must be shown in the output
+
+- `public setUri(string $uri): static` — Change the base URI for static resources
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="blacklist" type="array" default="[...]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="hideDocumentRoot" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isActive" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="renderer" type="Renderer" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="reportBuilder" type="ReportBuilder" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="showBackTrace" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="showFileFragment" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="showFiles" type="bool" default="true">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uri" type="string" default="&quot;https://assets.phalcon.io/debug/5.0.x/&quot;">
-</ApiItem>
+- `protected array $blacklist = [...]`
+
+- `protected array $data = []`
+
+- `protected bool $hideDocumentRoot = false`
+
+- `protected bool $isActive = false`
+
+- `protected Renderer $renderer`
+
+- `protected ReportBuilder $reportBuilder`
+
+- `protected bool $showBackTrace = true`
+
+- `protected bool $showFileFragment = false`
+
+- `protected bool $showFiles = true`
+
+- `protected string $uri = "https://assets.phalcon.io/debug/5.0.x/"`
 
 ### Methods
 
@@ -1115,8 +1034,8 @@ Halts the request showing a backtrace
 
 ```php
 public function listen(
-bool $exceptions = true,
-bool $lowSeverity = false
+    bool $exceptions = true,
+    bool $lowSeverity = false
 ): static;
 ```
 
@@ -1150,10 +1069,10 @@ Handles uncaught exceptions
 
 ```php
 public function onUncaughtLowSeverity(
-int $severity,
-string $message,
-string $file,
-int $line
+    int $severity,
+    string $message,
+    string $file,
+    int $line
 ): void;
 ```
 
@@ -1216,6 +1135,7 @@ public function setUri( string $uri ): static;
 
 Change the base URI for static resources
 
+
 ## Support\Debug\Dump
 
 Class
@@ -1242,49 +1162,37 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ### Method Summary
 
-<ApiItem href="#supportdebugdump-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"styles","default":"[]"},{"type":"bool","name":"detailed","default":"false"}]}>
-Dump constructor.
-</ApiItem>
-<ApiItem href="#supportdebugdump-all" visibility="public" name="all" returnType="string" params={[]}>
-Alias of variables() method
-</ApiItem>
-<ApiItem href="#supportdebugdump-getdetailed" visibility="public" name="getDetailed" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugdump-one" visibility="public" name="one" returnType="string" params={[{"type":"mixed","name":"variable","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Alias of variable() method
-</ApiItem>
-<ApiItem href="#supportdebugdump-setdetailed" visibility="public" name="setDetailed" returnType="void" params={[{"type":"bool","name":"flag","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugdump-setstyles" visibility="public" name="setStyles" returnType="array" params={[{"type":"array","name":"styles","default":"[]"}]}>
-Set styles for vars type
-</ApiItem>
-<ApiItem href="#supportdebugdump-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"mixed","name":"variable","default":null}]}>
-Returns an JSON string of information about a single variable.
-</ApiItem>
-<ApiItem href="#supportdebugdump-variable" visibility="public" name="variable" returnType="string" params={[{"type":"mixed","name":"variable","default":null},{"type":"string|null","name":"name","default":"null"}]}>
-Returns an HTML string of information about a single variable.
-</ApiItem>
-<ApiItem href="#supportdebugdump-variables" visibility="public" name="variables" returnType="string" params={[]}>
-Returns an HTML string of debugging information about any number of
-</ApiItem>
-<ApiItem href="#supportdebugdump-defaulttemplate" visibility="protected" name="defaultTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns the embedded default template for the given name.
-</ApiItem>
-<ApiItem href="#supportdebugdump-getstyle" visibility="protected" name="getStyle" returnType="string" params={[{"type":"string","name":"type","default":null}]}>
-Get style for type
-</ApiItem>
-<ApiItem href="#supportdebugdump-output" visibility="protected" name="output" returnType="string" params={[{"type":"mixed","name":"variable","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"int","name":"tab","default":"1"}]}>
-Prepare an HTML string of information about a single variable.
-</ApiItem>
+- `public __construct(array $styles = [], bool $detailed = false)` — Dump constructor.
+
+- `public all(): string` — Alias of variables() method
+
+- `public getDetailed(): bool`
+
+- `public one(mixed $variable, string|null $name = null): string` — Alias of variable() method
+
+- `public setDetailed(bool $flag): void`
+
+- `public setStyles(array $styles = []): array` — Set styles for vars type
+
+- `public toJson(mixed $variable): string` — Returns an JSON string of information about a single variable.
+
+- `public variable(mixed $variable, string|null $name = null): string` — Returns an HTML string of information about a single variable.
+
+- `public variables(): string` — Returns an HTML string of debugging information about any number of
+
+- `protected defaultTemplate(string $name): string` — Returns the embedded default template for the given name.
+
+- `protected getStyle(string $type): string` — Get style for type
+
+- `protected output(mixed $variable, string|null $name = null, int $tab = 1): string` — Prepare an HTML string of information about a single variable.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="detailed" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="methods" type="array&lt;array-key, class-string&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="styles" type="array" default="[]">
-</ApiItem>
+- `protected bool $detailed = false`
+
+- `protected array<array-key, class-string> $methods = []`
+
+- `protected array $styles = []`
 
 ### Methods
 
@@ -1292,8 +1200,8 @@ Prepare an HTML string of information about a single variable.
 
 ```php
 public function __construct(
-array $styles = [],
-bool $detailed = false
+    array $styles = [],
+    bool $detailed = false
 );
 ```
 
@@ -1317,8 +1225,8 @@ public function getDetailed(): bool;
 
 ```php
 public function one(
-mixed $variable,
-string|null $name = null
+    mixed $variable,
+    string|null $name = null
 ): string;
 ```
 
@@ -1348,7 +1256,7 @@ Returns an JSON string of information about a single variable.
 
 ```php
 $foo = [
-"key" => "value",
+    "key" => "value",
 ];
 
 echo (new \Phalcon\Debug\Dump())->toJson($foo);
@@ -1363,8 +1271,8 @@ echo (new \Phalcon\Debug\Dump())->toJson($foo);
 
 ```php
 public function variable(
-mixed $variable,
-string|null $name = null
+    mixed $variable,
+    string|null $name = null
 ): string;
 ```
 
@@ -1411,13 +1319,14 @@ Get style for type
 
 ```php
 protected function output(
-mixed $variable,
-string|null $name = null,
-int $tab = 1
+    mixed $variable,
+    string|null $name = null,
+    int $tab = 1
 ): string;
 ```
 
 Prepare an HTML string of information about a single variable.
+
 
 ## Support\Debug\Exception
 
@@ -1426,27 +1335,27 @@ Class
 Exceptions thrown in Phalcon\Debug will use this class
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- **`Phalcon\Support\Debug\Exception`**
-- [`Phalcon\Support\Debug\Exceptions\RequestHalted`](#supportdebugexceptionsrequesthalted)
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - **`Phalcon\Support\Debug\Exception`**
+      - [`Phalcon\Support\Debug\Exceptions\RequestHalted`](#supportdebugexceptionsrequesthalted)
 
 `Phalcon\Support\Exception`
+
 
 ## Support\Debug\Exceptions\RequestHalted
 
 Class
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
-- **`Phalcon\Support\Debug\Exceptions\RequestHalted`**
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
+      - **`Phalcon\Support\Debug\Exceptions\RequestHalted`**
 
 `Phalcon\Support\Debug\Exception`
 
 ### Method Summary
 
-<ApiItem href="#supportdebugexceptionsrequesthalted-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1456,12 +1365,14 @@ Class
 public function __construct();
 ```
 
+
 ## Support\Debug\Exceptions\RuntimeWarning
 
 Class
 
 - `\ErrorException`
-- **`Phalcon\Support\Debug\Exceptions\RuntimeWarning`**
+  - **`Phalcon\Support\Debug\Exceptions\RuntimeWarning`**
+
 
 ## Support\Debug\Renderer\HtmlRenderer
 
@@ -1478,26 +1389,21 @@ external debug.css / debug.js assets.
 
 ### Method Summary
 
-<ApiItem href="#supportdebugrendererhtmlrenderer-getcsssources" visibility="public" name="getCssSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-getjssources" visibility="public" name="getJsSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-render" visibility="public" name="render" returnType="string" params={[{"type":"ExceptionReport","name":"report","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-defaulttemplate" visibility="protected" name="defaultTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns the embedded default template for the given name.
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-escapestring" visibility="protected" name="escapeString" returnType="string" params={[{"type":"string","name":"value","default":null}]}>
-Escapes a string with htmlentities
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-getarraydump" visibility="protected" name="getArrayDump" returnType="string|null" params={[{"type":"array","name":"arguments","default":null},{"type":"int","name":"number","default":"0"}]}>
-Produces a recursive representation of an array
-</ApiItem>
-<ApiItem href="#supportdebugrendererhtmlrenderer-getvardump" visibility="protected" name="getVarDump" returnType="string" params={[{"type":"mixed","name":"variable","default":null}]}>
-Produces a string representation of a variable
-</ApiItem>
+- `public getCssSources(string $uri): string`
+
+- `public getJsSources(string $uri): string`
+
+- `public getVersion(): string`
+
+- `public render(ExceptionReport $report): string`
+
+- `protected defaultTemplate(string $name): string` — Returns the embedded default template for the given name.
+
+- `protected escapeString(string $value): string` — Escapes a string with htmlentities
+
+- `protected getArrayDump(array $arguments, int $number = 0): string|null` — Produces a recursive representation of an array
+
+- `protected getVarDump(mixed $variable): string` — Produces a string representation of a variable
 
 ### Methods
 
@@ -1545,8 +1451,8 @@ Escapes a string with htmlentities
 
 ```php
 protected function getArrayDump(
-array $arguments,
-int $number = 0
+    array $arguments,
+    int $number = 0
 ): string|null;
 ```
 
@@ -1559,6 +1465,7 @@ protected function getVarDump( mixed $variable ): string;
 ```
 
 Produces a string representation of a variable
+
 
 ## Support\Debug\ReportBuilder
 
@@ -1574,8 +1481,7 @@ logic.
 
 ### Method Summary
 
-<ApiItem href="#supportdebugreportbuilder-build" visibility="public" name="build" returnType="ExceptionReport" params={[{"type":"Throwable","name":"exception","default":null},{"type":"array","name":"blacklist","default":null},{"type":"bool","name":"showBackTrace","default":null},{"type":"bool","name":"showFiles","default":null},{"type":"bool","name":"showFileFragment","default":null},{"type":"string","name":"uri","default":null},{"type":"array","name":"data","default":null}]}>
-</ApiItem>
+- `public build(Throwable $exception, array $blacklist, bool $showBackTrace, bool $showFiles, bool $showFileFragment, string $uri, array $data): ExceptionReport`
 
 ### Methods
 
@@ -1583,15 +1489,16 @@ logic.
 
 ```php
 public function build(
-Throwable $exception,
-array $blacklist,
-bool $showBackTrace,
-bool $showFiles,
-bool $showFileFragment,
-string $uri,
-array $data
+    Throwable $exception,
+    array $blacklist,
+    bool $showBackTrace,
+    bool $showFiles,
+    bool $showFileFragment,
+    string $uri,
+    array $data
 ): ExceptionReport;
 ```
+
 
 ## Support\Debug\Report\BacktraceItem
 
@@ -1605,28 +1512,27 @@ Represents a single resolved frame of an exception backtrace.
 
 ### Method Summary
 
-<ApiItem href="#supportdebugreportbacktraceitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"functionName","default":null},{"type":"string|null","name":"type","default":"null"},{"type":"string|null","name":"className","default":"null"},{"type":"string|null","name":"classLink","default":"null"},{"type":"string|null","name":"functionLink","default":"null"},{"type":"bool","name":"hasArgs","default":"false"},{"type":"array","name":"args","default":"[]"},{"type":"string|null","name":"file","default":"null"},{"type":"int|null","name":"line","default":"null"},{"type":"mixed","name":"fragment","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getargs" visibility="public" name="getArgs" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getclasslink" visibility="public" name="getClassLink" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getclassname" visibility="public" name="getClassName" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getfile" visibility="public" name="getFile" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getfragment" visibility="public" name="getFragment" returnType="array|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getfunctionlink" visibility="public" name="getFunctionLink" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getfunctionname" visibility="public" name="getFunctionName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-getline" visibility="public" name="getLine" returnType="int|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-gettype" visibility="public" name="getType" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportbacktraceitem-hasargs" visibility="public" name="hasArgs" returnType="bool" params={[]}>
-</ApiItem>
+- `public __construct(string $functionName, string|null $type = null, string|null $className = null, string|null $classLink = null, string|null $functionLink = null, bool $hasArgs = false, array $args = [], string|null $file = null, int|null $line = null, mixed $fragment = null)`
+
+- `public getArgs(): array`
+
+- `public getClassLink(): string|null`
+
+- `public getClassName(): string|null`
+
+- `public getFile(): string|null`
+
+- `public getFragment(): array|null`
+
+- `public getFunctionLink(): string|null`
+
+- `public getFunctionName(): string`
+
+- `public getLine(): int|null`
+
+- `public getType(): string|null`
+
+- `public hasArgs(): bool`
 
 ### Methods
 
@@ -1634,16 +1540,16 @@ Represents a single resolved frame of an exception backtrace.
 
 ```php
 public function __construct(
-string $functionName,
-string|null $type = null,
-string|null $className = null,
-string|null $classLink = null,
-string|null $functionLink = null,
-bool $hasArgs = false,
-array $args = [],
-string|null $file = null,
-int|null $line = null,
-mixed $fragment = null
+    string $functionName,
+    string|null $type = null,
+    string|null $className = null,
+    string|null $classLink = null,
+    string|null $functionLink = null,
+    bool $hasArgs = false,
+    array $args = [],
+    string|null $file = null,
+    int|null $line = null,
+    mixed $fragment = null
 );
 ```
 
@@ -1707,6 +1613,7 @@ public function getType(): string|null;
 public function hasArgs(): bool;
 ```
 
+
 ## Support\Debug\Report\ExceptionReport
 
 Final
@@ -1720,50 +1627,49 @@ presentation logic.
 
 ### Method Summary
 
-<ApiItem href="#supportdebugreportexceptionreport-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null},{"type":"string","name":"message","default":null},{"type":"string","name":"file","default":null},{"type":"int","name":"line","default":null},{"type":"bool","name":"showBackTrace","default":null},{"type":"string","name":"uri","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getbacktrace" visibility="public" name="getBacktrace" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getclassname" visibility="public" name="getClassName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getfile" visibility="public" name="getFile" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getincludedfiles" visibility="public" name="getIncludedFiles" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getline" visibility="public" name="getLine" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getmemoryusage" visibility="public" name="getMemoryUsage" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getmessage" visibility="public" name="getMessage" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getpeakmemoryusage" visibility="public" name="getPeakMemoryUsage" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getrequest" visibility="public" name="getRequest" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getserver" visibility="public" name="getServer" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-geturi" visibility="public" name="getUri" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-getvariables" visibility="public" name="getVariables" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-hasvariables" visibility="public" name="hasVariables" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-isshowbacktrace" visibility="public" name="isShowBackTrace" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setbacktrace" visibility="public" name="setBacktrace" returnType="static" params={[{"type":"array","name":"backtrace","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setincludedfiles" visibility="public" name="setIncludedFiles" returnType="static" params={[{"type":"array","name":"includedFiles","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setmemoryusage" visibility="public" name="setMemoryUsage" returnType="static" params={[{"type":"int","name":"memoryUsage","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setpeakmemoryusage" visibility="public" name="setPeakMemoryUsage" returnType="static" params={[{"type":"int","name":"peakMemoryUsage","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setrequest" visibility="public" name="setRequest" returnType="static" params={[{"type":"array","name":"request","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setserver" visibility="public" name="setServer" returnType="static" params={[{"type":"array","name":"server","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugreportexceptionreport-setvariables" visibility="public" name="setVariables" returnType="static" params={[{"type":"array","name":"variables","default":null}]}>
-</ApiItem>
+- `public __construct(string $className, string $message, string $file, int $line, bool $showBackTrace, string $uri)`
+
+- `public getBacktrace(): array`
+
+- `public getClassName(): string`
+
+- `public getFile(): string`
+
+- `public getIncludedFiles(): array`
+
+- `public getLine(): int`
+
+- `public getMemoryUsage(): int`
+
+- `public getMessage(): string`
+
+- `public getPeakMemoryUsage(): int`
+
+- `public getRequest(): array`
+
+- `public getServer(): array`
+
+- `public getUri(): string`
+
+- `public getVariables(): array`
+
+- `public hasVariables(): bool`
+
+- `public isShowBackTrace(): bool`
+
+- `public setBacktrace(array $backtrace): static`
+
+- `public setIncludedFiles(array $includedFiles): static`
+
+- `public setMemoryUsage(int $memoryUsage): static`
+
+- `public setPeakMemoryUsage(int $peakMemoryUsage): static`
+
+- `public setRequest(array $request): static`
+
+- `public setServer(array $server): static`
+
+- `public setVariables(array $variables): static`
 
 ### Methods
 
@@ -1771,12 +1677,12 @@ presentation logic.
 
 ```php
 public function __construct(
-string $className,
-string $message,
-string $file,
-int $line,
-bool $showBackTrace,
-string $uri
+    string $className,
+    string $message,
+    string $file,
+    int $line,
+    bool $showBackTrace,
+    string $uri
 );
 ```
 
@@ -1906,6 +1812,7 @@ public function setServer( array $server ): static;
 public function setVariables( array $variables ): static;
 ```
 
+
 ## Support\Debug\Traits\TemplateAwareTrait
 
 Trait
@@ -1922,18 +1829,15 @@ these members in each class until Zephir supports traits.
 
 ### Method Summary
 
-<ApiItem href="#supportdebugtraitstemplateawaretrait-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugtraitstemplateawaretrait-settemplate" visibility="public" name="setTemplate" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"template","default":null}]}>
-</ApiItem>
-<ApiItem href="#supportdebugtraitstemplateawaretrait-defaulttemplate" visibility="protected" name="defaultTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns the embedded default template for the given name.
-</ApiItem>
+- `public getTemplate(string $name): string`
+
+- `public setTemplate(string $name, string $template): static`
+
+- `protected defaultTemplate(string $name): string` — Returns the embedded default template for the given name.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="templates" type="array" default="[]">
-</ApiItem>
+- `protected array $templates = []`
 
 ### Methods
 
@@ -1947,8 +1851,8 @@ public function getTemplate( string $name ): string;
 
 ```php
 public function setTemplate(
-string $name,
-string $template
+    string $name,
+    string $template
 ): static;
 ```
 
@@ -1960,6 +1864,7 @@ abstract protected function defaultTemplate( string $name ): string;
 
 Returns the embedded default template for the given name.
 
+
 ## Support\Exception
 
 Class
@@ -1967,10 +1872,11 @@ Class
 Exceptions thrown in Phalcon\Support will use this class
 
 - `\Exception`
-- **`Phalcon\Support\Exception`**
-- [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
-- [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
-- [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+  - **`Phalcon\Support\Exception`**
+    - [`Phalcon\Support\Collection\Exception`](#supportcollectionexception)
+    - [`Phalcon\Support\Debug\Exception`](#supportdebugexception)
+    - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+
 
 ## Support\HelperFactory
 
@@ -2039,25 +1945,22 @@ ServiceLocator implementation for helpers
 @method support_collection whitelist(support_collection $collection, support_collection $whiteList)
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.21/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.21/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Support\HelperFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.21/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Support\HelperFactory`**
 
 `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperfactory-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#supporthelperfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-Constructor.
-</ApiItem>
-<ApiItem href="#supporthelperfactory-newinstance" visibility="public" name="newInstance" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#supporthelperfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#supporthelperfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
+- `public __call(string $name, array $arguments)`
+
+- `public __construct(array $services = [])` — Constructor.
+
+- `public newInstance(string $name)`
+
+- `protected getExceptionClass(): string`
+
+- `protected getServices(): array` — Returns the available adapters
 
 ### Methods
 
@@ -2065,8 +1968,8 @@ Returns the available adapters
 
 ```php
 public function __call(
-string $name,
-array $arguments
+    string $name,
+    array $arguments
 );
 ```
 
@@ -2098,6 +2001,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Support\Helper\Arr\AbstractArr
 
 Abstract
@@ -2109,17 +2013,18 @@ Phalcon\Traits\Support\Helper\Arr\FilterTrait directly instead of extending
 this.
 
 - **`Phalcon\Support\Helper\Arr\AbstractArr`**
-- [`Phalcon\Support\Helper\Arr\Blacklist`](#supporthelperarrblacklist)
-- [`Phalcon\Support\Helper\Arr\Filter`](#supporthelperarrfilter)
-- [`Phalcon\Support\Helper\Arr\First`](#supporthelperarrfirst)
-- [`Phalcon\Support\Helper\Arr\FirstKey`](#supporthelperarrfirstkey)
-- [`Phalcon\Support\Helper\Arr\Last`](#supporthelperarrlast)
-- [`Phalcon\Support\Helper\Arr\LastKey`](#supporthelperarrlastkey)
-- [`Phalcon\Support\Helper\Arr\ValidateAll`](#supporthelperarrvalidateall)
-- [`Phalcon\Support\Helper\Arr\ValidateAny`](#supporthelperarrvalidateany)
-- [`Phalcon\Support\Helper\Arr\Whitelist`](#supporthelperarrwhitelist)
+  - [`Phalcon\Support\Helper\Arr\Blacklist`](#supporthelperarrblacklist)
+  - [`Phalcon\Support\Helper\Arr\Filter`](#supporthelperarrfilter)
+  - [`Phalcon\Support\Helper\Arr\First`](#supporthelperarrfirst)
+  - [`Phalcon\Support\Helper\Arr\FirstKey`](#supporthelperarrfirstkey)
+  - [`Phalcon\Support\Helper\Arr\Last`](#supporthelperarrlast)
+  - [`Phalcon\Support\Helper\Arr\LastKey`](#supporthelperarrlastkey)
+  - [`Phalcon\Support\Helper\Arr\ValidateAll`](#supporthelperarrvalidateall)
+  - [`Phalcon\Support\Helper\Arr\ValidateAny`](#supporthelperarrvalidateany)
+  - [`Phalcon\Support\Helper\Arr\Whitelist`](#supporthelperarrwhitelist)
 
 `Phalcon\Traits\Support\Helper\Arr\FilterTrait`
+
 
 ## Support\Helper\Arr\Blacklist
 
@@ -2129,12 +2034,11 @@ Black list filter by key: exclude elements of an array
 by the keys obtained from the elements of a blacklist
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Blacklist`**
+  - **`Phalcon\Support\Helper\Arr\Blacklist`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrblacklist-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"array","name":"blackList","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, array $blackList): array`
 
 ### Methods
 
@@ -2142,10 +2046,11 @@ by the keys obtained from the elements of a blacklist
 
 ```php
 public function __invoke(
-array $collection,
-array $blackList
+    array $collection,
+    array $blackList
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Chunk
 
@@ -2157,8 +2062,7 @@ Chunks an array into smaller arrays of a specified size.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrchunk-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"int","name":"size","default":null},{"type":"bool","name":"preserveKeys","default":"false"}]}>
-</ApiItem>
+- `public __invoke(array $collection, int $size, bool $preserveKeys = false): array`
 
 ### Methods
 
@@ -2166,11 +2070,12 @@ Chunks an array into smaller arrays of a specified size.
 
 ```php
 public function __invoke(
-array $collection,
-int $size,
-bool $preserveKeys = false
+    array $collection,
+    int $size,
+    bool $preserveKeys = false
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Filter
 
@@ -2180,12 +2085,11 @@ Filters an array using array_filter. If a callback is supplied, it will be
 used.
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Filter`**
+  - **`Phalcon\Support\Helper\Arr\Filter`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrfilter-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2193,10 +2097,11 @@ used.
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\First
 
@@ -2206,12 +2111,11 @@ Returns the first element of the collection. If a callable is passed, the
 element returned is the first that validates true
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\First`**
+  - **`Phalcon\Support\Helper\Arr\First`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrfirst-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2219,10 +2123,11 @@ element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\FirstKey
 
@@ -2232,12 +2137,11 @@ Returns the key of the first element of the collection. If a callable
 is passed, the element returned is the first that validates true
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\FirstKey`**
+  - **`Phalcon\Support\Helper\Arr\FirstKey`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrfirstkey-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2245,10 +2149,11 @@ is passed, the element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\Flatten
 
@@ -2261,8 +2166,7 @@ Flattens an array up to the one level depth, unless `$deep` is set to
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrflatten-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"bool","name":"deep","default":"false"}]}>
-</ApiItem>
+- `public __invoke(array $collection, bool $deep = false): array`
 
 ### Methods
 
@@ -2270,10 +2174,11 @@ Flattens an array up to the one level depth, unless `$deep` is set to
 
 ```php
 public function __invoke(
-array $collection,
-bool $deep = false
+    array $collection,
+    bool $deep = false
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Get
 
@@ -2289,8 +2194,7 @@ It also allows for casting the returned value to a specific type using
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrget-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"index","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $index, mixed $defaultValue = null, string|null $cast = null): mixed`
 
 ### Methods
 
@@ -2298,12 +2202,13 @@ It also allows for casting the returned value to a specific type using
 
 ```php
 public function __invoke(
-array $collection,
-mixed $index,
-mixed $defaultValue = null,
-string|null $cast = null
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    string|null $cast = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\Group
 
@@ -2317,8 +2222,7 @@ Groups the elements of an array based on the passed callable
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrgroup-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method): array`
 
 ### Methods
 
@@ -2326,10 +2230,11 @@ Groups the elements of an array based on the passed callable
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method
+    array $collection,
+    mixed $method
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Has
 
@@ -2342,8 +2247,7 @@ Checks an array if it has an element with a specific key and returns
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrhas-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"index","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $index): bool`
 
 ### Methods
 
@@ -2351,10 +2255,11 @@ Checks an array if it has an element with a specific key and returns
 
 ```php
 public function __invoke(
-array $collection,
-mixed $index
+    array $collection,
+    mixed $index
 ): bool;
 ```
+
 
 ## Support\Helper\Arr\IsUnique
 
@@ -2369,8 +2274,7 @@ values exist and false if values are all unique.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrisunique-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection): bool`
 
 ### Methods
 
@@ -2380,6 +2284,7 @@ values exist and false if values are all unique.
 public function __invoke( array $collection ): bool;
 ```
 
+
 ## Support\Helper\Arr\Last
 
 Class
@@ -2388,12 +2293,11 @@ Returns the last element of the collection. If a callable is passed, the
 element returned is the first that validates true
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Last`**
+  - **`Phalcon\Support\Helper\Arr\Last`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrlast-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2401,10 +2305,11 @@ element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\LastKey
 
@@ -2414,12 +2319,11 @@ Returns the key of the last element of the collection. If a callable is
 passed, the element returned is the first that validates true
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\LastKey`**
+  - **`Phalcon\Support\Helper\Arr\LastKey`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrlastkey-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2427,10 +2331,11 @@ passed, the element returned is the first that validates true
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): mixed;
 ```
+
 
 ## Support\Helper\Arr\Order
 
@@ -2444,15 +2349,13 @@ the ones used by `ksort` and `krsort`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrorder-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"attribute","default":null},{"type":"int","name":"order","default":"self::ORDER_ASC"},{"type":"int","name":"flags","default":"0"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $attribute, int $order = self::ORDER_ASC, int $flags = 0): array`
 
 ### Constants
 
-<ApiItem kind="constant" name="ORDER_ASC" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="ORDER_DESC" type="int" default="2">
-</ApiItem>
+- `const int ORDER_ASC = 1`
+
+- `const int ORDER_DESC = 2`
 
 ### Methods
 
@@ -2460,12 +2363,13 @@ the ones used by `ksort` and `krsort`
 
 ```php
 public function __invoke(
-array $collection,
-mixed $attribute,
-int $order = self::ORDER_ASC,
-int $flags = 0
+    array $collection,
+    mixed $attribute,
+    int $order = self::ORDER_ASC,
+    int $flags = 0
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Pluck
 
@@ -2477,8 +2381,7 @@ Returns a subset of the collection based on the values of the collection
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrpluck-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"string","name":"element","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, string $element): array`
 
 ### Methods
 
@@ -2486,10 +2389,11 @@ Returns a subset of the collection based on the values of the collection
 
 ```php
 public function __invoke(
-array $collection,
-string $element
+    array $collection,
+    string $element
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Set
 
@@ -2501,8 +2405,7 @@ Sets an array element. Using a key is optional
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrset-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"index","default":"null"}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $value, mixed $index = null): array`
 
 ### Methods
 
@@ -2510,11 +2413,12 @@ Sets an array element. Using a key is optional
 
 ```php
 public function __invoke(
-array $collection,
-mixed $value,
-mixed $index = null
+    array $collection,
+    mixed $value,
+    mixed $index = null
 ): array;
 ```
+
 
 ## Support\Helper\Arr\SliceLeft
 
@@ -2526,8 +2430,7 @@ Returns a new array with n elements removed from the left.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrsliceleft-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"int","name":"elements","default":"1"}]}>
-</ApiItem>
+- `public __invoke(array $collection, int $elements = 1): array`
 
 ### Methods
 
@@ -2535,10 +2438,11 @@ Returns a new array with n elements removed from the left.
 
 ```php
 public function __invoke(
-array $collection,
-int $elements = 1
+    array $collection,
+    int $elements = 1
 ): array;
 ```
+
 
 ## Support\Helper\Arr\SliceRight
 
@@ -2550,8 +2454,7 @@ Returns a new array with n elements removed from the right.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrsliceright-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"int","name":"elements","default":"1"}]}>
-</ApiItem>
+- `public __invoke(array $collection, int $elements = 1): array`
 
 ### Methods
 
@@ -2559,10 +2462,11 @@ Returns a new array with n elements removed from the right.
 
 ```php
 public function __invoke(
-array $collection,
-int $elements = 1
+    array $collection,
+    int $elements = 1
 ): array;
 ```
+
 
 ## Support\Helper\Arr\Split
 
@@ -2575,8 +2479,7 @@ as another
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrsplit-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection): array`
 
 ### Methods
 
@@ -2585,6 +2488,7 @@ as another
 ```php
 public function __invoke( array $collection ): array;
 ```
+
 
 ## Support\Helper\Arr\ToObject
 
@@ -2596,8 +2500,7 @@ Returns the passed array as an object.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrtoobject-__invoke" visibility="public" name="__invoke" returnType="object" params={[{"type":"array","name":"collection","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection): object`
 
 ### Methods
 
@@ -2607,6 +2510,7 @@ Returns the passed array as an object.
 public function __invoke( array $collection ): object;
 ```
 
+
 ## Support\Helper\Arr\ValidateAll
 
 Class
@@ -2615,12 +2519,11 @@ Returns `true` if the provided function returns `true` for all elements of
 the collection, `false` otherwise.
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\ValidateAll`**
+  - **`Phalcon\Support\Helper\Arr\ValidateAll`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrvalidateall-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method): bool`
 
 ### Methods
 
@@ -2628,10 +2531,11 @@ the collection, `false` otherwise.
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method
+    array $collection,
+    mixed $method
 ): bool;
 ```
+
 
 ## Support\Helper\Arr\ValidateAny
 
@@ -2641,12 +2545,11 @@ Returns `true` if the provided function returns `true` for at least one
 element of the collection, `false` otherwise.
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\ValidateAny`**
+  - **`Phalcon\Support\Helper\Arr\ValidateAny`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrvalidateany-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, mixed $method): bool`
 
 ### Methods
 
@@ -2654,10 +2557,11 @@ element of the collection, `false` otherwise.
 
 ```php
 public function __invoke(
-array $collection,
-mixed $method
+    array $collection,
+    mixed $method
 ): bool;
 ```
+
 
 ## Support\Helper\Arr\Whitelist
 
@@ -2667,12 +2571,11 @@ White list filter by key: obtain elements of an array filtering by the keys
 obtained from the elements of a whitelist
 
 - [`Phalcon\Support\Helper\Arr\AbstractArr`](#supporthelperarrabstractarr)
-- **`Phalcon\Support\Helper\Arr\Whitelist`**
+  - **`Phalcon\Support\Helper\Arr\Whitelist`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperarrwhitelist-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"array","name":"whiteList","default":null}]}>
-</ApiItem>
+- `public __invoke(array $collection, array $whiteList): array`
 
 ### Methods
 
@@ -2680,10 +2583,11 @@ obtained from the elements of a whitelist
 
 ```php
 public function __invoke(
-array $collection,
-array $whiteList
+    array $collection,
+    array $whiteList
 ): array;
 ```
+
 
 ## Support\Helper\Exception
 
@@ -2692,12 +2596,13 @@ Class
 Exceptions thrown in Phalcon\Support\Helper will use this class
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- **`Phalcon\Support\Helper\Exception`**
-- [`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`](#supporthelperstrexceptionsinsufficientarguments)
-- [`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`](#supporthelperstrexceptionsinvalidreplaceformat)
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - **`Phalcon\Support\Helper\Exception`**
+      - [`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`](#supporthelperstrexceptionsinsufficientarguments)
+      - [`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`](#supporthelperstrexceptionsinvalidreplaceformat)
 
 `Phalcon\Support\Exception`
+
 
 ## Support\Helper\File\Basename
 
@@ -2711,9 +2616,7 @@ filenames beginning with a non-US-ASCII character.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperfilebasename-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"uri","default":null},{"type":"string|null","name":"suffix","default":"null"}]}>
-@see https://bugs.php.net/bug.php?id=37738
-</ApiItem>
+- `public __invoke(string $uri, string|null $suffix = null): string` — @see <https://bugs.php.net/bug.php?id=37738>
 
 ### Methods
 
@@ -2721,12 +2624,13 @@ filenames beginning with a non-US-ASCII character.
 
 ```php
 public function __invoke(
-string $uri,
-string|null $suffix = null
+    string $uri,
+    string|null $suffix = null
 ): string;
 ```
 
 @see https://bugs.php.net/bug.php?id=37738
+
 
 ## Support\Helper\Json\Decode
 
@@ -2750,8 +2654,7 @@ JsonDecodeError
 
 ### Method Summary
 
-<ApiItem href="#supporthelperjsondecode-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"data","default":null},{"type":"bool","name":"associative","default":"false"},{"type":"int","name":"depth","default":"512"},{"type":"int","name":"options","default":"79"}]}>
-</ApiItem>
+- `public __invoke(string $data, bool $associative = false, int $depth = 512, int $options = 79)`
 
 ### Methods
 
@@ -2759,12 +2662,13 @@ JsonDecodeError
 
 ```php
 public function __invoke(
-string $data,
-bool $associative = false,
-int $depth = 512,
-int $options = 79
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 79
 );
 ```
+
 
 ## Support\Helper\Json\Encode
 
@@ -2790,8 +2694,7 @@ JsonEncodeError
 
 ### Method Summary
 
-<ApiItem href="#supporthelperjsonencode-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"data","default":null},{"type":"int","name":"options","default":"79"},{"type":"int","name":"depth","default":"512"}]}>
-</ApiItem>
+- `public __invoke(mixed $data, int $options = 79, int $depth = 512): string`
 
 ### Methods
 
@@ -2799,25 +2702,25 @@ JsonEncodeError
 
 ```php
 public function __invoke(
-mixed $data,
-int $options = 79,
-int $depth = 512
+    mixed $data,
+    int $options = 79,
+    int $depth = 512
 ): string;
 ```
+
 
 ## Support\Helper\Json\Exceptions\JsonDecodeError
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`**
+  - **`Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError`**
 
 `InvalidArgumentException` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperjsonexceptionsjsondecodeerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"Throwable|null","name":"previous","default":"null"}]}>
-</ApiItem>
+- `public __construct(string $message = "", int $code = 0, Throwable|null $previous = null)`
 
 ### Methods
 
@@ -2825,25 +2728,25 @@ Class
 
 ```php
 public function __construct(
-string $message = "",
-int $code = 0,
-Throwable|null $previous = null
+    string $message = "",
+    int $code = 0,
+    Throwable|null $previous = null
 );
 ```
+
 
 ## Support\Helper\Json\Exceptions\JsonEncodeError
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`**
+  - **`Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError`**
 
 `InvalidArgumentException` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperjsonexceptionsjsonencodeerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":"\"\""},{"type":"int","name":"code","default":"0"},{"type":"Throwable|null","name":"previous","default":"null"}]}>
-</ApiItem>
+- `public __construct(string $message = "", int $code = 0, Throwable|null $previous = null)`
 
 ### Methods
 
@@ -2851,11 +2754,12 @@ Class
 
 ```php
 public function __construct(
-string $message = "",
-int $code = 0,
-Throwable|null $previous = null
+    string $message = "",
+    int $code = 0,
+    Throwable|null $previous = null
 );
 ```
+
 
 ## Support\Helper\Number\IsBetween
 
@@ -2867,8 +2771,7 @@ Checks if a number is within a range
 
 ### Method Summary
 
-<ApiItem href="#supporthelpernumberisbetween-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"int","name":"value","default":null},{"type":"int","name":"start","default":null},{"type":"int","name":"end","default":null}]}>
-</ApiItem>
+- `public __invoke(int $value, int $start, int $end): bool`
 
 ### Methods
 
@@ -2876,11 +2779,12 @@ Checks if a number is within a range
 
 ```php
 public function __invoke(
-int $value,
-int $start,
-int $end
+    int $value,
+    int $start,
+    int $end
 ): bool;
 ```
+
 
 ## Support\Helper\Str\AbstractStr
 
@@ -2895,17 +2799,18 @@ Abstract class offering methods to help with the Str namespace.
       of extending this.
 
 - **`Phalcon\Support\Helper\Str\AbstractStr`**
-- [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
-- [`Phalcon\Support\Helper\Str\Decapitalize`](#supporthelperstrdecapitalize)
-- [`Phalcon\Support\Helper\Str\EndsWith`](#supporthelperstrendswith)
-- [`Phalcon\Support\Helper\Str\Friendly`](#supporthelperstrfriendly)
-- [`Phalcon\Support\Helper\Str\IsLower`](#supporthelperstrislower)
-- [`Phalcon\Support\Helper\Str\IsUpper`](#supporthelperstrisupper)
-- [`Phalcon\Support\Helper\Str\Lower`](#supporthelperstrlower)
-- [`Phalcon\Support\Helper\Str\StartsWith`](#supporthelperstrstartswith)
-- [`Phalcon\Support\Helper\Str\Upper`](#supporthelperstrupper)
+  - [`Phalcon\Support\Helper\Str\Concat`](#supporthelperstrconcat)
+  - [`Phalcon\Support\Helper\Str\Decapitalize`](#supporthelperstrdecapitalize)
+  - [`Phalcon\Support\Helper\Str\EndsWith`](#supporthelperstrendswith)
+  - [`Phalcon\Support\Helper\Str\Friendly`](#supporthelperstrfriendly)
+  - [`Phalcon\Support\Helper\Str\IsLower`](#supporthelperstrislower)
+  - [`Phalcon\Support\Helper\Str\IsUpper`](#supporthelperstrisupper)
+  - [`Phalcon\Support\Helper\Str\Lower`](#supporthelperstrlower)
+  - [`Phalcon\Support\Helper\Str\StartsWith`](#supporthelperstrstartswith)
+  - [`Phalcon\Support\Helper\Str\Upper`](#supporthelperstrupper)
 
 `Phalcon\Traits\Support\Helper\Str\EndsWithTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Phalcon\Traits\Support\Helper\Str\LowerTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait` · `Phalcon\Traits\Support\Helper\Str\UpperTrait`
+
 
 ## Support\Helper\Str\Camelize
 
@@ -2919,8 +2824,7 @@ Converts strings to upperCamelCase or lowerCamelCase
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrcamelize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"},{"type":"bool","name":"lowerFirst","default":"false"}]}>
-</ApiItem>
+- `public __invoke(string $text, string|null $delimiters = null, bool $lowerFirst = false): string`
 
 ### Methods
 
@@ -2928,11 +2832,12 @@ Converts strings to upperCamelCase or lowerCamelCase
 
 ```php
 public function __invoke(
-string $text,
-string|null $delimiters = null,
-bool $lowerFirst = false
+    string $text,
+    string|null $delimiters = null,
+    bool $lowerFirst = false
 ): string;
 ```
+
 
 ## Support\Helper\Str\Concat
 
@@ -2942,14 +2847,13 @@ Concatenates strings using the separator only once without duplication in
 places concatenation
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Concat`**
+  - **`Phalcon\Support\Helper\Str\Concat`**
 
 `Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrconcat-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"delimiter","default":null},{"type":"string","name":"many","default":null}]}>
-</ApiItem>
+- `public __invoke(string $delimiter, string $many): string`
 
 ### Methods
 
@@ -2957,10 +2861,11 @@ places concatenation
 
 ```php
 public function __invoke(
-string $delimiter,
-string $many
+    string $delimiter,
+    string $many
 ): string;
 ```
+
 
 ## Support\Helper\Str\CountVowels
 
@@ -2973,8 +2878,7 @@ to count the number of vowels (A, E, I, O, U) in a string.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrcountvowels-__invoke" visibility="public" name="__invoke" returnType="int" params={[{"type":"string","name":"text","default":null}]}>
-</ApiItem>
+- `public __invoke(string $text): int`
 
 ### Methods
 
@@ -2983,6 +2887,7 @@ to count the number of vowels (A, E, I, O, U) in a string.
 ```php
 public function __invoke( string $text ): int;
 ```
+
 
 ## Support\Helper\Str\Decapitalize
 
@@ -2993,12 +2898,11 @@ of the string. Omit the upperRest parameter to keep the rest of the
 string intact, or set it to true to convert to uppercase.
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Decapitalize`**
+  - **`Phalcon\Support\Helper\Str\Decapitalize`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrdecapitalize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"bool","name":"upperRest","default":"false"},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, bool $upperRest = false, string $encoding = "UTF-8"): string`
 
 ### Methods
 
@@ -3006,11 +2910,12 @@ string intact, or set it to true to convert to uppercase.
 
 ```php
 public function __invoke(
-string $text,
-bool $upperRest = false,
-string $encoding = "UTF-8"
+    string $text,
+    bool $upperRest = false,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Decrement
 
@@ -3023,8 +2928,7 @@ is already defined
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrdecrement-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"_\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $separator = "_"): string`
 
 ### Methods
 
@@ -3032,10 +2936,11 @@ is already defined
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "_"
+    string $text,
+    string $separator = "_"
 ): string;
 ```
+
 
 ## Support\Helper\Str\DirFromFile
 
@@ -3050,8 +2955,7 @@ directory structure with the filename in the end
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrdirfromfile-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"file","default":null}]}>
-</ApiItem>
+- `public __invoke(string $file): string`
 
 ### Methods
 
@@ -3060,6 +2964,7 @@ directory structure with the filename in the end
 ```php
 public function __invoke( string $file ): string;
 ```
+
 
 ## Support\Helper\Str\DirSeparator
 
@@ -3074,8 +2979,7 @@ DIRECTORY_SEPARATOR
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrdirseparator-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"directory","default":null}]}>
-</ApiItem>
+- `public __invoke(string $directory): string`
 
 ### Methods
 
@@ -3084,6 +2988,7 @@ DIRECTORY_SEPARATOR
 ```php
 public function __invoke( string $directory ): string;
 ```
+
 
 ## Support\Helper\Str\Dynamic
 
@@ -3099,8 +3004,7 @@ by the separator
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrdynamic-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"leftDelimiter","default":"\"{\""},{"type":"string","name":"rightDelimiter","default":"\"}\""},{"type":"string","name":"separator","default":"\"|\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $leftDelimiter = "{", string $rightDelimiter = "}", string $separator = "|"): string`
 
 ### Methods
 
@@ -3108,12 +3012,13 @@ by the separator
 
 ```php
 public function __invoke(
-string $text,
-string $leftDelimiter = "{",
-string $rightDelimiter = "}",
-string $separator = "|"
+    string $text,
+    string $leftDelimiter = "{",
+    string $rightDelimiter = "}",
+    string $separator = "|"
 ): string;
 ```
+
 
 ## Support\Helper\Str\EndsWith
 
@@ -3122,12 +3027,11 @@ Class
 Check if a string ends with a given string
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\EndsWith`**
+  - **`Phalcon\Support\Helper\Str\EndsWith`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrendswith-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null},{"type":"bool","name":"ignoreCase","default":"true"}]}>
-</ApiItem>
+- `public __invoke(string $haystack, string $needle, bool $ignoreCase = true): bool`
 
 ### Methods
 
@@ -3135,47 +3039,49 @@ Check if a string ends with a given string
 
 ```php
 public function __invoke(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Support\Helper\Str\Exceptions\InsufficientArguments
 
 Class
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
-- **`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`**
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+      - **`Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments`**
 
 `Phalcon\Support\Helper\Exception`
+
 
 ## Support\Helper\Str\Exceptions\InvalidReplaceFormat
 
 Class
 
 - `\Exception`
-- [`Phalcon\Support\Exception`](#supportexception)
-- [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
-- **`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`**
+  - [`Phalcon\Support\Exception`](#supportexception)
+    - [`Phalcon\Support\Helper\Exception`](#supporthelperexception)
+      - **`Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`**
 
 `Phalcon\Support\Helper\Exception`
+
 
 ## Support\Helper\Str\Exceptions\SyntaxError
 
 Class
 
 - `\RuntimeException`
-- **`Phalcon\Support\Helper\Str\Exceptions\SyntaxError`**
+  - **`Phalcon\Support\Helper\Str\Exceptions\SyntaxError`**
 
 `RuntimeException`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrexceptionssyntaxerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"text","default":null}]}>
-</ApiItem>
+- `public __construct(string $text)`
 
 ### Methods
 
@@ -3184,6 +3090,7 @@ Class
 ```php
 public function __construct( string $text );
 ```
+
 
 ## Support\Helper\Str\FirstBetween
 
@@ -3196,8 +3103,7 @@ parameter start and end.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrfirstbetween-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"start","default":null},{"type":"string","name":"end","default":null}]}>
-</ApiItem>
+- `public __invoke(string $text, string $start, string $end): string`
 
 ### Methods
 
@@ -3205,11 +3111,12 @@ parameter start and end.
 
 ```php
 public function __invoke(
-string $text,
-string $start,
-string $end
+    string $text,
+    string $start,
+    string $end
 ): string;
 ```
+
 
 ## Support\Helper\Str\Friendly
 
@@ -3220,14 +3127,13 @@ characters with their Latin equivalents. If a `replace` string or array
 is passed, it will also be used to replace those characters with a space.
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Friendly`**
+  - **`Phalcon\Support\Helper\Str\Friendly`**
 
 `Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrfriendly-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"mixed","name":"replace","default":"null"}]}>
-</ApiItem>
+- `public __invoke(string $text, string $separator = "-", bool $lowercase = true, mixed $replace = null): string`
 
 ### Methods
 
@@ -3235,12 +3141,13 @@ is passed, it will also be used to replace those characters with a space.
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "-",
-bool $lowercase = true,
-mixed $replace = null
+    string $text,
+    string $separator = "-",
+    bool $lowercase = true,
+    mixed $replace = null
 ): string;
 ```
+
 
 ## Support\Helper\Str\Humanize
 
@@ -3252,8 +3159,7 @@ Makes an underscored or dashed text human-readable
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrhumanize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null}]}>
-</ApiItem>
+- `public __invoke(string $text): string`
 
 ### Methods
 
@@ -3262,6 +3168,7 @@ Makes an underscored or dashed text human-readable
 ```php
 public function __invoke( string $text ): string;
 ```
+
 
 ## Support\Helper\Str\Includes
 
@@ -3273,8 +3180,7 @@ Determines whether a string includes another string or not.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrincludes-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null}]}>
-</ApiItem>
+- `public __invoke(string $haystack, string $needle): bool`
 
 ### Methods
 
@@ -3282,10 +3188,11 @@ Determines whether a string includes another string or not.
 
 ```php
 public function __invoke(
-string $haystack,
-string $needle
+    string $haystack,
+    string $needle
 ): bool;
 ```
+
 
 ## Support\Helper\Str\Increment
 
@@ -3298,8 +3205,7 @@ is already defined
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrincrement-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"_\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $separator = "_"): string`
 
 ### Methods
 
@@ -3307,10 +3213,11 @@ is already defined
 
 ```php
 public function __invoke(
-string $text,
-string $separator = "_"
+    string $text,
+    string $separator = "_"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Interpolate
 
@@ -3327,8 +3234,7 @@ right and left tokens are `%`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrinterpolate-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"},{"type":"string","name":"leftToken","default":"\"%\""},{"type":"string","name":"rightToken","default":"\"%\""}]}>
-</ApiItem>
+- `public __invoke(string $message, array $context = [], string $leftToken = "%", string $rightToken = "%"): string`
 
 ### Methods
 
@@ -3336,12 +3242,13 @@ right and left tokens are `%`
 
 ```php
 public function __invoke(
-string $message,
-array $context = [],
-string $leftToken = "%",
-string $rightToken = "%"
+    string $message,
+    array $context = [],
+    string $leftToken = "%",
+    string $rightToken = "%"
 ): string;
 ```
+
 
 ## Support\Helper\Str\IsAnagram
 
@@ -3354,8 +3261,7 @@ Compare two strings and returns `true` if both strings are anagram,
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrisanagram-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"first","default":null},{"type":"string","name":"second","default":null}]}>
-</ApiItem>
+- `public __invoke(string $first, string $second): bool`
 
 ### Methods
 
@@ -3363,10 +3269,11 @@ Compare two strings and returns `true` if both strings are anagram,
 
 ```php
 public function __invoke(
-string $first,
-string $second
+    string $first,
+    string $second
 ): bool;
 ```
+
 
 ## Support\Helper\Str\IsLower
 
@@ -3375,12 +3282,11 @@ Class
 Returns `true` if the given string is in lower case, `false` otherwise.
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\IsLower`**
+  - **`Phalcon\Support\Helper\Str\IsLower`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrislower-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $encoding = "UTF-8"): bool`
 
 ### Methods
 
@@ -3388,10 +3294,11 @@ Returns `true` if the given string is in lower case, `false` otherwise.
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): bool;
 ```
+
 
 ## Support\Helper\Str\IsPalindrome
 
@@ -3403,8 +3310,7 @@ Returns `true` if the given string is a palindrome, `false` otherwise.
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrispalindrome-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"text","default":null}]}>
-</ApiItem>
+- `public __invoke(string $text): bool`
 
 ### Methods
 
@@ -3414,6 +3320,7 @@ Returns `true` if the given string is a palindrome, `false` otherwise.
 public function __invoke( string $text ): bool;
 ```
 
+
 ## Support\Helper\Str\IsUpper
 
 Class
@@ -3421,12 +3328,11 @@ Class
 Returns `true` if the given string is in upper case, `false` otherwise.
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\IsUpper`**
+  - **`Phalcon\Support\Helper\Str\IsUpper`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrisupper-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $encoding = "UTF-8"): bool`
 
 ### Methods
 
@@ -3434,10 +3340,11 @@ Returns `true` if the given string is in upper case, `false` otherwise.
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): bool;
 ```
+
 
 ## Support\Helper\Str\KebabCase
 
@@ -3446,12 +3353,11 @@ Class
 Converts strings to kebab-case style
 
 - [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
-- **`Phalcon\Support\Helper\Str\KebabCase`**
+  - **`Phalcon\Support\Helper\Str\KebabCase`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrkebabcase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
-</ApiItem>
+- `public __invoke(string $text, string|null $delimiters = null): string`
 
 ### Methods
 
@@ -3459,10 +3365,11 @@ Converts strings to kebab-case style
 
 ```php
 public function __invoke(
-string $text,
-string|null $delimiters = null
+    string $text,
+    string|null $delimiters = null
 ): string;
 ```
+
 
 ## Support\Helper\Str\Len
 
@@ -3474,8 +3381,7 @@ Calculates the length of the string using `mb_strlen`
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrlen-__invoke" visibility="public" name="__invoke" returnType="int" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $encoding = "UTF-8"): int`
 
 ### Methods
 
@@ -3483,10 +3389,11 @@ Calculates the length of the string using `mb_strlen`
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): int;
 ```
+
 
 ## Support\Helper\Str\Lower
 
@@ -3495,12 +3402,11 @@ Class
 Converts a string to lowercase using mbstring
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Lower`**
+  - **`Phalcon\Support\Helper\Str\Lower`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrlower-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $encoding = "UTF-8"): string`
 
 ### Methods
 
@@ -3508,10 +3414,11 @@ Converts a string to lowercase using mbstring
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Helper\Str\PascalCase
 
@@ -3520,15 +3427,14 @@ Class
 Converts strings to PascalCase style
 
 - **`Phalcon\Support\Helper\Str\PascalCase`**
-- [`Phalcon\Support\Helper\Str\KebabCase`](#supporthelperstrkebabcase)
-- [`Phalcon\Support\Helper\Str\SnakeCase`](#supporthelperstrsnakecase)
+  - [`Phalcon\Support\Helper\Str\KebabCase`](#supporthelperstrkebabcase)
+  - [`Phalcon\Support\Helper\Str\SnakeCase`](#supporthelperstrsnakecase)
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrpascalcase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#supporthelperstrpascalcase-processarray" visibility="protected" name="processArray" returnType="array" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
-</ApiItem>
+- `public __invoke(string $text, string|null $delimiters = null): string`
+
+- `protected processArray(string $text, string|null $delimiters = null): array`
 
 ### Methods
 
@@ -3536,8 +3442,8 @@ Converts strings to PascalCase style
 
 ```php
 public function __invoke(
-string $text,
-string|null $delimiters = null
+    string $text,
+    string|null $delimiters = null
 ): string;
 ```
 
@@ -3545,10 +3451,11 @@ string|null $delimiters = null
 
 ```php
 protected function processArray(
-string $text,
-string|null $delimiters = null
+    string $text,
+    string|null $delimiters = null
 ): array;
 ```
+
 
 ## Support\Helper\Str\Prefix
 
@@ -3563,8 +3470,7 @@ Prefixes the text with the supplied prefix
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrprefix-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"text","default":null},{"type":"string","name":"prefix","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $text, string $prefix): string`
 
 ### Methods
 
@@ -3572,10 +3478,11 @@ Prefixes the text with the supplied prefix
 
 ```php
 public function __invoke(
-mixed $text,
-string $prefix
+    mixed $text,
+    string $prefix
 ): string;
 ```
+
 
 ## Support\Helper\Str\Random
 
@@ -3588,30 +3495,22 @@ RANDOM_* constants
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrrandom-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"int","name":"type","default":"self::RANDOM_ALNUM"},{"type":"int","name":"length","default":"8"}]}>
-</ApiItem>
+- `public __invoke(int $type = self::RANDOM_ALNUM, int $length = 8): string`
 
 ### Constants
 
-<ApiItem kind="constant" name="RANDOM_ALNUM" type="int" default="0">
-Only alphanumeric characters [a-zA-Z0-9]
-</ApiItem>
-<ApiItem kind="constant" name="RANDOM_ALPHA" type="int" default="1">
-Only alphabetical characters [azAZ]
-</ApiItem>
-<ApiItem kind="constant" name="RANDOM_DISTINCT" type="int" default="5">
-Only alphanumeric uppercase characters exclude similar
-characters [2345679ACDEFHJKLMNPRSTUVWXYZ]
-</ApiItem>
-<ApiItem kind="constant" name="RANDOM_HEXDEC" type="int" default="2">
-Only hexadecimal characters [0-9a-f]
-</ApiItem>
-<ApiItem kind="constant" name="RANDOM_NOZERO" type="int" default="4">
-Only numbers without 0 [1-9]
-</ApiItem>
-<ApiItem kind="constant" name="RANDOM_NUMERIC" type="int" default="3">
-Only numbers [0-9]
-</ApiItem>
+- `const int RANDOM_ALNUM = 0` — Only alphanumeric characters \[a-zA-Z0-9]
+
+- `const int RANDOM_ALPHA = 1` — Only alphabetical characters \[azAZ]
+
+- `const int RANDOM_DISTINCT = 5` — Only alphanumeric uppercase characters exclude similar
+  characters \[2345679ACDEFHJKLMNPRSTUVWXYZ]
+
+- `const int RANDOM_HEXDEC = 2` — Only hexadecimal characters \[0-9a-f]
+
+- `const int RANDOM_NOZERO = 4` — Only numbers without 0 \[1-9]
+
+- `const int RANDOM_NUMERIC = 3` — Only numbers \[0-9]
 
 ### Methods
 
@@ -3619,10 +3518,11 @@ Only numbers [0-9]
 
 ```php
 public function __invoke(
-int $type = self::RANDOM_ALNUM,
-int $length = 8
+    int $type = self::RANDOM_ALNUM,
+    int $length = 8
 ): string;
 ```
+
 
 ## Support\Helper\Str\ReduceSlashes
 
@@ -3634,8 +3534,7 @@ Reduces multiple slashes in a string to single slashes
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrreduceslashes-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null}]}>
-</ApiItem>
+- `public __invoke(string $text): string`
 
 ### Methods
 
@@ -3645,6 +3544,7 @@ Reduces multiple slashes in a string to single slashes
 public function __invoke( string $text ): string;
 ```
 
+
 ## Support\Helper\Str\SnakeCase
 
 Class
@@ -3652,12 +3552,11 @@ Class
 Converts strings to snake_case style
 
 - [`Phalcon\Support\Helper\Str\PascalCase`](#supporthelperstrpascalcase)
-- **`Phalcon\Support\Helper\Str\SnakeCase`**
+  - **`Phalcon\Support\Helper\Str\SnakeCase`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrsnakecase-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string|null","name":"delimiters","default":"null"}]}>
-</ApiItem>
+- `public __invoke(string $text, string|null $delimiters = null): string`
 
 ### Methods
 
@@ -3665,10 +3564,11 @@ Converts strings to snake_case style
 
 ```php
 public function __invoke(
-string $text,
-string|null $delimiters = null
+    string $text,
+    string|null $delimiters = null
 ): string;
 ```
+
 
 ## Support\Helper\Str\StartsWith
 
@@ -3677,12 +3577,11 @@ Class
 Check if a string starts with a given string
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\StartsWith`**
+  - **`Phalcon\Support\Helper\Str\StartsWith`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrstartswith-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null},{"type":"bool","name":"ignoreCase","default":"true"}]}>
-</ApiItem>
+- `public __invoke(string $haystack, string $needle, bool $ignoreCase = true): bool`
 
 ### Methods
 
@@ -3690,11 +3589,12 @@ Check if a string starts with a given string
 
 ```php
 public function __invoke(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Support\Helper\Str\Suffix
 
@@ -3709,8 +3609,7 @@ Suffixes the text with the supplied suffix
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrsuffix-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"mixed","name":"text","default":null},{"type":"string","name":"suffix","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $text, string $suffix): string`
 
 ### Methods
 
@@ -3718,10 +3617,11 @@ Suffixes the text with the supplied suffix
 
 ```php
 public function __invoke(
-mixed $text,
-string $suffix
+    mixed $text,
+    string $suffix
 ): string;
 ```
+
 
 ## Support\Helper\Str\Ucwords
 
@@ -3733,8 +3633,7 @@ Capitalizes the first letter of each word
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrucwords-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $encoding = "UTF-8"): string`
 
 ### Methods
 
@@ -3742,10 +3641,11 @@ Capitalizes the first letter of each word
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Uncamelize
 
@@ -3759,8 +3659,7 @@ Converts strings to non camelized style
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstruncamelize-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"delimiter","default":"\"_\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $delimiter = "_"): string`
 
 ### Methods
 
@@ -3768,10 +3667,11 @@ Converts strings to non camelized style
 
 ```php
 public function __invoke(
-string $text,
-string $delimiter = "_"
+    string $text,
+    string $delimiter = "_"
 ): string;
 ```
+
 
 ## Support\Helper\Str\Underscore
 
@@ -3783,8 +3683,7 @@ Makes a text underscored instead of spaced
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrunderscore-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null}]}>
-</ApiItem>
+- `public __invoke(string $text): string`
 
 ### Methods
 
@@ -3794,6 +3693,7 @@ Makes a text underscored instead of spaced
 public function __invoke( string $text ): string;
 ```
 
+
 ## Support\Helper\Str\Upper
 
 Class
@@ -3801,12 +3701,11 @@ Class
 Converts a string to uppercase using mbstring
 
 - [`Phalcon\Support\Helper\Str\AbstractStr`](#supporthelperstrabstractstr)
-- **`Phalcon\Support\Helper\Str\Upper`**
+  - **`Phalcon\Support\Helper\Str\Upper`**
 
 ### Method Summary
 
-<ApiItem href="#supporthelperstrupper-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `public __invoke(string $text, string $encoding = "UTF-8"): string`
 
 ### Methods
 
@@ -3814,10 +3713,11 @@ Converts a string to uppercase using mbstring
 
 ```php
 public function __invoke(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Support\Registry
 
@@ -3873,78 +3773,55 @@ bypass relatively slow method calls.
 @extends Collection&lt;mixed>
 
 - [`Phalcon\Support\Collection`](#supportcollection)
-- **`Phalcon\Support\Registry`**
+  - **`Phalcon\Support\Registry`**
 
 `Traversable`
 
 ### Method Summary
 
-<ApiItem href="#supportregistry-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"data","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#supportregistry-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
-Magic getter to get an element from the collection
-</ApiItem>
-<ApiItem href="#supportregistry-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-Magic isset to check whether an element exists or not
-</ApiItem>
-<ApiItem href="#supportregistry-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Magic setter to assign values to an element
-</ApiItem>
-<ApiItem href="#supportregistry-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Magic unset to remove an element from the collection
-</ApiItem>
-<ApiItem href="#supportregistry-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears the internal collection
-</ApiItem>
-<ApiItem href="#supportregistry-count" visibility="public" name="count" returnType="int" params={[]}>
-Count elements of an object
-</ApiItem>
-<ApiItem href="#supportregistry-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
-Get the element from the collection
-</ApiItem>
-<ApiItem href="#supportregistry-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
-Returns the iterator of the class
-</ApiItem>
-<ApiItem href="#supportregistry-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-Determines whether an element is present in the collection.
-</ApiItem>
-<ApiItem href="#supportregistry-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
-Initialize internal array
-</ApiItem>
-<ApiItem href="#supportregistry-jsonserialize" visibility="public" name="jsonSerialize" returnType="array" params={[]}>
-Specify data which should be serialized to JSON
-</ApiItem>
-<ApiItem href="#supportregistry-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"element","default":null}]}>
-Whether a offset exists
-</ApiItem>
-<ApiItem href="#supportregistry-offsetget" visibility="public" name="offsetGet" returnType="mixed" params={[{"type":"mixed","name":"element","default":null}]}>
-Offset to retrieve
-</ApiItem>
-<ApiItem href="#supportregistry-offsetset" visibility="public" name="offsetSet" returnType="void" params={[{"type":"mixed","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Offset to set
-</ApiItem>
-<ApiItem href="#supportregistry-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"element","default":null}]}>
-Offset to unset
-</ApiItem>
-<ApiItem href="#supportregistry-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Delete the element from the collection
-</ApiItem>
-<ApiItem href="#supportregistry-serialize" visibility="public" name="serialize" returnType="string|null" params={[]}>
-String representation of object
-</ApiItem>
-<ApiItem href="#supportregistry-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set an element in the collection
-</ApiItem>
-<ApiItem href="#supportregistry-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the object in an array format
-</ApiItem>
-<ApiItem href="#supportregistry-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":"79"}]}>
-Returns the object in a JSON format
-</ApiItem>
-<ApiItem href="#supportregistry-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"data","default":null}]}>
-Unserializes the object
-</ApiItem>
+- `public __construct(array $data = [])` — Constructor
+
+- `public __get(string $element): mixed` — Magic getter to get an element from the collection
+
+- `public __isset(string $element): bool` — Magic isset to check whether an element exists or not
+
+- `public __set(string $element, mixed $value): void` — Magic setter to assign values to an element
+
+- `public __unset(string $element): void` — Magic unset to remove an element from the collection
+
+- `public clear(): void` — Clears the internal collection
+
+- `public count(): int` — Count elements of an object
+
+- `public get(string $element, mixed $defaultValue = null, string|null $cast = null): mixed` — Get the element from the collection
+
+- `public getIterator(): Traversable` — Returns the iterator of the class
+
+- `public has(string $element): bool` — Determines whether an element is present in the collection.
+
+- `public init(array $data = []): void` — Initialize internal array
+
+- `public jsonSerialize(): array` — Specify data which should be serialized to JSON
+
+- `public offsetExists(mixed $element): bool` — Whether a offset exists
+
+- `public offsetGet(mixed $element): mixed` — Offset to retrieve
+
+- `public offsetSet(mixed $element, mixed $value): void` — Offset to set
+
+- `public offsetUnset(mixed $element): void` — Offset to unset
+
+- `public remove(string $element): void` — Delete the element from the collection
+
+- `public serialize(): string|null` — String representation of object
+
+- `public set(string $element, mixed $value): void` — Set an element in the collection
+
+- `public toArray(): array` — Returns the object in an array format
+
+- `public toJson(int $options = 79): string` — Returns the object in a JSON format
+
+- `public unserialize(string $data): void` — Unserializes the object
 
 ### Methods
 
@@ -3976,8 +3853,8 @@ Magic isset to check whether an element exists or not
 
 ```php
 final public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -4011,9 +3888,9 @@ Count elements of an object
 
 ```php
 final public function get(
-string $element,
-mixed $defaultValue = null,
-string|null $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string|null $cast = null
 ): mixed;
 ```
 
@@ -4071,8 +3948,8 @@ Offset to retrieve
 
 ```php
 final public function offsetSet(
-mixed $element,
-mixed $value
+    mixed $element,
+    mixed $value
 ): void;
 ```
 
@@ -4106,8 +3983,8 @@ String representation of object
 
 ```php
 final public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -4141,6 +4018,7 @@ final public function unserialize( string $data ): void;
 
 Unserializes the object
 
+
 ## Support\Settings
 
 Class
@@ -4171,21 +4049,15 @@ those keys to their globals_get() fallback values.
 
 ### Method Summary
 
-<ApiItem href="#supportsettings-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
-Returns the value of a known setting.
-</ApiItem>
-<ApiItem href="#supportsettings-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Clears all PHP-level overrides, restoring get() to return globals_get()
-</ApiItem>
-<ApiItem href="#supportsettings-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Overrides a setting at the PHP level.
-</ApiItem>
+- `public get(string $key): mixed` — Returns the value of a known setting.
+
+- `public reset(): void` — Clears all PHP-level overrides, restoring get() to return globals\_get()
+
+- `public set(string $key, mixed $value): void` — Overrides a setting at the PHP level.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="overrides" type="array" default="[]">
-PHP-level overrides. Keys stored here take priority over globals_get().
-</ApiItem>
+- `protected array $overrides = []` — PHP-level overrides. Keys stored here take priority over globals\_get().
 
 ### Methods
 
@@ -4215,8 +4087,8 @@ fallback values (as configured in php.ini or .htaccess).
 
 ```php
 public static function set(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -4226,6 +4098,7 @@ Does NOT call globals_set(), so the C-level struct is not modified and
 no other project sharing this PHP process is affected.
 
 Unknown keys are silently ignored.
+
 
 ## Support\Version
 
@@ -4237,64 +4110,52 @@ This class allows to get the installed version of the framework
 
 ### Method Summary
 
-<ApiItem href="#supportversion-get" visibility="public" name="get" returnType="string" params={[]}>
-Returns the active version (string)
-</ApiItem>
-<ApiItem href="#supportversion-getid" visibility="public" name="getId" returnType="string" params={[]}>
-Returns the numeric active version
-</ApiItem>
-<ApiItem href="#supportversion-getpart" visibility="public" name="getPart" returnType="string" params={[{"type":"int","name":"part","default":null}]}>
-Returns a specific part of the version. If the wrong parameter is passed
-</ApiItem>
-<ApiItem href="#supportversion-getspecial" visibility="protected" name="getSpecial" returnType="string" params={[{"type":"int","name":"special","default":null}]}>
-Translates a number to a special release.
-</ApiItem>
-<ApiItem href="#supportversion-getversion" visibility="protected" name="getVersion" returnType="array" params={[]}>
-Area where the version number is set. The format is as follows:
-</ApiItem>
+- `public get(): string` — Returns the active version (string)
+
+- `public getId(): string` — Returns the numeric active version
+
+- `public getPart(int $part): string` — Returns a specific part of the version. If the wrong parameter is passed
+
+- `protected getSpecial(int $special): string` — Translates a number to a special release.
+
+- `protected getVersion(): array` — Area where the version number is set. The format is as follows:
 
 ### Constants
 
-<ApiItem kind="constant" name="VERSION_MAJOR" type="int" default="0">
-The constant referencing the major version. Returns 0
+- `const int VERSION_MAJOR = 0` — The constant referencing the major version. Returns 0
 
-```php
-echo (new Phalcon\Support\Version())
-     ->getPart(Phalcon\Support\Version::VERSION_MAJOR);
-```
-</ApiItem>
-<ApiItem kind="constant" name="VERSION_MEDIUM" type="int" default="1">
-The constant referencing the major version. Returns 1
+  ```php
+  echo (new Phalcon\Support\Version())
+           ->getPart(Phalcon\Support\Version::VERSION_MAJOR);
+  ```
 
-```php
-echo (new Phalcon\Support\Version())
-     ->getPart(Phalcon\Support\Version::VERSION_MEDIUM);
-```
-</ApiItem>
-<ApiItem kind="constant" name="VERSION_MINOR" type="int" default="2">
-The constant referencing the major version. Returns 2
+- `const int VERSION_MEDIUM = 1` — The constant referencing the major version. Returns 1
 
-```php
-echo (new Phalcon\Support\Version())
-     ->getPart(Phalcon\Support\Version::VERSION_MINOR);
-```
-</ApiItem>
-<ApiItem kind="constant" name="VERSION_SPECIAL" type="int" default="3">
-The constant referencing the major version. Returns 3
+  ```php
+  echo (new Phalcon\Support\Version())
+           ->getPart(Phalcon\Support\Version::VERSION_MEDIUM);
+  ```
 
-```php
-echo (new Phalcon\Support\Version())
-     ->getPart(Phalcon\Support\Version::VERSION_SPECIAL);
-```
-</ApiItem>
-<ApiItem kind="constant" name="VERSION_SPECIAL_NUMBER" type="int" default="4">
-The constant referencing the major version. Returns 4
+- `const int VERSION_MINOR = 2` — The constant referencing the major version. Returns 2
 
-```php
-echo (new Phalcon\Support\Version())
-     ->getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER);
-```
-</ApiItem>
+  ```php
+  echo (new Phalcon\Support\Version())
+           ->getPart(Phalcon\Support\Version::VERSION_MINOR);
+  ```
+
+- `const int VERSION_SPECIAL = 3` — The constant referencing the major version. Returns 3
+
+  ```php
+  echo (new Phalcon\Support\Version())
+           ->getPart(Phalcon\Support\Version::VERSION_SPECIAL);
+  ```
+
+- `const int VERSION_SPECIAL_NUMBER = 4` — The constant referencing the major version. Returns 4
+
+  ```php
+  echo (new Phalcon\Support\Version())
+           ->getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER);
+  ```
 
 ### Methods
 

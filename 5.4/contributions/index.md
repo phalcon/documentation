@@ -15,7 +15,7 @@ Phalcon is an open source project and relies heavily on volunteer efforts and co
 Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication, and we can all move the project forward!
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub][github]. You can browse our repositories in our [organization page][phalcon-org].
-
+ 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request][github-pr]. 
 
 When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be:
@@ -85,6 +85,7 @@ If you have any questions about how to use Phalcon, please see the [support page
 If you have any changes or new features in mind, please fill an [NFR][nfr].
 
 Thanks!
+
 
 &lt;3 Phalcon Team
 

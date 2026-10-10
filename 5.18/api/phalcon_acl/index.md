@@ -28,12 +28,14 @@ description.
 <div class="api-tree">
 
 - **`Phalcon\Acl\AbstractElement`**
-- [`Phalcon\Acl\Component`](#aclcomponent)
-- [`Phalcon\Acl\Role`](#aclrole)
+    - [`Phalcon\Acl\Component`](#aclcomponent)
+    - [`Phalcon\Acl\Role`](#aclrole)
 
 </div>
 
 __Uses__ `Phalcon\Acl\Traits\ItemTrait`
+
+
 
 ## Acl\Adapter\AbstractAdapter
 
@@ -45,12 +47,13 @@ Adapter for Phalcon\Acl adapters
 <div class="api-tree">
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.18/api/phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.18/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
+    - **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.18/api/phalcon_events/#eventseventsawareinterface)
+        - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
 
 </div>
 
 __Uses__ `Phalcon\Acl\Enum` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface`
+
 
 ### Method Summary
 
@@ -167,6 +170,7 @@ public function setDefaultAction( int $defaultAccess ): void;
 
 Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
+
 ## Acl\Adapter\AdapterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -177,11 +181,13 @@ Interface for Phalcon\Acl adapters
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Acl\Adapter\Adapter`](/5.18/api/phalcon_contracts/#contractsacladapteradapter)
-- **`Phalcon\Acl\Adapter\AdapterInterface`**
+    - **`Phalcon\Acl\Adapter\AdapterInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Acl\Adapter\Adapter`
+
+
 
 ## Acl\Adapter\Memory
 
@@ -194,72 +200,73 @@ Manages ACL lists in memory
 $acl = new \Phalcon\Acl\Adapter\Memory();
 
 $acl->setDefaultAction(
-\Phalcon\Acl\Enum::DENY
+    \Phalcon\Acl\Enum::DENY
 );
 
 // Register roles
 $roles = [
-"users"  => new \Phalcon\Acl\Role("Users"),
-"guests" => new \Phalcon\Acl\Role("Guests"),
+    "users"  => new \Phalcon\Acl\Role("Users"),
+    "guests" => new \Phalcon\Acl\Role("Guests"),
 ];
 foreach ($roles as $role) {
-$acl->addRole($role);
+    $acl->addRole($role);
 }
 
 // Private area components
 $privateComponents = [
-"companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
-"products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
-"invoices"  => ["index", "profile"],
+    "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
+    "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
+    "invoices"  => ["index", "profile"],
 ];
 
 foreach ($privateComponents as $componentName => $actions) {
-$acl->addComponent(
-    new \Phalcon\Acl\Component($componentName),
-    $actions
-);
+    $acl->addComponent(
+        new \Phalcon\Acl\Component($componentName),
+        $actions
+    );
 }
 
 // Public area components
 $publicComponents = [
-"index"   => ["index"],
-"about"   => ["index"],
-"session" => ["index", "register", "start", "end"],
-"contact" => ["index", "send"],
+    "index"   => ["index"],
+    "about"   => ["index"],
+    "session" => ["index", "register", "start", "end"],
+    "contact" => ["index", "send"],
 ];
 
 foreach ($publicComponents as $componentName => $actions) {
-$acl->addComponent(
-    new \Phalcon\Acl\Component($componentName),
-    $actions
-);
+    $acl->addComponent(
+        new \Phalcon\Acl\Component($componentName),
+        $actions
+    );
 }
 
 // Grant access to public areas to both users and guests
 foreach ($roles as $role) {
-foreach ($publicComponents as $component => $actions) {
-    $acl->allow($role->getName(), $component, "*");
-}
+    foreach ($publicComponents as $component => $actions) {
+        $acl->allow($role->getName(), $component, "*");
+    }
 }
 
 // Grant access to private area to role Users
 foreach ($privateComponents as $component => $actions) {
-foreach ($actions as $action) {
-    $acl->allow("Users", $component, $action);
-}
+    foreach ($actions as $action) {
+        $acl->allow("Users", $component, $action);
+    }
 }
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.18/api/phalcon_events/#eventsabstracteventsaware)
-- [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
-- **`Phalcon\Acl\Adapter\Memory`**
-- [`Phalcon\Acl\Adapter\Storage`](#acladapterstorage)
+    - [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
+        - **`Phalcon\Acl\Adapter\Memory`**
+            - [`Phalcon\Acl\Adapter\Storage`](#acladapterstorage)
 
 </div>
 
 __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `ReflectionClass` · `ReflectionFunction` · `ReflectionNamedType`
+
 
 ### Method Summary
 
@@ -466,8 +473,8 @@ Phalcon\Acl\Adapter\Memory constructor
 
 ```php
 public function addComponent(
-mixed $componentValue,
-mixed $accessList
+    mixed $componentValue,
+    mixed $accessList
 ): bool;
 ```
 
@@ -480,27 +487,27 @@ Example:
 ```php
 // Add a component to the list allowing access to an action
 $acl->addComponent(
-new Phalcon\Acl\Component("customers"),
-"search"
+    new Phalcon\Acl\Component("customers"),
+    "search"
 );
 
 $acl->addComponent("customers", "search");
 
 // Add a component  with an access list
 $acl->addComponent(
-new Phalcon\Acl\Component("customers"),
-[
-    "create",
-    "search",
-]
+    new Phalcon\Acl\Component("customers"),
+    [
+        "create",
+        "search",
+    ]
 );
 
 $acl->addComponent(
-"customers",
-[
-    "create",
-    "search",
-]
+    "customers",
+    [
+        "create",
+        "search",
+    ]
 );
 ```
 
@@ -508,8 +515,8 @@ $acl->addComponent(
 
 ```php
 public function addComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): bool;
 ```
 
@@ -519,8 +526,8 @@ Adds access to components
 
 ```php
 public function addInherit(
-string $roleName,
-mixed $roleToInherits
+    string $roleName,
+    mixed $roleToInherits
 ): bool;
 ```
 
@@ -535,8 +542,8 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 
 ```php
 public function addRole(
-mixed $role,
-mixed $accessInherits = null
+    mixed $role,
+    mixed $accessInherits = null
 ): bool;
 ```
 
@@ -548,8 +555,8 @@ unchanged.
 
 ```php
 $acl->addRole(
-new Phalcon\Acl\Role("administrator"),
-"consultant"
+    new Phalcon\Acl\Role("administrator"),
+    "consultant"
 );
 
 $acl->addRole("administrator", "consultant");
@@ -560,10 +567,10 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 
 ```php
 public function allow(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -590,10 +597,10 @@ $acl->allow("*", "*", "*");
 
 ```php
 public function deny(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -620,8 +627,8 @@ $acl->deny("*", "*", "*");
 
 ```php
 public function dropComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): void;
 ```
 
@@ -690,10 +697,10 @@ Return an array with every role registered in the list
 
 ```php
 public function isAllowed(
-mixed $roleName,
-mixed $componentName,
-string $access,
-array $parameters = null
+    mixed $roleName,
+    mixed $componentName,
+    string $access,
+    array $parameters = null
 ): bool;
 ```
 
@@ -733,6 +740,7 @@ Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`)
 for no arguments provided in isAllowed action if there exists func for
 accessKey
 
+
 ## Acl\Adapter\Storage
 
 <span class="badge badge--class">Class</span>
@@ -758,13 +766,14 @@ Use external locking when multiple processes write the same key.
 <div class="api-tree">
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.18/api/phalcon_events/#eventsabstracteventsaware)
-- [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
-- [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
-- **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](/5.18/api/phalcon_contracts/#contractsacladapterpersistable)
+    - [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
+        - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
+            - **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](/5.18/api/phalcon_contracts/#contractsacladapterpersistable)
 
 </div>
 
 __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface`
+
 
 ### Method Summary
 
@@ -819,8 +828,8 @@ __Uses__ `Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exception
 
 ```php
 public function __construct(
-StorageInterface $storage,
-string $key = "acl-data"
+    StorageInterface $storage,
+    string $key = "acl-data"
 );
 ```
 
@@ -845,6 +854,7 @@ Persists the policy snapshot. Closure-backed access keys are written as
 DENY (fail closed); roles/components are written as scalar name =>
 description maps for serializer independence.
 
+
 ## Acl\Component
 
 <span class="badge badge--class">Class</span>
@@ -855,11 +865,12 @@ This class defines component entity and its description
 <div class="api-tree">
 
 - [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
-- **`Phalcon\Acl\Component`** - implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
+    - **`Phalcon\Acl\Component`** - implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
+
 
 ### Method Summary
 
@@ -879,12 +890,13 @@ __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 
 ```php
 public function __construct(
-string $name,
-string $description = null
+    string $name,
+    string $description = null
 );
 ```
 
 Phalcon\Acl\Component constructor
+
 
 ## Acl\ComponentAwareInterface
 
@@ -896,11 +908,13 @@ Interface for classes which could be used in allow method as RESOURCE
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Acl\ComponentAware`](/5.18/api/phalcon_contracts/#contractsaclcomponentaware)
-- **`Phalcon\Acl\ComponentAwareInterface`**
+    - **`Phalcon\Acl\ComponentAwareInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Acl\ComponentAware`
+
+
 
 ## Acl\ComponentInterface
 
@@ -912,11 +926,13 @@ Interface for Phalcon\Acl\Component
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Acl\Component`](/5.18/api/phalcon_contracts/#contractsaclcomponent)
-- **`Phalcon\Acl\ComponentInterface`**
+    - **`Phalcon\Acl\ComponentInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Acl\Component`
+
+
 
 ## Acl\Enum
 
@@ -944,6 +960,7 @@ Constants for Phalcon\Acl\Adapter adapters
 </div>
 </div>
 
+
 ## Acl\Exception
 
 <span class="badge badge--class">Class</span>
@@ -954,21 +971,22 @@ Class for exceptions thrown by Phalcon\Acl
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Acl\Exception`**
-- [`Phalcon\Acl\Exceptions\AccessRuleNotFound`](#aclexceptionsaccessrulenotfound)
-- [`Phalcon\Acl\Exceptions\CircularInheritanceError`](#aclexceptionscircularinheritanceerror)
-- [`Phalcon\Acl\Exceptions\ElementNotFound`](#aclexceptionselementnotfound)
-- [`Phalcon\Acl\Exceptions\ForbiddenWildcard`](#aclexceptionsforbiddenwildcard)
-- [`Phalcon\Acl\Exceptions\InvalidAccessList`](#aclexceptionsinvalidaccesslist)
-- [`Phalcon\Acl\Exceptions\InvalidComponentImplementation`](#aclexceptionsinvalidcomponentimplementation)
-- [`Phalcon\Acl\Exceptions\InvalidRoleImplementation`](#aclexceptionsinvalidroleimplementation)
-- [`Phalcon\Acl\Exceptions\InvalidRoleType`](#aclexceptionsinvalidroletype)
-- [`Phalcon\Acl\Exceptions\InvalidSnapshot`](#aclexceptionsinvalidsnapshot)
-- [`Phalcon\Acl\Exceptions\MissingFunctionParameters`](#aclexceptionsmissingfunctionparameters)
-- [`Phalcon\Acl\Exceptions\ParameterTypeMismatch`](#aclexceptionsparametertypemismatch)
-- [`Phalcon\Acl\Exceptions\RoleNotFoundException`](#aclexceptionsrolenotfoundexception)
+    - **`Phalcon\Acl\Exception`**
+        - [`Phalcon\Acl\Exceptions\AccessRuleNotFound`](#aclexceptionsaccessrulenotfound)
+        - [`Phalcon\Acl\Exceptions\CircularInheritanceError`](#aclexceptionscircularinheritanceerror)
+        - [`Phalcon\Acl\Exceptions\ElementNotFound`](#aclexceptionselementnotfound)
+        - [`Phalcon\Acl\Exceptions\ForbiddenWildcard`](#aclexceptionsforbiddenwildcard)
+        - [`Phalcon\Acl\Exceptions\InvalidAccessList`](#aclexceptionsinvalidaccesslist)
+        - [`Phalcon\Acl\Exceptions\InvalidComponentImplementation`](#aclexceptionsinvalidcomponentimplementation)
+        - [`Phalcon\Acl\Exceptions\InvalidRoleImplementation`](#aclexceptionsinvalidroleimplementation)
+        - [`Phalcon\Acl\Exceptions\InvalidRoleType`](#aclexceptionsinvalidroletype)
+        - [`Phalcon\Acl\Exceptions\InvalidSnapshot`](#aclexceptionsinvalidsnapshot)
+        - [`Phalcon\Acl\Exceptions\MissingFunctionParameters`](#aclexceptionsmissingfunctionparameters)
+        - [`Phalcon\Acl\Exceptions\ParameterTypeMismatch`](#aclexceptionsparametertypemismatch)
+        - [`Phalcon\Acl\Exceptions\RoleNotFoundException`](#aclexceptionsrolenotfoundexception)
 
 </div>
+
 
 ## Acl\Exceptions\AccessRuleNotFound
 
@@ -978,12 +996,13 @@ Class for exceptions thrown by Phalcon\Acl
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\AccessRuleNotFound`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\AccessRuleNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1002,10 +1021,11 @@ __Uses__ `Phalcon\Acl\Exception`
 
 ```php
 public function __construct(
-string $accessName,
-string $componentName
+    string $accessName,
+    string $componentName
 );
 ```
+
 
 ## Acl\Exceptions\CircularInheritanceError
 
@@ -1015,12 +1035,13 @@ string $componentName
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\CircularInheritanceError`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\CircularInheritanceError`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1041,6 +1062,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct( string $roleName );
 ```
 
+
 ## Acl\Exceptions\ElementNotFound
 
 <span class="badge badge--class">Class</span>
@@ -1049,12 +1071,14 @@ public function __construct( string $roleName );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ElementNotFound`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\ElementNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
+
 
 ## Acl\Exceptions\ForbiddenWildcard
 
@@ -1064,12 +1088,13 @@ __Uses__ `Phalcon\Acl\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ForbiddenWildcard`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\ForbiddenWildcard`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1090,6 +1115,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct( string $elementType );
 ```
 
+
 ## Acl\Exceptions\InvalidAccessList
 
 <span class="badge badge--class">Class</span>
@@ -1098,12 +1124,13 @@ public function __construct( string $elementType );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidAccessList`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\InvalidAccessList`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1124,6 +1151,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidComponentImplementation
 
 <span class="badge badge--class">Class</span>
@@ -1132,12 +1160,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidComponentImplementation`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\InvalidComponentImplementation`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1158,6 +1187,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidRoleImplementation
 
 <span class="badge badge--class">Class</span>
@@ -1166,12 +1196,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidRoleImplementation`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\InvalidRoleImplementation`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1192,6 +1223,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidRoleType
 
 <span class="badge badge--class">Class</span>
@@ -1200,12 +1232,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidRoleType`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\InvalidRoleType`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1226,6 +1259,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidSnapshot
 
 <span class="badge badge--class">Class</span>
@@ -1234,12 +1268,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidSnapshot`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\InvalidSnapshot`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
+
 
 ## Acl\Exceptions\MissingFunctionParameters
 
@@ -1249,12 +1285,14 @@ __Uses__ `Phalcon\Acl\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\MissingFunctionParameters`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\MissingFunctionParameters`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
+
 
 ## Acl\Exceptions\ParameterTypeMismatch
 
@@ -1264,12 +1302,14 @@ __Uses__ `Phalcon\Acl\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ParameterTypeMismatch`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\ParameterTypeMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
+
 
 ## Acl\Exceptions\RoleNotFoundException
 
@@ -1279,12 +1319,13 @@ __Uses__ `Phalcon\Acl\Exception`
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\RoleNotFoundException`**
+    - [`Phalcon\Acl\Exception`](#aclexception)
+        - **`Phalcon\Acl\Exceptions\RoleNotFoundException`**
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exception`
+
 
 ### Method Summary
 
@@ -1305,6 +1346,7 @@ __Uses__ `Phalcon\Acl\Exception`
 public function __construct( string $roleName );
 ```
 
+
 ## Acl\Role
 
 <span class="badge badge--class">Class</span>
@@ -1315,11 +1357,12 @@ This class defines role entity and its description
 <div class="api-tree">
 
 - [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
-- **`Phalcon\Acl\Role`** - implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
+    - **`Phalcon\Acl\Role`** - implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
 
 </div>
 
 __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
+
 
 ### Method Summary
 
@@ -1339,12 +1382,13 @@ __Uses__ `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 
 ```php
 public function __construct(
-string $name,
-string $description = null
+    string $name,
+    string $description = null
 );
 ```
 
 Phalcon\Acl\Role constructor
+
 
 ## Acl\RoleAwareInterface
 
@@ -1356,11 +1400,13 @@ Interface for classes which could be used in allow method as ROLE
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Acl\RoleAware`](/5.18/api/phalcon_contracts/#contractsaclroleaware)
-- **`Phalcon\Acl\RoleAwareInterface`**
+    - **`Phalcon\Acl\RoleAwareInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Acl\RoleAware`
+
+
 
 ## Acl\RoleInterface
 
@@ -1372,11 +1418,13 @@ Interface for Phalcon\Acl\Role
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Acl\Role`](/5.18/api/phalcon_contracts/#contractsaclrole)
-- **`Phalcon\Acl\RoleInterface`**
+    - **`Phalcon\Acl\RoleInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Acl\Role`
+
+
 
 ## Acl\Traits\ItemTrait
 
@@ -1392,6 +1440,7 @@ Shared name/description state for ACL Role and Component entities.
 </div>
 
 __Used by__ [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
+
 
 ### Method Summary
 

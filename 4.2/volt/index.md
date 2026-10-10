@@ -25,22 +25,22 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% raw %}
 {% for invoice in invoices %}
 <div class='row'>
-<div>
-    ID: {{ invoice.titleinv_id }}
-</div>
-<div>
-    {%- if 1 === invoice.titleinv_status_flag -%}
-    Paid
-    {%- else -%}
-    Unpaid
-    {%- endif -%}
-</div>
-<div>
-    {{ invoice.titleinv_description }}
-</div>
-<div>
-    {{ invoice.titleinv_total }}
-</div>
+    <div>
+        ID: {{ invoice.titleinv_id }}
+    </div>
+    <div>
+        {%- if 1 === invoice.titleinv_status_flag -%}
+        Paid
+        {%- else -%}
+        Unpaid
+        {%- endif -%}
+    </div>
+    <div>
+        {{ invoice.titleinv_description }}
+    </div>
+    <div>
+        {{ invoice.titleinv_total }}
+    </div>
 </div>
 {% endfor %}{% endraw %}
 ```
@@ -50,22 +50,22 @@ compared to:
 ```php
 <?php foreach ($invoices as $invoice) { ?>
 <div class='row'>
-<div>
-    ID: <?php echo $invoice->inv_id; ?>
-</div>
-<div>
-    <?php if (1 === $invoice->inv_status_flag) { ?>
-    Paid
-    <?php } else { ?>
-    Unpaid
-    <?php } ?>
-</div>
-<div>
-    <?php echo $invoice->inv_description; ?>
-</div>
-<div>
-    <?php echo $invoice->total; ?>
-</div>
+    <div>
+        ID: <?php echo $invoice->inv_id; ?>
+    </div>
+    <div>
+        <?php if (1 === $invoice->inv_status_flag) { ?>
+        Paid
+        <?php } else { ?>
+        Unpaid
+        <?php } ?>
+    </div>
+    <div>
+        <?php echo $invoice->inv_description; ?>
+    </div>
+    <div>
+        <?php echo $invoice->total; ?>
+    </div>
 </div>
 <?php } ?>
 ```
@@ -74,8 +74,8 @@ compared to:
 
 ```php
 public function __construct(
-ViewBaseInterface $view, 
-DiInterface $container = null
+    ViewBaseInterface $view, 
+    DiInterface $container = null
 )
 ```
 
@@ -99,55 +99,55 @@ Performs a string conversion
 ```php
 getCompiler(): Compiler
 ```
-
+                                         
 Returns the Volt's compiler
 
 ```php
 getContent(): string
 ```
-
+                                              
 Returns cached output on another view stage
 
 ```php
 getOptions(): array
 ```
-
+                                               
 Return Volt's options
 
 ```php
 getView(): ViewBaseInterface
 ```
-
+                                    
 Returns the view component related to the adapter
 
 ```php
 isIncluded(mixed $needle, mixed $haystack): bool
 ```
-
+                        
 Checks if the needle is included in the haystack
 
 ```php
 length(mixed $item): int
 ```
-
+                                             
 Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 ```php
 partial(string $partialPath, mixed $params = null): string
 ```
-
+           
 Renders a partial inside another view
 
 ```php
 render(string $templatePath, mixed $params, bool $mustClean = false)
 ```
-
+    
 Renders a view using the template engine
 
 ```php
 setOptions(array $options)
 ```
-
+                                           
 Set Volt's options
 
 ```php
@@ -159,7 +159,7 @@ Extracts a slice from a string/array/traversable object value
 ```php
 sort(array $value): array
 ```
-
+                                          
 Sorts an array
 
 ## Activation
@@ -177,39 +177,39 @@ use Phalcon\Mvc\View\Engine\Volt;
 $container = new FactoryDefault();
 
 $container->setShared(
-'voltService',
-function (ViewBaseInterface $view) use ($container) {
-    $volt = new Volt($view, $container);
-    $volt->setOptions(
-        [
-            'always'    => true,
-            'extension' => '.php',
-            'separator' => '_',
-            'stat'      => true,
-            'path'      => appPath('storage/cache/volt/'),
-            'prefix'    => '-prefix-',
-        ]
-    );
-
-    return $volt;
-}
+    'voltService',
+    function (ViewBaseInterface $view) use ($container) {
+        $volt = new Volt($view, $container);
+        $volt->setOptions(
+            [
+                'always'    => true,
+                'extension' => '.php',
+                'separator' => '_',
+                'stat'      => true,
+                'path'      => appPath('storage/cache/volt/'),
+                'prefix'    => '-prefix-',
+            ]
+        );
+        
+        return $volt;
+    }
 );
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    $view->registerEngines(
-        [
-            '.volt' => 'voltService',
-        ]
-    );
+        $view->registerEngines(
+            [
+                '.volt' => 'voltService',
+            ]
+        );
 
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -219,9 +219,9 @@ To use the standard `.phtml` extension:
 <?php
 
 $view->registerEngines(
-[
-    '.phtml' => 'voltService',
-]
+    [
+        '.phtml' => 'voltService',
+    ]
 );
 ```
 
@@ -232,10 +232,11 @@ You don't have to specify the Volt Service in the DI; you can also use the Volt 
 
 use Phalcon\Mvc\View\Engine\Volt;
 
+
 $view->registerEngines(
-[
-    '.volt' => Volt::class,
-]
+    [
+        '.volt' => Volt::class,
+    ]
 );
 ```
 
@@ -253,34 +254,34 @@ use Phalcon\Mvc\View\Engine\Volt;
 $container = new FactoryDefault();
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
-    $view->registerEngines(
-        [
-            '.volt' => function (ViewBaseInterface $view) {
-                $volt = new Volt($view, $this);
+        $view->setViewsDir('../app/views/');
+        $view->registerEngines(
+            [
+                '.volt' => function (ViewBaseInterface $view) {
+                    $volt = new Volt($view, $this);
 
-                $volt->setOptions(
-                    [
-                        'always'    => true,
-                        'extension' => '.php',
-                        'separator' => '_',
-                        'stat'      => true,
-                        'path'      => appPath('storage/cache/volt/'),
-                        'prefix'    => '-prefix-',
-                    ]
-                );
+                    $volt->setOptions(
+                        [
+                            'always'    => true,
+                            'extension' => '.php',
+                            'separator' => '_',
+                            'stat'      => true,
+                            'path'      => appPath('storage/cache/volt/'),
+                            'prefix'    => '-prefix-',
+                        ]
+                    );
+                    
+                    return $volt;
+                }
+            ]
+        );
 
-                return $volt;
-            }
-        ]
-    );
-
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -296,6 +297,7 @@ The following options are available in Volt:
 | `prefix`     | `null`  | Prepend a prefix to the templates in the compilation path                                                               |
 | `stat`       | `true`  | Whether Phalcon must check if there are differences between the template file and its compiled path                     |
 
+
 The compilation path is generated according to the options above. You however, have total freedom in defining the compilation path as an anonymous function, including the logic used to generate it. The anonymous function receives the relative path to the template in the predefined views directory.
 
 **Appending extensions**
@@ -306,11 +308,11 @@ Append the `.php` extension to the template path, leaving the compiled templates
 <?php
 
 $volt->setOptions(
-[
-    'path' => function ($templatePath) {
-        return $templatePath . '.php';
-    }
-]
+    [
+        'path' => function ($templatePath) {
+            return $templatePath . '.php';
+        }
+    ]
 );
 ```
 
@@ -322,21 +324,21 @@ The following example will create the same structure in a different directory
 <?php
 
 $volt->setOptions(
-[
-    'path' => function (string $templatePath) {
-        $dirName = dirname($templatePath);
+    [
+        'path' => function (string $templatePath) {
+            $dirName = dirname($templatePath);
 
-        if (true !== is_dir('cache/' . $dirName)) {
-            mkdir(
-                'cache/' . $dirName,
-                0777,
-                true
-            );
+            if (true !== is_dir('cache/' . $dirName)) {
+                mkdir(
+                    'cache/' . $dirName,
+                    0777,
+                    true
+                );
+            }
+
+            return 'cache/' . $dirName . '/' . $templatePath . '.php';
         }
-
-        return 'cache/' . $dirName . '/' . $templatePath . '.php';
-    }
-]
+    ]
 );
 ```
 
@@ -350,29 +352,29 @@ Below is a sample template that illustrates a few basics:
 {# app/views/posts/show.phtml #}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>{{ title }} - An example blog</title>
-</head>
-<body>
-    {% if true === showNavigation %}
-    <ul id='navigation'>
-        {% for item in menu %}
-            <li>
-                <a href='{{ item.href }}'>
-                    {{ item.caption }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <head>
+        <title>{{ title }} - An example blog</title>
+    </head>
+    <body>
+        {% if true === showNavigation %}
+        <ul id='navigation'>
+            {% for item in menu %}
+                <li>
+                    <a href='{{ item.href }}'>
+                        {{ item.caption }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
-    <h1>{{ post.title }}</h1>
+        <h1>{{ post.title }}</h1>
 
-    <div class='content'>
-        {{ post.content }}
-    </div>
+        <div class='content'>
+            {{ post.content }}
+        </div>
 
-</body>
+    </body>
 </html>
 {% endraw %}
 ```
@@ -392,23 +394,23 @@ use Phalcon\Mvc\View;
  */
 class PostsController extends Controller
 {
-public function showAction()
-{
-    $post = Post::findFirst();
-    $menu = Menu::findFirst();
+    public function showAction()
+    {
+        $post = Post::findFirst();
+        $menu = Menu::findFirst();
 
-    $this->view->showNavigation = true;
-    $this->view->menu           = $menu;
-    $this->view->title          = $post->title;
-    $this->view->post           = $post;
+        $this->view->showNavigation = true;
+        $this->view->menu           = $menu;
+        $this->view->title          = $post->title;
+        $this->view->post           = $post;
 
-    // Or...
+        // Or...
 
-    $this->view->setVar('showNavigation', true);
-    $this->view->setVar('menu',           $menu);
-    $this->view->setVar('title',          $post->title);
-    $this->view->setVar('post',           $post);
-}
+        $this->view->setVar('showNavigation', true);
+        $this->view->setVar('menu',           $menu);
+        $this->view->setVar('title',          $post->title);
+        $this->view->setVar('post',           $post);
+    }
 }
 ```
 
@@ -421,11 +423,11 @@ If you are using [Vue][vue] you will need to change the interpolators in Vue its
 
 ```javascript
 new Vue(
-{
-    el: '#app',
-    data: data,
-    delimiters: ["<%","%>"]
-}
+    {
+        el: '#app',
+        data: data,
+        delimiters: ["<%","%>"]
+    }
 );
 ```
 
@@ -436,10 +438,10 @@ If you are using [Angular][angular] you can set the interpolators as follows:
   var myApp = angular.module('myApp', []);
 
   myApp.config(
-function ($interpolateProvider) {
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-}
+    function ($interpolateProvider) {
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    }
 );
 ```
 
@@ -564,7 +566,7 @@ Comments may also be added to a template using the `{%- raw -%}{# ... #}{% endra
 ```twig
 {%- raw -%}
 {# note: this is a comment
-{% set price = 100; %}
+    {% set price = 100; %}
 #}
 {% endraw %}
 ```
@@ -579,11 +581,11 @@ Loop over each item in a sequence. The following example shows how to traverse a
 {%- raw -%}
 <h1>Invoices</h1>
 <ul>
-{% for invoice in invoices %}
-<li>
-    {{ invoice.inv_title | e }}
-</li>
-{% endfor %}
+    {% for invoice in invoices %}
+    <li>
+        {{ invoice.inv_title | e }}
+    </li>
+    {% endfor %}
 </ul>
 {% endraw %}
 ```
@@ -594,9 +596,9 @@ for-loops can also be nested:
 {%- raw -%}
 <h1>Invoices</h1>
 {% for invoice in invoices %}
-{% for product in invoice.products %}
+    {% for product in invoice.products %}
 Product: {{ product.prd_title|e }} {{ product.prd_price|e }} USD <br />
-{% endfor %}
+    {% endfor %}
 {% endfor %}
 {% endraw %}
 ```
@@ -608,7 +610,7 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
 {% for name, value in numbers %}
-Name: {{ name }} Value: {{ value }} <br />
+    Name: {{ name }} Value: {{ value }} <br />
 {% endfor %}
 {% endraw %}
 ```
@@ -620,11 +622,11 @@ An `if` evaluation can be optionally set:
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
 {% for value in numbers if value < 2 %}
-Value: {{ value }} <br />
+    Value: {{ value }} <br />
 {% endfor %}
 
 {% for name, value in numbers if name !== 'two' %}
-Name: {{ name }} Value: {{ value }} <br />
+    Name: {{ name }} Value: {{ value }} <br />
 {% endfor %}
 {% endraw %}
 ```
@@ -635,9 +637,9 @@ If an `else` is defined inside the `for`, it will be executed if the expression 
 {%- raw -%}
 <h1>Invoices</h1>
 {% for invoice in invoices %}
-Invoice: {{ invoice.inv_number | e }} - {{ invoice.inv_title | e }} <br />
+    Invoice: {{ invoice.inv_number | e }} - {{ invoice.inv_title | e }} <br />
 {% else %}
-There are no invoices to show
+    There are no invoices to show
 {% endfor %}
 {% endraw %}
 ```
@@ -648,9 +650,9 @@ Alternative syntax:
 {%- raw -%}
 <h1>Invoices</h1>
 {% for invoice in invoices %}
-Invoice: {{ invoice.inv_number | e }} - {{ invoice.inv_title | e }} <br />
+    Invoice: {{ invoice.inv_number | e }} - {{ invoice.inv_title | e }} <br />
 {% elsefor %}
-There are no invoices to show
+    There are no invoices to show
 {% endfor %}
 {% endraw %}
 ```
@@ -662,10 +664,10 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {%- raw -%}
 {# skip the even invoices #}
 {% for index, invoice in invoices %}
-{% if index is even %}
-    {% continue %}
-{% endif %}
-...
+    {% if index is even %}
+        {% continue %}
+    {% endif %}
+    ...
 {% endfor %}
 {% endraw %}
 ```
@@ -674,10 +676,10 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {%- raw -%}
 {# exit the foreach on the first even invoice #}
 {% for index, invoice in invoices %}
-{% if index is even %}
-    {% break %}
-{% endif %}
-...
+    {% if index is even %}
+        {% break %}
+    {% endif %}
+    ...
 {% endfor %}
 {% endraw %}
 ```
@@ -689,11 +691,11 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 {%- raw -%}
 <h1>Paid Invoices</h1>
 <ul>
-{% for invoice in invoices %}
-    {% if invoice.inv_paid_flag === 1 %}
-        <li>{{ invoice.inv_title | e }}</li>
-    {% endif %}
-{% endfor %}
+    {% for invoice in invoices %}
+        {% if invoice.inv_paid_flag === 1 %}
+            <li>{{ invoice.inv_title | e }}</li>
+        {% endif %}
+    {% endfor %}
 </ul>{% endraw %}
 ```
 
@@ -703,13 +705,13 @@ The else clause is also supported:
 {%- raw -%}
 <h1>Invoices</h1>
 <ul>
-{% for invoice in invoices %}
-    {% if invoice.inv_paid_flag === 1 %}
-        <li>{{ invoice.inv_title | e }}</li>
-    {% else %}
-        <li>{{ invoice.inv_title | e }} [NOT PAID]</li>
-    {% endif %}
-{% endfor %}
+    {% for invoice in invoices %}
+        {% if invoice.inv_paid_flag === 1 %}
+            <li>{{ invoice.inv_title | e }}</li>
+        {% else %}
+            <li>{{ invoice.inv_title | e }} [NOT PAID]</li>
+        {% endif %}
+    {% endfor %}
 </ul>{% endraw %}
 ```
 
@@ -718,11 +720,11 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 ```twig
 {%- raw -%}
 {% if invoice.inv_paid_flag === constant('MyApp\Constants\Status::PAID') %}
-Invoice is paid
+    Invoice is paid
 {% elseif invoice.inv_paid_flag === 2 %}
-Invoice is not paid
+    Invoice is not paid
 {% else %}
-Invoice is paid status is not defined
+    Invoice is paid status is not defined
 {% endif %}
 {% endraw %}
 ```
@@ -733,16 +735,16 @@ An alternative to the `if` statement is `switch`, allowing you to create logical
 ```twig
 {%- raw -%}
 {% switch foo %}
-{% case 0 %}
-{% case 1 %}
-{% case 2 %}
-    "foo" is less than 3 but not negative
-    {% break %}
-{% case 3 %}
-    "foo" is 3
-    {% break %}
-{% default %}
-    "foo" is {{ foo }}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        "foo" is less than 3 but not negative
+        {% break %}
+    {% case 3 %}
+        "foo" is 3
+        {% break %}
+    {% default %}
+        "foo" is {{ foo }}
 {% endswitch %}
 {% endraw %}
 ```
@@ -792,7 +794,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {%- raw -%}
 {% switch %}
   {% case EXPRESSION %}
-  {% break %}
+      {% break %}
 {% endswitch %}
 {% endraw %}
 ```
@@ -817,22 +819,22 @@ Example:
 ```twig
 {%- raw -%}
 {% for invoice in invoices %}
-{% if loop.first %}
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Id</th>
-            <th>Title</th>
-        </tr>
-{% endif %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ invoice.inv_id }}</td>
-            <td>{{ invoice.inv_title }}</td>
-        </tr>
-{% if loop.last %}
-    </table>
-{% endif %}
+    {% if loop.first %}
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Title</th>
+            </tr>
+    {% endif %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ invoice.inv_id }}</td>
+                <td>{{ invoice.inv_title }}</td>
+            </tr>
+    {% if loop.last %}
+        </table>
+    {% endif %}
 {% endfor %}
 {% endraw %}
 ```
@@ -991,9 +993,9 @@ The following example shows how to use operators:
 {% set fruits = ['Apple', 'Banana', 'Orange', 'Kiwi'] %}
 
 {% for index in 0..fruits | length %}
-{% if invoices[index] is defined %}
-    {{ 'Name: ' ~ invoices[index] }}
-{% endif %}
+    {% if invoices[index] is defined %}
+        {{ 'Name: ' ~ invoices[index] }}
+    {% endif %}
 {% endfor %}
 {% endraw %}
 ```
@@ -1006,9 +1008,9 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% set invoices = ['1': 'Apple', '2': 'Banana', '3': 'Orange'] %}
 
 {% for position, name in invoices %}
-{% if position is odd %}
-    {{ name }}
-{% endif %}
+    {% if position is odd %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 {% endraw %}
 ```
@@ -1033,46 +1035,46 @@ More examples:
 ```twig
 {%- raw -%}
 {% if invoice is defined %}
-The invoice variable is defined
+    The invoice variable is defined
 {% endif %}
 
 {% if invoice is empty %}
-The invoice is null or is not defined
+    The invoice is null or is not defined
 {% endif %}
 
 {% for key, name in [1: 'Apple', 2: 'Banana', 3: 'Orange'] %}
-{% if key is even %}
-    {{ name }}
-{% endif %}
+    {% if key is even %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 
 {% for key, name in [1: 'Apple', 2: 'Banana', 3: 'Orange'] %}
-{% if key is odd %}
-    {{ name }}
-{% endif %}
+    {% if key is odd %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 
 {% for key, name in [1: 'Apple', 2: 'Banana', 'third': 'Orange'] %}
-{% if key is numeric %}
-    {{ name }}
-{% endif %}
+    {% if key is numeric %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 
 {% set invoices = [1: 'Apple', 2: 'Banana'] %}
 {% if invoices is iterable %}
-{% for invoice in invoices %}
-    ...
-{% endfor %}
+    {% for invoice in invoices %}
+        ...
+    {% endfor %}
 {% endif %}
 
 {% set world = 'hello' %}
 {% if world is sameas('hello') %}
-{{ 'it's hello' }}
+    {{ 'it's hello' }}
 {% endif %}
 
 {% set external = false %}
 {% if external is type('boolean') %}
-{{ 'external is false or true' }}
+    {{ 'external is false or true' }}
 {% endif %}
 {% endraw %}
 ```
@@ -1084,16 +1086,16 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {%- raw -%}
 {# Macro 'display a list of links to related topics' #}
 {%- macro related_bar(related_links) %}
-<ul>
-    {%- for link in related_links %}
-    <li>
-        <a href='{{ url(link.url) }}' 
-           title='{{ link.title|striptags }}'>
-            {{ link.text }}
-        </a>
-    </li>
-    {%- endfor %}
-</ul>
+    <ul>
+        {%- for link in related_links %}
+        <li>
+            <a href='{{ url(link.url) }}' 
+               title='{{ link.title|striptags }}'>
+                {{ link.text }}
+            </a>
+        </li>
+        {%- endfor %}
+    </ul>
 {%- endmacro %}
 
 {# Print related links #}
@@ -1111,20 +1113,20 @@ When calling macros, parameters can be passed by name:
 ```twig
 {%- raw -%}
 {%- macro error_messages(message, field, type) %}
-<div>
-    <span class='error-type'>{{ type }}</span>
-    <span class='error-field'>{{ field }}</span>
-    <span class='error-message'>{{ message }}</span>
-</div>
+    <div>
+        <span class='error-type'>{{ type }}</span>
+        <span class='error-field'>{{ field }}</span>
+        <span class='error-message'>{{ message }}</span>
+    </div>
 {%- endmacro %}
 
 {# Call the macro #}
 {{ 
-error_messages(
-    'type': 'Invalid', 
-    'message': 'The name not invalid', 
-    'field': 'name'
-) 
+    error_messages(
+        'type': 'Invalid', 
+        'message': 'The name not invalid', 
+        'field': 'name'
+    ) 
 }}
 {% endraw %}
 ```
@@ -1134,7 +1136,7 @@ Macros can return values:
 ```twig
 {%- raw -%}
 {%- macro my_input(name, class) %}
-{% return text_field(name, 'class': class) %}
+    {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
 {# Call the macro #}
@@ -1147,7 +1149,7 @@ And receive optional parameters:
 ```twig
 {%- raw -%}
 {%- macro my_input(name, class='input-text') %}
-{% return text_field(name, 'class': class) %}
+    {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
 {# Call the macro #}
@@ -1165,28 +1167,28 @@ Volt is highly integrated with [Phalcon\Tag](/4.2/tag/), so it's easy to use the
 
 {{ form('products/save', 'method': 'post') }}
 
-<label for='name'>Name</label>
-{{ text_field('name', 'size': 32) }}
+    <label for='name'>Name</label>
+    {{ text_field('name', 'size': 32) }}
 
-<label for='type'>Type</label>
-{{ select({'type', productTypes, 'using': ['id', 'name']}) }}
+    <label for='type'>Type</label>
+    {{ select({'type', productTypes, 'using': ['id', 'name']}) }}
 
-<label for='type'>Section</label>
-{{ 
-    select(
-        [
-            'type', 
-            productSections, 
-            'using': ['id', 'name'], 
-            'useEmpty': true, 
-            'emptyText': '...', 
-            'emptyValue': '', 
-            'class': 'form-control'
-        ]
-    ) 
-}}
+    <label for='type'>Section</label>
+    {{ 
+        select(
+            [
+                'type', 
+                productSections, 
+                'using': ['id', 'name'], 
+                'useEmpty': true, 
+                'emptyText': '...', 
+                'emptyValue': '', 
+                'class': 'form-control'
+            ]
+        ) 
+    }}
 
-{{ submit_button('Send') }}
+    {{ submit_button('Send') }}
 
 {{ end_form() }}
 {% endraw %}
@@ -1199,16 +1201,16 @@ The following PHP is generated:
 
 <?php echo Phalcon\Tag::form(['products/save', 'method' => 'post']); ?>
 
-<label for='name'>Name</label>
-<?php echo Phalcon\Tag::textField(['name', 'size' => 32]); ?>
+    <label for='name'>Name</label>
+    <?php echo Phalcon\Tag::textField(['name', 'size' => 32]); ?>
 
-<label for='type'>Type</label>
-<?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
+    <label for='type'>Type</label>
+    <?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
 
-<label for='type'>Section</label>
-<?php echo Phalcon\Tag::select(['type', $productSections, 'using' => ['id', 'name'], 'useEmpty' => true, 'emptyText' => '...', 'emptyValue' => '', 'class' => 'form-control']); ?>
+    <label for='type'>Section</label>
+    <?php echo Phalcon\Tag::select(['type', $productSections, 'using' => ['id', 'name'], 'useEmpty' => true, 'emptyText' => '...', 'emptyValue' => '', 'class' => 'form-control']); ?>
 
-<?php echo Phalcon\Tag::submitButton('Send'); ?>
+    <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
 {%- raw -%}
 {{ end_form() }}
@@ -1267,8 +1269,8 @@ Also, Volt is integrated with [Phalcon\Mvc\View](/4.2/views/), you can play with
 {{ content() }}
 
 <div id='footer'>
-{{ partial('partials/footer') }}
-{{ partial('partials/footer', ['links': links]) }}
+    {{ partial('partials/footer') }}
+    {{ partial('partials/footer', ['links': links]) }}
 </div>
 {% endraw %}
 ```
@@ -1278,8 +1280,8 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 ```twig
 {%- raw -%}
 <div id='footer'>
-{% include 'partials/footer' %}
-{% include 'partials/footer' with ['links': links] %}
+    {% include 'partials/footer' %}
+    {% include 'partials/footer' with ['links': links] %}
 </div>
 {% endraw %}
 ```
@@ -1290,7 +1292,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 ```twig
 {%- raw -%}
 <div id='footer'>
-{% include 'partials/footer.volt' %}
+    {% include 'partials/footer.volt' %}
 </div>
 {% endraw %}
 ```
@@ -1311,24 +1313,24 @@ With template inheritance you can create base templates that can be extended by 
 {# templates/base.volt #}
 <!DOCTYPE html>
 <html>
-<head>
-    {% block head %}
-        <link rel='stylesheet' href='style.css' />
-    {% endblock %}
-
-    <title>{% block title %}{% endblock %} - My Webpage</title>
-</head>
-
-<body>
-    <div id='content'>{% block content %}{% endblock %}</div>
-
-    <div id='footer'>
-        {% block footer %}
-            &copy; Copyright 2012-present. 
-            All rights reserved.
+    <head>
+        {% block head %}
+            <link rel='stylesheet' href='style.css' />
         {% endblock %}
-    </div>
-</body>
+
+        <title>{% block title %}{% endblock %} - My Webpage</title>
+    </head>
+
+    <body>
+        <div id='content'>{% block content %}{% endblock %}</div>
+
+        <div id='footer'>
+            {% block footer %}
+                &copy; Copyright 2012-present. 
+                All rights reserved.
+            {% endblock %}
+        </div>
+    </body>
 </html>
 {% endraw %}
 ```
@@ -1344,8 +1346,8 @@ From other template we could extend the base template replacing the blocks:
 {% block head %}<style type='text/css'>.important { color: #336699; }</style>{% endblock %}
 
 {% block content %}
-<h1>Index</h1>
-<p class='important'>Welcome on my awesome homepage.</p>
+    <h1>Index</h1>
+    <p class='important'>Welcome on my awesome homepage.</p>
 {% endblock %}
 {% endraw %}
 ```
@@ -1355,23 +1357,23 @@ Not all blocks must be replaced at a child template, only those that are needed.
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <style type='text/css'>.important { color: #336699; }</style>
+    <head>
+        <style type='text/css'>.important { color: #336699; }</style>
 
-    <title>Index - My Webpage</title>
-</head>
+        <title>Index - My Webpage</title>
+    </head>
 
-<body>
-    <div id='content'>
-        <h1>Index</h1>
-        <p class='important'>Welcome on my awesome homepage.</p>
-    </div>
+    <body>
+        <div id='content'>
+            <h1>Index</h1>
+            <p class='important'>Welcome on my awesome homepage.</p>
+        </div>
 
-    <div id='footer'>
-        &copy; Copyright 2012-present. 
-        All rights reserved.
-    </div>
-</body>
+        <div id='footer'>
+            &copy; Copyright 2012-present. 
+            All rights reserved.
+        </div>
+    </body>
 </html>
 ```
 
@@ -1383,13 +1385,13 @@ Extended templates can extend other templates. The following example illustrates
 {# main.volt #}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-</head>
+    <head>
+        <title>Title</title>
+    </head>
 
-<body>
-    {% block content %}{% endblock %}
-</body>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
 </html>
 {% endraw %}
 ```
@@ -1403,7 +1405,7 @@ Template `layout.volt` extends `main.volt`
 
 {% block content %}
 
-<h1>Table of contents</h1>
+    <h1>Table of contents</h1>
 
 {% endblock %}
 {% endraw %}
@@ -1418,12 +1420,12 @@ Finally a view that extends `layout.volt`:
 
 {% block content %}
 
-{{ super() }}
+    {{ super() }}
 
-<ul>
-    <li>Some option</li>
-    <li>Some other option</li>
-</ul>
+    <ul>
+        <li>Some option</li>
+        <li>Some other option</li>
+    </ul>
 
 {% endblock %}
 {% endraw %}
@@ -1434,20 +1436,20 @@ Rendering `index.volt` produces:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-</head>
+    <head>
+        <title>Title</title>
+    </head>
 
-<body>
+    <body>
 
-    <h1>Table of contents</h1>
+        <h1>Table of contents</h1>
 
-    <ul>
-        <li>Some option</li>
-        <li>Some other option</li>
-    </ul>
+        <ul>
+            <li>Some option</li>
+            <li>Some other option</li>
+        </ul>
 
-</body>
+    </body>
 </html>
 ```
 
@@ -1465,10 +1467,10 @@ You can enable auto-escaping of all variables printed in a block using the autoe
 Manually escaped: {{ invoice.inv_title|e }}
 
 {% autoescape true %}
-Autoescaped: {{ invoice.inv_title }}
-{% autoescape false %}
-    No Autoescaped: {{ invoice.inv_title }}
-{% endautoescape %}
+    Autoescaped: {{ invoice.inv_title }}
+    {% autoescape false %}
+        No Autoescaped: {{ invoice.inv_title }}
+    {% endautoescape %}
 {% endautoescape %}
 {% endraw %}
 ```
@@ -1506,10 +1508,10 @@ The example below registers the function with an anonymous function. Here we use
 <?php
 
 $compiler->addFunction(
-'widget',
-function ($resolvedArgs, $exprArgs) {
-    return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
-}
+    'widget',
+    function ($resolvedArgs, $exprArgs) {
+        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
+    }
 );
 ```
 
@@ -1525,18 +1527,18 @@ You can also treat the arguments independently and also check for unresolved par
 <?php
 
 $compiler->addFunction(
-'repeat',
-function ($resolvedArgs, $exprArgs) use ($compiler) {
-    $firstArgument = $compiler->expression($exprArgs[0]['expr']);
+    'repeat',
+    function ($resolvedArgs, $exprArgs) use ($compiler) {
+        $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
-    if (isset($exprArgs[1])) {
-        $secondArgument = $compiler->expression($exprArgs[1]['expr']);
-    } else {
-        $secondArgument = '10';
+        if (isset($exprArgs[1])) {
+            $secondArgument = $compiler->expression($exprArgs[1]['expr']);
+        } else {
+            $secondArgument = '10';
+        }
+
+        return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
     }
-
-    return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
-}
 );
 ```
 
@@ -1552,14 +1554,14 @@ You can also check the availability of functions in your system and call them if
 <?php
 
 $compiler->addFunction(
-'contains_text',
-function ($resolvedArgs, $exprArgs) {
-    if (true === function_exists('mb_stripos')) {
-        return 'mb_stripos(' . $resolvedArgs . ')';
-    } else {
-        return 'stripos(' . $resolvedArgs . ')';
+    'contains_text',
+    function ($resolvedArgs, $exprArgs) {
+        if (true === function_exists('mb_stripos')) {
+            return 'mb_stripos(' . $resolvedArgs . ')';
+        } else {
+            return 'stripos(' . $resolvedArgs . ')';
+        }
     }
-}
 );
 ```
 
@@ -1588,10 +1590,10 @@ Add a new filter called `int`:
 <?php
 
 $compiler->addFilter(
-'int',
-function ($resolvedArgs, $exprArgs) {
-    return 'intval(' . $resolvedArgs . ')';
-}
+    'int',
+    function ($resolvedArgs, $exprArgs) {
+        return 'intval(' . $resolvedArgs . ')';
+    }
 );
 ```
 
@@ -1615,12 +1617,12 @@ namespace MyApp\View\Extensions;
 
 class PhpFunctionExtension
 {
-public function compileFunction(string $name, string $arguments)
-{
-    if (true === function_exists($name)) {
-        return $name . '('. $arguments . ')';
+    public function compileFunction(string $name, string $arguments)
+    {
+        if (true === function_exists($name)) {
+            return $name . '('. $arguments . ')';
+        }
     }
-}
 }
 ```
 
@@ -1634,7 +1636,7 @@ Volt extensions must be in registered in the compiler making them available in c
 use MyApp\View\Extensions\PhpFunctionExtension;
 
 $compiler->addExtension(
-new PhpFunctionExtension()
+    new PhpFunctionExtension()
 );
 ```
 
@@ -1667,16 +1669,16 @@ Registers an extension
 
 ```php
 public function addFilter(
-string $name, 
-mixed definition
+    string $name, 
+    mixed definition
 ): Compiler
 ```
 Register a new filter
 
 ```php
 public function addFunction(
-string $name, 
-mixed $definition
+    string $name, 
+    mixed $definition
 ): Compiler
 ```
 Register a new function
@@ -1688,8 +1690,8 @@ Resolves attribute reading
 
 ```php
 public function compile(
-string $templatePath, 
-bool $extendsMode = false
+    string $templatePath, 
+    bool $extendsMode = false
 )
 ```
 Compiles a template into a file applying the compiler options. This method does not return the compiled path if the template was not compiled
@@ -1702,8 +1704,8 @@ require $compiler->getCompiledTemplatePath();
 
 ```php
 public function compileAutoEscape(
-array $statement, 
-bool $extendsMode
+    array $statement, 
+    bool $extendsMode
 ): string
 ```
 Compiles a "autoescape" statement returning PHP code
@@ -1713,8 +1715,8 @@ Compiles a "autoescape" statement returning PHP code
  * @deprecated Will be removed in 5.0
  */
 public function compileCache(
-array $statement, 
-bool $extendsMode = false
+    array $statement, 
+    bool $extendsMode = false
 ): string
 ```
 (DEPRECATED)
@@ -1727,8 +1729,8 @@ Compiles calls to macros
 
 ```php
 public function compileCase(
-array $statement, 
-bool $caseClause = true
+    array $statement, 
+    bool $caseClause = true
 ): string
 ```
 Compiles a `case`/`default` clause returning PHP code
@@ -1750,24 +1752,24 @@ Compiles a `elseif` statement returning PHP code
 
 ```php
 public function compileFile(
-string $path, 
-string $compiledPath, 
-bool $extendsMode = false
+    string $path, 
+    string $compiledPath, 
+    bool $extendsMode = false
 ): string | array
 ```
 Compiles a template into a file also creating the destination path
 
 ```php
 $compiler->compileFile(
-"views/layouts/main.volt",
-"views/layouts/main.volt.php"
+    "views/layouts/main.volt",
+    "views/layouts/main.volt.php"
 );
 ```
 
 ```php
 public function compileForeach(
-array $statement, 
-bool $extendsMode = false
+    array $statement, 
+    bool $extendsMode = false
 ): string
 ```
 Compiles a `foreach` statement returning PHP code
@@ -1779,8 +1781,8 @@ Compiles a `forelse` statement returning PHP code
 
 ```php
 public function compileIf(
-array $statement, 
-bool $extendsMode = false
+    array $statement, 
+    bool $extendsMode = false
 ): string
 ```
 Compiles a `if` statement returning PHP code
@@ -1792,8 +1794,8 @@ Compiles a `include` statement returning PHP code
 
 ```php
 public function compileMacro(
-array $statement, 
-bool $extendsMode
+    array $statement, 
+    bool $extendsMode
 ): string
 ```
 Compiles a macro
@@ -1810,8 +1812,8 @@ Compiles a setter statement (assignment of value to variable) returning PHP code
 
 ```php
 public function compileString(
-string $viewCode, 
-bool $extendsMode = false
+    string $viewCode, 
+    bool $extendsMode = false
 ): string
 ```
 Compiles a template into a string
@@ -1822,8 +1824,8 @@ echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
 
 ```php
 public function compileSwitch(
-array $statement, 
-bool $extendsMode = false
+    array $statement, 
+    bool $extendsMode = false
 ): string
 ```
 Compiles a `switch` statement returning PHP code
@@ -1835,8 +1837,8 @@ Resolves an expression node in an AST volt tree
 
 ```php
 final public function fireExtensionEvent(
-string $name, 
-array $arguments = null
+    string $name, 
+    array $arguments = null
 )
 ```
 
@@ -1892,7 +1894,7 @@ Parses a Volt template returning its intermediate representation
 
 ```php
 print_r(
-$compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
+    $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
 );
 ```
 
@@ -1926,6 +1928,7 @@ The following compilation [events](/4.2/events/) are available to be implemented
 | `resolveExpression` | Triggered before trying to compile any expression. This allows the developer to override operators     |
 | `compileStatement`  | Triggered before trying to compile any statement. This allows the developer to override any statement |
 
+
 ## Services
 If a service container (di.md) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
 
@@ -1948,9 +1951,9 @@ use Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
 
 $compiler = new VoltCompiler();
 $compiler->setOptions(
-[
-    // ...
-]
+    [
+        // ...
+    ]
 );
 ```
 
@@ -1960,16 +1963,16 @@ Compilation of templates or strings:
 <?php
 
 echo $compiler->compileString(
-"{{ 'hello' }}"
+    "{{ 'hello' }}"
 );
 
 $compiler->compileFile(
-'layouts/main.volt',
-'cache/layouts/main.volt.php'
+    'layouts/main.volt',
+    'cache/layouts/main.volt.php'
 );
 
 $compiler->compile(
-'layouts/main.volt'
+    'layouts/main.volt'
 );
 ```
 
@@ -1999,21 +2002,21 @@ $whitelist   = ['.', '..', '.gitignore'];
 $path        = appPath('storage/cache');
 $dirIterator = new RecursiveDirectoryIterator($path);
 $iterator    = new RecursiveIteratorIterator(
-$dirIterator,
-RecursiveIteratorIterator::CHILD_FIRST
+    $dirIterator,
+    RecursiveIteratorIterator::CHILD_FIRST
 );
 
 foreach ($iterator as $file) {
-if (true !== $file->isDir() && 
-    true !== in_array($file->getFilename(), $whitelist)) {
-    $fileList[] = $file->getPathname();
-}
+    if (true !== $file->isDir() && 
+        true !== in_array($file->getFilename(), $whitelist)) {
+        $fileList[] = $file->getPathname();
+    }
 }
 
 echo sprintf('Found %s files', count($fileList)) . PHP_EOL;
 foreach ($fileList as $file) {
-echo '.';
-unlink($file);
+    echo '.';
+    unlink($file);
 }
 
 echo PHP_EOL . 'Folder cleared' . PHP_EOL;
@@ -2041,9 +2044,9 @@ use function in_array;
 use function substr;
 
 if (php_sapi_name() !== "cli") {
-throw new Exception(
-    'You need to run this script from the command line'
-);
+    throw new Exception(
+        'You need to run this script from the command line'
+    );
 }
 
 $bootstrap = new Web();
@@ -2057,21 +2060,21 @@ $whitelist   = ['.', '..', '.gitignore'];
 $path        = $viewPath;
 $dirIterator = new RecursiveDirectoryIterator($path);
 $iterator    = new RecursiveIteratorIterator(
-$dirIterator,
-RecursiveIteratorIterator::CHILD_FIRST
+    $dirIterator,
+    RecursiveIteratorIterator::CHILD_FIRST
 );
 
 foreach ($iterator as $file) {
-if (true !== $file->isDir() && 
-    true !== in_array($file->getFilename(), $whitelist)) {
-    $fileList[] = $file->getPathname();
-}
+    if (true !== $file->isDir() && 
+        true !== in_array($file->getFilename(), $whitelist)) {
+        $fileList[] = $file->getPathname();
+    }
 }
 
 echo sprintf('Found %s files', count($fileList)) . PHP_EOL;
 foreach ($fileList as $file) {
-echo '.';
-$volt->getCompiler()->compile($file);
+    echo '.';
+    $volt->getCompiler()->compile($file);
 }
 
 echo PHP_EOL . 'Templates compiled' . PHP_EOL;
@@ -2081,6 +2084,7 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Phosphorum](https://forum.phalcon.io), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
 * [Vökuró][vokuro], is another sample application that uses Volt, [GitHub](https://github.com/phalcon/vokuro)
+
 
 [abs]: https://php.net/manual/en/function.abs.php
 [addslashes]: https://php.net/manual/en/function.addslashes.php

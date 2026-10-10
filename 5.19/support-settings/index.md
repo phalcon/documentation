@@ -80,7 +80,7 @@ Read the current value of a setting:
 use Phalcon\Support\Settings;
 
 if (Settings::get('orm.dynamic_update')) {
-// The ORM is configured to issue partial UPDATE statements
+    // The ORM is configured to issue partial UPDATE statements
 }
 ```
 

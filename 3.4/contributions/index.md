@@ -15,15 +15,17 @@ Please take a moment to review this document in order to make the contribution p
 
 Following these guidelines, allows better communication, faster resolution of issues and moves the project forward.
 
+
 ## Contributions
 Contributions to Phalcon should be made in the form of [GitHub pull requests][ghpr]. Each pull request will be reviewed by a core contributor (someone with permission to merge pull requests). Based on the type and content of the pull request, it can either be merged immediately, put on hold if clarifications are needed, or rejected.
 
 Please ensure that you are sending your pull request to the correct branch and that you already have rebased your code.
 
+
 ## Questions and Support
 
-:::warning[NOTE]
-We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href='https://github.com/phalcon/cphalcon/discussions'>github discussions</a>.
+:::warning\[NOTE]
+We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the <a href="https://github.com/phalcon/cphalcon/discussions">github discussions</a>.
 :::
 
 ## Bug Report Checklist
@@ -31,6 +33,7 @@ We only accept bug reports, new feature requests and pull requests in GitHub. Fo
 - If you have found a bug, it is essential to add relevant information to reproduce it. Being able to reproduce a bug greatly reduces the time to investigate and fix it. This information should come in the form of a script, small application, or even a failing test. Please check [Submit Reproducible Test][srt] for more information.
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
 - If you're submitting a [Segmentation Fault][segfault] error, we would require a backtrace. Please check [Generating a Backtrace](#bug-report-generating-backtrace) for more information.
+
 
 ### Generating a backtrace
 Sometimes due to [Segmentation Fault][segfault] error, Phalcon could crash some of your web server processes. Please help us to find out the problem by adding a crash backtrace to your bug report.
@@ -41,6 +44,7 @@ Please follow this guides to understand how to generate the backtrace:
 * [Generating a backtrace, with a compiler, on Win32][gdb-howto-w32]
 * [Debugging Symbols][gdb-dbgsym]
 * [Building PHP][internals-build-php]
+
 
 ## Pull Request Checklist
 - Don't submit your pull requests to the `master` branch. Branch from the required branch and, if needed, rebase to the proper branch before submitting your pull request. If it doesn't merge cleanly with master you may be asked to rebase your changes
@@ -56,13 +60,16 @@ Before submit **new functionality**, please open a [NFR](/3.4/new-feature-reques
 - Unit Tests
 - Documentation or Usage Examples
 
+
 ## Getting Support
 If you have any questions about how to use Phalcon, please see the [support page][support].
+
 
 ## Requesting Features
 If you have any changes or new features in mind, please fill an [NFR](/3.4/new-feature-request/).
 
 Thanks!
+
 
 &lt;3 Phalcon Team
 

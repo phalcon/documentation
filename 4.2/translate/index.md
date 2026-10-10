@@ -30,39 +30,39 @@ use Phalcon\Translate\TranslateFactory;
 class UserController extends Controller
 {
 
-public function indexAction()
-{
-    $this->view->name = 'Mike';
-    $this->view->t    = $this->getTranslator();
-}
-
-/**
- * @return NativeArray
- */
-private function getTranslator(): NativeArray
-{
-    // Ask browser what is the best language
-    $language = $this->request->getBestLanguage();
-    $messages = [];
-
-    $translationFile = 'app/messages/' . $language . '.php';
-
-    if (true !== file_exists($translationFile)) {
-        $translationFile = 'app/messages/en.php';
+    public function indexAction()
+    {
+        $this->view->name = 'Mike';
+        $this->view->t    = $this->getTranslator();
     }
+    
+    /**
+     * @return NativeArray
+     */
+    private function getTranslator(): NativeArray
+    {
+        // Ask browser what is the best language
+        $language = $this->request->getBestLanguage();
+        $messages = [];
+        
+        $translationFile = 'app/messages/' . $language . '.php';
 
-    require $translationFile;
+        if (true !== file_exists($translationFile)) {
+            $translationFile = 'app/messages/en.php';
+        }
+        
+        require $translationFile;
 
-    $interpolator = new InterpolatorFactory();
-    $factory      = new TranslateFactory($interpolator);
-
-    return $factory->newInstance(
-        'array',
-        [
-            'content' => $messages,
-        ]
-    );
-}
+        $interpolator = new InterpolatorFactory();
+        $factory      = new TranslateFactory($interpolator);
+        
+        return $factory->newInstance(
+            'array',
+            [
+                'content' => $messages,
+            ]
+        );
+    }
 }
 ```
 
@@ -121,33 +121,33 @@ use Phalcon\Translate\TranslateFactory;
 
 class Locale extends Injectable
 {
-/**
- * @return NativeArray
- */
-public function getTranslator(): NativeArray
-{
-    // Ask browser what is the best language
-    $language = $this->request->getBestLanguage();
-    $messages = [];
+    /**
+     * @return NativeArray
+     */
+    public function getTranslator(): NativeArray
+    {
+        // Ask browser what is the best language
+        $language = $this->request->getBestLanguage();
+        $messages = [];
+        
+        $translationFile = 'app/messages/' . $language . '.php';
 
-    $translationFile = 'app/messages/' . $language . '.php';
+        if (true !== file_exists($translationFile)) {
+            $translationFile = 'app/messages/en.php';
+        }
+        
+        require $translationFile;
 
-    if (true !== file_exists($translationFile)) {
-        $translationFile = 'app/messages/en.php';
+        $interpolator = new InterpolatorFactory();
+        $factory      = new TranslateFactory($interpolator);
+        
+        return $factory->newInstance(
+            'array',
+            [
+                'content' => $messages,
+            ]
+        );
     }
-
-    require $translationFile;
-
-    $interpolator = new InterpolatorFactory();
-    $factory      = new TranslateFactory($interpolator);
-
-    return $factory->newInstance(
-        'array',
-        [
-            'content' => $messages,
-        ]
-    );
-}
 }
 ``` 
 
@@ -173,19 +173,19 @@ use Phalcon\Mvc\Controller;
  */
 class MyController extends Controller
 {
-public function indexAction()
-{
-    $name = 'Mike';
+    public function indexAction()
+    {
+        $name = 'Mike';
 
-    $text = $this->locale->_(
-        'hi-name',
-        [
-            'name' => $name,
-        ]
-    );
-
-    $this->view->text = $text;
-}
+        $text = $this->locale->_(
+            'hi-name',
+            [
+                'name' => $name,
+            ]
+        );
+        
+        $this->view->text = $text;
+    }
 }
 ```
 
@@ -203,7 +203,7 @@ and for Volt:
 
 ### Routing
 Some applications use the URL of the request to distinguish content based on different languages, in order to help with SEO. A sample URL is:
-```bash
+ ```bash
 https://mozilla.org/es-ES/firefox/
 ```
 
@@ -222,15 +222,15 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'content' => [
-    'hi'  => 'Hello',
-    'bye' => 'Good Bye',
-],
+    'content' => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
 ];
 
 $translator = $factory->newInstance('array', $options);
 ```
-
+ 
 ## Adapters
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
@@ -253,10 +253,10 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'content' => [
-    'hi'  => 'Hello',
-    'bye' => 'Good Bye',
-],
+    'content' => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
 ];
 
 $translator = $factory->newInstance('array', $options);
@@ -284,10 +284,10 @@ Each file contains PHP arrays, where key is the key of the translated string and
 
 // app/messages/en.php
 $messages = [
-'hi'      => 'Hello',
-'bye'     => 'Good Bye',
-'hi-name' => 'Hello %name%',
-'song'    => 'This song is %song%',
+    'hi'      => 'Hello',
+    'bye'     => 'Good Bye',
+    'hi-name' => 'Hello %name%',
+    'song'    => 'This song is %song%',
 ];
 ```
 
@@ -296,10 +296,10 @@ $messages = [
 
 // app/messages/fr.php
 $messages = [
-'hi'      => 'Bonjour',
-'bye'     => 'Au revoir',
-'hi-name' => 'Bonjour %name%',
-'song'    => 'La chanson est %song%',
+    'hi'      => 'Bonjour',
+    'bye'     => 'Au revoir',
+    'hi-name' => 'Bonjour %name%',
+    'song'    => 'La chanson est %song%',
 ];
 ```
 Creating this adapter can be achieved by using the [Translate Factory](#translate-factory), but you can instantiate it directly:
@@ -311,10 +311,10 @@ use Phalcon\Translate\Adapter\NativeArray;
 
 $interpolator = new InterpolatorFactory();
 $options      = [
-'content' => [
-    'hi'  => 'Hello',
-    'bye' => 'Good Bye',
-],
+    'content' => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
 ];
 
 $translator = new NativeArray($interpolator, $options);
@@ -334,11 +334,11 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'content'      => [
-    'hi'  => 'Hello',
-    'bye' => 'Good Bye',
-],
-'triggerError' => true,
+    'content'      => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
+    'triggerError' => true,
 ];
 
 $translator = $factory->newInstance('array', $options);
@@ -365,9 +365,9 @@ $factory      = new TranslateFactory($interpolator);
 
 // `sample-key`|`sample-translated-text`
 $options = [
-'content'   => '/path/to/translation-file.csv',
-'delimiter' => '|',
-'enclosure' => '`',
+    'content'   => '/path/to/translation-file.csv',
+    'delimiter' => '|',
+    'enclosure' => '`',
 ];
 
 $translator = $factory->newInstance('csv', $options);
@@ -384,9 +384,9 @@ use Phalcon\Translate\Adapter\Csv;
 
 $interpolator = new InterpolatorFactory();
 $options      = [
-'content'   => '/path/to/translation-file.csv',
-'delimiter' => '|',
-'enclosure' => '`',
+    'content'   => '/path/to/translation-file.csv',
+    'delimiter' => '|',
+    'enclosure' => '`',
 ];
 
 $translator = new Csv($interpolator, $options);
@@ -415,10 +415,10 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'locale'        => 'de_DE.UTF-8',
-'defaultDomain' => 'translations',
-'directory'     => '/path/to/application/locales',
-'category'      => LC_MESSAGES,
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
 ];
 
 $translator = $factory->newInstance('gettext', $options);
@@ -428,14 +428,14 @@ A sample directory structure for the translation files is:
 
 ```bash
 translations/
-en_US.UTF-8/
-    LC_MESSAGES/
-        translations.mo
-        translations.po
-de_DE.UTF-8
-    LC_MESSAGES/
-        translations.mo
-        translations.po
+    en_US.UTF-8/
+        LC_MESSAGES/
+            translations.mo
+            translations.po
+    de_DE.UTF-8
+        LC_MESSAGES/
+            translations.mo
+            translations.po
 ```
 
 Creating this adapter can be achieved by using the [Translate Factory](#translate-factory), but you can instantiate it directly:
@@ -447,14 +447,16 @@ use Phalcon\Translate\Adapter\Gettext;
 
 $interpolator = new InterpolatorFactory();
 $options      = [
-'locale'        => 'de_DE.UTF-8',
-'defaultDomain' => 'translations',
-'directory'     => '/path/to/application/locales',
-'category'      => LC_MESSAGES,
+    'locale'        => 'de_DE.UTF-8',
+    'defaultDomain' => 'translations',
+    'directory'     => '/path/to/application/locales',
+    'category'      => LC_MESSAGES,
 ];
 
 $translator = new Gettext($interpolator, $options);
 ```
+
+
 
 ## Custom 
 The [Phalcon\Translate\Adapter\AdapterInterface][adapterinterface] interface must be implemented in order to create your own translate adapters or extend the existing ones:
@@ -466,43 +468,43 @@ use Phalcon\Translate\Adapter\AdapterInterface;
 
 class MyTranslateAdapter implements AdapterInterface
 {
-/**
- * @param array $options
- */
-public function __construct(array $options);
+    /**
+     * @param array $options
+     */
+    public function __construct(array $options);
 
-/**
- * @param  string $translateKey
- * @param  array  $placeholders
- * 
- * @return string
- */
-public function t(string $translateKey, array $placeholders = []);
+    /**
+     * @param  string $translateKey
+     * @param  array  $placeholders
+     * 
+     * @return string
+     */
+    public function t(string $translateKey, array $placeholders = []);
+    
+    /**
+     * @param   string $translateKey
+     * @param   array  $placeholders
+     * 
+     * @return  string
+     */
+    public function _(
+        string $translateKey, 
+        array $placeholders = []
+    ): string;
 
-/**
- * @param   string $translateKey
- * @param   array  $placeholders
- * 
- * @return  string
- */
-public function _(
-    string $translateKey, 
-    array $placeholders = []
-): string;
+    /**
+     * @param   string $index
+     * @param   array  $placeholders
+     * 
+     * @return  string
+     */
+    public function query(string $index, array $placeholders = []): string;
 
-/**
- * @param   string $index
- * @param   array  $placeholders
- * 
- * @return  string
- */
-public function query(string $index, array $placeholders = []): string;
-
-/**
- * @param   string $index
- * @return  bool
- */
-public function exists(string $index): bool;
+    /**
+     * @param   string $index
+     * @return  bool
+     */
+    public function exists(string $index): bool;
 }
 ```
 
@@ -531,10 +533,10 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'defaultInterpolator' => 'indexedArray',
-'content'             => [
-    'hi-name' => 'Hello %1$s, it\'s %2$d o\'clock',
-],
+    'defaultInterpolator' => 'indexedArray',
+    'content'             => [
+        'hi-name' => 'Hello %1$s, it\'s %2$d o\'clock',
+    ],
 ];
 
 $translator = $factory->newInstance('array', $options);
@@ -553,9 +555,9 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'content' => [
-    'hi-name' => 'Hello %name%, good %time% !',
-],
+    'content' => [
+        'hi-name' => 'Hello %name%, good %time% !',
+    ],
 ];
 
 $translator = $factory->newInstance('array', $options);
@@ -563,19 +565,19 @@ $translator = $factory->newInstance('array', $options);
 $name = 'Henry';
 
 $translator->_(
-'hi-name',
-[
-    'name' => $name,
-    'time' => 'day',
-]
+    'hi-name',
+    [
+        'name' => $name,
+        'time' => 'day',
+    ]
 ); // Hello Henry, good day !
 
 $translator->_(
-'hi-name',
-[
-    'name' => $name,
-    'time' => 'night',
-]
+    'hi-name',
+    [
+        'name' => $name,
+        'time' => 'night',
+    ]
 ); // Hello Henry, good night !
 ```
 
@@ -592,10 +594,10 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $options = [
-'defaultInterpolator' => 'indexedArray',
-'content'             => [
-    'hi-name' => 'Hello %1$s, it\'s %2$d o\'clock',
-],
+    'defaultInterpolator' => 'indexedArray',
+    'content'             => [
+        'hi-name' => 'Hello %1$s, it\'s %2$d o\'clock',
+    ],
 ];
 
 $translator = $factory->newInstance('array', $options);
@@ -603,11 +605,11 @@ $translator = $factory->newInstance('array', $options);
 $name = 'Henry';
 
 $translator->_(
-'hi-name',
-[
-    $name,
-    8,
-]
+    'hi-name',
+    [
+        $name,
+        8,
+    ]
 ); // Hello Henry, it's 8 o'clock
 ```
 
@@ -627,13 +629,13 @@ $interpolator = new InterpolatorFactory();
 $factory      = new TranslateFactory($interpolator);
 
 $translator = $factory->newInstance(
-'array',
-[
-    'content' => [
-        'hi'  => 'Hello',
-        'bye' => 'Good Bye',
-    ],
-]
+    'array',
+    [
+        'content' => [
+            'hi'  => 'Hello',
+            'bye' => 'Good Bye',
+        ],
+    ]
 );
 ```
 

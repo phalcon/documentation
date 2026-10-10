@@ -17,9 +17,9 @@ Every responder implements `Phalcon\Contracts\ADR\Responder\Responder`, a single
 
 ```php
 public function __invoke(
-Phalcon\Http\RequestInterface $request,
-Phalcon\Http\ResponseInterface $response,
-Phalcon\Contracts\ADR\Payload\Payload $payload
+    Phalcon\Http\RequestInterface $request,
+    Phalcon\Http\ResponseInterface $response,
+    Phalcon\Contracts\ADR\Payload\Payload $payload
 ): Phalcon\Http\ResponseInterface;
 ```
 
@@ -62,7 +62,7 @@ The mapper ships with a default for every `Status::*` constant. Pass overrides t
 
 ```php
 $mapper = new StatusMapper([
-Status::ACCEPTED => 202,
+    Status::ACCEPTED => 202,
 ]);
 ```
 
@@ -75,9 +75,9 @@ Any status the mapper does not recognize falls back to `500`, never a silent `20
 ```php
 interface Formatter
 {
-public function accepts(string $acceptHeader): bool;
-public function contentType(): string;
-public function format(Phalcon\Contracts\ADR\Payload\Payload $payload): string;
+    public function accepts(string $acceptHeader): bool;
+    public function contentType(): string;
+    public function format(Phalcon\Contracts\ADR\Payload\Payload $payload): string;
 }
 ```
 
@@ -130,22 +130,22 @@ use Phalcon\Http\ResponseInterface;
 
 final class GetInvoices implements Action
 {
-public function __construct(
-    private ViewInvoice $domain,
-    private ViewResponder $responder
-) {
-}
+    public function __construct(
+        private ViewInvoice $domain,
+        private ViewResponder $responder
+    ) {
+    }
 
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    $payload = ($this->domain)(Input::fromRequest($request));
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        $payload = ($this->domain)(Input::fromRequest($request));
 
-    return ($this->responder->withTemplate('invoices/view'))(
-        $request,
-        new Response(),
-        $payload
-    );
-}
+        return ($this->responder->withTemplate('invoices/view'))(
+            $request,
+            new Response(),
+            $payload
+        );
+    }
 }
 ```
 
@@ -179,7 +179,7 @@ The status is mapped to an HTTP code exactly as `StatusResponder` maps it, so a 
 ```php
 interface Renderer
 {
-public function render(string $path, array $params = []): string;
+    public function render(string $path, array $params = []): string;
 }
 ```
 
@@ -195,15 +195,15 @@ use Twig\Environment;
 
 final class TwigRenderer implements Renderer
 {
-public function __construct(
-    private Environment $twig
-) {
-}
+    public function __construct(
+        private Environment $twig
+    ) {
+    }
 
-public function render(string $path, array $params = []): string
-{
-    return $this->twig->render($path . '.twig', $params);
-}
+    public function render(string $path, array $params = []): string
+    {
+        return $this->twig->render($path . '.twig', $params);
+    }
 }
 ```
 
@@ -214,13 +214,13 @@ use Phalcon\Contracts\View\Renderer;
 use Phalcon\Mvc\View\Simple;
 
 $container->set(
-Renderer::class,
-function () {
-    $simple = new Simple();
-    $simple->setViewsDir(__DIR__ . '/views/');
+    Renderer::class,
+    function () {
+        $simple = new Simple();
+        $simple->setViewsDir(__DIR__ . '/views/');
 
-    return $simple;
-}
+        return $simple;
+    }
 );
 ```
 
@@ -248,15 +248,15 @@ use Phalcon\Http\ResponseInterface;
 
 final class CsvResponder implements Responder
 {
-public function __invoke(
-    RequestInterface $request,
-    ResponseInterface $response,
-    Payload $payload
-): ResponseInterface {
-    return $response
-        ->setContentType('text/csv')
-        ->setContent($this->toCsv($payload->getResult()));
-}
+    public function __invoke(
+        RequestInterface $request,
+        ResponseInterface $response,
+        Payload $payload
+    ): ResponseInterface {
+        return $response
+            ->setContentType('text/csv')
+            ->setContent($this->toCsv($payload->getResult()));
+    }
 }
 ```
 

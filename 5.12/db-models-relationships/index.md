@@ -18,20 +18,20 @@ The following types of relationships are available:
 
 ```php
 hasOne(
-string|array $fields, 
-string $referenceModel, 
-string|array $referencedFields, 
-array $options = null
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
 )
 
 hasOneThrough(
-string|array $fields, 
-string $intermediateModel, 
-string|array $intermediateFields, 
-string|array $intermediateReferencedFields,
-string $referenceModel, 
-string|array $referencedFields, 
-array $options = null
+    string|array $fields, 
+    string $intermediateModel, 
+    string|array $intermediateFields, 
+    string|array $intermediateReferencedFields,
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
 )
 ```
 
@@ -39,10 +39,10 @@ array $options = null
 
 ```php
 hasMany(
-string|array $fields, 
-string $referenceModel, 
-string|array $referencedFields, 
-array options = null
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array options = null
 )
 ```
 
@@ -50,10 +50,10 @@ array options = null
 
 ```php
 belongsTo(
-string|array $fields, 
-string $referenceModel, 
-string|array $referencedFields, 
-array options = null
+    string|array $fields, 
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array options = null
 )
 ```
 
@@ -61,13 +61,13 @@ array options = null
 
 ```php
 hasManyToMany(
-string|array $fields, 
-string $intermediateModel, 
-string|array $intermediateFields, 
-string|array $intermediateReferencedFields,
-string $referenceModel, 
-string|array $referencedFields, 
-array $options = null
+    string|array $fields, 
+    string $intermediateModel, 
+    string|array $intermediateFields, 
+    string|array $intermediateReferencedFields,
+    string $referenceModel, 
+    string|array $referencedFields, 
+    array $options = null
 )
 ```
 
@@ -82,18 +82,18 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->hasOne(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'alias'    => 'customers',
-            'reusable' => true,
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasOne(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'alias'    => 'customers',
+                'reusable' => true,
+            ]
+        );
+    }
 }
 
 ```
@@ -124,25 +124,25 @@ The following schema shows 3 tables whose relations will serve us as an example 
 ```sql
 create table co_invoices
 (
-inv_id          int(10) auto_increment  primary key,
-inv_cst_id      int(10)      null,
-inv_status_flag tinyint(1)   null,
-inv_title       varchar(100) null,
-inv_total       float(10, 2) null,
-inv_created_at  datetime     null
+    inv_id          int(10) auto_increment  primary key,
+    inv_cst_id      int(10)      null,
+    inv_status_flag tinyint(1)   null,
+    inv_title       varchar(100) null,
+    inv_total       float(10, 2) null,
+    inv_created_at  datetime     null
 );
 
 create table co_invoices_x_products
 (
-ixp_inv_id      int(10),
-inv_prd_id      int(10)
+    ixp_inv_id      int(10),
+    inv_prd_id      int(10)
 );
 
 create table co_products
 (
-prd_id          int(10) auto_increment  primary key,
-prd_title       varchar(100) null,
-prd_price       float(10, 2) null
+    prd_id          int(10) auto_increment  primary key,
+    prd_title       varchar(100) null,
+    prd_price       float(10, 2) null
 );
 ```
 
@@ -164,38 +164,38 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'reusable' => true,
-            'alias'    => 'products',
-        ]
-    );
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
 
-    $this->hasMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        [
-            'reusable' => true,
-            'alias'    => 'invoicesProducts'
-        ]
-    );
-}
+        $this->hasMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            [
+                'reusable' => true,
+                'alias'    => 'invoicesProducts'
+            ]
+        );
+    }
 }
 ```
 
@@ -208,31 +208,31 @@ use Phalcon\Mvc\Model;
 
 class InvoicesProducts extends Model
 {
-public $ixp_inv_id;
-public $ixp_prd_id;
+    public $ixp_inv_id;
+    public $ixp_prd_id;
 
-public function initialize()
-{
-    $this->belongsTo(
-        'ixp_inv_id',
-        Invoices::class,
-        'inv_id',
-        [
-            'reusable' => true,
-            'alias'    => 'invoice'
-        ]
-    );
+    public function initialize()
+    {
+        $this->belongsTo(
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
+            [
+                'reusable' => true,
+                'alias'    => 'invoice'
+            ]
+        );
 
-    $this->belongsTo(
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'reusable' => true,
-            'alias'    => 'product'
-        ]
-    );
-}
+        $this->belongsTo(
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'product'
+            ]
+        );
+    }
 }
 ```
 
@@ -245,33 +245,33 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-public $prd_id;
-public $prd_title;
-public $prd_price;
-public $prd_created_at;
+    public $prd_id;
+    public $prd_title;
+    public $prd_price;
+    public $prd_created_at;
 
-public function initialize()
-{
-    $this->hasMany(
-        'prd_id',
-        InvoicesProducts::class,
-        'ixp_prd_id'
-    );
-
-    // Many to many -> Invoices
-    $this->hasManyToMany(
-        'prd_id',
-        InvoicesProducts::class,
-        'ixp_prd_id',
-        'ixp_inv_id',
-        Invoices::class,
-        'inv_id',
-        [
-            'reusable' => true,
-            'alias'    => 'invoices',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            'prd_id',
+            InvoicesProducts::class,
+            'ixp_prd_id'
+        );
+        
+        // Many to many -> Invoices
+        $this->hasManyToMany(
+            'prd_id',
+            InvoicesProducts::class,
+            'ixp_prd_id',
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
+            [
+                'reusable' => true,
+                'alias'    => 'invoices',
+            ]
+        );
+    }
 }
 ```
 
@@ -288,28 +288,28 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'reusable' => true,
-            'alias'    => 'products',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
+    }
 }
 ```
 
@@ -329,51 +329,51 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasMany(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'reusable' => true,
-            'alias'    => 'customersActive',
-            'params'   => [
-                'conditions' => 'cst_status_flag = :status:',
-                'bind'       => [
-                    'status' => 1,
-                 ]
-            ]
-        ]
-    );
-
-    $container = $this->getDI();
-
-    $this->hasMany(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'reusable' => true,
-            'alias'    => 'customersNearby',
-            'params'   => function() use ($container) {
-                return [
-                    'conditions' => 'cst_location = :location:',
+    public function initialize()
+    {
+        $this->hasMany(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+                'alias'    => 'customersActive',
+                'params'   => [
+                    'conditions' => 'cst_status_flag = :status:',
                     'bind'       => [
-                        'location' => $container->getShared('myLocationService')->myLocation,
+                        'status' => 1,
                      ]
-                ];
-            }
-        ]
-    );
-}
+                ]
+            ]
+        );
+
+        $container = $this->getDI();
+
+        $this->hasMany(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+                'alias'    => 'customersNearby',
+                'params'   => function() use ($container) {
+                    return [
+                        'conditions' => 'cst_location = :location:',
+                        'bind'       => [
+                            'location' => $container->getShared('myLocationService')->myLocation,
+                         ]
+                    ];
+                }
+            ]
+        );
+    }
 }
 ```
 
@@ -389,9 +389,9 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-public $prd_id;
-public $prd_type_flag;
-public $prd_name;
+    public $prd_id;
+    public $prd_type_flag;
+    public $prd_name;
 }
 ```
 
@@ -406,11 +406,11 @@ use Phalcon\Mvc\Model;
 
 class Parts extends Model
 {
-public $par_id;
-public $par_prd_id;
-public $par_par_id;
-public $par_type_flag;
-public $par_name;
+    public $par_id;
+    public $par_prd_id;
+    public $par_par_id;
+    public $par_type_flag;
+    public $par_name;
 }
 ```
 
@@ -427,28 +427,28 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-public $prd_id;
-public $prd_type_flag;
-public $prd_name;
-
-public function initialize()
-{
-    $this->hasOne(
-        [
-            'prd_id', 
-            'prd_type_flag'
-        ],
-        Parts::class,
-        [
-            'par_prd_id', 
-            'par_type_flag'
-        ],
-        [
-            'reusable' => true, // cache
-            'alias'    => 'parts',
-        ]
-    );
-}
+    public $prd_id;
+    public $prd_type_flag;
+    public $prd_name;
+    
+    public function initialize()
+    {
+        $this->hasOne(
+            [
+                'prd_id', 
+                'prd_type_flag'
+            ],
+            Parts::class,
+            [
+                'par_prd_id', 
+                'par_type_flag'
+            ],
+            [
+                'reusable' => true, // cache
+                'alias'    => 'parts',
+            ]
+        );
+    }
 }
 ```
 
@@ -470,16 +470,16 @@ You can use the magic method to access the relationship. Assigning an `alias` to
 <?php
 
 $customer = Customers::findFirst(
-[
-    'conditions' => 'cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 foreach ($customer->invoices as $invoice) {
-echo $invoice->inv_title;
+    echo $invoice->inv_title;
 }
 ```
 
@@ -489,20 +489,20 @@ or for a many-to-many relationship (see models above):
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 foreach ($invoice->invoicesProducts as $product) {
-echo $invoice->product->prd_name;
+    echo $invoice->product->prd_name;
 }
 
 foreach ($invoice->products as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 
@@ -515,16 +515,16 @@ You can access the same relationship by using a getter method, starting with _ge
 <?php
 
 $customer = Customers::findFirst(
-[
-    'conditions' => 'cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 foreach ($customer->getInvoices() as $invoice) {
-echo $invoice->inv_title;
+    echo $invoice->inv_title;
 }
 ```
 
@@ -534,20 +534,20 @@ or for a many-to-many relationship (see models above):
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 foreach ($invoice->getInvoiceProducts() as $product) {
-echo $invoice->product->prd_name;
+    echo $invoice->product->prd_name;
 }
 
 foreach ($invoice->getProducts() as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 This magic-getter also allows us to perform certain operations when accessing the relationship such as ordering the relationship:
@@ -556,48 +556,49 @@ This magic-getter also allows us to perform certain operations when accessing th
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 $products = $invoice->getProducts(
-[
-    'order' => 'prd_name',
-]
+    [
+        'order' => 'prd_name',
+    ]
 );
 foreach ($products as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 You can also add additional conditionals to the relationship:
+
 
 ```php
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 $products = $invoice->getProducts(
-[
-    'prd_created_at = :date:',
-    'bind' => [
-        'date' => '2019-12-25',
-    ],
-]
+    [
+        'prd_created_at = :date:',
+        'bind' => [
+            'date' => '2019-12-25',
+        ],
+    ]
 );
 
 foreach ($products as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 
@@ -607,39 +608,40 @@ To get the same records manually:
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
+
 $invoicesProducts = InvoicesProducts::find(
-[
-    'conditions' => 'ixp_inv_id = :invoiceId:',
-    'bind'       => [
-        'invoiceId' => $invoice->inv_id,
-    ],
-]
+    [
+        'conditions' => 'ixp_inv_id = :invoiceId:',
+        'bind'       => [
+            'invoiceId' => $invoice->inv_id,
+        ],
+    ]
 );
 
 $productIds = [];
 foreach ($invoicesProducts as $intermediate) {
-$productIds[] = $intermediate->ixp_prd_id;
+    $productIds[] = $intermediate->ixp_prd_id;
 }
 
 $products = Products::find(
-[
-    'conditions' => 'prd_id IN ({array:productIds})',
-    'bind'       => [
-        'productIds' => $productIds,,
-    ],
-]
+    [
+        'conditions' => 'prd_id IN ({array:productIds})',
+        'bind'       => [
+            'productIds' => $productIds,,
+        ],
+    ]
 );
 
 foreach ($products as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 
@@ -659,12 +661,12 @@ You can also use the `count` prefix to return an integer denoting the count of t
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 echo $invoice->countProducts();
@@ -677,16 +679,16 @@ You can access the same relationship by using `getRelated()` and defining which 
 <?php
 
 $customer = Customers::findFirst(
-[
-    'conditions' => 'cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 foreach ($customer->getRelated('invoices') as $invoice) {
-echo $invoice->inv_title;
+    echo $invoice->inv_title;
 }
 ```
 
@@ -696,16 +698,16 @@ or for a many-to-many relationship (see models above):
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 foreach ($invoice->getRelated('products') as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 The second parameter of `getRelated()` is an array that offers additional options to be set such as filtering and ordering.
@@ -714,26 +716,26 @@ The second parameter of `getRelated()` is an array that offers additional option
 <?php
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 
 $products = $invoice->getRelated(
-'products',
-[
-    'prd_created_at = :date:',
-    'bind' => [
-        'date' => '2019-12-25',
-    ],
-]
+    'products',
+    [
+        'prd_created_at = :date:',
+        'bind' => [
+            'date' => '2019-12-25',
+        ],
+    ]
 );
 
 foreach ($products as $product) {
-echo $invoice->prd_name;
+    echo $invoice->prd_name;
 }
 ```
 
@@ -744,12 +746,12 @@ You can set the same relationship by using `setRelated()` and defining which rel
 <?php
 
 $customer = Customers::findFirst(
-[
-    'conditions' => 'cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
-    ],
-]
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
 $invoice = new Invoice();
 $customer->setRelated('invoices', [$invoice]);
@@ -767,24 +769,24 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id'
-    );
-}
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id'
+        );
+    }
 }
 ```
 
@@ -799,28 +801,28 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'reusable' => true,
-            'alias'    => 'products',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
+    }
 }
 ```
 
@@ -835,34 +837,34 @@ use Phalcon\Mvc\Model;
 
 class Parts extends Model
 {
-public $par_id;
-public $par_prd_id;
-public $par_par_id;
-public $par_type_flag;
-public $par_name;
+    public $par_id;
+    public $par_prd_id;
+    public $par_par_id;
+    public $par_type_flag;
+    public $par_name;
 
-public function initialize()
-{
-    $this->hasMany(
-        'par_id',
-        Parts::class,
-        'par_par_id',
-        [
-            'reusable' => true,
-            'alias'    => 'children',
-        ]
-    );
+    public function initialize()
+    {
+        $this->hasMany(
+            'par_id',
+            Parts::class,
+            'par_par_id',
+            [
+                'reusable' => true,
+                'alias'    => 'children',
+            ]
+        );
 
-    $this->belongsTo(
-        'par_par_id',
-        Parts::class,
-        'par_id',
-        [
-            'reusable' => true,
-            'alias'    => 'parent',
-        ]
-    );
-}
+        $this->belongsTo(
+            'par_par_id',
+            Parts::class,
+            'par_id',
+            [
+                'reusable' => true,
+                'alias'    => 'parent',
+            ]
+        );
+    }
 }
 ```
 In the example above, we have a `Part` that has a relationship with one or more `Part` objects. Each `Part` can consist of other parts that construct it. As a result, we end up with a self-join relationship. For a telephone `Part` we have the following children:
@@ -906,18 +908,18 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->hasOne(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'alias'    => 'customers',
-            'reusable' => true,
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasOne(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'alias'    => 'customers',
+                'reusable' => true,
+            ]
+        );
+    }
 }
 
 ```
@@ -941,28 +943,28 @@ use Phalcon\Mvc\Model;
  */
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'reusable' => true,
-            'alias'    => 'products',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
+    }
 }
 ```
 
@@ -978,70 +980,70 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_id;
-public $inv_cst_id;
-public $inv_status_flag;
-public $inv_title;
-public $inv_total;
-public $inv_created_at;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->hasManyToMany(
-        'inv_id',
-        InvoicesProducts::class,
-        'ixp_inv_id',
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'reusable' => true,
-            'alias'    => 'products',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
+    }
 }
 
 class Companies extends Model
 {
-public function initialize()
-{
-    $this->hasMany(
-        'id',
-        Invoices::class,
-        'inv_id',
-        [
-            'alias' => 'Invoices',
-        ]
-    );
+    public function initialize()
+    {
+        $this->hasMany(
+            'id',
+            Invoices::class,
+            'inv_id',
+            [
+                'alias' => 'Invoices',
+            ]
+        );
 
-    $this->hasMany(
-        'id',
-        Invoices::class,
-        'inv_id',
-        [
-            'alias'  => 'InvoicesPaid',
-            'params' => [
-                'conditions' => "inv_status = 'paid'",
-            ],
-        ]
-    );
-
-    $this->hasMany(
-        'id',
-        Invoices::class,
-        'inv_id',
-        [
-            'alias'  => 'InvoicesUnpaid',
-            'params' => [
-                'conditions' => "inv_status <> :status:",
-                'bind'       => [
-                    'status' => 'unpaid',
+        $this->hasMany(
+            'id',
+            Invoices::class,
+            'inv_id',
+            [
+                'alias'  => 'InvoicesPaid',
+                'params' => [
+                    'conditions' => "inv_status = 'paid'",
                 ],
-            ],
-        ]
-    );
-}
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            Invoices::class,
+            'inv_id',
+            [
+                'alias'  => 'InvoicesUnpaid',
+                'params' => [
+                    'conditions' => "inv_status <> :status:",
+                    'bind'       => [
+                        'status' => 'unpaid',
+                    ],
+                ],
+            ]
+        );
+    }
 }
 ```
 
@@ -1051,30 +1053,30 @@ Additionally, you can use the parameters of `getInvoices()` or `getRelated()` on
 <?php
 
 $company = Companies::findFirst(
-[
-    'conditions' => 'id = :id:',
-    'bind'       => [
-        'id' => 1,
-    ],
-]
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 1,
+        ],
+    ]
 );
 *
 $unpaidInvoices = $company->InvoicesUnpaid;
 $unpaidInvoices = $company->getInvoicesUnpaid();
 $unpaidInvoices = $company->getRelated('InvoicesUnpaid');
 $unpaidInvoices = $company->getRelated(
-'Invoices', 
-[
-    'conditions' => "inv_status = 'paid'",
-]
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+    ]
 );
 
 $unpaidInvoices = $company->getRelated(
-'Invoices', 
-[
-    'conditions' => "inv_status = 'paid'",
-    'order'      => 'inv_created_date ASC',
-]
+    'Invoices', 
+    [
+        'conditions' => "inv_status = 'paid'",
+        'order'      => 'inv_created_date ASC',
+    ]
 );
 ```
 
@@ -1092,36 +1094,36 @@ use Phalcon\Mvc\Model;
 
 class InvoicesProducts extends Model
 {
-public $ixp_inv_id;
-public $ixp_prd_id;
+    public $ixp_inv_id;
+    public $ixp_prd_id;
 
-public function initialize()
-{
-    $this->belongsTo(
-        'ixp_inv_id',
-        Invoices::class,
-        'inv_id',
-        [
-            'alias'      => 'invoice',
-            'foreignKey' => true,
-            'reusable'   => true,
-        ]
-    );
+    public function initialize()
+    {
+        $this->belongsTo(
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
+            [
+                'alias'      => 'invoice',
+                'foreignKey' => true,
+                'reusable'   => true,
+            ]
+        );
 
-    $this->belongsTo(
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'alias'      => 'product',
-            'foreignKey' => [
-                'message' => 'The prd_id does not exist ' .
-                             'in the Products model',
-            ],
-            'reusable'   => true,
-        ]
-    );
-}
+        $this->belongsTo(
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'alias'      => 'product',
+                'foreignKey' => [
+                    'message' => 'The prd_id does not exist ' .
+                                 'in the Products model',
+                ],
+                'reusable'   => true,
+            ]
+        );
+    }
 }
 ```
 
@@ -1136,26 +1138,26 @@ use Phalcon\Mvc\Model;
 
 class Products extends Model
 {
-public $prd_id;
-public $prd_title;
-public $prd_price;
-public $prd_created_at;
+    public $prd_id;
+    public $prd_title;
+    public $prd_price;
+    public $prd_created_at;
 
-public function initialize()
-{
-    $this->hasMany(
-        'prd_id',
-        Products::class,
-        'ixp_prd_id',
-        [
-            'foreignKey' => [
-                'message' => 'The product cannot be deleted ' . 
-                             'because there are invoices ' .
-                             'attached to it',
-            ],
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            'prd_id',
+            Products::class,
+            'ixp_prd_id',
+            [
+                'foreignKey' => [
+                    'message' => 'The product cannot be deleted ' . 
+                                 'because there are invoices ' .
+                                 'attached to it',
+                ],
+            ]
+        );
+    }
 }
 ```
 
@@ -1170,37 +1172,37 @@ use Phalcon\Mvc\Model;
 
 class InvoicesProducts extends Model
 {
-public $ixp_inv_id;
-public $ixp_prd_id;
+    public $ixp_inv_id;
+    public $ixp_prd_id;
 
-public function initialize()
-{
-    $this->belongsTo(
-        'ixp_inv_id',
-        Invoices::class,
-        'inv_id',
-        [
-            'alias'      => 'invoice',
-            'foreignKey' => true,
-            'reusable'   => true,
-        ]
-    );
+    public function initialize()
+    {
+        $this->belongsTo(
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
+            [
+                'alias'      => 'invoice',
+                'foreignKey' => true,
+                'reusable'   => true,
+            ]
+        );
 
-    $this->belongsTo(
-        'ixp_prd_id',
-        Products::class,
-        'prd_id',
-        [
-            'alias'      => 'product',
-            'foreignKey' => [
-                'allowNulls' => true,
-                'message'    => 'The prd_id does not exist ' .
-                                'in the Products model',
-            ],
-            'reusable'   => true,
-        ]
-    );
-}
+        $this->belongsTo(
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'alias'      => 'product',
+                'foreignKey' => [
+                    'allowNulls' => true,
+                    'message'    => 'The prd_id does not exist ' .
+                                    'in the Products model',
+                ],
+                'reusable'   => true,
+            ]
+        );
+    }
 }
 ```
 
@@ -1220,24 +1222,24 @@ use Phalcon\Mvc\Model\Relation;
 
 class Products extends Model
 {
-public $prd_id;
-public $prd_title;
-public $prd_price;
-public $prd_created_at;
+    public $prd_id;
+    public $prd_title;
+    public $prd_price;
+    public $prd_created_at;
 
-public function initialize()
-{
-    $this->hasMany(
-        'prd_id',
-        Products::class,
-        'ixp_prd_id',
-        [
-            'foreignKey' => [
-                'action' => Relation::ACTION_CASCADE,
-            ],
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            'prd_id',
+            Products::class,
+            'ixp_prd_id',
+            [
+                'foreignKey' => [
+                    'action' => Relation::ACTION_CASCADE,
+                ],
+            ]
+        );
+    }
 }
 ```
 
@@ -1272,12 +1274,12 @@ Saving a record and its related records in a has-many relation:
 <?php
 
 $customer = Customers::findFirst(
-[
-    'conditions' => 'cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 1,
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ]
     ]
-]
 );
 
 $invoice1 = new Invoices();
@@ -1292,10 +1294,12 @@ $invoice2-> inv_title       = 'Invoice for ACME Inc. #2';
 $invoice2-> inv_total       = 200;
 $invoice2-> inv_created_at  = time();
 
+
 $customer->invoices = [
-$invoice1,
-$invoice2
+    $invoice1,
+    $invoice2
 ];
+
 
 $customer->save();
 ```
@@ -1325,18 +1329,18 @@ Instead of doing this:
 $invoices = $customer->getInvoices();
 
 foreach ($invoices as $invoice) {
-$invoice->inv_total      = 100;
-$invoice->inv_updated_at = time();
+    $invoice->inv_total      = 100;
+    $invoice->inv_updated_at = time();
 
-if (false === $invoice->update()) {
-    $messages = $invoice->getMessages();
+    if (false === $invoice->update()) {
+        $messages = $invoice->getMessages();
 
-    foreach ($messages as $message) {
-        echo $message;
+        foreach ($messages as $message) {
+            echo $message;
+        }
+
+        break;
     }
-
-    break;
-}
 }
 ```
 
@@ -1346,10 +1350,10 @@ you can do this:
 <?php
 
 $customer->getInvoices()->update(
-[
-    'inv_total'      => 100,
-    'inv_updated_at' => time(),
-]
+    [
+        'inv_total'      => 100,
+        'inv_updated_at' => time(),
+    ]
 );
 ```
 
@@ -1359,15 +1363,15 @@ $customer->getInvoices()->update(
 <?php
 
 $data = [
-'inv_total'      => 100,
-'inv_updated_at' => time(),
+    'inv_total'      => 100,
+    'inv_updated_at' => time(),
 ];
 
 $customer->getInvoices()->update(
-$data,
-function ($invoice) {
-    return ($invoice->inv_cst_id !== 1);
-}
+    $data,
+    function ($invoice) {
+        return ($invoice->inv_cst_id !== 1);
+    }
 );
 ```
 
@@ -1380,15 +1384,15 @@ Instead of doing this:
 $invoices = $customer->getInvoices();
 
 foreach ($invoices as $invoice) {
-if (false === $invoice->delete()) {
-    $messages = $invoice->getMessages();
+    if (false === $invoice->delete()) {
+        $messages = $invoice->getMessages();
 
-    foreach ($messages as $message) {
-        echo $message;
+        foreach ($messages as $message) {
+            echo $message;
+        }
+
+        break;
     }
-
-    break;
-}
 }
 ```
 
@@ -1418,11 +1422,12 @@ But unsafe for:
 <?php
 
 $customer->getInvoices()->delete(
-function ($invoice) {
-    return ($invoice->inv_total >= 0);
-}
+    function ($invoice) {
+        return ($invoice->inv_total >= 0);
+    }
 );
 ```
+
 
 ### Messages
 You can append messages from another model.
@@ -1433,19 +1438,20 @@ You can append messages from another model.
 $invoices = $customer->getInvoices();
 
 foreach ($invoices as $invoice) {
-if ( false === $invoice->save() ) {
-    $customer->appendMessagesFrom($invoice);
-}
+    if ( false === $invoice->save() ) {
+        $customer->appendMessagesFrom($invoice);
+    }
 }
 $messages = $customer->getMessages();
 foreach ($messages as $message) {
-echo $message;
-$metaData = $message->getMetadata();
-if ( true === isset($metaData['model']) ) {
-    echo $metaData['model'];
-}
+    echo $message;
+    $metaData = $message->getMetadata();
+    if ( true === isset($metaData['model']) ) {
+        echo $metaData['model'];
+    }
 }
 ```
+
 
 For better error reporting you can retrieve the name of the Model and Reference Model from the Message MetaData:
 
@@ -1454,19 +1460,20 @@ For better error reporting you can retrieve the name of the Model and Reference 
 
 $invoices = $customer->getInvoices();
 if ( false === $customer->save() ) {
-$messages = $customer->getMessages();
-foreach ($messages as $message) {
-    echo $message;
-    $metaData = $message->getMetadata();
-    if ( true === isset($metaData['model']) ) {
-        echo $metaData['model'];
+    $messages = $customer->getMessages();
+    foreach ($messages as $message) {
+        echo $message;
+        $metaData = $message->getMetadata();
+        if ( true === isset($metaData['model']) ) {
+            echo $metaData['model'];
+        }
+        if ( true === isset($metaData['referenceModel']) ) {
+            echo $metaData['referenceModel'];
+        }
     }
-    if ( true === isset($metaData['referenceModel']) ) {
-        echo $metaData['referenceModel'];
-    }
-}
 }
 ```
+
 
 [db-normalization]: https://en.wikipedia.org/wiki/Database_normalization
 [mvc-model]: /5.12/api/phalcon_mvc/#mvcmodel

@@ -36,10 +36,10 @@ $container  = new Di();
 $tagFactory = new TagFactory();
 
 $container->set(
-'assets',
-function () use ($tagFactory) {
-    return new Manager($tagFactory);
-}
+    'assets',
+    function () use ($tagFactory) {
+        return new Manager($tagFactory);
+    }
 )
 ```
 
@@ -47,7 +47,7 @@ If you do use the [Phalcon\Di\FactoryDefault][di-factorydefault], the [Phalcon\H
 
 ## Assets
 Assets can be added to the manager or a collection using the Asset related classes. The [Phalcon\Assets\Asset][asset] class. The object accepts the necessary data to create the asset. 
-
+ 
 **type**
 
 can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
@@ -76,6 +76,7 @@ version of the asset
 
 let the component auto version this asset or not
 
+
 Each asset has a unique key assigned to it. The key is computed using `sha256` and it is calculated as: 
 
 ```php
@@ -90,13 +91,13 @@ This ensures uniqueness and does not duplicate assets in the asset manager.
 use Phalcon\Assets\Asset;
 
 $asset = new Asset(
-'css',
-'css/bootstrap.css',
-true,
-null,
-[],
-'1.0',
-true
+    'css',
+    'css/bootstrap.css',
+    true,
+    null,
+    [],
+    '1.0',
+    true
 );
 ```
 
@@ -109,12 +110,12 @@ You can also use the [Phalcon\Assets\Asset\Css][asset-css] class to create a CSS
 use Phalcon\Assets\Asset\Css;
 
 $asset = new Css(
-'css/bootstrap.css',
-true,
-null,
-[],
-'1.0',
-true
+    'css/bootstrap.css',
+    true,
+    null,
+    [],
+    '1.0',
+    true
 );
 ```
 
@@ -127,12 +128,12 @@ You can also use the [Phalcon\Assets\Asset\Js][asset-js] class to create a JS as
 use Phalcon\Assets\Asset\Js;
 
 $asset = new Js(
-'js/bootstrap.js',
-true,
-null,
-[],
-'1.0',
-true
+    'js/bootstrap.js',
+    true,
+    null,
+    [],
+    '1.0',
+    true
 );
 ```
 
@@ -142,7 +143,7 @@ There are times that the application needs generated CSS or JS to be injected in
 **type**
 
 can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component.
-
+ 
 **content**
 
 the content to be injected
@@ -150,7 +151,7 @@ the content to be injected
 **filter**
 
 any filter attached to this asset
-
+ 
 **attributes**
 
 attributes relative to the asset
@@ -161,8 +162,8 @@ attributes relative to the asset
 use Phalcon\Assets\Inline;
 
 $asset = new Inline(
-'css',
-'.spinner {color: blue; }'
+    'css',
+    '.spinner {color: blue; }'
 );
 ```
 #### CSS
@@ -174,7 +175,7 @@ You can also use the [Phalcon\Assets\Inline\Css][asset-inline-css] class to crea
 use Phalcon\Assets\Inline\Css;
 
 $asset = new Css(
-'.spinner {color: blue; }'
+    '.spinner {color: blue; }'
 );
 ```
 
@@ -187,7 +188,7 @@ You can also use the [Phalcon\Assets\Inline\Js][asset-inline-js] class to create
 use Phalcon\Assets\Asset\Js;
 
 $asset = new Js(
-'alert("hello");'
+    'alert("hello");'
 );
 ```
 
@@ -205,15 +206,15 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $this->assets->addCss('css/style.css');
-        $this->assets->addCss('css/index.css');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            $this->assets->addCss('css/style.css');
+            $this->assets->addCss('css/index.css');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 
 ```
@@ -231,14 +232,14 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    $this->assets->addCss('css/style.css');
-    $this->assets->addCss('css/index.css');
+    public function index()
+    {
+        $this->assets->addCss('css/style.css');
+        $this->assets->addCss('css/index.css');
 
-    $this->assets->addJs('js/jquery.js');
-    $this->assets->addJs('js/bootstrap.min.js');
-}
+        $this->assets->addJs('js/jquery.js');
+        $this->assets->addJs('js/bootstrap.min.js');
+    }
 }
 ```
 
@@ -254,20 +255,20 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    $css1 = new Css('css/style.css');
-    $css2 = new Css('css/index.css');
+    public function index()
+    {
+        $css1 = new Css('css/style.css');
+        $css2 = new Css('css/index.css');
+        
+        $this->assets->addAsset($css1);
+        $this->assets->addAssetByType('css', $css2);
 
-    $this->assets->addAsset($css1);
-    $this->assets->addAssetByType('css', $css2);
-
-    $js1 = new Js('js/jquery.js');
-    $js2 = new Js('js/bootstrap.min.js');
-
-    $this->assets->addAsset($js1);
-    $this->assets->addAssetByType('js', $js2);
-}
+        $js1 = new Js('js/jquery.js');
+        $js2 = new Js('js/bootstrap.min.js');
+        
+        $this->assets->addAsset($js1);
+        $this->assets->addAssetByType('js', $js2);
+    }
 }
 ```
 
@@ -287,18 +288,18 @@ $assetCss = new Inline('css', $css};
 $assetJs  = new Inline('js', $js};
 
 $manager
-->addInlineCode($assetCss)
-->addInlineCode($assetJs)
+    ->addInlineCode($assetCss)
+    ->addInlineCode($assetJs)
 ;
 
 $manager
-->addInlineByType('css', $assetCss)
-->addInlineByType('js', $assetJs)
+    ->addInlineByType('css', $assetCss)
+    ->addInlineByType('js', $assetJs)
 ;
 
 $manager
-->addInlineCss($css)
-->addInlineJs($js)
+    ->addInlineCss($css)
+    ->addInlineJs($js)
 ;
 ```
 
@@ -314,13 +315,13 @@ The second parameter of `addCss()` and `addJs()` signifies whether asset is loca
 
 public function indexAction()
 {
-$this->assets->addCss(
-    '//cdn.assets.com/bootstrap/4/css/library.min.css', 
-    false
-);
+    $this->assets->addCss(
+        '//cdn.assets.com/bootstrap/4/css/library.min.css', 
+        false
+    );
 
-$this->assets->addCss('css/style.css', true);
-$this->assets->addCss('css/extra.css');
+    $this->assets->addCss('css/style.css', true);
+    $this->assets->addCss('css/extra.css');
 }
 ```
 
@@ -388,9 +389,9 @@ Collections can be URL-prefixed, allowing you to change the prefix easily based 
 $footerCollection = $this->assets->collection('footer');
 
 if ($config->environment === 'development') {
-$footerCollection->setPrefix('/');
+    $footerCollection->setPrefix('/');
 } else {
-$footerCollection->setPrefix('http:://cdn.example.com/');
+    $footerCollection->setPrefix('http:://cdn.example.com/');
 }
 
 $footerCollection->addJs('js/jquery.js');
@@ -403,12 +404,12 @@ You can also chain the method calls if that syntax is more preferable:
 <?php
 
 $headerCollection = $this
-->assets
-->collection('header')
-->setPrefix('https://cdn.example.com/')
-->setLocal(false)
-->addJs('js/jquery.js')
-->addJs('js/bootstrap.min.js');
+    ->assets
+    ->collection('header')
+    ->setPrefix('https://cdn.example.com/')
+    ->setLocal(false)
+    ->addJs('js/jquery.js')
+    ->addJs('js/bootstrap.min.js');
 ```
 
 ### Built-In Filters
@@ -430,39 +431,39 @@ use Phalcon\Assets\FilterInterface;
  */
 class CssYUICompressor implements FilterInterface
 {
-protected $options;
+    protected $options;
 
-/**
- * CssYUICompressor constructor
- *
- * @param array $options
- */
-public function __construct(array $options)
-{
-    $this->options = $options;
-}
+    /**
+     * CssYUICompressor constructor
+     *
+     * @param array $options
+     */
+    public function __construct(array $options)
+    {
+        $this->options = $options;
+    }
 
-/**
- * @param string $contents
- *
- * @return string
- */
-public function filter($contents)
-{
-    file_put_contents('temp/my-temp-1.css', $contents);
+    /**
+     * @param string $contents
+     *
+     * @return string
+     */
+    public function filter($contents)
+    {
+        file_put_contents('temp/my-temp-1.css', $contents);
 
-    system(
-        $this->options['java-bin'] .
-        ' -jar ' .
-        $this->options['yui'] .
-        ' --type css ' .
-        'temp/my-temp-file-1.css ' .
-        $this->options['extra-options'] .
-        ' -o temp/my-temp-file-2.css'
-    );
+        system(
+            $this->options['java-bin'] .
+            ' -jar ' .
+            $this->options['yui'] .
+            ' --type css ' .
+            'temp/my-temp-file-1.css ' .
+            $this->options['extra-options'] .
+            ' -o temp/my-temp-file-2.css'
+        );
 
-    return file_get_contents('temp/my-temp-file-2.css');
-}
+        return file_get_contents('temp/my-temp-file-2.css');
+    }
 }
 ```
 
@@ -474,13 +475,13 @@ Usage:
 $css = $this->assets->get('head');
 
 $css->addFilter(
-new CssYUICompressor(
-    [
-        'java-bin'      => '/usr/local/bin/java',
-        'yui'           => '/some/path/yuicompressor-x.y.z.jar',
-        'extra-options' => '--charset utf8',
-    ]
-)
+    new CssYUICompressor(
+        [
+            'java-bin'      => '/usr/local/bin/java',
+            'yui'           => '/some/path/yuicompressor-x.y.z.jar',
+            'extra-options' => '--charset utf8',
+        ]
+    )
 );
 ```
 
@@ -498,18 +499,18 @@ use Phalcon\Assets\FilterInterface;
  */
 class LicenseStamper implements FilterInterface
 {
-/**
- * Do the filtering
- *
- * @param string $contents
- * @return string
- */
-public function filter($contents)
-{
-    $license = '/* (c) 2019 Your Name Here */';
+    /**
+     * Do the filtering
+     *
+     * @param string $contents
+     * @return string
+     */
+    public function filter($contents)
+    {
+        $license = '/* (c) 2019 Your Name Here */';
 
-    return $license . PHP_EOL . PHP_EOL . $contents;
-}
+        return $license . PHP_EOL . PHP_EOL . $contents;
+    }
 }
 ```
 
@@ -538,17 +539,17 @@ Then in the views:
 
 ```php
 <html>
-<head>
-    <title>Some amazing website</title>
+    <head>
+        <title>Some amazing website</title>
 
-    <?php $this->assets->outputJs('headerJs'); ?>
-</head>
+        <?php $this->assets->outputJs('headerJs'); ?>
+    </head>
 
-<body>
-    <!-- ... -->
+    <body>
+        <!-- ... -->
 
-    <?php $this->assets->outputJs('footerJs'); ?>
-</body>
+        <?php $this->assets->outputJs('footerJs'); ?>
+    </body>
 <html>
 ```
 
@@ -556,21 +557,22 @@ Volt syntax:
 
 ```twig
 <html>
-<head>
-    <title>Some amazing website</title>
+    <head>
+        <title>Some amazing website</title>
 
-    {{ assets.outputCss('header') }}
-</head>
+        {{ assets.outputCss('header') }}
+    </head>
 
-<body>
-    <!-- ... -->
+    <body>
+        <!-- ... -->
 
-    {{ assets.outputJs('footer') }}
-</body>
+        {{ assets.outputJs('footer') }}
+    </body>
 <html>
 ```
 
 To output inline:
+
 
 ```php
 <?php
@@ -581,9 +583,9 @@ $assetCss = new Inline('css', $css};
 $assetJs  = new Inline('js', $js};
 
 $this
-->assets
-->addInlineCss($css)
-->addInlineJs($js)
+    ->assets
+    ->addInlineCss($css)
+    ->addInlineJs($js)
 ;
 ```
 
@@ -591,16 +593,16 @@ Then in the views:
 
 ```php
 <html>
-<head>
-    <title>Some amazing website</title>
-</head>
-<?php $this->assets->outputInlineCss(); ?>
-<body>
+    <head>
+        <title>Some amazing website</title>
+    </head>
+    <?php $this->assets->outputInlineCss(); ?>
+    <body>
+        
+        <!-- ... -->
 
-    <!-- ... -->
-
-    <?php $this->assets->outputInlineJs(); ?>
-</body>
+        <?php $this->assets->outputInlineJs(); ?>
+    </body>
 <html>
 ```
 
@@ -608,34 +610,34 @@ Volt syntax:
 
 ```twig
 <html>
-<head>
-    <title>Some amazing website</title>
+    <head>
+        <title>Some amazing website</title>
 
-    {{ assets.outputInlineCss() }}
-</head>
+        {{ assets.outputInlineCss() }}
+    </head>
 
-<body>
-    <!-- ... -->
+    <body>
+        <!-- ... -->
 
-    {{ assets.outputInlineJs() }}
-</body>
+        {{ assets.outputInlineJs() }}
+    </body>
 <html>
 ```
 The lines above will be translated to:
 
 ```html
 <html>
-<head>
-    <title>Some amazing website</title>
+    <head>
+        <title>Some amazing website</title>
 
-    <style>.spinner {color: blue; }</style>
-</head>
+        <style>.spinner {color: blue; }</style>
+    </head>
 
-<body>
-    <!-- ... -->
+    <body>
+        <!-- ... -->
 
-    <script type="application/javascript">alert("hello")</script>
-</body>
+        <script type="application/javascript">alert("hello")</script>
+    </body>
 <html>
 ```
 
@@ -651,10 +653,10 @@ $tagFactory   = new TagFactory();
 $jsCollection = $this->assets->collection('js');
 
 foreach ($jsCollection as $asset) {
-echo (string) $tagFactory
-    ->script()
-    ->add($asset->getPath())
-;
+    echo (string) $tagFactory
+        ->script()
+        ->add($asset->getPath())
+    ;
 }
 ```
 
@@ -665,10 +667,10 @@ There are times that you might need to implicitly output the output of the manag
 <?php
 
 $this
-->assets
-->useImplicitOutput(true)
-->addCss('css/style.css')
-->output()
+    ->assets
+    ->useImplicitOutput(true)
+    ->addCss('css/style.css')
+    ->output()
 ;
 ```
 
@@ -682,11 +684,11 @@ To add a version number to your assets, you need to add the version string while
 use Phalcon\Assets\Asset\Css;
 
 $asset = new Css(
-'css/bootstrap.css',
-true,
-null,
-[],
-'1.0'
+    'css/bootstrap.css',
+    true,
+    null,
+    [],
+    '1.0'
 );
 ```
 
@@ -706,12 +708,12 @@ You can also use the file time of the asset file to control the versioning of yo
 use Phalcon\Assets\Asset\Css;
 
 $asset = new Css(
-'css/bootstrap.css',
-true,
-null,
-[],
-null,
-true
+    'css/bootstrap.css',
+    true,
+    null,
+    [],
+    null,
+    true
 );
 ```
 The above will result in the following script as the output (assuming that your file was modified in May 20th 2019):
@@ -741,15 +743,15 @@ use Phalcon\Mvc\Controller;
  */
 class ControllerBase extends Controller
 {
-public function onConstruct()
-{
-    $this
-        ->assets
-        ->useImplicitOutput(false)
-        ->collection('global')
-        ->addJs('https://code.jquery.com/jquery-4.0.1.js', false, true)
-    ;
-}
+    public function onConstruct()
+    {
+        $this
+            ->assets
+            ->useImplicitOutput(false)
+            ->collection('global')
+            ->addJs('https://code.jquery.com/jquery-4.0.1.js', false, true)
+        ;
+    }
 }
 ```
 
@@ -765,14 +767,14 @@ Then we need to configure the routing:
 $router = new Phalcon\Mvc\Router();
 
 $router->addGet(
-'/assets/(css|js)/([\w.-]+)\.(css|js)',
-[
-    'controller' => 'assets',
-    'action'     => 'serve',
-    'type'       => 1,
-    'collection' => 2,
-    'extension'  => 3,
-]
+    '/assets/(css|js)/([\w.-]+)\.(css|js)',
+    [
+        'controller' => 'assets',
+        'action'     => 'serve',
+        'type'       => 1,
+        'collection' => 2,
+        'extension'  => 3,
+    ]
 );
 
 // ...
@@ -792,49 +794,49 @@ use Phalcon\Http\Response;
  */
 class AssetsController extends ControllerBase
 {
-public function serveAction(): Response
-{
-    // Getting a response instance
-    $response = new Response();
+    public function serveAction(): Response
+    {
+        // Getting a response instance
+        $response = new Response();
 
-    // Prepare output path
-    $collectionName = $this->dispatcher->getParam('collection');
-    $extension      = $this->dispatcher->getParam('extension');
-    $type           = $this->dispatcher->getParam('type');
-    $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
+        // Prepare output path
+        $collectionName = $this->dispatcher->getParam('collection');
+        $extension      = $this->dispatcher->getParam('extension');
+        $type           = $this->dispatcher->getParam('type');
+        $targetPath     = "assets/{$type}/{$collectionName}.{$extension}";
 
-    // Setting up the content type
-    $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
-    $response->setContentType($contentType, 'UTF-8');
+        // Setting up the content type
+        $contentType = $type == 'js' ? 'application/javascript' : 'text/css';
+        $response->setContentType($contentType, 'UTF-8');
 
-    // Check collection existence
-    if (!$this->assets->exists($collectionName)) {
-        return $response->setStatusCode(404, 'Not Found');
+        // Check collection existence
+        if (!$this->assets->exists($collectionName)) {
+            return $response->setStatusCode(404, 'Not Found');
+        }
+
+        // Setting up the Assets Collection
+        $collection = $this->assets
+            ->collection($collectionName)
+            ->setTargetUri($targetPath)
+            ->setTargetPath($targetPath);
+
+        // Store content to the disk and return fully qualified file path
+        $contentPath = $this->assets->output(
+            $collection,
+            function (array $parameters) {
+                return BASE_PATH . '/public/' . $parameters[0];
+            },
+            $type
+        );
+
+        // Set the content of the response
+        $response->setContent(
+            file_get_contents($contentPath)
+        );
+
+        // Return the response
+        return $response;
     }
-
-    // Setting up the Assets Collection
-    $collection = $this->assets
-        ->collection($collectionName)
-        ->setTargetUri($targetPath)
-        ->setTargetPath($targetPath);
-
-    // Store content to the disk and return fully qualified file path
-    $contentPath = $this->assets->output(
-        $collection,
-        function (array $parameters) {
-            return BASE_PATH . '/public/' . $parameters[0];
-        },
-        $type
-    );
-
-    // Set the content of the response
-    $response->setContent(
-        file_get_contents($contentPath)
-    );
-
-    // Return the response
-    return $response;
-}
 }
 ```
 
@@ -842,21 +844,21 @@ If precompiled assets exist in the file system they must be served directly by w
 
 ```nginx
 location ~ ^/assets/ {
-expires 1y;
-add_header Cache-Control public;
-add_header ETag "";
+    expires 1y;
+    add_header Cache-Control public;
+    add_header ETag "";
 
-# If the file exists as a static file serve it directly without
-# running all the other rewrite tests on it
-try_files $uri $uri/ @phalcon;
+    # If the file exists as a static file serve it directly without
+    # running all the other rewrite tests on it
+    try_files $uri $uri/ @phalcon;
 }
 
 location / {
-try_files $uri $uri/ @phalcon;
+    try_files $uri $uri/ @phalcon;
 }
 
 location @phalcon {
-rewrite ^(.*)$ /index.php?_url=$1;
+    rewrite ^(.*)$ /index.php?_url=$1;
 }
 
 ```

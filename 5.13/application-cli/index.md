@@ -57,9 +57,9 @@ use Throwable;
 
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp' => 'src/',
-]
+    [
+        'MyApp' => 'src/',
+    ]
 );
 $loader->register();
 
@@ -70,33 +70,33 @@ $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 
 $container->setShared('config', function () {
-return include 'app/config/config.php';
+    return include 'app/config/config.php';
 });
 
 $console = new Console($container);
 
 $arguments = [];
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 
 try {
-$console->handle($arguments);
+    $console->handle($arguments);
 } catch (PhalconException $e) {
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -111,9 +111,9 @@ that we need to instantiate to create a CLI application.
 ```php
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp' => 'src/',
-]
+    [
+        'MyApp' => 'src/',
+    ]
 );
 $loader->register();
 ```
@@ -151,10 +151,10 @@ object, set our default namespace, and then register it in the DI container.
 
 ```php
 $container->setShared(
-'config', 
-function () {
-    return include 'app/config/config.php';
-}
+    'config', 
+    function () {
+        return include 'app/config/config.php';
+    }
 );
 ```
 
@@ -185,13 +185,13 @@ need to pass.
 ```php
 $arguments = [];
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 ```
 
@@ -210,16 +210,16 @@ Our application will invoke the `UsersTask`, call the `recalculate` action and p
 
 ```php
 try {
-$console->handle($arguments);
+    $console->handle($arguments);
 } catch (PhalconException $e) {
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 
@@ -246,11 +246,11 @@ use Phalcon\Cli\Task;
 
 class MainTask extends Task
 {
-public function mainAction()
-{
-    // This is the default task and the default action
-    echo '000000' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        // This is the default task and the default action
+        echo '000000' . PHP_EOL;
+    }
 }
 ```
 
@@ -272,17 +272,17 @@ use Phalcon\Cli\Task;
 
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    // This is the default task and the default action
-    echo '000000' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        // This is the default task and the default action
+        echo '000000' . PHP_EOL;
+    }
 
-public function regenerateAction(int $count = 0)
-{
-    // This is the regenerate action
-    echo '111111' . PHP_EOL;
-}
+    public function regenerateAction(int $count = 0)
+    {
+        // This is the regenerate action
+        echo '111111' . PHP_EOL;
+    }
 }
 ```
 
@@ -314,15 +314,15 @@ use Phalcon\Cli\Task;
 
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    echo '000000' . PHP_EOL;
-}
+    public function mainAction()
+    {
+        echo '000000' . PHP_EOL;
+    }
 
-public function addAction(int $first, int $second)
-{
-    echo $first + $second . PHP_EOL;
-}
+    public function addAction(int $first, int $second)
+    {
+        echo $first + $second . PHP_EOL;
+    }
 }
 ```
 
@@ -348,10 +348,10 @@ use Phalcon\Cli\Task;
 
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    print_r( $this->dispatcher->getParams() );
-}
+    public function mainAction()
+    {
+        print_r( $this->dispatcher->getParams() );
+    }
 
 }
 ```
@@ -363,8 +363,8 @@ php cli.php users main additional parameters
 
 Array
 (
-[0] => additional
-[1] => parameters
+    [0] => additional
+    [1] => parameters
 )
 ```
 
@@ -399,25 +399,25 @@ use Phalcon\Cli\Task;
  */
 class UsersTask extends Task
 {
-public function mainAction()
-{
-    # This is the default task and the default action
-    echo '000000' . PHP_EOL;
+    public function mainAction()
+    {
+        # This is the default task and the default action
+        echo '000000' . PHP_EOL;
 
-    # Also handle the `print` action
-    $this->console->handle(
-        [
-            'task'   => 'main',
-            'action' => 'print',
-        ]
-    );
-}
+        # Also handle the `print` action
+        $this->console->handle(
+            [
+                'task'   => 'main',
+                'action' => 'print',
+            ]
+        );
+    }
 
-public function printAction()
-{
-    # Print action executed also
-    echo '444444' . PHP_EOL;
-}
+    public function printAction()
+    {
+        # Print action executed also
+        echo '444444' . PHP_EOL;
+    }
 }
 ```
 
@@ -449,9 +449,9 @@ use Throwable;
 
 $loader = new Loader();
 $loader->setNamespaces(
-[
-    'MyApp' => 'src/',
-]
+    [
+        'MyApp' => 'src/',
+    ]
 );
 $loader->register();
 
@@ -464,40 +464,40 @@ $container->setShared('dispatcher', $dispatcher);
 $console = new Console($container);
 
 $console->registerModules(
-[
-    'frontend' => [
-        'className' => BackendModule::class,
-        'path'      => './src/frontend/Module.php',
-    ],
-    'backend' => [
-        'className' => FrontendModule::class,
-        'path'      => './src/backend/Module.php',
-    ],
-]
+    [
+        'frontend' => [
+            'className' => BackendModule::class,
+            'path'      => './src/frontend/Module.php',
+        ],
+        'backend' => [
+            'className' => FrontendModule::class,
+            'path'      => './src/backend/Module.php',
+        ],
+    ]
 );
 
 $arguments = [];
 foreach ($argv as $k => $arg) {
-if ($k === 1) {
-    $arguments['task'] = $arg;
-} elseif ($k === 2) {
-    $arguments['action'] = $arg;
-} elseif ($k >= 3) {
-    $arguments['params'][] = $arg;
-}
+    if ($k === 1) {
+        $arguments['task'] = $arg;
+    } elseif ($k === 2) {
+        $arguments['action'] = $arg;
+    } elseif ($k >= 3) {
+        $arguments['params'][] = $arg;
+    }
 }
 
 try {
-$console->handle($arguments);
+    $console->handle($arguments);
 } catch (PhalconException $e) {
-fwrite(STDERR, $e->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $e->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Throwable $throwable) {
-fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
+    exit(1);
 } catch (Exception $exception) {
-fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-exit(1);
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    exit(1);
 }
 ```
 

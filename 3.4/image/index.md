@@ -11,6 +11,7 @@ version: "3.4"
 
 [Phalcon\Image](/3.4/api/phalcon_image/) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
+
 ## Adapters
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
@@ -19,26 +20,29 @@ This component makes use of adapters to encapsulate specific image manipulator p
 | [Phalcon\Image\Adapter\Gd](/3.4/api/phalcon_image/)      | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
 | [Phalcon\Image\Adapter\Imagick](/3.4/api/phalcon_image/) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
 
+
 ### Factory
 Loads an Image Adapter class using `adapter` option.
-
+ 
 ```php
 <?php
 
 use Phalcon\Image\Factory;
 
 $options = [
-'width'   => 200,
-'height'  => 200,
-'file'    => 'upload/test.jpg',
-'adapter' => 'imagick',
+    'width'   => 200,
+    'height'  => 200,
+    'file'    => 'upload/test.jpg',
+    'adapter' => 'imagick',
 ];
 
 $image = Factory::load($options);
 ```
 
+
 ### Implementing your own adapters
 The [Phalcon\Image\AdapterInterface](/3.4/api/phalcon_image/) interface must be implemented in order to create your own image adapters or extend the existing ones.
+
 
 ## Saving and rendering images
 Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
@@ -53,6 +57,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 // Overwrite the original image
 $image->save();
 ```
+
 
 ```php
 <?php
@@ -91,6 +96,7 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 $image->save('image.jpg', 80);
 ```
 
+
 ## Resizing images
 There are several modes of resizing:
 
@@ -102,6 +108,7 @@ There are several modes of resizing:
 - `\Phalcon\Image::INVERSE`
 - `\Phalcon\Image::PRECISE`
 
+
 ### `\Phalcon\Image::WIDTH`
 The height will automatically be generated to keep the proportions the same; if you specify a height, it will be ignored.
 
@@ -111,13 +118,14 @@ The height will automatically be generated to keep the proportions the same; if 
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $image->resize(
-300,
-null,
-\Phalcon\Image::WIDTH
+    300,
+    null,
+    \Phalcon\Image::WIDTH
 );
 
 $image->save('resized-image.jpg');
 ```
+
 
 ### `\Phalcon\Image::HEIGHT`
 The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
@@ -128,13 +136,14 @@ The width will automatically be generated to keep the proportions the same; if y
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $image->resize(
-null,
-300,
-\Phalcon\Image::HEIGHT
+    null,
+    300,
+    \Phalcon\Image::HEIGHT
 );
 
 $image->save('resized-image.jpg');
 ```
+
 
 ### `\Phalcon\Image::NONE`
 * The `NONE` constant ignores the original image's ratio.
@@ -148,13 +157,14 @@ $image->save('resized-image.jpg');
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $image->resize(
-400,
-200,
-\Phalcon\Image::NONE
+    400,
+    200,
+    \Phalcon\Image::NONE
 );
 
 $image->save('resized-image.jpg');
 ```
+
 
 ### `\Phalcon\Image::TENSILE`
 * Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
@@ -167,13 +177,14 @@ $image->save('resized-image.jpg');
 $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 $image->resize(
-400,
-200,
-\Phalcon\Image::TENSILE
+    400,
+    200,
+    \Phalcon\Image::TENSILE
 );
 
 $image->save('resized-image.jpg');
 ```
+
 
 ## Cropping images
 For example, to get a 100px by 100px square from the centre of the image:
@@ -193,6 +204,7 @@ $image->crop($width, $height, $offsetX, $offsetY);
 $image->save('cropped-image.jpg');
 ```
 
+
 ## Rotating images
 ```php
 <?php
@@ -205,6 +217,7 @@ $image->rotate(90);
 $image->save('rotated-image.jpg');
 ```
 
+
 ## Flipping images
 You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
 
@@ -215,11 +228,12 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 
 // Flip an image horizontally
 $image->flip(
-\Phalcon\Image::HORIZONTAL
+    \Phalcon\Image::HORIZONTAL
 );
 
 $image->save('flipped-image.jpg');
 ```
+
 
 ## Sharpening images
 The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
@@ -233,6 +247,7 @@ $image->sharpen(50);
 
 $image->save('sharpened-image.jpg');
 ```
+
 
 ## Adding watermarks to images
 
@@ -250,10 +265,10 @@ $offsetY = 10;
 $opacity = 70;
 
 $image->watermark(
-$watermark,
-$offsetX,
-$offsetY,
-$opacity
+    $watermark,
+    $offsetX,
+    $offsetY,
+    $opacity
 );
 
 $image->save('watermarked-image.jpg');
@@ -279,14 +294,15 @@ $offsetY = ($image->getHeight() - $watermark->getHeight() - 10);
 $opacity = 70;
 
 $image->watermark(
-$watermark,
-$offsetX,
-$offsetY,
-$opacity
+    $watermark,
+    $offsetX,
+    $offsetY,
+    $opacity
 );
 
 $image->save('watermarked-image.jpg');
 ```
+
 
 ## Blurring images
 The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
@@ -300,6 +316,7 @@ $image->blur(50);
 
 $image->save('blurred-image.jpg');
 ```
+
 
 ## Pixelating images
 The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:

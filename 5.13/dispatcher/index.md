@@ -38,9 +38,9 @@ $controller = $dispatcher->dispatch();
 
 ```php
 public function callActionMethod(
-mixed $handler, 
-string $actionMethod, 
-array $params = []
+    mixed $handler, 
+    string $actionMethod, 
+    array $params = []
 )
 ```
 
@@ -57,7 +57,7 @@ handler. Throws an Exception if any uncaught or unhandled exception occurs durin
 
 ```php
 public function forward(
-array $forward
+    array $forward
 ): void
 ```
 
@@ -72,20 +72,20 @@ use App\Back\Bootstrap as Back;
 use App\Front\Bootstrap as Front;
 
 $modules = [
-"frontend" => [
-    "className" => Front::class,
-    "path"      => __DIR__ . "/app/Modules/Front/Bootstrap.php",
-    "metadata"  => [
-        "controllersNamespace" => "App\Front\Controllers",
+    "frontend" => [
+        "className" => Front::class,
+        "path"      => __DIR__ . "/app/Modules/Front/Bootstrap.php",
+        "metadata"  => [
+            "controllersNamespace" => "App\Front\Controllers",
+        ],
     ],
-],
-"backend" => [
-    "className" => Back::class,
-    "path"      => __DIR__ . "/app/Modules/Back/Bootstrap.php",
-    "metadata"  => [
-        "controllersNamespace" => "App\Back\Controllers",
+    "backend" => [
+        "className" => Back::class,
+        "path"      => __DIR__ . "/app/Modules/Back/Bootstrap.php",
+        "metadata"  => [
+            "controllersNamespace" => "App\Back\Controllers",
+        ],
     ],
-],
 ];
 
 $application->registerModules($modules);
@@ -93,31 +93,31 @@ $application->registerModules($modules);
 $eventsManager = $container->getShared("eventsManager");
 
 $eventsManager->attach(
-"dispatch:beforeForward",
-function (
-    Event $event, 
-    Dispatcher $dispatcher, 
-    array $forward
-) use ($modules) {
-    $metadata = $modules[$forward["module"]]["metadata"];
+    "dispatch:beforeForward",
+    function (
+        Event $event, 
+        Dispatcher $dispatcher, 
+        array $forward
+    ) use ($modules) {
+        $metadata = $modules[$forward["module"]]["metadata"];
 
-    $dispatcher->setModuleName(
-        $forward["module"]
-    );
+        $dispatcher->setModuleName(
+            $forward["module"]
+        );
 
-    $dispatcher->setNamespaceName(
-        $metadata["controllersNamespace"]
-    );
-}
+        $dispatcher->setNamespaceName(
+            $metadata["controllersNamespace"]
+        );
+    }
 );
 
 // Forward
 $this->dispatcher->forward(
-[
-    "module"     => "backend",
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "module"     => "backend",
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 ```
 
@@ -161,13 +161,13 @@ use Phalcon\Mvc\Dispatcher;
  */
 class InvoicesController extends Controller
 {
-public function viewAction(Invoices $invoice)
-{
-    $boundModels = $this
-        ->dispatcher
-        ->getBoundModels()
-    ;
-}
+    public function viewAction(Invoices $invoice)
+    {
+        $boundModels = $this
+            ->dispatcher
+            ->getBoundModels()
+        ;
+    }
 }
 ```
 
@@ -231,9 +231,9 @@ Gets a namespace to be prepended to the current handler name
 
 ```php
 public function getParam(
-mixed $param, 
-string | array $filters = null, 
-mixed $defaultValue = null
+    mixed $param, 
+    string | array $filters = null, 
+    mixed $defaultValue = null
 ): mixed
 ```
 
@@ -271,7 +271,7 @@ Returns value returned by the latest dispatched action
 
 ```php
 public function hasParam(
-mixed $param
+    mixed $param
 ): bool
 ```
 
@@ -285,7 +285,7 @@ Check if the dispatch loop is finished or has more pending controllers/tasks to 
 
 ```php
 public function setActionName(
-string $actionName
+    string $actionName
 ): void
 ```
 
@@ -293,7 +293,7 @@ Sets the action name to be dispatched
 
 ```php
 public function setActionSuffix(
-string $actionSuffix
+    string $actionSuffix
 ): void
 ```
 
@@ -301,7 +301,7 @@ Sets the default action suffix
 
 ```php
 public function setControllerName(
-string $controllerName
+    string $controllerName
 )
 ```
 
@@ -309,7 +309,7 @@ Sets the controller name to be dispatched
 
 ```php
 public function setControllerSuffix(
-string $controllerSuffix
+    string $controllerSuffix
 )
 ```
 
@@ -317,7 +317,7 @@ Sets the default controller suffix
 
 ```php
 public function setDefaultAction(
-string $actionName
+    string $actionName
 ): void
 ```
 
@@ -325,7 +325,7 @@ Sets the default action name
 
 ```php
 public function setDefaultController(
-string $controllerName
+    string $controllerName
 )
 ```
 
@@ -333,7 +333,7 @@ Sets the default controller name
 
 ```php
 public function setDefaultNamespace(
-string $namespaceName
+    string $namespaceName
 ): void
 ```
 
@@ -341,7 +341,7 @@ Sets the default namespace
 
 ```php
 public function setHandlerSuffix(
-string $handlerSuffix
+    string $handlerSuffix
 ): void
 ```
 
@@ -349,8 +349,8 @@ Sets the default suffix for the handler
 
 ```php
 public function setModelBinder(
-BinderInterface $modelBinder, 
-mixed $cache = null
+    BinderInterface $modelBinder, 
+    mixed $cache = null
 ): DispatcherInterface
 ```
 
@@ -358,23 +358,23 @@ Enable model binding during dispatch
 
 ```php
 $container->set(
-'dispatcher',
-function() {
-    $dispatcher = new Dispatcher();
+    'dispatcher',
+    function() {
+        $dispatcher = new Dispatcher();
 
-    $dispatcher->setModelBinder(
-        new Binder(),
-        'cache'
-    );
+        $dispatcher->setModelBinder(
+            new Binder(),
+            'cache'
+        );
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
 ```php
 public function setModuleName(
-string $moduleName
+    string $moduleName
 ): void
 ```
 
@@ -382,7 +382,7 @@ Sets the module where the controller is (only informative)
 
 ```php
 public function setNamespaceName(
-string $namespaceName
+    string $namespaceName
 ): void
 ```
 
@@ -390,8 +390,8 @@ Sets the namespace where the controller class is
 
 ```php
 public function setParam(
-mixed $param, 
-mixed $value
+    mixed $param, 
+    mixed $value
 ): void
 ```
 
@@ -399,7 +399,7 @@ Set a param by its name or numeric index
 
 ```php
 public function setParams(
-array $params
+    array $params
 ): void
 ```
 
@@ -407,7 +407,7 @@ Sets action params to be dispatched
 
 ```php
 public function setReturnedValue(
-mixed $value
+    mixed $value
 ): void
 ```
 
@@ -433,20 +433,20 @@ the [Phalcon\Mvc\Dispatcher][mvc-dispatcher] component.
 $finished = false;
 
 while (true !== $finished) {
-$finished = true;
+    $finished = true;
 
-$controllerClass = $controllerName . 'Controller';
-$controller      = new $controllerClass();
+    $controllerClass = $controllerName . 'Controller';
+    $controller      = new $controllerClass();
 
-call_user_func_array(
-    [
-        $controller,
-        $actionName . 'Action',
-    ],
-    $params
-);
+    call_user_func_array(
+        [
+            $controller,
+            $actionName . 'Action',
+        ],
+        $params
+    );
 
-$finished = true;
+    $finished = true;
 }
 ```
 
@@ -471,17 +471,17 @@ use Phalcon\Mvc\Dispatcher;
  */
 class InvoicesController extends Controller
 {
-public function saveAction($year, $postTitle)
-{
-    // ... 
+    public function saveAction($year, $postTitle)
+    {
+        // ... 
 
-    $this->dispatcher->forward(
-        [
-            'controller' => 'invoices',
-            'action'     => 'list',
-        ]
-    );
-}
+        $this->dispatcher->forward(
+            [
+                'controller' => 'invoices',
+                'action'     => 'list',
+            ]
+        );
+    }
 }
 ```
 
@@ -495,9 +495,9 @@ Examples:
 <?php
 
 $this->dispatcher->forward(
-[
-    'action' => 'search',
-]
+    [
+        'action' => 'search',
+    ]
 );
 ```
 
@@ -507,10 +507,10 @@ Forward flow to another action in the current controller
 <?php
 
 $this->dispatcher->forward(
-[
-    'action' => 'search',
-    'params' => [1, 2, 3],
-]
+    [
+        'action' => 'search',
+        'params' => [1, 2, 3],
+    ]
 );
 ```
 
@@ -549,33 +549,33 @@ use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
 
 $container->set(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeDispatchLoop',
-        function (Event $event, $dispatcher) {
-            $params    = $dispatcher->getParams();
-            $keyParams = [];
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $params    = $dispatcher->getParams();
+                $keyParams = [];
 
-            foreach ($params as $index => $value) {
-                if ($index & 1) {
-                    $key = $params[$index - 1];
+                foreach ($params as $index => $value) {
+                    if ($index & 1) {
+                        $key = $params[$index - 1];
 
-                    $keyParams[$key] = $value;
+                        $keyParams[$key] = $value;
+                    }
                 }
+
+                $dispatcher->setParams($keyParams);
             }
+        );
 
-            $dispatcher->setParams($keyParams);
-        }
-    );
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
-
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -596,33 +596,33 @@ use Phalcon\Events\Manager;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 $container->set(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeDispatchLoop',
-        function (Event $event, $dispatcher) {
-            $params    = $dispatcher->getParams();
-            $keyParams = [];
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $params    = $dispatcher->getParams();
+                $keyParams = [];
 
-            foreach ($params as $param) {
-                $parts = explode(':', $param);
-                $key   = $parts[0];
-                $value = $parts[1];
+                foreach ($params as $param) {
+                    $parts = explode(':', $param);
+                    $key   = $parts[0];
+                    $value = $parts[1];
 
-                $keyParams[$key] = $value;
+                    $keyParams[$key] = $value;
+                }
+
+                $dispatcher->setParams($keyParams);
             }
+        );
 
-            $dispatcher->setParams($keyParams);
-        }
-    );
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
-
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -642,19 +642,19 @@ use Phalcon\Mvc\Dispatcher;
  */
 class InvoicesController extends Controller
 {
-public function viewAction()
-{
-    $invoiceId = $this
-        ->dispatcher
-        ->getParam('invoiceId', 'int')
-    ;
-    $filter = $this
-        ->dispatcher
-        ->getParam('filter', 'string')
-    ;
+    public function viewAction()
+    {
+        $invoiceId = $this
+            ->dispatcher
+            ->getParam('invoiceId', 'int')
+        ;
+        $filter = $this
+            ->dispatcher
+            ->getParam('filter', 'string')
+        ;
 
-    // ...
-}
+        // ...
+    }
 }
 ```
 
@@ -684,26 +684,26 @@ use Phalcon\Events\Manager as Manager;
 
 $helper = $container->getShared('helper');
 $container->set(
-'dispatcher',
-function () use ($helper) {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () use ($helper) {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeDispatchLoop',
-        function (Event $event, $dispatcher) {
-            $dispatcher->setActionName(
-                $helper->camelize(
-                    $dispatcher->getActionName()
-                )
-            );
-        }
-    );
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $dispatcher->setActionName(
+                    $helper->camelize(
+                        $dispatcher->getActionName()
+                    )
+                );
+            }
+        );
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -726,25 +726,25 @@ use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
 
 $container->set(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeDispatchLoop',
-        function (Event $event, $dispatcher) {
-            $action = $dispatcher->getActionName();
-            $action = preg_replace('/\.php$/', '', $action);
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $action = $dispatcher->getActionName();
+                $action = preg_replace('/\.php$/', '', $action);
 
-            $dispatcher->setActionName($action);
-        }
-    );
+                $dispatcher->setActionName($action);
+            }
+        );
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -770,10 +770,10 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function viewAction(Invoices $invoice)
-{
-    $this->view->invoice = $invoice;
-}
+    public function viewAction(Invoices $invoice)
+    {
+        $this->view->invoice = $invoice;
+    }
 }
 ```
 
@@ -792,48 +792,48 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use \ReflectionMethod;
 
 $container->set(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeDispatchLoop',
-        function (Event $event, $dispatcher) {
-            $controllerName = $dispatcher->getControllerClass();
-            $actionName     = $dispatcher->getActiveMethod();
+        $eventsManager->attach(
+            'dispatch:beforeDispatchLoop',
+            function (Event $event, $dispatcher) {
+                $controllerName = $dispatcher->getControllerClass();
+                $actionName     = $dispatcher->getActiveMethod();
 
-            try {
-                $reflection = new ReflectionMethod(
-                    $controllerName, 
-                    $actionName
-                );
-                $parameters = $reflection->getParameters();
+                try {
+                    $reflection = new ReflectionMethod(
+                        $controllerName, 
+                        $actionName
+                    );
+                    $parameters = $reflection->getParameters();
 
-                foreach ($parameters as $parameter) {
-                    $className = $parameter->getClass()->name;
+                    foreach ($parameters as $parameter) {
+                        $className = $parameter->getClass()->name;
 
-                    if (is_subclass_of($className, Model::class)) {
-                        $model = $className::findFirstById(
-                            $dispatcher->getParams()[0]
-                        );
+                        if (is_subclass_of($className, Model::class)) {
+                            $model = $className::findFirstById(
+                                $dispatcher->getParams()[0]
+                            );
 
-                        $dispatcher->setParams(
-                            [
-                                $model,
-                            ]
-                        );
+                            $dispatcher->setParams(
+                                [
+                                    $model,
+                                ]
+                            );
+                        }
                     }
+                } catch (Exception $e) {
                 }
-            } catch (Exception $e) {
             }
-        }
-    );
+        );
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -857,7 +857,7 @@ use Phalcon\Mvc\Model\Binder;
 $dispatcher = new Dispatcher();
 
 $dispatcher->setModelBinder(
-new Binder()
+    new Binder()
 );
 
 return $dispatcher;
@@ -884,10 +884,10 @@ use Phalcon\Mvc\View;
  */
 class CrudController extends Controller
 {
-public function viewAction(Model $model)
-{
-    $this->view->model = $model;
-}
+    public function viewAction(Model $model)
+    {
+        $this->view->model = $model;
+    }
 }
 ```
 
@@ -903,10 +903,10 @@ use Phalcon\Mvc\Model\Binder\BindableInterface;
 
 class InvoicesController extends CrudController implements BindableInterface
 {
-public function getModelName()
-{
-    return Invoices::class;
-}
+    public function getModelName()
+    {
+        return Invoices::class;
+    }
 }
 ```
 
@@ -927,10 +927,10 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function showAction(Invoices $invoice)
-{
-    $this->view->invoice = $invoice;
-}
+    public function showAction(Invoices $invoice)
+    {
+        $this->view->invoice = $invoice;
+    }
 }
 ```
 
@@ -954,36 +954,36 @@ use Phalcon\Events\Manager;
 use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
 $container->setShared(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeException',
-        function (
-            Event $event, 
-            $dispatcher, 
-            Exception $exception
-        ) {
-            // 404
-            if ($exception instanceof DispatchException) {
-                $dispatcher->forward(
-                    [
-                        'controller' => 'index',
-                        'action'     => 'fourOhFour',
-                    ]
-                );
+        $eventsManager->attach(
+            'dispatch:beforeException',
+            function (
+                Event $event, 
+                $dispatcher, 
+                Exception $exception
+            ) {
+                // 404
+                if ($exception instanceof DispatchException) {
+                    $dispatcher->forward(
+                        [
+                            'controller' => 'index',
+                            'action'     => 'fourOhFour',
+                        ]
+                    );
 
-                return false;
+                    return false;
+                }
             }
-        }
-    );
+        );
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -999,38 +999,38 @@ use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
 
 $container->setShared(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch:beforeException',
-        function (
-            Event $event, 
-            $dispatcher, 
-            Exception $exception
-        ) {
-            switch ($exception->getCode()) {
-                case DispatcherException::EXCEPTION_HANDLER_NOT_FOUND:
-                case DispatcherException::EXCEPTION_ACTION_NOT_FOUND:
-                    // 404
-                    $dispatcher->forward(
-                        [
-                            'controller' => 'index',
-                            'action'     => 'fourOhFour',
-                        ]
-                    );
+        $eventsManager->attach(
+            'dispatch:beforeException',
+            function (
+                Event $event, 
+                $dispatcher, 
+                Exception $exception
+            ) {
+                switch ($exception->getCode()) {
+                    case DispatcherException::EXCEPTION_HANDLER_NOT_FOUND:
+                    case DispatcherException::EXCEPTION_ACTION_NOT_FOUND:
+                        // 404
+                        $dispatcher->forward(
+                            [
+                                'controller' => 'index',
+                                'action'     => 'fourOhFour',
+                            ]
+                        );
 
-                    return false;
+                        return false;
+                }
             }
-        }
-    );
+        );
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -1046,26 +1046,26 @@ use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 
 class ExceptionsPlugin
 {
-public function beforeException(
-    Event $event, 
-    Dispatcher $dispatcher, 
-    Exception $exception
-) {
-    $action = 'fiveOhThree';
+    public function beforeException(
+        Event $event, 
+        Dispatcher $dispatcher, 
+        Exception $exception
+    ) {
+        $action = 'fiveOhThree';
 
-    if ($exception instanceof DispatchException) {
-        $action = 'fourOhFour';
+        if ($exception instanceof DispatchException) {
+            $action = 'fourOhFour';
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'index',
+                'action'     => $action,
+            ]
+        );
+
+        return false;
     }
-
-    $dispatcher->forward(
-        [
-            'controller' => 'index',
-            'action'     => $action,
-        ]
-    );
-
-    return false;
-}
 }
 ```
 
@@ -1106,23 +1106,23 @@ use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
 
 $container->set(
-'dispatcher',
-function () {
-    $eventsManager = new Manager();
+    'dispatcher',
+    function () {
+        $eventsManager = new Manager();
 
-    $eventsManager->attach(
-        'dispatch',
-        function (Event $event, $dispatcher) {
-            // ...
-        }
-    );
+        $eventsManager->attach(
+            'dispatch',
+            function (Event $event, $dispatcher) {
+                // ...
+            }
+        );
 
-    $dispatcher = new MvcDispatcher();
-    $dispatcher->setEventsManager($eventsManager);
+        $dispatcher = new MvcDispatcher();
+        $dispatcher->setEventsManager($eventsManager);
 
-    return $dispatcher;
-},
-true
+        return $dispatcher;
+    },
+    true
 );
 ```
 
@@ -1137,17 +1137,17 @@ use Phalcon\Mvc\Dispatcher;
 
 class InvoicesController extends Controller
 {
-public function beforeExecuteRoute(
-    Dispatcher $dispatcher
-) {
-    // ...
-}
+    public function beforeExecuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        // ...
+    }
 
-public function afterExecuteRoute(
-    Dispatcher $dispatcher
-) {
-    // ...
-}
+    public function afterExecuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        // ...
+    }
 }
 ```
 
@@ -1171,31 +1171,31 @@ use Phalcon\Events\Event;
 $container = new Di();
 
 $modules = [
-'backend' => [
-    'className' => Bootstrap::class,
-    'path'      => '/app/Modules/Back/Bootstrap.php',
-    'metadata'  => [
-        'controllersNamespace' => 'App\Back\Controllers',
+    'backend' => [
+        'className' => Bootstrap::class,
+        'path'      => '/app/Modules/Back/Bootstrap.php',
+        'metadata'  => [
+            'controllersNamespace' => 'App\Back\Controllers',
+        ],
     ],
-],
 ];
 
 $manager = new Manager();
 $manager->attach(
-'dispatch:beforeForward',
-function (
-    Event $event, 
-    Dispatcher $dispatcher, 
-    array $forward
-) use ($modules) {
-    $moduleName = $forward['module'];
-    $metadata   = $modules[$moduleName]['metadata'];
+    'dispatch:beforeForward',
+    function (
+        Event $event, 
+        Dispatcher $dispatcher, 
+        array $forward
+    ) use ($modules) {
+        $moduleName = $forward['module'];
+        $metadata   = $modules[$moduleName]['metadata'];
 
-    $dispatcher->setModuleName($moduleName);
-    $dispatcher->setNamespaceName(
-        $metadata['controllersNamespace']
-    );
-}
+        $dispatcher->setModuleName($moduleName);
+        $dispatcher->setNamespaceName(
+            $metadata['controllersNamespace']
+        );
+    }
 );
 
 $dispatcher = new Dispatcher();
@@ -1204,11 +1204,11 @@ dispatcher->setManager($manager);
 $container->set('dispatcher', $dispatcher);
 
 $dispatcher->forward(
-[
-    'module'     => 'backend',
-    'controller' => 'invoices',
-    'action'     => 'index',
-]
+    [
+        'module'     => 'backend',
+        'controller' => 'invoices',
+        'action'     => 'index',
+    ]
 );
 
 echo $dispatcher->getModuleName();
@@ -1228,135 +1228,135 @@ use Phalcon\Mvc\DispatcherInterface;
 
 class MyDispatcher implements DispatcherInterface
 {
-/**
- * Dispatches a handle action taking into account the routing parameters
- */
-public function dispatch(): object | bool;
+    /**
+     * Dispatches a handle action taking into account the routing parameters
+     */
+    public function dispatch(): object | bool;
 
-/**
- * Forwards the execution flow to another controller/action
- */
-public function forward(array $forward): void;
+    /**
+     * Forwards the execution flow to another controller/action
+     */
+    public function forward(array $forward): void;
 
-/**
- * Gets last dispatched action name
- */
-public function getActionName(): string;
+    /**
+     * Gets last dispatched action name
+     */
+    public function getActionName(): string;
 
-/**
- * Gets the default action suffix
- */
-public function getActionSuffix(): string;
+    /**
+     * Gets the default action suffix
+     */
+    public function getActionSuffix(): string;
 
-/**
- * Returns the active controller in the dispatcher
- */
-public function getActiveController(): ControllerInterface;
+    /**
+     * Returns the active controller in the dispatcher
+     */
+    public function getActiveController(): ControllerInterface;
 
-/**
- * Gets last dispatched controller name
- */
-public function getControllerName(): string;
+    /**
+     * Gets last dispatched controller name
+     */
+    public function getControllerName(): string;
 
-/**
- * Gets the default handler suffix
- */
-public function getHandlerSuffix(): string;
+    /**
+     * Gets the default handler suffix
+     */
+    public function getHandlerSuffix(): string;
 
-/**
- * Returns the latest dispatched controller
- */
-public function getLastController(): ControllerInterface;
+    /**
+     * Returns the latest dispatched controller
+     */
+    public function getLastController(): ControllerInterface;
 
-/**
- * Gets a param by its name or numeric index
- *
- * @param string|array filters
- */
-public function getParam($param, $filters = null);
+    /**
+     * Gets a param by its name or numeric index
+     *
+     * @param string|array filters
+     */
+    public function getParam($param, $filters = null);
 
-/**
- * Gets action params
- */
-public function getParams(): array;
+    /**
+     * Gets action params
+     */
+    public function getParams(): array;
 
-/**
- * Returns value returned by the latest dispatched action
- */
-public function getReturnedValue();
+    /**
+     * Returns value returned by the latest dispatched action
+     */
+    public function getReturnedValue();
 
-/**
- * Check if a param exists
- */
-public function hasParam($param): bool;
+    /**
+     * Check if a param exists
+     */
+    public function hasParam($param): bool;
 
-/**
- * Checks if the dispatch loop is finished or has more pending
- * controllers/tasks to dispatch
- */
-public function isFinished(): bool;
+    /**
+     * Checks if the dispatch loop is finished or has more pending
+     * controllers/tasks to dispatch
+     */
+    public function isFinished(): bool;
 
-/**
- * Sets the action name to be dispatched
- */
-public function setActionName(string $actionName): void;
+    /**
+     * Sets the action name to be dispatched
+     */
+    public function setActionName(string $actionName): void;
 
-/**
- * Sets the default action suffix
- */
-public function setActionSuffix(string $actionSuffix): void;
+    /**
+     * Sets the default action suffix
+     */
+    public function setActionSuffix(string $actionSuffix): void;
 
-/**
- * Sets the default controller suffix
- */
-public function setControllerSuffix(string $controllerSuffix);
+    /**
+     * Sets the default controller suffix
+     */
+    public function setControllerSuffix(string $controllerSuffix);
 
-/**
- * Sets the controller name to be dispatched
- */
-public function setControllerName(string $controllerName);
+    /**
+     * Sets the controller name to be dispatched
+     */
+    public function setControllerName(string $controllerName);
 
-/**
- * Sets the default action name
- */
-public function setDefaultAction(string $actionName): void;
+    /**
+     * Sets the default action name
+     */
+    public function setDefaultAction(string $actionName): void;
 
-/**
- * Sets the default controller name
- */
-public function setDefaultController(string $controllerName);
+    /**
+     * Sets the default controller name
+     */
+    public function setDefaultController(string $controllerName);
 
-/**
- * Sets the default namespace
- */
-public function setDefaultNamespace(string $defaultNamespace): void;
+    /**
+     * Sets the default namespace
+     */
+    public function setDefaultNamespace(string $defaultNamespace): void;
 
-/**
- * Sets the default suffix for the handler
- */
-public function setHandlerSuffix(string $handlerSuffix): void;
+    /**
+     * Sets the default suffix for the handler
+     */
+    public function setHandlerSuffix(string $handlerSuffix): void;
 
-/**
- * Sets the module name which the application belongs to
- */
-public function setModuleName(string $moduleName): void;
+    /**
+     * Sets the module name which the application belongs to
+     */
+    public function setModuleName(string $moduleName): void;
 
-/**
- * Sets the namespace to which the controller belongs to
- */
-public function setNamespaceName(string $namespaceName): void;
+    /**
+     * Sets the namespace to which the controller belongs to
+     */
+    public function setNamespaceName(string $namespaceName): void;
 
-/**
- * Set a param by its name or numeric index
- *
- * @param  mixed value
- */
-public function setParam($param, $value): void;
+    /**
+     * Set a param by its name or numeric index
+     *
+     * @param  mixed value
+     */
+    public function setParam($param, $value): void;
 
-/**
- * Sets action params to be dispatched
- */
-public function setParams(array $params): void;
+    /**
+     * Sets action params to be dispatched
+     */
+    public function setParams(array $params): void;
 }
 ```
 

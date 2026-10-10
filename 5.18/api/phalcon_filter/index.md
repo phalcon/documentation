@@ -25,10 +25,11 @@ Exceptions thrown in Phalcon\Filter will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Filter\Exception`**
-- [`Phalcon\Filter\Exceptions\FilterNotRegistered`](#filterexceptionsfilternotregistered)
+    - **`Phalcon\Filter\Exception`**
+        - [`Phalcon\Filter\Exceptions\FilterNotRegistered`](#filterexceptionsfilternotregistered)
 
 </div>
+
 
 ## Filter\Exceptions\FilterNotRegistered
 
@@ -38,12 +39,13 @@ Exceptions thrown in Phalcon\Filter will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Exception`](#filterexception)
-- **`Phalcon\Filter\Exceptions\FilterNotRegistered`**
+    - [`Phalcon\Filter\Exception`](#filterexception)
+        - **`Phalcon\Filter\Exceptions\FilterNotRegistered`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Exception`
+
 
 ### Method Summary
 
@@ -63,6 +65,7 @@ __Uses__ `Phalcon\Filter\Exception`
 ```php
 public function __construct( string $name );
 ```
+
 
 ## Filter\Filter
 
@@ -105,6 +108,7 @@ Lazy loads, stores and exposes sanitizer objects
 </div>
 
 __Uses__ `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`
+
 
 ### Method Summary
 
@@ -277,8 +281,8 @@ __Uses__ `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sani
 
 ```php
 public function __call(
-string $name,
-array $args
+    string $name,
+    array $args
 );
 ```
 
@@ -323,9 +327,9 @@ Checks if a service exists in the map array
 
 ```php
 public function sanitize(
-mixed $value,
-mixed $sanitizers,
-bool $noRecursive = false
+    mixed $value,
+    mixed $sanitizers,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -343,8 +347,8 @@ passed to the sanitizer as a single value.
 
 ```php
 public function set(
-string $name,
-mixed $service
+    string $name,
+    mixed $service
 ): void;
 ```
 
@@ -359,6 +363,7 @@ protected function init( array $mapper ): void;
 ```
 
 Loads the objects in the internal mapper array
+
 
 ## Filter\FilterFactory
 
@@ -376,6 +381,7 @@ Class FilterFactory
 </div>
 
 __Uses__ `Phalcon\Filter\Filter`
+
 
 ### Method Summary
 
@@ -417,6 +423,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Filter\FilterInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -449,9 +456,9 @@ Lazy loads, stores and exposes sanitizer objects
 
 ```php
 public function sanitize(
-mixed $value,
-mixed $sanitizers,
-bool $noRecursive = false
+    mixed $value,
+    mixed $sanitizers,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -461,6 +468,7 @@ Array policy: when `$value` is an array and `$noRecursive` is `false`
 (the default), each element is sanitized individually and an array is
 returned - recursion is one level deep only. When `$noRecursive` is
 `true`, the whole array is passed to the sanitizer as a single value.
+
 
 ## Filter\Sanitize\AbsInt
 
@@ -478,6 +486,7 @@ Sanitizes a value to absolute integer
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -498,6 +507,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\Alnum
 
 <span class="badge badge--class">Class</span>
@@ -514,6 +524,7 @@ Sanitizes a value to an alphanumeric value
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -534,6 +545,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\Alpha
 
 <span class="badge badge--class">Class</span>
@@ -550,6 +562,7 @@ Sanitizes a value to an alpha value
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -570,6 +583,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\BoolVal
 
 <span class="badge badge--class">Class</span>
@@ -586,6 +600,7 @@ Sanitizes a value to boolean
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -606,6 +621,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\Email
 
 <span class="badge badge--class">Class</span>
@@ -622,6 +638,7 @@ Sanitizes an email string
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -642,6 +659,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\FloatVal
 
 <span class="badge badge--class">Class</span>
@@ -658,6 +676,7 @@ Sanitizes a value to float
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -678,6 +697,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\IntVal
 
 <span class="badge badge--class">Class</span>
@@ -694,6 +714,7 @@ Sanitizes a value to integer
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -714,6 +735,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\Ip
 
 <span class="badge badge--class">Class</span>
@@ -730,6 +752,7 @@ Sanitizes a value to an ip address or CIDR range
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -749,10 +772,11 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
 ```php
 public function __invoke(
-string $input,
-int $filter = 0
+    string $input,
+    int $filter = 0
 ): string|false;
 ```
+
 
 ## Filter\Sanitize\Lower
 
@@ -770,6 +794,7 @@ Sanitizes a value to lowercase
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
+
 
 ### Method Summary
 
@@ -790,6 +815,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\LowerFirst
 
 <span class="badge badge--class">Class</span>
@@ -806,6 +832,7 @@ Sanitizes a value to lcfirst
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -826,6 +853,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\Regex
 
 <span class="badge badge--class">Class</span>
@@ -842,6 +870,7 @@ Sanitizes a value performing preg_replace
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -860,11 +889,12 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
 ```php
 public function __invoke(
-mixed $input,
-mixed $pattern,
-mixed $replace
+    mixed $input,
+    mixed $pattern,
+    mixed $replace
 );
 ```
+
 
 ## Filter\Sanitize\Remove
 
@@ -883,6 +913,7 @@ Sanitizes a value removing parts of a string
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -900,10 +931,11 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
 ```php
 public function __invoke(
-mixed $input,
-mixed $replace
+    mixed $input,
+    mixed $replace
 );
 ```
+
 
 ## Filter\Sanitize\Replace
 
@@ -922,6 +954,7 @@ Sanitizes a value replacing parts of a string
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -939,11 +972,12 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
 ```php
 public function __invoke(
-mixed $input,
-mixed $from,
-mixed $to
+    mixed $input,
+    mixed $from,
+    mixed $to
 );
 ```
+
 
 ## Filter\Sanitize\Special
 
@@ -961,6 +995,7 @@ Sanitizes a value special characters
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -981,6 +1016,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\SpecialFull
 
 <span class="badge badge--class">Class</span>
@@ -997,6 +1033,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1017,6 +1054,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\StringVal
 
 <span class="badge badge--class">Class</span>
@@ -1031,6 +1069,7 @@ Sanitizes a value to string
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1050,10 +1089,11 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 
 ```php
 public function __invoke(
-string $input,
-int $flags = 11
+    string $input,
+    int $flags = 11
 ): string;
 ```
+
 
 ## Filter\Sanitize\StringValLegacy
 
@@ -1072,6 +1112,7 @@ string is passed, the method will return false
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1092,6 +1133,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Sanitize\Striptags
 
 <span class="badge badge--class">Class</span>
@@ -1108,6 +1150,7 @@ Sanitizes a value striptags
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1128,6 +1171,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\Trim
 
 <span class="badge badge--class">Class</span>
@@ -1144,6 +1188,7 @@ Sanitizes a value removing leading and trailing spaces
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1164,6 +1209,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\Upper
 
 <span class="badge badge--class">Class</span>
@@ -1180,6 +1226,7 @@ Sanitizes a value to uppercase
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
+
 
 ### Method Summary
 
@@ -1200,6 +1247,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\UpperFirst
 
 <span class="badge badge--class">Class</span>
@@ -1216,6 +1264,7 @@ Sanitizes a value to ucfirst
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1236,6 +1285,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\UpperWords
 
 <span class="badge badge--class">Class</span>
@@ -1252,6 +1302,7 @@ Sanitizes a value to uppercase the first character of each word
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait`
+
 
 ### Method Summary
 
@@ -1272,6 +1323,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Traits\Php\MbCaseTrait
 public function __invoke( string $input );
 ```
 
+
 ## Filter\Sanitize\Url
 
 <span class="badge badge--class">Class</span>
@@ -1288,6 +1340,7 @@ Sanitizes a value url
 </div>
 
 __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
+
 
 ### Method Summary
 
@@ -1308,6 +1361,7 @@ __Uses__ `Phalcon\Contracts\Filter\Sanitizer`
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Validation
 
 <span class="badge badge--class">Class</span>
@@ -1318,12 +1372,13 @@ Allows to validate data using custom or built-in validators
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\Injectable`](/5.18/api/phalcon_di/#diinjectable)
-- **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
+    - [`Phalcon\Di\Injectable`](/5.18/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
 </div>
 
 __Uses__ `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\NoValidators` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
+
 
 ### Method Summary
 
@@ -1545,8 +1600,8 @@ Phalcon\Filter\Validation constructor
 
 ```php
 public function add(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): static;
 ```
 
@@ -1564,9 +1619,9 @@ Appends a message to the messages list
 
 ```php
 public function bind(
-mixed $entity,
-mixed $data,
-array $whitelist = []
+    mixed $entity,
+    mixed $data,
+    array $whitelist = []
 ): static;
 ```
 
@@ -1656,8 +1711,8 @@ Gets the a value to validate in the array/object data source
 
 ```php
 public function getValueByData(
-mixed $data,
-string $field
+    mixed $data,
+    string $field
 ): mixed|null;
 ```
 
@@ -1667,8 +1722,8 @@ Gets the a value to validate in the array/object data source
 
 ```php
 public function getValueByEntity(
-mixed $entity,
-string $field
+    mixed $entity,
+    string $field
 ): mixed|null;
 ```
 
@@ -1678,8 +1733,8 @@ Gets the a value to validate in the object entity source
 
 ```php
 public function rule(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): static;
 ```
 
@@ -1689,8 +1744,8 @@ Alias of `add` method
 
 ```php
 public function rules(
-mixed $field,
-array $validators
+    mixed $field,
+    array $validators
 ): static;
 ```
 
@@ -1719,8 +1774,8 @@ Sets the bound entity
 
 ```php
 public function setFilters(
-mixed $field,
-mixed $filters
+    mixed $field,
+    mixed $filters
 ): static;
 ```
 
@@ -1744,9 +1799,9 @@ public function setValidators( array $validators ): static;
 
 ```php
 public function validate(
-mixed $data = null,
-mixed $entity = null,
-array $whitelist = []
+    mixed $data = null,
+    mixed $entity = null,
+    array $whitelist = []
 ): Messages|bool;
 ```
 
@@ -1774,12 +1829,13 @@ $validation->validate($_POST, $entity, $fields);
 
 ```php
 protected function preChecking(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): bool;
 ```
 
 Internal validations, if it returns true, then skip the current validator
+
 
 ## Filter\Validation\AbstractCombinedFieldsValidator
 
@@ -1791,10 +1847,11 @@ This is a base class for combined fields validators
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`**
-- [`Phalcon\Filter\Validation\Validator\Uniqueness`](#filtervalidationvalidatoruniqueness)
+    - **`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`**
+        - [`Phalcon\Filter\Validation\Validator\Uniqueness`](#filtervalidationvalidatoruniqueness)
 
 </div>
+
 
 ## Filter\Validation\AbstractValidator
 
@@ -1806,33 +1863,34 @@ This is a base class for validators
 <div class="api-tree">
 
 - **`Phalcon\Filter\Validation\AbstractValidator`** - implements [`Phalcon\Filter\Validation\ValidatorInterface`](#filtervalidationvalidatorinterface)
-- [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
-- [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
-- [`Phalcon\Filter\Validation\Validator\Alnum`](#filtervalidationvalidatoralnum)
-- [`Phalcon\Filter\Validation\Validator\Alpha`](#filtervalidationvalidatoralpha)
-- [`Phalcon\Filter\Validation\Validator\Between`](#filtervalidationvalidatorbetween)
-- [`Phalcon\Filter\Validation\Validator\Callback`](#filtervalidationvalidatorcallback)
-- [`Phalcon\Filter\Validation\Validator\Confirmation`](#filtervalidationvalidatorconfirmation)
-- [`Phalcon\Filter\Validation\Validator\CreditCard`](#filtervalidationvalidatorcreditcard)
-- [`Phalcon\Filter\Validation\Validator\Date`](#filtervalidationvalidatordate)
-- [`Phalcon\Filter\Validation\Validator\Digit`](#filtervalidationvalidatordigit)
-- [`Phalcon\Filter\Validation\Validator\Email`](#filtervalidationvalidatoremail)
-- [`Phalcon\Filter\Validation\Validator\ExclusionIn`](#filtervalidationvalidatorexclusionin)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- [`Phalcon\Filter\Validation\Validator\Files`](#filtervalidationvalidatorfiles)
-- [`Phalcon\Filter\Validation\Validator\Identical`](#filtervalidationvalidatoridentical)
-- [`Phalcon\Filter\Validation\Validator\InclusionIn`](#filtervalidationvalidatorinclusionin)
-- [`Phalcon\Filter\Validation\Validator\Ip`](#filtervalidationvalidatorip)
-- [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
-- [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
-- [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
-- [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
-- [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
-- [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
+    - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
+    - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+    - [`Phalcon\Filter\Validation\Validator\Alnum`](#filtervalidationvalidatoralnum)
+    - [`Phalcon\Filter\Validation\Validator\Alpha`](#filtervalidationvalidatoralpha)
+    - [`Phalcon\Filter\Validation\Validator\Between`](#filtervalidationvalidatorbetween)
+    - [`Phalcon\Filter\Validation\Validator\Callback`](#filtervalidationvalidatorcallback)
+    - [`Phalcon\Filter\Validation\Validator\Confirmation`](#filtervalidationvalidatorconfirmation)
+    - [`Phalcon\Filter\Validation\Validator\CreditCard`](#filtervalidationvalidatorcreditcard)
+    - [`Phalcon\Filter\Validation\Validator\Date`](#filtervalidationvalidatordate)
+    - [`Phalcon\Filter\Validation\Validator\Digit`](#filtervalidationvalidatordigit)
+    - [`Phalcon\Filter\Validation\Validator\Email`](#filtervalidationvalidatoremail)
+    - [`Phalcon\Filter\Validation\Validator\ExclusionIn`](#filtervalidationvalidatorexclusionin)
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - [`Phalcon\Filter\Validation\Validator\Files`](#filtervalidationvalidatorfiles)
+    - [`Phalcon\Filter\Validation\Validator\Identical`](#filtervalidationvalidatoridentical)
+    - [`Phalcon\Filter\Validation\Validator\InclusionIn`](#filtervalidationvalidatorinclusionin)
+    - [`Phalcon\Filter\Validation\Validator\Ip`](#filtervalidationvalidatorip)
+    - [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
+    - [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
+    - [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
+    - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
+    - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+    - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`
+
 
 ### Method Summary
 
@@ -1972,8 +2030,8 @@ Phalcon\Filter\Validation\Validator constructor
 
 ```php
 public function getOption(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2008,8 +2066,8 @@ Checks if an option is defined
 
 ```php
 public function isAllowEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -2021,9 +2079,9 @@ empty values, or per-field map).
 
 ```php
 public function messageFactory(
-Validation $validation,
-mixed $field,
-array $replacements = []
+    Validation $validation,
+    mixed $field,
+    array $replacements = []
 ): Message;
 ```
 
@@ -2033,8 +2091,8 @@ Create a default message by factory
 
 ```php
 public function setOption(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -2060,8 +2118,8 @@ Clear current templates and set new from an array,
 
 ```php
 abstract public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -2073,8 +2131,8 @@ Executes the validation
 
 ```php
 protected function allowEmpty(
-mixed $field,
-mixed $value
+    mixed $field,
+    mixed $value
 ): bool;
 ```
 
@@ -2084,8 +2142,8 @@ Checks if field can be empty.
 
 ```php
 protected function checkArray(
-mixed $value,
-string $field
+    mixed $value,
+    string $field
 ): mixed;
 ```
 
@@ -2104,12 +2162,13 @@ Prepares a validation code.
 
 ```php
 protected function prepareLabel(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): mixed;
 ```
 
 Prepares a label for the field.
+
 
 ## Filter\Validation\AbstractValidatorComposite
 
@@ -2126,13 +2185,15 @@ extending this.
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\AbstractValidatorComposite`** - implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
-- [`Phalcon\Filter\Validation\Validator\File`](#filtervalidationvalidatorfile)
-- [`Phalcon\Filter\Validation\Validator\StringLength`](#filtervalidationvalidatorstringlength)
+    - **`Phalcon\Filter\Validation\AbstractValidatorComposite`** - implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
+        - [`Phalcon\Filter\Validation\Validator\File`](#filtervalidationvalidatorfile)
+        - [`Phalcon\Filter\Validation\Validator\StringLength`](#filtervalidationvalidatorstringlength)
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`
+
+
 
 ## Filter\Validation\Exception
 
@@ -2144,28 +2205,29 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Filter\Validation\Exception`**
-- [`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`](#filtervalidationexceptionsfieldnotprintable)
-- [`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`](#filtervalidationexceptionsfilterserviceunavailable)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`](#filtervalidationexceptionsinvalidallowedtypes)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`](#filtervalidationexceptionsinvalidcallbackreturn)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`](#filtervalidationexceptionsinvaliddomainoption)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`](#filtervalidationexceptionsinvalidfieldtype)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`](#filtervalidationexceptionsinvalidfilterservice)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`](#filtervalidationexceptionsinvalidstrictoption)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`](#filtervalidationexceptionsinvalidvalidationdata)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidValidator`](#filtervalidationexceptionsinvalidvalidator)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`](#filtervalidationexceptionsinvalidvalidatorscope)
-- [`Phalcon\Filter\Validation\Exceptions\MissingMbstring`](#filtervalidationexceptionsmissingmbstring)
-- [`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`](#filtervalidationexceptionsnodatatovalidate)
-- [`Phalcon\Filter\Validation\Exceptions\NoValidators`](#filtervalidationexceptionsnovalidators)
-- [`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`](#filtervalidationexceptionsnovalidatorsincomposite)
-- [`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`](#filtervalidationexceptionsuniquenessconversionmustbearray)
-- [`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`](#filtervalidationexceptionsuniquenessmodelrequired)
-- [`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`](#filtervalidationexceptionsuniquenessonlyforphalconmodel)
-- [`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`](#filtervalidationexceptionsvalidationentitynotobject)
+    - **`Phalcon\Filter\Validation\Exception`**
+        - [`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`](#filtervalidationexceptionsfieldnotprintable)
+        - [`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`](#filtervalidationexceptionsfilterserviceunavailable)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`](#filtervalidationexceptionsinvalidallowedtypes)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`](#filtervalidationexceptionsinvalidcallbackreturn)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`](#filtervalidationexceptionsinvaliddomainoption)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`](#filtervalidationexceptionsinvalidfieldtype)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`](#filtervalidationexceptionsinvalidfilterservice)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`](#filtervalidationexceptionsinvalidstrictoption)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`](#filtervalidationexceptionsinvalidvalidationdata)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidValidator`](#filtervalidationexceptionsinvalidvalidator)
+        - [`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`](#filtervalidationexceptionsinvalidvalidatorscope)
+        - [`Phalcon\Filter\Validation\Exceptions\MissingMbstring`](#filtervalidationexceptionsmissingmbstring)
+        - [`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`](#filtervalidationexceptionsnodatatovalidate)
+        - [`Phalcon\Filter\Validation\Exceptions\NoValidators`](#filtervalidationexceptionsnovalidators)
+        - [`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`](#filtervalidationexceptionsnovalidatorsincomposite)
+        - [`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`](#filtervalidationexceptionsuniquenessconversionmustbearray)
+        - [`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`](#filtervalidationexceptionsuniquenessmodelrequired)
+        - [`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`](#filtervalidationexceptionsuniquenessonlyforphalconmodel)
+        - [`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`](#filtervalidationexceptionsvalidationentitynotobject)
 
 </div>
+
 
 ## Filter\Validation\Exceptions\FieldNotPrintable
 
@@ -2175,12 +2237,13 @@ Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2201,6 +2264,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\FilterServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -2209,12 +2273,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2235,6 +2300,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidAllowedTypes
 
 <span class="badge badge--class">Class</span>
@@ -2243,12 +2309,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2269,6 +2336,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidCallbackReturn
 
 <span class="badge badge--class">Class</span>
@@ -2277,12 +2345,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2303,6 +2372,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidDomainOption
 
 <span class="badge badge--class">Class</span>
@@ -2311,12 +2381,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2337,6 +2408,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidFieldType
 
 <span class="badge badge--class">Class</span>
@@ -2345,12 +2417,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2371,6 +2444,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidFilterService
 
 <span class="badge badge--class">Class</span>
@@ -2379,12 +2453,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2405,6 +2480,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidStrictOption
 
 <span class="badge badge--class">Class</span>
@@ -2413,12 +2489,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2439,6 +2516,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidValidationData
 
 <span class="badge badge--class">Class</span>
@@ -2447,12 +2525,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2473,6 +2552,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidValidator
 
 <span class="badge badge--class">Class</span>
@@ -2481,12 +2561,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidValidator`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidValidator`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2507,6 +2588,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidValidatorScope
 
 <span class="badge badge--class">Class</span>
@@ -2515,12 +2597,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2541,6 +2624,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\MissingMbstring
 
 <span class="badge badge--class">Class</span>
@@ -2549,12 +2633,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\MissingMbstring`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\MissingMbstring`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2575,6 +2660,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\NoDataToValidate
 
 <span class="badge badge--class">Class</span>
@@ -2583,12 +2669,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2609,6 +2696,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\NoValidators
 
 <span class="badge badge--class">Class</span>
@@ -2617,12 +2705,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\NoValidators`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\NoValidators`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2643,6 +2732,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\NoValidatorsInComposite
 
 <span class="badge badge--class">Class</span>
@@ -2651,12 +2741,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2677,6 +2768,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct( string $className );
 ```
 
+
 ## Filter\Validation\Exceptions\UniquenessConversionMustBeArray
 
 <span class="badge badge--class">Class</span>
@@ -2685,12 +2777,13 @@ public function __construct( string $className );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2711,6 +2804,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\UniquenessModelRequired
 
 <span class="badge badge--class">Class</span>
@@ -2719,12 +2813,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2745,6 +2840,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel
 
 <span class="badge badge--class">Class</span>
@@ -2753,12 +2849,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2779,6 +2876,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\ValidationEntityNotObject
 
 <span class="badge badge--class">Class</span>
@@ -2787,12 +2885,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`**
+    - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+        - **`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\Exception`
+
 
 ### Method Summary
 
@@ -2813,6 +2912,7 @@ __Uses__ `Phalcon\Filter\Validation\Exception`
 public function __construct();
 ```
 
+
 ## Filter\Validation\Traits\ValidatorCompositeTrait
 
 <span class="badge badge--trait">Trait</span>
@@ -2828,6 +2928,7 @@ validators.
 </div>
 
 __Used by__ [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+
 
 ### Method Summary
 
@@ -2870,12 +2971,13 @@ public function getValidators(): array;
 
 ```php
 public function validate(
-\Phalcon\Filter\Validation $validation,
-mixed $field
+    \Phalcon\Filter\Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\ValidationInterface
 
@@ -2891,6 +2993,7 @@ Interface for the Phalcon\Filter\Validation component
 </div>
 
 __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
+
 
 ### Method Summary
 
@@ -2989,8 +3092,8 @@ __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Messages\MessageInterface` · `Phal
 
 ```php
 public function add(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): ValidationInterface;
 ```
 
@@ -3008,9 +3111,9 @@ Appends a message to the messages list
 
 ```php
 public function bind(
-mixed $entity,
-mixed $data,
-array $whitelist = []
+    mixed $entity,
+    mixed $data,
+    array $whitelist = []
 ): ValidationInterface;
 ```
 
@@ -3069,8 +3172,8 @@ Gets the a value to validate in the array/object data source
 
 ```php
 public function rule(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): ValidationInterface;
 ```
 
@@ -3080,8 +3183,8 @@ Alias of `add` method
 
 ```php
 public function rules(
-string $field,
-array $validators
+    string $field,
+    array $validators
 ): ValidationInterface;
 ```
 
@@ -3091,8 +3194,8 @@ Adds the validators to a field
 
 ```php
 public function setFilters(
-string $field,
-mixed $filters
+    string $field,
+    mixed $filters
 ): ValidationInterface;
 ```
 
@@ -3110,13 +3213,14 @@ Adds labels for fields
 
 ```php
 public function validate(
-mixed $data = null,
-mixed $entity = null,
-array $whitelist = []
+    mixed $data = null,
+    mixed $entity = null,
+    array $whitelist = []
 ): Messages|bool;
 ```
 
 Validate a set of data according to a set of rules
+
 
 ## Filter\Validation\ValidatorCompositeInterface
 
@@ -3132,6 +3236,7 @@ This is a base class for combined fields validators
 </div>
 
 __Uses__ `Phalcon\Filter\Validation`
+
 
 ### Method Summary
 
@@ -3166,12 +3271,13 @@ Executes the validation
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\ValidatorFactory
 
@@ -3181,12 +3287,13 @@ Executes the validation
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.18/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.18/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Filter\Validation\ValidatorFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.18/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Filter\Validation\ValidatorFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`
+
 
 ### Method Summary
 
@@ -3251,6 +3358,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Filter\Validation\ValidatorInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -3265,6 +3373,7 @@ Interface for Phalcon\Filter\Validation\AbstractValidator
 </div>
 
 __Uses__ `Phalcon\Filter\Validation`
+
 
 ### Method Summary
 
@@ -3321,8 +3430,8 @@ __Uses__ `Phalcon\Filter\Validation`
 
 ```php
 public function getOption(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -3373,12 +3482,13 @@ Clear current template and set new from an array,
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Alnum
 
@@ -3394,38 +3504,39 @@ use Phalcon\Filter\Validation\Validator\Alnum as AlnumValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new AlnumValidator(
-    [
-        "message" => ":field must contain only alphanumeric characters",
-    ]
-)
+    "username",
+    new AlnumValidator(
+        [
+            "message" => ":field must contain only alphanumeric characters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new AlnumValidator(
     [
-        "message" => [
-            "username" => "username must contain only alphanumeric characters",
-            "name"     => "name must contain only alphanumeric characters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new AlnumValidator(
+        [
+            "message" => [
+                "username" => "username must contain only alphanumeric characters",
+                "name"     => "name must contain only alphanumeric characters",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Alnum`**
+    - **`Phalcon\Filter\Validation\Validator\Alnum`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+
 
 ### Method Summary
 
@@ -3469,12 +3580,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Alpha
 
@@ -3490,38 +3602,39 @@ use Phalcon\Filter\Validation\Validator\Alpha as AlphaValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new AlphaValidator(
-    [
-        "message" => ":field must contain only letters",
-    ]
-)
+    "username",
+    new AlphaValidator(
+        [
+            "message" => ":field must contain only letters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new AlphaValidator(
     [
-        "message" => [
-            "username" => "username must contain only letters",
-            "name"     => "name must contain only letters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new AlphaValidator(
+        [
+            "message" => [
+                "username" => "username must contain only letters",
+                "name"     => "name must contain only letters",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Alpha`**
+    - **`Phalcon\Filter\Validation\Validator\Alpha`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -3565,12 +3678,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Between
 
@@ -3587,48 +3701,49 @@ use Phalcon\Filter\Validation\Validator\Between;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Between(
-    [
-        "minimum" => 0,
-        "maximum" => 100,
-        "message" => "The price must be between 0 and 100",
-    ]
-)
+    "price",
+    new Between(
+        [
+            "minimum" => 0,
+            "maximum" => 100,
+            "message" => "The price must be between 0 and 100",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Between(
     [
-        "minimum" => [
-            "price"  => 0,
-            "amount" => 0,
-        ],
-        "maximum" => [
-            "price"  => 100,
-            "amount" => 50,
-        ],
-        "message" => [
-            "price"  => "The price must be between 0 and 100",
-            "amount" => "The amount must be between 0 and 50",
-        ],
-    ]
-)
+        "price",
+        "amount",
+    ],
+    new Between(
+        [
+            "minimum" => [
+                "price"  => 0,
+                "amount" => 0,
+            ],
+            "maximum" => [
+                "price"  => 100,
+                "amount" => 50,
+            ],
+            "message" => [
+                "price"  => "The price must be between 0 and 100",
+                "amount" => "The amount must be between 0 and 50",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Between`**
+    - **`Phalcon\Filter\Validation\Validator\Between`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -3672,12 +3787,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Callback
 
@@ -3694,47 +3810,48 @@ use Phalcon\Filter\Validation\Validator\Numericality as NumericalityValidator;
 $validator = new Validation();
 
 $validator->add(
-["user", "admin"],
-new CallbackValidator(
-    [
-        "message" => "There must be only an user or admin set",
-        "callback" => function($data) {
-            if (!empty($data->getUser()) && !empty($data->getAdmin())) {
-                return false;
-            }
+    ["user", "admin"],
+    new CallbackValidator(
+        [
+            "message" => "There must be only an user or admin set",
+            "callback" => function($data) {
+                if (!empty($data->getUser()) && !empty($data->getAdmin())) {
+                    return false;
+                }
 
-            return true;
-        }
-    ]
-)
+                return true;
+            }
+        ]
+    )
 );
 
 $validator->add(
-"amount",
-new CallbackValidator(
-    [
-        "callback" => function($data) {
-            if (!empty($data->getProduct())) {
-                return new NumericalityValidator(
-                    [
-                        "message" => "Amount must be a number."
-                    ]
-                );
+    "amount",
+    new CallbackValidator(
+        [
+            "callback" => function($data) {
+                if (!empty($data->getProduct())) {
+                    return new NumericalityValidator(
+                        [
+                            "message" => "Amount must be a number."
+                        ]
+                    );
+                }
             }
-        }
-    ]
-)
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Callback`**
+    - **`Phalcon\Filter\Validation\Validator\Callback`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -3778,12 +3895,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Confirmation
 
@@ -3799,43 +3917,44 @@ use Phalcon\Filter\Validation\Validator\Confirmation;
 $validator = new Validation();
 
 $validator->add(
-"password",
-new Confirmation(
-    [
-        "message" => "Password does not match confirmation",
-        "with"    => "confirmPassword",
-    ]
-)
+    "password",
+    new Confirmation(
+        [
+            "message" => "Password does not match confirmation",
+            "with"    => "confirmPassword",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "password",
-    "email",
-],
-new Confirmation(
     [
-        "message" => [
-            "password" => "Password does not match confirmation",
-            "email"    => "Email does not match confirmation",
-        ],
-        "with" => [
-            "password" => "confirmPassword",
-            "email"    => "confirmEmail",
-        ],
-    ]
-)
+        "password",
+        "email",
+    ],
+    new Confirmation(
+        [
+            "message" => [
+                "password" => "Password does not match confirmation",
+                "email"    => "Email does not match confirmation",
+            ],
+            "with" => [
+                "password" => "confirmPassword",
+                "email"    => "confirmEmail",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Confirmation`**
+    - **`Phalcon\Filter\Validation\Validator\Confirmation`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -3885,8 +4004,8 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -3898,12 +4017,13 @@ Executes the validation
 
 ```php
 final protected function compare(
-string $a,
-string $b
+    string $a,
+    string $b
 ): bool;
 ```
 
 Compare strings
+
 
 ## Filter\Validation\Validator\CreditCard
 
@@ -3919,38 +4039,39 @@ use Phalcon\Filter\Validation\Validator\CreditCard as CreditCardValidator;
 $validator = new Validation();
 
 $validator->add(
-"creditCard",
-new CreditCardValidator(
-    [
-        "message" => "The credit card number is not valid",
-    ]
-)
+    "creditCard",
+    new CreditCardValidator(
+        [
+            "message" => "The credit card number is not valid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "creditCard",
-    "secondCreditCard",
-],
-new CreditCardValidator(
     [
-        "message" => [
-            "creditCard"       => "The credit card number is not valid",
-            "secondCreditCard" => "The second credit card number is not valid",
-        ],
-    ]
-)
+        "creditCard",
+        "secondCreditCard",
+    ],
+    new CreditCardValidator(
+        [
+            "message" => [
+                "creditCard"       => "The credit card number is not valid",
+                "secondCreditCard" => "The second credit card number is not valid",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\CreditCard`**
+    - **`Phalcon\Filter\Validation\Validator\CreditCard`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -3994,12 +4115,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Date
 
@@ -4015,43 +4137,44 @@ use Phalcon\Filter\Validation\Validator\Date as DateValidator;
 $validator = new Validation();
 
 $validator->add(
-"date",
-new DateValidator(
-    [
-        "format"  => "d-m-Y",
-        "message" => "The date is invalid",
-    ]
-)
+    "date",
+    new DateValidator(
+        [
+            "format"  => "d-m-Y",
+            "message" => "The date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "date",
-    "anotherDate",
-],
-new DateValidator(
     [
-        "format" => [
-            "date"        => "d-m-Y",
-            "anotherDate" => "Y-m-d",
-        ],
-        "message" => [
-            "date"        => "The date is invalid",
-            "anotherDate" => "The another date is invalid",
-        ],
-    ]
-)
+        "date",
+        "anotherDate",
+    ],
+    new DateValidator(
+        [
+            "format" => [
+                "date"        => "d-m-Y",
+                "anotherDate" => "Y-m-d",
+            ],
+            "message" => [
+                "date"        => "The date is invalid",
+                "anotherDate" => "The another date is invalid",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Date`**
+    - **`Phalcon\Filter\Validation\Validator\Date`**
 
 </div>
 
 __Uses__ `DateTime` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -4095,12 +4218,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Digit
 
@@ -4116,38 +4240,39 @@ use Phalcon\Filter\Validation\Validator\Digit as DigitValidator;
 $validator = new Validation();
 
 $validator->add(
-"height",
-new DigitValidator(
-    [
-        "message" => ":field must be numeric",
-    ]
-)
+    "height",
+    new DigitValidator(
+        [
+            "message" => ":field must be numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "height",
-    "width",
-],
-new DigitValidator(
     [
-        "message" => [
-            "height" => "height must be numeric",
-            "width"  => "width must be numeric",
-        ],
-    ]
-)
+        "height",
+        "width",
+    ],
+    new DigitValidator(
+        [
+            "message" => [
+                "height" => "height must be numeric",
+                "width"  => "width must be numeric",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Digit`**
+    - **`Phalcon\Filter\Validation\Validator\Digit`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -4191,12 +4316,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Email
 
@@ -4212,48 +4338,49 @@ use Phalcon\Filter\Validation\Validator\Email as EmailValidator;
 $validator = new Validation();
 
 $validator->add(
-"email",
-new EmailValidator(
-    [
-        "message" => "The e-mail is not valid",
-    ]
-)
-);
-
-$validator->add(
-[
     "email",
-    "anotherEmail",
-],
-new EmailValidator(
-    [
-        "message" => [
-            "email"        => "The e-mail is not valid",
-            "anotherEmail" => "The another e-mail is not valid",
-        ],
-    ]
-)
+    new EmailValidator(
+        [
+            "message" => "The e-mail is not valid",
+        ]
+    )
 );
 
 $validator->add(
-"täst@example.com",
-new EmailValidator(
     [
-        "message" => "The e-mail is not valid",
-        "allowUTF8" => true,
-    ]
-)
+        "email",
+        "anotherEmail",
+    ],
+    new EmailValidator(
+        [
+            "message" => [
+                "email"        => "The e-mail is not valid",
+                "anotherEmail" => "The another e-mail is not valid",
+            ],
+        ]
+    )
+);
+
+$validator->add(
+    "täst@example.com",
+    new EmailValidator(
+        [
+            "message" => "The e-mail is not valid",
+            "allowUTF8" => true,
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Email`**
+    - **`Phalcon\Filter\Validation\Validator\Email`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -4297,12 +4424,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Exception
 
@@ -4315,9 +4443,10 @@ class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Filter\Validation\Validator\Exception`**
+    - **`Phalcon\Filter\Validation\Validator\Exception`**
 
 </div>
+
 
 ## Filter\Validation\Validator\ExclusionIn
 
@@ -4333,49 +4462,50 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new ExclusionIn(
-    [
-        "message" => "The status must not be A or B",
-        "domain"  => [
-            "A",
-            "B",
-        ],
-    ]
-)
-);
-
-$validator->add(
-[
     "status",
-    "type",
-],
-new ExclusionIn(
-    [
-        "message" => [
-            "status" => "The status must not be A or B",
-            "type"   => "The type must not be 1 or "
-        ],
-        "domain" => [
-            "status" => [
+    new ExclusionIn(
+        [
+            "message" => "The status must not be A or B",
+            "domain"  => [
                 "A",
                 "B",
             ],
-            "type"   => [1, 2],
-        ],
-    ]
-)
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "status",
+        "type",
+    ],
+    new ExclusionIn(
+        [
+            "message" => [
+                "status" => "The status must not be A or B",
+                "type"   => "The type must not be 1 or "
+            ],
+            "domain" => [
+                "status" => [
+                    "A",
+                    "B",
+                ],
+                "type"   => [1, 2],
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
+    - **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -4419,12 +4549,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File
 
@@ -4440,75 +4571,76 @@ use Phalcon\Filter\Validation\Validator\File as FileValidator;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new FileValidator(
-    [
-        "maxSize"              => "2M",
-        "messageSize"          => ":field exceeds the max file size (:size)",
-        "allowedTypes"         => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "messageType"          => "Allowed file types are :types",
-        "maxResolution"        => "800x600",
-        "messageMaxResolution" => "Max resolution of :field is :resolution",
-        "messageFileEmpty"     => "File is empty",
-        "messageIniSize"       => "Ini size is not valid",
-        "messageValid"         => "File is not valid",
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new FileValidator(
-    [
-        "maxSize" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "messageSize" => [
-            "file"        => "file exceeds the max file size 2M",
-            "anotherFile" => "anotherFile exceeds the max file size 4M",
-        "allowedTypes" => [
-            "file"        => [
+    new FileValidator(
+        [
+            "maxSize"              => "2M",
+            "messageSize"          => ":field exceeds the max file size (:size)",
+            "allowedTypes"         => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
+            "messageType"          => "Allowed file types are :types",
+            "maxResolution"        => "800x600",
+            "messageMaxResolution" => "Max resolution of :field is :resolution",
+            "messageFileEmpty"     => "File is empty",
+            "messageIniSize"       => "Ini size is not valid",
+            "messageValid"         => "File is not valid",
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new FileValidator(
+        [
+            "maxSize" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
             ],
-        ],
-        "messageType" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
-        ],
-        "maxResolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "messageMaxResolution" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+            "messageSize" => [
+                "file"        => "file exceeds the max file size 2M",
+                "anotherFile" => "anotherFile exceeds the max file size 4M",
+            "allowedTypes" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "messageType" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ],
+            "maxResolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "messageMaxResolution" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
-- **`Phalcon\Filter\Validation\Validator\File`**
+    - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+        - **`Phalcon\Filter\Validation\Validator\File`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+
 
 ### Method Summary
 
@@ -4532,6 +4664,7 @@ public function __construct( array $options = [] );
 
 Constructor
 
+
 ## Filter\Validation\Validator\File\AbstractFile
 
 <span class="badge badge--abstract">Abstract</span>
@@ -4546,49 +4679,50 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Size(
-    [
-        "maxSize"              => "2M",
-        "messageSize"          => ":field exceeds the max file size (:size)",
-    ]
-)
+    "file",
+    new Size(
+        [
+            "maxSize"              => "2M",
+            "messageSize"          => ":field exceeds the max file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new FileValidator(
     [
-        "maxSize" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "messageSize" => [
-            "file"        => "file exceeds the max file size 2M",
-            "anotherFile" => "anotherFile exceeds the max file size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new FileValidator(
+        [
+            "maxSize" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "messageSize" => [
+                "file"        => "file exceeds the max file size 2M",
+                "anotherFile" => "anotherFile exceeds the max file size 4M",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\File\AbstractFile`**
-- [`Phalcon\Filter\Validation\Validator\File\MimeType`](#filtervalidationvalidatorfilemimetype)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`](#filtervalidationvalidatorfileresolutionaspectratio)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`](#filtervalidationvalidatorfileresolutionequal)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\Max`](#filtervalidationvalidatorfileresolutionmax)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
+    - **`Phalcon\Filter\Validation\Validator\File\AbstractFile`**
+        - [`Phalcon\Filter\Validation\Validator\File\MimeType`](#filtervalidationvalidatorfilemimetype)
+        - [`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`](#filtervalidationvalidatorfileresolutionaspectratio)
+        - [`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`](#filtervalidationvalidatorfileresolutionequal)
+        - [`Phalcon\Filter\Validation\Validator\File\Resolution\Max`](#filtervalidationvalidatorfileresolutionmax)
+        - [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
+        - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -4704,8 +4838,8 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 
 ```php
 public function checkUpload(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -4715,8 +4849,8 @@ Check upload
 
 ```php
 public function checkUploadIsEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -4726,8 +4860,8 @@ Check if upload is empty
 
 ```php
 public function checkUploadIsValid(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -4737,8 +4871,8 @@ Check if upload is valid
 
 ```php
 public function checkUploadMaxSize(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -4780,8 +4914,8 @@ File is not valid
 
 ```php
 public function isAllowEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -4822,6 +4956,7 @@ protected function checkIsUploadedFile( string $name ): bool;
 Checks if a file has been uploaded; Internal check that can be
 overridden in a subclass if you do not want to check uploaded files
 
+
 ## Filter\Validation\Validator\File\MimeType
 
 <span class="badge badge--class">Class</span>
@@ -4836,53 +4971,54 @@ use Phalcon\Filter\Validation\Validator\File\MimeType;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new MimeType(
-    [
-        "types" => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "message" => "Allowed file types are :types"
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new MimeType(
-    [
-        "types" => [
-            "file"        => [
+    new MimeType(
+        [
+            "types" => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
-            ],
-        ],
-        "message" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            "message" => "Allowed file types are :types"
         ]
-    ]
-)
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new MimeType(
+        [
+            "types" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "message" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ]
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\MimeType`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\MimeType`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -4913,12 +5049,13 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exception` ·
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\AspectRatio
 
@@ -4938,44 +5075,45 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new AspectRatio(
-    [
-        "ratio"   => "16x9",
-        "message" => "The aspect ratio of the field :field has to be :ratio",
-    ]
-)
+    "file",
+    new AspectRatio(
+        [
+            "ratio"   => "16x9",
+            "message" => "The aspect ratio of the field :field has to be :ratio",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new AspectRatio(
     [
-        "ratio" => [
-            "file"        => "16x9",
-            "anotherFile" => "4x3",
-        ],
-        "message" => [
-            "file"        => "Aspect ratio of file has to be 16x9",
-            "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new AspectRatio(
+        [
+            "ratio" => [
+                "file"        => "16x9",
+                "anotherFile" => "4x3",
+            ],
+            "message" => [
+                "file"        => "Aspect ratio of file has to be 16x9",
+                "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+
 
 ### Method Summary
 
@@ -5019,12 +5157,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\Equal
 
@@ -5040,44 +5179,45 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Equal;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Equal(
-    [
-        "resolution" => "800x600",
-        "message"    => "The resolution of the field :field has to be equal :resolution",
-    ]
-)
+    "file",
+    new Equal(
+        [
+            "resolution" => "800x600",
+            "message"    => "The resolution of the field :field has to be equal :resolution",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Equal(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "message" => [
-            "file"        => "Equal resolution of file has to be 800x600",
-            "anotherFile" => "Equal resolution of file has to be 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Equal(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "message" => [
+                "file"        => "Equal resolution of file has to be 800x600",
+                "anotherFile" => "Equal resolution of file has to be 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -5121,12 +5261,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\Max
 
@@ -5142,49 +5283,50 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Max;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Max(
-    [
-        "resolution"      => "800x600",
-        "message"  => "Max resolution of :field is :resolution",
-        "included" => true,
-    ]
-)
+    "file",
+    new Max(
+        [
+            "resolution"      => "800x600",
+            "message"  => "Max resolution of :field is :resolution",
+            "included" => true,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Max(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Max(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\Max`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\Resolution\Max`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -5228,12 +5370,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\Min
 
@@ -5249,49 +5392,50 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Min;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Min(
-    [
-        "resolution" => "800x600",
-        "message"    => "Min resolution of :field is :resolution",
-        "included"   => true,
-    ]
-)
+    "file",
+    new Min(
+        [
+            "resolution" => "800x600",
+            "message"    => "Min resolution of :field is :resolution",
+            "included"   => true,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Min(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "Min resolution of file is 800x600",
-            "anotherFile" => "Min resolution of file is 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Min(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "Min resolution of file is 800x600",
+                "anotherFile" => "Min resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\Min`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\Resolution\Min`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -5335,12 +5479,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Size\Equal
 
@@ -5356,51 +5501,52 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Equal(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the equal file size (:size)",
-    ]
-)
+    "file",
+    new Equal(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the equal file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Equal(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file does not have the right file size",
-            "anotherFile" => "anotherFile wrong file size (4MB)",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Equal(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file does not have the right file size",
+                "anotherFile" => "anotherFile wrong file size (4MB)",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Size\Equal`**
-- [`Phalcon\Filter\Validation\Validator\File\Size\Max`](#filtervalidationvalidatorfilesizemax)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Min`](#filtervalidationvalidatorfilesizemin)
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - **`Phalcon\Filter\Validation\Validator\File\Size\Equal`**
+            - [`Phalcon\Filter\Validation\Validator\File\Size\Max`](#filtervalidationvalidatorfilesizemax)
+            - [`Phalcon\Filter\Validation\Validator\File\Size\Min`](#filtervalidationvalidatorfilesizemin)
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+
 
 ### Method Summary
 
@@ -5436,8 +5582,8 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\Fil
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -5449,13 +5595,14 @@ Executes the validation
 
 ```php
 protected function getConditional(
-double $source,
-double $target,
-bool $included = false
+    double $source,
+    double $target,
+    bool $included = false
 );
 ```
 
 Executes the conditional
+
 
 ## Filter\Validation\Validator\File\Size\Max
 
@@ -5471,46 +5618,46 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Max(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the max file size (:size)",
-    ]
-)
+    "file",
+    new Max(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the max file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Max(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file exceeds the max file size 2M",
-            "anotherFile" => "anotherFile exceeds the max file size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Max(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file exceeds the max file size 2M",
+                "anotherFile" => "anotherFile exceeds the max file size 4M",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
-- **`Phalcon\Filter\Validation\Validator\File\Size\Max`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
+            - **`Phalcon\Filter\Validation\Validator\File\Size\Max`**
 
 </div>
 
@@ -5542,13 +5689,14 @@ new Max(
 
 ```php
 protected function getConditional(
-double $source,
-double $target,
-bool $included = false
+    double $source,
+    double $target,
+    bool $included = false
 );
 ```
 
 Executes the conditional
+
 
 ## Filter\Validation\Validator\File\Size\Min
 
@@ -5564,46 +5712,46 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Min(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the min file size (:size)",
-    ]
-)
+    "file",
+    new Min(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the min file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Min(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file exceeds the min file size 2M",
-            "anotherFile" => "anotherFile exceeds the min file size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Min(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file exceeds the min file size 2M",
+                "anotherFile" => "anotherFile exceeds the min file size 4M",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
-- **`Phalcon\Filter\Validation\Validator\File\Size\Min`**
+    - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+        - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
+            - **`Phalcon\Filter\Validation\Validator\File\Size\Min`**
 
 </div>
 
@@ -5635,13 +5783,14 @@ new Min(
 
 ```php
 protected function getConditional(
-double $source,
-double $target,
-bool $included = false
+    double $source,
+    double $target,
+    bool $included = false
 );
 ```
 
 Executes the conditional
+
 
 ## Filter\Validation\Validator\Files
 
@@ -5662,26 +5811,27 @@ use Phalcon\Filter\Validation\Validator\Files as FilesValidator;
 $validation = new Validation();
 
 $validation->add(
-"photos",
-new FilesValidator(
-    [
-        "maxSize"      => "2M",
-        "messageSize"  => ":field exceeds the max file size (:size)",
-        "allowedTypes" => ["image/jpeg", "image/png"],
-        "messageType"  => "Allowed file types are :types",
-    ]
-)
+    "photos",
+    new FilesValidator(
+        [
+            "maxSize"      => "2M",
+            "messageSize"  => ":field exceeds the max file size (:size)",
+            "allowedTypes" => ["image/jpeg", "image/png"],
+            "messageType"  => "Allowed file types are :types",
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Files`**
+    - **`Phalcon\Filter\Validation\Validator\Files`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages` · `Phalcon\Messages\Messages`
+
 
 ### Method Summary
 
@@ -5714,8 +5864,8 @@ __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValid
 
 ```php
 public function isAllowEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -5725,8 +5875,8 @@ Whole-field empty check: true when the field carries no uploaded files.
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -5743,6 +5893,7 @@ protected function normalizeFiles( mixed $value ): array;
 Normalizes a single file or a transposed multi-file `$_FILES` node into a
 list of single-file structures.
 
+
 ## Filter\Validation\Validator\Identical
 
 <span class="badge badge--class">Class</span>
@@ -5757,43 +5908,44 @@ use Phalcon\Filter\Validation\Validator\Identical;
 $validator = new Validation();
 
 $validator->add(
-"terms",
-new Identical(
-    [
-        "accepted" => "yes",
-        "message" => "Terms and conditions must be accepted",
-    ]
-)
+    "terms",
+    new Identical(
+        [
+            "accepted" => "yes",
+            "message" => "Terms and conditions must be accepted",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "terms",
-    "anotherTerms",
-],
-new Identical(
     [
-        "accepted" => [
-            "terms"        => "yes",
-            "anotherTerms" => "yes",
-        ],
-        "message" => [
-            "terms"        => "Terms and conditions must be accepted",
-            "anotherTerms" => "Another terms  must be accepted",
-        ],
-    ]
-)
+        "terms",
+        "anotherTerms",
+    ],
+    new Identical(
+        [
+            "accepted" => [
+                "terms"        => "yes",
+                "anotherTerms" => "yes",
+            ],
+            "message" => [
+                "terms"        => "Terms and conditions must be accepted",
+                "anotherTerms" => "Another terms  must be accepted",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Identical`**
+    - **`Phalcon\Filter\Validation\Validator\Identical`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -5837,12 +5989,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\InclusionIn
 
@@ -5858,43 +6011,44 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new InclusionIn(
-    [
-        "message" => "The status must be A or B",
-        "domain"  => ["A", "B"],
-    ]
-)
+    "status",
+    new InclusionIn(
+        [
+            "message" => "The status must be A or B",
+            "domain"  => ["A", "B"],
+        ]
+    )
 );
 
 $validator->add(
-[
-    "status",
-    "type",
-],
-new InclusionIn(
     [
-        "message" => [
-            "status" => "The status must be A or B",
-            "type"   => "The status must be 1 or 2",
-        ],
-        "domain" => [
-            "status" => ["A", "B"],
-            "type"   => [1, 2],
+        "status",
+        "type",
+    ],
+    new InclusionIn(
+        [
+            "message" => [
+                "status" => "The status must be A or B",
+                "type"   => "The status must be 1 or 2",
+            ],
+            "domain" => [
+                "status" => ["A", "B"],
+                "type"   => [1, 2],
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\InclusionIn`**
+    - **`Phalcon\Filter\Validation\Validator\InclusionIn`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -5938,12 +6092,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Ip
 
@@ -5956,58 +6111,59 @@ Check for IP addresses
 use Phalcon\Filter\Validation\Validator\Ip as IpValidator;
 
 $validator->add(
-"ip_address",
-new IpValidator(
-    [
-        "message"       => ":field must contain only ip addresses",
-        "version"       => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
-        "allowReserved" => false,   // False if not specified. Ignored for v6
-        "allowPrivate"  => false,   // False if not specified
-        "allowEmpty"    => false,
-    ]
-)
+    "ip_address",
+    new IpValidator(
+        [
+            "message"       => ":field must contain only ip addresses",
+            "version"       => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
+            "allowReserved" => false,   // False if not specified. Ignored for v6
+            "allowPrivate"  => false,   // False if not specified
+            "allowEmpty"    => false,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "source_address",
-    "destination_address",
-],
-new IpValidator(
     [
-        "message" => [
-            "source_address"      => "source_address must be a valid IP address",
-            "destination_address" => "destination_address must be a valid IP address",
-        ],
-        "version" => [
-             "source_address"      => Ip::VERSION_4 | IP::VERSION_6,
-             "destination_address" => Ip::VERSION_4,
-        ],
-        "allowReserved" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-        "allowPrivate" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-        "allowEmpty" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-    ]
-)
+        "source_address",
+        "destination_address",
+    ],
+    new IpValidator(
+        [
+            "message" => [
+                "source_address"      => "source_address must be a valid IP address",
+                "destination_address" => "destination_address must be a valid IP address",
+            ],
+            "version" => [
+                 "source_address"      => Ip::VERSION_4 | IP::VERSION_6,
+                 "destination_address" => Ip::VERSION_4,
+            ],
+            "allowReserved" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+            "allowPrivate" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+            "allowEmpty" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Ip`**
+    - **`Phalcon\Filter\Validation\Validator\Ip`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -6064,12 +6220,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Numericality
 
@@ -6085,38 +6242,39 @@ use Phalcon\Filter\Validation\Validator\Numericality;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Numericality(
-    [
-        "message" => ":field is not numeric",
-    ]
-)
+    "price",
+    new Numericality(
+        [
+            "message" => ":field is not numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Numericality(
     [
-        "message" => [
-            "price"  => "price is not numeric",
-            "amount" => "amount is not numeric",
+        "price",
+        "amount",
+    ],
+    new Numericality(
+        [
+            "message" => [
+                "price"  => "price is not numeric",
+                "amount" => "amount is not numeric",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Numericality`**
+    - **`Phalcon\Filter\Validation\Validator\Numericality`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -6160,12 +6318,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\PresenceOf
 
@@ -6181,38 +6340,39 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 $validator = new Validation();
 
 $validator->add(
-"name",
-new PresenceOf(
-    [
-        "message" => "The name is required",
-    ]
-)
+    "name",
+    new PresenceOf(
+        [
+            "message" => "The name is required",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "name",
-    "email",
-],
-new PresenceOf(
     [
-        "message" => [
-            "name"  => "The name is required",
-            "email" => "The email is required",
-        ],
-    ]
-)
+        "name",
+        "email",
+    ],
+    new PresenceOf(
+        [
+            "message" => [
+                "name"  => "The name is required",
+                "email" => "The email is required",
+            ],
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\PresenceOf`**
+    - **`Phalcon\Filter\Validation\Validator\PresenceOf`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -6256,12 +6416,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Regex
 
@@ -6277,43 +6438,44 @@ use Phalcon\Filter\Validation\Validator\Regex as RegexValidator;
 $validator = new Validation();
 
 $validator->add(
-"created_at",
-new RegexValidator(
-    [
-        "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-        "message" => "The creation date is invalid",
-    ]
-)
+    "created_at",
+    new RegexValidator(
+        [
+            "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+            "message" => "The creation date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "created_at",
-    "name",
-],
-new RegexValidator(
     [
-        "pattern" => [
-            "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-            "name"       => "/^[a-z]$/",
-        ],
-        "message" => [
-            "created_at" => "The creation date is invalid",
-            "name"       => "The name is invalid",
+        "created_at",
+        "name",
+    ],
+    new RegexValidator(
+        [
+            "pattern" => [
+                "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+                "name"       => "/^[a-z]$/",
+            ],
+            "message" => [
+                "created_at" => "The creation date is invalid",
+                "name"       => "The name is invalid",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Regex`**
+    - **`Phalcon\Filter\Validation\Validator\Regex`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -6357,12 +6519,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\StringLength
 
@@ -6381,64 +6544,65 @@ use Phalcon\Filter\Validation\Validator\StringLength as StringLength;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new StringLength(
-    [
-        "max"             => 50,
-        "min"             => 2,
-        "messageMaximum"  => "We don't like really long names",
-        "messageMinimum"  => "We want more than just their initials",
-        "includedMaximum" => true,
-        "includedMinimum" => false,
-    ]
-)
+    "name_last",
+    new StringLength(
+        [
+            "max"             => 50,
+            "min"             => 2,
+            "messageMaximum"  => "We don't like really long names",
+            "messageMinimum"  => "We want more than just their initials",
+            "includedMaximum" => true,
+            "includedMinimum" => false,
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new StringLength(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "messageMaximum" => [
-            "name_last"  => "We don't like really long last names",
-            "name_first" => "We don't like really long first names",
-        ],
-        "messageMinimum" => [
-            "name_last"  => "We don't like too short last names",
-            "name_first" => "We don't like too short first names",
-        ],
-        "includedMaximum" => [
-            "name_last"  => false,
-            "name_first" => true,
-        ],
-        "includedMinimum" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new StringLength(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "messageMaximum" => [
+                "name_last"  => "We don't like really long last names",
+                "name_first" => "We don't like really long first names",
+            ],
+            "messageMinimum" => [
+                "name_last"  => "We don't like too short last names",
+                "name_first" => "We don't like too short first names",
+            ],
+            "includedMaximum" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ],
+            "includedMinimum" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
-- **`Phalcon\Filter\Validation\Validator\StringLength`**
+    - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+        - **`Phalcon\Filter\Validation\Validator\StringLength`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -6462,6 +6626,7 @@ public function __construct( array $options = [] );
 
 Constructor
 
+
 ## Filter\Validation\Validator\StringLength\Max
 
 <span class="badge badge--class">Class</span>
@@ -6478,48 +6643,49 @@ use Phalcon\Filter\Validation\Validator\StringLength\Max;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new Max(
-    [
-        "max"      => 50,
-        "message"  => "We don't like really long names",
-        "included" => true
-    ]
-)
+    "name_last",
+    new Max(
+        [
+            "max"      => 50,
+            "message"  => "We don't like really long names",
+            "included" => true
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new Max(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "message" => [
-            "name_last"  => "We don't like really long last names",
-            "name_first" => "We don't like really long first names",
-        ],
-        "included" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new Max(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "message" => [
+                "name_last"  => "We don't like really long last names",
+                "name_first" => "We don't like really long first names",
+            ],
+            "included" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
+    - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -6563,12 +6729,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\StringLength\Min
 
@@ -6586,48 +6753,49 @@ use Phalcon\Filter\Validation\Validator\StringLength\Min;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new Min(
-    [
-        "min"     => 2,
-        "message" => "We want more than just their initials",
-        "included" => true
-    ]
-)
+    "name_last",
+    new Min(
+        [
+            "min"     => 2,
+            "message" => "We want more than just their initials",
+            "included" => true
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new Min(
     [
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "message" => [
-            "name_last"  => "We don't like too short last names",
-            "name_first" => "We don't like too short first names",
-        ],
-        "included" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new Min(
+        [
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "message" => [
+                "name_last"  => "We don't like too short last names",
+                "name_first" => "We don't like too short first names",
+            ],
+            "included" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
+    - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+
 
 ### Method Summary
 
@@ -6671,12 +6839,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Uniqueness
 
@@ -6692,45 +6861,45 @@ use Phalcon\Filter\Validation\Validator\Uniqueness as UniquenessValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "model"   => new Users(),
-        "message" => ":field must be unique",
-    ]
-)
+    "username",
+    new UniquenessValidator(
+        [
+            "model"   => new Users(),
+            "message" => ":field must be unique",
+        ]
+    )
 );
 ```
 
 Different attribute from the field:
 ```php
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "model"     => new Users(),
-        "attribute" => "nick",
-    ]
-)
+    "username",
+    new UniquenessValidator(
+        [
+            "model"     => new Users(),
+            "attribute" => "nick",
+        ]
+    )
 );
 ```
 
 In model:
 ```php
 $validator->add(
-"username",
-new UniquenessValidator()
+    "username",
+    new UniquenessValidator()
 );
 ```
 
 Combination of fields in model:
 ```php
 $validator->add(
-[
-    "firstName",
-    "lastName",
-],
-new UniquenessValidator()
+    [
+        "firstName",
+        "lastName",
+    ],
+    new UniquenessValidator()
 );
 ```
 
@@ -6739,28 +6908,29 @@ situations where values need to be converted to do the database lookup:
 
 ```php
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "convert" => function (array $values) {
-            $values["username"] = strtolower($values["username"]);
+    "username",
+    new UniquenessValidator(
+        [
+            "convert" => function (array $values) {
+                $values["username"] = strtolower($values["username"]);
 
-            return $values;
-        }
-    ]
-)
+                return $values;
+            }
+        ]
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
-- **`Phalcon\Filter\Validation\Validator\Uniqueness`**
+    - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
+        - **`Phalcon\Filter\Validation\Validator\Uniqueness`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Support\Settings`
+
 
 ### Method Summary
 
@@ -6826,8 +6996,8 @@ Constructor
 
 ```php
 public function getOption(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -6841,8 +7011,8 @@ combination of fields; in that case resolve it to the mapped value.
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -6854,8 +7024,8 @@ Executes the validation
 
 ```php
 protected function getColumnNameReal(
-mixed $record,
-string $field
+    mixed $record,
+    string $field
 ): string;
 ```
 
@@ -6865,8 +7035,8 @@ The column map is used in the case to get real column name
 
 ```php
 protected function isUniqueness(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -6874,13 +7044,14 @@ mixed $field
 
 ```php
 protected function isUniquenessModel(
-mixed $record,
-array $field,
-array $values
+    mixed $record,
+    array $field,
+    array $values
 );
 ```
 
 Uniqueness method used for model
+
 
 ## Filter\Validation\Validator\Url
 
@@ -6896,38 +7067,39 @@ use Phalcon\Filter\Validation\Validator\Url as UrlValidator;
 $validator = new Validation();
 
 $validator->add(
-"url",
-new UrlValidator(
-    [
-        "message" => ":field must be a url",
-    ]
-)
+    "url",
+    new UrlValidator(
+        [
+            "message" => ":field must be a url",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "url",
-    "homepage",
-],
-new UrlValidator(
     [
-        "message" => [
-            "url"      => "url must be a url",
-            "homepage" => "homepage must be a url",
+        "url",
+        "homepage",
+    ],
+    new UrlValidator(
+        [
+            "message" => [
+                "url"      => "url must be a url",
+                "homepage" => "homepage must be a url",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Url`**
+    - **`Phalcon\Filter\Validation\Validator\Url`**
 
 </div>
 
 __Uses__ `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+
 
 ### Method Summary
 
@@ -6971,8 +7143,8 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 

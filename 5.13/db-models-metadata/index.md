@@ -45,27 +45,27 @@ The above code will print the field names and also the fields to field types arr
 
 ```php
 [
-[0] => inv_id
-[1] => inv_cst_id
-[2] => inv_status_flag
-[3] => inv_title
-[4] => inv_total
-[5] => inv_created_at
-[6] => inv_created_by
-[7] => inv_updated_at
-[8] => inv_updated_by
+    [0] => inv_id
+    [1] => inv_cst_id
+    [2] => inv_status_flag
+    [3] => inv_title
+    [4] => inv_total
+    [5] => inv_created_at
+    [6] => inv_created_by
+    [7] => inv_updated_at
+    [8] => inv_updated_by
 ]
 
 [
-[inv_id]          => 0,
-[inv_cst_id]      => 0,
-[inv_status_flag] => 0,
-[inv_title]       => 2,
-[inv_total]       => 0,
-[inv_created_at]  => 4,
-[inv_created_by]  => 0,
-[inv_updated_at]  => 4,
-[inv_updated_by]  => 0,
+    [inv_id]          => 0,
+    [inv_cst_id]      => 0,
+    [inv_status_flag] => 0,
+    [inv_title]       => 2,
+    [inv_total]       => 0,
+    [inv_created_at]  => 4,
+    [inv_created_by]  => 0,
+    [inv_updated_at]  => 4,
+    [inv_updated_by]  => 0,
 ]
 ```
 
@@ -101,15 +101,15 @@ Returns table attributes names (fields)
 
 ```php
 print_r(
-$metaData->getAttributes(
-    new Invoices()
-)
+    $metaData->getAttributes(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 public function getAutomaticCreateAttributes(
-ModelInterface $model
+    ModelInterface $model
 ): array
 ```
 
@@ -117,15 +117,15 @@ Return attributes that must be ignored from the `INSERT` SQL generation
 
 ```php
 print_r(
-$metaData->getAutomaticCreateAttributes(
-    new Invoices()
-)
+    $metaData->getAutomaticCreateAttributes(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 public function getAutomaticUpdateAttributes(
-ModelInterface $model
+    ModelInterface $model
 ): array
 ```
 
@@ -133,9 +133,9 @@ Return attributes that must be ignored from the `UPDATE` SQL generation
 
 ```php
 print_r(
-$metaData->getAutomaticUpdateAttributes(
-    new Invoices()
-)
+    $metaData->getAutomaticUpdateAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -147,9 +147,9 @@ Return attributes and their bind data types
 
 ```php
 print_r(
-$metaData->getBindTypes(
-    new Invoices()
-)
+    $metaData->getBindTypes(
+        new Invoices()
+    )
 );
 ```
 
@@ -161,9 +161,9 @@ Returns the column map if any
 
 ```php
 print_r(
-$metaData->getColumnMap(
-    new Invoices()
-)
+    $metaData->getColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -175,9 +175,9 @@ Return attributes (which have default values) and their default values
 
 ```php
  print_r(
- $metaData->getDefaultValues(
-     new Invoices()
- )
+     $metaData->getDefaultValues(
+         new Invoices()
+     )
  );
 ```
 
@@ -189,9 +189,9 @@ Return attributes and their data types
 
 ```php
 print_r(
-$metaData->getDataTypes(
-    new Invoices()
-)
+    $metaData->getDataTypes(
+        new Invoices()
+    )
 );
 ```
 
@@ -203,15 +203,15 @@ Return attributes which types are numerical
 
 ```php
 print_r(
-$metaData->getDataTypesNumeric(
-    new Invoices()
-)
+    $metaData->getDataTypesNumeric(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 public function getEmptyStringAttributes(
-ModelInterface $model
+    ModelInterface $model
 ): array
 ```
 
@@ -219,9 +219,9 @@ Return attributes allow empty strings
 
 ```php
 print_r(
-$metaData->getEmptyStringAttributes(
-    new Invoices()
-)
+    $metaData->getEmptyStringAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -233,15 +233,15 @@ Returns the name of the identity field (if one is present)
 
 ```php
 print_r(
-$metaData->getIdentityField(
-    new Invoices()
-)
+    $metaData->getIdentityField(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 public function getNonPrimaryKeyAttributes(
-ModelInterface $model
+    ModelInterface $model
 ): array
 ```
 
@@ -249,9 +249,9 @@ Returns an array of fields which are not part of the primary key
 
 ```php
 print_r(
-$metaData->getNonPrimaryKeyAttributes(
-    new Invoices()
-)
+    $metaData->getNonPrimaryKeyAttributes(
+        new Invoices()
+    )
 );
 ```
 
@@ -263,15 +263,15 @@ Returns an array of not null attributes
 
 ```php
 print_r(
-$metaData->getNotNullAttributes(
-    new Invoices()
-)
+    $metaData->getNotNullAttributes(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 public function getPrimaryKeyAttributes(
-ModelInterface $model
+    ModelInterface $model
 ): array
 ```
 
@@ -279,15 +279,15 @@ Returns an array of fields which are part of the primary key
 
 ```php
 print_r(
-$metaData->getPrimaryKeyAttributes(
-    new Invoices()
-)
+    $metaData->getPrimaryKeyAttributes(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 public function getReverseColumnMap(
-ModelInterface $model
+    ModelInterface $model
 ): array
 ```
 
@@ -295,9 +295,9 @@ Returns the reverse column map if any
 
 ```php
 print_r(
-$metaData->getReverseColumnMap(
-    new Invoices()
-)
+    $metaData->getReverseColumnMap(
+        new Invoices()
+    )
 );
 ```
 
@@ -309,8 +309,8 @@ Return the strategy to obtain the meta-data
 
 ```php
 public function hasAttribute(
-ModelInterface $model, 
-string $attribute
+    ModelInterface $model, 
+    string $attribute
 ): bool
 ```
 
@@ -318,10 +318,10 @@ Check if a model has a certain attribute
 
 ```php
 print_r(
-$metaData->hasAttribute(
-    new Invoices(),
-    "inv_title"
-)
+    $metaData->hasAttribute(
+        new Invoices(),
+        "inv_title"
+    )
 );
 ```
 
@@ -333,7 +333,7 @@ Checks if the internal meta-data container is empty
 
 ```php
 print_r(
-$metaData->isEmpty()
+    $metaData->isEmpty()
 );
 ```
 
@@ -345,7 +345,7 @@ Reads metadata from the adapter
 
 ```php
 final public function readColumnMap(
-ModelInterface $model
+    ModelInterface $model
 ): array | null
 ```
 
@@ -353,16 +353,16 @@ Reads the ordered/reversed column map for certain model
 
 ```php
 print_r(
-$metaData->readColumnMap(
-    new Invoices()
-)
+    $metaData->readColumnMap(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 final public function readColumnMapIndex(
-ModelInterface $model, 
-int $index
+    ModelInterface $model, 
+    int $index
 )
 ```
 
@@ -370,10 +370,10 @@ Reads column-map information for a certain model using a `MODEL_*` constant
 
 ```php
 print_r(
-$metaData->readColumnMapIndex(
-    new Invoices(),
-    MetaData::MODELS_REVERSE_COLUMN_MAP
-)
+    $metaData->readColumnMapIndex(
+        new Invoices(),
+        MetaData::MODELS_REVERSE_COLUMN_MAP
+    )
 );
 ```
 
@@ -385,16 +385,16 @@ Reads the complete meta-data for certain model
 
 ```php
 print_r(
-$metaData->readMetaData(
-    new Invoices()
-)
+    $metaData->readMetaData(
+        new Invoices()
+    )
 );
 ```
 
 ```php
 final public function readMetaDataIndex(
-ModelInterface $model, 
-int $index
+    ModelInterface $model, 
+    int $index
 )
 ```
 
@@ -402,10 +402,10 @@ Reads meta-data for certain model
 
 ```php
 print_r(
-$metaData->readMetaDataIndex(
-    new Invoices(),
-    0
-)
+    $metaData->readMetaDataIndex(
+        new Invoices(),
+        0
+    )
 );
 ```
 
@@ -421,8 +421,8 @@ Resets internal meta-data in order to regenerate it
 
 ```php
 public function setAutomaticCreateAttributes(
-ModelInterface $model, 
-array $attributes
+    ModelInterface $model, 
+    array $attributes
 ): void
 ```
 
@@ -430,17 +430,17 @@ Set the attributes that must be ignored from the INSERT SQL generation
 
 ```php
 $metaData->setAutomaticCreateAttributes(
-new Invoices(),
-[
-    "inv_created_at" => true,
-]
+    new Invoices(),
+    [
+        "inv_created_at" => true,
+    ]
 );
 ```
 
 ```php
 public function setAutomaticUpdateAttributes(
-ModelInterface $model, 
-array $attributes
+    ModelInterface $model, 
+    array $attributes
 ): void
 ```
 
@@ -448,17 +448,17 @@ Set the attributes that must be ignored from the UPDATE SQL generation
 
 ```php
 $metaData->setAutomaticUpdateAttributes(
-new Invoices(),
-[
-    "inv_updated_at" => true,
-]
+    new Invoices(),
+    [
+        "inv_updated_at" => true,
+    ]
 );
 ```
 
 ```php
 public function setEmptyStringAttributes(
-ModelInterface $model, 
-array $attributes
+    ModelInterface $model, 
+    array $attributes
 ): void
 ```
 
@@ -466,10 +466,10 @@ Set the attributes that allow empty string values
 
 ```php
 $metaData->setEmptyStringAttributes(
-new Invoices(),
-[
-    "inv_title" => true,
-]
+    new Invoices(),
+    [
+        "inv_title" => true,
+    ]
 );
 ```
 
@@ -487,9 +487,9 @@ Writes the metadata to the adapter
 
 ```php
 final public function writeMetaDataIndex(
-ModelInterface $model, 
-int $index, 
-mixed $data
+    ModelInterface $model, 
+    int $index, 
+    mixed $data
 ): void
 ```
 
@@ -497,22 +497,22 @@ Writes meta-data for a certain model using a MODEL_* constant
 
 ```php
 print_r(
-$metaData->writeColumnMapIndex(
-    new Invoices(),
-    MetaData::MODELS_REVERSE_COLUMN_MAP,
-    [
-        "title" => "inv_title",
-    ]
-)
+    $metaData->writeColumnMapIndex(
+        new Invoices(),
+        MetaData::MODELS_REVERSE_COLUMN_MAP,
+        [
+            "title" => "inv_title",
+        ]
+    )
 );
 ```
 
 ```php
 final protected function initialize(
-ModelInterface $model, 
-mixed $key, 
-mixed $table, 
-mixed $schema
+    ModelInterface $model, 
+    mixed $key, 
+    mixed $table, 
+    mixed $schema
 )
 ```
 
@@ -556,17 +556,17 @@ use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    $serializerFactory = new SerializerFactory();
-    $adapterFactory    = new AdapterFactory($serializerFactory);
-    $options = [
-        'lifetime' => 86400,
-        'prefix'   => 'my-prefix',
-    ];
+    'modelsMetadata',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $adapterFactory    = new AdapterFactory($serializerFactory);
+        $options = [
+            'lifetime' => 86400,
+            'prefix'   => 'my-prefix',
+        ];
 
-    return new Apcu($adapterFactory, $options);
-}
+        return new Apcu($adapterFactory, $options);
+    }
 );
 ```
 
@@ -591,24 +591,24 @@ use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    $serializerFactory = new SerializerFactory();
-    $adapterFactory    = new AdapterFactory($serializerFactory);
-    $options = [
-        'servers' => [
-            0 => [
-                'host'   => '127.0.0.1',
-                'port'   => 11211,
-                'weight' => 1
-            ],   
-        ],
-        'lifetime' => 86400,
-        'prefix'   => 'my-prefix',
-    ];
+    'modelsMetadata',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $adapterFactory    = new AdapterFactory($serializerFactory);
+        $options = [
+            'servers' => [
+                0 => [
+                    'host'   => '127.0.0.1',
+                    'port'   => 11211,
+                    'weight' => 1
+                ],   
+            ],
+            'lifetime' => 86400,
+            'prefix'   => 'my-prefix',
+        ];
 
-    return new Libmemcached($adapterFactory, $options);
-}
+        return new Libmemcached($adapterFactory, $options);
+    }
 );
 ```
 
@@ -626,10 +626,10 @@ use Phalcon\Mvc\Model\MetaData\Memory;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    return new Memory();
-}
+    'modelsMetadata',
+    function () {
+        return new Memory();
+    }
 );
 ```
 
@@ -653,20 +653,20 @@ use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    $serializerFactory = new SerializerFactory();
-    $adapterFactory    = new AdapterFactory($serializerFactory);
-    $options = [
-        'host'     => '127.0.0.1',
-        'port'     => 6379,
-        'index'    => 1,
-        'lifetime' => 86400,
-        'prefix'   => 'my-prefix',
-    ];
+    'modelsMetadata',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $adapterFactory    = new AdapterFactory($serializerFactory);
+        $options = [
+            'host'     => '127.0.0.1',
+            'port'     => 6379,
+            'index'    => 1,
+            'lifetime' => 86400,
+            'prefix'   => 'my-prefix',
+        ];
 
-    return new Redis($adapterFactory, $options);
-}
+        return new Redis($adapterFactory, $options);
+    }
 );
 ```
 
@@ -686,14 +686,14 @@ use Phalcon\Mvc\Model\MetaData\Stream;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    $options = [
-        'metaDataDir' => '/app/storage/cache/metaData',
-    ];
+    'modelsMetadata',
+    function () {
+        $options = [
+            'metaDataDir' => '/app/storage/cache/metaData',
+        ];
 
-    return new Stream($options);
-}
+        return new Stream($options);
+    }
 );
 ```
 
@@ -720,20 +720,20 @@ use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    $serializerFactory = new SerializerFactory();
-    $adapterFactory    = new AdapterFactory($serializerFactory);
-    $options = [
-        'lifetime' => 86400,
-        'prefix'   => 'my-prefix',
-    ];
+    'modelsMetadata',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $adapterFactory    = new AdapterFactory($serializerFactory);
+        $options = [
+            'lifetime' => 86400,
+            'prefix'   => 'my-prefix',
+        ];
 
-    $metadata = new Apcu($adapterFactory, $options);
-    $metadata->setStrategy(new Introspection());
+        $metadata = new Apcu($adapterFactory, $options);
+        $metadata->setStrategy(new Introspection());
 
-    return $metadata;
-}
+        return $metadata;
+    }
 );
 ```
 
@@ -752,27 +752,27 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-/**
- * @Primary
- * @Identity
- * @Column(type='integer', nullable=false)
- */
-public $inv_id;
+    /**
+     * @Primary
+     * @Identity
+     * @Column(type='integer', nullable=false)
+     */
+    public $inv_id;
 
-/**
- * @Column(type='integer', nullable=false)
- */
-public $inv_cst_id;
+    /**
+     * @Column(type='integer', nullable=false)
+     */
+    public $inv_cst_id;
 
-/**
- * @Column(type='string', length=70, nullable=false)
- */
-public $inv_title;
+    /**
+     * @Column(type='string', length=70, nullable=false)
+     */
+    public $inv_title;
 
-/**
- * @Column(type='double', nullable=false)
- */
-public $inv_total;
+    /**
+     * @Column(type='double', nullable=false)
+     */
+    public $inv_total;
 }
 ```
 
@@ -813,20 +813,20 @@ use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
-'modelsMetadata',
-function () {
-    $serializerFactory = new SerializerFactory();
-    $adapterFactory    = new AdapterFactory($serializerFactory);
-    $options = [
-        'lifetime' => 86400,
-        'prefix'   => 'my-prefix',
-    ];
+    'modelsMetadata',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $adapterFactory    = new AdapterFactory($serializerFactory);
+        $options = [
+            'lifetime' => 86400,
+            'prefix'   => 'my-prefix',
+        ];
 
-    $metadata = new Apcu($adapterFactory, $options);
-    $metadata->setStrategy(new Annotations());
+        $metadata = new Apcu($adapterFactory, $options);
+        $metadata->setStrategy(new Annotations());
 
-    return $metadata;
-}
+        return $metadata;
+    }
 );
 ```
 
@@ -848,106 +848,106 @@ use Phalcon\Mvc\Model\MetaData;
 
 class Invoices extends Model
 {
-public function metaData()
-{
-    return array(
-        MetaData::MODELS_ATTRIBUTES => [
-            'inv_id',
-            'inv_cst_id',
-            'inv_status_flag',
-            'inv_title',
-            'inv_total',
-            'inv_created_at',
-            'inv_created_by',
-            'inv_updated_at',
-            'inv_updated_by',
-        ],
+    public function metaData()
+    {
+        return array(
+            MetaData::MODELS_ATTRIBUTES => [
+                'inv_id',
+                'inv_cst_id',
+                'inv_status_flag',
+                'inv_title',
+                'inv_total',
+                'inv_created_at',
+                'inv_created_by',
+                'inv_updated_at',
+                'inv_updated_by',
+            ],
 
-        MetaData::MODELS_PRIMARY_KEY => [
-            'inv_id',
-        ],
+            MetaData::MODELS_PRIMARY_KEY => [
+                'inv_id',
+            ],
 
-        MetaData::MODELS_NON_PRIMARY_KEY => [
-            'inv_cst_id',
-            'inv_status_flag',
-            'inv_title',
-            'inv_total',
-            'inv_created_at',
-            'inv_created_by',
-            'inv_updated_at',
-            'inv_updated_by',
-        ],
+            MetaData::MODELS_NON_PRIMARY_KEY => [
+                'inv_cst_id',
+                'inv_status_flag',
+                'inv_title',
+                'inv_total',
+                'inv_created_at',
+                'inv_created_by',
+                'inv_updated_at',
+                'inv_updated_by',
+            ],
 
-        MetaData::MODELS_NOT_NULL => [
-            'inv_id',
-            'inv_cst_id',
-            'inv_status_flag',
-            'inv_title',
-            'inv_total',
-            'inv_created_at',
-            'inv_created_by',
-            'inv_updated_at',
-            'inv_updated_by',
+            MetaData::MODELS_NOT_NULL => [
+                'inv_id',
+                'inv_cst_id',
+                'inv_status_flag',
+                'inv_title',
+                'inv_total',
+                'inv_created_at',
+                'inv_created_by',
+                'inv_updated_at',
+                'inv_updated_by',
 
-        MetaData::MODELS_DATA_TYPES => [
-            'inv_id'          => Column::TYPE_INTEGER,
-            'inv_cst_id'      => Column::TYPE_INTEGER,
-            'inv_status_flag' => Column::TYPE_INTEGER,
-            'inv_title'       => Column::TYPE_VARCHAR,
-            'inv_total'       => Column::TYPE_FLOAT,
-            'inv_created_at'  => Column::TYPE_DATETIME,
-            'inv_created_by'  => Column::TYPE_INTEGER,
-            'inv_updated_at'  => Column::TYPE_DATETIME,
-            'inv_updated_by'  => Column::TYPE_INTEGER,
-        ],
+            MetaData::MODELS_DATA_TYPES => [
+                'inv_id'          => Column::TYPE_INTEGER,
+                'inv_cst_id'      => Column::TYPE_INTEGER,
+                'inv_status_flag' => Column::TYPE_INTEGER,
+                'inv_title'       => Column::TYPE_VARCHAR,
+                'inv_total'       => Column::TYPE_FLOAT,
+                'inv_created_at'  => Column::TYPE_DATETIME,
+                'inv_created_by'  => Column::TYPE_INTEGER,
+                'inv_updated_at'  => Column::TYPE_DATETIME,
+                'inv_updated_by'  => Column::TYPE_INTEGER,
+            ],
 
-        MetaData::MODELS_DATA_TYPES_NUMERIC => [
-            'inv_id'          => true,
-            'inv_cst_id'      => true,
-            'inv_status_flag' => true,
-            'inv_total'       => true,
-            'inv_created_by'  => true,
-            'inv_updated_by'  => true,
-        ],
+            MetaData::MODELS_DATA_TYPES_NUMERIC => [
+                'inv_id'          => true,
+                'inv_cst_id'      => true,
+                'inv_status_flag' => true,
+                'inv_total'       => true,
+                'inv_created_by'  => true,
+                'inv_updated_by'  => true,
+            ],
 
-        MetaData::MODELS_IDENTITY_COLUMN => 'inv_id',
+            MetaData::MODELS_IDENTITY_COLUMN => 'inv_id',
 
-        MetaData::MODELS_DATA_TYPES_BIND => [
-            'inv_id'          => Column::BIND_PARAM_INT,
-            'inv_cst_id'      => Column::BIND_PARAM_INT,
-            'inv_status_flag' => Column::BIND_PARAM_INT,
-            'inv_title'       => Column::BIND_PARAM_INT,
-            'inv_total'       => Column::BIND_PARAM_DECIMAL,
-            'inv_created_at'  => Column::BIND_PARAM_STR,
-            'inv_created_by'  => Column::BIND_PARAM_INT,
-            'inv_updated_at'  => Column::BIND_PARAM_STR,
-            'inv_updated_by'  => Column::BIND_PARAM_INT,
-        ],
+            MetaData::MODELS_DATA_TYPES_BIND => [
+                'inv_id'          => Column::BIND_PARAM_INT,
+                'inv_cst_id'      => Column::BIND_PARAM_INT,
+                'inv_status_flag' => Column::BIND_PARAM_INT,
+                'inv_title'       => Column::BIND_PARAM_INT,
+                'inv_total'       => Column::BIND_PARAM_DECIMAL,
+                'inv_created_at'  => Column::BIND_PARAM_STR,
+                'inv_created_by'  => Column::BIND_PARAM_INT,
+                'inv_updated_at'  => Column::BIND_PARAM_STR,
+                'inv_updated_by'  => Column::BIND_PARAM_INT,
+            ],
 
-        MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => [
-            'inv_created_at' => true,
-            'inv_created_by' => true,
-            'inv_updated_at' => true,
-            'inv_updated_by' => true,
-        ],
+            MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => [
+                'inv_created_at' => true,
+                'inv_created_by' => true,
+                'inv_updated_at' => true,
+                'inv_updated_by' => true,
+            ],
 
-        MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => [
-            'inv_created_at' => true,
-            'inv_created_by' => true,
-            'inv_updated_at' => true,
-            'inv_updated_by' => true,
-        ],
+            MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => [
+                'inv_created_at' => true,
+                'inv_created_by' => true,
+                'inv_updated_at' => true,
+                'inv_updated_by' => true,
+            ],
 
-        MetaData::MODELS_DEFAULT_VALUES => [
-            'inv_status_flag' => 0,
-        ],
+            MetaData::MODELS_DEFAULT_VALUES => [
+                'inv_status_flag' => 0,
+            ],
 
-        MetaData::MODELS_EMPTY_STRING_VALUES => [
-            'inv_created_at' => true,
-            'inv_updated_at' => true,
-        ],
-    );
-}
+            MetaData::MODELS_EMPTY_STRING_VALUES => [
+                'inv_created_at' => true,
+                'inv_updated_at' => true,
+            ],
+        );
+    }
 }
 ```
 
@@ -966,15 +966,15 @@ use Phalcon\Di\DiInterface;
 
 class MyStrategy StrategyInterface
 {
-public function getColumnMaps(
-    ModelInterface $model, 
-    DiInterface $container
-): array;
+    public function getColumnMaps(
+        ModelInterface $model, 
+        DiInterface $container
+    ): array;
 
-public function getMetaData(
-    ModelInterface $model, 
-    DiInterface $container
-): array;
+    public function getMetaData(
+        ModelInterface $model, 
+        DiInterface $container
+    ): array;
 }
 
 ```

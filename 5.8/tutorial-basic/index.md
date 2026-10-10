@@ -26,18 +26,18 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
 ```text
 .
 └── tutorial
-├── src
-│   ├── controllers
-│   │   ├── IndexController.php
-│   │   └── SignupController.php
-│   ├── models
-│   │   └── Users.php
-│   └── views
-└── public
-    ├── css
-    ├── img
-    ├── index.php
-    └── js
+    ├── src
+    │   ├── controllers
+    │   │   ├── IndexController.php
+    │   │   └── SignupController.php
+    │   ├── models
+    │   │   └── Users.php
+    │   └── views
+    └── public
+        ├── css
+        ├── img
+        ├── index.php
+        └── js
 ```
 
 :::warning[NOTE]
@@ -50,11 +50,11 @@ If this is all brand new it is recommended that you install the [Phalcon Devtool
 <?php
 
 $uri = urldecode(
-parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 
 if ($uri !== '/' && file_exists(__DIR__ . '/public' . $uri)) {
-return false;
+    return false;
 }
 
 $_GET['_url'] = $_SERVER['REQUEST_URI'];
@@ -91,11 +91,12 @@ define('APP_PATH', BASE_PATH . '/app');
 
 $loader = new Loader();
 $loader->setDirectories(
-[
-    APP_PATH . '/controllers/',
-    APP_PATH . '/models/',
-]
+    [
+        APP_PATH . '/controllers/',
+        APP_PATH . '/models/',
+    ]
 );
+    
 
 $loader->register();
 ```
@@ -137,13 +138,13 @@ use Phalcon\Mvc\View;
 // ...
 
 $container->set(
-'view',
-function () {
-    $view = new View();
-    $view->setViewsDir(APP_PATH . '/views/');
+    'view',
+    function () {
+        $view = new View();
+        $view->setViewsDir(APP_PATH . '/views/');
 
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -158,13 +159,13 @@ use Phalcon\Mvc\Url;
 // ...
 
 $container->set(
-'url',
-function () {
-    $url = new Url();
-    $url->setBaseUri('/');
+    'url',
+    function () {
+        $url = new Url();
+        $url->setBaseUri('/');
 
-    return $url;
-}
+        return $url;
+    }
 );
 ```
 
@@ -182,7 +183,7 @@ use Phalcon\Mvc\Application;
 $application = new Application($container);
 
 $response = $application->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 
 $response->send();
@@ -207,10 +208,10 @@ define('APP_PATH', BASE_PATH . '/app');
 $loader = new Loader();
 
 $loader->setDirectories(
-[
-    APP_PATH . '/controllers/',
-    APP_PATH . '/models/',
-]
+    [
+        APP_PATH . '/controllers/',
+        APP_PATH . '/models/',
+    ]
 );
 
 $loader->register();
@@ -218,34 +219,34 @@ $loader->register();
 $container = new FactoryDefault();
 
 $container->set(
-'view',
-function () {
-    $view = new View();
-    $view->setViewsDir(APP_PATH . '/views/');
-    return $view;
-}
+    'view',
+    function () {
+        $view = new View();
+        $view->setViewsDir(APP_PATH . '/views/');
+        return $view;
+    }
 );
 
 $container->set(
-'url',
-function () {
-    $url = new Url();
-    $url->setBaseUri('/');
-    return $url;
-}
+    'url',
+    function () {
+        $url = new Url();
+        $url->setBaseUri('/');
+        return $url;
+    }
 );
 
 $application = new Application($container);
 
 try {
-// Handle the request
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    // Handle the request
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (\Exception $e) {
-echo 'Exception: ', $e->getMessage();
+    echo 'Exception: ', $e->getMessage();
 }
 ```
 
@@ -266,10 +267,10 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function indexAction()
-{
-    return '<h1>Hello!</h1>';
-}
+    public function indexAction()
+    {
+        return '<h1>Hello!</h1>';
+    }
 }
 ```
 
@@ -313,10 +314,10 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 }
 ```
 
@@ -365,10 +366,10 @@ use Phalcon\Mvc\Controller;
 
 class SignupController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 }
 ```
 
@@ -380,19 +381,19 @@ The empty index action gives the clean pass to a view with the form definition (
 
 <?php echo $this->tag->form(["action" => "signup/register"]); ?>
 
-<p>
-    <label for="name">Name</label>
-    <?php echo $this->tag->inputText("name"); ?>
-</p>
+    <p>
+        <label for="name">Name</label>
+        <?php echo $this->tag->inputText("name"); ?>
+    </p>
 
-<p>
-    <label for="email">E-Mail</label>
-    <?php echo $this->tag->inputText("email"); ?>
-</p>
+    <p>
+        <label for="email">E-Mail</label>
+        <?php echo $this->tag->inputText("email"); ?>
+    </p>
 
-<p>
-    <?php echo $this->tag->inputSubmit("Register"); ?>
-</p>
+    <p>
+        <?php echo $this->tag->inputSubmit("Register"); ?>
+    </p>
 
 <?php echo $this->tag->close('form'); ?>
 ```
@@ -419,15 +420,15 @@ use Phalcon\Mvc\Controller;
 
 class SignupController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function registerAction()
-{
+    public function registerAction()
+    {
 
-}
+    }
 }
 ```
 
@@ -444,10 +445,10 @@ Before creating our first model, we need to create a database table using a data
 ```sql
 CREATE TABLE `users`
 (
-`id`    int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Record ID',
-`name`  varchar(255) NOT NULL COMMENT 'User Name',
-`email` varchar(255) NOT NULL COMMENT 'User Email Address',
-PRIMARY KEY (`id`)
+    `id`    int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Record ID',
+    `name`  varchar(255) NOT NULL COMMENT 'User Name',
+    `email` varchar(255) NOT NULL COMMENT 'User Email Address',
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
@@ -461,9 +462,9 @@ use Phalcon\Mvc\Model;
 
 class Users extends Model
 {
-public $id;
-public $name;
-public $email;
+    public $id;
+    public $name;
+    public $email;
 }
 ```
 
@@ -481,17 +482,17 @@ In order to use a database connection and subsequently access data through our m
 use Phalcon\Db\Adapter\Pdo\Mysql;
 
 $container->set(
-'db',
-function () {
-    return new Mysql(
-        [
-            'host'     => '127.0.0.1',
-            'username' => 'root',
-            'password' => 'secret',
-            'dbname'   => 'tutorial',
-        ]
-    );
-}
+    'db',
+    function () {
+        return new Mysql(
+            [
+                'host'     => '127.0.0.1',
+                'username' => 'root',
+                'password' => 'secret',
+                'dbname'   => 'tutorial',
+            ]
+        );
+    }
 );
 ```
 
@@ -502,7 +503,7 @@ With the correct database parameters, our model is ready to interact with the re
 `app/views/signup/register.phtml`
 ```php
 <div class="alert alert-<?php echo $success === true ? 'success' : 'danger'; ?>">
-<?php echo $message; ?>
+    <?php echo $message; ?>
 </div>
 
 <?php echo $this->tag->a('/', 'Go back', ['class' => 'btn btn-primary']); ?>
@@ -519,35 +520,35 @@ use Phalcon\Mvc\Controller;
 
 class SignupController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
-
-public function registerAction()
-{
-    $post = $this->request->getPost();
-
-    // Store and check for errors
-    $user        = new Users();
-    $user->name  = $post['name'];
-    $user->email = $post['email'];
-    // Store and check for errors
-    $success = $user->save();
-
-    // passing the result to the view
-    $this->view->success = $success;
-
-    if ($success) {
-        $message = "Thanks for registering!";
-    } else {
-        $message = "Sorry, the following problems were generated:<br>"
-            . implode('<br>', $user->getMessages());
     }
 
-    // passing a message to the view
-    $this->view->message = $message;
-}
+    public function registerAction()
+    {
+        $post = $this->request->getPost();
+
+        // Store and check for errors
+        $user        = new Users();
+        $user->name  = $post['name'];
+        $user->email = $post['email'];
+        // Store and check for errors
+        $success = $user->save();
+
+        // passing the result to the view
+        $this->view->success = $success;
+
+        if ($success) {
+            $message = "Thanks for registering!";
+        } else {
+            $message = "Sorry, the following problems were generated:<br>"
+                . implode('<br>', $user->getMessages());
+        }
+
+        // passing a message to the view
+        $this->view->message = $message;
+    }
 }
 ```
 
@@ -574,13 +575,13 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-/**
- * Welcome and user list
- */
-public function indexAction()
-{
-    $this->view->users = Users::find();
-}
+    /**
+     * Welcome and user list
+     */
+    public function indexAction()
+    {
+        $this->view->users = Users::find();
+    }
 }
 ```
 
@@ -601,31 +602,31 @@ echo "<h1>Hello!</h1>";
 echo $this->tag->a('signup', 'Sign Up Here!', ['class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
-?>
-<table class="table table-bordered table-hover">
-    <thead class="thead-light">
-    <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
-    </tr>
-    </tfoot>
-    <tbody>
-    <?php foreach ($users as $user) { ?>
+    ?>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
         <tr>
-            <td><?php echo $user->id; ?></td>
-            <td><?php echo $user->name; ?></td>
-            <td><?php echo $user->email; ?></td>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
         </tr>
-    <?php } ?>
-    </tbody>
-</table>
-<?php
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach ($users as $user) { ?>
+            <tr>
+                <td><?php echo $user->id; ?></td>
+                <td><?php echo $user->name; ?></td>
+                <td><?php echo $user->email; ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <?php
 }
 ```
 
@@ -641,14 +642,14 @@ We can now add small design touches to our application. We can add the [Bootstra
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Phalcon Tutorial</title>
-<link rel="stylesheet" 
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Phalcon Tutorial</title>
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-<?php echo $this->getContent(); ?>
+    <?php echo $this->getContent(); ?>
 </div>
 </body>
 </html>

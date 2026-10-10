@@ -38,6 +38,7 @@ Implementation of this file has been influenced by lcobucci/clock
 
 __Uses__ `DateTimeImmutable`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -57,6 +58,7 @@ __Uses__ `DateTimeImmutable`
 ```php
 public function now(): DateTimeImmutable;
 ```
+
 
 ## Time\Clock\Exception
 
@@ -78,10 +80,11 @@ Implementation of this file has been influenced by lcobucci/clock
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Time\Clock\Exception`**
-- [`Phalcon\Time\Clock\Exceptions\InvalidModifier`](#timeclockexceptionsinvalidmodifier)
+    - **`Phalcon\Time\Clock\Exception`**
+        - [`Phalcon\Time\Clock\Exceptions\InvalidModifier`](#timeclockexceptionsinvalidmodifier)
 
 </div>
+
 
 ## Time\Clock\Exceptions\InvalidModifier
 
@@ -103,12 +106,13 @@ Implementation of this file has been influenced by lcobucci/clock
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Time\Clock\Exception`](#timeclockexception)
-- **`Phalcon\Time\Clock\Exceptions\InvalidModifier`**
+    - [`Phalcon\Time\Clock\Exception`](#timeclockexception)
+        - **`Phalcon\Time\Clock\Exceptions\InvalidModifier`**
 
 </div>
 
 __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
+
 
 ### Method Summary
 
@@ -127,10 +131,11 @@ __Uses__ `Phalcon\Time\Clock\Exception` · `Throwable`
 
 ```php
 public function __construct(
-string $message,
-Throwable $ex = null
+    string $message,
+    Throwable $ex = null
 );
 ```
+
 
 ## Time\Clock\FrozenClock
 
@@ -156,6 +161,7 @@ Implementation of this file has been influenced by lcobucci/clock
 </div>
 
 __Uses__ `DateTimeImmutable` · `DateTimeZone` · `Phalcon\Time\Clock\Exceptions\InvalidModifier` · `Throwable`
+
 
 ### Method Summary
 
@@ -246,6 +252,7 @@ public function set( DateTimeImmutable $now ): static;
 
 Sets the clock to a new value. All consumers receive the same modification
 
+
 ## Time\Clock\SystemClock
 
 <span class="badge badge--final">Final</span>
@@ -270,6 +277,7 @@ Implementation of this file has been influenced by lcobucci/clock
 </div>
 
 __Uses__ `DateTimeImmutable` · `DateTimeZone`
+
 
 ### Method Summary
 

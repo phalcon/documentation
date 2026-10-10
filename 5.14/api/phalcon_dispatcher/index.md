@@ -25,14 +25,15 @@ dispatchers.
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.14/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Dispatcher\AbstractDispatcher`** — implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](/5.14/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Cli\Dispatcher`](/5.14/api/phalcon_cli/#clidispatcher)
-- [`Phalcon\Mvc\Dispatcher`](/5.14/api/phalcon_mvc/#mvcdispatcher)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.14/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Dispatcher\AbstractDispatcher`** — implements [`Phalcon\Dispatcher\DispatcherInterface`](#dispatcherdispatcherinterface), [`Phalcon\Events\EventsAwareInterface`](/5.14/api/phalcon_events/#eventseventsawareinterface)
+            - [`Phalcon\Cli\Dispatcher`](/5.14/api/phalcon_cli/#clidispatcher)
+            - [`Phalcon\Mvc\Dispatcher`](/5.14/api/phalcon_mvc/#mvcdispatcher)
 
 </div>
 
 __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\Exception` · `Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface` · `Phalcon\Mvc\Model\Binder` · `Phalcon\Mvc\Model\BinderInterface` · `Phalcon\Support\Collection`
+
 
 ### Method Summary
 
@@ -413,9 +414,9 @@ __Uses__ `Exception` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInt
 
 ```php
 public function callActionMethod(
-mixed $handler,
-string $actionMethod,
-array $params = []
+    mixed $handler,
+    string $actionMethod,
+    array $params = []
 );
 ```
 
@@ -438,10 +439,10 @@ Forwards the execution flow to another controller/action.
 
 ```php
 $this->dispatcher->forward(
-[
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 ```
 
@@ -480,11 +481,11 @@ Returns bound models from binder instance
 ```php
 class UserController extends Controller
 {
-public function showAction(User $user)
-{
-    // return array with $user
-    $boundModels = $this->dispatcher->getBoundModels();
-}
+    public function showAction(User $user)
+    {
+        // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels();
+    }
 }
 ```
 
@@ -548,9 +549,9 @@ Gets a namespace to be prepended to the current handler name
 
 ```php
 public function getParam(
-mixed $param,
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $param,
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -562,9 +563,9 @@ Gets a param by its name or numeric index
 
 ```php
 public function getParameter(
-mixed $param,
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $param,
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -674,8 +675,8 @@ Sets the default suffix for the handler
 
 ```php
 public function setModelBinder(
-BinderInterface $modelBinder,
-mixed $cache = null
+    BinderInterface $modelBinder,
+    mixed $cache = null
 ): DispatcherInterface;
 ```
 
@@ -683,17 +684,17 @@ Enable model binding during dispatch
 
 ```php
 $di->set(
-'dispatcher',
-function() {
-    $dispatcher = new Dispatcher();
+    'dispatcher',
+    function() {
+        $dispatcher = new Dispatcher();
 
-    $dispatcher->setModelBinder(
-        new Binder(),
-        'cache'
-    );
+        $dispatcher->setModelBinder(
+            new Binder(),
+            'cache'
+        );
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -717,8 +718,8 @@ Sets the namespace where the controller class is
 
 ```php
 public function setParam(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -729,8 +730,8 @@ Set a param by its name or numeric index
 
 ```php
 public function setParameter(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -785,6 +786,7 @@ Set empty properties to their defaults (where defaults are available)
 protected function toCamelCase( string $input ): string;
 ```
 
+
 ## Dispatcher\DispatcherInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -795,8 +797,8 @@ Interface for Phalcon\Dispatcher\AbstractDispatcher
 <div class="api-tree">
 
 - **`Phalcon\Dispatcher\DispatcherInterface`**
-- [`Phalcon\Cli\DispatcherInterface`](/5.14/api/phalcon_cli/#clidispatcherinterface)
-- [`Phalcon\Mvc\DispatcherInterface`](/5.14/api/phalcon_mvc/#mvcdispatcherinterface)
+    - [`Phalcon\Cli\DispatcherInterface`](/5.14/api/phalcon_cli/#clidispatcherinterface)
+    - [`Phalcon\Mvc\DispatcherInterface`](/5.14/api/phalcon_mvc/#mvcdispatcherinterface)
 
 </div>
 
@@ -979,8 +981,8 @@ Gets the default handler suffix
 
 ```php
 public function getParam(
-mixed $param,
-mixed $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -990,8 +992,8 @@ Gets a param by its name or numeric index
 
 ```php
 public function getParameter(
-mixed $param,
-mixed $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -1098,8 +1100,8 @@ Sets the namespace which the controller belongs to
 
 ```php
 public function setParam(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -1113,6 +1115,7 @@ public function setParams( array $params ): void;
 
 Sets action params to be dispatched
 
+
 ## Dispatcher\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1123,10 +1126,10 @@ Exceptions thrown in Phalcon\Dispatcher/* will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Dispatcher\Exception`**
-- [`Phalcon\Cli\Dispatcher\Exception`](/5.14/api/phalcon_cli/#clidispatcherexception)
-- [`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`](#dispatcherexceptionsforwardininitializeforbidden)
-- [`Phalcon\Mvc\Dispatcher\Exception`](/5.14/api/phalcon_mvc/#mvcdispatcherexception)
+    - **`Phalcon\Dispatcher\Exception`**
+        - [`Phalcon\Cli\Dispatcher\Exception`](/5.14/api/phalcon_cli/#clidispatcherexception)
+        - [`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`](#dispatcherexceptionsforwardininitializeforbidden)
+        - [`Phalcon\Mvc\Dispatcher\Exception`](/5.14/api/phalcon_mvc/#mvcdispatcherexception)
 
 </div>
 
@@ -1159,6 +1162,7 @@ Exceptions thrown in Phalcon\Dispatcher/* will use this class
 </div>
 </div>
 
+
 ## Dispatcher\Exceptions\ForwardInInitializeForbidden
 
 <span class="badge badge--class">Class</span>
@@ -1174,12 +1178,13 @@ LICENSE.txt file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](#dispatcherexception)
-- **`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`**
+    - [`Phalcon\Dispatcher\Exception`](#dispatcherexception)
+        - **`Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden`**
 
 </div>
 
 __Uses__ `Phalcon\Dispatcher\Exception`
+
 
 ### Method Summary
 

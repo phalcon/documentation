@@ -29,34 +29,44 @@ Phalcon is designed to be developer-friendly, and you don't need to be familiar 
 
 Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based on the needs of their applications.
 
+
 You can check our [GitHub][github] project for the code and browse through these documents for usage and functionality.
 
 Since this is a community-driven project, you can share your thoughts and requests for functionality you need by issuing a [New Feature Request][new-feature-request] and if you wish vote in GitHub for [existing NFRs][new-feature-request-list].
 
 Feel free to connect with us using our social media accounts:
 
-- **:octicons-discussion-closed-16:\{ .lg .middle \} __Chat - QA__** — [Discord Chat][discord]
+- **:octicons-discussion-closed-16:\\\{ .lg .middle \\} \_\_Chat - QA\_\_**
 
-[Discussions][discussions]
-- **:octicons-question-16:\{ .lg .middle \} __Support__** — [GitHub Sponsors - Support Us][github_sponsors]
+  [Discord Chat][discord]
 
-[OpenCollective - Support Us][opencollective_sponsors]
-- **:octicons-megaphone-16:\{ .lg .middle \} __Social Media__** — [Telegram][telegram]
+  [Discussions][discussions]
+- **:octicons-question-16:\\\{ .lg .middle \\} \_\_Support\_\_**
 
-[Gab][gab]
+  [GitHub Sponsors - Support Us][github_sponsors]
 
-[MeWe][mewe]
+  [OpenCollective - Support Us][opencollective_sponsors]
+- **:octicons-megaphone-16:\\\{ .lg .middle \\} \_\_Social Media\_\_**
 
-[Reddit][reddit]
+  [Telegram][telegram]
 
-[Facebook][fb]
+  [Gab][gab]
 
-[Twitter][t]
-- **:octicons-video-16:\{ .lg .middle \} __Videos__** — [BitChute][bitchute]
+  [MeWe][mewe]
 
-[LBRY][lbry]
+  [Reddit][reddit]
 
-[YouTube][youtube]
+  [Facebook][fb]
+
+  [Twitter][t]
+- **:octicons-video-16:\\\{ .lg .middle \\} \_\_Videos\_\_**
+
+  [BitChute][bitchute]
+
+  [LBRY][lbry]
+
+  [YouTube][youtube]
+
 
 [github]: https://github.com/phalcon/cphalcon
 [github_docs]: https://github.com/phalcon/docs

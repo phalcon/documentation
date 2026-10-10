@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Acl\AbstractElement
 
 Abstract
@@ -25,10 +26,11 @@ description.
       instead of extending this class.
 
 - **`Phalcon\Acl\AbstractElement`**
-- [`Phalcon\Acl\Component`](#aclcomponent)
-- [`Phalcon\Acl\Role`](#aclrole)
+  - [`Phalcon\Acl\Component`](#aclcomponent)
+  - [`Phalcon\Acl\Role`](#aclrole)
 
 `Phalcon\Acl\Traits\ItemTrait`
+
 
 ## Acl\Adapter\AbstractAdapter
 
@@ -37,47 +39,35 @@ Abstract
 Functionality common to all adapters
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.21/api/phalcon_events/#eventsabstracteventsaware)
-- **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.21/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
+  - **`Phalcon\Acl\Adapter\AbstractAdapter`** - implements [`Phalcon\Acl\Adapter\AdapterInterface`](#acladapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/5.21/api/phalcon_events/#eventseventsawareinterface)
+    - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
 
 `Phalcon\Acl\Enum` · `Phalcon\Events\AbstractEventsAware` · `Phalcon\Events\EventsAwareInterface`
 
 ### Method Summary
 
-<ApiItem href="#acladapterabstractadapter-getactiveaccess" visibility="public" name="getActiveAccess" returnType="string|null" params={[]}>
-Returns the access which the list is checking if a role can access it
-</ApiItem>
-<ApiItem href="#acladapterabstractadapter-getactivecomponent" visibility="public" name="getActiveComponent" returnType="string|null" params={[]}>
-Returns the component which the list is checking if some role can access
-</ApiItem>
-<ApiItem href="#acladapterabstractadapter-getactiverole" visibility="public" name="getActiveRole" returnType="string|null" params={[]}>
-Returns the role which the list is checking if it's allowed to certain
-</ApiItem>
-<ApiItem href="#acladapterabstractadapter-getdefaultaction" visibility="public" name="getDefaultAction" returnType="int" params={[]}>
-Returns the default action
-</ApiItem>
-<ApiItem href="#acladapterabstractadapter-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
-Sets the default access level
-</ApiItem>
+- `public getActiveAccess(): string|null` — Returns the access which the list is checking if a role can access it
+
+- `public getActiveComponent(): string|null` — Returns the component which the list is checking if some role can access
+
+- `public getActiveRole(): string|null` — Returns the role which the list is checking if it's allowed to certain
+
+- `public getDefaultAction(): int` — Returns the default action
+
+- `public setDefaultAction(int $defaultAccess): void` — Sets the default access level
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="accessGranted" type="int" default="Enum::DENY">
-Access Granted
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeAccess" type="string|null" default="null">
-Active access which the list is checking if some role can access it
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeComponent" type="string|null" default="null">
-Component which the list is checking if some role can access it
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeRole" type="string|null" default="null">
-Role which the list is checking if it's allowed to certain
-component/access
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultAccess" type="int" default="Enum::DENY">
-Default access
-</ApiItem>
+- `protected int $accessGranted = Enum::DENY` — Access Granted
+
+- `protected string|null $activeAccess = null` — Active access which the list is checking if some role can access it
+
+- `protected string|null $activeComponent = null` — Component which the list is checking if some role can access it
+
+- `protected string|null $activeRole = null` — Role which the list is checking if it's allowed to certain
+  component/access
+
+- `protected int $defaultAccess = Enum::DENY` — Default access
 
 ### Methods
 
@@ -124,6 +114,7 @@ public function setDefaultAction( int $defaultAccess ): void;
 Sets the default access level
 (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
+
 ## Acl\Adapter\AdapterInterface
 
 Interface
@@ -131,9 +122,10 @@ Interface
 Interface for Phalcon\Acl adapters
 
 - [`Phalcon\Contracts\Acl\Adapter\Adapter`](/5.21/api/phalcon_contracts/#contractsacladapteradapter)
-- **`Phalcon\Acl\Adapter\AdapterInterface`**
+  - **`Phalcon\Acl\Adapter\AdapterInterface`**
 
 `Phalcon\Contracts\Acl\Adapter\Adapter`
+
 
 ## Acl\Adapter\Memory
 
@@ -145,162 +137,131 @@ Manages ACL lists in memory
 $acl = new \Phalcon\Acl\Adapter\Memory();
 
 $acl->setDefaultAction(
-\Phalcon\Acl\Enum::DENY
+    \Phalcon\Acl\Enum::DENY
 );
 
 // Register roles
 $roles = [
-"users"  => new \Phalcon\Acl\Role("Users"),
-"guests" => new \Phalcon\Acl\Role("Guests"),
+    "users"  => new \Phalcon\Acl\Role("Users"),
+    "guests" => new \Phalcon\Acl\Role("Guests"),
 ];
 foreach ($roles as $role) {
-$acl->addRole($role);
+    $acl->addRole($role);
 }
 
 // Private area components
 $privateComponents = [
-"companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
-"products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
-"invoices"  => ["index", "profile"],
+    "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
+    "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
+    "invoices"  => ["index", "profile"],
 ];
 
 foreach ($privateComponents as $componentName => $actions) {
-$acl->addComponent(
-    new \Phalcon\Acl\Component($componentName),
-    $actions
-);
+    $acl->addComponent(
+        new \Phalcon\Acl\Component($componentName),
+        $actions
+    );
 }
 
 // Public area components
 $publicComponents = [
-"index"   => ["index"],
-"about"   => ["index"],
-"session" => ["index", "register", "start", "end"],
-"contact" => ["index", "send"],
+    "index"   => ["index"],
+    "about"   => ["index"],
+    "session" => ["index", "register", "start", "end"],
+    "contact" => ["index", "send"],
 ];
 
 foreach ($publicComponents as $componentName => $actions) {
-$acl->addComponent(
-    new \Phalcon\Acl\Component($componentName),
-    $actions
-);
+    $acl->addComponent(
+        new \Phalcon\Acl\Component($componentName),
+        $actions
+    );
 }
 
 // Grant access to public areas to both users and guests
 foreach ($roles as $role) {
-foreach ($publicComponents as $component => $actions) {
-    $acl->allow($role->getName(), $component, "*");
-}
+    foreach ($publicComponents as $component => $actions) {
+        $acl->allow($role->getName(), $component, "*");
+    }
 }
 
 // Grant access to private area to role Users
 foreach ($privateComponents as $component => $actions) {
-foreach ($actions as $action) {
-    $acl->allow("Users", $component, $action);
-}
+    foreach ($actions as $action) {
+        $acl->allow("Users", $component, $action);
+    }
 }
 ```
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.21/api/phalcon_events/#eventsabstracteventsaware)
-- [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
-- **`Phalcon\Acl\Adapter\Memory`**
-- [`Phalcon\Acl\Adapter\Storage`](#acladapterstorage)
+  - [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
+    - **`Phalcon\Acl\Adapter\Memory`**
+      - [`Phalcon\Acl\Adapter\Storage`](#acladapterstorage)
 
 `Phalcon\Acl\Component` · `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\AccessRuleNotFound` · `Phalcon\Acl\Exceptions\CircularInheritanceError` · `Phalcon\Acl\Exceptions\ElementNotFound` · `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\InvalidAccessList` · `Phalcon\Acl\Exceptions\InvalidComponentImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleImplementation` · `Phalcon\Acl\Exceptions\InvalidRoleType` · `Phalcon\Acl\Exceptions\MissingFunctionParameters` · `Phalcon\Acl\Exceptions\ParameterTypeMismatch` · `Phalcon\Acl\Exceptions\RoleNotFoundException` · `Phalcon\Acl\Role` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionNamedType`
 
 ### Method Summary
 
-<ApiItem href="#acladaptermemory-addcomponent" visibility="public" name="addComponent" returnType="bool" params={[{"type":"mixed","name":"componentValue","default":null},{"type":"mixed","name":"accessList","default":null}]}>
-Adds a component to the ACL list
-</ApiItem>
-<ApiItem href="#acladaptermemory-addcomponentaccess" visibility="public" name="addComponentAccess" returnType="bool" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
-Adds access to components
-</ApiItem>
-<ApiItem href="#acladaptermemory-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"mixed","name":"roleToInherits","default":null}]}>
-Add a role which inherits from an existing role
-</ApiItem>
-<ApiItem href="#acladaptermemory-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"role","default":null},{"type":"mixed","name":"accessInherits","default":"null"}]}>
-Adds a role to the ACL list. The second parameter lets to inherit access
-</ApiItem>
-<ApiItem href="#acladaptermemory-allow" visibility="public" name="allow" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
-Allow access to a role on a component. You can use `*` as wildcard
-</ApiItem>
-<ApiItem href="#acladaptermemory-deny" visibility="public" name="deny" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
-Deny access to a role on a component. You can use `*` as wildcard
-</ApiItem>
-<ApiItem href="#acladaptermemory-dropcomponentaccess" visibility="public" name="dropComponentAccess" returnType="void" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
-Removes access from a component
-</ApiItem>
-<ApiItem href="#acladaptermemory-getactivefunction" visibility="public" name="getActiveFunction" returnType="mixed" params={[]}>
-Returns the latest function used to acquire access
-</ApiItem>
-<ApiItem href="#acladaptermemory-getactivefunctioncustomargumentscount" visibility="public" name="getActiveFunctionCustomArgumentsCount" returnType="int" params={[]}>
-Returns number of additional arguments(excluding role and resource) for active function
-</ApiItem>
-<ApiItem href="#acladaptermemory-getactivekey" visibility="public" name="getActiveKey" returnType="string|null" params={[]}>
-Returns the last composite key used to acquire access.
-</ApiItem>
-<ApiItem href="#acladaptermemory-getcomponents" visibility="public" name="getComponents" returnType="ComponentInterface[]" params={[]}>
-Return an array with every component registered in the list
-</ApiItem>
-<ApiItem href="#acladaptermemory-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
-Returns the inherited roles for a passed role name. If no role name
-</ApiItem>
-<ApiItem href="#acladaptermemory-getnoargumentsdefaultaction" visibility="public" name="getNoArgumentsDefaultAction" returnType="int" params={[]}>
-Returns the default ACL access level for no arguments provided in
-</ApiItem>
-<ApiItem href="#acladaptermemory-getroles" visibility="public" name="getRoles" returnType="RoleInterface[]" params={[]}>
-Return an array with every role registered in the list
-</ApiItem>
-<ApiItem href="#acladaptermemory-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"mixed","name":"roleName","default":null},{"type":"mixed","name":"componentName","default":null},{"type":"string","name":"access","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
-Check whether a role is allowed to access an action from a component
-</ApiItem>
-<ApiItem href="#acladaptermemory-iscomponent" visibility="public" name="isComponent" returnType="bool" params={[{"type":"string","name":"componentName","default":null}]}>
-Check whether component exist in the components list
-</ApiItem>
-<ApiItem href="#acladaptermemory-isrole" visibility="public" name="isRole" returnType="bool" params={[{"type":"string","name":"roleName","default":null}]}>
-Check whether role exist in the roles list
-</ApiItem>
-<ApiItem href="#acladaptermemory-setnoargumentsdefaultaction" visibility="public" name="setNoArgumentsDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
-Sets the default access level (`Phalcon\Enum::ALLOW` or
-</ApiItem>
+- `public addComponent(mixed $componentValue, mixed $accessList): bool` — Adds a component to the ACL list
+
+- `public addComponentAccess(string $componentName, mixed $accessList): bool` — Adds access to components
+
+- `public addInherit(string $roleName, mixed $roleToInherits): bool` — Add a role which inherits from an existing role
+
+- `public addRole(mixed $role, mixed $accessInherits = null): bool` — Adds a role to the ACL list. The second parameter lets to inherit access
+
+- `public allow(string $roleName, string $componentName, mixed $access, mixed $func = null): void` — Allow access to a role on a component. You can use `*` as wildcard
+
+- `public deny(string $roleName, string $componentName, mixed $access, mixed $func = null): void` — Deny access to a role on a component. You can use `*` as wildcard
+
+- `public dropComponentAccess(string $componentName, mixed $accessList): void` — Removes access from a component
+
+- `public getActiveFunction(): mixed` — Returns the latest function used to acquire access
+
+- `public getActiveFunctionCustomArgumentsCount(): int` — Returns number of additional arguments(excluding role and resource) for active function
+
+- `public getActiveKey(): string|null` — Returns the last composite key used to acquire access.
+
+- `public getComponents(): ComponentInterface[]` — Return an array with every component registered in the list
+
+- `public getInheritedRoles(string $roleName = ""): array` — Returns the inherited roles for a passed role name. If no role name
+
+- `public getNoArgumentsDefaultAction(): int` — Returns the default ACL access level for no arguments provided in
+
+- `public getRoles(): RoleInterface[]` — Return an array with every role registered in the list
+
+- `public isAllowed(mixed $roleName, mixed $componentName, string $access, array|null $parameters = null): bool` — Check whether a role is allowed to access an action from a component
+
+- `public isComponent(string $componentName): bool` — Check whether component exist in the components list
+
+- `public isRole(string $roleName): bool` — Check whether role exist in the roles list
+
+- `public setNoArgumentsDefaultAction(int $defaultAccess): void` — Sets the default access level (`Phalcon\Enum::ALLOW` or
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="access" type="array" default="[]">
-Access
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="accessList" type="array" default="[...]">
-Access List
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeFunction" type="mixed" default="">
-Returns the latest function used to acquire access
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeFunctionCustomArgumentsCount" type="int" default="0">
-Returns number of additional arguments(excluding role and resource) for
-active function
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="activeKey" type="string|null" default="null">
-Returns the latest key used to acquire access
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="components" type="array" default="[]">
-Components
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="componentsNames" type="array" default="[...]">
-Component Names
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="functions" type="array" default="[]">
-Function List
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="noArgumentsDefaultAction" type="int" default="Enum::DENY">
-Default action for no arguments is `deny`
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="roleInherits" type="array" default="[]">
-Role Inherits
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="roles" type="array" default="[]">
-Roles
-</ApiItem>
+- `protected array $access = []` — Access
+
+- `protected array $accessList = [...]` — Access List
+
+- `protected mixed $activeFunction` — Returns the latest function used to acquire access
+
+- `protected int $activeFunctionCustomArgumentsCount = 0` — Returns number of additional arguments(excluding role and resource) for
+  active function
+
+- `protected string|null $activeKey = null` — Returns the latest key used to acquire access
+
+- `protected array $components = []` — Components
+
+- `protected array $componentsNames = [...]` — Component Names
+
+- `protected array $functions = []` — Function List
+
+- `protected int $noArgumentsDefaultAction = Enum::DENY` — Default action for no arguments is `deny`
+
+- `protected array $roleInherits = []` — Role Inherits
+
+- `protected array $roles = []` — Roles
 
 ### Methods
 
@@ -308,8 +269,8 @@ Roles
 
 ```php
 public function addComponent(
-mixed $componentValue,
-mixed $accessList
+    mixed $componentValue,
+    mixed $accessList
 ): bool;
 ```
 
@@ -322,27 +283,27 @@ Example:
 ```php
 // Add a component to the list allowing access to an action
 $acl->addComponent(
-new Phalcon\Acl\Component("customers"),
-"search"
+    new Phalcon\Acl\Component("customers"),
+    "search"
 );
 
 $acl->addComponent("customers", "search");
 
 // Add a component  with an access list
 $acl->addComponent(
-new Phalcon\Acl\Component("customers"),
-[
-    "create",
-    "search",
-]
+    new Phalcon\Acl\Component("customers"),
+    [
+        "create",
+        "search",
+    ]
 );
 
 $acl->addComponent(
-"customers",
-[
-    "create",
-    "search",
-]
+    "customers",
+    [
+        "create",
+        "search",
+    ]
 );
 ```
 
@@ -350,8 +311,8 @@ $acl->addComponent(
 
 ```php
 public function addComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): bool;
 ```
 
@@ -364,8 +325,8 @@ The accepted values are documented on the contract.
 
 ```php
 public function addInherit(
-string $roleName,
-mixed $roleToInherits
+    string $roleName,
+    mixed $roleToInherits
 ): bool;
 ```
 
@@ -380,8 +341,8 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 
 ```php
 public function addRole(
-mixed $role,
-mixed $accessInherits = null
+    mixed $role,
+    mixed $accessInherits = null
 ): bool;
 ```
 
@@ -390,8 +351,8 @@ from an existing role
 
 ```php
 $acl->addRole(
-new Phalcon\Acl\Role("administrator"),
-"consultant"
+    new Phalcon\Acl\Role("administrator"),
+    "consultant"
 );
 
 $acl->addRole("administrator", "consultant");
@@ -402,10 +363,10 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 
 ```php
 public function allow(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -432,10 +393,10 @@ $acl->allow("*", "*", "*");
 
 ```php
 public function deny(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -462,8 +423,8 @@ $acl->deny("*", "*", "*");
 
 ```php
 public function dropComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): void;
 ```
 
@@ -532,10 +493,10 @@ Return an array with every role registered in the list
 
 ```php
 public function isAllowed(
-mixed $roleName,
-mixed $componentName,
-string $access,
-array|null $parameters = null
+    mixed $roleName,
+    mixed $componentName,
+    string $access,
+    array|null $parameters = null
 ): bool;
 ```
 
@@ -575,6 +536,7 @@ Sets the default access level (`Phalcon\Enum::ALLOW` or
 `Phalcon\Enum::DENY`) for no arguments provided in isAllowed action if
 there exists func for accessKey
 
+
 ## Acl\Adapter\Storage
 
 Class
@@ -597,34 +559,29 @@ Use external locking when multiple processes write the same key.
 @see Persistable
 
 - [`Phalcon\Events\AbstractEventsAware`](/5.21/api/phalcon_events/#eventsabstracteventsaware)
-- [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
-- [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
-- **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](/5.21/api/phalcon_contracts/#contractsacladapterpersistable)
+  - [`Phalcon\Acl\Adapter\AbstractAdapter`](#acladapterabstractadapter)
+    - [`Phalcon\Acl\Adapter\Memory`](#acladaptermemory)
+      - **`Phalcon\Acl\Adapter\Storage`** - implements [`Phalcon\Contracts\Acl\Adapter\Persistable`](/5.21/api/phalcon_contracts/#contractsacladapterpersistable)
 
 `Phalcon\Acl\Component` · `Phalcon\Acl\Enum` · `Phalcon\Acl\Exceptions\InvalidSnapshot` · `Phalcon\Acl\Role` · `Phalcon\Contracts\Acl\AclTypes` · `Phalcon\Contracts\Acl\Adapter\Persistable` · `Phalcon\Storage\Adapter\AdapterInterface`
 
 ### Method Summary
 
-<ApiItem href="#acladapterstorage-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"StorageInterface","name":"storage","default":null},{"type":"string","name":"key","default":"\"acl-data\""}]}>
-</ApiItem>
-<ApiItem href="#acladapterstorage-load" visibility="public" name="load" returnType="bool" params={[]}>
-Loads the policy snapshot from the backing store, replacing current
-</ApiItem>
-<ApiItem href="#acladapterstorage-save" visibility="public" name="save" returnType="bool" params={[]}>
-Persists the policy snapshot. Closure-backed access keys are written as
-</ApiItem>
+- `public __construct(StorageInterface $storage, string $key = "acl-data")`
+
+- `public load(): bool` — Loads the policy snapshot from the backing store, replacing current
+
+- `public save(): bool` — Persists the policy snapshot. Closure-backed access keys are written as
 
 ### Constants
 
-<ApiItem kind="constant" name="SNAPSHOT_VERSION" type="int" default="1">
-</ApiItem>
+- `const int SNAPSHOT_VERSION = 1`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="key" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="storage" type="StorageInterface" default="">
-</ApiItem>
+- `protected string $key`
+
+- `protected StorageInterface $storage`
 
 ### Methods
 
@@ -632,8 +589,8 @@ Persists the policy snapshot. Closure-backed access keys are written as
 
 ```php
 public function __construct(
-StorageInterface $storage,
-string $key = "acl-data"
+    StorageInterface $storage,
+    string $key = "acl-data"
 );
 ```
 
@@ -658,6 +615,7 @@ Persists the policy snapshot. Closure-backed access keys are written as
 DENY (fail closed); roles/components are written as scalar name =>
 description maps for serializer independence.
 
+
 ## Acl\Component
 
 Class
@@ -665,15 +623,13 @@ Class
 This class defines component entity and its description
 
 - [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
-- **`Phalcon\Acl\Component`** - implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
+  - **`Phalcon\Acl\Component`** - implements [`Phalcon\Acl\ComponentInterface`](#aclcomponentinterface)
 
 `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 
 ### Method Summary
 
-<ApiItem href="#aclcomponent-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"description","default":"null"}]}>
-Component constructor.
-</ApiItem>
+- `public __construct(string $name, string|null $description = null)` — Component constructor.
 
 ### Methods
 
@@ -681,12 +637,13 @@ Component constructor.
 
 ```php
 public function __construct(
-string $name,
-string|null $description = null
+    string $name,
+    string|null $description = null
 );
 ```
 
 Component constructor.
+
 
 ## Acl\ComponentAwareInterface
 
@@ -695,9 +652,10 @@ Interface
 Interface for ACL Component aware objects
 
 - [`Phalcon\Contracts\Acl\ComponentAware`](/5.21/api/phalcon_contracts/#contractsaclcomponentaware)
-- **`Phalcon\Acl\ComponentAwareInterface`**
+  - **`Phalcon\Acl\ComponentAwareInterface`**
 
 `Phalcon\Contracts\Acl\ComponentAware`
+
 
 ## Acl\ComponentInterface
 
@@ -706,9 +664,10 @@ Interface
 Interface for Phalcon\Acl\Component
 
 - [`Phalcon\Contracts\Acl\Component`](/5.21/api/phalcon_contracts/#contractsaclcomponent)
-- **`Phalcon\Acl\ComponentInterface`**
+  - **`Phalcon\Acl\ComponentInterface`**
 
 `Phalcon\Contracts\Acl\Component`
+
 
 ## Acl\Enum
 
@@ -720,10 +679,10 @@ Constants for Phalcon\Acl\Adapter adapters
 
 ### Constants
 
-<ApiItem kind="constant" name="ALLOW" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="DENY" type="int" default="0">
-</ApiItem>
+- `const int ALLOW = 1`
+
+- `const int DENY = 0`
+
 
 ## Acl\Exception
 
@@ -732,35 +691,35 @@ Class
 Class for exceptions thrown by Phalcon\Acl
 
 - `\Exception`
-- **`Phalcon\Acl\Exception`**
-- [`Phalcon\Acl\Exceptions\AccessRuleNotFound`](#aclexceptionsaccessrulenotfound)
-- [`Phalcon\Acl\Exceptions\CircularInheritanceError`](#aclexceptionscircularinheritanceerror)
-- [`Phalcon\Acl\Exceptions\ElementNotFound`](#aclexceptionselementnotfound)
-- [`Phalcon\Acl\Exceptions\ForbiddenDelimiter`](#aclexceptionsforbiddendelimiter)
-- [`Phalcon\Acl\Exceptions\ForbiddenWildcard`](#aclexceptionsforbiddenwildcard)
-- [`Phalcon\Acl\Exceptions\InvalidAccessList`](#aclexceptionsinvalidaccesslist)
-- [`Phalcon\Acl\Exceptions\InvalidComponentImplementation`](#aclexceptionsinvalidcomponentimplementation)
-- [`Phalcon\Acl\Exceptions\InvalidRoleImplementation`](#aclexceptionsinvalidroleimplementation)
-- [`Phalcon\Acl\Exceptions\InvalidRoleType`](#aclexceptionsinvalidroletype)
-- [`Phalcon\Acl\Exceptions\InvalidSnapshot`](#aclexceptionsinvalidsnapshot)
-- [`Phalcon\Acl\Exceptions\MissingFunctionParameters`](#aclexceptionsmissingfunctionparameters)
-- [`Phalcon\Acl\Exceptions\ParameterTypeMismatch`](#aclexceptionsparametertypemismatch)
-- [`Phalcon\Acl\Exceptions\RoleNotFoundException`](#aclexceptionsrolenotfoundexception)
+  - **`Phalcon\Acl\Exception`**
+    - [`Phalcon\Acl\Exceptions\AccessRuleNotFound`](#aclexceptionsaccessrulenotfound)
+    - [`Phalcon\Acl\Exceptions\CircularInheritanceError`](#aclexceptionscircularinheritanceerror)
+    - [`Phalcon\Acl\Exceptions\ElementNotFound`](#aclexceptionselementnotfound)
+    - [`Phalcon\Acl\Exceptions\ForbiddenDelimiter`](#aclexceptionsforbiddendelimiter)
+    - [`Phalcon\Acl\Exceptions\ForbiddenWildcard`](#aclexceptionsforbiddenwildcard)
+    - [`Phalcon\Acl\Exceptions\InvalidAccessList`](#aclexceptionsinvalidaccesslist)
+    - [`Phalcon\Acl\Exceptions\InvalidComponentImplementation`](#aclexceptionsinvalidcomponentimplementation)
+    - [`Phalcon\Acl\Exceptions\InvalidRoleImplementation`](#aclexceptionsinvalidroleimplementation)
+    - [`Phalcon\Acl\Exceptions\InvalidRoleType`](#aclexceptionsinvalidroletype)
+    - [`Phalcon\Acl\Exceptions\InvalidSnapshot`](#aclexceptionsinvalidsnapshot)
+    - [`Phalcon\Acl\Exceptions\MissingFunctionParameters`](#aclexceptionsmissingfunctionparameters)
+    - [`Phalcon\Acl\Exceptions\ParameterTypeMismatch`](#aclexceptionsparametertypemismatch)
+    - [`Phalcon\Acl\Exceptions\RoleNotFoundException`](#aclexceptionsrolenotfoundexception)
+
 
 ## Acl\Exceptions\AccessRuleNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\AccessRuleNotFound`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\AccessRuleNotFound`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsaccessrulenotfound-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"accessName","default":null},{"type":"string","name":"componentName","default":null}]}>
-</ApiItem>
+- `public __construct(string $accessName, string $componentName)`
 
 ### Methods
 
@@ -768,25 +727,25 @@ Class
 
 ```php
 public function __construct(
-string $accessName,
-string $componentName
+    string $accessName,
+    string $componentName
 );
 ```
+
 
 ## Acl\Exceptions\CircularInheritanceError
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\CircularInheritanceError`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\CircularInheritanceError`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionscircularinheritanceerror-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"roleName","default":null}]}>
-</ApiItem>
+- `public __construct(string $roleName)`
 
 ### Methods
 
@@ -796,15 +755,17 @@ Class
 public function __construct( string $roleName );
 ```
 
+
 ## Acl\Exceptions\ElementNotFound
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ElementNotFound`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\ElementNotFound`**
 
 `Phalcon\Acl\Exception`
+
 
 ## Acl\Exceptions\ForbiddenDelimiter
 
@@ -815,15 +776,14 @@ internal ACL keys, so a name that contains it would make two different
 tuples share one key.
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ForbiddenDelimiter`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\ForbiddenDelimiter`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsforbiddendelimiter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"elementType","default":null}]}>
-</ApiItem>
+- `public __construct(string $elementType)`
 
 ### Methods
 
@@ -833,20 +793,20 @@ tuples share one key.
 public function __construct( string $elementType );
 ```
 
+
 ## Acl\Exceptions\ForbiddenWildcard
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ForbiddenWildcard`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\ForbiddenWildcard`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsforbiddenwildcard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"elementType","default":null}]}>
-</ApiItem>
+- `public __construct(string $elementType)`
 
 ### Methods
 
@@ -856,20 +816,20 @@ Class
 public function __construct( string $elementType );
 ```
 
+
 ## Acl\Exceptions\InvalidAccessList
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidAccessList`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\InvalidAccessList`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsinvalidaccesslist-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -879,20 +839,20 @@ Class
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidComponentImplementation
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidComponentImplementation`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\InvalidComponentImplementation`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsinvalidcomponentimplementation-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -902,20 +862,20 @@ Class
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidRoleImplementation
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidRoleImplementation`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\InvalidRoleImplementation`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsinvalidroleimplementation-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -925,20 +885,20 @@ Class
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidRoleType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidRoleType`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\InvalidRoleType`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsinvalidroletype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -948,50 +908,53 @@ Class
 public function __construct();
 ```
 
+
 ## Acl\Exceptions\InvalidSnapshot
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\InvalidSnapshot`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\InvalidSnapshot`**
 
 `Phalcon\Acl\Exception`
+
 
 ## Acl\Exceptions\MissingFunctionParameters
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\MissingFunctionParameters`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\MissingFunctionParameters`**
 
 `Phalcon\Acl\Exception`
+
 
 ## Acl\Exceptions\ParameterTypeMismatch
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\ParameterTypeMismatch`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\ParameterTypeMismatch`**
 
 `Phalcon\Acl\Exception`
+
 
 ## Acl\Exceptions\RoleNotFoundException
 
 Class
 
 - `\Exception`
-- [`Phalcon\Acl\Exception`](#aclexception)
-- **`Phalcon\Acl\Exceptions\RoleNotFoundException`**
+  - [`Phalcon\Acl\Exception`](#aclexception)
+    - **`Phalcon\Acl\Exceptions\RoleNotFoundException`**
 
 `Phalcon\Acl\Exception`
 
 ### Method Summary
 
-<ApiItem href="#aclexceptionsrolenotfoundexception-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"roleName","default":null}]}>
-</ApiItem>
+- `public __construct(string $roleName)`
 
 ### Methods
 
@@ -1001,6 +964,7 @@ Class
 public function __construct( string $roleName );
 ```
 
+
 ## Acl\Role
 
 Class
@@ -1008,15 +972,13 @@ Class
 This class defines role entity and its description
 
 - [`Phalcon\Acl\AbstractElement`](#aclabstractelement)
-- **`Phalcon\Acl\Role`** - implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
+  - **`Phalcon\Acl\Role`** - implements [`Phalcon\Acl\RoleInterface`](#aclroleinterface)
 
 `Phalcon\Acl\Exceptions\ForbiddenDelimiter` · `Phalcon\Acl\Exceptions\ForbiddenWildcard`
 
 ### Method Summary
 
-<ApiItem href="#aclrole-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"string|null","name":"description","default":"null"}]}>
-Role constructor.
-</ApiItem>
+- `public __construct(string $name, string|null $description = null)` — Role constructor.
 
 ### Methods
 
@@ -1024,12 +986,13 @@ Role constructor.
 
 ```php
 public function __construct(
-string $name,
-string|null $description = null
+    string $name,
+    string|null $description = null
 );
 ```
 
 Role constructor.
+
 
 ## Acl\RoleAwareInterface
 
@@ -1038,9 +1001,10 @@ Interface
 Interface for ACL Role aware objects
 
 - [`Phalcon\Contracts\Acl\RoleAware`](/5.21/api/phalcon_contracts/#contractsaclroleaware)
-- **`Phalcon\Acl\RoleAwareInterface`**
+  - **`Phalcon\Acl\RoleAwareInterface`**
 
 `Phalcon\Contracts\Acl\RoleAware`
+
 
 ## Acl\RoleInterface
 
@@ -1049,9 +1013,10 @@ Interface
 Interface for Phalcon\Acl\Role
 
 - [`Phalcon\Contracts\Acl\Role`](/5.21/api/phalcon_contracts/#contractsaclrole)
-- **`Phalcon\Acl\RoleInterface`**
+  - **`Phalcon\Acl\RoleInterface`**
 
 `Phalcon\Contracts\Acl\Role`
+
 
 ## Acl\Traits\ItemTrait
 
@@ -1065,21 +1030,17 @@ This class defines role/component names and their descriptions
 
 ### Method Summary
 
-<ApiItem href="#acltraitsitemtrait-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#acltraitsitemtrait-getdescription" visibility="public" name="getDescription" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#acltraitsitemtrait-getname" visibility="public" name="getName" returnType="string" params={[]}>
-</ApiItem>
+- `public __toString(): string`
+
+- `public getDescription(): string|null`
+
+- `public getName(): string`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="description" type="string|null" default="null">
-Role/Component description
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="name" type="string" default="">
-Role/Component name
-</ApiItem>
+- `protected string|null $description = null` — Role/Component description
+
+- `protected string $name` — Role/Component name
 
 ### Methods
 

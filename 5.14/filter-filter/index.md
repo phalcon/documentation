@@ -52,7 +52,7 @@ use MyApp\Sanitizers\HelloSanitizer;
 use Phalcon\Filter\Filter;
 
 $services = [
-'hello' => HelloSanitizer::class,
+    'hello' => HelloSanitizer::class,
 ];
 
 $locator = new Filter($services);
@@ -397,7 +397,7 @@ $filter->upper(string $input): string
 $filter->upperfirst(string $input): string
 $filter->upperwords(string $input): string|null
 $filter->url(string $input): string|null
-```
+ ```
 
 ## Sanitizing Data
 
@@ -469,17 +469,17 @@ use Phalcon\Mvc\Controller;
  */
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    if (true === $this->request->isPost()) {
-        $price = $this->request->getPost('price', 'double');
+    public function saveAction()
+    {
+        if (true === $this->request->isPost()) {
+            $price = $this->request->getPost('price', 'double');
 
-        $email = $this->request->getPost(
-            'customerEmail',
-            Filter::FILTER_EMAIL
-        );
+            $email = $this->request->getPost(
+                'customerEmail',
+                Filter::FILTER_EMAIL
+            );
+        }
     }
-}
 }
 ```
 
@@ -505,11 +505,11 @@ use Phalcon\Mvc\Controller;
  */
 class ProductsController extends Controller
 {
-public function showAction($productId)
-{
-    // $productId = $this->filter->sanitize($productId, Filter::FILTER_ABSINT);
-    $productId = $this->filter->sanitize($productId, 'absint');
-}
+    public function showAction($productId)
+    {
+        // $productId = $this->filter->sanitize($productId, Filter::FILTER_ABSINT);
+        $productId = $this->filter->sanitize($productId, 'absint');
+    }
 }
 ```
 
@@ -547,9 +547,9 @@ when initializing the locator:
 use Phalcon\Filter\Filter;
 
 $services = [
-'md5' => function ($input) {
-    return md5($input);
-},
+    'md5' => function ($input) {
+        return md5($input);
+    },
 ];
 
 $locator = new Filter($services);
@@ -571,10 +571,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'md5',
-function ($input) {
-    return md5($input);
-}
+    'md5',
+    function ($input) {
+        return md5($input);
+    }
 );
 
 $sanitized = $locator->sanitize($value, 'md5');
@@ -589,10 +589,10 @@ use Phalcon\Filter\FilterFactory;
 
 class IPv4
 {
-public function __invoke($value)
-{
-    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-}
+    public function __invoke($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+    }
 }
 
 $factory = new FilterFactory();
@@ -600,8 +600,8 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'ipv4',
-new Ipv4()
+    'ipv4',
+    new Ipv4()
 );
 
 // Sanitize with the 'ipv4' filter
@@ -625,11 +625,11 @@ $locator = $factory->newInstance();
 
 // Returns 'Hello'
 $locator->sanitize(
-'   <h1> Hello </h1>   ',
-[
-    'striptags',
-    'trim',
-]
+    '   <h1> Hello </h1>   ',
+    [
+        'striptags',
+        'trim',
+    ]
 );
 ```
 
@@ -650,19 +650,19 @@ use Phalcon\Mvc\Controller;
  */
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    if (true === $this->request->isPost()) {
-        $message =  $this->request->getPost(
-            '   <h1> Hello </h1>   ',
-            [
-                'striptags',
-                'trim',
-            ]
-        );
+    public function saveAction()
+    {
+        if (true === $this->request->isPost()) {
+            $message =  $this->request->getPost(
+                '   <h1> Hello </h1>   ',
+                [
+                    'striptags',
+                    'trim',
+                ]
+            );
 
+        }
     }
-}
 }
 ```
 
@@ -681,10 +681,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'md5',
-function ($input) {
-    return md5($input);
-}
+    'md5',
+    function ($input) {
+        return md5($input);
+    }
 );
 
 $sanitized = $locator->sanitize($value, 'md5');
@@ -700,10 +700,10 @@ use Phalcon\Filter\FilterFactory;
 
 class IPv4 implements Sanitizer
 {
-public function __invoke($value)
-{
-    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-}
+    public function __invoke($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+    }
 }
 
 $factory = new FilterFactory();
@@ -711,10 +711,10 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 $locator->set(
-'ipv4',
-function () {
-    return new Ipv4();
-}
+    'ipv4',
+    function () {
+        return new Ipv4();
+    }
 );
 
 // Sanitize with the 'ipv4' filter

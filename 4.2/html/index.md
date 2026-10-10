@@ -34,8 +34,8 @@ Each of the words above (apart from the last one) are links to the respective pa
 ### Methods
 ```php
 public function add(
-string $label, 
-string $link = ""
+    string $label, 
+    string $link = ""
 ): Breadcrumbs
 ```
 Adds a new crumb.
@@ -44,8 +44,8 @@ In the example below, add a crumb with a link and then add a crumb without a lin
 
 ```php
 $breadcrumbs
-->add("Home", "/")
-->add("Users")
+    ->add("Home", "/")
+    ->add("Users")
 ;
 ```
 
@@ -82,9 +82,9 @@ Renders and outputs breadcrumbs HTML. The template used is:
 
 ```
 <dl>
-<dt><a href="Hyperlink">Text</a></dt> / 
-<dt><a href="Hyperlink">Text</a></dt> / 
-<dt>Text</dt>
+    <dt><a href="Hyperlink">Text</a></dt> / 
+    <dt><a href="Hyperlink">Text</a></dt> / 
+    <dt>Text</dt>
 </dl>
 ```
 The last set crumb will not have a link and will only have its text displayed. Each crumb is wrapped in `<dt></dt>` tags. The whole collection is wrapped in `<dl></dl>` tags. You can use them in conjunction with CSS to format the crumbs on screen according to the needs of your application.
@@ -155,9 +155,9 @@ use Phalcon\Html\Helper\Anchor;
 $escaper = new Escaper();
 $anchor  = new Anchor($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('/myurl', 'click<>me', $options);
@@ -181,9 +181,9 @@ use Phalcon\Html\Helper\AnchorRaw;
 $escaper = new Escaper();
 $anchor  = new AnchorRaw($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('/myurl', 'click<>me', $options);
@@ -207,8 +207,8 @@ use Phalcon\Html\Helper\Body;
 $escaper = new Escaper();
 $anchor  = new Body($escaper);
 $options = [
-'class' => 'my-class',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'id'    => 'my-id',
 ];
 
 echo $anchor($options);
@@ -230,9 +230,9 @@ use Phalcon\Html\Helper\Button;
 $escaper = new Escaper();
 $anchor  = new Button($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('click<>me', $options);
@@ -272,9 +272,9 @@ use Phalcon\Html\Helper\Element;
 $escaper = new Escaper();
 $anchor  = new Element($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('address', 'click<>me', $options);
@@ -298,9 +298,9 @@ use Phalcon\Html\Helper\ElementRaw;
 $escaper = new Escaper();
 $anchor  = new ElementRaw($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('address', 'click<>me', $options);
@@ -324,11 +324,11 @@ use Phalcon\Html\Helper\Form;
 $escaper = new Escaper();
 $anchor  = new Form($escaper);
 $options = [
-'class'   => 'my-class',
-'name'    => 'my-name',
-'id'      => 'my-id',
-'method'  => 'post',
-'enctype' => 'multipart/form-data'
+    'class'   => 'my-class',
+    'name'    => 'my-name',
+    'id'      => 'my-id',
+    'method'  => 'post',
+    'enctype' => 'multipart/form-data'
 ];
 
 echo $anchor($options);
@@ -356,9 +356,9 @@ use Phalcon\Html\Helper\Img;
 $escaper = new Escaper();
 $anchor  = new Img($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('/my-url', $options);
@@ -381,9 +381,9 @@ use Phalcon\Html\Helper\Label;
 $escaper = new Escaper();
 $anchor  = new Label($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor($options);
@@ -409,9 +409,9 @@ use Phalcon\Html\Helper\TextArea;
 $escaper = new Escaper();
 $anchor  = new TextArea($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $anchor('click<>me', $options);

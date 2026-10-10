@@ -26,92 +26,122 @@ version: "3.4"
 
 Adapter for Phalcon\Acl adapters
 
+
 ## Methods
 public  **getActiveRole** ()
 
 Role which the list is checking if it's allowed to certain resource/access
 
+
+
 public  **getActiveResource** ()
 
 Resource which the list is checking if some role can access it
+
+
 
 public  **getActiveAccess** ()
 
 Active access which the list is checking if some role can access it
 
+
+
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager)
 
 Sets the events manager
+
+
 
 public  **getEventsManager** ()
 
 Returns the internal event manager
 
+
+
 public  **setDefaultAction** (*mixed* $defaultAccess)
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+
+
 
 public  **getDefaultAction** ()
 
 Returns the default ACL access level
 
+
+
 abstract public  **setNoArgumentsDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **getNoArgumentsDefaultAction** () inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 abstract public  **addRole** (*mixed* $role, [*mixed* $accessInherits]) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 abstract public  **isRole** (*mixed* $roleName) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **isResource** (*mixed* $resourceName) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 abstract public  **addResource** (*mixed* $resourceObject, *mixed* $accessList) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 abstract public  **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func]) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 abstract public  **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func]) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters]) inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 abstract public  **getRoles** () inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
+
 
 abstract public  **getResources** () inherited from [Phalcon\Acl\AdapterInterface](/3.4/api/phalcon_acl/)
 
 ...
 
+
 <hr />
+
 
 # Class **Phalcon\Acl\Adapter\Memory**
 
@@ -129,67 +159,70 @@ Manages ACL lists in memory
 $acl = new \Phalcon\Acl\Adapter\Memory();
 
 $acl->setDefaultAction(
-\Phalcon\Acl::DENY
+    \Phalcon\Acl::DENY
 );
 
 // Register roles
 $roles = [
-"users"  => new \Phalcon\Acl\Role("Users"),
-"guests" => new \Phalcon\Acl\Role("Guests"),
+    "users"  => new \Phalcon\Acl\Role("Users"),
+    "guests" => new \Phalcon\Acl\Role("Guests"),
 ];
 foreach ($roles as $role) {
-$acl->addRole($role);
+    $acl->addRole($role);
 }
 
 // Private area resources
 $privateResources = [
-"companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
-"products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
-"invoices"  => ["index", "profile"],
+    "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
+    "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
+    "invoices"  => ["index", "profile"],
 ];
 
 foreach ($privateResources as $resourceName => $actions) {
-$acl->addResource(
-    new \Phalcon\Acl\Resource($resourceName),
-    $actions
-);
+    $acl->addResource(
+        new \Phalcon\Acl\Resource($resourceName),
+        $actions
+    );
 }
 
 // Public area resources
 $publicResources = [
-"index"   => ["index"],
-"about"   => ["index"],
-"session" => ["index", "register", "start", "end"],
-"contact" => ["index", "send"],
+    "index"   => ["index"],
+    "about"   => ["index"],
+    "session" => ["index", "register", "start", "end"],
+    "contact" => ["index", "send"],
 ];
 
 foreach ($publicResources as $resourceName => $actions) {
-$acl->addResource(
-    new \Phalcon\Acl\Resource($resourceName),
-    $actions
-);
+    $acl->addResource(
+        new \Phalcon\Acl\Resource($resourceName),
+        $actions
+    );
 }
 
 // Grant access to public areas to both users and guests
 foreach ($roles as $role){
-foreach ($publicResources as $resource => $actions) {
-    $acl->allow($role->getName(), $resource, "*");
-}
+    foreach ($publicResources as $resource => $actions) {
+        $acl->allow($role->getName(), $resource, "*");
+    }
 }
 
 // Grant access to private area to role Users
 foreach ($privateResources as $resource => $actions) {
-foreach ($actions as $action) {
-    $acl->allow("Users", $resource, $action);
-}
+    foreach ($actions as $action) {
+        $acl->allow("Users", $resource, $action);
+    }
 }
 
 ```
+
 
 ## Methods
 public  **__construct** ()
 
 Phalcon\Acl\Adapter\Memory constructor
+
+
 
 public  **addRole** (*RoleInterface* | *string* $role, [*array* | *string* $accessInherits])
 
@@ -200,25 +233,33 @@ Example:
 <?php
 
 $acl->addRole(
-new Phalcon\Acl\Role("administrator"),
-"consultant"
+    new Phalcon\Acl\Role("administrator"),
+    "consultant"
 );
 
 $acl->addRole("administrator", "consultant");
 
 ```
 
+
+
 public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
 Do a role inherit from another existing role
+
+
 
 public  **isRole** (*mixed* $roleName)
 
 Check whether role exist in the roles list
 
+
+
 public  **isResource** (*mixed* $resourceName)
 
 Check whether resource exist in the resources list
+
+
 
 public  **addResource** ([Phalcon\Acl\Resource](/3.4/api/phalcon_acl/) | *string* $resourceValue, *array* | *string* $accessList)
 
@@ -232,42 +273,50 @@ Example:
 
 // Add a resource to the the list allowing access to an action
 $acl->addResource(
-new Phalcon\Acl\Resource("customers"),
-"search"
+    new Phalcon\Acl\Resource("customers"),
+    "search"
 );
 
 $acl->addResource("customers", "search");
 
 // Add a resource  with an access list
 $acl->addResource(
-new Phalcon\Acl\Resource("customers"),
-[
-    "create",
-    "search",
-]
+    new Phalcon\Acl\Resource("customers"),
+    [
+        "create",
+        "search",
+    ]
 );
 
 $acl->addResource(
-"customers",
-[
-    "create",
-    "search",
-]
+    "customers",
+    [
+        "create",
+        "search",
+    ]
 );
 
 ```
+
+
 
 public  **addResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
 Adds access to resources
 
+
+
 public  **dropResourceAccess** (*mixed* $resourceName, *array* | *string* $accessList)
 
 Removes an access from a resource
 
+
+
 protected  **_allowOrDeny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, *mixed* $action, [*mixed* $func])
 
 Checks if a role has access to a resource
+
+
 
 public  **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
@@ -292,6 +341,8 @@ $acl->allow("*", "*", "browse");
 
 ```
 
+
+
 public  **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
 Deny access to a role on a resource
@@ -315,6 +366,8 @@ $acl->deny("*", "*", "browse");
 
 ```
 
+
+
 public  **isAllowed** (*RoleInterface* | *RoleAware* | *string* $roleName, *ResourceInterface* | *ResourceAware* | *string* $resourceName, *mixed* $access, [*array* $parameters])
 
 Check whether a role is allowed to access an action from a resource
@@ -330,52 +383,76 @@ $acl->isAllowed("guests", "*", "edit");
 
 ```
 
+
+
 public  **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 for no arguments provided in isAllowed action if there exists func for
 accessKey
 
+
+
 public  **getNoArgumentsDefaultAction** ()
 
 Returns the default ACL access level for no arguments provided in
 isAllowed action if there exists func for accessKey
 
+
+
 public  **getRoles** ()
 
 Return an array with every role registered in the list
+
+
 
 public  **getResources** ()
 
 Return an array with every resource registered in the list
 
+
+
 public  **getActiveRole** () inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Role which the list is checking if it's allowed to certain resource/access
+
+
 
 public  **getActiveResource** () inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Resource which the list is checking if some role can access it
 
+
+
 public  **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Active access which the list is checking if some role can access it
+
+
 
 public  **setEventsManager** ([Phalcon\Events\ManagerInterface](/3.4/api/phalcon_events/) $eventsManager) inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Sets the events manager
 
+
+
 public  **getEventsManager** () inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Returns the internal event manager
+
+
 
 public  **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
+
+
 public  **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](/3.4/api/phalcon_acl/)
 
 Returns the default ACL access level
+
+
 
 <hr />
 
@@ -388,80 +465,100 @@ abstract public  **setDefaultAction** (*mixed* $defaultAccess)
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
+
 abstract public  **getDefaultAction** ()
 
 Returns the default ACL access level
+
 
 abstract public  **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
 
+
 abstract public  **getNoArgumentsDefaultAction** ()
 
 Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+
 
 abstract public  **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
+
 abstract public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
 Do a role inherit from another existing role
+
 
 abstract public  **isRole** (*mixed* $roleName)
 
 Check whether role exist in the roles list
 
+
 abstract public  **isResource** (*mixed* $resourceName)
 
 Check whether resource exist in the resources list
+
 
 abstract public  **addResource** (*mixed* $resourceObject, *mixed* $accessList)
 
 Adds a resource to the ACL list
 Access names can be a particular action, by example search, update, delete, etc or a list of them
 
+
 abstract public  **addResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
 Adds access to resources
+
 
 abstract public  **dropResourceAccess** (*mixed* $resourceName, *mixed* $accessList)
 
 Removes an access from a resource
 
+
 abstract public  **allow** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
 Allow access to a role on a resource
+
 
 abstract public  **deny** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*mixed* $func])
 
 Deny access to a role on a resource
 
+
 abstract public  **isAllowed** (*mixed* $roleName, *mixed* $resourceName, *mixed* $access, [*array* $parameters])
 
 Check whether a role is allowed to access an action from a resource
+
 
 abstract public  **getActiveRole** ()
 
 Returns the role which the list is checking if it's allowed to certain resource/access
 
+
 abstract public  **getActiveResource** ()
 
 Returns the resource which the list is checking if some role can access it
+
 
 abstract public  **getActiveAccess** ()
 
 Returns the access which the list is checking if some role can access it
 
+
 abstract public  **getRoles** ()
 
 Return an array with every role registered in the list
+
 
 abstract public  **getResources** ()
 
 Return an array with every resource registered in the list
 
+
 <hr />
+
 
 # Class **Phalcon\Acl\Exception**
 
@@ -476,47 +573,69 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
+
+
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
 
+
+
 <hr />
+
 
 # Class **Phalcon\Acl\Resource**
 
@@ -526,24 +645,33 @@ String representation of the exception
 
 This class defines resource entity and its description
 
+
 ## Methods
 public  **getName** ()
 
 Resource name
 
+
+
 public  **__toString** ()
 
 Resource name
+
+
 
 public  **getDescription** ()
 
 Resource description
 
+
+
 public  **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\Acl\Resource constructor
 
+
 <hr />
+
 
 # Interface **Phalcon\Acl\ResourceAware**
 
@@ -556,6 +684,7 @@ Returns resource name
 
 <hr />
 
+
 # Interface **Phalcon\Acl\ResourceInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/resourceinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
@@ -565,15 +694,18 @@ abstract public  **getName** ()
 
 Returns the resource name
 
+
 abstract public  **getDescription** ()
 
 Returns resource description
+
 
 abstract public  **__toString** ()
 
 Magic method __toString
 
 <hr />
+
 
 # Class **Phalcon\Acl\Role**
 
@@ -583,24 +715,33 @@ Magic method __toString
 
 This class defines role entity and its description
 
+
 ## Methods
 public  **getName** ()
 
 Role name
 
+
+
 public  **__toString** ()
 
 Role name
+
+
 
 public  **getDescription** ()
 
 Role description
 
+
+
 public  **__construct** (*mixed* $name, [*mixed* $description])
 
 Phalcon\Acl\Role constructor
 
+
 <hr />
+
 
 # Interface **Phalcon\Acl\RoleAware**
 
@@ -613,6 +754,7 @@ Returns role name
 
 <hr />
 
+
 # Interface **Phalcon\Acl\RoleInterface**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v3.4.0/phalcon/acl/roleinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
@@ -622,9 +764,11 @@ abstract public  **getName** ()
 
 Returns the role name
 
+
 abstract public  **getDescription** ()
 
 Returns role description
+
 
 abstract public  **__toString** ()
 

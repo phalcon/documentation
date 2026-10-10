@@ -11,11 +11,14 @@ version: "3.4"
 
 These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
 
+
 ## Prerequisites
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/3.4/installation/) section for instructions.
 
+
 ## Installation
 You can download a cross platform package containing the developer tools from from [GitHub](https://github.com/phalcon/phalcon-devtools).
+
 
 ### Linux
 Open a terminal and type the command below:
@@ -41,6 +44,7 @@ Create a symbolic link to the phalcon.php script:
 ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
 chmod ugo+x /usr/bin/phalcon
 ```
+
 
 ### macOS
 Open a terminal and type the command below:
@@ -74,6 +78,7 @@ ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
 chmod ugo+x /usr/bin/phalcon
 ```
 
+
 ### Windows
 On the Windows platform, you need to configure the system `PATH` to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. `c:\phalcon-tools`. You will need this path in the steps below. Edit the file `phalcon.bat` by right clicking on the file and selecting `Edit`:
 
@@ -84,6 +89,7 @@ Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\p
 ![](/assets/images/content/devtools-windows-2.png)
 
 Save the changes.
+
 
 #### Adding PHP and Tools to your system PATH
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).

@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Contracts\ADR\ADRTypes
 
 Interface
@@ -31,6 +32,7 @@ imported from another namespace into the same file.
 
 - **`Phalcon\Contracts\ADR\ADRTypes`**
 
+
 ## Contracts\ADR\Action
 
 Interface
@@ -39,7 +41,8 @@ Marker contract for a per-endpoint Action. An Action is a Handler:
 `__invoke(request): response`.
 
 - [`Phalcon\Contracts\ADR\Handler`](#contractsadrhandler)
-- **`Phalcon\Contracts\ADR\Action`**
+  - **`Phalcon\Contracts\ADR\Action`**
+
 
 ## Contracts\ADR\Application
 
@@ -54,8 +57,7 @@ the response, routing any error through the error responder.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrapplication-handle" visibility="public" name="handle" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
-</ApiItem>
+- `public handle(AttributeRequest $request): ResponseInterface`
 
 ### Methods
 
@@ -64,6 +66,7 @@ the response, routing any error through the error responder.
 ```php
 public function handle( AttributeRequest $request ): ResponseInterface;
 ```
+
 
 ## Contracts\ADR\Dispatcher
 
@@ -78,8 +81,7 @@ runs it to produce a response.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrdispatcher-dispatch" visibility="public" name="dispatch" returnType="ResponseInterface" params={[{"type":"string","name":"actionClass","default":null},{"type":"AttributeRequest","name":"request","default":null},{"type":"array","name":"routeMiddleware","default":"[]"}]}>
-</ApiItem>
+- `public dispatch(string $actionClass, AttributeRequest $request, array $routeMiddleware = []): ResponseInterface`
 
 ### Methods
 
@@ -87,11 +89,12 @@ runs it to produce a response.
 
 ```php
 public function dispatch(
-string $actionClass,
-AttributeRequest $request,
-array $routeMiddleware = []
+    string $actionClass,
+    AttributeRequest $request,
+    array $routeMiddleware = []
 ): ResponseInterface;
 ```
+
 
 ## Contracts\ADR\Emitter\Emitter
 
@@ -105,8 +108,7 @@ Sends a response to the client. Called by the front controller only.
 
 ### Method Summary
 
-<ApiItem href="#contractsadremitteremitter-emit" visibility="public" name="emit" returnType="void" params={[{"type":"ResponseInterface","name":"response","default":null}]}>
-</ApiItem>
+- `public emit(ResponseInterface $response): void`
 
 ### Methods
 
@@ -116,6 +118,7 @@ Sends a response to the client. Called by the front controller only.
 public function emit( ResponseInterface $response ): void;
 ```
 
+
 ## Contracts\ADR\Exceptions\ADRThrowable
 
 Interface
@@ -124,7 +127,8 @@ Base throwable contract for the ADR component. Every ADR exception implements
 it, so callers can catch all ADR errors with a single type.
 
 - `\Throwable`
-- **`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`**
+  - **`Phalcon\Contracts\ADR\Exceptions\ADRThrowable`**
+
 
 ## Contracts\ADR\Handler
 
@@ -134,14 +138,13 @@ Receives the request and returns a response. The terminal handler in the
 pipeline is the Action.
 
 - **`Phalcon\Contracts\ADR\Handler`**
-- [`Phalcon\Contracts\ADR\Action`](#contractsadraction)
+  - [`Phalcon\Contracts\ADR\Action`](#contractsadraction)
 
 `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
 
 ### Method Summary
 
-<ApiItem href="#contractsadrhandler-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null}]}>
-</ApiItem>
+- `public __invoke(AttributeRequest $request): ResponseInterface`
 
 ### Methods
 
@@ -150,6 +153,7 @@ pipeline is the Action.
 ```php
 public function __invoke( AttributeRequest $request ): ResponseInterface;
 ```
+
 
 ## Contracts\ADR\Middleware
 
@@ -165,8 +169,7 @@ or throw to route through the error responder.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrmiddleware-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"AttributeRequest","name":"request","default":null},{"type":"Handler","name":"next","default":null}]}>
-</ApiItem>
+- `public __invoke(AttributeRequest $request, Handler $next): ResponseInterface`
 
 ### Methods
 
@@ -174,10 +177,11 @@ or throw to route through the error responder.
 
 ```php
 public function __invoke(
-AttributeRequest $request,
-Handler $next
+    AttributeRequest $request,
+    Handler $next
 ): ResponseInterface;
 ```
+
 
 ## Contracts\ADR\Payload\Payload
 
@@ -191,42 +195,29 @@ Contract for the immutable payload produced by the domain layer.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrpayloadpayload-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
-Gets the exception thrown in the domain layer, if any.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
-Gets the arbitrary extra domain information.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
-Gets the domain input.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
-Gets the domain messages.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-getresult" visibility="public" name="getResult" returnType="mixed" params={[]}>
-Gets the domain result.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
-Gets the payload status.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-withexception" visibility="public" name="withException" returnType="Payload" params={[{"type":"Throwable","name":"exception","default":null}]}>
-Returns a copy of the payload with the given exception.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-withextras" visibility="public" name="withExtras" returnType="Payload" params={[{"type":"mixed","name":"extras","default":null}]}>
-Returns a copy of the payload with the given extras.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-withinput" visibility="public" name="withInput" returnType="Payload" params={[{"type":"mixed","name":"input","default":null}]}>
-Returns a copy of the payload with the given input.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-withmessages" visibility="public" name="withMessages" returnType="Payload" params={[{"type":"mixed","name":"messages","default":null}]}>
-Returns a copy of the payload with the given messages.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-withresult" visibility="public" name="withResult" returnType="Payload" params={[{"type":"mixed","name":"result","default":null}]}>
-Returns a copy of the payload with the given result.
-</ApiItem>
-<ApiItem href="#contractsadrpayloadpayload-withstatus" visibility="public" name="withStatus" returnType="Payload" params={[{"type":"mixed","name":"status","default":null}]}>
-Returns a copy of the payload with the given status.
-</ApiItem>
+- `public getException(): Throwable|null` — Gets the exception thrown in the domain layer, if any.
+
+- `public getExtras(): mixed` — Gets the arbitrary extra domain information.
+
+- `public getInput(): mixed` — Gets the domain input.
+
+- `public getMessages(): mixed` — Gets the domain messages.
+
+- `public getResult(): mixed` — Gets the domain result.
+
+- `public getStatus(): mixed` — Gets the payload status.
+
+- `public withException(Throwable $exception): Payload` — Returns a copy of the payload with the given exception.
+
+- `public withExtras(mixed $extras): Payload` — Returns a copy of the payload with the given extras.
+
+- `public withInput(mixed $input): Payload` — Returns a copy of the payload with the given input.
+
+- `public withMessages(mixed $messages): Payload` — Returns a copy of the payload with the given messages.
+
+- `public withResult(mixed $result): Payload` — Returns a copy of the payload with the given result.
+
+- `public withStatus(mixed $status): Payload` — Returns a copy of the payload with the given status.
 
 ### Methods
 
@@ -326,6 +317,7 @@ public function withStatus( mixed $status ): Payload;
 
 Returns a copy of the payload with the given status.
 
+
 ## Contracts\ADR\Responder\Formatter\Formatter
 
 Interface
@@ -338,15 +330,11 @@ Renders a payload into a string for a given content type.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrresponderformatterformatter-accepts" visibility="public" name="accepts" returnType="bool" params={[{"type":"string","name":"acceptHeader","default":null}]}>
-Whether this formatter can satisfy the given `Accept` header.
-</ApiItem>
-<ApiItem href="#contractsadrresponderformatterformatter-contenttype" visibility="public" name="contentType" returnType="string" params={[]}>
-The content type this formatter produces.
-</ApiItem>
-<ApiItem href="#contractsadrresponderformatterformatter-format" visibility="public" name="format" returnType="string" params={[{"type":"Payload","name":"payload","default":null}]}>
-Renders the payload into a string.
-</ApiItem>
+- `public accepts(string $acceptHeader): bool` — Whether this formatter can satisfy the given `Accept` header.
+
+- `public contentType(): string` — The content type this formatter produces.
+
+- `public format(Payload $payload): string` — Renders the payload into a string.
 
 ### Methods
 
@@ -374,6 +362,7 @@ public function format( Payload $payload ): string;
 
 Renders the payload into a string.
 
+
 ## Contracts\ADR\Responder\Responder
 
 Interface
@@ -386,8 +375,7 @@ Turns a payload into an HTTP response. The only layer that speaks HTTP.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrresponderresponder-__invoke" visibility="public" name="__invoke" returnType="ResponseInterface" params={[{"type":"RequestInterface","name":"request","default":null},{"type":"ResponseInterface","name":"response","default":null},{"type":"Payload","name":"payload","default":null}]}>
-</ApiItem>
+- `public __invoke(RequestInterface $request, ResponseInterface $response, Payload $payload): ResponseInterface`
 
 ### Methods
 
@@ -395,11 +383,12 @@ Turns a payload into an HTTP response. The only layer that speaks HTTP.
 
 ```php
 public function __invoke(
-RequestInterface $request,
-ResponseInterface $response,
-Payload $payload
+    RequestInterface $request,
+    ResponseInterface $response,
+    Payload $payload
 ): ResponseInterface;
 ```
+
 
 ## Contracts\ADR\Router\AttributeFilter
 
@@ -415,8 +404,7 @@ named request attributes, driven by the matched Action's optional static
 
 ### Method Summary
 
-<ApiItem href="#contractsadrrouterattributefilter-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"actionClass","default":null},{"type":"array","name":"attributes","default":null}]}>
-</ApiItem>
+- `public filter(string $actionClass, array $attributes): array`
 
 ### Methods
 
@@ -424,10 +412,11 @@ named request attributes, driven by the matched Action's optional static
 
 ```php
 public function filter(
-string $actionClass,
-array $attributes
+    string $actionClass,
+    array $attributes
 ): array;
 ```
+
 
 ## Contracts\ADR\Router\Router
 
@@ -443,30 +432,23 @@ request attributes. No route table.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrrouterrouter-candidatesfor" visibility="public" name="candidatesFor" returnType="array" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
-Every Action class this router would try for the given method and path,
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-classfor" visibility="public" name="classFor" returnType="string" params={[{"type":"string","name":"method","default":null},{"type":"string","name":"path","default":null}]}>
-The class this convention names for a fully static path, derived without
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-match" visibility="public" name="match" returnType="RouterMatch|null" params={[{"type":"RequestInterface","name":"request","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-methodfor" visibility="public" name="methodFor" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
-The HTTP method the given Action class answers, uppercased, or null when
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-pathfor" visibility="public" name="pathFor" returnType="string|null" params={[{"type":"string","name":"className","default":null}]}>
-The canonical static path the given Action class answers, or null when
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-setactiondirectory" visibility="public" name="setActionDirectory" returnType="Router" params={[{"type":"string","name":"actionDirectory","default":null}]}>
-The filesystem root that backs the base namespace. The router uses it to
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-setbasenamespace" visibility="public" name="setBaseNamespace" returnType="Router" params={[{"type":"string","name":"baseNamespace","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-setmiddlewaremap" visibility="public" name="setMiddlewareMap" returnType="Router" params={[{"type":"array","name":"middlewareMap","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsadrrouterrouter-setwordseparator" visibility="public" name="setWordSeparator" returnType="Router" params={[{"type":"string","name":"wordSeparator","default":null}]}>
-The single delimiter between words in a path segment. Applied
-</ApiItem>
+- `public candidatesFor(string $method, string $path): array` — Every Action class this router would try for the given method and path,
+
+- `public classFor(string $method, string $path): string` — The class this convention names for a fully static path, derived without
+
+- `public match(RequestInterface $request): RouterMatch|null`
+
+- `public methodFor(string $className): string|null` — The HTTP method the given Action class answers, uppercased, or null when
+
+- `public pathFor(string $className): string|null` — The canonical static path the given Action class answers, or null when
+
+- `public setActionDirectory(string $actionDirectory): Router` — The filesystem root that backs the base namespace. The router uses it to
+
+- `public setBaseNamespace(string $baseNamespace): Router`
+
+- `public setMiddlewareMap(array $middlewareMap): Router`
+
+- `public setWordSeparator(string $wordSeparator): Router` — The single delimiter between words in a path segment. Applied
 
 ### Methods
 
@@ -474,8 +456,8 @@ The single delimiter between words in a path segment. Applied
 
 ```php
 public function candidatesFor(
-string $method,
-string $path
+    string $method,
+    string $path
 ): array;
 ```
 
@@ -488,8 +470,8 @@ action directory.
 
 ```php
 public function classFor(
-string $method,
-string $path
+    string $method,
+    string $path
 ): string;
 ```
 
@@ -560,6 +542,7 @@ The single delimiter between words in a path segment. Applied
 symmetrically when deriving a class name from a path and a path from a
 class name. Any other character is literal.
 
+
 ## Contracts\ADR\Router\RouterMatch
 
 Interface
@@ -573,14 +556,13 @@ extracted route attributes, the route's middleware and its optional name.
 
 ### Method Summary
 
-<ApiItem href="#contractsadrrouterroutermatch-getaction" visibility="public" name="getAction" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsadrrouterroutermatch-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsadrrouterroutermatch-getmiddleware" visibility="public" name="getMiddleware" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsadrrouterroutermatch-getname" visibility="public" name="getName" returnType="string|null" params={[]}>
-</ApiItem>
+- `public getAction(): string`
+
+- `public getAttributes(): array`
+
+- `public getMiddleware(): array`
+
+- `public getName(): string|null`
 
 ### Methods
 
@@ -608,6 +590,7 @@ public function getMiddleware(): array;
 public function getName(): string|null;
 ```
 
+
 ## Contracts\Acl\AclTypes
 
 Interface
@@ -618,6 +601,7 @@ Central registry of the array shapes used across the Acl namespace.
 
 `Phalcon\Acl\ComponentAwareInterface` · `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleAwareInterface` · `Phalcon\Acl\RoleInterface`
 
+
 ## Contracts\Acl\Adapter\Adapter
 
 Interface
@@ -625,72 +609,51 @@ Interface
 Canonical contract for Phalcon\Acl adapters
 
 - **`Phalcon\Contracts\Acl\Adapter\Adapter`**
-- [`Phalcon\Acl\Adapter\AdapterInterface`](/5.21/api/phalcon_acl/#acladapteradapterinterface)
+  - [`Phalcon\Acl\Adapter\AdapterInterface`](/5.21/api/phalcon_acl/#acladapteradapterinterface)
 
 `Phalcon\Acl\ComponentInterface` · `Phalcon\Acl\RoleInterface` · `Phalcon\Contracts\Acl\AclTypes`
 
 ### Method Summary
 
-<ApiItem href="#contractsacladapteradapter-addcomponent" visibility="public" name="addComponent" returnType="bool" params={[{"type":"mixed","name":"componentValue","default":null},{"type":"mixed","name":"accessList","default":null}]}>
-Adds a component to the ACL list
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-addcomponentaccess" visibility="public" name="addComponentAccess" returnType="bool" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
-Adds access to components
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-addinherit" visibility="public" name="addInherit" returnType="bool" params={[{"type":"string","name":"roleName","default":null},{"type":"mixed","name":"roleToInherits","default":null}]}>
-Do a role inherit from another existing role
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-addrole" visibility="public" name="addRole" returnType="bool" params={[{"type":"mixed","name":"role","default":null},{"type":"mixed","name":"accessInherits","default":"null"}]}>
-Adds a role to the ACL list. Second parameter lets to inherit access data
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-allow" visibility="public" name="allow" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
-Allow access to a role on a component
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-deny" visibility="public" name="deny" returnType="void" params={[{"type":"string","name":"roleName","default":null},{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"access","default":null},{"type":"mixed","name":"func","default":"null"}]}>
-Deny access to a role on a component
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-dropcomponentaccess" visibility="public" name="dropComponentAccess" returnType="void" params={[{"type":"string","name":"componentName","default":null},{"type":"mixed","name":"accessList","default":null}]}>
-Removes access from a component
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getactiveaccess" visibility="public" name="getActiveAccess" returnType="null|string" params={[]}>
-Returns the access which the list is checking if some role can access it
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getactivecomponent" visibility="public" name="getActiveComponent" returnType="null|string" params={[]}>
-Returns the component which the list is checking if some role can access
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getactiverole" visibility="public" name="getActiveRole" returnType="null|string" params={[]}>
-Returns the role which the list is checking if it's allowed to certain
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getcomponents" visibility="public" name="getComponents" returnType="ComponentInterface[]" params={[]}>
-Return an array with every component registered in the list
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getdefaultaction" visibility="public" name="getDefaultAction" returnType="int" params={[]}>
-Returns the default ACL access level
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getinheritedroles" visibility="public" name="getInheritedRoles" returnType="array" params={[{"type":"string","name":"roleName","default":"\"\""}]}>
-Returns the inherited roles for a passed role name. If no role name
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getnoargumentsdefaultaction" visibility="public" name="getNoArgumentsDefaultAction" returnType="int" params={[]}>
-Returns the default ACL access level for no arguments provided in
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-getroles" visibility="public" name="getRoles" returnType="RoleInterface[]" params={[]}>
-Return an array with every role registered in the list
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"mixed","name":"roleName","default":null},{"type":"mixed","name":"componentName","default":null},{"type":"string","name":"access","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
-Check whether a role is allowed to access an action from a component
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-iscomponent" visibility="public" name="isComponent" returnType="bool" params={[{"type":"string","name":"componentName","default":null}]}>
-Check whether component exist in the components list
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-isrole" visibility="public" name="isRole" returnType="bool" params={[{"type":"string","name":"roleName","default":null}]}>
-Check whether role exist in the roles list
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
-</ApiItem>
-<ApiItem href="#contractsacladapteradapter-setnoargumentsdefaultaction" visibility="public" name="setNoArgumentsDefaultAction" returnType="void" params={[{"type":"int","name":"defaultAccess","default":null}]}>
-Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
-</ApiItem>
+- `public addComponent(mixed $componentValue, mixed $accessList): bool` — Adds a component to the ACL list
+
+- `public addComponentAccess(string $componentName, mixed $accessList): bool` — Adds access to components
+
+- `public addInherit(string $roleName, mixed $roleToInherits): bool` — Do a role inherit from another existing role
+
+- `public addRole(mixed $role, mixed $accessInherits = null): bool` — Adds a role to the ACL list. Second parameter lets to inherit access data
+
+- `public allow(string $roleName, string $componentName, mixed $access, mixed $func = null): void` — Allow access to a role on a component
+
+- `public deny(string $roleName, string $componentName, mixed $access, mixed $func = null): void` — Deny access to a role on a component
+
+- `public dropComponentAccess(string $componentName, mixed $accessList): void` — Removes access from a component
+
+- `public getActiveAccess(): null|string` — Returns the access which the list is checking if some role can access it
+
+- `public getActiveComponent(): null|string` — Returns the component which the list is checking if some role can access
+
+- `public getActiveRole(): null|string` — Returns the role which the list is checking if it's allowed to certain
+
+- `public getComponents(): ComponentInterface[]` — Return an array with every component registered in the list
+
+- `public getDefaultAction(): int` — Returns the default ACL access level
+
+- `public getInheritedRoles(string $roleName = ""): array` — Returns the inherited roles for a passed role name. If no role name
+
+- `public getNoArgumentsDefaultAction(): int` — Returns the default ACL access level for no arguments provided in
+
+- `public getRoles(): RoleInterface[]` — Return an array with every role registered in the list
+
+- `public isAllowed(mixed $roleName, mixed $componentName, string $access, array|null $parameters = null): bool` — Check whether a role is allowed to access an action from a component
+
+- `public isComponent(string $componentName): bool` — Check whether component exist in the components list
+
+- `public isRole(string $roleName): bool` — Check whether role exist in the roles list
+
+- `public setDefaultAction(int $defaultAccess): void` — Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+
+- `public setNoArgumentsDefaultAction(int $defaultAccess): void` — Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 ### Methods
 
@@ -698,8 +661,8 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 ```php
 public function addComponent(
-mixed $componentValue,
-mixed $accessList
+    mixed $componentValue,
+    mixed $accessList
 ): bool;
 ```
 
@@ -712,8 +675,8 @@ search, update, delete, etc. or a list of them
 
 ```php
 public function addComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): bool;
 ```
 
@@ -723,8 +686,8 @@ Adds access to components
 
 ```php
 public function addInherit(
-string $roleName,
-mixed $roleToInherits
+    string $roleName,
+    mixed $roleToInherits
 ): bool;
 ```
 
@@ -734,8 +697,8 @@ Do a role inherit from another existing role
 
 ```php
 public function addRole(
-mixed $role,
-mixed $accessInherits = null
+    mixed $role,
+    mixed $accessInherits = null
 ): bool;
 ```
 
@@ -746,10 +709,10 @@ from other existing role
 
 ```php
 public function allow(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -759,10 +722,10 @@ Allow access to a role on a component
 
 ```php
 public function deny(
-string $roleName,
-string $componentName,
-mixed $access,
-mixed $func = null
+    string $roleName,
+    string $componentName,
+    mixed $access,
+    mixed $func = null
 ): void;
 ```
 
@@ -772,8 +735,8 @@ Deny access to a role on a component
 
 ```php
 public function dropComponentAccess(
-string $componentName,
-mixed $accessList
+    string $componentName,
+    mixed $accessList
 ): void;
 ```
 
@@ -852,10 +815,10 @@ Return an array with every role registered in the list
 
 ```php
 public function isAllowed(
-mixed $roleName,
-mixed $componentName,
-string $access,
-array|null $parameters = null
+    mixed $roleName,
+    mixed $componentName,
+    string $access,
+    array|null $parameters = null
 ): bool;
 ```
 
@@ -895,6 +858,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 for no arguments provided in isAllowed action if there exists func for
 accessKey
 
+
 ## Contracts\Acl\Adapter\Persistable
 
 Interface
@@ -910,12 +874,9 @@ load(). The static rule set and role inheritance are persisted in full.
 
 ### Method Summary
 
-<ApiItem href="#contractsacladapterpersistable-load" visibility="public" name="load" returnType="bool" params={[]}>
-Loads the policy snapshot from the backing store, replacing current
-</ApiItem>
-<ApiItem href="#contractsacladapterpersistable-save" visibility="public" name="save" returnType="bool" params={[]}>
-Persists the current policy snapshot to the backing store.
-</ApiItem>
+- `public load(): bool` — Loads the policy snapshot from the backing store, replacing current
+
+- `public save(): bool` — Persists the current policy snapshot to the backing store.
 
 ### Methods
 
@@ -936,6 +897,7 @@ public function save(): bool;
 
 Persists the current policy snapshot to the backing store.
 
+
 ## Contracts\Acl\Component
 
 Interface
@@ -943,19 +905,15 @@ Interface
 Canonical contract for an ACL component entity.
 
 - **`Phalcon\Contracts\Acl\Component`**
-- [`Phalcon\Acl\ComponentInterface`](/5.21/api/phalcon_acl/#aclcomponentinterface)
+  - [`Phalcon\Acl\ComponentInterface`](/5.21/api/phalcon_acl/#aclcomponentinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsaclcomponent-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Magic method __toString
-</ApiItem>
-<ApiItem href="#contractsaclcomponent-getdescription" visibility="public" name="getDescription" returnType="string|null" params={[]}>
-Returns component description
-</ApiItem>
-<ApiItem href="#contractsaclcomponent-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the component name
-</ApiItem>
+- `public __toString(): string` — Magic method \_\_toString
+
+- `public getDescription(): string|null` — Returns component description
+
+- `public getName(): string` — Returns the component name
 
 ### Methods
 
@@ -983,6 +941,7 @@ public function getName(): string;
 
 Returns the component name
 
+
 ## Contracts\Acl\ComponentAware
 
 Interface
@@ -990,13 +949,11 @@ Interface
 Canonical contract for ACL component-aware objects.
 
 - **`Phalcon\Contracts\Acl\ComponentAware`**
-- [`Phalcon\Acl\ComponentAwareInterface`](/5.21/api/phalcon_acl/#aclcomponentawareinterface)
+  - [`Phalcon\Acl\ComponentAwareInterface`](/5.21/api/phalcon_acl/#aclcomponentawareinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsaclcomponentaware-getcomponentname" visibility="public" name="getComponentName" returnType="string" params={[]}>
-Returns component name
-</ApiItem>
+- `public getComponentName(): string` — Returns component name
 
 ### Methods
 
@@ -1008,6 +965,7 @@ public function getComponentName(): string;
 
 Returns component name
 
+
 ## Contracts\Acl\Role
 
 Interface
@@ -1015,19 +973,15 @@ Interface
 Canonical contract for an ACL role entity.
 
 - **`Phalcon\Contracts\Acl\Role`**
-- [`Phalcon\Acl\RoleInterface`](/5.21/api/phalcon_acl/#aclroleinterface)
+  - [`Phalcon\Acl\RoleInterface`](/5.21/api/phalcon_acl/#aclroleinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsaclrole-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Magic method __toString
-</ApiItem>
-<ApiItem href="#contractsaclrole-getdescription" visibility="public" name="getDescription" returnType="string|null" params={[]}>
-Returns role description
-</ApiItem>
-<ApiItem href="#contractsaclrole-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the role name
-</ApiItem>
+- `public __toString(): string` — Magic method \_\_toString
+
+- `public getDescription(): string|null` — Returns role description
+
+- `public getName(): string` — Returns the role name
 
 ### Methods
 
@@ -1055,6 +1009,7 @@ public function getName(): string;
 
 Returns the role name
 
+
 ## Contracts\Acl\RoleAware
 
 Interface
@@ -1062,13 +1017,11 @@ Interface
 Canonical contract for ACL role-aware objects.
 
 - **`Phalcon\Contracts\Acl\RoleAware`**
-- [`Phalcon\Acl\RoleAwareInterface`](/5.21/api/phalcon_acl/#aclroleawareinterface)
+  - [`Phalcon\Acl\RoleAwareInterface`](/5.21/api/phalcon_acl/#aclroleawareinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsaclroleaware-getrolename" visibility="public" name="getRoleName" returnType="string" params={[]}>
-Returns role name
-</ApiItem>
+- `public getRoleName(): string` — Returns role name
 
 ### Methods
 
@@ -1080,6 +1033,7 @@ public function getRoleName(): string;
 
 Returns role name
 
+
 ## Contracts\Application\ApplicationTypes
 
 Interface
@@ -1089,6 +1043,7 @@ Central registry of the array shapes used across the Application namespace.
 - **`Phalcon\Contracts\Application\ApplicationTypes`**
 
 `Closure`
+
 
 ## Contracts\Assets\Asset
 
@@ -1101,31 +1056,23 @@ filter flag. The file-output pipeline (Phalcon\Assets\Manager::output())
 requires the concrete Phalcon\Assets\Asset class.
 
 - **`Phalcon\Contracts\Assets\Asset`**
-- [`Phalcon\Assets\AssetInterface`](/5.21/api/phalcon_assets/#assetsassetinterface)
+  - [`Phalcon\Assets\AssetInterface`](/5.21/api/phalcon_assets/#assetsassetinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsassetsasset-getassetkey" visibility="public" name="getAssetKey" returnType="string" params={[]}>
-Gets the asset's key.
-</ApiItem>
-<ApiItem href="#contractsassetsasset-getattributes" visibility="public" name="getAttributes" returnType="array|null" params={[]}>
-Gets extra HTML attributes.
-</ApiItem>
-<ApiItem href="#contractsassetsasset-getfilter" visibility="public" name="getFilter" returnType="bool" params={[]}>
-Gets if the asset must be filtered or not.
-</ApiItem>
-<ApiItem href="#contractsassetsasset-gettype" visibility="public" name="getType" returnType="string" params={[]}>
-Gets the asset's type.
-</ApiItem>
-<ApiItem href="#contractsassetsasset-setattributes" visibility="public" name="setAttributes" returnType="Asset" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets extra HTML attributes.
-</ApiItem>
-<ApiItem href="#contractsassetsasset-setfilter" visibility="public" name="setFilter" returnType="Asset" params={[{"type":"bool","name":"filter","default":null}]}>
-Sets if the asset must be filtered or not.
-</ApiItem>
-<ApiItem href="#contractsassetsasset-settype" visibility="public" name="setType" returnType="Asset" params={[{"type":"string","name":"type","default":null}]}>
-Sets the asset's type.
-</ApiItem>
+- `public getAssetKey(): string` — Gets the asset's key.
+
+- `public getAttributes(): array|null` — Gets extra HTML attributes.
+
+- `public getFilter(): bool` — Gets if the asset must be filtered or not.
+
+- `public getType(): string` — Gets the asset's type.
+
+- `public setAttributes(array $attributes): Asset` — Sets extra HTML attributes.
+
+- `public setFilter(bool $filter): Asset` — Sets if the asset must be filtered or not.
+
+- `public setType(string $type): Asset` — Sets the asset's type.
 
 ### Methods
 
@@ -1185,6 +1132,7 @@ public function setType( string $type ): Asset;
 
 Sets the asset's type.
 
+
 ## Contracts\Assets\AssetsTypes
 
 Interface
@@ -1195,6 +1143,7 @@ Central registry of the array shapes used across the Assets namespace.
 
 `Phalcon\Assets\AssetInterface` · `Phalcon\Assets\Collection` · `Phalcon\Assets\FilterInterface` · `Phalcon\Assets\Manager`
 
+
 ## Contracts\Assets\Filter
 
 Interface
@@ -1203,13 +1152,11 @@ Canonical contract for Phalcon\Assets filters (Cssmin, Jsmin, None, and
 custom user filters).
 
 - **`Phalcon\Contracts\Assets\Filter`**
-- [`Phalcon\Assets\FilterInterface`](/5.21/api/phalcon_assets/#assetsfilterinterface)
+  - [`Phalcon\Assets\FilterInterface`](/5.21/api/phalcon_assets/#assetsfilterinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsassetsfilter-filter" visibility="public" name="filter" returnType="string" params={[{"type":"string","name":"content","default":null}]}>
-Filters the content returning a string with the filtered content
-</ApiItem>
+- `public filter(string $content): string` — Filters the content returning a string with the filtered content
 
 ### Methods
 
@@ -1220,6 +1167,7 @@ public function filter( string $content ): string;
 ```
 
 Filters the content returning a string with the filtered content
+
 
 ## Contracts\Auth\Access\Access
 
@@ -1236,21 +1184,17 @@ reference to the auth manager.
 
 ### Method Summary
 
-<ApiItem href="#contractsauthaccessaccess-getexceptactions" visibility="public" name="getExceptActions" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthaccessaccess-getonlyactions" visibility="public" name="getOnlyActions" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthaccessaccess-isallowed" visibility="public" name="isAllowed" returnType="bool" params={[{"type":"Guard","name":"guard","default":null},{"type":"string","name":"actionName","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Whether the identity behind the guard may run the action.
-</ApiItem>
-<ApiItem href="#contractsauthaccessaccess-redirectto" visibility="public" name="redirectTo" returnType="array|null" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthaccessaccess-setexceptactions" visibility="public" name="setExceptActions" returnType="void" params={[{"type":"array","name":"exceptActions","default":"[]"}]}>
-Exempts the listed action names from the gate; every other action is
-</ApiItem>
-<ApiItem href="#contractsauthaccessaccess-setonlyactions" visibility="public" name="setOnlyActions" returnType="void" params={[{"type":"array","name":"onlyActions","default":"[]"}]}>
-Restricts the gate to the listed action names.
-</ApiItem>
+- `public getExceptActions(): array`
+
+- `public getOnlyActions(): array`
+
+- `public isAllowed(Guard $guard, string $actionName, array $context = []): bool` — Whether the identity behind the guard may run the action.
+
+- `public redirectTo(): array|null`
+
+- `public setExceptActions(array $exceptActions = []): void` — Exempts the listed action names from the gate; every other action is
+
+- `public setOnlyActions(array $onlyActions = []): void` — Restricts the gate to the listed action names.
 
 ### Methods
 
@@ -1270,9 +1214,9 @@ public function getOnlyActions(): array;
 
 ```php
 public function isAllowed(
-Guard $guard,
-string $actionName,
-array $context = []
+    Guard $guard,
+    string $actionName,
+    array $context = []
 ): bool;
 ```
 
@@ -1312,6 +1256,7 @@ base condition holds. The two gate families will be aligned in the next
 major version; until then, choose the gate family deliberately, because
 for an unlisted action they return opposite answers to the same call.
 
+
 ## Contracts\Auth\Adapter\Adapter
 
 Interface
@@ -1325,24 +1270,19 @@ optional `password` entry that is ignored during the row match and
 consumed only by validateCredentials().
 
 - **`Phalcon\Contracts\Auth\Adapter\Adapter`**
-- [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](#contractsauthadapterrememberadapter)
+  - [`Phalcon\Contracts\Auth\Adapter\RememberAdapter`](#contractsauthadapterrememberadapter)
 
 `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Encryption\Security\Security`
 
 ### Method Summary
 
-<ApiItem href="#contractsauthadapteradapter-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Security","name":"hasher","default":null},{"type":"array","name":"options","default":null}]}>
-Build an adapter from a flat options map. Used by ManagerFactory to
-</ApiItem>
-<ApiItem href="#contractsauthadapteradapter-retrievebycredentials" visibility="public" name="retrieveByCredentials" returnType="AuthUser|null" params={[{"type":"array","name":"credentials","default":null}]}>
-Find a user matching the given credentials (e.g. ['email' => 'a@b']).
-</ApiItem>
-<ApiItem href="#contractsauthadapteradapter-retrievebyid" visibility="public" name="retrieveById" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null}]}>
-Find a user by their unique identifier.
-</ApiItem>
-<ApiItem href="#contractsauthadapteradapter-validatecredentials" visibility="public" name="validateCredentials" returnType="bool" params={[{"type":"AuthUser","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
-Validate the provided credentials against the given user.
-</ApiItem>
+- `public fromOptions(Security $hasher, array $options): static` — Build an adapter from a flat options map. Used by ManagerFactory to
+
+- `public retrieveByCredentials(array $credentials): AuthUser|null` — Find a user matching the given credentials (e.g. \['email' => 'a\@b']).
+
+- `public retrieveById(mixed $id): AuthUser|null` — Find a user by their unique identifier.
+
+- `public validateCredentials(AuthUser $user, array $credentials): bool` — Validate the provided credentials against the given user.
 
 ### Methods
 
@@ -1350,8 +1290,8 @@ Validate the provided credentials against the given user.
 
 ```php
 public static function fromOptions(
-Security $hasher,
-array $options
+    Security $hasher,
+    array $options
 ): static;
 ```
 
@@ -1381,14 +1321,15 @@ Find a user by their unique identifier.
 
 ```php
 public function validateCredentials(
-AuthUser $user,
-array $credentials
+    AuthUser $user,
+    array $credentials
 ): bool;
 ```
 
 Validate the provided credentials against the given user.
 Implementations typically verify the password hash held under the
 'password' key.
+
 
 ## Contracts\Auth\Adapter\AdapterConfig
 
@@ -1404,9 +1345,7 @@ all adapters is the optional model class used during user hydration.
 
 ### Method Summary
 
-<ApiItem href="#contractsauthadapteradapterconfig-getmodel" visibility="public" name="getModel" returnType="string|null" params={[]}>
-Returns the user-model class name to hydrate, if configured.
-</ApiItem>
+- `public getModel(): string|null` — Returns the user-model class name to hydrate, if configured.
 
 ### Methods
 
@@ -1418,6 +1357,7 @@ public function getModel(): string|null;
 
 Returns the user-model class name to hydrate, if configured.
 
+
 ## Contracts\Auth\Adapter\RememberAdapter
 
 Interface
@@ -1425,18 +1365,15 @@ Interface
 Capability extension implemented by adapters that support remember-me.
 
 - [`Phalcon\Contracts\Auth\Adapter\Adapter`](#contractsauthadapteradapter)
-- **`Phalcon\Contracts\Auth\Adapter\RememberAdapter`**
+  - **`Phalcon\Contracts\Auth\Adapter\RememberAdapter`**
 
 `Phalcon\Contracts\Auth\AuthUser` · `Phalcon\Contracts\Auth\RememberToken`
 
 ### Method Summary
 
-<ApiItem href="#contractsauthadapterrememberadapter-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"AuthUser","name":"user","default":null}]}>
-Create and persist a new remember token for the user.
-</ApiItem>
-<ApiItem href="#contractsauthadapterrememberadapter-retrievebytoken" visibility="public" name="retrieveByToken" returnType="AuthUser|null" params={[{"type":"mixed","name":"id","default":null},{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
-Retrieve a user by the remember-me cookie payload.
-</ApiItem>
+- `public createRememberToken(AuthUser $user): RememberToken` — Create and persist a new remember token for the user.
+
+- `public retrieveByToken(mixed $id, string $token, string|null $userAgent = null): AuthUser|null` — Retrieve a user by the remember-me cookie payload.
 
 ### Methods
 
@@ -1452,13 +1389,14 @@ Create and persist a new remember token for the user.
 
 ```php
 public function retrieveByToken(
-mixed $id,
-string $token,
-string|null $userAgent = null
+    mixed $id,
+    string $token,
+    string|null $userAgent = null
 ): AuthUser|null;
 ```
 
 Retrieve a user by the remember-me cookie payload.
+
 
 ## Contracts\Auth\AuthRemember
 
@@ -1472,12 +1410,9 @@ not support remember-me are not forced to implement it.
 
 ### Method Summary
 
-<ApiItem href="#contractsauthauthremember-createremembertoken" visibility="public" name="createRememberToken" returnType="RememberToken" params={[{"type":"string","name":"token","default":null},{"type":"string|null","name":"userAgent","default":"null"}]}>
-Persists a new remember token for the user.
-</ApiItem>
-<ApiItem href="#contractsauthauthremember-getremembertoken" visibility="public" name="getRememberToken" returnType="RememberToken|null" params={[{"type":"string","name":"token","default":null}]}>
-Returns the remember token entry matching the given token value,
-</ApiItem>
+- `public createRememberToken(string $token, string|null $userAgent = null): RememberToken` — Persists a new remember token for the user.
+
+- `public getRememberToken(string $token): RememberToken|null` — Returns the remember token entry matching the given token value,
 
 ### Methods
 
@@ -1485,8 +1420,8 @@ Returns the remember token entry matching the given token value,
 
 ```php
 public function createRememberToken(
-string $token,
-string|null $userAgent = null
+    string $token,
+    string|null $userAgent = null
 ): RememberToken;
 ```
 
@@ -1501,6 +1436,7 @@ public function getRememberToken( string $token ): RememberToken|null;
 Returns the remember token entry matching the given token value,
 or null if not found.
 
+
 ## Contracts\Auth\AuthUser
 
 Interface
@@ -1511,12 +1447,9 @@ Implemented by user models that can be authenticated.
 
 ### Method Summary
 
-<ApiItem href="#contractsauthauthuser-getauthidentifier" visibility="public" name="getAuthIdentifier" returnType="int|string" params={[]}>
-Returns the unique identifier for the authenticatable user
-</ApiItem>
-<ApiItem href="#contractsauthauthuser-getauthpassword" visibility="public" name="getAuthPassword" returnType="string" params={[]}>
-Returns the hashed password for the authenticatable user.
-</ApiItem>
+- `public getAuthIdentifier(): int|string` — Returns the unique identifier for the authenticatable user
+
+- `public getAuthPassword(): string` — Returns the hashed password for the authenticatable user.
 
 ### Methods
 
@@ -1539,6 +1472,7 @@ public function getAuthPassword(): string;
 
 Returns the hashed password for the authenticatable user.
 
+
 ## Contracts\Auth\Guard\BasicAuth
 
 Interface
@@ -1549,12 +1483,9 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractsauthguardbasicauth-basic" visibility="public" name="basic" returnType="bool" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
-Authenticate against HTTP Basic credentials. Returns true on success.
-</ApiItem>
-<ApiItem href="#contractsauthguardbasicauth-oncebasic" visibility="public" name="onceBasic" returnType="false|AuthUser" params={[{"type":"string","name":"field","default":"\"email\""},{"type":"array","name":"extraConditions","default":"[]"}]}>
-Like basic() but does not persist; returns the resolved user on success
-</ApiItem>
+- `public basic(string $field = "email", array $extraConditions = []): bool` — Authenticate against HTTP Basic credentials. Returns true on success.
+
+- `public onceBasic(string $field = "email", array $extraConditions = []): false|AuthUser` — Like basic() but does not persist; returns the resolved user on success
 
 ### Methods
 
@@ -1562,8 +1493,8 @@ Like basic() but does not persist; returns the resolved user on success
 
 ```php
 public function basic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): bool;
 ```
 
@@ -1573,13 +1504,14 @@ Authenticate against HTTP Basic credentials. Returns true on success.
 
 ```php
 public function onceBasic(
-string $field = "email",
-array $extraConditions = []
+    string $field = "email",
+    array $extraConditions = []
 ): false|AuthUser;
 ```
 
 Like basic() but does not persist; returns the resolved user on success
 or false on failure.
+
 
 ## Contracts\Auth\Guard\Guard
 
@@ -1591,33 +1523,23 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractsauthguardguard-check" visibility="public" name="check" returnType="bool" params={[]}>
-Whether the current request is authenticated.
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-fromoptions" visibility="public" name="fromOptions" returnType="static" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"mixed","name":"container","default":null},{"type":"array","name":"options","default":null}]}>
-Build a guard from an adapter, the application container, and a flat
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-getlastuserattempted" visibility="public" name="getLastUserAttempted" returnType="AuthUser|null" params={[]}>
-Returns the last user the guard tried to authenticate during this
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-guest" visibility="public" name="guest" returnType="bool" params={[]}>
-Whether the current request is unauthenticated.
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-hasuser" visibility="public" name="hasUser" returnType="bool" params={[]}>
-Whether the guard currently holds a resolved user.
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
-Returns the authenticated user's identifier, or null when no
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-setuser" visibility="public" name="setUser" returnType="static" params={[{"type":"AuthUser","name":"user","default":null}]}>
-Sets the current user explicitly. Returns $this for fluent chaining.
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
-Returns the resolved user for the current request, or null.
-</ApiItem>
-<ApiItem href="#contractsauthguardguard-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
-Validates the given credentials without logging in.
-</ApiItem>
+- `public check(): bool` — Whether the current request is authenticated.
+
+- `public fromOptions(Adapter $adapter, mixed $container, array $options): static` — Build a guard from an adapter, the application container, and a flat
+
+- `public getLastUserAttempted(): AuthUser|null` — Returns the last user the guard tried to authenticate during this
+
+- `public guest(): bool` — Whether the current request is unauthenticated.
+
+- `public hasUser(): bool` — Whether the guard currently holds a resolved user.
+
+- `public id(): int|string|null` — Returns the authenticated user's identifier, or null when no
+
+- `public setUser(AuthUser $user): static` — Sets the current user explicitly. Returns $this for fluent chaining.
+
+- `public user(): AuthUser|null` — Returns the resolved user for the current request, or null.
+
+- `public validate(array $credentials = []): bool` — Validates the given credentials without logging in.
 
 ### Methods
 
@@ -1633,9 +1555,9 @@ Whether the current request is authenticated.
 
 ```php
 public static function fromOptions(
-Adapter $adapter,
-mixed $container,
-array $options
+    Adapter $adapter,
+    mixed $container,
+    array $options
 ): static;
 ```
 
@@ -1706,6 +1628,7 @@ public function validate( array $credentials = [] ): bool;
 
 Validates the given credentials without logging in.
 
+
 ## Contracts\Auth\Guard\GuardConfig
 
 Interface
@@ -1719,6 +1642,7 @@ AbstractGuard can accept any guard config uniformly.
 
 - **`Phalcon\Contracts\Auth\Guard\GuardConfig`**
 
+
 ## Contracts\Auth\Guard\GuardStateful
 
 Interface
@@ -1731,18 +1655,15 @@ Implemented by guards backed by persistent state (sessions/cookies).
 
 ### Method Summary
 
-<ApiItem href="#contractsauthguardguardstateful-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
-Attempts to authenticate the user with the given credentials and, on
-</ApiItem>
-<ApiItem href="#contractsauthguardguardstateful-login" visibility="public" name="login" returnType="void" params={[{"type":"AuthUser","name":"user","default":null},{"type":"bool","name":"remember","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#contractsauthguardguardstateful-loginbyid" visibility="public" name="loginById" returnType="AuthUser|false" params={[{"type":"mixed","name":"id","default":null},{"type":"bool","name":"remember","default":"false"}]}>
-Logs in the user identified by $id. Returns the resolved user on
-</ApiItem>
-<ApiItem href="#contractsauthguardguardstateful-logout" visibility="public" name="logout" returnType="void" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthguardguardstateful-viaremember" visibility="public" name="viaRemember" returnType="bool" params={[]}>
-</ApiItem>
+- `public attempt(array $credentials = [], bool $remember = false): bool` — Attempts to authenticate the user with the given credentials and, on
+
+- `public login(AuthUser $user, bool $remember = false): void`
+
+- `public loginById(mixed $id, bool $remember = false): AuthUser|false` — Logs in the user identified by $id. Returns the resolved user on
+
+- `public logout(): void`
+
+- `public viaRemember(): bool`
 
 ### Methods
 
@@ -1750,8 +1671,8 @@ Logs in the user identified by $id. Returns the resolved user on
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -1762,8 +1683,8 @@ success, persists the resulting state on the guard.
 
 ```php
 public function login(
-AuthUser $user,
-bool $remember = false
+    AuthUser $user,
+    bool $remember = false
 ): void;
 ```
 
@@ -1771,8 +1692,8 @@ bool $remember = false
 
 ```php
 public function loginById(
-mixed $id,
-bool $remember = false
+    mixed $id,
+    bool $remember = false
 ): AuthUser|false;
 ```
 
@@ -1791,6 +1712,7 @@ public function logout(): void;
 public function viaRemember(): bool;
 ```
 
+
 ## Contracts\Auth\Manager
 
 Interface
@@ -1801,52 +1723,41 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractsauthmanager-access" visibility="public" name="access" returnType="self" params={[{"type":"string","name":"accessName","default":null}]}>
-Activates the named access gate for the current request and returns the
-</ApiItem>
-<ApiItem href="#contractsauthmanager-addaccesslist" visibility="public" name="addAccessList" returnType="self" params={[{"type":"array","name":"accessList","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-addguard" visibility="public" name="addGuard" returnType="self" params={[{"type":"string","name":"nameGuard","default":null},{"type":"Guard","name":"guard","default":null},{"type":"bool","name":"isDefault","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-check" visibility="public" name="check" returnType="bool" params={[]}>
-Whether the default guard reports the current request as authenticated.
-</ApiItem>
-<ApiItem href="#contractsauthmanager-except" visibility="public" name="except" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
-Restricts the active access gate to skip the listed action names.
-</ApiItem>
-<ApiItem href="#contractsauthmanager-getaccess" visibility="public" name="getAccess" returnType="Access|null" params={[]}>
-Returns the active access gate, or null when none has been activated -
-</ApiItem>
-<ApiItem href="#contractsauthmanager-getaccesslist" visibility="public" name="getAccessList" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-getdefaultguard" visibility="public" name="getDefaultGuard" returnType="Guard|null" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-getguards" visibility="public" name="getGuards" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-guard" visibility="public" name="guard" returnType="Guard" params={[{"type":"string|null","name":"name","default":"null"}]}>
-Returns the named guard, or the default guard when $name is null.
-</ApiItem>
-<ApiItem href="#contractsauthmanager-id" visibility="public" name="id" returnType="int|string|null" params={[]}>
-Returns the authenticated user's identifier from the default guard,
-</ApiItem>
-<ApiItem href="#contractsauthmanager-logout" visibility="public" name="logout" returnType="void" params={[]}>
-Logs the current user out via the default guard.
-</ApiItem>
-<ApiItem href="#contractsauthmanager-only" visibility="public" name="only" returnType="self" params={[{"type":"string","name":"actions","default":null}]}>
-Restricts the active access gate to apply only to the listed action names.
-</ApiItem>
-<ApiItem href="#contractsauthmanager-setaccess" visibility="public" name="setAccess" returnType="self" params={[{"type":"Access","name":"access","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-setdefaultguard" visibility="public" name="setDefaultGuard" returnType="self" params={[{"type":"Guard","name":"guard","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsauthmanager-user" visibility="public" name="user" returnType="AuthUser|null" params={[]}>
-Returns the resolved user from the default guard, or null.
-</ApiItem>
-<ApiItem href="#contractsauthmanager-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"}]}>
-Validates the given credentials against the default guard without
-</ApiItem>
+- `public access(string $accessName): self` — Activates the named access gate for the current request and returns the
+
+- `public addAccessList(array $accessList): self`
+
+- `public addGuard(string $nameGuard, Guard $guard, bool $isDefault = false): self`
+
+- `public attempt(array $credentials = [], bool $remember = false): bool`
+
+- `public check(): bool` — Whether the default guard reports the current request as authenticated.
+
+- `public except(string $actions): self` — Restricts the active access gate to skip the listed action names.
+
+- `public getAccess(): Access|null` — Returns the active access gate, or null when none has been activated -
+
+- `public getAccessList(): array`
+
+- `public getDefaultGuard(): Guard|null`
+
+- `public getGuards(): array`
+
+- `public guard(string|null $name = null): Guard` — Returns the named guard, or the default guard when $name is null.
+
+- `public id(): int|string|null` — Returns the authenticated user's identifier from the default guard,
+
+- `public logout(): void` — Logs the current user out via the default guard.
+
+- `public only(string $actions): self` — Restricts the active access gate to apply only to the listed action names.
+
+- `public setAccess(Access $access): self`
+
+- `public setDefaultGuard(Guard $guard): self`
+
+- `public user(): AuthUser|null` — Returns the resolved user from the default guard, or null.
+
+- `public validate(array $credentials = []): bool` — Validates the given credentials against the default guard without
 
 ### Methods
 
@@ -1875,9 +1786,9 @@ public function addAccessList( array $accessList ): self;
 
 ```php
 public function addGuard(
-string $nameGuard,
-Guard $guard,
-bool $isDefault = false
+    string $nameGuard,
+    Guard $guard,
+    bool $isDefault = false
 ): self;
 ```
 
@@ -1885,8 +1796,8 @@ bool $isDefault = false
 
 ```php
 public function attempt(
-array $credentials = [],
-bool $remember = false
+    array $credentials = [],
+    bool $remember = false
 ): bool;
 ```
 
@@ -1995,6 +1906,7 @@ public function validate( array $credentials = [] ): bool;
 Validates the given credentials against the default guard without
 logging in.
 
+
 ## Contracts\Auth\RememberToken
 
 Interface
@@ -2005,15 +1917,11 @@ A persisted remember-me token row.
 
 ### Method Summary
 
-<ApiItem href="#contractsauthremembertoken-delete" visibility="public" name="delete" returnType="bool" params={[]}>
-Deletes the token from storage.
-</ApiItem>
-<ApiItem href="#contractsauthremembertoken-gettoken" visibility="public" name="getToken" returnType="string" params={[]}>
-Returns the token value stored for this remember entry.
-</ApiItem>
-<ApiItem href="#contractsauthremembertoken-getuseragent" visibility="public" name="getUserAgent" returnType="string|null" params={[]}>
-Returns the user agent associated with this token, if any.
-</ApiItem>
+- `public delete(): bool` — Deletes the token from storage.
+
+- `public getToken(): string` — Returns the token value stored for this remember entry.
+
+- `public getUserAgent(): string|null` — Returns the user agent associated with this token, if any.
 
 ### Methods
 
@@ -2041,6 +1949,7 @@ public function getUserAgent(): string|null;
 
 Returns the user agent associated with this token, if any.
 
+
 ## Contracts\Autoload\AutoloadTypes
 
 Interface
@@ -2049,6 +1958,7 @@ Central registry of the array shapes used across the Autoload namespace.
 
 - **`Phalcon\Contracts\Autoload\AutoloadTypes`**
 
+
 ## Contracts\Cache\Cache
 
 Interface
@@ -2056,36 +1966,27 @@ Interface
 Canonical contract for Phalcon\Cache\Cache.
 
 - **`Phalcon\Contracts\Cache\Cache`**
-- [`Phalcon\Cache\CacheInterface`](/5.21/api/phalcon_cache/#cachecacheinterface)
+  - [`Phalcon\Cache\CacheInterface`](/5.21/api/phalcon_cache/#cachecacheinterface)
 
 `DateInterval` · `Phalcon\Cache\Exception\InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#contractscachecache-clear" visibility="public" name="clear" returnType="bool" params={[]}>
-Wipes clean the entire cache's keys.
-</ApiItem>
-<ApiItem href="#contractscachecache-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Delete an item from the cache by its unique key.
-</ApiItem>
-<ApiItem href="#contractscachecache-deletemultiple" visibility="public" name="deleteMultiple" returnType="bool" params={[{"type":"mixed","name":"keys","default":null}]}>
-Deletes multiple cache items in a single operation.
-</ApiItem>
-<ApiItem href="#contractscachecache-get" visibility="public" name="get" returnType="" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Fetches a value from the cache.
-</ApiItem>
-<ApiItem href="#contractscachecache-getmultiple" visibility="public" name="getMultiple" returnType="" params={[{"type":"mixed","name":"keys","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Obtains multiple cache items by their unique keys.
-</ApiItem>
-<ApiItem href="#contractscachecache-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Determines whether an item is present in the cache.
-</ApiItem>
-<ApiItem href="#contractscachecache-set" visibility="public" name="set" returnType="bool" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
-Persists data in the cache, uniquely referenced by a key with an optional
-</ApiItem>
-<ApiItem href="#contractscachecache-setmultiple" visibility="public" name="setMultiple" returnType="bool" params={[{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"ttl","default":"null"}]}>
-Persists a set of key => value pairs in the cache, with an optional TTL.
-</ApiItem>
+- `public clear(): bool` — Wipes clean the entire cache's keys.
+
+- `public delete(string $key): bool` — Delete an item from the cache by its unique key.
+
+- `public deleteMultiple(mixed $keys): bool` — Deletes multiple cache items in a single operation.
+
+- `public get(string $key, mixed $defaultValue = null)` — Fetches a value from the cache.
+
+- `public getMultiple(mixed $keys, mixed $defaultValue = null)` — Obtains multiple cache items by their unique keys.
+
+- `public has(string $key): bool` — Determines whether an item is present in the cache.
+
+- `public set(string $key, mixed $value, mixed $ttl = null): bool` — Persists data in the cache, uniquely referenced by a key with an optional
+
+- `public setMultiple(mixed $values, mixed $ttl = null): bool` — Persists a set of key => value pairs in the cache, with an optional TTL.
 
 ### Methods
 
@@ -2117,8 +2018,8 @@ Deletes multiple cache items in a single operation.
 
 ```php
 public function get(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 );
 ```
 
@@ -2128,8 +2029,8 @@ Fetches a value from the cache.
 
 ```php
 public function getMultiple(
-mixed $keys,
-mixed $defaultValue = null
+    mixed $keys,
+    mixed $defaultValue = null
 );
 ```
 
@@ -2147,9 +2048,9 @@ Determines whether an item is present in the cache.
 
 ```php
 public function set(
-string $key,
-mixed $value,
-mixed $ttl = null
+    string $key,
+    mixed $value,
+    mixed $ttl = null
 ): bool;
 ```
 
@@ -2160,12 +2061,13 @@ expiration TTL time.
 
 ```php
 public function setMultiple(
-mixed $values,
-mixed $ttl = null
+    mixed $values,
+    mixed $ttl = null
 ): bool;
 ```
 
 Persists a set of key => value pairs in the cache, with an optional TTL.
+
 
 ## Contracts\Cli\CliTypes
 
@@ -2177,6 +2079,7 @@ Central registry of the array shapes used across the Cli namespace.
 
 `Phalcon\Cli\Router\Route`
 
+
 ## Contracts\Cli\Dispatcher
 
 Interface
@@ -2184,40 +2087,30 @@ Interface
 Canonical contract for Phalcon\Cli\Dispatcher.
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
-- **`Phalcon\Contracts\Cli\Dispatcher`**
-- [`Phalcon\Cli\DispatcherInterface`](/5.21/api/phalcon_cli/#clidispatcherinterface)
+  - **`Phalcon\Contracts\Cli\Dispatcher`**
+    - [`Phalcon\Cli\DispatcherInterface`](/5.21/api/phalcon_cli/#clidispatcherinterface)
 
 `Phalcon\Cli\TaskInterface` · `Phalcon\Contracts\Dispatcher\Dispatcher`
 
 ### Method Summary
 
-<ApiItem href="#contractsclidispatcher-getactivetask" visibility="public" name="getActiveTask" returnType="TaskInterface" params={[]}>
-Returns the active task in the dispatcher
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-getlasttask" visibility="public" name="getLastTask" returnType="TaskInterface" params={[]}>
-Returns the latest dispatched controller
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Get dispatched options
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-gettaskname" visibility="public" name="getTaskName" returnType="string" params={[]}>
-Gets last dispatched task name
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-gettasksuffix" visibility="public" name="getTaskSuffix" returnType="string" params={[]}>
-Gets default task suffix
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-setdefaulttask" visibility="public" name="setDefaultTask" returnType="void" params={[{"type":"string","name":"taskName","default":null}]}>
-Sets the default task name
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-setoptions" visibility="public" name="setOptions" returnType="void" params={[{"type":"array","name":"options","default":null}]}>
-Set the options to be dispatched
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-settaskname" visibility="public" name="setTaskName" returnType="void" params={[{"type":"string","name":"taskName","default":null}]}>
-Sets the task name to be dispatched
-</ApiItem>
-<ApiItem href="#contractsclidispatcher-settasksuffix" visibility="public" name="setTaskSuffix" returnType="void" params={[{"type":"string","name":"taskSuffix","default":null}]}>
-Sets the default task suffix
-</ApiItem>
+- `public getActiveTask(): TaskInterface` — Returns the active task in the dispatcher
+
+- `public getLastTask(): TaskInterface` — Returns the latest dispatched controller
+
+- `public getOptions(): array` — Get dispatched options
+
+- `public getTaskName(): string` — Gets last dispatched task name
+
+- `public getTaskSuffix(): string` — Gets default task suffix
+
+- `public setDefaultTask(string $taskName): void` — Sets the default task name
+
+- `public setOptions(array $options): void` — Set the options to be dispatched
+
+- `public setTaskName(string $taskName): void` — Sets the task name to be dispatched
+
+- `public setTaskSuffix(string $taskSuffix): void` — Sets the default task suffix
 
 ### Methods
 
@@ -2293,6 +2186,7 @@ public function setTaskSuffix( string $taskSuffix ): void;
 
 Sets the default task suffix
 
+
 ## Contracts\Config\ConfigTypes
 
 Interface
@@ -2302,6 +2196,7 @@ Central registry of the array shapes used across the Config namespace.
 - **`Phalcon\Contracts\Config\ConfigTypes`**
 
 `Phalcon\Config\ConfigInterface`
+
 
 ## Contracts\Container\ContainerTypes
 
@@ -2313,6 +2208,7 @@ Central registry of the array shapes used across the Container namespace.
 
 `Phalcon\Container\Definition\Processor\Processor` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Contracts\Container\Service\Provider` · `ReflectionParameter`
 
+
 ## Contracts\Container\Ioc\IocContainer
 
 Interface
@@ -2321,21 +2217,18 @@ Interface
 
 - Notes:
 
-- **This interface does not afford service management.** The container
+    - **This interface does not afford service management.** The container
       will need to obtain services somehow, e.g. from a [Service-Interop][]
       implementation.
 
 - **`Phalcon\Contracts\Container\Ioc\IocContainer`**
-- [`Phalcon\Contracts\Container\Service\Collection`](#contractscontainerservicecollection)
+  - [`Phalcon\Contracts\Container\Service\Collection`](#contractscontainerservicecollection)
 
 ### Method Summary
 
-<ApiItem href="#contractscontaineriocioccontainer-getservice" visibility="public" name="getService" returnType="object" params={[{"type":"string","name":"serviceName","default":null}]}>
-Returns an instance of the `$serviceName`.
-</ApiItem>
-<ApiItem href="#contractscontaineriocioccontainer-hasservice" visibility="public" name="hasService" returnType="bool" params={[{"type":"string","name":"serviceName","default":null}]}>
-Is the container able to return an instance of the `$serviceName`?
-</ApiItem>
+- `public getService(string $serviceName): object` — Returns an instance of the `$serviceName`.
+
+- `public hasService(string $serviceName): bool` — Is the container able to return an instance of the `$serviceName`?
 
 ### Methods
 
@@ -2354,11 +2247,11 @@ Returns an instance of the `$serviceName`.
 
 - Notes:
 
-- **The logic for this method is expressly unspecified.** Retrieval
+    - **The logic for this method is expressly unspecified.** Retrieval
       may be accomplished via a service management subsystem, or by some
       other means.
 
-- **The returned instance may be new or shared.** The retrieval
+    - **The returned instance may be new or shared.** The retrieval
       logic defines the service lifetime, not the container (per se) and
       not the caller requesting the service.
 
@@ -2372,9 +2265,10 @@ Is the container able to return an instance of the `$serviceName`?
 
 - Notes:
 
-- **The logic for this method is expressly unspecified.** The ability
+    - **The logic for this method is expressly unspecified.** The ability
       check may be accomplished by querying a service management subsystem,
       or by some other means.
+
 
 ## Contracts\Container\Ioc\IocContainerFactory
 
@@ -2387,9 +2281,7 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractscontaineriocioccontainerfactory-newcontainer" visibility="public" name="newContainer" returnType="IocContainer" params={[]}>
-Returns a new instance of [_IocContainer_][].
-</ApiItem>
+- `public newContainer(): IocContainer` — Returns a new instance of \[*IocContainer*]\[].
 
 ### Methods
 
@@ -2403,11 +2295,12 @@ Returns a new instance of [_IocContainer_][].
 
 - Notes:
 
-- **Container instantiation logic is not specified.** Implementations
+    - **Container instantiation logic is not specified.** Implementations
       might use providers, configuration files, attribute or annotation
       collection, or some other means to create and populate a container.
       Implementations might also choose to return a compiled or otherwise
       reconstituted container.
+
 
 ## Contracts\Container\Ioc\IocThrowable
 
@@ -2419,16 +2312,18 @@ IOC-related.
 It adds no class members.
 
 - `\Throwable`
-- **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
-- [`Phalcon\Container\Exceptions\ContainerThrowable`](/5.21/api/phalcon_container/#containerexceptionscontainerthrowable)
+  - **`Phalcon\Contracts\Container\Ioc\IocThrowable`**
+    - [`Phalcon\Container\Exceptions\ContainerThrowable`](/5.21/api/phalcon_container/#containerexceptionscontainerthrowable)
 
 `Throwable`
+
 
 ## Contracts\Container\Ioc\IocTypeAliases
 
 Interface
 
 - **`Phalcon\Contracts\Container\Ioc\IocTypeAliases`**
+
 
 ## Contracts\Container\Resolver\ReflectionMethodResolver
 
@@ -2440,8 +2335,7 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerresolverreflectionmethodresolver-resolvemethod" visibility="public" name="resolveMethod" returnType="void" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionMethod","name":"method","default":null},{"type":"object","name":"instance","default":null}]}>
-</ApiItem>
+- `public resolveMethod(IocContainer $ioc, ReflectionMethod $method, object $instance): void`
 
 ### Methods
 
@@ -2449,25 +2343,25 @@ Interface
 
 ```php
 public function resolveMethod(
-IocContainer $ioc,
-ReflectionMethod $method,
-object $instance
+    IocContainer $ioc,
+    ReflectionMethod $method,
+    object $instance
 ): void;
 ```
+
 
 ## Contracts\Container\Resolver\ReflectionParameterResolver
 
 Interface
 
 - **`Phalcon\Contracts\Container\Resolver\ReflectionParameterResolver`**
-- [`Phalcon\Contracts\Container\Resolver\ResolverService`](#contractscontainerresolverresolverservice)
+  - [`Phalcon\Contracts\Container\Resolver\ResolverService`](#contractscontainerresolverresolverservice)
 
 `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionParameter`
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerresolverreflectionparameterresolver-resolveparameter" visibility="public" name="resolveParameter" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionParameter","name":"parameter","default":null}]}>
-</ApiItem>
+- `public resolveParameter(IocContainer $ioc, ReflectionParameter $parameter): mixed`
 
 ### Methods
 
@@ -2475,10 +2369,11 @@ Interface
 
 ```php
 public function resolveParameter(
-IocContainer $ioc,
-ReflectionParameter $parameter
+    IocContainer $ioc,
+    ReflectionParameter $parameter
 ): mixed;
 ```
+
 
 ## Contracts\Container\Resolver\Resolvable
 
@@ -2490,8 +2385,7 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerresolverresolvable-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null}]}>
-</ApiItem>
+- `public resolve(IocContainer $ioc): mixed`
 
 ### Methods
 
@@ -2501,29 +2395,29 @@ Interface
 public function resolve( IocContainer $ioc ): mixed;
 ```
 
+
 ## Contracts\Container\Resolver\ResolverService
 
 Interface
 
 - [`Phalcon\Contracts\Container\Resolver\ReflectionParameterResolver`](#contractscontainerresolverreflectionparameterresolver)
-- **`Phalcon\Contracts\Container\Resolver\ResolverService`**
+  - **`Phalcon\Contracts\Container\Resolver\ResolverService`**
 
 `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `ReflectionMethod` · `ReflectionParameter` · `ReflectionType`
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerresolverresolverservice-isresolvableclass" visibility="public" name="isResolvableClass" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerresolverresolverservice-resolvecall" visibility="public" name="resolveCall" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"callable","name":"callableObject","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerresolverresolverservice-resolveclass" visibility="public" name="resolveClass" returnType="object" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"string","name":"className","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerresolverresolverservice-resolvemethod" visibility="public" name="resolveMethod" returnType="void" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionMethod","name":"method","default":null},{"type":"object","name":"instance","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerresolverresolverservice-resolveparameters" visibility="public" name="resolveParameters" returnType="array" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"array","name":"parameters","default":null},{"type":"array","name":"arguments","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerresolverresolverservice-resolvetype" visibility="public" name="resolveType" returnType="mixed" params={[{"type":"IocContainer","name":"ioc","default":null},{"type":"ReflectionType","name":"type","default":null}]}>
-</ApiItem>
+- `public isResolvableClass(string $className): bool`
+
+- `public resolveCall(IocContainer $ioc, callable $callableObject, array $arguments): mixed`
+
+- `public resolveClass(IocContainer $ioc, string $className, array $arguments): object`
+
+- `public resolveMethod(IocContainer $ioc, ReflectionMethod $method, object $instance): void`
+
+- `public resolveParameters(IocContainer $ioc, array $parameters, array $arguments): array`
+
+- `public resolveType(IocContainer $ioc, ReflectionType $type): mixed`
 
 ### Methods
 
@@ -2537,9 +2431,9 @@ public function isResolvableClass( string $className ): bool;
 
 ```php
 public function resolveCall(
-IocContainer $ioc,
-callable $callableObject,
-array $arguments
+    IocContainer $ioc,
+    callable $callableObject,
+    array $arguments
 ): mixed;
 ```
 
@@ -2547,9 +2441,9 @@ array $arguments
 
 ```php
 public function resolveClass(
-IocContainer $ioc,
-string $className,
-array $arguments
+    IocContainer $ioc,
+    string $className,
+    array $arguments
 ): object;
 ```
 
@@ -2557,9 +2451,9 @@ array $arguments
 
 ```php
 public function resolveMethod(
-IocContainer $ioc,
-ReflectionMethod $method,
-object $instance
+    IocContainer $ioc,
+    ReflectionMethod $method,
+    object $instance
 ): void;
 ```
 
@@ -2567,9 +2461,9 @@ object $instance
 
 ```php
 public function resolveParameters(
-IocContainer $ioc,
-array $parameters,
-array $arguments
+    IocContainer $ioc,
+    array $parameters,
+    array $arguments
 ): array;
 ```
 
@@ -2577,91 +2471,92 @@ array $arguments
 
 ```php
 public function resolveType(
-IocContainer $ioc,
-ReflectionType $type
+    IocContainer $ioc,
+    ReflectionType $type
 ): mixed;
 ```
+
 
 ## Contracts\Container\Resolver\ResolverThrowable
 
 Interface
 
 - `\Throwable`
-- **`Phalcon\Contracts\Container\Resolver\ResolverThrowable`**
+  - **`Phalcon\Contracts\Container\Resolver\ResolverThrowable`**
 
 `Throwable`
+
 
 ## Contracts\Container\Service\Collection
 
 Interface
 
 - [`Phalcon\Contracts\Container\Ioc\IocContainer`](#contractscontaineriocioccontainer)
-- **`Phalcon\Contracts\Container\Service\Collection`**
+  - **`Phalcon\Contracts\Container\Service\Collection`**
 
 `Closure` · `Phalcon\Container\Definition\ServiceDefinition` · `Phalcon\Container\Resolver\Resolver` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer`
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerservicecollection-bind" visibility="public" name="bind" returnType="ServiceDefinition" params={[{"type":"string","name":"interfaceName","default":null},{"type":"string","name":"concrete","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-callableget" visibility="public" name="callableGet" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-callablenew" visibility="public" name="callableNew" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-extend" visibility="public" name="extend" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-getalias" visibility="public" name="getAlias" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-getbytag" visibility="public" name="getByTag" returnType="array" params={[{"type":"string","name":"tag","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-getdefinition" visibility="public" name="getDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-getinstance" visibility="public" name="getInstance" returnType="object" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-getresolver" visibility="public" name="getResolver" returnType="Resolver" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-hasalias" visibility="public" name="hasAlias" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-hasdefinition" visibility="public" name="hasDefinition" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-hasinstance" visibility="public" name="hasInstance" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-hasparameter" visibility="public" name="hasParameter" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-isautowireenabled" visibility="public" name="isAutowireEnabled" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-new" visibility="public" name="new" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-newdefinition" visibility="public" name="newDefinition" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-set" visibility="public" name="set" returnType="ServiceDefinition" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-setalias" visibility="public" name="setAlias" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"alias","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-setautowire" visibility="public" name="setAutowire" returnType="static" params={[{"type":"bool","name":"enabled","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-setdefinition" visibility="public" name="setDefinition" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"ServiceDefinition","name":"definition","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-setinstance" visibility="public" name="setInstance" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"object","name":"instance","default":null},{"type":"string","name":"lifetime","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-setparameter" visibility="public" name="setParameter" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-unsetalias" visibility="public" name="unsetAlias" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-unsetdefinition" visibility="public" name="unsetDefinition" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-unsetinstance" visibility="public" name="unsetInstance" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-unsetinstances" visibility="public" name="unsetInstances" returnType="void" params={[{"type":"string","name":"lifetime","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicecollection-unsetparameter" visibility="public" name="unsetParameter" returnType="void" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public bind(string $interfaceName, string $concrete): ServiceDefinition`
+
+- `public callableGet(string $name): Closure`
+
+- `public callableNew(string $name): Closure`
+
+- `public extend(string $name, callable $callableObject): void`
+
+- `public get(string $name): mixed`
+
+- `public getAlias(string $name): string`
+
+- `public getByTag(string $tag): array`
+
+- `public getDefinition(string $name): ServiceDefinition`
+
+- `public getInstance(string $name): object`
+
+- `public getParameter(string $name): mixed`
+
+- `public getResolver(): Resolver`
+
+- `public has(string $name): bool`
+
+- `public hasAlias(string $name): bool`
+
+- `public hasDefinition(string $name): bool`
+
+- `public hasInstance(string $name): bool`
+
+- `public hasParameter(string $name): bool`
+
+- `public isAutowireEnabled(): bool`
+
+- `public new(string $name): mixed`
+
+- `public newDefinition(string $name): ServiceDefinition`
+
+- `public set(string $name, mixed $definition): ServiceDefinition`
+
+- `public setAlias(string $name, string $alias): static`
+
+- `public setAutowire(bool $enabled): static`
+
+- `public setDefinition(string $name, ServiceDefinition $definition): static`
+
+- `public setInstance(string $name, object $instance, string $lifetime): static`
+
+- `public setParameter(string $name, mixed $value): static`
+
+- `public unsetAlias(string $name): void`
+
+- `public unsetDefinition(string $name): void`
+
+- `public unsetInstance(string $name): void`
+
+- `public unsetInstances(string $lifetime): void`
+
+- `public unsetParameter(string $name): void`
 
 ### Methods
 
@@ -2669,8 +2564,8 @@ Interface
 
 ```php
 public function bind(
-string $interfaceName,
-string $concrete
+    string $interfaceName,
+    string $concrete
 ): ServiceDefinition;
 ```
 
@@ -2690,8 +2585,8 @@ public function callableNew( string $name ): Closure;
 
 ```php
 public function extend(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): void;
 ```
 
@@ -2789,8 +2684,8 @@ public function newDefinition( string $name ): ServiceDefinition;
 
 ```php
 public function set(
-string $name,
-mixed $definition
+    string $name,
+    mixed $definition
 ): ServiceDefinition;
 ```
 
@@ -2798,8 +2693,8 @@ mixed $definition
 
 ```php
 public function setAlias(
-string $name,
-string $alias
+    string $name,
+    string $alias
 ): static;
 ```
 
@@ -2813,8 +2708,8 @@ public function setAutowire( bool $enabled ): static;
 
 ```php
 public function setDefinition(
-string $name,
-ServiceDefinition $definition
+    string $name,
+    ServiceDefinition $definition
 ): static;
 ```
 
@@ -2822,9 +2717,9 @@ ServiceDefinition $definition
 
 ```php
 public function setInstance(
-string $name,
-object $instance,
-string $lifetime
+    string $name,
+    object $instance,
+    string $lifetime
 ): static;
 ```
 
@@ -2832,8 +2727,8 @@ string $lifetime
 
 ```php
 public function setParameter(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -2867,6 +2762,7 @@ public function unsetInstances( string $lifetime ): void;
 public function unsetParameter( string $name ): void;
 ```
 
+
 ## Contracts\Container\Service\Definition
 
 Interface
@@ -2877,40 +2773,39 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerservicedefinition-addextender" visibility="public" name="addExtender" returnType="static" params={[{"type":"callable","name":"extender","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-buildservice" visibility="public" name="buildService" returnType="object" params={[{"type":"IocContainer","name":"ioc","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-getclass" visibility="public" name="getClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-getextenders" visibility="public" name="getExtenders" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-getfactory" visibility="public" name="getFactory" returnType="callable" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-getlifetime" visibility="public" name="getLifetime" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-getservicename" visibility="public" name="getServiceName" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-hasclass" visibility="public" name="hasClass" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-hasextenders" visibility="public" name="hasExtenders" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-hasfactory" visibility="public" name="hasFactory" returnType="bool" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-setclass" visibility="public" name="setClass" returnType="static" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-setextenders" visibility="public" name="setExtenders" returnType="static" params={[{"type":"array","name":"extenders","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-setfactory" visibility="public" name="setFactory" returnType="static" params={[{"type":"callable","name":"factory","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-setlifetime" visibility="public" name="setLifetime" returnType="static" params={[{"type":"string","name":"lifetime","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-unsetclass" visibility="public" name="unsetClass" returnType="static" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-unsetextenders" visibility="public" name="unsetExtenders" returnType="static" params={[]}>
-</ApiItem>
-<ApiItem href="#contractscontainerservicedefinition-unsetfactory" visibility="public" name="unsetFactory" returnType="static" params={[]}>
-</ApiItem>
+- `public addExtender(callable $extender): static`
+
+- `public buildService(IocContainer $ioc): object`
+
+- `public getClass(): string`
+
+- `public getExtenders(): array`
+
+- `public getFactory(): callable`
+
+- `public getLifetime(): string`
+
+- `public getServiceName(): string`
+
+- `public hasClass(): bool`
+
+- `public hasExtenders(): bool`
+
+- `public hasFactory(): bool`
+
+- `public setClass(string $className): static`
+
+- `public setExtenders(array $extenders): static`
+
+- `public setFactory(callable $factory): static`
+
+- `public setLifetime(string $lifetime): static`
+
+- `public unsetClass(): static`
+
+- `public unsetExtenders(): static`
+
+- `public unsetFactory(): static`
 
 ### Methods
 
@@ -3016,6 +2911,7 @@ public function unsetExtenders(): static;
 public function unsetFactory(): static;
 ```
 
+
 ## Contracts\Container\Service\Enumerable
 
 Interface
@@ -3026,9 +2922,7 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerserviceenumerable-getservicenames" visibility="public" name="getServiceNames" returnType="array" params={[]}>
-Returns the names of every registered service definition. Names that
-</ApiItem>
+- `public getServiceNames(): array` — Returns the names of every registered service definition. Names that
 
 ### Methods
 
@@ -3042,6 +2936,7 @@ Returns the names of every registered service definition. Names that
 only exist as an alias, a pre-set instance or a parameter are not
 included.
 
+
 ## Contracts\Container\Service\Provider
 
 Interface
@@ -3050,8 +2945,7 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractscontainerserviceprovider-provide" visibility="public" name="provide" returnType="void" params={[{"type":"Collection","name":"services","default":null}]}>
-</ApiItem>
+- `public provide(Collection $services): void`
 
 ### Methods
 
@@ -3061,14 +2955,16 @@ Interface
 public function provide( Collection $services ): void;
 ```
 
+
 ## Contracts\Container\Service\Throwable
 
 Interface
 
 - `\Throwable`
-- **`Phalcon\Contracts\Container\Service\Throwable`**
+  - **`Phalcon\Contracts\Container\Service\Throwable`**
 
 `Throwable`
+
 
 ## Contracts\Db\Adapter\Adapter
 
@@ -3077,224 +2973,156 @@ Interface
 Canonical contract for Phalcon\Db adapters.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - addCheck()                : bool
-             - createMaterializedView()  : bool
-             - dropCheck()               : bool
-             - dropMaterializedView()    : bool
-             - onConflictUpdate()        : string
-             - refreshMaterializedView() : bool
-             - returning()               : string
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- addCheck()                : bool
+- createMaterializedView()  : bool
+- dropCheck()               : bool
+- dropMaterializedView()    : bool
+- onConflictUpdate()        : string
+- refreshMaterializedView() : bool
+- returning()               : string
 
 - **`Phalcon\Contracts\Db\Adapter\Adapter`**
-- [`Phalcon\Db\Adapter\AdapterInterface`](/5.21/api/phalcon_db/#dbadapteradapterinterface)
+  - [`Phalcon\Db\Adapter\AdapterInterface`](/5.21/api/phalcon_db/#dbadapteradapterinterface)
 
 `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface`
 
 ### Method Summary
 
-<ApiItem href="#contractsdbadapteradapter-addcolumn" visibility="public" name="addColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null}]}>
-Adds a column to a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-addforeignkey" visibility="public" name="addForeignKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ReferenceInterface","name":"reference","default":null}]}>
-Adds a foreign key to a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-addindex" visibility="public" name="addIndex" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
-Adds an index to a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-addprimarykey" visibility="public" name="addPrimaryKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
-Adds a primary key to a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-affectedrows" visibility="public" name="affectedRows" returnType="int" params={[]}>
-Returns the number of affected rows by the last INSERT/UPDATE/DELETE
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-begin" visibility="public" name="begin" returnType="bool" params={[{"type":"bool","name":"nesting","default":"true"}]}>
-Starts a transaction in the connection
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-close" visibility="public" name="close" returnType="void" params={[]}>
-Closes active connection returning success. Phalcon automatically closes
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-commit" visibility="public" name="commit" returnType="bool" params={[{"type":"bool","name":"nesting","default":"true"}]}>
-Commits the active transaction in the connection
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
-This method is automatically called in \Phalcon\Db\Adapter\Pdo
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-createsavepoint" visibility="public" name="createSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Creates a new savepoint
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-createtable" visibility="public" name="createTable" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"array","name":"definition","default":null}]}>
-Creates a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-createview" visibility="public" name="createView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Creates a view
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-delete" visibility="public" name="delete" returnType="bool" params={[{"type":"mixed","name":"table","default":null},{"type":"string|null","name":"whereCondition","default":"null"},{"type":"array","name":"placeholders","default":"[]"},{"type":"array","name":"dataTypes","default":"[]"}]}>
-Deletes data from a table using custom RDBMS SQL syntax
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-describecolumns" visibility="public" name="describeColumns" returnType="ColumnInterface[]" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Returns an array of Phalcon\Db\Column objects describing a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-describeindexes" visibility="public" name="describeIndexes" returnType="IndexInterface[]" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Lists table indexes
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-describereferences" visibility="public" name="describeReferences" returnType="ReferenceInterface[]" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Lists table references
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-dropcolumn" visibility="public" name="dropColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
-Drops a column from a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-dropforeignkey" visibility="public" name="dropForeignKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"referenceName","default":null}]}>
-Drops a foreign key from a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-dropindex" visibility="public" name="dropIndex" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"indexName","default":null}]}>
-Drop an index from a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-dropprimarykey" visibility="public" name="dropPrimaryKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null}]}>
-Drops primary key from a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-droptable" visibility="public" name="dropTable" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
-Drops a table from a schema/database
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-dropview" visibility="public" name="dropView" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
-Drops a view
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-escapeidentifier" visibility="public" name="escapeIdentifier" returnType="string" params={[{"type":"mixed","name":"identifier","default":null}]}>
-Escapes a column/table/schema name
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-escapestring" visibility="public" name="escapeString" returnType="string" params={[{"type":"string","name":"str","default":null}]}>
-Escapes a value to avoid SQL injections
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-execute" visibility="public" name="execute" returnType="bool" params={[{"type":"string","name":"sqlStatement","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Sends SQL statements to the database server returning the success state.
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Dumps the complete result of a query into an array
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="string|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
-Returns the n'th field of first row in a SQL query result
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-fetchone" visibility="public" name="fetchOne" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Returns the first row in a SQL query result
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
-Returns the SQL column definition from a column
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"mixed","name":"columnList","default":null}]}>
-Gets a list of columns
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getconnectionid" visibility="public" name="getConnectionId" returnType="int" params={[]}>
-Gets the active connection unique identifier
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getdefaultidvalue" visibility="public" name="getDefaultIdValue" returnType="RawValue" params={[]}>
-Return the default identity value to insert in an identity column
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getdefaultvalue" visibility="public" name="getDefaultValue" returnType="RawValue|null" params={[]}>
-Returns the default value to make the RBDM use the default value declared
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getdescriptor" visibility="public" name="getDescriptor" returnType="array" params={[]}>
-Return descriptor used to connect to the active database
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getdialect" visibility="public" name="getDialect" returnType="DialectInterface" params={[]}>
-Returns internal dialect instance
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getdialecttype" visibility="public" name="getDialectType" returnType="string" params={[]}>
-Returns the name of the dialect used
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getinternalhandler" visibility="public" name="getInternalHandler" returnType="mixed" params={[]}>
-Return internal PDO handler
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getnestedtransactionsavepointname" visibility="public" name="getNestedTransactionSavepointName" returnType="string" params={[]}>
-Returns the savepoint name to use for nested transactions
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getrealsqlstatement" visibility="public" name="getRealSQLStatement" returnType="string" params={[]}>
-Active SQL statement in the object without replace bound parameters
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getsqlbindtypes" visibility="public" name="getSQLBindTypes" returnType="array" params={[]}>
-Active SQL statement in the object
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getsqlstatement" visibility="public" name="getSQLStatement" returnType="string" params={[]}>
-Active SQL statement in the object
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-getsqlvariables" visibility="public" name="getSQLVariables" returnType="array" params={[]}>
-Active SQL statement in the object
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-gettype" visibility="public" name="getType" returnType="string" params={[]}>
-Returns type of database system the adapter is used for
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-insert" visibility="public" name="insert" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"array","name":"values","default":null},{"type":"mixed","name":"fields","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
-Inserts data into a table using custom RDBMS SQL syntax
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-insertasdict" visibility="public" name="insertAsDict" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"data","default":null},{"type":"mixed","name":"dataTypes","default":"null"}]}>
-Inserts data into a table using custom RBDM SQL syntax
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-isnestedtransactionswithsavepoints" visibility="public" name="isNestedTransactionsWithSavepoints" returnType="bool" params={[]}>
-Returns if nested transactions should use savepoints
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-isundertransaction" visibility="public" name="isUnderTransaction" returnType="bool" params={[]}>
-Checks whether connection is under database transaction
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-lastinsertid" visibility="public" name="lastInsertId" returnType="string|bool" params={[{"type":"string|null","name":"name","default":"null"}]}>
-Returns insert id for the auto_increment column inserted in the last SQL
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"number","default":null}]}>
-Appends a LIMIT clause to sqlQuery argument
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-listtables" visibility="public" name="listTables" returnType="array" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
-List all tables on a database
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-listviews" visibility="public" name="listViews" returnType="array" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
-List all views on a database
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-modifycolumn" visibility="public" name="modifyColumn" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null},{"type":"ColumnInterface|null","name":"currentColumn","default":"null"}]}>
-Modifies a table column based on a definition
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-query" visibility="public" name="query" returnType="ResultInterface|bool" params={[{"type":"string","name":"sqlStatement","default":null},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
-Sends SQL statements to the database server returning the success state.
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-releasesavepoint" visibility="public" name="releaseSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Releases given savepoint
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-rollback" visibility="public" name="rollback" returnType="bool" params={[{"type":"bool","name":"nesting","default":"true"}]}>
-Rollbacks the active transaction in the connection
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Rollbacks given savepoint
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="\Phalcon\Db\Adapter\AdapterInterface" params={[{"type":"bool","name":"nestedTransactionsWithSavepoints","default":null}]}>
-Set if nested transactions should use savepoints
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a shared-lock clause. See the dialect's
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-supportsequences" visibility="public" name="supportSequences" returnType="bool" params={[]}>
-Check whether the database system requires a sequence to produce
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-supportsdefaultvalue" visibility="public" name="supportsDefaultValue" returnType="bool" params={[]}>
-SQLite does not support the DEFAULT keyword
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-tableexists" visibility="public" name="tableExists" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Generates SQL checking for the existence of a schema.table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-tableoptions" visibility="public" name="tableOptions" returnType="array" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Gets creation options from a table
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-update" visibility="public" name="update" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"fields","default":null},{"type":"mixed","name":"values","default":null},{"type":"mixed","name":"whereCondition","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
-Updates data on a table using custom RDBMS SQL syntax
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-updateasdict" visibility="public" name="updateAsDict" returnType="bool" params={[{"type":"string","name":"table","default":null},{"type":"mixed","name":"data","default":null},{"type":"mixed","name":"whereCondition","default":"null"},{"type":"mixed","name":"dataTypes","default":"null"}]}>
-Updates data on a table using custom RBDM SQL syntax
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-useexplicitidvalue" visibility="public" name="useExplicitIdValue" returnType="bool" params={[]}>
-Check whether the database system requires an explicit value for identity
-</ApiItem>
-<ApiItem href="#contractsdbadapteradapter-viewexists" visibility="public" name="viewExists" returnType="bool" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Generates SQL checking for the existence of a schema.view
-</ApiItem>
+- `public addColumn(string $tableName, string $schemaName, ColumnInterface $column): bool` — Adds a column to a table
+
+- `public addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): bool` — Adds a foreign key to a table
+
+- `public addIndex(string $tableName, string $schemaName, IndexInterface $index): bool` — Adds an index to a table
+
+- `public addPrimaryKey(string $tableName, string $schemaName, IndexInterface $index): bool` — Adds a primary key to a table
+
+- `public affectedRows(): int` — Returns the number of affected rows by the last INSERT/UPDATE/DELETE
+
+- `public begin(bool $nesting = true): bool` — Starts a transaction in the connection
+
+- `public close(): void` — Closes active connection returning success. Phalcon automatically closes
+
+- `public commit(bool $nesting = true): bool` — Commits the active transaction in the connection
+
+- `public connect(array $descriptor = []): void` — This method is automatically called in \Phalcon\Db\Adapter\Pdo
+
+- `public createSavepoint(string $name): bool` — Creates a new savepoint
+
+- `public createTable(string $tableName, string $schemaName, array $definition): bool` — Creates a table
+
+- `public createView(string $viewName, array $definition, string|null $schemaName = null): bool` — Creates a view
+
+- `public delete(mixed $table, string|null $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool` — Deletes data from a table using custom RDBMS SQL syntax
+
+- `public describeColumns(string $table, string|null $schema = null): ColumnInterface[]` — Returns an array of Phalcon\Db\Column objects describing a table
+
+- `public describeIndexes(string $table, string|null $schema = null): IndexInterface[]` — Lists table indexes
+
+- `public describeReferences(string $table, string|null $schema = null): ReferenceInterface[]` — Lists table references
+
+- `public dropColumn(string $tableName, string $schemaName, string $columnName): bool` — Drops a column from a table
+
+- `public dropForeignKey(string $tableName, string $schemaName, string $referenceName): bool` — Drops a foreign key from a table
+
+- `public dropIndex(string $tableName, string $schemaName, string $indexName): bool` — Drop an index from a table
+
+- `public dropPrimaryKey(string $tableName, string $schemaName): bool` — Drops primary key from a table
+
+- `public dropTable(string $tableName, string|null $schemaName = null, bool $ifExists = true): bool` — Drops a table from a schema/database
+
+- `public dropView(string $viewName, string|null $schemaName = null, bool $ifExists = true): bool` — Drops a view
+
+- `public escapeIdentifier(mixed $identifier): string` — Escapes a column/table/schema name
+
+- `public escapeString(string $str): string` — Escapes a value to avoid SQL injections
+
+- `public execute(string $sqlStatement, array $bindParams = [], array $bindTypes = []): bool` — Sends SQL statements to the database server returning the success state.
+
+- `public fetchAll(string $sqlQuery, int $fetchMode = 2, array $bindParams = [], array $bindTypes = []): array` — Dumps the complete result of a query into an array
+
+- `public fetchColumn(string $sqlQuery, array $placeholders = [], mixed $column = 0): string|bool` — Returns the n'th field of first row in a SQL query result
+
+- `public fetchOne(string $sqlQuery, int $fetchMode = 2, array $bindParams = [], array $bindTypes = []): array` — Returns the first row in a SQL query result
+
+- `public forUpdate(string $sqlQuery, string $modifier = ""): string` — Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
+
+- `public getColumnDefinition(ColumnInterface $column): string` — Returns the SQL column definition from a column
+
+- `public getColumnList(mixed $columnList): string` — Gets a list of columns
+
+- `public getConnectionId(): int` — Gets the active connection unique identifier
+
+- `public getDefaultIdValue(): RawValue` — Return the default identity value to insert in an identity column
+
+- `public getDefaultValue(): RawValue|null` — Returns the default value to make the RBDM use the default value declared
+
+- `public getDescriptor(): array` — Return descriptor used to connect to the active database
+
+- `public getDialect(): DialectInterface` — Returns internal dialect instance
+
+- `public getDialectType(): string` — Returns the name of the dialect used
+
+- `public getInternalHandler(): mixed` — Return internal PDO handler
+
+- `public getNestedTransactionSavepointName(): string` — Returns the savepoint name to use for nested transactions
+
+- `public getRealSQLStatement(): string` — Active SQL statement in the object without replace bound parameters
+
+- `public getSQLBindTypes(): array` — Active SQL statement in the object
+
+- `public getSQLStatement(): string` — Active SQL statement in the object
+
+- `public getSQLVariables(): array` — Active SQL statement in the object
+
+- `public getType(): string` — Returns type of database system the adapter is used for
+
+- `public insert(string $table, array $values, mixed $fields = null, mixed $dataTypes = null): bool` — Inserts data into a table using custom RDBMS SQL syntax
+
+- `public insertAsDict(string $table, mixed $data, mixed $dataTypes = null): bool` — Inserts data into a table using custom RBDM SQL syntax
+
+- `public isNestedTransactionsWithSavepoints(): bool` — Returns if nested transactions should use savepoints
+
+- `public isUnderTransaction(): bool` — Checks whether connection is under database transaction
+
+- `public lastInsertId(string|null $name = null): string|bool` — Returns insert id for the auto\_increment column inserted in the last SQL
+
+- `public limit(string $sqlQuery, mixed $number): string` — Appends a LIMIT clause to sqlQuery argument
+
+- `public listTables(string|null $schemaName = null): array` — List all tables on a database
+
+- `public listViews(string|null $schemaName = null): array` — List all views on a database
+
+- `public modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface|null $currentColumn = null): bool` — Modifies a table column based on a definition
+
+- `public query(string $sqlStatement, array $bindParams = [], array $bindTypes = []): ResultInterface|bool` — Sends SQL statements to the database server returning the success state.
+
+- `public releaseSavepoint(string $name): bool` — Releases given savepoint
+
+- `public rollback(bool $nesting = true): bool` — Rollbacks the active transaction in the connection
+
+- `public rollbackSavepoint(string $name): bool` — Rollbacks given savepoint
+
+- `public setNestedTransactionsWithSavepoints(bool $nestedTransactionsWithSavepoints): \Phalcon\Db\Adapter\AdapterInterface` — Set if nested transactions should use savepoints
+
+- `public sharedLock(string $sqlQuery, string $modifier = ""): string` — Returns a SQL modified with a shared-lock clause. See the dialect's
+
+- `public supportSequences(): bool` — Check whether the database system requires a sequence to produce
+
+- `public supportsDefaultValue(): bool` — SQLite does not support the DEFAULT keyword
+
+- `public tableExists(string $tableName, string|null $schemaName = null): bool` — Generates SQL checking for the existence of a schema.table
+
+- `public tableOptions(string $tableName, string|null $schemaName = null): array` — Gets creation options from a table
+
+- `public update(string $table, mixed $fields, mixed $values, mixed $whereCondition = null, mixed $dataTypes = null): bool` — Updates data on a table using custom RDBMS SQL syntax
+
+- `public updateAsDict(string $table, mixed $data, mixed $whereCondition = null, mixed $dataTypes = null): bool` — Updates data on a table using custom RBDM SQL syntax
+
+- `public useExplicitIdValue(): bool` — Check whether the database system requires an explicit value for identity
+
+- `public viewExists(string $viewName, string|null $schemaName = null): bool` — Generates SQL checking for the existence of a schema.view
 
 ### Methods
 
@@ -3302,9 +3130,9 @@ Generates SQL checking for the existence of a schema.view
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): bool;
 ```
 
@@ -3314,9 +3142,9 @@ Adds a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): bool;
 ```
 
@@ -3326,9 +3154,9 @@ Adds a foreign key to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): bool;
 ```
 
@@ -3338,9 +3166,9 @@ Adds an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): bool;
 ```
 
@@ -3401,9 +3229,9 @@ Creates a new savepoint
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): bool;
 ```
 
@@ -3413,9 +3241,9 @@ Creates a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string|null $schemaName = null
+    string $viewName,
+    array $definition,
+    string|null $schemaName = null
 ): bool;
 ```
 
@@ -3425,10 +3253,10 @@ Creates a view
 
 ```php
 public function delete(
-mixed $table,
-string|null $whereCondition = null,
-array $placeholders = [],
-array $dataTypes = []
+    mixed $table,
+    string|null $whereCondition = null,
+    array $placeholders = [],
+    array $dataTypes = []
 ): bool;
 ```
 
@@ -3438,8 +3266,8 @@ Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
 public function describeColumns(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): ColumnInterface[];
 ```
 
@@ -3449,8 +3277,8 @@ Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
 public function describeIndexes(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): IndexInterface[];
 ```
 
@@ -3460,8 +3288,8 @@ Lists table indexes
 
 ```php
 public function describeReferences(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): ReferenceInterface[];
 ```
 
@@ -3471,9 +3299,9 @@ Lists table references
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): bool;
 ```
 
@@ -3483,9 +3311,9 @@ Drops a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): bool;
 ```
 
@@ -3495,9 +3323,9 @@ Drops a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): bool;
 ```
 
@@ -3507,8 +3335,8 @@ Drop an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): bool;
 ```
 
@@ -3518,9 +3346,9 @@ Drops primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string|null $schemaName = null,
-bool $ifExists = true
+    string $tableName,
+    string|null $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -3530,9 +3358,9 @@ Drops a table from a schema/database
 
 ```php
 public function dropView(
-string $viewName,
-string|null $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string|null $schemaName = null,
+    bool $ifExists = true
 ): bool;
 ```
 
@@ -3558,9 +3386,9 @@ Escapes a value to avoid SQL injections
 
 ```php
 public function execute(
-string $sqlStatement,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlStatement,
+    array $bindParams = [],
+    array $bindTypes = []
 ): bool;
 ```
 
@@ -3572,10 +3400,10 @@ return any rows
 
 ```php
 public function fetchAll(
-string $sqlQuery,
-int $fetchMode = 2,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlQuery,
+    int $fetchMode = 2,
+    array $bindParams = [],
+    array $bindTypes = []
 ): array;
 ```
 
@@ -3585,9 +3413,9 @@ Dumps the complete result of a query into an array
 
 ```php
 public function fetchColumn(
-string $sqlQuery,
-array $placeholders = [],
-mixed $column = 0
+    string $sqlQuery,
+    array $placeholders = [],
+    mixed $column = 0
 ): string|bool;
 ```
 
@@ -3600,8 +3428,8 @@ print_r($invoicesCount);
 
 // Getting the title of the last created invoice
 $invoice = $connection->fetchColumn(
-"SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
-1
+    "SELECT inv_id, inv_title FROM co_invoices ORDER BY inv_created_at DESC",
+    1
 );
 print_r($invoice);
 ```
@@ -3610,10 +3438,10 @@ print_r($invoice);
 
 ```php
 public function fetchOne(
-string $sqlQuery,
-int $fetchMode = 2,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlQuery,
+    int $fetchMode = 2,
+    array $bindParams = [],
+    array $bindTypes = []
 ): array;
 ```
 
@@ -3623,8 +3451,8 @@ Returns the first row in a SQL query result
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -3676,15 +3504,15 @@ in the table definition
 ```php
 // Inserting a new invoice with a valid default value for the column 'inv_total'
 $success = $connection->insert(
-"co_invoices",
-[
-    "Test Invoice",
-    $connection->getDefaultValue()
-],
-[
-    "inv_title",
-    "inv_total",
-]
+    "co_invoices",
+    [
+        "Test Invoice",
+        $connection->getDefaultValue()
+    ],
+    [
+        "inv_title",
+        "inv_total",
+    ]
 );
 ```
 
@@ -3774,10 +3602,10 @@ Returns type of database system the adapter is used for
 
 ```php
 public function insert(
-string $table,
-array $values,
-mixed $fields = null,
-mixed $dataTypes = null
+    string $table,
+    array $values,
+    mixed $fields = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -3787,9 +3615,9 @@ Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 public function insertAsDict(
-string $table,
-mixed $data,
-mixed $dataTypes = null
+    string $table,
+    mixed $data,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -3798,11 +3626,11 @@ Inserts data into a table using custom RBDM SQL syntax
 ```php
 // Inserting a new invoice
 $success = $connection->insertAsDict(
-"co_invoices",
-[
-    "inv_title" => "Test Invoice",
-    "inv_total" => 100,
-]
+    "co_invoices",
+    [
+        "inv_title" => "Test Invoice",
+        "inv_total" => 100,
+    ]
 );
 
 // Next SQL sentence is sent to the database system
@@ -3838,8 +3666,8 @@ statement
 
 ```php
 public function limit(
-string $sqlQuery,
-mixed $number
+    string $sqlQuery,
+    mixed $number
 ): string;
 ```
 
@@ -3865,10 +3693,10 @@ List all views on a database
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface|null $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface|null $currentColumn = null
 ): bool;
 ```
 
@@ -3878,9 +3706,9 @@ Modifies a table column based on a definition
 
 ```php
 public function query(
-string $sqlStatement,
-array $bindParams = [],
-array $bindTypes = []
+    string $sqlStatement,
+    array $bindParams = [],
+    array $bindTypes = []
 ): ResultInterface|bool;
 ```
 
@@ -3924,8 +3752,8 @@ Set if nested transactions should use savepoints
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -3955,8 +3783,8 @@ SQLite does not support the DEFAULT keyword
 
 ```php
 public function tableExists(
-string $tableName,
-string|null $schemaName = null
+    string $tableName,
+    string|null $schemaName = null
 ): bool;
 ```
 
@@ -3966,8 +3794,8 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 public function tableOptions(
-string $tableName,
-string|null $schemaName = null
+    string $tableName,
+    string|null $schemaName = null
 ): array;
 ```
 
@@ -3977,11 +3805,11 @@ Gets creation options from a table
 
 ```php
 public function update(
-string $table,
-mixed $fields,
-mixed $values,
-mixed $whereCondition = null,
-mixed $dataTypes = null
+    string $table,
+    mixed $fields,
+    mixed $values,
+    mixed $whereCondition = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -3991,10 +3819,10 @@ Updates data on a table using custom RDBMS SQL syntax
 
 ```php
 public function updateAsDict(
-string $table,
-mixed $data,
-mixed $whereCondition = null,
-mixed $dataTypes = null
+    string $table,
+    mixed $data,
+    mixed $whereCondition = null,
+    mixed $dataTypes = null
 ): bool;
 ```
 
@@ -4004,11 +3832,11 @@ Another, more convenient syntax
 ```php
 // Updating existing invoice
 $success = $connection->updateAsDict(
-"co_invoices",
-[
-    "inv_title" => "New Test Invoice",
-],
-"inv_id = 101"
+    "co_invoices",
+    [
+        "inv_title" => "New Test Invoice",
+    ],
+    "inv_id = 101"
 );
 
 // Next SQL sentence is sent to the database system
@@ -4028,12 +3856,13 @@ columns
 
 ```php
 public function viewExists(
-string $viewName,
-string|null $schemaName = null
+    string $viewName,
+    string|null $schemaName = null
 ): bool;
 ```
 
 Generates SQL checking for the existence of a schema.view
+
 
 ## Contracts\Db\Check
 
@@ -4042,16 +3871,13 @@ Interface
 Canonical contract for Phalcon\Db\Check.
 
 - **`Phalcon\Contracts\Db\Check`**
-- [`Phalcon\Db\CheckInterface`](/5.21/api/phalcon_db/#dbcheckinterface)
+  - [`Phalcon\Db\CheckInterface`](/5.21/api/phalcon_db/#dbcheckinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdbcheck-getexpression" visibility="public" name="getExpression" returnType="string" params={[]}>
-Gets the CHECK expression (the SQL boolean predicate).
-</ApiItem>
-<ApiItem href="#contractsdbcheck-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Gets the constraint name. An empty string indicates an unnamed CHECK
-</ApiItem>
+- `public getExpression(): string` — Gets the CHECK expression (the SQL boolean predicate).
+
+- `public getName(): string` — Gets the constraint name. An empty string indicates an unnamed CHECK
 
 ### Methods
 
@@ -4073,6 +3899,7 @@ Gets the constraint name. An empty string indicates an unnamed CHECK
 constraint - the dialect will emit the clause without a `CONSTRAINT`
 prefix in that case.
 
+
 ## Contracts\Db\Column
 
 Interface
@@ -4080,67 +3907,50 @@ Interface
 Canonical contract for Phalcon\Db\Column.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - getGenerationExpression() : string | null
-             - isArray()                 : bool
-             - isGenerated()             : bool
-             - isGenerationStored()      : bool
-             - isInvisible()             : bool
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- getGenerationExpression() : string | null
+- isArray()                 : bool
+- isGenerated()             : bool
+- isGenerationStored()      : bool
+- isInvisible()             : bool
 
 - **`Phalcon\Contracts\Db\Column`**
-- [`Phalcon\Db\ColumnInterface`](/5.21/api/phalcon_db/#dbcolumninterface)
+  - [`Phalcon\Db\ColumnInterface`](/5.21/api/phalcon_db/#dbcolumninterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdbcolumn-getafterposition" visibility="public" name="getAfterPosition" returnType="string|null" params={[]}>
-Check whether field absolute to position in table
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-getbindtype" visibility="public" name="getBindType" returnType="int" params={[]}>
-Returns the type of bind handling
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-getdefault" visibility="public" name="getDefault" returnType="mixed" params={[]}>
-Returns default value of column
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns column name
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-getscale" visibility="public" name="getScale" returnType="int" params={[]}>
-Returns column scale
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-getsize" visibility="public" name="getSize" returnType="int|string" params={[]}>
-Returns column size
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-gettype" visibility="public" name="getType" returnType="int|string" params={[]}>
-Returns column type
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-gettypereference" visibility="public" name="getTypeReference" returnType="int" params={[]}>
-Returns column type reference
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-gettypevalues" visibility="public" name="getTypeValues" returnType="array|string|int" params={[]}>
-Returns column type values
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-hasdefault" visibility="public" name="hasDefault" returnType="bool" params={[]}>
-Check whether column has default value
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-isautoincrement" visibility="public" name="isAutoIncrement" returnType="bool" params={[]}>
-Auto-Increment
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-isfirst" visibility="public" name="isFirst" returnType="bool" params={[]}>
-Check whether column have first position in table
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-isnotnull" visibility="public" name="isNotNull" returnType="bool" params={[]}>
-Not null
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-isnumeric" visibility="public" name="isNumeric" returnType="bool" params={[]}>
-Check whether column have an numeric type
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-isprimary" visibility="public" name="isPrimary" returnType="bool" params={[]}>
-Column is part of the primary key?
-</ApiItem>
-<ApiItem href="#contractsdbcolumn-isunsigned" visibility="public" name="isUnsigned" returnType="bool" params={[]}>
-Returns true if number column is unsigned
-</ApiItem>
+- `public getAfterPosition(): string|null` — Check whether field absolute to position in table
+
+- `public getBindType(): int` — Returns the type of bind handling
+
+- `public getDefault(): mixed` — Returns default value of column
+
+- `public getName(): string` — Returns column name
+
+- `public getScale(): int` — Returns column scale
+
+- `public getSize(): int|string` — Returns column size
+
+- `public getType(): int|string` — Returns column type
+
+- `public getTypeReference(): int` — Returns column type reference
+
+- `public getTypeValues(): array|string|int` — Returns column type values
+
+- `public hasDefault(): bool` — Check whether column has default value
+
+- `public isAutoIncrement(): bool` — Auto-Increment
+
+- `public isFirst(): bool` — Check whether column have first position in table
+
+- `public isNotNull(): bool` — Not null
+
+- `public isNumeric(): bool` — Check whether column have an numeric type
+
+- `public isPrimary(): bool` — Column is part of the primary key?
+
+- `public isUnsigned(): bool` — Returns true if number column is unsigned
 
 ### Methods
 
@@ -4272,6 +4082,7 @@ public function isUnsigned(): bool;
 
 Returns true if number column is unsigned
 
+
 ## Contracts\Db\Dialect
 
 Interface
@@ -4279,142 +4090,103 @@ Interface
 Canonical contract for Phalcon\Db dialects.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - addCheck()                : string
-             - createMaterializedView()  : string
-             - dropCheck()               : string
-             - dropMaterializedView()    : string
-             - onConflictUpdate()        : string
-             - refreshMaterializedView() : string
-             - returning()               : string
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- addCheck()                : string
+- createMaterializedView()  : string
+- dropCheck()               : string
+- dropMaterializedView()    : string
+- onConflictUpdate()        : string
+- refreshMaterializedView() : string
+- returning()               : string
 
 - **`Phalcon\Contracts\Db\Dialect`**
-- [`Phalcon\Db\DialectInterface`](/5.21/api/phalcon_db/#dbdialectinterface)
+  - [`Phalcon\Db\DialectInterface`](/5.21/api/phalcon_db/#dbdialectinterface)
 
 `Phalcon\Db\ColumnInterface` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
-<ApiItem href="#contractsdbdialect-addcolumn" visibility="public" name="addColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null}]}>
-Generates SQL to add a column to a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-addforeignkey" visibility="public" name="addForeignKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ReferenceInterface","name":"reference","default":null}]}>
-Generates SQL to add an index to a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-addindex" visibility="public" name="addIndex" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
-Generates SQL to add an index to a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-addprimarykey" visibility="public" name="addPrimaryKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"IndexInterface","name":"index","default":null}]}>
-Generates SQL to add the primary key to a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-createsavepoint" visibility="public" name="createSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Generate SQL to create a new savepoint
-</ApiItem>
-<ApiItem href="#contractsdbdialect-createtable" visibility="public" name="createTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"array","name":"definition","default":null}]}>
-Generates SQL to create a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-createview" visibility="public" name="createView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"array","name":"definition","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Generates SQL to create a view
-</ApiItem>
-<ApiItem href="#contractsdbdialect-describecolumns" visibility="public" name="describeColumns" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Generates SQL to describe a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-describeindexes" visibility="public" name="describeIndexes" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Generates SQL to query indexes on a table.
-</ApiItem>
-<ApiItem href="#contractsdbdialect-describereferences" visibility="public" name="describeReferences" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Generates SQL to query foreign keys on a table.
-</ApiItem>
-<ApiItem href="#contractsdbdialect-dropcolumn" visibility="public" name="dropColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"columnName","default":null}]}>
-Generates SQL to delete a column from a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-dropforeignkey" visibility="public" name="dropForeignKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"referenceName","default":null}]}>
-Generates SQL to delete a foreign key from a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-dropindex" visibility="public" name="dropIndex" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"string","name":"indexName","default":null}]}>
-Generates SQL to delete an index from a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-dropprimarykey" visibility="public" name="dropPrimaryKey" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null}]}>
-Generates SQL to delete primary key from a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-droptable" visibility="public" name="dropTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"bool","name":"ifExists","default":"true"}]}>
-Generates SQL to drop a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-dropview" visibility="public" name="dropView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
-Generates SQL to drop a view
-</ApiItem>
-<ApiItem href="#contractsdbdialect-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
-</ApiItem>
-<ApiItem href="#contractsdbdialect-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
-Gets the column name in RDBMS
-</ApiItem>
-<ApiItem href="#contractsdbdialect-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null}]}>
-Gets a list of columns
-</ApiItem>
-<ApiItem href="#contractsdbdialect-getcustomfunctions" visibility="public" name="getCustomFunctions" returnType="array" params={[]}>
-Returns registered functions
-</ApiItem>
-<ApiItem href="#contractsdbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
-Transforms an intermediate representation for an expression into a
-</ApiItem>
-<ApiItem href="#contractsdbdialect-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"number","default":null}]}>
-Generates the SQL for LIMIT clause
-</ApiItem>
-<ApiItem href="#contractsdbdialect-listtables" visibility="public" name="listTables" returnType="string" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
-List all tables in database
-</ApiItem>
-<ApiItem href="#contractsdbdialect-modifycolumn" visibility="public" name="modifyColumn" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ColumnInterface","name":"column","default":null},{"type":"ColumnInterface|null","name":"currentColumn","default":"null"}]}>
-Generates SQL to modify a column in a table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-registercustomfunction" visibility="public" name="registerCustomFunction" returnType="\Phalcon\Db\Dialect" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"customFunction","default":null}]}>
-Registers custom SQL functions
-</ApiItem>
-<ApiItem href="#contractsdbdialect-releasesavepoint" visibility="public" name="releaseSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Generate SQL to release a savepoint
-</ApiItem>
-<ApiItem href="#contractsdbdialect-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Generate SQL to rollback a savepoint
-</ApiItem>
-<ApiItem href="#contractsdbdialect-select" visibility="public" name="select" returnType="string" params={[{"type":"array","name":"definition","default":null}]}>
-Builds a SELECT statement
-</ApiItem>
-<ApiItem href="#contractsdbdialect-sharedlock" visibility="public" name="sharedLock" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
-Returns a SQL modified with a shared-lock clause. MySQL emits
-</ApiItem>
-<ApiItem href="#contractsdbdialect-supportsreleasesavepoints" visibility="public" name="supportsReleaseSavepoints" returnType="bool" params={[]}>
-Checks whether the platform supports releasing savepoints.
-</ApiItem>
-<ApiItem href="#contractsdbdialect-supportssavepoints" visibility="public" name="supportsSavepoints" returnType="bool" params={[]}>
-Checks whether the platform supports savepoints
-</ApiItem>
-<ApiItem href="#contractsdbdialect-tableexists" visibility="public" name="tableExists" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Generates SQL checking for the existence of a schema.table
-</ApiItem>
-<ApiItem href="#contractsdbdialect-tableoptions" visibility="public" name="tableOptions" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
-Generates the SQL to describe the table creation options
-</ApiItem>
-<ApiItem href="#contractsdbdialect-viewexists" visibility="public" name="viewExists" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"}]}>
-Generates SQL checking for the existence of a schema.view
-</ApiItem>
+- `public addColumn(string $tableName, string $schemaName, ColumnInterface $column): string` — Generates SQL to add a column to a table
+
+- `public addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): string` — Generates SQL to add an index to a table
+
+- `public addIndex(string $tableName, string $schemaName, IndexInterface $index): string` — Generates SQL to add an index to a table
+
+- `public addPrimaryKey(string $tableName, string $schemaName, IndexInterface $index): string` — Generates SQL to add the primary key to a table
+
+- `public createSavepoint(string $name): string` — Generate SQL to create a new savepoint
+
+- `public createTable(string $tableName, string $schemaName, array $definition): string` — Generates SQL to create a table
+
+- `public createView(string $viewName, array $definition, string|null $schemaName = null): string` — Generates SQL to create a view
+
+- `public describeColumns(string $table, string|null $schema = null): string` — Generates SQL to describe a table
+
+- `public describeIndexes(string $table, string|null $schema = null): string` — Generates SQL to query indexes on a table.
+
+- `public describeReferences(string $table, string|null $schema = null): string` — Generates SQL to query foreign keys on a table.
+
+- `public dropColumn(string $tableName, string $schemaName, string $columnName): string` — Generates SQL to delete a column from a table
+
+- `public dropForeignKey(string $tableName, string $schemaName, string $referenceName): string` — Generates SQL to delete a foreign key from a table
+
+- `public dropIndex(string $tableName, string $schemaName, string $indexName): string` — Generates SQL to delete an index from a table
+
+- `public dropPrimaryKey(string $tableName, string $schemaName): string` — Generates SQL to delete primary key from a table
+
+- `public dropTable(string $tableName, string $schemaName, bool $ifExists = true): string` — Generates SQL to drop a table
+
+- `public dropView(string $viewName, string|null $schemaName = null, bool $ifExists = true): string` — Generates SQL to drop a view
+
+- `public forUpdate(string $sqlQuery, string $modifier = ""): string` — Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
+
+- `public getColumnDefinition(ColumnInterface $column): string` — Gets the column name in RDBMS
+
+- `public getColumnList(array $columnList): string` — Gets a list of columns
+
+- `public getCustomFunctions(): array` — Returns registered functions
+
+- `public getSqlExpression(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Transforms an intermediate representation for an expression into a
+
+- `public limit(string $sqlQuery, mixed $number): string` — Generates the SQL for LIMIT clause
+
+- `public listTables(string|null $schemaName = null): string` — List all tables in database
+
+- `public modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface|null $currentColumn = null): string` — Generates SQL to modify a column in a table
+
+- `public registerCustomFunction(string $name, callable $customFunction): \Phalcon\Db\Dialect` — Registers custom SQL functions
+
+- `public releaseSavepoint(string $name): string` — Generate SQL to release a savepoint
+
+- `public rollbackSavepoint(string $name): string` — Generate SQL to rollback a savepoint
+
+- `public select(array $definition): string` — Builds a SELECT statement
+
+- `public sharedLock(string $sqlQuery, string $modifier = ""): string` — Returns a SQL modified with a shared-lock clause. MySQL emits
+
+- `public supportsReleaseSavepoints(): bool` — Checks whether the platform supports releasing savepoints.
+
+- `public supportsSavepoints(): bool` — Checks whether the platform supports savepoints
+
+- `public tableExists(string $tableName, string|null $schemaName = null): string` — Generates SQL checking for the existence of a schema.table
+
+- `public tableOptions(string $table, string|null $schema = null): string` — Generates the SQL to describe the table creation options
+
+- `public viewExists(string $viewName, string|null $schemaName = null): string` — Generates SQL checking for the existence of a schema.view
 
 ### Constants
 
-<ApiItem kind="constant" name="LOCK_NONE" type="string" default="&quot;&quot;">
-No row-lock modifier - the default behavior for `forUpdate()`.
-</ApiItem>
-<ApiItem kind="constant" name="LOCK_NOWAIT" type="string" default="&quot;NOWAIT&quot;">
-Append `NOWAIT` to the `FOR UPDATE` clause - the query fails immediately
-if a row it needs is locked instead of blocking. MySQL 8.0+ and
-PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
-silently ignores the modifier.
-</ApiItem>
-<ApiItem kind="constant" name="LOCK_SKIP_LOCKED" type="string" default="&quot;SKIP LOCKED&quot;">
-Append `SKIP LOCKED` to the `FOR UPDATE` clause - the query returns
-rows that are not currently locked and silently skips ones that are.
-MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.
-</ApiItem>
+- `const string LOCK_NONE = ""` — No row-lock modifier - the default behavior for `forUpdate()`.
+
+- `const string LOCK_NOWAIT = "NOWAIT"` — Append `NOWAIT` to the `FOR UPDATE` clause - the query fails immediately
+  if a row it needs is locked instead of blocking. MySQL 8.0+ and
+  PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
+  silently ignores the modifier.
+
+- `const string LOCK_SKIP_LOCKED = "SKIP LOCKED"` — Append `SKIP LOCKED` to the `FOR UPDATE` clause - the query returns
+  rows that are not currently locked and silently skips ones that are.
+  MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.
 
 ### Methods
 
@@ -4422,9 +4194,9 @@ MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.
 
 ```php
 public function addColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column
 ): string;
 ```
 
@@ -4434,9 +4206,9 @@ Generates SQL to add a column to a table
 
 ```php
 public function addForeignKey(
-string $tableName,
-string $schemaName,
-ReferenceInterface $reference
+    string $tableName,
+    string $schemaName,
+    ReferenceInterface $reference
 ): string;
 ```
 
@@ -4446,9 +4218,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addIndex(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -4458,9 +4230,9 @@ Generates SQL to add an index to a table
 
 ```php
 public function addPrimaryKey(
-string $tableName,
-string $schemaName,
-IndexInterface $index
+    string $tableName,
+    string $schemaName,
+    IndexInterface $index
 ): string;
 ```
 
@@ -4478,9 +4250,9 @@ Generate SQL to create a new savepoint
 
 ```php
 public function createTable(
-string $tableName,
-string $schemaName,
-array $definition
+    string $tableName,
+    string $schemaName,
+    array $definition
 ): string;
 ```
 
@@ -4490,9 +4262,9 @@ Generates SQL to create a table
 
 ```php
 public function createView(
-string $viewName,
-array $definition,
-string|null $schemaName = null
+    string $viewName,
+    array $definition,
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4502,8 +4274,8 @@ Generates SQL to create a view
 
 ```php
 public function describeColumns(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): string;
 ```
 
@@ -4513,8 +4285,8 @@ Generates SQL to describe a table
 
 ```php
 public function describeIndexes(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): string;
 ```
 
@@ -4528,8 +4300,8 @@ column name.
 
 ```php
 public function describeReferences(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): string;
 ```
 
@@ -4544,9 +4316,9 @@ referenced column.
 
 ```php
 public function dropColumn(
-string $tableName,
-string $schemaName,
-string $columnName
+    string $tableName,
+    string $schemaName,
+    string $columnName
 ): string;
 ```
 
@@ -4556,9 +4328,9 @@ Generates SQL to delete a column from a table
 
 ```php
 public function dropForeignKey(
-string $tableName,
-string $schemaName,
-string $referenceName
+    string $tableName,
+    string $schemaName,
+    string $referenceName
 ): string;
 ```
 
@@ -4568,9 +4340,9 @@ Generates SQL to delete a foreign key from a table
 
 ```php
 public function dropIndex(
-string $tableName,
-string $schemaName,
-string $indexName
+    string $tableName,
+    string $schemaName,
+    string $indexName
 ): string;
 ```
 
@@ -4580,8 +4352,8 @@ Generates SQL to delete an index from a table
 
 ```php
 public function dropPrimaryKey(
-string $tableName,
-string $schemaName
+    string $tableName,
+    string $schemaName
 ): string;
 ```
 
@@ -4591,9 +4363,9 @@ Generates SQL to delete primary key from a table
 
 ```php
 public function dropTable(
-string $tableName,
-string $schemaName,
-bool $ifExists = true
+    string $tableName,
+    string $schemaName,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -4603,9 +4375,9 @@ Generates SQL to drop a table
 
 ```php
 public function dropView(
-string $viewName,
-string|null $schemaName = null,
-bool $ifExists = true
+    string $viewName,
+    string|null $schemaName = null,
+    bool $ifExists = true
 ): string;
 ```
 
@@ -4615,8 +4387,8 @@ Generates SQL to drop a view
 
 ```php
 public function forUpdate(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -4652,9 +4424,9 @@ Returns registered functions
 
 ```php
 public function getSqlExpression(
-array $expression,
-string|null $escapeChar = null,
-array $bindCounts = []
+    array $expression,
+    string|null $escapeChar = null,
+    array $bindCounts = []
 ): string;
 ```
 
@@ -4665,8 +4437,8 @@ database system valid expression
 
 ```php
 public function limit(
-string $sqlQuery,
-mixed $number
+    string $sqlQuery,
+    mixed $number
 ): string;
 ```
 
@@ -4684,10 +4456,10 @@ List all tables in database
 
 ```php
 public function modifyColumn(
-string $tableName,
-string $schemaName,
-ColumnInterface $column,
-ColumnInterface|null $currentColumn = null
+    string $tableName,
+    string $schemaName,
+    ColumnInterface $column,
+    ColumnInterface|null $currentColumn = null
 ): string;
 ```
 
@@ -4697,8 +4469,8 @@ Generates SQL to modify a column in a table
 
 ```php
 public function registerCustomFunction(
-string $name,
-callable $customFunction
+    string $name,
+    callable $customFunction
 ): \Phalcon\Db\Dialect;
 ```
 
@@ -4732,8 +4504,8 @@ Builds a SELECT statement
 
 ```php
 public function sharedLock(
-string $sqlQuery,
-string $modifier = ""
+    string $sqlQuery,
+    string $modifier = ""
 ): string;
 ```
 
@@ -4764,8 +4536,8 @@ Checks whether the platform supports savepoints
 
 ```php
 public function tableExists(
-string $tableName,
-string|null $schemaName = null
+    string $tableName,
+    string|null $schemaName = null
 ): string;
 ```
 
@@ -4775,8 +4547,8 @@ Generates SQL checking for the existence of a schema.table
 
 ```php
 public function tableOptions(
-string $table,
-string|null $schema = null
+    string $table,
+    string|null $schema = null
 ): string;
 ```
 
@@ -4786,12 +4558,13 @@ Generates the SQL to describe the table creation options
 
 ```php
 public function viewExists(
-string $viewName,
-string|null $schemaName = null
+    string $viewName,
+    string|null $schemaName = null
 ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
+
 
 ## Contracts\Db\Geometry\Geometry
 
@@ -4800,19 +4573,15 @@ Interface
 Canonical contract for Phalcon\Db\Geometry value objects.
 
 - **`Phalcon\Contracts\Db\Geometry\Geometry`**
-- [`Phalcon\Db\Geometry\GeometryInterface`](/5.21/api/phalcon_db/#dbgeometrygeometryinterface)
+  - [`Phalcon\Db\Geometry\GeometryInterface`](/5.21/api/phalcon_db/#dbgeometrygeometryinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdbgeometrygeometry-getsrid" visibility="public" name="getSrid" returnType="int" params={[]}>
-Gets the Spatial Reference System Identifier (SRID).
-</ApiItem>
-<ApiItem href="#contractsdbgeometrygeometry-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-Gets the geometry type.
-</ApiItem>
-<ApiItem href="#contractsdbgeometrygeometry-towkt" visibility="public" name="toWkt" returnType="string" params={[]}>
-Renders the geometry as a Well-Known Text (WKT) string.
-</ApiItem>
+- `public getSrid(): int` — Gets the Spatial Reference System Identifier (SRID).
+
+- `public getType(): int` — Gets the geometry type.
+
+- `public toWkt(): string` — Renders the geometry as a Well-Known Text (WKT) string.
 
 ### Methods
 
@@ -4840,6 +4609,7 @@ public function toWkt(): string;
 
 Renders the geometry as a Well-Known Text (WKT) string.
 
+
 ## Contracts\Db\Index
 
 Interface
@@ -4847,27 +4617,23 @@ Interface
 Canonical contract for Phalcon\Db\Index.
 
 @todo v7 - these will become required interface members. They are
-           omitted from the v5 line to avoid breaking third-party
-           implementors:
-             - getDirections() : array
-             - getWhere()      : string
-             - isConcurrent()  : bool
-             - isInvisible()   : bool
+omitted from the v5 line to avoid breaking third-party
+implementors:
+- getDirections() : array
+- getWhere()      : string
+- isConcurrent()  : bool
+- isInvisible()   : bool
 
 - **`Phalcon\Contracts\Db\Index`**
-- [`Phalcon\Db\IndexInterface`](/5.21/api/phalcon_db/#dbindexinterface)
+  - [`Phalcon\Db\IndexInterface`](/5.21/api/phalcon_db/#dbindexinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdbindex-getcolumns" visibility="public" name="getColumns" returnType="array" params={[]}>
-Gets the columns that corresponds the index
-</ApiItem>
-<ApiItem href="#contractsdbindex-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Gets the index name
-</ApiItem>
-<ApiItem href="#contractsdbindex-gettype" visibility="public" name="getType" returnType="string" params={[]}>
-Gets the index type
-</ApiItem>
+- `public getColumns(): array` — Gets the columns that corresponds the index
+
+- `public getName(): string` — Gets the index name
+
+- `public getType(): string` — Gets the index type
 
 ### Methods
 
@@ -4895,6 +4661,7 @@ public function getType(): string;
 
 Gets the index type
 
+
 ## Contracts\Db\Reference
 
 Interface
@@ -4902,34 +4669,25 @@ Interface
 Canonical contract for Phalcon\Db\Reference.
 
 - **`Phalcon\Contracts\Db\Reference`**
-- [`Phalcon\Db\ReferenceInterface`](/5.21/api/phalcon_db/#dbreferenceinterface)
+  - [`Phalcon\Db\ReferenceInterface`](/5.21/api/phalcon_db/#dbreferenceinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdbreference-getcolumns" visibility="public" name="getColumns" returnType="array" params={[]}>
-Gets local columns which reference is based
-</ApiItem>
-<ApiItem href="#contractsdbreference-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Gets the index name
-</ApiItem>
-<ApiItem href="#contractsdbreference-getondelete" visibility="public" name="getOnDelete" returnType="string|null" params={[]}>
-Gets the referenced on delete
-</ApiItem>
-<ApiItem href="#contractsdbreference-getonupdate" visibility="public" name="getOnUpdate" returnType="string|null" params={[]}>
-Gets the referenced on update
-</ApiItem>
-<ApiItem href="#contractsdbreference-getreferencedcolumns" visibility="public" name="getReferencedColumns" returnType="array" params={[]}>
-Gets referenced columns
-</ApiItem>
-<ApiItem href="#contractsdbreference-getreferencedschema" visibility="public" name="getReferencedSchema" returnType="string|null" params={[]}>
-Gets the schema where referenced table is
-</ApiItem>
-<ApiItem href="#contractsdbreference-getreferencedtable" visibility="public" name="getReferencedTable" returnType="string" params={[]}>
-Gets the referenced table
-</ApiItem>
-<ApiItem href="#contractsdbreference-getschemaname" visibility="public" name="getSchemaName" returnType="string|null" params={[]}>
-Gets the schema where referenced table is
-</ApiItem>
+- `public getColumns(): array` — Gets local columns which reference is based
+
+- `public getName(): string` — Gets the index name
+
+- `public getOnDelete(): string|null` — Gets the referenced on delete
+
+- `public getOnUpdate(): string|null` — Gets the referenced on update
+
+- `public getReferencedColumns(): array` — Gets referenced columns
+
+- `public getReferencedSchema(): string|null` — Gets the schema where referenced table is
+
+- `public getReferencedTable(): string` — Gets the referenced table
+
+- `public getSchemaName(): string|null` — Gets the schema where referenced table is
 
 ### Methods
 
@@ -4997,6 +4755,7 @@ public function getSchemaName(): string|null;
 
 Gets the schema where referenced table is
 
+
 ## Contracts\Db\Result
 
 Interface
@@ -5004,34 +4763,25 @@ Interface
 Canonical contract for Phalcon\Db result objects.
 
 - **`Phalcon\Contracts\Db\Result`**
-- [`Phalcon\Db\ResultInterface`](/5.21/api/phalcon_db/#dbresultinterface)
+  - [`Phalcon\Db\ResultInterface`](/5.21/api/phalcon_db/#dbresultinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdbresult-dataseek" visibility="public" name="dataSeek" returnType="" params={[{"type":"int","name":"number","default":null}]}>
-Moves internal resultset cursor to another position letting us to fetch a
-</ApiItem>
-<ApiItem href="#contractsdbresult-execute" visibility="public" name="execute" returnType="bool" params={[]}>
-Allows to execute the statement again. Some database systems don't
-</ApiItem>
-<ApiItem href="#contractsdbresult-fetch" visibility="public" name="fetch" returnType="mixed" params={[]}>
-Fetches an array/object of strings that corresponds to the fetched row,
-</ApiItem>
-<ApiItem href="#contractsdbresult-fetchall" visibility="public" name="fetchAll" returnType="array" params={[]}>
-Returns an array of arrays containing all the records in the result. This
-</ApiItem>
-<ApiItem href="#contractsdbresult-fetcharray" visibility="public" name="fetchArray" returnType="mixed" params={[]}>
-Returns an array of strings that corresponds to the fetched row, or FALSE
-</ApiItem>
-<ApiItem href="#contractsdbresult-getinternalresult" visibility="public" name="getInternalResult" returnType="\PDOStatement" params={[]}>
-Gets the internal PDO result object
-</ApiItem>
-<ApiItem href="#contractsdbresult-numrows" visibility="public" name="numRows" returnType="int" params={[]}>
-Gets number of rows returned by a resultset
-</ApiItem>
-<ApiItem href="#contractsdbresult-setfetchmode" visibility="public" name="setFetchMode" returnType="bool" params={[{"type":"int","name":"fetchMode","default":null}]}>
-Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
-</ApiItem>
+- `public dataSeek(int $number)` — Moves internal resultset cursor to another position letting us to fetch a
+
+- `public execute(): bool` — Allows to execute the statement again. Some database systems don't
+
+- `public fetch(): mixed` — Fetches an array/object of strings that corresponds to the fetched row,
+
+- `public fetchAll(): array` — Returns an array of arrays containing all the records in the result. This
+
+- `public fetchArray(): mixed` — Returns an array of strings that corresponds to the fetched row, or FALSE
+
+- `public getInternalResult(): \PDOStatement` — Gets the internal PDO result object
+
+- `public numRows(): int` — Gets number of rows returned by a resultset
+
+- `public setFetchMode(int $fetchMode): bool` — Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
 ### Methods
 
@@ -5108,6 +4858,7 @@ public function setFetchMode( int $fetchMode ): bool;
 
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
+
 ## Contracts\Dispatcher\Dispatcher
 
 Interface
@@ -5120,75 +4871,53 @@ are scheduled to be removed in the next major version in favor of their
 `*Parameter` counterparts.
 
 - **`Phalcon\Contracts\Dispatcher\Dispatcher`**
-- [`Phalcon\Contracts\Cli\Dispatcher`](#contractsclidispatcher)
-- [`Phalcon\Contracts\Mvc\Dispatcher`](#contractsmvcdispatcher)
-- [`Phalcon\Dispatcher\DispatcherInterface`](/5.21/api/phalcon_dispatcher/#dispatcherdispatcherinterface)
+  - [`Phalcon\Contracts\Cli\Dispatcher`](#contractsclidispatcher)
+  - [`Phalcon\Contracts\Mvc\Dispatcher`](#contractsmvcdispatcher)
+  - [`Phalcon\Dispatcher\DispatcherInterface`](/5.21/api/phalcon_dispatcher/#dispatcherdispatcherinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsdispatcherdispatcher-dispatch" visibility="public" name="dispatch" returnType="mixed|bool" params={[]}>
-Dispatches a handle action taking into account the routing parameters
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-forward" visibility="public" name="forward" returnType="void" params={[{"type":"array","name":"forward","default":null}]}>
-Forwards the execution flow to another controller/action
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getactionname" visibility="public" name="getActionName" returnType="string" params={[]}>
-Gets last dispatched action name
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getactionsuffix" visibility="public" name="getActionSuffix" returnType="string" params={[]}>
-Gets the default action suffix
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-gethandlersuffix" visibility="public" name="getHandlerSuffix" returnType="string" params={[]}>
-Gets the default handler suffix
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getparam" visibility="public" name="getParam" returnType="mixed" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"filters","default":"null"}]}>
-Gets a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getparameter" visibility="public" name="getParameter" returnType="mixed" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"filters","default":"null"}]}>
-Gets a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getparameters" visibility="public" name="getParameters" returnType="array" params={[]}>
-Gets action params
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getparams" visibility="public" name="getParams" returnType="array" params={[]}>
-Gets action params
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-getreturnedvalue" visibility="public" name="getReturnedValue" returnType="mixed" params={[]}>
-Returns value returned by the latest dispatched action
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-hasparam" visibility="public" name="hasParam" returnType="bool" params={[{"type":"mixed","name":"param","default":null}]}>
-Check if a param exists
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-isfinished" visibility="public" name="isFinished" returnType="bool" params={[]}>
-Checks if the dispatch loop is finished or has more pendent
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setactionname" visibility="public" name="setActionName" returnType="void" params={[{"type":"string","name":"actionName","default":null}]}>
-Sets the action name to be dispatched
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setactionsuffix" visibility="public" name="setActionSuffix" returnType="void" params={[{"type":"string","name":"actionSuffix","default":null}]}>
-Sets the default action suffix
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setdefaultaction" visibility="public" name="setDefaultAction" returnType="void" params={[{"type":"string","name":"actionName","default":null}]}>
-Sets the default action name
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setdefaultnamespace" visibility="public" name="setDefaultNamespace" returnType="void" params={[{"type":"string","name":"defaultNamespace","default":null}]}>
-Sets the default namespace
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-sethandlersuffix" visibility="public" name="setHandlerSuffix" returnType="void" params={[{"type":"string","name":"handlerSuffix","default":null}]}>
-Sets the default suffix for the handler
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setmodulename" visibility="public" name="setModuleName" returnType="void" params={[{"type":"string|null","name":"moduleName","default":"null"}]}>
-Sets the module name which the application belongs to
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setnamespacename" visibility="public" name="setNamespaceName" returnType="void" params={[{"type":"string","name":"namespaceName","default":null}]}>
-Sets the namespace which the controller belongs to
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setparam" visibility="public" name="setParam" returnType="void" params={[{"type":"mixed","name":"param","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a param by its name or numeric index
-</ApiItem>
-<ApiItem href="#contractsdispatcherdispatcher-setparams" visibility="public" name="setParams" returnType="void" params={[{"type":"array","name":"params","default":null}]}>
-Sets action params to be dispatched
-</ApiItem>
+- `public dispatch(): mixed|bool` — Dispatches a handle action taking into account the routing parameters
+
+- `public forward(array $forward): void` — Forwards the execution flow to another controller/action
+
+- `public getActionName(): string` — Gets last dispatched action name
+
+- `public getActionSuffix(): string` — Gets the default action suffix
+
+- `public getHandlerSuffix(): string` — Gets the default handler suffix
+
+- `public getParam(mixed $param, mixed $filters = null): mixed` — Gets a param by its name or numeric index
+
+- `public getParameter(mixed $param, mixed $filters = null): mixed` — Gets a param by its name or numeric index
+
+- `public getParameters(): array` — Gets action params
+
+- `public getParams(): array` — Gets action params
+
+- `public getReturnedValue(): mixed` — Returns value returned by the latest dispatched action
+
+- `public hasParam(mixed $param): bool` — Check if a param exists
+
+- `public isFinished(): bool` — Checks if the dispatch loop is finished or has more pendent
+
+- `public setActionName(string $actionName): void` — Sets the action name to be dispatched
+
+- `public setActionSuffix(string $actionSuffix): void` — Sets the default action suffix
+
+- `public setDefaultAction(string $actionName): void` — Sets the default action name
+
+- `public setDefaultNamespace(string $defaultNamespace): void` — Sets the default namespace
+
+- `public setHandlerSuffix(string $handlerSuffix): void` — Sets the default suffix for the handler
+
+- `public setModuleName(string|null $moduleName = null): void` — Sets the module name which the application belongs to
+
+- `public setNamespaceName(string $namespaceName): void` — Sets the namespace which the controller belongs to
+
+- `public setParam(mixed $param, mixed $value): void` — Set a param by its name or numeric index
+
+- `public setParams(array $params): void` — Sets action params to be dispatched
 
 ### Methods
 
@@ -5236,8 +4965,8 @@ Gets the default handler suffix
 
 ```php
 public function getParam(
-mixed $param,
-mixed $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -5250,8 +4979,8 @@ accepts; the two will be aligned in the next major version.
 
 ```php
 public function getParameter(
-mixed $param,
-mixed $filters = null
+    mixed $param,
+    mixed $filters = null
 ): mixed;
 ```
 
@@ -5358,8 +5087,8 @@ Sets the namespace which the controller belongs to
 
 ```php
 public function setParam(
-mixed $param,
-mixed $value
+    mixed $param,
+    mixed $value
 ): void;
 ```
 
@@ -5373,6 +5102,7 @@ public function setParams( array $params ): void;
 
 Sets action params to be dispatched
 
+
 ## Contracts\Dispatcher\DispatcherTypes
 
 Interface
@@ -5380,6 +5110,7 @@ Interface
 Central registry of the array shapes used across the Dispatcher namespace.
 
 - **`Phalcon\Contracts\Dispatcher\DispatcherTypes`**
+
 
 ## Contracts\Domain\Payload\Payload
 
@@ -5399,7 +5130,8 @@ capability it needs, even though the concrete payload implements both.
 @see Writeable
 
 - [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable)
-- **`Phalcon\Contracts\Domain\Payload\Payload`** - extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
+  - **`Phalcon\Contracts\Domain\Payload\Payload`** - extends [`Phalcon\Contracts\Domain\Payload\Readable`](#contractsdomainpayloadreadable), [`Phalcon\Contracts\Domain\Payload\Writeable`](#contractsdomainpayloadwriteable)
+
 
 ## Contracts\Domain\Payload\Readable
 
@@ -5412,31 +5144,24 @@ narrowing the surface to the read side of the Action-Domain-Responder
 boundary.
 
 - **`Phalcon\Contracts\Domain\Payload\Readable`**
-- [`Phalcon\Contracts\Domain\Payload\Payload`](#contractsdomainpayloadpayload)
-- [`Phalcon\Domain\Payload\ReadableInterface`](/5.21/api/phalcon_domain/#domainpayloadreadableinterface)
+  - [`Phalcon\Contracts\Domain\Payload\Payload`](#contractsdomainpayloadpayload)
+  - [`Phalcon\Domain\Payload\ReadableInterface`](/5.21/api/phalcon_domain/#domainpayloadreadableinterface)
 
 `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#contractsdomainpayloadreadable-getexception" visibility="public" name="getException" returnType="Throwable|null" params={[]}>
-Gets the potential exception thrown in the domain layer
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadreadable-getextras" visibility="public" name="getExtras" returnType="mixed" params={[]}>
-Gets arbitrary extra values produced by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadreadable-getinput" visibility="public" name="getInput" returnType="mixed" params={[]}>
-Gets the input received by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadreadable-getmessages" visibility="public" name="getMessages" returnType="mixed" params={[]}>
-Gets the messages produced by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadreadable-getoutput" visibility="public" name="getOutput" returnType="mixed" params={[]}>
-Gets the output produced from the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadreadable-getstatus" visibility="public" name="getStatus" returnType="mixed" params={[]}>
-Gets the status of this payload.
-</ApiItem>
+- `public getException(): Throwable|null` — Gets the potential exception thrown in the domain layer
+
+- `public getExtras(): mixed` — Gets arbitrary extra values produced by the domain layer.
+
+- `public getInput(): mixed` — Gets the input received by the domain layer.
+
+- `public getMessages(): mixed` — Gets the messages produced by the domain layer.
+
+- `public getOutput(): mixed` — Gets the output produced from the domain layer.
+
+- `public getStatus(): mixed` — Gets the status of this payload.
 
 ### Methods
 
@@ -5492,6 +5217,7 @@ Status values are drawn from the `Status` vocabulary.
 
 @see \Phalcon\Domain\Payload\Status
 
+
 ## Contracts\Domain\Payload\Writeable
 
 Interface
@@ -5503,30 +5229,23 @@ narrowing the surface to the write side of the Action-Domain-Responder
 boundary.
 
 - **`Phalcon\Contracts\Domain\Payload\Writeable`**
-- [`Phalcon\Domain\Payload\WriteableInterface`](/5.21/api/phalcon_domain/#domainpayloadwriteableinterface)
+  - [`Phalcon\Domain\Payload\WriteableInterface`](/5.21/api/phalcon_domain/#domainpayloadwriteableinterface)
 
 `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#contractsdomainpayloadwriteable-setexception" visibility="public" name="setException" returnType="Payload" params={[{"type":"Throwable","name":"exception","default":null}]}>
-Sets an exception produced by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadwriteable-setextras" visibility="public" name="setExtras" returnType="Payload" params={[{"type":"mixed","name":"extras","default":null}]}>
-Sets arbitrary extra values produced by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadwriteable-setinput" visibility="public" name="setInput" returnType="Payload" params={[{"type":"mixed","name":"input","default":null}]}>
-Sets the input received by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadwriteable-setmessages" visibility="public" name="setMessages" returnType="Payload" params={[{"type":"mixed","name":"messages","default":null}]}>
-Sets the messages produced by the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadwriteable-setoutput" visibility="public" name="setOutput" returnType="Payload" params={[{"type":"mixed","name":"output","default":null}]}>
-Sets the output produced from the domain layer.
-</ApiItem>
-<ApiItem href="#contractsdomainpayloadwriteable-setstatus" visibility="public" name="setStatus" returnType="Payload" params={[{"type":"mixed","name":"status","default":null}]}>
-Sets the status of this payload.
-</ApiItem>
+- `public setException(Throwable $exception): Payload` — Sets an exception produced by the domain layer.
+
+- `public setExtras(mixed $extras): Payload` — Sets arbitrary extra values produced by the domain layer.
+
+- `public setInput(mixed $input): Payload` — Sets the input received by the domain layer.
+
+- `public setMessages(mixed $messages): Payload` — Sets the messages produced by the domain layer.
+
+- `public setOutput(mixed $output): Payload` — Sets the output produced from the domain layer.
+
+- `public setStatus(mixed $status): Payload` — Sets the status of this payload.
 
 ### Methods
 
@@ -5582,6 +5301,7 @@ Status values are drawn from the `Status` vocabulary.
 
 @see \Phalcon\Domain\Payload\Status
 
+
 ## Contracts\Encryption\Crypt\Crypt
 
 Interface
@@ -5590,7 +5310,7 @@ Canonical contract for Phalcon\Encryption\Crypt.
 
 The encrypted payload produced by `encrypt()` uses the wire format:
 
-    iv ‖ hmac ‖ ciphertext ‖ tag
+iv ‖ hmac ‖ ciphertext ‖ tag
 
 where `hmac` is present only when signing is enabled (`useSigning(true)`,
 the default) and `tag` is present only for AEAD ciphers (`gcm`/`ccm`).
@@ -5602,61 +5322,43 @@ through the DI container is therefore not safe for interleaved AEAD
 operations.
 
 - **`Phalcon\Contracts\Encryption\Crypt\Crypt`**
-- [`Phalcon\Encryption\Crypt\CryptInterface`](/5.21/api/phalcon_encryption/#encryptioncryptcryptinterface)
+  - [`Phalcon\Encryption\Crypt\CryptInterface`](/5.21/api/phalcon_encryption/#encryptioncryptcryptinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptioncryptcrypt-decrypt" visibility="public" name="decrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
-Decrypts a text
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-decryptbase64" visibility="public" name="decryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
-Decrypt a text that is coded as a base64 string
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-encrypt" visibility="public" name="encrypt" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
-Encrypts a text
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-encryptbase64" visibility="public" name="encryptBase64" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string|null","name":"key","default":"null"}]}>
-Encrypts a text returning the result as a base64 string
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-getauthdata" visibility="public" name="getAuthData" returnType="string" params={[]}>
-Returns authentication data
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-getauthtag" visibility="public" name="getAuthTag" returnType="string" params={[]}>
-Returns the authentication tag
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-getauthtaglength" visibility="public" name="getAuthTagLength" returnType="int" params={[]}>
-Returns the authentication tag length
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-getavailableciphers" visibility="public" name="getAvailableCiphers" returnType="array" params={[]}>
-Returns a list of available cyphers
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-getcipher" visibility="public" name="getCipher" returnType="string" params={[]}>
-Returns the current cipher
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-getkey" visibility="public" name="getKey" returnType="string" params={[]}>
-Returns the encryption key
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-setauthdata" visibility="public" name="setAuthData" returnType="Crypt" params={[{"type":"string","name":"data","default":null}]}>
-Sets authentication data
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-setauthtag" visibility="public" name="setAuthTag" returnType="Crypt" params={[{"type":"string","name":"tag","default":null}]}>
-Sets the authentication tag
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-setauthtaglength" visibility="public" name="setAuthTagLength" returnType="Crypt" params={[{"type":"int","name":"length","default":null}]}>
-Sets the authentication tag length
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-setcipher" visibility="public" name="setCipher" returnType="Crypt" params={[{"type":"string","name":"cipher","default":null}]}>
-Sets the cipher algorithm
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-setkey" visibility="public" name="setKey" returnType="Crypt" params={[{"type":"string","name":"key","default":null}]}>
-Sets the encryption key
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-setpadding" visibility="public" name="setPadding" returnType="Crypt" params={[{"type":"int","name":"scheme","default":null}]}>
-Changes the padding scheme used.
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptcrypt-usesigning" visibility="public" name="useSigning" returnType="Crypt" params={[{"type":"bool","name":"useSigning","default":null}]}>
-Sets if the calculating message digest must be used.
-</ApiItem>
+- `public decrypt(string $input, string|null $key = null): string` — Decrypts a text
+
+- `public decryptBase64(string $input, string|null $key = null): string` — Decrypt a text that is coded as a base64 string
+
+- `public encrypt(string $input, string|null $key = null): string` — Encrypts a text
+
+- `public encryptBase64(string $input, string|null $key = null): string` — Encrypts a text returning the result as a base64 string
+
+- `public getAuthData(): string` — Returns authentication data
+
+- `public getAuthTag(): string` — Returns the authentication tag
+
+- `public getAuthTagLength(): int` — Returns the authentication tag length
+
+- `public getAvailableCiphers(): array` — Returns a list of available cyphers
+
+- `public getCipher(): string` — Returns the current cipher
+
+- `public getKey(): string` — Returns the encryption key
+
+- `public setAuthData(string $data): Crypt` — Sets authentication data
+
+- `public setAuthTag(string $tag): Crypt` — Sets the authentication tag
+
+- `public setAuthTagLength(int $length): Crypt` — Sets the authentication tag length
+
+- `public setCipher(string $cipher): Crypt` — Sets the cipher algorithm
+
+- `public setKey(string $key): Crypt` — Sets the encryption key
+
+- `public setPadding(int $scheme): Crypt` — Changes the padding scheme used.
+
+- `public useSigning(bool $useSigning): Crypt` — Sets if the calculating message digest must be used.
 
 ### Methods
 
@@ -5664,8 +5366,8 @@ Sets if the calculating message digest must be used.
 
 ```php
 public function decrypt(
-string $input,
-string|null $key = null
+    string $input,
+    string|null $key = null
 ): string;
 ```
 
@@ -5675,8 +5377,8 @@ Decrypts a text
 
 ```php
 public function decryptBase64(
-string $input,
-string|null $key = null
+    string $input,
+    string|null $key = null
 ): string;
 ```
 
@@ -5686,8 +5388,8 @@ Decrypt a text that is coded as a base64 string
 
 ```php
 public function encrypt(
-string $input,
-string|null $key = null
+    string $input,
+    string|null $key = null
 ): string;
 ```
 
@@ -5697,8 +5399,8 @@ Encrypts a text
 
 ```php
 public function encryptBase64(
-string $input,
-string|null $key = null
+    string $input,
+    string|null $key = null
 ): string;
 ```
 
@@ -5808,6 +5510,7 @@ public function useSigning( bool $useSigning ): Crypt;
 
 Sets if the calculating message digest must be used.
 
+
 ## Contracts\Encryption\Crypt\Padding\Pad
 
 Interface
@@ -5822,14 +5525,13 @@ yields the wrong padding size whenever the bytes form valid multibyte
 sequences.
 
 - **`Phalcon\Contracts\Encryption\Crypt\Padding\Pad`**
-- [`Phalcon\Encryption\Crypt\Padding\PadInterface`](/5.21/api/phalcon_encryption/#encryptioncryptpaddingpadinterface)
+  - [`Phalcon\Encryption\Crypt\Padding\PadInterface`](/5.21/api/phalcon_encryption/#encryptioncryptpaddingpadinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptioncryptpaddingpad-pad" visibility="public" name="pad" returnType="string" params={[{"type":"int","name":"paddingSize","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptioncryptpaddingpad-unpad" visibility="public" name="unpad" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"blockSize","default":null}]}>
-</ApiItem>
+- `public pad(int $paddingSize): string`
+
+- `public unpad(string $input, int $blockSize): int`
 
 ### Methods
 
@@ -5843,32 +5545,32 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Contracts\Encryption\Security\CryptoUtils
 
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\CryptoUtils`**
-- [`Phalcon\Contracts\Encryption\Security\Security`](#contractsencryptionsecuritysecurity)
+  - [`Phalcon\Contracts\Encryption\Security\Security`](#contractsencryptionsecuritysecurity)
 
 `Phalcon\Encryption\Security\Random`
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecuritycryptoutils-computehmac" visibility="public" name="computeHmac" returnType="string" params={[{"type":"string","name":"data","default":null},{"type":"string","name":"key","default":null},{"type":"string","name":"algorithm","default":null},{"type":"bool","name":"raw","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycryptoutils-getrandom" visibility="public" name="getRandom" returnType="Random" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycryptoutils-getrandombytes" visibility="public" name="getRandomBytes" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycryptoutils-getsaltbytes" visibility="public" name="getSaltBytes" returnType="string" params={[{"type":"int","name":"numberBytes","default":"0"}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycryptoutils-setrandombytes" visibility="public" name="setRandomBytes" returnType="Security" params={[{"type":"int","name":"randomBytes","default":null}]}>
-</ApiItem>
+- `public computeHmac(string $data, string $key, string $algorithm, bool $raw = false): string`
+
+- `public getRandom(): Random`
+
+- `public getRandomBytes(): int`
+
+- `public getSaltBytes(int $numberBytes = 0): string`
+
+- `public setRandomBytes(int $randomBytes): Security`
 
 ### Methods
 
@@ -5876,10 +5578,10 @@ Interface
 
 ```php
 public function computeHmac(
-string $data,
-string $key,
-string $algorithm,
-bool $raw = false
+    string $data,
+    string $key,
+    string $algorithm,
+    bool $raw = false
 ): string;
 ```
 
@@ -5907,6 +5609,7 @@ public function getSaltBytes( int $numberBytes = 0 ): string;
 public function setRandomBytes( int $randomBytes ): Security;
 ```
 
+
 ## Contracts\Encryption\Security\CsrfProtection
 
 Interface
@@ -5915,18 +5618,17 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-checktoken" visibility="public" name="checkToken" returnType="bool" params={[{"type":"string|null","name":"tokenKey","default":"null"},{"type":"mixed","name":"tokenValue","default":"null"},{"type":"bool","name":"destroyIfValid","default":"true"}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-destroytoken" visibility="public" name="destroyToken" returnType="Security" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-getrequesttoken" visibility="public" name="getRequestToken" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-getsessiontoken" visibility="public" name="getSessionToken" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-gettoken" visibility="public" name="getToken" returnType="string|null" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritycsrfprotection-gettokenkey" visibility="public" name="getTokenKey" returnType="string|null" params={[]}>
-</ApiItem>
+- `public checkToken(string|null $tokenKey = null, mixed $tokenValue = null, bool $destroyIfValid = true): bool`
+
+- `public destroyToken(): Security`
+
+- `public getRequestToken(): string|null`
+
+- `public getSessionToken(): string|null`
+
+- `public getToken(): string|null`
+
+- `public getTokenKey(): string|null`
 
 ### Methods
 
@@ -5934,9 +5636,9 @@ Interface
 
 ```php
 public function checkToken(
-string|null $tokenKey = null,
-mixed $tokenValue = null,
-bool $destroyIfValid = true
+    string|null $tokenKey = null,
+    mixed $tokenValue = null,
+    bool $destroyIfValid = true
 ): bool;
 ```
 
@@ -5970,6 +5672,7 @@ public function getToken(): string|null;
 public function getTokenKey(): string|null;
 ```
 
+
 ## Contracts\Encryption\Security\JWT\Signer\Signer
 
 Interface
@@ -5977,22 +5680,17 @@ Interface
 Canonical contract for JWT Signer classes
 
 - **`Phalcon\Contracts\Encryption\Security\JWT\Signer\Signer`**
-- [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
+  - [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityjwtsignersignerinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecurityjwtsignersigner-getalgheader" visibility="public" name="getAlgHeader" returnType="string" params={[]}>
-Return the value that is used for the "alg" header
-</ApiItem>
-<ApiItem href="#contractsencryptionsecurityjwtsignersigner-getalgorithm" visibility="public" name="getAlgorithm" returnType="string" params={[]}>
-Return the algorithm used
-</ApiItem>
-<ApiItem href="#contractsencryptionsecurityjwtsignersigner-sign" visibility="public" name="sign" returnType="string" params={[{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Sign a payload using the passphrase
-</ApiItem>
-<ApiItem href="#contractsencryptionsecurityjwtsignersigner-verify" visibility="public" name="verify" returnType="bool" params={[{"type":"string","name":"source","default":null},{"type":"string","name":"payload","default":null},{"type":"string","name":"passphrase","default":null}]}>
-Verify a passed source with a payload and passphrase
-</ApiItem>
+- `public getAlgHeader(): string` — Return the value that is used for the "alg" header
+
+- `public getAlgorithm(): string` — Return the algorithm used
+
+- `public sign(string $payload, string $passphrase): string` — Sign a payload using the passphrase
+
+- `public verify(string $source, string $payload, string $passphrase): bool` — Verify a passed source with a payload and passphrase
 
 ### Methods
 
@@ -6016,8 +5714,8 @@ Return the algorithm used
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -6027,13 +5725,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Contracts\Encryption\Security\PasswordSecurity
 
@@ -6043,22 +5742,21 @@ Interface
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-checkhash" visibility="public" name="checkHash" returnType="bool" params={[{"type":"string","name":"password","default":null},{"type":"string","name":"passwordHash","default":null},{"type":"int","name":"maxPassLength","default":"0"}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-getdefaulthash" visibility="public" name="getDefaultHash" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-gethashinformation" visibility="public" name="getHashInformation" returnType="array" params={[{"type":"string","name":"hash","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-getworkfactor" visibility="public" name="getWorkFactor" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-hash" visibility="public" name="hash" returnType="string" params={[{"type":"string","name":"password","default":null},{"type":"array","name":"options","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-islegacyhash" visibility="public" name="isLegacyHash" returnType="bool" params={[{"type":"string","name":"passwordHash","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-setdefaulthash" visibility="public" name="setDefaultHash" returnType="Security" params={[{"type":"int","name":"defaultHash","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecuritypasswordsecurity-setworkfactor" visibility="public" name="setWorkFactor" returnType="Security" params={[{"type":"int","name":"workFactor","default":null}]}>
-</ApiItem>
+- `public checkHash(string $password, string $passwordHash, int $maxPassLength = 0): bool`
+
+- `public getDefaultHash(): int`
+
+- `public getHashInformation(string $hash): array`
+
+- `public getWorkFactor(): int`
+
+- `public hash(string $password, array $options = []): string`
+
+- `public isLegacyHash(string $passwordHash): bool`
+
+- `public setDefaultHash(int $defaultHash): Security`
+
+- `public setWorkFactor(int $workFactor): Security`
 
 ### Methods
 
@@ -6066,9 +5764,9 @@ Interface
 
 ```php
 public function checkHash(
-string $password,
-string $passwordHash,
-int $maxPassLength = 0
+    string $password,
+    string $passwordHash,
+    int $maxPassLength = 0
 ): bool;
 ```
 
@@ -6094,8 +5792,8 @@ public function getWorkFactor(): int;
 
 ```php
 public function hash(
-string $password,
-array $options = []
+    string $password,
+    array $options = []
 ): string;
 ```
 
@@ -6117,24 +5815,25 @@ public function setDefaultHash( int $defaultHash ): Security;
 public function setWorkFactor( int $workFactor ): Security;
 ```
 
+
 ## Contracts\Encryption\Security\Security
 
 Interface
 
 - [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils)
-- **`Phalcon\Contracts\Encryption\Security\Security`** - extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
+  - **`Phalcon\Contracts\Encryption\Security\Security`** - extends [`Phalcon\Contracts\Encryption\Security\CryptoUtils`](#contractsencryptionsecuritycryptoutils), [`Phalcon\Contracts\Encryption\Security\CsrfProtection`](#contractsencryptionsecuritycsrfprotection), [`Phalcon\Contracts\Encryption\Security\PasswordSecurity`](#contractsencryptionsecuritypasswordsecurity)
+
 
 ## Contracts\Encryption\Security\Uuid\NodeProvider
 
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\NodeProvider`**
-- [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
+  - [`Phalcon\Encryption\Security\Uuid\NodeProviderInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityuuidnodeproviderinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecurityuuidnodeprovider-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
-</ApiItem>
+- `public getNode(): string`
 
 ### Methods
 
@@ -6144,19 +5843,19 @@ Interface
 public function getNode(): string;
 ```
 
+
 ## Contracts\Encryption\Security\Uuid\TimeBasedUuid
 
 Interface
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\TimeBasedUuid`**
-- [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
+  - [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityuuidtimebaseduuidinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsencryptionsecurityuuidtimebaseduuid-getdatetime" visibility="public" name="getDateTime" returnType="\DateTimeImmutable" params={[]}>
-</ApiItem>
-<ApiItem href="#contractsencryptionsecurityuuidtimebaseduuid-getnode" visibility="public" name="getNode" returnType="string" params={[]}>
-</ApiItem>
+- `public getDateTime(): \DateTimeImmutable`
+
+- `public getNode(): string`
 
 ### Methods
 
@@ -6172,6 +5871,7 @@ public function getDateTime(): \DateTimeImmutable;
 public function getNode(): string;
 ```
 
+
 ## Contracts\Encryption\Security\Uuid\Uuid
 
 Interface
@@ -6181,18 +5881,18 @@ Canonical marker contract for UUID version adapters.
 Also carries the standard RFC 4122 namespace UUIDs as constants.
 
 - **`Phalcon\Contracts\Encryption\Security\Uuid\Uuid`**
-- [`Phalcon\Encryption\Security\Uuid\UuidInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityuuiduuidinterface)
+  - [`Phalcon\Encryption\Security\Uuid\UuidInterface`](/5.21/api/phalcon_encryption/#encryptionsecurityuuiduuidinterface)
 
 ### Constants
 
-<ApiItem kind="constant" name="NAMESPACE_DNS" type="string" default="&quot;6ba7b810-9dad-11d1-80b4-00c04fd430c8&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NAMESPACE_OID" type="string" default="&quot;6ba7b812-9dad-11d1-80b4-00c04fd430c8&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NAMESPACE_URL" type="string" default="&quot;6ba7b811-9dad-11d1-80b4-00c04fd430c8&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="NAMESPACE_X500" type="string" default="&quot;6ba7b814-9dad-11d1-80b4-00c04fd430c8&quot;">
-</ApiItem>
+- `const string NAMESPACE_DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8"`
+
+- `const string NAMESPACE_OID = "6ba7b812-9dad-11d1-80b4-00c04fd430c8"`
+
+- `const string NAMESPACE_URL = "6ba7b811-9dad-11d1-80b4-00c04fd430c8"`
+
+- `const string NAMESPACE_X500 = "6ba7b814-9dad-11d1-80b4-00c04fd430c8"`
+
 
 ## Contracts\Events\Enumerable
 
@@ -6213,9 +5913,7 @@ implementation detail that is free to change.
 
 ### Method Summary
 
-<ApiItem href="#contractseventsenumerable-getlistenermap" visibility="public" name="getListenerMap" returnType="array" params={[]}>
-Returns every event type that currently has at least one listener,
-</ApiItem>
+- `public getListenerMap(): array` — Returns every event type that currently has at least one listener,
 
 ### Methods
 
@@ -6230,6 +5928,7 @@ mapped to that type's listeners. Types contributed by subscribers are
 included, because addSubscriber() attaches through the regular listener
 pipeline.
 
+
 ## Contracts\Events\Event
 
 Interface
@@ -6237,31 +5936,23 @@ Interface
 Canonical contract for Phalcon\Events\Event.
 
 - **`Phalcon\Contracts\Events\Event`**
-- [`Phalcon\Events\EventInterface`](/5.21/api/phalcon_events/#eventseventinterface)
+  - [`Phalcon\Events\EventInterface`](/5.21/api/phalcon_events/#eventseventinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractseventsevent-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
-Gets event data
-</ApiItem>
-<ApiItem href="#contractseventsevent-gettype" visibility="public" name="getType" returnType="mixed" params={[]}>
-Gets event type
-</ApiItem>
-<ApiItem href="#contractseventsevent-iscancelable" visibility="public" name="isCancelable" returnType="bool" params={[]}>
-Check whether the event is cancelable
-</ApiItem>
-<ApiItem href="#contractseventsevent-isstopped" visibility="public" name="isStopped" returnType="bool" params={[]}>
-Check whether the event is currently stopped
-</ApiItem>
-<ApiItem href="#contractseventsevent-setdata" visibility="public" name="setData" returnType="Event" params={[{"type":"mixed","name":"data","default":"null"}]}>
-Sets event data
-</ApiItem>
-<ApiItem href="#contractseventsevent-settype" visibility="public" name="setType" returnType="Event" params={[{"type":"string","name":"type","default":null}]}>
-Sets event type
-</ApiItem>
-<ApiItem href="#contractseventsevent-stop" visibility="public" name="stop" returnType="Event" params={[]}>
-Stops the event preventing propagation
-</ApiItem>
+- `public getData(): mixed` — Gets event data
+
+- `public getType(): mixed` — Gets event type
+
+- `public isCancelable(): bool` — Check whether the event is cancelable
+
+- `public isStopped(): bool` — Check whether the event is currently stopped
+
+- `public setData(mixed $data = null): Event` — Sets event data
+
+- `public setType(string $type): Event` — Sets event type
+
+- `public stop(): Event` — Stops the event preventing propagation
 
 ### Methods
 
@@ -6321,6 +6012,7 @@ public function stop(): Event;
 
 Stops the event preventing propagation
 
+
 ## Contracts\Events\EventsAware
 
 Interface
@@ -6334,18 +6026,15 @@ already type-hint ManagerInterface. ManagerInterface extends Manager, so
 this remains type-compatible with any code that needs the canonical surface.
 
 - **`Phalcon\Contracts\Events\EventsAware`**
-- [`Phalcon\Events\EventsAwareInterface`](/5.21/api/phalcon_events/#eventseventsawareinterface)
+  - [`Phalcon\Events\EventsAwareInterface`](/5.21/api/phalcon_events/#eventseventsawareinterface)
 
 `Phalcon\Events\ManagerInterface`
 
 ### Method Summary
 
-<ApiItem href="#contractseventseventsaware-geteventsmanager" visibility="public" name="getEventsManager" returnType="ManagerInterface|null" params={[]}>
-Returns the internal events manager
-</ApiItem>
-<ApiItem href="#contractseventseventsaware-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
-Sets the events manager
-</ApiItem>
+- `public getEventsManager(): ManagerInterface|null` — Returns the internal events manager
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
 
 ### Methods
 
@@ -6365,6 +6054,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 
 Sets the events manager
 
+
 ## Contracts\Events\Manager
 
 Interface
@@ -6372,63 +6062,45 @@ Interface
 Canonical contract for Phalcon\Events\Manager.
 
 - **`Phalcon\Contracts\Events\Manager`**
-- [`Phalcon\Events\ManagerInterface`](/5.21/api/phalcon_events/#eventsmanagerinterface)
+  - [`Phalcon\Events\ManagerInterface`](/5.21/api/phalcon_events/#eventsmanagerinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractseventsmanager-addsubscriber" visibility="public" name="addSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
-Registers an event subscriber. The subscriber's getSubscribedEvents()
-</ApiItem>
-<ApiItem href="#contractseventsmanager-areprioritiesenabled" visibility="public" name="arePrioritiesEnabled" returnType="bool" params={[]}>
-Returns whether priority ordering is currently enabled.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-attach" visibility="public" name="attach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"mixed","name":"handler","default":null},{"type":"int","name":"priority","default":"self::DEFAULT_PRIORITY"}]}>
-Attach a listener to the events manager.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-clearsubscribers" visibility="public" name="clearSubscribers" returnType="void" params={[]}>
-Removes every registered subscriber and detaches each listener they
-</ApiItem>
-<ApiItem href="#contractseventsmanager-collectresponses" visibility="public" name="collectResponses" returnType="void" params={[{"type":"bool","name":"collect","default":null}]}>
-Toggle response collection on/off.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-detach" visibility="public" name="detach" returnType="void" params={[{"type":"string","name":"eventType","default":null},{"type":"mixed","name":"handler","default":null}]}>
-Detach a listener from the events manager.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-detachall" visibility="public" name="detachAll" returnType="void" params={[{"type":"string|null","name":"type","default":"null"}]}>
-Removes all listeners - globally or for a single event type.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-enablepriorities" visibility="public" name="enablePriorities" returnType="void" params={[{"type":"bool","name":"enablePriorities","default":null}]}>
-Toggle priority ordering on/off.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-fire" visibility="public" name="fire" returnType="" params={[{"type":"string","name":"eventType","default":null},{"type":"object","name":"source","default":null},{"type":"mixed","name":"data","default":"null"},{"type":"bool","name":"cancelable","default":"true"}]}>
-Fires an event, notifying the active listeners.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-getlisteners" visibility="public" name="getListeners" returnType="array" params={[{"type":"string","name":"type","default":null}]}>
-Returns all listeners attached to the given event type.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-getresponses" visibility="public" name="getResponses" returnType="array" params={[]}>
-Returns the responses recorded during the last fire (when collecting).
-</ApiItem>
-<ApiItem href="#contractseventsmanager-getsubscribers" visibility="public" name="getSubscribers" returnType="array" params={[]}>
-Returns the list of registered subscriber instances.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-haslisteners" visibility="public" name="hasListeners" returnType="bool" params={[{"type":"string","name":"type","default":null}]}>
-Check whether the given event type has any listeners.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-iscollecting" visibility="public" name="isCollecting" returnType="bool" params={[]}>
-Check whether the manager is currently collecting responses.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-isvalidhandler" visibility="public" name="isValidHandler" returnType="bool" params={[{"type":"mixed","name":"handler","default":null}]}>
-Returns true when the given handler is an object or callable.
-</ApiItem>
-<ApiItem href="#contractseventsmanager-removesubscriber" visibility="public" name="removeSubscriber" returnType="void" params={[{"type":"Subscriber","name":"subscriber","default":null}]}>
-Removes a previously registered subscriber. Detaches every listener the
-</ApiItem>
+- `public addSubscriber(Subscriber $subscriber): void` — Registers an event subscriber. The subscriber's getSubscribedEvents()
+
+- `public arePrioritiesEnabled(): bool` — Returns whether priority ordering is currently enabled.
+
+- `public attach(string $eventType, mixed $handler, int $priority = self::DEFAULT_PRIORITY): void` — Attach a listener to the events manager.
+
+- `public clearSubscribers(): void` — Removes every registered subscriber and detaches each listener they
+
+- `public collectResponses(bool $collect): void` — Toggle response collection on/off.
+
+- `public detach(string $eventType, mixed $handler): void` — Detach a listener from the events manager.
+
+- `public detachAll(string|null $type = null): void` — Removes all listeners - globally or for a single event type.
+
+- `public enablePriorities(bool $enablePriorities): void` — Toggle priority ordering on/off.
+
+- `public fire(string $eventType, object $source, mixed $data = null, bool $cancelable = true)` — Fires an event, notifying the active listeners.
+
+- `public getListeners(string $type): array` — Returns all listeners attached to the given event type.
+
+- `public getResponses(): array` — Returns the responses recorded during the last fire (when collecting).
+
+- `public getSubscribers(): array` — Returns the list of registered subscriber instances.
+
+- `public hasListeners(string $type): bool` — Check whether the given event type has any listeners.
+
+- `public isCollecting(): bool` — Check whether the manager is currently collecting responses.
+
+- `public isValidHandler(mixed $handler): bool` — Returns true when the given handler is an object or callable.
+
+- `public removeSubscriber(Subscriber $subscriber): void` — Removes a previously registered subscriber. Detaches every listener the
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_PRIORITY" type="int" default="100">
-</ApiItem>
+- `const int DEFAULT_PRIORITY = 100`
 
 ### Methods
 
@@ -6454,9 +6126,9 @@ Returns whether priority ordering is currently enabled.
 
 ```php
 public function attach(
-string $eventType,
-mixed $handler,
-int $priority = self::DEFAULT_PRIORITY
+    string $eventType,
+    mixed $handler,
+    int $priority = self::DEFAULT_PRIORITY
 ): void;
 ```
 
@@ -6483,8 +6155,8 @@ Toggle response collection on/off.
 
 ```php
 public function detach(
-string $eventType,
-mixed $handler
+    string $eventType,
+    mixed $handler
 ): void;
 ```
 
@@ -6510,10 +6182,10 @@ Toggle priority ordering on/off.
 
 ```php
 public function fire(
-string $eventType,
-object $source,
-mixed $data = null,
-bool $cancelable = true
+    string $eventType,
+    object $source,
+    mixed $data = null,
+    bool $cancelable = true
 );
 ```
 
@@ -6576,6 +6248,7 @@ public function removeSubscriber( Subscriber $subscriber ): void;
 Removes a previously registered subscriber. Detaches every listener the
 subscriber declared via getSubscribedEvents(). Idempotent.
 
+
 ## Contracts\Events\Stoppable
 
 Interface
@@ -6589,9 +6262,7 @@ package exposes a PSR-14 adapter.
 
 ### Method Summary
 
-<ApiItem href="#contractseventsstoppable-ispropagationstopped" visibility="public" name="isPropagationStopped" returnType="bool" params={[]}>
-Returns true when the event must stop propagating to subsequent
-</ApiItem>
+- `public isPropagationStopped(): bool` — Returns true when the event must stop propagating to subsequent
 
 ### Methods
 
@@ -6603,6 +6274,7 @@ public function isPropagationStopped(): bool;
 
 Returns true when the event must stop propagating to subsequent
 listeners.
+
 
 ## Contracts\Events\Subscriber
 
@@ -6634,9 +6306,7 @@ subscribe to every event of a component, use the prefix as the key:
 
 ### Method Summary
 
-<ApiItem href="#contractseventssubscriber-getsubscribedevents" visibility="public" name="getSubscribedEvents" returnType="array" params={[]}>
-Returns a map of event name => listener config. Called once per
-</ApiItem>
+- `public getSubscribedEvents(): array` — Returns a map of event name => listener config. Called once per
 
 ### Methods
 
@@ -6649,6 +6319,7 @@ public static function getSubscribedEvents(): array;
 Returns a map of event name => listener config. Called once per
 Manager::addSubscriber() / removeSubscriber() call.
 
+
 ## Contracts\Filter\FilterTypes
 
 Interface
@@ -6658,6 +6329,7 @@ Central registry of the array shapes used across the Filter namespace.
 - **`Phalcon\Contracts\Filter\FilterTypes`**
 
 `Phalcon\Filter\Validation\ValidatorInterface`
+
 
 ## Contracts\Filter\Sanitizer
 
@@ -6684,6 +6356,7 @@ Phalcon\Filter\Filter::sanitize(), not of the sanitizer.
 
 - **`Phalcon\Contracts\Filter\Sanitizer`**
 
+
 ## Contracts\Flash\Flash
 
 Interface
@@ -6695,25 +6368,19 @@ API and are not declared on this contract; they are scheduled to be added in
 the next major version.
 
 - **`Phalcon\Contracts\Flash\Flash`**
-- [`Phalcon\Flash\FlashInterface`](/5.21/api/phalcon_flash/#flashflashinterface)
+  - [`Phalcon\Flash\FlashInterface`](/5.21/api/phalcon_flash/#flashflashinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractsflashflash-error" visibility="public" name="error" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML error message
-</ApiItem>
-<ApiItem href="#contractsflashflash-message" visibility="public" name="message" returnType="string|null" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"message","default":null}]}>
-Outputs a message
-</ApiItem>
-<ApiItem href="#contractsflashflash-notice" visibility="public" name="notice" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML notice/information message
-</ApiItem>
-<ApiItem href="#contractsflashflash-success" visibility="public" name="success" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML success message
-</ApiItem>
-<ApiItem href="#contractsflashflash-warning" visibility="public" name="warning" returnType="string|null" params={[{"type":"string","name":"message","default":null}]}>
-Shows a HTML warning message
-</ApiItem>
+- `public error(string $message): string|null` — Shows a HTML error message
+
+- `public message(string $type, string $message): string|null` — Outputs a message
+
+- `public notice(string $message): string|null` — Shows a HTML notice/information message
+
+- `public success(string $message): string|null` — Shows a HTML success message
+
+- `public warning(string $message): string|null` — Shows a HTML warning message
 
 ### Methods
 
@@ -6729,8 +6396,8 @@ Shows a HTML error message
 
 ```php
 public function message(
-string $type,
-string $message
+    string $type,
+    string $message
 ): string|null;
 ```
 
@@ -6767,6 +6434,7 @@ public function warning( string $message ): string|null;
 
 Shows a HTML warning message
 
+
 ## Contracts\Flash\FlashTypes
 
 Interface
@@ -6774,6 +6442,7 @@ Interface
 Central registry of the array shapes used across the Flash namespace.
 
 - **`Phalcon\Contracts\Flash\FlashTypes`**
+
 
 ## Contracts\Forms\FormsTypes
 
@@ -6784,6 +6453,7 @@ Central registry of the array shapes used across the Forms namespace.
 - **`Phalcon\Contracts\Forms\FormsTypes`**
 
 `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Form`
+
 
 ## Contracts\Forms\Schema
 
@@ -6809,9 +6479,7 @@ Optional keys per definition:
 
 ### Method Summary
 
-<ApiItem href="#contractsformsschema-load" visibility="public" name="load" returnType="array" params={[]}>
-Returns an ordered list of normalized element definitions.
-</ApiItem>
+- `public load(): array` — Returns an ordered list of normalized element definitions.
 
 ### Methods
 
@@ -6822,6 +6490,7 @@ public function load(): array;
 ```
 
 Returns an ordered list of normalized element definitions.
+
 
 ## Contracts\Front\FrontController
 
@@ -6834,9 +6503,7 @@ layer in any execution context (HTTP, CLI, etc.).
 
 ### Method Summary
 
-<ApiItem href="#contractsfrontfrontcontroller-run" visibility="public" name="run" returnType="int" params={[]}>
-Runs the front controller.
-</ApiItem>
+- `public run(): int` — Runs the front controller.
 
 ### Methods
 
@@ -6862,7 +6529,7 @@ Runs the front controller.
 
 - Notes:
 
-- **The return value is intended as an exit status code.** Exit
+    - **The return value is intended as an exit status code.** Exit
       status codes may be received initially by the in-process logic
       that invoked `run()` (bootstrap scripts, test harnesses, etc.),
       and may ultimately be received by a parent process (shell,
@@ -6873,7 +6540,7 @@ Runs the front controller.
       whereas worker loops, supervised long-running processes, runtime
       layers, and CI harnesses do.
 
-- **"Success" and "non-success" are context-dependent.** In an HTTP
+    - **"Success" and "non-success" are context-dependent.** In an HTTP
       context, "success" typically means that the request was processed
       and a response was emitted regardless of the HTTP status code,
       whereas "non-success" may indicate that a [_Throwable_][] had to be
@@ -6882,26 +6549,27 @@ Runs the front controller.
       errors, whereas "non-success" may be one of several error
       conditions (cf. the [`sysexits.h`][] conventions where applicable).
 
-- **The exit status code `255` is reserved by PHP itself.** Cf.
+    - **The exit status code `255` is reserved by PHP itself.** Cf.
       [`exit()`][]: "Exit codes should be in the range 0 to 254, the exit
       code 255 is reserved by PHP and should not be used."
 
-- **Handle all possible exceptions.** The logic calling the front
+    - **Handle all possible exceptions.** The logic calling the front
       controller should not have to deal with any exceptions bubbling up
       from it.
 
-- **Graceful handling means returning, not exiting.** A "graceful"
+    - **Graceful handling means returning, not exiting.** A "graceful"
       handler catches the [_Throwable_][], turns it into a non-success
       exit status, and returns that status from `run()` rather than
       calling [`exit()`][].
 
-- **Return the exit status; leave termination to the caller.** The
+    - **Return the exit status; leave termination to the caller.** The
       value of an exit status code comes from letting the caller decide
       what to do with it: a worker loop, queue worker, or test harness
       needs `run()` to hand control back so it can continue, retry, or
       assert on the result. An implementation that calls [`exit()`][]
       inside `run()` prevents those uses, terminating the process before
       the caller regains control.
+
 
 ## Contracts\Front\FrontTypeAliases
 
@@ -6911,11 +6579,12 @@ Interface
 
 - ```
   front_exit_status_int int<0,254>
-```
+  ```
     - An `int` exit status code: `0` for success, `1` to `254` for
       non-success. The value `255` is reserved by PHP itself.
 
 - **`Phalcon\Contracts\Front\FrontTypeAliases`**
+
 
 ## Contracts\Html\Helper\Input\SelectData
 
@@ -6932,11 +6601,9 @@ Return format: [value => label] for flat options;
 
 ### Method Summary
 
-<ApiItem href="#contractshtmlhelperinputselectdata-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Returns the per-option attribute map.
-</ApiItem>
-<ApiItem href="#contractshtmlhelperinputselectdata-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-</ApiItem>
+- `public getAttributes(): array` — Returns the per-option attribute map.
+
+- `public getOptions(): array`
 
 ### Methods
 
@@ -6958,6 +6625,7 @@ ordering, or rendering is performed here.
 public function getOptions(): array;
 ```
 
+
 ## Contracts\Html\HtmlTypes
 
 Interface
@@ -6971,6 +6639,7 @@ pipeline concatenates and escapes every value as a string.
 - **`Phalcon\Contracts\Html\HtmlTypes`**
 
 `Closure`
+
 
 ## Contracts\Html\Link\LinkTypes
 
@@ -6986,6 +6655,7 @@ Html attribute shape drops.
 
 `Phalcon\Html\Link\Interfaces\LinkInterface`
 
+
 ## Contracts\Http\AttributeRequest
 
 Interface
@@ -6998,15 +6668,13 @@ interface exposes it as a contract without touching `RequestInterface`
 type against the attribute-bearing request without depending on the concrete.
 
 - [`Phalcon\Http\RequestInterface`](/5.21/api/phalcon_http/#httprequestinterface)
-- **`Phalcon\Contracts\Http\AttributeRequest`**
+  - **`Phalcon\Contracts\Http\AttributeRequest`**
 
 `Phalcon\Http\RequestInterface` · `Phalcon\Http\Request\Bag\AttributeBag`
 
 ### Method Summary
 
-<ApiItem href="#contractshttpattributerequest-getattributes" visibility="public" name="getAttributes" returnType="AttributeBag" params={[]}>
-Returns the request attribute bag.
-</ApiItem>
+- `public getAttributes(): AttributeBag` — Returns the request attribute bag.
 
 ### Methods
 
@@ -7018,6 +6686,7 @@ public function getAttributes(): AttributeBag;
 
 Returns the request attribute bag.
 
+
 ## Contracts\Http\HttpTypes
 
 Interface
@@ -7027,6 +6696,7 @@ Central registry of the array shapes used across the Http namespace.
 - **`Phalcon\Contracts\Http\HttpTypes`**
 
 `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Request\FileInterface`
+
 
 ## Contracts\Image\ImageTypes
 
@@ -7048,6 +6718,7 @@ from another namespace into the same file.
 
 `Phalcon\Image\Adapter\AdapterInterface`
 
+
 ## Contracts\Logger\Adapter\Adapter
 
 Interface
@@ -7055,39 +6726,29 @@ Interface
 Canonical contract for Phalcon\Logger adapters.
 
 - **`Phalcon\Contracts\Logger\Adapter\Adapter`**
-- [`Phalcon\Logger\Adapter\AdapterInterface`](/5.21/api/phalcon_logger/#loggeradapteradapterinterface)
+  - [`Phalcon\Logger\Adapter\AdapterInterface`](/5.21/api/phalcon_logger/#loggeradapteradapterinterface)
 
 `Phalcon\Logger\Formatter\FormatterInterface` · `Phalcon\Logger\Item`
 
 ### Method Summary
 
-<ApiItem href="#contractsloggeradapteradapter-add" visibility="public" name="add" returnType="Adapter" params={[{"type":"Item","name":"item","default":null}]}>
-Adds a message in the queue
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-begin" visibility="public" name="begin" returnType="Adapter" params={[]}>
-Starts a transaction
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-close" visibility="public" name="close" returnType="bool" params={[]}>
-Closes the logger
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-commit" visibility="public" name="commit" returnType="Adapter" params={[]}>
-Commits the internal transaction
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-getformatter" visibility="public" name="getFormatter" returnType="FormatterInterface" params={[]}>
-Returns the internal formatter
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-intransaction" visibility="public" name="inTransaction" returnType="bool" params={[]}>
-Returns the whether the logger is currently in an active transaction or
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-process" visibility="public" name="process" returnType="void" params={[{"type":"Item","name":"item","default":null}]}>
-Processes the message in the adapter
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-rollback" visibility="public" name="rollback" returnType="Adapter" params={[]}>
-Rollbacks the internal transaction
-</ApiItem>
-<ApiItem href="#contractsloggeradapteradapter-setformatter" visibility="public" name="setFormatter" returnType="Adapter" params={[{"type":"FormatterInterface","name":"formatter","default":null}]}>
-Sets the message formatter
-</ApiItem>
+- `public add(Item $item): Adapter` — Adds a message in the queue
+
+- `public begin(): Adapter` — Starts a transaction
+
+- `public close(): bool` — Closes the logger
+
+- `public commit(): Adapter` — Commits the internal transaction
+
+- `public getFormatter(): FormatterInterface` — Returns the internal formatter
+
+- `public inTransaction(): bool` — Returns the whether the logger is currently in an active transaction or
+
+- `public process(Item $item): void` — Processes the message in the adapter
+
+- `public rollback(): Adapter` — Rollbacks the internal transaction
+
+- `public setFormatter(FormatterInterface $formatter): Adapter` — Sets the message formatter
 
 ### Methods
 
@@ -7164,6 +6825,7 @@ public function setFormatter( FormatterInterface $formatter ): Adapter;
 
 Sets the message formatter
 
+
 ## Contracts\Logger\Formatter\Formatter
 
 Interface
@@ -7171,15 +6833,13 @@ Interface
 Canonical contract for Phalcon\Logger formatters.
 
 - **`Phalcon\Contracts\Logger\Formatter\Formatter`**
-- [`Phalcon\Logger\Formatter\FormatterInterface`](/5.21/api/phalcon_logger/#loggerformatterformatterinterface)
+  - [`Phalcon\Logger\Formatter\FormatterInterface`](/5.21/api/phalcon_logger/#loggerformatterformatterinterface)
 
 `Phalcon\Logger\Item`
 
 ### Method Summary
 
-<ApiItem href="#contractsloggerformatterformatter-format" visibility="public" name="format" returnType="string" params={[{"type":"Item","name":"item","default":null}]}>
-Applies a format to an item
-</ApiItem>
+- `public format(Item $item): string` — Applies a format to an item
 
 ### Methods
 
@@ -7191,6 +6851,7 @@ public function format( Item $item ): string;
 
 Applies a format to an item
 
+
 ## Contracts\Logger\Logger
 
 Interface
@@ -7198,54 +6859,39 @@ Interface
 Canonical contract for Phalcon\Logger\Logger.
 
 - **`Phalcon\Contracts\Logger\Logger`**
-- [`Phalcon\Logger\LoggerInterface`](/5.21/api/phalcon_logger/#loggerloggerinterface)
+  - [`Phalcon\Logger\LoggerInterface`](/5.21/api/phalcon_logger/#loggerloggerinterface)
 
 `Phalcon\Contracts\Logger\Adapter\Adapter`
 
 ### Method Summary
 
-<ApiItem href="#contractsloggerlogger-alert" visibility="public" name="alert" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Action must be taken immediately.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-critical" visibility="public" name="critical" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Critical conditions.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-debug" visibility="public" name="debug" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Detailed debug information.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-emergency" visibility="public" name="emergency" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-System is unusable.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-error" visibility="public" name="error" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Runtime errors that do not require immediate action but should typically
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-getadapter" visibility="public" name="getAdapter" returnType="Adapter" params={[{"type":"string","name":"name","default":null}]}>
-Returns an adapter from the stack
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-getadapters" visibility="public" name="getAdapters" returnType="array" params={[]}>
-Returns the adapter stack array
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-getloglevel" visibility="public" name="getLogLevel" returnType="int" params={[]}>
-Returns the log level
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the name of the logger
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-info" visibility="public" name="info" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Interesting events.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-log" visibility="public" name="log" returnType="void" params={[{"type":"mixed","name":"level","default":null},{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Logs with an arbitrary level.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-notice" visibility="public" name="notice" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Normal but significant events.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-trace" visibility="public" name="trace" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Extra-verbose diagnostic output.
-</ApiItem>
-<ApiItem href="#contractsloggerlogger-warning" visibility="public" name="warning" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Exceptional occurrences that are not errors.
-</ApiItem>
+- `public alert(string $message, array $context = []): void` — Action must be taken immediately.
+
+- `public critical(string $message, array $context = []): void` — Critical conditions.
+
+- `public debug(string $message, array $context = []): void` — Detailed debug information.
+
+- `public emergency(string $message, array $context = []): void` — System is unusable.
+
+- `public error(string $message, array $context = []): void` — Runtime errors that do not require immediate action but should typically
+
+- `public getAdapter(string $name): Adapter` — Returns an adapter from the stack
+
+- `public getAdapters(): array` — Returns the adapter stack array
+
+- `public getLogLevel(): int` — Returns the log level
+
+- `public getName(): string` — Returns the name of the logger
+
+- `public info(string $message, array $context = []): void` — Interesting events.
+
+- `public log(mixed $level, string $message, array $context = []): void` — Logs with an arbitrary level.
+
+- `public notice(string $message, array $context = []): void` — Normal but significant events.
+
+- `public trace(string $message, array $context = []): void` — Extra-verbose diagnostic output.
+
+- `public warning(string $message, array $context = []): void` — Exceptional occurrences that are not errors.
 
 ### Methods
 
@@ -7253,8 +6899,8 @@ Exceptional occurrences that are not errors.
 
 ```php
 public function alert(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7267,8 +6913,8 @@ trigger the SMS alerts and wake you up.
 
 ```php
 public function critical(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7280,8 +6926,8 @@ Example: Application component unavailable, unexpected exception.
 
 ```php
 public function debug(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7291,8 +6937,8 @@ Detailed debug information.
 
 ```php
 public function emergency(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7302,8 +6948,8 @@ System is unusable.
 
 ```php
 public function error(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7346,8 +6992,8 @@ Returns the name of the logger
 
 ```php
 public function info(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7359,9 +7005,9 @@ Example: User logs in, SQL logs.
 
 ```php
 public function log(
-mixed $level,
-string $message,
-array $context = []
+    mixed $level,
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7374,8 +7020,8 @@ to the CUSTOM level and is logged, rather than raising an exception.
 
 ```php
 public function notice(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7385,8 +7031,8 @@ Normal but significant events.
 
 ```php
 public function trace(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7396,8 +7042,8 @@ Extra-verbose diagnostic output.
 
 ```php
 public function warning(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -7405,6 +7051,7 @@ Exceptional occurrences that are not errors.
 
 Example: Use of deprecated APIs, poor use of an API, undesirable things
 that are not necessarily wrong.
+
 
 ## Contracts\Messages\Messages
 
@@ -7421,21 +7068,17 @@ during iteration (`foreach`), which walks the integer sequence only.
 @extends Iterator&lt;int, MessageInterface>
 
 - `\ArrayAccess`
-- **`Phalcon\Contracts\Messages\Messages`** - extends `\ArrayAccess`, `\Countable`, `\Iterator`
+  - **`Phalcon\Contracts\Messages\Messages`** - extends `\ArrayAccess`, `\Countable`, `\Iterator`
 
 `ArrayAccess` · `Countable` · `Iterator` · `Phalcon\Messages\MessageInterface`
 
 ### Method Summary
 
-<ApiItem href="#contractsmessagesmessages-appendmessage" visibility="public" name="appendMessage" returnType="void" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the collection
-</ApiItem>
-<ApiItem href="#contractsmessagesmessages-appendmessages" visibility="public" name="appendMessages" returnType="" params={[{"type":"mixed","name":"messages","default":null}]}>
-Appends an array of messages to the collection
-</ApiItem>
-<ApiItem href="#contractsmessagesmessages-filter" visibility="public" name="filter" returnType="array" params={[{"type":"string","name":"fieldName","default":null}]}>
-Filters the message collection by field name
-</ApiItem>
+- `public appendMessage(MessageInterface $message): void` — Appends a message to the collection
+
+- `public appendMessages(mixed $messages)` — Appends an array of messages to the collection
+
+- `public filter(string $fieldName): array` — Filters the message collection by field name
 
 ### Methods
 
@@ -7463,6 +7106,7 @@ public function filter( string $fieldName ): array;
 
 Filters the message collection by field name
 
+
 ## Contracts\Messages\MessagesTypes
 
 Interface
@@ -7483,6 +7127,7 @@ from another namespace into the same file.
 
 `Phalcon\Messages\MessageInterface`
 
+
 ## Contracts\Mvc\Dispatcher
 
 Interface
@@ -7490,31 +7135,24 @@ Interface
 Canonical contract for Phalcon\Mvc\Dispatcher.
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](#contractsdispatcherdispatcher)
-- **`Phalcon\Contracts\Mvc\Dispatcher`**
-- [`Phalcon\Mvc\DispatcherInterface`](/5.21/api/phalcon_mvc/#mvcdispatcherinterface)
+  - **`Phalcon\Contracts\Mvc\Dispatcher`**
+    - [`Phalcon\Mvc\DispatcherInterface`](/5.21/api/phalcon_mvc/#mvcdispatcherinterface)
 
 `Phalcon\Contracts\Dispatcher\Dispatcher` · `Phalcon\Mvc\ControllerInterface`
 
 ### Method Summary
 
-<ApiItem href="#contractsmvcdispatcher-getactivecontroller" visibility="public" name="getActiveController" returnType="ControllerInterface|null" params={[]}>
-Returns the active controller in the dispatcher
-</ApiItem>
-<ApiItem href="#contractsmvcdispatcher-getcontrollername" visibility="public" name="getControllerName" returnType="string" params={[]}>
-Gets last dispatched controller name
-</ApiItem>
-<ApiItem href="#contractsmvcdispatcher-getlastcontroller" visibility="public" name="getLastController" returnType="ControllerInterface|null" params={[]}>
-Returns the latest dispatched controller
-</ApiItem>
-<ApiItem href="#contractsmvcdispatcher-setcontrollername" visibility="public" name="setControllerName" returnType="DispatcherContract" params={[{"type":"string","name":"controllerName","default":null}]}>
-Sets the controller name to be dispatched
-</ApiItem>
-<ApiItem href="#contractsmvcdispatcher-setcontrollersuffix" visibility="public" name="setControllerSuffix" returnType="DispatcherContract" params={[{"type":"string","name":"controllerSuffix","default":null}]}>
-Sets the default controller suffix
-</ApiItem>
-<ApiItem href="#contractsmvcdispatcher-setdefaultcontroller" visibility="public" name="setDefaultController" returnType="DispatcherContract" params={[{"type":"string","name":"controllerName","default":null}]}>
-Sets the default controller name
-</ApiItem>
+- `public getActiveController(): ControllerInterface|null` — Returns the active controller in the dispatcher
+
+- `public getControllerName(): string` — Gets last dispatched controller name
+
+- `public getLastController(): ControllerInterface|null` — Returns the latest dispatched controller
+
+- `public setControllerName(string $controllerName): DispatcherContract` — Sets the controller name to be dispatched
+
+- `public setControllerSuffix(string $controllerSuffix): DispatcherContract` — Sets the default controller suffix
+
+- `public setDefaultController(string $controllerName): DispatcherContract` — Sets the default controller name
 
 ### Methods
 
@@ -7566,6 +7204,7 @@ public function setDefaultController( string $controllerName ): DispatcherContra
 
 Sets the default controller name
 
+
 ## Contracts\Mvc\Model\Relation\CacheKeyProvider
 
 Interface
@@ -7580,9 +7219,7 @@ database record.
 
 ### Method Summary
 
-<ApiItem href="#contractsmvcmodelrelationcachekeyprovider-getuniquekey" visibility="public" name="getUniqueKey" returnType="string" params={[]}>
-Returns a string that uniquely identifies this model instance for
-</ApiItem>
+- `public getUniqueKey(): string` — Returns a string that uniquely identifies this model instance for
 
 ### Methods
 
@@ -7595,6 +7232,7 @@ public function getUniqueKey(): string;
 Returns a string that uniquely identifies this model instance for
 use as the key in the reusable records cache.
 
+
 ## Contracts\Paginator\Adapter
 
 Interface
@@ -7602,22 +7240,17 @@ Interface
 Interface for Phalcon\Paginator adapters
 
 - **`Phalcon\Contracts\Paginator\Adapter`**
-- [`Phalcon\Paginator\Adapter\AdapterInterface`](/5.21/api/phalcon_paginator/#paginatoradapteradapterinterface)
+  - [`Phalcon\Paginator\Adapter\AdapterInterface`](/5.21/api/phalcon_paginator/#paginatoradapteradapterinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractspaginatoradapter-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
-Get current rows limit
-</ApiItem>
-<ApiItem href="#contractspaginatoradapter-paginate" visibility="public" name="paginate" returnType="Repository" params={[]}>
-Returns a slice of the resultset to show in the pagination
-</ApiItem>
-<ApiItem href="#contractspaginatoradapter-setcurrentpage" visibility="public" name="setCurrentPage" returnType="Adapter" params={[{"type":"int","name":"page","default":null}]}>
-Set the current page number
-</ApiItem>
-<ApiItem href="#contractspaginatoradapter-setlimit" visibility="public" name="setLimit" returnType="Adapter" params={[{"type":"int","name":"limit","default":null}]}>
-Set current rows limit
-</ApiItem>
+- `public getLimit(): int` — Get current rows limit
+
+- `public paginate(): Repository` — Returns a slice of the resultset to show in the pagination
+
+- `public setCurrentPage(int $page): Adapter` — Set the current page number
+
+- `public setLimit(int $limit): Adapter` — Set current rows limit
 
 ### Methods
 
@@ -7653,6 +7286,7 @@ public function setLimit( int $limit ): Adapter;
 
 Set current rows limit
 
+
 ## Contracts\Paginator\PaginatorTypes
 
 Interface
@@ -7673,6 +7307,7 @@ imported from another namespace into the same file.
 
 `Phalcon\Mvc\Model\Query\Builder`
 
+
 ## Contracts\Paginator\Repository
 
 Interface
@@ -7690,62 +7325,49 @@ Two adapter dialects fill this repository:
   `getPrevious()` are not computed (they return 0).
 
 - **`Phalcon\Contracts\Paginator\Repository`**
-- [`Phalcon\Paginator\RepositoryInterface`](/5.21/api/phalcon_paginator/#paginatorrepositoryinterface)
+  - [`Phalcon\Paginator\RepositoryInterface`](/5.21/api/phalcon_paginator/#paginatorrepositoryinterface)
 
 ### Method Summary
 
-<ApiItem href="#contractspaginatorrepository-getaliases" visibility="public" name="getAliases" returnType="array" params={[]}>
-Gets the aliases for properties repository
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getcurrent" visibility="public" name="getCurrent" returnType="int" params={[]}>
-Gets number of the current page
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getfirst" visibility="public" name="getFirst" returnType="int" params={[]}>
-Gets number of the first page
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getitems" visibility="public" name="getItems" returnType="mixed" params={[]}>
-Gets the items on the current page
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getlast" visibility="public" name="getLast" returnType="int" params={[]}>
-Gets number of the last page
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getlimit" visibility="public" name="getLimit" returnType="int" params={[]}>
-Gets current rows limit
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getnext" visibility="public" name="getNext" returnType="int" params={[]}>
-Gets number of the next page
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-getprevious" visibility="public" name="getPrevious" returnType="int" params={[]}>
-Gets number of the previous page
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-gettotalitems" visibility="public" name="getTotalItems" returnType="int" params={[]}>
-Gets the total number of items
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-setaliases" visibility="public" name="setAliases" returnType="Repository" params={[{"type":"array","name":"aliases","default":null}]}>
-Sets the aliases for properties repository
-</ApiItem>
-<ApiItem href="#contractspaginatorrepository-setproperties" visibility="public" name="setProperties" returnType="Repository" params={[{"type":"array","name":"properties","default":null}]}>
-Sets values for properties of the repository
-</ApiItem>
+- `public getAliases(): array` — Gets the aliases for properties repository
+
+- `public getCurrent(): int` — Gets number of the current page
+
+- `public getFirst(): int` — Gets number of the first page
+
+- `public getItems(): mixed` — Gets the items on the current page
+
+- `public getLast(): int` — Gets number of the last page
+
+- `public getLimit(): int` — Gets current rows limit
+
+- `public getNext(): int` — Gets number of the next page
+
+- `public getPrevious(): int` — Gets number of the previous page
+
+- `public getTotalItems(): int` — Gets the total number of items
+
+- `public setAliases(array $aliases): Repository` — Sets the aliases for properties repository
+
+- `public setProperties(array $properties): Repository` — Sets values for properties of the repository
 
 ### Constants
 
-<ApiItem kind="constant" name="PROPERTY_CURRENT_PAGE" type="string" default="&quot;current&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_FIRST_PAGE" type="string" default="&quot;first&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_ITEMS" type="string" default="&quot;items&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_LAST_PAGE" type="string" default="&quot;last&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_LIMIT" type="string" default="&quot;limit&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_NEXT_PAGE" type="string" default="&quot;next&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_PREVIOUS_PAGE" type="string" default="&quot;previous&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="PROPERTY_TOTAL_ITEMS" type="string" default="&quot;total_items&quot;">
-</ApiItem>
+- `const string PROPERTY_CURRENT_PAGE = "current"`
+
+- `const string PROPERTY_FIRST_PAGE = "first"`
+
+- `const string PROPERTY_ITEMS = "items"`
+
+- `const string PROPERTY_LAST_PAGE = "last"`
+
+- `const string PROPERTY_LIMIT = "limit"`
+
+- `const string PROPERTY_NEXT_PAGE = "next"`
+
+- `const string PROPERTY_PREVIOUS_PAGE = "previous"`
+
+- `const string PROPERTY_TOTAL_ITEMS = "total_items"`
 
 ### Methods
 
@@ -7849,6 +7471,7 @@ public function setProperties( array $properties ): Repository;
 
 Sets values for properties of the repository
 
+
 ## Contracts\Queue\ConnectionFactory
 
 Interface
@@ -7859,9 +7482,7 @@ Builds a Context: the entry point of every adapter.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueueconnectionfactory-createcontext" visibility="public" name="createContext" returnType="Context" params={[]}>
-Creates a context (a session/connection to the transport).
-</ApiItem>
+- `public createContext(): Context` — Creates a context (a session/connection to the transport).
 
 ### Methods
 
@@ -7873,6 +7494,7 @@ public function createContext(): Context;
 
 Creates a context (a session/connection to the transport).
 
+
 ## Contracts\Queue\Consumer
 
 Interface
@@ -7883,21 +7505,15 @@ Receives messages from a single queue.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueueconsumer-acknowledge" visibility="public" name="acknowledge" returnType="void" params={[{"type":"Message","name":"message","default":null}]}>
-Acknowledges the message; the transport may then discard it.
-</ApiItem>
-<ApiItem href="#contractsqueueconsumer-getqueue" visibility="public" name="getQueue" returnType="Queue" params={[]}>
-Returns the queue this consumer reads from.
-</ApiItem>
-<ApiItem href="#contractsqueueconsumer-receive" visibility="public" name="receive" returnType="Message|null" params={[{"type":"int","name":"timeout","default":"0"}]}>
-Receives a message, blocking up to timeout milliseconds (0 = block
-</ApiItem>
-<ApiItem href="#contractsqueueconsumer-receivenowait" visibility="public" name="receiveNoWait" returnType="Message|null" params={[]}>
-Receives a message without blocking, or null when none is ready.
-</ApiItem>
-<ApiItem href="#contractsqueueconsumer-reject" visibility="public" name="reject" returnType="void" params={[{"type":"Message","name":"message","default":null},{"type":"bool","name":"requeue","default":"false"}]}>
-Rejects the message. When requeue is true the transport redelivers it.
-</ApiItem>
+- `public acknowledge(Message $message): void` — Acknowledges the message; the transport may then discard it.
+
+- `public getQueue(): Queue` — Returns the queue this consumer reads from.
+
+- `public receive(int $timeout = 0): Message|null` — Receives a message, blocking up to timeout milliseconds (0 = block
+
+- `public receiveNoWait(): Message|null` — Receives a message without blocking, or null when none is ready.
+
+- `public reject(Message $message, bool $requeue = false): void` — Rejects the message. When requeue is true the transport redelivers it.
 
 ### Methods
 
@@ -7938,12 +7554,13 @@ Receives a message without blocking, or null when none is ready.
 
 ```php
 public function reject(
-Message $message,
-bool $requeue = false
+    Message $message,
+    bool $requeue = false
 ): void;
 ```
 
 Rejects the message. When requeue is true the transport redelivers it.
+
 
 ## Contracts\Queue\Context
 
@@ -7956,33 +7573,23 @@ producers and consumers.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueuecontext-close" visibility="public" name="close" returnType="void" params={[]}>
-Closes the context and releases its resources.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createconsumer" visibility="public" name="createConsumer" returnType="Consumer" params={[{"type":"Destination","name":"destination","default":null}]}>
-Creates a consumer for the given destination.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createmessage" visibility="public" name="createMessage" returnType="Message" params={[{"type":"string","name":"body","default":"\"\""},{"type":"array","name":"properties","default":"[]"},{"type":"array","name":"headers","default":"[]"}]}>
-Creates a message with an optional body, properties and headers.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createproducer" visibility="public" name="createProducer" returnType="Producer" params={[]}>
-Creates a producer.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createqueue" visibility="public" name="createQueue" returnType="Queue" params={[{"type":"string","name":"queueName","default":null}]}>
-Creates a queue destination by name.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createsubscriptionconsumer" visibility="public" name="createSubscriptionConsumer" returnType="SubscriptionConsumer" params={[]}>
-Creates a subscription consumer for consuming from several queues.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createtemporaryqueue" visibility="public" name="createTemporaryQueue" returnType="Queue" params={[]}>
-Creates a temporary queue tied to the lifetime of the context.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-createtopic" visibility="public" name="createTopic" returnType="Topic" params={[{"type":"string","name":"topicName","default":null}]}>
-Creates a topic destination by name.
-</ApiItem>
-<ApiItem href="#contractsqueuecontext-purgequeue" visibility="public" name="purgeQueue" returnType="void" params={[{"type":"Queue","name":"queue","default":null}]}>
-Removes all messages from the given queue.
-</ApiItem>
+- `public close(): void` — Closes the context and releases its resources.
+
+- `public createConsumer(Destination $destination): Consumer` — Creates a consumer for the given destination.
+
+- `public createMessage(string $body = "", array $properties = [], array $headers = []): Message` — Creates a message with an optional body, properties and headers.
+
+- `public createProducer(): Producer` — Creates a producer.
+
+- `public createQueue(string $queueName): Queue` — Creates a queue destination by name.
+
+- `public createSubscriptionConsumer(): SubscriptionConsumer` — Creates a subscription consumer for consuming from several queues.
+
+- `public createTemporaryQueue(): Queue` — Creates a temporary queue tied to the lifetime of the context.
+
+- `public createTopic(string $topicName): Topic` — Creates a topic destination by name.
+
+- `public purgeQueue(Queue $queue): void` — Removes all messages from the given queue.
 
 ### Methods
 
@@ -8006,9 +7613,9 @@ Creates a consumer for the given destination.
 
 ```php
 public function createMessage(
-string $body = "",
-array $properties = [],
-array $headers = []
+    string $body = "",
+    array $properties = [],
+    array $headers = []
 ): Message;
 ```
 
@@ -8062,6 +7669,7 @@ public function purgeQueue( Queue $queue ): void;
 
 Removes all messages from the given queue.
 
+
 ## Contracts\Queue\Destination
 
 Interface
@@ -8069,8 +7677,9 @@ Interface
 Marker interface for a message destination: a Queue or a Topic.
 
 - **`Phalcon\Contracts\Queue\Destination`**
-- [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
-- [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
+  - [`Phalcon\Contracts\Queue\Queue`](#contractsqueuequeue)
+  - [`Phalcon\Contracts\Queue\Topic`](#contractsqueuetopic)
+
 
 ## Contracts\Queue\Inspectable
 
@@ -8089,9 +7698,7 @@ normalized schema. Each implementation documents the exact keys it returns.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueueinspectable-getstats" visibility="public" name="getStats" returnType="array" params={[{"type":"Queue","name":"queue","default":null}]}>
-Returns statistics for the given queue.
-</ApiItem>
+- `public getStats(Queue $queue): array` — Returns statistics for the given queue.
 
 ### Methods
 
@@ -8102,6 +7709,7 @@ public function getStats( Queue $queue ): array;
 ```
 
 Returns statistics for the given queue.
+
 
 ## Contracts\Queue\Message
 
@@ -8114,66 +7722,45 @@ properties, transport headers and the standard messaging metadata.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueuemessage-getbody" visibility="public" name="getBody" returnType="string" params={[]}>
-Returns the message body.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getcorrelationid" visibility="public" name="getCorrelationId" returnType="string|null" params={[]}>
-Returns the correlation id used to correlate request/reply messages.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getheader" visibility="public" name="getHeader" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns a single header value, or the default when it is not set.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getheaders" visibility="public" name="getHeaders" returnType="array" params={[]}>
-Returns all transport headers.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getmessageid" visibility="public" name="getMessageId" returnType="string|null" params={[]}>
-Returns the message id.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getproperties" visibility="public" name="getProperties" returnType="array" params={[]}>
-Returns all application properties.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getproperty" visibility="public" name="getProperty" returnType="mixed" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns a single property value, or the default when it is not set.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-getreplyto" visibility="public" name="getReplyTo" returnType="string|null" params={[]}>
-Returns the reply-to destination name.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-gettimestamp" visibility="public" name="getTimestamp" returnType="int|null" params={[]}>
-Returns the timestamp (in milliseconds) or null when it is not set.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-isredelivered" visibility="public" name="isRedelivered" returnType="bool" params={[]}>
-Whether the message has been redelivered.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setbody" visibility="public" name="setBody" returnType="void" params={[{"type":"string","name":"body","default":null}]}>
-Sets the message body.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setcorrelationid" visibility="public" name="setCorrelationId" returnType="void" params={[{"type":"string","name":"correlationId","default":null}]}>
-Sets the correlation id.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setheader" visibility="public" name="setHeader" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a single transport header.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setheaders" visibility="public" name="setHeaders" returnType="void" params={[{"type":"array","name":"headers","default":null}]}>
-Replaces all transport headers.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setmessageid" visibility="public" name="setMessageId" returnType="void" params={[{"type":"string","name":"messageId","default":null}]}>
-Sets the message id.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setproperties" visibility="public" name="setProperties" returnType="void" params={[{"type":"array","name":"properties","default":null}]}>
-Replaces all application properties.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setproperty" visibility="public" name="setProperty" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a single application property.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setredelivered" visibility="public" name="setRedelivered" returnType="void" params={[{"type":"bool","name":"redelivered","default":null}]}>
-Marks the message as redelivered.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-setreplyto" visibility="public" name="setReplyTo" returnType="void" params={[{"type":"string","name":"replyTo","default":null}]}>
-Sets the reply-to destination name.
-</ApiItem>
-<ApiItem href="#contractsqueuemessage-settimestamp" visibility="public" name="setTimestamp" returnType="void" params={[{"type":"int","name":"timestamp","default":null}]}>
-Sets the timestamp (in milliseconds).
-</ApiItem>
+- `public getBody(): string` — Returns the message body.
+
+- `public getCorrelationId(): string|null` — Returns the correlation id used to correlate request/reply messages.
+
+- `public getHeader(string $name, mixed $defaultValue = null): mixed` — Returns a single header value, or the default when it is not set.
+
+- `public getHeaders(): array` — Returns all transport headers.
+
+- `public getMessageId(): string|null` — Returns the message id.
+
+- `public getProperties(): array` — Returns all application properties.
+
+- `public getProperty(string $name, mixed $defaultValue = null): mixed` — Returns a single property value, or the default when it is not set.
+
+- `public getReplyTo(): string|null` — Returns the reply-to destination name.
+
+- `public getTimestamp(): int|null` — Returns the timestamp (in milliseconds) or null when it is not set.
+
+- `public isRedelivered(): bool` — Whether the message has been redelivered.
+
+- `public setBody(string $body): void` — Sets the message body.
+
+- `public setCorrelationId(string $correlationId): void` — Sets the correlation id.
+
+- `public setHeader(string $name, mixed $value): void` — Sets a single transport header.
+
+- `public setHeaders(array $headers): void` — Replaces all transport headers.
+
+- `public setMessageId(string $messageId): void` — Sets the message id.
+
+- `public setProperties(array $properties): void` — Replaces all application properties.
+
+- `public setProperty(string $name, mixed $value): void` — Sets a single application property.
+
+- `public setRedelivered(bool $redelivered): void` — Marks the message as redelivered.
+
+- `public setReplyTo(string $replyTo): void` — Sets the reply-to destination name.
+
+- `public setTimestamp(int $timestamp): void` — Sets the timestamp (in milliseconds).
 
 ### Methods
 
@@ -8197,8 +7784,8 @@ Returns the correlation id used to correlate request/reply messages.
 
 ```php
 public function getHeader(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -8232,8 +7819,8 @@ Returns all application properties.
 
 ```php
 public function getProperty(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -8283,8 +7870,8 @@ Sets the correlation id.
 
 ```php
 public function setHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -8318,8 +7905,8 @@ Replaces all application properties.
 
 ```php
 public function setProperty(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): void;
 ```
 
@@ -8349,6 +7936,7 @@ public function setTimestamp( int $timestamp ): void;
 
 Sets the timestamp (in milliseconds).
 
+
 ## Contracts\Queue\Processor
 
 Interface
@@ -8363,18 +7951,15 @@ ecosystem.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueueprocessor-process" visibility="public" name="process" returnType="string|object" params={[{"type":"Message","name":"message","default":null},{"type":"Context","name":"context","default":null}]}>
-Processes the message and returns one of the ACK / REJECT / REQUEUE
-</ApiItem>
+- `public process(Message $message, Context $context): string|object` — Processes the message and returns one of the ACK / REJECT / REQUEUE
 
 ### Constants
 
-<ApiItem kind="constant" name="ACK" type="string" default="&quot;enqueue.ack&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="REJECT" type="string" default="&quot;enqueue.reject&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="REQUEUE" type="string" default="&quot;enqueue.requeue&quot;">
-</ApiItem>
+- `const string ACK = "enqueue.ack"`
+
+- `const string REJECT = "enqueue.reject"`
+
+- `const string REQUEUE = "enqueue.requeue"`
 
 ### Methods
 
@@ -8382,13 +7967,14 @@ Processes the message and returns one of the ACK / REJECT / REQUEUE
 
 ```php
 public function process(
-Message $message,
-Context $context
+    Message $message,
+    Context $context
 ): string|object;
 ```
 
 Processes the message and returns one of the ACK / REJECT / REQUEUE
 constants, or an object whose string form is one of those values.
+
 
 ## Contracts\Queue\Producer
 
@@ -8400,27 +7986,19 @@ Sends messages to a destination.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueueproducer-getdeliverydelay" visibility="public" name="getDeliveryDelay" returnType="int|null" params={[]}>
-Returns the delivery delay (in milliseconds) or null when not set.
-</ApiItem>
-<ApiItem href="#contractsqueueproducer-getpriority" visibility="public" name="getPriority" returnType="int|null" params={[]}>
-Returns the message priority or null when not set.
-</ApiItem>
-<ApiItem href="#contractsqueueproducer-gettimetolive" visibility="public" name="getTimeToLive" returnType="int|null" params={[]}>
-Returns the time to live (in milliseconds) or null when not set.
-</ApiItem>
-<ApiItem href="#contractsqueueproducer-send" visibility="public" name="send" returnType="void" params={[{"type":"Destination","name":"destination","default":null},{"type":"Message","name":"message","default":null}]}>
-Sends a message to the given destination.
-</ApiItem>
-<ApiItem href="#contractsqueueproducer-setdeliverydelay" visibility="public" name="setDeliveryDelay" returnType="Producer" params={[{"type":"mixed","name":"deliveryDelay","default":"null"}]}>
-Sets the delivery delay (in milliseconds). Null clears it.
-</ApiItem>
-<ApiItem href="#contractsqueueproducer-setpriority" visibility="public" name="setPriority" returnType="Producer" params={[{"type":"mixed","name":"priority","default":"null"}]}>
-Sets the message priority. Null clears it.
-</ApiItem>
-<ApiItem href="#contractsqueueproducer-settimetolive" visibility="public" name="setTimeToLive" returnType="Producer" params={[{"type":"mixed","name":"timeToLive","default":"null"}]}>
-Sets the time to live (in milliseconds). Null clears it.
-</ApiItem>
+- `public getDeliveryDelay(): int|null` — Returns the delivery delay (in milliseconds) or null when not set.
+
+- `public getPriority(): int|null` — Returns the message priority or null when not set.
+
+- `public getTimeToLive(): int|null` — Returns the time to live (in milliseconds) or null when not set.
+
+- `public send(Destination $destination, Message $message): void` — Sends a message to the given destination.
+
+- `public setDeliveryDelay(mixed $deliveryDelay = null): Producer` — Sets the delivery delay (in milliseconds). Null clears it.
+
+- `public setPriority(mixed $priority = null): Producer` — Sets the message priority. Null clears it.
+
+- `public setTimeToLive(mixed $timeToLive = null): Producer` — Sets the time to live (in milliseconds). Null clears it.
 
 ### Methods
 
@@ -8452,8 +8030,8 @@ Returns the time to live (in milliseconds) or null when not set.
 
 ```php
 public function send(
-Destination $destination,
-Message $message
+    Destination $destination,
+    Message $message
 ): void;
 ```
 
@@ -8483,6 +8061,7 @@ public function setTimeToLive( mixed $timeToLive = null ): Producer;
 
 Sets the time to live (in milliseconds). Null clears it.
 
+
 ## Contracts\Queue\Queue
 
 Interface
@@ -8490,13 +8069,11 @@ Interface
 A queue destination (point-to-point).
 
 - [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
-- **`Phalcon\Contracts\Queue\Queue`**
+  - **`Phalcon\Contracts\Queue\Queue`**
 
 ### Method Summary
 
-<ApiItem href="#contractsqueuequeue-getqueuename" visibility="public" name="getQueueName" returnType="string" params={[]}>
-Returns the queue name.
-</ApiItem>
+- `public getQueueName(): string` — Returns the queue name.
 
 ### Methods
 
@@ -8508,6 +8085,7 @@ public function getQueueName(): string;
 
 Returns the queue name.
 
+
 ## Contracts\Queue\QueueTypes
 
 Interface
@@ -8515,6 +8093,7 @@ Interface
 Central registry of the array shapes used across the Queue namespace.
 
 - **`Phalcon\Contracts\Queue\QueueTypes`**
+
 
 ## Contracts\Queue\SubscriptionConsumer
 
@@ -8527,18 +8106,13 @@ callback registered for its consumer.
 
 ### Method Summary
 
-<ApiItem href="#contractsqueuesubscriptionconsumer-consume" visibility="public" name="consume" returnType="void" params={[{"type":"int","name":"timeout","default":"0"}]}>
-Starts consuming, blocking up to timeout milliseconds (0 = block
-</ApiItem>
-<ApiItem href="#contractsqueuesubscriptionconsumer-subscribe" visibility="public" name="subscribe" returnType="void" params={[{"type":"Consumer","name":"consumer","default":null},{"type":"callable","name":"callback","default":null}]}>
-Subscribes a consumer; the callback receives each delivered message.
-</ApiItem>
-<ApiItem href="#contractsqueuesubscriptionconsumer-unsubscribe" visibility="public" name="unsubscribe" returnType="void" params={[{"type":"Consumer","name":"consumer","default":null}]}>
-Removes a previously subscribed consumer.
-</ApiItem>
-<ApiItem href="#contractsqueuesubscriptionconsumer-unsubscribeall" visibility="public" name="unsubscribeAll" returnType="void" params={[]}>
-Removes every subscribed consumer.
-</ApiItem>
+- `public consume(int $timeout = 0): void` — Starts consuming, blocking up to timeout milliseconds (0 = block
+
+- `public subscribe(Consumer $consumer, callable $callback): void` — Subscribes a consumer; the callback receives each delivered message.
+
+- `public unsubscribe(Consumer $consumer): void` — Removes a previously subscribed consumer.
+
+- `public unsubscribeAll(): void` — Removes every subscribed consumer.
 
 ### Methods
 
@@ -8555,8 +8129,8 @@ until a message is available).
 
 ```php
 public function subscribe(
-Consumer $consumer,
-callable $callback
+    Consumer $consumer,
+    callable $callback
 ): void;
 ```
 
@@ -8578,6 +8152,7 @@ public function unsubscribeAll(): void;
 
 Removes every subscribed consumer.
 
+
 ## Contracts\Queue\Topic
 
 Interface
@@ -8585,13 +8160,11 @@ Interface
 A topic destination (publish/subscribe).
 
 - [`Phalcon\Contracts\Queue\Destination`](#contractsqueuedestination)
-- **`Phalcon\Contracts\Queue\Topic`**
+  - **`Phalcon\Contracts\Queue\Topic`**
 
 ### Method Summary
 
-<ApiItem href="#contractsqueuetopic-gettopicname" visibility="public" name="getTopicName" returnType="string" params={[]}>
-Returns the topic name.
-</ApiItem>
+- `public getTopicName(): string` — Returns the topic name.
 
 ### Methods
 
@@ -8602,6 +8175,7 @@ public function getTopicName(): string;
 ```
 
 Returns the topic name.
+
 
 ## Contracts\Queue\VisibilityAware
 
@@ -8614,6 +8188,7 @@ shape.
 
 - **`Phalcon\Contracts\Queue\VisibilityAware`**
 
+
 ## Contracts\Session\SessionTypes
 
 Interface
@@ -8623,6 +8198,7 @@ Central registry of the array shapes used across the Session namespace.
 - **`Phalcon\Contracts\Session\SessionTypes`**
 
 `Phalcon\Storage\Serializer\SerializerInterface`
+
 
 ## Contracts\Storage\StorageTypes
 
@@ -8634,6 +8210,7 @@ Central registry of the array shapes used across the Storage namespace.
 
 `Phalcon\Storage\Serializer\SerializerInterface` · `WeakReference`
 
+
 ## Contracts\Support\Collection
 
 Interface
@@ -8644,93 +8221,68 @@ Canonical contract for Phalcon\Support\Collection.
 @extends IteratorAggregate&lt;int|string, mixed>
 
 - `\ArrayAccess`
-- **`Phalcon\Contracts\Support\Collection`** - extends `\ArrayAccess`, `\IteratorAggregate`
-- [`Phalcon\Support\Collection\CollectionInterface`](/5.21/api/phalcon_support/#supportcollectioncollectioninterface)
+  - **`Phalcon\Contracts\Support\Collection`** - extends `\ArrayAccess`, `\IteratorAggregate`
+    - [`Phalcon\Support\Collection\CollectionInterface`](/5.21/api/phalcon_support/#supportcollectioncollectioninterface)
 
 `ArrayAccess` · `IteratorAggregate`
 
 ### Method Summary
 
-<ApiItem href="#contractssupportcollection-__get" visibility="public" name="__get" returnType="mixed" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractssupportcollection-__isset" visibility="public" name="__isset" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractssupportcollection-__set" visibility="public" name="__set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractssupportcollection-__unset" visibility="public" name="__unset" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-</ApiItem>
-<ApiItem href="#contractssupportcollection-clear" visibility="public" name="clear" returnType="void" params={[]}>
-Clears the internal collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-column" visibility="public" name="column" returnType="array" params={[{"type":"string","name":"propertyOrMethod","default":null}]}>
-Returns the values from a single property/method extracted from every
-</ApiItem>
-<ApiItem href="#contractssupportcollection-each" visibility="public" name="each" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
-Invokes the callback for every item in the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-filter" visibility="public" name="filter" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
-Returns a new collection of items for which the callback returns true.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-first" visibility="public" name="first" returnType="mixed" params={[]}>
-Returns the first value in the collection or null when empty.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
-Returns an element from the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-getkeys" visibility="public" name="getKeys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
-Returns the keys (insensitive or not) of the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-gettype" visibility="public" name="getType" returnType="string|null" params={[]}>
-Returns the configured runtime type guard, or null when not set.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-getvalues" visibility="public" name="getValues" returnType="array" params={[]}>
-Returns the values of the internal array.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"element","default":null}]}>
-Checks whether an element exists in the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-init" visibility="public" name="init" returnType="void" params={[{"type":"array","name":"data","default":"[]"}]}>
-Initializes the internal array.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-isempty" visibility="public" name="isEmpty" returnType="bool" params={[]}>
-Returns true when the collection has no entries.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-keys" visibility="public" name="keys" returnType="array" params={[{"type":"bool","name":"insensitive","default":"true"}]}>
-Returns the keys (insensitive or not) of the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-last" visibility="public" name="last" returnType="mixed" params={[]}>
-Returns the last value in the collection or null when empty.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-map" visibility="public" name="map" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
-Returns a new collection with the callback applied to every value.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-reduce" visibility="public" name="reduce" returnType="mixed" params={[{"type":"callable","name":"callback","default":null},{"type":"mixed","name":"initial","default":"null"}]}>
-Reduces the collection to a single value using the callback.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
-Removes the element from the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-replace" visibility="public" name="replace" returnType="void" params={[{"type":"array","name":"data","default":null}]}>
-Replaces the collection data with a new array, clearing first.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Stores an element in the collection.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-sort" visibility="public" name="sort" returnType="static" params={[{"type":"callable|null","name":"callback","default":"null"},{"type":"int","name":"order","default":"4"}]}>
-Returns a new collection sorted by value, preserving keys.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the collection as an array.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":"4194383"}]}>
-Returns the collection serialized as a JSON string.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-values" visibility="public" name="values" returnType="array" params={[]}>
-Returns the values of the internal array.
-</ApiItem>
-<ApiItem href="#contractssupportcollection-where" visibility="public" name="where" returnType="static" params={[{"type":"string","name":"propertyOrMethod","default":null},{"type":"mixed","name":"value","default":null}]}>
-Returns a new collection containing only the items whose
-</ApiItem>
+- `public __get(string $element): mixed`
+
+- `public __isset(string $element): bool`
+
+- `public __set(string $element, mixed $value): void`
+
+- `public __unset(string $element): void`
+
+- `public clear(): void` — Clears the internal collection.
+
+- `public column(string $propertyOrMethod): array` — Returns the values from a single property/method extracted from every
+
+- `public each(callable $callback): static` — Invokes the callback for every item in the collection.
+
+- `public filter(callable $callback): static` — Returns a new collection of items for which the callback returns true.
+
+- `public first(): mixed` — Returns the first value in the collection or null when empty.
+
+- `public get(string $element, mixed $defaultValue = null, string|null $cast = null): mixed` — Returns an element from the collection.
+
+- `public getKeys(bool $insensitive = true): array` — Returns the keys (insensitive or not) of the collection.
+
+- `public getType(): string|null` — Returns the configured runtime type guard, or null when not set.
+
+- `public getValues(): array` — Returns the values of the internal array.
+
+- `public has(string $element): bool` — Checks whether an element exists in the collection.
+
+- `public init(array $data = []): void` — Initializes the internal array.
+
+- `public isEmpty(): bool` — Returns true when the collection has no entries.
+
+- `public keys(bool $insensitive = true): array` — Returns the keys (insensitive or not) of the collection.
+
+- `public last(): mixed` — Returns the last value in the collection or null when empty.
+
+- `public map(callable $callback): static` — Returns a new collection with the callback applied to every value.
+
+- `public reduce(callable $callback, mixed $initial = null): mixed` — Reduces the collection to a single value using the callback.
+
+- `public remove(string $element): void` — Removes the element from the collection.
+
+- `public replace(array $data): void` — Replaces the collection data with a new array, clearing first.
+
+- `public set(string $element, mixed $value): void` — Stores an element in the collection.
+
+- `public sort(callable|null $callback = null, int $order = 4): static` — Returns a new collection sorted by value, preserving keys.
+
+- `public toArray(): array` — Returns the collection as an array.
+
+- `public toJson(int $options = 4194383): string` — Returns the collection serialized as a JSON string.
+
+- `public values(): array` — Returns the values of the internal array.
+
+- `public where(string $propertyOrMethod, mixed $value): static` — Returns a new collection containing only the items whose
 
 ### Methods
 
@@ -8750,8 +8302,8 @@ public function __isset( string $element ): bool;
 
 ```php
 public function __set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -8806,9 +8358,9 @@ Returns the first value in the collection or null when empty.
 
 ```php
 public function get(
-string $element,
-mixed $defaultValue = null,
-string|null $cast = null
+    string $element,
+    mixed $defaultValue = null,
+    string|null $cast = null
 ): mixed;
 ```
 
@@ -8890,8 +8442,8 @@ Returns a new collection with the callback applied to every value.
 
 ```php
 public function reduce(
-callable $callback,
-mixed $initial = null
+    callable $callback,
+    mixed $initial = null
 ): mixed;
 ```
 
@@ -8917,8 +8469,8 @@ Replaces the collection data with a new array, clearing first.
 
 ```php
 public function set(
-string $element,
-mixed $value
+    string $element,
+    mixed $value
 ): void;
 ```
 
@@ -8928,8 +8480,8 @@ Stores an element in the collection.
 
 ```php
 public function sort(
-callable|null $callback = null,
-int $order = 4
+    callable|null $callback = null,
+    int $order = 4
 ): static;
 ```
 
@@ -8963,13 +8515,14 @@ Returns the values of the internal array.
 
 ```php
 public function where(
-string $propertyOrMethod,
-mixed $value
+    string $propertyOrMethod,
+    mixed $value
 ): static;
 ```
 
 Returns a new collection containing only the items whose
 `propertyOrMethod` strictly equals `$value`.
+
 
 ## Contracts\Support\Debug\Renderer
 
@@ -8979,24 +8532,19 @@ Canonical contract for Phalcon\Support\Debug renderers. Turns an
 ExceptionReport into output.
 
 - [`Phalcon\Contracts\Support\Debug\TemplateAware`](#contractssupportdebugtemplateaware)
-- **`Phalcon\Contracts\Support\Debug\Renderer`**
+  - **`Phalcon\Contracts\Support\Debug\Renderer`**
 
 `Phalcon\Support\Debug\Report\ExceptionReport`
 
 ### Method Summary
 
-<ApiItem href="#contractssupportdebugrenderer-getcsssources" visibility="public" name="getCssSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
-Returns the CSS sources block for the given base URI.
-</ApiItem>
-<ApiItem href="#contractssupportdebugrenderer-getjssources" visibility="public" name="getJsSources" returnType="string" params={[{"type":"string","name":"uri","default":null}]}>
-Returns the JavaScript sources block for the given base URI.
-</ApiItem>
-<ApiItem href="#contractssupportdebugrenderer-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
-Returns the framework version block.
-</ApiItem>
-<ApiItem href="#contractssupportdebugrenderer-render" visibility="public" name="render" returnType="string" params={[{"type":"ExceptionReport","name":"report","default":null}]}>
-Renders the report.
-</ApiItem>
+- `public getCssSources(string $uri): string` — Returns the CSS sources block for the given base URI.
+
+- `public getJsSources(string $uri): string` — Returns the JavaScript sources block for the given base URI.
+
+- `public getVersion(): string` — Returns the framework version block.
+
+- `public render(ExceptionReport $report): string` — Renders the report.
 
 ### Methods
 
@@ -9032,6 +8580,7 @@ public function render( ExceptionReport $report ): string;
 
 Renders the report.
 
+
 ## Contracts\Support\Debug\TemplateAware
 
 Interface
@@ -9040,16 +8589,13 @@ Canonical contract for components that render through named, overridable
 template strings.
 
 - **`Phalcon\Contracts\Support\Debug\TemplateAware`**
-- [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
+  - [`Phalcon\Contracts\Support\Debug\Renderer`](#contractssupportdebugrenderer)
 
 ### Method Summary
 
-<ApiItem href="#contractssupportdebugtemplateaware-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns the template for the given name (override if set, default
-</ApiItem>
-<ApiItem href="#contractssupportdebugtemplateaware-settemplate" visibility="public" name="setTemplate" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"template","default":null}]}>
-Overrides the template for the given name.
-</ApiItem>
+- `public getTemplate(string $name): string` — Returns the template for the given name (override if set, default
+
+- `public setTemplate(string $name, string $template): static` — Overrides the template for the given name.
 
 ### Methods
 
@@ -9066,12 +8612,13 @@ otherwise).
 
 ```php
 public function setTemplate(
-string $name,
-string $template
+    string $name,
+    string $template
 ): static;
 ```
 
 Overrides the template for the given name.
+
 
 ## Contracts\Support\SupportTypes
 
@@ -9081,6 +8628,7 @@ Central registry of the array shapes used across the Support namespace.
 
 - **`Phalcon\Contracts\Support\SupportTypes`**
 
+
 ## Contracts\Translate\TranslateTypes
 
 Interface
@@ -9088,6 +8636,7 @@ Interface
 Central registry of the array shapes used across the Translate namespace.
 
 - **`Phalcon\Contracts\Translate\TranslateTypes`**
+
 
 ## Contracts\View\Renderer
 
@@ -9103,9 +8652,7 @@ userland engines only need this one method to become a drop-in renderer.
 
 ### Method Summary
 
-<ApiItem href="#contractsviewrenderer-render" visibility="public" name="render" returnType="string" params={[{"type":"string","name":"path","default":null},{"type":"array","name":"params","default":"[]"}]}>
-Renders the template and returns the output.
-</ApiItem>
+- `public render(string $path, array $params = []): string` — Renders the template and returns the output.
 
 ### Methods
 
@@ -9113,8 +8660,8 @@ Renders the template and returns the output.
 
 ```php
 public function render(
-string $path,
-array $params = []
+    string $path,
+    array $params = []
 ): string;
 ```
 

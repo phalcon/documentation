@@ -60,8 +60,8 @@ namespace Phalcon\Acl;
 
 class Enum
 {
-const ALLOW = 1;
-const DENY  = 0;
+    const ALLOW = 1;
+    const DENY  = 0;
 }
 ```
 
@@ -79,10 +79,10 @@ use Phalcon\Acl\Adapter;
 
 class Memory extends Adapter
 {
-/**
- * @var string | null
- */
-protected activeKey = "" { get };
+    /**
+     * @var string | null
+     */
+    protected activeKey = "" { get };
 }
 ```
 
@@ -125,6 +125,7 @@ public function setElement(string! name, var value) -> void;
 
 ### PHP Files
 PHP files such as tests must follow [PSR-12][psr-12].
+
 
 [php-fig]: https://www.php-fig.org/
 [psr-12]: https://www.php-fig.org/psr/psr-12/

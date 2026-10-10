@@ -41,20 +41,20 @@ use Phalcon\Storage\SerializerFactory;
 $container = new FactoryDefault();
 
 $container->set(
-'modelsCache',
-function () {
-    $serializerFactory = new SerializerFactory();
-    $adapterFactory    = new AdapterFactory($serializerFactory);
+    'modelsCache',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $adapterFactory    = new AdapterFactory($serializerFactory);
 
-    $options = [
-        'defaultSerializer' => 'Php',
-        'lifetime'          => 7200
-    ];
+        $options = [
+            'defaultSerializer' => 'Php',
+            'lifetime'          => 7200
+        ];
 
-    $adapter = $adapterFactory->newInstance('apcu', $options);
+        $adapter = $adapterFactory->newInstance('apcu', $options);
 
-    return new Cache($adapter);
-}
+        return new Cache($adapter);
+    }
 );
 ```
 
@@ -76,11 +76,11 @@ Do not use cache
 
 ```php
 $invoices = Invoices::find(
-[
-    'cache' => [
-        'key' => 'my-cache',
-    ],
-]
+    [
+        'cache' => [
+            'key' => 'my-cache',
+        ],
+    ]
 );
 ```
 
@@ -89,12 +89,12 @@ service
 
 ```php
 $invoices = Invoices::find(
-[
-    'cache' => [
-        'key'      => 'my-cache',
-        'lifetime' => 300,
-    ],
-]
+    [
+        'cache' => [
+            'key'      => 'my-cache',
+            'lifetime' => 300,
+        ],
+    ]
 );
 ```
 
@@ -102,12 +102,12 @@ Cache the resultset using `my-cache` as the key for 5 minutes.
 
 ```php
 $invoices = Invoices::find(
-[
-    'cache' => [
-        'key'     => 'my-cache',
-        'service' => 'cache',
-    ],
-]
+    [
+        'cache' => [
+            'key'     => 'my-cache',
+            'service' => 'cache',
+        ],
+    ]
 );
 ```
 
@@ -125,31 +125,31 @@ use MyApp\Models\Customers;
 use MyApp\Models\Invoices;
 
 $customer = Customers::findFirst(
-[
-    'conditions' => 'cst_id = :cst_id:',
-    'bind'       => [
-        'cst_id' => 1,
-    ],
-]
+    [
+        'conditions' => 'cst_id = :cst_id:',
+        'bind'       => [
+            'cst_id' => 1,
+        ],
+    ]
 );
 
 $invoices = $customer->getRelated(
-'invoices',
-[
-    'cache' => [
-        'key'      => 'my-key',
-        'lifetime' => 300,
+    'invoices',
+    [
+        'cache' => [
+            'key'      => 'my-key',
+            'lifetime' => 300,
+        ]
     ]
-]
 );
 
 $invoices = $customer->getInvoices(
-[
-    'cache' => [
-        'key'      => 'my-key',
-        'lifetime' => 300,
+    [
+        'cache' => [
+            'key'      => 'my-key',
+            'lifetime' => 300,
+        ]
     ]
-]
 );
 ```
 
@@ -180,12 +180,12 @@ make a record/resultset cacheable we pass the key `cache` in the array of parame
 <?php
 
 $invoices = Invoices::find(
-[
-    'cache' => [
-        'key'      => 'my-cache',
-        'lifetime' => 300,
-    ],
-]
+    [
+        'cache' => [
+            'key'      => 'my-cache',
+            'lifetime' => 300,
+        ],
+    ]
 );
 ```
 
@@ -199,56 +199,56 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public static function find($parameters = null)
-{
-    $parameters = self::checkCacheParameters($parameters);
+    public static function find($parameters = null)
+    {
+        $parameters = self::checkCacheParameters($parameters);
 
-    return parent::find($parameters);
-}
-
-public static function findFirst($parameters = null)
-{
-    $parameters = self::checkCacheParameters($parameters);
-
-    return parent::findFirst($parameters);
-}
-
-protected static function checkCacheParameters($parameters = null)
-{
-    if (null !== $parameters) {
-        if (true !== is_array($parameters)) {
-            $parameters = [$parameters];
-        }
-
-        if (true !== isset($parameters['cache'])) {
-            $parameters['cache'] = [
-                'key'      => self::generateCacheKey($parameters),
-                'lifetime' => 300,
-            ];
-        }
+        return parent::find($parameters);
     }
 
-    return $parameters;
-}
+    public static function findFirst($parameters = null)
+    {
+        $parameters = self::checkCacheParameters($parameters);
 
-protected static function generateCacheKey(array $parameters)
-{
-    $uniqueKey = [];
-
-    foreach ($parameters as $key => $value) {
-        if (true === is_scalar($value)) {
-            $uniqueKey[] = $key . ':' . $value;
-        } elseif (true === is_array($value)) {
-            $uniqueKey[] = sprintf(
-                '%s:[%s]',
-                $key,
-                self::generateCacheKey($value)
-            );
-        }
+        return parent::findFirst($parameters);
     }
 
-    return join(',', $uniqueKey);
-}
+    protected static function checkCacheParameters($parameters = null)
+    {
+        if (null !== $parameters) {
+            if (true !== is_array($parameters)) {
+                $parameters = [$parameters];
+            }
+    
+            if (true !== isset($parameters['cache'])) {
+                $parameters['cache'] = [
+                    'key'      => self::generateCacheKey($parameters),
+                    'lifetime' => 300,
+                ];
+            }
+        }
+        
+        return $parameters;
+    }
+
+    protected static function generateCacheKey(array $parameters)
+    {
+        $uniqueKey = [];
+
+        foreach ($parameters as $key => $value) {
+            if (true === is_scalar($value)) {
+                $uniqueKey[] = $key . ':' . $value;
+            } elseif (true === is_array($value)) {
+                $uniqueKey[] = sprintf(
+                    '%s:[%s]',
+                    $key,
+                    self::generateCacheKey($value)
+                );
+            }
+        }
+
+        return join(',', $uniqueKey);
+    }
 }
 ```
 
@@ -268,56 +268,56 @@ use Phalcon\Mvc\Model;
 
 abstract class AbstractCacheable extends Model
 {
-public static function find($parameters = null)
-{
-    $parameters = self::checkCacheParameters($parameters);
+    public static function find($parameters = null)
+    {
+        $parameters = self::checkCacheParameters($parameters);
 
-    return parent::find($parameters);
-}
-
-public static function findFirst($parameters = null)
-{
-    $parameters = self::checkCacheParameters($parameters);
-
-    return parent::findFirst($parameters);
-}
-
-protected static function checkCacheParameters($parameters = null)
-{
-    if (null !== $parameters) {
-        if (true !== is_array($parameters)) {
-            $parameters = [$parameters];
-        }
-
-        if (true !== isset($parameters['cache'])) {
-            $parameters['cache'] = [
-                'key'      => self::generateCacheKey($parameters),
-                'lifetime' => 300,
-            ];
-        }
+        return parent::find($parameters);
     }
 
-    return $parameters;
-}
+    public static function findFirst($parameters = null)
+    {
+        $parameters = self::checkCacheParameters($parameters);
 
-protected static function generateCacheKey(array $parameters)
-{
-    $uniqueKey = [];
-
-    foreach ($parameters as $key => $value) {
-        if (true === is_scalar($value)) {
-            $uniqueKey[] = $key . ':' . $value;
-        } elseif (true === is_array($value)) {
-            $uniqueKey[] = sprintf(
-                '%s:[%s]',
-                $key,
-                self::generateCacheKey($value)
-            );
-        }
+        return parent::findFirst($parameters);
     }
 
-    return join(',', $uniqueKey);
-}
+    protected static function checkCacheParameters($parameters = null)
+    {
+        if (null !== $parameters) {
+            if (true !== is_array($parameters)) {
+                $parameters = [$parameters];
+            }
+    
+            if (true !== isset($parameters['cache'])) {
+                $parameters['cache'] = [
+                    'key'      => self::generateCacheKey($parameters),
+                    'lifetime' => 300,
+                ];
+            }
+        }
+        
+        return $parameters;
+    }
+
+    protected static function generateCacheKey(array $parameters)
+    {
+        $uniqueKey = [];
+
+        foreach ($parameters as $key => $value) {
+            if (true === is_scalar($value)) {
+                $uniqueKey[] = $key . ':' . $value;
+            } elseif (true === is_array($value)) {
+                $uniqueKey[] = sprintf(
+                    '%s:[%s]',
+                    $key,
+                    self::generateCacheKey($value)
+                );
+            }
+        }
+
+        return join(',', $uniqueKey);
+    }
 }
 ```
 
@@ -347,21 +347,21 @@ This language gives you much more freedom to create all kinds of queries. Of cou
 
 $phql  = 'SELECT * FROM Customers WHERE cst_id = :cst_id:';
 $query = $this
-->modelsManager
-->createQuery($phql)
+    ->modelsManager
+    ->createQuery($phql)
 ;
 
 $query->cache(
-[
-    'key'      => 'customers-1',
-    'lifetime' => 300,
-]
+    [
+        'key'      => 'customers-1',
+        'lifetime' => 300,
+    ]
 );
 
 $invoice = $query->execute(
-[
-    'cst_id' => 1,
-]
+    [
+        'cst_id' => 1,
+    ]
 );
 ```
 
@@ -376,12 +376,12 @@ instances in memory:
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :inv_id:',
-    'bind'       => [
-        'inv_id' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_id = :inv_id:',
+        'bind'       => [
+            'inv_id' => 1,
+        ],
+    ]
 );
 
 $customer = $invoice->customer;
@@ -402,10 +402,10 @@ use MyApp\Models\Invoices;
 $invoices = Invoices::find();
 
 foreach ($invoices as $invoice) {
-// SELECT * FROM co_customers WHERE cst_id = ?;
-$customer = $invoice->customer;
+    // SELECT * FROM co_customers WHERE cst_id = ?;
+    $customer = $invoice->customer;
 
-echo $customer->cst_name, PHP_EOL;
+    echo $customer->cst_name, PHP_EOL;
 }
 ```
 
@@ -422,17 +422,17 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'reusable' => true,
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+            ]
+        );
+    }
 }
 ```
 
@@ -459,22 +459,22 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model implements CacheKeyProvider
 {
-public function initialize()
-{
-    $this->belongsTo(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'reusable' => true,
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+            ]
+        );
+    }
 
-public function getUniqueKey(): string
-{
-    return 'invoice:' . $this->inv_id;
-}
+    public function getUniqueKey(): string
+    {
+        return 'invoice:' . $this->inv_id;
+    }
 }
 ```
 
@@ -502,12 +502,12 @@ corresponding method:
 use MyApp\Models\Invoices;
 
 $invoice = Invoices::findFirst(
-[
-    'conditions' => 'inv_id = :inv_id:',
-    'bind'       => [
-        'inv_id' => 1,
-    ],
-]
+    [
+        'conditions' => 'inv_id = :inv_id:',
+        'bind'       => [
+            'inv_id' => 1,
+        ],
+    ]
 );
 
 // Invoices::findFirst('...');
@@ -530,10 +530,10 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public static function findFirst($parameters = null)
-{
-    // ...
-}
+    public static function findFirst($parameters = null)
+    {
+        // ...
+    }
 }
 ```
 
@@ -551,76 +551,76 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'reusable' => true,
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->belongsTo(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+            ]
+        );
+    }
 
-public static function find($parameters = null)
-{
-    $cacheKey = self::generateCacheKey($parameters);
-    $results  = self::cacheGet($cacheKey);
+    public static function find($parameters = null)
+    {
+        $cacheKey = self::generateCacheKey($parameters);
+        $results  = self::cacheGet($cacheKey);
 
-    if (true === is_object($results)) {
+        if (true === is_object($results)) {
+            return $results;
+        }
+
+        $results = [];
+
+        $invoices = parent::find($parameters);
+
+        foreach ($invoices as $invoice) {
+            $customer = $invoice->getRelated('customer');
+
+            $invoice->customer = $customer;
+
+            $results[] = $invoice;
+        }
+
+        self::cacheSet($cacheKey, $results);
+
         return $results;
     }
 
-    $results = [];
-
-    $invoices = parent::find($parameters);
-
-    foreach ($invoices as $invoice) {
-        $customer = $invoice->getRelated('customer');
-
-        $invoice->customer = $customer;
-
-        $results[] = $invoice;
+    protected static function cacheGet($cacheKey)
+    {
+        $cache = Di::getDefault()->get('cache');
+        
+        return $cache->get($cacheKey);
     }
 
-    self::cacheSet($cacheKey, $results);
+    protected static function cacheSet($cacheKey, $results)
+    {
+        $cache = Di::getDefault()->get('cache');
+        
+        return $cache->save($cacheKey, $results);
+    }
 
-    return $results;
-}
+    protected static function generateCacheKey(array $parameters)
+    {
+        $uniqueKey = [];
 
-protected static function cacheGet($cacheKey)
-{
-    $cache = Di::getDefault()->get('cache');
-
-    return $cache->get($cacheKey);
-}
-
-protected static function cacheSet($cacheKey, $results)
-{
-    $cache = Di::getDefault()->get('cache');
-
-    return $cache->save($cacheKey, $results);
-}
-
-protected static function generateCacheKey(array $parameters)
-{
-    $uniqueKey = [];
-
-    foreach ($parameters as $key => $value) {
-        if (true === is_scalar($value)) {
-            $uniqueKey[] = $key . ':' . $value;
-        } elseif (true === is_array($value)) {
-            $uniqueKey[] = sprintf(
-                '%s:[%s]',
-                $key,
-                self::generateCacheKey($value)
-            );
+        foreach ($parameters as $key => $value) {
+            if (true === is_scalar($value)) {
+                $uniqueKey[] = $key . ':' . $value;
+            } elseif (true === is_array($value)) {
+                $uniqueKey[] = sprintf(
+                    '%s:[%s]',
+                    $key,
+                    self::generateCacheKey($value)
+                );
+            }
         }
-    }
 
-    return join(',', $uniqueKey);
-}
+        return join(',', $uniqueKey);
+    }
 }
 ```
 
@@ -642,61 +642,61 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->belongsTo(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'reusable' => true,
-        ]
-    );
-}
-
-public function getInvoicesCustomers($conditions, $params = null)
-{
-    $phql = 'SELECT Invoices.*, Customers.* '
-          . 'FROM Invoices '
-          . 'JOIN Customers '
-          . 'WHERE ' . $conditions;
-
-    $query = $this
-        ->getModelsManager()
-        ->executeQuery($phql)
-    ;
-
-    $query->cache(
-        [
-            'key'      => self::generateCacheKey(
-                $conditions, 
-                $params
-            ),
-            'lifetime' => 300,
-        ]
-    );
-
-    return $query->execute($params);
-}
-
-protected static function generateCacheKey(array $parameters)
-{
-    $uniqueKey = [];
-
-    foreach ($parameters as $key => $value) {
-        if (true === is_scalar($value)) {
-            $uniqueKey[] = $key . ':' . $value;
-        } elseif (true === is_array($value)) {
-            $uniqueKey[] = sprintf(
-                '%s:[%s]',
-                $key,
-                self::generateCacheKey($value)
-            );
-        }
+    public function initialize()
+    {
+        $this->belongsTo(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'reusable' => true,
+            ]
+        );
     }
 
-    return join(',', $uniqueKey);
-}
+    public function getInvoicesCustomers($conditions, $params = null)
+    {
+        $phql = 'SELECT Invoices.*, Customers.* '
+              . 'FROM Invoices '
+              . 'JOIN Customers '
+              . 'WHERE ' . $conditions;
+
+        $query = $this
+            ->getModelsManager()
+            ->executeQuery($phql)
+        ;
+
+        $query->cache(
+            [
+                'key'      => self::generateCacheKey(
+                    $conditions, 
+                    $params
+                ),
+                'lifetime' => 300,
+            ]
+        );
+
+        return $query->execute($params);
+    }
+
+    protected static function generateCacheKey(array $parameters)
+    {
+        $uniqueKey = [];
+
+        foreach ($parameters as $key => $value) {
+            if (true === is_scalar($value)) {
+                $uniqueKey[] = $key . ':' . $value;
+            } elseif (true === is_array($value)) {
+                $uniqueKey[] = sprintf(
+                    '%s:[%s]',
+                    $key,
+                    self::generateCacheKey($value)
+                );
+            }
+        }
+
+        return join(',', $uniqueKey);
+    }
 }
 ```
 
@@ -721,25 +721,25 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public static function queryCache(int $initial, int $final)
-{
-    if ($initial >= 1 && $final < 10000) {
-        $service = 'redis1';
-    } elseif ($initial >= 10000 && $final <= 20000) {
-        $service = 'redis2';
-    } else {
-        $service = 'redis3';
-    }
+    public static function queryCache(int $initial, int $final)
+    {
+        if ($initial >= 1 && $final < 10000) {
+            $service = 'redis1';
+        } elseif ($initial >= 10000 && $final <= 20000) {
+            $service = 'redis2';
+        } else {
+            $service = 'redis3';
+        }
 
-    return self::find(
-        [
-            'id >= ' . $initial . ' AND id <= ' . $final,
-            'cache' => [
-                'service' => $service,
-            ],
-        ]
-    );
-}
+        return self::find(
+            [
+                'id >= ' . $initial . ' AND id <= ' . $final,
+                'cache' => [
+                    'service' => $service,
+                ],
+            ]
+        );
+    }
 }
 ```
 
@@ -754,11 +754,11 @@ $invoices = Invoices::find('id < 1000');
 $invoices = Invoices::find("id > 100 AND type = 'A'");
 $invoices = Invoices::find("(id > 100 AND type = 'A') AND id < 2000");
 $invoices = Invoices::find(
-[
-    "(id > ?0 AND type = 'A') AND id < ?1",
-    'bind'  => [100, 2000],
-    'order' => 'type',
-]
+    [
+        "(id > ?0 AND type = 'A') AND id < ?1",
+        'bind'  => [100, 2000],
+        'order' => 'type',
+    ]
 );
 ```
 
@@ -776,36 +776,36 @@ use Phalcon\Mvc\Model\Query\Builder as QueryBuilder;
 
 class CustomQueryBuilder extends QueryBuilder
 {
-public function getQuery()
-{
-    $query = new CustomQuery(
-        $this->getPhql()
-    );
-
-    $query->setDI(
-        $this->getDI()
-    );
-
-    if (true === is_array($this->bindParams)) {
-        $query->setBindParams(
-            $this->bindParams
+    public function getQuery()
+    {
+        $query = new CustomQuery(
+            $this->getPhql()
         );
-    }
 
-    if (true === is_array($this->bindTypes)) {
-        $query->setBindTypes(
-            $this->bindTypes
+        $query->setDI(
+            $this->getDI()
         );
-    }
+        
+        if (true === is_array($this->bindParams)) {
+            $query->setBindParams(
+                $this->bindParams
+            );
+        }
 
-    if (true === is_array($this->sharedLock)) {
-        $query->setSharedLock(
-            $this->sharedLock
-        );
-    }
+        if (true === is_array($this->bindTypes)) {
+            $query->setBindTypes(
+                $this->bindTypes
+            );
+        }
 
-    return $query;
-}
+        if (true === is_array($this->sharedLock)) {
+            $query->setSharedLock(
+                $this->sharedLock
+            );
+        }
+
+        return $query;
+    }
 }
 ```
 
@@ -822,48 +822,48 @@ use Phalcon\Mvc\Model\Query as ModelQuery;
 
 class CustomQuery extends ModelQuery
 {
-public function execute($params = null, $types = null)
-{
-    $ir = $this->parse();
+    public function execute($params = null, $types = null)
+    {
+        $ir = $this->parse();
 
-    if (true === is_array($this->bindParams)) {
-        $params = array_merge(
-            $this->bindParams,
-            (array) $params
-        );
+        if (true === is_array($this->bindParams)) {
+            $params = array_merge(
+                $this->bindParams,
+                (array) $params
+            );
+        }
+
+        if (true === is_array($this->bindTypes)) {
+            $types = array_merge(
+                $this->bindTypes,
+                (array) $types
+            );
+        }
+
+        if (true === isset($ir['where'])) {
+            $visitor = new CustomNodeVisitor();
+            $visitor->visit(
+                $ir['where']
+            );
+
+            $initial = $visitor->getInitial();
+            $final   = $visitor->getFinal();
+            $key     = $this->queryCache($initial, $final);
+            $result  = $this->getDI()->get('cache')->get($key);
+
+            if (true === is_object($result)) {
+                return $result;
+            }   
+        }
+
+        $result   = $this->executeSelect($ir, $params, $types);
+        $result   = $this->uniqueRow ? $result->getFirst(): $result;
+        $cacheKey = $this->calculateKey();
+
+        $this->getDI()->get('cache')->save($cacheKey, $result);
+
+        return $result;
     }
-
-    if (true === is_array($this->bindTypes)) {
-        $types = array_merge(
-            $this->bindTypes,
-            (array) $types
-        );
-    }
-
-    if (true === isset($ir['where'])) {
-        $visitor = new CustomNodeVisitor();
-        $visitor->visit(
-            $ir['where']
-        );
-
-        $initial = $visitor->getInitial();
-        $final   = $visitor->getFinal();
-        $key     = $this->queryCache($initial, $final);
-        $result  = $this->getDI()->get('cache')->get($key);
-
-        if (true === is_object($result)) {
-            return $result;
-        }   
-    }
-
-    $result   = $this->executeSelect($ir, $params, $types);
-    $result   = $this->uniqueRow ? $result->getFirst(): $result;
-    $cacheKey = $this->calculateKey();
-
-    $this->getDI()->get('cache')->save($cacheKey, $result);
-
-    return $result;
-}
 }
 ```
 
@@ -884,69 +884,69 @@ results in the cache prior to returning it back.
 
 class CustomNodeVisitor
 {
-protected $initial = 0;
+    protected $initial = 0;
 
-protected $final = 25000;
+    protected $final = 25000;
 
-public function getInitial(): int
-{
-    return $this->initial;
-}
-
-public function getFinal(): int
-{
-    return $this->final;
-}
-
-public function visit(array $node)
-{
-    switch ($node['type']) {
-        case 'binary-op':
-            $left  = $this->visit($node['left']);
-            $right = $this->visit($node['right']);
-
-            if (!$left || !$right) {
-                return false;
-            }
-
-            if ($left === 'id') {
-                if ($node['op'] === '>') {
-                    $this->initial = $right;
-                }
-
-                if ($node['op'] === '=') {
-                    $this->initial = $right;
-                }
-
-                if ($node['op'] === '>=') {
-                    $this->initial = $right;
-                }
-
-                if ($node['op'] === '<') {
-                    $this->final = $right;
-                }
-
-                if ($node['op'] === '<=') {
-                    $this->final = $right;
-                }
-            }
-
-            break;
-
-        case 'qualified':
-            if ($node['name'] === 'id') {
-                return 'id';
-            }
-
-            break;
-
-        case 'literal':
-            return $node['value'];
-
-        default:
-            return false;
+    public function getInitial(): int
+    {
+        return $this->initial;
     }
-}
+
+    public function getFinal(): int
+    {
+        return $this->final;
+    }
+
+    public function visit(array $node)
+    {
+        switch ($node['type']) {
+            case 'binary-op':
+                $left  = $this->visit($node['left']);
+                $right = $this->visit($node['right']);
+
+                if (!$left || !$right) {
+                    return false;
+                }
+
+                if ($left === 'id') {
+                    if ($node['op'] === '>') {
+                        $this->initial = $right;
+                    }
+
+                    if ($node['op'] === '=') {
+                        $this->initial = $right;
+                    }
+
+                    if ($node['op'] === '>=') {
+                        $this->initial = $right;
+                    }
+
+                    if ($node['op'] === '<') {
+                        $this->final = $right;
+                    }
+
+                    if ($node['op'] === '<=') {
+                        $this->final = $right;
+                    }
+                }
+
+                break;
+
+            case 'qualified':
+                if ($node['name'] === 'id') {
+                    return 'id';
+                }
+
+                break;
+
+            case 'literal':
+                return $node['value'];
+
+            default:
+                return false;
+        }
+    }
 }
 ```
 
@@ -960,28 +960,28 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public static function find($parameters = null)
-{
-    if (true !== is_array($parameters)) {
-        $parameters = [$parameters];
-    }
+    public static function find($parameters = null)
+    {
+        if (true !== is_array($parameters)) {
+            $parameters = [$parameters];
+        }
 
-    $builder = new CustomQueryBuilder($parameters);
+        $builder = new CustomQueryBuilder($parameters);
 
-    $builder->from(
-        get_called_class()
-    );
-
-    $query = $builder->getQuery();
-
-    if (isset($parameters['bind'])) {
-        return $query->execute(
-            $parameters['bind']
+        $builder->from(
+            get_called_class()
         );
-    } else {
-        return $query->execute();
+
+        $query = $builder->getQuery();
+
+        if (isset($parameters['bind'])) {
+            return $query->execute(
+                $parameters['bind']
+            );
+        } else {
+            return $query->execute();
+        }
     }
-}
 }
 ```
 
@@ -995,14 +995,14 @@ this feature, it is highly recommended to build all your SQL statements passing 
 <?php
 
 for ($i = 1; $i <= 10; $i++) {
-$phql = 'SELECT * FROM Invoices WHERE inv_id = ' . $i;
+    $phql = 'SELECT * FROM Invoices WHERE inv_id = ' . $i;
 
-$robots = $this
-    ->modelsManager
-    ->executeQuery($phql)
-;
+    $robots = $this
+        ->modelsManager
+        ->executeQuery($phql)
+    ;
 
-// ...
+    // ...
 }
 ```
 
@@ -1016,17 +1016,17 @@ system:
 $phql = 'SELECT * FROM Invoices WHERE id = ?0';
 
 for ($i = 1; $i <= 10; $i++) {
-$robots = $this
-    ->modelsManager
-    ->executeQuery(
-        $phql,
-        [
-            $i,
-        ]
-    )
-;
+    $robots = $this
+        ->modelsManager
+        ->executeQuery(
+            $phql,
+            [
+                $i,
+            ]
+        )
+    ;
 
-// ...
+    // ...
 }
 ```
 
@@ -1037,19 +1037,19 @@ Performance can be also improved by reusing the PHQL query:
 
 $phql  = 'SELECT * FROM Invoices WHERE id = ?0';
 $query = $this
-->modelsManager
-->createQuery($phql)
+    ->modelsManager
+    ->createQuery($phql)
 ;
 
 for ($i = 1; $i <= 10; $i++) {
-$robots = $query->execute(
-    $phql,
-    [
-        $i,
-    ]
-);
+    $robots = $query->execute(
+        $phql,
+        [
+            $i,
+        ]
+    );
 
-// ...
+    // ...
 }
 ```
 

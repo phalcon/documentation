@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Image\Adapter\AbstractAdapter
 
 Abstract
@@ -22,150 +23,113 @@ All image adapters must use this class
 @template TImage of object
 
 - **`Phalcon\Image\Adapter\AbstractAdapter`** - implements [`Phalcon\Image\Adapter\AdapterInterface`](#imageadapteradapterinterface)
-- [`Phalcon\Image\Adapter\Gd`](#imageadaptergd)
-- [`Phalcon\Image\Adapter\Imagick`](#imageadapterimagick)
+  - [`Phalcon\Image\Adapter\Gd`](#imageadaptergd)
+  - [`Phalcon\Image\Adapter\Imagick`](#imageadapterimagick)
 
 `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ImageTooLarge` · `Phalcon\Image\Exceptions\InvalidColor` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
 
 ### Method Summary
 
-<ApiItem href="#imageadapterabstractadapter-background" visibility="public" name="background" returnType="AdapterInterface" params={[{"type":"string","name":"color","default":null},{"type":"int","name":"opacity","default":"100"}]}>
-Set the background color of an image
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-blur" visibility="public" name="blur" returnType="AdapterInterface" params={[{"type":"int","name":"radius","default":null}]}>
-Blur image
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-crop" visibility="public" name="crop" returnType="AdapterInterface" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"mixed","name":"offsetX","default":"null"},{"type":"mixed","name":"offsetY","default":"null"}]}>
-Crop an image to the given size
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-flip" visibility="public" name="flip" returnType="AdapterInterface" params={[{"type":"int","name":"direction","default":null}]}>
-Flip the image along the horizontal or vertical axis
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-getheight" visibility="public" name="getHeight" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-getimage" visibility="public" name="getImage" returnType="" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-getmime" visibility="public" name="getMime" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-getrealpath" visibility="public" name="getRealpath" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-gettype" visibility="public" name="getType" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-getwidth" visibility="public" name="getWidth" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-mask" visibility="public" name="mask" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
-Composite one image onto another
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-pixelate" visibility="public" name="pixelate" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
-Pixelate image
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-reflection" visibility="public" name="reflection" returnType="AdapterInterface" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":"100"},{"type":"bool","name":"fadeIn","default":"false"}]}>
-Add a reflection to an image
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-render" visibility="public" name="render" returnType="string" params={[{"type":"string|null","name":"extension","default":"null"},{"type":"int","name":"quality","default":"100"}]}>
-Render the image and return the binary string
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-resize" visibility="public" name="resize" returnType="AdapterInterface" params={[{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"master","default":"Enum::AUTO"}]}>
-Resize the image to the given size
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-rotate" visibility="public" name="rotate" returnType="AdapterInterface" params={[{"type":"int","name":"degrees","default":null}]}>
-Rotate the image by a given amount
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-save" visibility="public" name="save" returnType="AdapterInterface" params={[{"type":"string|null","name":"file","default":"null"},{"type":"int","name":"quality","default":"-1"}]}>
-Save the image
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-sharpen" visibility="public" name="sharpen" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
-Sharpen the image by a given amount
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-text" visibility="public" name="text" returnType="AdapterInterface" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":"false"},{"type":"mixed","name":"offsetY","default":"false"},{"type":"int","name":"opacity","default":"100"},{"type":"string","name":"color","default":"\"000000\""},{"type":"int","name":"size","default":"12"},{"type":"string|null","name":"fontFile","default":"null"}]}>
-Add a text to an image with a specified opacity
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-watermark" visibility="public" name="watermark" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":"0"},{"type":"int","name":"offsetY","default":"0"},{"type":"int","name":"opacity","default":"100"}]}>
-Add a watermark to an image with the specified opacity
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-assertpixellimit" visibility="protected" name="assertPixelLimit" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-Rejects an image whose pixel count exceeds the configured limit before
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-checkhighlow" visibility="protected" name="checkHighLow" returnType="int" params={[{"type":"int","name":"value","default":null},{"type":"int","name":"min","default":"0"},{"type":"int","name":"max","default":"100"}]}>
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
-Renders the supplied colour onto the image as the background. Channels
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
-Applies a blur. The radius is already clamped to 1-100.
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processcrop" visibility="protected" name="processCrop" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null}]}>
-Crops the image. Width, height and both offsets are already normalized
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processflip" visibility="protected" name="processFlip" returnType="void" params={[{"type":"int","name":"direction","default":null}]}>
-Flips the image. The direction is already normalized to
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processmask" visibility="protected" name="processMask" returnType="" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
-Composites the supplied image as a mask onto this one. The mask is read
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processpixelate" visibility="protected" name="processPixelate" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
-Pixelates the image. The amount is already at least 2.
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processreflection" visibility="protected" name="processReflection" returnType="void" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":null},{"type":"bool","name":"fadeIn","default":null}]}>
-Adds a reflection. The height is clamped to the image height and the
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processrender" visibility="protected" name="processRender" returnType="" params={[{"type":"string","name":"extension","default":null},{"type":"int","name":"quality","default":null}]}>
-Renders the image to a binary string. The extension is non-empty and the
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processresize" visibility="protected" name="processResize" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-Resizes the image. Width and height are already resolved to positive
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processrotate" visibility="protected" name="processRotate" returnType="void" params={[{"type":"int","name":"degrees","default":null}]}>
-Rotates the image. The degrees value is already normalized to -180..180.
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processsave" visibility="protected" name="processSave" returnType="bool" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"quality","default":null}]}>
-Saves the image to the supplied file path.
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processsharpen" visibility="protected" name="processSharpen" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
-Sharpens the image. The amount is already clamped to 1-100.
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processtext" visibility="protected" name="processText" returnType="void" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":null},{"type":"mixed","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null},{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"size","default":null},{"type":"string|null","name":"fontFile","default":"null"}]}>
-Renders text onto the image. The opacity is clamped to 0-100 and the
-</ApiItem>
-<ApiItem href="#imageadapterabstractadapter-processwatermark" visibility="protected" name="processWatermark" returnType="void" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null}]}>
-Composites the supplied watermark onto this image. Offsets and opacity
-</ApiItem>
+- `public background(string $color, int $opacity = 100): AdapterInterface` — Set the background color of an image
+
+- `public blur(int $radius): AdapterInterface` — Blur image
+
+- `public crop(int $width, int $height, mixed $offsetX = null, mixed $offsetY = null): AdapterInterface` — Crop an image to the given size
+
+- `public flip(int $direction): AdapterInterface` — Flip the image along the horizontal or vertical axis
+
+- `public getHeight(): int`
+
+- `public getImage()`
+
+- `public getMime(): string`
+
+- `public getRealpath(): string`
+
+- `public getType(): int`
+
+- `public getWidth(): int`
+
+- `public mask(AdapterInterface $mask): AdapterInterface` — Composite one image onto another
+
+- `public pixelate(int $amount): AdapterInterface` — Pixelate image
+
+- `public reflection(int $height, int $opacity = 100, bool $fadeIn = false): AdapterInterface` — Add a reflection to an image
+
+- `public render(string|null $extension = null, int $quality = 100): string` — Render the image and return the binary string
+
+- `public resize(int|null $width = null, int|null $height = null, int $master = Enum::AUTO): AdapterInterface` — Resize the image to the given size
+
+- `public rotate(int $degrees): AdapterInterface` — Rotate the image by a given amount
+
+- `public save(string|null $file = null, int $quality = -1): AdapterInterface` — Save the image
+
+- `public sharpen(int $amount): AdapterInterface` — Sharpen the image by a given amount
+
+- `public text(string $text, mixed $offsetX = false, mixed $offsetY = false, int $opacity = 100, string $color = "000000", int $size = 12, string|null $fontFile = null): AdapterInterface` — Add a text to an image with a specified opacity
+
+- `public watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface` — Add a watermark to an image with the specified opacity
+
+- `protected assertPixelLimit(int $width, int $height): void` — Rejects an image whose pixel count exceeds the configured limit before
+
+- `protected checkHighLow(int $value, int $min = 0, int $max = 100): int`
+
+- `protected processBackground(int $red, int $green, int $blue, int $opacity): void` — Renders the supplied colour onto the image as the background. Channels
+
+- `protected processBlur(int $radius): void` — Applies a blur. The radius is already clamped to 1-100.
+
+- `protected processCrop(int $width, int $height, int $offsetX, int $offsetY): void` — Crops the image. Width, height and both offsets are already normalized
+
+- `protected processFlip(int $direction): void` — Flips the image. The direction is already normalized to
+
+- `protected processMask(AdapterInterface $mask)` — Composites the supplied image as a mask onto this one. The mask is read
+
+- `protected processPixelate(int $amount): void` — Pixelates the image. The amount is already at least 2.
+
+- `protected processReflection(int $height, int $opacity, bool $fadeIn): void` — Adds a reflection. The height is clamped to the image height and the
+
+- `protected processRender(string $extension, int $quality)` — Renders the image to a binary string. The extension is non-empty and the
+
+- `protected processResize(int $width, int $height): void` — Resizes the image. Width and height are already resolved to positive
+
+- `protected processRotate(int $degrees): void` — Rotates the image. The degrees value is already normalized to -180..180.
+
+- `protected processSave(string $file, int $quality): bool` — Saves the image to the supplied file path.
+
+- `protected processSharpen(int $amount): void` — Sharpens the image. The amount is already clamped to 1-100.
+
+- `protected processText(string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string|null $fontFile = null): void` — Renders text onto the image. The opacity is clamped to 0-100 and the
+
+- `protected processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity): void` — Composites the supplied watermark onto this image. Offsets and opacity
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_MAX_PIXELS" type="int" default="50000000">
-Default cap on the pixel count (width * height) of a loaded image, used
-when the constructor is not given an explicit limit. Bounds the memory a
-crafted image (decompression bomb / pixel flood) can force the backend to
-allocate (CWE-409). Generous by default; override per instance.
-</ApiItem>
+- `const int DEFAULT_MAX_PIXELS = 50000000` — Default cap on the pixel count (width \* height) of a loaded image, used
+  when the constructor is not given an explicit limit. Bounds the memory a
+  crafted image (decompression bomb / pixel flood) can force the backend to
+  allocate (CWE-409). Generous by default; override per instance.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="file" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="height" type="int" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="image" type="TImage|null" default="null">
-The handle of the underlying backend. Every adapter assigns it in its
-constructor and releases it in its destructor.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="maxPixels" type="int" default="0">
-Maximum allowed pixel count (width * height) for a loaded image. Zero
-disables the check.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="mime" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="realpath" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="type" type="int" default="">
-Image type
+- `protected string $file`
 
-Driver dependent
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="width" type="int" default="">
-Image width
-</ApiItem>
+- `protected int $height`
+
+- `protected TImage|null $image = null` — The handle of the underlying backend. Every adapter assigns it in its
+  constructor and releases it in its destructor.
+
+- `protected int $maxPixels = 0` — Maximum allowed pixel count (width \* height) for a loaded image. Zero
+  disables the check.
+
+- `protected string $mime`
+
+- `protected string $realpath`
+
+- `protected int $type` — Image type
+
+  Driver dependent
+
+- `protected int $width` — Image width
 
 ### Methods
 
@@ -173,8 +137,8 @@ Image width
 
 ```php
 public function background(
-string $color,
-int $opacity = 100
+    string $color,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
@@ -192,10 +156,10 @@ Blur image
 
 ```php
 public function crop(
-int $width,
-int $height,
-mixed $offsetX = null,
-mixed $offsetY = null
+    int $width,
+    int $height,
+    mixed $offsetX = null,
+    mixed $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -270,9 +234,9 @@ Pixelate image
 
 ```php
 public function reflection(
-int $height,
-int $opacity = 100,
-bool $fadeIn = false
+    int $height,
+    int $opacity = 100,
+    bool $fadeIn = false
 ): AdapterInterface;
 ```
 
@@ -282,8 +246,8 @@ Add a reflection to an image
 
 ```php
 public function render(
-string|null $extension = null,
-int $quality = 100
+    string|null $extension = null,
+    int $quality = 100
 ): string;
 ```
 
@@ -293,9 +257,9 @@ Render the image and return the binary string
 
 ```php
 public function resize(
-int|null $width = null,
-int|null $height = null,
-int $master = Enum::AUTO
+    int|null $width = null,
+    int|null $height = null,
+    int $master = Enum::AUTO
 ): AdapterInterface;
 ```
 
@@ -313,8 +277,8 @@ Rotate the image by a given amount
 
 ```php
 public function save(
-string|null $file = null,
-int $quality = -1
+    string|null $file = null,
+    int $quality = -1
 ): AdapterInterface;
 ```
 
@@ -332,13 +296,13 @@ Sharpen the image by a given amount
 
 ```php
 public function text(
-string $text,
-mixed $offsetX = false,
-mixed $offsetY = false,
-int $opacity = 100,
-string $color = "000000",
-int $size = 12,
-string|null $fontFile = null
+    string $text,
+    mixed $offsetX = false,
+    mixed $offsetY = false,
+    int $opacity = 100,
+    string $color = "000000",
+    int $size = 12,
+    string|null $fontFile = null
 ): AdapterInterface;
 ```
 
@@ -351,10 +315,10 @@ wider than the `int` the interface documents.
 
 ```php
 public function watermark(
-AdapterInterface $watermark,
-int $offsetX = 0,
-int $offsetY = 0,
-int $opacity = 100
+    AdapterInterface $watermark,
+    int $offsetX = 0,
+    int $offsetY = 0,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
@@ -369,8 +333,8 @@ which is worth knowing inside loops.
 
 ```php
 protected function assertPixelLimit(
-int $width,
-int $height
+    int $width,
+    int $height
 ): void;
 ```
 
@@ -382,9 +346,9 @@ memory use (CWE-409). A zero limit disables the check.
 
 ```php
 protected function checkHighLow(
-int $value,
-int $min = 0,
-int $max = 100
+    int $value,
+    int $min = 0,
+    int $max = 100
 ): int;
 ```
 
@@ -392,10 +356,10 @@ int $max = 100
 
 ```php
 abstract protected function processBackground(
-int $red,
-int $green,
-int $blue,
-int $opacity
+    int $red,
+    int $green,
+    int $blue,
+    int $opacity
 ): void;
 ```
 
@@ -414,10 +378,10 @@ Applies a blur. The radius is already clamped to 1-100.
 
 ```php
 abstract protected function processCrop(
-int $width,
-int $height,
-int $offsetX,
-int $offsetY
+    int $width,
+    int $height,
+    int $offsetX,
+    int $offsetY
 ): void;
 ```
 
@@ -454,9 +418,9 @@ Pixelates the image. The amount is already at least 2.
 
 ```php
 abstract protected function processReflection(
-int $height,
-int $opacity,
-bool $fadeIn
+    int $height,
+    int $opacity,
+    bool $fadeIn
 ): void;
 ```
 
@@ -467,8 +431,8 @@ opacity to 0-100.
 
 ```php
 abstract protected function processRender(
-string $extension,
-int $quality
+    string $extension,
+    int $quality
 );
 ```
 
@@ -479,8 +443,8 @@ quality is already clamped to 1-100. Returns the encoded bytes.
 
 ```php
 abstract protected function processResize(
-int $width,
-int $height
+    int $width,
+    int $height
 ): void;
 ```
 
@@ -499,8 +463,8 @@ Rotates the image. The degrees value is already normalized to -180..180.
 
 ```php
 abstract protected function processSave(
-string $file,
-int $quality
+    string $file,
+    int $quality
 ): bool;
 ```
 
@@ -518,15 +482,15 @@ Sharpens the image. The amount is already clamped to 1-100.
 
 ```php
 abstract protected function processText(
-string $text,
-mixed $offsetX,
-mixed $offsetY,
-int $opacity,
-int $red,
-int $green,
-int $blue,
-int $size,
-string|null $fontFile = null
+    string $text,
+    mixed $offsetX,
+    mixed $offsetY,
+    int $opacity,
+    int $red,
+    int $green,
+    int $blue,
+    int $size,
+    string|null $fontFile = null
 ): void;
 ```
 
@@ -537,16 +501,17 @@ colour is supplied as separate 0-255 channels.
 
 ```php
 abstract protected function processWatermark(
-AdapterInterface $watermark,
-int $offsetX,
-int $offsetY,
-int $opacity
+    AdapterInterface $watermark,
+    int $offsetX,
+    int $offsetY,
+    int $opacity
 ): void;
 ```
 
 Composites the supplied watermark onto this image. Offsets and opacity
 are already clamped to the valid range; the watermark is read through
 its public render() output, so it may be any adapter backend.
+
 
 ## Image\Adapter\AdapterInterface
 
@@ -560,52 +525,37 @@ Interface for Phalcon\Image\Adapter classes
 
 ### Method Summary
 
-<ApiItem href="#imageadapteradapterinterface-background" visibility="public" name="background" returnType="AdapterInterface" params={[{"type":"string","name":"color","default":null},{"type":"int","name":"opacity","default":"100"}]}>
-Add a background to an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-blur" visibility="public" name="blur" returnType="AdapterInterface" params={[{"type":"int","name":"radius","default":null}]}>
-Blur an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-crop" visibility="public" name="crop" returnType="AdapterInterface" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int|null","name":"offsetX","default":"null"},{"type":"int|null","name":"offsetY","default":"null"}]}>
-Crop an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-flip" visibility="public" name="flip" returnType="AdapterInterface" params={[{"type":"int","name":"direction","default":null}]}>
-Flip an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-getheight" visibility="public" name="getHeight" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-getwidth" visibility="public" name="getWidth" returnType="int" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-mask" visibility="public" name="mask" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
-Add a mask to an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-pixelate" visibility="public" name="pixelate" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
-Pixelate an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-reflection" visibility="public" name="reflection" returnType="AdapterInterface" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":"100"},{"type":"bool","name":"fadeIn","default":"false"}]}>
-Reflect an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-render" visibility="public" name="render" returnType="string" params={[{"type":"string|null","name":"extension","default":"null"},{"type":"int","name":"quality","default":"100"}]}>
-Render an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-resize" visibility="public" name="resize" returnType="AdapterInterface" params={[{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"master","default":"Enum::AUTO"}]}>
-Resize an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-rotate" visibility="public" name="rotate" returnType="AdapterInterface" params={[{"type":"int","name":"degrees","default":null}]}>
-Rotate an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-save" visibility="public" name="save" returnType="AdapterInterface" params={[{"type":"string|null","name":"file","default":"null"},{"type":"int","name":"quality","default":"100"}]}>
-Save an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-sharpen" visibility="public" name="sharpen" returnType="AdapterInterface" params={[{"type":"int","name":"amount","default":null}]}>
-Sharpen an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-text" visibility="public" name="text" returnType="AdapterInterface" params={[{"type":"string","name":"text","default":null},{"type":"int","name":"offsetX","default":"0"},{"type":"int","name":"offsetY","default":"0"},{"type":"int","name":"opacity","default":"100"},{"type":"string","name":"color","default":"\"000000\""},{"type":"int","name":"size","default":"12"},{"type":"string|null","name":"fontFile","default":"null"}]}>
-Adds text on an image
-</ApiItem>
-<ApiItem href="#imageadapteradapterinterface-watermark" visibility="public" name="watermark" returnType="AdapterInterface" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":"0"},{"type":"int","name":"offsetY","default":"0"},{"type":"int","name":"opacity","default":"100"}]}>
-Add a watermark on an image
-</ApiItem>
+- `public background(string $color, int $opacity = 100): AdapterInterface` — Add a background to an image
+
+- `public blur(int $radius): AdapterInterface` — Blur an image
+
+- `public crop(int $width, int $height, int|null $offsetX = null, int|null $offsetY = null): AdapterInterface` — Crop an image
+
+- `public flip(int $direction): AdapterInterface` — Flip an image
+
+- `public getHeight(): int`
+
+- `public getWidth(): int`
+
+- `public mask(AdapterInterface $mask): AdapterInterface` — Add a mask to an image
+
+- `public pixelate(int $amount): AdapterInterface` — Pixelate an image
+
+- `public reflection(int $height, int $opacity = 100, bool $fadeIn = false): AdapterInterface` — Reflect an image
+
+- `public render(string|null $extension = null, int $quality = 100): string` — Render an image
+
+- `public resize(int|null $width = null, int|null $height = null, int $master = Enum::AUTO): AdapterInterface` — Resize an image
+
+- `public rotate(int $degrees): AdapterInterface` — Rotate an image
+
+- `public save(string|null $file = null, int $quality = 100): AdapterInterface` — Save an image
+
+- `public sharpen(int $amount): AdapterInterface` — Sharpen an image
+
+- `public text(string $text, int $offsetX = 0, int $offsetY = 0, int $opacity = 100, string $color = "000000", int $size = 12, string|null $fontFile = null): AdapterInterface` — Adds text on an image
+
+- `public watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface` — Add a watermark on an image
 
 ### Methods
 
@@ -613,8 +563,8 @@ Add a watermark on an image
 
 ```php
 public function background(
-string $color,
-int $opacity = 100
+    string $color,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
@@ -632,10 +582,10 @@ Blur an image
 
 ```php
 public function crop(
-int $width,
-int $height,
-int|null $offsetX = null,
-int|null $offsetY = null
+    int $width,
+    int $height,
+    int|null $offsetX = null,
+    int|null $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -681,9 +631,9 @@ Pixelate an image
 
 ```php
 public function reflection(
-int $height,
-int $opacity = 100,
-bool $fadeIn = false
+    int $height,
+    int $opacity = 100,
+    bool $fadeIn = false
 ): AdapterInterface;
 ```
 
@@ -693,8 +643,8 @@ Reflect an image
 
 ```php
 public function render(
-string|null $extension = null,
-int $quality = 100
+    string|null $extension = null,
+    int $quality = 100
 ): string;
 ```
 
@@ -704,9 +654,9 @@ Render an image
 
 ```php
 public function resize(
-int|null $width = null,
-int|null $height = null,
-int $master = Enum::AUTO
+    int|null $width = null,
+    int|null $height = null,
+    int $master = Enum::AUTO
 ): AdapterInterface;
 ```
 
@@ -724,8 +674,8 @@ Rotate an image
 
 ```php
 public function save(
-string|null $file = null,
-int $quality = 100
+    string|null $file = null,
+    int $quality = 100
 ): AdapterInterface;
 ```
 
@@ -743,13 +693,13 @@ Sharpen an image
 
 ```php
 public function text(
-string $text,
-int $offsetX = 0,
-int $offsetY = 0,
-int $opacity = 100,
-string $color = "000000",
-int $size = 12,
-string|null $fontFile = null
+    string $text,
+    int $offsetX = 0,
+    int $offsetY = 0,
+    int $opacity = 100,
+    string $color = "000000",
+    int $size = 12,
+    string|null $fontFile = null
 ): AdapterInterface;
 ```
 
@@ -759,14 +709,15 @@ Adds text on an image
 
 ```php
 public function watermark(
-AdapterInterface $watermark,
-int $offsetX = 0,
-int $offsetY = 0,
-int $opacity = 100
+    AdapterInterface $watermark,
+    int $offsetX = 0,
+    int $offsetY = 0,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
 Add a watermark on an image
+
 
 ## Image\Adapter\Gd
 
@@ -791,53 +742,49 @@ own scales. Switching the factory backend can change the rendered output.
 @extends AbstractAdapter&lt;GdImage>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
-- **`Phalcon\Image\Adapter\Gd`**
+  - **`Phalcon\Image\Adapter\Gd`**
 
 `GdImage` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<ApiItem href="#imageadaptergd-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"maxPixels","default":"0"}]}>
-Loads an image from a file, or creates a blank canvas.
-</ApiItem>
-<ApiItem href="#imageadaptergd-__destruct" visibility="public" name="__destruct" returnType="" params={[]}>
-Destructor
-</ApiItem>
-<ApiItem href="#imageadaptergd-create" visibility="public" name="create" returnType="AbstractAdapter" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-Creates a blank true-color canvas of the given dimensions, without the
-</ApiItem>
-<ApiItem href="#imageadaptergd-getversion" visibility="public" name="getVersion" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processcreate" visibility="protected" name="processCreate" returnType="" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processcrop" visibility="protected" name="processCrop" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processflip" visibility="protected" name="processFlip" returnType="void" params={[{"type":"int","name":"direction","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processmask" visibility="protected" name="processMask" returnType="" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processpixelate" visibility="protected" name="processPixelate" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processreflection" visibility="protected" name="processReflection" returnType="void" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":null},{"type":"bool","name":"fadeIn","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processrender" visibility="protected" name="processRender" returnType="false|string" params={[{"type":"string","name":"extension","default":null},{"type":"int","name":"quality","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processresize" visibility="protected" name="processResize" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processrotate" visibility="protected" name="processRotate" returnType="void" params={[{"type":"int","name":"degrees","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processsave" visibility="protected" name="processSave" returnType="bool" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"quality","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processsharpen" visibility="protected" name="processSharpen" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processtext" visibility="protected" name="processText" returnType="void" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":null},{"type":"mixed","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null},{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"size","default":null},{"type":"string|null","name":"fontFile","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#imageadaptergd-processwatermark" visibility="protected" name="processWatermark" returnType="void" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null}]}>
-</ApiItem>
+- `public __construct(string $file, int|null $width = null, int|null $height = null, int $maxPixels = 0)` — Loads an image from a file, or creates a blank canvas.
+
+- `public __destruct()` — Destructor
+
+- `public create(int $width, int $height): AbstractAdapter` — Creates a blank true-color canvas of the given dimensions, without the
+
+- `public getVersion(): string`
+
+- `protected processBackground(int $red, int $green, int $blue, int $opacity): void`
+
+- `protected processBlur(int $radius): void`
+
+- `protected processCreate(int $width, int $height)`
+
+- `protected processCrop(int $width, int $height, int $offsetX, int $offsetY): void`
+
+- `protected processFlip(int $direction): void`
+
+- `protected processMask(AdapterInterface $mask)`
+
+- `protected processPixelate(int $amount): void`
+
+- `protected processReflection(int $height, int $opacity, bool $fadeIn): void`
+
+- `protected processRender(string $extension, int $quality): false|string`
+
+- `protected processResize(int $width, int $height): void`
+
+- `protected processRotate(int $degrees): void`
+
+- `protected processSave(string $file, int $quality): bool`
+
+- `protected processSharpen(int $amount): void`
+
+- `protected processText(string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string|null $fontFile = null): void`
+
+- `protected processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity): void`
 
 ### Methods
 
@@ -845,10 +792,10 @@ Creates a blank true-color canvas of the given dimensions, without the
 
 ```php
 public function __construct(
-string $file,
-int|null $width = null,
-int|null $height = null,
-int $maxPixels = 0
+    string $file,
+    int|null $width = null,
+    int|null $height = null,
+    int $maxPixels = 0
 );
 ```
 
@@ -872,8 +819,8 @@ Destructor
 
 ```php
 public static function create(
-int $width,
-int $height
+    int $width,
+    int $height
 ): AbstractAdapter;
 ```
 
@@ -890,10 +837,10 @@ public function getVersion(): string;
 
 ```php
 protected function processBackground(
-int $red,
-int $green,
-int $blue,
-int $opacity
+    int $red,
+    int $green,
+    int $blue,
+    int $opacity
 ): void;
 ```
 
@@ -907,8 +854,8 @@ protected function processBlur( int $radius ): void;
 
 ```php
 protected function processCreate(
-int $width,
-int $height
+    int $width,
+    int $height
 );
 ```
 
@@ -916,10 +863,10 @@ int $height
 
 ```php
 protected function processCrop(
-int $width,
-int $height,
-int $offsetX,
-int $offsetY
+    int $width,
+    int $height,
+    int $offsetX,
+    int $offsetY
 ): void;
 ```
 
@@ -945,9 +892,9 @@ protected function processPixelate( int $amount ): void;
 
 ```php
 protected function processReflection(
-int $height,
-int $opacity,
-bool $fadeIn
+    int $height,
+    int $opacity,
+    bool $fadeIn
 ): void;
 ```
 
@@ -955,8 +902,8 @@ bool $fadeIn
 
 ```php
 protected function processRender(
-string $extension,
-int $quality
+    string $extension,
+    int $quality
 ): false|string;
 ```
 
@@ -964,8 +911,8 @@ int $quality
 
 ```php
 protected function processResize(
-int $width,
-int $height
+    int $width,
+    int $height
 ): void;
 ```
 
@@ -979,8 +926,8 @@ protected function processRotate( int $degrees ): void;
 
 ```php
 protected function processSave(
-string $file,
-int $quality
+    string $file,
+    int $quality
 ): bool;
 ```
 
@@ -994,15 +941,15 @@ protected function processSharpen( int $amount ): void;
 
 ```php
 protected function processText(
-string $text,
-mixed $offsetX,
-mixed $offsetY,
-int $opacity,
-int $red,
-int $green,
-int $blue,
-int $size,
-string|null $fontFile = null
+    string $text,
+    mixed $offsetX,
+    mixed $offsetY,
+    int $opacity,
+    int $red,
+    int $green,
+    int $blue,
+    int $size,
+    string|null $fontFile = null
 ): void;
 ```
 
@@ -1010,12 +957,13 @@ string|null $fontFile = null
 
 ```php
 protected function processWatermark(
-AdapterInterface $watermark,
-int $offsetX,
-int $offsetY,
-int $opacity
+    AdapterInterface $watermark,
+    int $offsetX,
+    int $offsetY,
+    int $opacity
 ): void;
 ```
+
 
 ## Image\Adapter\Imagick
 
@@ -1031,7 +979,7 @@ $image = new \Phalcon\Image\Adapter\Imagick("upload/test.jpg");
 $image->resize(200, 200)->rotate(90)->crop(100, 100);
 
 if ($image->save()) {
-echo "success";
+    echo "success";
 }
 ```
 
@@ -1050,74 +998,53 @@ Switching the factory backend can change the rendered output.
 @extends AbstractAdapter&lt;ImagickNative>
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
-- **`Phalcon\Image\Adapter\Imagick`**
+  - **`Phalcon\Image\Adapter\Imagick`**
 
 `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#imageadapterimagick-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null},{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"},{"type":"int","name":"maxPixels","default":"0"}]}>
-Loads an image from a file, or creates a blank canvas.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-__destruct" visibility="public" name="__destruct" returnType="" params={[]}>
-Destroys the loaded image to free up resources.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-create" visibility="public" name="create" returnType="AbstractAdapter" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-Creates a blank transparent canvas of the given dimensions, without the
-</ApiItem>
-<ApiItem href="#imageadapterimagick-liquidrescale" visibility="public" name="liquidRescale" returnType="AbstractAdapter" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"deltaX","default":"0"},{"type":"int","name":"rigidity","default":"0"}]}>
-This method scales the images using liquid rescaling method. Only support
-</ApiItem>
-<ApiItem href="#imageadapterimagick-setresourcelimit" visibility="public" name="setResourceLimit" returnType="void" params={[{"type":"int","name":"type","default":null},{"type":"int","name":"limit","default":null}]}>
-Sets the limit for a particular resource in megabytes
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processbackground" visibility="protected" name="processBackground" returnType="void" params={[{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"opacity","default":null}]}>
-Execute a background.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processblur" visibility="protected" name="processBlur" returnType="void" params={[{"type":"int","name":"radius","default":null}]}>
-Blur image
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processcrop" visibility="protected" name="processCrop" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null}]}>
-Execute a crop.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processflip" visibility="protected" name="processFlip" returnType="void" params={[{"type":"int","name":"direction","default":null}]}>
-Execute a flip.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processmask" visibility="protected" name="processMask" returnType="void" params={[{"type":"AdapterInterface","name":"mask","default":null}]}>
-Composite one image onto another
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processpixelate" visibility="protected" name="processPixelate" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
-Pixelate image
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processreflection" visibility="protected" name="processReflection" returnType="void" params={[{"type":"int","name":"height","default":null},{"type":"int","name":"opacity","default":null},{"type":"bool","name":"fadeIn","default":null}]}>
-Execute a reflection.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processrender" visibility="protected" name="processRender" returnType="string" params={[{"type":"string","name":"extension","default":null},{"type":"int","name":"quality","default":null}]}>
-Execute a render.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processresize" visibility="protected" name="processResize" returnType="void" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null}]}>
-Execute a resize.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processrotate" visibility="protected" name="processRotate" returnType="void" params={[{"type":"int","name":"degrees","default":null}]}>
-Execute a rotation.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processsave" visibility="protected" name="processSave" returnType="bool" params={[{"type":"string","name":"file","default":null},{"type":"int","name":"quality","default":null}]}>
-Execute a save.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processsharpen" visibility="protected" name="processSharpen" returnType="void" params={[{"type":"int","name":"amount","default":null}]}>
-Execute a sharpen.
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processtext" visibility="protected" name="processText" returnType="void" params={[{"type":"string","name":"text","default":null},{"type":"mixed","name":"offsetX","default":null},{"type":"mixed","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null},{"type":"int","name":"red","default":null},{"type":"int","name":"green","default":null},{"type":"int","name":"blue","default":null},{"type":"int","name":"size","default":null},{"type":"string|null","name":"fontFile","default":"null"}]}>
-Execute a text
-</ApiItem>
-<ApiItem href="#imageadapterimagick-processwatermark" visibility="protected" name="processWatermark" returnType="void" params={[{"type":"AdapterInterface","name":"watermark","default":null},{"type":"int","name":"offsetX","default":null},{"type":"int","name":"offsetY","default":null},{"type":"int","name":"opacity","default":null}]}>
-Add Watermark
-</ApiItem>
+- `public __construct(string $file, int|null $width = null, int|null $height = null, int $maxPixels = 0)` — Loads an image from a file, or creates a blank canvas.
+
+- `public __destruct()` — Destroys the loaded image to free up resources.
+
+- `public create(int $width, int $height): AbstractAdapter` — Creates a blank transparent canvas of the given dimensions, without the
+
+- `public liquidRescale(int $width, int $height, int $deltaX = 0, int $rigidity = 0): AbstractAdapter` — This method scales the images using liquid rescaling method. Only support
+
+- `public setResourceLimit(int $type, int $limit): void` — Sets the limit for a particular resource in megabytes
+
+- `protected processBackground(int $red, int $green, int $blue, int $opacity): void` — Execute a background.
+
+- `protected processBlur(int $radius): void` — Blur image
+
+- `protected processCrop(int $width, int $height, int $offsetX, int $offsetY): void` — Execute a crop.
+
+- `protected processFlip(int $direction): void` — Execute a flip.
+
+- `protected processMask(AdapterInterface $mask): void` — Composite one image onto another
+
+- `protected processPixelate(int $amount): void` — Pixelate image
+
+- `protected processReflection(int $height, int $opacity, bool $fadeIn): void` — Execute a reflection.
+
+- `protected processRender(string $extension, int $quality): string` — Execute a render.
+
+- `protected processResize(int $width, int $height): void` — Execute a resize.
+
+- `protected processRotate(int $degrees): void` — Execute a rotation.
+
+- `protected processSave(string $file, int $quality): bool` — Execute a save.
+
+- `protected processSharpen(int $amount): void` — Execute a sharpen.
+
+- `protected processText(string $text, mixed $offsetX, mixed $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string|null $fontFile = null): void` — Execute a text
+
+- `protected processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity): void` — Add Watermark
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="version" type="int" default="0">
-</ApiItem>
+- `protected int $version = 0`
 
 ### Methods
 
@@ -1125,10 +1052,10 @@ Add Watermark
 
 ```php
 public function __construct(
-string $file,
-int|null $width = null,
-int|null $height = null,
-int $maxPixels = 0
+    string $file,
+    int|null $width = null,
+    int|null $height = null,
+    int $maxPixels = 0
 );
 ```
 
@@ -1152,8 +1079,8 @@ Destroys the loaded image to free up resources.
 
 ```php
 public static function create(
-int $width,
-int $height
+    int $width,
+    int $height
 ): AbstractAdapter;
 ```
 
@@ -1164,10 +1091,10 @@ load-or-create ambiguity of the constructor.
 
 ```php
 public function liquidRescale(
-int $width,
-int $height,
-int $deltaX = 0,
-int $rigidity = 0
+    int $width,
+    int $height,
+    int $deltaX = 0,
+    int $rigidity = 0
 ): AbstractAdapter;
 ```
 
@@ -1178,8 +1105,8 @@ Imagick
 
 ```php
 public function setResourceLimit(
-int $type,
-int $limit
+    int $type,
+    int $limit
 ): void;
 ```
 
@@ -1191,10 +1118,10 @@ Sets the limit for a particular resource in megabytes
 
 ```php
 protected function processBackground(
-int $red,
-int $green,
-int $blue,
-int $opacity
+    int $red,
+    int $green,
+    int $blue,
+    int $opacity
 ): void;
 ```
 
@@ -1212,10 +1139,10 @@ Blur image
 
 ```php
 protected function processCrop(
-int $width,
-int $height,
-int $offsetX,
-int $offsetY
+    int $width,
+    int $height,
+    int $offsetX,
+    int $offsetY
 ): void;
 ```
 
@@ -1249,9 +1176,9 @@ Pixelate image
 
 ```php
 protected function processReflection(
-int $height,
-int $opacity,
-bool $fadeIn
+    int $height,
+    int $opacity,
+    bool $fadeIn
 ): void;
 ```
 
@@ -1261,8 +1188,8 @@ Execute a reflection.
 
 ```php
 protected function processRender(
-string $extension,
-int $quality
+    string $extension,
+    int $quality
 ): string;
 ```
 
@@ -1272,8 +1199,8 @@ Execute a render.
 
 ```php
 protected function processResize(
-int $width,
-int $height
+    int $width,
+    int $height
 ): void;
 ```
 
@@ -1291,8 +1218,8 @@ Execute a rotation.
 
 ```php
 protected function processSave(
-string $file,
-int $quality
+    string $file,
+    int $quality
 ): bool;
 ```
 
@@ -1310,15 +1237,15 @@ Execute a sharpen.
 
 ```php
 protected function processText(
-string $text,
-mixed $offsetX,
-mixed $offsetY,
-int $opacity,
-int $red,
-int $green,
-int $blue,
-int $size,
-string|null $fontFile = null
+    string $text,
+    mixed $offsetX,
+    mixed $offsetY,
+    int $opacity,
+    int $red,
+    int $green,
+    int $blue,
+    int $size,
+    string|null $fontFile = null
 ): void;
 ```
 
@@ -1328,14 +1255,15 @@ Execute a text
 
 ```php
 protected function processWatermark(
-AdapterInterface $watermark,
-int $offsetX,
-int $offsetY,
-int $opacity
+    AdapterInterface $watermark,
+    int $offsetX,
+    int $offsetY,
+    int $opacity
 ): void;
 ```
 
 Add Watermark
+
 
 ## Image\Enum
 
@@ -1345,24 +1273,24 @@ Class
 
 ### Constants
 
-<ApiItem kind="constant" name="AUTO" type="int" default="4">
-</ApiItem>
-<ApiItem kind="constant" name="HEIGHT" type="int" default="3">
-</ApiItem>
-<ApiItem kind="constant" name="HORIZONTAL" type="int" default="11">
-</ApiItem>
-<ApiItem kind="constant" name="INVERSE" type="int" default="5">
-</ApiItem>
-<ApiItem kind="constant" name="NONE" type="int" default="1">
-</ApiItem>
-<ApiItem kind="constant" name="PRECISE" type="int" default="6">
-</ApiItem>
-<ApiItem kind="constant" name="TENSILE" type="int" default="7">
-</ApiItem>
-<ApiItem kind="constant" name="VERTICAL" type="int" default="12">
-</ApiItem>
-<ApiItem kind="constant" name="WIDTH" type="int" default="2">
-</ApiItem>
+- `const int AUTO = 4`
+
+- `const int HEIGHT = 3`
+
+- `const int HORIZONTAL = 11`
+
+- `const int INVERSE = 5`
+
+- `const int NONE = 1`
+
+- `const int PRECISE = 6`
+
+- `const int TENSILE = 7`
+
+- `const int VERTICAL = 12`
+
+- `const int WIDTH = 2`
+
 
 ## Image\Exception
 
@@ -1371,35 +1299,35 @@ Class
 Exceptions thrown in Phalcon\Image will use this class
 
 - `\Exception`
-- **`Phalcon\Image\Exception`**
-- [`Phalcon\Image\Exceptions\CompositeFailed`](#imageexceptionscompositefailed)
-- [`Phalcon\Image\Exceptions\ExtensionNotLoaded`](#imageexceptionsextensionnotloaded)
-- [`Phalcon\Image\Exceptions\ImageLoadFailed`](#imageexceptionsimageloadfailed)
-- [`Phalcon\Image\Exceptions\ImageTooLarge`](#imageexceptionsimagetoolarge)
-- [`Phalcon\Image\Exceptions\InvalidColor`](#imageexceptionsinvalidcolor)
-- [`Phalcon\Image\Exceptions\MissingDimensions`](#imageexceptionsmissingdimensions)
-- [`Phalcon\Image\Exceptions\MissingHeight`](#imageexceptionsmissingheight)
-- [`Phalcon\Image\Exceptions\MissingWidth`](#imageexceptionsmissingwidth)
-- [`Phalcon\Image\Exceptions\ResizeFailed`](#imageexceptionsresizefailed)
-- [`Phalcon\Image\Exceptions\ResourceTypeError`](#imageexceptionsresourcetypeerror)
-- [`Phalcon\Image\Exceptions\TextRenderingFailed`](#imageexceptionstextrenderingfailed)
-- [`Phalcon\Image\Exceptions\UnsupportedImageType`](#imageexceptionsunsupportedimagetype)
-- [`Phalcon\Image\Exceptions\VersionMismatch`](#imageexceptionsversionmismatch)
+  - **`Phalcon\Image\Exception`**
+    - [`Phalcon\Image\Exceptions\CompositeFailed`](#imageexceptionscompositefailed)
+    - [`Phalcon\Image\Exceptions\ExtensionNotLoaded`](#imageexceptionsextensionnotloaded)
+    - [`Phalcon\Image\Exceptions\ImageLoadFailed`](#imageexceptionsimageloadfailed)
+    - [`Phalcon\Image\Exceptions\ImageTooLarge`](#imageexceptionsimagetoolarge)
+    - [`Phalcon\Image\Exceptions\InvalidColor`](#imageexceptionsinvalidcolor)
+    - [`Phalcon\Image\Exceptions\MissingDimensions`](#imageexceptionsmissingdimensions)
+    - [`Phalcon\Image\Exceptions\MissingHeight`](#imageexceptionsmissingheight)
+    - [`Phalcon\Image\Exceptions\MissingWidth`](#imageexceptionsmissingwidth)
+    - [`Phalcon\Image\Exceptions\ResizeFailed`](#imageexceptionsresizefailed)
+    - [`Phalcon\Image\Exceptions\ResourceTypeError`](#imageexceptionsresourcetypeerror)
+    - [`Phalcon\Image\Exceptions\TextRenderingFailed`](#imageexceptionstextrenderingfailed)
+    - [`Phalcon\Image\Exceptions\UnsupportedImageType`](#imageexceptionsunsupportedimagetype)
+    - [`Phalcon\Image\Exceptions\VersionMismatch`](#imageexceptionsversionmismatch)
+
 
 ## Image\Exceptions\CompositeFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\CompositeFailed`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\CompositeFailed`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionscompositefailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1409,20 +1337,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\ExtensionNotLoaded
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ExtensionNotLoaded`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\ExtensionNotLoaded`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsextensionnotloaded-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"extension","default":null}]}>
-</ApiItem>
+- `public __construct(string $extension)`
 
 ### Methods
 
@@ -1432,20 +1360,20 @@ Class
 public function __construct( string $extension );
 ```
 
+
 ## Image\Exceptions\ImageLoadFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ImageLoadFailed`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\ImageLoadFailed`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsimageloadfailed-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"file","default":null}]}>
-</ApiItem>
+- `public __construct(string $file)`
 
 ### Methods
 
@@ -1455,20 +1383,20 @@ Class
 public function __construct( string $file );
 ```
 
+
 ## Image\Exceptions\ImageTooLarge
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ImageTooLarge`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\ImageTooLarge`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsimagetoolarge-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"pixels","default":null},{"type":"int","name":"maxPixels","default":null}]}>
-</ApiItem>
+- `public __construct(int $pixels, int $maxPixels)`
 
 ### Methods
 
@@ -1476,25 +1404,25 @@ Class
 
 ```php
 public function __construct(
-int $pixels,
-int $maxPixels
+    int $pixels,
+    int $maxPixels
 );
 ```
+
 
 ## Image\Exceptions\InvalidColor
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\InvalidColor`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\InvalidColor`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsinvalidcolor-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"color","default":null}]}>
-</ApiItem>
+- `public __construct(string $color)`
 
 ### Methods
 
@@ -1504,20 +1432,20 @@ Class
 public function __construct( string $color );
 ```
 
+
 ## Image\Exceptions\MissingDimensions
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\MissingDimensions`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\MissingDimensions`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsmissingdimensions-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1527,20 +1455,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\MissingHeight
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\MissingHeight`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\MissingHeight`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsmissingheight-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1550,20 +1478,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\MissingWidth
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\MissingWidth`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\MissingWidth`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsmissingwidth-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1573,20 +1501,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\ResizeFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ResizeFailed`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\ResizeFailed`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsresizefailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1596,20 +1524,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\ResourceTypeError
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ResourceTypeError`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\ResourceTypeError`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsresourcetypeerror-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1619,20 +1547,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\TextRenderingFailed
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\TextRenderingFailed`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\TextRenderingFailed`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionstextrenderingfailed-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1642,20 +1570,20 @@ Class
 public function __construct();
 ```
 
+
 ## Image\Exceptions\UnsupportedImageType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\UnsupportedImageType`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\UnsupportedImageType`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsunsupportedimagetype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"format","default":"\"\""}]}>
-</ApiItem>
+- `public __construct(string $format = "")`
 
 ### Methods
 
@@ -1665,20 +1593,20 @@ Class
 public function __construct( string $format = "" );
 ```
 
+
 ## Image\Exceptions\VersionMismatch
 
 Class
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\VersionMismatch`**
+  - [`Phalcon\Image\Exception`](#imageexception)
+    - **`Phalcon\Image\Exceptions\VersionMismatch`**
 
 `Phalcon\Image\Exception`
 
 ### Method Summary
 
-<ApiItem href="#imageexceptionsversionmismatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"version","default":null}]}>
-</ApiItem>
+- `public __construct(string $version)`
 
 ### Methods
 
@@ -1688,6 +1616,7 @@ Class
 public function __construct( string $version );
 ```
 
+
 ## Image\ImageFactory
 
 Class
@@ -1695,27 +1624,22 @@ Class
 Factory to create adapters for image manipulation
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.21/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.21/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Image\ImageFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.21/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Image\ImageFactory`**
 
 `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Throwable`
 
 ### Method Summary
 
-<ApiItem href="#imageimagefactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#imageimagefactory-load" visibility="public" name="load" returnType="AdapterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
-Factory to create an instance from a Config object
-</ApiItem>
-<ApiItem href="#imageimagefactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"file","default":null},{"type":"int|null","name":"width","default":"null"},{"type":"int|null","name":"height","default":"null"}]}>
-Creates a new instance
-</ApiItem>
-<ApiItem href="#imageimagefactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#imageimagefactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
+- `public __construct(array $services = [])` — Constructor
+
+- `public load(mixed $config): AdapterInterface` — Factory to create an instance from a Config object
+
+- `public newInstance(string $name, string $file, int|null $width = null, int|null $height = null): AdapterInterface` — Creates a new instance
+
+- `protected getExceptionClass(): string`
+
+- `protected getServices(): array` — Returns the available adapters
 
 ### Methods
 
@@ -1739,10 +1663,10 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-string $file,
-int|null $width = null,
-int|null $height = null
+    string $name,
+    string $file,
+    int|null $width = null,
+    int|null $height = null
 ): AdapterInterface;
 ```
 

@@ -141,19 +141,19 @@ $admin   = new Component('admin', 'Administration Pages');
 $reports = new Component('reports', 'Reports Pages');
 
 $acl->addComponent(
-$admin,
-[
-    'dashboard',
-    'users',
-]
+    $admin,
+    [
+        'dashboard',
+        'users',
+    ]
 );
 
 $acl->addComponent(
-$reports,
-[
-    'list',
-    'add',
-]
+    $reports,
+    [
+        'list',
+        'add',
+    ]
 );
 ```
 
@@ -167,19 +167,19 @@ use Phalcon\Acl\Adapter\Memory;
 $acl = new Memory();
 
 $acl->addComponent(
-'admin',
-[
-    'dashboard',
-    'users',
-]
+    'admin',
+    [
+        'dashboard',
+        'users',
+    ]
 );
 
 $acl->addComponent(
-'reports',
-[
-    'list',
-    'add',
-]
+    'reports',
+    [
+        'list',
+        'add',
+    ]
 );
 ```
 
@@ -209,29 +209,29 @@ $acl->addRole('accounting');
 $acl->addRole('guest');
 
 $acl->addComponent(
-'admin',
-[
-    'dashboard',
-    'users',
-    'view',
-]
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
 );
 
 $acl->addComponent(
-'reports',
-[
-    'list',
-    'add',
-    'view',
-]
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
 );
 
 $acl->addComponent(
-'session',
-[
-    'login',
-    'logout',
-]
+    'session',
+    [
+        'login',
+        'logout',
+    ]
 );
 
 $acl->allow('manager', 'admin', 'dashboard');
@@ -305,22 +305,22 @@ $acl->addRole('manager');
 
 // Add components
 $acl->addComponent(
-'admin',
-[
-    'dashboard',
-    'users',
-    'view',
-]
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
 );
 
 // Set access level for `role` into `components` with a custom function
 $acl->allow(
-'manager',
-'admin',
-'dashboard',
-function ($name) {
-    return boolval('Bob' !== $name);
-}
+    'manager',
+    'admin',
+    'dashboard',
+    function ($name) {
+        return boolval('Bob' !== $name);
+    }
 );
 ```
 
@@ -342,42 +342,42 @@ $acl->addRole('manager');
 
 // Add components
 $acl->addComponent(
-'admin',
-[
-    'dashboard',
-    'users',
-    'view',
-]
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
 );
 
 // Set access level for `role` into `components` with a custom function
 $acl->allow(
-'manager',
-'admin',
-'dashboard',
-function ($name) {
-    return boolval('Bob' !== $name);
-}
+    'manager',
+    'admin',
+    'dashboard',
+    function ($name) {
+        return boolval('Bob' !== $name);
+    }
 );
 
 // Returns `true`
 $acl->isAllowed(
-'manager',
-'admin',
-'dashboard',
-[
-    'name' => 'John',
-]
+    'manager',
+    'admin',
+    'dashboard',
+    [
+        'name' => 'John',
+    ]
 );
 
 // Returns `false`
 $acl->isAllowed(
-'manager',
-'admin',
-'dashboard',
-[
-    'name' => 'Bob',
-]
+    'manager',
+    'admin',
+    'dashboard',
+    [
+        'name' => 'Bob',
+    ]
 );
 ```
 
@@ -404,29 +404,29 @@ $acl->addRole('manager');
 
 // Add components
 $acl->addComponent(
-'admin',
-[
-    'dashboard',
-    'users',
-    'view',
-]
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
 );
 
 // Set access level for `role` into `components` with a custom function
 $acl->allow(
-'manager',
-'admin',
-'dashboard',
-function ($name) {
-    return boolval('Bob' !== $name);
-}
+    'manager',
+    'admin',
+    'dashboard',
+    function ($name) {
+        return boolval('Bob' !== $name);
+    }
 );
 
 // Returns `false`
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
 $acl->setNoArgumentsDefaultAction(
-Enum::ALLOW
+    Enum::ALLOW
 );
 
 // Returns `true`
@@ -456,26 +456,26 @@ use Phalcon\Acl\RoleAwareInterface;
 // Create our class, which will be used as roleName
 class ManagerRole implements RoleAwareInterface
 {
-protected $id;
+    protected $id;
 
-protected $roleName;
+    protected $roleName;
 
-public function __construct($id, $roleName)
-{
-    $this->id = $id;
-    $this->roleName = $roleName;
-}
+    public function __construct($id, $roleName)
+    {
+        $this->id = $id;
+        $this->roleName = $roleName;
+    }
 
-public function getId()
-{
-    return $this->id;
-}
+    public function getId()
+    {
+        return $this->id;
+    }
 
-// Implemented function from RoleAware Interface
-public function getRoleName()
-{
-    return $this->roleName;
-}
+    // Implemented function from RoleAware Interface
+    public function getRoleName()
+    {
+        return $this->roleName;
+    }
 }
 ```
 
@@ -491,34 +491,34 @@ use Phalcon\Acl\ComponentAwareInterface;
 // Create our class, which will be used as componentName
 class ReportsComponent implements ComponentAwareInterface
 {
-protected $id;
+    protected $id;
 
-protected $componentName;
+    protected $componentName;
 
-protected $userId;
+    protected $userId;
 
-public function __construct($id, $componentName, $userId)
-{
-    $this->id = $id;
-    $this->componentName = $componentName;
-    $this->userId = $userId;
-}
+    public function __construct($id, $componentName, $userId)
+    {
+        $this->id = $id;
+        $this->componentName = $componentName;
+        $this->userId = $userId;
+    }
 
-public function getId()
-{
-    return $this->id;
-}
+    public function getId()
+    {
+        return $this->id;
+    }
 
-public function getUserId()
-{
-    return $this->userId;
-}
+    public function getUserId()
+    {
+        return $this->userId;
+    }
 
-// Implemented function from ComponentAware Interface
-public function getComponentName()
-{
-    return $this->componentName;
-}
+    // Implemented function from ComponentAware Interface
+    public function getComponentName()
+    {
+        return $this->componentName;
+    }
 }
 ```
 
@@ -542,24 +542,24 @@ $acl->addRole('manager');
 
 // Add components
 $acl->addComponent(
-'reports',
-[
-    'list',
-    'add',
-    'view',
-]
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
 );
 
 // Now tie them all together with a custom function.
 // The `ManagerRole` and `ModelSubject` parameters are necessary
 // for the custom function to work
 $acl->allow(
-'manager', 
-'reports', 
-'list',
-function (ManagerRole $manager, ReportsComponent $model) {
-    return boolval($manager->getId() === $model->getUserId());
-}
+    'manager', 
+    'reports', 
+    'list',
+    function (ManagerRole $manager, ReportsComponent $model) {
+        return boolval($manager->getId() === $model->getUserId());
+    }
 );
 
 // Create the custom objects
@@ -657,29 +657,29 @@ $aclFile = 'app/security/acl.cache';
 
 // Check whether ACL data already exist
 if (!is_file($aclFile)) {
-// The ACL does not exist - build it
-$acl = new Memory();
+    // The ACL does not exist - build it
+    $acl = new Memory();
 
-// Define roles, components, access, etc.
-// ...
+    // Define roles, components, access, etc.
+    // ...
 
-// Store serialized list into a plain file
-file_put_contents(
-    $aclFile,
-    serialize($acl)
-);
+    // Store serialized list into a plain file
+    file_put_contents(
+        $aclFile,
+        serialize($acl)
+    );
 } else {
-// Restore the ACL object from the serialized file
-$acl = unserialize(
-    file_get_contents($aclFile)
-);
+    // Restore the ACL object from the serialized file
+    $acl = unserialize(
+        file_get_contents($aclFile)
+    );
 }
 
 // Use the ACL list as needed
 if ($acl->isAllowed('manager', 'admin', 'dashboard')) {
-echo 'Access granted!';
+    echo 'Access granted!';
 } else {
-echo 'Access denied :(';
+    echo 'Access denied :(';
 }
 ```
 
@@ -699,10 +699,10 @@ use Phalcon\Storage\Adapter\Stream;
 use Phalcon\Storage\SerializerFactory;
 
 $backend = new Stream(
-new SerializerFactory(),
-[
-    'storageDir' => '/app/storage/acl',
-]
+    new SerializerFactory(),
+    [
+        'storageDir' => '/app/storage/acl',
+    ]
 );
 
 // Loads an existing snapshot from the backend if one is present
@@ -727,10 +727,10 @@ use Phalcon\Storage\Adapter\Stream;
 use Phalcon\Storage\SerializerFactory;
 
 $backend = new Stream(
-new SerializerFactory(),
-[
-    'storageDir' => '/app/storage/acl',
-]
+    new SerializerFactory(),
+    [
+        'storageDir' => '/app/storage/acl',
+    ]
 );
 
 // The constructor calls load(), repopulating roles, components and access
@@ -771,14 +771,14 @@ $eventsManager = new Manager();
 
 // Attach a listener for type `acl`
 $eventsManager->attach(
-'acl:beforeCheckAccess',
-function (Event $event, $acl) {
-    echo $acl->getActiveRole() . PHP_EOL;
+    'acl:beforeCheckAccess',
+    function (Event $event, $acl) {
+        echo $acl->getActiveRole() . PHP_EOL;
 
-    echo $acl->getActiveComponent() . PHP_EOL;
+        echo $acl->getActiveComponent() . PHP_EOL;
 
-    echo $acl->getActiveAccess() . PHP_EOL;
-}
+        echo $acl->getActiveAccess() . PHP_EOL;
+    }
 );
 
 $acl = new Memory();
@@ -824,10 +824,10 @@ use Phalcon\Acl\Component;
 use Phalcon\Acl\Exception;
 
 try {
-$acl   = new Memory();
-$admin = new Component('*');
+    $acl   = new Memory();
+    $admin = new Component('*');
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 

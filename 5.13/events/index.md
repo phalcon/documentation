@@ -27,24 +27,24 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-'db:afterQuery',
-function (Event $event, $connection) {
-    echo $connection->getSQLStatement();
-}
+    'db:afterQuery',
+    function (Event $event, $connection) {
+        echo $connection->getSQLStatement();
+    }
 );
 
 $connection = new DbAdapter(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'invo',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'invo',
+    ]
 );
 
 $connection->setEventsManager($eventsManager);
 $connection->query(
-'SELECT * FROM products p WHERE p.status = 1'
+    'SELECT * FROM products p WHERE p.status = 1'
 );
 ```
 
@@ -79,9 +79,9 @@ the regular listener pipeline. See [Subscribers](#subscribers).
 
 ```php
 final public function attach(
-string $eventType, 
-mixed $handler, 
-int $priority = self::DEFAULT_PRIORITY
+    string $eventType, 
+    mixed $handler, 
+    int $priority = self::DEFAULT_PRIORITY
 ): void
 ```
 
@@ -127,10 +127,10 @@ Sets whether priorities are honored when dispatching (default `false`).
 
 ```php
 final public function fire(
-string $eventType, 
-object $source, 
-mixed $data = null, 
-bool $cancelable = true
+    string $eventType, 
+    object $source, 
+    mixed $data = null, 
+    bool $cancelable = true
 ): mixed
 ```
 
@@ -139,10 +139,10 @@ stopping listener's return value when `$event->stop()` is called).
 
 ```php
 public function fireAll(
-string $eventType, 
-object $source, 
-mixed $data = null, 
-bool $cancelable = true
+    string $eventType, 
+    object $source, 
+    mixed $data = null, 
+    bool $cancelable = true
 ): array
 ```
 
@@ -260,24 +260,24 @@ $container     = Di::getDefault();
 $eventsManager = $container->get('eventsManager');
 
 $eventsManager->attach(
-'db:afterQuery',
-function (Event $event, $connection) {
-    echo $connection->getSQLStatement();
-}
+    'db:afterQuery',
+    function (Event $event, $connection) {
+        echo $connection->getSQLStatement();
+    }
 );
 
 $connection = new DbAdapter(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'invo',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'invo',
+    ]
 );
 
 $connection->setEventsManager($eventsManager);
 $connection->query(
-'SELECT * FROM products p WHERE p.status = 1'
+    'SELECT * FROM products p WHERE p.status = 1'
 );
 ```
 
@@ -292,24 +292,24 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 $eventsManager = new EventsManager();
 $eventsManager->attach(
-'db:afterQuery',
-function (Event $event, $connection) {
-    echo $connection->getSQLStatement();
-}
+    'db:afterQuery',
+    function (Event $event, $connection) {
+        echo $connection->getSQLStatement();
+    }
 );
 
 $connection = new DbAdapter(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'invo',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'invo',
+    ]
 );
 
 $connection->setEventsManager($eventsManager);
 $connection->query(
-'SELECT * FROM products p WHERE p.status = 1'
+    'SELECT * FROM products p WHERE p.status = 1'
 );
 ```
 
@@ -339,24 +339,24 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 $eventsManager = new EventsManager();
 $eventsManager->attach(
-'db:afterQuery',
-function (Event $event, $connection) {
-    echo $connection->getSQLStatement();
-}
+    'db:afterQuery',
+    function (Event $event, $connection) {
+        echo $connection->getSQLStatement();
+    }
 );
 
 $connection = new DbAdapter(
-[
-    'host'     => 'localhost',
-    'username' => 'root',
-    'password' => 'secret',
-    'dbname'   => 'invo',
-]
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => 'secret',
+        'dbname'   => 'invo',
+    ]
 );
 
 $connection->setEventsManager($eventsManager);
 $connection->query(
-'SELECT * FROM products p WHERE p.status = 1'
+    'SELECT * FROM products p WHERE p.status = 1'
 );
 ```
 
@@ -383,25 +383,25 @@ use Phalcon\Events\Event;
  */
 class QueryListener extends Injectable
 {
-public function beforeQuery(Event $event, AdapterInterface $connection)
-{
-    if ($this->config->path('app.logLevel') > 1) {
-        $this->logger->info(
-            sprintf(
-                '%s - [%s]',
-                $connection->getSQLStatement(),
-                json_encode($connection->getSQLVariables())
-            )
-        );
+    public function beforeQuery(Event $event, AdapterInterface $connection)
+    {
+        if ($this->config->path('app.logLevel') > 1) {
+            $this->logger->info(
+                sprintf(
+                    '%s - [%s]',
+                    $connection->getSQLStatement(),
+                    json_encode($connection->getSQLVariables())
+                )
+            );
+        }
     }
-}
 
-public function rollbackTransaction(Event $event)
-{
-    if ($this->config->path('app.logLevel') > 1) {
-        $this->logger->warning($event->getType());
+    public function rollbackTransaction(Event $event)
+    {
+        if ($this->config->path('app.logLevel') > 1) {
+            $this->logger->warning($event->getType());
+        }
     }
-}
 }
 ```
 
@@ -411,8 +411,8 @@ Attaching the listener to our events manager is very simple:
 <?php
 
 $eventsManager->attach(
-'db',
-new QueryListener()
+    'db',
+    new QueryListener()
 );
 ```
 
@@ -441,38 +441,38 @@ use MyApp\Auth\Adapters\AbstractAdapter;
  */
 class NotFoundListener extends Injectable
 {
-public function beforeException(
-    Event $event, 
-    Dispatcher $dispatcher, 
-    \Exception $ex
-) {
-    switch ($ex->getCode()) {
-        case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-        case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
-            $dispatcher->setModuleName('main');
-            $params = [
-                'namespace'  => 'MyApp\Controllers',
-                'controller' => 'session',
-                'action'     => 'fourohfour',
-            ];
+    public function beforeException(
+        Event $event, 
+        Dispatcher $dispatcher, 
+        \Exception $ex
+    ) {
+        switch ($ex->getCode()) {
+            case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+            case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                $dispatcher->setModuleName('main');
+                $params = [
+                    'namespace'  => 'MyApp\Controllers',
+                    'controller' => 'session',
+                    'action'     => 'fourohfour',
+                ];
 
-            /**
-             * 404 not logged in
-             */
-            if (true !== $this->auth->isLoggedIn()) {
-                $params['action'] = 'login';
-            }
+                /**
+                 * 404 not logged in
+                 */
+                if (true !== $this->auth->isLoggedIn()) {
+                    $params['action'] = 'login';
+                }
 
-            $dispatcher->forward($params);
+                $dispatcher->forward($params);
 
-            return false;
-        default:
-            $this->logger->error($ex->getMessage());
-            $this->logger->error($ex->getTraceAsString());
+                return false;
+            default:
+                $this->logger->error($ex->getMessage());
+                $this->logger->error($ex->getTraceAsString());
 
-            return false;
+                return false;
+        }
     }
-}
 }
 ``` 
 
@@ -482,9 +482,9 @@ and attaching it to the events manager:
 <?php
 
 $eventsManager->attach(
-'dispatch:beforeException',
-new NotFoundListener(),
-200
+    'dispatch:beforeException',
+    new NotFoundListener(),
+    200
 );
 ```
 
@@ -525,37 +525,37 @@ use Phalcon\Mvc\Model;
 
 class AuditSubscriber implements Subscriber
 {
-public static function getSubscribedEvents(): array
-{
-    return [
-        'model:beforeSave'   => 'recordIntent',
-        'model:afterSave'    => ['logSave', 150],
-        'model:beforeDelete' => [
-            ['markForArchive', 200],
-            ['notifyAuditor', 100],
-        ],
-    ];
-}
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'model:beforeSave'   => 'recordIntent',
+            'model:afterSave'    => ['logSave', 150],
+            'model:beforeDelete' => [
+                ['markForArchive', 200],
+                ['notifyAuditor', 100],
+            ],
+        ];
+    }
 
-public function recordIntent(Event $event, Model $model): void
-{
-    // ...
-}
+    public function recordIntent(Event $event, Model $model): void
+    {
+        // ...
+    }
 
-public function logSave(Event $event, Model $model): void
-{
-    // ...
-}
+    public function logSave(Event $event, Model $model): void
+    {
+        // ...
+    }
 
-public function markForArchive(Event $event, Model $model): void
-{
-    // ...
-}
+    public function markForArchive(Event $event, Model $model): void
+    {
+        // ...
+    }
 
-public function notifyAuditor(Event $event, Model $model): void
-{
-    // ...
-}
+    public function notifyAuditor(Event $event, Model $model): void
+    {
+        // ...
+    }
 }
 ```
 
@@ -614,26 +614,27 @@ use Phalcon\Events\ManagerInterface;
  */
 class NotificationsAware extends Injectable implements EventsAwareInterface
 {
-protected $eventsManager;
+    protected $eventsManager;
+    
+    public function getEventsManager()
+    {
+        return $this->eventsManager;
+    }
 
-public function getEventsManager()
-{
-    return $this->eventsManager;
-}
+    public function setEventsManager(ManagerInterface $eventsManager)
+    {
+        $this->eventsManager = $eventsManager;
+    }
 
-public function setEventsManager(ManagerInterface $eventsManager)
-{
-    $this->eventsManager = $eventsManager;
-}
 
-public function process()
-{
-    $this->eventsManager->fire('notifications:beforeSend', $this);
+    public function process()
+    {
+        $this->eventsManager->fire('notifications:beforeSend', $this);
 
-    $this->logger->info('Processing.... ');
+        $this->logger->info('Processing.... ');
 
-    $this->eventsManager->fire('notifications:afterSend', $this);
-}
+        $this->eventsManager->fire('notifications:afterSend', $this);
+    }
 }
 ```
 
@@ -662,29 +663,29 @@ use Phalcon\Logger;
  */
 class MotificationsListener
 {
-/**
- * @var Logger
- */
-private $logger;
+    /**
+     * @var Logger
+     */
+    private $logger;
 
-public function __construct(Logger $logger)
-{
-    $this->logger = $logger;
-}
+    public function __construct(Logger $logger)
+    {
+        $this->logger = $logger;
+    }
 
-public function afterSend(
-    Event $event, 
-    NotificationsAware $component
-) {
-    $this->logger->info('After Notification');
-}
+    public function afterSend(
+        Event $event, 
+        NotificationsAware $component
+    ) {
+        $this->logger->info('After Notification');
+    }
 
-public function beforeSend(
-    Event $event, 
-    NotificationsAware $component
-) {
-    $this->logger->info('Before Notification');
-}
+    public function beforeSend(
+        Event $event, 
+        NotificationsAware $component
+    ) {
+        $this->logger->info('Before Notification');
+    }
 }
 ```
 
@@ -703,8 +704,8 @@ $component     = new NotificationAware();
 $component->setEventsManager($eventsManager);
 
 $eventsManager->attach(
-'notifications',
-new NotificationsListener()
+    'notifications',
+    new NotificationsListener()
 );
 
 $component->process();
@@ -727,8 +728,8 @@ Additional data may also be passed when triggering an event using the third para
 <?php
 
 $data = [
-'name'     => 'Darth Vader',
-'password' => '12345',
+    'name'     => 'Darth Vader',
+    'password' => '12345',
 ];
 
 $eventsManager->fire('notifications:afterSend', $this, $data);
@@ -742,22 +743,22 @@ In a listener the third parameter also receives data:
 use Phalcon\Events\Event;
 
 $data = [
-'name'     => 'Darth Vader',
-'password' => '12345',
+    'name'     => 'Darth Vader',
+    'password' => '12345',
 ];
 
 $eventsManager->attach(
-'notifications',
-function (Event $event, $component, $data) {
-    print_r($data);
-}
+    'notifications',
+    function (Event $event, $component, $data) {
+        print_r($data);
+    }
 );
 
 $eventsManager->attach(
-'notifications',
-function (Event $event, $component) {
-    print_r($event->getData());
-}
+    'notifications',
+    function (Event $event, $component) {
+        print_r($event->getData());
+    }
 );
 ```
 
@@ -773,12 +774,12 @@ propagation early:
 use Phalcon\Events\Event;
 
 $eventsManager->attach(
-'db',
-function (Event $event, $connection) {
-    if ('2019-01-01' < date('Y-m-d')) {
-        $event->stop();
+    'db',
+    function (Event $event, $connection) {
+        if ('2019-01-01' < date('Y-m-d')) {
+            $event->stop();
+        }
     }
-}
 );
 ```
 
@@ -795,12 +796,12 @@ the particular event to fire on all available listeners that implement it.
 use Phalcon\Events\Event;
 
 $eventsManager->attach(
-'db',
-function (Event $event, $connection) {
-    if ($event->isCancelable()) {
-        $event->stop();
+    'db',
+    function (Event $event, $connection) {
+        if ($event->isCancelable()) {
+            $event->stop();
+        }
     }
-}
 );
 ```
 
@@ -835,18 +836,18 @@ $eventsManager = new EventsManager();
 $eventsManager->setStopOnFalse(true);
 
 $eventsManager->attach(
-'orders:beforePay',
-function ($event, $order) {
-    return $order->isValid();
-}
+    'orders:beforePay',
+    function ($event, $order) {
+        return $order->isValid();
+    }
 );
 
 $eventsManager->attach(
-'orders:beforePay',
-function ($event, $order) {
-    // Skipped entirely if the first listener returned false.
-    return $order->reserveStock();
-}
+    'orders:beforePay',
+    function ($event, $order) {
+        // Skipped entirely if the first listener returned false.
+        return $order->reserveStock();
+    }
 );
 
 $result = $eventsManager->fire('orders:beforePay', $order);
@@ -873,12 +874,12 @@ use Phalcon\Events\Manager as EventsManager;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-'app:beforeRequest',
-function (Event $event, $app) use ($eventsManager) {
-    if (true !== $app->shouldContinue()) {
-        $eventsManager->halt();
+    'app:beforeRequest',
+    function (Event $event, $app) use ($eventsManager) {
+        if (true !== $app->shouldContinue()) {
+            $eventsManager->halt();
+        }
     }
-}
 );
 
 // After the listener trips halt(), no other event fires.
@@ -909,19 +910,19 @@ $eventsManager = new EventsManager();
 $eventsManager->enablePriorities(true);
 
 $eventsManager->attach(
-'db', 
-new QueryListener(), 
-150
+    'db', 
+    new QueryListener(), 
+    150
 );
 $eventsManager->attach(
-'db', 
-new QueryListener(), 
-100
+    'db', 
+    new QueryListener(), 
+    100
 );
 $eventsManager->attach(
-'db', 
-new QueryListener(), 
-50
+    'db', 
+    new QueryListener(), 
+    50
 ); 
 ```
 
@@ -948,17 +949,17 @@ $eventsManager = new EventsManager();
 $eventsManager->collectResponses(true);
 
 $eventsManager->attach(
-'custom:custom',
-function () {
-    return 'first response';
-}
+    'custom:custom',
+    function () {
+        return 'first response';
+    }
 );
 
 $eventsManager->attach(
-'custom:custom',
-function () {
-    return 'second response';
-}
+    'custom:custom',
+    function () {
+        return 'second response';
+    }
 );
 
 $eventsManager->fire('custom:custom', $eventsManager, null);
@@ -970,8 +971,8 @@ The above example produces:
 
 ```bash
 [
-0 => 'first response',
-1 => 'second response',
+    0 => 'first response',
+    1 => 'second response',
 ]
 ```
 
@@ -992,17 +993,17 @@ use Phalcon\Events\Manager as EventsManager;
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
-'reports:collect',
-function () {
-    return 'metrics';
-}
+    'reports:collect',
+    function () {
+        return 'metrics';
+    }
 );
 
 $eventsManager->attach(
-'reports:collect',
-function () {
-    return 'audit';
-}
+    'reports:collect',
+    function () {
+        return 'audit';
+    }
 );
 
 $results = $eventsManager->fireAll('reports:collect', $context);
@@ -1028,10 +1029,10 @@ $eventsManager = new EventsManager();
 $eventsManager->setStrict(true);
 
 try {
-$eventsManager->fire('typo:eventName', $source);
+    $eventsManager->fire('typo:eventName', $source);
 } catch (Exception $ex) {
-echo $ex->getMessage();
-// "No listeners attached for event typo:eventName"
+    echo $ex->getMessage();
+    // "No listeners attached for event typo:eventName"
 }
 ```
 
@@ -1088,22 +1089,22 @@ use MyApp\Auth\Adapters\AbstractAdapter;
  */
 class BaseController extends Controller
 {
-public function beforeExecuteRoute(Dispatcher $dispatcher)
-{
-    /**
-     * Send them to the login page if no identity exists
-     */
-    if (true !== $this->auth->isLoggedIn()) {
-        $this->response->redirect(
-            '/login',
-            true
-        );
+    public function beforeExecuteRoute(Dispatcher $dispatcher)
+    {
+        /**
+         * Send them to the login page if no identity exists
+         */
+        if (true !== $this->auth->isLoggedIn()) {
+            $this->response->redirect(
+                '/login',
+                true
+            );
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 }
 ``` 
 
@@ -1138,48 +1139,48 @@ use function str_pad;
  */
 class Invoices extends Model
 {
-/**
- * @var int
- */
-public $inv_cst_id;
+    /**
+     * @var int
+     */
+    public $inv_cst_id;
 
-/**
- * @var string
- */
-public $inv_created_at;
+    /**
+     * @var string
+     */
+    public $inv_created_at;
 
-/**
- * @var int
- */
-public $inv_id;
+    /**
+     * @var int
+     */
+    public $inv_id;
 
-/**
- * @var string
- */
-public $inv_number;
+    /**
+     * @var string
+     */
+    public $inv_number;
 
-/**
- * @var string
- */
-public $inv_title;
+    /**
+     * @var string
+     */
+    public $inv_title;
 
-/**
- * @var float
- */
-public $inv_total;
+    /**
+     * @var float
+     */
+    public $inv_total;
 
-public function beforeCreate()
-{
-    $date     = date('YmdHis');
-    $customer = substr(
-        str_pad(
-            $this->inv_cst_id, 6, '0', STR_PAD_LEFT
-        ),
-        -6
-    );
+    public function beforeCreate()
+    {
+        $date     = date('YmdHis');
+        $customer = substr(
+            str_pad(
+                $this->inv_cst_id, 6, '0', STR_PAD_LEFT
+            ),
+            -6
+        );
 
-    $this->inv_number = 'INV-' . $customer . '-' . $date;
-}
+        $this->inv_number = 'INV-' . $customer . '-' . $date;
+    }
 }
 ``` 
 
@@ -1225,51 +1226,51 @@ use Phalcon\Contracts\Events\Manager as ManagerInterface;
 
 class EventsManager implements ManagerInterface
 {
-/**
- * @param string          $eventType
- * @param object|callable $handler
- */
-public function attach(string $eventType, $handler);
+    /**
+     * @param string          $eventType
+     * @param object|callable $handler
+     */
+    public function attach(string $eventType, $handler);
 
-/**
- * @param string          $eventType
- * @param object|callable $handler
- */
-public function detach(string $eventType, $handler);
+    /**
+     * @param string          $eventType
+     * @param object|callable $handler
+     */
+    public function detach(string $eventType, $handler);
 
-/**
- * @param string $type
- */
-public function detachAll(string $type = null);
+    /**
+     * @param string $type
+     */
+    public function detachAll(string $type = null);
 
-/**
- * @param string $eventType
- * @param object $source
- * @param mixed  $data
- * @param mixed  $cancelable
- * 
- * @return mixed
- */
-public function fire(
-    string $eventType, 
-    $source, 
-    $data = null, 
-    bool $cancelable = false
-);
+    /**
+     * @param string $eventType
+     * @param object $source
+     * @param mixed  $data
+     * @param mixed  $cancelable
+     * 
+     * @return mixed
+     */
+    public function fire(
+        string $eventType, 
+        $source, 
+        $data = null, 
+        bool $cancelable = false
+    );
 
-/**
- * @param string $type
- *
- * @return array
- */
-public function getListeners(string $type): array;
+    /**
+     * @param string $type
+     *
+     * @return array
+     */
+    public function getListeners(string $type): array;
 
-/**
- * @param string $type
- *
- * @return bool
- */
-public function hasListeners(string $type): bool;
+    /**
+     * @param string $type
+     *
+     * @return bool
+     */
+    public function hasListeners(string $type): bool;
 }
 ```
 
@@ -1405,10 +1406,10 @@ use Phalcon\Events\EventsManager;
 use Phalcon\Events\Exception;
 
 try {
-$eventsManager = new EventsManager();
-$eventsManager->attach('custom:custom', true);
+    $eventsManager = new EventsManager();
+    $eventsManager->attach('custom:custom', true);
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 

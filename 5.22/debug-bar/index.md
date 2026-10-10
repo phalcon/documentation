@@ -97,10 +97,10 @@ The second argument to `Provider` is a nested array. Every key is optional.
 use Phalcon\DebugBar\Provider;
 
 (new Provider($application, [
-'env'        => ['var' => 'APP_ENV', 'blocked' => ['production', 'staging']],
-'access'     => ['allow_ips' => ['127.0.0.1', '10.0.0.5']],
-'collectors' => ['cache' => false, 'view' => false],
-'redact'     => ['mask' => ['api_key'], 'hidden' => ['secret_question']],
+    'env'        => ['var' => 'APP_ENV', 'blocked' => ['production', 'staging']],
+    'access'     => ['allow_ips' => ['127.0.0.1', '10.0.0.5']],
+    'collectors' => ['cache' => false, 'view' => false],
+    'redact'     => ['mask' => ['api_key'], 'hidden' => ['secret_question']],
 ]))->boot();
 ```
 
@@ -140,7 +140,7 @@ Streamed collectors only receive events from components that fire on the same ev
 use Phalcon\Events\Manager as EventsManager;
 
 $container->setShared('eventsManager', function () {
-return new EventsManager();
+    return new EventsManager();
 });
 
 // On the application, so the bar can attach its response listener.
@@ -172,9 +172,9 @@ Debug::startMeasure('render');
 Debug::stopMeasure('render');
 
 try {
-$service->charge($order);
+    $service->charge($order);
 } catch (\Throwable $exception) {
-Debug::addException($exception);
+    Debug::addException($exception);
 }
 ```
 
@@ -222,7 +222,7 @@ The `logger` collector is registered by default. Disable it, like any collector,
 use Phalcon\DebugBar\Provider;
 
 (new Provider($application, [
-'collectors' => ['logger' => false],
+    'collectors' => ['logger' => false],
 ]))->boot();
 ```
 
@@ -243,11 +243,11 @@ The default masked keys are `authorization`, `cookie`, `csrf`, `key`, `password`
 use Phalcon\DebugBar\Provider;
 
 (new Provider($application, [
-'access' => [
-    'allow_ips' => ['127.0.0.1'],
-    'callback'  => fn (): bool => 'admin' === ($_SESSION['role'] ?? null),
-],
-'redact' => ['hidden' => ['card_number']],
+    'access' => [
+        'allow_ips' => ['127.0.0.1'],
+        'callback'  => fn (): bool => 'admin' === ($_SESSION['role'] ?? null),
+    ],
+    'redact' => ['hidden' => ['card_number']],
 ]))->boot();
 ```
 

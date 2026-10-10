@@ -13,6 +13,7 @@ version: "5.22"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Filter\Exception
 
 Class
@@ -22,23 +23,23 @@ Phalcon\Filter\Exception
 Exceptions thrown in Phalcon\Filter will use this class
 
 - `\Exception`
-- **`Phalcon\Filter\Exception`**
-- [`Phalcon\Filter\Exceptions\FilterNotRegistered`](#filterexceptionsfilternotregistered)
+  - **`Phalcon\Filter\Exception`**
+    - [`Phalcon\Filter\Exceptions\FilterNotRegistered`](#filterexceptionsfilternotregistered)
+
 
 ## Filter\Exceptions\FilterNotRegistered
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Exception`](#filterexception)
-- **`Phalcon\Filter\Exceptions\FilterNotRegistered`**
+  - [`Phalcon\Filter\Exception`](#filterexception)
+    - **`Phalcon\Filter\Exceptions\FilterNotRegistered`**
 
 `Phalcon\Filter\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filterexceptionsfilternotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -47,6 +48,7 @@ Class
 ```php
 public function __construct( string $name );
 ```
+
 
 ## Filter\Filter
 
@@ -87,86 +89,75 @@ Lazy loads, stores and exposes sanitizer objects
 
 ### Method Summary
 
-<ApiItem href="#filterfilter-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"args","default":null}]}>
-Magic call to make the helper objects available as methods.
-</ApiItem>
-<ApiItem href="#filterfilter-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"mapper","default":"[]"}]}>
-Filter constructor.
-</ApiItem>
-<ApiItem href="#filterfilter-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
-Get a service. If it is not in the mapper array, create a new object,
-</ApiItem>
-<ApiItem href="#filterfilter-getdefaultmapper" visibility="public" name="getDefaultMapper" returnType="array" params={[]}>
-Returns the default sanitizer name to class map. This is the single
-</ApiItem>
-<ApiItem href="#filterfilter-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Checks if a service exists in the map array
-</ApiItem>
-<ApiItem href="#filterfilter-sanitize" visibility="public" name="sanitize" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"sanitizers","default":null},{"type":"bool","name":"noRecursive","default":"false"}]}>
-Sanitizes a value with a specified single or set of sanitizers
-</ApiItem>
-<ApiItem href="#filterfilter-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"service","default":null}]}>
-Set a new service to the mapper array
-</ApiItem>
-<ApiItem href="#filterfilter-init" visibility="protected" name="init" returnType="void" params={[{"type":"array","name":"mapper","default":null}]}>
-Loads the objects in the internal mapper array
-</ApiItem>
+- `public __call(string $name, array $args)` — Magic call to make the helper objects available as methods.
+
+- `public __construct(array $mapper = [])` — Filter constructor.
+
+- `public get(string $name): mixed` — Get a service. If it is not in the mapper array, create a new object,
+
+- `public getDefaultMapper(): array` — Returns the default sanitizer name to class map. This is the single
+
+- `public has(string $name): bool` — Checks if a service exists in the map array
+
+- `public sanitize(mixed $value, mixed $sanitizers, bool $noRecursive = false): mixed` — Sanitizes a value with a specified single or set of sanitizers
+
+- `public set(string $name, mixed $service): void` — Set a new service to the mapper array
+
+- `protected init(array $mapper): void` — Loads the objects in the internal mapper array
 
 ### Constants
 
-<ApiItem kind="constant" name="FILTER_ABSINT" type="string" default="&quot;absint&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_ALNUM" type="string" default="&quot;alnum&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_ALPHA" type="string" default="&quot;alpha&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_BOOL" type="string" default="&quot;bool&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_EMAIL" type="string" default="&quot;email&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_FLOAT" type="string" default="&quot;float&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_INT" type="string" default="&quot;int&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_IP" type="string" default="&quot;ip&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_LOWER" type="string" default="&quot;lower&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_LOWERFIRST" type="string" default="&quot;lowerfirst&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_REGEX" type="string" default="&quot;regex&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_REMOVE" type="string" default="&quot;remove&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_REPLACE" type="string" default="&quot;replace&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_SPECIAL" type="string" default="&quot;special&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_SPECIALFULL" type="string" default="&quot;specialfull&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_STRING" type="string" default="&quot;string&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_STRING_LEGACY" type="string" default="&quot;stringlegacy&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_STRIPTAGS" type="string" default="&quot;striptags&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_TRIM" type="string" default="&quot;trim&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_UPPER" type="string" default="&quot;upper&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_UPPERFIRST" type="string" default="&quot;upperfirst&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_UPPERWORDS" type="string" default="&quot;upperwords&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="FILTER_URL" type="string" default="&quot;url&quot;">
-</ApiItem>
+- `const string FILTER_ABSINT = "absint"`
+
+- `const string FILTER_ALNUM = "alnum"`
+
+- `const string FILTER_ALPHA = "alpha"`
+
+- `const string FILTER_BOOL = "bool"`
+
+- `const string FILTER_EMAIL = "email"`
+
+- `const string FILTER_FLOAT = "float"`
+
+- `const string FILTER_INT = "int"`
+
+- `const string FILTER_IP = "ip"`
+
+- `const string FILTER_LOWER = "lower"`
+
+- `const string FILTER_LOWERFIRST = "lowerfirst"`
+
+- `const string FILTER_REGEX = "regex"`
+
+- `const string FILTER_REMOVE = "remove"`
+
+- `const string FILTER_REPLACE = "replace"`
+
+- `const string FILTER_SPECIAL = "special"`
+
+- `const string FILTER_SPECIALFULL = "specialfull"`
+
+- `const string FILTER_STRING = "string"`
+
+- `const string FILTER_STRING_LEGACY = "stringlegacy"`
+
+- `const string FILTER_STRIPTAGS = "striptags"`
+
+- `const string FILTER_TRIM = "trim"`
+
+- `const string FILTER_UPPER = "upper"`
+
+- `const string FILTER_UPPERFIRST = "upperfirst"`
+
+- `const string FILTER_UPPERWORDS = "upperwords"`
+
+- `const string FILTER_URL = "url"`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="mapper" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="services" type="array" default="[]">
-</ApiItem>
+- `protected array $mapper = []`
+
+- `protected array $services = []`
 
 ### Methods
 
@@ -174,8 +165,8 @@ Loads the objects in the internal mapper array
 
 ```php
 public function __call(
-string $name,
-array $args
+    string $name,
+    array $args
 );
 ```
 
@@ -220,9 +211,9 @@ Checks if a service exists in the map array
 
 ```php
 public function sanitize(
-mixed $value,
-mixed $sanitizers,
-bool $noRecursive = false
+    mixed $value,
+    mixed $sanitizers,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -240,8 +231,8 @@ passed to the sanitizer as a single value.
 
 ```php
 public function set(
-string $name,
-mixed $service
+    string $name,
+    mixed $service
 ): void;
 ```
 
@@ -254,6 +245,7 @@ protected function init( array $mapper ): void;
 ```
 
 Loads the objects in the internal mapper array
+
 
 ## Filter\FilterFactory
 
@@ -269,12 +261,9 @@ Class FilterFactory
 
 ### Method Summary
 
-<ApiItem href="#filterfilterfactory-newinstance" visibility="public" name="newInstance" returnType="FilterInterface" params={[]}>
-Returns a Locator object with all the helpers defined in anonymous
-</ApiItem>
-<ApiItem href="#filterfilterfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
+- `public newInstance(): FilterInterface` — Returns a Locator object with all the helpers defined in anonymous
+
+- `protected getServices(): array` — Returns the available adapters
 
 ### Methods
 
@@ -295,6 +284,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Filter\FilterInterface
 
 Interface
@@ -307,9 +297,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 ### Method Summary
 
-<ApiItem href="#filterfilterinterface-sanitize" visibility="public" name="sanitize" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"sanitizers","default":null},{"type":"bool","name":"noRecursive","default":"false"}]}>
-Sanitizes a value with a specified single or set of sanitizers
-</ApiItem>
+- `public sanitize(mixed $value, mixed $sanitizers, bool $noRecursive = false): mixed` — Sanitizes a value with a specified single or set of sanitizers
 
 ### Methods
 
@@ -317,9 +305,9 @@ Sanitizes a value with a specified single or set of sanitizers
 
 ```php
 public function sanitize(
-mixed $value,
-mixed $sanitizers,
-bool $noRecursive = false
+    mixed $value,
+    mixed $sanitizers,
+    bool $noRecursive = false
 ): mixed;
 ```
 
@@ -329,6 +317,7 @@ Array policy: when `$value` is an array and `$noRecursive` is `false`
 (the default), each element is sanitized individually and an array is
 returned - recursion is one level deep only. When `$noRecursive` is
 `true`, the whole array is passed to the sanitizer as a single value.
+
 
 ## Filter\Sanitize\AbsInt
 
@@ -342,8 +331,7 @@ Sanitizes a value to absolute integer
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeabsint-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -352,6 +340,7 @@ Sanitizes a value to absolute integer
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\Alnum
 
@@ -365,8 +354,7 @@ Sanitizes a value to an alphanumeric value
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizealnum-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -375,6 +363,7 @@ Sanitizes a value to an alphanumeric value
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\Alpha
 
@@ -388,8 +377,7 @@ Sanitizes a value to an alpha value
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizealpha-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -398,6 +386,7 @@ Sanitizes a value to an alpha value
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\BoolVal
 
@@ -411,8 +400,7 @@ Sanitizes a value to boolean
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeboolval-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -421,6 +409,7 @@ Sanitizes a value to boolean
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\Email
 
@@ -434,8 +423,7 @@ Sanitizes an email string
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeemail-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -444,6 +432,7 @@ Sanitizes an email string
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\FloatVal
 
@@ -457,8 +446,7 @@ Sanitizes a value to float
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizefloatval-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -467,6 +455,7 @@ Sanitizes a value to float
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\IntVal
 
@@ -480,8 +469,7 @@ Sanitizes a value to integer
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeintval-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -490,6 +478,7 @@ Sanitizes a value to integer
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\Ip
 
@@ -503,8 +492,7 @@ Sanitizes a value to an ip address or CIDR range
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeip-__invoke" visibility="public" name="__invoke" returnType="false|string" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"filter","default":"0"}]}>
-</ApiItem>
+- `public __invoke(string $input, int $filter = 0): false|string`
 
 ### Methods
 
@@ -512,10 +500,11 @@ Sanitizes a value to an ip address or CIDR range
 
 ```php
 public function __invoke(
-string $input,
-int $filter = 0
+    string $input,
+    int $filter = 0
 ): false|string;
 ```
+
 
 ## Filter\Sanitize\Lower
 
@@ -529,8 +518,7 @@ Sanitizes a value to lowercase
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizelower-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -539,6 +527,7 @@ Sanitizes a value to lowercase
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\LowerFirst
 
@@ -552,8 +541,7 @@ Sanitizes a value to lcfirst
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizelowerfirst-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -562,6 +550,7 @@ Sanitizes a value to lcfirst
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\Regex
 
@@ -575,8 +564,7 @@ Sanitizes a value performing preg_replace
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeregex-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null},{"type":"mixed","name":"pattern","default":null},{"type":"mixed","name":"replace","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input, mixed $pattern, mixed $replace)`
 
 ### Methods
 
@@ -584,11 +572,12 @@ Sanitizes a value performing preg_replace
 
 ```php
 public function __invoke(
-mixed $input,
-mixed $pattern,
-mixed $replace
+    mixed $input,
+    mixed $pattern,
+    mixed $replace
 );
 ```
+
 
 ## Filter\Sanitize\Remove
 
@@ -602,8 +591,7 @@ Sanitizes a value removing parts of a string
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeremove-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null},{"type":"mixed","name":"replace","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input, mixed $replace)`
 
 ### Methods
 
@@ -611,10 +599,11 @@ Sanitizes a value removing parts of a string
 
 ```php
 public function __invoke(
-mixed $input,
-mixed $replace
+    mixed $input,
+    mixed $replace
 );
 ```
+
 
 ## Filter\Sanitize\Replace
 
@@ -628,8 +617,7 @@ Sanitizes a value replacing parts of a string
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizereplace-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null},{"type":"mixed","name":"from","default":null},{"type":"mixed","name":"to","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input, mixed $from, mixed $to)`
 
 ### Methods
 
@@ -637,11 +625,12 @@ Sanitizes a value replacing parts of a string
 
 ```php
 public function __invoke(
-mixed $input,
-mixed $from,
-mixed $to
+    mixed $input,
+    mixed $from,
+    mixed $to
 );
 ```
+
 
 ## Filter\Sanitize\Special
 
@@ -655,8 +644,7 @@ Sanitizes a value special characters
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizespecial-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -665,6 +653,7 @@ Sanitizes a value special characters
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\SpecialFull
 
@@ -678,8 +667,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizespecialfull-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -688,6 +676,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\StringVal
 
@@ -701,8 +690,7 @@ Sanitizes a value to string
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizestringval-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"flags","default":"11"}]}>
-</ApiItem>
+- `public __invoke(string $input, int $flags = 11): string`
 
 ### Methods
 
@@ -710,10 +698,11 @@ Sanitizes a value to string
 
 ```php
 public function __invoke(
-string $input,
-int $flags = 11
+    string $input,
+    int $flags = 11
 ): string;
 ```
+
 
 ## Filter\Sanitize\StringValLegacy
 
@@ -730,8 +719,7 @@ string is passed, the method will return false
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizestringvallegacy-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -740,6 +728,7 @@ string is passed, the method will return false
 ```php
 public function __invoke( mixed $input );
 ```
+
 
 ## Filter\Sanitize\Striptags
 
@@ -753,8 +742,7 @@ Sanitizes a value striptags
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizestriptags-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -763,6 +751,7 @@ Sanitizes a value striptags
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\Trim
 
@@ -776,8 +765,7 @@ Sanitizes a value removing leading and trailing spaces
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizetrim-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -786,6 +774,7 @@ Sanitizes a value removing leading and trailing spaces
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\Upper
 
@@ -799,8 +788,7 @@ Sanitizes a value to uppercase
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeupper-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -809,6 +797,7 @@ Sanitizes a value to uppercase
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\UpperFirst
 
@@ -822,8 +811,7 @@ Sanitizes a value to ucfirst
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeupperfirst-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -832,6 +820,7 @@ Sanitizes a value to ucfirst
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\UpperWords
 
@@ -845,8 +834,7 @@ Sanitizes a value to uppercase the first character of each word
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeupperwords-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"string","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(string $input)`
 
 ### Methods
 
@@ -855,6 +843,7 @@ Sanitizes a value to uppercase the first character of each word
 ```php
 public function __invoke( string $input );
 ```
+
 
 ## Filter\Sanitize\Url
 
@@ -868,8 +857,7 @@ Sanitizes a value url
 
 ### Method Summary
 
-<ApiItem href="#filtersanitizeurl-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"mixed","name":"input","default":null}]}>
-</ApiItem>
+- `public __invoke(mixed $input)`
 
 ### Methods
 
@@ -879,6 +867,7 @@ Sanitizes a value url
 public function __invoke( mixed $input );
 ```
 
+
 ## Filter\Validation
 
 Class
@@ -886,115 +875,87 @@ Class
 Allows to validate data using custom or built-in validators
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
-- **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
+  - [`Phalcon\Di\Injectable`](/5.22/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\NoValidators` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"validators","default":"[]"}]}>
-Phalcon\Filter\Validation constructor
-</ApiItem>
-<ApiItem href="#filtervalidation-add" visibility="public" name="add" returnType="static" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Adds a validator to a field
-</ApiItem>
-<ApiItem href="#filtervalidation-appendmessage" visibility="public" name="appendMessage" returnType="static" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the messages list
-</ApiItem>
-<ApiItem href="#filtervalidation-bind" visibility="public" name="bind" returnType="static" params={[{"type":"mixed","name":"entity","default":null},{"type":"mixed","name":"data","default":null},{"type":"array","name":"whitelist","default":"[]"}]}>
-Assigns the data to an entity
-</ApiItem>
-<ApiItem href="#filtervalidation-fails" visibility="public" name="fails" returnType="bool" params={[]}>
-Verify if validation fails by verifying if there are messages in the current validation
-</ApiItem>
-<ApiItem href="#filtervalidation-getdata" visibility="public" name="getData" returnType="mixed" params={[]}>
-</ApiItem>
-<ApiItem href="#filtervalidation-getdefaultmessage" visibility="public" name="getDefaultMessage" returnType="string" params={[{"type":"string","name":"validatorClassName","default":null}]}>
-Returns the default message registered for a validator class, or an
-</ApiItem>
-<ApiItem href="#filtervalidation-getentity" visibility="public" name="getEntity" returnType="mixed" params={[]}>
-Returns the bound entity
-</ApiItem>
-<ApiItem href="#filtervalidation-getfilters" visibility="public" name="getFilters" returnType="mixed|null" params={[{"type":"string|null","name":"field","default":"null"}]}>
-Returns all the filters or a specific one
-</ApiItem>
-<ApiItem href="#filtervalidation-getlabel" visibility="public" name="getLabel" returnType="string" params={[{"type":"mixed","name":"field","default":null}]}>
-Get label for field
-</ApiItem>
-<ApiItem href="#filtervalidation-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
-Returns the registered validators
-</ApiItem>
-<ApiItem href="#filtervalidation-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
-Returns the validators added to the validation
-</ApiItem>
-<ApiItem href="#filtervalidation-getvalue" visibility="public" name="getValue" returnType="mixed|null" params={[{"type":"string","name":"field","default":null}]}>
-Gets the value to validate in the array/object data source
-</ApiItem>
-<ApiItem href="#filtervalidation-getvaluebydata" visibility="public" name="getValueByData" returnType="mixed|null" params={[{"type":"mixed","name":"data","default":null},{"type":"string","name":"field","default":null}]}>
-Gets the value to validate in the array/object data source
-</ApiItem>
-<ApiItem href="#filtervalidation-getvaluebyentity" visibility="public" name="getValueByEntity" returnType="mixed|null" params={[{"type":"mixed","name":"entity","default":null},{"type":"string","name":"field","default":null}]}>
-Gets the value to validate in the object entity source
-</ApiItem>
-<ApiItem href="#filtervalidation-rule" visibility="public" name="rule" returnType="static" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Alias of `add` method
-</ApiItem>
-<ApiItem href="#filtervalidation-rules" visibility="public" name="rules" returnType="static" params={[{"type":"mixed","name":"field","default":null},{"type":"array","name":"validators","default":null}]}>
-Adds the validators to a field
-</ApiItem>
-<ApiItem href="#filtervalidation-setdefaultmessages" visibility="public" name="setDefaultMessages" returnType="array" params={[{"type":"array","name":"messages","default":"[]"}]}>
-Registers default messages for validators, keyed by validator class
-</ApiItem>
-<ApiItem href="#filtervalidation-setentity" visibility="public" name="setEntity" returnType="void" params={[{"type":"mixed","name":"entity","default":null}]}>
-Sets the bound entity
-</ApiItem>
-<ApiItem href="#filtervalidation-setfilters" visibility="public" name="setFilters" returnType="static" params={[{"type":"mixed","name":"field","default":null},{"type":"mixed","name":"filters","default":null}]}>
-Adds filters to the field
-</ApiItem>
-<ApiItem href="#filtervalidation-setlabels" visibility="public" name="setLabels" returnType="void" params={[{"type":"array","name":"labels","default":null}]}>
-Adds labels for fields
-</ApiItem>
-<ApiItem href="#filtervalidation-setvalidators" visibility="public" name="setValidators" returnType="static" params={[{"type":"array","name":"validators","default":null}]}>
-Sets the validator array
-</ApiItem>
-<ApiItem href="#filtervalidation-validate" visibility="public" name="validate" returnType="Messages|bool" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
-Validate a set of data according to a set of rules
-</ApiItem>
-<ApiItem href="#filtervalidation-prechecking" visibility="protected" name="preChecking" returnType="bool" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Internal validations, if it returns true, then skip the current validator
-</ApiItem>
+- `public __construct(array $validators = [])` — Phalcon\Filter\Validation constructor
+
+- `public add(mixed $field, ValidatorInterface $validator): static` — Adds a validator to a field
+
+- `public appendMessage(MessageInterface $message): static` — Appends a message to the messages list
+
+- `public bind(mixed $entity, mixed $data, array $whitelist = []): static` — Assigns the data to an entity
+
+- `public fails(): bool` — Verify if validation fails by verifying if there are messages in the current validation
+
+- `public getData(): mixed`
+
+- `public getDefaultMessage(string $validatorClassName): string` — Returns the default message registered for a validator class, or an
+
+- `public getEntity(): mixed` — Returns the bound entity
+
+- `public getFilters(string|null $field = null): mixed|null` — Returns all the filters or a specific one
+
+- `public getLabel(mixed $field): string` — Get label for field
+
+- `public getMessages(): Messages` — Returns the registered validators
+
+- `public getValidators(): array` — Returns the validators added to the validation
+
+- `public getValue(string $field): mixed|null` — Gets the value to validate in the array/object data source
+
+- `public getValueByData(mixed $data, string $field): mixed|null` — Gets the value to validate in the array/object data source
+
+- `public getValueByEntity(mixed $entity, string $field): mixed|null` — Gets the value to validate in the object entity source
+
+- `public rule(mixed $field, ValidatorInterface $validator): static` — Alias of `add` method
+
+- `public rules(mixed $field, array $validators): static` — Adds the validators to a field
+
+- `public setDefaultMessages(array $messages = []): array` — Registers default messages for validators, keyed by validator class
+
+- `public setEntity(mixed $entity): void` — Sets the bound entity
+
+- `public setFilters(mixed $field, mixed $filters): static` — Adds filters to the field
+
+- `public setLabels(array $labels): void` — Adds labels for fields
+
+- `public setValidators(array $validators): static` — Sets the validator array
+
+- `public validate(mixed $data = null, mixed $entity = null, array $whitelist = []): Messages|bool` — Validate a set of data according to a set of rules
+
+- `protected preChecking(mixed $field, ValidatorInterface $validator): bool` — Internal validations, if it returns true, then skip the current validator
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="combinedFieldsValidators" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="data" type="mixed" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="defaultMessages" type="array" default="[]">
-Default messages for validators, keyed by validator class name
+- `protected array $combinedFieldsValidators = []`
 
-Declared without an array initializer on purpose: an initialized static
-array makes Zephir emit a zephir_init_static_properties() function that
-fails to compile in the single-file build. It is null until first set
-and treated as an empty array by the accessors below.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="entity" type="object|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="filters" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="labels" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="Messages" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="validators" type="array" default="[]">
-List of validators
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="values" type="array" default="[]">
-Calculated values
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="whitelist" type="array" default="[]">
-</ApiItem>
+- `protected mixed $data`
+
+- `protected array $defaultMessages = []` — Default messages for validators, keyed by validator class name
+
+  Declared without an array initializer on purpose: an initialized static
+  array makes Zephir emit a zephir\_init\_static\_properties() function that
+  fails to compile in the single-file build. It is null until first set
+  and treated as an empty array by the accessors below.
+
+- `protected object|null $entity = null`
+
+- `protected array $filters = []`
+
+- `protected array $labels = []`
+
+- `protected Messages $messages`
+
+- `protected array $validators = []` — List of validators
+
+- `protected array $values = []` — Calculated values
+
+- `protected array $whitelist = []`
 
 ### Methods
 
@@ -1010,8 +971,8 @@ Phalcon\Filter\Validation constructor
 
 ```php
 public function add(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): static;
 ```
 
@@ -1029,9 +990,9 @@ Appends a message to the messages list
 
 ```php
 public function bind(
-mixed $entity,
-mixed $data,
-array $whitelist = []
+    mixed $entity,
+    mixed $data,
+    array $whitelist = []
 ): static;
 ```
 
@@ -1121,8 +1082,8 @@ Gets the value to validate in the array/object data source
 
 ```php
 public function getValueByData(
-mixed $data,
-string $field
+    mixed $data,
+    string $field
 ): mixed|null;
 ```
 
@@ -1132,8 +1093,8 @@ Gets the value to validate in the array/object data source
 
 ```php
 public function getValueByEntity(
-mixed $entity,
-string $field
+    mixed $entity,
+    string $field
 ): mixed|null;
 ```
 
@@ -1143,8 +1104,8 @@ Gets the value to validate in the object entity source
 
 ```php
 public function rule(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): static;
 ```
 
@@ -1156,8 +1117,8 @@ Alias of `add` method
 
 ```php
 public function rules(
-mixed $field,
-array $validators
+    mixed $field,
+    array $validators
 ): static;
 ```
 
@@ -1186,8 +1147,8 @@ Sets the bound entity
 
 ```php
 public function setFilters(
-mixed $field,
-mixed $filters
+    mixed $field,
+    mixed $filters
 ): static;
 ```
 
@@ -1213,9 +1174,9 @@ Sets the validator array
 
 ```php
 public function validate(
-mixed $data = null,
-mixed $entity = null,
-array $whitelist = []
+    mixed $data = null,
+    mixed $entity = null,
+    array $whitelist = []
 ): Messages|bool;
 ```
 
@@ -1241,12 +1202,13 @@ $validation->validate($_POST, $entity, $fields);
 
 ```php
 protected function preChecking(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): bool;
 ```
 
 Internal validations, if it returns true, then skip the current validator
+
 
 ## Filter\Validation\AbstractCombinedFieldsValidator
 
@@ -1255,8 +1217,9 @@ Abstract
 This is a base class for combined fields validators
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`**
-- [`Phalcon\Filter\Validation\Validator\Uniqueness`](#filtervalidationvalidatoruniqueness)
+  - **`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`**
+    - [`Phalcon\Filter\Validation\Validator\Uniqueness`](#filtervalidationvalidatoruniqueness)
+
 
 ## Filter\Validation\AbstractValidator
 
@@ -1265,99 +1228,78 @@ Abstract
 This is a base class for validators
 
 - **`Phalcon\Filter\Validation\AbstractValidator`** - implements [`Phalcon\Filter\Validation\ValidatorInterface`](#filtervalidationvalidatorinterface)
-- [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
-- [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
-- [`Phalcon\Filter\Validation\Validator\Alnum`](#filtervalidationvalidatoralnum)
-- [`Phalcon\Filter\Validation\Validator\Alpha`](#filtervalidationvalidatoralpha)
-- [`Phalcon\Filter\Validation\Validator\Between`](#filtervalidationvalidatorbetween)
-- [`Phalcon\Filter\Validation\Validator\Callback`](#filtervalidationvalidatorcallback)
-- [`Phalcon\Filter\Validation\Validator\Confirmation`](#filtervalidationvalidatorconfirmation)
-- [`Phalcon\Filter\Validation\Validator\CreditCard`](#filtervalidationvalidatorcreditcard)
-- [`Phalcon\Filter\Validation\Validator\Date`](#filtervalidationvalidatordate)
-- [`Phalcon\Filter\Validation\Validator\Digit`](#filtervalidationvalidatordigit)
-- [`Phalcon\Filter\Validation\Validator\Email`](#filtervalidationvalidatoremail)
-- [`Phalcon\Filter\Validation\Validator\ExclusionIn`](#filtervalidationvalidatorexclusionin)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- [`Phalcon\Filter\Validation\Validator\Files`](#filtervalidationvalidatorfiles)
-- [`Phalcon\Filter\Validation\Validator\Identical`](#filtervalidationvalidatoridentical)
-- [`Phalcon\Filter\Validation\Validator\InclusionIn`](#filtervalidationvalidatorinclusionin)
-- [`Phalcon\Filter\Validation\Validator\Ip`](#filtervalidationvalidatorip)
-- [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
-- [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
-- [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
-- [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
-- [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
-- [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
+  - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
+  - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+  - [`Phalcon\Filter\Validation\Validator\Alnum`](#filtervalidationvalidatoralnum)
+  - [`Phalcon\Filter\Validation\Validator\Alpha`](#filtervalidationvalidatoralpha)
+  - [`Phalcon\Filter\Validation\Validator\Between`](#filtervalidationvalidatorbetween)
+  - [`Phalcon\Filter\Validation\Validator\Callback`](#filtervalidationvalidatorcallback)
+  - [`Phalcon\Filter\Validation\Validator\Confirmation`](#filtervalidationvalidatorconfirmation)
+  - [`Phalcon\Filter\Validation\Validator\CreditCard`](#filtervalidationvalidatorcreditcard)
+  - [`Phalcon\Filter\Validation\Validator\Date`](#filtervalidationvalidatordate)
+  - [`Phalcon\Filter\Validation\Validator\Digit`](#filtervalidationvalidatordigit)
+  - [`Phalcon\Filter\Validation\Validator\Email`](#filtervalidationvalidatoremail)
+  - [`Phalcon\Filter\Validation\Validator\ExclusionIn`](#filtervalidationvalidatorexclusionin)
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+  - [`Phalcon\Filter\Validation\Validator\Files`](#filtervalidationvalidatorfiles)
+  - [`Phalcon\Filter\Validation\Validator\Identical`](#filtervalidationvalidatoridentical)
+  - [`Phalcon\Filter\Validation\Validator\InclusionIn`](#filtervalidationvalidatorinclusionin)
+  - [`Phalcon\Filter\Validation\Validator\Ip`](#filtervalidationvalidatorip)
+  - [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
+  - [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
+  - [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
+  - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
+  - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+  - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationabstractvalidator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Phalcon\Filter\Validation\Validator constructor
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-getoption" visibility="public" name="getOption" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns an option in the validator's options
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string|null","name":"field","default":"null"}]}>
-Get the template message
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-gettemplates" visibility="public" name="getTemplates" returnType="array" params={[]}>
-Get templates collection object
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-hasoption" visibility="public" name="hasOption" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Checks if an option is defined
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-isallowempty" visibility="public" name="isAllowEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Checks whether the field can be considered empty and therefore
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-messagefactory" visibility="public" name="messageFactory" returnType="Message" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"array","name":"replacements","default":"[]"}]}>
-Create a default message by factory
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-setoption" visibility="public" name="setOption" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets an option in the validator
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-settemplate" visibility="public" name="setTemplate" returnType="ValidatorInterface" params={[{"type":"string","name":"template","default":null}]}>
-Set a new template message
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-settemplates" visibility="public" name="setTemplates" returnType="ValidatorInterface" params={[{"type":"array","name":"templates","default":null}]}>
-Clear current templates and set new from an array,
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-allowempty" visibility="protected" name="allowEmpty" returnType="bool" params={[{"type":"mixed","name":"field","default":null},{"type":"mixed","name":"value","default":null}]}>
-Checks if field can be empty.
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-checkarray" visibility="protected" name="checkArray" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"field","default":null}]}>
-Checks if a value is an array and returns the element based on the
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-preparecode" visibility="protected" name="prepareCode" returnType="int" params={[{"type":"string","name":"field","default":null}]}>
-Prepares a validation code.
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-preparelabel" visibility="protected" name="prepareLabel" returnType="mixed" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Prepares a label for the field.
-</ApiItem>
-<ApiItem href="#filtervalidationabstractvalidator-rejectnonstringable" visibility="protected" name="rejectNonStringable" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"mixed","name":"value","default":null}]}>
-Rejects a value that cannot be a string: an array, or an object without
-</ApiItem>
+- `public __construct(array $options = [])` — Phalcon\Filter\Validation\Validator constructor
+
+- `public getOption(string $key, mixed $defaultValue = null): mixed` — Returns an option in the validator's options
+
+- `public getTemplate(string|null $field = null): string` — Get the template message
+
+- `public getTemplates(): array` — Get templates collection object
+
+- `public hasOption(string $key): bool` — Checks if an option is defined
+
+- `public isAllowEmpty(Validation $validation, string $field): bool` — Checks whether the field can be considered empty and therefore
+
+- `public messageFactory(Validation $validation, mixed $field, array $replacements = []): Message` — Create a default message by factory
+
+- `public setOption(string $key, mixed $value): void` — Sets an option in the validator
+
+- `public setTemplate(string $template): ValidatorInterface` — Set a new template message
+
+- `public setTemplates(array $templates): ValidatorInterface` — Clear current templates and set new from an array,
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+
+- `protected allowEmpty(mixed $field, mixed $value): bool` — Checks if field can be empty.
+
+- `protected checkArray(mixed $value, string $field): mixed` — Checks if a value is an array and returns the element based on the
+
+- `protected prepareCode(string $field): int` — Prepares a validation code.
+
+- `protected prepareLabel(Validation $validation, string $field): mixed` — Prepares a label for the field.
+
+- `protected rejectNonStringable(Validation $validation, mixed $field, mixed $value): bool` — Rejects a value that cannot be a string: an array, or an object without
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="null">
-Message template
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="templateChanged" type="bool" default="false">
-Whether the template/message has been explicitly assigned on the
-instance (constructor `message`/`template` option or setTemplate()).
-While false, `template` still holds the validator's class default and a
-global default registered via Validation::setDefaultMessages() applies.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="templates" type="array" default="[]">
-Message templates
-</ApiItem>
+- `protected array $options = []`
+
+- `protected string|null $template = null` — Message template
+
+- `protected bool $templateChanged = false` — Whether the template/message has been explicitly assigned on the
+  instance (constructor `message`/`template` option or setTemplate()).
+  While false, `template` still holds the validator's class default and a
+  global default registered via Validation::setDefaultMessages() applies.
+
+- `protected array $templates = []` — Message templates
 
 ### Methods
 
@@ -1373,8 +1315,8 @@ Phalcon\Filter\Validation\Validator constructor
 
 ```php
 public function getOption(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -1409,8 +1351,8 @@ Checks if an option is defined
 
 ```php
 public function isAllowEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -1422,9 +1364,9 @@ empty values, or per-field map).
 
 ```php
 public function messageFactory(
-Validation $validation,
-mixed $field,
-array $replacements = []
+    Validation $validation,
+    mixed $field,
+    array $replacements = []
 ): Message;
 ```
 
@@ -1434,8 +1376,8 @@ Create a default message by factory
 
 ```php
 public function setOption(
-string $key,
-mixed $value
+    string $key,
+    mixed $value
 ): void;
 ```
 
@@ -1461,8 +1403,8 @@ Clear current templates and set new from an array,
 
 ```php
 abstract public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -1472,8 +1414,8 @@ Executes the validation
 
 ```php
 protected function allowEmpty(
-mixed $field,
-mixed $value
+    mixed $field,
+    mixed $value
 ): bool;
 ```
 
@@ -1483,8 +1425,8 @@ Checks if field can be empty.
 
 ```php
 protected function checkArray(
-mixed $value,
-string $field
+    mixed $value,
+    string $field
 ): mixed;
 ```
 
@@ -1503,8 +1445,8 @@ Prepares a validation code.
 
 ```php
 protected function prepareLabel(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): mixed;
 ```
 
@@ -1514,9 +1456,9 @@ Prepares a label for the field.
 
 ```php
 protected function rejectNonStringable(
-Validation $validation,
-mixed $field,
-mixed $value
+    Validation $validation,
+    mixed $field,
+    mixed $value
 ): bool;
 ```
 
@@ -1524,6 +1466,7 @@ Rejects a value that cannot be a string: an array, or an object without
 __toString(). A cast would turn an array into the constant "Array",
 which satisfies the string checks. Appends the message and returns
 true when the value is rejected.
+
 
 ## Filter\Validation\AbstractValidatorComposite
 
@@ -1537,11 +1480,12 @@ extends AbstractValidator implements ValidatorCompositeInterface) instead of
 extending this.
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\AbstractValidatorComposite`** - implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
-- [`Phalcon\Filter\Validation\Validator\File`](#filtervalidationvalidatorfile)
-- [`Phalcon\Filter\Validation\Validator\StringLength`](#filtervalidationvalidatorstringlength)
+  - **`Phalcon\Filter\Validation\AbstractValidatorComposite`** - implements [`Phalcon\Filter\Validation\ValidatorCompositeInterface`](#filtervalidationvalidatorcompositeinterface)
+    - [`Phalcon\Filter\Validation\Validator\File`](#filtervalidationvalidatorfile)
+    - [`Phalcon\Filter\Validation\Validator\StringLength`](#filtervalidationvalidatorstringlength)
 
 `Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait`
+
 
 ## Filter\Validation\Exception
 
@@ -1550,41 +1494,41 @@ Class
 Exceptions thrown in Phalcon\Filter\Validation\* classes will use this class
 
 - `\Exception`
-- **`Phalcon\Filter\Validation\Exception`**
-- [`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`](#filtervalidationexceptionsfieldnotprintable)
-- [`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`](#filtervalidationexceptionsfilterserviceunavailable)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`](#filtervalidationexceptionsinvalidallowedtypes)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`](#filtervalidationexceptionsinvalidcallbackreturn)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`](#filtervalidationexceptionsinvaliddomainoption)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`](#filtervalidationexceptionsinvalidfieldtype)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`](#filtervalidationexceptionsinvalidfilterservice)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`](#filtervalidationexceptionsinvalidstrictoption)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`](#filtervalidationexceptionsinvalidvalidationdata)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidValidator`](#filtervalidationexceptionsinvalidvalidator)
-- [`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`](#filtervalidationexceptionsinvalidvalidatorscope)
-- [`Phalcon\Filter\Validation\Exceptions\MissingMbstring`](#filtervalidationexceptionsmissingmbstring)
-- [`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`](#filtervalidationexceptionsnodatatovalidate)
-- [`Phalcon\Filter\Validation\Exceptions\NoValidators`](#filtervalidationexceptionsnovalidators)
-- [`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`](#filtervalidationexceptionsnovalidatorsincomposite)
-- [`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`](#filtervalidationexceptionsuniquenessconversionmustbearray)
-- [`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`](#filtervalidationexceptionsuniquenessmodelrequired)
-- [`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`](#filtervalidationexceptionsuniquenessonlyforphalconmodel)
-- [`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`](#filtervalidationexceptionsvalidationentitynotobject)
+  - **`Phalcon\Filter\Validation\Exception`**
+    - [`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`](#filtervalidationexceptionsfieldnotprintable)
+    - [`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`](#filtervalidationexceptionsfilterserviceunavailable)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`](#filtervalidationexceptionsinvalidallowedtypes)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`](#filtervalidationexceptionsinvalidcallbackreturn)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`](#filtervalidationexceptionsinvaliddomainoption)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`](#filtervalidationexceptionsinvalidfieldtype)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`](#filtervalidationexceptionsinvalidfilterservice)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`](#filtervalidationexceptionsinvalidstrictoption)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`](#filtervalidationexceptionsinvalidvalidationdata)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidValidator`](#filtervalidationexceptionsinvalidvalidator)
+    - [`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`](#filtervalidationexceptionsinvalidvalidatorscope)
+    - [`Phalcon\Filter\Validation\Exceptions\MissingMbstring`](#filtervalidationexceptionsmissingmbstring)
+    - [`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`](#filtervalidationexceptionsnodatatovalidate)
+    - [`Phalcon\Filter\Validation\Exceptions\NoValidators`](#filtervalidationexceptionsnovalidators)
+    - [`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`](#filtervalidationexceptionsnovalidatorsincomposite)
+    - [`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`](#filtervalidationexceptionsuniquenessconversionmustbearray)
+    - [`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`](#filtervalidationexceptionsuniquenessmodelrequired)
+    - [`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`](#filtervalidationexceptionsuniquenessonlyforphalconmodel)
+    - [`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`](#filtervalidationexceptionsvalidationentitynotobject)
+
 
 ## Filter\Validation\Exceptions\FieldNotPrintable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\FieldNotPrintable`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsfieldnotprintable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1594,20 +1538,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\FilterServiceUnavailable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsfilterserviceunavailable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1617,20 +1561,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidAllowedTypes
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidallowedtypes-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1640,20 +1584,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidCallbackReturn
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidcallbackreturn-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1663,20 +1607,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidDomainOption
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidDomainOption`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvaliddomainoption-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1686,20 +1630,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidFieldType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidFieldType`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidfieldtype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1709,20 +1653,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidFilterService
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidFilterService`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidfilterservice-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1732,20 +1676,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidStrictOption
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidStrictOption`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidstrictoption-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1755,20 +1699,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidValidationData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidValidationData`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidvalidationdata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1778,20 +1722,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidValidator
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidValidator`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidValidator`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidvalidator-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1801,20 +1745,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\InvalidValidatorScope
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsinvalidvalidatorscope-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1824,20 +1768,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\MissingMbstring
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\MissingMbstring`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\MissingMbstring`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsmissingmbstring-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1847,20 +1791,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\NoDataToValidate
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\NoDataToValidate`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsnodatatovalidate-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1870,20 +1814,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\NoValidators
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\NoValidators`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\NoValidators`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsnovalidators-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1893,20 +1837,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\NoValidatorsInComposite
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsnovalidatorsincomposite-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"className","default":null}]}>
-</ApiItem>
+- `public __construct(string $className)`
 
 ### Methods
 
@@ -1916,20 +1860,20 @@ Class
 public function __construct( string $className );
 ```
 
+
 ## Filter\Validation\Exceptions\UniquenessConversionMustBeArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsuniquenessconversionmustbearray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1939,20 +1883,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\UniquenessModelRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsuniquenessmodelrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1962,20 +1906,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsuniquenessonlyforphalconmodel-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1985,20 +1929,20 @@ Class
 public function __construct();
 ```
 
+
 ## Filter\Validation\Exceptions\ValidationEntityNotObject
 
 Class
 
 - `\Exception`
-- [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
-- **`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`**
+  - [`Phalcon\Filter\Validation\Exception`](#filtervalidationexception)
+    - **`Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject`**
 
 `Phalcon\Filter\Validation\Exception`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationexceptionsvalidationentitynotobject-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -2007,6 +1951,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Filter\Validation\Traits\ValidatorCompositeTrait
 
@@ -2023,17 +1968,13 @@ validators.
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationtraitsvalidatorcompositetrait-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#filtervalidationtraitsvalidatorcompositetrait-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"\\Phalcon\\Filter\\Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public getValidators(): array`
+
+- `public validate(\Phalcon\Filter\Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="validators" type="array" default="null">
-@todo Use a default [] once Zephir supports array trait defaults
-</ApiItem>
+- `protected array $validators = null` — @todo Use a default \[] once Zephir supports array trait defaults
 
 ### Methods
 
@@ -2047,12 +1988,13 @@ public function getValidators(): array;
 
 ```php
 public function validate(
-\Phalcon\Filter\Validation $validation,
-mixed $field
+    \Phalcon\Filter\Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\ValidationInterface
 
@@ -2066,48 +2008,33 @@ Interface for the Phalcon\Filter\Validation component
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidationinterface-add" visibility="public" name="add" returnType="ValidationInterface" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Adds a validator to a field
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-appendmessage" visibility="public" name="appendMessage" returnType="ValidationInterface" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the messages list
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-bind" visibility="public" name="bind" returnType="ValidationInterface" params={[{"type":"mixed","name":"entity","default":null},{"type":"mixed","name":"data","default":null},{"type":"array","name":"whitelist","default":"[]"}]}>
-Assigns the data to an entity
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-getentity" visibility="public" name="getEntity" returnType="mixed" params={[]}>
-Returns the bound entity
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-getfilters" visibility="public" name="getFilters" returnType="mixed|null" params={[{"type":"string|null","name":"field","default":"null"}]}>
-Returns all the filters or a specific one
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-getlabel" visibility="public" name="getLabel" returnType="string" params={[{"type":"string","name":"field","default":null}]}>
-Get label for field
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
-Returns the registered validators
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
-Returns the validators added to the validation
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-getvalue" visibility="public" name="getValue" returnType="mixed|null" params={[{"type":"string","name":"field","default":null}]}>
-Gets the a value to validate in the array/object data source
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-rule" visibility="public" name="rule" returnType="ValidationInterface" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Alias of `add` method
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-rules" visibility="public" name="rules" returnType="ValidationInterface" params={[{"type":"string","name":"field","default":null},{"type":"array","name":"validators","default":null}]}>
-Adds the validators to a field
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-setfilters" visibility="public" name="setFilters" returnType="ValidationInterface" params={[{"type":"string","name":"field","default":null},{"type":"mixed","name":"filters","default":null}]}>
-Adds filters to the field
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-setlabels" visibility="public" name="setLabels" returnType="void" params={[{"type":"array","name":"labels","default":null}]}>
-Adds labels for fields
-</ApiItem>
-<ApiItem href="#filtervalidationvalidationinterface-validate" visibility="public" name="validate" returnType="bool|Messages" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
-Validate a set of data according to a set of rules
-</ApiItem>
+- `public add(mixed $field, ValidatorInterface $validator): ValidationInterface` — Adds a validator to a field
+
+- `public appendMessage(MessageInterface $message): ValidationInterface` — Appends a message to the messages list
+
+- `public bind(mixed $entity, mixed $data, array $whitelist = []): ValidationInterface` — Assigns the data to an entity
+
+- `public getEntity(): mixed` — Returns the bound entity
+
+- `public getFilters(string|null $field = null): mixed|null` — Returns all the filters or a specific one
+
+- `public getLabel(string $field): string` — Get label for field
+
+- `public getMessages(): Messages` — Returns the registered validators
+
+- `public getValidators(): array` — Returns the validators added to the validation
+
+- `public getValue(string $field): mixed|null` — Gets the a value to validate in the array/object data source
+
+- `public rule(mixed $field, ValidatorInterface $validator): ValidationInterface` — Alias of `add` method
+
+- `public rules(string $field, array $validators): ValidationInterface` — Adds the validators to a field
+
+- `public setFilters(string $field, mixed $filters): ValidationInterface` — Adds filters to the field
+
+- `public setLabels(array $labels): void` — Adds labels for fields
+
+- `public validate(mixed $data = null, mixed $entity = null, array $whitelist = []): bool|Messages` — Validate a set of data according to a set of rules
 
 ### Methods
 
@@ -2115,8 +2042,8 @@ Validate a set of data according to a set of rules
 
 ```php
 public function add(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): ValidationInterface;
 ```
 
@@ -2134,9 +2061,9 @@ Appends a message to the messages list
 
 ```php
 public function bind(
-mixed $entity,
-mixed $data,
-array $whitelist = []
+    mixed $entity,
+    mixed $data,
+    array $whitelist = []
 ): ValidationInterface;
 ```
 
@@ -2195,8 +2122,8 @@ Gets the a value to validate in the array/object data source
 
 ```php
 public function rule(
-mixed $field,
-ValidatorInterface $validator
+    mixed $field,
+    ValidatorInterface $validator
 ): ValidationInterface;
 ```
 
@@ -2206,8 +2133,8 @@ Alias of `add` method
 
 ```php
 public function rules(
-string $field,
-array $validators
+    string $field,
+    array $validators
 ): ValidationInterface;
 ```
 
@@ -2217,8 +2144,8 @@ Adds the validators to a field
 
 ```php
 public function setFilters(
-string $field,
-mixed $filters
+    string $field,
+    mixed $filters
 ): ValidationInterface;
 ```
 
@@ -2236,13 +2163,14 @@ Adds labels for fields
 
 ```php
 public function validate(
-mixed $data = null,
-mixed $entity = null,
-array $whitelist = []
+    mixed $data = null,
+    mixed $entity = null,
+    array $whitelist = []
 ): bool|Messages;
 ```
 
 Validate a set of data according to a set of rules
+
 
 ## Filter\Validation\ValidatorCompositeInterface
 
@@ -2256,12 +2184,9 @@ This is a base class for combined fields validators
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorcompositeinterface-getvalidators" visibility="public" name="getValidators" returnType="array" params={[]}>
-Executes the validation
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorcompositeinterface-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public getValidators(): array` — Executes the validation
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Methods
 
@@ -2277,36 +2202,33 @@ Executes the validation
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\ValidatorFactory
 
 Class
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Filter\Validation\ValidatorFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Filter\Validation\ValidatorFactory`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Filter\Validation\Validator\Alnum` · `Phalcon\Filter\Validation\Validator\Alpha` · `Phalcon\Filter\Validation\Validator\Between` · `Phalcon\Filter\Validation\Validator\Callback` · `Phalcon\Filter\Validation\Validator\Confirmation` · `Phalcon\Filter\Validation\Validator\CreditCard` · `Phalcon\Filter\Validation\Validator\Date` · `Phalcon\Filter\Validation\Validator\Digit` · `Phalcon\Filter\Validation\Validator\Email` · `Phalcon\Filter\Validation\Validator\Exception` · `Phalcon\Filter\Validation\Validator\ExclusionIn` · `Phalcon\Filter\Validation\Validator\File` · `Phalcon\Filter\Validation\Validator\Identical` · `Phalcon\Filter\Validation\Validator\InclusionIn` · `Phalcon\Filter\Validation\Validator\Ip` · `Phalcon\Filter\Validation\Validator\Numericality` · `Phalcon\Filter\Validation\Validator\PresenceOf` · `Phalcon\Filter\Validation\Validator\Regex` · `Phalcon\Filter\Validation\Validator\StringLength` · `Phalcon\Filter\Validation\Validator\Uniqueness` · `Phalcon\Filter\Validation\Validator\Url`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-Constructor.
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfactory-newinstance" visibility="public" name="newInstance" returnType="ValidatorInterface" params={[{"type":"string","name":"name","default":null}]}>
-Creates a new instance
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
+- `public __construct(array $services = [])` — Constructor.
+
+- `public newInstance(string $name): ValidatorInterface` — Creates a new instance
+
+- `protected getExceptionClass(): string`
+
+- `protected getServices(): array` — Returns the available adapters
 
 ### Methods
 
@@ -2340,6 +2262,7 @@ protected function getServices(): array;
 
 Returns the available adapters
 
+
 ## Filter\Validation\ValidatorInterface
 
 Interface
@@ -2352,27 +2275,19 @@ Interface for Phalcon\Filter\Validation\AbstractValidator
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorinterface-getoption" visibility="public" name="getOption" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns an option in the validator's options
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinterface-gettemplate" visibility="public" name="getTemplate" returnType="string" params={[{"type":"string","name":"field","default":null}]}>
-Get the template message
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinterface-gettemplates" visibility="public" name="getTemplates" returnType="array" params={[]}>
-Get message templates
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinterface-hasoption" visibility="public" name="hasOption" returnType="bool" params={[{"type":"string","name":"key","default":null}]}>
-Checks if an option is defined
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinterface-settemplate" visibility="public" name="setTemplate" returnType="ValidatorInterface" params={[{"type":"string","name":"template","default":null}]}>
-Set a new template message
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinterface-settemplates" visibility="public" name="setTemplates" returnType="ValidatorInterface" params={[{"type":"array","name":"templates","default":null}]}>
-Clear current template and set new from an array,
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinterface-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public getOption(string $key, mixed $defaultValue = null): mixed` — Returns an option in the validator's options
+
+- `public getTemplate(string $field): string` — Get the template message
+
+- `public getTemplates(): array` — Get message templates
+
+- `public hasOption(string $key): bool` — Checks if an option is defined
+
+- `public setTemplate(string $template): ValidatorInterface` — Set a new template message
+
+- `public setTemplates(array $templates): ValidatorInterface` — Clear current template and set new from an array,
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Methods
 
@@ -2380,8 +2295,8 @@ Executes the validation
 
 ```php
 public function getOption(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2432,12 +2347,13 @@ Clear current template and set new from an array,
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Alnum
 
@@ -2452,48 +2368,44 @@ use Phalcon\Filter\Validation\Validator\Alnum as AlnumValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new AlnumValidator(
-    [
-        "message" => ":field must contain only alphanumeric characters",
-    ]
-)
+    "username",
+    new AlnumValidator(
+        [
+            "message" => ":field must contain only alphanumeric characters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new AlnumValidator(
     [
-        "message" => [
-            "username" => "username must contain only alphanumeric characters",
-            "name"     => "name must contain only alphanumeric characters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new AlnumValidator(
+        [
+            "message" => [
+                "username" => "username must contain only alphanumeric characters",
+                "name"     => "name must contain only alphanumeric characters",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Alnum`**
+  - **`Phalcon\Filter\Validation\Validator\Alnum`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatoralnum-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoralnum-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters and numbers&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must contain only letters and numbers"`
 
 ### Methods
 
@@ -2509,12 +2421,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Alpha
 
@@ -2529,48 +2442,44 @@ use Phalcon\Filter\Validation\Validator\Alpha as AlphaValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new AlphaValidator(
-    [
-        "message" => ":field must contain only letters",
-    ]
-)
+    "username",
+    new AlphaValidator(
+        [
+            "message" => ":field must contain only letters",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "username",
-    "name",
-],
-new AlphaValidator(
     [
-        "message" => [
-            "username" => "username must contain only letters",
-            "name"     => "name must contain only letters",
-        ],
-    ]
-)
+        "username",
+        "name",
+    ],
+    new AlphaValidator(
+        [
+            "message" => [
+                "username" => "username must contain only letters",
+                "name"     => "name must contain only letters",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Alpha`**
+  - **`Phalcon\Filter\Validation\Validator\Alpha`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatoralpha-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoralpha-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must contain only letters"`
 
 ### Methods
 
@@ -2586,12 +2495,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Between
 
@@ -2607,58 +2517,54 @@ use Phalcon\Filter\Validation\Validator\Between;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Between(
-    [
-        "minimum" => 0,
-        "maximum" => 100,
-        "message" => "The price must be between 0 and 100",
-    ]
-)
+    "price",
+    new Between(
+        [
+            "minimum" => 0,
+            "maximum" => 100,
+            "message" => "The price must be between 0 and 100",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Between(
     [
-        "minimum" => [
-            "price"  => 0,
-            "amount" => 0,
-        ],
-        "maximum" => [
-            "price"  => 100,
-            "amount" => 50,
-        ],
-        "message" => [
-            "price"  => "The price must be between 0 and 100",
-            "amount" => "The amount must be between 0 and 50",
-        ],
-    ]
-)
+        "price",
+        "amount",
+    ],
+    new Between(
+        [
+            "minimum" => [
+                "price"  => 0,
+                "amount" => 0,
+            ],
+            "maximum" => [
+                "price"  => 100,
+                "amount" => 50,
+            ],
+            "message" => [
+                "price"  => "The price must be between 0 and 100",
+                "amount" => "The amount must be between 0 and 50",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Between`**
+  - **`Phalcon\Filter\Validation\Validator\Between`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorbetween-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorbetween-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be within the range of :min to :max&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be within the range of :min to :max"`
 
 ### Methods
 
@@ -2674,12 +2580,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Callback
 
@@ -2695,57 +2602,53 @@ use Phalcon\Filter\Validation\Validator\Numericality as NumericalityValidator;
 $validator = new Validation();
 
 $validator->add(
-["user", "admin"],
-new CallbackValidator(
-    [
-        "message" => "There must be only an user or admin set",
-        "callback" => function($data) {
-            if (!empty($data->getUser()) && !empty($data->getAdmin())) {
-                return false;
-            }
+    ["user", "admin"],
+    new CallbackValidator(
+        [
+            "message" => "There must be only an user or admin set",
+            "callback" => function($data) {
+                if (!empty($data->getUser()) && !empty($data->getAdmin())) {
+                    return false;
+                }
 
-            return true;
-        }
-    ]
-)
+                return true;
+            }
+        ]
+    )
 );
 
 $validator->add(
-"amount",
-new CallbackValidator(
-    [
-        "callback" => function($data) {
-            if (!empty($data->getProduct())) {
-                return new NumericalityValidator(
-                    [
-                        "message" => "Amount must be a number."
-                    ]
-                );
+    "amount",
+    new CallbackValidator(
+        [
+            "callback" => function($data) {
+                if (!empty($data->getProduct())) {
+                    return new NumericalityValidator(
+                        [
+                            "message" => "Amount must be a number."
+                        ]
+                    );
+                }
             }
-        }
-    ]
-)
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Callback`**
+  - **`Phalcon\Filter\Validation\Validator\Callback`**
 
 `Closure` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn` · `Phalcon\Filter\Validation\ValidatorInterface` · `ReflectionFunction`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorcallback-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorcallback-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must match the callback function&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must match the callback function"`
 
 ### Methods
 
@@ -2761,12 +2664,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Confirmation
 
@@ -2781,56 +2685,51 @@ use Phalcon\Filter\Validation\Validator\Confirmation;
 $validator = new Validation();
 
 $validator->add(
-"password",
-new Confirmation(
-    [
-        "message" => "Password does not match confirmation",
-        "with"    => "confirmPassword",
-    ]
-)
+    "password",
+    new Confirmation(
+        [
+            "message" => "Password does not match confirmation",
+            "with"    => "confirmPassword",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "password",
-    "email",
-],
-new Confirmation(
     [
-        "message" => [
-            "password" => "Password does not match confirmation",
-            "email"    => "Email does not match confirmation",
-        ],
-        "with" => [
-            "password" => "confirmPassword",
-            "email"    => "confirmEmail",
-        ],
-    ]
-)
+        "password",
+        "email",
+    ],
+    new Confirmation(
+        [
+            "message" => [
+                "password" => "Password does not match confirmation",
+                "email"    => "Email does not match confirmation",
+            ],
+            "with" => [
+                "password" => "confirmPassword",
+                "email"    => "confirmEmail",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Confirmation`**
+  - **`Phalcon\Filter\Validation\Validator\Confirmation`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorconfirmation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorconfirmation-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorconfirmation-compare" visibility="protected" name="compare" returnType="bool" params={[{"type":"string","name":"a","default":null},{"type":"string","name":"b","default":null}]}>
-Compare strings
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+
+- `protected compare(string $a, string $b): bool` — Compare strings
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be the same as :with&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be the same as :with"`
 
 ### Methods
 
@@ -2846,8 +2745,8 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -2857,12 +2756,13 @@ Executes the validation
 
 ```php
 final protected function compare(
-string $a,
-string $b
+    string $a,
+    string $b
 ): bool;
 ```
 
 Compare strings
+
 
 ## Filter\Validation\Validator\CreditCard
 
@@ -2877,48 +2777,44 @@ use Phalcon\Filter\Validation\Validator\CreditCard as CreditCardValidator;
 $validator = new Validation();
 
 $validator->add(
-"creditCard",
-new CreditCardValidator(
-    [
-        "message" => "The credit card number is not valid",
-    ]
-)
+    "creditCard",
+    new CreditCardValidator(
+        [
+            "message" => "The credit card number is not valid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "creditCard",
-    "secondCreditCard",
-],
-new CreditCardValidator(
     [
-        "message" => [
-            "creditCard"       => "The credit card number is not valid",
-            "secondCreditCard" => "The second credit card number is not valid",
-        ],
-    ]
-)
+        "creditCard",
+        "secondCreditCard",
+    ],
+    new CreditCardValidator(
+        [
+            "message" => [
+                "creditCard"       => "The credit card number is not valid",
+                "secondCreditCard" => "The second credit card number is not valid",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\CreditCard`**
+  - **`Phalcon\Filter\Validation\Validator\CreditCard`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorcreditcard-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorcreditcard-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not valid for a credit card number&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field is not valid for a credit card number"`
 
 ### Methods
 
@@ -2934,12 +2830,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Date
 
@@ -2954,53 +2851,49 @@ use Phalcon\Filter\Validation\Validator\Date as DateValidator;
 $validator = new Validation();
 
 $validator->add(
-"date",
-new DateValidator(
-    [
-        "format"  => "d-m-Y",
-        "message" => "The date is invalid",
-    ]
-)
+    "date",
+    new DateValidator(
+        [
+            "format"  => "d-m-Y",
+            "message" => "The date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "date",
-    "anotherDate",
-],
-new DateValidator(
     [
-        "format" => [
-            "date"        => "d-m-Y",
-            "anotherDate" => "Y-m-d",
-        ],
-        "message" => [
-            "date"        => "The date is invalid",
-            "anotherDate" => "The another date is invalid",
-        ],
-    ]
-)
+        "date",
+        "anotherDate",
+    ],
+    new DateValidator(
+        [
+            "format" => [
+                "date"        => "d-m-Y",
+                "anotherDate" => "Y-m-d",
+            ],
+            "message" => [
+                "date"        => "The date is invalid",
+                "anotherDate" => "The another date is invalid",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Date`**
+  - **`Phalcon\Filter\Validation\Validator\Date`**
 
 `DateTime` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatordate-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatordate-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not a valid date&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field is not a valid date"`
 
 ### Methods
 
@@ -3016,12 +2909,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Digit
 
@@ -3036,48 +2930,44 @@ use Phalcon\Filter\Validation\Validator\Digit as DigitValidator;
 $validator = new Validation();
 
 $validator->add(
-"height",
-new DigitValidator(
-    [
-        "message" => ":field must be numeric",
-    ]
-)
+    "height",
+    new DigitValidator(
+        [
+            "message" => ":field must be numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "height",
-    "width",
-],
-new DigitValidator(
     [
-        "message" => [
-            "height" => "height must be numeric",
-            "width"  => "width must be numeric",
-        ],
-    ]
-)
+        "height",
+        "width",
+    ],
+    new DigitValidator(
+        [
+            "message" => [
+                "height" => "height must be numeric",
+                "width"  => "width must be numeric",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Digit`**
+  - **`Phalcon\Filter\Validation\Validator\Digit`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatordigit-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatordigit-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be numeric&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be numeric"`
 
 ### Methods
 
@@ -3093,12 +2983,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Email
 
@@ -3113,60 +3004,56 @@ use Phalcon\Filter\Validation\Validator\Email as EmailValidator;
 $validator = new Validation();
 
 $validator->add(
-"email",
-new EmailValidator(
-    [
-        "message" => "The e-mail is not valid",
-    ]
-)
+    "email",
+    new EmailValidator(
+        [
+            "message" => "The e-mail is not valid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "email",
-    "anotherEmail",
-],
-new EmailValidator(
     [
-        "message" => [
-            "email"        => "The e-mail is not valid",
-            "anotherEmail" => "The another e-mail is not valid",
-        ],
-    ]
-)
+        "email",
+        "anotherEmail",
+    ],
+    new EmailValidator(
+        [
+            "message" => [
+                "email"        => "The e-mail is not valid",
+                "anotherEmail" => "The another e-mail is not valid",
+            ],
+        ]
+    )
 );
 ```
 
 ```php
 $validator->add(
-"täst@example.com",
-new EmailValidator(
-    [
-        "message" => "The e-mail is not valid",
-        "allowUTF8" => true,
-    ]
-)
+    "täst@example.com",
+    new EmailValidator(
+        [
+            "message" => "The e-mail is not valid",
+            "allowUTF8" => true,
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Email`**
+  - **`Phalcon\Filter\Validation\Validator\Email`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatoremail-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoremail-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be an email address&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be an email address"`
 
 ### Methods
 
@@ -3182,12 +3069,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Exception
 
@@ -3197,7 +3085,8 @@ Exceptions thrown in Phalcon\Filter\Validation\Validator\* classes will use this
 class
 
 - `\Exception`
-- **`Phalcon\Filter\Validation\Validator\Exception`**
+  - **`Phalcon\Filter\Validation\Validator\Exception`**
+
 
 ## Filter\Validation\Validator\ExclusionIn
 
@@ -3212,59 +3101,55 @@ use Phalcon\Filter\Validation\Validator\ExclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new ExclusionIn(
-    [
-        "message" => "The status must not be A or B",
-        "domain"  => [
-            "A",
-            "B",
-        ],
-    ]
-)
-);
-
-$validator->add(
-[
     "status",
-    "type",
-],
-new ExclusionIn(
-    [
-        "message" => [
-            "status" => "The status must not be A or B",
-            "type"   => "The type must not be 1 or "
-        ],
-        "domain" => [
-            "status" => [
+    new ExclusionIn(
+        [
+            "message" => "The status must not be A or B",
+            "domain"  => [
                 "A",
                 "B",
             ],
-            "type"   => [1, 2],
-        ],
-    ]
-)
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "status",
+        "type",
+    ],
+    new ExclusionIn(
+        [
+            "message" => [
+                "status" => "The status must not be A or B",
+                "type"   => "The type must not be 1 or "
+            ],
+            "domain" => [
+                "status" => [
+                    "A",
+                    "B",
+                ],
+                "type"   => [1, 2],
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
+  - **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorexclusionin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorexclusionin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not be a part of list: :domain&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must not be a part of list: :domain"`
 
 ### Methods
 
@@ -3280,12 +3165,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File
 
@@ -3300,77 +3186,75 @@ use Phalcon\Filter\Validation\Validator\File as FileValidator;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new FileValidator(
-    [
-        "maxSize"              => "2M",
-        "messageSize"          => ":field exceeds the max file size (:size)",
-        "allowedTypes"         => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "messageType"          => "Allowed file types are :types",
-        "maxResolution"        => "800x600",
-        "messageMaxResolution" => "Max resolution of :field is :resolution",
-        "messageFileEmpty"     => "File is empty",
-        "messageIniSize"       => "Ini size is not valid",
-        "messageValid"         => "File is not valid",
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new FileValidator(
-    [
-        "maxSize" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "messageSize" => [
-            "file"        => "file exceeds the max file size 2M",
-            "anotherFile" => "anotherFile exceeds the max file size 4M",
-        "allowedTypes" => [
-            "file"        => [
+    new FileValidator(
+        [
+            "maxSize"              => "2M",
+            "messageSize"          => ":field exceeds the max file size (:size)",
+            "allowedTypes"         => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
+            "messageType"          => "Allowed file types are :types",
+            "maxResolution"        => "800x600",
+            "messageMaxResolution" => "Max resolution of :field is :resolution",
+            "messageFileEmpty"     => "File is empty",
+            "messageIniSize"       => "Ini size is not valid",
+            "messageValid"         => "File is not valid",
+        ]
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new FileValidator(
+        [
+            "maxSize" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
             ],
-        ],
-        "messageType" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
-        ],
-        "maxResolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "messageMaxResolution" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+            "messageSize" => [
+                "file"        => "file exceeds the max file size 2M",
+                "anotherFile" => "anotherFile exceeds the max file size 4M",
+            "allowedTypes" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "messageType" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ],
+            "maxResolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "messageMaxResolution" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
-- **`Phalcon\Filter\Validation\Validator\File`**
+  - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+    - **`Phalcon\Filter\Validation\Validator\File`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\File\MimeType` · `Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio` · `Phalcon\Filter\Validation\Validator\File\Resolution\Equal` · `Phalcon\Filter\Validation\Validator\File\Resolution\Max` · `Phalcon\Filter\Validation\Validator\File\Resolution\Min` · `Phalcon\Filter\Validation\Validator\File\Size\Equal` · `Phalcon\Filter\Validation\Validator\File\Size\Max` · `Phalcon\Filter\Validation\Validator\File\Size\Min` · `Phalcon\Messages\Message` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfile-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
 
 ### Methods
 
@@ -3381,6 +3265,7 @@ public function __construct( array $options = [] );
 ```
 
 Constructor
+
 
 ## Filter\Validation\Validator\File\AbstractFile
 
@@ -3395,102 +3280,83 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Size(
-    [
-        "maxSize"              => "2M",
-        "messageSize"          => ":field exceeds the max file size (:size)",
-    ]
-)
+    "file",
+    new Size(
+        [
+            "maxSize"              => "2M",
+            "messageSize"          => ":field exceeds the max file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new FileValidator(
     [
-        "maxSize" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "messageSize" => [
-            "file"        => "file exceeds the max file size 2M",
-            "anotherFile" => "anotherFile exceeds the max file size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new FileValidator(
+        [
+            "maxSize" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "messageSize" => [
+                "file"        => "file exceeds the max file size 2M",
+                "anotherFile" => "anotherFile exceeds the max file size 4M",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\File\AbstractFile`**
-- [`Phalcon\Filter\Validation\Validator\File\MimeType`](#filtervalidationvalidatorfilemimetype)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`](#filtervalidationvalidatorfileresolutionaspectratio)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`](#filtervalidationvalidatorfileresolutionequal)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\Max`](#filtervalidationvalidatorfileresolutionmax)
-- [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
+  - **`Phalcon\Filter\Validation\Validator\File\AbstractFile`**
+    - [`Phalcon\Filter\Validation\Validator\File\MimeType`](#filtervalidationvalidatorfilemimetype)
+    - [`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`](#filtervalidationvalidatorfileresolutionaspectratio)
+    - [`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`](#filtervalidationvalidatorfileresolutionequal)
+    - [`Phalcon\Filter\Validation\Validator\File\Resolution\Max`](#filtervalidationvalidatorfileresolutionmax)
+    - [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
+    - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
 
 `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkupload" visibility="public" name="checkUpload" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Check upload
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkuploadisempty" visibility="public" name="checkUploadIsEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Check if upload is empty
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkuploadisvalid" visibility="public" name="checkUploadIsValid" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Check if upload is valid
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkuploadmaxsize" visibility="public" name="checkUploadMaxSize" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Check if uploaded file is larger than PHP allowed size
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-getfilesizeinbytes" visibility="public" name="getFileSizeInBytes" returnType="float" params={[{"type":"string","name":"size","default":null}]}>
-Convert a string like "2.5MB" in bytes
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-getmessagefileempty" visibility="public" name="getMessageFileEmpty" returnType="string" params={[]}>
-Empty is empty
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-getmessageinisize" visibility="public" name="getMessageIniSize" returnType="string" params={[]}>
-File exceeds the file size set in PHP configuration
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-getmessagevalid" visibility="public" name="getMessageValid" returnType="string" params={[]}>
-File is not valid
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-isallowempty" visibility="public" name="isAllowEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Check on empty
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessagefileempty" visibility="public" name="setMessageFileEmpty" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
-Empty is empty
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessageinisize" visibility="public" name="setMessageIniSize" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
-File exceeds the file size set in PHP configuration
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-setmessagevalid" visibility="public" name="setMessageValid" returnType="void" params={[{"type":"string","name":"message","default":null}]}>
-File is not valid
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-appendmessagevalid" visibility="protected" name="appendMessageValid" returnType="void" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Appends the "file is not valid" message for the field
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile" visibility="protected" name="checkIsUploadedFile" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Checks if a file has been uploaded; Internal check that can be
-</ApiItem>
+- `public checkUpload(Validation $validation, string $field): bool` — Check upload
+
+- `public checkUploadIsEmpty(Validation $validation, string $field): bool` — Check if upload is empty
+
+- `public checkUploadIsValid(Validation $validation, string $field): bool` — Check if upload is valid
+
+- `public checkUploadMaxSize(Validation $validation, string $field): bool` — Check if uploaded file is larger than PHP allowed size
+
+- `public getFileSizeInBytes(string $size): float` — Convert a string like "2.5MB" in bytes
+
+- `public getMessageFileEmpty(): string` — Empty is empty
+
+- `public getMessageIniSize(): string` — File exceeds the file size set in PHP configuration
+
+- `public getMessageValid(): string` — File is not valid
+
+- `public isAllowEmpty(Validation $validation, string $field): bool` — Check on empty
+
+- `public setMessageFileEmpty(string $message): void` — Empty is empty
+
+- `public setMessageIniSize(string $message): void` — File exceeds the file size set in PHP configuration
+
+- `public setMessageValid(string $message): void` — File is not valid
+
+- `protected appendMessageValid(Validation $validation, string $field): void` — Appends the "file is not valid" message for the field
+
+- `protected checkIsUploadedFile(string $name): bool` — Checks if a file has been uploaded; Internal check that can be
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="messageFileEmpty" type="string" default="&quot;Field :field must not be empty&quot;">
-Empty is empty
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messageIniSize" type="string" default="&quot;File :field exceeds the maximum file size&quot;">
-File exceeds the file size set in PHP configuration
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messageValid" type="string" default="&quot;Field :field is not valid&quot;">
-File is not valid
-</ApiItem>
+- `protected string $messageFileEmpty = "Field :field must not be empty"` — Empty is empty
+
+- `protected string $messageIniSize = "File :field exceeds the maximum file size"` — File exceeds the file size set in PHP configuration
+
+- `protected string $messageValid = "Field :field is not valid"` — File is not valid
 
 ### Methods
 
@@ -3498,8 +3364,8 @@ File is not valid
 
 ```php
 public function checkUpload(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -3509,8 +3375,8 @@ Check upload
 
 ```php
 public function checkUploadIsEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -3520,8 +3386,8 @@ Check if upload is empty
 
 ```php
 public function checkUploadIsValid(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -3531,8 +3397,8 @@ Check if upload is valid
 
 ```php
 public function checkUploadMaxSize(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -3574,8 +3440,8 @@ File is not valid
 
 ```php
 public function isAllowEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -3609,8 +3475,8 @@ File is not valid
 
 ```php
 protected function appendMessageValid(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): void;
 ```
 
@@ -3625,6 +3491,7 @@ protected function checkIsUploadedFile( string $name ): bool;
 Checks if a file has been uploaded; Internal check that can be
 overridden in a subclass if you do not want to check uploaded files
 
+
 ## Filter\Validation\Validator\File\MimeType
 
 Class
@@ -3638,60 +3505,57 @@ use Phalcon\Filter\Validation\Validator\File\MimeType;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new MimeType(
-    [
-        "types" => [
-            "image/jpeg",
-            "image/png",
-        ],
-        "message" => "Allowed file types are :types"
-    ]
-)
-);
-
-$validator->add(
-[
     "file",
-    "anotherFile",
-],
-new MimeType(
-    [
-        "types" => [
-            "file"        => [
+    new MimeType(
+        [
+            "types" => [
                 "image/jpeg",
                 "image/png",
             ],
-            "anotherFile" => [
-                "image/gif",
-                "image/bmp",
-            ],
-        ],
-        "message" => [
-            "file"        => "Allowed file types are image/jpeg and image/png",
-            "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            "message" => "Allowed file types are :types"
         ]
-    ]
-)
+    )
+);
+
+$validator->add(
+    [
+        "file",
+        "anotherFile",
+    ],
+    new MimeType(
+        [
+            "types" => [
+                "file"        => [
+                    "image/jpeg",
+                    "image/png",
+                ],
+                "anotherFile" => [
+                    "image/gif",
+                    "image/bmp",
+                ],
+            ],
+            "message" => [
+                "file"        => "Allowed file types are image/jpeg and image/png",
+                "anotherFile" => "Allowed file types are image/gif and image/bmp",
+            ]
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\MimeType`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - **`Phalcon\Filter\Validation\Validator\File\MimeType`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfilemimetype-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field must be of type: :types&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field must be of type: :types"`
 
 ### Methods
 
@@ -3699,12 +3563,13 @@ Executes the validation
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\AspectRatio
 
@@ -3723,54 +3588,50 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new AspectRatio(
-    [
-        "ratio"   => "16x9",
-        "message" => "The aspect ratio of the field :field has to be :ratio",
-    ]
-)
+    "file",
+    new AspectRatio(
+        [
+            "ratio"   => "16x9",
+            "message" => "The aspect ratio of the field :field has to be :ratio",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new AspectRatio(
     [
-        "ratio" => [
-            "file"        => "16x9",
-            "anotherFile" => "4x3",
-        ],
-        "message" => [
-            "file"        => "Aspect ratio of file has to be 16x9",
-            "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new AspectRatio(
+        [
+            "ratio" => [
+                "file"        => "16x9",
+                "anotherFile" => "4x3",
+            ],
+            "message" => [
+                "file"        => "Aspect ratio of file has to be 16x9",
+                "anotherFile" => "Aspect ratio of anotherFile has to be 4x3",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - **`Phalcon\Filter\Validation\Validator\File\Resolution\AspectRatio`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfileresolutionaspectratio-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileresolutionaspectratio-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact aspect ratio of :ratio&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field does not have the exact aspect ratio of :ratio"`
 
 ### Methods
 
@@ -3786,12 +3647,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\Equal
 
@@ -3806,54 +3668,50 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Equal;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Equal(
-    [
-        "resolution" => "800x600",
-        "message"    => "The resolution of the field :field has to be equal :resolution",
-    ]
-)
+    "file",
+    new Equal(
+        [
+            "resolution" => "800x600",
+            "message"    => "The resolution of the field :field has to be equal :resolution",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Equal(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "message" => [
-            "file"        => "Equal resolution of file has to be 800x600",
-            "anotherFile" => "Equal resolution of file has to be 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Equal(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "message" => [
+                "file"        => "Equal resolution of file has to be 800x600",
+                "anotherFile" => "Equal resolution of file has to be 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - **`Phalcon\Filter\Validation\Validator\File\Resolution\Equal`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfileresolutionequal-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileresolutionequal-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;The resolution of the field :field has to be equal :resolution&quot;">
-</ApiItem>
+- `protected string|null $template = "The resolution of the field :field has to be equal :resolution"`
 
 ### Methods
 
@@ -3869,12 +3727,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\Max
 
@@ -3889,59 +3748,55 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Max;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Max(
-    [
-        "resolution"      => "800x600",
-        "message"  => "Max resolution of :field is :resolution",
-        "included" => true,
-    ]
-)
+    "file",
+    new Max(
+        [
+            "resolution"      => "800x600",
+            "message"  => "Max resolution of :field is :resolution",
+            "included" => true,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Max(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "Max resolution of file is 800x600",
-            "anotherFile" => "Max resolution of file is 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Max(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "Max resolution of file is 800x600",
+                "anotherFile" => "Max resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\Max`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - **`Phalcon\Filter\Validation\Validator\File\Resolution\Max`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfileresolutionmax-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileresolutionmax-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the maximum resolution of :resolution&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field exceeds the maximum resolution of :resolution"`
 
 ### Methods
 
@@ -3957,12 +3812,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Resolution\Min
 
@@ -3977,59 +3833,55 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Min;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Min(
-    [
-        "resolution" => "800x600",
-        "message"    => "Min resolution of :field is :resolution",
-        "included"   => true,
-    ]
-)
+    "file",
+    new Min(
+        [
+            "resolution" => "800x600",
+            "message"    => "Min resolution of :field is :resolution",
+            "included"   => true,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Min(
     [
-        "resolution" => [
-            "file"        => "800x600",
-            "anotherFile" => "1024x768",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "Min resolution of file is 800x600",
-            "anotherFile" => "Min resolution of file is 1024x768",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Min(
+        [
+            "resolution" => [
+                "file"        => "800x600",
+                "anotherFile" => "1024x768",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "Min resolution of file is 800x600",
+                "anotherFile" => "Min resolution of file is 1024x768",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Resolution\Min`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - **`Phalcon\Filter\Validation\Validator\File\Resolution\Min`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfileresolutionmin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfileresolutionmin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum resolution of :resolution&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field can not have the minimum resolution of :resolution"`
 
 ### Methods
 
@@ -4045,12 +3897,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\File\Size\Equal
 
@@ -4065,61 +3918,57 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Equal(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the equal file size (:size)",
-    ]
-)
+    "file",
+    new Equal(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the equal file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Equal(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file does not have the right file size",
-            "anotherFile" => "anotherFile wrong file size (4MB)",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Equal(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file does not have the right file size",
+                "anotherFile" => "anotherFile wrong file size (4MB)",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- **`Phalcon\Filter\Validation\Validator\File\Size\Equal`**
-- [`Phalcon\Filter\Validation\Validator\File\Size\Max`](#filtervalidationvalidatorfilesizemax)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Min`](#filtervalidationvalidatorfilesizemin)
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - **`Phalcon\Filter\Validation\Validator\File\Size\Equal`**
+      - [`Phalcon\Filter\Validation\Validator\File\Size\Max`](#filtervalidationvalidatorfilesizemax)
+      - [`Phalcon\Filter\Validation\Validator\File\Size\Min`](#filtervalidationvalidatorfilesizemin)
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfilesizeequal-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfilesizeequal-getconditional" visibility="protected" name="getConditional" returnType="" params={[{"type":"float","name":"source","default":null},{"type":"float","name":"target","default":null},{"type":"bool","name":"included","default":"false"}]}>
-Executes the conditional
-</ApiItem>
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+
+- `protected getConditional(float $source, float $target, bool $included = false)` — Executes the conditional
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact :size file size&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field does not have the exact :size file size"`
 
 ### Methods
 
@@ -4127,8 +3976,8 @@ Executes the conditional
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -4138,13 +3987,14 @@ Executes the validation
 
 ```php
 protected function getConditional(
-float $source,
-float $target,
-bool $included = false
+    float $source,
+    float $target,
+    bool $included = false
 );
 ```
 
 Executes the conditional
+
 
 ## Filter\Validation\Validator\File\Size\Max
 
@@ -4159,55 +4009,52 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Max(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the max file size (:size)",
-    ]
-)
+    "file",
+    new Max(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the max file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Max(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file exceeds the max file size 2M",
-            "anotherFile" => "anotherFile exceeds the max file size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Max(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file exceeds the max file size 2M",
+                "anotherFile" => "anotherFile exceeds the max file size 4M",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
-- **`Phalcon\Filter\Validation\Validator\File\Size\Max`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
+      - **`Phalcon\Filter\Validation\Validator\File\Size\Max`**
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfilesizemax-getconditional" visibility="protected" name="getConditional" returnType="" params={[{"type":"float","name":"source","default":null},{"type":"float","name":"target","default":null},{"type":"bool","name":"included","default":"false"}]}>
-Executes the conditional
-</ApiItem>
+- `protected getConditional(float $source, float $target, bool $included = false)` — Executes the conditional
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the size of :size&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field exceeds the size of :size"`
 
 ### Methods
 
@@ -4215,13 +4062,14 @@ Executes the conditional
 
 ```php
 protected function getConditional(
-float $source,
-float $target,
-bool $included = false
+    float $source,
+    float $target,
+    bool $included = false
 );
 ```
 
 Executes the conditional
+
 
 ## Filter\Validation\Validator\File\Size\Min
 
@@ -4236,55 +4084,52 @@ use Phalcon\Filter\Validation\Validator\File\Size;
 $validator = new Validation();
 
 $validator->add(
-"file",
-new Min(
-    [
-        "size"     => "2M",
-        "included" => true,
-        "message"  => ":field exceeds the min file size (:size)",
-    ]
-)
+    "file",
+    new Min(
+        [
+            "size"     => "2M",
+            "included" => true,
+            "message"  => ":field exceeds the min file size (:size)",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "file",
-    "anotherFile",
-],
-new Min(
     [
-        "size" => [
-            "file"        => "2M",
-            "anotherFile" => "4M",
-        ],
-        "included" => [
-            "file"        => false,
-            "anotherFile" => true,
-        ],
-        "message" => [
-            "file"        => "file exceeds the min file size 2M",
-            "anotherFile" => "anotherFile exceeds the min file size 4M",
-        ],
-    ]
-)
+        "file",
+        "anotherFile",
+    ],
+    new Min(
+        [
+            "size" => [
+                "file"        => "2M",
+                "anotherFile" => "4M",
+            ],
+            "included" => [
+                "file"        => false,
+                "anotherFile" => true,
+            ],
+            "message" => [
+                "file"        => "file exceeds the min file size 2M",
+                "anotherFile" => "anotherFile exceeds the min file size 4M",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
-- [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
-- **`Phalcon\Filter\Validation\Validator\File\Size\Min`**
+  - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
+    - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
+      - **`Phalcon\Filter\Validation\Validator\File\Size\Min`**
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfilesizemin-getconditional" visibility="protected" name="getConditional" returnType="" params={[{"type":"float","name":"source","default":null},{"type":"float","name":"target","default":null},{"type":"bool","name":"included","default":"false"}]}>
-Executes the conditional
-</ApiItem>
+- `protected getConditional(float $source, float $target, bool $included = false)` — Executes the conditional
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum size of :size&quot;">
-</ApiItem>
+- `protected string|null $template = "File :field can not have the minimum size of :size"`
 
 ### Methods
 
@@ -4292,13 +4137,14 @@ Executes the conditional
 
 ```php
 protected function getConditional(
-float $source,
-float $target,
-bool $included = false
+    float $source,
+    float $target,
+    bool $included = false
 );
 ```
 
 Executes the conditional
+
 
 ## Filter\Validation\Validator\Files
 
@@ -4318,34 +4164,30 @@ use Phalcon\Filter\Validation\Validator\Files as FilesValidator;
 $validation = new Validation();
 
 $validation->add(
-"photos",
-new FilesValidator(
-    [
-        "maxSize"      => "2M",
-        "messageSize"  => ":field exceeds the max file size (:size)",
-        "allowedTypes" => ["image/jpeg", "image/png"],
-        "messageType"  => "Allowed file types are :types",
-    ]
-)
+    "photos",
+    new FilesValidator(
+        [
+            "maxSize"      => "2M",
+            "messageSize"  => ":field exceeds the max file size (:size)",
+            "allowedTypes" => ["image/jpeg", "image/png"],
+            "messageType"  => "Allowed file types are :types",
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Files`**
+  - **`Phalcon\Filter\Validation\Validator\Files`**
 
 `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorfiles-isallowempty" visibility="public" name="isAllowEmpty" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"string","name":"field","default":null}]}>
-Whole-field empty check: true when the field carries no uploaded files.
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfiles-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation, delegating each file to a `File` validator.
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorfiles-normalizefiles" visibility="protected" name="normalizeFiles" returnType="array" params={[{"type":"mixed","name":"value","default":null}]}>
-Normalizes a single file or a transposed multi-file `$_FILES` node into a
-</ApiItem>
+- `public isAllowEmpty(Validation $validation, string $field): bool` — Whole-field empty check: true when the field carries no uploaded files.
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation, delegating each file to a `File` validator.
+
+- `protected normalizeFiles(mixed $value): array` — Normalizes a single file or a transposed multi-file `$_FILES` node into a
 
 ### Methods
 
@@ -4353,8 +4195,8 @@ Normalizes a single file or a transposed multi-file `$_FILES` node into a
 
 ```php
 public function isAllowEmpty(
-Validation $validation,
-string $field
+    Validation $validation,
+    string $field
 ): bool;
 ```
 
@@ -4364,8 +4206,8 @@ Whole-field empty check: true when the field carries no uploaded files.
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -4380,6 +4222,7 @@ protected function normalizeFiles( mixed $value ): array;
 Normalizes a single file or a transposed multi-file `$_FILES` node into a
 list of single-file structures.
 
+
 ## Filter\Validation\Validator\Identical
 
 Class
@@ -4393,53 +4236,49 @@ use Phalcon\Filter\Validation\Validator\Identical;
 $validator = new Validation();
 
 $validator->add(
-"terms",
-new Identical(
-    [
-        "accepted" => "yes",
-        "message" => "Terms and conditions must be accepted",
-    ]
-)
+    "terms",
+    new Identical(
+        [
+            "accepted" => "yes",
+            "message" => "Terms and conditions must be accepted",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "terms",
-    "anotherTerms",
-],
-new Identical(
     [
-        "accepted" => [
-            "terms"        => "yes",
-            "anotherTerms" => "yes",
-        ],
-        "message" => [
-            "terms"        => "Terms and conditions must be accepted",
-            "anotherTerms" => "Another terms  must be accepted",
-        ],
-    ]
-)
+        "terms",
+        "anotherTerms",
+    ],
+    new Identical(
+        [
+            "accepted" => [
+                "terms"        => "yes",
+                "anotherTerms" => "yes",
+            ],
+            "message" => [
+                "terms"        => "Terms and conditions must be accepted",
+                "anotherTerms" => "Another terms  must be accepted",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Identical`**
+  - **`Phalcon\Filter\Validation\Validator\Identical`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatoridentical-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoridentical-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have the expected value&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field does not have the expected value"`
 
 ### Methods
 
@@ -4455,12 +4294,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\InclusionIn
 
@@ -4475,53 +4315,49 @@ use Phalcon\Filter\Validation\Validator\InclusionIn;
 $validator = new Validation();
 
 $validator->add(
-"status",
-new InclusionIn(
-    [
-        "message" => "The status must be A or B",
-        "domain"  => ["A", "B"],
-    ]
-)
+    "status",
+    new InclusionIn(
+        [
+            "message" => "The status must be A or B",
+            "domain"  => ["A", "B"],
+        ]
+    )
 );
 
 $validator->add(
-[
-    "status",
-    "type",
-],
-new InclusionIn(
     [
-        "message" => [
-            "status" => "The status must be A or B",
-            "type"   => "The status must be 1 or 2",
-        ],
-        "domain" => [
-            "status" => ["A", "B"],
-            "type"   => [1, 2],
+        "status",
+        "type",
+    ],
+    new InclusionIn(
+        [
+            "message" => [
+                "status" => "The status must be A or B",
+                "type"   => "The status must be 1 or 2",
+            ],
+            "domain" => [
+                "status" => ["A", "B"],
+                "type"   => [1, 2],
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\InclusionIn`**
+  - **`Phalcon\Filter\Validation\Validator\InclusionIn`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorinclusionin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorinclusionin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a part of list: :domain&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be a part of list: :domain"`
 
 ### Methods
 
@@ -4537,12 +4373,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Ip
 
@@ -4554,75 +4391,70 @@ Check for IP addresses
 use Phalcon\Filter\Validation\Validator\Ip as IpValidator;
 
 $validator->add(
-"ip_address",
-new IpValidator(
-    [
-        "message"       => ":field must contain only ip addresses",
-        "version"       => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
-        "allowReserved" => false,   // False if not specified. Ignored for v6
-        "allowPrivate"  => false,   // False if not specified
-        "allowEmpty"    => false,
-    ]
-)
+    "ip_address",
+    new IpValidator(
+        [
+            "message"       => ":field must contain only ip addresses",
+            "version"       => IP::VERSION_4 | IP::VERSION_6, // v6 and v4. The same if not specified
+            "allowReserved" => false,   // False if not specified. Ignored for v6
+            "allowPrivate"  => false,   // False if not specified
+            "allowEmpty"    => false,
+        ]
+    )
 );
 
 $validator->add(
-[
-    "source_address",
-    "destination_address",
-],
-new IpValidator(
     [
-        "message" => [
-            "source_address"      => "source_address must be a valid IP address",
-            "destination_address" => "destination_address must be a valid IP address",
-        ],
-        "version" => [
-             "source_address"      => Ip::VERSION_4 | IP::VERSION_6,
-             "destination_address" => Ip::VERSION_4,
-        ],
-        "allowReserved" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-        "allowPrivate" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-        "allowEmpty" => [
-             "source_address"      => false,
-             "destination_address" => true,
-        ],
-    ]
-)
+        "source_address",
+        "destination_address",
+    ],
+    new IpValidator(
+        [
+            "message" => [
+                "source_address"      => "source_address must be a valid IP address",
+                "destination_address" => "destination_address must be a valid IP address",
+            ],
+            "version" => [
+                 "source_address"      => Ip::VERSION_4 | IP::VERSION_6,
+                 "destination_address" => Ip::VERSION_4,
+            ],
+            "allowReserved" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+            "allowPrivate" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+            "allowEmpty" => [
+                 "source_address"      => false,
+                 "destination_address" => true,
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Ip`**
+  - **`Phalcon\Filter\Validation\Validator\Ip`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorip-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorip-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Constants
 
-<ApiItem kind="constant" name="VERSION_4" type="int" default="FILTER_FLAG_IPV4">
-</ApiItem>
-<ApiItem kind="constant" name="VERSION_6" type="int" default="FILTER_FLAG_IPV6">
-</ApiItem>
+- `const int VERSION_4 = FILTER_FLAG_IPV4`
+
+- `const int VERSION_6 = FILTER_FLAG_IPV6`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a valid IP address&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be a valid IP address"`
 
 ### Methods
 
@@ -4638,12 +4470,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Numericality
 
@@ -4658,48 +4491,44 @@ use Phalcon\Filter\Validation\Validator\Numericality;
 $validator = new Validation();
 
 $validator->add(
-"price",
-new Numericality(
-    [
-        "message" => ":field is not numeric",
-    ]
-)
+    "price",
+    new Numericality(
+        [
+            "message" => ":field is not numeric",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "price",
-    "amount",
-],
-new Numericality(
     [
-        "message" => [
-            "price"  => "price is not numeric",
-            "amount" => "amount is not numeric",
+        "price",
+        "amount",
+    ],
+    new Numericality(
+        [
+            "message" => [
+                "price"  => "price is not numeric",
+                "amount" => "amount is not numeric",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Numericality`**
+  - **`Phalcon\Filter\Validation\Validator\Numericality`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatornumericality-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatornumericality-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have a valid numeric format&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field does not have a valid numeric format"`
 
 ### Methods
 
@@ -4715,12 +4544,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\PresenceOf
 
@@ -4735,48 +4565,44 @@ use Phalcon\Filter\Validation\Validator\PresenceOf;
 $validator = new Validation();
 
 $validator->add(
-"name",
-new PresenceOf(
-    [
-        "message" => "The name is required",
-    ]
-)
+    "name",
+    new PresenceOf(
+        [
+            "message" => "The name is required",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "name",
-    "email",
-],
-new PresenceOf(
     [
-        "message" => [
-            "name"  => "The name is required",
-            "email" => "The email is required",
-        ],
-    ]
-)
+        "name",
+        "email",
+    ],
+    new PresenceOf(
+        [
+            "message" => [
+                "name"  => "The name is required",
+                "email" => "The email is required",
+            ],
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\PresenceOf`**
+  - **`Phalcon\Filter\Validation\Validator\PresenceOf`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorpresenceof-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorpresenceof-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is required&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field is required"`
 
 ### Methods
 
@@ -4792,12 +4618,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Regex
 
@@ -4812,53 +4639,49 @@ use Phalcon\Filter\Validation\Validator\Regex as RegexValidator;
 $validator = new Validation();
 
 $validator->add(
-"created_at",
-new RegexValidator(
-    [
-        "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-        "message" => "The creation date is invalid",
-    ]
-)
+    "created_at",
+    new RegexValidator(
+        [
+            "pattern" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+            "message" => "The creation date is invalid",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "created_at",
-    "name",
-],
-new RegexValidator(
     [
-        "pattern" => [
-            "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
-            "name"       => "/^[a-z]$/",
-        ],
-        "message" => [
-            "created_at" => "The creation date is invalid",
-            "name"       => "The name is invalid",
+        "created_at",
+        "name",
+    ],
+    new RegexValidator(
+        [
+            "pattern" => [
+                "created_at" => "/^[0-9]{4}[-\/](0[1-9]|1[12])[-\/](0[1-9]|[12][0-9]|3[01])$/",
+                "name"       => "/^[a-z]$/",
+            ],
+            "message" => [
+                "created_at" => "The creation date is invalid",
+                "name"       => "The name is invalid",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Regex`**
+  - **`Phalcon\Filter\Validation\Validator\Regex`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorregex-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorregex-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not match the required format&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field does not match the required format"`
 
 ### Methods
 
@@ -4874,12 +4697,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\StringLength
 
@@ -4902,66 +4726,64 @@ use Phalcon\Filter\Validation\Validator\StringLength as StringLength;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new StringLength(
-    [
-        "max"             => 50,
-        "min"             => 2,
-        "messageMaximum"  => "We don't like really long names",
-        "messageMinimum"  => "We want more than just their initials",
-        "includedMaximum" => true,
-        "includedMinimum" => false,
-    ]
-)
+    "name_last",
+    new StringLength(
+        [
+            "max"             => 50,
+            "min"             => 2,
+            "messageMaximum"  => "We don't like really long names",
+            "messageMinimum"  => "We want more than just their initials",
+            "includedMaximum" => true,
+            "includedMinimum" => false,
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new StringLength(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "messageMaximum" => [
-            "name_last"  => "We don't like really long last names",
-            "name_first" => "We don't like really long first names",
-        ],
-        "messageMinimum" => [
-            "name_last"  => "We don't like too short last names",
-            "name_first" => "We don't like too short first names",
-        ],
-        "includedMaximum" => [
-            "name_last"  => false,
-            "name_first" => true,
-        ],
-        "includedMinimum" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new StringLength(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "messageMaximum" => [
+                "name_last"  => "We don't like really long last names",
+                "name_first" => "We don't like really long first names",
+            ],
+            "messageMinimum" => [
+                "name_last"  => "We don't like too short last names",
+                "name_first" => "We don't like too short first names",
+            ],
+            "includedMaximum" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ],
+            "includedMinimum" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
-- **`Phalcon\Filter\Validation\Validator\StringLength`**
+  - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
+    - **`Phalcon\Filter\Validation\Validator\StringLength`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorstringlength-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
 
 ### Methods
 
@@ -4972,6 +4794,7 @@ public function __construct( array $options = [] );
 ```
 
 Constructor
+
 
 ## Filter\Validation\Validator\StringLength\Max
 
@@ -4993,58 +4816,54 @@ use Phalcon\Filter\Validation\Validator\StringLength\Max;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new Max(
-    [
-        "max"      => 50,
-        "message"  => "We don't like really long names",
-        "included" => true
-    ]
-)
+    "name_last",
+    new Max(
+        [
+            "max"      => 50,
+            "message"  => "We don't like really long names",
+            "included" => true
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new Max(
     [
-        "max" => [
-            "name_last"  => 50,
-            "name_first" => 40,
-        ],
-        "message" => [
-            "name_last"  => "We don't like really long last names",
-            "name_first" => "We don't like really long first names",
-        ],
-        "included" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new Max(
+        [
+            "max" => [
+                "name_last"  => 50,
+                "name_first" => 40,
+            ],
+            "message" => [
+                "name_last"  => "We don't like really long last names",
+                "name_first" => "We don't like really long first names",
+            ],
+            "included" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
+  - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorstringlengthmax-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorstringlengthmax-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not exceed :max characters long&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must not exceed :max characters long"`
 
 ### Methods
 
@@ -5060,12 +4879,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\StringLength\Min
 
@@ -5087,58 +4907,54 @@ use Phalcon\Filter\Validation\Validator\StringLength\Min;
 $validator = new Validation();
 
 $validation->add(
-"name_last",
-new Min(
-    [
-        "min"     => 2,
-        "message" => "We want more than just their initials",
-        "included" => false
-    ]
-)
+    "name_last",
+    new Min(
+        [
+            "min"     => 2,
+            "message" => "We want more than just their initials",
+            "included" => false
+        ]
+    )
 );
 
 $validation->add(
-[
-    "name_last",
-    "name_first",
-],
-new Min(
     [
-        "min" => [
-            "name_last"  => 2,
-            "name_first" => 4,
-        ],
-        "message" => [
-            "name_last"  => "We don't like too short last names",
-            "name_first" => "We don't like too short first names",
-        ],
-        "included" => [
-            "name_last"  => false,
-            "name_first" => true,
+        "name_last",
+        "name_first",
+    ],
+    new Min(
+        [
+            "min" => [
+                "name_last"  => 2,
+                "name_first" => 4,
+            ],
+            "message" => [
+                "name_last"  => "We don't like too short last names",
+                "name_first" => "We don't like too short first names",
+            ],
+            "included" => [
+                "name_last"  => false,
+                "name_first" => true,
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
+  - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorstringlengthmin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorstringlengthmin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be at least :min characters long&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be at least :min characters long"`
 
 ### Methods
 
@@ -5154,12 +4970,13 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
 Executes the validation
+
 
 ## Filter\Validation\Validator\Uniqueness
 
@@ -5174,45 +4991,45 @@ use Phalcon\Filter\Validation\Validator\Uniqueness as UniquenessValidator;
 $validator = new Validation();
 
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "model"   => new Users(),
-        "message" => ":field must be unique",
-    ]
-)
+    "username",
+    new UniquenessValidator(
+        [
+            "model"   => new Users(),
+            "message" => ":field must be unique",
+        ]
+    )
 );
 ```
 
 Different attribute from the field:
 ```php
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "model"     => new Users(),
-        "attribute" => "nick",
-    ]
-)
+    "username",
+    new UniquenessValidator(
+        [
+            "model"     => new Users(),
+            "attribute" => "nick",
+        ]
+    )
 );
 ```
 
 In model:
 ```php
 $validator->add(
-"username",
-new UniquenessValidator()
+    "username",
+    new UniquenessValidator()
 );
 ```
 
 Combination of fields in model:
 ```php
 $validator->add(
-[
-    "firstName",
-    "lastName",
-],
-new UniquenessValidator()
+    [
+        "firstName",
+        "lastName",
+    ],
+    new UniquenessValidator()
 );
 ```
 
@@ -5221,49 +5038,42 @@ situations where values need to be converted to do the database lookup:
 
 ```php
 $validator->add(
-"username",
-new UniquenessValidator(
-    [
-        "convert" => function (array $values) {
-            $values["username"] = strtolower($values["username"]);
+    "username",
+    new UniquenessValidator(
+        [
+            "convert" => function (array $values) {
+                $values["username"] = strtolower($values["username"]);
 
-            return $values;
-        }
-    ]
-)
+                return $values;
+            }
+        ]
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
-- **`Phalcon\Filter\Validation\Validator\Uniqueness`**
+  - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
+    - **`Phalcon\Filter\Validation\Validator\Uniqueness`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatoruniqueness-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoruniqueness-getoption" visibility="public" name="getOption" returnType="mixed" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns an option in the validator's options
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoruniqueness-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoruniqueness-getcolumnnamereal" visibility="protected" name="getColumnNameReal" returnType="string" params={[{"type":"mixed","name":"record","default":null},{"type":"string","name":"field","default":null}]}>
-The column map is used in the case to get real column name
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoruniqueness-isuniqueness" visibility="protected" name="isUniqueness" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatoruniqueness-isuniquenessmodel" visibility="protected" name="isUniquenessModel" returnType="" params={[{"type":"mixed","name":"record","default":null},{"type":"array","name":"field","default":null},{"type":"array","name":"values","default":null}]}>
-Uniqueness method used for model
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public getOption(string $key, mixed $defaultValue = null): mixed` — Returns an option in the validator's options
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+
+- `protected getColumnNameReal(mixed $record, string $field): string` — The column map is used in the case to get real column name
+
+- `protected isUniqueness(Validation $validation, mixed $field): bool`
+
+- `protected isUniquenessModel(mixed $record, array $field, array $values)` — Uniqueness method used for model
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be unique&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be unique"`
 
 ### Methods
 
@@ -5279,8 +5089,8 @@ Constructor
 
 ```php
 public function getOption(
-string $key,
-mixed $defaultValue = null
+    string $key,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -5294,8 +5104,8 @@ combination of fields; in that case resolve it to the mapped value.
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -5305,8 +5115,8 @@ Executes the validation
 
 ```php
 protected function getColumnNameReal(
-mixed $record,
-string $field
+    mixed $record,
+    string $field
 ): string;
 ```
 
@@ -5316,8 +5126,8 @@ The column map is used in the case to get real column name
 
 ```php
 protected function isUniqueness(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 
@@ -5325,13 +5135,14 @@ mixed $field
 
 ```php
 protected function isUniquenessModel(
-mixed $record,
-array $field,
-array $values
+    mixed $record,
+    array $field,
+    array $values
 );
 ```
 
 Uniqueness method used for model
+
 
 ## Filter\Validation\Validator\Url
 
@@ -5346,48 +5157,44 @@ use Phalcon\Filter\Validation\Validator\Url as UrlValidator;
 $validator = new Validation();
 
 $validator->add(
-"url",
-new UrlValidator(
-    [
-        "message" => ":field must be a url",
-    ]
-)
+    "url",
+    new UrlValidator(
+        [
+            "message" => ":field must be a url",
+        ]
+    )
 );
 
 $validator->add(
-[
-    "url",
-    "homepage",
-],
-new UrlValidator(
     [
-        "message" => [
-            "url"      => "url must be a url",
-            "homepage" => "homepage must be a url",
+        "url",
+        "homepage",
+    ],
+    new UrlValidator(
+        [
+            "message" => [
+                "url"      => "url must be a url",
+                "homepage" => "homepage must be a url",
+            ]
         ]
-    ]
-)
+    )
 );
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-- **`Phalcon\Filter\Validation\Validator\Url`**
+  - **`Phalcon\Filter\Validation\Validator\Url`**
 
 `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
 
 ### Method Summary
 
-<ApiItem href="#filtervalidationvalidatorurl-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#filtervalidationvalidatorurl-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
-</ApiItem>
+- `public __construct(array $options = [])` — Constructor
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a url&quot;">
-</ApiItem>
+- `protected string|null $template = "Field :field must be a url"`
 
 ### Methods
 
@@ -5403,8 +5210,8 @@ Constructor
 
 ```php
 public function validate(
-Validation $validation,
-mixed $field
+    Validation $validation,
+    mixed $field
 ): bool;
 ```
 

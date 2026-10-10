@@ -13,6 +13,7 @@ version: "5.20"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Traits\Factory\ConfigTrait
 
 Trait
@@ -25,11 +26,9 @@ Trait
 
 ### Method Summary
 
-<ApiItem href="#traitsfactoryconfigtrait-checkconfig" visibility="protected" name="checkConfig" returnType="array" params={[{"type":"mixed","name":"config","default":null}]}>
-</ApiItem>
-<ApiItem href="#traitsfactoryconfigtrait-checkconfigelement" visibility="protected" name="checkConfigElement" returnType="array" params={[{"type":"array","name":"config","default":null},{"type":"string","name":"element","default":null}]}>
-Checks if the config has a specific element
-</ApiItem>
+- `protected checkConfig(mixed $config): array`
+
+- `protected checkConfigElement(array $config, string $element): array` — Checks if the config has a specific element
 
 ### Methods
 
@@ -43,12 +42,13 @@ protected function checkConfig( mixed $config ): array;
 
 ```php
 protected function checkConfigElement(
-array $config,
-string $element
+    array $config,
+    string $element
 ): array;
 ```
 
 Checks if the config has a specific element
+
 
 ## Traits\Factory\FactoryTrait
 
@@ -64,21 +64,15 @@ the exception class (when exceptions are needed to be thrown)
 
 ### Method Summary
 
-<ApiItem href="#traitsfactoryfactorytrait-getcachedinstance" visibility="protected" name="getCachedInstance" returnType="object" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"arguments","default":null}]}>
-Return an object from the instances pool. If it does not exist, create it
-</ApiItem>
-<ApiItem href="#traitsfactoryfactorytrait-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-Returns the exception class for the factory
-</ApiItem>
-<ApiItem href="#traitsfactoryfactorytrait-getservice" visibility="protected" name="getService" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns a service based on the name; throws exception if it does not
-</ApiItem>
-<ApiItem href="#traitsfactoryfactorytrait-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the services for the factory
-</ApiItem>
-<ApiItem href="#traitsfactoryfactorytrait-init" visibility="protected" name="init" returnType="void" params={[{"type":"array","name":"services","default":"[]"}]}>
-Initializes services
-</ApiItem>
+- `protected getCachedInstance(string $name, mixed $arguments): object` — Return an object from the instances pool. If it does not exist, create it
+
+- `protected getExceptionClass(): string` — Returns the exception class for the factory
+
+- `protected getService(string $name): string` — Returns a service based on the name; throws exception if it does not
+
+- `protected getServices(): array` — Returns the services for the factory
+
+- `protected init(array $services = []): void` — Initializes services
 
 ### Methods
 
@@ -86,8 +80,8 @@ Initializes services
 
 ```php
 protected function getCachedInstance(
-string $name,
-mixed $arguments
+    string $name,
+    mixed $arguments
 ): object;
 ```
 
@@ -126,6 +120,7 @@ protected function init( array $services = [] ): void;
 
 Initializes services
 
+
 ## Traits\Php\ApcuTrait
 
 Trait
@@ -138,27 +133,19 @@ APCu based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpapcutrait-phpapcudec" visibility="protected" name="phpApcuDec" returnType="bool|int" params={[{"type":"mixed","name":"key","default":null},{"type":"int","name":"step","default":"1"}]}>
-@link https://php.net/manual/en/function.apcu-dec.php
-</ApiItem>
-<ApiItem href="#traitsphpapcutrait-phpapcudelete" visibility="protected" name="phpApcuDelete" returnType="bool|array" params={[{"type":"mixed","name":"key","default":null}]}>
-@link https://php.net/manual/en/function.apcu-delete.php
-</ApiItem>
-<ApiItem href="#traitsphpapcutrait-phpapcuexists" visibility="protected" name="phpApcuExists" returnType="bool|array" params={[{"type":"mixed","name":"key","default":null}]}>
-@link https://php.net/manual/en/function.apcu-exists.php
-</ApiItem>
-<ApiItem href="#traitsphpapcutrait-phpapcufetch" visibility="protected" name="phpApcuFetch" returnType="mixed" params={[{"type":"mixed","name":"key","default":null}]}>
-@link https://php.net/manual/en/function.apcu-fetch.php
-</ApiItem>
-<ApiItem href="#traitsphpapcutrait-phpapcuinc" visibility="protected" name="phpApcuInc" returnType="bool|int" params={[{"type":"mixed","name":"key","default":null},{"type":"int","name":"step","default":"1"}]}>
-@link https://php.net/manual/en/function.apcu-inc.php
-</ApiItem>
-<ApiItem href="#traitsphpapcutrait-phpapcuiterator" visibility="protected" name="phpApcuIterator" returnType="\APCUIterator|bool" params={[{"type":"string","name":"pattern","default":null}]}>
-@link https://php.net/manual/en/class.apcuiterator.php
-</ApiItem>
-<ApiItem href="#traitsphpapcutrait-phpapcustore" visibility="protected" name="phpApcuStore" returnType="bool|array" params={[{"type":"mixed","name":"key","default":null},{"type":"mixed","name":"payload","default":null},{"type":"int","name":"ttl","default":"0"}]}>
-@link https://php.net/manual/en/function.apcu-store.php
-</ApiItem>
+- `protected phpApcuDec(mixed $key, int $step = 1): bool|int` — @link <https://php.net/manual/en/function.apcu-dec.php>
+
+- `protected phpApcuDelete(mixed $key): bool|array` — @link <https://php.net/manual/en/function.apcu-delete.php>
+
+- `protected phpApcuExists(mixed $key): bool|array` — @link <https://php.net/manual/en/function.apcu-exists.php>
+
+- `protected phpApcuFetch(mixed $key): mixed` — @link <https://php.net/manual/en/function.apcu-fetch.php>
+
+- `protected phpApcuInc(mixed $key, int $step = 1): bool|int` — @link <https://php.net/manual/en/function.apcu-inc.php>
+
+- `protected phpApcuIterator(string $pattern): \APCUIterator|bool` — @link <https://php.net/manual/en/class.apcuiterator.php>
+
+- `protected phpApcuStore(mixed $key, mixed $payload, int $ttl = 0): bool|array` — @link <https://php.net/manual/en/function.apcu-store.php>
 
 ### Methods
 
@@ -166,8 +153,8 @@ APCu based wrapper methods
 
 ```php
 protected static function phpApcuDec(
-mixed $key,
-int $step = 1
+    mixed $key,
+    int $step = 1
 ): bool|int;
 ```
 
@@ -201,8 +188,8 @@ protected static function phpApcuFetch( mixed $key ): mixed;
 
 ```php
 protected static function phpApcuInc(
-mixed $key,
-int $step = 1
+    mixed $key,
+    int $step = 1
 ): bool|int;
 ```
 
@@ -220,13 +207,14 @@ protected static function phpApcuIterator( string $pattern ): \APCUIterator|bool
 
 ```php
 protected static function phpApcuStore(
-mixed $key,
-mixed $payload,
-int $ttl = 0
+    mixed $key,
+    mixed $payload,
+    int $ttl = 0
 ): bool|array;
 ```
 
 @link https://php.net/manual/en/function.apcu-store.php
+
 
 ## Traits\Php\Base64Trait
 
@@ -240,18 +228,13 @@ Base64 based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpbase64trait-dodecodeurl" visibility="protected" name="doDecodeUrl" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Decode a Base64 URL string
-</ApiItem>
-<ApiItem href="#traitsphpbase64trait-doencodeurl" visibility="protected" name="doEncodeUrl" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-Encode a string in Base64 URL format
-</ApiItem>
-<ApiItem href="#traitsphpbase64trait-phpbase64decode" visibility="protected" name="phpBase64Decode" returnType="string|false" params={[{"type":"string","name":"input","default":null},{"type":"bool","name":"strict","default":"false"}]}>
-@link https://php.net/manual/en/function.base64-decode.php
-</ApiItem>
-<ApiItem href="#traitsphpbase64trait-phpbase64encode" visibility="protected" name="phpBase64Encode" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-@link https://php.net/manual/en/function.base64-encode.php
-</ApiItem>
+- `protected doDecodeUrl(string $input): string` — Decode a Base64 URL string
+
+- `protected doEncodeUrl(string $input): string` — Encode a string in Base64 URL format
+
+- `protected phpBase64Decode(string $input, bool $strict = false): string|false` — @link <https://php.net/manual/en/function.base64-decode.php>
+
+- `protected phpBase64Encode(string $input): string` — @link <https://php.net/manual/en/function.base64-encode.php>
 
 ### Methods
 
@@ -275,8 +258,8 @@ Encode a string in Base64 URL format
 
 ```php
 protected static function phpBase64Decode(
-string $input,
-bool $strict = false
+    string $input,
+    bool $strict = false
 ): string|false;
 ```
 
@@ -290,6 +273,7 @@ protected static function phpBase64Encode( string $input ): string;
 
 @link https://php.net/manual/en/function.base64-encode.php
 
+
 ## Traits\Php\FileTrait
 
 Trait
@@ -302,33 +286,23 @@ File based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpfiletrait-phpfclose" visibility="protected" name="phpFclose" returnType="bool" params={[{"type":"mixed","name":"handle","default":null}]}>
-Closes an open file pointer
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpfgetcsv" visibility="protected" name="phpFgetCsv" returnType="array|false" params={[{"type":"mixed","name":"stream","default":null},{"type":"int","name":"length","default":"0"},{"type":"string","name":"separator","default":"\",\""},{"type":"mixed","name":"enclosure","default":"null"},{"type":"mixed","name":"escape","default":"null"}]}>
-Gets line from file pointer and parse for CSV fields
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpfileexists" visibility="protected" name="phpFileExists" returnType="bool" params={[{"type":"string","name":"filename","default":null}]}>
-@link https://php.net/manual/en/function.file-exists.php
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpfilegetcontents" visibility="protected" name="phpFileGetContents" returnType="false|string" params={[{"type":"string","name":"filename","default":null},{"type":"bool","name":"useIncludePath","default":"false"},{"type":"mixed","name":"context","default":"null"},{"type":"int","name":"offset","default":"0"},{"type":"int|null","name":"length","default":"null"}]}>
-@link https://php.net/manual/en/function.file-get-contents.php
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpfileputcontents" visibility="protected" name="phpFilePutContents" returnType="false|int" params={[{"type":"string","name":"filename","default":null},{"type":"mixed","name":"data","default":null},{"type":"int","name":"flags","default":"0"},{"type":"mixed","name":"context","default":"null"}]}>
-@link https://php.net/manual/en/function.file-put-contents.php
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpfopen" visibility="protected" name="phpFopen" returnType="mixed" params={[{"type":"string","name":"filename","default":null},{"type":"string","name":"mode","default":null},{"type":"bool","name":"useIncludePath","default":"false"},{"type":"mixed","name":"context","default":"null"}]}>
-@link https://php.net/manual/en/function.fopen.php
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpfwrite" visibility="protected" name="phpFwrite" returnType="false|int" params={[{"type":"mixed","name":"handle","default":null},{"type":"string","name":"data","default":null},{"type":"int|null","name":"length","default":"null"}]}>
-Binary-safe file write
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpiswritable" visibility="protected" name="phpIsWritable" returnType="bool" params={[{"type":"string","name":"filename","default":null}]}>
-Tells whether the filename is writable
-</ApiItem>
-<ApiItem href="#traitsphpfiletrait-phpunlink" visibility="protected" name="phpUnlink" returnType="bool" params={[{"type":"string","name":"filename","default":null},{"type":"mixed","name":"context","default":"null"}]}>
-@link https://php.net/manual/en/function.unlink.php
-</ApiItem>
+- `protected phpFclose(mixed $handle): bool` — Closes an open file pointer
+
+- `protected phpFgetCsv(mixed $stream, int $length = 0, string $separator = ",", mixed $enclosure = null, mixed $escape = null): array|false` — Gets line from file pointer and parse for CSV fields
+
+- `protected phpFileExists(string $filename): bool` — @link <https://php.net/manual/en/function.file-exists.php>
+
+- `protected phpFileGetContents(string $filename, bool $useIncludePath = false, mixed $context = null, int $offset = 0, int|null $length = null): false|string` — @link <https://php.net/manual/en/function.file-get-contents.php>
+
+- `protected phpFilePutContents(string $filename, mixed $data, int $flags = 0, mixed $context = null): false|int` — @link <https://php.net/manual/en/function.file-put-contents.php>
+
+- `protected phpFopen(string $filename, string $mode, bool $useIncludePath = false, mixed $context = null): mixed` — @link <https://php.net/manual/en/function.fopen.php>
+
+- `protected phpFwrite(mixed $handle, string $data, int|null $length = null): false|int` — Binary-safe file write
+
+- `protected phpIsWritable(string $filename): bool` — Tells whether the filename is writable
+
+- `protected phpUnlink(string $filename, mixed $context = null): bool` — @link <https://php.net/manual/en/function.unlink.php>
 
 ### Methods
 
@@ -346,11 +320,11 @@ Closes an open file pointer
 
 ```php
 protected static function phpFgetCsv(
-mixed $stream,
-int $length = 0,
-string $separator = ",",
-mixed $enclosure = null,
-mixed $escape = null
+    mixed $stream,
+    int $length = 0,
+    string $separator = ",",
+    mixed $enclosure = null,
+    mixed $escape = null
 ): array|false;
 ```
 
@@ -370,11 +344,11 @@ protected static function phpFileExists( string $filename ): bool;
 
 ```php
 protected static function phpFileGetContents(
-string $filename,
-bool $useIncludePath = false,
-mixed $context = null,
-int $offset = 0,
-int|null $length = null
+    string $filename,
+    bool $useIncludePath = false,
+    mixed $context = null,
+    int $offset = 0,
+    int|null $length = null
 ): false|string;
 ```
 
@@ -384,10 +358,10 @@ int|null $length = null
 
 ```php
 protected static function phpFilePutContents(
-string $filename,
-mixed $data,
-int $flags = 0,
-mixed $context = null
+    string $filename,
+    mixed $data,
+    int $flags = 0,
+    mixed $context = null
 ): false|int;
 ```
 
@@ -397,10 +371,10 @@ mixed $context = null
 
 ```php
 protected static function phpFopen(
-string $filename,
-string $mode,
-bool $useIncludePath = false,
-mixed $context = null
+    string $filename,
+    string $mode,
+    bool $useIncludePath = false,
+    mixed $context = null
 ): mixed;
 ```
 
@@ -410,9 +384,9 @@ mixed $context = null
 
 ```php
 protected static function phpFwrite(
-mixed $handle,
-string $data,
-int|null $length = null
+    mixed $handle,
+    string $data,
+    int|null $length = null
 ): false|int;
 ```
 
@@ -434,12 +408,13 @@ Tells whether the filename is writable
 
 ```php
 protected static function phpUnlink(
-string $filename,
-mixed $context = null
+    string $filename,
+    mixed $context = null
 ): bool;
 ```
 
 @link https://php.net/manual/en/function.unlink.php
+
 
 ## Traits\Php\HashTrait
 
@@ -453,15 +428,11 @@ Hashing method wrappers
 
 ### Method Summary
 
-<ApiItem href="#traitsphphashtrait-phphash" visibility="protected" name="phpHash" returnType="string" params={[{"type":"string","name":"algorithm","default":null},{"type":"string","name":"data","default":null},{"type":"bool","name":"binary","default":"false"}]}>
-@link https://php.net/manual/en/function.hash.php
-</ApiItem>
-<ApiItem href="#traitsphphashtrait-phphashequals" visibility="protected" name="phpHashEquals" returnType="bool" params={[{"type":"string","name":"knownString","default":null},{"type":"string","name":"userString","default":null}]}>
-@link https://php.net/manual/en/function.hash-equals.php
-</ApiItem>
-<ApiItem href="#traitsphphashtrait-phphashhmac" visibility="protected" name="phpHashHmac" returnType="string" params={[{"type":"string","name":"algorithm","default":null},{"type":"string","name":"data","default":null},{"type":"string","name":"key","default":null},{"type":"bool","name":"binary","default":"false"}]}>
-@link https://php.net/manual/en/function.hash-hmac.php
-</ApiItem>
+- `protected phpHash(string $algorithm, string $data, bool $binary = false): string` — @link <https://php.net/manual/en/function.hash.php>
+
+- `protected phpHashEquals(string $knownString, string $userString): bool` — @link <https://php.net/manual/en/function.hash-equals.php>
+
+- `protected phpHashHmac(string $algorithm, string $data, string $key, bool $binary = false): string` — @link <https://php.net/manual/en/function.hash-hmac.php>
 
 ### Methods
 
@@ -469,9 +440,9 @@ Hashing method wrappers
 
 ```php
 protected static function phpHash(
-string $algorithm,
-string $data,
-bool $binary = false
+    string $algorithm,
+    string $data,
+    bool $binary = false
 ): string;
 ```
 
@@ -481,8 +452,8 @@ bool $binary = false
 
 ```php
 protected static function phpHashEquals(
-string $knownString,
-string $userString
+    string $knownString,
+    string $userString
 ): bool;
 ```
 
@@ -492,14 +463,15 @@ string $userString
 
 ```php
 protected static function phpHashHmac(
-string $algorithm,
-string $data,
-string $key,
-bool $binary = false
+    string $algorithm,
+    string $data,
+    string $key,
+    bool $binary = false
 ): string;
 ```
 
 @link https://php.net/manual/en/function.hash-hmac.php
+
 
 ## Traits\Php\HeaderTrait
 
@@ -513,9 +485,7 @@ Header based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpheadertrait-phpheaderssent" visibility="protected" name="phpHeadersSent" returnType="bool" params={[]}>
-Checks if or where headers have been sent
-</ApiItem>
+- `protected phpHeadersSent(): bool` — Checks if or where headers have been sent
 
 ### Methods
 
@@ -529,6 +499,7 @@ Checks if or where headers have been sent
 
 @link https://php.net/manual/en/function.headers-sent.php
 
+
 ## Traits\Php\IgbinaryTrait
 
 Trait
@@ -541,12 +512,9 @@ Igbinary based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpigbinarytrait-phpigbinaryserialize" visibility="protected" name="phpIgbinarySerialize" returnType="string|null" params={[{"type":"mixed","name":"value","default":null}]}>
-@link https://php.net/manual/en/function.igbinary-serialize.php
-</ApiItem>
-<ApiItem href="#traitsphpigbinarytrait-phpigbinaryunserialize" visibility="protected" name="phpIgbinaryUnserialize" returnType="" params={[{"type":"mixed","name":"value","default":null}]}>
-@link https://php.net/manual/en/function.igbinary-unserialize.php
-</ApiItem>
+- `protected phpIgbinarySerialize(mixed $value): string|null` — @link <https://php.net/manual/en/function.igbinary-serialize.php>
+
+- `protected phpIgbinaryUnserialize(mixed $value)` — @link <https://php.net/manual/en/function.igbinary-unserialize.php>
 
 ### Methods
 
@@ -566,6 +534,7 @@ protected static function phpIgbinaryUnserialize( mixed $value );
 
 @link https://php.net/manual/en/function.igbinary-unserialize.php
 
+
 ## Traits\Php\InfoTrait
 
 Trait
@@ -578,12 +547,9 @@ Information method wrappers
 
 ### Method Summary
 
-<ApiItem href="#traitsphpinfotrait-phpextensionloaded" visibility="protected" name="phpExtensionLoaded" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Find out whether an extension is loaded
-</ApiItem>
-<ApiItem href="#traitsphpinfotrait-phpfunctionexists" visibility="protected" name="phpFunctionExists" returnType="bool" params={[{"type":"string","name":"functionName","default":null}]}>
-Return true if the given function has been defined
-</ApiItem>
+- `protected phpExtensionLoaded(string $name): bool` — Find out whether an extension is loaded
+
+- `protected phpFunctionExists(string $functionName): bool` — Return true if the given function has been defined
 
 ### Methods
 
@@ -607,6 +573,7 @@ Return true if the given function has been defined
 
 @link https://php.net/manual/en/function.function-exists.php
 
+
 ## Traits\Php\IniTrait
 
 Trait
@@ -617,18 +584,13 @@ Trait
 
 ### Method Summary
 
-<ApiItem href="#traitsphpinitrait-phpiniget" visibility="protected" name="phpIniGet" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"defaultValue","default":"\"\""}]}>
-Gets the value of a configuration option
-</ApiItem>
-<ApiItem href="#traitsphpinitrait-phpinigetbool" visibility="protected" name="phpIniGetBool" returnType="bool" params={[{"type":"string","name":"input","default":null},{"type":"bool","name":"defaultValue","default":"false"}]}>
-Query a php.ini value and return it back as boolean
-</ApiItem>
-<ApiItem href="#traitsphpinitrait-phpinigetint" visibility="protected" name="phpIniGetInt" returnType="int" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"defaultValue","default":"0"}]}>
-Query a php.ini value and return it back as integer
-</ApiItem>
-<ApiItem href="#traitsphpinitrait-phpparseinifile" visibility="protected" name="phpParseIniFile" returnType="array|false" params={[{"type":"string","name":"filename","default":null},{"type":"bool","name":"processSections","default":"false"},{"type":"int","name":"scannerMode","default":"0"}]}>
-Parse a configuration file
-</ApiItem>
+- `protected phpIniGet(string $input, string $defaultValue = ""): string` — Gets the value of a configuration option
+
+- `protected phpIniGetBool(string $input, bool $defaultValue = false): bool` — Query a php.ini value and return it back as boolean
+
+- `protected phpIniGetInt(string $input, int $defaultValue = 0): int` — Query a php.ini value and return it back as integer
+
+- `protected phpParseIniFile(string $filename, bool $processSections = false, int $scannerMode = 0): array|false` — Parse a configuration file
 
 ### Methods
 
@@ -636,8 +598,8 @@ Parse a configuration file
 
 ```php
 protected static function phpIniGet(
-string $input,
-string $defaultValue = ""
+    string $input,
+    string $defaultValue = ""
 ): string;
 ```
 
@@ -650,8 +612,8 @@ Gets the value of a configuration option
 
 ```php
 protected static function phpIniGetBool(
-string $input,
-bool $defaultValue = false
+    string $input,
+    bool $defaultValue = false
 ): bool;
 ```
 
@@ -664,8 +626,8 @@ Query a php.ini value and return it back as boolean
 
 ```php
 protected static function phpIniGetInt(
-string $input,
-int $defaultValue = 0
+    string $input,
+    int $defaultValue = 0
 ): int;
 ```
 
@@ -678,15 +640,16 @@ Query a php.ini value and return it back as integer
 
 ```php
 protected static function phpParseIniFile(
-string $filename,
-bool $processSections = false,
-int $scannerMode = 0
+    string $filename,
+    bool $processSections = false,
+    int $scannerMode = 0
 ): array|false;
 ```
 
 Parse a configuration file
 
 @link https://php.net/manual/en/function.parse-ini-file.php
+
 
 ## Traits\Php\MbCaseTrait
 
@@ -700,9 +663,7 @@ Multibyte case conversion wrapper method
 
 ### Method Summary
 
-<ApiItem href="#traitsphpmbcasetrait-phpmbconvertcase" visibility="protected" name="phpMbConvertCase" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"int","name":"mode","default":null}]}>
-Converts the case of a string using `mb_convert_case()`
-</ApiItem>
+- `protected phpMbConvertCase(string $input, int $mode): string` — Converts the case of a string using `mb_convert_case()`
 
 ### Methods
 
@@ -710,14 +671,15 @@ Converts the case of a string using `mb_convert_case()`
 
 ```php
 protected static function phpMbConvertCase(
-string $input,
-int $mode
+    string $input,
+    int $mode
 ): string;
 ```
 
 Converts the case of a string using `mb_convert_case()`
 
 @link https://php.net/manual/en/function.mb-convert-case.php
+
 
 ## Traits\Php\MsgpackTrait
 
@@ -731,12 +693,9 @@ MessagePack based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpmsgpacktrait-phpmsgpackpack" visibility="protected" name="phpMsgpackPack" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
-@link https://php.net/manual/en/function.msgpack-pack.php
-</ApiItem>
-<ApiItem href="#traitsphpmsgpacktrait-phpmsgpackunpack" visibility="protected" name="phpMsgpackUnpack" returnType="" params={[{"type":"mixed","name":"value","default":null}]}>
-@link https://php.net/manual/en/function.msgpack-unpack.php
-</ApiItem>
+- `protected phpMsgpackPack(mixed $value): string` — @link <https://php.net/manual/en/function.msgpack-pack.php>
+
+- `protected phpMsgpackUnpack(mixed $value)` — @link <https://php.net/manual/en/function.msgpack-unpack.php>
 
 ### Methods
 
@@ -756,6 +715,7 @@ protected static function phpMsgpackUnpack( mixed $value );
 
 @link https://php.net/manual/en/function.msgpack-unpack.php
 
+
 ## Traits\Php\OpensslTrait
 
 Trait
@@ -768,12 +728,9 @@ OpenSSL based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpopenssltrait-phpopensslcipherivlength" visibility="protected" name="phpOpensslCipherIvLength" returnType="int|bool" params={[{"type":"string","name":"cipher","default":null}]}>
-@link https://php.net/manual/en/function.openssl-cipher-iv-length.php
-</ApiItem>
-<ApiItem href="#traitsphpopenssltrait-phpopensslrandompseudobytes" visibility="protected" name="phpOpensslRandomPseudoBytes" returnType="" params={[{"type":"int","name":"length","default":null}]}>
-@link https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
-</ApiItem>
+- `protected phpOpensslCipherIvLength(string $cipher): int|bool` — @link <https://php.net/manual/en/function.openssl-cipher-iv-length.php>
+
+- `protected phpOpensslRandomPseudoBytes(int $length)` — @link <https://php.net/manual/en/function.openssl-random-pseudo-bytes.php>
 
 ### Methods
 
@@ -793,6 +750,7 @@ protected static function phpOpensslRandomPseudoBytes( int $length );
 
 @link https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
 
+
 ## Traits\Php\SerializeTrait
 
 Trait
@@ -805,12 +763,9 @@ PHP serialize/unserialize wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpserializetrait-phpserialize" visibility="protected" name="phpSerialize" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
-@link https://php.net/manual/en/function.serialize.php
-</ApiItem>
-<ApiItem href="#traitsphpserializetrait-phpunserialize" visibility="protected" name="phpUnserialize" returnType="mixed" params={[{"type":"string","name":"data","default":null},{"type":"array","name":"options","default":"[]"}]}>
-@link https://php.net/manual/en/function.unserialize.php
-</ApiItem>
+- `protected phpSerialize(mixed $value): string` — @link <https://php.net/manual/en/function.serialize.php>
+
+- `protected phpUnserialize(string $data, array $options = []): mixed` — @link <https://php.net/manual/en/function.unserialize.php>
 
 ### Methods
 
@@ -826,12 +781,13 @@ protected static function phpSerialize( mixed $value ): string;
 
 ```php
 protected static function phpUnserialize(
-string $data,
-array $options = []
+    string $data,
+    array $options = []
 ): mixed;
 ```
 
 @link https://php.net/manual/en/function.unserialize.php
+
 
 ## Traits\Php\UrlTrait
 
@@ -845,15 +801,11 @@ URL based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpurltrait-phpparseurl" visibility="protected" name="phpParseUrl" returnType="" params={[{"type":"string","name":"url","default":null},{"type":"int","name":"component","default":"-1"}]}>
-@link https://php.net/manual/en/function.parse-url.php
-</ApiItem>
-<ApiItem href="#traitsphpurltrait-phprawurldecode" visibility="protected" name="phpRawUrlDecode" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-@link https://php.net/manual/en/function.rawurldecode.php
-</ApiItem>
-<ApiItem href="#traitsphpurltrait-phprawurlencode" visibility="protected" name="phpRawUrlEncode" returnType="string" params={[{"type":"string","name":"input","default":null}]}>
-@link https://php.net/manual/en/function.rawurlencode.php
-</ApiItem>
+- `protected phpParseUrl(string $url, int $component = -1)` — @link <https://php.net/manual/en/function.parse-url.php>
+
+- `protected phpRawUrlDecode(string $input): string` — @link <https://php.net/manual/en/function.rawurldecode.php>
+
+- `protected phpRawUrlEncode(string $input): string` — @link <https://php.net/manual/en/function.rawurlencode.php>
 
 ### Methods
 
@@ -861,8 +813,8 @@ URL based wrapper methods
 
 ```php
 protected static function phpParseUrl(
-string $url,
-int $component = -1
+    string $url,
+    int $component = -1
 );
 ```
 
@@ -884,6 +836,7 @@ protected static function phpRawUrlEncode( string $input ): string;
 
 @link https://php.net/manual/en/function.rawurlencode.php
 
+
 ## Traits\Php\YamlTrait
 
 Trait
@@ -896,9 +849,7 @@ YAML based wrapper methods
 
 ### Method Summary
 
-<ApiItem href="#traitsphpyamltrait-phpyamlparsefile" visibility="protected" name="phpYamlParseFile" returnType="" params={[{"type":"string","name":"filename","default":null},{"type":"int","name":"pos","default":"0"},{"type":"array","name":"callbacks","default":"[]"}]}>
-Parse a YAML stream from a file
-</ApiItem>
+- `protected phpYamlParseFile(string $filename, int $pos = 0, array $callbacks = [])` — Parse a YAML stream from a file
 
 ### Methods
 
@@ -906,15 +857,16 @@ Parse a YAML stream from a file
 
 ```php
 protected static function phpYamlParseFile(
-string $filename,
-int $pos = 0,
-array $callbacks = []
+    string $filename,
+    int $pos = 0,
+    array $callbacks = []
 );
 ```
 
 Parse a YAML stream from a file
 
 @link https://php.net/manual/en/function.yaml-parse-file.php
+
 
 ## Traits\Support\Helper\Arr\FilterTrait
 
@@ -928,9 +880,7 @@ Filters a collection using array_filter with an optional callable
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperarrfiltertrait-tofilter" visibility="protected" name="toFilter" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
-Helper method to filter the collection
-</ApiItem>
+- `protected toFilter(array $collection, mixed $method = null): array` — Helper method to filter the collection
 
 ### Methods
 
@@ -938,12 +888,13 @@ Helper method to filter the collection
 
 ```php
 protected static function toFilter(
-array $collection,
-mixed $method = null
+    array $collection,
+    mixed $method = null
 ): array;
 ```
 
 Helper method to filter the collection
+
 
 ## Traits\Support\Helper\Arr\GetTrait
 
@@ -959,8 +910,7 @@ It also allows for casting the returned value to a specific type using
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperarrgettrait-getarrval" visibility="protected" name="getArrVal" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"index","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"cast","default":"null"}]}>
-</ApiItem>
+- `protected getArrVal(array $collection, mixed $index, mixed $defaultValue = null, string|null $cast = null): mixed`
 
 ### Methods
 
@@ -968,12 +918,13 @@ It also allows for casting the returned value to a specific type using
 
 ```php
 protected static function getArrVal(
-array $collection,
-mixed $index,
-mixed $defaultValue = null,
-string|null $cast = null
+    array $collection,
+    mixed $index,
+    mixed $defaultValue = null,
+    string|null $cast = null
 ): mixed;
 ```
+
 
 ## Traits\Support\Helper\Json\DecodeTrait
 
@@ -989,9 +940,7 @@ helper class that wraps this trait.
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperjsondecodetrait-todecode" visibility="protected" name="toDecode" returnType="" params={[{"type":"string","name":"data","default":null},{"type":"bool","name":"associative","default":"false"},{"type":"int","name":"depth","default":"512"},{"type":"int","name":"options","default":"79"}]}>
-Decodes a string using `json_decode`
-</ApiItem>
+- `protected toDecode(string $data, bool $associative = false, int $depth = 512, int $options = 79)` — Decodes a string using `json_decode`
 
 ### Methods
 
@@ -999,14 +948,15 @@ Decodes a string using `json_decode`
 
 ```php
 protected static function toDecode(
-string $data,
-bool $associative = false,
-int $depth = 512,
-int $options = 79
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 79
 );
 ```
 
 Decodes a string using `json_decode`
+
 
 ## Traits\Support\Helper\Json\EncodeTrait
 
@@ -1022,9 +972,7 @@ class that wraps this trait.
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperjsonencodetrait-toencode" visibility="protected" name="toEncode" returnType="string" params={[{"type":"mixed","name":"data","default":null},{"type":"int","name":"options","default":"79"},{"type":"int","name":"depth","default":"512"}]}>
-Encodes data using `json_encode`
-</ApiItem>
+- `protected toEncode(mixed $data, int $options = 79, int $depth = 512): string` — Encodes data using `json_encode`
 
 ### Methods
 
@@ -1032,13 +980,14 @@ Encodes data using `json_encode`
 
 ```php
 protected static function toEncode(
-mixed $data,
-int $options = 79,
-int $depth = 512
+    mixed $data,
+    int $options = 79,
+    int $depth = 512
 ): string;
 ```
 
 Encodes data using `json_encode`
+
 
 ## Traits\Support\Helper\Str\CamelizeTrait
 
@@ -1052,8 +1001,7 @@ Converts strings to upperCamelCase or lowerCamelCase
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrcamelizetrait-tocamelize" visibility="public" name="toCamelize" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"delimiters","default":"\"-_\""},{"type":"bool","name":"lowerFirst","default":"false"}]}>
-</ApiItem>
+- `public toCamelize(string $text, string $delimiters = "-_", bool $lowerFirst = false): string`
 
 ### Methods
 
@@ -1061,11 +1009,12 @@ Converts strings to upperCamelCase or lowerCamelCase
 
 ```php
 public static function toCamelize(
-string $text,
-string $delimiters = "-_",
-bool $lowerFirst = false
+    string $text,
+    string $delimiters = "-_",
+    bool $lowerFirst = false
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\DirFromFileTrait
 
@@ -1080,8 +1029,7 @@ directory structure with the filename in the end
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrdirfromfiletrait-todirfromfile" visibility="protected" name="toDirFromFile" returnType="string" params={[{"type":"string","name":"file","default":null},{"type":"bool","name":"filesystemSafe","default":"false"}]}>
-</ApiItem>
+- `protected toDirFromFile(string $file, bool $filesystemSafe = false): string`
 
 ### Methods
 
@@ -1089,10 +1037,11 @@ directory structure with the filename in the end
 
 ```php
 protected static function toDirFromFile(
-string $file,
-bool $filesystemSafe = false
+    string $file,
+    bool $filesystemSafe = false
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\DirSeparatorTrait
 
@@ -1107,8 +1056,7 @@ DIRECTORY_SEPARATOR
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrdirseparatortrait-todirseparator" visibility="protected" name="toDirSeparator" returnType="string" params={[{"type":"string","name":"directory","default":null}]}>
-</ApiItem>
+- `protected toDirSeparator(string $directory): string`
 
 ### Methods
 
@@ -1117,6 +1065,7 @@ DIRECTORY_SEPARATOR
 ```php
 protected static function toDirSeparator( string $directory ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\EndsWithTrait
 
@@ -1130,8 +1079,7 @@ Check if a string ends with a given string
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrendswithtrait-toendswith" visibility="protected" name="toEndsWith" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null},{"type":"bool","name":"ignoreCase","default":"true"}]}>
-</ApiItem>
+- `protected toEndsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
 
 ### Methods
 
@@ -1139,11 +1087,12 @@ Check if a string ends with a given string
 
 ```php
 protected static function toEndsWith(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Traits\Support\Helper\Str\InterpolateTrait
 
@@ -1159,8 +1108,7 @@ Interpolates context values into the message placeholders
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrinterpolatetrait-tointerpolate" visibility="protected" name="toInterpolate" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"array","name":"context","default":"[]"},{"type":"string","name":"left","default":"\"%\""},{"type":"string","name":"right","default":"\"%\""}]}>
-</ApiItem>
+- `protected toInterpolate(string $input, array $context = [], string $left = "%", string $right = "%"): string`
 
 ### Methods
 
@@ -1168,12 +1116,13 @@ Interpolates context values into the message placeholders
 
 ```php
 protected static function toInterpolate(
-string $input,
-array $context = [],
-string $left = "%",
-string $right = "%"
+    string $input,
+    array $context = [],
+    string $left = "%",
+    string $right = "%"
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\LowerTrait
 
@@ -1187,8 +1136,7 @@ Lowercases a string using mbstring
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrlowertrait-tolower" visibility="protected" name="toLower" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `protected toLower(string $text, string $encoding = "UTF-8"): string`
 
 ### Methods
 
@@ -1196,10 +1144,11 @@ Lowercases a string using mbstring
 
 ```php
 protected static function toLower(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\StartsWithTrait
 
@@ -1213,8 +1162,7 @@ Check if a string starts with a given string
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstrstartswithtrait-tostartswith" visibility="protected" name="toStartsWith" returnType="bool" params={[{"type":"string","name":"haystack","default":null},{"type":"string","name":"needle","default":null},{"type":"bool","name":"ignoreCase","default":"true"}]}>
-</ApiItem>
+- `protected toStartsWith(string $haystack, string $needle, bool $ignoreCase = true): bool`
 
 ### Methods
 
@@ -1222,11 +1170,12 @@ Check if a string starts with a given string
 
 ```php
 protected static function toStartsWith(
-string $haystack,
-string $needle,
-bool $ignoreCase = true
+    string $haystack,
+    string $needle,
+    bool $ignoreCase = true
 ): bool;
 ```
+
 
 ## Traits\Support\Helper\Str\UncamelizeTrait
 
@@ -1240,8 +1189,7 @@ Converts strings to non camelized style
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstruncamelizetrait-touncamelize" visibility="protected" name="toUncamelize" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"delimiter","default":"\"_\""}]}>
-</ApiItem>
+- `protected toUncamelize(string $text, string $delimiter = "_"): string`
 
 ### Methods
 
@@ -1249,10 +1197,11 @@ Converts strings to non camelized style
 
 ```php
 protected static function toUncamelize(
-string $text,
-string $delimiter = "_"
+    string $text,
+    string $delimiter = "_"
 ): string;
 ```
+
 
 ## Traits\Support\Helper\Str\UpperTrait
 
@@ -1266,8 +1215,7 @@ Uppercases a string using mbstring
 
 ### Method Summary
 
-<ApiItem href="#traitssupporthelperstruppertrait-toupper" visibility="protected" name="toUpper" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"encoding","default":"\"UTF-8\""}]}>
-</ApiItem>
+- `protected toUpper(string $text, string $encoding = "UTF-8"): string`
 
 ### Methods
 
@@ -1275,8 +1223,8 @@ Uppercases a string using mbstring
 
 ```php
 protected static function toUpper(
-string $text,
-string $encoding = "UTF-8"
+    string $text,
+    string $encoding = "UTF-8"
 ): string;
 ```
 

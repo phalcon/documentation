@@ -16,6 +16,7 @@ Furthermore, the Devilbox provides an identical and reproducible development env
 
 This example will use `phalcon` to install Phalcon from within the Devilbox PHP container. After completing the steps listed below, you will have a working Phalcon setup ready to be served via http and https.
 
+
 ## Configuration
 
 The following configuration will be used:
@@ -42,6 +43,7 @@ Your environment will be ready in six simple steps:
 - Setup DNS record
 - Visit `http://my-phalcon.loc` in your browser
 - (Nginx) Create custom vhost config file
+
 
 ### Enter the PHP Container
 
@@ -114,10 +116,11 @@ If you **do not have** Auto DNS configured, you will need to add the following l
 ```bash
 127.0.0.1 my-phalcon.loc
 ```
-
+ 
 ### Open your Browser 
 
 Open your browser and navigate to `http://my-phalcon.loc` or `https://my-phalcon.loc`
+
 
 ### Create Custom Vhost Config File (Nginx Only)
 

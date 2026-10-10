@@ -33,8 +33,8 @@ Create a `tests` directory with a `Unit` subdirectory and a bootstrap file:
 public/
 src/
 tests/
-Unit/
-bootstrap.php
+    Unit/
+    bootstrap.php
 ```
 
 ## Autoload the Test Namespace
@@ -43,11 +43,11 @@ Map a test namespace to the `tests` directory in `composer.json`:
 
 ```json
 {
-"autoload-dev": {
-    "psr-4": {
-        "Tests\\": "tests/"
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     }
-}
 }
 ```
 
@@ -82,15 +82,15 @@ Save a `phpunit.xml.dist` file in the project root. It points PHPUnit at the boo
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-     bootstrap="tests/bootstrap.php"
-     colors="true"
-     cacheDirectory=".phpunit.cache">
-<testsuites>
-    <testsuite name="unit">
-        <directory>tests/Unit</directory>
-    </testsuite>
-</testsuites>
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
 ```
 
@@ -110,22 +110,22 @@ use Phalcon\Talon\PHPUnit\AbstractUnitTestCase;
 
 final class CalculatorTest extends AbstractUnitTestCase
 {
-public function testAdd(): void
-{
-    $calculator = new Calculator();
+    public function testAdd(): void
+    {
+        $calculator = new Calculator();
 
-    $this->assertSame(5, $calculator->add(2, 3));
-}
+        $this->assertSame(5, $calculator->add(2, 3));
+    }
 
-public function testProtectedRounding(): void
-{
-    $calculator = new Calculator();
+    public function testProtectedRounding(): void
+    {
+        $calculator = new Calculator();
 
-    $this->assertSame(
-        3,
-        $this->callProtectedMethod($calculator, 'roundValue', 2.5)
-    );
-}
+        $this->assertSame(
+            3,
+            $this->callProtectedMethod($calculator, 'roundValue', 2.5)
+        );
+    }
 }
 ```
 

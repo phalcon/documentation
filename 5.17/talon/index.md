@@ -67,9 +67,9 @@ use Phalcon\Talon\Bootstrap\Stage;
 use Phalcon\Talon\Settings;
 
 Runner::for(Settings::fromArray(['root' => __DIR__ . '/..']))
-->before(Stage::Environment, fn () => ini_set('memory_limit', '512M'))
-->after(Stage::Directories, fn ($settings) => mkdir($settings->outputPath('screens'), 0777, true))
-->boot();
+    ->before(Stage::Environment, fn () => ini_set('memory_limit', '512M'))
+    ->after(Stage::Directories, fn ($settings) => mkdir($settings->outputPath('screens'), 0777, true))
+    ->boot();
 ```
 
 ## The Command-Line Runner
@@ -96,14 +96,14 @@ Projects that need PHP ini flags or environment variables declare a `talon.php` 
 <?php
 
 return [
-'php'     => ['extension=ext/modules/phalcon.so'],   // global ini flags, optional
-'suites'  => [
-    'unit'   => ['config' => 'resources/phpunit.xml.dist'],
-    'mysql'  => ['config' => 'resources/phpunit.mysql.xml'],
-    'pgsql'  => ['config' => 'resources/phpunit.pgsql.xml'],
-    'sqlite' => ['config' => 'resources/phpunit.sqlite.xml'],
-],
-'default' => 'unit',
+    'php'     => ['extension=ext/modules/phalcon.so'],   // global ini flags, optional
+    'suites'  => [
+        'unit'   => ['config' => 'resources/phpunit.xml.dist'],
+        'mysql'  => ['config' => 'resources/phpunit.mysql.xml'],
+        'pgsql'  => ['config' => 'resources/phpunit.pgsql.xml'],
+        'sqlite' => ['config' => 'resources/phpunit.sqlite.xml'],
+    ],
+    'default' => 'unit',
 ];
 ```
 
@@ -145,10 +145,10 @@ use Phalcon\Talon\PHPUnit\AbstractUnitTestCase;
 
 final class CalculatorTest extends AbstractUnitTestCase
 {
-public function testInternal(): void
-{
-    $this->assertSame(5, $this->callProtectedMethod(new Calculator(), 'add', 2, 3));
-}
+    public function testInternal(): void
+    {
+        $this->assertSame(5, $this->callProtectedMethod(new Calculator(), 'add', 2, 3));
+    }
 }
 ```
 
@@ -163,10 +163,10 @@ use Phalcon\Talon\PHPUnit\AbstractDatabaseTestCase;
 
 final class UserTest extends AbstractDatabaseTestCase
 {
-public function testSeeded(): void
-{
-    $this->assertInDatabase('users', ['email' => 'john.connor@skynet.dev']);
-}
+    public function testSeeded(): void
+    {
+        $this->assertInDatabase('users', ['email' => 'john.connor@skynet.dev']);
+    }
 }
 ```
 
@@ -183,18 +183,18 @@ use Phalcon\Talon\PHPUnit\AbstractFunctionalTestCase;
 
 final class HomeTest extends AbstractFunctionalTestCase
 {
-protected function appFactory(): callable
-{
-    // returns a configured Application or Micro
-    return fn () => require __DIR__ . '/../app/bootstrap.php';
-}
+    protected function appFactory(): callable
+    {
+        // returns a configured Application or Micro
+        return fn () => require __DIR__ . '/../app/bootstrap.php';
+    }
 
-public function testHome(): void
-{
-    $this->dispatch('/');
-    $this->assertController('index');
-    $this->assertResponseContentContains('Welcome');
-}
+    public function testHome(): void
+    {
+        $this->dispatch('/');
+        $this->assertController('index');
+        $this->assertResponseContentContains('Welcome');
+    }
 }
 ```
 
@@ -209,20 +209,20 @@ use Phalcon\Talon\PHPUnit\AbstractBrowserTestCase;
 
 final class LoginTest extends AbstractBrowserTestCase
 {
-protected function appFactory(): callable
-{
-    return fn () => require __DIR__ . '/../app/bootstrap.php';
-}
+    protected function appFactory(): callable
+    {
+        return fn () => require __DIR__ . '/../app/bootstrap.php';
+    }
 
-public function testLogin(): void
-{
-    $this->visitPage('/session/login');
-    $this->fillField('email', 'sarah.connor@skynet.dev');
-    $this->fillField('password', 'password1');
-    $this->pressButton('Log In');
+    public function testLogin(): void
+    {
+        $this->visitPage('/session/login');
+        $this->fillField('email', 'sarah.connor@skynet.dev');
+        $this->fillField('password', 'password1');
+        $this->pressButton('Log In');
 
-    $this->assertPageContainsText('Search users');
-}
+        $this->assertPageContainsText('Search users');
+    }
 }
 ```
 
@@ -237,11 +237,11 @@ use Phalcon\Talon\PHPUnit\AbstractServicesTestCase;
 
 final class CacheTest extends AbstractServicesTestCase
 {
-public function testRedis(): void
-{
-    $this->setRedisKey('key', 'value');
-    $this->assertSame('value', $this->getRedisKey('key'));
-}
+    public function testRedis(): void
+    {
+        $this->setRedisKey('key', 'value');
+        $this->assertSame('value', $this->getRedisKey('key'));
+    }
 }
 ```
 
@@ -259,14 +259,14 @@ use PHPUnit\Framework\TestCase;
 
 final class ReportTest extends TestCase
 {
-use ResultSetTrait;
+    use ResultSetTrait;
 
-public function testReport(): void
-{
-    $resultset = $this->mockResultSet([$modelA, $modelB]);
+    public function testReport(): void
+    {
+        $resultset = $this->mockResultSet([$modelA, $modelB]);
 
-    $this->assertCount(2, $resultset);
-}
+        $this->assertCount(2, $resultset);
+    }
 }
 ```
 
@@ -297,23 +297,23 @@ use Phalcon\Talon\Settings;
 use Phalcon\Talon\Talon;
 
 Talon::boot(
-Settings::fromArray(
-    [
-        'root' => dirname(__DIR__),
-        'db'   => [
-            'mysql'  => [
-                'host'     => '127.0.0.1', 
-                'port'     => 3306, 
-                'dbname'   => 'app', 
-                'username' => 'root', 
-                'password' => '',
+    Settings::fromArray(
+        [
+            'root' => dirname(__DIR__),
+            'db'   => [
+                'mysql'  => [
+                    'host'     => '127.0.0.1', 
+                    'port'     => 3306, 
+                    'dbname'   => 'app', 
+                    'username' => 'root', 
+                    'password' => '',
+                ],
+                'sqlite' => [
+                    'dbname' => ':memory:',
+                ],
             ],
-            'sqlite' => [
-                'dbname' => ':memory:',
-            ],
-        ],
-    ]
-)
+        ]
+    )
 );
 ```
 

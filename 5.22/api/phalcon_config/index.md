@@ -13,6 +13,7 @@ version: "5.22"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Config\Adapter\Grouped
 
 Class
@@ -25,10 +26,10 @@ See `Phalcon\Config\ConfigFactory::load` To load Config Adapter class using 'ada
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
-    "path/to/config.php",
-    "path/to/config.dist.php",
-]
+    [
+        "path/to/config.php",
+        "path/to/config.dist.php",
+    ]
 );
 ```
 
@@ -36,11 +37,11 @@ $config = new Grouped(
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
-    "path/to/config.json",
-    "path/to/config.dist.json",
-],
-"json"
+    [
+        "path/to/config.json",
+        "path/to/config.dist.json",
+    ],
+    "json"
 );
 ```
 
@@ -48,36 +49,34 @@ $config = new Grouped(
 use Phalcon\Config\Adapter\Grouped;
 
 $config = new Grouped(
-[
     [
-        "filePath" => "path/to/config.php",
-        "adapter"  => "php",
-    ],
-    [
-        "filePath" => "path/to/config.json",
-        "adapter"  => "json",
-    ],
-    [
-        "adapter"  => "array",
-        "config"   => [
-            "property" => "value",
+        [
+            "filePath" => "path/to/config.php",
+            "adapter"  => "php",
+        ],
+        [
+            "filePath" => "path/to/config.json",
+            "adapter"  => "json",
+        ],
+        [
+            "adapter"  => "array",
+            "config"   => [
+                "property" => "value",
+            ],
         ],
     ],
-],
 );
 ```
 
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Grouped`**
+  - [`Phalcon\Config\Config`](#configconfig)
+    - **`Phalcon\Config\Adapter\Grouped`**
 
 `Phalcon\Config\Config` · `Phalcon\Config\ConfigFactory` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exceptions\GroupedAdapterRequiresArray` · `Phalcon\Contracts\Config\ConfigTypes`
 
 ### Method Summary
 
-<ApiItem href="#configadaptergrouped-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"arrayConfig","default":null},{"type":"string","name":"defaultAdapter","default":"\"php\""},{"type":"ConfigFactory|null","name":"factory","default":"null"}]}>
-Grouped constructor.
-</ApiItem>
+- `public __construct(array $arrayConfig, string $defaultAdapter = "php", ConfigFactory|null $factory = null)` — Grouped constructor.
 
 ### Methods
 
@@ -85,13 +84,14 @@ Grouped constructor.
 
 ```php
 public function __construct(
-array $arrayConfig,
-string $defaultAdapter = "php",
-ConfigFactory|null $factory = null
+    array $arrayConfig,
+    string $defaultAdapter = "php",
+    ConfigFactory|null $factory = null
 );
 ```
 
 Grouped constructor.
+
 
 ## Config\Adapter\Ini
 
@@ -133,30 +133,26 @@ second parameter as `INI_SCANNER_NORMAL` when calling the constructor:
 
 ```php
 $config = new \Phalcon\Config\Adapter\Ini(
-"path/config-with-constants.ini",
-INI_SCANNER_NORMAL
+    "path/config-with-constants.ini",
+    INI_SCANNER_NORMAL
 );
 ```
 
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Ini`**
+  - [`Phalcon\Config\Config`](#configconfig)
+    - **`Phalcon\Config\Adapter\Ini`**
 
 `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Traits\Php\IniTrait`
 
 ### Method Summary
 
-<ApiItem href="#configadapterini-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null},{"type":"int","name":"mode","default":"1"}]}>
-Ini constructor.
-</ApiItem>
-<ApiItem href="#configadapterini-cast" visibility="protected" name="cast" returnType="mixed" params={[{"type":"mixed","name":"ini","default":null}]}>
-We have to cast values manually because parse_ini_file() has a poor
-</ApiItem>
-<ApiItem href="#configadapterini-castarray" visibility="protected" name="castArray" returnType="array" params={[{"type":"array","name":"ini","default":null}]}>
-</ApiItem>
-<ApiItem href="#configadapterini-parseinistring" visibility="protected" name="parseIniString" returnType="array" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"value","default":null}]}>
-Build multidimensional array from string
-</ApiItem>
+- `public __construct(string $filePath, int $mode = 1)` — Ini constructor.
+
+- `protected cast(mixed $ini): mixed` — We have to cast values manually because parse\_ini\_file() has a poor
+
+- `protected castArray(array $ini): array`
+
+- `protected parseIniString(string $path, mixed $value): array` — Build multidimensional array from string
 
 ### Methods
 
@@ -164,8 +160,8 @@ Build multidimensional array from string
 
 ```php
 public function __construct(
-string $filePath,
-int $mode = 1
+    string $filePath,
+    int $mode = 1
 );
 ```
 
@@ -196,12 +192,13 @@ protected function castArray( array $ini ): array;
 
 ```php
 protected function parseIniString(
-string $path,
-mixed $value
+    string $path,
+    mixed $value
 ): array;
 ```
 
 Build multidimensional array from string
+
 
 ## Config\Adapter\Json
 
@@ -227,16 +224,14 @@ echo $config->models->metadata;
 ```
 
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Json`**
+  - [`Phalcon\Config\Config`](#configconfig)
+    - **`Phalcon\Config\Adapter\Json`**
 
 `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
-<ApiItem href="#configadapterjson-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null}]}>
-Json constructor.
-</ApiItem>
+- `public __construct(string $filePath)` — Json constructor.
 
 ### Methods
 
@@ -247,6 +242,7 @@ public function __construct( string $filePath );
 ```
 
 Json constructor.
+
 
 ## Config\Adapter\Php
 
@@ -260,18 +256,18 @@ Given the next configuration file:
 <?php
 
 return [
-"database" => [
-    "adapter"  => "Mysql",
-    "host"     => "localhost",
-    "username" => "scott",
-    "password" => "cheetah",
-    "dbname"   => "test_db",
-],
-"phalcon" => [
-    "controllersDir" => "../app/controllers/",
-    "modelsDir"      => "../app/models/",
-    "viewsDir"       => "../app/views/",
-],
+    "database" => [
+        "adapter"  => "Mysql",
+        "host"     => "localhost",
+        "username" => "scott",
+        "password" => "cheetah",
+        "dbname"   => "test_db",
+    ],
+    "phalcon" => [
+        "controllersDir" => "../app/controllers/",
+        "modelsDir"      => "../app/models/",
+        "viewsDir"       => "../app/views/",
+    ],
 ];
 ```
 
@@ -287,16 +283,14 @@ echo $config->database->username;
 ```
 
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Php`**
+  - [`Phalcon\Config\Config`](#configconfig)
+    - **`Phalcon\Config\Adapter\Php`**
 
 `Phalcon\Config\Config` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Contracts\Config\ConfigTypes`
 
 ### Method Summary
 
-<ApiItem href="#configadapterphp-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null}]}>
-Php constructor.
-</ApiItem>
+- `public __construct(string $filePath)` — Php constructor.
 
 ### Methods
 
@@ -307,6 +301,7 @@ public function __construct( string $filePath );
 ```
 
 Php constructor.
+
 
 ## Config\Adapter\Yaml
 
@@ -328,19 +323,19 @@ You can read it as follows:
 
 ```php
 define(
-"APPROOT",
-dirname(__DIR__)
+    "APPROOT",
+    dirname(__DIR__)
 );
 
 use Phalcon\Config\Adapter\Yaml;
 
 $config = new Yaml(
-"path/config.yaml",
-[
-    "!approot" => function($value) {
-        return APPROOT . $value;
-    },
-]
+    "path/config.yaml",
+    [
+        "!approot" => function($value) {
+            return APPROOT . $value;
+        },
+    ]
 );
 
 echo $config->phalcon->controllersDir;
@@ -349,16 +344,14 @@ echo $config->models->metadata;
 ```
 
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
-- [`Phalcon\Config\Config`](#configconfig)
-- **`Phalcon\Config\Adapter\Yaml`**
+  - [`Phalcon\Config\Config`](#configconfig)
+    - **`Phalcon\Config\Adapter\Yaml`**
 
 `Phalcon\Config\Config` · `Phalcon\Config\Exception` · `Phalcon\Config\Exceptions\CannotLoadConfigFile` · `Phalcon\Config\Exceptions\MissingYamlExtension` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\YamlTrait`
 
 ### Method Summary
 
-<ApiItem href="#configadapteryaml-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"filePath","default":null},{"type":"array|null","name":"callbacks","default":"null"}]}>
-Yaml constructor.
-</ApiItem>
+- `public __construct(string $filePath, array|null $callbacks = null)` — Yaml constructor.
 
 ### Methods
 
@@ -366,12 +359,13 @@ Yaml constructor.
 
 ```php
 public function __construct(
-string $filePath,
-array|null $callbacks = null
+    string $filePath,
+    array|null $callbacks = null
 );
 ```
 
 Yaml constructor.
+
 
 ## Config\Config
 
@@ -384,71 +378,60 @@ code.
 
 ```php
 $config = new \Phalcon\Config\Config(
-[
-    "database" => [
-        "adapter"  => "Mysql",
-        "host"     => "localhost",
-        "username" => "scott",
-        "password" => "cheetah",
-        "dbname"   => "test_db",
-    ],
-    "phalcon" => [
-        "controllersDir" => "../app/controllers/",
-        "modelsDir"      => "../app/models/",
-        "viewsDir"       => "../app/views/",
-    ],
-]
+    [
+        "database" => [
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db",
+        ],
+        "phalcon" => [
+            "controllersDir" => "../app/controllers/",
+            "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ],
+    ]
 );
 ```
 
 @extends Collection&lt;mixed>
 
 - [`Phalcon\Support\Collection`](/5.22/api/phalcon_support/#supportcollection)
-- **`Phalcon\Config\Config`** - implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
-- [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
-- [`Phalcon\Config\Adapter\Ini`](#configadapterini)
-- [`Phalcon\Config\Adapter\Json`](#configadapterjson)
-- [`Phalcon\Config\Adapter\Php`](#configadapterphp)
-- [`Phalcon\Config\Adapter\Yaml`](#configadapteryaml)
+  - **`Phalcon\Config\Config`** - implements [`Phalcon\Config\ConfigInterface`](#configconfiginterface)
+    - [`Phalcon\Config\Adapter\Grouped`](#configadaptergrouped)
+    - [`Phalcon\Config\Adapter\Ini`](#configadapterini)
+    - [`Phalcon\Config\Adapter\Json`](#configadapterjson)
+    - [`Phalcon\Config\Adapter\Php`](#configadapterphp)
+    - [`Phalcon\Config\Adapter\Yaml`](#configadapteryaml)
 
 `Phalcon\Config\Exceptions\InvalidMergeData` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection`
 
 ### Method Summary
 
-<ApiItem href="#configconfig-getpathdelimiter" visibility="public" name="getPathDelimiter" returnType="string" params={[]}>
-Gets the default path delimiter
-</ApiItem>
-<ApiItem href="#configconfig-merge" visibility="public" name="merge" returnType="ConfigInterface" params={[{"type":"mixed","name":"toMerge","default":null}]}>
-Merges a configuration into the current one
-</ApiItem>
-<ApiItem href="#configconfig-path" visibility="public" name="path" returnType="mixed" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"delimiter","default":"null"}]}>
-Returns a value from current config using a dot separated path.
-</ApiItem>
-<ApiItem href="#configconfig-setpathdelimiter" visibility="public" name="setPathDelimiter" returnType="ConfigInterface" params={[{"type":"string|null","name":"delimiter","default":"null"}]}>
-Sets the default path delimiter
-</ApiItem>
-<ApiItem href="#configconfig-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Converts recursively the object to an array
-</ApiItem>
-<ApiItem href="#configconfig-cloneempty" visibility="protected" name="cloneEmpty" returnType="static" params={[{"type":"array","name":"data","default":"[]"}]}>
-Builds a new collection with the given data, carrying over the
-</ApiItem>
-<ApiItem href="#configconfig-internalmerge" visibility="protected" name="internalMerge" returnType="array" params={[{"type":"array","name":"source","default":null},{"type":"array","name":"target","default":null}]}>
-Performs a merge recursively
-</ApiItem>
-<ApiItem href="#configconfig-setdata" visibility="protected" name="setData" returnType="void" params={[{"type":"mixed","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets the collection data
-</ApiItem>
+- `public getPathDelimiter(): string` — Gets the default path delimiter
+
+- `public merge(mixed $toMerge): ConfigInterface` — Merges a configuration into the current one
+
+- `public path(string $path, mixed $defaultValue = null, string|null $delimiter = null): mixed` — Returns a value from current config using a dot separated path.
+
+- `public setPathDelimiter(string|null $delimiter = null): ConfigInterface` — Sets the default path delimiter
+
+- `public toArray(): array` — Converts recursively the object to an array
+
+- `protected cloneEmpty(array $data = []): static` — Builds a new collection with the given data, carrying over the
+
+- `protected internalMerge(array $source, array $target): array` — Performs a merge recursively
+
+- `protected setData(mixed $element, mixed $value): void` — Sets the collection data
 
 ### Constants
 
-<ApiItem kind="constant" name="DEFAULT_PATH_DELIMITER" type="string" default="&quot;.&quot;">
-</ApiItem>
+- `const string DEFAULT_PATH_DELIMITER = "."`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="pathDelimiter" type="string" default="self::DEFAULT_PATH_DELIMITER">
-</ApiItem>
+- `protected string $pathDelimiter = self::DEFAULT_PATH_DELIMITER`
 
 ### Methods
 
@@ -470,11 +453,11 @@ Merges a configuration into the current one
 
 ```php
 $appConfig = new \Phalcon\Config\Config(
-[
-    "database" => [
-        "host" => "localhost",
-    ],
-]
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
 );
 
 $globalConfig->merge($appConfig);
@@ -484,9 +467,9 @@ $globalConfig->merge($appConfig);
 
 ```php
 public function path(
-string $path,
-mixed $defaultValue = null,
-string|null $delimiter = null
+    string $path,
+    mixed $defaultValue = null,
+    string|null $delimiter = null
 ): mixed;
 ```
 
@@ -514,7 +497,7 @@ Converts recursively the object to an array
 
 ```php
 print_r(
-$config->toArray()
+    $config->toArray()
 );
 ```
 
@@ -535,8 +518,8 @@ parent's `(array $data, ...)` signature, so `filter()`, `map()`,
 
 ```php
 final protected function internalMerge(
-array $source,
-array $target
+    array $source,
+    array $target
 ): array;
 ```
 
@@ -546,8 +529,8 @@ Performs a merge recursively
 
 ```php
 protected function setData(
-mixed $element,
-mixed $value
+    mixed $element,
+    mixed $value
 ): void;
 ```
 
@@ -557,6 +540,7 @@ Array values become nested Config objects carrying the `insensitive`,
 `strictNull` and `type` flags of this instance. The `type` guard is
 applied to leaf values only - arrays are not validated themselves;
 the nested Config validates its own leaves.
+
 
 ## Config\ConfigFactory
 
@@ -569,43 +553,36 @@ provided it will be added to filePath
 use Phalcon\Config\ConfigFactory;
 
 $options = [
-"filePath" => "path/config",
-"adapter"  => "php",
+    "filePath" => "path/config",
+    "adapter"  => "php",
 ];
 
 $config = (new ConfigFactory())->load($options);
 ```
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.22/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Config\ConfigFactory`**
+  - [`Phalcon\Factory\AbstractFactory`](/5.22/api/phalcon_factory/#factoryabstractfactory)
+    - **`Phalcon\Config\ConfigFactory`**
 
 `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Config` · `Phalcon\Config\ConfigInterface` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Factory\AbstractFactory`
 
 ### Method Summary
 
-<ApiItem href="#configconfigfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
-ConfigFactory constructor.
-</ApiItem>
-<ApiItem href="#configconfigfactory-load" visibility="public" name="load" returnType="ConfigInterface" params={[{"type":"mixed","name":"config","default":null}]}>
-Load a config to create a new instance
-</ApiItem>
-<ApiItem href="#configconfigfactory-newinstance" visibility="public" name="newInstance" returnType="ConfigInterface" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"fileName","default":null},{"type":"mixed","name":"params","default":"null"}]}>
-Returns a new Config instance
-</ApiItem>
-<ApiItem href="#configconfigfactory-getadapteraliases" visibility="protected" name="getAdapterAliases" returnType="array" params={[]}>
-Adapter name aliases resolved by `load()` (file extensions that map
-</ApiItem>
-<ApiItem href="#configconfigfactory-getexceptionclass" visibility="protected" name="getExceptionClass" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#configconfigfactory-getextraarguments" visibility="protected" name="getExtraArguments" returnType="array" params={[]}>
-Adapters accepting an extra constructor argument, with the config
-</ApiItem>
-<ApiItem href="#configconfigfactory-getservices" visibility="protected" name="getServices" returnType="array" params={[]}>
-Returns the available adapters
-</ApiItem>
-<ApiItem href="#configconfigfactory-parseconfig" visibility="protected" name="parseConfig" returnType="array" params={[{"type":"mixed","name":"config","default":null}]}>
-</ApiItem>
+- `public __construct(array $services = [])` — ConfigFactory constructor.
+
+- `public load(mixed $config): ConfigInterface` — Load a config to create a new instance
+
+- `public newInstance(string $name, string $fileName, mixed $params = null): ConfigInterface` — Returns a new Config instance
+
+- `protected getAdapterAliases(): array` — Adapter name aliases resolved by `load()` (file extensions that map
+
+- `protected getExceptionClass(): string`
+
+- `protected getExtraArguments(): array` — Adapters accepting an extra constructor argument, with the config
+
+- `protected getServices(): array` — Returns the available adapters
+
+- `protected parseConfig(mixed $config): array`
 
 ### Methods
 
@@ -629,9 +606,9 @@ Load a config to create a new instance
 
 ```php
 public function newInstance(
-string $name,
-string $fileName,
-mixed $params = null
+    string $name,
+    string $fileName,
+    mixed $params = null
 ): ConfigInterface;
 ```
 
@@ -676,6 +653,7 @@ Returns the available adapters
 protected function parseConfig( mixed $config ): array;
 ```
 
+
 ## Config\ConfigInterface
 
 Interface
@@ -687,22 +665,21 @@ Interface for Phalcon\Config\Config class
 @extends CollectionInterface&lt;mixed>
 
 - `\ArrayAccess`
-- [`Phalcon\Contracts\Support\Collection`](/5.22/api/phalcon_contracts/#contractssupportcollection)
-- [`Phalcon\Support\Collection\CollectionInterface`](/5.22/api/phalcon_support/#supportcollectioncollectioninterface)
-- **`Phalcon\Config\ConfigInterface`**
+  - [`Phalcon\Contracts\Support\Collection`](/5.22/api/phalcon_contracts/#contractssupportcollection)
+    - [`Phalcon\Support\Collection\CollectionInterface`](/5.22/api/phalcon_support/#supportcollectioncollectioninterface)
+      - **`Phalcon\Config\ConfigInterface`**
 
 `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Support\Collection\CollectionInterface`
 
 ### Method Summary
 
-<ApiItem href="#configconfiginterface-getpathdelimiter" visibility="public" name="getPathDelimiter" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#configconfiginterface-merge" visibility="public" name="merge" returnType="ConfigInterface" params={[{"type":"mixed","name":"toMerge","default":null}]}>
-</ApiItem>
-<ApiItem href="#configconfiginterface-path" visibility="public" name="path" returnType="mixed" params={[{"type":"string","name":"path","default":null},{"type":"mixed","name":"defaultValue","default":"null"},{"type":"string|null","name":"delimiter","default":"null"}]}>
-</ApiItem>
-<ApiItem href="#configconfiginterface-setpathdelimiter" visibility="public" name="setPathDelimiter" returnType="ConfigInterface" params={[{"type":"string|null","name":"delimiter","default":"null"}]}>
-</ApiItem>
+- `public getPathDelimiter(): string`
+
+- `public merge(mixed $toMerge): ConfigInterface`
+
+- `public path(string $path, mixed $defaultValue = null, string|null $delimiter = null): mixed`
+
+- `public setPathDelimiter(string|null $delimiter = null): ConfigInterface`
 
 ### Methods
 
@@ -722,9 +699,9 @@ public function merge( mixed $toMerge ): ConfigInterface;
 
 ```php
 public function path(
-string $path,
-mixed $defaultValue = null,
-string|null $delimiter = null
+    string $path,
+    mixed $defaultValue = null,
+    string|null $delimiter = null
 ): mixed;
 ```
 
@@ -734,6 +711,7 @@ string|null $delimiter = null
 public function setPathDelimiter( string|null $delimiter = null ): ConfigInterface;
 ```
 
+
 ## Config\Exception
 
 Class
@@ -741,31 +719,31 @@ Class
 Exceptions thrown in Phalcon\Config will use this class
 
 - `\Exception`
-- **`Phalcon\Config\Exception`**
-- [`Phalcon\Config\Exceptions\CannotLoadConfigFile`](#configexceptionscannotloadconfigfile)
-- [`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`](#configexceptionsconfignotarrayorobject)
-- [`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`](#configexceptionsgroupedadapterrequiresarray)
-- [`Phalcon\Config\Exceptions\InvalidMergeData`](#configexceptionsinvalidmergedata)
-- [`Phalcon\Config\Exceptions\MissingConfigOption`](#configexceptionsmissingconfigoption)
-- [`Phalcon\Config\Exceptions\MissingFileExtension`](#configexceptionsmissingfileextension)
-- [`Phalcon\Config\Exceptions\MissingYamlExtension`](#configexceptionsmissingyamlextension)
+  - **`Phalcon\Config\Exception`**
+    - [`Phalcon\Config\Exceptions\CannotLoadConfigFile`](#configexceptionscannotloadconfigfile)
+    - [`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`](#configexceptionsconfignotarrayorobject)
+    - [`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`](#configexceptionsgroupedadapterrequiresarray)
+    - [`Phalcon\Config\Exceptions\InvalidMergeData`](#configexceptionsinvalidmergedata)
+    - [`Phalcon\Config\Exceptions\MissingConfigOption`](#configexceptionsmissingconfigoption)
+    - [`Phalcon\Config\Exceptions\MissingFileExtension`](#configexceptionsmissingfileextension)
+    - [`Phalcon\Config\Exceptions\MissingYamlExtension`](#configexceptionsmissingyamlextension)
+
 
 ## Config\Exceptions\CannotLoadConfigFile
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\CannotLoadConfigFile`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\CannotLoadConfigFile`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionscannotloadconfigfile-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"fileName","default":null}]}>
-</ApiItem>
-<ApiItem href="#configexceptionscannotloadconfigfile-getfilename" visibility="public" name="getFileName" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $fileName)`
+
+- `public getFileName(): string`
 
 ### Methods
 
@@ -781,20 +759,20 @@ public function __construct( string $fileName );
 public function getFileName(): string;
 ```
 
+
 ## Config\Exceptions\ConfigNotArrayOrObject
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\ConfigNotArrayOrObject`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionsconfignotarrayorobject-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -804,20 +782,20 @@ Class
 public function __construct();
 ```
 
+
 ## Config\Exceptions\GroupedAdapterRequiresArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\GroupedAdapterRequiresArray`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionsgroupedadapterrequiresarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -827,20 +805,20 @@ Class
 public function __construct();
 ```
 
+
 ## Config\Exceptions\InvalidMergeData
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\InvalidMergeData`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\InvalidMergeData`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionsinvalidmergedata-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -850,22 +828,22 @@ Class
 public function __construct();
 ```
 
+
 ## Config\Exceptions\MissingConfigOption
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\MissingConfigOption`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\MissingConfigOption`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionsmissingconfigoption-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"option","default":null}]}>
-</ApiItem>
-<ApiItem href="#configexceptionsmissingconfigoption-getoption" visibility="public" name="getOption" returnType="string" params={[]}>
-</ApiItem>
+- `public __construct(string $option)`
+
+- `public getOption(): string`
 
 ### Methods
 
@@ -881,20 +859,20 @@ public function __construct( string $option );
 public function getOption(): string;
 ```
 
+
 ## Config\Exceptions\MissingFileExtension
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\MissingFileExtension`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\MissingFileExtension`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionsmissingfileextension-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -904,20 +882,20 @@ Class
 public function __construct();
 ```
 
+
 ## Config\Exceptions\MissingYamlExtension
 
 Class
 
 - `\Exception`
-- [`Phalcon\Config\Exception`](#configexception)
-- **`Phalcon\Config\Exceptions\MissingYamlExtension`**
+  - [`Phalcon\Config\Exception`](#configexception)
+    - **`Phalcon\Config\Exceptions\MissingYamlExtension`**
 
 `Phalcon\Config\Exception`
 
 ### Method Summary
 
-<ApiItem href="#configexceptionsmissingyamlextension-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 

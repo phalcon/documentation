@@ -36,26 +36,26 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public $inv_cst_id;
+    public $inv_cst_id;
 
-public $inv_id;
+    public $inv_id;
 
-public $inv_status_flag;
+    public $inv_status_flag;
 
-public $inv_title;
+    public $inv_title;
 
-public $inv_created_at;
+    public $inv_created_at;
 
-public function initialize()
-{
-    $this->setSource('co_invoices');
+    public function initialize()
+    {
+        $this->setSource('co_invoices');
 
-    $this->belongsTo(
-        'inv_cst_id', 
-        Customers::class, 
-        'cst_id'
-    );
-}
+        $this->belongsTo(
+            'inv_cst_id', 
+            Customers::class, 
+            'cst_id'
+        );
+    }
 }
 ```
 
@@ -71,26 +71,26 @@ use Phalcon\Mvc\Model;
 
 class Customers extends Model
 {
-public $cst_id;
+    public $cst_id;
 
-public $cst_active_flag;
+    public $cst_active_flag;
+    
+    public $cst_name_last;
+    
+    public $cst_name_first;
+    
+    public $cst_created_at;
 
-public $cst_name_last;
+    public function initialize()
+    {
+        $this->setSource('co_customers');
 
-public $cst_name_first;
-
-public $cst_created_at;
-
-public function initialize()
-{
-    $this->setSource('co_customers');
-
-    $this->hasMany(
-        'cst_id', 
-        Invoices::class, 
-        'inv_cst_id'
-    );
-}
+        $this->hasMany(
+            'cst_id', 
+            Invoices::class, 
+            'inv_cst_id'
+        );
+    }
 }
 ```
 
@@ -104,8 +104,8 @@ use Phalcon\Mvc\Model\Query;
 
 $container = Di::getDefault();
 $query     = new Query(
-'SELECT * FROM Invoices',
-$container
+    'SELECT * FROM Invoices',
+    $container
 );
 
 $invoices = $query->execute();
@@ -127,17 +127,17 @@ use Phalcon\Mvc\View;
  */
 class Invoices extends Controller
 {
-public function listAction()
-{
-    $query = new Query(
-        'SELECT * FROM Invoices',
-        $this->di
-    );
+    public function listAction()
+    {
+        $query = new Query(
+            'SELECT * FROM Invoices',
+            $this->di
+        );
 
-    $invoices = $query->execute();
-
-    $this->view->setVar('invoices', $invoices);
-}
+        $invoices = $query->execute();
+        
+        $this->view->setVar('invoices', $invoices);
+    }
 }
 ```
 
@@ -157,19 +157,19 @@ use Phalcon\Mvc\View;
  */
 class Invoices extends Controller
 {
-public function listAction()
-{
-    $query = $this
-        ->modelsManager
-        ->createQuery(
-            'SELECT * FROM Invoices'
-        )
-    ;
+    public function listAction()
+    {
+        $query = $this
+            ->modelsManager
+            ->createQuery(
+                'SELECT * FROM Invoices'
+            )
+        ;
 
-    $invoices = $query->execute();
-
-    $this->view->setVar('invoices', $invoices);
-}
+        $invoices = $query->execute();
+        
+        $this->view->setVar('invoices', $invoices);
+    }
 }
 ```
 
@@ -190,24 +190,24 @@ use Phalcon\Mvc\View;
  */
 class Invoices extends Controller
 {
-public function viewAction()
-{
-    $invoiceId = $this->request->getQuery('id', 'int');
-    $query     = $this
-        ->modelsManager
-        ->createQuery(
-            'SELECT * FROM Invoices WHERE inv_id = :id:'
-        )
-    ;
+    public function viewAction()
+    {
+        $invoiceId = $this->request->getQuery('id', 'int');
+        $query     = $this
+            ->modelsManager
+            ->createQuery(
+                'SELECT * FROM Invoices WHERE inv_id = :id:'
+            )
+        ;
 
-    $invoices = $query->execute(
-        [
-            'id' => $invoiceId,
-        ]
-    );
-
-    $this->view->setVar('invoices', $invoices);
-}
+        $invoices = $query->execute(
+            [
+                'id' => $invoiceId,
+            ]
+        );
+        
+        $this->view->setVar('invoices', $invoices);
+    }
 }
 ```
 
@@ -226,17 +226,17 @@ use Phalcon\Mvc\View;
  */
 class Invoices extends Controller
 {
-public function listAction()
-{
-    $invoices = $this
-        ->modelsManager
-        ->executeQuery(
-            'SELECT * FROM Invoices'
-        )
-    ;
+    public function listAction()
+    {
+        $invoices = $this
+            ->modelsManager
+            ->executeQuery(
+                'SELECT * FROM Invoices'
+            )
+        ;
 
-    $this->view->setVar('invoices', $invoices);
-}
+        $this->view->setVar('invoices', $invoices);
+    }
 }
 ```
 
@@ -257,21 +257,21 @@ use Phalcon\Mvc\View;
  */
 class Invoices extends Controller
 {
-public function viewAction()
-{
-    $invoiceId = $this->request->getQuery('id', 'int');
-    $invoices  = $this
-        ->modelsManager
-        ->executeQuery(
-            'SELECT * FROM Invoices WHERE inv_id = :id:',
-            [
-                'id' => $invoiceId,
-            ]
-        )
-    ;
-
-    $this->view->setVar('invoices', $invoices);
-}
+    public function viewAction()
+    {
+        $invoiceId = $this->request->getQuery('id', 'int');
+        $invoices  = $this
+            ->modelsManager
+            ->executeQuery(
+                'SELECT * FROM Invoices WHERE inv_id = :id:',
+                [
+                    'id' => $invoiceId,
+                ]
+            )
+        ;
+        
+        $this->view->setVar('invoices', $invoices);
+    }
 }
 ```
 
@@ -282,64 +282,64 @@ As the familiar SQL, PHQL allows selecting records using the `SELECT` statement,
 
 ```sql
 SELECT 
-* 
+    * 
 FROM   
-Invoices  
+    Invoices  
 ORDER BY 
-Invoices.inv_title
+    Invoices.inv_title
 ```
 
 ```sql
 SELECT 
-Invoices.inv_id, 
-Invoices.inv_title, 
-Invoices.inv_status_flag
+    Invoices.inv_id, 
+    Invoices.inv_title, 
+    Invoices.inv_status_flag
 FROM   
-Invoices  
+    Invoices  
 ORDER BY 
-Invoices.inv_title
+    Invoices.inv_title
 ```
 
 **Namespaced models**
 
 ```sql
 SELECT 
-* 
+    * 
 FROM   
-MyApp\Models\Invoices
+    MyApp\Models\Invoices
 ORDER BY 
-MyApp\Models\Invoices.inv_title'
+    MyApp\Models\Invoices.inv_title'
 ```
 
 **Aliases**
 
 ```sql
 SELECT 
-i.inv_id, 
-i.inv_title, 
-i.inv_status_flag
+    i.inv_id, 
+    i.inv_title, 
+    i.inv_status_flag
 FROM   
-Invoices i  
+    Invoices i  
 ORDER BY 
-i.inv_title
+    i.inv_title
 ```
 
 **`CASE`**
 
 ```sql
 SELECT 
-i.inv_id, 
-i.inv_title, 
-CASE i.inv_status_flag
-    WHEN 1 THEN 'Paid'
-    WHEN 0 THEN 'Unpaid'
-END AS status_text
+    i.inv_id, 
+    i.inv_title, 
+    CASE i.inv_status_flag
+        WHEN 1 THEN 'Paid'
+        WHEN 0 THEN 'Unpaid'
+    END AS status_text
 FROM   
-Invoices i
+    Invoices i
 WHERE  
-i.inv_status_flag = 1  
+    i.inv_status_flag = 1  
 ORDER BY 
-i.inv_title
+    i.inv_title
 LIMIT 100
 ```
 
@@ -347,15 +347,15 @@ LIMIT 100
 
 ```sql
 SELECT 
-i.inv_id, 
-i.inv_title, 
-i.inv_status_flag
+    i.inv_id, 
+    i.inv_title, 
+    i.inv_status_flag
 FROM   
-Invoices i
+    Invoices i
 WHERE  
-i.inv_status_flag = 1  
+    i.inv_status_flag = 1  
 ORDER BY 
-i.inv_title
+    i.inv_title
 LIMIT 100
 ```
 
@@ -363,33 +363,34 @@ LIMIT 100
 
 PHQL also supports subqueries. The syntax is similar to the one offered by PDO.
 
+
 ```sql
 SELECT 
-i.inv_id 
+    i.inv_id 
 FROM   
-Invoices i
+    Invoices i
 WHERE EXISTS (  
-SELECT 
-    cst_id
-FROM
-    Customers c
-WHERE 
-    c.cst_id = i.inv_cst_id
+    SELECT 
+        cst_id
+    FROM
+        Customers c
+    WHERE 
+        c.cst_id = i.inv_cst_id
 )
 ```
 
 ```sql
 SELECT 
-inv_id 
+    inv_id 
 FROM   
-Invoices 
+    Invoices 
 WHERE inv_cst_id IN (  
-SELECT 
-    cst_id
-FROM
-    Customers 
-WHERE 
-    cst_name LIKE '%ACME%'
+    SELECT 
+        cst_id
+    FROM
+        Customers 
+    WHERE 
+        cst_name LIKE '%ACME%'
 )
 ```
 
@@ -408,13 +409,13 @@ The following examples return identical results:
 use MyApp\Models\Invoices;
 
 $invoices = Invoices::find(
-[
-    'order' => 'inv_title'
-]
+    [
+        'order' => 'inv_title'
+    ]
 );
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
+    echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 }
 ```
 
@@ -424,19 +425,19 @@ echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 <?php
 
 $phql = "
-SELECT 
-    * 
-FROM 
-    Invoices 
-ORDER BY 
-    inv_title";
+    SELECT 
+        * 
+    FROM 
+        Invoices 
+    ORDER BY 
+        inv_title";
 $invoices  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
+    echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 }
 ```
 
@@ -446,19 +447,19 @@ Any queries that use specific columns do not return _complete_ objects, and ther
 <?php
 
 $phql = "
-SELECT 
-    inv_id, inv_title 
-FROM 
-    Invoices 
-ORDER BY 
-    inv_title";
+    SELECT 
+        inv_id, inv_title 
+    FROM 
+        Invoices 
+    ORDER BY 
+        inv_title";
 $invoices  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($invoices as $invoice) {
-echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
+    echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 }
 ```
 
@@ -470,19 +471,19 @@ These values that do not represent complete objects are what we call scalars. PH
 <?php
 
 $phql = "
-SELECT 
-    CONCAT(inv_id, ' - ', inv_title) AS id_name 
-FROM 
-    Invoices 
-ORDER BY 
-    inv_title";
+    SELECT 
+        CONCAT(inv_id, ' - ', inv_title) AS id_name 
+    FROM 
+        Invoices 
+    ORDER BY 
+        inv_title";
 $invoices  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($invoices as $invoice) {
-echo $invoice->id_name, PHP_EOL;
+    echo $invoice->id_name, PHP_EOL;
 }
 ```
 
@@ -492,16 +493,16 @@ We can query complete objects or scalars and, therefore can also query both at o
 <?php
 
 $phql = "
-SELECT 
-    i.*, 
-    IF(i.inv_status_flag = 1, 'Paid', 'Unpaid') AS status 
-FROM 
-    Invoices i 
-ORDER BY 
-    i.inv_title";
+    SELECT 
+        i.*, 
+        IF(i.inv_status_flag = 1, 'Paid', 'Unpaid') AS status 
+    FROM 
+        Invoices i 
+    ORDER BY 
+        i.inv_title";
 $invoices  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -511,11 +512,11 @@ The result in this case is a [Phalcon\Mvc\Model\Resultset\Complex][mvc-model-res
 <?php
 
 foreach ($invoices as $invoice) {
-echo $invoice->status, 
-     $invoice->i->inv_id, 
-     $invoice->i->inv_name, 
-     PHP_EOL
-;
+    echo $invoice->status, 
+         $invoice->i->inv_id, 
+         $invoice->i->inv_name, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -527,21 +528,21 @@ If you mix `*` selections from one model with columns from another, you will end
 <?php
 
 $phql = "
-SELECT 
-    i.*, 
-    IF(i.inv_status_flag = 1, 'Paid', 'Unpaid') AS status
-    c.* 
-FROM 
-    Invoices i
-JOIN
-    Customers c
-ON
-    i.inv_cst_id = c.cst_id 
-ORDER BY 
-    i.inv_title";
+    SELECT 
+        i.*, 
+        IF(i.inv_status_flag = 1, 'Paid', 'Unpaid') AS status
+        c.* 
+    FROM 
+        Invoices i
+    JOIN
+        Customers c
+    ON
+        i.inv_cst_id = c.cst_id 
+    ORDER BY 
+        i.inv_title";
 $invoices  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -551,13 +552,13 @@ The above will produce:
 <?php
 
 foreach ($invoices as $invoice) {
-echo $invoice->status, 
-     $invoice->i->inv_id, 
-     $invoice->i->inv_name, 
-     $invoice->c->cst_id, 
-     $invoice->c->cst_name_last, 
-     PHP_EOL
-;
+    echo $invoice->status, 
+         $invoice->i->inv_id, 
+         $invoice->i->inv_name, 
+         $invoice->c->cst_id, 
+         $invoice->c->cst_name_last, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -567,20 +568,20 @@ Another example:
 <?php
 
 $phql = "
-SELECT 
-    i.*, 
-    c.cst_name_last AS name_last 
-FROM 
-    Invoices i
-JOIN
-    Customers c
-ON
-    i.inv_cst_id = c.cst_id 
-ORDER BY 
-    i.inv_title";
+    SELECT 
+        i.*, 
+        c.cst_name_last AS name_last 
+    FROM 
+        Invoices i
+    JOIN
+        Customers c
+    ON
+        i.inv_cst_id = c.cst_id 
+    ORDER BY 
+        i.inv_title";
 $invoices  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -590,11 +591,11 @@ The above will produce:
 <?php
 
 foreach ($invoices as $invoice) {
-echo $invoice->name_last, 
-     $invoice->i->inv_id, 
-     $invoice->i->inv_name, 
-     PHP_EOL
-;
+    echo $invoice->name_last, 
+         $invoice->i->inv_id, 
+         $invoice->i->inv_name, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -607,31 +608,31 @@ It's easy to request records from multiple models using PHQL. Most kinds of Join
 <?php
 
 $phql = "
-SELECT 
-    Invoices.inv_id AS invoice_id, 
-    Invoices.inv_title AS invoice_title, 
-    Customers.cst_id AS customer_id,
-    Customers.cst_name_last,
-    Customers.cst_name_first 
-FROM 
-    Customers
-INNER JOIN 
-    Invoices 
-ORDER BY 
-    Customers.cst_name_last, Customers.cst_name_first";
+    SELECT 
+        Invoices.inv_id AS invoice_id, 
+        Invoices.inv_title AS invoice_title, 
+        Customers.cst_id AS customer_id,
+        Customers.cst_name_last,
+        Customers.cst_name_first 
+    FROM 
+        Customers
+    INNER JOIN 
+        Invoices 
+    ORDER BY 
+        Customers.cst_name_last, Customers.cst_name_first";
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($records as $record) {
-echo $record->invoice_id, 
-     $record->invoice_title, 
-     $record->customer_id,
-     $record->cst_name_last,
-     $record->cst_name_first, 
-     PHP_EOL
-;
+    echo $record->invoice_id, 
+         $record->invoice_title, 
+         $record->customer_id,
+         $record->cst_name_last,
+         $record->cst_name_first, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -657,24 +658,24 @@ It is however possible to manually set the conditions of the `JOIN`:
 <?php
 
 $phql = "
-SELECT 
-    Invoices.inv_id AS invoice_id, 
-    Invoices.inv_title AS invoice_title, 
-    Customers.cst_id AS customer_id,
-    Customers.cst_name_last,
-    Customers.cst_name_first 
-FROM 
-    Customers
-INNER JOIN 
-    Invoices
-ON 
-    Customers.cst_id = Invoices.inv_cst_id 
-ORDER BY 
-    Customers.cst_name_last, Customers.cst_name_first";
+    SELECT 
+        Invoices.inv_id AS invoice_id, 
+        Invoices.inv_title AS invoice_title, 
+        Customers.cst_id AS customer_id,
+        Customers.cst_name_last,
+        Customers.cst_name_first 
+    FROM 
+        Customers
+    INNER JOIN 
+        Invoices
+    ON 
+        Customers.cst_id = Invoices.inv_cst_id 
+    ORDER BY 
+        Customers.cst_name_last, Customers.cst_name_first";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -684,29 +685,29 @@ Also, the joins can be created using multiple tables in the `FROM` clause, using
 <?php
 
 $phql = "
-SELECT 
-    Invoices.*, 
-    Customers.* 
-FROM 
-    Customers, Invoices
-WHERE 
-    Customers.cst_id = Invoices.inv_cst_id 
-ORDER BY 
-    Customers.cst_name_last, Customers.cst_name_first";
+    SELECT 
+        Invoices.*, 
+        Customers.* 
+    FROM 
+        Customers, Invoices
+    WHERE 
+        Customers.cst_id = Invoices.inv_cst_id 
+    ORDER BY 
+        Customers.cst_name_last, Customers.cst_name_first";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($records as $record) {
-echo $record->invoices->inv_id, 
-     $record->invoices->inv_title, 
-     $record->customers->cst_id,
-     $record->customers->cst_name_last,
-     $record->customers->cst_name_first, 
-     PHP_EOL
-;
+    echo $record->invoices->inv_id, 
+         $record->invoices->inv_title, 
+         $record->customers->cst_id,
+         $record->customers->cst_name_last,
+         $record->customers->cst_name_first, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -716,29 +717,29 @@ If aliases are used for models, then the resultset will use those aliases to nam
 <?php
 
 $phql = "
-SELECT 
-    i.*, 
-    c.* 
-FROM 
-    Customers c, Invoices i
-WHERE 
-    c.cst_id = i.inv_cst_id 
-ORDER BY 
-    c.cst_name_last, c.cst_name_first";
+    SELECT 
+        i.*, 
+        c.* 
+    FROM 
+        Customers c, Invoices i
+    WHERE 
+        c.cst_id = i.inv_cst_id 
+    ORDER BY 
+        c.cst_name_last, c.cst_name_first";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($records as $record) {
-echo $record->i->inv_id, 
-     $record->i->inv_title, 
-     $record->c->cst_id,
-     $record->c->cst_name_last,
-     $record->c->cst_name_first, 
-     PHP_EOL
-;
+    echo $record->i->inv_id, 
+         $record->i->inv_title, 
+         $record->c->cst_id,
+         $record->c->cst_name_last,
+         $record->c->cst_name_first, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -748,23 +749,23 @@ When the joined model has a many-to-many relation to the `from` model, the inter
 <?php
 
 $phql = "
-SELECT 
-    Invoices.inv_id, 
-    Invoices.inv_title, 
-    Products.prd_id,
-    Products.prd_title 
-FROM 
-    Invoices
-JOIN
-    Products
-WHERE 
-    Invoices.inv_id = 1 
-ORDER BY 
-    Products.prd_name";
+    SELECT 
+        Invoices.inv_id, 
+        Invoices.inv_title, 
+        Products.prd_id,
+        Products.prd_title 
+    FROM 
+        Invoices
+    JOIN
+        Products
+    WHERE 
+        Invoices.inv_id = 1 
+    ORDER BY 
+        Products.prd_name";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -772,24 +773,24 @@ This code executes the following SQL in MySQL:
 
 ```sql
 SELECT 
-co_invoices.inv_id, 
-co_invoices.inv_title, 
-co_products.prd_id,
-co_products.prd_title 
+    co_invoices.inv_id, 
+    co_invoices.inv_title, 
+    co_products.prd_id,
+    co_products.prd_title 
 FROM 
-co_invoices
+    co_invoices
 JOIN
-co_invoices_x_products 
+    co_invoices_x_products 
 ON 
-co_invoices.inv_id = co_invoices_x_products.ixp_inv_id
+    co_invoices.inv_id = co_invoices_x_products.ixp_inv_id
 JOIN
-co_products 
+    co_products 
 ON 
-co_invoices_x_products.ixp_prd_id = co_products.prd_id
+    co_invoices_x_products.ixp_prd_id = co_products.prd_id
 WHERE
-co_invoices.inv_id = 1
+    co_invoices.inv_id = 1
 ORDER BY
-co_products.prd_name
+    co_products.prd_name
 ```
 
 ### Aggregations
@@ -803,16 +804,16 @@ What is the average amount of invoices for a customer with `inv_cst_id = 1`
 <?php
 
 $phql = "
-SELECT 
-    AVERAGE(inv_total) AS invoice_average
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = 1";
+    SELECT 
+        AVERAGE(inv_total) AS invoice_average
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
 
 $results  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 echo $results['invoice_average'], PHP_EOL;
@@ -826,26 +827,26 @@ How many invoices does each customer have
 <?php
 
 $phql = "
-SELECT 
-    inv_cst_id,
-    COUNT(*) AS invoice_count
-FROM 
-    Invoices
-GROUP BY 
-    Invoices.inv_cst_id
-ORDER BY 
-    Invoices.inv_cst_id";
+    SELECT 
+        inv_cst_id,
+        COUNT(*) AS invoice_count
+    FROM 
+        Invoices
+    GROUP BY 
+        Invoices.inv_cst_id
+    ORDER BY 
+        Invoices.inv_cst_id";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($records as $record) {
-echo $record->inv_cst_id, 
-     $record->invoice_count, 
-     PHP_EOL
-;
+    echo $record->inv_cst_id, 
+         $record->invoice_count, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -857,22 +858,22 @@ How many invoices does each customer have
 <?php
 
 $phql = "
-SELECT 
-    COUNT(DISTINCT inv_cst_id) AS customer_id
-FROM 
-    Invoices
-ORDER BY 
-    Invoices.inv_cst_id";
+    SELECT 
+        COUNT(DISTINCT inv_cst_id) AS customer_id
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 foreach ($records as $record) {
-echo $record->inv_cst_id, 
-     PHP_EOL
-;
+    echo $record->inv_cst_id, 
+         PHP_EOL
+    ;
 }
 ```
 
@@ -884,16 +885,16 @@ What is the maximum invoice amount for a customer with `inv_cst_id = 1`
 <?php
 
 $phql = "
-SELECT 
-    MAX(inv_total) AS invoice_max
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = 1";
+    SELECT 
+        MAX(inv_total) AS invoice_max
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
 
 $results  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 echo $results['invoice_max'], PHP_EOL;
@@ -907,16 +908,16 @@ What is the minimum invoice amount for a customer with `inv_cst_id = 1`
 <?php
 
 $phql = "
-SELECT 
-    MIN(inv_total) AS invoice_min
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = 1";
+    SELECT 
+        MIN(inv_total) AS invoice_min
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
 
 $results  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 echo $results['invoice_min'], PHP_EOL;
@@ -930,16 +931,16 @@ What is the total amount of invoices for a customer with `inv_cst_id = 1`
 <?php
 
 $phql = "
-SELECT 
-    SUM(inv_total) AS invoice_total
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = 1";
+    SELECT 
+        SUM(inv_total) AS invoice_total
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
 
 $results  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 echo $results['invoice_total'], PHP_EOL;
@@ -954,16 +955,16 @@ Select a record with a single numeric comparison:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = 1";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 ```
@@ -974,16 +975,16 @@ Select records with a greater than numeric comparison:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_total > 1000";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_total > 1000";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -993,16 +994,16 @@ Select records with a single text comparison using `TRIM`:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    TRIM(Invoices.inv_title) = 'Invoice for ACME Inc.'";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        TRIM(Invoices.inv_title) = 'Invoice for ACME Inc.'";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1012,16 +1013,16 @@ Select records using the `LIKE` keyword:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_title LIKE '%ACME%'";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_title LIKE '%ACME%'";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1031,16 +1032,16 @@ Select records using the `NOT LIKE` keywords:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_title NOT LIKE '%ACME%'";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_title NOT LIKE '%ACME%'";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1050,16 +1051,16 @@ Select records where a field is `NULL`:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_total IS NULL";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_total IS NULL";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1069,16 +1070,16 @@ Select records using the `IN` keyword:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id IN (1, 3, 5)";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id IN (1, 3, 5)";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1088,16 +1089,16 @@ Select records using the `NOT IN` keywords:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id NOT IN (1, 3, 5)";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id NOT IN (1, 3, 5)";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1107,16 +1108,16 @@ Select records using the `BETWEEN` keywords:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id BETWEEN 1 AND 5";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id BETWEEN 1 AND 5";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1130,21 +1131,21 @@ Using named parameters:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = :customer_id:";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = :customer_id:";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'customer_id' => 1,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customer_id' => 1,
+        ]
+    )
 ;
 ```
 
@@ -1154,21 +1155,21 @@ Using numeric indexes:
 <?php
 
 $phql = "
-SELECT 
-    *
-FROM 
-    Invoices
-WHERE 
-    Invoices.inv_cst_id = ?2";
+    SELECT 
+        *
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = ?2";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        2 => 1,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            2 => 1,
+        ]
+    )
 ;
 ```
 
@@ -1181,18 +1182,18 @@ Inserting data without columns:
 <?php
 
 $phql = "
-INSERT INTO Invoices
-VALUES (
-    NULL,
-    1,
-    0,
-    'Invoice for ACME Inc.',
-    0
-)";
+    INSERT INTO Invoices
+    VALUES (
+        NULL,
+        1,
+        0,
+        'Invoice for ACME Inc.',
+        0
+    )";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1202,24 +1203,24 @@ Inserting data with specific columns:
 <?php
 
 $phql = "
-INSERT INTO Invoices (
-    inv_id,
-    inv_cst_id,
-    inv_status_flag,
-    inv_title,
-    inv_total
-)
-VALUES (
-    NULL,
-    1,
-    0,
-    'Invoice for ACME Inc.',
-    0
-)";
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        NULL,
+        1,
+        0,
+        'Invoice for ACME Inc.',
+        0
+    )";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1229,33 +1230,33 @@ Inserting data with named placeholders:
 <?php
 
 $phql = "
-INSERT INTO Invoices (
-    inv_id,
-    inv_cst_id,
-    inv_status_flag,
-    inv_title,
-    inv_total
-)
-VALUES (
-    :id:,
-    :cst_id:,
-    :status_flag:,
-    :title:,
-    :total:
-)";
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        :id:,
+        :cst_id:,
+        :status_flag:,
+        :title:,
+        :total:
+    )";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'id'          => NULL,
-        'cst_id'      => 1,
-        'status_flag' => 0,
-        'title'       => 'Invoice for ACME Inc.',
-        'total'       => 0
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'id'          => NULL,
+            'cst_id'      => 1,
+            'status_flag' => 0,
+            'title'       => 'Invoice for ACME Inc.',
+            'total'       => 0
+        ]
+    )
 ;
 ```
 
@@ -1265,33 +1266,33 @@ Inserting data with numeric placeholders:
 <?php
 
 $phql = "
-INSERT INTO Invoices (
-    inv_id,
-    inv_cst_id,
-    inv_status_flag,
-    inv_title,
-    inv_total
-)
-VALUES (
-    ?0,
-    ?1,
-    ?2,
-    ?3,
-    ?4
-)";
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        ?0,
+        ?1,
+        ?2,
+        ?3,
+        ?4
+    )";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        0 => NULL,
-        1 => 1,
-        2 => 0,
-        3 => 'Invoice for ACME Inc.',
-        4 => 0
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            0 => NULL,
+            1 => 1,
+            2 => 0,
+            3 => 'Invoice for ACME Inc.',
+            4 => 0
+        ]
+    )
 ;
 ```
 
@@ -1309,16 +1310,16 @@ use Phalcon\Messages\Message;
 
 class Invoices extends Model
 {
-public function beforeCreate()
-{
-    if ($this->inv_total < 0) {
-        $this->appendMessage(
-            new Message('An invoice cannot have a negative total')
-        );
+    public function beforeCreate()
+    {
+        if ($this->inv_total < 0) {
+            $this->appendMessage(
+                new Message('An invoice cannot have a negative total')
+            );
 
-        return false;
+            return false;
+        }
     }
-}
 }
 ```
 
@@ -1328,39 +1329,39 @@ If we issue the following `INSERT` statement:
 <?php
 
 $phql = "
-INSERT INTO Invoices (
-    inv_id,
-    inv_cst_id,
-    inv_status_flag,
-    inv_title,
-    inv_total
-)
-VALUES (
-    ?0,
-    ?1,
-    ?2,
-    ?3,
-    ?4
-)";
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        ?0,
+        ?1,
+        ?2,
+        ?3,
+        ?4
+    )";
 
 $result  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        0 => NULL,
-        1 => 1,
-        2 => 0,
-        3 => 'Invoice for ACME Inc.',
-        4 => -100
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            0 => NULL,
+            1 => 1,
+            2 => 0,
+            3 => 'Invoice for ACME Inc.',
+            4 => -100
+        ]
+    )
 ;
 
 if (false === $result->success()) {
-foreach ($result->getMessages() as $message) {
-    echo $message->getMessage();
-}
+    foreach ($result->getMessages() as $message) {
+        echo $message->getMessage();
+    }
 }
 ```
 
@@ -1375,15 +1376,15 @@ Updating one column
 <?php
 
 $phql = "
-UPDATE Invoices
-SET
-    inv_total = 0
-WHERE
-    inv_cst_id = 1";
+    UPDATE Invoices
+    SET
+        inv_total = 0
+    WHERE
+        inv_cst_id = 1";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1393,16 +1394,16 @@ Updating multiple columns
 <?php
 
 $phql = "
-UPDATE Invoices
-SET
-    inv_status_flag = 0,
-    inv_total = 0
-WHERE
-    inv_cst_id = 1";
+    UPDATE Invoices
+    SET
+        inv_status_flag = 0,
+        inv_total = 0
+    WHERE
+        inv_cst_id = 1";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1412,16 +1413,16 @@ Updating multiple rows:
 <?php
 
 $phql = "
-UPDATE Invoices
-SET
-    inv_status_flag = 0,
-    inv_total = 0
-WHERE
-    inv_cst_id > 10";
+    UPDATE Invoices
+    SET
+        inv_status_flag = 0,
+        inv_total = 0
+    WHERE
+        inv_cst_id > 10";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1431,23 +1432,23 @@ Updating data with named placeholders:
 <?php
 
 $phql = "
-UPDATE Invoices
-SET
-    inv_status_flag = :status:,
-    inv_total = :total:
-WHERE
-    inv_cst_id > :customerId:";
+    UPDATE Invoices
+    SET
+        inv_status_flag = :status:,
+        inv_total = :total:
+    WHERE
+        inv_cst_id > :customerId:";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'status'     => 0,
-        'total'      => 0,
-        'customerId' => 10,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'status'     => 0,
+            'total'      => 0,
+            'customerId' => 10,
+        ]
+    )
 ;
 ```
 
@@ -1457,23 +1458,23 @@ Updating data with numeric placeholders:
 <?php
 
 $phql = "
-UPDATE Invoices
-SET
-    inv_status_flag = ?0,
-    inv_total = ?1
-WHERE
-    inv_cst_id > ?2";
+    UPDATE Invoices
+    SET
+        inv_status_flag = ?0,
+        inv_total = ?1
+    WHERE
+        inv_cst_id > ?2";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        0 => 0,
-        1 => 0,
-        2 => 10,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            0 => 0,
+            1 => 0,
+            2 => 10,
+        ]
+    )
 ;
 ```
 
@@ -1488,24 +1489,24 @@ This way of operation allows events, virtual foreign keys, and validations to be
 <?php
 
 $phql = "
-UPDATE Invoices
-SET
-    inv_status_flag = 0,
-    inv_total = 0
-WHERE
-    inv_cst_id > 10";
+    UPDATE Invoices
+    SET
+        inv_status_flag = 0,
+        inv_total = 0
+    WHERE
+        inv_cst_id > 10";
 
 $result = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 if (false === $result->success()) {
-$messages = $result->getMessages();
+    $messages = $result->getMessages();
 
-foreach ($messages as $message) {
-    echo $message->getMessage();
-}
+    foreach ($messages as $message) {
+        echo $message->getMessage();
+    }
 }
 ```
 
@@ -1518,22 +1519,22 @@ use MyApp\Models\Invoices;
 
 $messages = [];
 $invoices = Invoices::find(
-[
-    'conditions' => 'inc_cst_id = :customerId:',
-    'bind'       => [
-        'customerId' => 10,
-    ],
-]  
+    [
+        'conditions' => 'inc_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 10,
+        ],
+    ]  
 );
 
 foreach ($invoices as $invoice) {
-$invoice->inv_status_flag = 0;
-$invoice->inv_total       = 0;
-
-$result = $invoice->save();
-if (false === $result) {
-    $messages[] = $invoice->getMessages();
-} 
+    $invoice->inv_status_flag = 0;
+    $invoice->inv_total       = 0;
+    
+    $result = $invoice->save();
+    if (false === $result) {
+        $messages[] = $invoice->getMessages();
+    } 
 }
 ```
 
@@ -1546,15 +1547,15 @@ Deleting one row
 <?php
 
 $phql = "
-DELETE
-FROM 
-    Invoices
-WHERE
-    inv_cst_id = 1";
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id = 1";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1564,15 +1565,15 @@ Deleting multiple rows:
 <?php
 
 $phql = "
-DELETE
-FROM 
-    Invoices
-WHERE
-    inv_cst_id > 10";
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id > 10";
 
 $records  = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 ```
 
@@ -1582,20 +1583,20 @@ Deleting data with named placeholders:
 <?php
 
 $phql = "
-DELETE
-FROM 
-    Invoices
-WHERE
-    inv_cst_id > :customerId:";
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id > :customerId:";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        'customerId' => 10,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customerId' => 10,
+        ]
+    )
 ;
 ```
 
@@ -1605,20 +1606,20 @@ Deleting data with numeric placeholders:
 <?php
 
 $phql = "
-DELETE
-FROM 
-    Invoices
-WHERE
-    inv_cst_id > ?2";
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id > ?2";
 
 $records  = $this
-->modelsManager
-->executeQuery(
-    $phql,
-    [
-        2 => 10,
-    ]
-)
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            2 => 10,
+        ]
+    )
 ;
 ```
 
@@ -1633,23 +1634,23 @@ Just as with the rest of the operations, checking the status code returned allow
 <?php
 
 $phql = "
-DELETE
-FROM
-    Invoices
-WHERE
-    inv_cst_id > 10";
+    DELETE
+    FROM
+        Invoices
+    WHERE
+        inv_cst_id > 10";
 
 $result = $this
-->modelsManager
-->executeQuery($phql)
+    ->modelsManager
+    ->executeQuery($phql)
 ;
 
 if (false === $result->success()) {
-$messages = $result->getMessages();
+    $messages = $result->getMessages();
 
-foreach ($messages as $message) {
-    echo $message->getMessage();
-}
+    foreach ($messages as $message) {
+        echo $message->getMessage();
+    }
 }
 ```
 
@@ -1660,11 +1661,11 @@ The PHQL query:
 
 ```sql
 SELECT 
-* 
+    * 
 FROM 
-Invoices 
+    Invoices 
 ORDER BY 
-inv_title
+    inv_title
 ```
 
 can be created and executed as follows:
@@ -1675,12 +1676,12 @@ can be created and executed as follows:
 use MyApp\Models\Invoices;
 
 $invoices = $this
-->modelsManager
-->createBuilder()
-->from(Invoices::class)
-->orderBy('inv_title')
-->getQuery()
-->execute();
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->orderBy('inv_title')
+    ->getQuery()
+    ->execute();
 ```
 
 To get a single row:
@@ -1691,12 +1692,12 @@ To get a single row:
 use MyApp\Models\Invoices;
 
 $invoices = $this
-->modelsManager
-->createBuilder()
-->from(Invoices::class)
-->orderBy('inv_title')
-->getQuery()
-->getSingleResult();
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->orderBy('inv_title')
+    ->getQuery()
+    ->getSingleResult();
 ```
 
 ### Parameters
@@ -1731,31 +1732,31 @@ use Phalcon\Di\FactoryDefault as Di;
 $di = new Di();
 
 $params = [
-"container" => $di,
-"models"     => [
-    Users::class,
-],
-"columns"    => ["id", "name", "status"],
-"conditions" => [
-    [
-        "created > :min: AND created < :max:",
+    "container" => $di,
+    "models"     => [
+        Users::class,
+    ],
+    "columns"    => ["id", "name", "status"],
+    "conditions" => [
         [
-            "min" => "2013-01-01",
-            "max" => "2014-01-01",
-        ],
-        [
-            "min" => PDO::PARAM_STR,
-            "max" => PDO::PARAM_STR,
+            "created > :min: AND created < :max:",
+            [
+                "min" => "2013-01-01",
+                "max" => "2014-01-01",
+            ],
+            [
+                "min" => PDO::PARAM_STR,
+                "max" => PDO::PARAM_STR,
+            ],
         ],
     ],
-],
-// or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
-"group"      => ["id", "name"],
-"having"     => "name = 'Kamil'",
-"order"      => ["name", "id"],
-"limit"      => 20,
-"offset"     => 20,
-// or "limit" => [20, 20],
+    // or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
+    "group"      => ["id", "name"],
+    "having"     => "name = 'Kamil'",
+    "order"      => ["name", "id"],
+    "limit"      => 20,
+    "offset"     => 20,
+    // or "limit" => [20, 20],
 ];
 
 $builder = new Builder($params);
@@ -1786,8 +1787,8 @@ $builder = new Builder($params);
 
 ```php
 public function addFrom(
-string $model, 
-string $alias = null
+    string $model, 
+    string $alias = null
 ): BuilderInterface
 ```
 Add a model. The first parameter is the model while the second one is the alias for the model.
@@ -1796,20 +1797,20 @@ Add a model. The first parameter is the model while the second one is the alias 
 <?php
 
 $builder->addFrom(
-Customers::class
+    Customers::class
 );
 
 $builder->addFrom(
-Customers::class,
-"c"
+    Customers::class,
+    "c"
 );
 ```
 
 ```php
 public function andHaving(
-mixed $conditions, 
-array $bindParams = [], 
-array $bindTypes = []
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): BuilderInterface
 ```
 Appends a condition to the current `HAVING` conditions clause using an `AND` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants][pdo-constants].
@@ -1820,21 +1821,21 @@ Appends a condition to the current `HAVING` conditions clause using an `AND` ope
 $builder->andHaving("SUM(Invoices.inv_total) > 1000");
 
 $builder->andHaving(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 1000,
-],
-[
-    "sum" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 ```
 
 ```php
 public function andWhere(
-mixed $conditions, 
-array $bindParams = [], 
-array $bindTypes = []
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): BuilderInterface
 ```
 Appends a condition to the current `WHERE` conditions clause using an `AND` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants][pdo-constants].
@@ -1845,22 +1846,22 @@ Appends a condition to the current `WHERE` conditions clause using an `AND` oper
 $builder->andWhere("SUM(Invoices.inv_total) > 1000");
 
 $builder->andWhere(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 1000,
-],
-[
-    "sum" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 ```
 
 ```php
 public function betweenHaving(
-string $expr, 
-mixed $minimum, 
-mixed $maximum, 
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `BETWEEN` condition to the current `HAVING` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -1869,18 +1870,18 @@ Appends a `BETWEEN` condition to the current `HAVING` conditions clause. The met
 <?php
 
 $builder->betweenHaving(
-"SUM(Invoices.inv_total)",
-1000,
-5000
+    "SUM(Invoices.inv_total)",
+    1000,
+    5000
 );
 ```
 
 ```php
 public function betweenWhere(
-string $expr, 
-mixed $minimum, 
-mixed $maximum, 
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `BETWEEN` condition to the current `WHERE` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -1889,9 +1890,9 @@ Appends a `BETWEEN` condition to the current `WHERE` conditions clause. The meth
 <?php
 
 $builder->betweenWhere(
-"Invoices.inv_total",
-1000,
-5000
+    "Invoices.inv_total",
+    1000,
+    5000
 );
 ```
 
@@ -1908,18 +1909,18 @@ $builder->columns("inv_id, inv_title");
 
 // SELECT inv_id, inv_title
 $builder->columns(
-[
-    "inv_id",
-    "inv_title",
-]
+    [
+        "inv_id",
+        "inv_title",
+    ]
 );
 
 // SELECT inv_cst_id, inv_total
 $builder->columns(
-[
-    "inv_cst_id",
-    "inv_total" => "SUM(inv_total)",
-]
+    [
+        "inv_cst_id",
+        "inv_total" => "SUM(inv_total)",
+    ]
 );
 ```
 
@@ -1955,21 +1956,21 @@ Sets the models for the query. The method accepts either a `string` or an `array
 <?php
 
 $builder->from(
-Invoices::class
+    Invoices::class
 );
 
 $builder->from(
-[
-    Invoices::class,
-    Customers::class,
-]
+    [
+        Invoices::class,
+        Customers::class,
+    ]
 );
 
 $builder->from(
-[
-    'i' => Invoices::class,
-    'c' => Customers::class,
-]
+    [
+        'i' => Invoices::class,
+        'c' => Customers::class,
+    ]
 );
 ```
 
@@ -1982,17 +1983,17 @@ Adds a `GROUP BY` condition to the builder.
 <?php
 
 $builder->groupBy(
-[
-    "Invoices.inv_cst_id",
-]
+    [
+        "Invoices.inv_cst_id",
+    ]
 );
 ```
 
 ```php
 public function having(
-mixed $conditions, 
-array $bindParams = [], 
-array $bindTypes = []
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): BuilderInterface
 ```
 Sets the `HAVING` condition clause. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants][pdo-constants].
@@ -2003,21 +2004,21 @@ Sets the `HAVING` condition clause. The first parameter is the expression. The s
 $builder->having("SUM(Invoices.inv_total) > 1000");
 
 $builder->having(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 1000,
-],
-[
-    "sum" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 ```
 
 ```php
 public function inHaving(
-string $expr, 
-array $values, 
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    array $values, 
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `IN` condition to the current `HAVING` conditions clause. The method accepts the expression, an array with the `IN` values as well as the operator for the `IN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -2026,19 +2027,19 @@ Appends a `IN` condition to the current `HAVING` conditions clause. The method a
 <?php
 
 $builder->inHaving(
-"SUM(Invoices.inv_total)",
-[
-    1000,
-    5000,
-]
+    "SUM(Invoices.inv_total)",
+    [
+        1000,
+        5000,
+    ]
 );
 ```
 
 ```php
 public function innerJoin(
-string $model, 
-string $conditions = null, 
-string $alias = null
+    string $model, 
+    string $conditions = null, 
+    string $alias = null
 ): BuilderInterface
 ```
 Adds an `INNER` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
@@ -2047,26 +2048,26 @@ Adds an `INNER` join to the query. The first parameter is the model. The join co
 <?php
 
 $builder->innerJoin(
-Customers::class
+    Customers::class
 );
 
 $builder->innerJoin(
-Customers::class,
-"Invoices.inv_cst_id = Customers.cst_id"
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
 );
 
 $builder->innerJoin(
-Customers::class,
-"Invoices.inv_cst_id = c.cst_id",
-"c"
+    Customers::class,
+    "Invoices.inv_cst_id = c.cst_id",
+    "c"
 );
 ```
 
 ```php
 public function inWhere(
-string $expr, 
-array $values,  
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    array $values,  
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends an `IN` condition to the current `WHERE` conditions clause. The method accepts the expression, an array with the values for the `IN` clause as well as the operator for the `IN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -2075,24 +2076,24 @@ Appends an `IN` condition to the current `WHERE` conditions clause. The method a
 <?php
 
 $builder->inWhere(
-"Invoices.inv_id",
-[1, 3, 5]
+    "Invoices.inv_id",
+    [1, 3, 5]
 );
 
 //Using OPERATOR_OR:
 $builder->inWhere(
-"Invoices.inv_id",
-[1, 3, 5],
-\Phalcon\Mvc\Model\Query\BuilderInterface::OPERATOR_OR
+    "Invoices.inv_id",
+    [1, 3, 5],
+    \Phalcon\Mvc\Model\Query\BuilderInterface::OPERATOR_OR
 );
 ```
 
 ```php
 public function join(
-string $model, 
-string $conditions = null, 
-string $alias = null, 
-string $type = null
+    string $model, 
+    string $conditions = null, 
+    string $alias = null, 
+    string $type = null
 ): BuilderInterface
 ```
 
@@ -2102,34 +2103,34 @@ Adds a join to the query. The first parameter is the model. The join conditions 
 <?php
 
 $builder->join(
-Customers::class
+    Customers::class
 );
 
 $builder->join(
-Customers::class,
-"Invoices.inv_cst_id = Customers.cst_id"
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
 );
 
 //If model `Invoices` has an alias, use it accordingly in the following two examples:
 $builder->join(
-Customers::class,
-"Invoices.inv_cst_id = c.cst_id",
-"c"
+    Customers::class,
+    "Invoices.inv_cst_id = c.cst_id",
+    "c"
 );
 
 $builder->join(
-Customers::class,
-"Invoices.inv_cst_id = c.cst_id",
-"c",
-"INNER"
+    Customers::class,
+    "Invoices.inv_cst_id = c.cst_id",
+    "c",
+    "INNER"
 );
 ```
 
 ```php
 public function leftJoin(
-string $model, 
-string $conditions = null, 
-string $alias = null
+    string $model, 
+    string $conditions = null, 
+    string $alias = null
 ): BuilderInterface
 ```
 Adds a `LEFT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
@@ -2138,25 +2139,25 @@ Adds a `LEFT` join to the query. The first parameter is the model. The join cond
 <?php
 
 $builder->leftJoin(
-Customers::class
+    Customers::class
 );
 
 $builder->leftJoin(
-Customers::class,
-"Invoices.inv_cst_id = Customers.cst_id"
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
 );
 
 $builder->leftJoin(
-Customers::class,
-"Invoices.inv_cst_id = c.cst_id",
-"c"
+    Customers::class,
+    "Invoices.inv_cst_id = c.cst_id",
+    "c"
 );
 ```
 
 ```php
 public function limit(
-int $limit, 
-mixed $offset = null
+    int $limit, 
+    mixed $offset = null
 ): BuilderInterface
 ```
 Sets a `LIMIT` clause, optionally an offset clause as the second parameter
@@ -2169,12 +2170,13 @@ $builder->limit(100, 20);
 $builder->limit("100", "20");
 ```
 
+
 ```php
 public function notBetweenHaving(
-string $expr, 
-mixed $minimum, 
-mixed $maximum, 
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `NOT BETWEEN` condition to the current `HAVING` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `NOT BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -2183,18 +2185,18 @@ Appends a `NOT BETWEEN` condition to the current `HAVING` conditions clause. The
 <?php
 
 $builder->notBetweenHaving(
-"SUM(Invoices.inv_total)",
-1000,
-5000
+    "SUM(Invoices.inv_total)",
+    1000,
+    5000
 );
 ```
 
 ```php
 public function notBetweenWhere(
-string $expr, 
-mixed $minimum, 
-mixed $maximum, 
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `NOT BETWEEN` condition to the current `WHERE` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `NOT BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -2203,17 +2205,17 @@ Appends a `NOT BETWEEN` condition to the current `WHERE` conditions clause. The 
 <?php
 
 $builder->notBetweenWhere(
-"Invoices.inv_total",
-1000,
-5000
+    "Invoices.inv_total",
+    1000,
+    5000
 );
 ```
 
 ```php
 public function notInHaving(
-string $expr, 
-array $values, 
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    array $values, 
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `NOT IN` condition to the current `HAVING` conditions clause. The method accepts the expression, an array with the `IN` values as well as the operator for the `NOT IN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -2222,19 +2224,19 @@ Appends a `NOT IN` condition to the current `HAVING` conditions clause. The meth
 <?php
 
 $builder->notInHaving(
-"SUM(Invoices.inv_total)",
-[
-    1000,
-    5000,
-]
+    "SUM(Invoices.inv_total)",
+    [
+        1000,
+        5000,
+    ]
 );
 ```
 
 ```php
 public function notInWhere(
-string $expr, 
-array $values,  
-string $operator = BuilderInterface::OPERATOR_AND
+    string $expr, 
+    array $values,  
+    string $operator = BuilderInterface::OPERATOR_AND
 ): BuilderInterface
 ```
 Appends a `NOT IN` condition to the current `WHERE` conditions clause. The method accepts the expression, an array with the values for the `IN` clause as well as the operator for the `NOT IN` (`OPERATOR_AND` or `OPERATOR_OR`)
@@ -2243,8 +2245,8 @@ Appends a `NOT IN` condition to the current `WHERE` conditions clause. The metho
 <?php
 
 $builder->notInWhere(
-"Invoices.inv_id",
-[1, 3, 5]
+    "Invoices.inv_id",
+    [1, 3, 5]
 );
 ```
 
@@ -2270,23 +2272,23 @@ Sets an `ORDER BY` condition clause. The parameter can be a string or an array. 
 $builder->orderBy("Invoices.inv_total");
 
 $builder->orderBy(
-[
-    "Invoices.inv_total",
-]
+    [
+        "Invoices.inv_total",
+    ]
 );
 
 $builder->orderBy(
-[
-    "Invoices.inv_total DESC",
-]
+    [
+        "Invoices.inv_total DESC",
+    ]
 );
 ```
 
 ```php
 public function orHaving(
-mixed $conditions, 
-array $bindParams = [], 
-array $bindTypes = []
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): BuilderInterface
 ```
 Appends a condition to the current `HAVING` condition clause using an `OR` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants][pdo-constants].
@@ -2297,21 +2299,21 @@ Appends a condition to the current `HAVING` condition clause using an `OR` opera
 $builder->orHaving("SUM(Invoices.inv_total) > 1000");
 
 $builder->orHaving(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 1000,
-],
-[
-    "sum" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 ```
 
 ```php
 public function orWhere(
-mixed $conditions, 
-array $bindParams = [], 
-array $bindTypes = []
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): BuilderInterface
 ```
 Appends a condition to the current `WHERE` condition clause using an `OR` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants][pdo-constants].
@@ -2322,21 +2324,21 @@ Appends a condition to the current `WHERE` condition clause using an `OR` operat
 $builder->orWhere("SUM(Invoices.inv_total) > 1000");
 
 $builder->orWhere(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 1000,
-],
-[
-    "sum" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 ```
 
 ```php
 public function rightJoin(
-string $model, 
-string $conditions = null, 
-string $alias = null
+    string $model, 
+    string $conditions = null, 
+    string $alias = null
 ): BuilderInterface
 ```
 Adds a `RIGHT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However, you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
@@ -2345,25 +2347,25 @@ Adds a `RIGHT` join to the query. The first parameter is the model. The join con
 <?php
 
 $builder->rightJoin(
-Customers::class
+    Customers::class
 );
 
 $builder->rightJoin(
-Customers::class,
-"Invoices.inv_cst_id = Customers.cst_id"
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
 );
 
 $builder->rightJoin(
-Customers::class,
-"Invoices.inv_cst_id = c.cst_id",
-"c"
+    Customers::class,
+    "Invoices.inv_cst_id = c.cst_id",
+    "c"
 );
 ```
 
 ```php
 public function setBindParams(
-array $bindParams, 
-bool $merge = false
+    array $bindParams, 
+    bool $merge = false
 ): BuilderInterface
 ```
 Set default bind parameters. The first parameter is an array, where the key is the bound parameter name or number. The second parameter is a boolean, instructing the component to merge the supplied parameters to the existing stack or not.
@@ -2372,31 +2374,31 @@ Set default bind parameters. The first parameter is an array, where the key is t
 <?php
 
 $builder->setBindParams(
-[
-    "sum" => 1000,
-]
+    [
+        "sum" => 1000,
+    ]
 );
 
 $builder->setBindParams(
-[
-    "cst_id" => 10,
-],
-true
+    [
+        "cst_id" => 10,
+    ],
+    true
 );
 
 $builder->where(
-"SUM(Invoices.inv_total) > :sum: AND inv_cst_id > :cst_id:",
-[
-    "sum"    => PDO::PARAM_INT,
-    "cst_id" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum: AND inv_cst_id > :cst_id:",
+    [
+        "sum"    => PDO::PARAM_INT,
+        "cst_id" => PDO::PARAM_INT,
+    ]
 );
 ```
 
 ```php
 public function setBindTypes(
-array bindTypes, 
-bool $merge = false
+    array bindTypes, 
+    bool $merge = false
 ): BuilderInterface
 ```
 Set default bind types. The first parameter is an array, where the key is the bound parameter name or number. The second parameter is a boolean, instructing the component to merge the supplied parameters to the existing stack or not. The bound types are [PDO constants][pdo-constants].
@@ -2405,41 +2407,41 @@ Set default bind types. The first parameter is an array, where the key is the bo
 <?php
 
 $builder->setBindParams(
-[
-    "sum" => 1000,
-]
+    [
+        "sum" => 1000,
+    ]
 );
 
 $builder->setBindParams(
-[
-    "cst_id" => 10,
-],
-true
+    [
+        "cst_id" => 10,
+    ],
+    true
 );
 
 $builder->setBindTypes(
-[
-    "sum" => PDO::PARAM_INT,
-]
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 
 $builder->setBindTypes(
-[
-    "cst_id" => PDO::PARAM_INT,
-],
-true
+    [
+        "cst_id" => PDO::PARAM_INT,
+    ],
+    true
 );
 
 $builder->where(
-"SUM(Invoices.inv_total) > :sum: AND inv_cst_id > :cst_id:"
+    "SUM(Invoices.inv_total) > :sum: AND inv_cst_id > :cst_id:"
 );
 ```
 
 ```php
 public function where(
-mixed $conditions, 
-array $bindParams = [], 
-array $bindTypes = []
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
 ): BuilderInterface
 ```
 Sets the `WHERE` condition clause. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants][pdo-constants].
@@ -2450,13 +2452,13 @@ Sets the `WHERE` condition clause. The first parameter is the expression. The se
 $builder->where("SUM(Invoices.inv_total) > 1000");
 
 $builder->where(
-"SUM(Invoices.inv_total) > :sum:",
-[
-    "sum" => 1000,
-],
-[
-    "sum" => PDO::PARAM_INT,
-]
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
 );
 ```
 
@@ -2477,10 +2479,10 @@ $builder->from(Invoices::class);
 //      Invoices, 
 //      Customers
 $builder->from(
-[
-    Invoices::class,
-    Customers::class,
-]
+    [
+        Invoices::class,
+        Customers::class,
+    ]
 );
 
 // SELECT 
@@ -2488,8 +2490,8 @@ $builder->from(
 // FROM 
 //      Invoices
 $builder
-->columns('*')
-->from(Invoices::class)
+    ->columns('*')
+    ->from(Invoices::class)
 ;
 
 // SELECT 
@@ -2497,8 +2499,8 @@ $builder
 // FROM 
 //      Invoices
 $builder
-->columns('inv_id')
-->from(Invoices::class)
+    ->columns('inv_id')
+    ->from(Invoices::class)
 ;
 
 // SELECT 
@@ -2507,13 +2509,13 @@ $builder
 // FROM 
 //      Invoices
 $builder
-->columns(
-    [
-        'inv_id', 
-        'inv_title',
-    ]
-)
-->from(Invoices::class)
+    ->columns(
+        [
+            'inv_id', 
+            'inv_title',
+        ]
+    )
+    ->from(Invoices::class)
 ;
 
 // SELECT 
@@ -2522,13 +2524,13 @@ $builder
 // FROM 
 //      Invoices
 $builder
-->columns(
-    [
-        'inv_id', 
-        'title_alias' => 'inv_title',
-    ]
-)
-->from(Invoices::class)
+    ->columns(
+        [
+            'inv_id', 
+            'title_alias' => 'inv_title',
+        ]
+    )
+    ->from(Invoices::class)
 ;
 
 // SELECT 
@@ -2538,8 +2540,8 @@ $builder
 // WHERE 
 //      Invoices.inv_cst_id = 1
 $builder
-->from(Invoices::class)
-->where("Invoices.inv_cst_id = 1")
+    ->from(Invoices::class)
+    ->where("Invoices.inv_cst_id = 1")
 ;
 
 // SELECT 
@@ -2549,8 +2551,8 @@ $builder
 // WHERE 
 //      Invoices.inv_id = 1
 $builder
-->from(Invoices::class)
-->where(1)
+    ->from(Invoices::class)
+    ->where(1)
 ;
 
 // SELECT 
@@ -2562,9 +2564,9 @@ $builder
 // AND 
 //      Invoices.inv_total > 1000
 $builder
-->from(Invoices::class)
-->where("inv_cst_id = 1")
-->andWhere('inv_total > 1000')
+    ->from(Invoices::class)
+    ->where("inv_cst_id = 1")
+    ->andWhere('inv_total > 1000')
 ;
 
 // SELECT 
@@ -2576,10 +2578,11 @@ $builder
 // OR 
 //      Invoices.inv_total > 1000
 $builder
-->from(Invoices::class)
-->where("inv_cst_id = 1")
-->orWhere('inv_total > 1000')
+    ->from(Invoices::class)
+    ->where("inv_cst_id = 1")
+    ->orWhere('inv_total > 1000')
 ;
+
 
 // SELECT 
 //      Invoices.* 
@@ -2588,8 +2591,8 @@ $builder
 // GROUP BY 
 //      Invoices.inv_cst_id
 $builder
-->from(Invoices::class)
-->groupBy('Invoices.inv_cst_id')
+    ->from(Invoices::class)
+    ->groupBy('Invoices.inv_cst_id')
 ;
 
 // SELECT 
@@ -2600,13 +2603,13 @@ $builder
 //      Invoices.inv_cst_id,
 //      Invoices.inv_status_flag
 $builder
-->from(Invoices::class)
-->groupBy(
-    [
-        'Invoices.inv_cst_id',
-        'Invoices.inv_status_flag',
-    ]
-)
+    ->from(Invoices::class)
+    ->groupBy(
+        [
+            'Invoices.inv_cst_id',
+            'Invoices.inv_status_flag',
+        ]
+    )
 ;
 
 // SELECT 
@@ -2617,14 +2620,14 @@ $builder
 // GROUP BY 
 //      Invoices.inv_cst_id
 $builder
-->columns(
-    [
-        'Invoices.inv_title', 
-        'total' => 'SUM(Invoices.inv_total)'
-    ]
-)
-->from(Invoices::class)
-->groupBy('Invoices.inv_cst_id')
+    ->columns(
+        [
+            'Invoices.inv_title', 
+            'total' => 'SUM(Invoices.inv_total)'
+        ]
+    )
+    ->from(Invoices::class)
+    ->groupBy('Invoices.inv_cst_id')
 ;
 
 // SELECT 
@@ -2637,15 +2640,15 @@ $builder
 // HAVING
 //      Invoices.inv_total > 1000
 $builder
-->columns(
-    [
-        'Invoices.inv_title', 
-        'total' => 'SUM(Invoices.inv_total)'
-    ]
-)
-->from(Invoices::class)
-->groupBy('Invoices.inv_cst_id')
-->having('SUM(Invoices.inv_total) > 1000')
+    ->columns(
+        [
+            'Invoices.inv_title', 
+            'total' => 'SUM(Invoices.inv_total)'
+        ]
+    )
+    ->from(Invoices::class)
+    ->groupBy('Invoices.inv_cst_id')
+    ->having('SUM(Invoices.inv_total) > 1000')
 ;
 
 // SELECT 
@@ -2655,8 +2658,8 @@ $builder
 // JOIN 
 //      Customers
 $builder
-->from(Invoices::class)
-->join(Customers::class)
+    ->from(Invoices::class)
+    ->join(Customers::class)
 ;
 
 // SELECT 
@@ -2666,8 +2669,8 @@ $builder
 // JOIN 
 //      Customers AS c
 $builder
-->from(Invoices::class)
-->join(Customers::class, null, 'c')
+    ->from(Invoices::class)
+    ->join(Customers::class, null, 'c')
 ;
 
 // SELECT 
@@ -2679,12 +2682,12 @@ $builder
 // ON
 //      i.inv_cst_id = c.cst_id
 $builder
-->from(Invoices::class, 'i')
-->join(
-    Customers::class, 
-    'i.inv_cst_id = c.cst_id', 
-    'c'
-)
+    ->from(Invoices::class, 'i')
+    ->join(
+        Customers::class, 
+        'i.inv_cst_id = c.cst_id', 
+        'c'
+    )
 ;
 
 // SELECT 
@@ -2700,17 +2703,17 @@ $builder
 // ON
 //      x.ixp_prd_id = p.prd_id
 $builder
-->addFrom(Invoices::class, 'i')
-->join(
-    InvoicesXProducts::class, 
-    'i.inv_id = x.ixp_inv_id', 
-    'x'
-)
-->join(
-    Products::class, 
-    'x.ixp_prd_id = p.prd_id', 
-    'p'
-)
+    ->addFrom(Invoices::class, 'i')
+    ->join(
+        InvoicesXProducts::class, 
+        'i.inv_id = x.ixp_inv_id', 
+        'x'
+    )
+    ->join(
+        Products::class, 
+        'x.ixp_prd_id = p.prd_id', 
+        'p'
+    )
 ;
 
 // SELECT 
@@ -2720,8 +2723,8 @@ $builder
 //      Invoices, 
 //      Customers AS c
 $builder
-->from(Invoices::class)
-->addFrom(Customers::class, 'c')
+    ->from(Invoices::class)
+    ->addFrom(Customers::class, 'c')
 ;
 
 // SELECT 
@@ -2731,13 +2734,14 @@ $builder
 //      Invoices AS i, 
 //      Customers AS c
 $builder
-->from(
-    [
-        'i' => Invoices::class,
-        'c' => Customers::class,
-    ]
-)
+    ->from(
+        [
+            'i' => Invoices::class,
+            'c' => Customers::class,
+        ]
+    )
 ;
+
 
 // SELECT 
 //      Invoices.* 
@@ -2746,8 +2750,8 @@ $builder
 // LIMIT 
 //      10
 $builder
-->from(Invoices::class)
-->limit(10)
+    ->from(Invoices::class)
+    ->limit(10)
 ;
 
 // SELECT 
@@ -2759,8 +2763,8 @@ $builder
 // OFFSET
 //      5
 $builder
-->from(Invoices::class)
-->limit(10, 5)
+    ->from(Invoices::class)
+    ->limit(10, 5)
 ;
 
 // SELECT 
@@ -2774,8 +2778,8 @@ $builder
 // AND 
 //      100
 $builder
-->from(Invoices::class)
-->betweenWhere('inv_id', 1, 100)
+    ->from(Invoices::class)
+    ->betweenWhere('inv_id', 1, 100)
 ;
 
 // SELECT 
@@ -2787,11 +2791,11 @@ $builder
 // IN 
 //      (1, 2, 3)
 $builder
-->from(Invoices::class)
-->inWhere(
-    'inv_id', 
-    [1, 2, 3]
-)
+    ->from(Invoices::class)
+    ->inWhere(
+        'inv_id', 
+        [1, 2, 3]
+    )
 ;
 
 // SELECT 
@@ -2803,11 +2807,11 @@ $builder
 // NOT IN 
 //      (1, 2, 3)
 $builder
-->from(Invoices::class)
-->notInWhere(
-    'inv_id', 
-    [1, 2, 3]
-)
+    ->from(Invoices::class)
+    ->notInWhere(
+        'inv_id', 
+        [1, 2, 3]
+    )
 ;
 
 // SELECT 
@@ -2820,13 +2824,13 @@ $builder
 //      '%ACME%';
 $title = 'ACME';
 $builder
-->from(Invoices::class)
-->where(
-    'inv_title LIKE :title:', 
-    [
-        'title' => '%' . $title . '%',
-    ]
-)
+    ->from(Invoices::class)
+    ->where(
+        'inv_title LIKE :title:', 
+        [
+            'title' => '%' . $title . '%',
+        ]
+    )
 ;
 ```
 
@@ -2837,37 +2841,37 @@ Bound parameters in the query builder can be set as the query is built or when i
 <?php
 
 $invoices = $this
-->modelsManager
-->createBuilder()
-->from(Invoices::class)
-->where(
-    'inv_cst_id = :cst_id:', 
-    [
-        'cst_id' => 1,
-    ]
-)
-->andWhere(
-    'inv_total = :total:', 
-    [
-        'total' => 1000,
-    ]
-)
-->getQuery()
-->execute();
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->where(
+        'inv_cst_id = :cst_id:', 
+        [
+            'cst_id' => 1,
+        ]
+    )
+    ->andWhere(
+        'inv_total = :total:', 
+        [
+            'total' => 1000,
+        ]
+    )
+    ->getQuery()
+    ->execute();
 
 $invoices = $this
-->modelsManager
-->createBuilder()
-->from(Invoices::class)
-->where('inv_cst_id = :cst_id:')
-->andWhere('inv_total = :total:')
-->getQuery()
-->execute(
-    [
-        'cst_id' => 1,
-        'total'  => 1000,
-    ]
-)
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->where('inv_cst_id = :cst_id:')
+    ->andWhere('inv_total = :total:')
+    ->getQuery()
+    ->execute(
+        [
+            'cst_id' => 1,
+            'total'  => 1000,
+        ]
+    )
 ;
 ```
 
@@ -2906,10 +2910,10 @@ Which is always `true` no matter what the login stored in the database is. If li
 $login  = 'admin';
 $phql   = "SELECT * FROM Users WHERE login = :login:";
 $result = $manager->executeQuery(
-$phql,
-[
-    'login' => $login,
-]
+    $phql,
+    [
+        'login' => $login,
+    ]
 );
 ```
 
@@ -2921,9 +2925,9 @@ You can disallow literals as follows:
 use Phalcon\Mvc\Model;
 
 Model::setup(
-[
-    'phqlLiterals' => false
-]
+    [
+        'phqlLiterals' => false
+    ]
 );
 ```
 
@@ -2957,25 +2961,25 @@ use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
 
 $dialect = new Dialect();
 $dialect->registerCustomFunction(
-'MATCH_AGAINST',
-function ($dialect, $expression) {
-    $arguments = $expression['arguments'];
-    return sprintf(
-        " MATCH (%s) AGAINST (%s)",
-        $dialect->getSqlExpression($arguments[0]),
-        $dialect->getSqlExpression($arguments[1])
-     );
-}
+    'MATCH_AGAINST',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%s)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
 );
 
 $connection = new Connection(
-[
-    "host"          => "localhost",
-    "username"      => "root",
-    "password"      => "secret",
-    "dbname"        => "phalcon",
-    "dialectClass"  => $dialect
-]
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "secret",
+        "dbname"        => "phalcon",
+        "dialectClass"  => $dialect
+    ]
 );
 ```
 
@@ -2984,16 +2988,16 @@ Now you can use this function in PHQL, and it internally translates to the corre
 ```php
 
 $phql = "SELECT *
-     FROM Invoices
-     WHERE MATCH_AGAINST(inv_title, :pattern:)";
+         FROM Invoices
+         WHERE MATCH_AGAINST(inv_title, :pattern:)";
 
 $invoices = $modelsManager
-->executeQuery(
-    $phql, 
-    [
-        'pattern' => $pattern
-    ]
-)
+    ->executeQuery(
+        $phql, 
+        [
+            'pattern' => $pattern
+        ]
+    )
 ;
 ```
 
@@ -3007,39 +3011,39 @@ use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
 
 $dialect = new Dialect();
 $dialect->registerCustomFunction(
-'GROUPCONCAT',
-function ($dialect, $expression) {
-    $arguments = $expression['arguments'];
-    if (true !== empty($arguments[2])) {
-        return sprintf(
-            " GROUP_CONCAT(DISTINCT %s ORDER BY %s SEPARATOR %s)",
-            $dialect->getSqlExpression($arguments[0]),
-            $dialect->getSqlExpression($arguments[1]),
-            $dialect->getSqlExpression($arguments[2]),
-        );
-    } elseif (true !== empty($arguments[1])) {
-        return sprintf(
-            " GROUP_CONCAT(%s SEPARATOR %s)",
-            $dialect->getSqlExpression($arguments[0]),
-            $dialect->getSqlExpression($arguments[1])
-        );
-    } else {
-        return sprintf(
-            " GROUP_CONCAT(%s)",
-            $dialect->getSqlExpression($arguments[0])
-        );
+    'GROUPCONCAT',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        if (true !== empty($arguments[2])) {
+            return sprintf(
+                " GROUP_CONCAT(DISTINCT %s ORDER BY %s SEPARATOR %s)",
+                $dialect->getSqlExpression($arguments[0]),
+                $dialect->getSqlExpression($arguments[1]),
+                $dialect->getSqlExpression($arguments[2]),
+            );
+        } elseif (true !== empty($arguments[1])) {
+            return sprintf(
+                " GROUP_CONCAT(%s SEPARATOR %s)",
+                $dialect->getSqlExpression($arguments[0]),
+                $dialect->getSqlExpression($arguments[1])
+            );
+        } else {
+            return sprintf(
+                " GROUP_CONCAT(%s)",
+                $dialect->getSqlExpression($arguments[0])
+            );
+        }
     }
-}
 );
 
 $connection = new Connection(
-[
-    "host"          => "localhost",
-    "username"      => "root",
-    "password"      => "secret",
-    "dbname"        => "phalcon",
-    "dialectClass"  => $dialect
-]
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "secret",
+        "dbname"        => "phalcon",
+        "dialectClass"  => $dialect
+    ]
 );
 ```
 
@@ -3048,15 +3052,15 @@ Now you can use this function in PHQL, and it internally translates to the corre
 ```php
 
 $phql = "SELECT GROUPCONCAT(inv_title, inv_title, :separator:)
-     FROM Invoices";
+         FROM Invoices";
 
 $invoices = $modelsManager
-->executeQuery(
-    $phql, 
-    [
-        'separator' => ", "
-    ]
-)
+    ->executeQuery(
+        $phql, 
+        [
+            'separator' => ", "
+        ]
+    )
 ;
 ```
 
@@ -3070,21 +3074,21 @@ PHQL queries can be cached. You can also check the [Models Caching][db-models-ca
 
 $phql  = 'SELECT * FROM Customers WHERE cst_id = :cst_id:';
 $query = $this
-->modelsManager
-->createQuery($phql)
+    ->modelsManager
+    ->createQuery($phql)
 ;
 
 $query->cache(
-[
-    'key'      => 'customers-1',
-    'lifetime' => 300,
-]
+    [
+        'key'      => 'customers-1',
+        'lifetime' => 300,
+    ]
 );
 
 $invoice = $query->execute(
-[
-    'cst_id' => 1,
-]
+    [
+        'cst_id' => 1,
+    ]
 );
 ```
 
@@ -3106,18 +3110,18 @@ use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
 class Invoices extends Model
 {
-public static function findByCreateInterval()
-{
-    $sql     = 'SELECT * FROM Invoices WHERE inv_id > 1';
-    $invoice = new Invoices();
+    public static function findByCreateInterval()
+    {
+        $sql     = 'SELECT * FROM Invoices WHERE inv_id > 1';
+        $invoice = new Invoices();
 
-    // Execute the query
-    return new Resultset(
-        null,
-        $invoice,
-        $invoice->getReadConnection()->query($sql)
-    );
-}
+        // Execute the query
+        return new Resultset(
+            null,
+            $invoice,
+            $invoice->getReadConnection()->query($sql)
+        );
+    }
 }
 ```
 
@@ -3131,20 +3135,20 @@ use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
 class Invoices extends Model
 {
-public static function findByRawSql(
-    string $conditions, 
-    array $params = null
-) {
-    $sql     = 'SELECT * FROM Invoices WHERE ' . $conditions;
-    $invoice = new Invoices();
+    public static function findByRawSql(
+        string $conditions, 
+        array $params = null
+    ) {
+        $sql     = 'SELECT * FROM Invoices WHERE ' . $conditions;
+        $invoice = new Invoices();
 
-    // Execute the query
-    return new Resultset(
-        null,
-        $invoice,
-        $invoice->getReadConnection()->query($sql, $params)
-    );
-}
+        // Execute the query
+        return new Resultset(
+            null,
+            $invoice,
+            $invoice->getReadConnection()->query($sql, $params)
+        );
+    }
 }
 ```
 
@@ -3154,10 +3158,10 @@ The above `findByRawSql` could be used as follows:
 <?php
 
 $robots = Invoices::findByRawSql(
-'id > ?0',
-[
-    10
-]
+    'id > ?0',
+    [
+        10
+    ]
 );
 ```
 

@@ -135,10 +135,10 @@ Enable/Disable model binding during dispatch
 <?php
 
 $di->set('dispatcher', function() {
-$dispatcher = new Dispatcher();
+    $dispatcher = new Dispatcher();
 
-$dispatcher->setModelBinding(true, 'cache');
-return $dispatcher;
+    $dispatcher->setModelBinding(true, 'cache');
+    return $dispatcher;
 });
 
 ```
@@ -151,10 +151,10 @@ Enable model binding during dispatch
 <?php
 
 $di->set('dispatcher', function() {
-$dispatcher = new Dispatcher();
+    $dispatcher = new Dispatcher();
 
-$dispatcher->setModelBinder(new Binder(), 'cache');
-return $dispatcher;
+    $dispatcher->setModelBinder(new Binder(), 'cache');
+    return $dispatcher;
 });
 
 ```
@@ -179,10 +179,10 @@ Forwards the execution flow to another controller/action.
 <?php
 
 $this->dispatcher->forward(
-[
-    "controller" => "posts",
-    "action"     => "index",
-]
+    [
+        "controller" => "posts",
+        "action"     => "index",
+    ]
 );
 
 ```
@@ -208,10 +208,10 @@ Returns bound models from binder instance
 
 class UserController extends Controller
 {
-public function showAction(User $user)
-{
-    $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
-}
+    public function showAction(User $user)
+    {
+        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+    }
 }
 
 ```

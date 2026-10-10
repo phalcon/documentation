@@ -46,23 +46,23 @@ After that you can execute that migrations (run) in another environment to creat
 use Phalcon\Config;
 
 return new Config([
-'database' => [
-    'adapter' => 'mysql',
-    'host' => '127.0.0.1',
-    'username' => 'root',
-    'password' => '',
-    'dbname' => 'db-name',
-    'charset' => 'utf8',
-],
-'application' => [
-    'logInDb' => true,
-    'migrationsDir' => 'db/migrations',
-    'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
-    'exportDataFromTables' => [
-        // Tables names
-        // Attention! It will export data every new migration
+    'database' => [
+        'adapter' => 'mysql',
+        'host' => '127.0.0.1',
+        'username' => 'root',
+        'password' => '',
+        'dbname' => 'db-name',
+        'charset' => 'utf8',
     ],
-],
+    'application' => [
+        'logInDb' => true,
+        'migrationsDir' => 'db/migrations',
+        'migrationsTsBased' => true, // true - Use TIMESTAMP as version name, false - use versions
+        'exportDataFromTables' => [
+            // Tables names
+            // Attention! It will export data every new migration
+        ],
+    ],
 ]);
 ```
 
@@ -78,10 +78,10 @@ vendor/bin/phalcon-migrations generate
 
 ```
 vendor/bin/phalcon-migrations generate \
---config=migrations.php \
---table=users \
---exportDataFromTables=users \
---data=oncreate
+    --config=migrations.php \
+    --table=users \
+    --exportDataFromTables=users \
+    --data=oncreate
 ```
 
 ### Run migrations
@@ -105,18 +105,18 @@ use Phalcon\Migrations\Migrations;
 
 $migration = new Migrations();
 $migration::run([
-'migrationsDir' => [
-    __DIR__ . '/migrations',
-],
-'config' => [
-    'database' => [
-        'adapter' => 'Mysql',
-        'host' => 'phalcon-db-mysql',
-        'username' => 'root',
-        'password' => 'root',
-        'dbname' => 'vokuro',
+    'migrationsDir' => [
+        __DIR__ . '/migrations',
     ],
-]
+    'config' => [
+        'database' => [
+            'adapter' => 'Mysql',
+            'host' => 'phalcon-db-mysql',
+            'username' => 'root',
+            'password' => 'root',
+            'dbname' => 'vokuro',
+        ],
+    ]
 ]);
 ```
 
@@ -138,6 +138,7 @@ The tables below show the Migration Class methods. They are stored by order of e
 | afterCreateTable | Make something immediately after table was created |
 | up               | Table is created and ready to work with |
 | afterUp          | Extra method to work for some specific cases |
+
 
 **Running to down**
 

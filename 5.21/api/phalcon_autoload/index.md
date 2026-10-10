@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Autoload\Exception
 
 Class
@@ -20,24 +21,24 @@ Class
 Exceptions thrown in Phalcon\Autoload will use this class
 
 - `\Exception`
-- **`Phalcon\Autoload\Exception`**
-- [`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`](#autoloadexceptionsloaderdirectoriesnotarray)
-- [`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`](#autoloadexceptionsloadermethodnotcallable)
+  - **`Phalcon\Autoload\Exception`**
+    - [`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`](#autoloadexceptionsloaderdirectoriesnotarray)
+    - [`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`](#autoloadexceptionsloadermethodnotcallable)
+
 
 ## Autoload\Exceptions\LoaderDirectoriesNotArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Autoload\Exception`](#autoloadexception)
-- **`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`**
+  - [`Phalcon\Autoload\Exception`](#autoloadexception)
+    - **`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray`**
 
 `Phalcon\Autoload\Exception`
 
 ### Method Summary
 
-<ApiItem href="#autoloadexceptionsloaderdirectoriesnotarray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":"\"\""}]}>
-</ApiItem>
+- `public __construct(string $name = "")`
 
 ### Methods
 
@@ -47,20 +48,20 @@ Class
 public function __construct( string $name = "" );
 ```
 
+
 ## Autoload\Exceptions\LoaderMethodNotCallable
 
 Class
 
 - `\Exception`
-- [`Phalcon\Autoload\Exception`](#autoloadexception)
-- **`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`**
+  - [`Phalcon\Autoload\Exception`](#autoloadexception)
+    - **`Phalcon\Autoload\Exceptions\LoaderMethodNotCallable`**
 
 `Phalcon\Autoload\Exception`
 
 ### Method Summary
 
-<ApiItem href="#autoloadexceptionsloadermethodnotcallable-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -69,6 +70,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Autoload\Loader
 
@@ -84,112 +86,84 @@ allowing the user to autoload files with different extensions than .php.
 
 ### Method Summary
 
-<ApiItem href="#autoloadloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"bool","name":"isDebug","default":"false"}]}>
-Loader constructor.
-</ApiItem>
-<ApiItem href="#autoloadloader-addclass" visibility="public" name="addClass" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"string","name":"file","default":null}]}>
-Adds a class to the internal collection for the mapping
-</ApiItem>
-<ApiItem href="#autoloadloader-adddirectory" visibility="public" name="addDirectory" returnType="static" params={[{"type":"string","name":"directory","default":null}]}>
-Adds a directory for the loaded files
-</ApiItem>
-<ApiItem href="#autoloadloader-addextension" visibility="public" name="addExtension" returnType="static" params={[{"type":"string","name":"extension","default":null}]}>
-Adds an extension for the loaded files
-</ApiItem>
-<ApiItem href="#autoloadloader-addfile" visibility="public" name="addFile" returnType="static" params={[{"type":"string","name":"file","default":null}]}>
-Adds a file to be added to the loader
-</ApiItem>
-<ApiItem href="#autoloadloader-addnamespace" visibility="public" name="addNamespace" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"directories","default":null},{"type":"bool","name":"prepend","default":"false"}]}>
-</ApiItem>
-<ApiItem href="#autoloadloader-autoload" visibility="public" name="autoload" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
-Autoloads the registered classes
-</ApiItem>
-<ApiItem href="#autoloadloader-getcheckedpath" visibility="public" name="getCheckedPath" returnType="string|null" params={[]}>
-Get the path the loader is checking for a path
-</ApiItem>
-<ApiItem href="#autoloadloader-getclasses" visibility="public" name="getClasses" returnType="array" params={[]}>
-Returns the class-map currently registered in the autoloader
-</ApiItem>
-<ApiItem href="#autoloadloader-getdebug" visibility="public" name="getDebug" returnType="array" params={[]}>
-Returns debug information collected
-</ApiItem>
-<ApiItem href="#autoloadloader-getdirectories" visibility="public" name="getDirectories" returnType="array" params={[]}>
-Returns the directories currently registered in the autoloader
-</ApiItem>
-<ApiItem href="#autoloadloader-getextensions" visibility="public" name="getExtensions" returnType="array" params={[]}>
-Returns the file extensions registered in the loader
-</ApiItem>
-<ApiItem href="#autoloadloader-getfiles" visibility="public" name="getFiles" returnType="array" params={[]}>
-Returns the files currently registered in the autoloader
-</ApiItem>
-<ApiItem href="#autoloadloader-getfoundpath" visibility="public" name="getFoundPath" returnType="string|null" params={[]}>
-Get the path when a class was found
-</ApiItem>
-<ApiItem href="#autoloadloader-getnamespaces" visibility="public" name="getNamespaces" returnType="array" params={[]}>
-Returns the namespaces currently registered in the autoloader
-</ApiItem>
-<ApiItem href="#autoloadloader-isregistered" visibility="public" name="isRegistered" returnType="bool" params={[]}>
-Returns isRegistered
-</ApiItem>
-<ApiItem href="#autoloadloader-loadfiles" visibility="public" name="loadFiles" returnType="void" params={[]}>
-Checks if a file exists and then adds the file by doing virtual require
-</ApiItem>
-<ApiItem href="#autoloadloader-register" visibility="public" name="register" returnType="static" params={[{"type":"bool","name":"prepend","default":"false"}]}>
-Register the autoload method
-</ApiItem>
-<ApiItem href="#autoloadloader-setclasses" visibility="public" name="setClasses" returnType="static" params={[{"type":"array","name":"classes","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Register classes and their locations
-</ApiItem>
-<ApiItem href="#autoloadloader-setdirectories" visibility="public" name="setDirectories" returnType="static" params={[{"type":"array","name":"directories","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Register directories in which "not found" classes could be found
-</ApiItem>
-<ApiItem href="#autoloadloader-setextensions" visibility="public" name="setExtensions" returnType="static" params={[{"type":"array","name":"extensions","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Sets an array of file extensions that the loader must try in each attempt
-</ApiItem>
-<ApiItem href="#autoloadloader-setfilecheckingcallback" visibility="public" name="setFileCheckingCallback" returnType="static" params={[{"type":"mixed","name":"method","default":"null"}]}>
-Sets the file check callback.
-</ApiItem>
-<ApiItem href="#autoloadloader-setfiles" visibility="public" name="setFiles" returnType="static" params={[{"type":"array","name":"files","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Registers files that are "non-classes" hence need a "require". This is
-</ApiItem>
-<ApiItem href="#autoloadloader-setnamespaces" visibility="public" name="setNamespaces" returnType="static" params={[{"type":"array","name":"namespaces","default":null},{"type":"bool","name":"merge","default":"false"}]}>
-Register namespaces and their related directories
-</ApiItem>
-<ApiItem href="#autoloadloader-unregister" visibility="public" name="unregister" returnType="static" params={[]}>
-Unregister the autoload method
-</ApiItem>
-<ApiItem href="#autoloadloader-requirefile" visibility="protected" name="requireFile" returnType="bool" params={[{"type":"string","name":"file","default":null}]}>
-If the file exists, require it and return true; false otherwise
-</ApiItem>
+- `public __construct(bool $isDebug = false)` — Loader constructor.
+
+- `public addClass(string $name, string $file): static` — Adds a class to the internal collection for the mapping
+
+- `public addDirectory(string $directory): static` — Adds a directory for the loaded files
+
+- `public addExtension(string $extension): static` — Adds an extension for the loaded files
+
+- `public addFile(string $file): static` — Adds a file to be added to the loader
+
+- `public addNamespace(string $name, mixed $directories, bool $prepend = false): static`
+
+- `public autoload(string $className): bool` — Autoloads the registered classes
+
+- `public getCheckedPath(): string|null` — Get the path the loader is checking for a path
+
+- `public getClasses(): array` — Returns the class-map currently registered in the autoloader
+
+- `public getDebug(): array` — Returns debug information collected
+
+- `public getDirectories(): array` — Returns the directories currently registered in the autoloader
+
+- `public getExtensions(): array` — Returns the file extensions registered in the loader
+
+- `public getFiles(): array` — Returns the files currently registered in the autoloader
+
+- `public getFoundPath(): string|null` — Get the path when a class was found
+
+- `public getNamespaces(): array` — Returns the namespaces currently registered in the autoloader
+
+- `public isRegistered(): bool` — Returns isRegistered
+
+- `public loadFiles(): void` — Checks if a file exists and then adds the file by doing virtual require
+
+- `public register(bool $prepend = false): static` — Register the autoload method
+
+- `public setClasses(array $classes, bool $merge = false): static` — Register classes and their locations
+
+- `public setDirectories(array $directories, bool $merge = false): static` — Register directories in which "not found" classes could be found
+
+- `public setExtensions(array $extensions, bool $merge = false): static` — Sets an array of file extensions that the loader must try in each attempt
+
+- `public setFileCheckingCallback(mixed $method = null): static` — Sets the file check callback.
+
+- `public setFiles(array $files, bool $merge = false): static` — Registers files that are "non-classes" hence need a "require". This is
+
+- `public setNamespaces(array $namespaces, bool $merge = false): static` — Register namespaces and their related directories
+
+- `public unregister(): static` — Unregister the autoload method
+
+- `protected requireFile(string $file): bool` — If the file exists, require it and return true; false otherwise
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="checkedPath" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="classes" type="autoload_strings" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="debug" type="array&lt;int, string&gt;" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="directories" type="autoload_strings" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="extensions" type="autoload_strings" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="fileCheckingCallback" type="callable" default="&quot;is_file&quot;">
-Always holds a callable. The setter accepts a callable or a callable
-string and rejects anything else.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="files" type="autoload_strings" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="foundPath" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isDebug" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isRegistered" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="namespaces" type="autoload_namespaces" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="nestingLevel" type="int" default="0">
-</ApiItem>
+- `protected string|null $checkedPath = null`
+
+- `protected autoload_strings $classes = []`
+
+- `protected array<int, string> $debug = []`
+
+- `protected autoload_strings $directories = []`
+
+- `protected autoload_strings $extensions = []`
+
+- `protected callable $fileCheckingCallback = "is_file"` — Always holds a callable. The setter accepts a callable or a callable
+  string and rejects anything else.
+
+- `protected autoload_strings $files = []`
+
+- `protected string|null $foundPath = null`
+
+- `protected bool $isDebug = false`
+
+- `protected bool $isRegistered = false`
+
+- `protected autoload_namespaces $namespaces = []`
+
+- `protected int $nestingLevel = 0`
 
 ### Methods
 
@@ -205,8 +179,8 @@ Loader constructor.
 
 ```php
 public function addClass(
-string $name,
-string $file
+    string $name,
+    string $file
 ): static;
 ```
 
@@ -240,9 +214,9 @@ Adds a file to be added to the loader
 
 ```php
 public function addNamespace(
-string $name,
-mixed $directories,
-bool $prepend = false
+    string $name,
+    mixed $directories,
+    bool $prepend = false
 ): static;
 ```
 
@@ -346,8 +320,8 @@ Register the autoload method
 
 ```php
 public function setClasses(
-array $classes,
-bool $merge = false
+    array $classes,
+    bool $merge = false
 ): static;
 ```
 
@@ -357,8 +331,8 @@ Register classes and their locations
 
 ```php
 public function setDirectories(
-array $directories,
-bool $merge = false
+    array $directories,
+    bool $merge = false
 ): static;
 ```
 
@@ -368,8 +342,8 @@ Register directories in which "not found" classes could be found
 
 ```php
 public function setExtensions(
-array $extensions,
-bool $merge = false
+    array $extensions,
+    bool $merge = false
 ): static;
 ```
 
@@ -400,8 +374,8 @@ $loader->setFileCheckingCallback(null);
 
 ```php
 public function setFiles(
-array $files,
-bool $merge = false
+    array $files,
+    bool $merge = false
 ): static;
 ```
 
@@ -412,8 +386,8 @@ very useful for including files that only have functions
 
 ```php
 public function setNamespaces(
-array $namespaces,
-bool $merge = false
+    array $namespaces,
+    bool $merge = false
 ): static;
 ```
 

@@ -33,14 +33,15 @@ Class AbstractFlash
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.18/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
-- [`Phalcon\Flash\Direct`](#flashdirect)
-- [`Phalcon\Flash\Session`](#flashsession)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.18/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Flash\AbstractFlash`** - implements [`Phalcon\Flash\FlashInterface`](#flashflashinterface)
+            - [`Phalcon\Flash\Direct`](#flashdirect)
+            - [`Phalcon\Flash\Session`](#flashsession)
 
 </div>
 
 __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Helper\Str\Interpolate`
+
 
 ### Method Summary
 
@@ -230,8 +231,8 @@ __Uses__ `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\Di` · `Phalcon\Di\D
 
 ```php
 public function __construct(
-EscaperInterface $escaper = null,
-SessionInterface $session = null
+    EscaperInterface $escaper = null,
+    SessionInterface $session = null
 );
 ```
 
@@ -299,8 +300,8 @@ Returns the Escaper Service
 
 ```php
 abstract public function message(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -324,8 +325,8 @@ $flash->notice("This is an information");
 
 ```php
 public function outputMessage(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -420,6 +421,7 @@ Shows a HTML warning message
 $flash->warning("Hey, this is important");
 ```
 
+
 ## Flash\Direct
 
 <span class="badge badge--class">Class</span>
@@ -432,9 +434,9 @@ Class Direct
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.18/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-- **`Phalcon\Flash\Direct`**
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.18/api/phalcon_di/#diabstractinjectionaware)
+        - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+            - **`Phalcon\Flash\Direct`**
 
 </div>
 
@@ -463,8 +465,8 @@ Class Direct
 
 ```php
 public function message(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -478,6 +480,7 @@ public function output( bool $remove = true ): void;
 
 Prints the messages accumulated in the flasher
 
+
 ## Flash\Exception
 
 <span class="badge badge--class">Class</span>
@@ -488,12 +491,13 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Flash\Exception`**
-- [`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`](#flashexceptionsescaperserviceunavailable)
-- [`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`](#flashexceptionsflashmessagenotstringorarray)
-- [`Phalcon\Flash\Exceptions\SessionServiceUnavailable`](#flashexceptionssessionserviceunavailable)
+    - **`Phalcon\Flash\Exception`**
+        - [`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`](#flashexceptionsescaperserviceunavailable)
+        - [`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`](#flashexceptionsflashmessagenotstringorarray)
+        - [`Phalcon\Flash\Exceptions\SessionServiceUnavailable`](#flashexceptionssessionserviceunavailable)
 
 </div>
+
 
 ## Flash\Exceptions\EscaperServiceUnavailable
 
@@ -503,12 +507,13 @@ Exceptions thrown in Phalcon\Flash classes will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Flash\Exception`](#flashexception)
-- **`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`**
+    - [`Phalcon\Flash\Exception`](#flashexception)
+        - **`Phalcon\Flash\Exceptions\EscaperServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Flash\Exception`
+
 
 ### Method Summary
 
@@ -529,6 +534,7 @@ __Uses__ `Phalcon\Flash\Exception`
 public function __construct();
 ```
 
+
 ## Flash\Exceptions\FlashMessageNotStringOrArray
 
 <span class="badge badge--class">Class</span>
@@ -537,12 +543,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Flash\Exception`](#flashexception)
-- **`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`**
+    - [`Phalcon\Flash\Exception`](#flashexception)
+        - **`Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray`**
 
 </div>
 
 __Uses__ `Phalcon\Flash\Exception`
+
 
 ### Method Summary
 
@@ -563,6 +570,7 @@ __Uses__ `Phalcon\Flash\Exception`
 public function __construct();
 ```
 
+
 ## Flash\Exceptions\SessionServiceUnavailable
 
 <span class="badge badge--class">Class</span>
@@ -571,12 +579,13 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Flash\Exception`](#flashexception)
-- **`Phalcon\Flash\Exceptions\SessionServiceUnavailable`**
+    - [`Phalcon\Flash\Exception`](#flashexception)
+        - **`Phalcon\Flash\Exceptions\SessionServiceUnavailable`**
 
 </div>
 
 __Uses__ `Phalcon\Flash\Exception`
+
 
 ### Method Summary
 
@@ -597,6 +606,7 @@ __Uses__ `Phalcon\Flash\Exception`
 public function __construct();
 ```
 
+
 ## Flash\FlashInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -607,11 +617,13 @@ Interface FlashInterface
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Flash\Flash`](/5.18/api/phalcon_contracts/#contractsflashflash)
-- **`Phalcon\Flash\FlashInterface`**
+    - **`Phalcon\Flash\FlashInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Flash\Flash`
+
+
 
 ## Flash\Session
 
@@ -629,13 +641,14 @@ Class Session
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.18/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
-- **`Phalcon\Flash\Session`**
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.18/api/phalcon_di/#diabstractinjectionaware)
+        - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
+            - **`Phalcon\Flash\Session`**
 
 </div>
 
 __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
+
 
 ### Method Summary
 
@@ -722,9 +735,9 @@ __Uses__ `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\E
 
 ```php
 public function __construct(
-EscaperInterface $escaper = null,
-ManagerInterface $session = null,
-string $sessionKey = null
+    EscaperInterface $escaper = null,
+    ManagerInterface $session = null,
+    string $sessionKey = null
 );
 ```
 
@@ -742,8 +755,8 @@ Clear messages in the session messenger
 
 ```php
 public function getMessages(
-mixed $type = null,
-bool $remove = true
+    mixed $type = null,
+    bool $remove = true
 ): array;
 ```
 
@@ -769,8 +782,8 @@ Checks whether there are messages
 
 ```php
 public function message(
-string $type,
-mixed $message
+    string $type,
+    mixed $message
 ): string|null;
 ```
 
@@ -790,8 +803,8 @@ Prints the messages in the session flasher
 
 ```php
 protected function getSessionMessages(
-bool $remove,
-string $type = null
+    bool $remove,
+    string $type = null
 ): array;
 ```
 

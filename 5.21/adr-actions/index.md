@@ -30,19 +30,19 @@ use Phalcon\Http\ResponseInterface;
 
 final class GetInvoices implements Action
 {
-public function __construct(
-    private ViewInvoice $domain,
-    private Responder $responder
-) {
-}
+    public function __construct(
+        private ViewInvoice $domain,
+        private Responder $responder
+    ) {
+    }
 
-public function __invoke(AttributeRequest $request): ResponseInterface
-{
-    $input   = Input::fromRequest($request);
-    $payload = ($this->domain)($input);
+    public function __invoke(AttributeRequest $request): ResponseInterface
+    {
+        $input   = Input::fromRequest($request);
+        $payload = ($this->domain)($input);
 
-    return ($this->responder)($request, new Response(), $payload);
-}
+        return ($this->responder)($request, new Response(), $payload);
+    }
 }
 ```
 

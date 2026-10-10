@@ -136,10 +136,10 @@ declare(strict_types=1);
 
 class TestController extends \Phalcon\Mvc\Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 }
 
 ```
@@ -161,27 +161,27 @@ defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirn
 defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 
 return new \Phalcon\Config([
-'database' => [
-    'adapter'     => 'Mysql',
-    'options' => [
-        'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
-        'dbname'      => 'test',
-        'charset'     => 'utf8',
+    'database' => [
+        'adapter'     => 'Mysql',
+        'options' => [
+            'host'        => 'localhost',
+            'username'    => 'root',
+            'password'    => '',
+            'dbname'      => 'test',
+            'charset'     => 'utf8',
+        ],
     ],
-],
-'application' => [
-    'appDir'         => APP_PATH . '/',
-    'controllersDir' => APP_PATH . '/controllers/',
-    'modelsDir'      => APP_PATH . '/models/',
-    'migrationsDir'  => APP_PATH . '/migrations/',
-    'viewsDir'       => APP_PATH . '/views/',
-    'pluginsDir'     => APP_PATH . '/plugins/',
-    'libraryDir'     => APP_PATH . '/library/',
-    'cacheDir'       => BASE_PATH . '/cache/',
-    'baseUri'        => '/',
-]
+    'application' => [
+        'appDir'         => APP_PATH . '/',
+        'controllersDir' => APP_PATH . '/controllers/',
+        'modelsDir'      => APP_PATH . '/models/',
+        'migrationsDir'  => APP_PATH . '/migrations/',
+        'viewsDir'       => APP_PATH . '/views/',
+        'pluginsDir'     => APP_PATH . '/plugins/',
+        'libraryDir'     => APP_PATH . '/library/',
+        'cacheDir'       => BASE_PATH . '/cache/',
+        'baseUri'        => '/',
+    ]
 ]);
 ```
 
@@ -220,20 +220,20 @@ If your database looks like this:
 ```sql
 create table customers
 (
-`cst_id`          int(10) auto_increment primary key,
-`cst_status_flag` tinyint(1)   null,
-`cst_name_last`   varchar(100) null,
-`cst_name_first`  varchar(50)  null
+    `cst_id`          int(10) auto_increment primary key,
+    `cst_status_flag` tinyint(1)   null,
+    `cst_name_last`   varchar(100) null,
+    `cst_name_first`  varchar(50)  null
 );
 
 create index customers_cst_status_flag_index
-on `customers` (`cst_status_flag`);
+    on `customers` (`cst_status_flag`);
 
 create index customers_cst_name_last_index
-on `customers` (`cst_name_last`);
+    on `customers` (`cst_name_last`);
 
 create index customers_cst_name_first_index
-on `customers` (`cst_name_first`);
+    on `customers` (`cst_name_first`);
 ```
 
 It will result in
@@ -267,50 +267,50 @@ use Phalcon\Filter\Validation\Validator\PresenceOf as EmailValidator;
  */
 class Customers extends Model
 {
-/**
- * @var int 
- */
-public $cst_id;
+    /**
+     * @var int 
+     */
+    public $cst_id;
 
-/**
- * @var int 
- */
-public $cst_status_flag;
+    /**
+     * @var int 
+     */
+    public $cst_status_flag;
 
-/**
- * @var string 
- */
-public $cst_name_last;
+    /**
+     * @var string 
+     */
+    public $cst_name_last;
 
-/**
- * @var string 
- */
-public $cst_name_first;
+    /**
+     * @var string 
+     */
+    public $cst_name_first;
 
-public function initialize()
-{
-    $this->setSource('customers');
-}
+    public function initialize()
+    {
+        $this->setSource('customers');
+    }
 
-/**
- * @return bool
- */
-public function validation()
-{
-    $validator = new Validation();
+    /**
+     * @return bool
+     */
+    public function validation()
+    {
+        $validator = new Validation();
 
-    $validator->add(
-        'cst_name_last',
-        new PresenceOf(
-            [
-                'model'   => $this,
-                'message' => 'Please enter a valid last name',
-            ]
-        )
-    );
+        $validator->add(
+            'cst_name_last',
+            new PresenceOf(
+                [
+                    'model'   => $this,
+                    'message' => 'Please enter a valid last name',
+                ]
+            )
+        );
 
-    return $this->validate($validator);
-}
+        return $this->validate($validator);
+    }
 }
 ```
 

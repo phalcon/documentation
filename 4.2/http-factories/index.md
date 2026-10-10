@@ -27,8 +27,8 @@ use Phalcon\Http\Message\RequestFactory;
 $factory = new RequestFactory();
 
 $stream = $factory->createRequest(
-'GET', 
-'https://api.phalcon.io/companies/1'
+    'GET', 
+    'https://api.phalcon.io/companies/1'
 );
 ```
 The `createRequest()` method accepts a string as the method (`GET`, `POST` etc.) and the URI and returns back the request object.
@@ -58,11 +58,11 @@ use Phalcon\Http\Message\ServerRequestFactory;
 $factory = new ServerRequestFactory();
 
 $request = $factory->createServerRequest(
-'GET', 
-'https://api.phalcon.io/companies/1',
-[
-    'param' => 'value'
-]
+    'GET', 
+    'https://api.phalcon.io/companies/1',
+    [
+        'param' => 'value'
+    ]
 );
 ```
 
@@ -78,11 +78,11 @@ use Phalcon\Http\Message\ServerRequestFactory;
 $factory = new ServerRequestFactory();
 
 $request = $factory->load(
-$_SERVER,
-$_GET,
-$_POST,
-$_COOKIE,
-$_FILES
+    $_SERVER,
+    $_GET,
+    $_POST,
+    $_COOKIE,
+    $_FILES
 );
 ```
 
@@ -114,18 +114,18 @@ $factory = new UploadedFileFactory();
 $streamFactory = new StreamFactory();
 
 $stream = $streamFactory->createStream('stream contents');
-
+        
 $size            = 12345;
 $error           = 0;
 $clientFilename  = null;
 $clientMediaType = null;
 
 $file = $factory->createUploadedFile(
-$stream,
-$size,
-$error,
-$clientFilename,
-$clientMediaType
+    $stream,
+    $size,
+    $error,
+    $clientFilename,
+    $clientMediaType
 );
 ```
 
@@ -143,6 +143,7 @@ $factory = new UriFactory();
 
 $uri = $factory->createUri('https://api.phalcon.io/companies/1');
 ```
+
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/

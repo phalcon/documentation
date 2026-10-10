@@ -11,6 +11,7 @@ version: "3.4"
 
 Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
+
 ## When to implement cache?
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
@@ -28,6 +29,7 @@ The caching process is divided into 2 parts:
 * **Frontend**: This part is responsible for checking if a key has expired and perform additional transformations to the data before storing and after retrieving them from the backend-
 * **Backend**: This part is responsible for communicating, writing/reading the data required by the frontend.
 
+
 ## Factory
 Instantiating frontend or backend adapters can be achieved by two ways:
 
@@ -41,19 +43,19 @@ use Phalcon\Cache\Frontend\Data as FrontData;
 
 // Create an Output frontend. Cache the files for 2 days
 $frontCache = new FrontData(
-[
-    'lifetime' => 172800,
-]
+    [
+        'lifetime' => 172800,
+    ]
 );
 
 // Create the component that will cache from the 'Output' to a 'File' backend
 // Set the cache file directory - it's important to keep the '/' at the end of
 // the value for the folder
 $cache = new BackFile(
-$frontCache,
-[
-    'cacheDir' => '../app/cache/',
-]
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
 );
 ```
 
@@ -64,22 +66,24 @@ or using the Factory object as follows:
 
 use Phalcon\Cache\Frontend\Factory as FFactory;
 use Phalcon\Cache\Backend\Factory as BFactory;
-
+ 
  $options = [
- 'lifetime' => 172800,
- 'adapter'  => 'data',
+     'lifetime' => 172800,
+     'adapter'  => 'data',
  ];
  $frontendCache = FFactory::load($options);
-
+ 
+ 
 $options = [
-'cacheDir' => '../app/cache/',
-'prefix'   => 'app-data',
-'frontend' => $frontendCache,
-'adapter'  => 'file',
+    'cacheDir' => '../app/cache/',
+    'prefix'   => 'app-data',
+    'frontend' => $frontendCache,
+    'adapter'  => 'file',
 ];
 
 $backendCache = BFactory::load($options);
 ```
+
 
 ## Caching Output Fragments
 An output fragment is a piece of HTML or text that is cached as is and returned as is. The output is automatically captured
@@ -96,19 +100,19 @@ use Phalcon\Cache\Frontend\Output as FrontOutput;
 
 // Create an Output frontend. Cache the files for 2 days
 $frontCache = new FrontOutput(
-[
-    'lifetime' => 172800,
-]
+    [
+        'lifetime' => 172800,
+    ]
 );
 
 // Create the component that will cache from the 'Output' to a 'File' backend
 // Set the cache file directory - it's important to keep the '/' at the end of
 // the value for the folder
 $cache = new BackFile(
-$frontCache,
-[
-    'cacheDir' => '../app/cache/',
-]
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
 );
 
 // Get/Set the cache file to ../app/cache/my-cache.html
@@ -116,23 +120,23 @@ $content = $cache->start('my-cache.html');
 
 // If $content is null then the content will be generated for the cache
 if ($content === null) {
-// Print date and time
-echo date('r');
+    // Print date and time
+    echo date('r');
 
-// Generate a link to the sign-up action
-echo Tag::linkTo(
-    [
-        'user/signup',
-        'Sign Up',
-        'class' => 'signup-button',
-    ]
-);
+    // Generate a link to the sign-up action
+    echo Tag::linkTo(
+        [
+            'user/signup',
+            'Sign Up',
+            'class' => 'signup-button',
+        ]
+    );
 
-// Store the output into the cache file
-$cache->save();
+    // Store the output into the cache file
+    $cache->save();
 } else {
-// Echo the cached output
-echo $content;
+    // Echo the cached output
+    echo $content;
 }
 ```
 
@@ -142,6 +146,7 @@ In the example above, our code remains the same, echoing output to the user as i
 
 ## Caching Arbitrary Data
 Caching just data is equally important for your application. Caching can reduce database load by reusing commonly used (but not updated) data, thus speeding up your application.
+
 
 ### File Backend Example
 One of the caching adapters is `File`. The only key area for this adapter is the location of where the cache files will be stored. This is controlled by the `cacheDir` option which *must* have a backslash at the end of it.
@@ -154,19 +159,19 @@ use Phalcon\Cache\Frontend\Data as FrontData;
 
 // Cache the files for 2 days using a Data frontend
 $frontCache = new FrontData(
-[
-    'lifetime' => 172800,
-]
+    [
+        'lifetime' => 172800,
+    ]
 );
 
 // Create the component that will cache 'Data' to a 'File' backend
 // Set the cache file directory - important to keep the `/` at the end of
 // the value for the folder
 $cache = new BackFile(
-$frontCache,
-[
-    'cacheDir' => '../app/cache/',
-]
+    $frontCache,
+    [
+        'cacheDir' => '../app/cache/',
+    ]
 );
 
 $cacheKey = 'robots_order_id.cache';
@@ -175,16 +180,16 @@ $cacheKey = 'robots_order_id.cache';
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-// $robots is null because of cache expiration or data does not exist
-// Make the database call and populate the variable
-$robots = Robots::find(
-    [
-        'order' => 'id',
-    ]
-);
+    // $robots is null because of cache expiration or data does not exist
+    // Make the database call and populate the variable
+    $robots = Robots::find(
+        [
+            'order' => 'id',
+        ]
+    );
 
-// Store it in the cache
-$cache->save($cacheKey, $robots);
+    // Store it in the cache
+    $cache->save($cacheKey, $robots);
 }
 
 // Use $robots :)
@@ -192,6 +197,7 @@ foreach ($robots as $robot) {
    echo $robot->name, '\n';
 }
 ```
+
 
 ### Memcached Backend Example
 The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
@@ -204,24 +210,24 @@ use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
 
 // Cache data for one hour
 $frontCache = new FrontData(
-[
-    'lifetime' => 3600,
-]
+    [
+        'lifetime' => 3600,
+    ]
 );
 
 // Create the component that will cache 'Data' to a 'Memcached' backend
 // Memcached connection settings
 $cache = new BackMemCached(
-$frontCache,
-[
-    'servers' => [
-        [
-            'host'   => '127.0.0.1',
-            'port'   => '11211',
-            'weight' => '1',
+    $frontCache,
+    [
+        'servers' => [
+            [
+                'host'   => '127.0.0.1',
+                'port'   => '11211',
+                'weight' => '1',
+            ]
         ]
     ]
-]
 );
 
 $cacheKey = 'robots_order_id.cache';
@@ -230,16 +236,16 @@ $cacheKey = 'robots_order_id.cache';
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-// $robots is null because of cache expiration or data does not exist
-// Make the database call and populate the variable
-$robots = Robots::find(
-    [
-        'order' => 'id',
-    ]
-);
+    // $robots is null because of cache expiration or data does not exist
+    // Make the database call and populate the variable
+    $robots = Robots::find(
+        [
+            'order' => 'id',
+        ]
+    );
 
-// Store it in the cache
-$cache->save($cacheKey, $robots);
+    // Store it in the cache
+    $cache->save($cacheKey, $robots);
 }
 
 // Use $robots :)
@@ -248,7 +254,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-:::warning[NOTE]
+:::warning\[NOTE]
 Calling <code>save()</code> will return a boolean, indicating success (<code>true</code>) or failure (<code>false</code>). Depending on the backend that you use, you will need to look at the relevant logs to identify failures.
 :::
 
@@ -271,14 +277,15 @@ If you want to know which keys are stored in the cache you could call the `query
 $keys = $cache->queryKeys();
 
 foreach ($keys as $key) {
-$data = $cache->get($key);
+    $data = $cache->get($key);
 
-echo 'Key=', $key, ' Data=', $data;
+    echo 'Key=', $key, ' Data=', $data;
 }
 
 // Query keys in the cache that begins with 'my-prefix'
 $keys = $cache->queryKeys('my-prefix');
 ```
+
 
 ## Deleting data from the cache
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
@@ -293,9 +300,10 @@ $keys = $cache->queryKeys();
 
 // Delete all items from the cache
 foreach ($keys as $key) {
-$cache->delete($key);
+    $cache->delete($key);
 }
 ```
+
 
 ## Checking cache existence
 It is possible to check if a cache already exists with a given key:
@@ -304,11 +312,12 @@ It is possible to check if a cache already exists with a given key:
 <?php
 
 if ($cache->exists('someKey')) {
-echo $cache->get('someKey');
+    echo $cache->get('someKey');
 } else {
-echo 'Cache does not exists!';
+    echo 'Cache does not exists!';
 }
 ```
+
 
 ## Lifetime
 A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
@@ -324,10 +333,10 @@ $cacheKey = 'my.cache';
 $robots = $cache->get($cacheKey, 3600);
 
 if ($robots === null) {
-$robots = 'some robots';
+    $robots = 'some robots';
 
-// Store it in the cache
-$cache->save($cacheKey, $robots);
+    // Store it in the cache
+    $cache->save($cacheKey, $robots);
 }
 ```
 
@@ -341,12 +350,13 @@ $cacheKey = 'my.cache';
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-$robots = 'some robots';
+    $robots = 'some robots';
 
-// Setting the cache when saving data
-$cache->save($cacheKey, $robots, 3600);
+    // Setting the cache when saving data
+    $cache->save($cacheKey, $robots, 3600);
 }
 ```
+
 
 ## Multi-Level Cache
 This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
@@ -361,53 +371,54 @@ use Phalcon\Cache\Frontend\Data as DataFrontend;
 use Phalcon\Cache\Backend\Memcache as MemcacheCache;
 
 $ultraFastFrontend = new DataFrontend(
-[
-    'lifetime' => 3600,
-]
+    [
+        'lifetime' => 3600,
+    ]
 );
 
 $fastFrontend = new DataFrontend(
-[
-    'lifetime' => 86400,
-]
+    [
+        'lifetime' => 86400,
+    ]
 );
 
 $slowFrontend = new DataFrontend(
-[
-    'lifetime' => 604800,
-]
+    [
+        'lifetime' => 604800,
+    ]
 );
 
 // Backends are registered from the fastest to the slower
 $cache = new Multiple(
-[
-    new ApcCache(
-        $ultraFastFrontend,
-        [
-            'prefix' => 'cache',
-        ]
-    ),
-    new MemcacheCache(
-        $fastFrontend,
-        [
-            'prefix' => 'cache',
-            'host'   => 'localhost',
-            'port'   => '11211',
-        ]
-    ),
-    new FileCache(
-        $slowFrontend,
-        [
-            'prefix'   => 'cache',
-            'cacheDir' => '../app/cache/',
-        ]
-    ),
-]
+    [
+        new ApcCache(
+            $ultraFastFrontend,
+            [
+                'prefix' => 'cache',
+            ]
+        ),
+        new MemcacheCache(
+            $fastFrontend,
+            [
+                'prefix' => 'cache',
+                'host'   => 'localhost',
+                'port'   => '11211',
+            ]
+        ),
+        new FileCache(
+            $slowFrontend,
+            [
+                'prefix'   => 'cache',
+                'cacheDir' => '../app/cache/',
+            ]
+        ),
+    ]
 );
 
 // Save, saves in every backend
 $cache->save('my-key', $data);
 ```
+
 
 ## Frontend Adapters
 The available frontend adapters that are used as interfaces or input sources to the cache are:
@@ -421,8 +432,10 @@ The available frontend adapters that are used as interfaces or input sources to 
 | [Phalcon\Cache\Frontend\Igbinary](/3.4/api/phalcon_cache/) | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized using `Igbinary` before be stored in the backend.                 |
 | [Phalcon\Cache\Frontend\None](/3.4/api/phalcon_cache/)     | It's used to cache any kind of PHP data without serializing them.                                                                                              |
 
+
 ### Implementing your own Frontend adapters
 The [Phalcon\Cache\FrontendInterface](/3.4/api/phalcon_cache/) interface must be implemented in order to create your own frontend adapters or extend the existing ones.
+
 
 ## Backend Adapters
 The backend adapters available to store cache data are:
@@ -439,7 +452,8 @@ The backend adapters available to store cache data are:
 | [Phalcon\Cache\Backend\Redis](/3.4/api/phalcon_cache/)        | Stores data in Redis.                                | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
 | [Phalcon\Cache\Backend\Xcache](/3.4/api/phalcon_cache/)       | Stores data in XCache.                               | XCache                         | XCache                           |
 
-##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.4.0 you can switch your <code>\*\Apc</code> classes to <code>\*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### \{.alert .alert-warning\}
+##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu\_bc</code> package from pecl. Now in Phalcon 3.4.0 you can switch your <code>\*\Apc</code> classes to <code>\*\Apcu</code> and remove <code>apcu\_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### \{.alert .alert-warning}
+
 
 ### Factory
 There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
@@ -451,15 +465,17 @@ use Phalcon\Cache\Backend\Factory;
 use Phalcon\Cache\Frontend\Data;
 
 $options = [
-'prefix'   => 'app-data',
-'frontend' => new Data(),
-'adapter'  => 'apc',
+    'prefix'   => 'app-data',
+    'frontend' => new Data(),
+    'adapter'  => 'apc',
 ];
 $backendCache = Factory::load($options);
 ```
 
+
 ### Implementing your own Backend adapters
 The [Phalcon\Cache\BackendInterface](/3.4/api/phalcon_cache/) interface must be implemented in order to create your own backend adapters or extend the existing ones.
+
 
 ### File Backend Options
 This backend will store cached content into files in the local server. The available options for this backend are:
@@ -468,6 +484,7 @@ This backend will store cached content into files in the local server. The avail
 |------------|-------------------------------------------------------------|
 | `prefix`   | A prefix that is automatically prepended to the cache keys. |
 | `cacheDir` | A writable directory on which cached files will be placed.  |
+
 
 ### Libmemcached Backend Options
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
@@ -501,30 +518,31 @@ use Phalcon\Cache\Frontend\Data as FrontData;
 
 // Cache data for 2 days
 $frontCache = new FrontData(
-[
-    'lifetime' => 172800,
-]
+    [
+        'lifetime' => 172800,
+    ]
 );
 
 // Create the Cache setting memcached connection options
 $cache = new Libmemcached(
-$frontCache,
-[
-    'servers' => [
-        [
-            'host'   => '127.0.0.1',
-            'port'   => 11211,
-            'weight' => 1,
+    $frontCache,
+    [
+        'servers' => [
+            [
+                'host'   => '127.0.0.1',
+                'port'   => 11211,
+                'weight' => 1,
+            ],
         ],
-    ],
-    'client' => [
-        \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
-        \Memcached::OPT_PREFIX_KEY => 'prefix.',
-    ],
-    'persistent_id' => 'my_app_cache',
-]
+        'client' => [
+            \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
+            \Memcached::OPT_PREFIX_KEY => 'prefix.',
+        ],
+        'persistent_id' => 'my_app_cache',
+    ]
 );
 ```
+
 
 ### Memcache Backend Options
 This backend will store cached content on a memcached server. The available options for this backend are:
@@ -536,6 +554,7 @@ This backend will store cached content on a memcached server. The available opti
 | `port`       | The memcached port.                                         |
 | `persistent` | Create a persistent connection to memcached?                |
 
+
 ### APC Backend Options
 This backend will store cached content on Alternative PHP Cache ([APC](https://php.net/apc)). The available options for this backend are:
 
@@ -543,12 +562,14 @@ This backend will store cached content on Alternative PHP Cache ([APC](https://p
 |----------|-------------------------------------------------------------|
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
+
 ### APCU Backend Options
 This backend will store cached content on Alternative PHP Cache ([APCU](https://php.net/apcu)). The available options for this backend are:
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
+
 
 ### Mongo Backend Options
 This backend will store cached content on a MongoDB server ([MongoDB](https://mongodb.org/)). The available options for this backend are:
@@ -560,12 +581,14 @@ This backend will store cached content on a MongoDB server ([MongoDB](https://mo
 | `db`         | Mongo database name.                                        |
 | `collection` | Mongo collection in the database.                           |
 
+
 ### XCache Backend Options
 This backend will store cached content on XCache (XCache                    ). The available options for this backend are:
 
 | Option   | Description                                                 |
 |----------|-------------------------------------------------------------|
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
+
 
 ### Redis Backend Options
 This backend will store cached content on a Redis server ([Redis](https://redis.io/)). The available options for this backend are:

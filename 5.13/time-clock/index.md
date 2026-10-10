@@ -31,7 +31,7 @@ use DateTimeImmutable;
 
 interface ClockInterface
 {
-public function now(): DateTimeImmutable;
+    public function now(): DateTimeImmutable;
 }
 ```
 
@@ -235,9 +235,9 @@ use Phalcon\Time\Clock\FrozenClock;
 $clock = new FrozenClock(new DateTimeImmutable('2026-01-01 12:00:00'));
 
 try {
-$clock->adjust('not a real modifier');
+    $clock->adjust('not a real modifier');
 } catch (Exception $ex) {
-echo $ex->getMessage(); // Invalid modifier: "not a real modifier"
+    echo $ex->getMessage(); // Invalid modifier: "not a real modifier"
 }
 ```
 
@@ -256,10 +256,10 @@ use Phalcon\Time\Clock\SystemClock;
 $container = new Di();
 
 $container->setShared(
-ClockInterface::class,
-function () {
-    return SystemClock::fromUTC();
-}
+    ClockInterface::class,
+    function () {
+        return SystemClock::fromUTC();
+    }
 );
 ```
 
@@ -272,15 +272,15 @@ use Phalcon\Time\Clock\ClockInterface;
 
 class InvoiceService
 {
-public function __construct(
-    private ClockInterface $clock
-) {
-}
+    public function __construct(
+        private ClockInterface $clock
+    ) {
+    }
 
-public function isOverdue(\DateTimeImmutable $dueDate): bool
-{
-    return $this->clock->now() > $dueDate;
-}
+    public function isOverdue(\DateTimeImmutable $dueDate): bool
+    {
+        return $this->clock->now() > $dueDate;
+    }
 }
 ```
 

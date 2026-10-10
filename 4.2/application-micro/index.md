@@ -20,14 +20,14 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 
 $app->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -48,58 +48,58 @@ $app       = new Micro($container);
 
 ```php
 public function __construct(
-DiInterface $container = null
+    DiInterface $container = null
 )
 ```
 Constructor. Accepts an optional Di container.
 
 ```php
 public function after(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Appends an `after` middleware to be called after execute the route
 
 ```php
 public function afterBinding(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Appends a afterBinding middleware to be called after model binding
 
 ```php
 public function before(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Appends a before middleware to be called before execute the route
 
 ```php
 public function delete(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 ```php
 public function error(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Sets a handler that will be called when an exception is thrown handling the route
 
 ```php
 public function finish(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Appends a `finish` middleware to be called when the request is finished
 
 ```php
 public function get(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is GET
@@ -136,80 +136,80 @@ Returns the internal router used by the application
 
 ```php
 public function getService(
-string $serviceName
+    string $serviceName
 ): object
 ```
 Obtains a service from the DI
 
 ```php
 public function getSharedService(
-string $serviceName
+    string $serviceName
 )
 ```
 Obtains a shared service from the DI
 
 ```php
 public function handle(
-string $uri
+    string $uri
 ): mixed
 ```
 Handle the whole request
 
 ```php
 public function hasService(
-string $serviceName
+    string $serviceName
 ): bool
 ```
 Checks if a service is registered in the DI
 
 ```php
 public function head(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
 ```php
 public function map(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler without any HTTP method constraint
 
 ```php
 public function mount(
-CollectionInterface $collection
+    CollectionInterface $collection
 ): Micro
 ```
 Mounts a collection of handlers
 
 ```php
 public function notFound(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Sets a handler that will be called when the router does not match any of the defined routes
 
 ```php
 public function offsetExists(
-mixed $alias
+    mixed $alias
 ): bool
 ```
 Check if a service is registered in the internal DI container using the array syntax
 
 ```php
 public function offsetGet(
-mixed $alias
+    mixed $alias
 ): mixed
 ```
 Gets a DI service from the internal DI container using the array syntax
 
 ```php
 public function offsetSet(
-mixed $alias, 
-mixed $definition
+    mixed $alias, 
+    mixed $definition
 )
 ```
 Registers a service in the internal DI container using the array syntax
@@ -220,54 +220,54 @@ $app["request"] = new \Phalcon\Http\Request();
 
 ```php
 public function offsetUnset(
-mixed $alias
+    mixed $alias
 ): void
 ```
 Removes a service from the internal DI container using the array syntax
 
 ```php
 public function options(    
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `OPTIONS`
 
 ```php
 public function patch(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `PATCH`
 
 ```php
 public function post(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `POST`
 
 ```php
 public function put(
-string $routePattern, 
-callable $handler
+    string $routePattern, 
+    callable $handler
 ): RouteInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `PUT`
 
 ```php
 public function setActiveHandler(
-callable $activeHandler
+    callable $activeHandler
 )
 ```
 Sets externally the handler that must be called by the matched route
 
 ```php
 public function setModelBinder(
-BinderInterface $modelBinder, 
-mixed $cache = null
+    BinderInterface $modelBinder, 
+    mixed $cache = null
 ): Micro
 ```
 Sets model binder
@@ -276,23 +276,23 @@ Sets model binder
 $micro = new Micro($di);
 
 $micro->setModelBinder(
-new Binder(),
-'cache'
+    new Binder(),
+    'cache'
 );
 ```
 
 ```php
 public function setResponseHandler(
-callable $handler
+    callable $handler
 ): Micro
 ```
 Appends a custom `response` handler to be called instead of the default one
 
 ```php
 public function setService(
-string $serviceName, 
-mixed $definition, 
-bool $shared = false
+    string $serviceName, 
+    mixed $definition, 
+    bool $shared = false
 ): ServiceInterface
 ```
 Sets a service in the internal Di container. If no container is preset a [Phalcon\Di\FactoryDefault][di-factorydefault] will be automatically created
@@ -322,10 +322,10 @@ Usually, the starting route for an application is `/`, accessed via the `GET` HT
 <?php
 
 $application->get(
-'/',
-function () {
-    echo '<h1>3.1459</h1>';
-}
+    '/',
+    function () {
+        echo '<h1>3.1459</h1>';
+    }
 );
 ```
 
@@ -345,10 +345,10 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 ```
 
@@ -363,10 +363,11 @@ use Phalcon\Di;
 use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Router;
 
+
 $router = new Router();
 $router->addGet(
-'/invoices/view/{id}',
-'InvoicesClass::view'
+    '/invoices/view/{id}',
+    'InvoicesClass::view'
 );
 
 $container   = new Di();
@@ -394,10 +395,10 @@ You can use an anonymous function to handle the request
 <?php
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 ```
 
@@ -407,14 +408,14 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 <?php
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) use ($app){
-    $content = "<h1>Invoice #{$id}!</h1>";
+    '/invoices/view/{id}',
+    function ($id) use ($app){
+        $content = "<h1>Invoice #{$id}!</h1>";
 
-    $app->response->setContent($content);
+        $app->response->setContent($content);
 
-    $app->response->send();
-}
+        $app->response->send();
+    }
 );
 ```
 
@@ -426,12 +427,12 @@ You can define a function as the handler and attach it to a specific route.
 <?php
 
 function invoiceView($id) {
-echo "<h1>Invoice #{$id}!</h1>";
+    echo "<h1>Invoice #{$id}!</h1>";
 }
 
 $app->get(
-'/invoices/view/{id}',
-'invoicesView'
+    '/invoices/view/{id}',
+    'invoicesView'
 );
 ```
 
@@ -444,14 +445,14 @@ You can also use a static method as the handler.
 
 class InvoicesClass
 {
-public static function view($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    public static function view($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 }
 
 $app->get(
-'/invoices/view/{id}',
-'InvoicesClass::View'
+    '/invoices/view/{id}',
+    'InvoicesClass::View'
 );
 ```
 
@@ -464,18 +465,18 @@ You can also use a method in an object as the handler.
 
 class InvoicesClass
 {
-public function view($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    public function view($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 }
 
 $invoices = new InvoicesClass();
 $app->get(
-'/invoices/view/{id}',
-[
-    $invoices,
-    'view'
-]
+    '/invoices/view/{id}',
+    [
+        $invoices,
+        'view'
+    ]
 );
 ```
 
@@ -490,10 +491,10 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $invoices = new MicroCollection();
 $invoices
-->setHandler(new InvoicesController())
-->setPrefix('/invoices')
-->get('/', 'index')
-->get('/view/{id}', 'view')
+    ->setHandler(new InvoicesController())
+    ->setPrefix('/invoices')
+    ->get('/', 'index')
+    ->get('/view/{id}', 'view')
 ;
 
 $app->mount($invoices);
@@ -507,14 +508,14 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function index()
-{
-    // ...
-}
+    public function index()
+    {
+        // ...
+    }
 
-public function view($id) {
-    // ...
-}
+    public function view($id) {
+        // ...
+    }
 }
 ```
 
@@ -531,19 +532,19 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function index()
-{
-    // ...
-}
+    public function index()
+    {
+        // ...
+    }
 
-public function view($id)
-{
-    $content = "<h1>Invoice #{$id}!</h1>";
+    public function view($id)
+    {
+        $content = "<h1>Invoice #{$id}!</h1>";
 
-    $this->response->setContent($content);
+        $this->response->setContent($content);
 
-    return $this->response;
-}
+        return $this->response;
+    }
 }
 ```
 
@@ -558,16 +559,17 @@ Lazy loading can be easily achieved when setting your handler in your [Phalcon\M
 use MyApp\Controllers\InvoicesController;
 
 $invoices->setHandler(
-InvoicesController::class, 
-true
+    InvoicesController::class, 
+    true
 );
 
+
 $invoices
-->setHandler(InvoicesController::class)
-->setLazy(true)
-->setPrefix('/invoices')
-->get('/', 'index')
-->get('/view/{id}', 'view')
+    ->setHandler(InvoicesController::class)
+    ->setLazy(true)
+    ->setPrefix('/invoices')
+    ->get('/', 'index')
+    ->get('/view/{id}', 'view')
 ;
 
 $app->mount($invoices);
@@ -586,41 +588,41 @@ use Phalcon\Mvc\Controller;
 
 class UsersController extends Controller
 {
-public function get($id)
-{
-    // ...
-}
+    public function get($id)
+    {
+        // ...
+    }
 
-public function add($payload)
-{
-    // ...
-}
+    public function add($payload)
+    {
+        // ...
+    }
 }
 
 class InvoicesController extends Controller
 {
-public function get($id)
-{
-    // ...
-}
+    public function get($id)
+    {
+        // ...
+    }
 
-public function add($payload)
-{
-    // ...
-}
+    public function add($payload)
+    {
+        // ...
+    }
 }
 
 class ProductsController extends Controller
 {
-public function get($id)
-{
-    // ...
-}
+    public function get($id)
+    {
+        // ...
+    }
 
-public function add($payload)
-{
-    // ...
-}
+    public function add($payload)
+    {
+        // ...
+    }
 }
 ```
 
@@ -633,48 +635,48 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $users = new MicroCollection();
 $users
-->setHandler(new UsersController())
-->setPrefix('/users')
-->get(
-    '/get/{id}', 
-    'get'
-)
-->get(
-    '/add/{payload}', 
-    'add'
-)
+    ->setHandler(new UsersController())
+    ->setPrefix('/users')
+    ->get(
+        '/get/{id}', 
+        'get'
+    )
+    ->get(
+        '/add/{payload}', 
+        'add'
+    )
 ;
 
 $app->mount($users);
 
 $invoices = new MicroCollection();
 $invoices
-->setHandler(new InvoicesController())
-->setPrefix('/invoices')
-->get(
-    '/get/{id}', 
-    'get'
-)
-->get(
-    '/add/{payload}', 
-    'add'
-)
+    ->setHandler(new InvoicesController())
+    ->setPrefix('/invoices')
+    ->get(
+        '/get/{id}', 
+        'get'
+    )
+    ->get(
+        '/add/{payload}', 
+        'add'
+    )
 ;
 
 $app->mount($invoices);
 
 $products = new MicroCollection();
 $products
-->setHandler(new ProductsController())
-->setPrefix('/products')
-->get(
-    '/get/{id}', 
-    'get'
-)
-->get(
-    '/add/{payload}', 
-    'add'
-)
+    ->setHandler(new ProductsController())
+    ->setPrefix('/products')
+    ->get(
+        '/get/{id}', 
+        'get'
+    )
+    ->get(
+        '/add/{payload}', 
+        'add'
+    )
 ;
 
 $app->mount($products);
@@ -690,58 +692,58 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $users = new MicroCollection();
 $users
-->setHandler(
-    UsersController::class,
-    true
-)
-->setPrefix('/users')
-->get(
-    '/get/{id}', 
-    'get'
-)
-->get(
-    '/add/{payload}', 
-    'add'
-)
+    ->setHandler(
+        UsersController::class,
+        true
+    )
+    ->setPrefix('/users')
+    ->get(
+        '/get/{id}', 
+        'get'
+    )
+    ->get(
+        '/add/{payload}', 
+        'add'
+    )
 ;
 
 $app->mount($users);
 
 $invoices = new MicroCollection();
 $invoices
-->setHandler(
-    InvoicesController::class,
-    true
-)
-->setPrefix('/invoices')
-->get(
-    '/get/{id}', 
-    'get'
-)
-->get(
-    '/add/{payload}', 
-    'add'
-)
+    ->setHandler(
+        InvoicesController::class,
+        true
+    )
+    ->setPrefix('/invoices')
+    ->get(
+        '/get/{id}', 
+        'get'
+    )
+    ->get(
+        '/add/{payload}', 
+        'add'
+    )
 ;
 
 $app->mount($invoices);
 
 $products = new MicroCollection();
 $products
-->setHandler(
-    ProductsController::class,
-    true
-)
-->setPrefix('/products')
-->get(
-    '/get/{id}', 
-    'get'
-)
-->get(
-    '/add/{payload}', 
-    'add'
-)
-
+    ->setHandler(
+        ProductsController::class,
+        true
+    )
+    ->setPrefix('/products')
+    ->get(
+        '/get/{id}', 
+        'get'
+    )
+    ->get(
+        '/add/{payload}', 
+        'add'
+    )
+    
 $app->mount($products);   
 ```
 
@@ -751,80 +753,80 @@ Using this simple change in implementation, all handlers remain non instantiated
 If you are working on a large application, there is no need to mount all the collections, even if they are lazy loaded: Phalcon will use regex to match the routes. To speed up the routing process it is possible to run a _pre-filter_ like this, using the previous example:
 
 ```php
-    $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
-    $path = $uri->getPath();
-    $parts = explode("/", $path);
-    $collection = $parts[1];
+        $uri = new \Phalcon\Http\Message\Uri($_SERVER['REQUEST_URI']);
+        $path = $uri->getPath();
+        $parts = explode("/", $path);
+        $collection = $parts[1];
+        
+        switch ($collection) {
+            case "users":
+                $users = new MicroCollection();
+                $users
+                    ->setHandler(
+                        UsersController::class,
+                        true
+                    )
+                    ->setPrefix('/users')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+                ;
 
-    switch ($collection) {
-        case "users":
-            $users = new MicroCollection();
-            $users
-                ->setHandler(
-                    UsersController::class,
-                    true
-                )
-                ->setPrefix('/users')
-                ->get(
-                    '/get/{id}', 
-                    'get'
-                )
-                ->get(
-                    '/add/{payload}', 
-                    'add'
-                )
-            ;
+                $app->mount($users);
+                
+                break;
 
-            $app->mount($users);
+            case "invoices":
+                $invoices = new MicroCollection();
+                $invoices
+                    ->setHandler(
+                        InvoicesController::class,
+                        true
+                    )
+                    ->setPrefix('/invoices')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
+                ;
 
-            break;
+                $app->mount($invoices);   
+                
+                break;
 
-        case "invoices":
-            $invoices = new MicroCollection();
-            $invoices
-                ->setHandler(
-                    InvoicesController::class,
-                    true
-                )
-                ->setPrefix('/invoices')
-                ->get(
-                    '/get/{id}', 
-                    'get'
-                )
-                ->get(
-                    '/add/{payload}', 
-                    'add'
-                )
-            ;
+            case "products": 
+                $products = new MicroCollection();
+                $products
+                    ->setHandler(
+                        ProductsController::class,
+                        true
+                    )
+                    ->setPrefix('/products')
+                    ->get(
+                        '/get/{id}', 
+                        'get'
+                    )
+                    ->get(
+                        '/add/{payload}', 
+                        'add'
+                    )
 
-            $app->mount($invoices);   
+                $app->mount($products);  
+                
+                break;
 
-            break;
-
-        case "products": 
-            $products = new MicroCollection();
-            $products
-                ->setHandler(
-                    ProductsController::class,
-                    true
-                )
-                ->setPrefix('/products')
-                ->get(
-                    '/get/{id}', 
-                    'get'
-                )
-                ->get(
-                    '/add/{payload}', 
-                    'add'
-                )
-
-            $app->mount($products);  
-
-            break;
-
-        default: 
-        //do nothing (or something)
-    }
+            default: 
+            //do nothing (or something)
+        }
 ```
 In this way, Phalcon can handle tens (or hundreds) of routes without regex performance penalty: using `explode()` is faster than regex. 
 
@@ -834,16 +836,16 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro][mvc-micro] applic
 <?php
 
 $app->notFound(
-function () use ($app) {
-    $message = 'Nothing to see here. Move along....';
-    $app
-        ->response
-        ->setStatusCode(404, 'Not Found')
-        ->sendHeaders()
-        ->setContent($message)
-        ->send()
-    ;
-}
+    function () use ($app) {
+        $message = 'Nothing to see here. Move along....';
+        $app
+            ->response
+            ->setStatusCode(404, 'Not Found')
+            ->sendHeaders()
+            ->setContent($message)
+            ->send()
+        ;
+    }
 );
 ```
 
@@ -860,8 +862,8 @@ Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{i
 <?php
 
 $app->delete(
-'/api/products/delete/{id}',
-'deleteProduct'
+    '/api/products/delete/{id}',
+    'deleteProduct'
 );
 ```
 
@@ -873,8 +875,8 @@ Matches if the HTTP method is `GET` and the route is `/api/products`
 <?php
 
 $app->get(
-'/api/products',
-'getProducts'
+    '/api/products',
+    'getProducts'
 );
 ```
 
@@ -886,8 +888,8 @@ Matches if the HTTP method is `HEAD` and the route is `/api/products`
 <?php
 
 $app->head(
-'/api/products',
-'getProducts'
+    '/api/products',
+    'getProducts'
 );
 ```
 
@@ -899,16 +901,16 @@ Map allows you to attach the same endpoint to more than one HTTP method. The exa
 <?php
 
 $app
-->map(
-    '/repos/store/refs',
-    'actionProduct'
-)
-->via(
-    [
-        'GET',
-        'POST',
-    ]
-);
+    ->map(
+        '/repos/store/refs',
+        'actionProduct'
+    )
+    ->via(
+        [
+            'GET',
+            'POST',
+        ]
+    );
 ```
 
 **options**
@@ -919,8 +921,8 @@ Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
 <?php
 
 $app->options(
-'/api/products/options',
-'infoProduct'
+    '/api/products/options',
+    'infoProduct'
 );
 ```
 
@@ -932,8 +934,8 @@ Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id
 <?php
 
 $app->patch(
-'/api/products/update/{id}',
-'updateProduct'
+    '/api/products/update/{id}',
+    'updateProduct'
 );
 ```
 
@@ -945,8 +947,8 @@ Matches if the HTTP method is `POST` and the route is `/api/products/add`
 <?php
 
 $app->post(
-'/api/products',
-'addProduct'
+    '/api/products',
+    'addProduct'
 );
 ```
 
@@ -958,8 +960,8 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 <?php
 
 $app->put(
-'/api/products/update/{id}',
-'updateProduct'
+    '/api/products/update/{id}',
+    'updateProduct'
 );
 ```
 
@@ -1003,18 +1005,18 @@ The available methods for the [Phalcon\Mvc\Micro\Collection][mvc-micro-collectio
 
 ```php
 public function delete(
-string $routePattern, 
-callable $handler, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `DELETE`.
 
 ```php
 public function get(
-string $routePattern, 
-callable $handler,  
-string $name = null
+    string $routePattern, 
+    callable $handler,  
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `GET`.
@@ -1036,9 +1038,9 @@ Returns the collection prefix if any
 
 ```php
 public function head(
-string $routePattern, 
-callable $handler, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `HEAD`.
@@ -1050,90 +1052,90 @@ Returns if the main handler must be lazy loaded
 
 ```php
 public function map(
-string $routePattern, 
-callable $handler, 
-string | array $method, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string | array $method, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler.
 
 ```php
 public function mapVia(
-string $routePattern, 
-callable $handler, 
-string | array $method, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string | array $method, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler via methods.
 
 ```php
 $collection->mapVia(
-"/invoices",
-"indexAction",
-[
-    "POST", 
-    "GET"
-],
-"invoices"
+    "/invoices",
+    "indexAction",
+    [
+        "POST", 
+        "GET"
+    ],
+    "invoices"
 );
 ```
 
 ```php
 public function options(
-string $routePattern, 
-callable $handler, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `OPTIONS`.
 
 ```php
 public function patch(
-string $routePattern, 
-callable $handler, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `PATCH`.
 
 ```php
 public function post(
-string $routePattern, 
-callable $handler, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `POST`.
 
 ```php
 public function put(
-string $routePattern, 
-callable $handler, 
-string $name = null
+    string $routePattern, 
+    callable $handler, 
+    string $name = null
 ): CollectionInterface
 ```
 Maps a route to a handler that only matches if the HTTP method is `PUT`.
 
 ```php
 public function setHandler(
-callable $handler, 
-bool $lazy = false
+    callable $handler, 
+    bool $lazy = false
 ): CollectionInterface
 ```
 Sets the main handler.
 
 ```php
 public function setLazy(
-bool $lazy
+    bool $lazy
 ): CollectionInterface
 ```
 Sets if the main handler must be lazy loaded
 
 ```php
 public function setPrefix(
-string $prefix
+    string $prefix
 ): CollectionInterface
 ```
 Sets a prefix for all routes added to the collection
@@ -1145,10 +1147,10 @@ We have briefly seen above how parameters are defined in the routes. Parameters 
 <?php
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 ```
 
@@ -1158,19 +1160,19 @@ We can also enforce certain rules for each parameter by using regular expression
 <?php
 
 $app->get(
-'/invoices/view/{id:[0-9]+}',
-function ($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    '/invoices/view/{id:[0-9]+}',
+    function ($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 
 $app->get(
-'/invoices/search/year/{year:[0-9][4]}/title/{title:[a-zA-Z\-]+}',
-function ($year, $title) {
-    echo "'<h1>Title: {$title}</h1>", PHP_EOL,
-         "'<h2>Year: {$year}</h2>"
-    ;
-}
+    '/invoices/search/year/{year:[0-9][4]}/title/{title:[a-zA-Z\-]+}',
+    function ($year, $title) {
+        echo "'<h1>Title: {$title}</h1>", PHP_EOL,
+             "'<h2>Year: {$year}</h2>"
+        ;
+    }
 );
 ```
 
@@ -1185,21 +1187,21 @@ You can redirect one matched route to another using the [Phalcon\Http\Response][
 <?php
 
 $app->get('/invoices/show/{id}',
-function ($id) use ($app) {
-    $app
-        ->response
-        ->redirect(
-            "invoices/view/{$id}"
-        )
-        ->sendHeaders()
-    ;
-}
+    function ($id) use ($app) {
+        $app
+            ->response
+            ->redirect(
+                "invoices/view/{$id}"
+            )
+            ->sendHeaders()
+        ;
+    }
 );
 
 $app->get('/invoices/view/{id}',
-function ($id) use ($app) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    function ($id) use ($app) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 ```
 
@@ -1220,20 +1222,20 @@ use Phalcon\Mvc\Controller;
  */
 class InvoicesController extends Controller
 {
-public function show($id)
-{
-    return $this
-        ->response
-        ->redirect(
-            "invoices/view/{$id}"
-        )
-    ;
-}
+    public function show($id)
+    {
+        return $this
+            ->response
+            ->redirect(
+                "invoices/view/{$id}"
+            )
+        ;
+    }
 
-public function get($id)
-{
-    // ...
-}
+    public function get($id)
+    {
+        // ...
+    }
 }
 ```
 
@@ -1248,13 +1250,13 @@ You will need to name your routes to take advantage of this feature. This can be
 <?php
 
 $app
-->get(
-    '/invoices/view/{id}',
-    function ($id) use ($app) {
-        // ...
-    }
-)
-->setName('view-invoice');
+    ->get(
+        '/invoices/view/{id}',
+        function ($id) use ($app) {
+            // ...
+        }
+    )
+    ->setName('view-invoice');
 ```
 
 If you are using the [Phalcon\Mvc\Micro\Collection][mvc-micro-collection] object, the name needs to be the third parameter of the methods setting the routes.
@@ -1265,21 +1267,21 @@ If you are using the [Phalcon\Mvc\Micro\Collection][mvc-micro-collection] object
 $invoices = new MicroCollection();
 
 $invoices
-->setHandler(
-    InvoicesController::class,
-    true
-)
-->setPrefix('/invoices')
-->get(
-    '/view/{id}', 
-    'get', 
-    'view-invoice'
-)
-->post(
-    '/add', 
-    'post', 
-    'add-invoice'
-)
+    ->setHandler(
+        InvoicesController::class,
+        true
+    )
+    ->setPrefix('/invoices')
+    ->get(
+        '/view/{id}', 
+        'get', 
+        'view-invoice'
+    )
+    ->post(
+        '/add', 
+        'post', 
+        'add-invoice'
+    )
 ;
 
 $app->mount($invoices);
@@ -1291,22 +1293,22 @@ Lastly you need the [Phalcon\Url](/4.2/url/) component to generate URLs for the 
 <?php
 
 $app->get(
-'/',
-function () use ($app) {
-    $url = sprintf(
-        '<a href="%s">Invoice</a>',
-        $app
-            ->url
-            ->get(
-                [
-                    'for' => 'view-invoice',
-                    'id'  => 1234,
-                ]
-            )
-    );
+    '/',
+    function () use ($app) {
+        $url = sprintf(
+            '<a href="%s">Invoice</a>',
+            $app
+                ->url
+                ->get(
+                    [
+                        'for' => 'view-invoice',
+                        'id'  => 1234,
+                    ]
+                )
+        );
 
-    echo $url;
-}
+        echo $url;
+    }
 );
 ```
 
@@ -1321,14 +1323,14 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-'/',
-function () use ($app) {
-    $app
-        ->response
-        ->setContent('3.1459')
-        ->send()
-    ;
-}
+    '/',
+    function () use ($app) {
+        $app
+            ->response
+            ->setContent('3.1459')
+            ->send()
+        ;
+    }
 );
 ```
 
@@ -1344,33 +1346,33 @@ use Phalcon\Config\Adapter\Ini;
 $container = new Di();
 
 $container->set(
-'config',
-function () {
-    return new Ini(
-        'config.ini'
-    );
-}
+    'config',
+    function () {
+        return new Ini(
+            'config.ini'
+        );
+    }
 );
 
 $app = new Micro($container);
 
 $app->get(
-'/',
-function () use ($app) {
-    echo $app
-        ->config
-        ->app_name;
-}
+    '/',
+    function () use ($app) {
+        echo $app
+            ->config
+            ->app_name;
+    }
 );
 
 $app->post(
-'/contact',
-function () use ($app) {
-    $app
-        ->flash
-        ->success('What are you doing Dave?')
-    ;
-}
+    '/contact',
+    function () use ($app) {
+        $app
+            ->flash
+            ->success('What are you doing Dave?')
+        ;
+    }
 );
 ```
 
@@ -1385,27 +1387,27 @@ use Phalcon\Db\Adapter\Pdo\Mysql;
 $app = new Micro();
 
 $app['db'] = function () {
-return new Mysql(
-    [
-        'host'     => 'localhost',
-        'username' => 'root',
-        'password' => 'secret',
-        'dbname'   => 'test_db',
-    ]
-);
+    return new Mysql(
+        [
+            'host'     => 'localhost',
+            'username' => 'root',
+            'password' => 'secret',
+            'dbname'   => 'test_db',
+        ]
+    );
 };
 
 $app->get(
-'/blog',
-function () use ($app) {
-    $invoices = $app['db']->query(
-        'SELECT * FROM co_invoices'
-    );
+    '/blog',
+    function () use ($app) {
+        $invoices = $app['db']->query(
+            'SELECT * FROM co_invoices'
+        );
 
-    foreach ($invoices as $invoice) {
-        echo $invoice->inv_title;
+        foreach ($invoices as $invoice) {
+            echo $invoice->inv_title;
+        }
     }
-}
 );
 ```
 
@@ -1419,10 +1421,10 @@ Handlers may return raw responses using plain text, [Phalcon\Http\Response][http
 <?php
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    echo "<h1>Invoice #{$id}!</h1>";
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        echo "<h1>Invoice #{$id}!</h1>";
+    }
 );
 ```
 
@@ -1431,10 +1433,10 @@ function ($id) {
 <?php
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    require 'views/results.php';
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        require 'views/results.php';
+    }
 );
 ```
 
@@ -1443,15 +1445,15 @@ function ($id) {
 <?php
 
 $app->get(
-'/invoices/view/{id}',
-function ($id) {
-    echo json_encode(
-        [
-            'code' => 200,
-            'id'   => $id,
-        ]
-    );
-}
+    '/invoices/view/{id}',
+    function ($id) {
+        echo json_encode(
+            [
+                'code' => 200,
+                'id'   => $id,
+            ]
+        );
+    }
 );
 ```
 
@@ -1464,15 +1466,15 @@ You can use the `setContent` method of a new [Phalcon\Http\Response][http-respon
 use Phalcon\Http\Response;
 
 $app->get(
-'/invoices/list',
-function () {
-    return (new Response())
-        ->setContentType('text/plain')
-        ->setContent(
-            file_get_contents('data.txt')
-        )
-    ;
-}
+    '/invoices/list',
+    function () {
+        return (new Response())
+            ->setContentType('text/plain')
+            ->setContent(
+                file_get_contents('data.txt')
+            )
+        ;
+    }
 );
 ```
 
@@ -1483,16 +1485,16 @@ You can also use the [Phalcon\Http\Response][http-response] from the application
 <?php
 
 $app->get(
-'/invoices/list',
-function () use ($app) {
-    $app
-        ->response
-        ->setContentType('text/plain')
-        ->sendHeaders()
-    ;
+    '/invoices/list',
+    function () use ($app) {
+        $app
+            ->response
+            ->setContentType('text/plain')
+            ->sendHeaders()
+        ;
 
-    readfile('data.txt');
-}
+        readfile('data.txt');
+    }
 );
 ```
 
@@ -1508,18 +1510,18 @@ use Phalcon\Http\Response;
 $app = new Micro();
 
 $app->get(
-'/invoices//list',
-function () {
-    return (new Response())
-        ->setStatusCode(
-            401, 
-            'Unauthorized'
-        )
-        ->setContent(
-            '401 - Unauthorized'
-        )
-    ;
-}
+    '/invoices//list',
+    function () {
+        return (new Response())
+            ->setStatusCode(
+                401, 
+                'Unauthorized'
+            )
+            ->setContent(
+                '401 - Unauthorized'
+            )
+        ;
+    }
 );
 ```
 
@@ -1530,21 +1532,21 @@ JSON can be sent back just as easy using the [Phalcon\Http\Response][http-respon
 <?php
 
 $app->get(
-'/invoices/index',
-function () use ($app) {
+    '/invoices/index',
+    function () use ($app) {
 
-    $data = [
-        'code'    => 401,
-        'status'  => 'error',
-        'message' => 'Unauthorized access',
-        'payload' => [],
-    ];
+        $data = [
+            'code'    => 401,
+            'status'  => 'error',
+            'message' => 'Unauthorized access',
+            'payload' => [],
+        ];
 
-    return $this
-        ->response
-        ->setJsonContent($data)
-    ;
-}
+        return $this
+            ->response
+            ->setJsonContent($data)
+        ;
+    }
 );
 ```
 
@@ -1576,19 +1578,19 @@ use Phalcon\Events\Manager;
 $manager = new Manager();
 
 $manager->attach(
-'micro:beforeExecuteRoute',
-function (Event $event, $app) {
-    if ($app->session->get('auth') === false) {
-        $app->flashSession->error(
-            "The user is not authenticated"
-        );
+    'micro:beforeExecuteRoute',
+    function (Event $event, $app) {
+        if ($app->session->get('auth') === false) {
+            $app->flashSession->error(
+                "The user is not authenticated"
+            );
 
-        $app->response->redirect('/');
-        $app->response->sendHeaders();
+            $app->response->redirect('/');
+            $app->response->sendHeaders();
 
-        return false;
+            return false;
+        }
     }
-}
 );
 
 $app = new Micro();
@@ -1609,13 +1611,13 @@ use Phalcon\Events\Manager;
 $manager = new Manager();
 
 $manager->attach(
-'micro:beforeNotFound',
-function (Event $event, $app) {
-    $app->response->redirect('/404');
-    $app->response->sendHeaders();
+    'micro:beforeNotFound',
+    function (Event $event, $app) {
+        $app->response->redirect('/404');
+        $app->response->sendHeaders();
 
-    return $app->response;
-}
+        return $app->response;
+    }
 );
 
 $app = new Micro();
@@ -1653,23 +1655,23 @@ This event is perfect for stopping execution of the application if certain crite
 <?php
 
 $app->before(
-function () use ($app) {
-    if (false === $app['session']->get('auth')) {
-        $app
-            ->flashSession
-            ->error("The user is not authenticated")
-        ;
+    function () use ($app) {
+        if (false === $app['session']->get('auth')) {
+            $app
+                ->flashSession
+                ->error("The user is not authenticated")
+            ;
 
-        $app
-            ->response
-            ->redirect('/error')
-        ;
+            $app
+                ->response
+                ->redirect('/error')
+            ;
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 );
 ```
 
@@ -1683,24 +1685,24 @@ This event can be used to manipulate data or perform actions that are needed aft
 <?php
 
 $app->map(
-'/invoices/list',
-function () {
-    return [
-        1234 => [
-            'total'      => 100,
-            'customerId' => 3,
-            'title'      => 'Invoice for ACME Inc.',
-        ]
-    ];
-}
+    '/invoices/list',
+    function () {
+        return [
+            1234 => [
+                'total'      => 100,
+                'customerId' => 3,
+                'title'      => 'Invoice for ACME Inc.',
+            ]
+        ];
+    }
 );
 
 $app->after(
-function () use ($app) {
-    echo json_encode(
-        $app->getReturnedValue()
-    );
-}
+    function () use ($app) {
+        echo json_encode(
+            $app->getReturnedValue()
+        );
+    }
 );
 ```
 In the above example, the handler returns an array of data. The `after` event calls `json_encode` on it, thus returning valid JSON.
@@ -1717,11 +1719,11 @@ This even will fire up when the whole request cycle has been completed.
 <?php
 
 $app->finish(
-function () use ($app) {
-    if (true === file_exists('/tmp/processing.cache')) {
-        unlink('/tmp/processing.cache');
+    function () use ($app) {
+        if (true === file_exists('/tmp/processing.cache')) {
+            unlink('/tmp/processing.cache');
+        }
     }
-}
 );
 ```
 In the above example we utilize the `finish` event to do some cache cleaning.
@@ -1733,29 +1735,29 @@ Attaching middleware to your application is very easy as shown above, with the `
 <?php
 
 $app->before(
-function () use ($app) {
-    if (false === $app['session']->get('auth')) {
-        $app['flashSession']
-            ->error("The user isn not authenticated")
-        ;
+    function () use ($app) {
+        if (false === $app['session']->get('auth')) {
+            $app['flashSession']
+                ->error("The user isn not authenticated")
+            ;
 
-        $app['response']
-            ->redirect('/error')
-        ;
+            $app['response']
+                ->redirect('/error')
+            ;
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 );
 
 $app->after(
-function () use ($app) {
-    echo json_encode(
-        $app->getReturnedValue()
-    );
-}
+    function () use ($app) {
+        echo json_encode(
+            $app->getReturnedValue()
+        );
+    }
 );
 ```
 
@@ -1779,31 +1781,31 @@ $application = new Micro();
 
 // before
 $manager->attach(
-'micro',
-new CacheMiddleware()
+    'micro',
+    new CacheMiddleware()
 );
 
 $application->before(
-new CacheMiddleware()
+    new CacheMiddleware()
 );
 
 $manager->attach(
-'micro',
-new NotFoundMiddleware()
+    'micro',
+    new NotFoundMiddleware()
 );
 
 $application->before(
-new NotFoundMiddleware()
+    new NotFoundMiddleware()
 );
 
 // after
 $manager->attach(
-'micro',
-new ResponseMiddleware()
+    'micro',
+    new ResponseMiddleware()
 );
 
 $application->after(
-new ResponseMiddleware()
+    new ResponseMiddleware()
 );
 
 $application->setEventsManager($manager);
@@ -1829,33 +1831,33 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class CacheMiddleware implements MiddlewareInterface
 {
-/**
- * Calls the middleware
- *
- * @param Micro $application
- *
- * @returns bool
- */
-public function call(Micro $application)
-{
-    $cache  = $application['cache'];
-    $router = $application['router'];
+    /**
+     * Calls the middleware
+     *
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function call(Micro $application)
+    {
+        $cache  = $application['cache'];
+        $router = $application['router'];
 
-    $key = preg_replace(
-        '/^[a-zA-Z0-9]/',
-        '',
-        $router->getRewriteUri()
-    );
+        $key = preg_replace(
+            '/^[a-zA-Z0-9]/',
+            '',
+            $router->getRewriteUri()
+        );
 
-    // Check if the request is cached
-    if ($cache->exists($key)) {
-        echo $cache->get($key);
+        // Check if the request is cached
+        if ($cache->exists($key)) {
+            echo $cache->get($key);
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-}
 }
 ```
 
@@ -1896,50 +1898,50 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class FirewallMiddleware implements MiddlewareInterface
 {
-/**
- * @param Event $event
- * @param Micro $application
- *
- * @returns bool
- */
-public function beforeHandleRoute(
-    Event $event, 
-    Micro $application
-) {
-    $whitelist = [
-        '10.4.6.1',
-        '10.4.6.2',
-        '10.4.6.3',
-        '10.4.6.4',
-    ];
+    /**
+     * @param Event $event
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function beforeHandleRoute(
+        Event $event, 
+        Micro $application
+    ) {
+        $whitelist = [
+            '10.4.6.1',
+            '10.4.6.2',
+            '10.4.6.3',
+            '10.4.6.4',
+        ];
 
-    $ipAddress = $application
-        ->request
-        ->getClientAddress()
-    ;
-
-    if (true !== array_key_exists($ipAddress, $whitelist)) {
-        $this
-            ->response
-            ->redirect('/401')
-            ->send()
+        $ipAddress = $application
+            ->request
+            ->getClientAddress()
         ;
 
-        return false;
+        if (true !== array_key_exists($ipAddress, $whitelist)) {
+            $this
+                ->response
+                ->redirect('/401')
+                ->send()
+            ;
+
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
-
-/**
- * @param Micro $application
- *
- * @returns bool
- */
-public function call(Micro $application)
-{
-    return true;
-}
+    /**
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function call(Micro $application)
+    {
+        return true;
+    }
 }
 ```
 
@@ -1961,29 +1963,29 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class NotFoundMiddleware implements MiddlewareInterface
 {
-/**
- * @param Event $event
- * @param Micro $application
- *
- * @returns bool
- */
-public function beforeNotFound(Event $event, Micro $application)
-{
-    $application->response->redirect('/404');
-    $application->response->send();
+    /**
+     * @param Event $event
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function beforeNotFound(Event $event, Micro $application)
+    {
+        $application->response->redirect('/404');
+        $application->response->send();
 
-    return false;
-}
+        return false;
+    }
 
-/**
- * @param Micro $application
- *
- * @returns bool
- */
-public function call(Micro $application)
-{
-    return true;
-}
+    /**
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function call(Micro $application)
+    {
+        return true;
+    }
 }
 ```
 
@@ -2008,40 +2010,40 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class RedirectMiddleware implements MiddlewareInterface
 {
-/**
- * Before anything happens
- *
- * @param Event $event
- * @param Micro $application
- *
- * @returns bool
- */
-public function beforeHandleRoute(
-    Event $event, 
-    Micro $application
-) {
-    if ('github' === $application->request->getURI()) {
-        $application
-            ->response
-            ->redirect('https://github.com')
-            ->send()
-        ;
+    /**
+     * Before anything happens
+     *
+     * @param Event $event
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function beforeHandleRoute(
+        Event $event, 
+        Micro $application
+    ) {
+        if ('github' === $application->request->getURI()) {
+            $application
+                ->response
+                ->redirect('https://github.com')
+                ->send()
+            ;
 
-        return false;
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
-
-/**
- * @param Micro $application
- *
- * @returns bool
- */
-public function call(Micro $application)
-{
-    return true;
-}
+    /**
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function call(Micro $application)
+    {
+        return true;
+    }
 }
 ```
 
@@ -2065,56 +2067,56 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class CORSMiddleware implements MiddlewareInterface
 {
-/**
- * @param Event $event
- * @param Micro $application
- *
- * @returns bool
- */
-public function beforeHandleRoute(
-    Event $event, 
-    Micro $application
-) {
-    if ($application->request->getHeader('ORIGIN')) {
-        $origin = $application
-            ->request
-            ->getHeader('ORIGIN')
+    /**
+     * @param Event $event
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function beforeHandleRoute(
+        Event $event, 
+        Micro $application
+    ) {
+        if ($application->request->getHeader('ORIGIN')) {
+            $origin = $application
+                ->request
+                ->getHeader('ORIGIN')
+            ;
+        } else {
+            $origin = '*';
+        }
+
+        $application
+            ->response
+            ->setHeader(
+                'Access-Control-Allow-Origin', 
+                $origin
+            )
+            ->setHeader(
+                'Access-Control-Allow-Methods',
+                'GET,PUT,POST,DELETE,OPTIONS'
+            )
+            ->setHeader(
+                'Access-Control-Allow-Headers',
+                'Origin, X-Requested-With, Content-Range, ' .
+                'Content-Disposition, Content-Type, Authorization'
+            )
+            ->setHeader(
+                'Access-Control-Allow-Credentials', 
+                'true'
+            )
         ;
-    } else {
-        $origin = '*';
     }
 
-    $application
-        ->response
-        ->setHeader(
-            'Access-Control-Allow-Origin', 
-            $origin
-        )
-        ->setHeader(
-            'Access-Control-Allow-Methods',
-            'GET,PUT,POST,DELETE,OPTIONS'
-        )
-        ->setHeader(
-            'Access-Control-Allow-Headers',
-            'Origin, X-Requested-With, Content-Range, ' .
-            'Content-Disposition, Content-Type, Authorization'
-        )
-        ->setHeader(
-            'Access-Control-Allow-Credentials', 
-            'true'
-        )
-    ;
-}
-
-/**
- * @param Micro $application
- *
- * @returns bool
- */
-public function call(Micro $application)
-{
-    return true;
-}
+    /**
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function call(Micro $application)
+    {
+        return true;
+    }
 }
 ```
 
@@ -2139,45 +2141,45 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class RequestMiddleware implements MiddlewareInterface
 {
-/**
- * @param Event $event
- * @param Micro $application
- *
- * @returns bool
- */
-public function beforeExecuteRoute(
-    Event $event, 
-    Micro $application
-) {
-    json_decode(
-        $application
-            ->request
-            ->getRawBody()
-    );
+    /**
+     * @param Event $event
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function beforeExecuteRoute(
+        Event $event, 
+        Micro $application
+    ) {
+        json_decode(
+            $application
+                ->request
+                ->getRawBody()
+        );
 
-    if (JSON_ERROR_NONE !== json_last_error()) {
-        $application
-            ->response
-            ->redirect('/malformed')
-            ->send()
-        ;
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            $application
+                ->response
+                ->redirect('/malformed')
+                ->send()
+            ;
 
-        return false;
+            return false;
+        }
+
+        return true;
+
     }
 
-    return true;
-
-}
-
-/**
- * @param Micro $application
- *
- * @returns bool
- */
-public function call(Micro $application)
-{
-    return true;
-}
+    /**
+     * @param Micro $application
+     *
+     * @returns bool
+     */
+    public function call(Micro $application)
+    {
+        return true;
+    }
 }
 ```
 
@@ -2203,28 +2205,28 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
  */
 class ResponseMiddleware implements MiddlewareInterface
 {
- /**
-  * @param Micro $application
-  *
-  * @returns bool
-  */
-public function call(Micro $application)
-{
-    $payload = [
-        'code'    => 200,
-        'status'  => 'success',
-        'message' => '',
-        'payload' => $application->getReturnedValue(),
-    ];
+     /**
+      * @param Micro $application
+      *
+      * @returns bool
+      */
+    public function call(Micro $application)
+    {
+        $payload = [
+            'code'    => 200,
+            'status'  => 'success',
+            'message' => '',
+            'payload' => $application->getReturnedValue(),
+        ];
 
-    $application
-        ->response
-        ->setJsonContent($payload)
-        ->send()
-    ;
+        $application
+            ->response
+            ->setJsonContent($payload)
+            ->send()
+        ;
 
-    return true;
-}
+        return true;
+    }
 }
 ```
 
@@ -2244,28 +2246,28 @@ use Phalcon\Mvc\Micro;
 
 $loader = new Loader();
 $loader
-->registerDirs(
-    [
-        __DIR__ . '/models/',
-    ]
-)
-->register();
+    ->registerDirs(
+        [
+            __DIR__ . '/models/',
+        ]
+    )
+    ->register();
 
 $app = new Micro();
 
 $app->get(
-'/invoices/find',
-function () {
-    $invoices = Invoices::find();
+    '/invoices/find',
+    function () {
+        $invoices = Invoices::find();
 
-    foreach ($invoices as $invoice) {
-        echo $invoice->inv_id, '<br>';
+        foreach ($invoices as $invoice) {
+            echo $invoice->inv_id, '<br>';
+        }
     }
-}
 );
 
 $app->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 
@@ -2283,26 +2285,26 @@ use Phalcon\Mvc\Model\Binder;
 $loader = new Loader();
 
 $loader->registerDirs(
-[
-    __DIR__ . '/models/',
-]
+    [
+        __DIR__ . '/models/',
+    ]
 )->register();
 
 $app = new Micro();
 
 $app->setModelBinder(
-new Binder()
+    new Binder()
 );
 
 $app->get(
-"/invoices/view/{id:[0-9]+}",
-function (Invoices $id) {
-    // ...
-}
+    "/invoices/view/{id:[0-9]+}",
+    function (Invoices $id) {
+        // ...
+    }
 );
 
 $app->handle(
-$_SERVER["REQUEST_URI"]
+    $_SERVER["REQUEST_URI"]
 );
 ```
 Since the Binder object is using internally PHP's Reflection API which requires additional CPU cycles, there is an option to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
@@ -2321,28 +2323,28 @@ use Phalcon\Mvc\View\Simple;
 $app = new Micro();
 
 $app['view'] = function () {
-$view = new Simple();
-$view->setViewsDir('app/views/');
+    $view = new Simple();
+    $view->setViewsDir('app/views/');
 
-return $view;
+    return $view;
 };
 
 $app->get(
-'/invoices/show',
-function () use ($app) {
-    // app/views/invoices/view.phtml
-    echo $app['view']
-        ->render(
-            'invoices/view',
-            [
-                'id'         => 4,
-                'customerId' => 3,
-                'title'      => 'Invoice for ACME Inc.',
-                'total'      => 100,
-            ]
-        )
-    ;
-}
+    '/invoices/show',
+    function () use ($app) {
+        // app/views/invoices/view.phtml
+        echo $app['view']
+            ->render(
+                'invoices/view',
+                [
+                    'id'         => 4,
+                    'customerId' => 3,
+                    'title'      => 'Invoice for ACME Inc.',
+                    'total'      => 100,
+                ]
+            )
+        ;
+    }
 );
 ```
 
@@ -2357,30 +2359,30 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\View;
 
 $app['view'] = function () {
-$view = new View();
+    $view = new View();
 
-$view->setViewsDir('app/views/');
+    $view->setViewsDir('app/views/');
 
-return $view;
+    return $view;
 };
 
 $app->get(
-'/invoices/view',
-function () use ($app) {
-    // app/views/invoices/view.phtml
-    echo $app['view']
-        ->render(
-            'invoices',
-            'view',
-            [
-                'id'         => 4,
-                'customerId' => 3,
-                'title'      => 'Invoice for ACME Inc.',
-                'total'      => 100,
-            ]
-        )
-    ;
-}
+    '/invoices/view',
+    function () use ($app) {
+        // app/views/invoices/view.phtml
+        echo $app['view']
+            ->render(
+                'invoices',
+                'view',
+                [
+                    'id'         => 4,
+                    'customerId' => 3,
+                    'title'      => 'Invoice for ACME Inc.',
+                    'total'      => 100,
+                ]
+            )
+        ;
+    }
 );
 ```
 
@@ -2394,14 +2396,14 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Mvc\Micro\Exception;
 
 try {
-$app = new Micro();
-$app->before(false);
-
-$app->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $app = new Micro();
+    $app->before(false);
+    
+    $app->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 
@@ -2416,25 +2418,25 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 
 $app->get(
-'/',
-function () {
-    throw new \Exception(
-        'Error', 
-        401
-    );
-}
+    '/',
+    function () {
+        throw new \Exception(
+            'Error', 
+            401
+        );
+    }
 );
 
 $app->error(
-function ($exception) {
-    echo json_encode(
-        [
-            'code'    => $exception->getCode(),
-            'status'  => 'error',
-            'message' => $exception->getMessage(),
-        ]
-    );
-}
+    function ($exception) {
+        echo json_encode(
+            [
+                'code'    => $exception->getCode(),
+                'status'  => 'error',
+                'message' => $exception->getMessage(),
+            ]
+        );
+    }
 );
 ```
 

@@ -36,9 +36,9 @@ The [front controller][front] registers the provider for you in its default `reg
 ```php
 protected function registerProviders(Container $container): void
 {
-parent::registerProviders($container);   // registers the ADR seams above
+    parent::registerProviders($container);   // registers the ADR seams above
 
-$container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
+    $container->bind(OrderRepositoryInterface::class, DbOrderRepository::class);
 }
 ```
 
@@ -66,12 +66,12 @@ use App\Order\OrderRepositoryInterface;
 use Phalcon\ADR\Application;
 
 $application = (new Application())
-->bind(OrderRepositoryInterface::class, DbOrderRepository::class)
-->define(MailerService::class, [
-    'host'   => 'smtp.example.com',
-    'port'   => 587,
-    'useTls' => true,
-]);
+    ->bind(OrderRepositoryInterface::class, DbOrderRepository::class)
+    ->define(MailerService::class, [
+        'host'   => 'smtp.example.com',
+        'port'   => 587,
+        'useTls' => true,
+    ]);
 ```
 
 Constructed with no container, `new Application()` builds its own with the seams above already registered, which is how you configure an ADR application without a front controller.

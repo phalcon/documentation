@@ -1,0 +1,30 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Phalcon Documentation",
+    "identifier": "https://docs.phalcon.io/",
+    "documentationUrl": "https://docs.phalcon.io/"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:docs.phalcon.io:docs:index",
+      "displayName": "Phalcon Documentation documentation index",
+      "type": "text/plain",
+      "url": "https://docs.phalcon.io/llms.txt",
+      "representativeQueries": [
+        "Find the Phalcon Documentation documentation",
+        "List topics covered by Phalcon Documentation"
+      ]
+    },
+    {
+      "identifier": "urn:air:docs.phalcon.io:docs:home",
+      "displayName": "Phalcon Documentation overview",
+      "type": "text/markdown",
+      "url": "https://docs.phalcon.io/index.md",
+      "representativeQueries": [
+        "Get started with Phalcon Documentation",
+        "Read an overview of Phalcon Documentation"
+      ]
+    }
+  ]
+}

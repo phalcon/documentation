@@ -23,6 +23,7 @@ When a migration is generated a set of classes are created to describe how your 
     <iframe src='https://player.vimeo.com/video/41381817' width='500' height='281' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
+
 ## Schema Dumping
 The [Phalcon Developer Tools](/3.4/devtools-usage/) provides scripts to manage migrations (generation, running and rollback).
 
@@ -33,6 +34,7 @@ Each migration has a version identifier associated with it. The version number a
 When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
 
 By default, [Phalcon Developer Tools](/3.4/devtools-usage/) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
+
 
 ## Migration Class Anatomy
 Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
@@ -49,86 +51,86 @@ use Phalcon\Mvc\Model\Migration;
 
 class ProductsMigration_100 extends Migration
 {
-public function up()
-{
-    $this->morphTable(
-        'products',
-        [
-            'columns' => [
-                new Column(
-                    'id',
-                    [
-                        'type'          => Column::TYPE_INTEGER,
-                        'size'          => 10,
-                        'unsigned'      => true,
-                        'notNull'       => true,
-                        'autoIncrement' => true,
-                        'first'         => true,
-                    ]
-                ),
-                new Column(
-                    'product_types_id',
-                    [
-                        'type'     => Column::TYPE_INTEGER,
-                        'size'     => 10,
-                        'unsigned' => true,
-                        'notNull'  => true,
-                        'after'    => 'id',
-                    ]
-                ),
-                new Column(
-                    'name',
-                    [
-                        'type'    => Column::TYPE_VARCHAR,
-                        'size'    => 70,
-                        'notNull' => true,
-                        'after'   => 'product_types_id',
-                    ]
-                ),
-                new Column(
-                    'price',
-                    [
-                        'type'    => Column::TYPE_DECIMAL,
-                        'size'    => 16,
-                        'scale'   => 2,
-                        'notNull' => true,
-                        'after'   => 'name',
-                    ]
-                ),
-            ],
-            'indexes' => [
-                new Index(
-                    'PRIMARY',
-                    [
+    public function up()
+    {
+        $this->morphTable(
+            'products',
+            [
+                'columns' => [
+                    new Column(
                         'id',
-                    ]
-                ),
-                new Index(
-                    'product_types_id',
-                    [
+                        [
+                            'type'          => Column::TYPE_INTEGER,
+                            'size'          => 10,
+                            'unsigned'      => true,
+                            'notNull'       => true,
+                            'autoIncrement' => true,
+                            'first'         => true,
+                        ]
+                    ),
+                    new Column(
                         'product_types_id',
-                    ]
-                ),
-            ],
-            'references' => [
-                new Reference(
-                    'products_ibfk_1',
-                    [
-                        'referencedSchema'  => 'invo',
-                        'referencedTable'   => 'product_types',
-                        'columns'           => ['product_types_id'],
-                        'referencedColumns' => ['id'],
-                    ]
-                ),
-            ],
-            'options' => [
-                'TABLE_TYPE'      => 'BASE TABLE',
-                'ENGINE'          => 'InnoDB',
-                'TABLE_COLLATION' => 'utf8_general_ci',
-            ],
-        ]
-    );
-}
+                        [
+                            'type'     => Column::TYPE_INTEGER,
+                            'size'     => 10,
+                            'unsigned' => true,
+                            'notNull'  => true,
+                            'after'    => 'id',
+                        ]
+                    ),
+                    new Column(
+                        'name',
+                        [
+                            'type'    => Column::TYPE_VARCHAR,
+                            'size'    => 70,
+                            'notNull' => true,
+                            'after'   => 'product_types_id',
+                        ]
+                    ),
+                    new Column(
+                        'price',
+                        [
+                            'type'    => Column::TYPE_DECIMAL,
+                            'size'    => 16,
+                            'scale'   => 2,
+                            'notNull' => true,
+                            'after'   => 'name',
+                        ]
+                    ),
+                ],
+                'indexes' => [
+                    new Index(
+                        'PRIMARY',
+                        [
+                            'id',
+                        ]
+                    ),
+                    new Index(
+                        'product_types_id',
+                        [
+                            'product_types_id',
+                        ]
+                    ),
+                ],
+                'references' => [
+                    new Reference(
+                        'products_ibfk_1',
+                        [
+                            'referencedSchema'  => 'invo',
+                            'referencedTable'   => 'product_types',
+                            'columns'           => ['product_types_id'],
+                            'referencedColumns' => ['id'],
+                        ]
+                    ),
+                ],
+                'options' => [
+                    'TABLE_TYPE'      => 'BASE TABLE',
+                    'ENGINE'          => 'InnoDB',
+                    'TABLE_COLLATION' => 'utf8_general_ci',
+                ],
+            ]
+        );
+    }
 }
 ```
 
@@ -140,6 +142,7 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 | `indexes`    | An array with a set of table indexes.                                                                                                       | Yes      |
 | `references` | An array with a set of table references (foreign keys).                                                                                     | Yes      |
 | `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | Yes      |
+
 
 ### Defining Columns
 [Phalcon\Db\Column](/3.4/api/phalcon_db/) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
@@ -177,8 +180,10 @@ Database migrations support the following database column types:
 * `Phalcon\Db\Column::TYPE_JSONB`
 * `Phalcon\Db\Column::TYPE_BIGINTEGER`
 
+
 ### Defining Indexes
 [Phalcon\Db\Index](/3.4/api/phalcon_db/) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
+
 
 ### Defining References
 [Phalcon\Db\Reference](/3.4/api/phalcon_db/) defines table references (also called foreign keys). The following options can be used to define a reference:
@@ -192,6 +197,7 @@ Database migrations support the following database column types:
 | `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
 | `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       | Yes      | MySQL PostgreSQL |
 
+
 ## Writing Migrations
 Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/3.4/db-layer/).
 
@@ -202,24 +208,25 @@ use Phalcon\Mvc\Model\Migration;
 
 class ProductsMigration_100 extends Migration
 {
-public function up()
-{
-    // ...
+    public function up()
+    {
+        // ...
 
-    self::$_connection->insert(
-        'products',
-        [
-            'Malabar spinach',
-            14.50,
-        ],
-        [
-            'name',
-            'price',
-        ]
-    );
-}
+        self::$_connection->insert(
+            'products',
+            [
+                'Malabar spinach',
+                14.50,
+            ],
+            [
+                'name',
+                'price',
+            ]
+        );
+    }
 }
 ```
+
 
 ## Running Migrations
 

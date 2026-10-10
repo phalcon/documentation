@@ -29,6 +29,7 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 ```
 
+
 ## Constants
 *string* **FILTER_EMAIL**
 
@@ -63,17 +64,26 @@ public  **add** (*mixed* $name, *mixed* $handler)
 
 Adds a user-defined filter
 
+
+
 public  **sanitize** (*mixed* $value, *mixed* $filters, [*mixed* $noRecursive])
 
 Sanitizes a value with a specified single or set of filters
+
+
 
 protected  **_sanitize** (*mixed* $value, *mixed* $filter)
 
 Internal sanitize wrapper to filter_var
 
+
+
 public  **getFilters** ()
 
 Return the user-defined filters in the instance
+
+
+
 
 <hr />
 
@@ -90,45 +100,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -141,6 +173,8 @@ abstract public  **filter** (*mixed* $value)
 
 ...
 
+
+
 <hr />
 
 # Interface **Phalcon\FilterInterface**
@@ -152,9 +186,11 @@ abstract public  **add** (*mixed* $name, *mixed* $handler)
 
 ...
 
+
 abstract public  **sanitize** (*mixed* $value, *mixed* $filters)
 
 ...
+
 
 abstract public  **getFilters** ()
 

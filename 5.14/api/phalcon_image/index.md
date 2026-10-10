@@ -23,12 +23,13 @@ All image adapters must use this class
 <div class="api-tree">
 
 - **`Phalcon\Image\Adapter\AbstractAdapter`** — implements [`Phalcon\Image\Adapter\AdapterInterface`](#imageadapteradapterinterface)
-- [`Phalcon\Image\Adapter\Gd`](#imageadaptergd)
-- [`Phalcon\Image\Adapter\Imagick`](#imageadapterimagick)
+    - [`Phalcon\Image\Adapter\Gd`](#imageadaptergd)
+    - [`Phalcon\Image\Adapter\Imagick`](#imageadapterimagick)
 
 </div>
 
 __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\MissingDimensions` · `Phalcon\Image\Exceptions\MissingHeight` · `Phalcon\Image\Exceptions\MissingWidth`
+
 
 ### Method Summary
 
@@ -205,8 +206,8 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 
 ```php
 public function background(
-string $color,
-int $opacity = 100
+    string $color,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
@@ -224,10 +225,10 @@ Blur image
 
 ```php
 public function crop(
-int $width,
-int $height,
-mixed $offsetX = null,
-mixed $offsetY = null
+    int $width,
+    int $height,
+    mixed $offsetX = null,
+    mixed $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -297,9 +298,9 @@ Pixelate image
 
 ```php
 public function reflection(
-int $height,
-int $opacity = 100,
-bool $fadeIn = false
+    int $height,
+    int $opacity = 100,
+    bool $fadeIn = false
 ): AdapterInterface;
 ```
 
@@ -309,8 +310,8 @@ Add a reflection to an image
 
 ```php
 public function render(
-string $extension = null,
-int $quality = 100
+    string $extension = null,
+    int $quality = 100
 ): string;
 ```
 
@@ -320,9 +321,9 @@ Render the image and return the binary string
 
 ```php
 public function resize(
-int $width = null,
-int $height = null,
-int $master = Enum::AUTO
+    int $width = null,
+    int $height = null,
+    int $master = Enum::AUTO
 ): AdapterInterface;
 ```
 
@@ -340,8 +341,8 @@ Rotate the image by a given amount
 
 ```php
 public function save(
-string $file = null,
-int $quality = -1
+    string $file = null,
+    int $quality = -1
 ): AdapterInterface;
 ```
 
@@ -359,13 +360,13 @@ Sharpen the image by a given amount
 
 ```php
 public function text(
-string $text,
-mixed $offsetX = false,
-mixed $offsetY = false,
-int $opacity = 100,
-string $color = "000000",
-int $size = 12,
-string $fontFile = null
+    string $text,
+    mixed $offsetX = false,
+    mixed $offsetY = false,
+    int $opacity = 100,
+    string $color = "000000",
+    int $size = 12,
+    string $fontFile = null
 ): AdapterInterface;
 ```
 
@@ -375,10 +376,10 @@ Add a text to an image with a specified opacity
 
 ```php
 public function watermark(
-AdapterInterface $watermark,
-int $offsetX = 0,
-int $offsetY = 0,
-int $opacity = 100
+    AdapterInterface $watermark,
+    int $offsetX = 0,
+    int $offsetY = 0,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
@@ -390,11 +391,12 @@ Add a watermark to an image with the specified opacity
 
 ```php
 protected function checkHighLow(
-int $value,
-int $min = 0,
-int $max = 100
+    int $value,
+    int $min = 0,
+    int $max = 100
 ): int;
 ```
+
 
 ## Image\Adapter\AdapterInterface
 
@@ -410,6 +412,7 @@ Interface for Phalcon\Image\Adapter classes
 </div>
 
 __Uses__ `Phalcon\Image\Enum`
+
 
 ### Method Summary
 
@@ -518,8 +521,8 @@ __Uses__ `Phalcon\Image\Enum`
 
 ```php
 public function background(
-string $color,
-int $opacity = 100
+    string $color,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
@@ -537,10 +540,10 @@ Blur an image
 
 ```php
 public function crop(
-int $width,
-int $height,
-int $offsetX = null,
-int $offsetY = null
+    int $width,
+    int $height,
+    int $offsetX = null,
+    int $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -586,9 +589,9 @@ Pixelate an image
 
 ```php
 public function reflection(
-int $height,
-int $opacity = 100,
-bool $fadeIn = false
+    int $height,
+    int $opacity = 100,
+    bool $fadeIn = false
 ): AdapterInterface;
 ```
 
@@ -598,8 +601,8 @@ Reflect an image
 
 ```php
 public function render(
-string $extension = null,
-int $quality = 100
+    string $extension = null,
+    int $quality = 100
 ): string;
 ```
 
@@ -609,9 +612,9 @@ Render an image
 
 ```php
 public function resize(
-int $width = null,
-int $height = null,
-int $master = Enum::AUTO
+    int $width = null,
+    int $height = null,
+    int $master = Enum::AUTO
 ): AdapterInterface;
 ```
 
@@ -629,8 +632,8 @@ Rotate an image
 
 ```php
 public function save(
-string $file = null,
-int $quality = 100
+    string $file = null,
+    int $quality = 100
 ): AdapterInterface;
 ```
 
@@ -648,13 +651,13 @@ Sharpen an image
 
 ```php
 public function text(
-string $text,
-int $offsetX = 0,
-int $offsetY = 0,
-int $opacity = 100,
-string $color = "000000",
-int $size = 12,
-string $fontFile = null
+    string $text,
+    int $offsetX = 0,
+    int $offsetY = 0,
+    int $opacity = 100,
+    string $color = "000000",
+    int $size = 12,
+    string $fontFile = null
 ): AdapterInterface;
 ```
 
@@ -664,14 +667,15 @@ Adds text on an image
 
 ```php
 public function watermark(
-AdapterInterface $watermark,
-int $offsetX = 0,
-int $offsetY = 0,
-int $opacity = 100
+    AdapterInterface $watermark,
+    int $offsetX = 0,
+    int $offsetY = 0,
+    int $opacity = 100
 ): AdapterInterface;
 ```
 
 Add a watermark on an image
+
 
 ## Image\Adapter\Gd
 
@@ -688,11 +692,12 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
-- **`Phalcon\Image\Adapter\Gd`**
+    - **`Phalcon\Image\Adapter\Gd`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\TextRenderingFailed` · `Phalcon\Image\Exceptions\UnsupportedImageType` · `Phalcon\Image\Exceptions\VersionMismatch`
+
 
 ### Method Summary
 
@@ -793,9 +798,9 @@ __Uses__ `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exc
 
 ```php
 public function __construct(
-string $file,
-int $width = null,
-int $height = null
+    string $file,
+    int $width = null,
+    int $height = null
 );
 ```
 
@@ -819,10 +824,10 @@ public function getVersion(): string;
 
 ```php
 protected function processBackground(
-int $red,
-int $green,
-int $blue,
-int $opacity
+    int $red,
+    int $green,
+    int $blue,
+    int $opacity
 ): void;
 ```
 
@@ -836,8 +841,8 @@ protected function processBlur( int $radius ): void;
 
 ```php
 protected function processCreate(
-int $width,
-int $height
+    int $width,
+    int $height
 );
 ```
 
@@ -845,10 +850,10 @@ int $height
 
 ```php
 protected function processCrop(
-int $width,
-int $height,
-int $offsetX,
-int $offsetY
+    int $width,
+    int $height,
+    int $offsetX,
+    int $offsetY
 ): void;
 ```
 
@@ -874,9 +879,9 @@ protected function processPixelate( int $amount ): void;
 
 ```php
 protected function processReflection(
-int $height,
-int $opacity,
-bool $fadeIn
+    int $height,
+    int $opacity,
+    bool $fadeIn
 ): void;
 ```
 
@@ -884,8 +889,8 @@ bool $fadeIn
 
 ```php
 protected function processRender(
-string $extension,
-int $quality
+    string $extension,
+    int $quality
 );
 ```
 
@@ -893,8 +898,8 @@ int $quality
 
 ```php
 protected function processResize(
-int $width,
-int $height
+    int $width,
+    int $height
 ): void;
 ```
 
@@ -908,8 +913,8 @@ protected function processRotate( int $degrees ): void;
 
 ```php
 protected function processSave(
-string $file,
-int $quality
+    string $file,
+    int $quality
 ): bool;
 ```
 
@@ -923,15 +928,15 @@ protected function processSharpen( int $amount ): void;
 
 ```php
 protected function processText(
-string $text,
-mixed $offsetX,
-mixed $offsetY,
-int $opacity,
-int $red,
-int $green,
-int $blue,
-int $size,
-string $fontFile = null
+    string $text,
+    mixed $offsetX,
+    mixed $offsetY,
+    int $opacity,
+    int $red,
+    int $green,
+    int $blue,
+    int $size,
+    string $fontFile = null
 ): void;
 ```
 
@@ -939,12 +944,13 @@ string $fontFile = null
 
 ```php
 protected function processWatermark(
-AdapterInterface $watermark,
-int $offsetX,
-int $offsetY,
-int $opacity
+    AdapterInterface $watermark,
+    int $offsetX,
+    int $offsetY,
+    int $opacity
 ): void;
 ```
+
 
 ## Image\Adapter\Imagick
 
@@ -961,18 +967,19 @@ $image = new \Phalcon\Image\Adapter\Imagick("upload/test.jpg");
 $image->resize(200, 200)->rotate(90)->crop(100, 100);
 
 if ($image->save()) {
-echo "success";
+    echo "success";
 }
 ```
 
 <div class="api-tree">
 
 - [`Phalcon\Image\Adapter\AbstractAdapter`](#imageadapterabstractadapter)
-- **`Phalcon\Image\Adapter\Imagick`**
+    - **`Phalcon\Image\Adapter\Imagick`**
 
 </div>
 
 __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickException` · `ImagickPixel` · `ImagickPixelException` · `Phalcon\Image\Enum` · `Phalcon\Image\Exception` · `Phalcon\Image\Exceptions\CompositeFailed` · `Phalcon\Image\Exceptions\ExtensionNotLoaded` · `Phalcon\Image\Exceptions\ImageLoadFailed` · `Phalcon\Image\Exceptions\ResizeFailed` · `Phalcon\Image\Exceptions\ResourceTypeError`
+
 
 ### Method Summary
 
@@ -1103,9 +1110,9 @@ __Uses__ `Imagick` · `ImagickDraw` · `ImagickDrawException` · `ImagickExcepti
 
 ```php
 public function __construct(
-string $file,
-int $width = null,
-int $height = null
+    string $file,
+    int $width = null,
+    int $height = null
 );
 ```
 
@@ -1123,10 +1130,10 @@ Destroys the loaded image to free up resources.
 
 ```php
 public function liquidRescale(
-int $width,
-int $height,
-int $deltaX = 0,
-int $rigidity = 0
+    int $width,
+    int $height,
+    int $deltaX = 0,
+    int $rigidity = 0
 ): AbstractAdapter;
 ```
 
@@ -1137,8 +1144,8 @@ Imagick
 
 ```php
 public function setResourceLimit(
-int $type,
-int $limit
+    int $type,
+    int $limit
 ): void;
 ```
 
@@ -1152,10 +1159,10 @@ Sets the limit for a particular resource in megabytes
 
 ```php
 protected function processBackground(
-int $red,
-int $green,
-int $blue,
-int $opacity
+    int $red,
+    int $green,
+    int $blue,
+    int $opacity
 ): void;
 ```
 
@@ -1173,10 +1180,10 @@ Blur image
 
 ```php
 protected function processCrop(
-int $width,
-int $height,
-int $offsetX,
-int $offsetY
+    int $width,
+    int $height,
+    int $offsetX,
+    int $offsetY
 ): void;
 ```
 
@@ -1210,9 +1217,9 @@ Pixelate image
 
 ```php
 protected function processReflection(
-int $height,
-int $opacity,
-bool $fadeIn
+    int $height,
+    int $opacity,
+    bool $fadeIn
 ): void;
 ```
 
@@ -1222,8 +1229,8 @@ Execute a reflection.
 
 ```php
 protected function processRender(
-string $extension,
-int $quality
+    string $extension,
+    int $quality
 ): string;
 ```
 
@@ -1233,8 +1240,8 @@ Execute a render.
 
 ```php
 protected function processResize(
-int $width,
-int $height
+    int $width,
+    int $height
 ): void;
 ```
 
@@ -1252,8 +1259,8 @@ Execute a rotation.
 
 ```php
 protected function processSave(
-string $file,
-int $quality
+    string $file,
+    int $quality
 ): void;
 ```
 
@@ -1271,15 +1278,15 @@ Execute a sharpen.
 
 ```php
 protected function processText(
-string $text,
-mixed $offsetX,
-mixed $offsetY,
-int $opacity,
-int $red,
-int $green,
-int $blue,
-int $size,
-string $fontFile = null
+    string $text,
+    mixed $offsetX,
+    mixed $offsetY,
+    int $opacity,
+    int $red,
+    int $green,
+    int $blue,
+    int $size,
+    string $fontFile = null
 ): void;
 ```
 
@@ -1289,14 +1296,15 @@ Execute a text
 
 ```php
 protected function processWatermark(
-AdapterInterface $image,
-int $offsetX,
-int $offsetY,
-int $opacity
+    AdapterInterface $image,
+    int $offsetX,
+    int $offsetY,
+    int $opacity
 ): void;
 ```
 
 Add Watermark
+
 
 ## Image\Enum
 
@@ -1357,6 +1365,7 @@ file that was distributed with this source code.
 </div>
 </div>
 
+
 ## Image\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1367,20 +1376,21 @@ Exceptions thrown in Phalcon\Image will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Image\Exception`**
-- [`Phalcon\Image\Exceptions\CompositeFailed`](#imageexceptionscompositefailed)
-- [`Phalcon\Image\Exceptions\ExtensionNotLoaded`](#imageexceptionsextensionnotloaded)
-- [`Phalcon\Image\Exceptions\ImageLoadFailed`](#imageexceptionsimageloadfailed)
-- [`Phalcon\Image\Exceptions\MissingDimensions`](#imageexceptionsmissingdimensions)
-- [`Phalcon\Image\Exceptions\MissingHeight`](#imageexceptionsmissingheight)
-- [`Phalcon\Image\Exceptions\MissingWidth`](#imageexceptionsmissingwidth)
-- [`Phalcon\Image\Exceptions\ResizeFailed`](#imageexceptionsresizefailed)
-- [`Phalcon\Image\Exceptions\ResourceTypeError`](#imageexceptionsresourcetypeerror)
-- [`Phalcon\Image\Exceptions\TextRenderingFailed`](#imageexceptionstextrenderingfailed)
-- [`Phalcon\Image\Exceptions\UnsupportedImageType`](#imageexceptionsunsupportedimagetype)
-- [`Phalcon\Image\Exceptions\VersionMismatch`](#imageexceptionsversionmismatch)
+    - **`Phalcon\Image\Exception`**
+        - [`Phalcon\Image\Exceptions\CompositeFailed`](#imageexceptionscompositefailed)
+        - [`Phalcon\Image\Exceptions\ExtensionNotLoaded`](#imageexceptionsextensionnotloaded)
+        - [`Phalcon\Image\Exceptions\ImageLoadFailed`](#imageexceptionsimageloadfailed)
+        - [`Phalcon\Image\Exceptions\MissingDimensions`](#imageexceptionsmissingdimensions)
+        - [`Phalcon\Image\Exceptions\MissingHeight`](#imageexceptionsmissingheight)
+        - [`Phalcon\Image\Exceptions\MissingWidth`](#imageexceptionsmissingwidth)
+        - [`Phalcon\Image\Exceptions\ResizeFailed`](#imageexceptionsresizefailed)
+        - [`Phalcon\Image\Exceptions\ResourceTypeError`](#imageexceptionsresourcetypeerror)
+        - [`Phalcon\Image\Exceptions\TextRenderingFailed`](#imageexceptionstextrenderingfailed)
+        - [`Phalcon\Image\Exceptions\UnsupportedImageType`](#imageexceptionsunsupportedimagetype)
+        - [`Phalcon\Image\Exceptions\VersionMismatch`](#imageexceptionsversionmismatch)
 
 </div>
+
 
 ## Image\Exceptions\CompositeFailed
 
@@ -1397,12 +1407,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\CompositeFailed`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\CompositeFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1423,6 +1434,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\ExtensionNotLoaded
 
 <span class="badge badge--class">Class</span>
@@ -1438,12 +1450,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ExtensionNotLoaded`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\ExtensionNotLoaded`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1464,6 +1477,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct( string $extension );
 ```
 
+
 ## Image\Exceptions\ImageLoadFailed
 
 <span class="badge badge--class">Class</span>
@@ -1479,12 +1493,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ImageLoadFailed`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\ImageLoadFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1505,6 +1520,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct( string $file );
 ```
 
+
 ## Image\Exceptions\MissingDimensions
 
 <span class="badge badge--class">Class</span>
@@ -1520,12 +1536,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\MissingDimensions`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\MissingDimensions`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1546,6 +1563,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\MissingHeight
 
 <span class="badge badge--class">Class</span>
@@ -1561,12 +1579,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\MissingHeight`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\MissingHeight`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1587,6 +1606,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\MissingWidth
 
 <span class="badge badge--class">Class</span>
@@ -1602,12 +1622,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\MissingWidth`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\MissingWidth`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1628,6 +1649,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\ResizeFailed
 
 <span class="badge badge--class">Class</span>
@@ -1643,12 +1665,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ResizeFailed`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\ResizeFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1669,6 +1692,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\ResourceTypeError
 
 <span class="badge badge--class">Class</span>
@@ -1684,12 +1708,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\ResourceTypeError`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\ResourceTypeError`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1710,6 +1735,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\TextRenderingFailed
 
 <span class="badge badge--class">Class</span>
@@ -1725,12 +1751,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\TextRenderingFailed`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\TextRenderingFailed`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1751,6 +1778,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct();
 ```
 
+
 ## Image\Exceptions\UnsupportedImageType
 
 <span class="badge badge--class">Class</span>
@@ -1766,12 +1794,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\UnsupportedImageType`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\UnsupportedImageType`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1792,6 +1821,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct( string $format = "" );
 ```
 
+
 ## Image\Exceptions\VersionMismatch
 
 <span class="badge badge--class">Class</span>
@@ -1807,12 +1837,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Image\Exception`](#imageexception)
-- **`Phalcon\Image\Exceptions\VersionMismatch`**
+    - [`Phalcon\Image\Exception`](#imageexception)
+        - **`Phalcon\Image\Exceptions\VersionMismatch`**
 
 </div>
 
 __Uses__ `Phalcon\Image\Exception`
+
 
 ### Method Summary
 
@@ -1833,6 +1864,7 @@ __Uses__ `Phalcon\Image\Exception`
 public function __construct( string $version );
 ```
 
+
 ## Image\ImageFactory
 
 <span class="badge badge--class">Class</span>
@@ -1843,12 +1875,13 @@ Factory to create adapters for image manipulation
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.14/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Image\ImageFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Image\ImageFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Config\ConfigInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface`
+
 
 ### Method Summary
 
@@ -1907,10 +1940,10 @@ Factory to create an instance from a Config object
 
 ```php
 public function newInstance(
-string $name,
-string $file,
-int $width = null,
-int $height = null
+    string $name,
+    string $file,
+    int $width = null,
+    int $height = null
 ): AdapterInterface;
 ```
 

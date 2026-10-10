@@ -72,53 +72,53 @@ use Phalcon\Security;
  */
 class SessionController extends Controller
 {
-/**
- * Login
- */
-public function loginAction()
-{
-    $login    = $this->request->getPost('login');
-    $password = $this->request->getPost('password');
+    /**
+     * Login
+     */
+    public function loginAction()
+    {
+        $login    = $this->request->getPost('login');
+        $password = $this->request->getPost('password');
 
-    $user = Users::findFirst(
-        [
-            'conditions' => 'login = :login:',
-            'bind'       => [
-                'login' => $login,
-            ],
-        ]
-    );
+        $user = Users::findFirst(
+            [
+                'conditions' => 'login = :login:',
+                'bind'       => [
+                    'login' => $login,
+                ],
+            ]
+        );
 
-    if (false !== $user) {
-        $check = $this
-            ->security
-            ->checkHash($password, $user->password);
-
-        if (true === $check) {
-            // OK
+        if (false !== $user) {
+            $check = $this
+                ->security
+                ->checkHash($password, $user->password);
+            
+            if (true === $check) {
+                // OK
+            }
+        } else {
+            $this->security->hash(rand());
         }
-    } else {
-        $this->security->hash(rand());
+
+        // ERROR
     }
 
-    // ERROR
-}
+    /**
+     * Register
+     */
+    public function registerAction()
+    {
+        $login    = $this->request->getPost('login', 'string');
+        $password = $this->request->getPost('password', 'string');
 
-/**
- * Register
- */
-public function registerAction()
-{
-    $login    = $this->request->getPost('login', 'string');
-    $password = $this->request->getPost('password', 'string');
+        $user = new Users();
 
-    $user = new Users();
+        $user->login    = $login;
+        $user->password = $this->security->hash($password);
 
-    $user->login    = $login;
-    $user->password = $this->security->hash($password);
-
-    $user->save();
-}
+        $user->save();
+    }
 
 }
 ```
@@ -163,14 +163,14 @@ use Phalcon\Mvc\Controller;
 
 class IndexController extends Controller
 {
-public function index()
-{
-    try {
-        $this->security->hash('123');
-    } catch (Exception $ex) {
-        echo $ex->getMessage();
+    public function index()
+    {
+        try {
+            $this->security->hash('123');
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
-}
 }
 ```
 
@@ -182,10 +182,10 @@ The idea is to prevent the form values from being sent outside our application. 
 ```php
 <form method='post' action='session/login'>
 
-<!-- Login and password inputs ... -->
+    <!-- Login and password inputs ... -->
 
-<input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
-    value='<?php echo $this->security->getToken() ?>'/>
+    <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+        value='<?php echo $this->security->getToken() ?>'/>
 
 </form>
 ```
@@ -203,14 +203,14 @@ use Phalcon\Mvc\Controller;
  */
 class SessionController extends Controller
 {
-public function loginAction()
-{
-    if ($this->request->isPost()) {
-        if ($this->security->checkToken()) {
-            // OK
+    public function loginAction()
+    {
+        if ($this->request->isPost()) {
+            if ($this->security->checkToken()) {
+                // OK
+            }
         }
     }
-}
 }
 ```
 
@@ -235,11 +235,11 @@ Getter and setter for the default hash that the component will use. By default t
 * `CRYPT_SHA256`
 * `CRYPT_SHA512`
 * `CRYPT_DEFAULT`
-
+ 
 **hash()**
 
 Hashes a string or password and returns the hashed string back. The second parameter is optional, and allows you to set temporarily a specific `workFactor` or passes which overrides the default one. 
-
+ 
 **checkHash()**  
 
 Accepts a string (usually the password), an already hashed string (the hashed password) and an optional minimum password length. It checks them both and returns `true` if they are identical and `false` otherwise.
@@ -456,15 +456,15 @@ use Phalcon\Security;
 $container = new FactoryDefault();
 
 $container->set(
-'security',
-function () {
-    $security = new Security();
+    'security',
+    function () {
+        $security = new Security();
 
-    $security->setWorkFactor(12);
+        $security->setWorkFactor(12);
 
-    return $security;
-},
-true
+        return $security;
+    },
+    true
 );
 ```
 In the above example, the `setWorkFactor()` sets the password hashing factor to 12 rounds.
@@ -482,10 +482,10 @@ use Phalcon\Security;
  */
 class MyController extends Controller
 {
-private function getHash(string $password): string
-{
-    return $this->security->hash($password);
-}
+    private function getHash(string $password): string
+    {
+        return $this->security->hash($password);
+    }
 }
 ```
 
@@ -494,6 +494,7 @@ Also in your views (Volt syntax)
 ```twig
 {% raw %}{{ security.getToken() }}{% endraw %}
 ```
+
 
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
 [captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA

@@ -1,0 +1,1 @@
+import{t as e}from"./nav-sidebar-C8UwYqMW.CpSvOf4J.js";import{a as t}from"./client.BoLtxocY.js";function n(e){let n=e.querySelector(`[data-nb-collapsible-trigger]`),r=e.querySelector(`[data-nb-collapsible-content]`);if(!n||!r)return()=>{};let i=e.dataset.nbDefaultOpen===`true`,a=t({trigger:n,content:r,defaultOpen:i});return()=>a.destroy()}e(`[data-nb-collapsible]`,n);

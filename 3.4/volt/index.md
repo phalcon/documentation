@@ -13,6 +13,7 @@ Volt is an ultra-fast and designer friendly templating language written in C for
 
 Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
+
 ## Introduction
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -23,15 +24,16 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% block last_products %}
 
 {% for product in products %}
-* Name: {{ product.name|e }}
-{% if product.status === 'Active' %}
-   Price: {{ product.price + product.taxes/100 }}
-{% endif  %}
+    * Name: {{ product.name|e }}
+    {% if product.status === 'Active' %}
+       Price: {{ product.price + product.taxes/100 }}
+    {% endif  %}
 {% endfor  %}
 
 {% endblock %}
 {% endraw %}
 ```
+
 
 ## Activating Volt
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
@@ -44,37 +46,37 @@ use Phalcon\Mvc\View\Engine\Volt;
 
 // Register Volt as a service
 $di->set(
-'voltService',
-function ($view, $di) {
-    $volt = new Volt($view, $di);
+    'voltService',
+    function ($view, $di) {
+        $volt = new Volt($view, $di);
 
-    $volt->setOptions(
-        [
-            'compiledPath'      => '../app/compiled-templates/',
-            'compiledExtension' => '.compiled',
-        ]
-    );
+        $volt->setOptions(
+            [
+                'compiledPath'      => '../app/compiled-templates/',
+                'compiledExtension' => '.compiled',
+            ]
+        );
 
-    return $volt;
-}
+        return $volt;
+    }
 );
 
 // Register Volt as template engine
 $di->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    $view->registerEngines(
-        [
-            '.volt' => 'voltService',
-        ]
-    );
+        $view->registerEngines(
+            [
+                '.volt' => 'voltService',
+            ]
+        );
 
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -84,9 +86,9 @@ Use the standard `.phtml` extension:
 <?php
 
 $view->registerEngines(
-[
-    '.phtml' => 'voltService',
-]
+    [
+        '.phtml' => 'voltService',
+    ]
 );
 ```
 
@@ -96,9 +98,9 @@ You don't have to specify the Volt Service in the DI; you can also use the Volt 
 <?php
 
 $view->registerEngines(
-[
-    '.volt' => Phalcon\Mvc\View\Engine\Volt::class,
-]
+    [
+        '.volt' => Phalcon\Mvc\View\Engine\Volt::class,
+    ]
 );
 ```
 `
@@ -112,26 +114,26 @@ use Phalcon\Mvc\View\Engine\Volt;
 
 // Register Volt as template engine with an anonymous function
 $di->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    $view->registerEngines(
-        [
-            '.volt' => function ($view, $di) {
-                $volt = new Volt($view, $di);
+        $view->registerEngines(
+            [
+                '.volt' => function ($view, $di) {
+                    $volt = new Volt($view, $di);
 
-                // Set some options here
+                    // Set some options here
 
-                return $volt;
-            }
-        ]
-    );
+                    return $volt;
+                }
+            ]
+        );
 
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -155,28 +157,29 @@ The compilation path is generated according to the above options, if the develop
 // Just append the .php extension to the template path
 // leaving the compiled templates in the same directory
 $volt->setOptions(
-[
-    'compiledPath' => function ($templatePath) {
-        return $templatePath . '.php';
-    }
-]
+    [
+        'compiledPath' => function ($templatePath) {
+            return $templatePath . '.php';
+        }
+    ]
 );
 
 // Recursively create the same structure in another directory
 $volt->setOptions(
-[
-    'compiledPath' => function ($templatePath) {
-        $dirName = dirname($templatePath);
+    [
+        'compiledPath' => function ($templatePath) {
+            $dirName = dirname($templatePath);
 
-        if (!is_dir('cache/' . $dirName)) {
-            mkdir('cache/' . $dirName , 0777 , true);
+            if (!is_dir('cache/' . $dirName)) {
+                mkdir('cache/' . $dirName , 0777 , true);
+            }
+
+            return 'cache/' . $dirName . '/'. $templatePath . '.php';
         }
-
-        return 'cache/' . $dirName . '/'. $templatePath . '.php';
-    }
-]
+    ]
 );
 ```
+
 
 ## Basic Usage
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`,
@@ -189,30 +192,30 @@ Below is a minimal template that illustrates a few basics:
 {# app/views/posts/show.phtml #}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>{{ title }} - An example blog</title>
-</head>
-<body>
+    <head>
+        <title>{{ title }} - An example blog</title>
+    </head>
+    <body>
 
-    {% if show_navigation %}
-        <ul id='navigation'>
-            {% for item in menu %}
-                <li>
-                    <a href='{{ item.href }}'>
-                        {{ item.caption }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% if show_navigation %}
+            <ul id='navigation'>
+                {% for item in menu %}
+                    <li>
+                        <a href='{{ item.href }}'>
+                            {{ item.caption }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
-    <h1>{{ post.title }}</h1>
+        <h1>{{ post.title }}</h1>
 
-    <div class='content'>
-        {{ post.content }}
-    </div>
+        <div class='content'>
+            {{ post.content }}
+        </div>
 
-</body>
+    </body>
 </html>
 {% endraw %}
 ```
@@ -226,25 +229,26 @@ use Phalcon\Mvc\Controller;
 
 class PostsController extends Controller
 {
-public function showAction()
-{
-    $post = Post::findFirst();
-    $menu = Menu::findFirst();
+    public function showAction()
+    {
+        $post = Post::findFirst();
+        $menu = Menu::findFirst();
 
-    $this->view->show_navigation = true;
-    $this->view->menu            = $menu;
-    $this->view->title           = $post->title;
-    $this->view->post            = $post;
+        $this->view->show_navigation = true;
+        $this->view->menu            = $menu;
+        $this->view->title           = $post->title;
+        $this->view->post            = $post;
 
-    // Or...
+        // Or...
 
-    $this->view->setVar('show_navigation', true);
-    $this->view->setVar('menu',            $menu);
-    $this->view->setVar('title',           $post->title);
-    $this->view->setVar('post',            $post);
-}
+        $this->view->setVar('show_navigation', true);
+        $this->view->setVar('menu',            $menu);
+        $this->view->setVar('title',           $post->title);
+        $this->view->setVar('post',            $post);
+    }
 }
 ```
+
 
 ## Variables
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
@@ -255,6 +259,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 {{ post['title'] }} {# for $post['title'] #}
 {% endraw %}
 ```
+
 
 ## Filters
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
@@ -359,19 +364,22 @@ Examples:
 {% endraw %}
 ```
 
+
 ## Comments
 Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
 ```twig
 {% raw %}
 {# note: this is a comment
-{% set price = 100; %}
+    {% set price = 100; %}
 #}
 {% endraw %}
 ```
 
+
 ## List of Control Structures
 Volt provides a set of basic but powerful control structures for use in templates:
+
 
 ### For
 Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
@@ -380,11 +388,11 @@ Loop over each item in a sequence. The following example shows how to traverse a
 {% raw %}
 <h1>Robots</h1>
 <ul>
-{% for robot in robots %}
-    <li>
-        {{ robot.name|e }}
-    </li>
-{% endfor %}
+    {% for robot in robots %}
+        <li>
+            {{ robot.name|e }}
+        </li>
+    {% endfor %}
 </ul>
 {% endraw %}
 ```
@@ -395,9 +403,9 @@ for-loops can also be nested:
 {% raw %}
 <h1>Robots</h1>
 {% for robot in robots %}
-{% for part in robot.parts %}
-    Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
-{% endfor %}
+    {% for part in robot.parts %}
+        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+    {% endfor %}
 {% endfor %}
 {% endraw %}
 ```
@@ -409,7 +417,7 @@ You can get the element `keys` as in the PHP counterpart using the following syn
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
 {% for name, value in numbers %}
-Name: {{ name }} Value: {{ value }}
+    Name: {{ name }} Value: {{ value }}
 {% endfor %}
 {% endraw %}
 ```
@@ -421,11 +429,11 @@ An `if` evaluation can be optionally set:
 {% set numbers = ['one': 1, 'two': 2, 'three': 3] %}
 
 {% for value in numbers if value < 2 %}
-Value: {{ value }}
+    Value: {{ value }}
 {% endfor %}
 
 {% for name, value in numbers if name !== 'two' %}
-Name: {{ name }} Value: {{ value }}
+    Name: {{ name }} Value: {{ value }}
 {% endfor %}
 {% endraw %}
 ```
@@ -436,9 +444,9 @@ If an `else` is defined inside the `for`, it will be executed if the expression 
 {% raw %}
 <h1>Robots</h1>
 {% for robot in robots %}
-Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+    Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
 {% else %}
-There are no robots to show
+    There are no robots to show
 {% endfor %}
 {% endraw %}
 ```
@@ -449,12 +457,13 @@ Alternative syntax:
 {% raw %}
 <h1>Robots</h1>
 {% for robot in robots %}
-Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
+    Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
 {% elsefor %}
-There are no robots to show
+    There are no robots to show
 {% endfor %}
 {% endraw %}
 ```
+
 
 ### Loop Controls
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
@@ -463,10 +472,10 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {% raw %}
 {# skip the even robots #}
 {% for index, robot in robots %}
-{% if index is even %}
-    {% continue %}
-{% endif %}
-...
+    {% if index is even %}
+        {% continue %}
+    {% endif %}
+    ...
 {% endfor %}
 {% endraw %}
 ```
@@ -475,13 +484,14 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 {% raw %}
 {# exit the foreach on the first even robot #}
 {% for index, robot in robots %}
-{% if index is even %}
-    {% break %}
-{% endif %}
-...
+    {% if index is even %}
+        {% break %}
+    {% endif %}
+    ...
 {% endfor %}
 {% endraw %}
 ```
+
 
 ### If
 As PHP, an `if` statement checks if an expression is evaluated as true or false:
@@ -490,11 +500,11 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 {% raw %}
 <h1>Cyborg Robots</h1>
 <ul>
-{% for robot in robots %}
-    {% if robot.type === 'cyborg' %}
-        <li>{{ robot.name|e }}</li>
-    {% endif %}
-{% endfor %}
+    {% for robot in robots %}
+        {% if robot.type === 'cyborg' %}
+            <li>{{ robot.name|e }}</li>
+        {% endif %}
+    {% endfor %}
 </ul>
 {% endraw %}
 ```
@@ -505,13 +515,13 @@ The else clause is also supported:
 {% raw %}
 <h1>Robots</h1>
 <ul>
-{% for robot in robots %}
-    {% if robot.type === 'cyborg' %}
-        <li>{{ robot.name|e }}</li>
-    {% else %}
-        <li>{{ robot.name|e }} (not a cyborg)</li>
-    {% endif %}
-{% endfor %}
+    {% for robot in robots %}
+        {% if robot.type === 'cyborg' %}
+            <li>{{ robot.name|e }}</li>
+        {% else %}
+            <li>{{ robot.name|e }} (not a cyborg)</li>
+        {% endif %}
+    {% endfor %}
 </ul>
 {% endraw %}
 ```
@@ -521,14 +531,15 @@ The `elseif` control flow structure can be used together with if to emulate a `s
 ```twig
 {% raw %}
 {% if robot.type === 'cyborg' %}
-Robot is a cyborg
+    Robot is a cyborg
 {% elseif robot.type === 'virtual' %}
-Robot is virtual
+    Robot is virtual
 {% elseif robot.type === 'mechanical' %}
-Robot is mechanical
+    Robot is mechanical
 {% endif %}
 {% endraw %}
 ```
+
 
 ### Switch
 An alternative to the `if` statement is `switch`, allowing you to create logical execution paths in your application:
@@ -536,16 +547,16 @@ An alternative to the `if` statement is `switch`, allowing you to create logical
 ```twig
 {% raw %}
 {% switch foo %}
-{% case 0 %}
-{% case 1 %}
-{% case 2 %}
-    "foo" is less than 3 but not negative
-    {% break %}
-{% case 3 %}
-    "foo" is 3
-    {% break %}
-{% default %}
-    "foo" is {{ foo }}
+    {% case 0 %}
+    {% case 1 %}
+    {% case 2 %}
+        "foo" is less than 3 but not negative
+        {% break %}
+    {% case 3 %}
+        "foo" is 3
+        {% break %}
+    {% default %}
+        "foo" is {{ foo }}
 {% endswitch %}
 {% endraw %}
 
@@ -594,12 +605,13 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 {% raw %}
 {% switch %}
   {% case EXPRESSION %}
-  {% break %}
+      {% break %}
 {% endswitch %}
 {% endraw %}
 ```
 
 Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token {% raw %}%}{% endraw %} in ... on line ...`
+
 
 ### Loop Context
 A special variable is available inside `for` loops providing you information about
@@ -619,25 +631,26 @@ Example:
 ```twig
 {% raw %}
 {% for robot in robots %}
-{% if loop.first %}
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Id</th>
-            <th>Name</th>
-        </tr>
-{% endif %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ robot.id }}</td>
-            <td>{{ robot.name }}</td>
-        </tr>
-{% if loop.last %}
-    </table>
-{% endif %}
+    {% if loop.first %}
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+    {% endif %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ robot.id }}</td>
+                <td>{{ robot.name }}</td>
+            </tr>
+    {% if loop.last %}
+        </table>
+    {% endif %}
 {% endfor %}
 {% endraw %}
 ```
+
 
 ## Assignments
 Variables may be changed in a template using the instruction `set`:
@@ -678,6 +691,7 @@ The following operators are available:
 | `\*=`    | Multiplication assignment |
 | `/=`     | Division assignment       |
 
+
 ## Expressions
 Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
 
@@ -695,6 +709,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 {% endraw %}
 ```
 
+
 ### Literals
 The following literals are supported:
 
@@ -706,6 +721,7 @@ The following literals are supported:
 | `false`              | Constant 'false' is the boolean false value                        |
 | `true`               | Constant 'true' is the boolean true value                          |
 | `null`               | Constant 'null' is the Null value                                  |
+
 
 ### Arrays
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
@@ -735,6 +751,7 @@ Curly braces also can be used to define arrays or hashes:
 {% endraw %}
 ```
 
+
 ### Math
 You may make calculations in templates using the following operators:
 
@@ -745,6 +762,7 @@ You may make calculations in templates using the following operators:
 | `*`      | Perform a multiplication operation `{% raw %}{{ 2 * 3 }}{% endraw %}` returns 6              |
 | `/`      | Perform a division operation `{% raw %}{{ 10 / 2 }}{% endraw %}` returns 5                   |
 | `%`      | Calculate the remainder of an integer division `{% raw %}{{ 10 % 3 }}{% endraw %}` returns 1 |
+
 
 ### Comparisons
 The following comparison operators are available:
@@ -761,6 +779,7 @@ The following comparison operators are available:
 | `===`    | Check whether both operands are identical                         |
 | `!==`    | Check whether both operands aren't identical                      |
 
+
 ### Logic
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -770,6 +789,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 | `and`      | Return true if both left and right operands are evaluated as true |
 | `not`      | Negates an expression                                             |
 | `( expr )` | Parenthesis groups expressions                                    |
+
 
 ### Other Operators
 Additional operators seen the following operators are available:
@@ -793,12 +813,13 @@ The following example shows how to use operators:
 {% set robots = ['Voltron', 'Astro Boy', 'Terminator', 'C3PO'] %}
 
 {% for index in 0..robots|length %}
-{% if robots[index] is defined %}
-    {{ 'Name: ' ~ robots[index] }}
-{% endif %}
+    {% if robots[index] is defined %}
+        {{ 'Name: ' ~ robots[index] }}
+    {% endif %}
 {% endfor %}
 {% endraw %}
 ```
+
 
 ## Tests
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
@@ -808,9 +829,9 @@ Tests can be used to test if a variable has a valid expected value. The operator
 {% set robots = ['1': 'Voltron', '2': 'Astro Boy', '3': 'Terminator', '4': 'C3PO'] %}
 
 {% for position, name in robots %}
-{% if position is odd %}
-    {{ name }}
-{% endif %}
+    {% if position is odd %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 {% endraw %}
 ```
@@ -835,49 +856,50 @@ More examples:
 ```twig
 {% raw %}
 {% if robot is defined %}
-The robot variable is defined
+    The robot variable is defined
 {% endif %}
 
 {% if robot is empty %}
-The robot is null or isn't defined
+    The robot is null or isn't defined
 {% endif %}
 
 {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
-{% if key is even %}
-    {{ name }}
-{% endif %}
+    {% if key is even %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 
 {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 3: 'Bender'] %}
-{% if key is odd %}
-    {{ name }}
-{% endif %}
+    {% if key is odd %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 
 {% for key, name in [1: 'Voltron', 2: 'Astroy Boy', 'third': 'Bender'] %}
-{% if key is numeric %}
-    {{ name }}
-{% endif %}
+    {% if key is numeric %}
+        {{ name }}
+    {% endif %}
 {% endfor %}
 
 {% set robots = [1: 'Voltron', 2: 'Astroy Boy'] %}
 {% if robots is iterable %}
-{% for robot in robots %}
-    ...
-{% endfor %}
+    {% for robot in robots %}
+        ...
+    {% endfor %}
 {% endif %}
 
 {% set world = 'hello' %}
 {% if world is sameas('hello') %}
-{{ 'it's hello' }}
+    {{ 'it's hello' }}
 {% endif %}
 
 {% set external = false %}
 {% if external is type('boolean') %}
-{{ 'external is false or true' }}
+    {{ 'external is false or true' }}
 {% endif %}
 {% endraw %}
 ```
+
 
 ## Macros
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
@@ -886,15 +908,15 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 {% raw %}
 {# Macro 'display a list of links to related topics' #}
 {%- macro related_bar(related_links) %}
-<ul>
-    {%- for link in related_links %}
-        <li>
-            <a href='{{ url(link.url) }}' title='{{ link.title|striptags }}'>
-                {{ link.text }}
-            </a>
-        </li>
-    {%- endfor %}
-</ul>
+    <ul>
+        {%- for link in related_links %}
+            <li>
+                <a href='{{ url(link.url) }}' title='{{ link.title|striptags }}'>
+                    {{ link.text }}
+                </a>
+            </li>
+        {%- endfor %}
+    </ul>
 {%- endmacro %}
 
 {# Print related links #}
@@ -912,11 +934,11 @@ When calling macros, parameters can be passed by name:
 ```twig
 {% raw %}
 {%- macro error_messages(message, field, type) %}
-<div>
-    <span class='error-type'>{{ type }}</span>
-    <span class='error-field'>{{ field }}</span>
-    <span class='error-message'>{{ message }}</span>
-</div>
+    <div>
+        <span class='error-type'>{{ type }}</span>
+        <span class='error-field'>{{ field }}</span>
+        <span class='error-message'>{{ message }}</span>
+    </div>
 {%- endmacro %}
 
 {# Call the macro #}
@@ -929,7 +951,7 @@ Macros can return values:
 ```twig
 {% raw %}
 {%- macro my_input(name, class) %}
-{% return text_field(name, 'class': class) %}
+    {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
 {# Call the macro #}
@@ -942,7 +964,7 @@ And receive optional parameters:
 ```twig
 {% raw %}
 {%- macro my_input(name, class='input-text') %}
-{% return text_field(name, 'class': class) %}
+    {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
 {# Call the macro #}
@@ -950,6 +972,7 @@ And receive optional parameters:
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
 {% endraw %}
 ```
+
 
 ## Using Tag Helpers
 Volt is highly integrated with [Phalcon\Tag](/3.4/api/phalcon_tag/), so it's easy to use the helpers provided by that component in a Volt template:
@@ -960,13 +983,13 @@ Volt is highly integrated with [Phalcon\Tag](/3.4/api/phalcon_tag/), so it's eas
 
 {{ form('products/save', 'method': 'post') }}
 
-<label for='name'>Name</label>
-{{ text_field('name', 'size': 32) }}
+    <label for='name'>Name</label>
+    {{ text_field('name', 'size': 32) }}
 
-<label for='type'>Type</label>
-{{ select('type', productTypes, 'using': ['id', 'name']) }}
+    <label for='type'>Type</label>
+    {{ select('type', productTypes, 'using': ['id', 'name']) }}
 
-{{ submit_button('Send') }}
+    {{ submit_button('Send') }}
 
 {{ end_form() }}
 {% endraw %}
@@ -979,13 +1002,13 @@ The following PHP is generated:
 
 <?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
 
-<label for='name'>Name</label>
-<?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
+    <label for='name'>Name</label>
+    <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
 
-<label for='type'>Type</label>
-<?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
+    <label for='type'>Type</label>
+    <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
 
-<?php echo Phalcon\Tag::submitButton('Send'); ?>
+    <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
 {% raw %}
 {{ end_form() }}
@@ -1018,6 +1041,7 @@ To call a [Phalcon\Tag](/3.4/api/phalcon_tag/) helper, you only need to call an 
 | `Phalcon\Tag::textArea`          | `text_area`          |
 | `Phalcon\Tag::textField`         | `text_field`         |
 
+
 ## Functions
 The following built-in functions are available in Volt:
 
@@ -1033,6 +1057,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `constant`    | Reads a PHP constant                                        |
 | `url`         | Generate a URL using the 'url' service                      |
+
 
 ## View Integration
 Also, Volt is integrated with [Phalcon\Mvc\View](/3.4/api/phalcon_mvc_view/), you can play with the view hierarchy and include partials as well:
@@ -1055,15 +1080,16 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {% raw %}
 {# Simple include of a partial #}
 <div id='footer'>
-{% include 'partials/footer' %}
+    {% include 'partials/footer' %}
 </div>
 
 {# Passing extra variables #}
 <div id='footer'>
-{% include 'partials/footer' with ['links': links] %}
+    {% include 'partials/footer' with ['links': links] %}
 </div>
 {% endraw %}
 ```
+
 
 ### Include
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
@@ -1072,10 +1098,11 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {% raw %}
 {# The contents of 'partials/footer.volt' is compiled and inlined #}
 <div id='footer'>
-{% include 'partials/footer.volt' %}
+    {% include 'partials/footer.volt' %}
 </div>
 {% endraw %}
 ```
+
 
 ### Partial vs Include
 Keep the following points in mind when choosing to use the `partial` function or `include`:
@@ -1089,6 +1116,7 @@ Keep the following points in mind when choosing to use the `partial` function or
 |               | only allows to include templates made with Volt                                                             |
 |               | requires an existing template at compile time                                                               |
 
+
 ## Template Inheritance
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
@@ -1097,21 +1125,21 @@ With template inheritance you can create base templates that can be extended by 
 {# templates/base.volt #}
 <!DOCTYPE html>
 <html>
-<head>
-    {% block head %}
-        <link rel='stylesheet' href='style.css' />
-    {% endblock %}
+    <head>
+        {% block head %}
+            <link rel='stylesheet' href='style.css' />
+        {% endblock %}
 
-    <title>{% block title %}{% endblock %} - My Webpage</title>
-</head>
+        <title>{% block title %}{% endblock %} - My Webpage</title>
+    </head>
 
-<body>
-    <div id='content'>{% block content %}{% endblock %}</div>
+    <body>
+        <div id='content'>{% block content %}{% endblock %}</div>
 
-    <div id='footer'>
-        {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
-    </div>
-</body>
+        <div id='footer'>
+            {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
+        </div>
+    </body>
 </html>
 {% endraw %}
 ```
@@ -1127,8 +1155,8 @@ From other template we could extend the base template replacing the blocks:
 {% block head %}<style type='text/css'>.important { color: #336699; }</style>{% endblock %}
 
 {% block content %}
-<h1>Index</h1>
-<p class='important'>Welcome on my awesome homepage.</p>
+    <h1>Index</h1>
+    <p class='important'>Welcome on my awesome homepage.</p>
 {% endblock %}
 {% endraw %}
 ```
@@ -1138,24 +1166,25 @@ Not all blocks must be replaced at a child template, only those that are needed.
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <style type='text/css'>.important { color: #336699; }</style>
+    <head>
+        <style type='text/css'>.important { color: #336699; }</style>
 
-    <title>Index - My Webpage</title>
-</head>
+        <title>Index - My Webpage</title>
+    </head>
 
-<body>
-    <div id='content'>
-        <h1>Index</h1>
-        <p class='important'>Welcome on my awesome homepage.</p>
-    </div>
+    <body>
+        <div id='content'>
+            <h1>Index</h1>
+            <p class='important'>Welcome on my awesome homepage.</p>
+        </div>
 
-    <div id='footer'>
-        &copy; Copyright 2015, All rights reserved.
-    </div>
-</body>
+        <div id='footer'>
+            &copy; Copyright 2015, All rights reserved.
+        </div>
+    </body>
 </html>
 ```
+
 
 ### Multiple Inheritance
 Extended templates can extend other templates. The following example illustrates this:
@@ -1165,13 +1194,13 @@ Extended templates can extend other templates. The following example illustrates
 {# main.volt #}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-</head>
+    <head>
+        <title>Title</title>
+    </head>
 
-<body>
-    {% block content %}{% endblock %}
-</body>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
 </html>
 {% endraw %}
 ```
@@ -1185,7 +1214,7 @@ Template `layout.volt` extends `main.volt`
 
 {% block content %}
 
-<h1>Table of contents</h1>
+    <h1>Table of contents</h1>
 
 {% endblock %}
 {% endraw %}
@@ -1200,12 +1229,12 @@ Finally a view that extends `layout.volt`:
 
 {% block content %}
 
-{{ super() }}
+    {{ super() }}
 
-<ul>
-    <li>Some option</li>
-    <li>Some other option</li>
-</ul>
+    <ul>
+        <li>Some option</li>
+        <li>Some other option</li>
+    </ul>
 
 {% endblock %}
 {% endraw %}
@@ -1216,20 +1245,20 @@ Rendering `index.volt` produces:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Title</title>
-</head>
+    <head>
+        <title>Title</title>
+    </head>
 
-<body>
+    <body>
 
-    <h1>Table of contents</h1>
+        <h1>Table of contents</h1>
 
-    <ul>
-        <li>Some option</li>
-        <li>Some other option</li>
-    </ul>
+        <ul>
+            <li>Some option</li>
+            <li>Some other option</li>
+        </ul>
 
-</body>
+    </body>
 </html>
 ```
 
@@ -1247,18 +1276,20 @@ You can enable auto-escaping of all variables printed in a block using the autoe
 Manually escaped: {{ robot.name|e }}
 
 {% autoescape true %}
-Autoescaped: {{ robot.name }}
-{% autoescape false %}
-    No Autoescaped: {{ robot.name }}
-{% endautoescape %}
+    Autoescaped: {{ robot.name }}
+    {% autoescape false %}
+        No Autoescaped: {{ robot.name }}
+    {% endautoescape %}
 {% endautoescape %}
 {% endraw %}
 ```
+
 
 ## Extending Volt
 Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
 
 The Volt compiler allow you to extend it adding more functions, tests or filters to the existing ones.
+
 
 ### Functions
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
@@ -1282,10 +1313,10 @@ Register the function with an anonymous function. This case we use `$resolvedArg
 <?php
 
 $compiler->addFunction(
-'widget',
-function ($resolvedArgs, $exprArgs) {
-    return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
-}
+    'widget',
+    function ($resolvedArgs, $exprArgs) {
+        return 'MyLibrary\Widgets::get(' . $resolvedArgs . ')';
+    }
 );
 ```
 
@@ -1295,21 +1326,21 @@ Treat the arguments independently and unresolved:
 <?php
 
 $compiler->addFunction(
-'repeat',
-function ($resolvedArgs, $exprArgs) use ($compiler) {
-    // Resolve the first argument
-    $firstArgument = $compiler->expression($exprArgs[0]['expr']);
+    'repeat',
+    function ($resolvedArgs, $exprArgs) use ($compiler) {
+        // Resolve the first argument
+        $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
-    // Checks if the second argument was passed
-    if (isset($exprArgs[1])) {
-        $secondArgument = $compiler->expression($exprArgs[1]['expr']);
-    } else {
-        // Use '10' as default
-        $secondArgument = '10';
+        // Checks if the second argument was passed
+        if (isset($exprArgs[1])) {
+            $secondArgument = $compiler->expression($exprArgs[1]['expr']);
+        } else {
+            // Use '10' as default
+            $secondArgument = '10';
+        }
+
+        return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
     }
-
-    return 'str_repeat(' . $firstArgument . ', ' . $secondArgument . ')';
-}
 );
 ```
 
@@ -1319,14 +1350,14 @@ Generate the code based on some function availability:
 <?php
 
 $compiler->addFunction(
-'contains_text',
-function ($resolvedArgs, $exprArgs) {
-    if (function_exists('mb_stripos')) {
-        return 'mb_stripos(' . $resolvedArgs . ')';
-    } else {
-        return 'stripos(' . $resolvedArgs . ')';
+    'contains_text',
+    function ($resolvedArgs, $exprArgs) {
+        if (function_exists('mb_stripos')) {
+            return 'mb_stripos(' . $resolvedArgs . ')';
+        } else {
+            return 'stripos(' . $resolvedArgs . ')';
+        }
     }
-}
 );
 ```
 
@@ -1338,6 +1369,7 @@ Built-in functions can be overridden adding a function with its name:
 // Replace built-in function dump
 $compiler->addFunction('dump', 'print_r');
 ```
+
 
 ### Filters
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
@@ -1353,10 +1385,10 @@ $compiler->addFilter('hash', 'md5');
 <?php
 
 $compiler->addFilter(
-'int',
-function ($resolvedArgs, $exprArgs) {
-    return 'intval(' . $resolvedArgs . ')';
-}
+    'int',
+    function ($resolvedArgs, $exprArgs) {
+        return 'intval(' . $resolvedArgs . ')';
+    }
 );
 ```
 
@@ -1369,6 +1401,7 @@ Built-in filters can be overridden adding a function with its name:
 $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
+
 ### Extensions
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
@@ -1379,15 +1412,15 @@ An extension is a class that implements the events triggered by Volt as a method
 
 class PhpFunctionExtension
 {
-/**
- * This method is called on any attempt to compile a function call
- */
-public function compileFunction($name, $arguments)
-{
-    if (function_exists($name)) {
-        return $name . '('. $arguments . ')';
+    /**
+     * This method is called on any attempt to compile a function call
+     */
+    public function compileFunction($name, $arguments)
+    {
+        if (function_exists($name)) {
+            return $name . '('. $arguments . ')';
+        }
     }
-}
 }
 ```
 
@@ -1409,7 +1442,7 @@ Volt extensions must be in registered in the compiler making them available in c
 
 // Register the extension in the compiler
 $compiler->addExtension(
-new PhpFunctionExtension()
+    new PhpFunctionExtension()
 );
 ```
 
@@ -1419,7 +1452,7 @@ With Volt it's easy cache view fragments. This caching improves performance prev
 ```twig
 {% raw %}
 {% cache 'sidebar' %}
-<!-- generate this content is slow so we are going to cache it -->
+    <!-- generate this content is slow so we are going to cache it -->
 {% endcache %}
 {% endraw %}
 ```
@@ -1430,7 +1463,7 @@ Setting a specific number of seconds:
 {% raw %}
 {# cache the sidebar by 1 hour #}
 {% cache 'sidebar' 3600 %}
-<!-- generate this content is slow so we are going to cache it -->
+    <!-- generate this content is slow so we are going to cache it -->
 {% endcache %}
 {% endraw %}
 ```
@@ -1441,15 +1474,16 @@ Any valid expression can be used as cache key:
 {% raw %}
 {% cache ('article-' ~ post.id) 3600 %}
 
-<h1>{{ post.title }}</h1>
+    <h1>{{ post.title }}</h1>
 
-<p>{{ post.content }}</p>
+    <p>{{ post.content }}</p>
 
 {% endcache %}
 {% endraw %}
 ```
 
 The caching is done by the `Phalcon\Cache` component via the view component. Learn more about how this integration works in the section [Caching View Fragments](/3.4/views/#caching-fragments).
+
 
 ## Inject Services into a Template
 If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
@@ -1464,6 +1498,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 {% endraw %}
 ```
 
+
 ## Stand-alone component
 Using Volt in a stand-alone mode can be demonstrated below:
 
@@ -1477,25 +1512,25 @@ $compiler = new VoltCompiler();
 
 // Optionally add some options
 $compiler->setOptions(
-[
-    // ...
-]
+    [
+        // ...
+    ]
 );
 
 // Compile a template string returning PHP code
 echo $compiler->compileString(
-"{{ 'hello' }}"
+    "{{ 'hello' }}"
 );
 
 // Compile a template in a file specifying the destination file
 $compiler->compileFile(
-'layouts/main.volt',
-'cache/layouts/main.volt.php'
+    'layouts/main.volt',
+    'cache/layouts/main.volt.php'
 );
 
 // Compile a template in a file based on the options passed to the compiler
 $compiler->compile(
-'layouts/main.volt'
+    'layouts/main.volt'
 );
 
 // Require the compiled templated (optional)

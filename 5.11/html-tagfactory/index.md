@@ -89,243 +89,243 @@ If you do not wish to call `newInstance()`, you can always use the method call t
 
 ```php
 public function a(
-string $href, 
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $href, 
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function base(
-string $href, 
-array $attributes = []
+    string $href, 
+    array $attributes = []
 ): string
 
 public function body(
-array $attributes = []
+    array $attributes = []
 ): string
 
 public function breadcrumbs(
-string $indent = '    ',
-string $delimiter = "\n"
+    string $indent = '    ',
+    string $delimiter = "\n"
 ): Breadcrumbs
 
 public function button(
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function close(
-string $tag, 
-bool $raw = false
+    string $tag, 
+    bool $raw = false
 ): string
 
 public function doctype(
-int $flag, 
-string $delimiter
+    int $flag, 
+    string $delimiter
 ): Doctype
 
 public function element(
-string $tag, 
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $tag, 
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function form(
-array $attributes = []
+    array $attributes = []
 ): string
 
 public function img(
-string $src, 
-array $attributes = []
+    string $src, 
+    array $attributes = []
 ): string
 
 public function inputCheckbox(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Checkbox
 
 public function inputColor(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Color
 
 public function inputDate(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Date
 
 public function inputDateTime(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): DateTime
 
 public function inputDateTimeLocal(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): DateTimeLocal
 
 public function inputEmail(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Email
 
 public function inputFile(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): File
 
 public function inputHidden(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Hidden
 
 public function inputImage(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Image
 
 public function inputInput(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Input
 
 public function inputMonth(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Month
 
 public function inputNumeric(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Numeric
 
 public function inputPassword(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Password
 
 public function inputRadio(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Radio
 
 public function inputRange(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Range
 
 public function inputSearch(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Search
 
 public function inputSelect(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Select
 
 public function inputSubmit(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Submit
 
 public function inputTel(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Tel
 
 public function inputText(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Text
 
 public function inputTextarea(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Textarea
 
 public function inputTime(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Time
 
 public function inputUrl(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Url
 
 public function inputWeek(
-string $name, 
-string $value = null, 
-array $attributes = []
+    string $name, 
+    string $value = null, 
+    array $attributes = []
 ): Week
 
 public function label(
-string $label, 
-array $attributes = [], 
-bool $raw = false
+    string $label, 
+    array $attributes = [], 
+    bool $raw = false
 ): string
 
 public function link(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Link
 
 public function meta(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Meta
 
 public function ol(
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): Ol
 
 public function script(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Script
 
 public function style(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Style
 
 public function title(
-string $indent = '    ', 
-string $delimiter = PHP_EOL
+    string $indent = '    ', 
+    string $delimiter = PHP_EOL
 ): Title
 
 public function ul(
-string $text, 
-array $attributes = [], 
-bool $raw = false
+    string $text, 
+    array $attributes = [], 
+    bool $raw = false
 ): Ul
 
 ```
@@ -340,17 +340,17 @@ $container = new FactoryDefault();
 $result = $container->tag->a('https://phalcon.io', 'Phalcon Website');
 
 $image  = $container
-->tag
-->img('https://phalcon.io/img/phalcon.png')
+    ->tag
+    ->img('https://phalcon.io/img/phalcon.png')
 ;
 
 $result = $container
-->tag
-->a(
-    'https://phalcon.io', 
-    $image,
-    true
-)
+    ->tag
+    ->a(
+        'https://phalcon.io', 
+        $image,
+        true
+    )
 ;
 ```
 
@@ -380,9 +380,9 @@ use Phalcon\Html\Helper\Anchor;
 $escaper = new Escaper();
 $helper  = new Anchor($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('/myurl', 'click<>me', $options);
@@ -411,7 +411,7 @@ use Phalcon\Html\Helper\Base;
 $escaper = new Escaper();
 $helper  = new Base($escaper);
 $options = [
-'target' => '_blank',
+    'target' => '_blank',
 ];
 
 echo $helper('/myurl', $options);
@@ -427,6 +427,7 @@ echo $helper('/myurl', $options);
 | `string $indent`    | The indent    |
 | `string $delimiter` | The delimiter |
 
+
 A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represents the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application.
 
 An example is an application that has an `admin` module, an `invoices` area, and a `view invoice` page. Usually, you would select the `admin` module, then from the links you will choose `invoices` (list), and then clicking on one of the invoices in the list, you can view it. To represent this tree-like structure, the breadcrumbs displayed could be:
@@ -441,8 +442,8 @@ Each of the words above (apart from the last one) are links to the respective pa
 ### Methods
 ```php
 public function __invoke(
-string $indent = '    ',
-string $delimiter = PHP_EOL
+    string $indent = '    ',
+    string $delimiter = PHP_EOL
 ): static 
 ```
 
@@ -450,10 +451,10 @@ Sets the indent and delimiter and returns the object back
 
 ```php
 public function add(
-string $text,
-string $link = '',
-string $icon = '',
-array $attributes = []
+    string $text,
+    string $link = '',
+    string $icon = '',
+    array $attributes = []
 ): static 
 ```
 Adds a new crumb.
@@ -535,9 +536,9 @@ Sets the separator
 
 ```php
 public function setTemplate(
-string $main,
-string $line,
-string $last
+    string $main,
+    string $line,
+    string $last
 ): static 
 ```
 
@@ -610,28 +611,28 @@ $tagFactory = new TagFactory($escaper);
 
 $separator = '
 <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-<svg xmlns="http://www.w3.org/2000/svg" 
-     class="w-5 h-5" 
-     viewBox="0 0 20 20" 
-     fill="currentColor">
-    <path fill-rule="evenodd" 
-          d="M7.293 14.707a1 1 0 010-1.414L10.586 
-            10 7.293 6.707a1 1 0 011.414-1.414l4 
-            4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
-          clip-rule="evenodd" />
-</svg>
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         class="w-5 h-5" 
+         viewBox="0 0 20 20" 
+         fill="currentColor">
+        <path fill-rule="evenodd" 
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 
+                10 7.293 6.707a1 1 0 011.414-1.414l4 
+                4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+              clip-rule="evenodd" />
+    </svg>
 </span>
 ';
 
 $homeIcon = '
 <svg xmlns="http://www.w3.org/2000/svg" 
- class="w-5 h-5" viewBox="0 0 20 20" 
- fill="currentColor">
-<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 
-        0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 
-        0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 
-        0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
-        0 001.414-1.414l-7-7z" />
+     class="w-5 h-5" viewBox="0 0 20 20" 
+     fill="currentColor">
+    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 
+            0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 
+            0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 
+            0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
+            0 001.414-1.414l-7-7z" />
 </svg>
 ';
 
@@ -642,32 +643,32 @@ $mainTemplate = '
 ';
 $lineTemplate = '
 <a href="%link%"%attributes%>
-%icon%%text%
+    %icon%%text%
 </a>
 ';
 $lastTemplate = '
 <a href="%link%"%attributes%>
-%icon%%text%
+    %icon%%text%
 </a>
 ';
 
 $homeAttributes = [
-'class' => 'text-gray-600 dark:text-gray-200',
+    'class' => 'text-gray-600 dark:text-gray-200',
 ];
 $lineAttributes = [
-'class' => 'text-gray-600 dark:text-gray-200 hover:underline',
+    'class' => 'text-gray-600 dark:text-gray-200 hover:underline',
 ];
 $lastAttributes = [
-'class' => 'text-blue-600 dark:text-blue-400 hover:underline',
+    'class' => 'text-blue-600 dark:text-blue-400 hover:underline',
 ];
 
 $breadcrumbs
-->setTemplate($mainTemplate, $lineTemplate, $lastTemplate)
-->setSeparator($separator)
-->add('', '#', $homeIcon, $homeAttributes)
-->add('Admin', '#', '', $lineAttributes)
-->add('Invoices', '#', '', $lineAttributes)
-->add('Viewing Invoice [1234]', '#', '', $lastAttributes)
+    ->setTemplate($mainTemplate, $lineTemplate, $lastTemplate)
+    ->setSeparator($separator)
+    ->add('', '#', $homeIcon, $homeAttributes)
+    ->add('Admin', '#', '', $lineAttributes)
+    ->add('Invoices', '#', '', $lineAttributes)
+    ->add('Viewing Invoice [1234]', '#', '', $lastAttributes)
 ;
 
 echo $breadcrumbs->render();    
@@ -676,76 +677,76 @@ echo $breadcrumbs->render();
 Output HTML:
 ```html
 <div class="flex items-center py-4 overflow-x-auto whitespace-nowrap">
-<a href="#" class="text-gray-600 dark:text-gray-200">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" 
-         fill="currentColor">
-        <path d="M10.707 2.293a1 1 
-            0 00-1.414 0l-7 7a1 1 
-            0 001.414 1.414L4 10.414V17a1 1 
-            0 001 1h2a1 1 0 001-1v-2a1 1 
-            0 011-1h2a1 1 0 011 1v2a1 1 
-            0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
-            0 001.414-1.414l-7-7z" />
-    </svg>
-</a>
+    <a href="#" class="text-gray-600 dark:text-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path d="M10.707 2.293a1 1 
+                0 00-1.414 0l-7 7a1 1 
+                0 001.414 1.414L4 10.414V17a1 1 
+                0 001 1h2a1 1 0 001-1v-2a1 1 
+                0 011-1h2a1 1 0 011 1v2a1 1 
+                0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 
+                0 001.414-1.414l-7-7z" />
+        </svg>
+    </a>
 
-<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" 
-         fill="currentColor">
-        <path fill-rule="evenodd" 
-              d="M7.293 14.707a1 1 
-                0 010-1.414L10.586 10 7.293 6.707a1 1 
-                0 011.414-1.414l4 4a1 1 
-                0 010 1.414l-4 4a1 1 
-                0 01-1.414 0z" 
-              clip-rule="evenodd" />
-    </svg>
-</span>
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
 
-<a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
-    Admin
-</a>
+    <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+        Admin
+    </a>
 
-<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" 
-         fill="currentColor">
-        <path fill-rule="evenodd" 
-              d="M7.293 14.707a1 1 
-                0 010-1.414L10.586 10 7.293 6.707a1 1 
-                0 011.414-1.414l4 4a1 1 
-                0 010 1.414l-4 4a1 1 
-                0 01-1.414 0z" 
-              clip-rule="evenodd" />
-    </svg>
-</span>
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" 
+             fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
 
-<a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
-    Invoices
-</a>
+    <a href="#" class="text-gray-600 dark:text-gray-200 hover:underline">
+        Invoices
+    </a>
 
-<span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         class="w-5 h-5" 
-         viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" 
-              d="M7.293 14.707a1 1 
-                0 010-1.414L10.586 10 7.293 6.707a1 1 
-                0 011.414-1.414l4 4a1 1 
-                0 010 1.414l-4 4a1 1 
-                0 01-1.414 0z" 
-              clip-rule="evenodd" />
-    </svg>
-</span>
+    <span class="mx-5 text-gray-500 dark:text-gray-300 rtl:-scale-x-100">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="w-5 h-5" 
+             viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" 
+                  d="M7.293 14.707a1 1 
+                    0 010-1.414L10.586 10 7.293 6.707a1 1 
+                    0 011.414-1.414l4 4a1 1 
+                    0 010 1.414l-4 4a1 1 
+                    0 01-1.414 0z" 
+                  clip-rule="evenodd" />
+        </svg>
+    </span>
 
-<a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">
-    Viewing Invoice [1234]
-</a>
+    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline">
+        Viewing Invoice [1234]
+    </a>
 </div>
 ```
 
@@ -765,8 +766,8 @@ use Phalcon\Html\Helper\Body;
 $escaper = new Escaper();
 $helper  = new Body($escaper);
 $options = [
-'class' => 'my-class',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'id'    => 'my-id',
 ];
 
 echo $helper($options);
@@ -795,9 +796,9 @@ use Phalcon\Html\Helper\Button;
 $escaper = new Escaper();
 $helper  = new Button($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('click<>me', $options);
@@ -872,9 +873,9 @@ use Phalcon\Html\Helper\Element;
 $escaper = new Escaper();
 $helper  = new Element($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('address', 'click<>me', $options);
@@ -902,11 +903,11 @@ use Phalcon\Html\Helper\Form;
 $escaper = new Escaper();
 $helper  = new Form($escaper);
 $options = [
-'class'   => 'my-class',
-'name'    => 'my-name',
-'id'      => 'my-id',
-'method'  => 'post',
-'enctype' => 'multipart/form-data'
+    'class'   => 'my-class',
+    'name'    => 'my-name',
+    'id'      => 'my-id',
+    'method'  => 'post',
+    'enctype' => 'multipart/form-data'
 ];
 
 echo $helper($options);
@@ -977,9 +978,9 @@ use Phalcon\Html\Helper\Img;
 $escaper = new Escaper();
 $helper  = new Img($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('/my-url', $options);
@@ -1015,9 +1016,9 @@ use Phalcon\Html\Helper\Input\Checkbox;
 $escaper = new Escaper();
 $helper  = new Checkbox($escaper);
 $options = [
-'id'        => 'my-id',
-'unchecked' => 'no',
-'checked'   => 'yes',
+    'id'        => 'my-id',
+    'unchecked' => 'no',
+    'checked'   => 'yes',
 ];
 
 $result = $helper('my-name', 'yes', $options);
@@ -1052,9 +1053,9 @@ use Phalcon\Html\Helper\Input\Color;
 $escaper = new Escaper();
 $helper  = new Color($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1083,9 +1084,9 @@ use Phalcon\Html\Helper\Input\Date;
 $escaper = new Escaper();
 $helper  = new Date($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1114,9 +1115,9 @@ use Phalcon\Html\Helper\Input\DateTime;
 $escaper = new Escaper();
 $helper  = new DateTime($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1145,9 +1146,9 @@ use Phalcon\Html\Helper\Input\DateTimeLocal;
 $escaper = new Escaper();
 $helper  = new DateTimeLocal($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1176,9 +1177,9 @@ use Phalcon\Html\Helper\Input\Email;
 $escaper = new Escaper();
 $helper  = new Email($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1207,9 +1208,9 @@ use Phalcon\Html\Helper\Input\File;
 $escaper = new Escaper();
 $helper  = new File($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1238,9 +1239,9 @@ use Phalcon\Html\Helper\Input\Hidden;
 $escaper = new Escaper();
 $helper  = new Hidden($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1269,9 +1270,9 @@ use Phalcon\Html\Helper\Input\Image;
 $escaper = new Escaper();
 $helper  = new Image($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1300,9 +1301,9 @@ use Phalcon\Html\Helper\Input\Month;
 $escaper = new Escaper();
 $helper  = new Month($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1338,9 +1339,9 @@ use Phalcon\Html\Helper\Input\Input;
 $escaper = new Escaper();
 $helper  = new Input($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 $result = $helper('test-name', "test-value", $options);
@@ -1373,9 +1374,9 @@ use Phalcon\Html\Helper\Input\Numeric;
 $escaper = new Escaper();
 $helper  = new Numeric($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1404,9 +1405,9 @@ use Phalcon\Html\Helper\Input\Password;
 $escaper = new Escaper();
 $helper  = new Password($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1442,9 +1443,9 @@ use Phalcon\Html\Helper\Input\Radio;
 $escaper = new Escaper();
 $helper  = new Radio($escaper);
 $options = [
-'id'        => 'my-id',
-'unchecked' => 'no',
-'checked'   => 'yes',
+    'id'        => 'my-id',
+    'unchecked' => 'no',
+    'checked'   => 'yes',
 ];
 
 $result = $helper('my-name', 'yes', $options);
@@ -1479,9 +1480,9 @@ use Phalcon\Html\Helper\Input\Range;
 $escaper = new Escaper();
 $helper  = new Range($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1510,9 +1511,9 @@ use Phalcon\Html\Helper\Input\Search;
 $escaper = new Escaper();
 $helper  = new Search($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1532,32 +1533,33 @@ echo $helper('test-name', "test-value", $options);
 | `string $value`          | The value                         |
 | `array $attributes = []` | Additional attributes (key/value) |
 
+
 **Methods**
 
 ```php
 public function add(
-string $text,
-string $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    string $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): Select
 ```
 Add an element to the list
 
 ```php
 public function addPlaceholder(
-string $text,
-mixed $value = null,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    mixed $value = null,
+    array $attributes = [],
+    bool $raw = false
 ): Select
 ```
 Add a placeholder to the element
 
 ```php
 public function optGroup(
-string $label = null,
-array $attributes = []
+    string $label = null,
+    array $attributes = []
 ): Select
 ```
 Create an option group
@@ -1577,28 +1579,28 @@ $escaper = new Escaper();
 $helper  = new Select($escaper);
 
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ];
-
+ 
 $result = $helper('    ', PHP_EOL, $options);
 $result
-->add("Ferrari", "1", ["class" => "active"])
-->add("Ford", "2")
-->add("Dodge", "3")
-->add("Toyota", "4")
-->optGroup(
-    'oneLabel',
-    [
-        'class' => 'form-input',
-    ]
-)
-->addPlaceholder(
-    'Choose & Car...',
-    "0",
-    [],
-    true,
-)
-->selected("3")
+    ->add("Ferrari", "1", ["class" => "active"])
+    ->add("Ford", "2")
+    ->add("Dodge", "3")
+    ->add("Toyota", "4")
+    ->optGroup(
+        'oneLabel',
+        [
+            'class' => 'form-input',
+        ]
+    )
+    ->addPlaceholder(
+        'Choose & Car...',
+        "0",
+        [],
+        true,
+    )
+    ->selected("3")
 ;
 
 echo $result;
@@ -1632,9 +1634,9 @@ use Phalcon\Html\Helper\Input\Submit;
 $escaper = new Escaper();
 $helper  = new Submit($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1663,9 +1665,9 @@ use Phalcon\Html\Helper\Input\Tel;
 $escaper = new Escaper();
 $helper  = new Tel($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1694,9 +1696,9 @@ use Phalcon\Html\Helper\Input\Text;
 $escaper = new Escaper();
 $helper  = new Text($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1725,9 +1727,9 @@ use Phalcon\Html\Helper\Input\TextArea;
 $escaper = new Escaper();
 $helper  = new TextArea($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('click<>me', $options);
@@ -1757,9 +1759,9 @@ use Phalcon\Html\Helper\Input\Time;
 $escaper = new Escaper();
 $helper  = new Time($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1788,9 +1790,9 @@ use Phalcon\Html\Helper\Input\Url;
 $escaper = new Escaper();
 $helper  = new Url($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1819,9 +1821,9 @@ use Phalcon\Html\Helper\Input\Week;
 $escaper = new Escaper();
 $helper  = new Week($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper('test-name', "test-value", $options);
@@ -1850,9 +1852,9 @@ use Phalcon\Html\Helper\Label;
 $escaper = new Escaper();
 $helper  = new Label($escaper);
 $options = [
-'class' => 'my-class',
-'name'  => 'my-name',
-'id'    => 'my-id',
+    'class' => 'my-class',
+    'name'  => 'my-name',
+    'id'    => 'my-id',
 ];
 
 echo $helper($options);
@@ -1885,8 +1887,8 @@ $helper  = new Link($escaper);
 
 $result = $helper();
 $result
-->add('https://phalcon.io/page/1', ['rel' => 'prev'])
-->add('https://phalcon.io/page/2', ['rel' => 'next'])
+    ->add('https://phalcon.io/page/1', ['rel' => 'prev'])
+    ->add('https://phalcon.io/page/2', ['rel' => 'next'])
 ;
 
 echo $result;
@@ -1935,14 +1937,14 @@ $helper  = new Meta($escaper);
 $result = $helper();
 
 $result
-->add(
-    [
-        "charset" => 'utf-8',
-    ]
-)
-->addHttp("X-UA-Compatible", "IE=edge")
-->addName("generator", "Phalcon")
-->addProperty("org:url", "https://phalcon.io")
+    ->add(
+        [
+            "charset" => 'utf-8',
+        ]
+    )
+    ->addHttp("X-UA-Compatible", "IE=edge")
+    ->addName("generator", "Phalcon")
+    ->addProperty("org:url", "https://phalcon.io")
 ;
 
 echo $result;
@@ -1964,9 +1966,9 @@ echo $result;
 
 ```php
 public function add(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): Ol
 ```
 Add an element to the list
@@ -1980,16 +1982,16 @@ use Phalcon\Html\Helper\Ol;
 $escaper = new Escaper();
 $helper  = new Ol($escaper);
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ]
 
 $result = $helper('    ', PHP_EOL, $options);
 
 $result
-->add("Ferrari", "1", ["class" => "active"])
-->add("Ford", "2")
-->add("Dodge", "3")
-->add("Toyota", "4")
+    ->add("Ferrari", "1", ["class" => "active"])
+    ->add("Ford", "2")
+    ->add("Dodge", "3")
+    ->add("Toyota", "4")
 ;
 
 echo $result;
@@ -2058,8 +2060,8 @@ echo $factory->preload('/my-font.woff2', 'font');
 
 ```php
 public function add(
-string $url,
-array $attributes = []
+    string $url,
+    array $attributes = []
 ): Script
 ```
 Add a URL to the list
@@ -2076,8 +2078,8 @@ $helper  = new Script($escaper);
 $result = $helper();
 
 $result
-->add('/js/custom.js')
-->add('/js/print.js', ['ie' => 'active'])
+    ->add('/js/custom.js')
+    ->add('/js/print.js', ['ie' => 'active'])
 ;
 
 echo $result;
@@ -2099,8 +2101,8 @@ echo $result;
 
 ```php
 public function add(
-string $url,
-array $attributes = []
+    string $url,
+    array $attributes = []
 ): Script
 ```
 Add a URL to the list
@@ -2117,8 +2119,8 @@ $helper  = new Script($escaper);
 $result = $helper();
 
 $result
-->add('custom.css')
-->add('print.css', ['media' => 'print'])
+    ->add('custom.css')
+    ->add('print.css', ['media' => 'print'])
 ;
 
 echo $result;
@@ -2140,8 +2142,8 @@ echo $result;
 
 ```php
 public function append(
-string $text, 
-bool $raw = false
+    string $text, 
+    bool $raw = false
 ): Title
 ```
 Appends text to the current document title
@@ -2153,24 +2155,24 @@ Returns the title
 
 ```php
 public function set(
-string $text, 
-bool $raw = false
+    string $text, 
+    bool $raw = false
 )): Title
 ```
 Sets the title
 
 ```php
 public function setSeparator(
-string $separator, 
-bool $raw = false
+    string $separator, 
+    bool $raw = false
 )): Title
 ```
 Sets the separator
 
 ```php
 public function prepend(
-string $text, 
-bool $raw = false
+    string $text, 
+    bool $raw = false
 ): Title
 ```
 Prepends text to the current document title
@@ -2184,16 +2186,16 @@ use Phalcon\Html\Helper\Ul;
 $escaper = new Escaper();
 $helper  = new Ul($escaper);
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ]
 
 $result = $helper();
 
 $result
-->setSeparator(' | ')
-->set('<Dodge>')
-->append('< Ferrari', true)
-->prepend('Ford <')
+    ->setSeparator(' | ')
+    ->set('<Dodge>')
+    ->append('< Ferrari', true)
+    ->prepend('Ford <')
 ;
 
 echo $result->get();
@@ -2215,9 +2217,9 @@ echo $result;
 
 ```php
 public function add(
-string $text,
-array $attributes = [],
-bool $raw = false
+    string $text,
+    array $attributes = [],
+    bool $raw = false
 ): Ol
 ```
 Add an element to the list
@@ -2231,16 +2233,16 @@ use Phalcon\Html\Helper\Ul;
 $escaper = new Escaper();
 $helper  = new Ul($escaper);
 $options = [
-'id' => 'carsList',
+    'id' => 'carsList',
 ]
 
 $result = $helper('    ', PHP_EOL, $options);
 
 $result
-->add("Ferrari", "1", ["class" => "active"])
-->add("Ford", "2")
-->add("Dodge", "3")
-->add("Toyota", "4")
+    ->add("Ferrari", "1", ["class" => "active"])
+    ->add("Ford", "2")
+    ->add("Dodge", "3")
+    ->add("Toyota", "4")
 ;
 
 echo $result;
@@ -2251,6 +2253,8 @@ echo $result;
 //     <li>> Toyota</li>
 // </ul>
 ```
+
+
 
 [di-factorydefault]: /5.11/api/phalcon_di/#difactorydefault
 [html-attributes]: /5.11/api/phalcon_html/#htmlattributes

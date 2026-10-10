@@ -15,6 +15,7 @@ version: "3.4"
 
 Base class for Phalcon\Session adapters
 
+
 ## Constants
 *integer* **SESSION_ACTIVE**
 
@@ -27,9 +28,13 @@ public  **__construct** ([*array* $options])
 
 Phalcon\Session\Adapter constructor
 
+
+
 public  **start** ()
 
 Starts the session (if headers are already sent the session will not be started)
+
+
 
 public  **setOptions** (*array* $options)
 
@@ -39,26 +44,38 @@ Sets session's options
 <?php
 
 $session->setOptions(
-[
-    "uniqueId" => "my-private-app",
-]
+    [
+        "uniqueId" => "my-private-app",
+    ]
 );
 
 ```
+
+
 
 public  **getOptions** ()
 
 Get internal options
 
+
+
 public  **setName** (*mixed* $name)
 
 Set session name
+
+
 
 public  **getName** ()
 
 Get session name
 
+
+
 public  **regenerateId** ([*mixed* $deleteOldSession])
+
+
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove])
 
@@ -71,6 +88,8 @@ $session->get("auth", "yes");
 
 ```
 
+
+
 public  **set** (*mixed* $index, *mixed* $value)
 
 Sets a session variable in an application context
@@ -82,6 +101,8 @@ $session->set("auth", "yes");
 
 ```
 
+
+
 public  **has** (*mixed* $index)
 
 Check whether a session variable is set in an application context
@@ -90,10 +111,12 @@ Check whether a session variable is set in an application context
 <?php
 
 var_dump(
-$session->has("auth")
+    $session->has("auth")
 );
 
 ```
+
+
 
 public  **remove** (*mixed* $index)
 
@@ -106,6 +129,8 @@ $session->remove("auth");
 
 ```
 
+
+
 public  **getId** ()
 
 Returns active session id
@@ -116,6 +141,8 @@ Returns active session id
 echo $session->getId();
 
 ```
+
+
 
 public  **setId** (*mixed* $id)
 
@@ -128,6 +155,8 @@ $session->setId($id);
 
 ```
 
+
+
 public  **isStarted** ()
 
 Check whether the session has been started
@@ -136,10 +165,12 @@ Check whether the session has been started
 <?php
 
 var_dump(
-$session->isStarted()
+    $session->isStarted()
 );
 
 ```
+
+
 
 public  **destroy** ([*mixed* $removeData])
 
@@ -149,14 +180,16 @@ Destroys the active session
 <?php
 
 var_dump(
-$session->destroy()
+    $session->destroy()
 );
 
 var_dump(
-$session->destroy(true)
+    $session->destroy(true)
 );
 
 ```
+
+
 
 public  **status** ()
 
@@ -166,26 +199,34 @@ Returns the status of the current session.
 <?php
 
 var_dump(
-$session->status()
+    $session->status()
 );
 
 if ($session->status() !== $session::SESSION_ACTIVE) {
-$session->start();
+    $session->start();
 }
 
 ```
+
+
 
 public  **__get** (*mixed* $index)
 
 Alias: Gets a session variable from an application context
 
+
+
 public  **__set** (*mixed* $index, *mixed* $value)
 
 Alias: Sets a session variable in an application context
 
+
+
 public  **__isset** (*mixed* $index)
 
 Alias: Check whether a session variable is set in an application context
+
+
 
 public  **__unset** (*mixed* $index)
 
@@ -198,13 +239,18 @@ unset($session->auth);
 
 ```
 
+
+
 public  **__destruct** ()
 
 ...
 
+
 protected  **removeSessionData** ()
 
 ...
+
+
 
 <hr />
 
@@ -228,9 +274,13 @@ public  **__construct** ([*array* $options]) inherited from [Phalcon\Session\Ada
 
 Phalcon\Session\Adapter constructor
 
+
+
 public  **start** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Starts the session (if headers are already sent the session will not be started)
+
+
 
 public  **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -240,26 +290,38 @@ Sets session's options
 <?php
 
 $session->setOptions(
-[
-    "uniqueId" => "my-private-app",
-]
+    [
+        "uniqueId" => "my-private-app",
+    ]
 );
 
 ```
+
+
 
 public  **getOptions** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get internal options
 
+
+
 public  **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Set session name
+
+
 
 public  **getName** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get session name
 
+
+
 public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
+
+
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -272,6 +334,8 @@ $session->get("auth", "yes");
 
 ```
 
+
+
 public  **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Sets a session variable in an application context
@@ -283,6 +347,8 @@ $session->set("auth", "yes");
 
 ```
 
+
+
 public  **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether a session variable is set in an application context
@@ -291,10 +357,12 @@ Check whether a session variable is set in an application context
 <?php
 
 var_dump(
-$session->has("auth")
+    $session->has("auth")
 );
 
 ```
+
+
 
 public  **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -307,6 +375,8 @@ $session->remove("auth");
 
 ```
 
+
+
 public  **getId** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Returns active session id
@@ -317,6 +387,8 @@ Returns active session id
 echo $session->getId();
 
 ```
+
+
 
 public  **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -329,6 +401,8 @@ $session->setId($id);
 
 ```
 
+
+
 public  **isStarted** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether the session has been started
@@ -337,10 +411,12 @@ Check whether the session has been started
 <?php
 
 var_dump(
-$session->isStarted()
+    $session->isStarted()
 );
 
 ```
+
+
 
 public  **destroy** ([*mixed* $removeData]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -350,14 +426,16 @@ Destroys the active session
 <?php
 
 var_dump(
-$session->destroy()
+    $session->destroy()
 );
 
 var_dump(
-$session->destroy(true)
+    $session->destroy(true)
 );
 
 ```
+
+
 
 public  **status** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -367,26 +445,34 @@ Returns the status of the current session.
 <?php
 
 var_dump(
-$session->status()
+    $session->status()
 );
 
 if ($session->status() !== $session::SESSION_ACTIVE) {
-$session->start();
+    $session->start();
 }
 
 ```
+
+
 
 public  **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Gets a session variable from an application context
 
+
+
 public  **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Sets a session variable in an application context
 
+
+
 public  **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Check whether a session variable is set in an application context
+
+
 
 public  **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -399,13 +485,18 @@ unset($session->auth);
 
 ```
 
+
+
 public  **__destruct** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
 
+
 protected  **removeSessionData** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
+
+
 
 <hr />
 
@@ -425,21 +516,21 @@ This adapter store sessions in libmemcached
 use Phalcon\Session\Adapter\Libmemcached;
 
 $session = new Libmemcached(
-[
-    "servers" => [
-        [
-            "host"   => "localhost",
-            "port"   => 11211,
-            "weight" => 1,
+    [
+        "servers" => [
+            [
+                "host"   => "localhost",
+                "port"   => 11211,
+                "weight" => 1,
+            ],
         ],
-    ],
-    "client" => [
-        \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
-        \Memcached::OPT_PREFIX_KEY => "prefix.",
-    ],
-    "lifetime" => 3600,
-    "prefix"   => "my_",
-]
+        "client" => [
+            \Memcached::OPT_HASH       => \Memcached::HASH_MD5,
+            \Memcached::OPT_PREFIX_KEY => "prefix.",
+        ],
+        "lifetime" => 3600,
+        "prefix"   => "my_",
+    ]
 );
 
 $session->start();
@@ -449,6 +540,7 @@ $session->set("var", "some-value");
 echo $session->get("var");
 
 ```
+
 
 ## Constants
 *integer* **SESSION_ACTIVE**
@@ -462,33 +554,57 @@ public  **getLibmemcached** ()
 
 ...
 
+
 public  **getLifetime** ()
 
 ...
+
 
 public  **__construct** (*array* $options)
 
 Phalcon\Session\Adapter\Libmemcached constructor
 
+
+
 public  **open** ()
 
 ...
+
 
 public  **close** ()
 
 ...
 
+
 public  **read** (*mixed* $sessionId)
+
+
+
+
 
 public  **write** (*mixed* $sessionId, *mixed* $data)
 
+
+
+
+
 public  **destroy** ([*mixed* $sessionId])
 
+
+
+
+
 public  **gc** ()
+
+
+
+
 
 public  **start** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Starts the session (if headers are already sent the session will not be started)
+
+
 
 public  **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -498,26 +614,38 @@ Sets session's options
 <?php
 
 $session->setOptions(
-[
-    "uniqueId" => "my-private-app",
-]
+    [
+        "uniqueId" => "my-private-app",
+    ]
 );
 
 ```
+
+
 
 public  **getOptions** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get internal options
 
+
+
 public  **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Set session name
+
+
 
 public  **getName** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get session name
 
+
+
 public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
+
+
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -530,6 +658,8 @@ $session->get("auth", "yes");
 
 ```
 
+
+
 public  **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Sets a session variable in an application context
@@ -541,6 +671,8 @@ $session->set("auth", "yes");
 
 ```
 
+
+
 public  **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether a session variable is set in an application context
@@ -549,10 +681,12 @@ Check whether a session variable is set in an application context
 <?php
 
 var_dump(
-$session->has("auth")
+    $session->has("auth")
 );
 
 ```
+
+
 
 public  **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -565,6 +699,8 @@ $session->remove("auth");
 
 ```
 
+
+
 public  **getId** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Returns active session id
@@ -575,6 +711,8 @@ Returns active session id
 echo $session->getId();
 
 ```
+
+
 
 public  **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -587,6 +725,8 @@ $session->setId($id);
 
 ```
 
+
+
 public  **isStarted** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether the session has been started
@@ -595,10 +735,12 @@ Check whether the session has been started
 <?php
 
 var_dump(
-$session->isStarted()
+    $session->isStarted()
 );
 
 ```
+
+
 
 public  **status** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -608,26 +750,34 @@ Returns the status of the current session.
 <?php
 
 var_dump(
-$session->status()
+    $session->status()
 );
 
 if ($session->status() !== $session::SESSION_ACTIVE) {
-$session->start();
+    $session->start();
 }
 
 ```
+
+
 
 public  **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Gets a session variable from an application context
 
+
+
 public  **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Sets a session variable in an application context
 
+
+
 public  **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Check whether a session variable is set in an application context
+
+
 
 public  **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -640,13 +790,18 @@ unset($session->auth);
 
 ```
 
+
+
 public  **__destruct** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
 
+
 protected  **removeSessionData** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
+
+
 
 <hr />
 
@@ -666,14 +821,14 @@ This adapter store sessions in memcache
 use Phalcon\Session\Adapter\Memcache;
 
 $session = new Memcache(
-[
-    "uniqueId"   => "my-private-app",
-    "host"       => "127.0.0.1",
-    "port"       => 11211,
-    "persistent" => true,
-    "lifetime"   => 3600,
-    "prefix"     => "my_",
-]
+    [
+        "uniqueId"   => "my-private-app",
+        "host"       => "127.0.0.1",
+        "port"       => 11211,
+        "persistent" => true,
+        "lifetime"   => 3600,
+        "prefix"     => "my_",
+    ]
 );
 
 $session->start();
@@ -683,6 +838,7 @@ $session->set("var", "some-value");
 echo $session->get("var");
 
 ```
+
 
 ## Constants
 *integer* **SESSION_ACTIVE**
@@ -696,33 +852,57 @@ public  **getMemcache** ()
 
 ...
 
+
 public  **getLifetime** ()
 
 ...
+
 
 public  **__construct** ([*array* $options])
 
 Phalcon\Session\Adapter\Memcache constructor
 
+
+
 public  **open** ()
 
 ...
+
 
 public  **close** ()
 
 ...
 
+
 public  **read** (*mixed* $sessionId)
+
+
+
+
 
 public  **write** (*mixed* $sessionId, *mixed* $data)
 
+
+
+
+
 public  **destroy** ([*mixed* $sessionId])
 
+
+
+
+
 public  **gc** ()
+
+
+
+
 
 public  **start** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Starts the session (if headers are already sent the session will not be started)
+
+
 
 public  **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -732,26 +912,38 @@ Sets session's options
 <?php
 
 $session->setOptions(
-[
-    "uniqueId" => "my-private-app",
-]
+    [
+        "uniqueId" => "my-private-app",
+    ]
 );
 
 ```
+
+
 
 public  **getOptions** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get internal options
 
+
+
 public  **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Set session name
+
+
 
 public  **getName** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get session name
 
+
+
 public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
+
+
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -764,6 +956,8 @@ $session->get("auth", "yes");
 
 ```
 
+
+
 public  **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Sets a session variable in an application context
@@ -775,6 +969,8 @@ $session->set("auth", "yes");
 
 ```
 
+
+
 public  **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether a session variable is set in an application context
@@ -783,10 +979,12 @@ Check whether a session variable is set in an application context
 <?php
 
 var_dump(
-$session->has("auth")
+    $session->has("auth")
 );
 
 ```
+
+
 
 public  **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -799,6 +997,8 @@ $session->remove("auth");
 
 ```
 
+
+
 public  **getId** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Returns active session id
@@ -809,6 +1009,8 @@ Returns active session id
 echo $session->getId();
 
 ```
+
+
 
 public  **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -821,6 +1023,8 @@ $session->setId($id);
 
 ```
 
+
+
 public  **isStarted** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether the session has been started
@@ -829,10 +1033,12 @@ Check whether the session has been started
 <?php
 
 var_dump(
-$session->isStarted()
+    $session->isStarted()
 );
 
 ```
+
+
 
 public  **status** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -842,26 +1048,34 @@ Returns the status of the current session.
 <?php
 
 var_dump(
-$session->status()
+    $session->status()
 );
 
 if ($session->status() !== $session::SESSION_ACTIVE) {
-$session->start();
+    $session->start();
 }
 
 ```
+
+
 
 public  **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Gets a session variable from an application context
 
+
+
 public  **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Sets a session variable in an application context
 
+
+
 public  **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Check whether a session variable is set in an application context
+
+
 
 public  **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -874,13 +1088,18 @@ unset($session->auth);
 
 ```
 
+
+
 public  **__destruct** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
 
+
 protected  **removeSessionData** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
+
+
 
 <hr />
 
@@ -900,16 +1119,16 @@ This adapter store sessions in Redis
 use Phalcon\Session\Adapter\Redis;
 
 $session = new Redis(
-[
-    "uniqueId"   => "my-private-app",
-    "host"       => "localhost",
-    "port"       => 6379,
-    "auth"       => "foobared",
-    "persistent" => false,
-    "lifetime"   => 3600,
-    "prefix"     => "my",
-    "index"      => 1,
-]
+    [
+        "uniqueId"   => "my-private-app",
+        "host"       => "localhost",
+        "port"       => 6379,
+        "auth"       => "foobared",
+        "persistent" => false,
+        "lifetime"   => 3600,
+        "prefix"     => "my",
+        "index"      => 1,
+    ]
 );
 
 $session->start();
@@ -919,6 +1138,7 @@ $session->set("var", "some-value");
 echo $session->get("var");
 
 ```
+
 
 ## Constants
 *integer* **SESSION_ACTIVE**
@@ -932,29 +1152,59 @@ public  **getRedis** ()
 
 ...
 
+
 public  **getLifetime** ()
 
 ...
+
 
 public  **__construct** ([*array* $options])
 
 Phalcon\Session\Adapter\Redis constructor
 
+
+
 public  **open** ()
+
+
+
+
 
 public  **close** ()
 
+
+
+
+
 public  **read** (*mixed* $sessionId)
+
+
+
+
 
 public  **write** (*mixed* $sessionId, *mixed* $data)
 
+
+
+
+
 public  **destroy** ([*mixed* $sessionId])
 
+
+
+
+
 public  **gc** ()
+
+
+
+
 
 public  **start** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Starts the session (if headers are already sent the session will not be started)
+
+
 
 public  **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -964,26 +1214,38 @@ Sets session's options
 <?php
 
 $session->setOptions(
-[
-    "uniqueId" => "my-private-app",
-]
+    [
+        "uniqueId" => "my-private-app",
+    ]
 );
 
 ```
+
+
 
 public  **getOptions** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get internal options
 
+
+
 public  **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Set session name
+
+
 
 public  **getName** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Get session name
 
+
+
 public  **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
+
+
+
+
 
 public  **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -996,6 +1258,8 @@ $session->get("auth", "yes");
 
 ```
 
+
+
 public  **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Sets a session variable in an application context
@@ -1007,6 +1271,8 @@ $session->set("auth", "yes");
 
 ```
 
+
+
 public  **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether a session variable is set in an application context
@@ -1015,10 +1281,12 @@ Check whether a session variable is set in an application context
 <?php
 
 var_dump(
-$session->has("auth")
+    $session->has("auth")
 );
 
 ```
+
+
 
 public  **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -1031,6 +1299,8 @@ $session->remove("auth");
 
 ```
 
+
+
 public  **getId** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Returns active session id
@@ -1041,6 +1311,8 @@ Returns active session id
 echo $session->getId();
 
 ```
+
+
 
 public  **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -1053,6 +1325,8 @@ $session->setId($id);
 
 ```
 
+
+
 public  **isStarted** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Check whether the session has been started
@@ -1061,10 +1335,12 @@ Check whether the session has been started
 <?php
 
 var_dump(
-$session->isStarted()
+    $session->isStarted()
 );
 
 ```
+
+
 
 public  **status** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -1074,26 +1350,34 @@ Returns the status of the current session.
 <?php
 
 var_dump(
-$session->status()
+    $session->status()
 );
 
 if ($session->status() !== $session::SESSION_ACTIVE) {
-$session->start();
+    $session->start();
 }
 
 ```
+
+
 
 public  **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Gets a session variable from an application context
 
+
+
 public  **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Sets a session variable in an application context
 
+
+
 public  **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 Alias: Check whether a session variable is set in an application context
+
+
 
 public  **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
@@ -1106,13 +1390,18 @@ unset($session->auth);
 
 ```
 
+
+
 public  **__destruct** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
 
+
 protected  **removeSessionData** () inherited from [Phalcon\Session\Adapter](/3.4/api/phalcon_session/)
 
 ...
+
+
 
 <hr />
 
@@ -1125,53 +1414,67 @@ abstract public  **start** ()
 
 ...
 
+
 abstract public  **setOptions** (*array* $options)
 
 ...
+
 
 abstract public  **getOptions** ()
 
 ...
 
+
 abstract public  **get** (*mixed* $index, [*mixed* $defaultValue])
 
 ...
+
 
 abstract public  **set** (*mixed* $index, *mixed* $value)
 
 ...
 
+
 abstract public  **has** (*mixed* $index)
 
 ...
+
 
 abstract public  **remove** (*mixed* $index)
 
 ...
 
+
 abstract public  **getId** ()
 
 ...
+
 
 abstract public  **isStarted** ()
 
 ...
 
+
 abstract public  **destroy** ([*mixed* $removeData])
 
 ...
+
 
 abstract public  **regenerateId** ([*mixed* $deleteOldSession])
 
 ...
 
+
 abstract public  **setName** (*mixed* $name)
 
 ...
 
+
 abstract public  **getName** ()
 
 ...
+
+
 
 <hr />
 
@@ -1194,23 +1497,32 @@ $user->age  = 22;
 
 ```
 
+
 ## Methods
 public  **__construct** (*mixed* $name)
 
 Phalcon\Session\Bag constructor
 
+
+
 public  **setDI** ([Phalcon\DiInterface](/3.4/api/phalcon_di/) $dependencyInjector)
 
 Sets the DependencyInjector container
+
+
 
 public  **getDI** ()
 
 Returns the DependencyInjector container
 
+
+
 public  **initialize** ()
 
 Initializes the session bag. This method must not be called directly, the
 class calls it when its internal data is accessed
+
+
 
 public  **destroy** ()
 
@@ -1223,6 +1535,8 @@ $user->destroy();
 
 ```
 
+
+
 public  **set** (*mixed* $property, *mixed* $value)
 
 Sets a value in the session bag
@@ -1233,6 +1547,8 @@ Sets a value in the session bag
 $user->set("name", "Kimbra");
 
 ```
+
+
 
 public  **__set** (*mixed* $property, *mixed* $value)
 
@@ -1245,6 +1561,8 @@ $user->name = "Kimbra";
 
 ```
 
+
+
 public  **get** (*mixed* $property, [*mixed* $defaultValue])
 
 Obtains a value from the session bag optionally setting a default value
@@ -1255,6 +1573,8 @@ Obtains a value from the session bag optionally setting a default value
 echo $user->get("name", "Kimbra");
 
 ```
+
+
 
 public  **__get** (*mixed* $property)
 
@@ -1267,6 +1587,8 @@ echo $user->name;
 
 ```
 
+
+
 public  **has** (*mixed* $property)
 
 Check whether a property is defined in the internal bag
@@ -1275,10 +1597,12 @@ Check whether a property is defined in the internal bag
 <?php
 
 var_dump(
-$user->has("name")
+    $user->has("name")
 );
 
 ```
+
+
 
 public  **__isset** (*mixed* $property)
 
@@ -1288,10 +1612,12 @@ Magic isset to check whether a property is defined in the bag
 <?php
 
 var_dump(
-isset($user["name"])
+    isset($user["name"])
 );
 
 ```
+
+
 
 public  **remove** (*mixed* $property)
 
@@ -1304,6 +1630,8 @@ $user->remove("name");
 
 ```
 
+
+
 public  **__unset** (*mixed* $property)
 
 Magic unset to remove items using the array syntax
@@ -1314,6 +1642,8 @@ Magic unset to remove items using the array syntax
 unset($user["name"]);
 
 ```
+
+
 
 final public  **count** ()
 
@@ -1326,25 +1656,34 @@ echo $user->count();
 
 ```
 
+
+
 final public  **getIterator** ()
 
  Returns the bag iterator
+
+
 
 final public  **offsetSet** (*mixed* $property, *mixed* $value)
 
 ...
 
+
 final public  **offsetExists** (*mixed* $property)
 
 ...
+
 
 final public  **offsetUnset** (*mixed* $property)
 
 ...
 
+
 final public  **offsetGet** (*mixed* $property)
 
 ...
+
+
 
 <hr />
 
@@ -1357,33 +1696,42 @@ abstract public  **initialize** ()
 
 ...
 
+
 abstract public  **destroy** ()
 
 ...
+
 
 abstract public  **set** (*mixed* $property, *mixed* $value)
 
 ...
 
+
 abstract public  **get** (*mixed* $property, [*mixed* $defaultValue])
 
 ...
+
 
 abstract public  **has** (*mixed* $property)
 
 ...
 
+
 abstract public  **__set** (*mixed* $property, *mixed* $value)
 
 ...
+
 
 abstract public  **__get** (*mixed* $property)
 
 ...
 
+
 abstract public  **__isset** (*mixed* $property)
 
 ...
+
+
 
 <hr />
 
@@ -1400,45 +1748,67 @@ final private [Exception](https://php.net/manual/en/class.exception.php) **__clo
 
 Clone the exception
 
+
+
 public  **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Exception constructor
+
+
 
 public  **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 ...
 
+
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception message
+
+
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the Exception code
 
+
+
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the file in which the exception occurred
+
+
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the line in which the exception occurred
 
+
+
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace
+
+
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Returns previous Exception
 
+
+
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 Gets the stack trace as a string
 
+
+
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
 String representation of the exception
+
+
+
 
 <hr />
 
@@ -1458,20 +1828,25 @@ Loads Session Adapter class using 'adapter' option
 use Phalcon\Session\Factory;
 
 $options = [
-"uniqueId"   => "my-private-app",
-"host"       => "127.0.0.1",
-"port"       => 11211,
-"persistent" => true,
-"lifetime"   => 3600,
-"prefix"     => "my_",
-"adapter"    => "memcache",
+    "uniqueId"   => "my-private-app",
+    "host"       => "127.0.0.1",
+    "port"       => 11211,
+    "persistent" => true,
+    "lifetime"   => 3600,
+    "prefix"     => "my_",
+    "adapter"    => "memcache",
 ];
 $session = Factory::load($options);
 
 ```
 
+
 ## Methods
 public static  **load** ([Phalcon\Config](/3.4/api/phalcon_config/) | *array* $config)
+
+
+
+
 
 protected static  **loadClass** (*mixed* $namespace, *mixed* $config) inherited from [Phalcon\Factory](/3.4/api/phalcon_factory/)
 

@@ -19,10 +19,10 @@ If you decided to use namespaces for your application, you will need to instruct
 <?php
 
 $loader->registerNamespaces(
-[
-   'MyApp\Admin\Controllers' => '/app/web/admin/controllers/',
-   'MyApp\Admin\Models'      => '/app/web/admin/models/',
-]
+    [
+       'MyApp\Admin\Controllers' => '/app/web/admin/controllers/',
+       'MyApp\Admin\Models'      => '/app/web/admin/models/',
+    ]
 );
 ```
 
@@ -32,12 +32,12 @@ You can also specify the namespace when defining your routes, using the [Router]
 <?php
 
 $router->add(
-'/admin/invoices/list',
-[
-    'namespace'  => 'MyApp\Admin',
-    'controller' => 'Invoices',
-    'action'     => 'list',
-]
+    '/admin/invoices/list',
+    [
+        'namespace'  => 'MyApp\Admin',
+        'controller' => 'Invoices',
+        'action'     => 'list',
+    ]
 );
 ```
 
@@ -47,12 +47,12 @@ or passing it as part of the route as a parameter
 <?php
 
 $router->add(
-'/:namespace/invoices/list',
-[
-    'namespace'  => 1,
-    'controller' => 'Invoices',
-    'action'     => 'list',
-]
+    '/:namespace/invoices/list',
+    [
+        'namespace'  => 1,
+        'controller' => 'Invoices',
+        'action'     => 'list',
+    ]
 );
 ```
 
@@ -64,16 +64,16 @@ Finally, if you are only working with the same namespace for every controller, y
 use Phalcon\Mvc\Dispatcher;
 
 $di->set(
-'dispatcher',
-function () {
-    $dispatcher = new Dispatcher();
+    'dispatcher',
+    function () {
+        $dispatcher = new Dispatcher();
 
-    $dispatcher->setDefaultNamespace(
-        'MyApp\Admin\Controllers'
-    );
+        $dispatcher->setDefaultNamespace(
+            'MyApp\Admin\Controllers'
+        );
 
-    return $dispatcher;
-}
+        return $dispatcher;
+    }
 );
 ```
 
@@ -89,15 +89,15 @@ use Phalcon\Mvc\Controller;
 
 class InvoicesController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function listAction()
-{
+    public function listAction()
+    {
 
-}
+    }
 }
 ```
 
@@ -128,17 +128,17 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->hasMany(
-        'inv_cst_id',
-        Customers::class,
-        'cst_id',
-        [
-            'alias' => 'customers',
-        ]
-    );
-}
+    public function initialize()
+    {
+        $this->hasMany(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'alias' => 'customers',
+            ]
+        );
+    }
 }
 ```
 
@@ -148,8 +148,8 @@ In PHQL you must write the statements including namespaces:
 <?php
 
 $phql = 'SELECT i.* '
-  . 'FROM MyApp\Admin\Models\Invoices i '
-  . 'JOIN MyApp\Admin\Models\Customers c';
+      . 'FROM MyApp\Admin\Models\Invoices i '
+      . 'JOIN MyApp\Admin\Models\Customers c';
 ```
 
 [namespaces]: https://php.net/manual/en/language.namespaces.php

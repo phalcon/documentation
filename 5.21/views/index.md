@@ -26,10 +26,10 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function viewAction($invoiceId)
-{
-    $this->view->invoiceId = $invoiceId;
-}
+    public function viewAction($invoiceId)
+    {
+        $this->view->invoiceId = $invoiceId;
+    }
 }
 ```
 
@@ -104,7 +104,7 @@ Disables a specific level of rendering
 
 ```php
 $this->view->disableLevel(
-View::LEVEL_ACTION_VIEW
+    View::LEVEL_ACTION_VIEW
 );
 ```
 
@@ -190,8 +190,8 @@ Returns parameters to views
 
 ```php
 public function getPartial(
-string $partialPath, 
-mixed $params = null
+    string $partialPath, 
+    mixed $params = null
 ): string
 ```
 
@@ -205,10 +205,10 @@ Retrieve the contents of a partial
 
 ```php
 echo $this->getPartial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -222,10 +222,10 @@ Gets the current partials subdirectory
 
 ```php
 public function getRender(
-string $controllerName, 
-string $actionName, 
-array $params = [], 
-mixed $configCallback = null
+    string $controllerName, 
+    string $actionName, 
+    array $params = [], 
+    mixed $configCallback = null
 ): string
 ```
 
@@ -233,11 +233,11 @@ Perform the automatic rendering returning the output as a string
 
 ```php
 $template = $this->view->getRender(
-"invoices",
-"show",
-[
-    "invoices" => $invoices,
-]
+    "invoices",
+    "show",
+    [
+        "invoices" => $invoices,
+    ]
 );
 ```
 
@@ -267,8 +267,8 @@ Whether automatic rendering is enabled
 
 ```php
 public function partial(
-string $partialPath, 
-mixed $params = null
+    string $partialPath, 
+    mixed $params = null
 )
 ```
 
@@ -282,10 +282,10 @@ Show a partial inside another view
 
 ```php
 $this->partial(
-"shared/footer",
-[
-    "content" => $html,
-]
+    "shared/footer",
+    [
+        "content" => $html,
+    ]
 );
 ```
 
@@ -302,18 +302,18 @@ use Phalcon\Mvc\Controller;
 
 class ProductsController extends Controller
 {
-public function saveAction()
-{
-    // ...
+    public function saveAction()
+    {
+        // ...
 
-    $this->view->pick("invoices/list");
-}
+        $this->view->pick("invoices/list");
+    }
 }
 ```
 
 ```php
 public function registerEngines(
-array $engines
+    array $engines
 ): View
 ```
 
@@ -321,19 +321,19 @@ Register templating engines
 
 ```php
 $this->view->registerEngines(
-[
-    ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
-    ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
-    ".mhtml" => \MyCustomEngine::class,
-]
+    [
+        ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
+        ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
+        ".mhtml" => \MyCustomEngine::class,
+    ]
 );
 ```
 
 ```php
 public function render(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): View | bool
 ```
 
@@ -341,9 +341,9 @@ Executes render process from dispatching data
 
 ```php
 $view
-->start()
-->render("posts", "recent")
-->finish()
+    ->start()
+    ->render("posts", "recent")
+    ->finish()
 ;
 ```
 
@@ -357,7 +357,7 @@ Resets the view component to its factory default values
 
 ```php
 public function setBasePath(
-string $basePath
+    string $basePath
 ): View
 ```
 
@@ -369,7 +369,7 @@ $view->setBasePath(__DIR__ . "/");
 
 ```php
 public function setContent(
-string $content
+    string $content
 ): View
 ```
 
@@ -377,13 +377,13 @@ Externally sets the view content
 
 ```php
 $this->view->setContent(
-"<h1>hello</h1>"
+    "<h1>hello</h1>"
 );
 ```
 
 ```php
 public function setLayout(
-string $layout
+    string $layout
 ): View
 ```
 
@@ -395,7 +395,7 @@ $this->view->setLayout("main");
 
 ```php
 public function setLayoutsDir(
-string $layoutsDir
+    string $layoutsDir
 ): View
 ```
 
@@ -403,13 +403,13 @@ Sets the layouts subdirectory. It must be a directory under the views directory.
 
 ```php
 $view->setLayoutsDir(
-"../common/layouts/"
+    "../common/layouts/"
 );
 ```
 
 ```php
 public function setMainView(
-string $viewPath
+    string $viewPath
 ): View
 ```
 
@@ -423,7 +423,7 @@ Renders as main view views-dir/base.phtml
 
 ```php
 public function setPartialsDir(
-string $partialsDir
+    string $partialsDir
 ): View
 ```
 
@@ -431,14 +431,14 @@ Sets a partials subdirectory. Must be a directory under the views directory. Dep
 
 ```php
 $view->setPartialsDir(
-"../common/partials/"
+    "../common/partials/"
 );
 ```
 
 ```php
 public function setParamToView(
-string $key, 
-mixed $value
+    string $key, 
+    mixed $value
 ): View
 ```
 
@@ -446,14 +446,14 @@ Adds parameters to views (alias of setVar)
 
 ```php
 $this
-->view
-->setParamToView("invoices", $invoices)
+    ->view
+    ->setParamToView("invoices", $invoices)
 ;
 ```
 
 ```php
 public function setRenderLevel(
-int $level
+    int $level
 ): ViewInterface
 ```
 
@@ -461,7 +461,7 @@ Sets the render level for the view
 
 ```php
 $this->view->setRenderLevel(
-View::LEVEL_LAYOUT
+    View::LEVEL_LAYOUT
 );
 ```
 
@@ -469,7 +469,7 @@ Render the view related to the controller only
 
 ```php
 public function setTemplateAfter(
-mixed $templateAfter
+    mixed $templateAfter
 ): View
 ```
 
@@ -477,7 +477,7 @@ Sets a "template after" controller layout
 
 ```php
 public function setTemplateBefore(
-mixed $templateBefore
+    mixed $templateBefore
 ): View
 ```
 
@@ -485,8 +485,8 @@ Sets a template before the controller layout
 
 ```php
 public function setVar(
-string $key, 
-mixed $value
+    string $key, 
+    mixed $value
 ): View
 ```
 
@@ -494,15 +494,15 @@ Set a single view parameter
 
 ```php
 $this
-->view
-->setVar("invoices", $invoices)
+    ->view
+    ->setVar("invoices", $invoices)
 ;
 ```
 
 ```php
 public function setVars(
-array $params, 
-bool $merge = true
+    array $params, 
+    bool $merge = true
 ): View
 ```
 
@@ -510,15 +510,15 @@ Set all the render params
 
 ```php
 $this->view->setVars(
-[
-    "invoices" => $invoices,
-]
+    [
+        "invoices" => $invoices,
+    ]
 );
 ```
 
 ```php
 public function setViewsDir(
-mixed $viewsDir
+    mixed $viewsDir
 ): View
 ```
 
@@ -532,9 +532,9 @@ Starts rendering process enabling the output buffering
 
 ```php
 public function toString(
-string $controllerName,
-string $actionName,
-array $params = []
+    string $controllerName,
+    string $actionName,
+    array $params = []
 ): string
 ```
 
@@ -553,14 +553,14 @@ use Phalcon\Mvc\View;
 $container = new FactoryDefault();
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -590,10 +590,10 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function viewAction($invoiceId)
-{
-    $this->view->setVar('invoiceId', $invoiceId);
-}
+    public function viewAction($invoiceId)
+    {
+        $this->view->setVar('invoiceId', $invoiceId);
+    }
 }
 ```
 
@@ -638,15 +638,15 @@ You are not required to implement all the files mentioned above. [Phalcon\Mvc\Vi
 ```php
 <!-- app/views/index.phtml -->
 <html>
-<head>
-    <title>Example</title>
-</head>
-<body>
-    <h1>Main layout!</h1>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+        <h1>Main layout!</h1>
 
-    <?php echo $this->getContent(); ?>
+        <?php echo $this->getContent(); ?>
 
-</body>
+    </body>
 </html>
 ```
 
@@ -662,23 +662,23 @@ The generated HTML will be:
 
 ```php
 <html>
-<head>
-    <title>Example</title>
-</head>
-<body>
-    <h1>Main layout!</h1>
+    <head>
+        <title>Example</title>
+    </head>
+    <body>
+        <h1>Main layout!</h1>
 
-    <!-- app/views/layouts/invoices.phtml -->
+        <!-- app/views/layouts/invoices.phtml -->
+        
+        <h2>Controller view: "invoices"</h2>
+        
+        <!-- app/views/invoices/view.phtml -->
+        
+        <h3>View Name: "view"</h3>
+        
+        <p>I have received the parameter 12345</p>
 
-    <h2>Controller view: "invoices"</h2>
-
-    <!-- app/views/invoices/view.phtml -->
-
-    <h3>View Name: "view"</h3>
-
-    <p>I have received the parameter 12345</p>
-
-</body>
+    </body>
 </html>
 ```
 
@@ -701,17 +701,17 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function initialize()
-{
-    $this->view->setTemplateAfter('common');
-}
+    public function initialize()
+    {
+        $this->view->setTemplateAfter('common');
+    }
 
-public function lastAction()
-{
-    $this->flash->notice(
-        'These are the latest invoices'
-    );
-}
+    public function lastAction()
+    {
+        $this->flash->notice(
+            'These are the latest invoices'
+        );
+    }
 }
 ```
 
@@ -719,12 +719,12 @@ public function lastAction()
 <!-- app/views/index.phtml -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Invoices</title>
-</head>
-<body>
-    <?php echo $this->getContent(); ?>
-</body>
+    <head>
+        <title>Invoices</title>
+    </head>
+    <body>
+        <?php echo $this->getContent(); ?>
+    </body>
 </html>
 ```
 
@@ -732,13 +732,13 @@ public function lastAction()
 <!-- app/views/layouts/common.phtml -->
 
 <ul class='menu'>
-<li><a href='/'>Home</a></li>
-<li><a href='/list'>List</a></li>
-<li><a href='/support'>Support</a></li>
+    <li><a href='/'>Home</a></li>
+    <li><a href='/list'>List</a></li>
+    <li><a href='/support'>Support</a></li>
 </ul>
 
 <div class='content'>
-<?php echo $this->getContent(); ?>
+    <?php echo $this->getContent(); ?>
 </div>
 ```
 
@@ -754,13 +754,13 @@ public function lastAction()
 <!-- app/views/invoices/last.phtml -->
 
 <article>
-<h2>This is a title</h2>
-<p>This is Invoice One</p>
+    <h2>This is a title</h2>
+    <p>This is Invoice One</p>
 </article>
 
 <article>
-<h2>Another title</h2>
-<p>This is Invoice Two</p>
+    <h2>Another title</h2>
+    <p>This is Invoice Two</p>
 </article>
 ```
 
@@ -770,40 +770,40 @@ The final output will be the following:
 <!-- app/views/index.phtml -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Invoices</title>
-</head>
-<body>
+    <head>
+        <title>Invoices</title>
+    </head>
+    <body>
 
-    <!-- app/views/layouts/common.phtml -->
+        <!-- app/views/layouts/common.phtml -->
+        
+        <ul class='menu'>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/list'>List</a></li>
+            <li><a href='/support'>Support</a></li>
+        </ul>
 
-    <ul class='menu'>
-        <li><a href='/'>Home</a></li>
-        <li><a href='/list'>List</a></li>
-        <li><a href='/support'>Support</a></li>
-    </ul>
+        <div class='content'>
 
-    <div class='content'>
+            <!-- app/views/layouts/invoices.phtml -->
 
-        <!-- app/views/layouts/invoices.phtml -->
+            <h1>Invoices</h1>
 
-        <h1>Invoices</h1>
+            <!-- app/views/invoices/last.phtml -->
+            
+            <article>
+                <h2>This is a title</h2>
+                <p>This is Invoice One</p>
+            </article>
+            
+            <article>
+                <h2>Another title</h2>
+                <p>This is Invoice Two</p>
+            </article>
 
-        <!-- app/views/invoices/last.phtml -->
+        </div>
 
-        <article>
-            <h2>This is a title</h2>
-            <p>This is Invoice One</p>
-        </article>
-
-        <article>
-            <h2>Another title</h2>
-            <p>This is Invoice Two</p>
-        </article>
-
-    </div>
-
-</body>
+    </body>
 </html>
 ```
 
@@ -813,40 +813,40 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 <!-- app/views/index.phtml -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Blog's title</title>
-</head>
-<body>
+    <head>
+        <title>Blog's title</title>
+    </head>
+    <body>
 
-    <!-- app/views/layouts/invoices.phtml -->
+        <!-- app/views/layouts/invoices.phtml -->
 
-    <h1>Blog Title</h1>
+        <h1>Blog Title</h1>
 
-    <!-- app/views/layouts/common.phtml -->
+        <!-- app/views/layouts/common.phtml -->
 
-    <ul class='menu'>
-        <li><a href='/'>Home</a></li>
-        <li><a href='/articles'>Articles</a></li>
-        <li><a href='/contact'>Contact us</a></li>
-    </ul>
+        <ul class='menu'>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/articles'>Articles</a></li>
+            <li><a href='/contact'>Contact us</a></li>
+        </ul>
 
-    <div class='content'>
+        <div class='content'>
 
-        <!-- app/views/invoices/last.phtml -->
+            <!-- app/views/invoices/last.phtml -->
 
-        <article>
-            <h2>This is a title</h2>
-            <p>This is the post content</p>
-        </article>
+            <article>
+                <h2>This is a title</h2>
+                <p>This is the post content</p>
+            </article>
 
-        <article>
-            <h2>This is another title</h2>
-            <p>This is another post content</p>
-        </article>
+            <article>
+                <h2>This is another title</h2>
+                <p>This is another post content</p>
+            </article>
 
-    </div>
+        </div>
 
-</body>
+    </body>
 </html>
 ```
 
@@ -867,21 +867,21 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function findAction()
-{
-    $this->view->setRenderLevel(
-        View::LEVEL_NO_RENDER
-    );
+    public function findAction()
+    {
+        $this->view->setRenderLevel(
+            View::LEVEL_NO_RENDER
+        );
 
-    // ...
-}
+        // ...
+    }
 
-public function viewAction($invoiceId)
-{
-    $this->view->setRenderLevel(
-        View::LEVEL_ACTION_VIEW
-    );
-}
+    public function viewAction($invoiceId)
+    {
+        $this->view->setRenderLevel(
+            View::LEVEL_ACTION_VIEW
+        );
+    }
 }
 ```
 
@@ -906,21 +906,21 @@ You can permanently or temporarily disable render levels. A level could be perma
 use Phalcon\Mvc\View;
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    // Disable several levels
-    $view->disableLevel(
-        [
-            View::LEVEL_LAYOUT      => true,
-            View::LEVEL_MAIN_LAYOUT => true,
-        ]
-    );
+        // Disable several levels
+        $view->disableLevel(
+            [
+                View::LEVEL_LAYOUT      => true,
+                View::LEVEL_MAIN_LAYOUT => true,
+            ]
+        );
 
-    return $view;
-},
-true
+        return $view;
+    },
+    true
 );
 ```
 
@@ -937,12 +937,12 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function findAction()
-{
-    $this->view->disableLevel(
-        View::LEVEL_MAIN_LAYOUT
-    );
-}
+    public function findAction()
+    {
+        $this->view->disableLevel(
+            View::LEVEL_MAIN_LAYOUT
+        );
+    }
 }
 ```
 
@@ -961,10 +961,10 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function processAction()
-{
-    $this->view->disable();
-}
+    public function processAction()
+    {
+        $this->view->disable();
+    }
 }
 ```
 
@@ -981,10 +981,10 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function processAction()
-{
-    return false;
-}
+    public function processAction()
+    {
+        return false;
+    }
 }
 ```
 
@@ -1003,13 +1003,13 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function processAction()
-{
-    return $this
-        ->response
-        ->redirect('index/index')
-    ;
-}
+    public function processAction()
+    {
+        return $this
+            ->response
+            ->redirect('index/index')
+        ;
+    }
 }
 ```
 
@@ -1031,15 +1031,15 @@ The default component must be replaced in the service container:
 use Phalcon\Mvc\View\Simple;
 
 $container->set(
-'view',
-function () {
-    $view = new Simple();
+    'view',
+    function () {
+        $view = new Simple();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    return $view;
-},
-true
+        return $view;
+    },
+    true
 );
 ```
 
@@ -1052,18 +1052,18 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Application;
 
 try {
-$container   = new FactoryDefault();
-$application = new Application($container);
+    $container   = new FactoryDefault();
+    $application = new Application($container);
 
-$application->useImplicitView(false);
+    $application->useImplicitView(false);
 
-$response = $application->handle(
-    $_SERVER["REQUEST_URI"]
-);
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
-$response->send();
+    $response->send();
 } catch (Exception $e) {
-echo $e->getMessage();
+    echo $e->getMessage();
 }
 ```
 
@@ -1083,30 +1083,30 @@ use Phalcon\Mvc\View;
 class InvoicesController extends Controller
 {
 
-public function indexAction()
-{
-    // 'views-dir/index.phtml'
-    echo $this->view->render('index');
+    public function indexAction()
+    {
+        // 'views-dir/index.phtml'
+        echo $this->view->render('index');
 
-    // 'views-dir/posts/show.phtml'
-    echo $this->view->render('posts/show');
+        // 'views-dir/posts/show.phtml'
+        echo $this->view->render('posts/show');
 
-    // 'views-dir/index.phtml' passing variables
-    echo $this->view->render(
-        'index',
-        [
-            'posts' => Invoices::find(),
-        ]
-    );
+        // 'views-dir/index.phtml' passing variables
+        echo $this->view->render(
+            'index',
+            [
+                'posts' => Invoices::find(),
+            ]
+        );
 
-    // 'views-dir/invoices/view.phtml' passing variables
-    echo $this->view->render(
-        'invoices/view',
-        [
-            'posts' => Invoices::find(),
-        ]
-    );
-}
+        // 'views-dir/invoices/view.phtml' passing variables
+        echo $this->view->render(
+            'invoices/view',
+            [
+                'posts' => Invoices::find(),
+            ]
+        );
+    }
 }
 ```
 
@@ -1119,7 +1119,7 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Simple;
 
 $params = [
-'invoices' => Invoices::find(),
+    'invoices' => Invoices::find(),
 ];
 
 // Phalcon\Mvc\View
@@ -1147,25 +1147,25 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function listAction()
-{
-    // Pick 'views-dir/invoices/search' as a view to render
-    $this->view->pick('invoices/search');
+    public function listAction()
+    {
+        // Pick 'views-dir/invoices/search' as a view to render
+        $this->view->pick('invoices/search');
 
-    // Pick 'views-dir/invoices/list' as a view to render
-    $this->view->pick(
-        [
-            'invoices',
-        ]
-    );
+        // Pick 'views-dir/invoices/list' as a view to render
+        $this->view->pick(
+            [
+                'invoices',
+            ]
+        );
 
-    // Pick 'views-dir/invoices/search' as a view to render
-    $this->view->pick(
-        [
-            1 => 'search',
-        ]
-    );
-}
+        // Pick 'views-dir/invoices/search' as a view to render
+        $this->view->pick(
+            [
+                1 => 'search',
+            ]
+        );
+    }
 }
 ```
 
@@ -1177,18 +1177,18 @@ One way to use partials is to treat them as HTML fragments that can be injected 
 
 ```php
 <div class='top'>
-<?php $this->partial('shared/ad_banner'); ?>
+    <?php $this->partial('shared/ad_banner'); ?>
 </div>
 
 <div class='content'>
-<h1>Invoices</h1>
+    <h1>Invoices</h1>
 
-<p>Check out our specials!</p>
-...
+    <p>Check out our specials!</p>
+    ...
 </div>
 
 <div class='footer'>
-<?php $this->partial('shared/footer'); ?>
+    <?php $this->partial('shared/footer'); ?>
 </div>
 ```
 
@@ -1196,13 +1196,13 @@ The `partial()` method does accept a second parameter as an array of variables/p
 
 ```php
 <?php 
-$this->partial(
-    'shared/ad_banner', 
-    [
-        'id'   => $site->id, 
-        'size' => 'big'
-    ]
-); 
+    $this->partial(
+        'shared/ad_banner', 
+        [
+            'id'   => $site->id, 
+            'size' => 'big'
+        ]
+    ); 
 ?>
 ```
 
@@ -1221,29 +1221,29 @@ use Phalcon\Mvc\View;
  */
 class InvoicesController extends Controller
 {
-public function viewAction($invoiceId)
-{
-    $invoice = Invoices::findFirst(
-        [
-            'conditions' => 'inv_id = :id:',
-            'bind'       => [
-                'id' => abs(intval($invoiceId)),
+    public function viewAction($invoiceId)
+    {
+        $invoice = Invoices::findFirst(
+            [
+                'conditions' => 'inv_id = :id:',
+                'bind'       => [
+                    'id' => abs(intval($invoiceId)),
+                ]
             ]
-        ]
-    );
-    $customer = $invoice->getRelated('customer');
+        );
+        $customer = $invoice->getRelated('customer');
 
-    $this->view->setVar('invoice', $invoice);
+        $this->view->setVar('invoice', $invoice);
 
-    $this->view->customerId = $customer->cst_id;
+        $this->view->customerId = $customer->cst_id;
 
-    $this->view->setVars(
-        [
-            'name_first' => $customer->name_first,
-            'name_last'  => $customer->name_last,
-        ]
-    );
-}
+        $this->view->setVars(
+            [
+                'name_first' => $customer->name_first,
+                'name_last'  => $customer->name_last,
+            ]
+        );
+    }
 }
 ```
 
@@ -1251,15 +1251,15 @@ A variable with the name of the first parameter of `setVar()` will be created in
 
 ```php
 <h1>
-Invoices [Customer #{{ customerId }}]
+    Invoices [Customer #{{ customerId }}]
 </h1>
 
 <div class='invoice'>
 <?php
 
-foreach ($invoices as $invoice) {
-    echo '<h2>', $invoice->inv_title, '</h2>';
-}
+    foreach ($invoices as $invoice) {
+        echo '<h2>', $invoice->inv_title, '</h2>';
+    }
 
 ?>
 </div>
@@ -1279,15 +1279,15 @@ The [Phalcon\Mvc\View\Engine\Php][mvc-view-engine-php] is the default template e
 use Phalcon\Mvc\View;
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    return $view;
-},
-true
+        return $view;
+    },
+    true
 );
 ```
 
@@ -1307,39 +1307,39 @@ use Phalcon\Mvc\View\Engine\Volt;
 $container = new FactoryDefault();
 
 $container->setShared(
-'voltService',
-function (ViewBaseInterface $view) {
-    $volt = new Volt($view, $this);
-    $volt->setOptions(
-        [
-            'always'    => true,
-            'extension' => '.php',
-            'separator' => '_',
-            'stat'      => true,
-            'path'      => appPath('storage/cache/volt/'),
-            'prefix'    => '-prefix-',
-        ]
-    );
-
-    return $volt;
-}
+    'voltService',
+    function (ViewBaseInterface $view) {
+        $volt = new Volt($view, $this);
+        $volt->setOptions(
+            [
+                'always'    => true,
+                'extension' => '.php',
+                'separator' => '_',
+                'stat'      => true,
+                'path'      => appPath('storage/cache/volt/'),
+                'prefix'    => '-prefix-',
+            ]
+        );
+        
+        return $volt;
+    }
 );
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    $view->registerEngines(
-        [
-            '.volt' => 'voltService',
-        ]
-    );
+        $view->registerEngines(
+            [
+                '.volt' => 'voltService',
+            ]
+        );
 
-    return $view;
-}
+        return $view;
+    }
 );
 ```
 
@@ -1364,30 +1364,30 @@ use Phalcon\Mvc\View;
 
 class CustomEngine extends AbstractEngine
 {
-/**
- * @param View        $view
- * @param DiInterface $container
- */
-public function __construct($view, DiInterface $container)
-{
-    parent::__construct($view, $container);
-}
+    /**
+     * @param View        $view
+     * @param DiInterface $container
+     */
+    public function __construct($view, DiInterface $container)
+    {
+        parent::__construct($view, $container);
+    }
 
-/**
- * @param string $path
- * @param array $params
- */
-public function render(string $path, $params)
-{
-    // Access view
-    $view = $this->view;
+    /**
+     * @param string $path
+     * @param array $params
+     */
+    public function render(string $path, $params)
+    {
+        // Access view
+        $view = $this->view;
 
-    // Options
-    $options = $this->options;
+        // Options
+        $options = $this->options;
 
-    // Render the view
-    // ...
-}
+        // Render the view
+        // ...
+    }
 }
 ```
 
@@ -1402,28 +1402,28 @@ use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Php;
 
 $container->set(
-'view',
-function () {
-    $view = new View();
+    'view',
+    function () {
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    $view->registerEngines(
-        [
-            '.my-html' => \CustomEngine::class,
-        ]
-    );
+        $view->registerEngines(
+            [
+                '.my-html' => \CustomEngine::class,
+            ]
+        );
 
-    $view->registerEngines(
-        [
-            '.my-html' => \CustomEngine::class,
-            '.phtml'   => Php::class,
-        ]
-    );
+        $view->registerEngines(
+            [
+                '.my-html' => \CustomEngine::class,
+                '.phtml'   => Php::class,
+            ]
+        );
 
-    return $view;
-},
-true
+        return $view;
+    },
+    true
 );
 ```
 
@@ -1435,10 +1435,10 @@ Since our view is registered in our Dependency Injection container, the services
 <script type='text/javascript'>
 
 $.ajax({
-url: '<?php echo $this->url->get('invoices/get'); ?>'
+    url: '<?php echo $this->url->get('invoices/get'); ?>'
 })
 .done(function () {
-alert('Done!');
+    alert('Done!');
 });
 
 </script>
@@ -1485,19 +1485,19 @@ use Phalcon\Mvc\View;
 $view = new View();
 
 echo $view->getRender(
-'invoices',
-'list',
-[
-    'invoices' => $invoices,
-    'isAdmin'  => true,
-],
-function ($view) {
-    $view->setViewsDir('../app/views/');
+    'invoices',
+    'list',
+    [
+        'invoices' => $invoices,
+        'isAdmin'  => true,
+    ],
+    function ($view) {
+        $view->setViewsDir('../app/views/');
 
-    $view->setRenderLevel(
-        View::LEVEL_LAYOUT
-    );
-}
+        $view->setRenderLevel(
+            View::LEVEL_LAYOUT
+        );
+    }
 );
 ```
 
@@ -1521,11 +1521,11 @@ $view->setViewsDir('../app/views/');
 echo $view->render('templates/welcome');
 
 echo $view->render(
-'templates/welcome',
-[
-    'email'   => $email,
-    'content' => $content,
-]
+    'templates/welcome',
+    [
+        'email'   => $email,
+        'content' => $content,
+    ]
 );
 ```
 
@@ -1555,27 +1555,27 @@ use Phalcon\Mvc\View;
 
 $container = new FactoryDefault();
 $container->set(
-'view',
-function () {
-    $manager = new Manager();
+    'view',
+    function () {
+        $manager = new Manager();
 
-    $manager->attach(
-        'view',
-        function (Event $event, $view) {
-            echo $event->getType(), ' - ', 
-                 $view->getActiveRenderPath(), PHP_EOL;
-        }
-    );
+        $manager->attach(
+            'view',
+            function (Event $event, $view) {
+                echo $event->getType(), ' - ', 
+                     $view->getActiveRenderPath(), PHP_EOL;
+            }
+        );
 
-    $view = new View();
+        $view = new View();
 
-    $view->setViewsDir('../app/views/');
+        $view->setViewsDir('../app/views/');
 
-    $view->setEventsManager($manager);
+        $view->setEventsManager($manager);
 
-    return $view;
-},
-true
+        return $view;
+    },
+    true
 );
 ```
 
@@ -1588,27 +1588,27 @@ use Phalcon\Events\Event;
 
 class TidyPlugin
 {
-public function afterRender(Event $event, $view)
-{
-    $tidyConfig = [
-        'clean'          => true,
-        'output-xhtml'   => true,
-        'show-body-only' => true,
-        'wrap'           => 0,
-    ];
+    public function afterRender(Event $event, $view)
+    {
+        $tidyConfig = [
+            'clean'          => true,
+            'output-xhtml'   => true,
+            'show-body-only' => true,
+            'wrap'           => 0,
+        ];
 
-    $tidy = tidy_parse_string(
-        $view->getContent(),
-        $tidyConfig,
-        'UTF8'
-    );
+        $tidy = tidy_parse_string(
+            $view->getContent(),
+            $tidyConfig,
+            'UTF8'
+        );
 
-    $tidy->cleanRepair();
+        $tidy->cleanRepair();
 
-    $view->setContent(
-        (string) $tidy
-    );
-}
+        $view->setContent(
+            (string) $tidy
+        );
+    }
 }
 ```
 
@@ -1618,8 +1618,8 @@ and we can now attach it to our events manager:
 <?php
 
 $manager->attach(
-'view:afterRender',
-new TidyPlugin()
+    'view:afterRender',
+    new TidyPlugin()
 );
 ```
 
@@ -1635,25 +1635,25 @@ use Phalcon\Mvc\View\Exception;
 
 try {
 
-$view = new View();
-
-echo $view->getRender(
-    'unknown-view',
-    'list',
-    [
-        'invoices' => $invoices,
-        'isAdmin'  => true,
-    ],
-    function ($view) {
-        $view->setViewsDir('../app/views/');
-
-        $view->setRenderLevel(
-            View::LEVEL_LAYOUT
-        );
-    }
-);
+    $view = new View();
+    
+    echo $view->getRender(
+        'unknown-view',
+        'list',
+        [
+            'invoices' => $invoices,
+            'isAdmin'  => true,
+        ],
+        function ($view) {
+            $view->setViewsDir('../app/views/');
+    
+            $view->setRenderLevel(
+                View::LEVEL_LAYOUT
+            );
+        }
+    );
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 
 ```

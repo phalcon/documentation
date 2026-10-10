@@ -13,6 +13,7 @@ version: "5.22"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## DataMapper\Pdo\Connection
 
 Class
@@ -21,29 +22,23 @@ Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
 - [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](#datamapperpdoconnectionabstractconnection)
-- **`Phalcon\DataMapper\Pdo\Connection`**
+  - **`Phalcon\DataMapper\Pdo\Connection`**
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnection-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"dsn","default":null},{"type":"string|null","name":"username","default":"null"},{"type":"string|null","name":"password","default":"null"},{"type":"array","name":"options","default":"[]"},{"type":"array","name":"queries","default":"[]"},{"type":"ProfilerInterface|null","name":"profiler","default":"null"}]}>
-Constructor.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnection-__debuginfo" visibility="public" name="__debugInfo" returnType="array" params={[]}>
-The purpose of this method is to hide sensitive data from stack traces.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnection-connect" visibility="public" name="connect" returnType="void" params={[]}>
-Connects to the database.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnection-disconnect" visibility="public" name="disconnect" returnType="void" params={[]}>
-Disconnects from the database.
-</ApiItem>
+- `public __construct(string $dsn, string|null $username = null, string|null $password = null, array $options = [], array $queries = [], ProfilerInterface|null $profiler = null)` — Constructor.
+
+- `public __debugInfo(): array` — The purpose of this method is to hide sensitive data from stack traces.
+
+- `public connect(): void` — Connects to the database.
+
+- `public disconnect(): void` — Disconnects from the database.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="arguments" type="array" default="[]">
-</ApiItem>
+- `protected array $arguments = []`
 
 ### Methods
 
@@ -51,12 +46,12 @@ Disconnects from the database.
 
 ```php
 public function __construct(
-string $dsn,
-string|null $username = null,
-string|null $password = null,
-array $options = [],
-array $queries = [],
-ProfilerInterface|null $profiler = null
+    string $dsn,
+    string|null $username = null,
+    string|null $password = null,
+    array $options = [],
+    array $queries = [],
+    ProfilerInterface|null $profiler = null
 );
 ```
 
@@ -89,6 +84,7 @@ public function disconnect(): void;
 
 Disconnects from the database.
 
+
 ## DataMapper\Pdo\ConnectionLocator
 
 Class
@@ -104,42 +100,29 @@ so connections that are built on demand also fire the DataMapper events.
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnectionlocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"ConnectionInterface","name":"master","default":null},{"type":"array","name":"read","default":"[]"},{"type":"array","name":"write","default":"[]"}]}>
-Constructor.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getmaster" visibility="public" name="getMaster" returnType="ConnectionInterface" params={[]}>
-Returns the default connection object.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getread" visibility="public" name="getRead" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
-Returns a read connection by name; if no name is given, picks a
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getwrite" visibility="public" name="getWrite" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
-Returns a write connection by name; if no name is given, picks a
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-setmaster" visibility="public" name="setMaster" returnType="static" params={[{"type":"ConnectionInterface","name":"callableObject","default":null}]}>
-Sets the default connection factory.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-setread" visibility="public" name="setRead" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
-Sets a read connection factory by name.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-setwrite" visibility="public" name="setWrite" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
-Sets a write connection factory by name.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getconnection" visibility="protected" name="getConnection" returnType="ConnectionInterface" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":"\"\""}]}>
-Returns a connection by name.
-</ApiItem>
+- `public __construct(ConnectionInterface $master, array $read = [], array $write = [])` — Constructor.
+
+- `public getMaster(): ConnectionInterface` — Returns the default connection object.
+
+- `public getRead(string $name = ""): ConnectionInterface` — Returns a read connection by name; if no name is given, picks a
+
+- `public getWrite(string $name = ""): ConnectionInterface` — Returns a write connection by name; if no name is given, picks a
+
+- `public setMaster(ConnectionInterface $callableObject): static` — Sets the default connection factory.
+
+- `public setRead(string $name, callable $callableObject): static` — Sets a read connection factory by name.
+
+- `public setWrite(string $name, callable $callableObject): static` — Sets a write connection factory by name.
+
+- `protected getConnection(string $type, string $name = ""): ConnectionInterface` — Returns a connection by name.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="master" type="ConnectionInterface" default="">
-A default Connection connection factory/instance.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="read" type="array" default="[]">
-A registry of Connection "read" factories/instances.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="write" type="array" default="[]">
-A registry of Connection "write" factories/instances.
-</ApiItem>
+- `protected ConnectionInterface $master` — A default Connection connection factory/instance.
+
+- `protected array $read = []` — A registry of Connection "read" factories/instances.
+
+- `protected array $write = []` — A registry of Connection "write" factories/instances.
 
 ### Methods
 
@@ -147,9 +130,9 @@ A registry of Connection "write" factories/instances.
 
 ```php
 public function __construct(
-ConnectionInterface $master,
-array $read = [],
-array $write = []
+    ConnectionInterface $master,
+    array $read = [],
+    array $write = []
 );
 ```
 
@@ -195,8 +178,8 @@ Sets the default connection factory.
 
 ```php
 public function setRead(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): static;
 ```
 
@@ -206,8 +189,8 @@ Sets a read connection factory by name.
 
 ```php
 public function setWrite(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): static;
 ```
 
@@ -217,12 +200,13 @@ Sets a write connection factory by name.
 
 ```php
 protected function getConnection(
-string $type,
-string $name = ""
+    string $type,
+    string $name = ""
 ): ConnectionInterface;
 ```
 
 Returns a connection by name.
+
 
 ## DataMapper\Pdo\ConnectionLocatorInterface
 
@@ -236,24 +220,17 @@ Locates PDO connections for default, read, and write databases.
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-getmaster" visibility="public" name="getMaster" returnType="ConnectionInterface" params={[]}>
-Returns the default connection object.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-getread" visibility="public" name="getRead" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
-Returns a read connection by name; if no name is given, picks a
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-getwrite" visibility="public" name="getWrite" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
-Returns a write connection by name; if no name is given, picks a
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-setmaster" visibility="public" name="setMaster" returnType="ConnectionLocatorInterface" params={[{"type":"ConnectionInterface","name":"callableObject","default":null}]}>
-Sets the default connection registry entry.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-setread" visibility="public" name="setRead" returnType="ConnectionLocatorInterface" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
-Sets a read connection registry entry by name.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-setwrite" visibility="public" name="setWrite" returnType="ConnectionLocatorInterface" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
-Sets a write connection registry entry by name.
-</ApiItem>
+- `public getMaster(): ConnectionInterface` — Returns the default connection object.
+
+- `public getRead(string $name = ""): ConnectionInterface` — Returns a read connection by name; if no name is given, picks a
+
+- `public getWrite(string $name = ""): ConnectionInterface` — Returns a write connection by name; if no name is given, picks a
+
+- `public setMaster(ConnectionInterface $callableObject): ConnectionLocatorInterface` — Sets the default connection registry entry.
+
+- `public setRead(string $name, callable $callableObject): ConnectionLocatorInterface` — Sets a read connection registry entry by name.
+
+- `public setWrite(string $name, callable $callableObject): ConnectionLocatorInterface` — Sets a write connection registry entry by name.
 
 ### Methods
 
@@ -297,8 +274,8 @@ Sets the default connection registry entry.
 
 ```php
 public function setRead(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): ConnectionLocatorInterface;
 ```
 
@@ -308,12 +285,13 @@ Sets a read connection registry entry by name.
 
 ```php
 public function setWrite(
-string $name,
-callable $callableObject
+    string $name,
+    callable $callableObject
 ): ConnectionLocatorInterface;
 ```
 
 Sets a write connection registry entry by name.
+
 
 ## DataMapper\Pdo\Connection\AbstractConnection
 
@@ -328,155 +306,109 @@ manager methods; the EventsAware contract is applied here so that existing
 implementations of the interface keep working.
 
 - **`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`** - implements [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface), [`Phalcon\Contracts\Events\EventsAware`](/5.22/api/phalcon_contracts/#contractseventseventsaware)
-- [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
-- [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
+  - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
+  - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
 `BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Throwable` · `stdClass`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnectionabstractconnection-__call" visibility="public" name="__call" returnType="" params={[{"type":"mixed","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
-Proxies to PDO methods created for specific drivers; in particular,
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-begintransaction" visibility="public" name="beginTransaction" returnType="bool" params={[]}>
-Begins a transaction. If the profiler is enabled, the operation will
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-commit" visibility="public" name="commit" returnType="bool" params={[]}>
-Commits the existing transaction. If the profiler is enabled, the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-connect" visibility="public" name="connect" returnType="void" params={[]}>
-Connects to the database.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-disconnect" visibility="public" name="disconnect" returnType="void" params={[]}>
-Disconnects from the database.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-ensureconnection" visibility="public" name="ensureConnection" returnType="void" params={[]}>
-Ensures the connection is alive, reconnecting in place if it is not.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-errorcode" visibility="public" name="errorCode" returnType="string|null" params={[]}>
-Gets the most recent error code.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-errorinfo" visibility="public" name="errorInfo" returnType="array" params={[]}>
-Gets the most recent error info.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-exec" visibility="public" name="exec" returnType="int" params={[{"type":"string","name":"statement","default":null}]}>
-Executes an SQL statement and returns the number of affected rows. If
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchaffected" visibility="public" name="fetchAffected" returnType="int" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Performs a statement and returns the number of affected rows.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches a sequential array of rows from the database; the rows are
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchassoc" visibility="public" name="fetchAssoc" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches an associative array of rows from the database; the rows are
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchcolumn" visibility="public" name="fetchColumn" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"int","name":"column","default":"0"}]}>
-Fetches a column of rows as a sequential array (default first one).
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchgroup" visibility="public" name="fetchGroup" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"int","name":"flags","default":"\\PDO::FETCH_ASSOC"}]}>
-Fetches multiple from the database as an associative array. The first
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchobject" visibility="public" name="fetchObject" returnType="object" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"string","name":"className","default":"\"stdClass\""},{"type":"array","name":"arguments","default":"[]"}]}>
-Fetches one row from the database as an object where the column values
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchobjects" visibility="public" name="fetchObjects" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"string","name":"className","default":"\"stdClass\""},{"type":"array","name":"arguments","default":"[]"}]}>
-Fetches a sequential array of rows from the database; the rows are
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchone" visibility="public" name="fetchOne" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches one row from the database as an associative array.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchpairs" visibility="public" name="fetchPairs" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches an associative array of rows as key-value pairs (first column is
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchvalue" visibility="public" name="fetchValue" returnType="" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches the very first value (i.e., first column of the first row).
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getadapter" visibility="public" name="getAdapter" returnType="\PDO" params={[]}>
-Return the inner PDO (if any)
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getattribute" visibility="public" name="getAttribute" returnType="mixed" params={[{"type":"int","name":"attribute","default":null}]}>
-Retrieve a database connection attribute
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getautoreconnect" visibility="public" name="getAutoReconnect" returnType="bool" params={[]}>
-Returns whether transparent auto-reconnect is enabled.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getavailabledrivers" visibility="public" name="getAvailableDrivers" returnType="array" params={[]}>
-Return an array of available PDO drivers (empty array if none available)
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getdrivername" visibility="public" name="getDriverName" returnType="string" params={[]}>
-Return the driver name
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getprofiler" visibility="public" name="getProfiler" returnType="ProfilerInterface" params={[]}>
-Returns the Profiler instance.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-getquotenames" visibility="public" name="getQuoteNames" returnType="array" params={[{"type":"string","name":"driver","default":"\"\""}]}>
-Gets the quote parameters based on the driver
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-intransaction" visibility="public" name="inTransaction" returnType="bool" params={[]}>
-Is a transaction currently active? If the profiler is enabled, the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-isconnected" visibility="public" name="isConnected" returnType="bool" params={[]}>
-Is the PDO connection active?
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-lastinsertid" visibility="public" name="lastInsertId" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
-Returns the last inserted autoincrement sequence value. If the profiler
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-perform" visibility="public" name="perform" returnType="\PDOStatement" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Performs a query with bound values and returns the resulting
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-ping" visibility="public" name="ping" returnType="bool" params={[]}>
-Checks whether the underlying connection is still alive by issuing a
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-prepare" visibility="public" name="prepare" returnType="\PDOStatement|bool" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Prepares an SQL statement for execution.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-query" visibility="public" name="query" returnType="\PDOStatement|bool" params={[{"type":"string","name":"statement","default":null}]}>
-Queries the database and returns a PDOStatement. If the profiler is
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-quote" visibility="public" name="quote" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"\\PDO::PARAM_STR"}]}>
-Quotes a value for use in an SQL statement. This differs from
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-rollback" visibility="public" name="rollBack" returnType="bool" params={[]}>
-Rolls back the current transaction, and restores autocommit mode. If the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-setattribute" visibility="public" name="setAttribute" returnType="bool" params={[{"type":"int","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a database connection attribute
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-setautoreconnect" visibility="public" name="setAutoReconnect" returnType="static" params={[{"type":"bool","name":"autoReconnect","default":null}]}>
-Enables or disables transparent auto-reconnect on a lost connection.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-setprofiler" visibility="public" name="setProfiler" returnType="static" params={[{"type":"ProfilerInterface","name":"profiler","default":null}]}>
-Sets the Profiler instance.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-fetchdata" visibility="protected" name="fetchData" returnType="array" params={[{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null},{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Helper method to get data from PDO based on the method passed
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-firebefore" visibility="protected" name="fireBefore" returnType="void" params={[{"type":"string","name":"eventName","default":null},{"type":"mixed","name":"data","default":"null"}]}>
-Fires a cancelable "before" event. A listener cancels by stopping the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-isconnectionerror" visibility="protected" name="isConnectionError" returnType="bool" params={[{"type":"\\Throwable","name":"exception","default":null}]}>
-Recognizes a lost ("gone away") connection. Detection is driver-agnostic:
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-performbind" visibility="protected" name="performBind" returnType="void" params={[{"type":"\\PDOStatement","name":"statement","default":null},{"type":"mixed","name":"name","default":null},{"type":"mixed","name":"arguments","default":null}]}>
-Bind a value using the proper PDO::PARAM_* type.
-</ApiItem>
+- `public __call(mixed $name, array $arguments)` — Proxies to PDO methods created for specific drivers; in particular,
+
+- `public beginTransaction(): bool` — Begins a transaction. If the profiler is enabled, the operation will
+
+- `public commit(): bool` — Commits the existing transaction. If the profiler is enabled, the
+
+- `public connect(): void` — Connects to the database.
+
+- `public disconnect(): void` — Disconnects from the database.
+
+- `public ensureConnection(): void` — Ensures the connection is alive, reconnecting in place if it is not.
+
+- `public errorCode(): string|null` — Gets the most recent error code.
+
+- `public errorInfo(): array` — Gets the most recent error info.
+
+- `public exec(string $statement): int` — Executes an SQL statement and returns the number of affected rows. If
+
+- `public fetchAffected(string $statement, array $values = []): int` — Performs a statement and returns the number of affected rows.
+
+- `public fetchAll(string $statement, array $values = []): array` — Fetches a sequential array of rows from the database; the rows are
+
+- `public fetchAssoc(string $statement, array $values = []): array` — Fetches an associative array of rows from the database; the rows are
+
+- `public fetchColumn(string $statement, array $values = [], int $column = 0): array` — Fetches a column of rows as a sequential array (default first one).
+
+- `public fetchGroup(string $statement, array $values = [], int $flags = \PDO::FETCH_ASSOC): array` — Fetches multiple from the database as an associative array. The first
+
+- `public fetchObject(string $statement, array $values = [], string $className = "stdClass", array $arguments = []): object` — Fetches one row from the database as an object where the column values
+
+- `public fetchObjects(string $statement, array $values = [], string $className = "stdClass", array $arguments = []): array` — Fetches a sequential array of rows from the database; the rows are
+
+- `public fetchOne(string $statement, array $values = []): array` — Fetches one row from the database as an associative array.
+
+- `public fetchPairs(string $statement, array $values = []): array` — Fetches an associative array of rows as key-value pairs (first column is
+
+- `public fetchValue(string $statement, array $values = [])` — Fetches the very first value (i.e., first column of the first row).
+
+- `public getAdapter(): \PDO` — Return the inner PDO (if any)
+
+- `public getAttribute(int $attribute): mixed` — Retrieve a database connection attribute
+
+- `public getAutoReconnect(): bool` — Returns whether transparent auto-reconnect is enabled.
+
+- `public getAvailableDrivers(): array` — Return an array of available PDO drivers (empty array if none available)
+
+- `public getDriverName(): string` — Return the driver name
+
+- `public getProfiler(): ProfilerInterface` — Returns the Profiler instance.
+
+- `public getQuoteNames(string $driver = ""): array` — Gets the quote parameters based on the driver
+
+- `public inTransaction(): bool` — Is a transaction currently active? If the profiler is enabled, the
+
+- `public isConnected(): bool` — Is the PDO connection active?
+
+- `public lastInsertId(string|null $name = null): string` — Returns the last inserted autoincrement sequence value. If the profiler
+
+- `public perform(string $statement, array $values = []): \PDOStatement` — Performs a query with bound values and returns the resulting
+
+- `public ping(): bool` — Checks whether the underlying connection is still alive by issuing a
+
+- `public prepare(string $statement, array $options = []): \PDOStatement|bool` — Prepares an SQL statement for execution.
+
+- `public query(string $statement): \PDOStatement|bool` — Queries the database and returns a PDOStatement. If the profiler is
+
+- `public quote(mixed $value, int $type = \PDO::PARAM_STR): string` — Quotes a value for use in an SQL statement. This differs from
+
+- `public rollBack(): bool` — Rolls back the current transaction, and restores autocommit mode. If the
+
+- `public setAttribute(int $attribute, mixed $value): bool` — Set a database connection attribute
+
+- `public setAutoReconnect(bool $autoReconnect): static` — Enables or disables transparent auto-reconnect on a lost connection.
+
+- `public setProfiler(ProfilerInterface $profiler): static` — Sets the Profiler instance.
+
+- `protected fetchData(string $method, array $arguments, string $statement, array $values = []): array` — Helper method to get data from PDO based on the method passed
+
+- `protected fireBefore(string $eventName, mixed $data = null): void` — Fires a cancelable "before" event. A listener cancels by stopping the
+
+- `protected isConnectionError(\Throwable $exception): bool` — Recognizes a lost ("gone away") connection. Detection is driver-agnostic:
+
+- `protected performBind(\PDOStatement $statement, mixed $name, mixed $arguments): void` — Bind a value using the proper PDO::PARAM\_\* type.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="autoReconnect" type="bool" default="false">
-Whether to transparently reconnect and retry once when a statement fails
-because the connection was lost. Opt-in; off by default.
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="pdo" type="\PDO|null" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="profiler" type="ProfilerInterface" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="transactionLevel" type="int" default="0">
-Current transaction nesting level. Tracked locally rather than via
-PDO::inTransaction() because some drivers report a broken connection as
-being "in transaction".
-</ApiItem>
+- `protected bool $autoReconnect = false` — Whether to transparently reconnect and retry once when a statement fails
+  because the connection was lost. Opt-in; off by default.
+
+- `protected \PDO|null $pdo`
+
+- `protected ProfilerInterface $profiler`
+
+- `protected int $transactionLevel = 0` — Current transaction nesting level. Tracked locally rather than via
+  PDO::inTransaction() because some drivers report a broken connection as
+  being "in transaction".
 
 ### Methods
 
@@ -484,8 +416,8 @@ being "in transaction".
 
 ```php
 public function __call(
-mixed $name,
-array $arguments
+    mixed $name,
+    array $arguments
 );
 ```
 
@@ -565,8 +497,8 @@ the profiler is enabled, the operation will be recorded.
 
 ```php
 public function fetchAffected(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): int;
 ```
 
@@ -576,8 +508,8 @@ Performs a statement and returns the number of affected rows.
 
 ```php
 public function fetchAll(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -588,8 +520,8 @@ returned as associative arrays.
 
 ```php
 public function fetchAssoc(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -605,9 +537,9 @@ intensive and should be avoided if possible.
 
 ```php
 public function fetchColumn(
-string $statement,
-array $values = [],
-int $column = 0
+    string $statement,
+    array $values = [],
+    int $column = 0
 ): array;
 ```
 
@@ -617,9 +549,9 @@ Fetches a column of rows as a sequential array (default first one).
 
 ```php
 public function fetchGroup(
-string $statement,
-array $values = [],
-int $flags = \PDO::FETCH_ASSOC
+    string $statement,
+    array $values = [],
+    int $flags = \PDO::FETCH_ASSOC
 ): array;
 ```
 
@@ -631,10 +563,10 @@ PDO::FETCH_ASSOC | PDO::FETCH_GROUP
 
 ```php
 public function fetchObject(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): object;
 ```
 
@@ -654,10 +586,10 @@ instead. The `object|false` return type lands in v7.
 
 ```php
 public function fetchObjects(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): array;
 ```
 
@@ -674,8 +606,8 @@ constructor, will override the values that have been injected by
 
 ```php
 public function fetchOne(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -685,8 +617,8 @@ Fetches one row from the database as an associative array.
 
 ```php
 public function fetchPairs(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -697,8 +629,8 @@ the key, second column is the value).
 
 ```php
 public function fetchValue(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 );
 ```
 
@@ -791,8 +723,8 @@ is enabled, the operation will be recorded.
 
 ```php
 public function perform(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): \PDOStatement;
 ```
 
@@ -814,8 +746,8 @@ trivial query. Returns false if there is no handle or the probe fails.
 
 ```php
 public function prepare(
-string $statement,
-array $options = []
+    string $statement,
+    array $options = []
 ): \PDOStatement|bool;
 ```
 
@@ -834,8 +766,8 @@ enabled, the operation will be recorded.
 
 ```php
 public function quote(
-mixed $value,
-int $type = \PDO::PARAM_STR
+    mixed $value,
+    int $type = \PDO::PARAM_STR
 ): string;
 ```
 
@@ -856,8 +788,8 @@ profiler is enabled, the operation will be recorded.
 
 ```php
 public function setAttribute(
-int $attribute,
-mixed $value
+    int $attribute,
+    mixed $value
 ): bool;
 ```
 
@@ -883,10 +815,10 @@ Sets the Profiler instance.
 
 ```php
 protected function fetchData(
-string $method,
-array $arguments,
-string $statement,
-array $values = []
+    string $method,
+    array $arguments,
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -896,8 +828,8 @@ Helper method to get data from PDO based on the method passed
 
 ```php
 protected function fireBefore(
-string $eventName,
-mixed $data = null
+    string $eventName,
+    mixed $data = null
 ): void;
 ```
 
@@ -920,13 +852,14 @@ overlap, so all known signatures are checked unconditionally.
 
 ```php
 protected function performBind(
-\PDOStatement $statement,
-mixed $name,
-mixed $arguments
+    \PDOStatement $statement,
+    mixed $name,
+    mixed $arguments
 ): void;
 ```
 
 Bind a value using the proper PDO::PARAM_* type.
+
 
 ## DataMapper\Pdo\Connection\ConnectionInterface
 
@@ -936,63 +869,45 @@ Provides array quoting, profiling, a new `perform()` method, new `fetch*()`
 methods
 
 - [`Phalcon\DataMapper\Pdo\Connection\PdoInterface`](#datamapperpdoconnectionpdointerface)
-- **`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`**
+  - **`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`**
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-connect" visibility="public" name="connect" returnType="void" params={[]}>
-Connects to the database.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-disconnect" visibility="public" name="disconnect" returnType="void" params={[]}>
-Disconnects from the database.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchaffected" visibility="public" name="fetchAffected" returnType="int" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Performs a statement and returns the number of affected rows.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches a sequential array of rows from the database; the rows are
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchassoc" visibility="public" name="fetchAssoc" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches an associative array of rows from the database; the rows are
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchcolumn" visibility="public" name="fetchColumn" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"int","name":"column","default":"0"}]}>
-Fetches a column of rows as a sequential array (default first one).
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchgroup" visibility="public" name="fetchGroup" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"int","name":"flags","default":"\\PDO::FETCH_ASSOC"}]}>
-Fetches multiple from the database as an associative array. The first
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchobject" visibility="public" name="fetchObject" returnType="object" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"string","name":"className","default":"\"stdClass\""},{"type":"array","name":"arguments","default":"[]"}]}>
-Fetches one row from the database as an object where the column values
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchobjects" visibility="public" name="fetchObjects" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"},{"type":"string","name":"className","default":"\"stdClass\""},{"type":"array","name":"arguments","default":"[]"}]}>
-Fetches a sequential array of rows from the database; the rows are
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchone" visibility="public" name="fetchOne" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches one row from the database as an associative array.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchpairs" visibility="public" name="fetchPairs" returnType="array" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches an associative array of rows as key-value pairs (first column is
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-fetchvalue" visibility="public" name="fetchValue" returnType="mixed" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Fetches the very first value (i.e., first column of the first row).
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-getadapter" visibility="public" name="getAdapter" returnType="\PDO" params={[]}>
-Return the inner PDO (if any)
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-getprofiler" visibility="public" name="getProfiler" returnType="ProfilerInterface" params={[]}>
-Returns the Profiler instance.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-isconnected" visibility="public" name="isConnected" returnType="bool" params={[]}>
-Is the PDO connection active?
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-perform" visibility="public" name="perform" returnType="\PDOStatement" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"values","default":"[]"}]}>
-Performs a query with bound values and returns the resulting
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionconnectioninterface-setprofiler" visibility="public" name="setProfiler" returnType="" params={[{"type":"ProfilerInterface","name":"profiler","default":null}]}>
-Sets the Profiler instance.
-</ApiItem>
+- `public connect(): void` — Connects to the database.
+
+- `public disconnect(): void` — Disconnects from the database.
+
+- `public fetchAffected(string $statement, array $values = []): int` — Performs a statement and returns the number of affected rows.
+
+- `public fetchAll(string $statement, array $values = []): array` — Fetches a sequential array of rows from the database; the rows are
+
+- `public fetchAssoc(string $statement, array $values = []): array` — Fetches an associative array of rows from the database; the rows are
+
+- `public fetchColumn(string $statement, array $values = [], int $column = 0): array` — Fetches a column of rows as a sequential array (default first one).
+
+- `public fetchGroup(string $statement, array $values = [], int $flags = \PDO::FETCH_ASSOC): array` — Fetches multiple from the database as an associative array. The first
+
+- `public fetchObject(string $statement, array $values = [], string $className = "stdClass", array $arguments = []): object` — Fetches one row from the database as an object where the column values
+
+- `public fetchObjects(string $statement, array $values = [], string $className = "stdClass", array $arguments = []): array` — Fetches a sequential array of rows from the database; the rows are
+
+- `public fetchOne(string $statement, array $values = []): array` — Fetches one row from the database as an associative array.
+
+- `public fetchPairs(string $statement, array $values = []): array` — Fetches an associative array of rows as key-value pairs (first column is
+
+- `public fetchValue(string $statement, array $values = []): mixed` — Fetches the very first value (i.e., first column of the first row).
+
+- `public getAdapter(): \PDO` — Return the inner PDO (if any)
+
+- `public getProfiler(): ProfilerInterface` — Returns the Profiler instance.
+
+- `public isConnected(): bool` — Is the PDO connection active?
+
+- `public perform(string $statement, array $values = []): \PDOStatement` — Performs a query with bound values and returns the resulting
+
+- `public setProfiler(ProfilerInterface $profiler)` — Sets the Profiler instance.
 
 ### Methods
 
@@ -1016,8 +931,8 @@ Disconnects from the database.
 
 ```php
 public function fetchAffected(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): int;
 ```
 
@@ -1027,8 +942,8 @@ Performs a statement and returns the number of affected rows.
 
 ```php
 public function fetchAll(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1039,8 +954,8 @@ returned as associative arrays.
 
 ```php
 public function fetchAssoc(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1056,9 +971,9 @@ intensive and should be avoided if possible.
 
 ```php
 public function fetchColumn(
-string $statement,
-array $values = [],
-int $column = 0
+    string $statement,
+    array $values = [],
+    int $column = 0
 ): array;
 ```
 
@@ -1068,9 +983,9 @@ Fetches a column of rows as a sequential array (default first one).
 
 ```php
 public function fetchGroup(
-string $statement,
-array $values = [],
-int $flags = \PDO::FETCH_ASSOC
+    string $statement,
+    array $values = [],
+    int $flags = \PDO::FETCH_ASSOC
 ): array;
 ```
 
@@ -1082,10 +997,10 @@ PDO::FETCH_ASSOC | PDO::FETCH_GROUP
 
 ```php
 public function fetchObject(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): object;
 ```
 
@@ -1104,10 +1019,10 @@ An empty `stdClass` is returned when there is no row. The
 
 ```php
 public function fetchObjects(
-string $statement,
-array $values = [],
-string $className = "stdClass",
-array $arguments = []
+    string $statement,
+    array $values = [],
+    string $className = "stdClass",
+    array $arguments = []
 ): array;
 ```
 
@@ -1124,8 +1039,8 @@ constructor, will override the values that have been injected by
 
 ```php
 public function fetchOne(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1135,8 +1050,8 @@ Fetches one row from the database as an associative array.
 
 ```php
 public function fetchPairs(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): array;
 ```
 
@@ -1147,8 +1062,8 @@ the key, second column is the value).
 
 ```php
 public function fetchValue(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): mixed;
 ```
 
@@ -1182,8 +1097,8 @@ Is the PDO connection active?
 
 ```php
 public function perform(
-string $statement,
-array $values = []
+    string $statement,
+    array $values = []
 ): \PDOStatement;
 ```
 
@@ -1200,6 +1115,7 @@ public function setProfiler( ProfilerInterface $profiler );
 
 Sets the Profiler instance.
 
+
 ## DataMapper\Pdo\Connection\Decorated
 
 Class
@@ -1207,21 +1123,17 @@ Class
 Decorates an existing PDO instance with the extended methods.
 
 - [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](#datamapperpdoconnectionabstractconnection)
-- **`Phalcon\DataMapper\Pdo\Connection\Decorated`**
+  - **`Phalcon\DataMapper\Pdo\Connection\Decorated`**
 
 `Phalcon\DataMapper\Pdo\Exception\CannotDisconnect` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnectiondecorated-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"\\PDO","name":"pdo","default":null},{"type":"ProfilerInterface|null","name":"profiler","default":"null"}]}>
-Constructor.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectiondecorated-connect" visibility="public" name="connect" returnType="void" params={[]}>
-Connects to the database.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectiondecorated-disconnect" visibility="public" name="disconnect" returnType="void" params={[]}>
-Disconnects from the database; disallowed with decorated PDO connections.
-</ApiItem>
+- `public __construct(\PDO $pdo, ProfilerInterface|null $profiler = null)` — Constructor.
+
+- `public connect(): void` — Connects to the database.
+
+- `public disconnect(): void` — Disconnects from the database; disallowed with decorated PDO connections.
 
 ### Methods
 
@@ -1229,8 +1141,8 @@ Disconnects from the database; disallowed with decorated PDO connections.
 
 ```php
 public function __construct(
-\PDO $pdo,
-ProfilerInterface|null $profiler = null
+    \PDO $pdo,
+    ProfilerInterface|null $profiler = null
 );
 ```
 
@@ -1255,6 +1167,7 @@ public function disconnect(): void;
 
 Disconnects from the database; disallowed with decorated PDO connections.
 
+
 ## DataMapper\Pdo\Connection\PdoInterface
 
 Interface
@@ -1262,54 +1175,39 @@ Interface
 An interface to the native PDO object.
 
 - **`Phalcon\DataMapper\Pdo\Connection\PdoInterface`**
-- [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
+  - [`Phalcon\DataMapper\Pdo\Connection\ConnectionInterface`](#datamapperpdoconnectionconnectioninterface)
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoconnectionpdointerface-begintransaction" visibility="public" name="beginTransaction" returnType="bool" params={[]}>
-Begins a transaction. If the profiler is enabled, the operation will
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-commit" visibility="public" name="commit" returnType="bool" params={[]}>
-Commits the existing transaction. If the profiler is enabled, the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-errorcode" visibility="public" name="errorCode" returnType="string|null" params={[]}>
-Gets the most recent error code.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-errorinfo" visibility="public" name="errorInfo" returnType="array" params={[]}>
-Gets the most recent error info.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-exec" visibility="public" name="exec" returnType="int" params={[{"type":"string","name":"statement","default":null}]}>
-Executes an SQL statement and returns the number of affected rows. If
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-getattribute" visibility="public" name="getAttribute" returnType="mixed" params={[{"type":"int","name":"attribute","default":null}]}>
-Retrieve a database connection attribute
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-getavailabledrivers" visibility="public" name="getAvailableDrivers" returnType="array" params={[]}>
-Return an array of available PDO drivers (empty array if none available)
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-intransaction" visibility="public" name="inTransaction" returnType="bool" params={[]}>
-Is a transaction currently active? If the profiler is enabled, the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-lastinsertid" visibility="public" name="lastInsertId" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
-Returns the last inserted autoincrement sequence value. If the profiler
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-prepare" visibility="public" name="prepare" returnType="bool|\PDOStatement" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"options","default":"[]"}]}>
-Prepares an SQL statement for execution.
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-query" visibility="public" name="query" returnType="bool|\PDOStatement" params={[{"type":"string","name":"statement","default":null}]}>
-Queries the database and returns a PDOStatement. If the profiler is
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-quote" visibility="public" name="quote" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"\\PDO::PARAM_STR"}]}>
-Quotes a value for use in an SQL statement. This differs from
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-rollback" visibility="public" name="rollBack" returnType="bool" params={[]}>
-Rolls back the current transaction, and restores autocommit mode. If the
-</ApiItem>
-<ApiItem href="#datamapperpdoconnectionpdointerface-setattribute" visibility="public" name="setAttribute" returnType="bool" params={[{"type":"int","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Set a database connection attribute
-</ApiItem>
+- `public beginTransaction(): bool` — Begins a transaction. If the profiler is enabled, the operation will
+
+- `public commit(): bool` — Commits the existing transaction. If the profiler is enabled, the
+
+- `public errorCode(): string|null` — Gets the most recent error code.
+
+- `public errorInfo(): array` — Gets the most recent error info.
+
+- `public exec(string $statement): int` — Executes an SQL statement and returns the number of affected rows. If
+
+- `public getAttribute(int $attribute): mixed` — Retrieve a database connection attribute
+
+- `public getAvailableDrivers(): array` — Return an array of available PDO drivers (empty array if none available)
+
+- `public inTransaction(): bool` — Is a transaction currently active? If the profiler is enabled, the
+
+- `public lastInsertId(string|null $name = null): string` — Returns the last inserted autoincrement sequence value. If the profiler
+
+- `public prepare(string $statement, array $options = []): bool|\PDOStatement` — Prepares an SQL statement for execution.
+
+- `public query(string $statement): bool|\PDOStatement` — Queries the database and returns a PDOStatement. If the profiler is
+
+- `public quote(mixed $value, int $type = \PDO::PARAM_STR): string` — Quotes a value for use in an SQL statement. This differs from
+
+- `public rollBack(): bool` — Rolls back the current transaction, and restores autocommit mode. If the
+
+- `public setAttribute(int $attribute, mixed $value): bool` — Set a database connection attribute
 
 ### Methods
 
@@ -1395,8 +1293,8 @@ is enabled, the operation will be recorded.
 
 ```php
 public function prepare(
-string $statement,
-array $options = []
+    string $statement,
+    array $options = []
 ): bool|\PDOStatement;
 ```
 
@@ -1415,8 +1313,8 @@ enabled, the operation will be recorded.
 
 ```php
 public function quote(
-mixed $value,
-int $type = \PDO::PARAM_STR
+    mixed $value,
+    int $type = \PDO::PARAM_STR
 ): string;
 ```
 
@@ -1437,12 +1335,13 @@ profiler is enabled, the operation will be recorded.
 
 ```php
 public function setAttribute(
-int $attribute,
-mixed $value
+    int $attribute,
+    mixed $value
 ): bool;
 ```
 
 Set a database connection attribute
+
 
 ## DataMapper\Pdo\Events
 
@@ -1454,14 +1353,14 @@ Phalcon\Events\Manager. One public constant per event.
 The `before*` events are cancelable. To cancel an operation, a listener
 must stop the event and return false:
 
-    $manager->attach(
-        Events::BEFORE_PERFORM,
-        function ($event) \{
-            $event->stop();
+$manager->attach(
+Events::BEFORE\_PERFORM,
+function ($event) \{
+$event->stop();
 
-            return false;
-        \}
-    );
+return false;
+}
+);
 
 Both parts are necessary. `stop()` alone abandons the queue but returns
 the listener's own value, which the connection cannot tell apart from
@@ -1486,40 +1385,40 @@ method therefore reports the lost connection and the new one.
 
 ### Constants
 
-<ApiItem kind="constant" name="AFTER_BEGIN_TRANSACTION" type="string" default="&quot;dm:afterBeginTransaction&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_COMMIT" type="string" default="&quot;dm:afterCommit&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_CONNECT" type="string" default="&quot;dm:afterConnect&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_DISCONNECT" type="string" default="&quot;dm:afterDisconnect&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_EXEC" type="string" default="&quot;dm:afterExec&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_PERFORM" type="string" default="&quot;dm:afterPerform&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_QUERY" type="string" default="&quot;dm:afterQuery&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="AFTER_ROLLBACK" type="string" default="&quot;dm:afterRollBack&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_BEGIN_TRANSACTION" type="string" default="&quot;dm:beforeBeginTransaction&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_COMMIT" type="string" default="&quot;dm:beforeCommit&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_CONNECT" type="string" default="&quot;dm:beforeConnect&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_DISCONNECT" type="string" default="&quot;dm:beforeDisconnect&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_EXEC" type="string" default="&quot;dm:beforeExec&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_PERFORM" type="string" default="&quot;dm:beforePerform&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_QUERY" type="string" default="&quot;dm:beforeQuery&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="BEFORE_ROLLBACK" type="string" default="&quot;dm:beforeRollBack&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="CONNECTION_LOST" type="string" default="&quot;dm:connectionLost&quot;">
-</ApiItem>
+- `const string AFTER_BEGIN_TRANSACTION = "dm:afterBeginTransaction"`
+
+- `const string AFTER_COMMIT = "dm:afterCommit"`
+
+- `const string AFTER_CONNECT = "dm:afterConnect"`
+
+- `const string AFTER_DISCONNECT = "dm:afterDisconnect"`
+
+- `const string AFTER_EXEC = "dm:afterExec"`
+
+- `const string AFTER_PERFORM = "dm:afterPerform"`
+
+- `const string AFTER_QUERY = "dm:afterQuery"`
+
+- `const string AFTER_ROLLBACK = "dm:afterRollBack"`
+
+- `const string BEFORE_BEGIN_TRANSACTION = "dm:beforeBeginTransaction"`
+
+- `const string BEFORE_COMMIT = "dm:beforeCommit"`
+
+- `const string BEFORE_CONNECT = "dm:beforeConnect"`
+
+- `const string BEFORE_DISCONNECT = "dm:beforeDisconnect"`
+
+- `const string BEFORE_EXEC = "dm:beforeExec"`
+
+- `const string BEFORE_PERFORM = "dm:beforePerform"`
+
+- `const string BEFORE_QUERY = "dm:beforeQuery"`
+
+- `const string BEFORE_ROLLBACK = "dm:beforeRollBack"`
+
+- `const string CONNECTION_LOST = "dm:connectionLost"`
+
 
 ## DataMapper\Pdo\Exception\CannotDisconnect
 
@@ -1529,8 +1428,9 @@ ExtendedPdo could not disconnect; e.g., because its PDO connection was
 created externally and then injected.
 
 - `\Exception`
-- [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
-- **`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`**
+  - [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
+    - **`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`**
+
 
 ## DataMapper\Pdo\Exception\ConnectionNotFound
 
@@ -1539,22 +1439,22 @@ Class
 Locator could not find a named connection.
 
 - `\Exception`
-- [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
-- **`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`**
+  - [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
+    - **`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`**
+
 
 ## DataMapper\Pdo\Exception\DriverNotSupported
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`**
+  - **`Phalcon\DataMapper\Pdo\Exception\DriverNotSupported`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoexceptiondrivernotsupported-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"driver","default":null}]}>
-</ApiItem>
+- `public __construct(string $driver)`
 
 ### Methods
 
@@ -1564,6 +1464,7 @@ Class
 public function __construct( string $driver );
 ```
 
+
 ## DataMapper\Pdo\Exception\Exception
 
 Class
@@ -1571,10 +1472,11 @@ Class
 Base Exception class
 
 - `\Exception`
-- **`Phalcon\DataMapper\Pdo\Exception\Exception`**
-- [`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`](#datamapperpdoexceptioncannotdisconnect)
-- [`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`](#datamapperpdoexceptionconnectionnotfound)
-- [`Phalcon\DataMapper\Pdo\Exception\OperationCancelled`](#datamapperpdoexceptionoperationcancelled)
+  - **`Phalcon\DataMapper\Pdo\Exception\Exception`**
+    - [`Phalcon\DataMapper\Pdo\Exception\CannotDisconnect`](#datamapperpdoexceptioncannotdisconnect)
+    - [`Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound`](#datamapperpdoexceptionconnectionnotfound)
+    - [`Phalcon\DataMapper\Pdo\Exception\OperationCancelled`](#datamapperpdoexceptionoperationcancelled)
+
 
 ## DataMapper\Pdo\Exception\OperationCancelled
 
@@ -1585,13 +1487,12 @@ not run. This is a deliberate cancellation, not a database failure. Catch
 this class to tell the two apart.
 
 - `\Exception`
-- [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
-- **`Phalcon\DataMapper\Pdo\Exception\OperationCancelled`**
+  - [`Phalcon\DataMapper\Pdo\Exception\Exception`](#datamapperpdoexceptionexception)
+    - **`Phalcon\DataMapper\Pdo\Exception\OperationCancelled`**
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoexceptionoperationcancelled-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"eventName","default":null}]}>
-</ApiItem>
+- `public __construct(string $eventName)`
 
 ### Methods
 
@@ -1601,19 +1502,19 @@ this class to tell the two apart.
 public function __construct( string $eventName );
 ```
 
+
 ## DataMapper\Pdo\Exception\UnknownDriverMethod
 
 Class
 
 - `\BadMethodCallException`
-- **`Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod`**
+  - **`Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod`**
 
 `BadMethodCallException`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoexceptionunknowndrivermethod-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"message","default":null}]}>
-</ApiItem>
+- `public __construct(string $message)`
 
 ### Methods
 
@@ -1623,19 +1524,19 @@ Class
 public function __construct( string $message );
 ```
 
+
 ## DataMapper\Pdo\Exception\UnknownQueryMethod
 
 Class
 
 - `\BadMethodCallException`
-- **`Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`**
+  - **`Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`**
 
 `BadMethodCallException`
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoexceptionunknownquerymethod-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"method","default":null}]}>
-</ApiItem>
+- `public __construct(string $method)`
 
 ### Methods
 
@@ -1644,6 +1545,7 @@ Class
 ```php
 public function __construct( string $method );
 ```
+
 
 ## DataMapper\Pdo\Profiler\MemoryLogger
 
@@ -1657,47 +1559,39 @@ A memory-based logger.
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoprofilermemorylogger-alert" visibility="public" name="alert" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-critical" visibility="public" name="critical" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-debug" visibility="public" name="debug" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-emergency" visibility="public" name="emergency" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-error" visibility="public" name="error" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-getadapter" visibility="public" name="getAdapter" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null}]}>
-Returns an adapter from the stack
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-getadapters" visibility="public" name="getAdapters" returnType="array" params={[]}>
-Returns the adapter stack array
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-getloglevel" visibility="public" name="getLogLevel" returnType="int" params={[]}>
-Returns the log level
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-getmessages" visibility="public" name="getMessages" returnType="array" params={[]}>
-Returns the logged messages.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the name of the logger
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-info" visibility="public" name="info" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-log" visibility="public" name="log" returnType="void" params={[{"type":"mixed","name":"level","default":null},{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-Logs a message.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-notice" visibility="public" name="notice" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-trace" visibility="public" name="trace" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilermemorylogger-warning" visibility="public" name="warning" returnType="void" params={[{"type":"string","name":"message","default":null},{"type":"array","name":"context","default":"[]"}]}>
-</ApiItem>
+- `public alert(string $message, array $context = []): void`
+
+- `public critical(string $message, array $context = []): void`
+
+- `public debug(string $message, array $context = []): void`
+
+- `public emergency(string $message, array $context = []): void`
+
+- `public error(string $message, array $context = []): void`
+
+- `public getAdapter(string $name): AdapterInterface` — Returns an adapter from the stack
+
+- `public getAdapters(): array` — Returns the adapter stack array
+
+- `public getLogLevel(): int` — Returns the log level
+
+- `public getMessages(): array` — Returns the logged messages.
+
+- `public getName(): string` — Returns the name of the logger
+
+- `public info(string $message, array $context = []): void`
+
+- `public log(mixed $level, string $message, array $context = []): void` — Logs a message.
+
+- `public notice(string $message, array $context = []): void`
+
+- `public trace(string $message, array $context = []): void`
+
+- `public warning(string $message, array $context = []): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="messages" type="array" default="[]">
-</ApiItem>
+- `protected array $messages = []`
 
 ### Methods
 
@@ -1705,8 +1599,8 @@ Logs a message.
 
 ```php
 public function alert(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1714,8 +1608,8 @@ array $context = []
 
 ```php
 public function critical(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1723,8 +1617,8 @@ array $context = []
 
 ```php
 public function debug(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1732,8 +1626,8 @@ array $context = []
 
 ```php
 public function emergency(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1741,8 +1635,8 @@ array $context = []
 
 ```php
 public function error(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1790,8 +1684,8 @@ Returns the name of the logger
 
 ```php
 public function info(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1799,9 +1693,9 @@ array $context = []
 
 ```php
 public function log(
-mixed $level,
-string $message,
-array $context = []
+    mixed $level,
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1811,8 +1705,8 @@ Logs a message.
 
 ```php
 public function notice(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1820,8 +1714,8 @@ array $context = []
 
 ```php
 public function trace(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
 
@@ -1829,10 +1723,11 @@ array $context = []
 
 ```php
 public function warning(
-string $message,
-array $context = []
+    string $message,
+    array $context = []
 ): void;
 ```
+
 
 ## DataMapper\Pdo\Profiler\Profiler
 
@@ -1846,49 +1741,37 @@ Sends query profiles to a logger.
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoprofilerprofiler-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"LoggerInterface|null","name":"logger","default":"null"}]}>
-Constructor.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-finish" visibility="public" name="finish" returnType="void" params={[{"type":"string|null","name":"statement","default":"null"},{"type":"array","name":"values","default":"[]"}]}>
-Finishes and logs a profile entry.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-getlogformat" visibility="public" name="getLogFormat" returnType="string" params={[]}>
-Returns the log message format string, with placeholders.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-getloglevel" visibility="public" name="getLogLevel" returnType="string" params={[]}>
-Returns the level at which to log profile messages.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-getlogger" visibility="public" name="getLogger" returnType="LoggerInterface" params={[]}>
-Returns the underlying logger instance.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-isactive" visibility="public" name="isActive" returnType="bool" params={[]}>
-Returns true if logging is active.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-setactive" visibility="public" name="setActive" returnType="ProfilerInterface" params={[{"type":"bool","name":"active","default":null}]}>
-Enable or disable profiler logging.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-setlogformat" visibility="public" name="setLogFormat" returnType="ProfilerInterface" params={[{"type":"string","name":"logFormat","default":null}]}>
-Sets the log message format string, with placeholders.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-setloglevel" visibility="public" name="setLogLevel" returnType="ProfilerInterface" params={[{"type":"string","name":"logLevel","default":null}]}>
-Level at which to log profile messages.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofiler-start" visibility="public" name="start" returnType="void" params={[{"type":"string","name":"method","default":null}]}>
-Starts a profile entry.
-</ApiItem>
+- `public __construct(LoggerInterface|null $logger = null)` — Constructor.
+
+- `public finish(string|null $statement = null, array $values = []): void` — Finishes and logs a profile entry.
+
+- `public getLogFormat(): string` — Returns the log message format string, with placeholders.
+
+- `public getLogLevel(): string` — Returns the level at which to log profile messages.
+
+- `public getLogger(): LoggerInterface` — Returns the underlying logger instance.
+
+- `public isActive(): bool` — Returns true if logging is active.
+
+- `public setActive(bool $active): ProfilerInterface` — Enable or disable profiler logging.
+
+- `public setLogFormat(string $logFormat): ProfilerInterface` — Sets the log message format string, with placeholders.
+
+- `public setLogLevel(string $logLevel): ProfilerInterface` — Level at which to log profile messages.
+
+- `public start(string $method): void` — Starts a profile entry.
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="active" type="bool" default="false">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="context" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="logFormat" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="logLevel" type="int|string" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="logger" type="LoggerInterface" default="">
-</ApiItem>
+- `protected bool $active = false`
+
+- `protected array $context = []`
+
+- `protected string $logFormat = ""`
+
+- `protected int|string $logLevel = 0`
+
+- `protected LoggerInterface $logger`
 
 ### Methods
 
@@ -1904,8 +1787,8 @@ Constructor.
 
 ```php
 public function finish(
-string|null $statement = null,
-array $values = []
+    string|null $statement = null,
+    array $values = []
 ): void;
 ```
 
@@ -1975,6 +1858,7 @@ public function start( string $method ): void;
 
 Starts a profile entry.
 
+
 ## DataMapper\Pdo\Profiler\ProfilerInterface
 
 Interface
@@ -1987,33 +1871,23 @@ Interface to send query profiles to a logger.
 
 ### Method Summary
 
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-finish" visibility="public" name="finish" returnType="void" params={[{"type":"string|null","name":"statement","default":"null"},{"type":"array","name":"values","default":"[]"}]}>
-Finishes and logs a profile entry.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-getlogformat" visibility="public" name="getLogFormat" returnType="string" params={[]}>
-Returns the log message format string, with placeholders.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-getloglevel" visibility="public" name="getLogLevel" returnType="string" params={[]}>
-Returns the level at which to log profile messages.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-getlogger" visibility="public" name="getLogger" returnType="LoggerInterface" params={[]}>
-Returns the underlying logger instance.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-isactive" visibility="public" name="isActive" returnType="bool" params={[]}>
-Returns true if logging is active.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-setactive" visibility="public" name="setActive" returnType="ProfilerInterface" params={[{"type":"bool","name":"active","default":null}]}>
-Enable or disable profiler logging.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-setlogformat" visibility="public" name="setLogFormat" returnType="ProfilerInterface" params={[{"type":"string","name":"logFormat","default":null}]}>
-Sets the log message format string, with placeholders.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-setloglevel" visibility="public" name="setLogLevel" returnType="ProfilerInterface" params={[{"type":"string","name":"logLevel","default":null}]}>
-Level at which to log profile messages.
-</ApiItem>
-<ApiItem href="#datamapperpdoprofilerprofilerinterface-start" visibility="public" name="start" returnType="void" params={[{"type":"string","name":"method","default":null}]}>
-Starts a profile entry.
-</ApiItem>
+- `public finish(string|null $statement = null, array $values = []): void` — Finishes and logs a profile entry.
+
+- `public getLogFormat(): string` — Returns the log message format string, with placeholders.
+
+- `public getLogLevel(): string` — Returns the level at which to log profile messages.
+
+- `public getLogger(): LoggerInterface` — Returns the underlying logger instance.
+
+- `public isActive(): bool` — Returns true if logging is active.
+
+- `public setActive(bool $active): ProfilerInterface` — Enable or disable profiler logging.
+
+- `public setLogFormat(string $logFormat): ProfilerInterface` — Sets the log message format string, with placeholders.
+
+- `public setLogLevel(string $logLevel): ProfilerInterface` — Level at which to log profile messages.
+
+- `public start(string $method): void` — Starts a profile entry.
 
 ### Methods
 
@@ -2021,8 +1895,8 @@ Starts a profile entry.
 
 ```php
 public function finish(
-string|null $statement = null,
-array $values = []
+    string|null $statement = null,
+    array $values = []
 ): void;
 ```
 
@@ -2092,6 +1966,7 @@ public function start( string $method ): void;
 
 Starts a profile entry.
 
+
 ## DataMapper\Query\AbstractConditions
 
 Abstract
@@ -2099,65 +1974,48 @@ Abstract
 Class AbstractConditions
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- **`Phalcon\DataMapper\Query\AbstractConditions`**
-- [`Phalcon\DataMapper\Query\Delete`](#datamapperquerydelete)
-- [`Phalcon\DataMapper\Query\Select`](#datamapperqueryselect)
-- [`Phalcon\DataMapper\Query\Update`](#datamapperqueryupdate)
+  - **`Phalcon\DataMapper\Query\AbstractConditions`**
+    - [`Phalcon\DataMapper\Query\Delete`](#datamapperquerydelete)
+    - [`Phalcon\DataMapper\Query\Select`](#datamapperqueryselect)
+    - [`Phalcon\DataMapper\Query\Update`](#datamapperqueryupdate)
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes`
 
 ### Method Summary
 
-<ApiItem href="#datamapperqueryabstractconditions-andwhere" visibility="public" name="andWhere" returnType="AbstractConditions" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a `AND` for a `WHERE` condition
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-appendwhere" visibility="public" name="appendWhere" returnType="AbstractConditions" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Concatenates to the most recent `WHERE` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-limit" visibility="public" name="limit" returnType="AbstractConditions" params={[{"type":"int","name":"limit","default":null}]}>
-Sets the `LIMIT` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-offset" visibility="public" name="offset" returnType="AbstractConditions" params={[{"type":"int","name":"offset","default":null}]}>
-Sets the `OFFSET` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-orwhere" visibility="public" name="orWhere" returnType="AbstractConditions" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a `OR` for a `WHERE` condition
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-orderby" visibility="public" name="orderBy" returnType="AbstractConditions" params={[{"type":"mixed","name":"orderBy","default":null}]}>
-Sets the `ORDER BY`
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-where" visibility="public" name="where" returnType="AbstractConditions" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a `WHERE` condition
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-whereequals" visibility="public" name="whereEquals" returnType="AbstractConditions" params={[{"type":"array","name":"columnsValues","default":null}]}>
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-addcondition" visibility="protected" name="addCondition" returnType="void" params={[{"type":"string","name":"store","default":null},{"type":"string","name":"andor","default":null},{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Appends a conditional
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-appendcondition" visibility="protected" name="appendCondition" returnType="void" params={[{"type":"string","name":"store","default":null},{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Concatenates a conditional
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-buildby" visibility="protected" name="buildBy" returnType="string" params={[{"type":"string","name":"type","default":null}]}>
-Builds a `BY` list
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-buildcondition" visibility="protected" name="buildCondition" returnType="string" params={[{"type":"string","name":"type","default":null}]}>
-Builds the conditional string
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-buildlimit" visibility="protected" name="buildLimit" returnType="string" params={[]}>
-Builds the `LIMIT` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-buildlimitcommon" visibility="protected" name="buildLimitCommon" returnType="string" params={[]}>
-Builds the `LIMIT` clause for all drivers
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-buildlimitearly" visibility="protected" name="buildLimitEarly" returnType="string" params={[]}>
-Builds the early `LIMIT` clause - MS SQLServer
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-buildlimitsqlsrv" visibility="protected" name="buildLimitSqlsrv" returnType="string" params={[]}>
-Builds the `LIMIT` clause for MSSQLServer
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractconditions-processvalue" visibility="protected" name="processValue" returnType="void" params={[{"type":"string","name":"store","default":null},{"type":"mixed","name":"data","default":null}]}>
-Processes a value (array or string) and merges it with the store
-</ApiItem>
+- `public andWhere(string $condition, mixed $value = null, int $type = -1): AbstractConditions` — Sets a `AND` for a `WHERE` condition
+
+- `public appendWhere(string $condition, mixed $value = null, int $type = -1): AbstractConditions` — Concatenates to the most recent `WHERE` clause
+
+- `public limit(int $limit): AbstractConditions` — Sets the `LIMIT` clause
+
+- `public offset(int $offset): AbstractConditions` — Sets the `OFFSET` clause
+
+- `public orWhere(string $condition, mixed $value = null, int $type = -1): AbstractConditions` — Sets a `OR` for a `WHERE` condition
+
+- `public orderBy(mixed $orderBy): AbstractConditions` — Sets the `ORDER BY`
+
+- `public where(string $condition, mixed $value = null, int $type = -1): AbstractConditions` — Sets a `WHERE` condition
+
+- `public whereEquals(array $columnsValues): AbstractConditions`
+
+- `protected addCondition(string $store, string $andor, string $condition, mixed $value = null, int $type = -1): void` — Appends a conditional
+
+- `protected appendCondition(string $store, string $condition, mixed $value = null, int $type = -1): void` — Concatenates a conditional
+
+- `protected buildBy(string $type): string` — Builds a `BY` list
+
+- `protected buildCondition(string $type): string` — Builds the conditional string
+
+- `protected buildLimit(): string` — Builds the `LIMIT` clause
+
+- `protected buildLimitCommon(): string` — Builds the `LIMIT` clause for all drivers
+
+- `protected buildLimitEarly(): string` — Builds the early `LIMIT` clause - MS SQLServer
+
+- `protected buildLimitSqlsrv(): string` — Builds the `LIMIT` clause for MSSQLServer
+
+- `protected processValue(string $store, mixed $data): void` — Processes a value (array or string) and merges it with the store
 
 ### Methods
 
@@ -2165,9 +2023,9 @@ Processes a value (array or string) and merges it with the store
 
 ```php
 public function andWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2177,9 +2035,9 @@ Sets a `AND` for a `WHERE` condition
 
 ```php
 public function appendWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2205,9 +2063,9 @@ Sets the `OFFSET` clause
 
 ```php
 public function orWhere(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2225,9 +2083,9 @@ Sets the `ORDER BY`
 
 ```php
 public function where(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): AbstractConditions;
 ```
 
@@ -2243,11 +2101,11 @@ public function whereEquals( array $columnsValues ): AbstractConditions;
 
 ```php
 protected function addCondition(
-string $store,
-string $andor,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $store,
+    string $andor,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): void;
 ```
 
@@ -2257,10 +2115,10 @@ Appends a conditional
 
 ```php
 protected function appendCondition(
-string $store,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $store,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): void;
 ```
 
@@ -2318,12 +2176,13 @@ Builds the `LIMIT` clause for MSSQLServer
 
 ```php
 protected function processValue(
-string $store,
-mixed $data
+    string $store,
+    mixed $data
 ): void;
 ```
 
 Processes a value (array or string) and merges it with the store
+
 
 ## DataMapper\Query\AbstractQuery
 
@@ -2332,85 +2191,62 @@ Abstract
 Class AbstractQuery
 
 - **`Phalcon\DataMapper\Query\AbstractQuery`**
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- [`Phalcon\DataMapper\Query\Insert`](#datamapperqueryinsert)
+  - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+  - [`Phalcon\DataMapper\Query\Insert`](#datamapperqueryinsert)
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
-<ApiItem href="#datamapperqueryabstractquery-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Connection","name":"connection","default":null},{"type":"Bind","name":"bind","default":null}]}>
-AbstractQuery constructor.
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-bindinline" visibility="public" name="bindInline" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"-1"}]}>
-Binds a value inline
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-bindvalue" visibility="public" name="bindValue" returnType="AbstractQuery" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"-1"}]}>
-Binds a value - auto-detects the type if necessary
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-bindvalues" visibility="public" name="bindValues" returnType="AbstractQuery" params={[{"type":"array","name":"values","default":null}]}>
-Binds an array of values
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-getbindvalues" visibility="public" name="getBindValues" returnType="array" params={[]}>
-Returns all the bound values
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-getstatement" visibility="public" name="getStatement" returnType="string" params={[]}>
-Return the generated statement
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-perform" visibility="public" name="perform" returnType="" params={[]}>
-Performs a statement in the connection
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-quoteidentifier" visibility="public" name="quoteIdentifier" returnType="string" params={[{"type":"string","name":"name","default":null},{"type":"int","name":"type","default":"\\PDO::PARAM_STR"}]}>
-Quotes the identifier
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal array
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetcolumns" visibility="public" name="resetColumns" returnType="void" params={[]}>
-Resets the columns
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetflags" visibility="public" name="resetFlags" returnType="void" params={[]}>
-Resets the flags
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetfrom" visibility="public" name="resetFrom" returnType="void" params={[]}>
-Resets the from
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetgroupby" visibility="public" name="resetGroupBy" returnType="void" params={[]}>
-Resets the group by
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resethaving" visibility="public" name="resetHaving" returnType="void" params={[]}>
-Resets the having
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetlimit" visibility="public" name="resetLimit" returnType="void" params={[]}>
-Resets the limit and offset
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetorderby" visibility="public" name="resetOrderBy" returnType="void" params={[]}>
-Resets the order by
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-resetwhere" visibility="public" name="resetWhere" returnType="void" params={[]}>
-Resets the where
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-setflag" visibility="public" name="setFlag" returnType="void" params={[{"type":"string","name":"flag","default":null},{"type":"bool","name":"enable","default":"true"}]}>
-Sets a flag for the query such as "DISTINCT"
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-buildflags" visibility="protected" name="buildFlags" returnType="" params={[]}>
-Builds the flags statement(s)
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-buildreturning" visibility="protected" name="buildReturning" returnType="string" params={[]}>
-Builds the `RETURNING` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryabstractquery-indent" visibility="protected" name="indent" returnType="string" params={[{"type":"array","name":"collection","default":null},{"type":"string","name":"glue","default":"\"\""}]}>
-Indents a collection
-</ApiItem>
+- `public __construct(Connection $connection, Bind $bind)` — AbstractQuery constructor.
+
+- `public bindInline(mixed $value, int $type = -1): string` — Binds a value inline
+
+- `public bindValue(string $key, mixed $value, int $type = -1): AbstractQuery` — Binds a value - auto-detects the type if necessary
+
+- `public bindValues(array $values): AbstractQuery` — Binds an array of values
+
+- `public getBindValues(): array` — Returns all the bound values
+
+- `public getStatement(): string` — Return the generated statement
+
+- `public perform()` — Performs a statement in the connection
+
+- `public quoteIdentifier(string $name, int $type = \PDO::PARAM_STR): string` — Quotes the identifier
+
+- `public reset(): void` — Resets the internal array
+
+- `public resetColumns(): void` — Resets the columns
+
+- `public resetFlags(): void` — Resets the flags
+
+- `public resetFrom(): void` — Resets the from
+
+- `public resetGroupBy(): void` — Resets the group by
+
+- `public resetHaving(): void` — Resets the having
+
+- `public resetLimit(): void` — Resets the limit and offset
+
+- `public resetOrderBy(): void` — Resets the order by
+
+- `public resetWhere(): void` — Resets the where
+
+- `public setFlag(string $flag, bool $enable = true): void` — Sets a flag for the query such as "DISTINCT"
+
+- `protected buildFlags()` — Builds the flags statement(s)
+
+- `protected buildReturning(): string` — Builds the `RETURNING` clause
+
+- `protected indent(array $collection, string $glue = ""): string` — Indents a collection
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="bind" type="Bind" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="connection" type="Connection" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="store" type="array" default="[]">
-</ApiItem>
+- `protected Bind $bind`
+
+- `protected Connection $connection`
+
+- `protected array $store = []`
 
 ### Methods
 
@@ -2418,8 +2254,8 @@ Indents a collection
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -2429,8 +2265,8 @@ AbstractQuery constructor.
 
 ```php
 public function bindInline(
-mixed $value,
-int $type = -1
+    mixed $value,
+    int $type = -1
 ): string;
 ```
 
@@ -2440,9 +2276,9 @@ Binds a value inline
 
 ```php
 public function bindValue(
-string $key,
-mixed $value,
-int $type = -1
+    string $key,
+    mixed $value,
+    int $type = -1
 ): AbstractQuery;
 ```
 
@@ -2484,8 +2320,8 @@ Performs a statement in the connection
 
 ```php
 public function quoteIdentifier(
-string $name,
-int $type = \PDO::PARAM_STR
+    string $name,
+    int $type = \PDO::PARAM_STR
 ): string;
 ```
 
@@ -2567,8 +2403,8 @@ Resets the where
 
 ```php
 public function setFlag(
-string $flag,
-bool $enable = true
+    string $flag,
+    bool $enable = true
 ): void;
 ```
 
@@ -2594,12 +2430,13 @@ Builds the `RETURNING` clause
 
 ```php
 protected function indent(
-array $collection,
-string $glue = ""
+    array $collection,
+    string $glue = ""
 ): string;
 ```
 
 Indents a collection
+
 
 ## DataMapper\Query\Bind
 
@@ -2613,33 +2450,25 @@ Class Bind
 
 ### Method Summary
 
-<ApiItem href="#datamapperquerybind-bindinline" visibility="public" name="bindInline" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"-1"}]}>
-</ApiItem>
-<ApiItem href="#datamapperquerybind-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"key","default":null}]}>
-Removes a value from the store
-</ApiItem>
-<ApiItem href="#datamapperquerybind-setvalue" visibility="public" name="setValue" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"-1"}]}>
-Sets a value
-</ApiItem>
-<ApiItem href="#datamapperquerybind-setvalues" visibility="public" name="setValues" returnType="void" params={[{"type":"array","name":"values","default":null},{"type":"int","name":"type","default":"-1"}]}>
-Sets values from an array
-</ApiItem>
-<ApiItem href="#datamapperquerybind-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
-Returns the internal collection
-</ApiItem>
-<ApiItem href="#datamapperquerybind-gettype" visibility="protected" name="getType" returnType="int" params={[{"type":"mixed","name":"value","default":null}]}>
-Auto detects the PDO type
-</ApiItem>
-<ApiItem href="#datamapperquerybind-inlinearray" visibility="protected" name="inlineArray" returnType="string" params={[{"type":"array","name":"data","default":null},{"type":"int","name":"type","default":null}]}>
-Processes an array - if passed as an `inline` parameter
-</ApiItem>
+- `public bindInline(mixed $value, int $type = -1): string`
+
+- `public remove(string $key): void` — Removes a value from the store
+
+- `public setValue(string $key, mixed $value, int $type = -1): void` — Sets a value
+
+- `public setValues(array $values, int $type = -1): void` — Sets values from an array
+
+- `public toArray(): array` — Returns the internal collection
+
+- `protected getType(mixed $value): int` — Auto detects the PDO type
+
+- `protected inlineArray(array $data, int $type): string` — Processes an array - if passed as an `inline` parameter
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="inlineCount" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="store" type="array" default="[]">
-</ApiItem>
+- `protected int $inlineCount = 0`
+
+- `protected array $store = []`
 
 ### Methods
 
@@ -2647,8 +2476,8 @@ Processes an array - if passed as an `inline` parameter
 
 ```php
 public function bindInline(
-mixed $value,
-int $type = -1
+    mixed $value,
+    int $type = -1
 ): string;
 ```
 
@@ -2664,9 +2493,9 @@ Removes a value from the store
 
 ```php
 public function setValue(
-string $key,
-mixed $value,
-int $type = -1
+    string $key,
+    mixed $value,
+    int $type = -1
 ): void;
 ```
 
@@ -2676,8 +2505,8 @@ Sets a value
 
 ```php
 public function setValues(
-array $values,
-int $type = -1
+    array $values,
+    int $type = -1
 ): void;
 ```
 
@@ -2703,12 +2532,13 @@ Auto detects the PDO type
 
 ```php
 protected function inlineArray(
-array $data,
-int $type
+    array $data,
+    int $type
 ): string;
 ```
 
 Processes an array - if passed as an `inline` parameter
+
 
 ## DataMapper\Query\Delete
 
@@ -2719,27 +2549,22 @@ Delete Query
 @property datamapper_write_store $store
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- **`Phalcon\DataMapper\Query\Delete`**
+  - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+    - **`Phalcon\DataMapper\Query\Delete`**
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
-<ApiItem href="#datamapperquerydelete-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Connection","name":"connection","default":null},{"type":"Bind","name":"bind","default":null}]}>
-Delete constructor.
-</ApiItem>
-<ApiItem href="#datamapperquerydelete-from" visibility="public" name="from" returnType="Delete" params={[{"type":"string","name":"table","default":null}]}>
-Adds table(s) in the query
-</ApiItem>
-<ApiItem href="#datamapperquerydelete-getstatement" visibility="public" name="getStatement" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#datamapperquerydelete-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal store
-</ApiItem>
-<ApiItem href="#datamapperquerydelete-returning" visibility="public" name="returning" returnType="Delete" params={[{"type":"array","name":"columns","default":null}]}>
-Adds the `RETURNING` clause
-</ApiItem>
+- `public __construct(Connection $connection, Bind $bind)` — Delete constructor.
+
+- `public from(string $table): Delete` — Adds table(s) in the query
+
+- `public getStatement(): string`
+
+- `public reset(): void` — Resets the internal store
+
+- `public returning(array $columns): Delete` — Adds the `RETURNING` clause
 
 ### Methods
 
@@ -2747,8 +2572,8 @@ Adds the `RETURNING` clause
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -2784,6 +2609,7 @@ public function returning( array $columns ): Delete;
 
 Adds the `RETURNING` clause
 
+
 ## DataMapper\Query\Insert
 
 Class
@@ -2793,38 +2619,29 @@ Insert Query
 @property datamapper_write_store $store
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- **`Phalcon\DataMapper\Query\Insert`**
+  - **`Phalcon\DataMapper\Query\Insert`**
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
-<ApiItem href="#datamapperqueryinsert-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Connection","name":"connection","default":null},{"type":"Bind","name":"bind","default":null}]}>
-Insert constructor.
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-column" visibility="public" name="column" returnType="Insert" params={[{"type":"string","name":"column","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a column for the `INSERT` query
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-columns" visibility="public" name="columns" returnType="Insert" params={[{"type":"array","name":"columns","default":null}]}>
-Mass sets columns and values for the `INSERT`
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-getlastinsertid" visibility="public" name="getLastInsertId" returnType="string" params={[{"type":"string|null","name":"name","default":"null"}]}>
-Returns the id of the last inserted record
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-getstatement" visibility="public" name="getStatement" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-into" visibility="public" name="into" returnType="Insert" params={[{"type":"string","name":"table","default":null}]}>
-Adds table(s) in the query
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal store
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-returning" visibility="public" name="returning" returnType="Insert" params={[{"type":"array","name":"columns","default":null}]}>
-Adds the `RETURNING` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryinsert-set" visibility="public" name="set" returnType="Insert" params={[{"type":"string","name":"column","default":null},{"type":"mixed","name":"value","default":"null"}]}>
-Sets a column = value condition
-</ApiItem>
+- `public __construct(Connection $connection, Bind $bind)` — Insert constructor.
+
+- `public column(string $column, mixed $value = null, int $type = -1): Insert` — Sets a column for the `INSERT` query
+
+- `public columns(array $columns): Insert` — Mass sets columns and values for the `INSERT`
+
+- `public getLastInsertId(string|null $name = null): string` — Returns the id of the last inserted record
+
+- `public getStatement(): string`
+
+- `public into(string $table): Insert` — Adds table(s) in the query
+
+- `public reset(): void` — Resets the internal store
+
+- `public returning(array $columns): Insert` — Adds the `RETURNING` clause
+
+- `public set(string $column, mixed $value = null): Insert` — Sets a column = value condition
 
 ### Methods
 
@@ -2832,8 +2649,8 @@ Sets a column = value condition
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -2843,9 +2660,9 @@ Insert constructor.
 
 ```php
 public function column(
-string $column,
-mixed $value = null,
-int $type = -1
+    string $column,
+    mixed $value = null,
+    int $type = -1
 ): Insert;
 ```
 
@@ -2901,12 +2718,13 @@ Adds the `RETURNING` clause
 
 ```php
 public function set(
-string $column,
-mixed $value = null
+    string $column,
+    mixed $value = null
 ): Insert;
 ```
 
 Sets a column = value condition
+
 
 ## DataMapper\Query\QueryFactory
 
@@ -2920,29 +2738,21 @@ QueryFactory
 
 ### Method Summary
 
-<ApiItem href="#datamapperqueryqueryfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"selectClass","default":"\"\""}]}>
-QueryFactory constructor.
-</ApiItem>
-<ApiItem href="#datamapperqueryqueryfactory-newbind" visibility="public" name="newBind" returnType="Bind" params={[]}>
-Create a new Bind object
-</ApiItem>
-<ApiItem href="#datamapperqueryqueryfactory-newdelete" visibility="public" name="newDelete" returnType="Delete" params={[{"type":"Connection","name":"connection","default":null}]}>
-Create a new Delete object
-</ApiItem>
-<ApiItem href="#datamapperqueryqueryfactory-newinsert" visibility="public" name="newInsert" returnType="Insert" params={[{"type":"Connection","name":"connection","default":null}]}>
-Create a new Insert object
-</ApiItem>
-<ApiItem href="#datamapperqueryqueryfactory-newselect" visibility="public" name="newSelect" returnType="Select" params={[{"type":"Connection","name":"connection","default":null}]}>
-Create a new Select object
-</ApiItem>
-<ApiItem href="#datamapperqueryqueryfactory-newupdate" visibility="public" name="newUpdate" returnType="Update" params={[{"type":"Connection","name":"connection","default":null}]}>
-Create a new Update object
-</ApiItem>
+- `public __construct(string $selectClass = "")` — QueryFactory constructor.
+
+- `public newBind(): Bind` — Create a new Bind object
+
+- `public newDelete(Connection $connection): Delete` — Create a new Delete object
+
+- `public newInsert(Connection $connection): Insert` — Create a new Insert object
+
+- `public newSelect(Connection $connection): Select` — Create a new Select object
+
+- `public newUpdate(Connection $connection): Update` — Create a new Update object
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="selectClass" type="string" default="&quot;&quot;">
-</ApiItem>
+- `protected string $selectClass = ""`
 
 ### Methods
 
@@ -2994,6 +2804,7 @@ public function newUpdate( Connection $connection ): Update;
 
 Create a new Update object
 
+
 ## DataMapper\Query\Select
 
 Class
@@ -3003,90 +2814,68 @@ Select Query
 @property datamapper_select_store $store
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- **`Phalcon\DataMapper\Query\Select`**
+  - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+    - **`Phalcon\DataMapper\Query\Select`**
 
 `BadMethodCallException` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod`
 
 ### Method Summary
 
-<ApiItem href="#datamapperqueryselect-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"method","default":null},{"type":"array","name":"params","default":null}]}>
-Proxied methods to the connection
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-andhaving" visibility="public" name="andHaving" returnType="Select" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a `AND` for a `HAVING` condition
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-appendhaving" visibility="public" name="appendHaving" returnType="Select" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Concatenates to the most recent `HAVING` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-appendjoin" visibility="public" name="appendJoin" returnType="Select" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Concatenates to the most recent `JOIN` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-asalias" visibility="public" name="asAlias" returnType="Select" params={[{"type":"string","name":"asAlias","default":null}]}>
-The `AS` statement for the query - useful in sub-queries
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-columns" visibility="public" name="columns" returnType="Select" params={[{"type":"array","name":"columns","default":null}]}>
-The columns to select from. If a key is set in the array element, the
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-distinct" visibility="public" name="distinct" returnType="Select" params={[{"type":"bool","name":"enable","default":"true"}]}>
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-forupdate" visibility="public" name="forUpdate" returnType="Select" params={[{"type":"bool","name":"enable","default":"true"}]}>
-Enable the `FOR UPDATE` for the query
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-from" visibility="public" name="from" returnType="Select" params={[{"type":"string","name":"table","default":null}]}>
-Adds table(s) in the query
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-getstatement" visibility="public" name="getStatement" returnType="string" params={[]}>
-Returns the compiled SQL statement
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-groupby" visibility="public" name="groupBy" returnType="Select" params={[{"type":"mixed","name":"groupBy","default":null}]}>
-Sets the `GROUP BY`
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-hascolumns" visibility="public" name="hasColumns" returnType="bool" params={[]}>
-Whether the query has columns or not
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-having" visibility="public" name="having" returnType="Select" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a `HAVING` condition
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-join" visibility="public" name="join" returnType="Select" params={[{"type":"string","name":"join","default":null},{"type":"string","name":"table","default":null},{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a 'JOIN' condition
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-orhaving" visibility="public" name="orHaving" returnType="Select" params={[{"type":"string","name":"condition","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a `OR` for a `HAVING` condition
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal collections
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-subselect" visibility="public" name="subSelect" returnType="Select" params={[]}>
-Start a sub-select
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-union" visibility="public" name="union" returnType="Select" params={[]}>
-Start a `UNION`
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-unionall" visibility="public" name="unionAll" returnType="Select" params={[]}>
-Start a `UNION ALL`
-</ApiItem>
-<ApiItem href="#datamapperqueryselect-getcurrentstatement" visibility="protected" name="getCurrentStatement" returnType="string" params={[{"type":"string","name":"suffix","default":"\"\""}]}>
-Statement builder
-</ApiItem>
+- `public __call(string $method, array $params)` — Proxied methods to the connection
+
+- `public andHaving(string $condition, mixed $value = null, int $type = -1): Select` — Sets a `AND` for a `HAVING` condition
+
+- `public appendHaving(string $condition, mixed $value = null, int $type = -1): Select` — Concatenates to the most recent `HAVING` clause
+
+- `public appendJoin(string $condition, mixed $value = null, int $type = -1): Select` — Concatenates to the most recent `JOIN` clause
+
+- `public asAlias(string $asAlias): Select` — The `AS` statement for the query - useful in sub-queries
+
+- `public columns(array $columns): Select` — The columns to select from. If a key is set in the array element, the
+
+- `public distinct(bool $enable = true): Select`
+
+- `public forUpdate(bool $enable = true): Select` — Enable the `FOR UPDATE` for the query
+
+- `public from(string $table): Select` — Adds table(s) in the query
+
+- `public getStatement(): string` — Returns the compiled SQL statement
+
+- `public groupBy(mixed $groupBy): Select` — Sets the `GROUP BY`
+
+- `public hasColumns(): bool` — Whether the query has columns or not
+
+- `public having(string $condition, mixed $value = null, int $type = -1): Select` — Sets a `HAVING` condition
+
+- `public join(string $join, string $table, string $condition, mixed $value = null, int $type = -1): Select` — Sets a 'JOIN' condition
+
+- `public orHaving(string $condition, mixed $value = null, int $type = -1): Select` — Sets a `OR` for a `HAVING` condition
+
+- `public reset(): void` — Resets the internal collections
+
+- `public subSelect(): Select` — Start a sub-select
+
+- `public union(): Select` — Start a `UNION`
+
+- `public unionAll(): Select` — Start a `UNION ALL`
+
+- `protected getCurrentStatement(string $suffix = ""): string` — Statement builder
 
 ### Constants
 
-<ApiItem kind="constant" name="JOIN_INNER" type="string" default="&quot;INNER&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="JOIN_LEFT" type="string" default="&quot;LEFT&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="JOIN_NATURAL" type="string" default="&quot;NATURAL&quot;">
-</ApiItem>
-<ApiItem kind="constant" name="JOIN_RIGHT" type="string" default="&quot;RIGHT&quot;">
-</ApiItem>
+- `const string JOIN_INNER = "INNER"`
+
+- `const string JOIN_LEFT = "LEFT"`
+
+- `const string JOIN_NATURAL = "NATURAL"`
+
+- `const string JOIN_RIGHT = "RIGHT"`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="asAlias" type="string" default="&quot;&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="forUpdate" type="bool" default="false">
-</ApiItem>
+- `protected string $asAlias = ""`
+
+- `protected bool $forUpdate = false`
 
 ### Methods
 
@@ -3094,8 +2883,8 @@ Statement builder
 
 ```php
 public function __call(
-string $method,
-array $params
+    string $method,
+    array $params
 );
 ```
 
@@ -3105,9 +2894,9 @@ Proxied methods to the connection
 
 ```php
 public function andHaving(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3117,9 +2906,9 @@ Sets a `AND` for a `HAVING` condition
 
 ```php
 public function appendHaving(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3129,9 +2918,9 @@ Concatenates to the most recent `HAVING` clause
 
 ```php
 public function appendJoin(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3204,9 +2993,9 @@ Whether the query has columns or not
 
 ```php
 public function having(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3216,11 +3005,11 @@ Sets a `HAVING` condition
 
 ```php
 public function join(
-string $join,
-string $table,
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $join,
+    string $table,
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3230,9 +3019,9 @@ Sets a 'JOIN' condition
 
 ```php
 public function orHaving(
-string $condition,
-mixed $value = null,
-int $type = -1
+    string $condition,
+    mixed $value = null,
+    int $type = -1
 ): Select;
 ```
 
@@ -3278,6 +3067,7 @@ protected function getCurrentStatement( string $suffix = "" ): string;
 
 Statement builder
 
+
 ## DataMapper\Query\Update
 
 Class
@@ -3287,39 +3077,30 @@ Update Query
 @property datamapper_write_store $store
 
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
-- [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
-- **`Phalcon\DataMapper\Query\Update`**
+  - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
+    - **`Phalcon\DataMapper\Query\Update`**
 
 `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
 
 ### Method Summary
 
-<ApiItem href="#datamapperqueryupdate-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Connection","name":"connection","default":null},{"type":"Bind","name":"bind","default":null}]}>
-Update constructor.
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-column" visibility="public" name="column" returnType="Update" params={[{"type":"string","name":"column","default":null},{"type":"mixed","name":"value","default":"null"},{"type":"int","name":"type","default":"-1"}]}>
-Sets a column for the `UPDATE` query
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-columns" visibility="public" name="columns" returnType="Update" params={[{"type":"array","name":"columns","default":null}]}>
-Mass sets columns and values for the `UPDATE`
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-from" visibility="public" name="from" returnType="Update" params={[{"type":"string","name":"table","default":null}]}>
-Adds table(s) in the query
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-getstatement" visibility="public" name="getStatement" returnType="string" params={[]}>
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-hascolumns" visibility="public" name="hasColumns" returnType="bool" params={[]}>
-Whether the query has columns or not
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-reset" visibility="public" name="reset" returnType="void" params={[]}>
-Resets the internal store
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-returning" visibility="public" name="returning" returnType="Update" params={[{"type":"array","name":"columns","default":null}]}>
-Adds the `RETURNING` clause
-</ApiItem>
-<ApiItem href="#datamapperqueryupdate-set" visibility="public" name="set" returnType="Update" params={[{"type":"string","name":"column","default":null},{"type":"mixed","name":"value","default":"null"}]}>
-Sets a column = value condition
-</ApiItem>
+- `public __construct(Connection $connection, Bind $bind)` — Update constructor.
+
+- `public column(string $column, mixed $value = null, int $type = -1): Update` — Sets a column for the `UPDATE` query
+
+- `public columns(array $columns): Update` — Mass sets columns and values for the `UPDATE`
+
+- `public from(string $table): Update` — Adds table(s) in the query
+
+- `public getStatement(): string`
+
+- `public hasColumns(): bool` — Whether the query has columns or not
+
+- `public reset(): void` — Resets the internal store
+
+- `public returning(array $columns): Update` — Adds the `RETURNING` clause
+
+- `public set(string $column, mixed $value = null): Update` — Sets a column = value condition
 
 ### Methods
 
@@ -3327,8 +3108,8 @@ Sets a column = value condition
 
 ```php
 public function __construct(
-Connection $connection,
-Bind $bind
+    Connection $connection,
+    Bind $bind
 );
 ```
 
@@ -3338,9 +3119,9 @@ Update constructor.
 
 ```php
 public function column(
-string $column,
-mixed $value = null,
-int $type = -1
+    string $column,
+    mixed $value = null,
+    int $type = -1
 ): Update;
 ```
 
@@ -3396,8 +3177,8 @@ Adds the `RETURNING` clause
 
 ```php
 public function set(
-string $column,
-mixed $value = null
+    string $column,
+    mixed $value = null
 ): Update;
 ```
 

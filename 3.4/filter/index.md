@@ -17,6 +17,7 @@ Sanitizing user input is a critical part of software development. Trusting or ne
 
 The [Phalcon\Filter](/3.4/api/phalcon_filter/) component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
 
+
 ## Types of Built-in Filters
 The following are the built-in filters provided by this component:
 
@@ -55,6 +56,7 @@ const FILTER_TRIM       = "trim";
 const FILTER_UPPER      = "upper";
 ```
 
+
 ## Sanitizing data
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
 
@@ -78,6 +80,7 @@ $filter->sanitize('!100a019', 'int');
 $filter->sanitize('!100a019.01a', 'float');
 ```
 
+
 ## Sanitizing from Controllers
 You can access a [Phalcon\Filter](/3.4/api/phalcon_filter/) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
@@ -88,21 +91,22 @@ use Phalcon\Mvc\Controller;
 
 class ProductsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function saveAction()
-{
-    // Sanitizing price from input
-    $price = $this->request->getPost('price', 'double');
+    public function saveAction()
+    {
+        // Sanitizing price from input
+        $price = $this->request->getPost('price', 'double');
 
-    // Sanitizing email from input
-    $email = $this->request->getPost('customerEmail', 'email');
-}
+        // Sanitizing email from input
+        $email = $this->request->getPost('customerEmail', 'email');
+    }
 }
 ```
+
 
 ## Filtering Action Parameters
 The next example shows you how to sanitize the action parameters within a controller action:
@@ -114,17 +118,18 @@ use Phalcon\Mvc\Controller;
 
 class ProductsController extends Controller
 {
-public function indexAction()
-{
+    public function indexAction()
+    {
 
-}
+    }
 
-public function showAction($productId)
-{
-    $productId = $this->filter->sanitize($productId, 'int');
-}
+    public function showAction($productId)
+    {
+        $productId = $this->filter->sanitize($productId, 'int');
+    }
 }
 ```
+
 
 ## Filtering data
 In addition to sanitizing, [Phalcon\Filter](/3.4/api/phalcon_filter/) also provides filtering by removing or modifying input data to the format we expect.
@@ -143,6 +148,7 @@ $filter->sanitize('<h1>Hello</h1>', 'striptags');
 $filter->sanitize('  Hello   ', 'trim');
 ```
 
+
 ## Combining Filters
 You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
@@ -155,13 +161,14 @@ $filter = new Filter();
 
 // Returns 'Hello'
 $filter->sanitize(
-'   <h1> Hello </h1>   ',
-[
-    'striptags',
-    'trim',
-]
+    '   <h1> Hello </h1>   ',
+    [
+        'striptags',
+        'trim',
+    ]
 );
 ```
+
 
 ## Adding filters
 You can add your own filters to [Phalcon\Filter](/3.4/api/phalcon_filter/). The filter function could be an anonymous function:
@@ -175,10 +182,10 @@ $filter = new Filter();
 
 // Using an anonymous function
 $filter->add(
-'md5',
-function ($value) {
-    return preg_replace('/[^0-9a-f]/', '', $value);
-}
+    'md5',
+    function ($value) {
+        return preg_replace('/[^0-9a-f]/', '', $value);
+    }
 );
 
 // Sanitize with the 'md5' filter
@@ -194,26 +201,28 @@ use Phalcon\Filter;
 
 class IPv4Filter
 {
-public function filter($value)
-{
-    return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
-}
+    public function filter($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+    }
 }
 
 $filter = new Filter();
 
 // Using an object
 $filter->add(
-'ipv4',
-new IPv4Filter()
+    'ipv4',
+    new IPv4Filter()
 );
 
 // Sanitize with the 'ipv4' filter
 $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 ```
 
+
 ## Complex Sanitizing and Filtering
 PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
+
 
 ## Implementing your own Filter
 The [Phalcon\FilterInterface](/3.4/api/phalcon_filter/) interface must be implemented to create your own filtering service replacing the one provided by Phalcon.

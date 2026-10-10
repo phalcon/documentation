@@ -23,13 +23,14 @@ This component allows to create CLI applications using Phalcon
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- [`Phalcon\Application\AbstractApplication`](/5.19/api/phalcon_application/#applicationabstractapplication)
-- **`Phalcon\Cli\Console`**
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - [`Phalcon\Application\AbstractApplication`](/5.19/api/phalcon_application/#applicationabstractapplication)
+            - **`Phalcon\Cli\Console`**
 
 </div>
 
 __Uses__ `Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`
+
 
 ### Method Summary
 
@@ -78,13 +79,14 @@ Handle the whole command-line tasks
 
 ```php
 public function setArgument(
-array|null $arguments = null,
-bool $str = true,
-bool $shift = true
+    array|null $arguments = null,
+    bool $str = true,
+    bool $shift = true
 ): static;
 ```
 
 Set a specific argument
+
 
 ## Cli\Console\Exception
 
@@ -96,13 +98,14 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- **`Phalcon\Cli\Console\Exception`**
-- [`Phalcon\Cli\Console\Exceptions\ContainerRequired`](#cliconsoleexceptionscontainerrequired)
-- [`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`](#cliconsoleexceptionsinvalidmoduledefinition)
-- [`Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`](#cliconsoleexceptionsmoduledefinitionpathnotfound)
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - **`Phalcon\Cli\Console\Exception`**
+            - [`Phalcon\Cli\Console\Exceptions\ContainerRequired`](#cliconsoleexceptionscontainerrequired)
+            - [`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`](#cliconsoleexceptionsinvalidmoduledefinition)
+            - [`Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`](#cliconsoleexceptionsmoduledefinitionpathnotfound)
 
 </div>
+
 
 ## Cli\Console\Exceptions\ContainerRequired
 
@@ -112,13 +115,14 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
-- **`Phalcon\Cli\Console\Exceptions\ContainerRequired`**
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
+            - **`Phalcon\Cli\Console\Exceptions\ContainerRequired`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Console\Exception`
+
 
 ### Method Summary
 
@@ -139,6 +143,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 public function __construct();
 ```
 
+
 ## Cli\Console\Exceptions\InvalidModuleDefinition
 
 <span class="badge badge--class">Class</span>
@@ -147,13 +152,14 @@ public function __construct();
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
-- **`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`**
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
+            - **`Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Console\Exception`
+
 
 ### Method Summary
 
@@ -172,10 +178,11 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 
 ```php
 public function __construct(
-string|null $name = null,
-string|null $reason = null
+    string|null $name = null,
+    string|null $reason = null
 );
 ```
+
 
 ## Cli\Console\Exceptions\ModuleDefinitionPathNotFound
 
@@ -185,13 +192,14 @@ string|null $reason = null
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
-- [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
-- **`Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`**
+    - [`Phalcon\Application\Exception`](/5.19/api/phalcon_application/#applicationexception)
+        - [`Phalcon\Cli\Console\Exception`](#cliconsoleexception)
+            - **`Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Console\Exception`
+
 
 ### Method Summary
 
@@ -211,6 +219,7 @@ __Uses__ `Phalcon\Cli\Console\Exception`
 ```php
 public function __construct( string $path );
 ```
+
 
 ## Cli\Dispatcher
 
@@ -241,13 +250,14 @@ $handle = $dispatcher->dispatch();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- [`Phalcon\Dispatcher\AbstractDispatcher`](/5.19/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
-- **`Phalcon\Cli\Dispatcher`** - implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - [`Phalcon\Dispatcher\AbstractDispatcher`](/5.19/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
+            - **`Phalcon\Cli\Dispatcher`** - implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Events\ManagerInterface` · `Phalcon\Filter\FilterInterface`
+
 
 ### Method Summary
 
@@ -369,9 +379,9 @@ __Uses__ `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` 
 
 ```php
 public function callActionMethod(
-mixed $handler,
-string $actionMethod,
-array $params = []
+    mixed $handler,
+    string $actionMethod,
+    array $params = []
 ): mixed;
 ```
 
@@ -401,9 +411,9 @@ Returns the latest dispatched controller
 
 ```php
 public function getOption(
-mixed $option,
-mixed $filters = null,
-mixed $defaultValue = null
+    mixed $option,
+    mixed $filters = null,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -487,12 +497,13 @@ Handles a user exception
 
 ```php
 protected function throwDispatchException(
-string $message,
-int $exceptionCode = 0
+    string $message,
+    int $exceptionCode = 0
 );
 ```
 
 Throws an internal exception
+
 
 ## Cli\DispatcherInterface
 
@@ -504,12 +515,14 @@ Interface for Phalcon\Cli\Dispatcher
 <div class="api-tree">
 
 - [`Phalcon\Contracts\Dispatcher\Dispatcher`](/5.19/api/phalcon_contracts/#contractsdispatcherdispatcher)
-- [`Phalcon\Contracts\Cli\Dispatcher`](/5.19/api/phalcon_contracts/#contractsclidispatcher)
-- **`Phalcon\Cli\DispatcherInterface`**
+    - [`Phalcon\Contracts\Cli\Dispatcher`](/5.19/api/phalcon_contracts/#contractsclidispatcher)
+        - **`Phalcon\Cli\DispatcherInterface`**
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Cli\Dispatcher`
+
+
 
 ## Cli\Dispatcher\Exception
 
@@ -521,10 +534,11 @@ Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Dispatcher\Exception`](/5.19/api/phalcon_dispatcher/#dispatcherexception)
-- **`Phalcon\Cli\Dispatcher\Exception`**
+    - [`Phalcon\Dispatcher\Exception`](/5.19/api/phalcon_dispatcher/#dispatcherexception)
+        - **`Phalcon\Cli\Dispatcher\Exception`**
 
 </div>
+
 
 ## Cli\Router
 
@@ -540,11 +554,11 @@ request.
 $router = new \Phalcon\Cli\Router();
 
 $router->handle(
-[
-    "module" => "main",
-    "task"   => "videos",
-    "action" => "process",
-]
+    [
+        "module" => "main",
+        "task"   => "videos",
+        "action" => "process",
+    ]
 );
 
 echo $router->getTaskName();
@@ -553,12 +567,13 @@ echo $router->getTaskName();
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Cli\Router`** - implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.19/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Cli\Router`** - implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
 
 </div>
 
 __Uses__ `Phalcon\Cli\Router\Exception` · `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface`
+
 
 ### Method Summary
 
@@ -752,8 +767,8 @@ Phalcon\Cli\Router constructor
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -887,10 +902,10 @@ route
 
 ```php
 $router->setDefaults(
-[
-    "module" => "common",
-    "action" => "index",
-]
+    [
+        "module" => "common",
+        "action" => "index",
+    ]
 );
 ```
 
@@ -901,6 +916,7 @@ public function wasMatched(): bool;
 ```
 
 Checks if the router matches any of the defined routes
+
 
 ## Cli\RouterInterface
 
@@ -916,6 +932,7 @@ Interface for Phalcon\Cli\Router
 </div>
 
 __Uses__ `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes`
+
 
 ### Method Summary
 
@@ -1031,8 +1048,8 @@ __Uses__ `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes`
 
 ```php
 public function add(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): RouteInterface;
 ```
 
@@ -1174,6 +1191,7 @@ public function wasMatched(): bool;
 
 Check if the router matches any of the defined routes
 
+
 ## Cli\Router\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1184,12 +1202,13 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Cli\Router\Exception`**
-- [`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable`](#clirouterexceptionsbeforematchnotcallable)
-- [`Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`](#clirouterexceptionsinvalidroutepaths)
-- [`Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`](#clirouterexceptionsrouterargumentsinvalidtype)
+    - **`Phalcon\Cli\Router\Exception`**
+        - [`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable`](#clirouterexceptionsbeforematchnotcallable)
+        - [`Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`](#clirouterexceptionsinvalidroutepaths)
+        - [`Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`](#clirouterexceptionsrouterargumentsinvalidtype)
 
 </div>
+
 
 ## Cli\Router\Exceptions\BeforeMatchNotCallable
 
@@ -1199,12 +1218,13 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Cli\Router\Exception`](#clirouterexception)
-- **`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable`**
+    - [`Phalcon\Cli\Router\Exception`](#clirouterexception)
+        - **`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Router\Exception`
+
 
 ### Method Summary
 
@@ -1225,6 +1245,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 public function __construct( string $route = "" );
 ```
 
+
 ## Cli\Router\Exceptions\InvalidRoutePaths
 
 <span class="badge badge--class">Class</span>
@@ -1233,12 +1254,13 @@ public function __construct( string $route = "" );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Cli\Router\Exception`](#clirouterexception)
-- **`Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`**
+    - [`Phalcon\Cli\Router\Exception`](#clirouterexception)
+        - **`Phalcon\Cli\Router\Exceptions\InvalidRoutePaths`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Router\Exception`
+
 
 ### Method Summary
 
@@ -1259,6 +1281,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 public function __construct( string $route = "" );
 ```
 
+
 ## Cli\Router\Exceptions\RouterArgumentsInvalidType
 
 <span class="badge badge--class">Class</span>
@@ -1267,12 +1290,13 @@ public function __construct( string $route = "" );
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Cli\Router\Exception`](#clirouterexception)
-- **`Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`**
+    - [`Phalcon\Cli\Router\Exception`](#clirouterexception)
+        - **`Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType`**
 
 </div>
 
 __Uses__ `Phalcon\Cli\Router\Exception`
+
 
 ### Method Summary
 
@@ -1293,6 +1317,7 @@ __Uses__ `Phalcon\Cli\Router\Exception`
 public function __construct( string $type = "" );
 ```
 
+
 ## Cli\Router\Route
 
 <span class="badge badge--class">Class</span>
@@ -1307,6 +1332,7 @@ This class represents every route added to the router
 </div>
 
 __Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\InvalidRoutePaths` · `Phalcon\Contracts\Cli\CliTypes`
+
 
 ### Method Summary
 
@@ -1509,8 +1535,8 @@ __Uses__ `Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\
 
 ```php
 public function __construct(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 );
 ```
 
@@ -1539,8 +1565,8 @@ expression
 
 ```php
 public function convert(
-string $name,
-mixed $converter
+    string $name,
+    mixed $converter
 ): RouteInterface;
 ```
 
@@ -1653,8 +1679,8 @@ Returns the route's id
 
 ```php
 public function reConfigure(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): void;
 ```
 
@@ -1690,12 +1716,13 @@ Sets the route's name
 
 ```php
 $router->add(
-"/about",
-[
-    "controller" => "about",
-]
+    "/about",
+    [
+        "controller" => "about",
+    ]
 )->setName("about");
 ```
+
 
 ## Cli\Router\RouteInterface
 
@@ -1718,6 +1745,7 @@ declared on the concrete `Route` class, not here.
 </div>
 
 __Uses__ `Phalcon\Contracts\Cli\CliTypes`
+
 
 ### Method Summary
 
@@ -1896,8 +1924,8 @@ Returns the route's id
 
 ```php
 public function reConfigure(
-string $pattern,
-mixed $paths = null
+    string $pattern,
+    mixed $paths = null
 ): void;
 ```
 
@@ -1927,6 +1955,7 @@ public function setName( string $name ): RouteInterface;
 
 Sets the route's name
 
+
 ## Cli\Task
 
 <span class="badge badge--class">Class</span>
@@ -1942,16 +1971,16 @@ method.
 ```php
 class HelloTask extends \Phalcon\Cli\Task
 {
-// This action will be executed by default
-public function mainAction()
-{
+    // This action will be executed by default
+    public function mainAction()
+    {
 
-}
+    }
 
-public function findAction()
-{
+    public function findAction()
+    {
 
-}
+    }
 }
 ```
 
@@ -1962,13 +1991,14 @@ arguments). Declare optional trailing parameters to read those options.
 <div class="api-tree">
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
-- **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
-- [`Phalcon\Queue\Cli\ConsumerTask`](/5.19/api/phalcon_queue/#queuecliconsumertask)
+    - [`Phalcon\Di\Injectable`](/5.19/api/phalcon_di/#diinjectable)
+        - **`Phalcon\Cli\Task`** - implements [`Phalcon\Cli\TaskInterface`](#clitaskinterface), [`Phalcon\Events\EventsAwareInterface`](/5.19/api/phalcon_events/#eventseventsawareinterface)
+            - [`Phalcon\Queue\Cli\ConsumerTask`](/5.19/api/phalcon_queue/#queuecliconsumertask)
 
 </div>
 
 __Uses__ `Phalcon\Di\Injectable` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait`
+
 
 ### Method Summary
 
@@ -1991,6 +2021,7 @@ final public function __construct();
 ```
 
 Phalcon\Cli\Task constructor
+
 
 ## Cli\TaskInterface
 

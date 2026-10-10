@@ -71,21 +71,21 @@ use Phalcon\Logger\LoggerFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $config = [
-"name"    => "prod-logger",
-"options" => [
-    "adapters" => [
-        "main"  => [
-            "adapter" => "stream",
-            "name"    => "/storage/logs/main.log",
-            "options" => []
-        ],
-        "admin" => [
-            "adapter" => "stream",
-            "name"    => "/storage/logs/admin.log",
-            "options" => []
+    "name"    => "prod-logger",
+    "options" => [
+        "adapters" => [
+            "main"  => [
+                "adapter" => "stream",
+                "name"    => "/storage/logs/main.log",
+                "options" => []
+            ],
+            "admin" => [
+                "adapter" => "stream",
+                "name"    => "/storage/logs/admin.log",
+                "options" => []
+            ],
         ],
     ],
-],
 ];
 
 $serializerFactory = new SerializerFactory();
@@ -108,8 +108,8 @@ use Phalcon\Logger\LoggerFactory;
 use Phalcon\Storage\SerializerFactory;
 
 $adapters = [
-"main"  => new Stream("/storage/logs/main.log"),
-"admin" => new Stream("/storage/logs/admin.log"),
+    "main"  => new Stream("/storage/logs/main.log"),
+    "admin" => new Stream("/storage/logs/admin.log"),
 ];
 
 $serializerFactory = new SerializerFactory();
@@ -131,10 +131,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -152,10 +152,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->alert("This is an alert message");
@@ -199,12 +199,12 @@ $adapter2 = new Stream('/remote/second-log.log');
 $adapter3 = new Stream('/manager/third-log.log');
 
 $logger = new Logger(
-'messages',
-[
-    'local'   => $adapter1,
-    'remote'  => $adapter2,
-    'manager' => $adapter3,
-]
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -229,12 +229,12 @@ $adapter2 = new Stream('/remote/second-log.log');
 $adapter3 = new Stream('/manager/third-log.log');
 
 $logger = new Logger(
-'messages',
-[
-    'local'   => $adapter1,
-    'remote'  => $adapter2,
-    'manager' => $adapter3,
-]
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
 );
 ```
 
@@ -252,8 +252,8 @@ Log to all adapters
 <?php
 
 $logger
-->excludeAdapters(['local'])
-->info('This does not go to the "local" logger');
+    ->excludeAdapters(['local'])
+    ->info('This does not go to the "local" logger');
 ```
 
 Log only to remote and manager
@@ -297,10 +297,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->setLogLevel(Logger::ALERT);
@@ -352,10 +352,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 // "warnning" is a typo and is not a known level; it is logged as CUSTOM
@@ -386,10 +386,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 // Suppressed: the default minimum level is CUSTOM (8), TRACE (9) is higher
@@ -432,12 +432,12 @@ $adapter2 = new Stream('/remote/second-log.log');
 $adapter3 = new Stream('/manager/third-log.log');
 
 $logger = new Logger(
-'messages',
-[
-    'local'   => $adapter1,
-    'remote'  => $adapter2,
-    'manager' => $adapter3,
-]
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
 );
 
 $logger->getAdapter('manager')->begin();
@@ -479,11 +479,11 @@ $adapter1 = new Stream('/logs/first-log.log');
 $adapter2 = new Stream('/remote/second-log.log');
 
 $logger = new Logger(
-'messages',
-[
-    'local'  => $adapter1,
-    'remote' => $adapter2,
-]
+    'messages',
+    [
+        'local'  => $adapter1,
+        'remote' => $adapter2,
+    ]
 );
 
 $logger->begin();
@@ -516,7 +516,7 @@ $logger = new Logger('messages', ['file' => $adapter]);
 $adapter->begin();
 
 for ($i = 0; $i < 5000; $i++) {
-$logger->info('record ' . $i);
+    $logger->info('record ' . $i);
 }
 
 $adapter->commit();
@@ -568,10 +568,10 @@ $adapter   = new Stream('/storage/logs/main.log');
 $adapter->setFormatter($formatter);
 
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -600,10 +600,10 @@ $adapter = new Stream('/storage/logs/main.log');
 $adapter->setFormatter($formatter);
 
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -634,10 +634,10 @@ $adapter = new Stream('/storage/logs/main.log');
 $adapter->setFormatter($formatter);
 
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong'); 
@@ -655,9 +655,9 @@ Formats the messages returning a JSON string:
 
 ```json
 {
-"level"     : "Level of the message",
-"message"   : "The message",
-"timestamp" : "The date as defined in the date format"
+    "level"     : "Level of the message",
+    "message"   : "The message",
+    "timestamp" : "The date as defined in the date format"
 }
 ```
 
@@ -695,10 +695,10 @@ $adapter = new Stream('/storage/logs/main.log');
 $adapter->setFormatter($formatter);
 
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -708,9 +708,9 @@ which produces:
 
 ```json
 {
-"level"     : "error",
-"message"   : "Something went wrong",
-"timestamp" : "20181225-121314"
+    "level"     : "error",
+    "message"   : "Something went wrong",
+    "timestamp" : "20181225-121314"
 }
 ```
 
@@ -732,16 +732,16 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $message = '%framework% executed the "Hello World" test in %secs% second(s)';
 $context = [
-'framework' => 'Phalcon',
-'secs'      => 1,
+    'framework' => 'Phalcon',
+    'secs'      => 1,
 ];
 
 $logger->info($message, $context);
@@ -773,10 +773,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('/storage/logs/main.log');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 // Log to all adapters
@@ -793,10 +793,10 @@ use Phalcon\Logger\Adapter\Stream;
 
 $adapter = new Stream('php://stderr');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -812,18 +812,18 @@ use Phalcon\Logger\Adapter\Syslog;
 
 // Setting identity/mode/facility
 $adapter = new Syslog(
-'ident-name',
-[
-    'option'   => LOG_NDELAY,
-    'facility' => LOG_MAIL,
-]
+    'ident-name',
+    [
+        'option'   => LOG_NDELAY,
+        'facility' => LOG_MAIL,
+    ]
 );
 
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -839,10 +839,10 @@ use Phalcon\Logger\Adapter\Noop;
 
 $adapter = new Noop('nothing');
 $logger  = new Logger(
-'messages',
-[
-    'main' => $adapter,
-]
+    'messages',
+    [
+        'main' => $adapter,
+    ]
 );
 
 $logger->error('Something went wrong');
@@ -874,18 +874,18 @@ use Phalcon\Logger\Adapter\Stream;
 $container = new Di();
 
 $container->set(
-'logger',
-function () {
-    $adapter = new Stream('/storage/logs/main.log');
-    $logger  = new Logger(
-        'messages',
-        [
-            'main' => $adapter,
-        ]
-    );
+    'logger',
+    function () {
+        $adapter = new Stream('/storage/logs/main.log');
+        $logger  = new Logger(
+            'messages',
+            [
+                'main' => $adapter,
+            ]
+        );
 
-    return $logger;
-}
+        return $logger;
+    }
 );
 
 // accessing it later:
@@ -920,10 +920,10 @@ use Phalcon\Bridge\Psr3\Logger;
 use Phalcon\Logger\Adapter\Stream;
 
 $logger = new Logger(
-'application',
-[
-    'main' => new Stream('/storage/logs/application.log'),
-]
+    'application',
+    [
+        'main' => new Stream('/storage/logs/application.log'),
+    ]
 );
 
 // $logger is a Psr\Log\LoggerInterface
@@ -947,10 +947,10 @@ use Phalcon\Logger\Logger;
 $psr = new Monolog('application');
 
 $logger = new Logger(
-'application',
-[
-    'psr' => new Adapter($psr),
-]
+    'application',
+    [
+        'psr' => new Adapter($psr),
+    ]
 );
 
 // The message is forwarded to the PSR-3 logger
@@ -983,17 +983,17 @@ use Phalcon\Logger\Adapter\Stream;
 use Phalcon\Logger\Exception;
 
 try {
-$adapter = new Stream('/storage/logs/main.log');
-$logger  = new Logger(
-    'messages',
-    [
-        'main' => $adapter,
-    ]
-);
+    $adapter = new Stream('/storage/logs/main.log');
+    $logger  = new Logger(
+        'messages',
+        [
+            'main' => $adapter,
+        ]
+    );
 
-$logger->error('Something went wrong');
+    $logger->error('Something went wrong');
 } catch (Exception $ex) {
-echo $ex->getMessage();
+    echo $ex->getMessage();
 }
 ```
 

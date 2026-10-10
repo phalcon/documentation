@@ -13,6 +13,7 @@ version: "5.21"
 All classes are prefixed with `Phalcon`
 :::
 
+
 ## Forms\Element\AbstractElement
 
 Abstract
@@ -20,155 +21,118 @@ Abstract
 This is a base class for form elements
 
 - **`Phalcon\Forms\Element\AbstractElement`** - implements [`Phalcon\Forms\Element\ElementInterface`](#formselementelementinterface)
-- [`Phalcon\Forms\Element\Check`](#formselementcheck)
-- [`Phalcon\Forms\Element\CheckGroup`](#formselementcheckgroup)
-- [`Phalcon\Forms\Element\Date`](#formselementdate)
-- [`Phalcon\Forms\Element\Email`](#formselementemail)
-- [`Phalcon\Forms\Element\File`](#formselementfile)
-- [`Phalcon\Forms\Element\Hidden`](#formselementhidden)
-- [`Phalcon\Forms\Element\Numeric`](#formselementnumeric)
-- [`Phalcon\Forms\Element\Password`](#formselementpassword)
-- [`Phalcon\Forms\Element\Radio`](#formselementradio)
-- [`Phalcon\Forms\Element\RadioGroup`](#formselementradiogroup)
-- [`Phalcon\Forms\Element\Select`](#formselementselect)
-- [`Phalcon\Forms\Element\Submit`](#formselementsubmit)
-- [`Phalcon\Forms\Element\Text`](#formselementtext)
-- [`Phalcon\Forms\Element\TextArea`](#formselementtextarea)
+  - [`Phalcon\Forms\Element\Check`](#formselementcheck)
+  - [`Phalcon\Forms\Element\CheckGroup`](#formselementcheckgroup)
+  - [`Phalcon\Forms\Element\Date`](#formselementdate)
+  - [`Phalcon\Forms\Element\Email`](#formselementemail)
+  - [`Phalcon\Forms\Element\File`](#formselementfile)
+  - [`Phalcon\Forms\Element\Hidden`](#formselementhidden)
+  - [`Phalcon\Forms\Element\Numeric`](#formselementnumeric)
+  - [`Phalcon\Forms\Element\Password`](#formselementpassword)
+  - [`Phalcon\Forms\Element\Radio`](#formselementradio)
+  - [`Phalcon\Forms\Element\RadioGroup`](#formselementradiogroup)
+  - [`Phalcon\Forms\Element\Select`](#formselementselect)
+  - [`Phalcon\Forms\Element\Submit`](#formselementsubmit)
+  - [`Phalcon\Forms\Element\Text`](#formselementtext)
+  - [`Phalcon\Forms\Element\TextArea`](#formselementtextarea)
 
 `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Forms\Exception` · `Phalcon\Forms\Exceptions\FormElementNameRequired` · `Phalcon\Forms\Exceptions\InvalidFilterType` · `Phalcon\Forms\Form` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Stringable`
 
 ### Method Summary
 
-<ApiItem href="#formselementabstractelement-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#formselementabstractelement-__tostring" visibility="public" name="__toString" returnType="string" params={[]}>
-Magic method __toString renders the widget without attributes
-</ApiItem>
-<ApiItem href="#formselementabstractelement-addfilter" visibility="public" name="addFilter" returnType="ElementInterface" params={[{"type":"string","name":"filter","default":null}]}>
-Adds a filter to current list of filters
-</ApiItem>
-<ApiItem href="#formselementabstractelement-addvalidator" visibility="public" name="addValidator" returnType="ElementInterface" params={[{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Adds a validator to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-addvalidators" visibility="public" name="addValidators" returnType="ElementInterface" params={[{"type":"array","name":"validators","default":null},{"type":"bool","name":"merge","default":"true"}]}>
-Adds a group of validators
-</ApiItem>
-<ApiItem href="#formselementabstractelement-appendmessage" visibility="public" name="appendMessage" returnType="ElementInterface" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the internal message list
-</ApiItem>
-<ApiItem href="#formselementabstractelement-clear" visibility="public" name="clear" returnType="ElementInterface" params={[]}>
-Clears element to its default value
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getattribute" visibility="public" name="getAttribute" returnType="mixed" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns the value of an attribute if present
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Returns the default attributes for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getdefault" visibility="public" name="getDefault" returnType="mixed" params={[]}>
-Returns the default value assigned to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getfilters" visibility="public" name="getFilters" returnType="" params={[]}>
-Returns the element filters
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getform" visibility="public" name="getForm" returnType="Form" params={[]}>
-Returns the parent form to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getlabel" visibility="public" name="getLabel" returnType="string|null" params={[]}>
-Returns the element label
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
-Returns the messages that belongs to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the element name
-</ApiItem>
-<ApiItem href="#formselementabstractelement-gettagfactory" visibility="public" name="getTagFactory" returnType="TagFactory|null" params={[]}>
-Returns the tagFactory; throws exception if not present
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getuseroption" visibility="public" name="getUserOption" returnType="mixed" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns the value of an option if present
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getuseroptions" visibility="public" name="getUserOptions" returnType="array" params={[]}>
-Returns the options for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getvalidators" visibility="public" name="getValidators" returnType="ValidatorInterface[]" params={[]}>
-Returns the validators registered for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getvalue" visibility="public" name="getValue" returnType="mixed" params={[]}>
-Returns the element's value
-</ApiItem>
-<ApiItem href="#formselementabstractelement-hasmessages" visibility="public" name="hasMessages" returnType="bool" params={[]}>
-Checks whether there are messages attached to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-label" visibility="public" name="label" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Generate the HTML to label the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-render" visibility="public" name="render" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Renders the element widget returning HTML
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setattribute" visibility="public" name="setAttribute" returnType="ElementInterface" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a default attribute for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setattributes" visibility="public" name="setAttributes" returnType="ElementInterface" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets default attributes for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setdefault" visibility="public" name="setDefault" returnType="ElementInterface" params={[{"type":"mixed","name":"value","default":null}]}>
-Sets a default value in case the form does not use an entity
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setfilters" visibility="public" name="setFilters" returnType="ElementInterface" params={[{"type":"mixed","name":"filters","default":null}]}>
-Sets the element filters
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setform" visibility="public" name="setForm" returnType="ElementInterface" params={[{"type":"Form","name":"form","default":null}]}>
-Sets the parent form to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setlabel" visibility="public" name="setLabel" returnType="ElementInterface" params={[{"type":"string","name":"label","default":null}]}>
-Sets the element label
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setmessages" visibility="public" name="setMessages" returnType="ElementInterface" params={[{"type":"Messages","name":"messages","default":null}]}>
-Sets the validation messages related to the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setname" visibility="public" name="setName" returnType="ElementInterface" params={[{"type":"string","name":"name","default":null}]}>
-Sets the element name
-</ApiItem>
-<ApiItem href="#formselementabstractelement-settagfactory" visibility="public" name="setTagFactory" returnType="static" params={[{"type":"TagFactory","name":"tagFactory","default":null}]}>
-Sets the TagFactory
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setuseroption" visibility="public" name="setUserOption" returnType="ElementInterface" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets an option for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-setuseroptions" visibility="public" name="setUserOptions" returnType="ElementInterface" params={[{"type":"array","name":"options","default":null}]}>
-Sets options for the element
-</ApiItem>
-<ApiItem href="#formselementabstractelement-getlocaltagfactory" visibility="protected" name="getLocalTagFactory" returnType="TagFactory" params={[]}>
-Returns the tagFactory; throws exception if not present
-</ApiItem>
+- `public __construct(string $name, array $attributes = [])` — Constructor
+
+- `public __toString(): string` — Magic method \_\_toString renders the widget without attributes
+
+- `public addFilter(string $filter): ElementInterface` — Adds a filter to current list of filters
+
+- `public addValidator(ValidatorInterface $validator): ElementInterface` — Adds a validator to the element
+
+- `public addValidators(array $validators, bool $merge = true): ElementInterface` — Adds a group of validators
+
+- `public appendMessage(MessageInterface $message): ElementInterface` — Appends a message to the internal message list
+
+- `public clear(): ElementInterface` — Clears element to its default value
+
+- `public getAttribute(string $attribute, mixed $defaultValue = null): mixed` — Returns the value of an attribute if present
+
+- `public getAttributes(): array` — Returns the default attributes for the element
+
+- `public getDefault(): mixed` — Returns the default value assigned to the element
+
+- `public getFilters()` — Returns the element filters
+
+- `public getForm(): Form` — Returns the parent form to the element
+
+- `public getLabel(): string|null` — Returns the element label
+
+- `public getMessages(): Messages` — Returns the messages that belongs to the element
+
+- `public getName(): string` — Returns the element name
+
+- `public getTagFactory(): TagFactory|null` — Returns the tagFactory; throws exception if not present
+
+- `public getUserOption(string $option, mixed $defaultValue = null): mixed` — Returns the value of an option if present
+
+- `public getUserOptions(): array` — Returns the options for the element
+
+- `public getValidators(): ValidatorInterface[]` — Returns the validators registered for the element
+
+- `public getValue(): mixed` — Returns the element's value
+
+- `public hasMessages(): bool` — Checks whether there are messages attached to the element
+
+- `public label(array $attributes = []): string` — Generate the HTML to label the element
+
+- `public render(array $attributes = []): string` — Renders the element widget returning HTML
+
+- `public setAttribute(string $attribute, mixed $value): ElementInterface` — Sets a default attribute for the element
+
+- `public setAttributes(array $attributes): ElementInterface` — Sets default attributes for the element
+
+- `public setDefault(mixed $value): ElementInterface` — Sets a default value in case the form does not use an entity
+
+- `public setFilters(mixed $filters): ElementInterface` — Sets the element filters
+
+- `public setForm(Form $form): ElementInterface` — Sets the parent form to the element
+
+- `public setLabel(string $label): ElementInterface` — Sets the element label
+
+- `public setMessages(Messages $messages): ElementInterface` — Sets the validation messages related to the element
+
+- `public setName(string $name): ElementInterface` — Sets the element name
+
+- `public setTagFactory(TagFactory $tagFactory): static` — Sets the TagFactory
+
+- `public setUserOption(string $option, mixed $value): ElementInterface` — Sets an option for the element
+
+- `public setUserOptions(array $options): ElementInterface` — Sets options for the element
+
+- `protected getLocalTagFactory(): TagFactory` — Returns the tagFactory; throws exception if not present
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="filters" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="form" type="Form|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="label" type="string|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="Messages" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputText&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="name" type="string" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tagFactory" type="TagFactory|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="validators" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="value" type="mixed|null" default="null">
-</ApiItem>
+- `protected array $attributes = []`
+
+- `protected array $filters = []`
+
+- `protected Form|null $form = null`
+
+- `protected string|null $label = null`
+
+- `protected Messages $messages`
+
+- `protected string $method = "inputText"`
+
+- `protected string $name`
+
+- `protected array $options = []`
+
+- `protected TagFactory|null $tagFactory = null`
+
+- `protected array $validators = []`
+
+- `protected mixed|null $value = null`
 
 ### Methods
 
@@ -176,8 +140,8 @@ Returns the tagFactory; throws exception if not present
 
 ```php
 public function __construct(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 );
 ```
 
@@ -211,8 +175,8 @@ Adds a validator to the element
 
 ```php
 public function addValidators(
-array $validators,
-bool $merge = true
+    array $validators,
+    bool $merge = true
 ): ElementInterface;
 ```
 
@@ -238,8 +202,8 @@ Clears element to its default value
 
 ```php
 public function getAttribute(
-string $attribute,
-mixed $defaultValue = null
+    string $attribute,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -314,8 +278,8 @@ Returns the tagFactory; throws exception if not present
 
 ```php
 public function getUserOption(
-string $option,
-mixed $defaultValue = null
+    string $option,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -373,8 +337,8 @@ Renders the element widget returning HTML
 
 ```php
 public function setAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -449,8 +413,8 @@ Sets the TagFactory
 
 ```php
 public function setUserOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -472,6 +436,7 @@ protected function getLocalTagFactory(): TagFactory;
 
 Returns the tagFactory; throws exception if not present
 
+
 ## Forms\Element\Check
 
 Class
@@ -479,28 +444,23 @@ Class
 Component INPUT[type=check] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Check`**
+  - **`Phalcon\Forms\Element\Check`**
 
 ### Method Summary
 
-<ApiItem href="#formselementcheck-getuncheckedvalue" visibility="public" name="getUncheckedValue" returnType="mixed" params={[]}>
-Returns the value to bind when the checkbox is absent from submitted
-</ApiItem>
-<ApiItem href="#formselementcheck-hasuncheckedvalue" visibility="public" name="hasUncheckedValue" returnType="bool" params={[]}>
-Whether an "unchecked value" has been explicitly registered.
-</ApiItem>
-<ApiItem href="#formselementcheck-setuncheckedvalue" visibility="public" name="setUncheckedValue" returnType="static" params={[{"type":"mixed","name":"value","default":null}]}>
-Registers a value to bind when the checkbox is absent from submitted
-</ApiItem>
+- `public getUncheckedValue(): mixed` — Returns the value to bind when the checkbox is absent from submitted
+
+- `public hasUncheckedValue(): bool` — Whether an "unchecked value" has been explicitly registered.
+
+- `public setUncheckedValue(mixed $value): static` — Registers a value to bind when the checkbox is absent from submitted
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputCheckbox&quot;">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uncheckedValue" type="mixed" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="uncheckedValueSet" type="bool" default="false">
-</ApiItem>
+- `protected string $method = "inputCheckbox"`
+
+- `protected mixed $uncheckedValue = null`
+
+- `protected bool $uncheckedValueSet = false`
 
 ### Methods
 
@@ -532,6 +492,7 @@ data (the typical browser behavior for an unchecked input). Without
 this opt-in, an unchecked checkbox leaves the entity property
 untouched. See cphalcon issue #16982.
 
+
 ## Forms\Element\CheckGroup
 
 Class
@@ -547,29 +508,23 @@ or with per-item attributes:
   ['value' => ['label' => 'Label', 'disabled' => true]]
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\CheckGroup`**
+  - **`Phalcon\Forms\Element\CheckGroup`**
 
 `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\TagFactory`
 
 ### Method Summary
 
-<ApiItem href="#formselementcheckgroup-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"},{"type":"array","name":"attributes","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#formselementcheckgroup-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Returns the group options
-</ApiItem>
-<ApiItem href="#formselementcheckgroup-render" visibility="public" name="render" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Renders the checkbox group returning HTML
-</ApiItem>
-<ApiItem href="#formselementcheckgroup-setoptions" visibility="public" name="setOptions" returnType="ElementInterface" params={[{"type":"array","name":"options","default":null}]}>
-Sets the group options
-</ApiItem>
+- `public __construct(string $name, array $options = [], array $attributes = [])` — Constructor
+
+- `public getOptions(): array` — Returns the group options
+
+- `public render(array $attributes = []): string` — Renders the checkbox group returning HTML
+
+- `public setOptions(array $options): ElementInterface` — Sets the group options
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="optionsValues" type="array" default="[]">
-</ApiItem>
+- `protected array $optionsValues = []`
 
 ### Methods
 
@@ -577,9 +532,9 @@ Sets the group options
 
 ```php
 public function __construct(
-string $name,
-array $options = [],
-array $attributes = []
+    string $name,
+    array $options = [],
+    array $attributes = []
 );
 ```
 
@@ -609,6 +564,7 @@ public function setOptions( array $options ): ElementInterface;
 
 Sets the group options
 
+
 ## Forms\Element\Date
 
 Class
@@ -616,12 +572,12 @@ Class
 Component INPUT[type=date] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Date`**
+  - **`Phalcon\Forms\Element\Date`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputDate&quot;">
-</ApiItem>
+- `protected string $method = "inputDate"`
+
 
 ## Forms\Element\ElementInterface
 
@@ -635,96 +591,65 @@ Interface for Phalcon\Forms\Element classes
 
 ### Method Summary
 
-<ApiItem href="#formselementelementinterface-addfilter" visibility="public" name="addFilter" returnType="ElementInterface" params={[{"type":"string","name":"filter","default":null}]}>
-Adds a filter to current list of filters
-</ApiItem>
-<ApiItem href="#formselementelementinterface-addvalidator" visibility="public" name="addValidator" returnType="ElementInterface" params={[{"type":"ValidatorInterface","name":"validator","default":null}]}>
-Adds a validator to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-addvalidators" visibility="public" name="addValidators" returnType="ElementInterface" params={[{"type":"array","name":"validators","default":null},{"type":"bool","name":"merge","default":"true"}]}>
-Adds a group of validators
-</ApiItem>
-<ApiItem href="#formselementelementinterface-appendmessage" visibility="public" name="appendMessage" returnType="ElementInterface" params={[{"type":"MessageInterface","name":"message","default":null}]}>
-Appends a message to the internal message list
-</ApiItem>
-<ApiItem href="#formselementelementinterface-clear" visibility="public" name="clear" returnType="ElementInterface" params={[]}>
-Clears every element in the form to its default value
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getattribute" visibility="public" name="getAttribute" returnType="mixed" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns the value of an attribute if present
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getattributes" visibility="public" name="getAttributes" returnType="array" params={[]}>
-Returns the default attributes for the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getdefault" visibility="public" name="getDefault" returnType="mixed" params={[]}>
-Returns the default value assigned to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getfilters" visibility="public" name="getFilters" returnType="" params={[]}>
-Returns the element's filters
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getform" visibility="public" name="getForm" returnType="Form" params={[]}>
-Returns the parent form to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getlabel" visibility="public" name="getLabel" returnType="string|null" params={[]}>
-Returns the element's label
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
-Returns the messages that belongs to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getname" visibility="public" name="getName" returnType="string" params={[]}>
-Returns the element's name
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getuseroption" visibility="public" name="getUserOption" returnType="mixed" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns the value of an option if present
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getuseroptions" visibility="public" name="getUserOptions" returnType="array" params={[]}>
-Returns the options for the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getvalidators" visibility="public" name="getValidators" returnType="ValidatorInterface[]" params={[]}>
-Returns the validators registered for the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-getvalue" visibility="public" name="getValue" returnType="mixed" params={[]}>
-Returns the element's value
-</ApiItem>
-<ApiItem href="#formselementelementinterface-hasmessages" visibility="public" name="hasMessages" returnType="bool" params={[]}>
-Checks whether there are messages attached to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-label" visibility="public" name="label" returnType="string" params={[]}>
-Generate the HTML to label the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-render" visibility="public" name="render" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Renders the element widget
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setattribute" visibility="public" name="setAttribute" returnType="ElementInterface" params={[{"type":"string","name":"attribute","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets a default attribute for the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setattributes" visibility="public" name="setAttributes" returnType="ElementInterface" params={[{"type":"array","name":"attributes","default":null}]}>
-Sets default attributes for the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setdefault" visibility="public" name="setDefault" returnType="ElementInterface" params={[{"type":"mixed","name":"value","default":null}]}>
-Sets a default value in case the form does not use an entity
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setfilters" visibility="public" name="setFilters" returnType="ElementInterface" params={[{"type":"mixed","name":"filters","default":null}]}>
-Sets the element's filters
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setform" visibility="public" name="setForm" returnType="ElementInterface" params={[{"type":"Form","name":"form","default":null}]}>
-Sets the parent form to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setlabel" visibility="public" name="setLabel" returnType="ElementInterface" params={[{"type":"string","name":"label","default":null}]}>
-Sets the element label
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setmessages" visibility="public" name="setMessages" returnType="ElementInterface" params={[{"type":"Messages","name":"messages","default":null}]}>
-Sets the validation messages related to the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setname" visibility="public" name="setName" returnType="ElementInterface" params={[{"type":"string","name":"name","default":null}]}>
-Sets the element's name
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setuseroption" visibility="public" name="setUserOption" returnType="ElementInterface" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets an option for the element
-</ApiItem>
-<ApiItem href="#formselementelementinterface-setuseroptions" visibility="public" name="setUserOptions" returnType="ElementInterface" params={[{"type":"array","name":"options","default":null}]}>
-Sets options for the element
-</ApiItem>
+- `public addFilter(string $filter): ElementInterface` — Adds a filter to current list of filters
+
+- `public addValidator(ValidatorInterface $validator): ElementInterface` — Adds a validator to the element
+
+- `public addValidators(array $validators, bool $merge = true): ElementInterface` — Adds a group of validators
+
+- `public appendMessage(MessageInterface $message): ElementInterface` — Appends a message to the internal message list
+
+- `public clear(): ElementInterface` — Clears every element in the form to its default value
+
+- `public getAttribute(string $attribute, mixed $defaultValue = null): mixed` — Returns the value of an attribute if present
+
+- `public getAttributes(): array` — Returns the default attributes for the element
+
+- `public getDefault(): mixed` — Returns the default value assigned to the element
+
+- `public getFilters()` — Returns the element's filters
+
+- `public getForm(): Form` — Returns the parent form to the element
+
+- `public getLabel(): string|null` — Returns the element's label
+
+- `public getMessages(): Messages` — Returns the messages that belongs to the element
+
+- `public getName(): string` — Returns the element's name
+
+- `public getUserOption(string $option, mixed $defaultValue = null): mixed` — Returns the value of an option if present
+
+- `public getUserOptions(): array` — Returns the options for the element
+
+- `public getValidators(): ValidatorInterface[]` — Returns the validators registered for the element
+
+- `public getValue(): mixed` — Returns the element's value
+
+- `public hasMessages(): bool` — Checks whether there are messages attached to the element
+
+- `public label(): string` — Generate the HTML to label the element
+
+- `public render(array $attributes = []): string` — Renders the element widget
+
+- `public setAttribute(string $attribute, mixed $value): ElementInterface` — Sets a default attribute for the element
+
+- `public setAttributes(array $attributes): ElementInterface` — Sets default attributes for the element
+
+- `public setDefault(mixed $value): ElementInterface` — Sets a default value in case the form does not use an entity
+
+- `public setFilters(mixed $filters): ElementInterface` — Sets the element's filters
+
+- `public setForm(Form $form): ElementInterface` — Sets the parent form to the element
+
+- `public setLabel(string $label): ElementInterface` — Sets the element label
+
+- `public setMessages(Messages $messages): ElementInterface` — Sets the validation messages related to the element
+
+- `public setName(string $name): ElementInterface` — Sets the element's name
+
+- `public setUserOption(string $option, mixed $value): ElementInterface` — Sets an option for the element
+
+- `public setUserOptions(array $options): ElementInterface` — Sets options for the element
 
 ### Methods
 
@@ -748,8 +673,8 @@ Adds a validator to the element
 
 ```php
 public function addValidators(
-array $validators,
-bool $merge = true
+    array $validators,
+    bool $merge = true
 ): ElementInterface;
 ```
 
@@ -775,8 +700,8 @@ Clears every element in the form to its default value
 
 ```php
 public function getAttribute(
-string $attribute,
-mixed $defaultValue = null
+    string $attribute,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -843,8 +768,8 @@ Returns the element's name
 
 ```php
 public function getUserOption(
-string $option,
-mixed $defaultValue = null
+    string $option,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -902,8 +827,8 @@ Renders the element widget
 
 ```php
 public function setAttribute(
-string $attribute,
-mixed $value
+    string $attribute,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -970,8 +895,8 @@ Sets the element's name
 
 ```php
 public function setUserOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): ElementInterface;
 ```
 
@@ -985,6 +910,7 @@ public function setUserOptions( array $options ): ElementInterface;
 
 Sets options for the element
 
+
 ## Forms\Element\Email
 
 Class
@@ -992,12 +918,12 @@ Class
 Component INPUT[type=email] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Email`**
+  - **`Phalcon\Forms\Element\Email`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputEmail&quot;">
-</ApiItem>
+- `protected string $method = "inputEmail"`
+
 
 ## Forms\Element\File
 
@@ -1006,12 +932,12 @@ Class
 Component INPUT[type=file] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\File`**
+  - **`Phalcon\Forms\Element\File`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputFile&quot;">
-</ApiItem>
+- `protected string $method = "inputFile"`
+
 
 ## Forms\Element\Hidden
 
@@ -1020,12 +946,12 @@ Class
 Component INPUT[type=hidden] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Hidden`**
+  - **`Phalcon\Forms\Element\Hidden`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputHidden&quot;">
-</ApiItem>
+- `protected string $method = "inputHidden"`
+
 
 ## Forms\Element\Numeric
 
@@ -1034,12 +960,12 @@ Class
 Component INPUT[type=number] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Numeric`**
+  - **`Phalcon\Forms\Element\Numeric`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputNumeric&quot;">
-</ApiItem>
+- `protected string $method = "inputNumeric"`
+
 
 ## Forms\Element\Password
 
@@ -1048,12 +974,12 @@ Class
 Component INPUT[type=password] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Password`**
+  - **`Phalcon\Forms\Element\Password`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputPassword&quot;">
-</ApiItem>
+- `protected string $method = "inputPassword"`
+
 
 ## Forms\Element\Radio
 
@@ -1062,12 +988,12 @@ Class
 Component INPUT[type=radio] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Radio`**
+  - **`Phalcon\Forms\Element\Radio`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputRadio&quot;">
-</ApiItem>
+- `protected string $method = "inputRadio"`
+
 
 ## Forms\Element\RadioGroup
 
@@ -1081,29 +1007,23 @@ or with per-item attributes:
   ['value' => ['label' => 'Label', 'disabled' => true]]
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\RadioGroup`**
+  - **`Phalcon\Forms\Element\RadioGroup`**
 
 `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\TagFactory`
 
 ### Method Summary
 
-<ApiItem href="#formselementradiogroup-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"},{"type":"array","name":"attributes","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#formselementradiogroup-getoptions" visibility="public" name="getOptions" returnType="array" params={[]}>
-Returns the group options
-</ApiItem>
-<ApiItem href="#formselementradiogroup-render" visibility="public" name="render" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Renders the radio group returning HTML
-</ApiItem>
-<ApiItem href="#formselementradiogroup-setoptions" visibility="public" name="setOptions" returnType="ElementInterface" params={[{"type":"array","name":"options","default":null}]}>
-Sets the group options
-</ApiItem>
+- `public __construct(string $name, array $options = [], array $attributes = [])` — Constructor
+
+- `public getOptions(): array` — Returns the group options
+
+- `public render(array $attributes = []): string` — Renders the radio group returning HTML
+
+- `public setOptions(array $options): ElementInterface` — Sets the group options
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="optionsValues" type="array" default="[]">
-</ApiItem>
+- `protected array $optionsValues = []`
 
 ### Methods
 
@@ -1111,9 +1031,9 @@ Sets the group options
 
 ```php
 public function __construct(
-string $name,
-array $options = [],
-array $attributes = []
+    string $name,
+    array $options = [],
+    array $attributes = []
 );
 ```
 
@@ -1143,6 +1063,7 @@ public function setOptions( array $options ): ElementInterface;
 
 Sets the group options
 
+
 ## Forms\Element\Select
 
 Class
@@ -1150,35 +1071,27 @@ Class
 Component SELECT (choice) for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Select`**
+  - **`Phalcon\Forms\Element\Select`**
 
 `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Tag\Select`
 
 ### Method Summary
 
-<ApiItem href="#formselementselect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"options","default":"null"},{"type":"array","name":"attributes","default":"[]"}]}>
-Constructor
-</ApiItem>
-<ApiItem href="#formselementselect-addoption" visibility="public" name="addOption" returnType="ElementInterface" params={[{"type":"mixed","name":"option","default":null}]}>
-Adds an option to the current options
-</ApiItem>
-<ApiItem href="#formselementselect-getoptions" visibility="public" name="getOptions" returnType="" params={[]}>
-Returns the choices' options
-</ApiItem>
-<ApiItem href="#formselementselect-render" visibility="public" name="render" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Renders the element widget returning HTML
-</ApiItem>
-<ApiItem href="#formselementselect-setoptions" visibility="public" name="setOptions" returnType="ElementInterface" params={[{"type":"mixed","name":"options","default":null}]}>
-Set the choice's options
-</ApiItem>
-<ApiItem href="#formselementselect-prepareattributes" visibility="protected" name="prepareAttributes" returnType="array" params={[{"type":"array","name":"attributes","default":"[]"}]}>
-Returns an array of prepared attributes for Phalcon\Html\TagFactory
-</ApiItem>
+- `public __construct(string $name, mixed $options = null, array $attributes = [])` — Constructor
+
+- `public addOption(mixed $option): ElementInterface` — Adds an option to the current options
+
+- `public getOptions()` — Returns the choices' options
+
+- `public render(array $attributes = []): string` — Renders the element widget returning HTML
+
+- `public setOptions(mixed $options): ElementInterface` — Set the choice's options
+
+- `protected prepareAttributes(array $attributes = []): array` — Returns an array of prepared attributes for Phalcon\Html\TagFactory
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="optionsValues" type="array|object|null" default="null">
-</ApiItem>
+- `protected array|object|null $optionsValues = null`
 
 ### Methods
 
@@ -1186,9 +1099,9 @@ Returns an array of prepared attributes for Phalcon\Html\TagFactory
 
 ```php
 public function __construct(
-string $name,
-mixed $options = null,
-array $attributes = []
+    string $name,
+    mixed $options = null,
+    array $attributes = []
 );
 ```
 
@@ -1235,6 +1148,7 @@ protected function prepareAttributes( array $attributes = [] ): array;
 Returns an array of prepared attributes for Phalcon\Html\TagFactory
 helpers according to the element parameters
 
+
 ## Forms\Element\Submit
 
 Class
@@ -1242,12 +1156,12 @@ Class
 Component INPUT[type=submit] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Submit`**
+  - **`Phalcon\Forms\Element\Submit`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputSubmit&quot;">
-</ApiItem>
+- `protected string $method = "inputSubmit"`
+
 
 ## Forms\Element\Text
 
@@ -1256,7 +1170,8 @@ Class
 Component INPUT[type=text] for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\Text`**
+  - **`Phalcon\Forms\Element\Text`**
+
 
 ## Forms\Element\TextArea
 
@@ -1265,12 +1180,12 @@ Class
 Component TEXTAREA for forms
 
 - [`Phalcon\Forms\Element\AbstractElement`](#formselementabstractelement)
-- **`Phalcon\Forms\Element\TextArea`**
+  - **`Phalcon\Forms\Element\TextArea`**
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="method" type="string" default="&quot;inputTextarea&quot;">
-</ApiItem>
+- `protected string $method = "inputTextarea"`
+
 
 ## Forms\Exception
 
@@ -1279,27 +1194,26 @@ Class
 Exceptions thrown in Phalcon\Forms will use this class
 
 - `\Exception`
-- **`Phalcon\Forms\Exception`**
-- [`Phalcon\Forms\Exceptions\ElementNotInForm`](#formsexceptionselementnotinform)
-- [`Phalcon\Forms\Exceptions\FormNotInLocator`](#formsexceptionsformnotinlocator)
-- [`Phalcon\Forms\Exceptions\FormNotRegistered`](#formsexceptionsformnotregistered)
-- [`Phalcon\Forms\Exceptions\InvalidEntity`](#formsexceptionsinvalidentity)
-- [`Phalcon\Forms\Exceptions\InvalidFilterType`](#formsexceptionsinvalidfiltertype)
-- [`Phalcon\Forms\Exceptions\InvalidJsonSchema`](#formsexceptionsinvalidjsonschema)
-- [`Phalcon\Forms\Exceptions\JsonSchemaNotArray`](#formsexceptionsjsonschemanotarray)
-- [`Phalcon\Forms\Exceptions\NoFormElements`](#formsexceptionsnoformelements)
-- [`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`](#formsexceptionsschemaentrymissingkey)
-- [`Phalcon\Forms\Exceptions\SchemaEntryNotArray`](#formsexceptionsschemaentrynotarray)
-- [`Phalcon\Forms\Exceptions\UnknownFormElementType`](#formsexceptionsunknownformelementtype)
-- [`Phalcon\Forms\Exceptions\YamlExtensionRequired`](#formsexceptionsyamlextensionrequired)
-- [`Phalcon\Forms\Exceptions\YamlSchemaNotArray`](#formsexceptionsyamlschemanotarray)
+  - **`Phalcon\Forms\Exception`**
+    - [`Phalcon\Forms\Exceptions\ElementNotInForm`](#formsexceptionselementnotinform)
+    - [`Phalcon\Forms\Exceptions\FormNotInLocator`](#formsexceptionsformnotinlocator)
+    - [`Phalcon\Forms\Exceptions\FormNotRegistered`](#formsexceptionsformnotregistered)
+    - [`Phalcon\Forms\Exceptions\InvalidEntity`](#formsexceptionsinvalidentity)
+    - [`Phalcon\Forms\Exceptions\InvalidFilterType`](#formsexceptionsinvalidfiltertype)
+    - [`Phalcon\Forms\Exceptions\InvalidJsonSchema`](#formsexceptionsinvalidjsonschema)
+    - [`Phalcon\Forms\Exceptions\JsonSchemaNotArray`](#formsexceptionsjsonschemanotarray)
+    - [`Phalcon\Forms\Exceptions\NoFormElements`](#formsexceptionsnoformelements)
+    - [`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`](#formsexceptionsschemaentrymissingkey)
+    - [`Phalcon\Forms\Exceptions\SchemaEntryNotArray`](#formsexceptionsschemaentrynotarray)
+    - [`Phalcon\Forms\Exceptions\UnknownFormElementType`](#formsexceptionsunknownformelementtype)
+    - [`Phalcon\Forms\Exceptions\YamlExtensionRequired`](#formsexceptionsyamlextensionrequired)
+    - [`Phalcon\Forms\Exceptions\YamlSchemaNotArray`](#formsexceptionsyamlschemanotarray)
 
 ### Method Summary
 
-<ApiItem href="#formsexception-tagfactorynotfound" visibility="public" name="tagFactoryNotFound" returnType="self" params={[]}>
-</ApiItem>
-<ApiItem href="#formsexception-usingparameterrequired" visibility="public" name="usingParameterRequired" returnType="self" params={[]}>
-</ApiItem>
+- `public tagFactoryNotFound(): self`
+
+- `public usingParameterRequired(): self`
 
 ### Methods
 
@@ -1315,20 +1229,20 @@ public static function tagFactoryNotFound(): self;
 public static function usingParameterRequired(): self;
 ```
 
+
 ## Forms\Exceptions\ElementNotInForm
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\ElementNotInForm`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\ElementNotInForm`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionselementnotinform-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1338,19 +1252,19 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Forms\Exceptions\FormElementNameRequired
 
 Class
 
 - `\InvalidArgumentException`
-- **`Phalcon\Forms\Exceptions\FormElementNameRequired`**
+  - **`Phalcon\Forms\Exceptions\FormElementNameRequired`**
 
 `InvalidArgumentException`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsformelementnamerequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1360,20 +1274,20 @@ Class
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\FormNotInLocator
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\FormNotInLocator`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\FormNotInLocator`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsformnotinlocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1383,20 +1297,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Forms\Exceptions\FormNotRegistered
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\FormNotRegistered`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\FormNotRegistered`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsformnotregistered-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"name","default":null}]}>
-</ApiItem>
+- `public __construct(string $name)`
 
 ### Methods
 
@@ -1406,20 +1320,20 @@ Class
 public function __construct( string $name );
 ```
 
+
 ## Forms\Exceptions\InvalidEntity
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\InvalidEntity`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\InvalidEntity`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsinvalidentity-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1429,20 +1343,20 @@ Class
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\InvalidFilterType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\InvalidFilterType`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\InvalidFilterType`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsinvalidfiltertype-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1452,20 +1366,20 @@ Class
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\InvalidJsonSchema
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\InvalidJsonSchema`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\InvalidJsonSchema`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsinvalidjsonschema-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"detail","default":null}]}>
-</ApiItem>
+- `public __construct(string $detail)`
 
 ### Methods
 
@@ -1475,20 +1389,20 @@ Class
 public function __construct( string $detail );
 ```
 
+
 ## Forms\Exceptions\JsonSchemaNotArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\JsonSchemaNotArray`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\JsonSchemaNotArray`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsjsonschemanotarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1498,20 +1412,20 @@ Class
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\NoFormElements
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\NoFormElements`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\NoFormElements`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsnoformelements-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1521,20 +1435,20 @@ Class
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\SchemaEntryMissingKey
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\SchemaEntryMissingKey`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsschemaentrymissingkey-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"index","default":null},{"type":"string","name":"key","default":null}]}>
-</ApiItem>
+- `public __construct(int $index, string $key)`
 
 ### Methods
 
@@ -1542,25 +1456,25 @@ Class
 
 ```php
 public function __construct(
-int $index,
-string $key
+    int $index,
+    string $key
 );
 ```
+
 
 ## Forms\Exceptions\SchemaEntryNotArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\SchemaEntryNotArray`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\SchemaEntryNotArray`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsschemaentrynotarray-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"int","name":"index","default":null}]}>
-</ApiItem>
+- `public __construct(int $index)`
 
 ### Methods
 
@@ -1570,20 +1484,20 @@ Class
 public function __construct( int $index );
 ```
 
+
 ## Forms\Exceptions\UnknownFormElementType
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\UnknownFormElementType`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\UnknownFormElementType`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsunknownformelementtype-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-</ApiItem>
+- `public __construct(string $type)`
 
 ### Methods
 
@@ -1593,20 +1507,20 @@ Class
 public function __construct( string $type );
 ```
 
+
 ## Forms\Exceptions\YamlExtensionRequired
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\YamlExtensionRequired`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\YamlExtensionRequired`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsyamlextensionrequired-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1616,20 +1530,20 @@ Class
 public function __construct();
 ```
 
+
 ## Forms\Exceptions\YamlSchemaNotArray
 
 Class
 
 - `\Exception`
-- [`Phalcon\Forms\Exception`](#formsexception)
-- **`Phalcon\Forms\Exceptions\YamlSchemaNotArray`**
+  - [`Phalcon\Forms\Exception`](#formsexception)
+    - **`Phalcon\Forms\Exceptions\YamlSchemaNotArray`**
 
 `Phalcon\Forms\Exception`
 
 ### Method Summary
 
-<ApiItem href="#formsexceptionsyamlschemanotarray-__construct" visibility="public" name="__construct" returnType="" params={[]}>
-</ApiItem>
+- `public __construct()`
 
 ### Methods
 
@@ -1638,6 +1552,7 @@ Class
 ```php
 public function __construct();
 ```
+
 
 ## Forms\Form
 
@@ -1648,159 +1563,118 @@ This component allows to build forms using an object-oriented interface
 @implements Iterator&lt;int, ElementInterface>
 
 - `\stdClass`
-- [`Phalcon\Di\Injectable`](/5.21/api/phalcon_di/#diinjectable)
-- **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/5.21/api/phalcon_html/#htmlattributesattributesinterface)
+  - [`Phalcon\Di\Injectable`](/5.21/api/phalcon_di/#diinjectable)
+    - **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/5.21/api/phalcon_html/#htmlattributesattributesinterface)
 
 `Countable` · `Iterator` · `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Tag`
 
 ### Method Summary
 
-<ApiItem href="#formsform-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"userOptions","default":"[]"}]}>
-Phalcon\Forms\Form constructor
-</ApiItem>
-<ApiItem href="#formsform-add" visibility="public" name="add" returnType="static" params={[{"type":"ElementInterface","name":"element","default":null},{"type":"string|null","name":"position","default":"null"},{"type":"bool|null","name":"type","default":"null"}]}>
-Adds an element to the form
-</ApiItem>
-<ApiItem href="#formsform-bind" visibility="public" name="bind" returnType="static" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
-Binds data to the entity
-</ApiItem>
-<ApiItem href="#formsform-clear" visibility="public" name="clear" returnType="static" params={[{"type":"mixed","name":"fields","default":"null"}]}>
-Clears every element in the form to its default value
-</ApiItem>
-<ApiItem href="#formsform-count" visibility="public" name="count" returnType="int" params={[]}>
-Returns the number of elements in the form
-</ApiItem>
-<ApiItem href="#formsform-current" visibility="public" name="current" returnType="mixed" params={[]}>
-Returns the current element in the iterator
-</ApiItem>
-<ApiItem href="#formsform-get" visibility="public" name="get" returnType="ElementInterface" params={[{"type":"string","name":"name","default":null}]}>
-Returns an element added to the form by its name
-</ApiItem>
-<ApiItem href="#formsform-getaction" visibility="public" name="getAction" returnType="string" params={[]}>
-Returns the form's action
-</ApiItem>
-<ApiItem href="#formsform-getattributes" visibility="public" name="getAttributes" returnType="Attributes" params={[]}>
-Get Form attributes collection
-</ApiItem>
-<ApiItem href="#formsform-getelements" visibility="public" name="getElements" returnType="ElementInterface[]" params={[]}>
-Returns the form elements added to the form
-</ApiItem>
-<ApiItem href="#formsform-getentity" visibility="public" name="getEntity" returnType="" params={[]}>
-Returns the entity related to the model
-</ApiItem>
-<ApiItem href="#formsform-getfilteredvalue" visibility="public" name="getFilteredValue" returnType="mixed|null" params={[{"type":"string","name":"name","default":null}]}>
-Gets a value from the internal filtered data or calls getValue(name)
-</ApiItem>
-<ApiItem href="#formsform-getlabel" visibility="public" name="getLabel" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
-Returns a label for an element
-</ApiItem>
-<ApiItem href="#formsform-getmessages" visibility="public" name="getMessages" returnType="Messages" params={[]}>
-Returns the messages generated in the validation.
-</ApiItem>
-<ApiItem href="#formsform-getmessagesfor" visibility="public" name="getMessagesFor" returnType="Messages" params={[{"type":"string","name":"name","default":null}]}>
-Returns the messages generated for a specific element
-</ApiItem>
-<ApiItem href="#formsform-gettagfactory" visibility="public" name="getTagFactory" returnType="TagFactory|null" params={[]}>
-Returns the tagFactory object
-</ApiItem>
-<ApiItem href="#formsform-getuseroption" visibility="public" name="getUserOption" returnType="mixed" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
-Returns the value of an option if present
-</ApiItem>
-<ApiItem href="#formsform-getuseroptions" visibility="public" name="getUserOptions" returnType="array" params={[]}>
-Returns the options for the element
-</ApiItem>
-<ApiItem href="#formsform-getvalidation" visibility="public" name="getValidation" returnType="ValidationInterface|null" params={[]}>
-return ValidationInterface|null
-</ApiItem>
-<ApiItem href="#formsform-getvalue" visibility="public" name="getValue" returnType="mixed|null" params={[{"type":"string","name":"name","default":null}]}>
-Gets a value from the internal related entity or from the default value
-</ApiItem>
-<ApiItem href="#formsform-getwhitelist" visibility="public" name="getWhitelist" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#formsform-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Check if the form contains an element
-</ApiItem>
-<ApiItem href="#formsform-hasmessagesfor" visibility="public" name="hasMessagesFor" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Check if messages were generated for a specific element
-</ApiItem>
-<ApiItem href="#formsform-isvalid" visibility="public" name="isValid" returnType="bool" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
-Validates the form
-</ApiItem>
-<ApiItem href="#formsform-key" visibility="public" name="key" returnType="int" params={[]}>
-Returns the current position/key in the iterator
-</ApiItem>
-<ApiItem href="#formsform-label" visibility="public" name="label" returnType="string" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-Generate the label of an element added to the form including HTML
-</ApiItem>
-<ApiItem href="#formsform-load" visibility="public" name="load" returnType="static" params={[{"type":"Schema","name":"schema","default":null},{"type":"FormsLocator","name":"locator","default":null}]}>
-Loads elements into the form from a Schema source.
-</ApiItem>
-<ApiItem href="#formsform-next" visibility="public" name="next" returnType="void" params={[]}>
-Moves the internal iteration pointer to the next position
-</ApiItem>
-<ApiItem href="#formsform-remove" visibility="public" name="remove" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Removes an element from the form
-</ApiItem>
-<ApiItem href="#formsform-render" visibility="public" name="render" returnType="string" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"attributes","default":"[]"}]}>
-Renders a specific item in the form
-</ApiItem>
-<ApiItem href="#formsform-rewind" visibility="public" name="rewind" returnType="void" params={[]}>
-Rewinds the internal iterator
-</ApiItem>
-<ApiItem href="#formsform-setaction" visibility="public" name="setAction" returnType="static" params={[{"type":"string","name":"action","default":null}]}>
-Sets the form's action
-</ApiItem>
-<ApiItem href="#formsform-setattributes" visibility="public" name="setAttributes" returnType="static" params={[{"type":"Attributes","name":"attributes","default":null}]}>
-Set form attributes collection
-</ApiItem>
-<ApiItem href="#formsform-setentity" visibility="public" name="setEntity" returnType="static" params={[{"type":"mixed","name":"entity","default":null}]}>
-Sets the entity related to the model
-</ApiItem>
-<ApiItem href="#formsform-settagfactory" visibility="public" name="setTagFactory" returnType="static" params={[{"type":"TagFactory","name":"tagFactory","default":null}]}>
-Sets the tagFactory for the form
-</ApiItem>
-<ApiItem href="#formsform-setuseroption" visibility="public" name="setUserOption" returnType="static" params={[{"type":"string","name":"option","default":null},{"type":"mixed","name":"value","default":null}]}>
-Sets an option for the form
-</ApiItem>
-<ApiItem href="#formsform-setuseroptions" visibility="public" name="setUserOptions" returnType="static" params={[{"type":"array","name":"options","default":null}]}>
-Sets options for the element
-</ApiItem>
-<ApiItem href="#formsform-setvalidation" visibility="public" name="setValidation" returnType="static" params={[{"type":"ValidationInterface","name":"validation","default":null}]}>
-Sets the default validation
-</ApiItem>
-<ApiItem href="#formsform-setwhitelist" visibility="public" name="setWhitelist" returnType="static" params={[{"type":"array","name":"whitelist","default":null}]}>
-Sets the default whitelist
-</ApiItem>
-<ApiItem href="#formsform-valid" visibility="public" name="valid" returnType="bool" params={[]}>
-Check if the current element in the iterator is valid
-</ApiItem>
+- `public __construct(mixed $entity = null, array $userOptions = [])` — Phalcon\Forms\Form constructor
+
+- `public add(ElementInterface $element, string|null $position = null, bool|null $type = null): static` — Adds an element to the form
+
+- `public bind(array $data, mixed $entity = null, array $whitelist = []): static` — Binds data to the entity
+
+- `public clear(mixed $fields = null): static` — Clears every element in the form to its default value
+
+- `public count(): int` — Returns the number of elements in the form
+
+- `public current(): mixed` — Returns the current element in the iterator
+
+- `public get(string $name): ElementInterface` — Returns an element added to the form by its name
+
+- `public getAction(): string` — Returns the form's action
+
+- `public getAttributes(): Attributes` — Get Form attributes collection
+
+- `public getElements(): ElementInterface[]` — Returns the form elements added to the form
+
+- `public getEntity()` — Returns the entity related to the model
+
+- `public getFilteredValue(string $name): mixed|null` — Gets a value from the internal filtered data or calls getValue(name)
+
+- `public getLabel(string $name): string` — Returns a label for an element
+
+- `public getMessages(): Messages` — Returns the messages generated in the validation.
+
+- `public getMessagesFor(string $name): Messages` — Returns the messages generated for a specific element
+
+- `public getTagFactory(): TagFactory|null` — Returns the tagFactory object
+
+- `public getUserOption(string $option, mixed $defaultValue = null): mixed` — Returns the value of an option if present
+
+- `public getUserOptions(): array` — Returns the options for the element
+
+- `public getValidation(): ValidationInterface|null` — return ValidationInterface|null
+
+- `public getValue(string $name): mixed|null` — Gets a value from the internal related entity or from the default value
+
+- `public getWhitelist(): array`
+
+- `public has(string $name): bool` — Check if the form contains an element
+
+- `public hasMessagesFor(string $name): bool` — Check if messages were generated for a specific element
+
+- `public isValid(mixed $data = null, mixed $entity = null, array $whitelist = []): bool` — Validates the form
+
+- `public key(): int` — Returns the current position/key in the iterator
+
+- `public label(string $name, array $attributes = []): string` — Generate the label of an element added to the form including HTML
+
+- `public load(Schema $schema, FormsLocator $locator): static` — Loads elements into the form from a Schema source.
+
+- `public next(): void` — Moves the internal iteration pointer to the next position
+
+- `public remove(string $name): bool` — Removes an element from the form
+
+- `public render(string $name, array $attributes = []): string` — Renders a specific item in the form
+
+- `public rewind(): void` — Rewinds the internal iterator
+
+- `public setAction(string $action): static` — Sets the form's action
+
+- `public setAttributes(Attributes $attributes): static` — Set form attributes collection
+
+- `public setEntity(mixed $entity): static` — Sets the entity related to the model
+
+- `public setTagFactory(TagFactory $tagFactory): static` — Sets the tagFactory for the form
+
+- `public setUserOption(string $option, mixed $value): static` — Sets an option for the form
+
+- `public setUserOptions(array $options): static` — Sets options for the element
+
+- `public setValidation(ValidationInterface $validation): static` — Sets the default validation
+
+- `public setWhitelist(array $whitelist): static` — Sets the default whitelist
+
+- `public valid(): bool` — Check if the current element in the iterator is valid
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="attributes" type="AttributesInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="data" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="elements" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="elementsIndexed" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="entity" type="object|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="filteredData" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="messages" type="Messages" default="">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="position" type="int" default="0">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="tagFactory" type="TagFactory|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="validation" type="ValidationInterface|null" default="null">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="whitelist" type="array" default="[]">
-</ApiItem>
+- `protected AttributesInterface|null $attributes = null`
+
+- `protected array $data = []`
+
+- `protected array $elements = []`
+
+- `protected array $elementsIndexed = []`
+
+- `protected object|null $entity = null`
+
+- `protected array $filteredData = []`
+
+- `protected Messages $messages`
+
+- `protected array $options = []`
+
+- `protected int $position = 0`
+
+- `protected TagFactory|null $tagFactory = null`
+
+- `protected ValidationInterface|null $validation = null`
+
+- `protected array $whitelist = []`
 
 ### Methods
 
@@ -1808,8 +1682,8 @@ Check if the current element in the iterator is valid
 
 ```php
 public function __construct(
-mixed $entity = null,
-array $userOptions = []
+    mixed $entity = null,
+    array $userOptions = []
 );
 ```
 
@@ -1819,9 +1693,9 @@ Phalcon\Forms\Form constructor
 
 ```php
 public function add(
-ElementInterface $element,
-string|null $position = null,
-bool|null $type = null
+    ElementInterface $element,
+    string|null $position = null,
+    bool|null $type = null
 ): static;
 ```
 
@@ -1831,9 +1705,9 @@ Adds an element to the form
 
 ```php
 public function bind(
-array $data,
-mixed $entity = null,
-array $whitelist = []
+    array $data,
+    mixed $entity = null,
+    array $whitelist = []
 ): static;
 ```
 
@@ -1929,11 +1803,11 @@ Returns the messages generated in the validation.
 
 ```php
 if ($form->isValid($_POST) == false) {
-$messages = $form->getMessages();
+    $messages = $form->getMessages();
 
-foreach ($messages as $message) {
-    echo $message, "<br>";
-}
+    foreach ($messages as $message) {
+        echo $message, "<br>";
+    }
 }
 ```
 
@@ -1957,8 +1831,8 @@ Returns the tagFactory object
 
 ```php
 public function getUserOption(
-string $option,
-mixed $defaultValue = null
+    string $option,
+    mixed $defaultValue = null
 ): mixed;
 ```
 
@@ -2014,9 +1888,9 @@ Check if messages were generated for a specific element
 
 ```php
 public function isValid(
-mixed $data = null,
-mixed $entity = null,
-array $whitelist = []
+    mixed $data = null,
+    mixed $entity = null,
+    array $whitelist = []
 ): bool;
 ```
 
@@ -2034,8 +1908,8 @@ Returns the current position/key in the iterator
 
 ```php
 public function label(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
 
@@ -2045,8 +1919,8 @@ Generate the label of an element added to the form including HTML
 
 ```php
 public function load(
-Schema $schema,
-FormsLocator $locator
+    Schema $schema,
+    FormsLocator $locator
 ): static;
 ```
 
@@ -2076,8 +1950,8 @@ Removes an element from the form
 
 ```php
 public function render(
-string $name,
-array $attributes = []
+    string $name,
+    array $attributes = []
 ): string;
 ```
 
@@ -2127,8 +2001,8 @@ Sets the tagFactory for the form
 
 ```php
 public function setUserOption(
-string $option,
-mixed $value
+    string $option,
+    mixed $value
 ): static;
 ```
 
@@ -2166,6 +2040,7 @@ public function valid(): bool;
 
 Check if the current element in the iterator is valid
 
+
 ## Forms\FormsLocator
 
 Class
@@ -2188,29 +2063,21 @@ types with `setElement()`.
 
 ### Method Summary
 
-<ApiItem href="#formsformslocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"definitions","default":"[]"}]}>
-</ApiItem>
-<ApiItem href="#formsformslocator-get" visibility="public" name="get" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"entity","default":"null"}]}>
-Returns the named form.
-</ApiItem>
-<ApiItem href="#formsformslocator-getelement" visibility="public" name="getElement" returnType="" params={[{"type":"string","name":"type","default":null}]}>
-Returns the factory callable for the given element type.
-</ApiItem>
-<ApiItem href="#formsformslocator-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Checks whether a named form factory is registered.
-</ApiItem>
-<ApiItem href="#formsformslocator-haselement" visibility="public" name="hasElement" returnType="bool" params={[{"type":"string","name":"type","default":null}]}>
-Checks whether an element type is registered.
-</ApiItem>
-<ApiItem href="#formsformslocator-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"factory","default":null}]}>
-Registers or replaces a named form factory.
-</ApiItem>
-<ApiItem href="#formsformslocator-setelement" visibility="public" name="setElement" returnType="void" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"factory","default":null}]}>
-Registers or replaces an element type factory.
-</ApiItem>
-<ApiItem href="#formsformslocator-getdefaultservices" visibility="protected" name="getDefaultServices" returnType="array" params={[]}>
-Returns the built-in element type factories.
-</ApiItem>
+- `public __construct(array $definitions = [])`
+
+- `public get(string $name, mixed $entity = null): Form` — Returns the named form.
+
+- `public getElement(string $type)` — Returns the factory callable for the given element type.
+
+- `public has(string $name): bool` — Checks whether a named form factory is registered.
+
+- `public hasElement(string $type): bool` — Checks whether an element type is registered.
+
+- `public set(string $name, mixed $factory): void` — Registers or replaces a named form factory.
+
+- `public setElement(string $type, mixed $factory): void` — Registers or replaces an element type factory.
+
+- `protected getDefaultServices(): array` — Returns the built-in element type factories.
 
 ### Methods
 
@@ -2224,8 +2091,8 @@ public function __construct( array $definitions = [] );
 
 ```php
 public function get(
-string $name,
-mixed $entity = null
+    string $name,
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2262,8 +2129,8 @@ Checks whether an element type is registered.
 
 ```php
 public function set(
-string $name,
-mixed $factory
+    string $name,
+    mixed $factory
 ): void;
 ```
 
@@ -2277,8 +2144,8 @@ the next get() call rebuilds from the new factory.
 
 ```php
 public function setElement(
-string $type,
-mixed $factory
+    string $type,
+    mixed $factory
 ): void;
 ```
 
@@ -2297,6 +2164,7 @@ Returns the built-in element type factories.
 
 Each value is a callable: fn(string $name, array $options, array $attributes): ElementInterface
 
+
 ## Forms\Loader\ArrayLoader
 
 Class
@@ -2309,17 +2177,15 @@ Supplies form element definitions from a PHP array.
 
 ### Method Summary
 
-<ApiItem href="#formsloaderarrayloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"definitions","default":null}]}>
-</ApiItem>
-<ApiItem href="#formsloaderarrayloader-load" visibility="public" name="load" returnType="array" params={[]}>
-</ApiItem>
-<ApiItem href="#formsloaderarrayloader-validatedefinition" visibility="protected" name="validateDefinition" returnType="void" params={[{"type":"mixed","name":"definition","default":null},{"type":"int","name":"index","default":null}]}>
-</ApiItem>
+- `public __construct(array $definitions)`
+
+- `public load(): array`
+
+- `protected validateDefinition(mixed $definition, int $index): void`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="definitions" type="array" default="">
-</ApiItem>
+- `protected array $definitions`
 
 ### Methods
 
@@ -2339,10 +2205,11 @@ public function load(): array;
 
 ```php
 protected function validateDefinition(
-mixed $definition,
-int $index
+    mixed $definition,
+    int $index
 ): void;
 ```
+
 
 ## Forms\Loader\JsonLoader
 
@@ -2359,15 +2226,13 @@ disk first; otherwise the value is treated as a raw JSON string.
 
 ### Method Summary
 
-<ApiItem href="#formsloaderjsonloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"source","default":null}]}>
-</ApiItem>
-<ApiItem href="#formsloaderjsonloader-load" visibility="public" name="load" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(string $source)`
+
+- `public load(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="source" type="string" default="">
-</ApiItem>
+- `protected string $source`
 
 ### Methods
 
@@ -2382,6 +2247,7 @@ public function __construct( string $source );
 ```php
 public function load(): array;
 ```
+
 
 ## Forms\Loader\YamlLoader
 
@@ -2400,15 +2266,13 @@ directly; otherwise the value is treated as a raw YAML string.
 
 ### Method Summary
 
-<ApiItem href="#formsloaderyamlloader-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"source","default":null}]}>
-</ApiItem>
-<ApiItem href="#formsloaderyamlloader-load" visibility="public" name="load" returnType="array" params={[]}>
-</ApiItem>
+- `public __construct(string $source)`
+
+- `public load(): array`
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="source" type="string" default="">
-</ApiItem>
+- `protected string $source`
 
 ### Methods
 
@@ -2424,6 +2288,7 @@ public function __construct( string $source );
 public function load(): array;
 ```
 
+
 ## Forms\Manager
 
 Class
@@ -2436,34 +2301,25 @@ Forms Manager
 
 ### Method Summary
 
-<ApiItem href="#formsmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"FormsLocator|null","name":"locator","default":"null"}]}>
-Manager constructor.
-</ApiItem>
-<ApiItem href="#formsmanager-create" visibility="public" name="create" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"entity","default":"null"}]}>
-Creates a form registering it in the forms manager
-</ApiItem>
-<ApiItem href="#formsmanager-get" visibility="public" name="get" returnType="Form" params={[{"type":"string","name":"name","default":null}]}>
-Returns a form by its name
-</ApiItem>
-<ApiItem href="#formsmanager-getlocator" visibility="public" name="getLocator" returnType="FormsLocator" params={[]}>
-Returns the FormsLocator instance.
-</ApiItem>
-<ApiItem href="#formsmanager-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
-Checks if a form is registered in the forms manager
-</ApiItem>
-<ApiItem href="#formsmanager-loadform" visibility="public" name="loadForm" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"Schema","name":"schema","default":null},{"type":"mixed","name":"entity","default":"null"}]}>
-Creates a form from a Schema source, registers it in the manager,
-</ApiItem>
-<ApiItem href="#formsmanager-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"Form","name":"form","default":null}]}>
-Registers a form in the Forms Manager
-</ApiItem>
+- `public __construct(FormsLocator|null $locator = null)` — Manager constructor.
+
+- `public create(string $name, mixed $entity = null): Form` — Creates a form registering it in the forms manager
+
+- `public get(string $name): Form` — Returns a form by its name
+
+- `public getLocator(): FormsLocator` — Returns the FormsLocator instance.
+
+- `public has(string $name): bool` — Checks if a form is registered in the forms manager
+
+- `public loadForm(string $name, Schema $schema, mixed $entity = null): Form` — Creates a form from a Schema source, registers it in the manager,
+
+- `public set(string $name, Form $form): static` — Registers a form in the Forms Manager
 
 ### Properties
 
-<ApiItem kind="property" visibility="protected" name="forms" type="array" default="[]">
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="locator" type="FormsLocator" default="">
-</ApiItem>
+- `protected array $forms = []`
+
+- `protected FormsLocator $locator`
 
 ### Methods
 
@@ -2479,8 +2335,8 @@ Manager constructor.
 
 ```php
 public function create(
-string $name,
-mixed $entity = null
+    string $name,
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2514,9 +2370,9 @@ Checks if a form is registered in the forms manager
 
 ```php
 public function loadForm(
-string $name,
-Schema $schema,
-mixed $entity = null
+    string $name,
+    Schema $schema,
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2527,8 +2383,8 @@ and registers a factory in the locator for entity-aware retrieval.
 
 ```php
 public function set(
-string $name,
-Form $form
+    string $name,
+    Form $form
 ): static;
 ```
 

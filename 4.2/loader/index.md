@@ -29,10 +29,10 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $loader->register();
@@ -54,10 +54,10 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $loader->register();
@@ -75,16 +75,16 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $loader->register();
 
 if (true === $loader->isRegistered()) {
-$loader->unregister();
+    $loader->unregister();
 }
 ```
 
@@ -98,13 +98,13 @@ Consider the following example:
 
 // Basic autoloader
 spl_autoload_register(
-function (string $className) {
-    $filepath = $className . '.php';
+    function (string $className) {
+        $filepath = $className . '.php';
 
-    if (file_exists($filepath)) {
-        require $filepath;
+        if (file_exists($filepath)) {
+            require $filepath;
+        }
     }
-}
 );
 ```
 
@@ -116,7 +116,7 @@ The above auto loader lacks any kind of security. If a part of your code acciden
 $className = '../processes/important-process';
 
 if (class_exists($className)) {
-// ...
+    // ...
 }
 ```
 
@@ -137,11 +137,11 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'             => 'app/library',
-   'MyApp\Controllers' => 'app/controllers',
-   'MyApp\Models'      => 'app/models',
-]
+    [
+       'MyApp'             => 'app/library',
+       'MyApp\Controllers' => 'app/controllers',
+       'MyApp\Models'      => 'app/models',
+    ]
 );
 
 $loader->register();
@@ -177,17 +177,17 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'             => 'app/library',
-]
+    [
+       'MyApp'             => 'app/library',
+    ]
 );
 
 $loader->registerNamespaces(
-[
-   'MyApp\Controllers' => 'app/controllers',
-   'MyApp\Models'      => 'app/models',
-],
-true
+    [
+       'MyApp\Controllers' => 'app/controllers',
+       'MyApp\Models'      => 'app/models',
+    ],
+    true
 );
 
 $loader->register();
@@ -220,13 +220,13 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerClasses(
-[
-    'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
-    'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
-    'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
-    'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
-    'MyApp\Models\Users'                => 'app/models/Users.php',
-]
+    [
+        'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
+        'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
+        'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
+        'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
+        'MyApp\Models\Users'                => 'app/models/Users.php',
+    ]
 );
 
 $loader->register();
@@ -244,19 +244,19 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerClasses(
-[
-    'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
-    'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
-    'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
-]
+    [
+        'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
+        'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
+        'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
+    ]
 );
 
 $loader->registerClasses(
-[
-    'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
-    'MyApp\Models\Users'                => 'app/models/Users.php',
-],
-true
+    [
+        'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
+        'MyApp\Models\Users'                => 'app/models/Users.php',
+    ],
+    true
 );
 
 $loader->register();
@@ -268,11 +268,11 @@ If you need to check what classes are registered in the autoloader, you can use 
 
 ```php
 [
-'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
-'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
-'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
-'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
-'MyApp\Models\Users'                => 'app/models/Users.php',
+    'MyApp\Components\Mail'             => 'app/library/Components/Mail.php',
+    'MyApp\Controllers\IndexController' => 'app/controllers/IndexController.php',
+    'MyApp\Controllers\AdminController' => 'app/controllers/AdminController.php',
+    'MyApp\Models\Invoices'             => 'app/models/Invoices.php',
+    'MyApp\Models\Users'                => 'app/models/Users.php',
 ]
 ```
 
@@ -289,10 +289,10 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerFiles(
-[
-    'functions.php',
-    'arrayFunctions.php',
-]
+    [
+        'functions.php',
+        'arrayFunctions.php',
+    ]
 );
 
 $loader->register();
@@ -310,16 +310,16 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerFiles(
-[
-    'app/functions/functions.php',
-]
+    [
+        'app/functions/functions.php',
+    ]
 );
 
 $loader->registerFiles(
-[
-    'app/functions/debug.php',
-],
-true
+    [
+        'app/functions/debug.php',
+    ],
+    true
 );
 
 $loader->register();
@@ -331,8 +331,8 @@ If you need to check what files are registered in the autoloader, you can use th
 
 ```php
 [
-'app/functions/functions.php',
-'app/functions/debug.php',
+    'app/functions/functions.php',
+    'app/functions/debug.php',
 ]
 ```
 
@@ -353,11 +353,11 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerDirs(
-[
-    'app/functions',
-    'app/controllers',
-    'app/models',
-]
+    [
+        'app/functions',
+        'app/controllers',
+        'app/models',
+    ]
 );
 
 $loader->register();
@@ -373,17 +373,17 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->registerDirs(
-[
-    'app/functions',
-]
+    [
+        'app/functions',
+    ]
 );
 
 $loader->registerDirs(
-[
-    'app/controllers',
-    'app/models',
-],
-true
+    [
+        'app/controllers',
+        'app/models',
+    ],
+    true
 );
 
 $loader->register();
@@ -395,9 +395,9 @@ If you need to check what directories are registered in the autoloader, you can 
 
 ```php
 [
-'app/functions',
-'app/controllers',
-'app/models',
+    'app/functions',
+    'app/controllers',
+    'app/models',
 ]
 ```
 
@@ -412,17 +412,17 @@ use Phalcon\Loader;
 $loader = new Loader();
 
 $loader->setExtensions(
-[
-    'php',
-    'inc',
-    'phb',
-]
+    [
+        'php',
+        'inc',
+        'phb',
+    ]
 );
 
 $loader->registerDirs(
-[
-    'app/functions',
-]
+    [
+        'app/functions',
+    ]
 );
 ```
 
@@ -500,20 +500,20 @@ $eventsManager = new Manager();
 $loader        = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $eventsManager->attach(
-'loader:beforeCheckPath',
-function (
-    Event $event, 
-    Loader $loader
-) {
-    echo $loader->getCheckedPath();
-}
+    'loader:beforeCheckPath',
+    function (
+        Event $event, 
+        Loader $loader
+    ) {
+        echo $loader->getCheckedPath();
+    }
 );
 
 $loader->setEventsManager($eventsManager);
@@ -524,6 +524,7 @@ $loader->register();
 In the above example, we create a new Events Manager object, attach a method to the `loader:beforeCheckPath` event and then set it in our autoloader. Every time the loader loops and looks for a particular file in a specific path, the path will be printed on screen. 
 
 The `getCheckedPath()` holds the path that is scanned during each iteration of the internal loop. Also you can use the `getfoundPath()` method, which holds the path of the found file during the internal loop.
+
 
 For events that can stop operation, all you will need to do is return `false` in the method that is attached to the particular event:
 
@@ -538,22 +539,22 @@ $eventsManager = new Manager();
 $loader        = new Loader();
 
 $loader->registerNamespaces(
-[
-   'MyApp'        => 'app/library',
-   'MyApp\Models' => 'app/models',
-]
+    [
+       'MyApp'        => 'app/library',
+       'MyApp\Models' => 'app/models',
+    ]
 );
 
 $eventsManager->attach(
-'loader:beforeCheckPath',
-function (
-    Event $event, 
-    Loader $loader
-) {
-    if ('app/models' === $loader->getCheckedPath()) {
-        return false;
+    'loader:beforeCheckPath',
+    function (
+        Event $event, 
+        Loader $loader
+    ) {
+        if ('app/models' === $loader->getCheckedPath()) {
+            return false;
+        }
     }
-}
 );
 
 $loader->setEventsManager($eventsManager);

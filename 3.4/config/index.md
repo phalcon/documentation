@@ -12,21 +12,21 @@ version: "3.4"
 [Phalcon\Config](/3.4/api/phalcon_config/) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
 Values can be obtained from `Phalcon\Config` as follows:
-
+ 
 ```php
 <?php
 
 use Phalcon\Config;
 
 $config = new Config(
-[
-    'test' => [
-        'parent' => [
-            'property'  => 1,
-            'property2' => 'yeah',
-        ],
-    ],  
-]
+    [
+        'test' => [
+            'parent' => [
+                'property'  => 1,
+                'property2' => 'yeah',
+            ],
+        ],  
+    ]
 );
 
 echo $config->get('test')->get('parent')->get('property');  // displays 1
@@ -34,21 +34,23 @@ echo $config->test->parent->property;                       // displays 1
 echo $config->path('test.parent.property');                 // displays 1
 ```
 
+
 ## Factory
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
-
+ 
 ```php
 <?php
 
 use Phalcon\Config\Factory;
 
 $options = [
-'filePath' => 'path/config',
-'adapter'  => 'php',
+    'filePath' => 'path/config',
+    'adapter'  => 'php',
  ];
-
+ 
  $config = Factory::load($options);
-```
+ ```
+
 
 ## Native Arrays
 The first example shows how to convert native arrays into [Phalcon\Config](/3.4/api/phalcon_config/) objects. This option offers the best performance since no files are read during this request.
@@ -59,19 +61,19 @@ The first example shows how to convert native arrays into [Phalcon\Config](/3.4/
 use Phalcon\Config;
 
 $settings = [
-'database' => [
-    'adapter'  => 'Mysql',
-    'host'     => 'localhost',
-    'username' => 'scott',
-    'password' => 'cheetah',
-    'dbname'   => 'test_db'
-],
- 'app' => [
-    'controllersDir' => '../app/controllers/',
-    'modelsDir'      => '../app/models/',
-    'viewsDir'       => '../app/views/'
-],
-'mysetting' => 'the-value'
+    'database' => [
+        'adapter'  => 'Mysql',
+        'host'     => 'localhost',
+        'username' => 'scott',
+        'password' => 'cheetah',
+        'dbname'   => 'test_db'
+    ],
+     'app' => [
+        'controllersDir' => '../app/controllers/',
+        'modelsDir'      => '../app/models/',
+        'viewsDir'       => '../app/views/'
+    ],
+    'mysetting' => 'the-value'
 ];
 
 $config = new Config($settings);
@@ -93,6 +95,7 @@ require 'config/config.php';
 $config = new Config($settings);
 ```
 
+
 ## File Adapters
 The adapters available are:
 
@@ -102,6 +105,7 @@ The adapters available are:
 | [Phalcon\Config\Adapter\Json](/3.4/api/phalcon_config/) | Uses JSON files to store settings.                                                               |
 | [Phalcon\Config\Adapter\Php](/3.4/api/phalcon_config/)  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
 | [Phalcon\Config\Adapter\Yaml](/3.4/api/phalcon_config/) | Uses YAML files to store settings.                                                               |
+
 
 ## Reading INI Files
 Ini files are a common way to store settings. [Phalcon\Config](/3.4/api/phalcon_config/) uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
@@ -137,6 +141,7 @@ echo $config->database->username, "\n";
 echo $config->models->metadata->adapter, "\n";
 ```
 
+
 ## Merging Configurations
 [Phalcon\Config](/3.4/api/phalcon_config/) can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -146,24 +151,24 @@ echo $config->models->metadata->adapter, "\n";
 use Phalcon\Config;
 
 $config = new Config(
-[
-    'database' => [
-        'host'   => 'localhost',
-        'dbname' => 'test_db',
-    ],
-    'debug' => 1,
-]
+    [
+        'database' => [
+            'host'   => 'localhost',
+            'dbname' => 'test_db',
+        ],
+        'debug' => 1,
+    ]
 );
 
 $config2 = new Config(
-[
-    'database' => [
-        'dbname'   => 'production_db',
-        'username' => 'scott',
-        'password' => 'secret',
-    ],
-    'logging' => 1,
-]
+    [
+        'database' => [
+            'dbname'   => 'production_db',
+            'username' => 'scott',
+            'password' => 'secret',
+        ],
+        'logging' => 1,
+    ]
 );
 
 $config->merge($config2);
@@ -176,19 +181,20 @@ The above code produces the following:
 ```bash
 Phalcon\Config Object
 (
-[database] => Phalcon\Config Object
-    (
-        [host] => localhost
-        [dbname]   => production_db
-        [username] => scott
-        [password] => secret
-    )
-[debug] => 1
-[logging] => 1
+    [database] => Phalcon\Config Object
+        (
+            [host] => localhost
+            [dbname]   => production_db
+            [username] => scott
+            [password] => secret
+        )
+    [debug] => 1
+    [logging] => 1
 )
 ```
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+
 
 ## Nested Configuration
 You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
@@ -200,25 +206,25 @@ use Phalcon\Config;
 
 $config = new Config(
    [
-    'phalcon' => [
-        'baseuri' => '/phalcon/'
-    ],
-    'models' => [
-        'metadata' => 'memory'
-    ],
-    'database' => [
-        'adapter'  => 'mysql',
-        'host'     => 'localhost',
-        'username' => 'user',
-        'password' => 'passwd',
-        'name'     => 'demo'
-    ],
-    'test' => [
-        'parent' => [
-            'property' => 1,
-            'property2' => 'yeah'
+        'phalcon' => [
+            'baseuri' => '/phalcon/'
         ],
-    ],
+        'models' => [
+            'metadata' => 'memory'
+        ],
+        'database' => [
+            'adapter'  => 'mysql',
+            'host'     => 'localhost',
+            'username' => 'user',
+            'password' => 'passwd',
+            'name'     => 'demo'
+        ],
+        'test' => [
+            'parent' => [
+                'property' => 1,
+                'property2' => 'yeah'
+            ],
+        ],
    ]
 );
 
@@ -248,16 +254,17 @@ use Phalcon\Config;
  * @return mixed|Config
  */
 function config() {
-$args = func_get_args();
-$config = Di::getDefault()->getShared(__FUNCTION__);
+    $args = func_get_args();
+    $config = Di::getDefault()->getShared(__FUNCTION__);
 
-if (empty($args)) {
-   return $config;
-}
+    if (empty($args)) {
+       return $config;
+    }
 
-return call_user_func_array([$config, 'path'], $args);
+    return call_user_func_array([$config, 'path'], $args);
 }
 ```
+
 
 ## Injecting Configuration Dependency
 You can inject your configuration to the controller allowing us to use [Phalcon\Config](/3.4/api/phalcon_config/) inside [Phalcon\Mvc\Controller](/3.4/api/phalcon_mvc_controller/). To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
@@ -272,12 +279,12 @@ use Phalcon\Config;
 $di = new FactoryDefault();
 
 $di->set(
-'config',
-function () {
-    $configData = require 'config/config.php';
+    'config',
+    function () {
+        $configData = require 'config/config.php';
 
-    return new Config($configData);
-}
+        return new Config($configData);
+    }
 );
 ```
 
@@ -290,10 +297,10 @@ use Phalcon\Mvc\Controller;
 
 class MyController extends Controller
 {
-private function getDatabaseName()
-{
-    return $this->config->database->dbname;
-}
+    private function getDatabaseName()
+    {
+        return $this->config->database->dbname;
+    }
 }
 ```
 

@@ -43,28 +43,37 @@ for [existing NFRs][new-feature-request-list].
 
 Feel free to connect with us using our social media accounts:
 
-- **Chat - QA** — [Discord Chat][discord]
+- **Chat - QA**
 
-[Discussions][discussions]
-- **Support** — [GitHub Sponsors - Support Us][github_sponsors]
+  [Discord Chat][discord]
 
-[OpenCollective - Support Us][opencollective_sponsors]
-- **Social Media** — [Telegram][telegram]
+  [Discussions][discussions]
+- **Support**
 
-[Gab][gab]
+  [GitHub Sponsors - Support Us][github_sponsors]
 
-[MeWe][mewe]
+  [OpenCollective - Support Us][opencollective_sponsors]
+- **Social Media**
 
-[Reddit][reddit]
+  [Telegram][telegram]
 
-[Facebook][fb]
+  [Gab][gab]
 
-[Twitter][t]
-- **Videos** — [BitChute][bitchute]
+  [MeWe][mewe]
 
-[LBRY][lbry]
+  [Reddit][reddit]
 
-[YouTube][youtube]
+  [Facebook][fb]
+
+  [Twitter][t]
+- **Videos**
+
+  [BitChute][bitchute]
+
+  [LBRY][lbry]
+
+  [YouTube][youtube]
+
 
 [github]: https://github.com/phalcon/cphalcon
 

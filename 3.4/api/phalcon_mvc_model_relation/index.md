@@ -15,6 +15,7 @@ version: "3.4"
 
 This class represents a relationship between two models
 
+
 ## Constants
 *integer* **BELONGS_TO**
 
@@ -37,66 +38,99 @@ public  **__construct** (*int* $type, *string* $referencedModel, *string* | *arr
 
 Phalcon\Mvc\Model\Relation constructor
 
+
+
 public  **setIntermediateRelation** (*string* | *array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
 
 Sets the intermediate model data for has-*-through relations
+
+
 
 public  **getType** ()
 
 Returns the relation type
 
+
+
 public  **getReferencedModel** ()
 
 Returns the referenced model
+
+
 
 public *string* | *array* **getFields** ()
 
 Returns the fields
 
+
+
 public *string* | *array* **getReferencedFields** ()
 
 Returns the referenced fields
 
+
+
 public *string* | *array* **getOptions** ()
 
 Returns the options
+
+
 
 public  **getOption** (*mixed* $name)
 
 Returns an option by the specified name
 If the option doesn't exist null is returned
 
+
+
 public  **isForeignKey** ()
 
 Check whether the relation act as a foreign key
+
+
 
 public *string* | *array* **getForeignKey** ()
 
 Returns the foreign key configuration
 
+
+
 public *array* **getParams** ()
 
 Returns parameters that must be always used when the related records are obtained
+
+
 
 public  **isThrough** ()
 
 Check whether the relation is a 'many-to-many' relation or not
 
+
+
 public  **isReusable** ()
 
 Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
+
+
 
 public *string* | *array* **getIntermediateFields** ()
 
 Gets the intermediate fields for has-*-through relations
 
+
+
 public  **getIntermediateModel** ()
 
 Gets the intermediate model for has-*-through relations
 
+
+
 public *string* | *array* **getIntermediateReferencedFields** ()
 
 Gets the intermediate referenced fields for has-*-through relations
+
+
+
 
 <hr />
 
@@ -109,53 +143,66 @@ abstract public  **setIntermediateRelation** (*mixed* $intermediateFields, *mixe
 
 ...
 
+
 abstract public  **isReusable** ()
 
 ...
+
 
 abstract public  **getType** ()
 
 ...
 
+
 abstract public  **getReferencedModel** ()
 
 ...
+
 
 abstract public  **getFields** ()
 
 ...
 
+
 abstract public  **getReferencedFields** ()
 
 ...
+
 
 abstract public  **getOptions** ()
 
 ...
 
+
 abstract public  **getOption** (*mixed* $name)
 
 ...
+
 
 abstract public  **isForeignKey** ()
 
 ...
 
+
 abstract public  **getForeignKey** ()
 
 ...
+
 
 abstract public  **isThrough** ()
 
 ...
 
+
 abstract public  **getIntermediateFields** ()
 
 ...
 
+
 abstract public  **getIntermediateModel** ()
 
 ...
+
 
 abstract public  **getIntermediateReferencedFields** ()
 

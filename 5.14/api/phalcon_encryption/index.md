@@ -44,6 +44,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 __Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\Exception\DecryptionFailed` · `Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey` · `Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey` · `Phalcon\Encryption\Crypt\Exception\EncryptionFailed` · `Phalcon\Encryption\Crypt\Exception\Exception` · `Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize` · `Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed` · `Phalcon\Encryption\Crypt\Exception\Mismatch` · `Phalcon\Encryption\Crypt\Exception\MissingAuthData` · `Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension` · `Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed` · `Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm` · `Phalcon\Encryption\Crypt\PadFactory`
 
+
 ### Method Summary
 
 <div class="api-list">
@@ -356,9 +357,9 @@ __Uses__ `Phalcon\Encryption\Crypt\CryptInterface` · `Phalcon\Encryption\Crypt\
 
 ```php
 public function __construct(
-string $cipher = self::DEFAULT_CIPHER,
-bool $useSigning = true,
-PadFactory $padFactory = null
+    string $cipher = self::DEFAULT_CIPHER,
+    bool $useSigning = true,
+    PadFactory $padFactory = null
 );
 ```
 
@@ -368,8 +369,8 @@ Crypt constructor.
 
 ```php
 public function decrypt(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -377,8 +378,8 @@ Decrypts an encrypted text.
 
 ```php
 $encrypted = $crypt->decrypt(
-$encrypted,
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    $encrypted,
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
 
@@ -386,9 +387,9 @@ $encrypted,
 
 ```php
 public function decryptBase64(
-string $input,
-string $key = null,
-bool $safe = false
+    string $input,
+    string $key = null,
+    bool $safe = false
 ): string;
 ```
 
@@ -398,8 +399,8 @@ Decrypt a text that is coded as a base64 string.
 
 ```php
 public function encrypt(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -407,8 +408,8 @@ Encrypts a text.
 
 ```php
 $encrypted = $crypt->encrypt(
-"Top secret",
-"T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+    "Top secret",
+    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
 );
 ```
 
@@ -416,9 +417,9 @@ $encrypted = $crypt->encrypt(
 
 ```php
 public function encryptBase64(
-string $input,
-string $key = null,
-bool $safe = false
+    string $input,
+    string $key = null,
+    bool $safe = false
 ): string;
 ```
 
@@ -573,8 +574,8 @@ Sets if the calculating message digest must used.
 
 ```php
 protected function checkCipherHashIsAvailable(
-string $cipher,
-string $type
+    string $cipher,
+    string $type
 ): void;
 ```
 
@@ -584,10 +585,10 @@ Checks if a cipher or a hash algorithm is available
 
 ```php
 protected function cryptPadText(
-string $input,
-string $mode,
-int $blockSize,
-int $paddingType
+    string $input,
+    string $mode,
+    int $blockSize,
+    int $paddingType
 ): string;
 ```
 
@@ -598,10 +599,10 @@ Pads texts before encryption. See
 
 ```php
 protected function cryptUnpadText(
-string $input,
-string $mode,
-int $blockSize,
-int $paddingType
+    string $input,
+    string $mode,
+    int $blockSize,
+    int $paddingType
 ): string;
 ```
 
@@ -614,10 +615,10 @@ unmodified.
 
 ```php
 protected function decryptGcmCcmAuth(
-string $mode,
-string $cipherText,
-string $decryptKey,
-string $iv
+    string $mode,
+    string $cipherText,
+    string $decryptKey,
+    string $iv
 ): string;
 ```
 
@@ -625,9 +626,9 @@ string $iv
 
 ```php
 protected function decryptGetUnpadded(
-string $mode,
-int $blockSize,
-string $decrypted
+    string $mode,
+    int $blockSize,
+    string $decrypted
 ): string;
 ```
 
@@ -635,10 +636,10 @@ string $decrypted
 
 ```php
 protected function encryptGcmCcm(
-string $mode,
-string $padded,
-string $encryptKey,
-string $iv
+    string $mode,
+    string $padded,
+    string $encryptKey,
+    string $iv
 ): string;
 ```
 
@@ -646,9 +647,9 @@ string $iv
 
 ```php
 protected function encryptGetPadded(
-string $mode,
-string $input,
-int $blockSize
+    string $mode,
+    string $input,
+    int $blockSize
 ): string;
 ```
 
@@ -679,6 +680,7 @@ protected function phpOpensslCipherIvLength( string $cipher ): int|bool;
 ```php
 protected function phpOpensslRandomPseudoBytes( int $length );
 ```
+
 
 ## Encryption\Crypt\CryptInterface
 
@@ -808,8 +810,8 @@ Interface for Phalcon\Crypt
 
 ```php
 public function decrypt(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -819,8 +821,8 @@ Decrypts a text
 
 ```php
 public function decryptBase64(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -830,8 +832,8 @@ Decrypt a text that is coded as a base64 string
 
 ```php
 public function encrypt(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -841,8 +843,8 @@ Encrypts a text
 
 ```php
 public function encryptBase64(
-string $input,
-string $key = null
+    string $input,
+    string $key = null
 ): string;
 ```
 
@@ -952,6 +954,7 @@ public function useSigning( bool $useSigning ): CryptInterface;
 
 Sets if the calculating message digest must be used.
 
+
 ## Encryption\Crypt\Exception\DecryptionFailed
 
 <span class="badge badge--class">Class</span>
@@ -967,8 +970,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`**
 
 </div>
 
@@ -991,6 +994,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\EmptyDecryptionKey
 
 <span class="badge badge--class">Class</span>
@@ -1006,8 +1010,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`**
 
 </div>
 
@@ -1030,6 +1034,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\EmptyEncryptionKey
 
 <span class="badge badge--class">Class</span>
@@ -1045,8 +1050,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`**
 
 </div>
 
@@ -1069,6 +1074,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\EncryptionFailed
 
 <span class="badge badge--class">Class</span>
@@ -1084,8 +1090,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`**
 
 </div>
 
@@ -1108,6 +1114,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\Exception
 
 <span class="badge badge--class">Class</span>
@@ -1118,20 +1125,21 @@ Exceptions thrown in Phalcon\Crypt use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Encryption\Crypt\Exception\Exception`**
-- [`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`](#encryptioncryptexceptiondecryptionfailed)
-- [`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`](#encryptioncryptexceptionemptydecryptionkey)
-- [`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`](#encryptioncryptexceptionemptyencryptionkey)
-- [`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`](#encryptioncryptexceptionencryptionfailed)
-- [`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`](#encryptioncryptexceptioninvalidpaddingsize)
-- [`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`](#encryptioncryptexceptionivlengthcalculationfailed)
-- [`Phalcon\Encryption\Crypt\Exception\Mismatch`](#encryptioncryptexceptionmismatch)
-- [`Phalcon\Encryption\Crypt\Exception\MissingAuthData`](#encryptioncryptexceptionmissingauthdata)
-- [`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`](#encryptioncryptexceptionmissingopensslextension)
-- [`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`](#encryptioncryptexceptionrandombytesgenerationfailed)
-- [`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`](#encryptioncryptexceptionunsupportedalgorithm)
+    - **`Phalcon\Encryption\Crypt\Exception\Exception`**
+        - [`Phalcon\Encryption\Crypt\Exception\DecryptionFailed`](#encryptioncryptexceptiondecryptionfailed)
+        - [`Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey`](#encryptioncryptexceptionemptydecryptionkey)
+        - [`Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey`](#encryptioncryptexceptionemptyencryptionkey)
+        - [`Phalcon\Encryption\Crypt\Exception\EncryptionFailed`](#encryptioncryptexceptionencryptionfailed)
+        - [`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`](#encryptioncryptexceptioninvalidpaddingsize)
+        - [`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`](#encryptioncryptexceptionivlengthcalculationfailed)
+        - [`Phalcon\Encryption\Crypt\Exception\Mismatch`](#encryptioncryptexceptionmismatch)
+        - [`Phalcon\Encryption\Crypt\Exception\MissingAuthData`](#encryptioncryptexceptionmissingauthdata)
+        - [`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`](#encryptioncryptexceptionmissingopensslextension)
+        - [`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`](#encryptioncryptexceptionrandombytesgenerationfailed)
+        - [`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`](#encryptioncryptexceptionunsupportedalgorithm)
 
 </div>
+
 
 ## Encryption\Crypt\Exception\InvalidPaddingSize
 
@@ -1148,8 +1156,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize`**
 
 </div>
 
@@ -1172,6 +1180,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\IvLengthCalculationFailed
 
 <span class="badge badge--class">Class</span>
@@ -1187,8 +1196,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed`**
 
 </div>
 
@@ -1211,6 +1220,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\Mismatch
 
 <span class="badge badge--class">Class</span>
@@ -1221,10 +1231,11 @@ Exceptions thrown in Phalcon\Crypt will use this class.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\Mismatch`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\Mismatch`**
 
 </div>
+
 
 ## Encryption\Crypt\Exception\MissingAuthData
 
@@ -1241,8 +1252,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\MissingAuthData`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\MissingAuthData`**
 
 </div>
 
@@ -1265,6 +1276,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\MissingOpensslExtension
 
 <span class="badge badge--class">Class</span>
@@ -1280,8 +1292,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension`**
 
 </div>
 
@@ -1304,6 +1316,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\RandomBytesGenerationFailed
 
 <span class="badge badge--class">Class</span>
@@ -1319,8 +1332,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed`**
 
 </div>
 
@@ -1343,6 +1356,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Crypt\Exception\UnsupportedAlgorithm
 
 <span class="badge badge--class">Class</span>
@@ -1358,8 +1372,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
-- **`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`**
+    - [`Phalcon\Encryption\Crypt\Exception\Exception`](#encryptioncryptexceptionexception)
+        - **`Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm`**
 
 </div>
 
@@ -1380,10 +1394,11 @@ file that was distributed with this source code.
 
 ```php
 public function __construct(
-string $type,
-string $cipher
+    string $type,
+    string $cipher
 );
 ```
+
 
 ## Encryption\Crypt\PadFactory
 
@@ -1395,12 +1410,13 @@ Factory for creating pad classes
 <div class="api-tree">
 
 - [`Phalcon\Factory\AbstractConfigFactory`](/5.14/api/phalcon_factory/#factoryabstractconfigfactory)
-- [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
-- **`Phalcon\Encryption\Crypt\PadFactory`**
+    - [`Phalcon\Factory\AbstractFactory`](/5.14/api/phalcon_factory/#factoryabstractfactory)
+        - **`Phalcon\Encryption\Crypt\PadFactory`**
 
 </div>
 
 __Uses__ `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Crypt\Padding\PadInterface` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Get`
+
 
 ### Method Summary
 
@@ -1476,6 +1492,7 @@ padding class
 protected function getServices(): array;
 ```
 
+
 ## Encryption\Crypt\Padding\Ansi
 
 <span class="badge badge--class">Class</span>
@@ -1520,10 +1537,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Iso10126
 
@@ -1569,10 +1587,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\IsoIek
 
@@ -1618,10 +1637,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Noop
 
@@ -1667,10 +1687,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\PadInterface
 
@@ -1714,10 +1735,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Pkcs7
 
@@ -1763,10 +1785,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Space
 
@@ -1812,10 +1835,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Crypt\Padding\Zero
 
@@ -1861,10 +1885,11 @@ public function pad( int $paddingSize ): string;
 
 ```php
 public function unpad(
-string $input,
-int $blockSize
+    string $input,
+    int $blockSize
 ): int;
 ```
+
 
 ## Encryption\Security
 
@@ -1881,21 +1906,22 @@ $password = $this->request->getPost("password");
 $user = Users::findFirstByLogin($login);
 
 if ($user) {
-if ($this->security->checkHash($password, $user->password)) {
-    // The password is valid
-}
+    if ($this->security->checkHash($password, $user->password)) {
+        // The password is valid
+    }
 }
 ```
 
 <div class="api-tree">
 
 - `stdClass`
-- [`Phalcon\Di\AbstractInjectionAware`](/5.14/api/phalcon_di/#diabstractinjectionaware)
-- **`Phalcon\Encryption\Security`** — implements [`Phalcon\Contracts\Encryption\Security\Security`](/5.14/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
+    - [`Phalcon\Di\AbstractInjectionAware`](/5.14/api/phalcon_di/#diabstractinjectionaware)
+        - **`Phalcon\Encryption\Security`** — implements [`Phalcon\Contracts\Encryption\Security\Security`](/5.14/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
 
 </div>
 
 __Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Di\DiInterface` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface`
+
 
 ### Method Summary
 
@@ -2156,8 +2182,8 @@ __Uses__ `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\Abstrac
 
 ```php
 public function __construct(
-SessionInterface $session = null,
-RequestInterface $request = null
+    SessionInterface $session = null,
+    RequestInterface $request = null
 );
 ```
 
@@ -2167,9 +2193,9 @@ Security constructor.
 
 ```php
 public function checkHash(
-string $password,
-string $passwordHash,
-int $maxPassLength = 0
+    string $password,
+    string $passwordHash,
+    int $maxPassLength = 0
 ): bool;
 ```
 
@@ -2180,9 +2206,9 @@ password matches
 
 ```php
 public function checkToken(
-string $tokenKey = null,
-mixed $tokenValue = null,
-bool $destroyIfValid = true
+    string $tokenKey = null,
+    mixed $tokenValue = null,
+    bool $destroyIfValid = true
 ): bool;
 ```
 
@@ -2193,10 +2219,10 @@ in session
 
 ```php
 public function computeHmac(
-string $data,
-string $key,
-string $algorithm,
-bool $raw = false
+    string $data,
+    string $key,
+    string $algorithm,
+    bool $raw = false
 ): string;
 ```
 
@@ -2296,8 +2322,8 @@ public function getWorkFactor(): int;
 
 ```php
 public function hash(
-string $password,
-array $options = []
+    string $password,
+    array $options = []
 ): string;
 ```
 
@@ -2364,10 +2390,11 @@ Sets the work factor
 
 ```php
 protected function getLocalService(
-string $name,
-string $property
+    string $name,
+    string $property
 );
 ```
+
 
 ## Encryption\Security\Exception
 
@@ -2381,11 +2408,12 @@ Exceptions thrown in Phalcon\Security will use this class
 <div class="api-tree">
 
 - `\Exception`
-- **`Phalcon\Encryption\Security\Exception`**
-- [`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`](#encryptionsecurityexceptionsinvalidrandominput)
-- [`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`](#encryptionsecurityexceptionsunknownhashalgorithm)
+    - **`Phalcon\Encryption\Security\Exception`**
+        - [`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`](#encryptionsecurityexceptionsinvalidrandominput)
+        - [`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`](#encryptionsecurityexceptionsunknownhashalgorithm)
 
 </div>
+
 
 ## Encryption\Security\Exceptions\InvalidRandomInput
 
@@ -2402,12 +2430,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
-- **`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`**
+    - [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
+        - **`Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`**
 
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\Exception`
+
 
 ### Method Summary
 
@@ -2428,6 +2457,7 @@ __Uses__ `Phalcon\Encryption\Security\Exception`
 public function __construct();
 ```
 
+
 ## Encryption\Security\Exceptions\UnknownHashAlgorithm
 
 <span class="badge badge--class">Class</span>
@@ -2443,12 +2473,13 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `\Exception`
-- [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
-- **`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`**
+    - [`Phalcon\Encryption\Security\Exception`](#encryptionsecurityexception)
+        - **`Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm`**
 
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\Exception`
+
 
 ### Method Summary
 
@@ -2469,6 +2500,7 @@ __Uses__ `Phalcon\Encryption\Security\Exception`
 public function __construct( string $algo );
 ```
 
+
 ## Encryption\Security\JWT\Builder
 
 <span class="badge badge--class">Class</span>
@@ -2485,6 +2517,7 @@ JWT Builder
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Item` · `Phalcon\Encryption\Security\JWT\Token\Signature` · `Phalcon\Encryption\Security\JWT\Token\Token` · `Phalcon\Support\Collection` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Helper\Json\Encode`
+
 
 ### Method Summary
 
@@ -2647,8 +2680,8 @@ Builder constructor.
 
 ```php
 public function addClaim(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -2658,8 +2691,8 @@ Adds a custom claim
 
 ```php
 public function addHeader(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -2860,12 +2893,13 @@ value.  Use of this claim is OPTIONAL.
 
 ```php
 protected function setClaim(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): Builder;
 ```
 
 Sets a registered claim
+
 
 ## Encryption\Security\JWT\Exceptions\EmptyPassphrase
 
@@ -2882,8 +2916,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`**
 
 </div>
 
@@ -2906,6 +2940,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidAudience
 
 <span class="badge badge--class">Class</span>
@@ -2921,8 +2956,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`**
 
 </div>
 
@@ -2945,6 +2980,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidAudienceType
 
 <span class="badge badge--class">Class</span>
@@ -2960,8 +2996,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`**
 
 </div>
 
@@ -2984,6 +3020,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidClaims
 
 <span class="badge badge--class">Class</span>
@@ -2999,11 +3036,12 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`**
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -3024,6 +3062,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidExpirationTime
 
 <span class="badge badge--class">Class</span>
@@ -3039,8 +3078,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`**
 
 </div>
 
@@ -3063,6 +3102,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidHeader
 
 <span class="badge badge--class">Class</span>
@@ -3078,11 +3118,12 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`**
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -3103,6 +3144,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\InvalidNotBefore
 
 <span class="badge badge--class">Class</span>
@@ -3118,8 +3160,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`**
 
 </div>
 
@@ -3142,6 +3184,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\MalformedJwtString
 
 <span class="badge badge--class">Class</span>
@@ -3157,11 +3200,12 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`**
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -3182,6 +3226,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\MissingJwtTypHeader
 
 <span class="badge badge--class">Class</span>
@@ -3197,11 +3242,12 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `InvalidArgumentException`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`**
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader`**
 
 </div>
 
 __Uses__ `InvalidArgumentException`
+
 
 ### Method Summary
 
@@ -3222,6 +3268,7 @@ __Uses__ `InvalidArgumentException`
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException
 
 <span class="badge badge--class">Class</span>
@@ -3232,12 +3279,14 @@ Exception thrown when the algorithm is not supported for JWT
 <div class="api-tree">
 
 - `Exception`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`**
-- [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`](#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`**
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`](#encryptionsecurityjwtexceptionsunsupportedhmacalgorithm)
 
 </div>
 
 __Uses__ `Exception`
+
+
 
 ## Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm
 
@@ -3254,8 +3303,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`](#encryptionsecurityjwtexceptionsunsupportedalgorithmexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException`](#encryptionsecurityjwtexceptionsunsupportedalgorithmexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`**
 
 </div>
 
@@ -3278,6 +3327,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Exceptions\ValidatorException
 
 <span class="badge badge--class">Class</span>
@@ -3288,17 +3338,19 @@ Exception thrown when the validation does not pass for JWT
 <div class="api-tree">
 
 - `Exception`
-- **`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`**
-- [`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`](#encryptionsecurityjwtexceptionsemptypassphrase)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`](#encryptionsecurityjwtexceptionsinvalidaudience)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`](#encryptionsecurityjwtexceptionsinvalidaudiencetype)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`](#encryptionsecurityjwtexceptionsinvalidexpirationtime)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`](#encryptionsecurityjwtexceptionsinvalidnotbefore)
-- [`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`](#encryptionsecurityjwtexceptionsweakpassphrase)
+    - **`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`**
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase`](#encryptionsecurityjwtexceptionsemptypassphrase)
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience`](#encryptionsecurityjwtexceptionsinvalidaudience)
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType`](#encryptionsecurityjwtexceptionsinvalidaudiencetype)
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime`](#encryptionsecurityjwtexceptionsinvalidexpirationtime)
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore`](#encryptionsecurityjwtexceptionsinvalidnotbefore)
+        - [`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`](#encryptionsecurityjwtexceptionsweakpassphrase)
 
 </div>
 
 __Uses__ `Exception`
+
+
 
 ## Encryption\Security\JWT\Exceptions\WeakPassphrase
 
@@ -3315,8 +3367,8 @@ file that was distributed with this source code.
 <div class="api-tree">
 
 - `Exception`
-- [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
-- **`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`**
+    - [`Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException`](#encryptionsecurityjwtexceptionsvalidatorexception)
+        - **`Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase`**
 
 </div>
 
@@ -3339,6 +3391,7 @@ file that was distributed with this source code.
 public function __construct();
 ```
 
+
 ## Encryption\Security\JWT\Signer\AbstractSigner
 
 <span class="badge badge--abstract">Abstract</span>
@@ -3349,7 +3402,7 @@ Abstract class helping with the signer classes
 <div class="api-tree">
 
 - **`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`** — implements [`Phalcon\Encryption\Security\JWT\Signer\SignerInterface`](#encryptionsecurityjwtsignersignerinterface)
-- [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](#encryptionsecurityjwtsignerhmac)
+    - [`Phalcon\Encryption\Security\JWT\Signer\Hmac`](#encryptionsecurityjwtsignerhmac)
 
 </div>
 
@@ -3383,6 +3436,7 @@ Abstract class helping with the signer classes
 public function getAlgorithm(): string;
 ```
 
+
 ## Encryption\Security\JWT\Signer\Hmac
 
 <span class="badge badge--class">Class</span>
@@ -3393,11 +3447,12 @@ HMAC signing class
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\JWT\Signer\AbstractSigner`](#encryptionsecurityjwtsignerabstractsigner)
-- **`Phalcon\Encryption\Security\JWT\Signer\Hmac`**
+    - **`Phalcon\Encryption\Security\JWT\Signer\Hmac`**
 
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException` · `Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm`
+
 
 ### Method Summary
 
@@ -3451,8 +3506,8 @@ Return the value that is used for the "alg" header
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -3462,13 +3517,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Encryption\Security\JWT\Signer\None
 
@@ -3536,8 +3592,8 @@ Return the algorithm used
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -3547,13 +3603,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Encryption\Security\JWT\Signer\SignerInterface
 
@@ -3621,8 +3678,8 @@ Return the algorithm used
 
 ```php
 public function sign(
-string $payload,
-string $passphrase
+    string $payload,
+    string $passphrase
 ): string;
 ```
 
@@ -3632,13 +3689,14 @@ Sign a payload using the passphrase
 
 ```php
 public function verify(
-string $source,
-string $payload,
-string $passphrase
+    string $source,
+    string $payload,
+    string $passphrase
 ): bool;
 ```
 
 Verify a passed source with a payload and passphrase
+
 
 ## Encryption\Security\JWT\Token\AbstractItem
 
@@ -3650,8 +3708,8 @@ Abstract helper class for Tokens
 <div class="api-tree">
 
 - **`Phalcon\Encryption\Security\JWT\Token\AbstractItem`**
-- [`Phalcon\Encryption\Security\JWT\Token\Item`](#encryptionsecurityjwttokenitem)
-- [`Phalcon\Encryption\Security\JWT\Token\Signature`](#encryptionsecurityjwttokensignature)
+    - [`Phalcon\Encryption\Security\JWT\Token\Item`](#encryptionsecurityjwttokenitem)
+    - [`Phalcon\Encryption\Security\JWT\Token\Signature`](#encryptionsecurityjwttokensignature)
 
 </div>
 
@@ -3684,6 +3742,7 @@ Abstract helper class for Tokens
 ```php
 public function getEncoded(): string;
 ```
+
 
 ## Encryption\Security\JWT\Token\Enum
 
@@ -3747,6 +3806,7 @@ Constants for Tokens. It offers constants for Headers as well as Claims
 </div>
 </div>
 
+
 ## Encryption\Security\JWT\Token\Item
 
 <span class="badge badge--class">Class</span>
@@ -3757,7 +3817,7 @@ Storage class for a Token Item
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
-- **`Phalcon\Encryption\Security\JWT\Token\Item`**
+    - **`Phalcon\Encryption\Security\JWT\Token\Item`**
 
 </div>
 
@@ -3794,8 +3854,8 @@ Storage class for a Token Item
 
 ```php
 public function __construct(
-array $payload,
-string $encoded
+    array $payload,
+    string $encoded
 );
 ```
 
@@ -3805,8 +3865,8 @@ Item constructor.
 
 ```php
 public function get(
-string $name,
-mixed $defaultValue = null
+    string $name,
+    mixed $defaultValue = null
 ): mixed|null;
 ```
 
@@ -3821,6 +3881,7 @@ public function getPayload(): array;
 ```php
 public function has( string $name ): bool;
 ```
+
 
 ## Encryption\Security\JWT\Token\Parser
 
@@ -3840,6 +3901,7 @@ signature. It returns a token object populated with the decoded information.
 </div>
 
 __Uses__ `InvalidArgumentException` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims` · `Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader` · `Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString` · `Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader` · `Phalcon\Support\Helper\Json\Decode`
+
 
 ### Method Summary
 
@@ -3874,6 +3936,7 @@ public function parse( string $token ): Token;
 
 Parse a token and return it
 
+
 ## Encryption\Security\JWT\Token\Signature
 
 <span class="badge badge--class">Class</span>
@@ -3884,7 +3947,7 @@ Signature class containing the encoded data and the hash.
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\JWT\Token\AbstractItem`](#encryptionsecurityjwttokenabstractitem)
-- **`Phalcon\Encryption\Security\JWT\Token\Signature`**
+    - **`Phalcon\Encryption\Security\JWT\Token\Signature`**
 
 </div>
 
@@ -3911,8 +3974,8 @@ Signature class containing the encoded data and the hash.
 
 ```php
 public function __construct(
-string $hash = "",
-string $encoded = ""
+    string $hash = "",
+    string $encoded = ""
 );
 ```
 
@@ -3923,6 +3986,7 @@ Signature constructor.
 ```php
 public function getHash(): string;
 ```
+
 
 ## Encryption\Security\JWT\Token\Token
 
@@ -3947,6 +4011,7 @@ and payload. It also calculates and returns the token string.
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`
+
 
 ### Method Summary
 
@@ -4007,9 +4072,9 @@ __Uses__ `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\En
 
 ```php
 public function __construct(
-Item $headers,
-Item $claims,
-Signature $signature
+    Item $headers,
+    Item $claims,
+    Signature $signature
 );
 ```
 
@@ -4065,12 +4130,13 @@ public function validate( Validator $validator ): array;
 
 ```php
 public function verify(
-SignerInterface $signer,
-string $key
+    SignerInterface $signer,
+    string $key
 ): bool;
 ```
 
 Verify the signature
+
 
 ## Encryption\Security\JWT\Validator
 
@@ -4086,6 +4152,7 @@ Class Validator
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Token\Enum` · `Phalcon\Encryption\Security\JWT\Token\Token`
+
 
 ### Method Summary
 
@@ -4177,8 +4244,8 @@ __Uses__ `Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType` · `Ph
 
 ```php
 public function __construct(
-Token $token,
-int $timeShift = 0
+    Token $token,
+    int $timeShift = 0
 );
 ```
 
@@ -4204,8 +4271,8 @@ Return an array with validation errors (if any)
 
 ```php
 public function set(
-string $claim,
-mixed $value
+    string $claim,
+    mixed $value
 ): static;
 ```
 
@@ -4231,8 +4298,8 @@ Validate the audience
 
 ```php
 public function validateClaim(
-string $name,
-mixed $value
+    string $name,
+    mixed $value
 ): static;
 ```
 
@@ -4282,12 +4349,13 @@ Validate the notbefore (nbf) of the token
 
 ```php
 public function validateSignature(
-SignerInterface $signer,
-string $passphrase
+    SignerInterface $signer,
+    string $passphrase
 ): static;
 ```
 
 Validate the signature of the token
+
 
 ## Encryption\Security\Random
 
@@ -4371,6 +4439,7 @@ This class partially borrows SecureRandom library from Ruby
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput`
+
 
 ### Method Summary
 
@@ -4500,8 +4569,8 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 ```php
 public function base64Safe(
-int $len = 16,
-bool $padding = false
+    int $len = 16,
+    bool $padding = false
 ): string;
 ```
 
@@ -4605,14 +4674,15 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ```php
 protected function base(
-string $alphabet,
-int $base,
-mixed $number = 16
+    string $alphabet,
+    int $base,
+    mixed $number = 16
 ): string;
 ```
 
 Generates a random string based on the number ($base) of characters
 ($alphabet).
+
 
 ## Encryption\Security\Uuid
 
@@ -4632,6 +4702,7 @@ getDateTime() or getNode().
 </div>
 
 __Uses__ `Phalcon\Encryption\Security\Uuid\Version1` · `Phalcon\Encryption\Security\Uuid\Version3` · `Phalcon\Encryption\Security\Uuid\Version4` · `Phalcon\Encryption\Security\Uuid\Version5` · `Phalcon\Encryption\Security\Uuid\Version6` · `Phalcon\Encryption\Security\Uuid\Version7`
+
 
 ### Method Summary
 
@@ -4690,8 +4761,8 @@ Generates a version 1 (time-based) UUID.
 
 ```php
 public function v3(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 ): Version3;
 ```
 
@@ -4709,8 +4780,8 @@ Generates a version 4 (random) UUID.
 
 ```php
 public function v5(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 ): Version5;
 ```
 
@@ -4732,6 +4803,7 @@ public function v7(): Version7;
 
 Generates a version 7 (Unix timestamp) UUID.
 
+
 ## Encryption\Security\Uuid\AbstractUuid
 
 <span class="badge badge--abstract">Abstract</span>
@@ -4742,12 +4814,12 @@ Shared base for all UUID version objects.
 <div class="api-tree">
 
 - **`Phalcon\Encryption\Security\Uuid\AbstractUuid`** — implements [`Phalcon\Encryption\Security\Uuid\UuidInterface`](#encryptionsecurityuuiduuidinterface)
-- [`Phalcon\Encryption\Security\Uuid\Version1`](#encryptionsecurityuuidversion1)
-- [`Phalcon\Encryption\Security\Uuid\Version3`](#encryptionsecurityuuidversion3)
-- [`Phalcon\Encryption\Security\Uuid\Version4`](#encryptionsecurityuuidversion4)
-- [`Phalcon\Encryption\Security\Uuid\Version5`](#encryptionsecurityuuidversion5)
-- [`Phalcon\Encryption\Security\Uuid\Version6`](#encryptionsecurityuuidversion6)
-- [`Phalcon\Encryption\Security\Uuid\Version7`](#encryptionsecurityuuidversion7)
+    - [`Phalcon\Encryption\Security\Uuid\Version1`](#encryptionsecurityuuidversion1)
+    - [`Phalcon\Encryption\Security\Uuid\Version3`](#encryptionsecurityuuidversion3)
+    - [`Phalcon\Encryption\Security\Uuid\Version4`](#encryptionsecurityuuidversion4)
+    - [`Phalcon\Encryption\Security\Uuid\Version5`](#encryptionsecurityuuidversion5)
+    - [`Phalcon\Encryption\Security\Uuid\Version6`](#encryptionsecurityuuidversion6)
+    - [`Phalcon\Encryption\Security\Uuid\Version7`](#encryptionsecurityuuidversion7)
 
 </div>
 
@@ -4884,6 +4956,7 @@ protected function uuidTimestampToDateTime( mixed $timestamp ): \DateTimeImmutab
 Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
 a DateTimeImmutable. Used by Version1 and Version6.
 
+
 ## Encryption\Security\Uuid\NodeProviderInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -4925,6 +4998,7 @@ Implementation of this file has been influenced by sinbadxiii/cphalcon-uuid
 public function getNode(): string;
 ```
 
+
 ## Encryption\Security\Uuid\RandomNodeProvider
 
 <span class="badge badge--class">Class</span>
@@ -4964,6 +5038,7 @@ public function getNode(): string;
 ```
 
 Returns a random 12-character hex node with the multicast bit set.
+
 
 ## Encryption\Security\Uuid\SysNodeProvider
 
@@ -5013,6 +5088,7 @@ public function getNode(): string;
 
 Returns the hardware MAC address as a 12-character hex string.
 Result is cached in the instance property and optionally in APCu.
+
 
 ## Encryption\Security\Uuid\TimeBasedUuidInterface
 
@@ -5066,6 +5142,7 @@ public function getDateTime(): \DateTimeImmutable;
 public function getNode(): string;
 ```
 
+
 ## Encryption\Security\Uuid\UuidInterface
 
 <span class="badge badge--interface">Interface</span>
@@ -5102,6 +5179,7 @@ Also carries the standard RFC 4122 namespace UUIDs as constants.
 </div>
 </div>
 
+
 ## Encryption\Security\Uuid\Version1
 
 <span class="badge badge--class">Class</span>
@@ -5119,7 +5197,7 @@ as fallback.
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version1`** — implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
+    - **`Phalcon\Encryption\Security\Uuid\Version1`** — implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
 </div>
 
@@ -5152,8 +5230,8 @@ as fallback.
 
 ```php
 public function __construct(
-\DateTimeInterface $dateTime = null,
-mixed $node = null
+    \DateTimeInterface $dateTime = null,
+    mixed $node = null
 );
 ```
 
@@ -5173,6 +5251,7 @@ public function getNode(): string;
 
 Returns the 12-character hex node embedded in the UUID.
 
+
 ## Encryption\Security\Uuid\Version3
 
 <span class="badge badge--class">Class</span>
@@ -5188,7 +5267,7 @@ by hashing namespace bytes + name with MD5, then stamping version/variant.
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version3`**
+    - **`Phalcon\Encryption\Security\Uuid\Version3`**
 
 </div>
 
@@ -5209,10 +5288,11 @@ by hashing namespace bytes + name with MD5, then stamping version/variant.
 
 ```php
 public function __construct(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 );
 ```
+
 
 ## Encryption\Security\Uuid\Version4
 
@@ -5229,7 +5309,7 @@ Phalcon\Encryption\Security\Random::uuid().
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version4`**
+    - **`Phalcon\Encryption\Security\Uuid\Version4`**
 
 </div>
 
@@ -5252,6 +5332,7 @@ Phalcon\Encryption\Security\Random::uuid().
 public function __construct();
 ```
 
+
 ## Encryption\Security\Uuid\Version5
 
 <span class="badge badge--class">Class</span>
@@ -5268,7 +5349,7 @@ then stamping version/variant bits.
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version5`**
+    - **`Phalcon\Encryption\Security\Uuid\Version5`**
 
 </div>
 
@@ -5289,10 +5370,11 @@ then stamping version/variant bits.
 
 ```php
 public function __construct(
-string $namespaceName,
-string $name
+    string $namespaceName,
+    string $name
 );
 ```
+
 
 ## Encryption\Security\Uuid\Version6
 
@@ -5310,7 +5392,7 @@ that sort lexicographically in chronological order.
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version6`** — implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
+    - **`Phalcon\Encryption\Security\Uuid\Version6`** — implements [`Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface`](#encryptionsecurityuuidtimebaseduuidinterface)
 
 </div>
 
@@ -5361,6 +5443,7 @@ public function getNode(): string;
 
 Returns the 12-character hex node embedded in the UUID.
 
+
 ## Encryption\Security\Uuid\Version7
 
 <span class="badge badge--class">Class</span>
@@ -5376,7 +5459,7 @@ Layout (128 bits):
 <div class="api-tree">
 
 - [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](#encryptionsecurityuuidabstractuuid)
-- **`Phalcon\Encryption\Security\Uuid\Version7`**
+    - **`Phalcon\Encryption\Security\Uuid\Version7`**
 
 </div>
 

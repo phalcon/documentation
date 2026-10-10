@@ -46,11 +46,11 @@ $uri     = new Uri('https://api.phalcon.io/companies/1');
 
 $request = new ServerRequest();
 $request = $request
-->withHeader('Content-Type', ['application/json'])
-->withMethod('GET')
-->withProtocolVersion('1.1')
-->withUploadedFiles($_FILES)
-->withUri($uri)
+    ->withHeader('Content-Type', ['application/json'])
+    ->withMethod('GET')
+    ->withProtocolVersion('1.1')
+    ->withUploadedFiles($_FILES)
+    ->withUri($uri)
 ;
 ```
 
@@ -64,18 +64,18 @@ The above example can be implemented by only using the constructor parameters:
 use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://input',
-[
-    'Content-Type'  => 'application/json',
-],
-$_COOKIE,
-$_GET,
-$_FILES,
-'some body',
-'1.2'
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://input',
+    [
+        'Content-Type'  => 'application/json',
+    ],
+    $_COOKIE,
+    $_GET,
+    $_FILES,
+    'some body',
+    '1.2'
 );
 ```
 
@@ -85,16 +85,16 @@ The [ServerRequest][http-message-serverrequest] object created is immutable, mea
 
 ```php
 public function __construct(
-[string $method = "GET" 
-[, mixed $uri = null 
-[, array serverParams = [],
-[, mixed body = "php://input",
-[, mixed headers = [],
-[, array cookies = [],
-[, array queryParams = [],
-[, array uploadFiles = [],
-[, mixed parsedBody = null,
-[, string protocol = "1.1"]]]]]]]]]]
+    [string $method = "GET" 
+    [, mixed $uri = null 
+    [, array serverParams = [],
+    [, mixed body = "php://input",
+    [, mixed headers = [],
+    [, array cookies = [],
+    [, array queryParams = [],
+    [, array uploadFiles = [],
+    [, mixed parsedBody = null,
+    [, string protocol = "1.1"]]]]]]]]]]
 )
 ```
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
@@ -116,18 +116,18 @@ The constructor accepts parameters allowing you to create the object with certai
 use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://input',
-[
-    'Content-Type'  => 'application/json',
-],
-$_COOKIE,
-$_GET,
-$_FILES,
-'some body',
-'1.2'
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://input',
+    [
+        'Content-Type'  => 'application/json',
+    ],
+    $_COOKIE,
+    $_GET,
+    $_FILES,
+    'some body',
+    '1.2'
 );
 ```
 
@@ -144,7 +144,7 @@ use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest();
 $request = $request
-->withAttribute('one', 'two')
+    ->withAttribute('one', 'two')
 ;
 
 echo $request->getAttribute('one');           // 'two'
@@ -162,11 +162,11 @@ use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest();
 $request = $request
-->withAttribute('one', 'two')
+    ->withAttribute('one', 'two')
 ;
 
 var_dump(
-$request->getAttributes()
+    $request->getAttributes()
 );
 
 // [
@@ -203,18 +203,18 @@ Returns the cookies of the server request. The returned array is compatible with
 use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-[],
-'php://input',
-[],
-[
-    'cookie-one' => 'cookie-value-one',
-]
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    [],
+    'php://input',
+    [],
+    [
+        'cookie-one' => 'cookie-value-one',
+    ]
 );
 
 var_dump(
-$request->getCookieParams()
+    $request->getCookieParams()
 );
 
 // [
@@ -232,13 +232,13 @@ Returns an array of all the header values of the passed case insensitive header 
 use Phalcon\Http\Message\ServerRequest;
 
 $request  = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1',
-[],
-'php://memory',
-[
-    'Content-Type' => 'application/json',
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    [],
+    'php://memory',
+    [
+        'Content-Type' => 'application/json',
+    ]
 );
 
 echo $request->getHeader('content-Type'); // ['application/json']
@@ -255,16 +255,16 @@ Returns all of the header values of the given case-insensitive header name as a 
 use Phalcon\Http\Message\ServerRequest;
 
 $request  = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1',
-[],
-'php://memory',
-[
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    [],
+    'php://memory',
+    [
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 echo $request->getHeaderLine('content-Type'); // 'application/json,application/html'
@@ -280,20 +280,20 @@ Returns an array with all the message header values. The keys represent the head
 use Phalcon\Http\Message\ServerRequest;
 
 $request  = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1',
-[],
-'php://memory',
-[
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    [],
+    'php://memory',
+    [
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Content-Type'  => [
@@ -328,22 +328,22 @@ Returns any parameters provided in the request body. If the request `Content-Typ
 use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://input',
-[
-    'Content-Type'  => 'application/x-www-form-urlencoded',
-],
-$_COOKIE,
-$_GET,
-$_FILES,
-$_POST,
-'1.2'
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://input',
+    [
+        'Content-Type'  => 'application/x-www-form-urlencoded',
+    ],
+    $_COOKIE,
+    $_GET,
+    $_FILES,
+    $_POST,
+    '1.2'
 );
 
 var_dump(
-$this->getParsedBody()
+    $this->getParsedBody()
 );
 
 // $_POST
@@ -374,13 +374,13 @@ use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest();
 $request = $request->withQueryParams(
-[
-    'param' => 'value',
-]
+    [
+        'param' => 'value',
+    ]
 );
 
 var_dump(
-$request->getQueryParams()
+    $request->getQueryParams()
 );
 
 // [
@@ -413,27 +413,27 @@ Returns an array of data related to the incoming request environment, typically 
 use Phalcon\Http\Message\ServerRequest;
 
 $request  = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1',
-$_SERVER
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER
 );
 
 var_dump(
-$this->getServerParams()
+    $this->getServerParams()
 );
 
 // $_POST
 
 $request  = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1',
-[
-    'param' => 'value',
-]   
+    'POST',
+    'https://api.phalcon.io/companies/1',
+    [
+        'param' => 'value',
+    ]   
 );
 
 var_dump(
-$this->getServerParams()
+    $this->getServerParams()
 );
 
 // [
@@ -451,20 +451,20 @@ Returns an array with upload metadata in a normalized tree, with each leaf is an
 use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://input',
-[
-    'Content-Type'  => 'application/json',
-],
-$_COOKIE,
-$_GET,
-$_FILES
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://input',
+    [
+        'Content-Type'  => 'application/json',
+    ],
+    $_COOKIE,
+    $_GET,
+    $_FILES
 );
 
 var_dump(
-$this->getUploadedFiles()
+    $this->getUploadedFiles()
 );
 
 // [
@@ -486,12 +486,13 @@ Returns the Uri as a `UriInterface` object
 use Phalcon\Http\Message\ServerRequest;
 
 $request = new ServerRequest(
-'POST',
-'https://api.phalcon.io/companies/1'
+    'POST',
+    'https://api.phalcon.io/companies/1'
 );
 
 echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
+
 
 ## Existence
 
@@ -507,17 +508,17 @@ use Phalcon\Http\Message\ServerRequest;
 $jwtToken = 'abc.def.ghi';
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-        'application/html',
-    ],
-]
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+            'application/html',
+        ],
+    ]
 );
 
 echo $request->hasHeader('content-type'); // true
@@ -538,20 +539,20 @@ use Phalcon\Http\Message\ServerRequest;
 $jwtToken = 'abc.def.ghi';
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-    ],
-]
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+        ],
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -561,15 +562,15 @@ $request->getHeaders()
 // ]
 
 $clone = $request
-->withAddedHeader(
-    'Content-Type', 
-    [
-        'application/html'
-    ]
-);
+    ->withAddedHeader(
+        'Content-Type', 
+        [
+            'application/html'
+        ]
+    );
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -592,13 +593,13 @@ use Phalcon\Http\Message\ServerRequest;
 $request = new ServerRequest();
 
 $clone = $request
-->withAttribute(
-    'attribute-name', 
-    'attribute-value'
-);
+    ->withAttribute(
+        'attribute-name', 
+        'attribute-value'
+    );
 
 var_dump(
-$clone->getAttributes()
+    $clone->getAttributes()
 );
 // [
 //     'attribute-name' => 'attribute-value',
@@ -637,14 +638,14 @@ use Phalcon\Http\Message\ServerRequest;
 $request = new ServerRequest();
 
 $clone = $request
-->withCookieParams(
-    [
-        'cookie-name' => 'cookie-value',
-    ]
-);
+    ->withCookieParams(
+        [
+            'cookie-name' => 'cookie-value',
+        ]
+    );
 
 var_dump(
-$clone->getCookieParams()
+    $clone->getCookieParams()
 );
 // [
 //     'cookie-name' => 'cookie-value',
@@ -663,31 +664,31 @@ use Phalcon\Http\Message\ServerRequest;
 $jwtToken = 'abc.def.ghi';
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-]
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 
 $clone = $request->withAddedHeader(
-'Content-Type',
-[
-    'application/html',
-]
+    'Content-Type',
+    [
+        'application/html',
+    ]
 );
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -714,7 +715,7 @@ $clone = $request->withMethod('GET');
 
 echo $clone->getMethod(); // GET
 ```
-
+     
 ### `withParsedBody()`
 
 Returns an instance with the specified body parameters. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method should be used only to inject the contents of `$_POST`. The data is not required to come from `$_POST`, but will be the results of unserializing the request body content. Unserialization/parsing returns structured data, and, as such, this method only accepts arrays or objects, or a null value if nothing was available to parse.
@@ -729,9 +730,9 @@ use Phalcon\Http\Message\ServerRequest;
 $request = new ServerRequest();
 
 $clone = $request->withParsedBody(
-[
-    'one' => 'two',
-]
+    [
+        'one' => 'two',
+    ]
 );
 
 echo $clone->getParsedBody(); 
@@ -767,13 +768,13 @@ use Phalcon\Http\Message\ServerRequest;
 $request = new ServerRequest();
 
 $clone = $request->withQueryParams(
-[
-    'one' => 'two',
-]
+    [
+        'one' => 'two',
+    ]
 );
 
 var_dump(
-$clone->getQueryParams()
+    $clone->getQueryParams()
 );
 
 // [
@@ -813,27 +814,27 @@ $fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $file = new UploadedFile(
-$stream,
-1234,
-UPLOAD_ERR_OK,
-'phalcon.txt'
+    $stream,
+    1234,
+    UPLOAD_ERR_OK,
+    'phalcon.txt'
 );
 
 $request = new ServerRequest();
 
 $clone = $request
-->withUploadedFiles(
-    [
-        'my-form' => [
-            'details' => [
-                'invoice' => $file,
-            ] 
-        ]          
-    ]           
-);
-
+    ->withUploadedFiles(
+        [
+            'my-form' => [
+                'details' => [
+                    'invoice' => $file,
+                ] 
+            ]          
+        ]           
+    );
+   
 var_dump(
-$this->getUploadedFiles()
+    $this->getUploadedFiles()
 );
 
 // [
@@ -881,24 +882,25 @@ use Phalcon\Http\Message\ServerRequest;
 $request = new ServerRequest();
 
 $clone = $request
-->withAttribute('one', 'two')
-->withAttribute('three', 'four')
+    ->withAttribute('one', 'two')
+    ->withAttribute('three', 'four')
 ;
 
 var_dump(
-$clone->getAttributes()
+    $clone->getAttributes()
 );
 // [
 //     'one'   => 'two',
 //     'three' => 'four',
 // ]
 
+
 $newClone = $request
-->withoutAttribute('one')
+    ->withoutAttribute('one')
 ;
 
 var_dump(
-$newClone->getAttributes()
+    $newClone->getAttributes()
 );
 // [
 //     'three' => 'four',
@@ -917,20 +919,20 @@ use Phalcon\Http\Message\ServerRequest;
 $jwtToken = 'abc.def.ghi';
 
 $request = new ServerRequest(
-'GET',
-'https://api.phalcon.io/companies/1',
-$_SERVER,
-'php://memory',
-[
-    'Authorization' => 'Bearer ' . $jwtToken,
-    'Content-Type'  => [
-        'application/json',
-    ],
-]
+    'GET',
+    'https://api.phalcon.io/companies/1',
+    $_SERVER,
+    'php://memory',
+    [
+        'Authorization' => 'Bearer ' . $jwtToken,
+        'Content-Type'  => [
+            'application/json',
+        ],
+    ]
 );
 
 var_dump(
-$request->getHeaders()
+    $request->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
@@ -942,12 +944,13 @@ $request->getHeaders()
 $clone = $request->withoutHeader('Content-Type');
 
 var_dump(
-$clone->getHeaders()
+    $clone->getHeaders()
 );
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 ```
+
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/

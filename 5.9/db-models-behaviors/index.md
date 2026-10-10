@@ -24,39 +24,39 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 class Invoices extends Model
 {
-/**
- * @var int
- */
-public $inv_id;
+    /**
+     * @var int
+     */
+    public $inv_id;
 
-/**
- * @var string
- */
-public $inv_created_at;
+    /**
+     * @var string
+     */
+    public $inv_created_at;
 
-/**
- * @var int
- */
-public $inv_status_flag;
+    /**
+     * @var int
+     */
+    public $inv_status_flag;
 
-/**
- * @var string
- */
-public $inv_title;
+    /**
+     * @var string
+     */
+    public $inv_title;
 
-public function initialize()
-{
-    $this->addBehavior(
-        new Timestampable(
-            [
-                'beforeCreate' => [
-                    'field'  => 'inv_created_at',
-                    'format' => 'Y-m-d',
-                ],
-            ]
-        )
-    );
-}
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Timestampable(
+                [
+                    'beforeCreate' => [
+                        'field'  => 'inv_created_at',
+                        'format' => 'Y-m-d',
+                    ],
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -78,16 +78,16 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 public function initialize()
 {
-$this->addBehavior(
-    new Timestampable(
-        [
-            'beforeCreate' => [
-                'field'  => 'inv_created_at',
-                'format' => 'Y-m-d',
-            ],
-        ]
-    )
-);
+    $this->addBehavior(
+        new Timestampable(
+            [
+                'beforeCreate' => [
+                    'field'  => 'inv_created_at',
+                    'format' => 'Y-m-d',
+                ],
+            ]
+        )
+    );
 }
 ```
 
@@ -102,22 +102,22 @@ use Phalcon\Mvc\Model\Behavior\Timestampable;
 
 public function initialize()
 {
-$this->addBehavior(
-    new Timestampable(
-        [
-            'beforeCreate' => [
-                'field'  => 'inv_created_at',
-                'format' => function () {
-                    $datetime = new Datetime(
-                        new DateTimeZone('Europe/Stockholm')
-                    );
+    $this->addBehavior(
+        new Timestampable(
+            [
+                'beforeCreate' => [
+                    'field'  => 'inv_created_at',
+                    'format' => function () {
+                        $datetime = new Datetime(
+                            new DateTimeZone('Europe/Stockholm')
+                        );
 
-                    return $datetime->format('Y-m-d H:i:sP');
-                },
-            ],
-        ]
-    )
-);
+                        return $datetime->format('Y-m-d H:i:sP');
+                    },
+                ],
+            ]
+        )
+    );
 }
 ```
 
@@ -134,40 +134,40 @@ use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
 class Invoices extends Model
 {
-const ACTIVE   = 1;
-const INACTIVE = 0;
+    const ACTIVE   = 1;
+    const INACTIVE = 0;
 
-/**
- * @var int
- */
-public $inv_id;
+    /**
+     * @var int
+     */
+    public $inv_id;
 
-/**
- * @var string
- */
-public $inv_created_at;
+    /**
+     * @var string
+     */
+    public $inv_created_at;
 
-/**
- * @var int
- */
-public $inv_deleted_flag;
+    /**
+     * @var int
+     */
+    public $inv_deleted_flag;
 
-/**
- * @var string
- */
-public $inv_title;
+    /**
+     * @var string
+     */
+    public $inv_title;
 
-public function initialize()
-{
-    $this->addBehavior(
-        new SoftDelete(
-            [
-                'field' => 'inv_deleted_flag',
-                'value' => Invoices::INACTIVE,
-            ]
-        )
-    );
-}
+    public function initialize()
+    {
+        $this->addBehavior(
+            new SoftDelete(
+                [
+                    'field' => 'inv_deleted_flag',
+                    'value' => Invoices::INACTIVE,
+                ]
+            )
+        );
+    }
 }
 ```
 
@@ -220,9 +220,9 @@ The [Phalcon\Mvc\Model\BehaviorInterface][mvc-model-behaviorinterface] requires 
 
 ```php 
 public function missingMethod(
-ModelInterface $model, 
-string $method, 
-array $arguments = []
+    ModelInterface $model, 
+    string $method, 
+    array $arguments = []
 )
 ```
 
@@ -230,8 +230,8 @@ This method acts as a fallback when a missing method is called on the model
 
 ```php
 public function notify(
-string $type, 
-ModelInterface $model
+    string $type, 
+    ModelInterface $model
 )
 ```
 
@@ -255,28 +255,28 @@ use Phalcon\Mvc\Model\Behavior;
 
 class Blameable extends Behavior
 {
-public function notify(string $eventType, ModelInterface $model)
-{
-    $container = Di::getDefault();
-    $userName  = $container->get('auth')->getFullName();
+    public function notify(string $eventType, ModelInterface $model)
+    {
+        $container = Di::getDefault();
+        $userName  = $container->get('auth')->getFullName();
 
-    switch ($eventType) {
+        switch ($eventType) {
 
-        case 'afterCreate':
-        case 'afterDelete':
-        case 'afterUpdate':
+            case 'afterCreate':
+            case 'afterDelete':
+            case 'afterUpdate':
 
-            file_put_contents(
-                'logs/blamable-log.txt',
-                $userName . ' ' . $eventType . ' ' . $model->inv_id
-            );
+                file_put_contents(
+                    'logs/blamable-log.txt',
+                    $userName . ' ' . $eventType . ' ' . $model->inv_id
+                );
 
-            break;
+                break;
 
-        default:
-            // ...
+            default:
+                // ...
+        }
     }
-}
 }
 ```
 
@@ -289,12 +289,12 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-public function initialize()
-{
-    $this->addBehavior(
-        new Blameable()
-    );
-}
+    public function initialize()
+    {
+        $this->addBehavior(
+            new Blameable()
+        );
+    }
 }
 ```
 
@@ -310,15 +310,15 @@ use Phalcon\Mvc\Model\BehaviorInterface;
 
 class Sluggable extends Behavior
 {
-public function missingMethod(
-    ModelInterface $model,
-    string $method,
-    $arguments = []
-) {
-    if ($method === 'getSlug') {
-        return Tag::friendlyTitle($model->title);
+    public function missingMethod(
+        ModelInterface $model,
+        string $method,
+        $arguments = []
+    ) {
+        if ($method === 'getSlug') {
+            return Tag::friendlyTitle($model->title);
+        }
     }
-}
 }
 ```
 
@@ -338,15 +338,15 @@ You can use [Traits][traits] to re-use code in your classes, this is another way
 
 trait Timestampable
 {
-public function beforeCreate()
-{
-    $this->inv_created_at = date('r');
-}
+    public function beforeCreate()
+    {
+        $this->inv_created_at = date('r');
+    }
 
-public function beforeUpdate()
-{
-    $this->inv_updated_at = date('r');
-}
+    public function beforeUpdate()
+    {
+        $this->inv_updated_at = date('r');
+    }
 }
 ```
 
@@ -359,7 +359,7 @@ use Phalcon\Mvc\Model;
 
 class Invoices extends Model
 {
-use Timestampable;
+    use Timestampable;
 }
 ```
 
