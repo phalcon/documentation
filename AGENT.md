@@ -15,7 +15,7 @@ Every command runs in the `phalcon-docs` image (node 22, pnpm 10, `WORKDIR /docs
 
 ```bash
 ./serve                                                        # dev server, http://localhost:4321
-docker run --rm -v "$PWD":/docs phalcon-docs pnpm build         # dist/, about four minutes
+docker run --rm -v "$PWD":/docs phalcon-docs pnpm build         # dist/, about seven minutes
 docker run --rm -v "$PWD":/docs phalcon-docs pnpm lint:docs     # frontmatter + internal links
 docker run --rm -v "$PWD":/docs phalcon-docs pnpm test          # unit tests of src/lib and scripts
 docker run --rm -v "$PWD":/docs phalcon-docs pnpm typecheck     # astro check
@@ -113,7 +113,7 @@ Rules:
 
 ## Verify before you claim
 
-`lint:docs` and `test` are cheap and catch most of it; `pnpm build` is the real check and takes about four minutes. A change to content needs at least:
+`lint:docs` and `test` are cheap and catch most of it; `pnpm build` is the real check and takes about seven minutes. A change to content needs at least:
 
 ```bash
 docker run --rm -v "$PWD":/docs phalcon-docs pnpm lint:docs

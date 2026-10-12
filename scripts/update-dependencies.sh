@@ -10,7 +10,7 @@
 # 3. Checks and builds again, and compares the build with the baseline.
 #
 # The checks are `pnpm test`, `pnpm typecheck` and `pnpm build`. The run
-# takes about ten minutes (two builds). The baseline and the comparison go
+# takes about fifteen minutes (two builds). The baseline and the comparison go
 # to resources/nimbus/work/update/.
 #
 # @cloudflare/nimbus-docs is not updated: a new version needs the reviews of

@@ -21,13 +21,14 @@ export const SITE_CARD = {
 
 /**
  * The page id of Astro for a file of a version folder: the path with no
- * extension; the index of a folder is the folder (`api/index.mdx` is `api`).
+ * extension, in lowercase, as the slugger of Astro; the index of a folder
+ * is the folder (`api/index.mdx` is `api`).
  *
  * @param {string} file The path of the file in its version folder.
  * @returns {string}
  */
 export function pageSlug(file) {
-  return file.replace(/\.mdx?$/, "").replace(/\/index$/, "");
+  return file.toLowerCase().replace(/\.mdx?$/, "").replace(/\/index$/, "");
 }
 
 /** The YAML escapes of a string in double quotes that are not the character itself. */

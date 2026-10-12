@@ -48,6 +48,11 @@ test("pageSlug gives the page id of Astro: the file with no extension, and a fol
   assert.equal(pageSlug("api/index.mdx"), "api");
 });
 
+test("pageSlug gives the page id in lowercase, as the slugger of Astro", () => {
+  assert.equal(pageSlug("Tutorial/Vokuro.md"), "tutorial/vokuro");
+  assert.equal(pageSlug("Api/Index.mdx"), "api");
+});
+
 test("pageTitle reads a plain title and a title in single quotes", () => {
   // AGENT.md shows a plain title; YAML allows each of the three forms.
   assert.equal(pageTitle("---\ntitle: My page\n---\n"), "My page");
