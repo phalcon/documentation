@@ -6,6 +6,9 @@
  *   the id empty to disable analytics.
  * - `versionBanner(version, latest)` returns the banner shown on every page
  *   of a documentation version.
+ * - `versionTag(version)` returns the tag of a version in the version picker.
+ * - `indexedVersions(versions, groups)` and `llmsVersions(versions)` give the
+ *   versions of the root /llms.txt and their labels.
  */
 
 /** @param {string} id - A GA4 measurement id such as `G-XXXXXXXXXX`. */
@@ -56,6 +59,43 @@ export function versionTag(version, stable = STABLE_VERSIONS, prereleases = PRER
   if (version === stable[0]) return "latest";
   if (stable.includes(version)) return "stable";
   return prereleases[version];
+}
+
+/**
+ * The versions that have a /<version>/llms.txt, in the order of `versions`:
+ * each has a group of the kind "version" in `getIndexedTopLevel()` that is
+ * not hidden ([section]/llms.txt.ts skips the hidden groups).
+ *
+ * @param {string[]} versions - The published versions, newest first.
+ * @param {{ slug: string, kind: string, hidden: boolean }[]} groups - The groups of getIndexedTopLevel().
+ * @returns {string[]}
+ */
+export function indexedVersions(versions, groups) {
+  const indexed = new Set(groups.filter((group) => group.kind === "version" && !group.hidden).map((group) => group.slug));
+  return versions.filter((version) => indexed.has(version));
+}
+
+/**
+ * The versions of the root /llms.txt, in its order: the first stable
+ * version, then the others in the order of `versions` (the newest first).
+ * The label has the picker tag of the version, or "deprecated".
+ *
+ * @param {string[]} versions - The versions that have a /<version>/llms.txt, newest first.
+ * @param {string[]} stable - The stable releases, newest first.
+ * @param {Record<string, string>} prereleases - Pre-release tags by version.
+ * @param {string[]} deprecated - The versions that are no longer maintained.
+ * @returns {{ version: string, label: string }[]}
+ */
+export function llmsVersions(versions, stable = STABLE_VERSIONS, prereleases = PRERELEASES, deprecated = DEPRECATED) {
+  const ordered = [
+    ...versions.filter((version) => version === stable[0]),
+    ...versions.filter((version) => version !== stable[0]),
+  ];
+
+  return ordered.map((version) => {
+    const tag = deprecated.includes(version) ? "deprecated" : versionTag(version, stable, prereleases);
+    return { version, label: tag ? `${version} (${tag})` : version };
+  });
 }
 
 /**

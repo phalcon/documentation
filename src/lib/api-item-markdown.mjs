@@ -1,3 +1,5 @@
+import { readApiItem } from "./api-item.mjs";
+
 /**
  * The Markdown form of one `<ApiItem>` row of an API page: a constant, a
  * property or a method of a summary (src/components/api/ApiItem.astro).
@@ -10,28 +12,27 @@
  *   - `protected string|null $documentTitle = ""`
  *   - `const string OPTION_CLOSE = "</option>"`
  *
- * The attributes are strings. An empty string means "absent", as in
- * ApiItem.astro. `params` is the JSON text of the parameters.
+ * The attributes are strings, and `params` is the JSON text of the parameters.
+ * readApiItem (api-item.mjs) reads them, as for ApiItem.astro: an empty string
+ * means "absent".
  *
  * @param {{ attrs: Record<string, string | boolean>, children: string }} context
  * @returns {string}
  */
 export function apiItemMarkdown({ attrs, children }) {
-  const text = (name) => String(attrs[name] ?? "").trim();
+  const row = readApiItem(attrs);
   const withDefault = (declaration, value) => (value === "" ? declaration : `${declaration} = ${value}`);
   const words = (...parts) => parts.filter((part) => part !== "").join(" ");
 
   let declaration;
-  if (text("kind") === "constant") {
-    declaration = withDefault(words("const", text("type"), text("name")), text("default"));
-  } else if (text("kind") === "property") {
-    declaration = withDefault(words(text("visibility"), text("type"), `$${text("name")}`), text("default"));
+  if (row.kind === "constant") {
+    declaration = withDefault(words("const", row.type, row.name), row.default);
+  } else if (row.kind === "property") {
+    declaration = withDefault(words(row.visibility, row.type, `$${row.name}`), row.default);
   } else {
-    const params = JSON.parse(text("params") || "[]").map((param) =>
-      withDefault(words(param.type ?? "", `$${param.name}`), param.default ?? ""),
-    );
-    const returnType = text("returnType") === "" ? "" : `: ${text("returnType")}`;
-    declaration = `${words(text("visibility"), text("name"))}(${params.join(", ")})${returnType}`;
+    const params = row.params.map((param) => withDefault(words(param.type, `$${param.name}`), param.default));
+    const returnType = row.returnType === "" ? "" : `: ${row.returnType}`;
+    declaration = `${words(row.visibility, row.name)}(${params.join(", ")})${returnType}`;
   }
 
   // A code span needs a run of backticks that is longer than each run in it.

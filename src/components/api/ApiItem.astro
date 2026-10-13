@@ -10,15 +10,19 @@
  * floats left, the type chip floats right, and the signature flows between
  * them with the description below.
  *
- * Empty strings mean "absent": the templates cannot leave an attribute out.
+ * readApiItem (src/lib/api-item.mjs) reads the props, as for the Markdown row
+ * of the page: an empty string means "absent".
  */
+import { readApiItem } from "../../lib/api-item.mjs";
+
 interface Parameter {
   type: string;
   name: string;
   default: string | null;
 }
 
-interface Props {
+// A type, not an interface: readApiItem takes a record of the props.
+type Props = {
   /** Absent for a method summary row. */
   kind?: "constant" | "property";
   href?: string;
@@ -30,46 +34,35 @@ interface Props {
   returnType?: string;
   default?: string;
   params?: Parameter[];
-}
+};
 
-const {
-  kind,
-  href,
-  visibility,
-  name,
-  type,
-  returnType,
-  default: defaultValue,
-  params = [],
-} = Astro.props;
-
-const declaredType = (type ?? returnType ?? "").trim();
-const hasDefault = (defaultValue ?? "").trim() !== "";
-const Tag = href ? "a" : "div";
+const item = readApiItem(Astro.props);
+const declaredType = item.type || item.returnType;
+const Tag = item.href ? "a" : "div";
 ---
 
-<Tag class="api-item" href={href}>
-  {visibility && <code class="api-vis" data-visibility={visibility}>{visibility}</code>}
+<Tag class="api-item" href={item.href || undefined}>
+  {item.visibility && <code class="api-vis" data-visibility={item.visibility}>{item.visibility}</code>}
   {declaredType !== "" && <code class="api-type">{declaredType}</code>}
 
   <code class="api-sig">
-    {kind === "constant" && <span class="api-const">{name}</span>}
-    {kind === "property" && <span class="api-var">${name}</span>}
-    {!kind && (
+    {item.kind === "constant" && <span class="api-const">{item.name}</span>}
+    {item.kind === "property" && <span class="api-var">${item.name}</span>}
+    {item.kind === "" && (
       <>
-        <span class="api-fn">{name}</span>(
-        {params.map((parameter, index) => (
+        <span class="api-fn">{item.name}</span>(
+        {item.params.map((parameter, index) => (
           <span class="api-prm">
             <span class="api-type-token">{parameter.type}</span>{" "}
             <span class="api-var">${parameter.name}</span>
-            {parameter.default !== null && <span class="api-muted"> = {parameter.default}</span>}
-            {index < params.length - 1 && ","}
+            {parameter.default !== "" && <span class="api-muted"> = {parameter.default}</span>}
+            {index < item.params.length - 1 && ","}
           </span>
         ))}
         )
       </>
     )}
-    {hasDefault && <span class="api-muted"> = {defaultValue}</span>}
+    {item.default !== "" && <span class="api-muted"> = {item.default}</span>}
   </code>
 
   <span class="api-desc"><slot /></span>

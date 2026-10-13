@@ -46,10 +46,11 @@ src/
 │   ├── <version>/[...slug]/index.md.ts # GENERATED markdown twin, /<version>/<slug>/index.md
 │   ├── [...slug].astro, [...slug]/     # the empty primary collection
 │   ├── [section]/llms.txt.ts           # per-version agent index, /<version>/llms.txt
-│   ├── llms.txt.ts, llms-full.txt.ts, robots.txt.ts, 404.astro
+│   ├── llms.txt.ts                     # ours, not the nimbus starter: /llms.txt (and its copy /index.md), one link for each version; no llms-full.txt.ts, on purpose
+│   ├── robots.txt.ts, 404.astro
 ├── layouts/                    # BaseLayout (head, fan art, AgentDirective), DocsLayout
 ├── lib/
-│   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, analytics
+│   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, llmsVersions, analytics
 │   ├── mkdocs-heading-ids.mjs  # the MkDocs heading ids
 │   ├── version-sidebar.mjs     # the rail of one version
 │   ├── design-checks.mjs       # copy of phalcon/tools/ in phalcon/assets: checks the design files (tests, scripts/update-tokens.mjs)

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { googleAnalytics, versionBanner, versionTag } from "./site.mjs";
+import { googleAnalytics, indexedVersions, llmsVersions, versionBanner, versionTag } from "./site.mjs";
 
 test("analytics head elements carry the measurement id", () => {
   const head = googleAnalytics("G-TEST");
@@ -42,4 +42,41 @@ test("picker tags: latest for the first stable, stable for the others, the pre-r
   assert.equal(versionTag("5.20", stable, {}), "stable");
   assert.equal(versionTag("5.19", stable, {}), undefined);
   assert.equal(versionTag("7.0", stable, { "7.0": "alpha" }), "alpha");
+});
+
+test("llms.txt versions: the first stable version first, then the others newest first, with their tags", () => {
+  const versions = ["6.0", "5.22", "5.21", "4.2", "3.4"];
+  assert.deepEqual(llmsVersions(versions, ["5.22"], { "6.0": "RC" }, ["4.2", "3.4"]), [
+    { version: "5.22", label: "5.22 (latest)" },
+    { version: "6.0", label: "6.0 (RC)" },
+    { version: "5.21", label: "5.21" },
+    { version: "4.2", label: "4.2 (deprecated)" },
+    { version: "3.4", label: "3.4 (deprecated)" },
+  ]);
+});
+
+test("llms.txt versions: the other stable versions get the stable tag", () => {
+  assert.deepEqual(llmsVersions(["6.0", "5.22", "5.21"], ["6.0", "5.22"], {}, []), [
+    { version: "6.0", label: "6.0 (latest)" },
+    { version: "5.22", label: "5.22 (stable)" },
+    { version: "5.21", label: "5.21" },
+  ]);
+});
+
+test("llms.txt versions: only the versions with an index group that is not hidden, in the order of versions", () => {
+  const groups = [
+    { slug: "3.4", kind: "version", hidden: false },
+    { slug: "5.21", kind: "version", hidden: true },
+    { slug: "5.22", kind: "version", hidden: false },
+    { slug: "6.0", kind: "secondary", hidden: false },
+    { slug: "guide", kind: "primary", hidden: false },
+  ];
+  assert.deepEqual(indexedVersions(["6.0", "5.22", "5.21", "3.4"], groups), ["5.22", "3.4"]);
+});
+
+test("llms.txt versions: a stable version with no index is not listed", () => {
+  assert.deepEqual(llmsVersions(["6.0", "5.21"], ["5.22"], { "6.0": "RC" }, []), [
+    { version: "6.0", label: "6.0 (RC)" },
+    { version: "5.21", label: "5.21" },
+  ]);
 });
