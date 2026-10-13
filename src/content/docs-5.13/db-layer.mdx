@@ -2707,8 +2707,8 @@ $idx = new Index(
 $connection->addIndex('users', null, $idx);
 ```
 
-The MySQL and PostgreSQL dialects wrap each expression entry in extra parentheses (`KEY idx (\`tenant_id\`, (LOWER(
-email)))`); SQLite emits the expression directly. Expressions compose with `directions` and `where` without any
+The MySQL and PostgreSQL dialects wrap each expression entry in extra parentheses (``KEY idx (`tenant_id`, (LOWER(
+email)))``); SQLite emits the expression directly. Expressions compose with `directions` and `where` without any
 additional API surface.
 
 #### Concurrent Index Creation (PostgreSQL)
