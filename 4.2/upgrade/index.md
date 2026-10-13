@@ -367,7 +367,7 @@ use Phalcon\Filter\FilterFactory;
 $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
-Calling`newInstance()` will return a [Phalcon\Filter](/4.2/api/phalcon_filter/#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
+Calling `newInstance()` will return a [Phalcon\Filter](/4.2/api/phalcon_filter/#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
 
 #### Load Only Sanitizers You Want
 You can instantiate the [Phalcon\Filter](/4.2/api/phalcon_filter/#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.

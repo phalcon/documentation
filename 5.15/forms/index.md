@@ -215,7 +215,7 @@ public function bind(
 
 Binds data to the entity. The first parameter `data` is an array of key/values. This usually is the `$_POST` array. The
 second parameter `entity` is an entity object. If the properties of the entity object contain properties that match the
-names of the `data`elements defined in the form, those elements will be populated with the values of the corresponding
+names of the `data` elements defined in the form, those elements will be populated with the values of the corresponding
 properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model][db-models] or even a `\stdClass`.
 The third parameter `whitelist` is an array of whitelisted elements. Any element in the `whitelist` array that has the
 same name as an element in the `data` array will be ignored.
