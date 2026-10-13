@@ -32,10 +32,10 @@ export function googleAnalytics(id) {
 
 /**
  * The stable releases, newest first. It is a decision, not the newest
- * number: a pre-release (6.0 beta) is newer but not stable. Stable versions
+ * number: a pre-release (6.0 RC) is newer but not stable. Stable versions
  * show no banner; the first one is where `/` and `/latest/` lead and gets
  * the "latest" tag in the picker, the others get "stable". When 6.0 is
- * released: `["6.0", "5.20"]`, and remove it from PRERELEASES.
+ * released: `["6.0", "5.22"]`, and remove it from PRERELEASES.
  */
 export const STABLE_VERSIONS = ["5.22"];
 
