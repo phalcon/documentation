@@ -32,7 +32,7 @@ There is no shared content. Each documentation version is a content collection o
 ```
 src/
 ├── components.ts               # MDX globals registry - a component used in .mdx must be listed here
-├── components/                 # AgentDirective, Header, Render + ui/<slug>/ (registry components)
+├── components/                 # AgentDirective, Header (the shared nav), Footer (the shared footer), SiteLinks (the links of the nav in the drawer), Render + ui/<slug>/ (registry components)
 ├── content/
 │   ├── docs/index.mdx          # placeholder only - the primary collection is empty on purpose
 │   ├── docs-<version>/*.mdx    # the pages of a version (6.0, 5.20 … 5.11, 5.9 … 5.4, 4.2, 3.4)
@@ -55,9 +55,12 @@ src/
 │   ├── version-sidebar.mjs     # the rail of one version
 │   ├── design-checks.mjs       # copy of phalcon/tools/ in phalcon/assets: checks the design files (tests, scripts/update-tokens.mjs)
 │   ├── design-refresh.mjs      # copy of phalcon/tools/ in phalcon/assets: refreshes the design files (scripts/update-tokens.mjs)
+│   ├── site-nav.mjs            # the links of the shared nav (Header.astro, SiteLinks.astro)
+│   ├── stars.mjs               # copy of phalcon/tools/ in phalcon/assets: the star count of the nav
 │   └── cn.ts                   # Tailwind className merger
-├── styles/                     # globals.css, prose.css, api.css (port of the MkDocs API styles); tokens.css and code-theme.json are copies from phalcon/assets
-└── fanart.html                 # <head> comment, refreshed by the deploy workflow
+├── styles/                     # globals.css, prose.css, api.css (port of the MkDocs API styles); tokens.css, code-theme.json and common.css (the shared nav and footer) are copies from phalcon/assets
+├── fanart.html                 # <head> comment, refreshed by the deploy workflow
+└── footer.json, repositories.json  # copies from phalcon/assets: the footer links, the GitHub stars of the nav
 
 public/assets/images/           # images, shared by all versions, referenced as /assets/images/...
 resources/nimbus/               # convert.py, its tests, templates, per-version overrides, parity.sh
@@ -126,7 +129,7 @@ To compile-check MDX without a full build, run `@mdx-js/mdx`'s `compile()` over 
 
 ## Deployment
 
-A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css` and `src/styles/code-theme.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
+A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`, `src/lib/stars.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css`, `src/styles/code-theme.json`, `src/styles/common.css`, `src/footer.json` and `src/repositories.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
 
 ## Don't
 
@@ -139,4 +142,4 @@ A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `u
 - Use a component in `.mdx` without adding it to `src/components.ts`.
 - Run a build while `./serve` is running.
 - Type a color in `src/`: use a token (`var(--nb-…)`, `var(--ph-…)`, `var(--code-…)`). `pnpm test` fails on a typed color.
-- Edit `src/styles/tokens.css` or `src/styles/code-theme.json`: they are copies; change them in phalcon/assets.
+- Edit `src/styles/tokens.css`, `src/styles/code-theme.json`, `src/styles/common.css`, `src/footer.json`, `src/repositories.json` or `src/lib/stars.mjs`: they are copies; change them in phalcon/assets.
