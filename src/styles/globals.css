@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "./tokens.css";
+/* The shared nav and footer: src/styles/common.css, a copy of
+   phalcon/css/common.css. In the layer components, the classes of the docs
+   controls in the nav win over its resets. */
+@import "./common.css" layer(components);
 
 /* ============================================================
  * Nimbus Theme — THE file you edit to customize your site.
@@ -86,10 +90,11 @@
 	--code-string-expression: var(--ph-light-syntax-string-expression);
 	--code-text: var(--ph-light-syntax-text);
 
-	/* Layout — design: sidebar 264px / content 820px / toc 232px */
+	/* Layout — design: sidebar 264px / content 820px / toc 232px; the shared nav 69px */
 	--nb-sidebar-width: 16.5rem;
 	--nb-toc-width: 14.5rem;
 	--nb-content-max: 51.25rem;
+	--nb-header-height: 69px;
 
 	/* Typography — Helvetica everywhere, matching phalcon.io: no webfonts,
 	   nothing to download. Code keeps the platform monospace stack. */
@@ -245,6 +250,70 @@
 	--shadow-sm: var(--nb-shadow-sm);
 	--shadow-default: var(--nb-shadow);
 	--shadow-lg: var(--nb-shadow-lg);
+}
+
+/* ---- The shared nav (src/components/Header.astro, common.css) ----
+ * The nav is dark in both tones. Its data-mode="dark" gives the docs controls
+ * in it the dark --nb- colors; the Tailwind colors take them again here,
+ * because @theme resolves them on :root. The bar has one height at every
+ * width, so that the sticky parts of the layout stay below it. */
+.ph-nav {
+	--color-background: var(--nb-background);
+	--color-foreground: var(--nb-foreground);
+	--color-card: var(--nb-card);
+	--color-card-foreground: var(--nb-card-foreground);
+	--color-muted: var(--nb-muted);
+	--color-muted-foreground: var(--nb-muted-foreground);
+	--color-accent: var(--nb-accent);
+	--color-accent-foreground: var(--nb-accent-foreground);
+	--color-primary: var(--nb-primary);
+	--color-primary-foreground: var(--nb-primary-foreground);
+	--color-primary-hover: var(--nb-primary-hover);
+	--color-border: var(--nb-border);
+	--color-border-strong: var(--nb-border-strong);
+	--color-selected: var(--nb-selected);
+	--color-ring: var(--nb-ring);
+	--color-info: var(--nb-info);
+	--color-info-foreground: var(--nb-info-foreground);
+	--color-info-muted: var(--nb-info-muted);
+	--color-success: var(--nb-success);
+	--color-success-foreground: var(--nb-success-foreground);
+	--color-success-muted: var(--nb-success-muted);
+	--color-warning: var(--nb-warning);
+	--color-warning-foreground: var(--nb-warning-foreground);
+	--color-warning-muted: var(--nb-warning-muted);
+	--color-danger: var(--nb-danger);
+	--color-danger-foreground: var(--nb-danger-foreground);
+	--color-danger-muted: var(--nb-danger-muted);
+}
+
+.ph-nav__bar {
+	min-height: calc(var(--nb-header-height) - 1px);
+}
+
+/* One line, so that the nav keeps its height on a phone. */
+.ph-nav__name {
+	white-space: nowrap;
+}
+
+/* The search of the nav: the look of the blog search (public/css/site.css of
+   the blog, .header__search), as a button that opens the search dialog. */
+.nav-search {
+	background-color: color-mix(in srgb, var(--ph-mist-100) 40%, transparent);
+	border-radius: 100px;
+	color: var(--ph-white);
+	cursor: pointer;
+	font-size: 12px;
+	height: 30px;
+	padding: 0 15px;
+	text-align: left;
+	transition: 0.2s;
+	width: 172px;
+}
+
+.nav-search:focus-visible {
+	background-color: var(--ph-white);
+	color: var(--ph-ink-500);
 }
 
 /* ---- Minimal overrides the plugin doesn't cover ---- */

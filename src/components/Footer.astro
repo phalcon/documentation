@@ -1,0 +1,43 @@
+---
+/*
+ * The shared footer of the Phalcon sites: the footer of phalcon.io, with the
+ * classes of src/styles/common.css. The links come from src/footer.json, a
+ * copy of phalcon/footer.json in phalcon/assets that the deploy workflow gets
+ * again before every build.
+ */
+import footer from "../footer.json";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="ph-footer">
+  <div class="ph-footer__grid">
+    <div>
+      <div class="ph-footer__brand">
+        <img src="https://assets.phalcon.io/phalcon/images/svg/falcon.svg" alt="" class="ph-footer__logo" />
+        <span class="ph-footer__name">Phalcon</span>
+      </div>
+      <p class="ph-footer__tagline">{footer.tagline}</p>
+    </div>
+    {footer.columns.map((column) => (
+      <div>
+        <p class="ph-footer__title">{column.title}</p>
+        <div class="ph-footer__links">
+          {column.links.map((link) => (
+            <a href={link.href} class="ph-footer__link">{link.label}</a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="ph-footer__socials">
+    {footer.socials.map((social) => (
+      <a href={social.href} class="ph-footer__social">{social.label}</a>
+    ))}
+  </div>
+  <div class="ph-footer__bottom">
+    <div class="ph-footer__bottom-inner">
+      <span class="ph-footer__copyright">© {year} {footer.copyright}</span>
+    </div>
+  </div>
+</footer>

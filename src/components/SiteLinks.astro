@@ -1,0 +1,41 @@
+---
+/*
+ * The links of the shared nav in the drawer of the docs navigation
+ * (src/layouts/DocsLayout.astro). The nav shows them from 84rem. The drawer
+ * button shows below 84rem, so the links are one tap away at every width: the
+ * docs have no burger. The style is the style of the docs navigation.
+ */
+import { download, github, links, menus } from "../lib/site-nav.mjs";
+import { cphalconStars, formatStars } from "../lib/stars.mjs";
+import repositories from "../repositories.json?raw";
+
+const stars = formatStars(cphalconStars(repositories));
+const title = "px-3 pb-1 pt-4 text-[0.6875rem] font-semibold uppercase tracking-wide text-muted-foreground/70";
+const link =
+  "flex min-h-[2rem] items-center rounded-lg px-3 py-1 text-[0.8125rem] font-medium text-muted-foreground no-underline transition-colors duration-150 hover:bg-accent hover:text-foreground";
+---
+
+<div class="border-t border-border px-4 pb-8 pt-2" data-site-links>
+  <p class={title}>Phalcon</p>
+  <ul class="m-0 list-none p-0">
+    {links.map((item) => (
+      <li><a href={item.href} class={link}>{item.label}</a></li>
+    ))}
+    <li><a href={github} class={link}>GitHub ★ {stars}</a></li>
+  </ul>
+  {menus.map((menu) => (
+    <Fragment>
+      <p class={title}>{menu.label}</p>
+      <ul class="m-0 list-none p-0">
+        {menu.items.map((item) => (
+          <li><a href={item.href} class={link}>{item.label}</a></li>
+        ))}
+      </ul>
+    </Fragment>
+  ))}
+  <a
+    href={download}
+    class="mx-3 mt-4 inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground no-underline transition-colors hover:bg-primary-hover"
+    >Get Phalcon</a
+  >
+</div>

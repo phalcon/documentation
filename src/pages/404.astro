@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { config } from "virtual:nimbus/config";
 ---
 
 <BaseLayout title={`Page not found · ${config.title}`} description="The page you're looking for doesn't exist.">
   <div class="flex flex-col min-h-screen">
-    <Header />
+    <Header showSidebar={false} />
     <main id="main-content" tabindex="-1" class="flex-1 mx-auto max-w-2xl w-full px-6 py-24 text-center">
       <p class="text-sm font-medium text-muted-foreground">404</p>
       <h1
@@ -25,5 +26,6 @@ import { config } from "virtual:nimbus/config";
         Back home
       </a>
     </main>
+    <Footer />
   </div>
 </BaseLayout>

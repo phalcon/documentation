@@ -1,12 +1,20 @@
 ---
 /** Button that opens the search dialog. Cmd+K on macOS, Ctrl+K elsewhere. */
 import Icon from "@cloudflare/nimbus-docs/components/Icon.astro";
+import { cn } from "@/lib/cn";
+
+interface Props {
+  /** More classes, for example the widths at which the button shows. */
+  class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
 <button
   data-search-trigger
   type="button"
-  class="flex items-center gap-2 rounded-md border border-border bg-card text-sm text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground p-2 sm:px-2.5 sm:py-1.5"
+  class={cn("flex items-center gap-2 rounded-md border border-border bg-card text-sm text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground p-2 sm:px-2.5 sm:py-1.5", className)}
   aria-label="Search documentation"
   aria-keyshortcuts="Control+K"
 >

@@ -114,20 +114,13 @@ function getFontFamily(): string {
 	return font || "system-ui, -apple-system, sans-serif";
 }
 
-function getPageBackground(): string {
-	const style = getComputedStyle(document.documentElement);
-	const bg = style.getPropertyValue("--nb-background").trim();
-	if (isMermaidSupportedColor(bg)) return bg;
-	return document.documentElement.getAttribute("data-mode") === "dark"
-		? "#0f0f0f"
-		: "#ffffff";
-}
-
-function getThemeColor(name: string, fallback: string): string {
+// A color of the docs in the current mode (src/styles/globals.css), or
+// undefined: Mermaid then keeps the value of its base theme.
+function getThemeColor(name: string): string | undefined {
 	const value = getComputedStyle(document.documentElement)
 		.getPropertyValue(name)
 		.trim();
-	return isMermaidSupportedColor(value) ? value : fallback;
+	return isMermaidSupportedColor(value) ? value : undefined;
 }
 
 function isMermaidSupportedColor(value: string): boolean {
@@ -184,51 +177,40 @@ async function render() {
 	const isLight =
 		document.documentElement.getAttribute("data-mode") !== "dark";
 	const fontFamily = getFontFamily();
-	const pageBg = getPageBackground();
-	const accent = getThemeColor("--nb-primary", isLight ? "#ff4801" : "#ff6524");
+	// The diagram colors are the colors of the docs in the current mode, so
+	// they follow the Phalcon design tokens (src/styles/tokens.css).
+	const accent = getThemeColor("--nb-primary");
+	const background = getThemeColor("--nb-background");
+	const border = getThemeColor("--nb-muted-foreground");
+	const muted = getThemeColor("--nb-muted");
+	const surface = getThemeColor("--nb-card");
+	const text = getThemeColor("--nb-foreground");
 
-	const lightThemeVars = {
-		fontFamily,
-		primaryColor: "#ffffff",
+	const colors = {
+		primaryColor: surface,
 		primaryBorderColor: accent,
-		primaryTextColor: "#1d1d1d",
-		secondaryColor: "#f3f4f6",
-		secondaryBorderColor: "#9ca3af",
-		secondaryTextColor: "#1d1d1d",
-		tertiaryColor: "#f3f4f6",
-		tertiaryBorderColor: "#9ca3af",
-		tertiaryTextColor: "#1d1d1d",
+		primaryTextColor: text,
+		secondaryColor: muted,
+		secondaryBorderColor: border,
+		secondaryTextColor: text,
+		tertiaryColor: muted,
+		tertiaryBorderColor: border,
+		tertiaryTextColor: text,
 		lineColor: accent,
-		textColor: "#1d1d1d",
-		mainBkg: "#ffffff",
-		errorBkgColor: "#fef2f2",
-		errorTextColor: "#7f1d1d",
-		edgeLabelBackground: pageBg,
-		labelBackground: pageBg,
+		textColor: text,
+		mainBkg: surface,
+		edgeLabelBackground: background,
+		labelBackground: background,
+		// The light mode keeps the background of the base theme.
+		background: isLight ? undefined : background,
 	};
 
-	const darkThemeVars = {
+	const themeVariables = {
 		fontFamily,
-		primaryColor: "#1f1f1f",
-		primaryBorderColor: accent,
-		primaryTextColor: "#f2f2f2",
-		secondaryColor: "#262626",
-		secondaryBorderColor: "#6b7280",
-		secondaryTextColor: "#f2f2f2",
-		tertiaryColor: "#262626",
-		tertiaryBorderColor: "#6b7280",
-		tertiaryTextColor: "#f2f2f2",
-		lineColor: accent,
-		textColor: "#f2f2f2",
-		mainBkg: "#1f1f1f",
-		background: "#0f0f0f",
-		errorBkgColor: "#3c0501",
-		errorTextColor: "#ffefee",
-		edgeLabelBackground: pageBg,
-		labelBackground: pageBg,
+		...Object.fromEntries(
+			Object.entries(colors).filter(([, value]) => value !== undefined),
+		),
 	};
-
-	const themeVariables = isLight ? lightThemeVars : darkThemeVars;
 
 	try {
 		// Initialize once before the loop — config is identical for all diagrams
