@@ -388,3 +388,13 @@ test("the deploy workflow renders the social cards after the build, and checks t
   assert.ok(at("- name: Render the social cards") < at("- name: Check the social cards"));
   assert.ok(at("- name: Check the social cards") < at("- name: Publish to the deploy branch"));
 });
+
+test("Built with Phalcon links to the page on phalcon.io", () => {
+  // The page replaces builtwith.phalcon.io (2026-10-14). src/footer.json is the committed copy of phalcon/footer.json.
+  for (const file of ["src/lib/site-nav.mjs", "src/footer.json"]) {
+    const source = readFileSync(new URL(file, root), "utf8");
+
+    assert.match(source, /["']Built with Phalcon["'], ["']?href["']?: ["']https:\/\/phalcon\.io\/built-with["']/, file);
+    assert.doesNotMatch(source, /builtwith\.phalcon\.io/, file);
+  }
+});
