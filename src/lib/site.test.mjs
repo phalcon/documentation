@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { googleAnalytics, indexedVersions, llmsVersions, versionBanner, versionTag } from "./site.mjs";
+import { googleAnalytics, iconHead, indexedVersions, llmsVersions, versionBanner, versionTag } from "./site.mjs";
 
 test("analytics head elements carry the measurement id", () => {
   const head = googleAnalytics("G-TEST");
@@ -8,6 +8,21 @@ test("analytics head elements carry the measurement id", () => {
   assert.equal(head[0].attrs.src, "https://www.googletagmanager.com/gtag/js?id=G-TEST");
   assert.match(head[1].content, /gtag\('config', 'G-TEST'\)/);
   assert.deepEqual(googleAnalytics(""), []);
+});
+
+test("the icon head elements link the copies of phalcon/assets, with the browser bar color", () => {
+  // nimbus writes the SVG icon itself, from public/favicon.svg. The ICO has sizes="32x32", so that Chrome takes the
+  // SVG when it can.
+  assert.deepEqual(iconHead("the-color"), [
+    { tag: "link", attrs: { rel: "icon", href: "/favicon.ico", sizes: "32x32" } },
+    { tag: "link", attrs: { rel: "apple-touch-icon", href: "/apple-touch-icon.png" } },
+    { tag: "link", attrs: { rel: "manifest", href: "/site.webmanifest" } },
+    { tag: "meta", attrs: { name: "theme-color", content: "the-color" } },
+  ]);
+});
+
+test("the icon head elements need a browser bar color", () => {
+  assert.throws(() => iconHead(null), /--ph-dark-bg/);
 });
 
 test("stable versions have no banner; others point to the stable release", () => {

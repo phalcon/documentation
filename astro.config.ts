@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import type { AstroUserConfig } from "astro";
 import { defineConfig } from "astro/config";
@@ -8,7 +9,8 @@ import mkdocsHeadingIds from "./src/lib/mkdocs-heading-ids.mjs";
 import { mermaidFence } from "./src/lib/mermaid-fence";
 import { slashlessHref } from "./src/lib/slashless-href.mjs";
 import { slashlessLinks } from "./src/lib/slashless-links";
-import { DEPRECATED, googleAnalytics, STABLE_VERSION } from "./src/lib/site.mjs";
+import { resolveToken } from "./src/lib/design-checks.mjs";
+import { DEPRECATED, googleAnalytics, iconHead, SITE_DESCRIPTION, SITE_TITLE, STABLE_VERSION } from "./src/lib/site.mjs";
 import codeTheme from "./src/styles/code-theme.json" with { type: "json" };
 import { redirects, sidebars, versions } from "./src/versions.generated.mjs";
 
@@ -17,14 +19,18 @@ type ShikiTheme = NonNullable<NonNullable<NonNullable<AstroUserConfig["markdown"
 
 const nimbusConfig = defineNimbusConfig({
   site: "https://docs.phalcon.io",
-  title: "Phalcon Documentation",
-  description:
-    "Phalcon Framework. A full-stack PHP framework delivered as a PHP extension, offering lower resource consumption and high performance.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   locale: "en",
   github: "https://github.com/phalcon/documentation",
   socialImageAlt: "Phalcon documentation preview",
-  // Google Analytics; an empty id disables it.
-  head: googleAnalytics("G-JR4REKBKH3") as { tag: "script"; attrs?: Record<string, string>; content?: string }[],
+  // The icons of phalcon/assets (copies in public/; nimbus writes the SVG tag
+  // from public/favicon.svg), with the browser bar color of the tokens, and
+  // Google Analytics (an empty id disables it).
+  head: [
+    ...iconHead(resolveToken(readFileSync("src/styles/tokens.css", "utf8"), "--ph-dark-bg")),
+    ...googleAnalytics("G-JR4REKBKH3"),
+  ] as { tag: "link" | "meta" | "script"; attrs?: Record<string, string>; content?: string }[],
   // Every published version is a `docs-<version>` collection listed in
   // `others`. The primary `docs` collection stays empty; `current` is only
   // the label for it. `deprecated` adds the deprecation banner, the sidebar

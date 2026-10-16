@@ -4,12 +4,23 @@
  * - `googleAnalytics(id)` returns the `<head>` elements for a Google
  *   Analytics 4 property; add them to `head` in astro.config.ts, or leave
  *   the id empty to disable analytics.
+ * - `iconHead(themeColor)` returns the `<head>` elements of the icons of
+ *   phalcon/assets (copies in public/); add them to `head` in astro.config.ts.
+ * - `SITE_TITLE` and `SITE_DESCRIPTION` are the name and the description of
+ *   the docs: the nimbus config, the web app manifest and its check use them.
  * - `versionBanner(version, latest)` returns the banner shown on every page
  *   of a documentation version.
  * - `versionTag(version)` returns the tag of a version in the version picker.
  * - `indexedVersions(versions, groups)` and `llmsVersions(versions)` give the
  *   versions of the root /llms.txt and their labels.
  */
+
+/** The name of the docs (the nimbus `title`). */
+export const SITE_TITLE = "Phalcon Documentation";
+
+/** The description of the docs (the nimbus `description`). A page can have its own. */
+export const SITE_DESCRIPTION =
+  "Phalcon Framework. A full-stack PHP framework delivered as a PHP extension, offering lower resource consumption and high performance.";
 
 /** @param {string} id - A GA4 measurement id such as `G-XXXXXXXXXX`. */
 export function googleAnalytics(id) {
@@ -27,6 +38,27 @@ export function googleAnalytics(id) {
         "gtag('js', new Date());" +
         `gtag('config', '${id}');`,
     },
+  ];
+}
+
+/**
+ * The `<head>` elements of the icons of phalcon/assets (copies in public/): the
+ * ICO, the apple-touch icon, the web app manifest and the browser bar color.
+ * nimbus writes the SVG icon itself, from public/favicon.svg, before these. The
+ * ICO has sizes="32x32", so that Chrome takes the SVG when it can.
+ *
+ * @param {string | null} themeColor - The value of --ph-dark-bg in the tokens.
+ */
+export function iconHead(themeColor) {
+  if (!themeColor) {
+    throw new Error("the tokens have no value for --ph-dark-bg");
+  }
+
+  return [
+    { tag: "link", attrs: { rel: "icon", href: "/favicon.ico", sizes: "32x32" } },
+    { tag: "link", attrs: { rel: "apple-touch-icon", href: "/apple-touch-icon.png" } },
+    { tag: "link", attrs: { rel: "manifest", href: "/site.webmanifest" } },
+    { tag: "meta", attrs: { name: "theme-color", content: themeColor } },
   ];
 }
 

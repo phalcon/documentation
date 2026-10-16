@@ -200,6 +200,30 @@ test("the refresh script copies the shared files and checks each one", () => {
   assert.ok(script.indexOf('copy: "src/styles/tokens.css"') < script.indexOf('copy: "src/styles/common.css"'), "the tokens must come before common.css");
 });
 
+test("the refresh script copies the icons of phalcon/assets as bytes, and checks each one", () => {
+  // An icon is an image: refresh() must read, compare and write its bytes (binary: true). The copies are at the root
+  // of the site, where browsers and other clients ask for /favicon.ico. nimbus writes the SVG icon tag from
+  // public/favicon.svg.
+  const script = readFileSync(new URL("scripts/update-tokens.mjs", root), "utf8");
+  const entries = [
+    ["public/favicon.ico", "favicons/favicon.ico", "icoProblems"],
+    ["public/favicon.svg", "favicons/favicon.svg", "svgProblems"],
+    ["public/apple-touch-icon.png", "favicons/apple-touch-icon.png", "(bytes) => pngProblems(bytes, 180)"],
+    ["public/android-chrome-192x192.png", "favicons/android-chrome-192x192.png", "(bytes) => pngProblems(bytes, 192)"],
+    ["public/android-chrome-512x512.png", "favicons/android-chrome-512x512.png", "(bytes) => pngProblems(bytes, 512)"],
+  ];
+
+  for (const [copy, name, check] of entries) {
+    assert.ok(script.includes(`binary: true,\n      copy: "${copy}",\n      name: "${name}",\n      problems: ${check},`), copy);
+  }
+});
+
+test("the old icon of the MkDocs site is gone", () => {
+  // The icons are at the root of public/, as copies of phalcon/assets. resources/nimbus/convert.py copies the images
+  // of a MkDocs version into public/assets/images/, so a conversion can bring the old icon back.
+  assert.ok(!existsSync(new URL("public/assets/images/favicon.ico", root)));
+});
+
 test("the committed footer.json has no problems", () => {
   // Footer.astro reads this copy at build time.
   assert.deepEqual(footerProblems(readFileSync(new URL("src/footer.json", root), "utf8")), []);
@@ -387,6 +411,15 @@ test("the deploy workflow renders the social cards after the build, and checks t
   assert.ok(at("run: pnpm build") > 0 && at("run: pnpm build") < at("- name: Render the social cards"));
   assert.ok(at("- name: Render the social cards") < at("- name: Check the social cards"));
   assert.ok(at("- name: Check the social cards") < at("- name: Publish to the deploy branch"));
+});
+
+test("the deploy workflow checks the icons after the build, and before it publishes", () => {
+  const workflow = readFileSync(new URL(".github/workflows/deploy-documents.yml", root), "utf8");
+  const at = (text) => workflow.indexOf(text);
+
+  assert.match(workflow, /\n {8}run: node scripts\/check-icons\.mjs\n/);
+  assert.ok(at("run: pnpm build") > 0 && at("run: pnpm build") < at("- name: Check the icons"));
+  assert.ok(at("- name: Check the icons") < at("- name: Publish to the deploy branch"));
 });
 
 test("Built with Phalcon links to the page on phalcon.io", () => {

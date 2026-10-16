@@ -129,7 +129,7 @@ To compile-check MDX without a full build, run `@mdx-js/mdx`'s `compile()` over 
 
 ## Deployment
 
-A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`, `src/lib/stars.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css`, `src/styles/code-theme.json`, `src/styles/common.css`, `src/footer.json` and `src/repositories.json` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
+A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `update-nfr` → get the shared design tools (`src/lib/design-checks.mjs`, `src/lib/design-refresh.mjs`, `src/lib/stars.mjs`) from `phalcon/assets` → refresh `src/styles/tokens.css`, `src/styles/code-theme.json`, `src/styles/common.css`, `src/footer.json`, `src/repositories.json` and the icons in `public/` from `phalcon/assets` (`scripts/update-tokens.mjs`) → `test` → refresh `src/fanart.html` from `phalcon/assets` → `build` → publish `dist/` to the branch named by `DEPLOY_BRANCH` (`production`), which Cloudflare Pages serves → point the `/latest/` redirect rule at `STABLE_VERSION`. The `gh-pages` branch holds the last MkDocs deployment as the rollback: point the Pages production branch back at it.
 
 ## Don't
 

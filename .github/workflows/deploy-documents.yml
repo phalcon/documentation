@@ -70,7 +70,11 @@ jobs:
         # src/styles/common.css, src/footer.json and src/repositories.json are
         # copies of phalcon/css/tokens.css, phalcon/css/code-theme.json,
         # phalcon/css/common.css, phalcon/footer.json and
-        # phalcon/repositories.json in phalcon/assets. The script keeps a
+        # phalcon/repositories.json in phalcon/assets. public/favicon.ico,
+        # public/favicon.svg, public/apple-touch-icon.png,
+        # public/android-chrome-192x192.png and
+        # public/android-chrome-512x512.png are copies of the icons in
+        # phalcon/favicons/ there. The script keeps a
         # committed copy, with a warning, when its download fails or the file
         # is not correct (for example, a token that the docs use is missing).
         # It does not commit. It runs before the tests, so that they check the
@@ -120,6 +124,11 @@ jobs:
       - name: Check the social cards
         # Every og:image and twitter:image of every page is a file of dist/.
         run: node scripts/check-og.mjs
+
+      - name: Check the icons
+        # Every page has the icon tags of the Phalcon sites, and dist/ has the
+        # manifest and the icons (copies of phalcon/favicons/ in phalcon/assets).
+        run: node scripts/check-icons.mjs
 
       - name: Publish to the deploy branch
         # dist/_redirects (written by the cloudflare-redirects hook in
