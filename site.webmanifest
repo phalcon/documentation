@@ -1,0 +1,21 @@
+{
+  "name": "Phalcon Documentation",
+  "short_name": "Docs",
+  "description": "Phalcon Framework. A full-stack PHP framework delivered as a PHP extension, offering lower resource consumption and high performance.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#070d0c",
+  "theme_color": "#070d0c",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
