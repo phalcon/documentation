@@ -230,7 +230,7 @@ Returns the route that matches the handled URI
 public function getMatches(): array
 ```
 
-Returns the sub-expressions in the regular expression matched
+Returns the sub-expressions in the regular expression matched. After a static-route match, or when no route matches, it returns an empty array.
 
 ```php
 public function getModuleName(): string

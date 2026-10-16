@@ -336,6 +336,8 @@ public static function cloneResultMap(
 
 Assign values to a model from an array, returning a new model, using the column map.
 
+The method reads the model metadata only when it needs it. For a row with no `null` value, it does not read the metadata: the `modelsMetaData` property of the new model stays `null` until the first `getModelsMetaData()` call, and the method does not throw an exception when the Di container has no `modelsMetadata` service.
+
 ```php
 <?php
 

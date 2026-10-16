@@ -85,6 +85,86 @@ Unless you are making changes to your local copy of the framework and wish to co
 
 - - -
 
+## Upgrading from v5.22 to v5.23
+
+Phalcon v5.23 makes many components faster. Most of these changes do not change what your application sees. The changes below can affect your application. Most of them affect only a class in your application that extends a Phalcon class and overrides a method.
+
+### Container Definitions
+
+A subclass of `Phalcon\Container\Definition\ServiceDefinition` that overrides the protected `checkFrozen()` method gets the call from the setters only when the definition is frozen. In v5.22, it got the call on each setter call.
+
+### Db Dialect
+
+#### Plain Columns
+
+`Phalcon\Db\Dialect::getSqlColumn()` resolves a plain column (`[field, domain, alias]`) with `prepareQualified()` directly. `Phalcon\Mvc\Model\Query` uses this form for each model attribute. A dialect subclass that overrides the public `getSqlExpression()` method no longer gets the call (with a `qualified` expression) from `getSqlColumn()` for such a column. An override of `prepareQualified()` gets the same calls as before. The scalar (`[array, ...]`), `*` and typed (`['type' => ...]`) column forms still call `getSqlExpression()`. The SQL does not change.
+
+#### Columns With No Alias
+
+`Phalcon\Db\Dialect::getSqlColumn()` returns the column SQL directly when the column has no alias. A dialect subclass that overrides the protected `prepareColumnAlias()` method no longer gets the call (with a `null` alias) from `getSqlColumn()` for such a column. The calls for a column with an alias (`[field, domain, alias]` with an alias that is not empty, or an `alias` or `sqlAlias` key) are the same as before. The SQL does not change.
+
+### Http Response
+
+`Phalcon\Http\Response::sendHeaders()` calls `fireManagerEvent()` for the `response:beforeSendHeaders` and `response:afterSendHeaders` events only when an events manager is set. A subclass of `Response` that overrides the protected `fireManagerEvent()` method no longer gets these two calls when no events manager is set. With an events manager, nothing changes.
+
+### Mvc Micro
+
+When the `router` service has the default definition (the `Phalcon\Mvc\Router` class name, as in `Phalcon\Di\FactoryDefault`), `Phalcon\Mvc\Micro::getRouter()` gets the router without its two default routes. `getRouter()` removes these routes with `clear()` in all cases. This change has three effects:
+
+- The routes of a Micro application get route IDs that are 2 lower. Code that reads the IDs with `getRouteId()` is not affected.
+- The `di:beforeServiceResolve` and `di:afterServiceResolve` events get `"parameters" => [false]` for the `router` service. In v5.22, they got `null`.
+- A `Micro` subclass that overrides `getSharedService()` no longer gets the `router` call from `getRouter()` for the default definition.
+
+### Mvc Model
+
+`Phalcon\Mvc\Model::cloneResultMap()` reads the model metadata only when it needs it. For a row with no `null` value, it does not need the metadata. This has two effects for such a row:
+
+- A hydrated model does not get its `modelsMetaData` property at hydration. `dump()` and `var_dump()` show `null` for this property until the first `getModelsMetaData()` call.
+- When the Di container has no `modelsMetadata` service, a direct `cloneResultMap()` call no longer throws an exception. `find()`, `findFirst()` and PHQL read the metadata before the hydration, so for them nothing changes.
+
+### Mvc Router
+
+#### Matches After a Static Route
+
+`Phalcon\Mvc\Router::getMatches()` and `Phalcon\Cli\Router::getMatches()` return an empty array after a static-route match, or when no route matches. In v5.22, they returned the matches of an earlier `handle()` call. If your code reads the matches after such a request, it now gets an empty array.
+
+#### Route Constructor
+
+`Phalcon\Mvc\Router\Route::__construct()` stores the HTTP methods directly and does not call `via()`. A subclass that overrides `via()` does not get the call from the constructor. A call to `setHttpMethods()` or `via()` still runs the override.
+
+### Volt Compiler
+
+#### Compilation State
+
+`Phalcon\Mvc\View\Engine\Volt\Compiler` resets the compilation state at the start of each compilation in `compileSource()`, and not at the start of each `compile()` call. `compileFile()` and `compileString()` call `compileSource()`. The compilation state is in these protected properties: `extended`, `extendedBlocks`, `blocks`, `level`, `foreachLevel`, `blockLevel` and `exprLevel`.
+
+This change affects your application only if one of your classes extends the Volt compiler:
+
+- When `compile()` uses the compiled file, the state stays from the last compilation. A subclass that reads these properties after such a `compile()` call gets that state. In v5.22, it got the reset values.
+- A subclass that overrides `compileSource()` and does not call the parent method does not get the reset.
+
+#### Volt Output
+
+The output of [Volt][phalcon-volt] can change. When one compiler compiles more than one template, a template no longer gets the blocks or the `{% extends %}` state of an earlier template. The Volt engine of `Phalcon\Mvc\View` uses one compiler for all the templates.
+
+For example, `login.volt` extends `base.volt` and makes the `header` block empty. `main.volt` extends `base.volt` and does not change the `header` block. In v5.22, `main.volt` compiled after `login.volt` had an empty `header` block. In v5.23, it has the `header` block of `base.volt`.
+
+Compiled templates made before the upgrade can have the old output. Remove the compiled templates after the upgrade, so that the compiler makes them again.
+
+#### Template Paths
+
+`Phalcon\Mvc\View\Engine\Volt\Compiler::compile()` keeps the virtual path of each template path. The virtual path comes from `realpath()` and the `separator` option. The compiler keeps it when the `path` option is a string that is not empty and the template file exists. `realpath()` runs one time for each template path and compiler instance.
+
+The compiler uses the kept path until the next `setOptions()` or `setOption()` call. This is also true when one of these changes occurs after the first `compile()` call:
+
+- A template file is moved or removed.
+- A symbolic link in the template path changes.
+- The current directory changes (for a relative template path).
+
+`clearstatcache()` does not clear the kept paths. A subclass that changes the protected `options` property directly does not clear them. A closure in the `path` option is called on each call, as before.
+
+- - -
+
 ## Upgrading from v5.20 to v5.21
 
 Phalcon v5.21 adds native types to class properties that did not have a type. Some of these properties now have an object type. For example, the `$eventsManager` property is now `?Phalcon\Events\ManagerInterface`.

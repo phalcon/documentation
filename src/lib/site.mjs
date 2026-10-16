@@ -37,7 +37,7 @@ export function googleAnalytics(id) {
  * the "latest" tag in the picker, the others get "stable". When 6.0 is
  * released: `["6.0", "5.22"]`, and remove it from PRERELEASES.
  */
-export const STABLE_VERSIONS = ["5.22"];
+export const STABLE_VERSIONS = ["5.23"];
 
 /** The version that `/` and `/latest/` lead to. */
 export const STABLE_VERSION = STABLE_VERSIONS[0];
