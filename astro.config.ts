@@ -5,11 +5,11 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import nimbus, { defineConfig as defineNimbusConfig } from "@cloudflare/nimbus-docs";
 import { tableScroll } from "@cloudflare/nimbus-docs/markdown";
+import { resolveToken } from "./src/lib/design-checks.mjs";
 import mkdocsHeadingIds from "./src/lib/mkdocs-heading-ids.mjs";
 import { mermaidFence } from "./src/lib/mermaid-fence";
 import { slashlessHref } from "./src/lib/slashless-href.mjs";
 import { slashlessLinks } from "./src/lib/slashless-links";
-import { resolveToken } from "./src/lib/design-checks.mjs";
 import { DEPRECATED, googleAnalytics, iconHead, SITE_DESCRIPTION, SITE_TITLE, STABLE_VERSION } from "./src/lib/site.mjs";
 import codeTheme from "./src/styles/code-theme.json" with { type: "json" };
 import { redirects, sidebars, versions } from "./src/versions.generated.mjs";
@@ -28,7 +28,7 @@ const nimbusConfig = defineNimbusConfig({
   // from public/favicon.svg), with the browser bar color of the tokens, and
   // Google Analytics (an empty id disables it).
   head: [
-    ...iconHead(resolveToken(readFileSync("src/styles/tokens.css", "utf8"), "--ph-dark-bg")),
+    ...iconHead(resolveToken(readFileSync(new URL("./src/styles/tokens.css", import.meta.url), "utf8"), "--ph-dark-bg")),
     ...googleAnalytics("G-JR4REKBKH3"),
   ] as { tag: "link" | "meta" | "script"; attrs?: Record<string, string>; content?: string }[],
   // Every published version is a `docs-<version>` collection listed in

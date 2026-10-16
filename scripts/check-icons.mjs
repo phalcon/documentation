@@ -9,7 +9,7 @@
  *   node scripts/check-icons.mjs [dist]
  */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { resolveToken } from "../src/lib/design-checks.mjs";
@@ -42,7 +42,7 @@ export function iconTags(html) {
  * SVG icon (from public/favicon.svg), and the head option of astro.config.ts
  * the others (iconHead() in src/lib/site.mjs).
  *
- * @param {string} color the browser bar color (--ph-dark-bg)
+ * @param {string | null} color the browser bar color (--ph-dark-bg), or null when the tokens have no value for it
  * @returns {string[]}
  */
 export function expectedTags(color) {
@@ -60,7 +60,7 @@ export function expectedTags(color) {
  * description of src/lib/site.mjs), and the two icons of a home screen.
  *
  * @param {string} text the content of dist/site.webmanifest
- * @param {string} color the browser bar color (--ph-dark-bg)
+ * @param {string | null} color the browser bar color (--ph-dark-bg), or null when the tokens have no value for it
  * @returns {string[]}
  */
 export function manifestProblems(text, color) {
@@ -97,7 +97,7 @@ export function manifestProblems(text, color) {
  * then the check read nothing, and must not pass in silence.
  *
  * @param {{ html: string, page: string }[]} pages
- * @param {{ color: string, exists: (file: string) => boolean, manifest: string | null }} site
+ * @param {{ color: string | null, exists: (file: string) => boolean, manifest: string | null }} site
  * @returns {{ pages: number, problems: string[], ok: boolean }}
  */
 export function checkSummary(pages, { color, exists, manifest }) {
@@ -117,7 +117,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const dist = process.argv[2] ?? "dist";
   const read = (file) => (existsSync(join(dist, file)) ? readFileSync(join(dist, file), "utf8") : null);
   const files = readdirSync(dist, { recursive: true }).filter((file) => file.endsWith(".html"));
-  const pages = files.map((file) => ({ html: readFileSync(join(dist, file), "utf8"), page: relative(dist, join(dist, file)) }));
+  const pages = files.map((file) => ({ html: readFileSync(join(dist, file), "utf8"), page: file }));
   const color = resolveToken(readFileSync("src/styles/tokens.css", "utf8"), "--ph-dark-bg");
   const { pages: checked, problems, ok } = checkSummary(pages, {
     color,

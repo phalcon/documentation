@@ -48,9 +48,10 @@ src/
 │   ├── [section]/llms.txt.ts           # per-version agent index, /<version>/llms.txt
 │   ├── llms.txt.ts                     # ours, not the nimbus starter: /llms.txt (and its copy /index.md), one link for each version; no llms-full.txt.ts, on purpose
 │   ├── robots.txt.ts, 404.astro
+│   ├── site.webmanifest.ts             # the web app manifest, /site.webmanifest (SITE_TITLE, SITE_DESCRIPTION and the tokens)
 ├── layouts/                    # BaseLayout (head, fan art, AgentDirective), DocsLayout
 ├── lib/
-│   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, llmsVersions, analytics
+│   ├── site.mjs                # STABLE_VERSIONS, PRERELEASES, DEPRECATED, versionBanner, llmsVersions, analytics, SITE_TITLE, SITE_DESCRIPTION, iconHead (the icon tags of the head)
 │   ├── mkdocs-heading-ids.mjs  # the MkDocs heading ids
 │   ├── version-sidebar.mjs     # the rail of one version
 │   ├── design-checks.mjs       # copy of phalcon/tools/ in phalcon/assets: checks the design files (tests, scripts/update-tokens.mjs)
@@ -63,9 +64,10 @@ src/
 └── footer.json, repositories.json  # copies from phalcon/assets: the footer links, the GitHub stars of the nav
 
 public/assets/images/           # images, shared by all versions, referenced as /assets/images/...
+public/favicon.*, apple-touch-icon.png, android-chrome-*.png  # copies of phalcon/favicons/ in phalcon/assets: the icons (scripts/update-tokens.mjs); nimbus writes the SVG tag
 resources/nimbus/               # convert.py, its tests, templates, per-version overrides, parity.sh
 resources/og/card.html          # the layout of the social cards (the cards of phalcon/assets), see README.md
-scripts/                        # new-version.sh, update-nfr.mjs, update-tokens.mjs (the design files), token-sources.mjs (the tokens that src/ uses), og-cards.mjs, render-og-cards.mjs, check-og.mjs (the social cards)
+scripts/                        # new-version.sh, update-nfr.mjs, update-tokens.mjs (the design files), token-sources.mjs (the tokens that src/ uses), og-cards.mjs, render-og-cards.mjs, check-og.mjs (the social cards), check-icons.mjs (the icons)
 ```
 
 **Do not edit a generated file.** `src/content.config.ts`, `src/versions.generated.mjs`, `src/sidebar/*`, `src/redirects/*` and `src/pages/<version>/*` are written by `resources/nimbus/convert.py`; the route files come from `resources/nimbus/templates/*.tpl`. Change the template or the converter, then run `convert.py --register` again:
@@ -142,4 +144,4 @@ A push to `master` runs `.github/workflows/deploy-documents.yml`: install → `u
 - Use a component in `.mdx` without adding it to `src/components.ts`.
 - Run a build while `./serve` is running.
 - Type a color in `src/`: use a token (`var(--nb-…)`, `var(--ph-…)`, `var(--code-…)`). `pnpm test` fails on a typed color.
-- Edit `src/styles/tokens.css`, `src/styles/code-theme.json`, `src/styles/common.css`, `src/footer.json`, `src/repositories.json` or `src/lib/stars.mjs`: they are copies; change them in phalcon/assets.
+- Edit `src/styles/tokens.css`, `src/styles/code-theme.json`, `src/styles/common.css`, `src/footer.json`, `src/repositories.json`, `src/lib/stars.mjs` or the icons in `public/` (`favicon.*`, `apple-touch-icon.png`, `android-chrome-*.png`): they are copies; change them in phalcon/assets.
