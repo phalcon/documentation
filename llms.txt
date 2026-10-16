@@ -6,8 +6,9 @@ Each version of the documentation has its own index of its pages.
 
 ## Versions
 
-- [5.22 (latest)](https://docs.phalcon.io/5.22/llms.txt)
+- [5.23 (latest)](https://docs.phalcon.io/5.23/llms.txt)
 - [6.0 (RC)](https://docs.phalcon.io/6.0/llms.txt)
+- [5.22](https://docs.phalcon.io/5.22/llms.txt)
 - [5.21](https://docs.phalcon.io/5.21/llms.txt)
 - [5.20](https://docs.phalcon.io/5.20/llms.txt)
 - [5.19](https://docs.phalcon.io/5.19/llms.txt)
