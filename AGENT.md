@@ -11,7 +11,7 @@ This site replaces a MkDocs site. Two properties of that site are kept and must 
 
 ## No tooling on the host
 
-Every command runs in the `phalcon-docs` image (node 22, pnpm 10, `WORKDIR /docs`). Build it with `docker build -t phalcon-docs resources/docker` if it does not exist.
+Every command runs in the `phalcon-docs` image (node 26, pnpm 10, `WORKDIR /docs`). Build it with `docker build -t phalcon-docs resources/docker` if it does not exist.
 
 ```bash
 ./serve                                                        # dev server, http://localhost:4321
