@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  pull_request:
   workflow_dispatch:
 
 env:
@@ -131,6 +132,7 @@ jobs:
         run: node scripts/check-icons.mjs
 
       - name: Publish to the deploy branch
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
         # dist/_redirects (written by the cloudflare-redirects hook in
         # astro.config.ts) carries /latest -> the stable version, so the
         # deployment is self-contained: no zone rule to update from here.
