@@ -3390,6 +3390,47 @@ foreach ($invoices as $invoice) {
 }
 ```
 
+## Table Names from Source Attributes
+
+:::note[Availability]
+This section describes the fix in [cphalcon#17742](https://github.com/phalcon/cphalcon/pull/17742). Phalcon 5.23.0 does not use `Source` to choose a model's table. Until you install a release containing this fix, use `setSource()` in `initialize()` instead.
+:::
+
+To specify a model's table with a PHP attribute, select `AttributesReader` on the container's `annotations` service before using the model:
+
+```php
+<?php
+
+use Phalcon\Annotations\AttributesReader;
+use Phalcon\Annotations\Models\MetaData\Source;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Model;
+
+$container = new FactoryDefault();
+$container->getShared('annotations')->setReader(new AttributesReader());
+
+#[Source(table: 'accounting_invoices')]
+class Invoices extends Model
+{
+}
+
+echo (new Invoices())->getSource(); // accounting_invoices
+```
+
+The positional form `#[Source('accounting_invoices')]` has the same effect. Table resolution uses this priority:
+
+1. A source explicitly set with `setSource()` or the model manager's `setModelSource()`.
+2. A `Source` attribute declared on the model class, when the annotations reader is `AttributesReader` or a subclass of it.
+3. The default table name inferred from the model class.
+
+The model manager applies its current table prefix to the selected source. For example, `setModelPrefix('app_')` changes the source in this example to `app_accounting_invoices`.
+
+This behavior is opt-in. The default PHPDoc `Reader` does not activate it, and `@Source(...)` does not change a model's table. Models using the default `Introspection` metadata strategy do not have their docblocks parsed just to determine a table name. Selecting `AttributesReader` for table resolution does not itself change the metadata strategy used to describe columns.
+
+`Source` applies only to the class that declares it. A subclass without its own `Source` uses the name inferred from the subclass, even if the parent has a `Source` attribute. By contrast, an inherited `initialize()` method that calls `setSource()` still explicitly sets the subclass's table and takes priority over attributes.
+
+Configure the reader before the first source lookup: the model manager caches the resolved source per model class. A later explicit `setModelSource()` can replace the cached value.
+
 ## Table Prefixes
 
 If you want all your tables to have a certain prefix without setting the source in all models, you can use the [Phalcon\Mvc\Model\Manager][mvc-model-manager] and the method `setModelPrefix()`:

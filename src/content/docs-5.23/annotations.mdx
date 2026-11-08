@@ -258,7 +258,7 @@ The route classes accept more than one attribute on one method, in the same way 
 
 The service does not make an instance of these classes. It reads the name and the arguments with `ReflectionAttribute`. The classes give the name, the target and the signature that an IDE and a static analyzer read. Because no instance is made, the parameter types are not checked when the application runs. `#[Column(length: 'seventy')]` reaches the metadata strategy as a string, and only a static analyzer reports it.
 
-`Source` is available for an application that reads it, and no component of the framework reads it.
+In Phalcon 5.23.0, `Source` is available for an application that reads it, and no component of the framework uses it to choose a model's table. For the opt-in ORM support introduced by [cphalcon#17742](https://github.com/phalcon/cphalcon/pull/17742), including release availability, source precedence, table prefixes and inheritance, see [Table Names from Source Attributes](/5.23/db-models/#table-names-from-source-attributes).
 
 The model of the Usage section, written with attributes:
 
