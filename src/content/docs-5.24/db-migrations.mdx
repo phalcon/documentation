@@ -1,0 +1,546 @@
+---
+title: "Database Migrations"
+---
+
+:::info[NOTE]
+Phalcon migrations have been removed from DevTools and moved to a separate repository.
+:::
+
+## Package git repository
+
+https://github.com/phalcon/migrations
+
+## Requirements
+
+* PHP >= 8.2
+* The PDO extension and the PDO driver for your database: `pdo_mysql`, `pdo_pgsql` or `pdo_sqlite`
+* The `yaml` extension, only if you use a YAML configuration file
+* The `posix` extension (optional, Linux and macOS). Without it, the output has no colors.
+
+:::info[NOTE]
+Since version 4.0.0, the package does not use the Phalcon extension. It has its own database layer, which uses PDO.
+:::
+
+## Supported databases
+
+| Database   | `adapter` value | Notes                                                                |
+|------------|-----------------|----------------------------------------------------------------------|
+| MySQL      | `mysql`         | Default port: `3306`. The connection always uses the `utf8` charset. |
+| PostgreSQL | `postgresql`    | Default port: `5432`. Default schema: `public`.                      |
+| SQLite     | `sqlite`        | The `dbname` value is the path to the database file.                 |
+
+The `adapter` value is not case-sensitive.
+
+:::warning[WARNING]
+SQLite cannot do some changes with `ALTER TABLE`. When a migration changes an existing SQLite table, the package ignores these changes:
+
+* Modify a column
+* Add or drop a primary key
+* Add or drop a foreign key
+
+To make these changes, drop the table and create it again.
+:::
+
+## Installing via Composer
+
+```
+composer require --dev phalcon/migrations
+```
+
+## Using the PHAR
+
+Each release on GitHub has a `phalcon-migrations.phar` file. Download it from the [releases page](https://github.com/phalcon/migrations/releases). Run it with PHP:
+
+```
+php phalcon-migrations.phar list
+```
+
+The PHAR accepts the same arguments and options as `vendor/bin/phalcon-migrations`.
+
+## Quick start
+
+What you need for a quick start:
+
+* Configuration file in the root of your project (you can also pass them as parameters inside CLI environment)
+* Create database table structure
+* Execute command to generate migrations
+
+After that, you can execute that migration (run) in another environment to create the same DB structure.
+
+### Create the configuration file
+
+The configuration file is a PHP file that returns an array. You can use any file name, for example `migrations.php`.
+
+```php
+<?php
+
+return [
+    'database'    => [
+        'adapter'  => 'mysql',
+        'host'     => '127.0.0.1',
+        'port'     => 3306,
+        'username' => 'root',
+        'password' => '',
+        'dbname'   => 'db-name',
+    ],
+    'application' => [
+        'logInDb'              => true,
+        'migrationsDir'        => 'db/migrations',
+        // true - TIMESTAMP, false - versions
+        'migrationsTsBased'    => true,
+        'exportDataFromTables' => [
+            // Tables names
+        ],
+    ],
+];
+```
+
+:::warning[WARNING]
+Since version 4.0.0, a PHP configuration file must return an array. If the file returns a different value, for example a `Phalcon\Config\Config` object, the package uses an empty configuration. The command then stops with the error `Cannot load database configuration`.
+:::
+
+For all the configuration keys, see [Configuration](#configuration).
+
+### Generate migrations
+
+**Basic generation**
+
+```
+vendor/bin/phalcon-migrations generate
+```
+
+**Generate a specific table and export data from it**
+
+```
+vendor/bin/phalcon-migrations generate \
+    --config=migrations.php \
+    --table=users \
+    --data=oncreate
+```
+
+The `--table` option accepts:
+
+* One table name: `--table=users`
+* A comma-separated list of table names: `--table=users,roles`
+* A table prefix with an asterisk: `--table=user*`
+
+For the data options, see [Export data](#export-data).
+
+### Run migrations
+
+```
+vendor/bin/phalcon-migrations run
+```
+
+### Roll back migrations
+
+To roll back, use `run` with `--version`. Set `--version` to a version that is earlier than the current version:
+
+```
+vendor/bin/phalcon-migrations run --version=1.0.1
+```
+
+The package goes back one version at a time. For each table, it calls the `down()` and `afterDown()` methods of the version that it removes. Then it calls the `morph()` method of the previous version. See [Migration methods](#migration-methods).
+
+### List existing migrations
+
+```
+vendor/bin/phalcon-migrations list
+```
+
+The command shows each version and if it was applied:
+
+```
+┌───────────────────────────┬──────────────┐
+│ Version                   │  Was applied │
+├───────────────────────────┼──────────────┤
+│ 1.0.0                     │            Y │
+│ 1.0.1                     │            N │
+└───────────────────────────┴──────────────┘
+```
+
+## Configuration
+
+The configuration has two sections: `database` and `application`.
+
+### Database options
+
+| Key        | Description                                                                                                                                                               |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `adapter`  | Database adapter: `mysql`, `postgresql` or `sqlite`                                                                                                                       |
+| `host`     | Database server host (MySQL and PostgreSQL)                                                                                                                               |
+| `port`     | Database server port. Default: `3306` (MySQL), `5432` (PostgreSQL)                                                                                                        |
+| `username` | Database user name                                                                                                                                                        |
+| `password` | Database password                                                                                                                                                         |
+| `dbname`   | Database name. For SQLite, the path to the database file                                                                                                                  |
+| `schema`   | Schema that the package reads and changes. Default: the `dbname` value (MySQL), `public` (PostgreSQL). For PostgreSQL, the package also sets `search_path` to this schema |
+
+:::info[NOTE]
+The package does not use other keys, for example `charset`.
+:::
+
+### Application options
+
+| Key                    | Description                                                                                                                    |
+|------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `migrationsDir`        | Migrations directory. To use more than one directory, separate them with commas                                                |
+| `logInDb`              | `true` - keep the migrations log in the database. `false` (default) - keep it in a file. See [Migrations log](#migrations-log) |
+| `migrationsTsBased`    | `true` - `run` and `list` use timestamp based versions. `false` (default) - incremental versions                               |
+| `descr`                | Description for timestamp based versions. When you set it, `generate` always creates a timestamp based version                 |
+| `exportDataFromTables` | Tables to export data from. An array, or a comma-separated string. The data is exported with every migration                   |
+| `no-auto-increment`    | `true` - same as the `--no-auto-increment` option                                                                              |
+| `skip-ref-schema`      | `true` - same as the `--skip-ref-schema` option                                                                                |
+| `skip-foreign-checks`  | `true` - same as the `--skip-foreign-checks` option                                                                            |
+
+:::info[NOTE]
+The keys `no-auto-increment`, `skip-ref-schema` and `skip-foreign-checks` use hyphens. The other keys use camelCase.
+:::
+
+### Other configuration formats
+
+The package also reads `.ini`, `.json`, `.yaml` and `.yml` files. These files use the same `database` and `application` sections. A YAML file needs the `yaml` PHP extension.
+
+```ini
+[database]
+adapter  = mysql
+host     = 127.0.0.1
+username = root
+password =
+dbname   = db-name
+
+[application]
+logInDb              = true
+migrationsDir        = db/migrations
+migrationsTsBased    = true
+exportDataFromTables = users,roles
+```
+
+### Project directory
+
+The project directory is the value of the `--directory` option. The default is the current directory.
+
+These paths are relative to the project directory:
+
+* The `--config` file
+* A relative `--migrations` or `migrationsDir` directory
+
+### Configuration file discovery
+
+If you do not use `--config`, the package looks for a configuration file in the project directory. It looks in `app/config/` first, then in `config/`. In each directory, it looks for these files, in this order:
+
+1. `config.ini`
+2. `config.php`
+3. `config.json`
+4. `config.yaml`
+5. `config.yml`
+
+The package uses the first file that it finds. If it finds no file, the command stops with an error.
+
+### Default migrations directory
+
+If you do not set `--migrations` or `migrationsDir`, the package uses the first of these directories that applies:
+
+1. `app/migrations`, if the `app` directory exists
+2. `apps/migrations`, if the `apps` directory exists
+3. `migrations`
+
+If you set more than one migrations directory, `generate` asks which directory to use.
+
+## Migrations log
+
+The package records each version that it applies. It uses the log to find the versions to run, and to show the status in `list`.
+
+* **File** (default). The log is the `.phalcon/migration-version` file in the project directory.
+* **Database**. Set `logInDb` to `true`, or use the `--log-in-db` option. The log is the `phalcon_migrations` table. If the table does not exist, the package creates it. The table has the columns `version`, `start_time` and `end_time`.
+
+:::warning[WARNING]
+The file log and the database log are separate. Use the same log setting for all the `run` and `list` commands of a project.
+:::
+
+## Usage example
+
+**Run migrations from specific migrations directory**
+
+```php
+<?php
+
+use Phalcon\Migrations\Migrations;
+use Phalcon\Migrations\Utils\Config;
+
+$config = Config::fromArray([
+    'database' => [
+        'adapter'  => 'mysql',
+        'host'     => 'phalcon-db-mysql',
+        'username' => 'root',
+        'password' => 'root',
+        'dbname'   => 'vokuro',
+    ],
+]);
+
+Migrations::run([
+    'directory'     => __DIR__,
+    'migrationsDir' => [
+        __DIR__ . '/migrations',
+    ],
+    'config'        => $config,
+]);
+```
+
+The `config` value must be a `Phalcon\Migrations\Utils\Config` object. Use `Config::fromArray()` to create it from an array with the `database` and `application` sections. If you use a plain array, `Migrations::run()` throws an exception with the message `Internal error. Config should be an instance of Phalcon\Migrations\Utils\Config`.
+
+`Migrations::run()` accepts these options:
+
+| Key                   | Type               | Description                                                                                                                                                        |
+|-----------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `config`              | `Config`           | Database configuration (required)                                                                                                                                  |
+| `migrationsDir`       | `array` / `string` | Migrations directories (required)                                                                                                                                  |
+| `directory`           | `string`           | Project directory, which holds the file log. Default: the `BASE_PATH` constant, or the parent directory of `APP_PATH`. Set it if you do not define these constants |
+| `version`             | `string`           | Version to migrate to. Default: the latest version                                                                                                                 |
+| `tableName`           | `string`           | Table name, comma-separated table names or a prefix with an asterisk. Default: `@` (all tables)                                                                    |
+| `tsBased`             | `bool`             | `true` - use timestamp based versions                                                                                                                              |
+| `migrationsInDb`      | `bool`             | `true` - keep the migrations log in the `phalcon_migrations` table                                                                                                 |
+| `verbose`             | `bool`             | `true` - show debugging information                                                                                                                                |
+| `skip-foreign-checks` | `bool`             | `true` - disable the foreign key checks during the run                                                                                                             |
+
+## Migration files
+
+Each version is a directory in the migrations directory. The version directory has one PHP file for each table. Each file has one class, which extends `Phalcon\Migrations\Mvc\Model\Migration`.
+
+The class name is the table name in CamelCase, then `Migration_`, then the version stamp:
+
+* For an incremental version `X.Y.Z`, the stamp is `X * 100 + Y * 10 + Z`.
+* For a timestamp based version, the stamp is the timestamp part of the name.
+
+For example, the class for the `users` table in version `1.0.0` is `UsersMigration_100`.
+
+A generated file is similar to this (shortened) example:
+
+```php
+<?php
+
+use Phalcon\Migrations\Db\Column;
+use Phalcon\Migrations\Db\Index;
+use Phalcon\Migrations\Db\Reference;
+use Phalcon\Migrations\Mvc\Model\Migration;
+
+/**
+ * Class UsersMigration_100
+ */
+class UsersMigration_100 extends Migration
+{
+    /**
+     * Define the table structure
+     *
+     * @return void
+     * @throws Exception
+     */
+    public function morph(): void
+    {
+        $this->morphTable('users', [
+            'columns' => [
+                new Column(
+                    'id',
+                    [
+                        'type' => Column::TYPE_INTEGER,
+                        'unsigned' => true,
+                        'notNull' => true,
+                        'autoIncrement' => true,
+                        'size' => 10,
+                        'first' => true
+                    ]
+                ),
+                new Column(
+                    'email',
+                    [
+                        'type' => Column::TYPE_VARCHAR,
+                        'notNull' => true,
+                        'size' => 255,
+                        'after' => 'id'
+                    ]
+                ),
+            ],
+            'indexes' => [
+                new Index('PRIMARY', ['id'], 'PRIMARY'),
+            ],
+        ]);
+    }
+
+    /**
+     * Run the migrations
+     *
+     * @return void
+     */
+    public function up(): void
+    {
+    }
+
+    /**
+     * Reverse the migrations
+     *
+     * @return void
+     */
+    public function down(): void
+    {
+    }
+}
+```
+
+:::info[NOTE]
+Since version 4.0.0, migration files use the `Phalcon\Migrations\Db\Column`, `Phalcon\Migrations\Db\Index` and `Phalcon\Migrations\Db\Reference` classes. The `Column::TYPE_*` constants of `Phalcon\Migrations\Db\Column` are strings, for example `Column::TYPE_INTEGER` is `'integer'`. To update files from earlier versions, see [Upgrade from 3.x to 4.0](#upgrade-from-3x-to-40).
+:::
+
+## Migration methods
+
+Each migration is a separate class that works as an entity for a specific database table. Inside each class, different methods can occur during migration running.
+
+Each migration file (and class) can implement specific methods, that will be executed based on the operation requested. There are no restrictions on the logic encapsulated in each method.
+
+The tables below show the Migration Class methods. They are stored by order of execution, earliest to latest.
+
+**Running to up**
+
+| Method name        | Description                                            |
+|--------------------|--------------------------------------------------------|
+| `morph`            | Morph table structure                                  |
+| `afterCreateTable` | Make something immediately after the table was created |
+| `up`               | Table is created and ready to work with                |
+| `afterUp`          | Extra method to work for some specific cases           |
+
+**Running to down**
+
+| Method name | Description                                                                                                            |
+|-------------|------------------------------------------------------------------------------------------------------------------------|
+| `down`      | Normally you put here table drop or data truncation                                                                    |
+| `afterDown` | Extra method to work after all was cleaned up                                                                          |
+| `morph`     | (**from previous migration**) As the migration was moved backward, there need to be all returned to the previous state |
+
+### Helper methods
+
+The `Phalcon\Migrations\Mvc\Model\Migration` class has these methods, which you can use in your migration methods:
+
+| Method                                                                  | Description                                                                                                             |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `morphTable(string $tableName, array $definition): void`                | Creates the table, or changes the table to match the `columns`, `indexes`, `references` and `options` in the definition |
+| `batchInsert(string $tableName, array $fields, int $size = 1024): void` | Inserts the rows of the `<table>.dat` file of the version. It inserts `$size` rows in each query                        |
+| `batchDelete(string $tableName): void`                                  | Deletes all the rows of the table, if the `<table>.dat` file of the version exists                                      |
+| `getConnection(): AdapterInterface`                                     | Returns the database adapter (`Phalcon\Migrations\Db\Adapter\AdapterInterface`)                                         |
+
+### Export data
+
+`generate` can export the data of a table. It writes the rows to a `<table>.dat` file (CSV format) in the version directory. The `--data` option controls how the migration imports the data:
+
+| Value      | Generated code                                                                                    |
+|------------|---------------------------------------------------------------------------------------------------|
+| `oncreate` | `afterCreateTable()` calls `batchInsert()`. The data is imported only when the table is created   |
+| `always`   | `up()` calls `batchInsert()` and `down()` calls `batchDelete()`. The data is imported on each run |
+
+The tables in `exportDataFromTables` (or `--exportDataFromTables`) get the same code as `always`.
+
+## CLI Arguments and options
+
+**Arguments**
+
+| Argument        | Description                                                                                                              |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------|
+| `generate`      | Generate a Migration                                                                                                     |
+| `run`           | Run a Migration                                                                                                          |
+| `list`          | List all available migrations                                                                                            |
+| `migrate-files` | Update migration files to use the `Phalcon\Migrations\Db` classes. See [Upgrade from 3.x to 4.0](#upgrade-from-3x-to-40) |
+| `help`          | Shows the help                                                                                                           |
+
+**Options**
+
+| Action                     | Description                                                                                                                               |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `--config=s`               | Configuration file, relative to the project directory                                                                                     |
+| `--migrations=s`           | Migrations directory. Use comma separated string to specify multiple directories                                                          |
+| `--directory=s`            | Directory where the project was created                                                                                                   |
+| `--table=s`                | Table to migrate. Table name, comma-separated table names, or table prefix with an asterisk. Default: all                                 |
+| `--version=s`              | Version to generate, or version to migrate to                                                                                             |
+| `--descr=s`                | Migration description (used for timestamp-based migration)                                                                                |
+| `--data=s`                 | Export data ['always' or 'oncreate'] (Data is imported during migration run)                                                              |
+| `--exportDataFromTables=s` | Export data from specific tables, use comma-separated string                                                                              |
+| `--force`                  | Forces to overwrite existing migrations                                                                                                   |
+| `--ts-based`               | Timestamp based migration version                                                                                                         |
+| `--log-in-db`              | Keep migrations log in the database table rather than in file                                                                             |
+| `--dry`                    | Attempt requested operation without making changes to system (Generating only)                                                            |
+| `--dry-run`                | Show the files to change, but do not change them (`migrate-files` only)                                                                   |
+| `--verbose`                | Output of debugging information during operation (Running only)                                                                           |
+| `--no-auto-increment`      | Disable auto-increment (Generating only)                                                                                                  |
+| `--skip-ref-schema`        | Skip referencedSchema inside generated migration (Generating only)                                                                        |
+| `--skip-foreign-checks`    | Disable the foreign key checks during the run. MySQL: `SET FOREIGN_KEY_CHECKS`. PostgreSQL: `SET session_replication_role` (Running only) |
+| `--help`                   | Shows this help                                                                                                                           |
+
+## Incremental versions
+
+By default, `generate` creates incremental versions. The first version is `1.0.0`. Each new version adds one to the last number: `1.0.1`, `1.0.2` and so on.
+
+To set the version name, use `--version`:
+
+```
+vendor/bin/phalcon-migrations generate --version=2.0.0
+```
+
+If the version already exists, the command stops with an error. To overwrite the files of the existing version, add `--force`.
+
+## Timestamp based migrations
+
+Using this approach is useful when more than one developer is participating in the database structure management.
+
+* To generate a timestamp based version, set a description with the `--descr` option, or with `descr` in the config file.
+* To run or list timestamp based versions, use `'migrationsTsBased' => true` in the config file, or the `--ts-based` option.
+
+The description can contain only lowercase letters, digits and underscores (`_`). If it has other characters, the command stops with an error. For example:
+
+```
+vendor/bin/phalcon-migrations generate --descr=create_users
+```
+
+The command creates a version directory with a name like this:
+
+```sh
+* 1582539287636860_create_users
+```
+
+The name is the current Unix time in microseconds, then `_`, then the description.
+
+Migrations will be executed from oldest to newest.
+
+:::info[NOTE]
+Whenever migrations are run, the application scans all available migrations and their status irrespective of their "age". If one or more were not executed in a previous run, they will be executed in the next run.
+:::
+
+## Upgrade from 3.x to 4.0
+
+Version 4.0.0 removes the dependency on the Phalcon extension. To upgrade:
+
+1. Use PHP 8.2 or later.
+2. Change your PHP configuration file to return an array. See [Create the configuration file](#create-the-configuration-file).
+3. If you call `Migrations::run()` in your code, use `Config::fromArray()` for the `config` option. See [Usage example](#usage-example).
+4. Update your migration files with the `migrate-files` command.
+
+First, see the files that the command changes:
+
+```
+vendor/bin/phalcon-migrations migrate-files --migrations=db/migrations --dry-run
+```
+
+Then change the files:
+
+```
+vendor/bin/phalcon-migrations migrate-files --migrations=db/migrations
+```
+
+The `--migrations` option is required. The path is relative to the current directory. The command reads all the `.php` files in the directory and its subdirectories, and replaces these lines:
+
+| Old line                    | New line                               |
+|-----------------------------|----------------------------------------|
+| `use Phalcon\Db\Column;`    | `use Phalcon\Migrations\Db\Column;`    |
+| `use Phalcon\Db\Index;`     | `use Phalcon\Migrations\Db\Index;`     |
+| `use Phalcon\Db\Reference;` | `use Phalcon\Migrations\Db\Reference;` |
+
+:::warning[WARNING]
+The command replaces only these exact lines. If a file refers to the `Phalcon\Db` classes in a different way, for example with a fully qualified class name or a grouped `use` statement, change the file manually. If a file uses integer column types instead of the `Column::TYPE_*` constants, change them to the constants.
+:::
+
+Migration files that you do not update continue to work if the `Phalcon\Db` classes are available, for example from the Phalcon extension. The package converts the `Phalcon\Db\Column`, `Phalcon\Db\Index` and `Phalcon\Db\Reference` objects when the migration runs.
