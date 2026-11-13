@@ -6,6 +6,12 @@
 #   ./serve 4400       # http://localhost:4400
 #   ./serve --build    # force an image rebuild first (after Dockerfile changes)
 #
+# The server loads the newest three versions. With all the versions, the dev
+# server does not start in time (see src/lib/local-versions.mjs). To load
+# other versions, set DOCS_VERSIONS:
+#
+#   DOCS_VERSIONS="6.0 5.22" ./serve
+#
 # Stop the server before running a build (`pnpm build`): both use the
 # .astro/ cache.
 
@@ -49,5 +55,11 @@ fi
 # bind mount. Remove it so the next start does not see a "running" server.
 rm -f .astro/dev.json
 
+# The newest three versions, for example "6.0 5.24 5.23".
+if [[ -z "${DOCS_VERSIONS:-}" ]]; then
+    DOCS_VERSIONS="$(for dir in src/content/docs-*/; do dir="${dir%/}"; echo "${dir#src/content/docs-}"; done | sort -rV | head -n 3 | tr '\n' ' ')"
+fi
+
 echo "Serving documentation at http://localhost:${PORT} (Ctrl+C to stop)"
-docker run --rm -it -p "${PORT}:4321" -v "$PWD":/docs "${IMAGE}"
+echo "Versions: ${DOCS_VERSIONS}"
+docker run --rm -it -p "${PORT}:4321" -e DOCS_VERSIONS="${DOCS_VERSIONS}" -v "$PWD":/docs "${IMAGE}"
