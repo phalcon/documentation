@@ -3423,6 +3423,8 @@ The positional form `#[Source('accounting_invoices')]` has the same effect. Tabl
 2. A `Source` attribute declared on the model class, when the annotations reader is `AttributesReader` or a subclass of it.
 3. The default table name inferred from the model class.
 
+A `Source` attribute must provide a non-empty string table name. A missing, empty, or non-string name raises `Phalcon\Annotations\Exceptions\InvalidSourceTable` during source resolution instead of falling back to the model class name.
+
 The model manager applies its current table prefix to the selected source. For example, `setModelPrefix('app_')` changes the source in this example to `app_accounting_invoices`.
 
 This behavior is opt-in. The default PHPDoc `Reader` does not activate it, and `@Source(...)` does not change a model's table. Models using the default `Introspection` metadata strategy do not have their docblocks parsed just to determine a table name. Selecting `AttributesReader` for table resolution does not itself change the metadata strategy used to describe columns.
