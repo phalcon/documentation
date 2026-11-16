@@ -236,10 +236,11 @@ use Phalcon\Annotations\AttributesReader;
 
 $adapter = new Apcu();
 $adapter->setReader(new AttributesReader());
+$container->removeShared('annotations');
 $container->setShared('annotations', $adapter);
 ```
 
-Configure the service before using models or the annotations router. With `Stream`, set `annotationsDir` to a writable cache directory. Clear cached entries when deploying changed attributes; persistent cache hits do not re-read the source files.
+`removeShared()` clears any adapter instance already resolved by the earlier examples, so the next lookup uses `Apcu`. Configure the service before using models or the annotations router. With `Stream`, set `annotationsDir` to a writable cache directory. Clear cached entries when deploying changed attributes; persistent cache hits do not re-read the source files.
 :::
 
 :::caution[Clear the cache after a change of reader]

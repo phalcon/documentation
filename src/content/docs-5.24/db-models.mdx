@@ -3423,7 +3423,7 @@ The positional form `#[Source('accounting_invoices')]` has the same effect. Tabl
 2. A `Source` attribute declared on the model class, when the annotations reader is `AttributesReader` or a subclass of it.
 3. The default table name inferred from the model class.
 
-A `Source` attribute must provide a non-empty string table name. A missing, empty, whitespace-only, or non-string name raises `Phalcon\Mvc\Model\Exception` during source resolution. Its message includes the rejected value, and `getPrevious()` returns the original `Phalcon\Annotations\Exceptions\InvalidSourceTable`. Valid table names are used as supplied; they are not trimmed.
+A `Source` attribute must provide a non-empty string table name. A missing, empty, whitespace-only, or non-string name raises `Phalcon\Mvc\Model\Exception` during source resolution. Its message includes the rejected scalar value or null; for arrays, objects and resources, it reports the type without inspecting their contents. `getPrevious()` returns the original `Phalcon\Annotations\Exceptions\InvalidSourceTable`. Valid table names are used as supplied; they are not trimmed.
 
 The model manager applies its current table prefix to the selected source. For example, `setModelPrefix('app_')` changes the source in this example to `app_accounting_invoices`.
 
