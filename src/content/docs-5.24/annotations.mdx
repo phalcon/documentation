@@ -227,6 +227,21 @@ $container
 
 `getReader()` returns the reader in use.
 
+:::tip[Persist attribute metadata]
+`AttributesReader` uses Reflection to inspect the class, its constants, properties and methods, including inherited methods. With `Memory`, each class is scanned again on each request. Use `Phalcon\Annotations\Adapter\Apcu` or `Phalcon\Annotations\Adapter\Stream` to cache the results across requests. For example, when APCu is available:
+
+```php
+use Phalcon\Annotations\Adapter\Apcu;
+use Phalcon\Annotations\AttributesReader;
+
+$adapter = new Apcu();
+$adapter->setReader(new AttributesReader());
+$container->setShared('annotations', $adapter);
+```
+
+Configure the service before using models or the annotations router. With `Stream`, set `annotationsDir` to a writable cache directory. Clear cached entries when deploying changed attributes; persistent cache hits do not re-read the source files.
+:::
+
 :::caution[Clear the cache after a change of reader]
 The `Apcu` and `Stream` adapters key their entries on the class name only. The key does not name the reader. After a change of reader, clear the APCu cache or the `annotationsDir` folder, or the adapter returns the entries that the previous reader wrote.
 :::

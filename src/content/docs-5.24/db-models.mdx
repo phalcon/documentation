@@ -3423,11 +3423,17 @@ The positional form `#[Source('accounting_invoices')]` has the same effect. Tabl
 2. A `Source` attribute declared on the model class, when the annotations reader is `AttributesReader` or a subclass of it.
 3. The default table name inferred from the model class.
 
-A `Source` attribute must provide a non-empty string table name. A missing, empty, or non-string name raises `Phalcon\Annotations\Exceptions\InvalidSourceTable` during source resolution instead of falling back to the model class name.
+A `Source` attribute must provide a non-empty string table name. A missing, empty, whitespace-only, or non-string name raises `Phalcon\Mvc\Model\Exception` during source resolution. Its message includes the rejected value, and `getPrevious()` returns the original `Phalcon\Annotations\Exceptions\InvalidSourceTable`. Valid table names are used as supplied; they are not trimmed.
 
 The model manager applies its current table prefix to the selected source. For example, `setModelPrefix('app_')` changes the source in this example to `app_accounting_invoices`.
 
 This behavior is opt-in. The default PHPDoc `Reader` does not activate it, and `@Source(...)` does not change a model's table. Models using the default `Introspection` metadata strategy do not have their docblocks parsed just to determine a table name. Selecting `AttributesReader` for table resolution does not itself change the metadata strategy used to describe columns.
+
+An `annotations` service that does not implement `Phalcon\Annotations\Adapter\AdapterInterface`, such as a reader from another library, does not activate this behavior either. The manager uses the name inferred from the model class, unless an explicit source is set.
+
+:::tip[Cache attribute metadata across requests]
+Use a persistent annotations adapter such as `Phalcon\Annotations\Adapter\Apcu` or `Phalcon\Annotations\Adapter\Stream` with `AttributesReader`. Resolving a source reads the class attributes, constants, properties and methods, including inherited methods. With the default `Memory` adapter, this reflection work is repeated for each model class on each request, even with the `Introspection` metadata strategy and even if the model has no `Source` attribute. The `Annotations` metadata strategy reuses the same adapter data, so source resolution does not add a second scan. A persistent adapter avoids repeating the scan while its cache entry remains available. See [Selecting a Reader](/5.24/annotations/#selecting-a-reader) for cache configuration and invalidation.
+:::
 
 `Source` applies only to the class that declares it. A subclass without its own `Source` uses the name inferred from the subclass, even if the parent has a `Source` attribute. By contrast, an inherited `initialize()` method that calls `setSource()` still explicitly sets the subclass's table and takes priority over attributes.
 
