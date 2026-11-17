@@ -15,7 +15,7 @@
     "update-nfr": "node scripts/update-nfr.mjs"
   },
   "dependencies": {
-    "@cloudflare/nimbus-docs": "0.17.0",
+    "@cloudflare/nimbus-docs": "0.20.0",
     "@iconify-json/ph": "^1.2.0",
     "astro": "~7.3.8",
     "clsx": "^2.1.1",

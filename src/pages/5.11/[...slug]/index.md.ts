@@ -58,7 +58,7 @@ export async function GET({ props }: { props: SlugProps }) {
     "",
     markdown,
     "",
-    `Source: ${absoluteUrl(sourceUrl ?? markdownUrl)}`,
+    `Source: ${absoluteUrl(sourceUrl ?? markdownUrl ?? item.url)}`,
     "",
   ].join("\n");
 
