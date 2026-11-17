@@ -4169,13 +4169,13 @@ those keys to their ini_get() fallback values.
 
 - `public get(string $key): bool|int|null` — Returns the value of a known setting.
 
-- `public reset(): void` — Clears all PHP-level overrides, restoring get() to return ini\_get()
+- `public reset(): void` — Clears all PHP-level overrides, restoring get() to return ini_get()
 
 - `public set(string $key, bool|int $value): void` — Overrides a setting at the PHP level.
 
 ### Properties
 
-- `protected array<string, bool|int> $overrides = []` — PHP-level overrides. Keys stored here take priority over ini\_get().
+- `protected array<string, bool|int> $overrides = []` — PHP-level overrides. Keys stored here take priority over ini_get().
 
 ### Methods
 

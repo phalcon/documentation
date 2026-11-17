@@ -495,7 +495,7 @@ Represents a single annotation in an annotations collection
   ReflectionAttribute::getArguments() gives the values and not a parse
   tree. The value goes to the caller without a change.
 
-  The parser types stop at 309 (PHANNOT\_T\_ARBITRARY\_TEXT). The value is
+  The parser types stop at 309 (PHANNOT_T_ARBITRARY_TEXT). The value is
   1000 and not 310, so that a token added to the grammar later cannot
   make two case labels with one value in getExpression().
 

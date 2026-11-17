@@ -2081,7 +2081,7 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 - `public getChangedFields(): array` — Returns a list of changed values.
 
-- `public getDirtyState(): int` — Returns one of the DIRTY\_STATE\_\* constants telling if the record exists
+- `public getDirtyState(): int` — Returns one of the DIRTY_STATE\_\* constants telling if the record exists
 
 - `public getEventsManager(): EventsManagerInterface|null` — Returns the custom events manager or null if there is no custom events manager
 
@@ -2123,7 +2123,7 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 - `public isRelationshipLoaded(string $relationshipAlias): bool` — Checks if saved related records have already been loaded.
 
-- `public jsonSerialize(): array` — Serializes the object for json\_encode
+- `public jsonSerialize(): array` — Serializes the object for json_encode
 
 - `public maximum(mixed $parameters = null): mixed` — Returns the maximum value of a column for a result-set of rows that match
 
@@ -2141,7 +2141,7 @@ and a behavior/listener `missingMethod()` hook. An unresolved method throws
 
 - `public setConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service name
 
-- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Sets the dirty state of the object using one of the DIRTY\_STATE\_\* constants
+- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Sets the dirty state of the object using one of the DIRTY_STATE\_\* constants
 
 - `public setEventsManager(EventsManagerInterface $eventsManager)` — Sets a custom events manager
 
@@ -4212,7 +4212,7 @@ Interface for Phalcon\Mvc\Model
 
 - `public fireEventCancel(string $eventName): bool` — Fires an event, implicitly calls behaviors and listeners in the events
 
-- `public getDirtyState(): int` — Returns one of the DIRTY\_STATE\_\* constants telling if the record exists
+- `public getDirtyState(): int` — Returns one of the DIRTY_STATE\_\* constants telling if the record exists
 
 - `public getMessages(): MessageInterface[]` — Returns array of validation messages
 
@@ -4246,7 +4246,7 @@ Interface for Phalcon\Mvc\Model
 
 - `public setConnectionService(string $connectionService): void` — Sets both read/write connection services
 
-- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Sets the dirty state of the object using one of the DIRTY\_STATE\_\*
+- `public setDirtyState(int $dirtyState): ModelInterface|bool` — Sets the dirty state of the object using one of the DIRTY_STATE\_\*
 
 - `public setReadConnectionService(string $connectionService): void` — Sets the DependencyInjection connection service used to read data
 
@@ -5125,7 +5125,7 @@ $invoices = Invoices::query()
 
 - `public execute(): ResultsetInterface` — Executes a find using the parameters built with the criteria
 
-- `public forUpdate(bool $forUpdate = true): CriteriaInterface` — Adds the "for\_update" parameter to the criteria
+- `public forUpdate(bool $forUpdate = true): CriteriaInterface` — Adds the "for_update" parameter to the criteria
 
 - `public fromInput(DiInterface $container, string $modelName, array $data, string $operator = "AND"): CriteriaInterface` — Builds a Phalcon\Mvc\Model\Criteria based on an input array like $\_POST
 
@@ -5177,7 +5177,7 @@ $invoices = Invoices::query()
 
 - `public setModelName(string $modelName): CriteriaInterface` — Set a model on which the query will be executed
 
-- `public sharedLock(bool $sharedLock = true): CriteriaInterface` — Adds the "shared\_lock" parameter to the criteria
+- `public sharedLock(bool $sharedLock = true): CriteriaInterface` — Adds the "shared_lock" parameter to the criteria
 
 - `public where(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Sets the conditions parameter in the criteria
 
@@ -5752,7 +5752,7 @@ Interface for Phalcon\Mvc\Model\Criteria
 
 - `public execute(): ResultsetInterface` — Executes a find using the parameters built with the criteria
 
-- `public forUpdate(bool $forUpdate = true): CriteriaInterface` — Sets the "for\_update" parameter to the criteria
+- `public forUpdate(bool $forUpdate = true): CriteriaInterface` — Sets the "for_update" parameter to the criteria
 
 - `public getColumns(): string|array|null` — Returns the columns to be queried
 
@@ -5796,7 +5796,7 @@ Interface for Phalcon\Mvc\Model\Criteria
 
 - `public setModelName(string $modelName): CriteriaInterface` — Set a model on which the query will be executed
 
-- `public sharedLock(bool $sharedLock = true): CriteriaInterface` — Sets the "shared\_lock" parameter to the criteria
+- `public sharedLock(bool $sharedLock = true): CriteriaInterface` — Sets the "shared_lock" parameter to the criteria
 
 - `public where(string $conditions, mixed $bindParams = null, mixed $bindTypes = null): CriteriaInterface` — Sets the conditions parameter in the criteria
 
@@ -15875,7 +15875,7 @@ while ($invoices->valid()) {
 
 - `public isFresh(): bool` — Tell if the resultset if fresh or an old one cached
 
-- `public jsonSerialize(): array` — Returns serialised model objects as array for json\_encode.
+- `public jsonSerialize(): array` — Returns serialised model objects as array for json_encode.
 
 - `public key(): int|null` — Gets pointer number of active row in the resultset
 
@@ -16627,7 +16627,7 @@ This objects implements the ArrayAccess interface to allow access the object as 
 
 ### Method Summary
 
-- `public jsonSerialize(): array` — Serializes the object for json\_encode
+- `public jsonSerialize(): array` — Serializes the object for json_encode
 
 - `public offsetExists(mixed $index): bool` — Checks whether offset exists in the row. Returns true when the property
 
@@ -17767,7 +17767,7 @@ echo $router->getControllerName();
 
 - `public setKeyRouteNames(array $routeNames): static`
 
-- `public setUriSource(int $uriSource): static` — Sets the URI source. One of the URI\_SOURCE\_\* constants
+- `public setUriSource(int $uriSource): static` — Sets the URI source. One of the URI_SOURCE\_\* constants
 
 - `public useCache(CacheAdapterInterface $cache, string $key = "phalcon.router.dispatcher"): void` — Cache-instance convenience wrapper. On cache hit, restores the
 
@@ -22500,7 +22500,7 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 
 - `public isIncluded(mixed $needle, mixed $haystack): bool` — Checks if the needle is included in the haystack
 
-- `public length(mixed $item): int` — Length filter. If an array/object is passed a count is performed otherwise a strlen/mb\_strlen
+- `public length(mixed $item): int` — Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 - `public preload(mixed $parameters): string` — Parses the preload element passed and sets the necessary link headers
 

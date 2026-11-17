@@ -1535,7 +1535,7 @@ Interface
 
 - `public id(): int|string|null` — Returns the authenticated user's identifier, or null when no
 
-- `public setUser(AuthUser $user): static` — Sets the current user explicitly. Returns $this for fluent chaining.
+- `public setUser(AuthUser $user): static` — Sets the current user explicitly. Returns \$this for fluent chaining.
 
 - `public user(): AuthUser|null` — Returns the resolved user for the current request, or null.
 
@@ -1659,7 +1659,7 @@ Implemented by guards backed by persistent state (sessions/cookies).
 
 - `public login(AuthUser $user, bool $remember = false): void`
 
-- `public loginById(mixed $id, bool $remember = false): AuthUser|false` — Logs in the user identified by $id. Returns the resolved user on
+- `public loginById(mixed $id, bool $remember = false): AuthUser|false` — Logs in the user identified by \$id. Returns the resolved user on
 
 - `public logout(): void`
 
@@ -1743,7 +1743,7 @@ Interface
 
 - `public getGuards(): array`
 
-- `public guard(string|null $name = null): Guard` — Returns the named guard, or the default guard when $name is null.
+- `public guard(string|null $name = null): Guard` — Returns the named guard, or the default guard when \$name is null.
 
 - `public id(): int|string|null` — Returns the authenticated user's identifier from the default guard,
 
@@ -3086,7 +3086,7 @@ implementors:
 
 - `public isUnderTransaction(): bool` — Checks whether connection is under database transaction
 
-- `public lastInsertId(string|null $name = null): string|bool` — Returns insert id for the auto\_increment column inserted in the last SQL
+- `public lastInsertId(string|null $name = null): string|bool` — Returns insert id for the auto_increment column inserted in the last SQL
 
 - `public limit(string $sqlQuery, mixed $number): string` — Appends a LIMIT clause to sqlQuery argument
 

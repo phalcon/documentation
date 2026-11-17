@@ -4051,13 +4051,13 @@ those keys to their globals_get() fallback values.
 
 - `public get(string $key): mixed` — Returns the value of a known setting.
 
-- `public reset(): void` — Clears all PHP-level overrides, restoring get() to return globals\_get()
+- `public reset(): void` — Clears all PHP-level overrides, restoring get() to return globals_get()
 
 - `public set(string $key, mixed $value): void` — Overrides a setting at the PHP level.
 
 ### Properties
 
-- `protected array $overrides = []` — PHP-level overrides. Keys stored here take priority over globals\_get().
+- `protected array $overrides = []` — PHP-level overrides. Keys stored here take priority over globals_get().
 
 ### Methods
 

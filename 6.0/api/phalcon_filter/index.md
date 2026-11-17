@@ -936,7 +936,7 @@ Allows to validate data using custom or built-in validators
 - `protected array $defaultMessages = []` — Default messages for validators, keyed by validator class name
 
   Declared without an array initializer on purpose: an initialized static
-  array makes Zephir emit a zephir\_init\_static\_properties() function that
+  array makes Zephir emit a zephir_init_static_properties() function that
   fails to compile in the single-file build. It is null until first set
   and treated as an empty array by the accessors below.
 

@@ -452,7 +452,7 @@ The backend adapters available to store cache data are:
 | [Phalcon\Cache\Backend\Redis](/3.4/api/phalcon_cache/)        | Stores data in Redis.                                | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
 | [Phalcon\Cache\Backend\Xcache](/3.4/api/phalcon_cache/)       | Stores data in XCache.                               | XCache                         | XCache                           |
 
-##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu\_bc</code> package from pecl. Now in Phalcon 3.4.0 you can switch your <code>\*\Apc</code> classes to <code>\*\Apcu</code> and remove <code>apcu\_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### \{.alert .alert-warning}
+##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 3.4.0 you can switch your <code>\*\Apc</code> classes to <code>\*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### \{.alert .alert-warning}
 
 
 ### Factory

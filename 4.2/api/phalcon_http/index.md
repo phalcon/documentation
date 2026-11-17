@@ -598,14 +598,14 @@ The keys represent the header name as it will be sent over the wire, and
 each value is an array of strings associated with the header.
 
 // Represent the headers as a string
-foreach ($message->getHeaders() as $name => $values) \{
-echo $name . ': ' . implode(', ', $values);
+foreach (\$message->getHeaders() as \$name => \$values) \{
+echo \$name . ': ' . implode(', ', \$values);
 }
 
 // Emit headers iteratively:
-foreach ($message->getHeaders() as $name => $values) \{
-foreach ($values as $value) \{
-header(sprintf('%s: %s', $name, $value), false);
+foreach (\$message->getHeaders() as \$name => \$values) \{
+foreach (\$values as \$value) \{
+header(sprintf('%s: %s', \$name, \$value), false);
 }
 }
 
@@ -726,7 +726,7 @@ from the set of US-ASCII visual characters not allowed in a token
 
 token          = 1\*tchar
 
-tchar          = '!' / '#' / '$' / '%' / '&' / ''' / '\*'
+tchar          = '!' / '#' / '\$' / '%' / '&' / ''' / '\*'
 / '+' / '-' / '.' / '^' / '\_' / '\`' / '|' / '\~'
 / DIGIT / ALPHA
 ; any VCHAR, except delimiters

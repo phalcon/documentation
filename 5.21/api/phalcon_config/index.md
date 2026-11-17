@@ -148,7 +148,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 - `public __construct(string $filePath, int $mode = 1)` — Ini constructor.
 
-- `protected cast(mixed $ini): mixed` — We have to cast values manually because parse\_ini\_file() has a poor
+- `protected cast(mixed $ini): mixed` — We have to cast values manually because parse_ini_file() has a poor
 
 - `protected castArray(array $ini): array`
 

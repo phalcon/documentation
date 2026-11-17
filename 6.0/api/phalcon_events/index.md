@@ -443,7 +443,7 @@ conditional execution and much more.
 
 - `public getListeners(string $type): array` — Returns all the attached listeners of a certain type
 
-- `public getMethodExistsCacheLimit(): int` — Returns the configured method\_exists-cache cap (0 = unlimited).
+- `public getMethodExistsCacheLimit(): int` — Returns the configured method_exists-cache cap (0 = unlimited).
 
 - `public getResponses(): array` — Returns all the responses returned by every handler executed by the last
 
@@ -496,7 +496,7 @@ conditional execution and much more.
 
 - `protected array $events = []` — Listener storage. Shape:
 
-  events\[$eventType] = \[
+  events\[\$eventType] = \[
   \[handler, type, priority]            // types 0, 1, 3
   \[handler, type, priority, className] // type 2 carries
   // resolved class name
@@ -516,9 +516,9 @@ conditional execution and much more.
   `handler[0]->{handler[1]}(args)`
   2 - plain object: dynamic dispatch via method named after the
   event (the classic Phalcon listener pattern); class name is
-  captured at attach time to skip get\_class() per fire
+  captured at attach time to skip get_class() per fire
   3 - generic callable (string fn name, invokable object,
-  \[class, staticMethod]): call\_user\_func\_array
+  \[class, staticMethod]): call_user_func_array
 
 - `protected int $fireDepth = 0` — Re-entrancy depth of fire()/fireAll(). 0 means no fire is in
   progress. Incremented on every fire entry, decremented on exit.
@@ -530,14 +530,14 @@ conditional execution and much more.
   dispatching. Cleared by resume(). Survives across fire() calls,
   unlike Event::stop() which only stops the current dispatch chain.
 
-- `protected array $methodExistsCache = []` — Memoized method\_exists() results for the OBJECT\_METHOD dispatch
+- `protected array $methodExistsCache = []` — Memoized method_exists() results for the OBJECT_METHOD dispatch
   path in dispatch(). Keyed by `handlerClass => [methodName => bool]`.
   A class doesn't gain methods at runtime so the lookup is permanent.
 
 - `protected int $methodExistsCacheLimit = 0` — Maximum number of distinct handler classes retained in
   methodExistsCache. 0 (default) keeps the original unbounded
   behavior; a positive value clears the cache when adding a new
-  class would exceed it. Re-warming is cheap (method\_exists is
+  class would exceed it. Re-warming is cheap (method_exists is
   O(1)) and the cap is meant for very long-lived workers that see
   many distinct listener classes over time.
 

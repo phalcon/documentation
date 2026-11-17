@@ -155,7 +155,7 @@ try {
 
 - `public isNestedTransactionsWithSavepoints(): bool` — Returns if nested transactions should use savepoints
 
-- `public limit(string $sqlQuery, mixed $number): string` — Appends a LIMIT clause to $sqlQuery argument
+- `public limit(string $sqlQuery, mixed $number): string` — Appends a LIMIT clause to \$sqlQuery argument
 
 - `public listTables(string|null $schemaName = null): array` — List all tables on a database
 
@@ -1303,7 +1303,7 @@ $connection = new Mysql($config);
 
 - `public isUnderTransaction(): bool` — Checks whether the connection is under a transaction
 
-- `public lastInsertId(string|null $name = null): bool|string` — Returns the insert id for the auto\_increment/serial column inserted in
+- `public lastInsertId(string|null $name = null): bool|string` — Returns the insert id for the auto_increment/serial column inserted in
 
 - `public ping(): bool` — Checks whether the underlying connection is still alive by issuing a
 
@@ -1880,7 +1880,7 @@ $connection = new Postgresql($config);
 
 - `public getDefaultIdValue(): RawValue` — Returns the default identity value to be inserted in an identity column
 
-- `public modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface|null $currentColumn = null): bool` — Modifies a table column based on a $definition
+- `public modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface|null $currentColumn = null): bool` — Modifies a table column based on a \$definition
 
 - `public supportSequences(): bool` — Check whether the database system requires a sequence to produce
 
@@ -2863,9 +2863,9 @@ common methods to transform intermediate code into its RDBMS related syntax
 - `protected string $escapeChar`
 
 - `protected list<string> $guardedOperators = [...]` — Dialect-specific operators that a concrete dialect must opt into via
-  $supportedOperators; using one elsewhere throws.
+  \$supportedOperators; using one elsewhere throws.
 
-- `protected list<string> $supportedOperators = []` — Subset of $guardedOperators that this dialect emits. Overridden per
+- `protected list<string> $supportedOperators = []` — Subset of \$guardedOperators that this dialect emits. Overridden per
   dialect.
 
 ### Methods
@@ -3575,7 +3575,7 @@ Generates database specific SQL for the MySQL RDBMS
 
 - `public getColumnDefinition(ColumnInterface $column): string` — Gets the column name in MySQL
 
-- `public getForeignKeyChecks(): string` — Generates SQL to check DB parameter FOREIGN\_KEY\_CHECKS.
+- `public getForeignKeyChecks(): string` — Generates SQL to check DB parameter FOREIGN_KEY_CHECKS.
 
 - `public listTables(string|null $schemaName = null): string` — List all tables in database
 

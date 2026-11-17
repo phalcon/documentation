@@ -314,7 +314,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 - `public setCssEscaper(CssEscaper $escaper): static`
 
-- `public setDoubleEncode(bool $doubleEncode): static` — Sets the double\_encode flag. Fans out to all sub-escapers.
+- `public setDoubleEncode(bool $doubleEncode): static` — Sets the double_encode flag. Fans out to all sub-escapers.
 
 - `public setEncoding(string $encoding): static` — Sets the encoding. Fans out to all sub-escapers.
 
@@ -908,7 +908,7 @@ utilities used by the per-context escaper objects (`HtmlEscaper`,
 
 - `protected string $encoding = "utf-8"`
 
-- `protected int $flags` — ENT\_QUOTES | ENT\_SUBSTITUTE | ENT\_HTML401
+- `protected int $flags` — ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
 
 ### Methods
 
@@ -2346,7 +2346,7 @@ scalar value (treated as a one-element array).
 
 ### Method Summary
 
-- `protected isChecked(string $value): bool` — Returns true when $value appears in the checked list.
+- `protected isChecked(string $value): bool` — Returns true when \$value appears in the checked list.
 
 ### Properties
 
@@ -2438,7 +2438,7 @@ option's value attribute.
 
 ### Method Summary
 
-- `protected isChecked(string $value): bool` — Returns true when $value loosely equals the checked scalar.
+- `protected isChecked(string $value): bool` — Returns true when \$value loosely equals the checked scalar.
 
 ### Properties
 

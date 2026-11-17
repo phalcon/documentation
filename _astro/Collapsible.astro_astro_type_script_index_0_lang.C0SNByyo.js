@@ -1,0 +1,1 @@
+import{t as e}from"./url-param-CmvdLmAB.CpSvOf4J.js";import{a as t}from"./client.BkI3j2Kf.js";function n(e){let n=e.querySelector(`[data-nb-collapsible-trigger]`),r=e.querySelector(`[data-nb-collapsible-content]`);if(!n||!r)return()=>{};let i=e.dataset.nbDefaultOpen===`true`,a=t({trigger:n,content:r,defaultOpen:i});return()=>a.destroy()}e(`[data-nb-collapsible]`,n);

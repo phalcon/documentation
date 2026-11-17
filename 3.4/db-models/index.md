@@ -1751,7 +1751,7 @@ The available options are:
 | virtualForeignKeys    | Enables/Disables the virtual foreign keys                                               | `true`  |
 
 :::warning\[NOTE]
-<code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable\_assign\_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+<code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>\$this->property = value</code>.
 :::
 
 ## Stand-Alone component

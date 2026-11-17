@@ -100,7 +100,7 @@ Stores a message from various components
 
 - `public getType(): string`
 
-- `public jsonSerialize(): array` — Serializes the object for json\_encode
+- `public jsonSerialize(): array` — Serializes the object for json_encode
 
 - `public setCode(int $code): MessageInterface` — Sets code for the message
 
@@ -379,7 +379,7 @@ must take part in iteration.
 
 - `public filter(string $fieldName): array` — Filters the message collection by field name
 
-- `public jsonSerialize(): array` — Returns serialized message objects as array for json\_encode. Calls
+- `public jsonSerialize(): array` — Returns serialized message objects as array for json_encode. Calls
 
 ### Methods
 

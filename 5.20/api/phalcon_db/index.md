@@ -157,7 +157,7 @@ try {
 
 - `public isNestedTransactionsWithSavepoints(): bool` — Returns if nested transactions should use savepoints
 
-- `public limit(string $sqlQuery, mixed $number): string` — Appends a LIMIT clause to $sqlQuery argument
+- `public limit(string $sqlQuery, mixed $number): string` — Appends a LIMIT clause to \$sqlQuery argument
 
 - `public listTables(string|null $schemaName = null): array` — List all tables on a database
 
@@ -1314,7 +1314,7 @@ $connection = new Mysql($config);
 
 - `public isUnderTransaction(): bool` — Checks whether the connection is under a transaction
 
-- `public lastInsertId(string|null $name = null): string|bool` — Returns the insert id for the auto\_increment/serial column inserted in
+- `public lastInsertId(string|null $name = null): string|bool` — Returns the insert id for the auto_increment/serial column inserted in
 
 - `public ping(): bool` — Checks whether the underlying connection is still alive by issuing a
 
@@ -3609,7 +3609,7 @@ Generates database specific SQL for the MySQL RDBMS
 
 - `public getColumnDefinition(ColumnInterface $column): string` — Gets the column name in MySQL
 
-- `public getForeignKeyChecks(): string` — Generates SQL to check DB parameter FOREIGN\_KEY\_CHECKS.
+- `public getForeignKeyChecks(): string` — Generates SQL to check DB parameter FOREIGN_KEY_CHECKS.
 
 - `public listTables(string|null $schemaName = null): string` — List all tables in database
 

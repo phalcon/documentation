@@ -1353,10 +1353,10 @@ Phalcon\Events\Manager. One public constant per event.
 The `before*` events are cancelable. To cancel an operation, a listener
 must stop the event and return false:
 
-$manager->attach(
-Events::BEFORE\_PERFORM,
-function ($event) \{
-$event->stop();
+\$manager->attach(
+Events::BEFORE_PERFORM,
+function (\$event) \{
+\$event->stop();
 
 return false;
 }

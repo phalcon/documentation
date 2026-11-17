@@ -60,7 +60,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 - `public getAvailableCiphers(): array` — Returns a list of available ciphers.
 
-- `public getAvailableHashAlgorithms(): array` — Return a list of registered hashing algorithms suitable for hash\_hmac.
+- `public getAvailableHashAlgorithms(): array` — Return a list of registered hashing algorithms suitable for hash_hmac.
 
 - `public getCipher(): string` — Returns the current cipher
 
@@ -2786,11 +2786,11 @@ This class partially borrows SecureRandom library from Ruby
 
 - `public hex(int $len = 16): string` — Generates a random hex string
 
-- `public number(int $len): int` — Generates a random number between 0 and $len
+- `public number(int $len): int` — Generates a random number between 0 and \$len
 
 - `public uuid(): string` — Generates a v4 random UUID (Universally Unique IDentifier)
 
-- `protected base(string $alphabet, int $base, mixed $number = 16): string` — Generates a random string based on the number ($base) of characters
+- `protected base(string $alphabet, int $base, mixed $number = 16): string` — Generates a random string based on the number (\$base) of characters
 
 ### Methods
 
