@@ -48,13 +48,18 @@ Phalcon v6 has the same classes and methods as Phalcon v5. The changes below can
 In Phalcon v5 and v6, these rules apply to the variables of the templates:
 
 - A variable that the view of the action sets is visible in the layout.
-- A variable that a template sets is visible in a partial without parameters that the template calls after it sets the variable. In v6, this needs the `withScope()` call that this section describes.
-- A partial with an array of parameters gets a new set. The set has only the variables of the view and the parameters of the partial.
+- A variable that a template sets is visible in a partial without parameters that the template calls after it sets the variable.
+- A variable that a partial without parameters sets is visible in the template that called the partial, after the call.
+- A partial with an array of parameters gets a new set. The set has only the variables of the view and the parameters of the partial. The variables that this partial sets are not visible in the template that called it.
 - Each render starts with a new set. A variable that a template sets in one render is not visible in the next render.
+- All the template engines of a view use the same set. For example, a variable that a Volt template sets is visible in a `.phtml` partial.
 
-Phalcon v6 is written in PHP, and PHP runs each template in its own scope. When a template ends, Phalcon v6 copies the variables of the template to the set of the render. The layout and the other templates that the view renders after the template can then use these variables. A partial that the template calls before it ends does not get the variables that the template set or changed before the call. To give these variables to the partial, call `withScope()` before `partial()`.
+Phalcon v6 is written in PHP, and PHP runs each template in its own scope. When a template ends, Phalcon v6 copies the variables of the template to the set of the render. The layout and the other templates that the view renders after the template can then use these variables. Two cases need an additional call in v6:
 
-In v6, these variables are available without `withScope()`:
+- A partial does not get the variables that the calling template set or changed before the call. To give these variables to the partial, call `withScope(get_defined_vars())` before `partial()`.
+- The calling template does not get the variables that the partial set. To get these variables, call `extract($this->getScope())` after `partial()`.
+
+In v6, these variables are available without an additional call:
 
 - The variables that your controller sets with `setVar()` or `setVars()` of the view.
 - The variables in the `$params` array of `partial()`.
@@ -62,20 +67,23 @@ In v6, these variables are available without `withScope()`:
 
 **Volt**
 
-Volt templates do not need a change. The [Volt][phalcon-volt] compiler adds the `withScope()` call to `partial()` and `{% include %}` where it is necessary. In this example, `partials/header.volt` can use `title`:
+Volt templates do not need a change. For `partial()` and `{% include %}`, the [Volt][phalcon-volt] compiler adds the `withScope()` call before the partial and the `extract()` call after it, where it is necessary. In this example, `partials/header.volt` can use `title`, and the template can use `subtitle` after the call if `partials/header.volt` sets it:
 
 ```twig
 {% set title = 'Invoices' %}
 {{ partial('partials/header') }}
+{{ subtitle }}
 ```
 
-A partial with an array of parameters, for example `{{ partial('partials/header', ['page': 1]) }}`, does not get `title`. This is the same in v5 and v6.
+A partial with an array of parameters, for example `{{ partial('partials/header', ['page': 1]) }}`, does not get `title`, and the variables that it sets are not visible after the call. This is the same in v5 and v6.
 
-The templates that Phalcon v5 compiled do not have the `withScope()` call. Remove the compiled templates after the upgrade, so that the compiler makes them again.
+The templates that Phalcon v5 compiled do not have these calls. Remove the compiled templates after the upgrade, so that the compiler makes them again.
 
 **PHP Templates**
 
-A `.phtml` template needs a change in one case only: the template sets or changes a variable, and then calls `$this->partial()` for a partial that uses this variable. In this case, call `withScope(get_defined_vars())` before `partial()`:
+A `.phtml` template needs a change in two cases only.
+
+In the first case, the template sets or changes a variable, and then calls `$this->partial()` for a partial that uses this variable. Call `withScope(get_defined_vars())` before `partial()`:
 
 ```php
 <?php $title = 'Invoices'; ?>
@@ -89,13 +97,39 @@ A `.phtml` template needs a change in one case only: the template sets or change
 
 Without the `withScope()` call, `partials/header.phtml` does not get `$title` in v6. If an earlier template of the same render set `$title`, the partial gets the value from that template.
 
+In the second case, the template uses a variable that the partial sets. Call `extract($this->getScope())` after `partial()`. In this example, `partials/totals.phtml` sets `$total`:
+
+```php
+<!-- v5 -->
+<?php $this->partial('partials/totals'); ?>
+<?= $total ?>
+
+<!-- v6 -->
+<?php
+$this->partial('partials/totals');
+extract($this->getScope());
+?>
+<?= $total ?>
+```
+
+If both cases apply, call `withScope()` before the partial and `extract()` after it:
+
+```php
+<?php
+$this->withScope(get_defined_vars())->partial('partials/header');
+extract($this->getScope());
+?>
+```
+
 **`withScope()`, `getScope()` and `setScope()`**
 
-`Phalcon\Mvc\View\Engine\AbstractEngine::withScope(array $scope): static` adds the variables in `$scope` to the set of variables of the engine. A variable in `$scope` replaces the variable with the same name in the set. The method returns the engine. Thus, you can call `partial()` on the result.
+The variables that the templates share are one set for each view. All the template engines of the view use this set.
+
+`Phalcon\Mvc\View\Engine\AbstractEngine::withScope(array $scope): static` adds the variables in `$scope` to the set of the view. A variable in `$scope` replaces the variable with the same name in the set. The method returns the engine. Thus, you can call `partial()` on the result.
 
 - Phalcon v5 does not have `withScope()`. On v5, a template that calls it stops with the error `Call to undefined method`.
 - `partial()` has the same signature as in v5. A class that extends `AbstractEngine` and overrides `partial()` does not need a change.
-- `getScope(): array` returns the set of variables of the engine, and `setScope(array $scope): static` replaces it. `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` use these methods to start a new set for each render and for each partial with an array of parameters. Phalcon v5 does not have these methods.
+- `getScope(): array` returns the set of the view, and `setScope(array $scope): static` replaces it. `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` use these methods to start a new set for each render and for each partial with an array of parameters. Phalcon v5 does not have these methods.
 
 - - -
 

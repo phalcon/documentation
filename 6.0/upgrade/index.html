@@ -213,25 +213,33 @@ offering lower resource consumption and high performance.
 <p>In Phalcon v5 and v6, these rules apply to the variables of the templates:</p>
 <ul>
 <li>A variable that the view of the action sets is visible in the layout.</li>
-<li>A variable that a template sets is visible in a partial without parameters that the template calls after it sets the variable. In v6, this needs the <code>withScope()</code> call that this section describes.</li>
-<li>A partial with an array of parameters gets a new set. The set has only the variables of the view and the parameters of the partial.</li>
+<li>A variable that a template sets is visible in a partial without parameters that the template calls after it sets the variable.</li>
+<li>A variable that a partial without parameters sets is visible in the template that called the partial, after the call.</li>
+<li>A partial with an array of parameters gets a new set. The set has only the variables of the view and the parameters of the partial. The variables that this partial sets are not visible in the template that called it.</li>
 <li>Each render starts with a new set. A variable that a template sets in one render is not visible in the next render.</li>
+<li>All the template engines of a view use the same set. For example, a variable that a Volt template sets is visible in a <code>.phtml</code> partial.</li>
 </ul>
-<p>Phalcon v6 is written in PHP, and PHP runs each template in its own scope. When a template ends, Phalcon v6 copies the variables of the template to the set of the render. The layout and the other templates that the view renders after the template can then use these variables. A partial that the template calls before it ends does not get the variables that the template set or changed before the call. To give these variables to the partial, call <code>withScope()</code> before <code>partial()</code>.</p>
-<p>In v6, these variables are available without <code>withScope()</code>:</p>
+<p>Phalcon v6 is written in PHP, and PHP runs each template in its own scope. When a template ends, Phalcon v6 copies the variables of the template to the set of the render. The layout and the other templates that the view renders after the template can then use these variables. Two cases need an additional call in v6:</p>
+<ul>
+<li>A partial does not get the variables that the calling template set or changed before the call. To give these variables to the partial, call <code>withScope(get_defined_vars())</code> before <code>partial()</code>.</li>
+<li>The calling template does not get the variables that the partial set. To get these variables, call <code>extract($this-&gt;getScope())</code> after <code>partial()</code>.</li>
+</ul>
+<p>In v6, these variables are available without an additional call:</p>
 <ul>
 <li>The variables that your controller sets with <code>setVar()</code> or <code>setVars()</code> of the view.</li>
 <li>The variables in the <code>$params</code> array of <code>partial()</code>.</li>
 <li>The variables that a template sets, in the templates that the view renders after this template ends, in the same render. For example, the layout can use the variables that the view of the action sets.</li>
 </ul>
 <p><strong>Volt</strong></p>
-<p>Volt templates do not need a change. The <a href="/6.0/volt">Volt</a> compiler adds the <code>withScope()</code> call to <code>partial()</code> and <code>{% include %}</code> where it is necessary. In this example, <code>partials/header.volt</code> can use <code>title</code>:</p>
+<p>Volt templates do not need a change. For <code>partial()</code> and <code>{% include %}</code>, the <a href="/6.0/volt">Volt</a> compiler adds the <code>withScope()</code> call before the partial and the <code>extract()</code> call after it, where it is necessary. In this example, <code>partials/header.volt</code> can use <code>title</code>, and the template can use <code>subtitle</code> after the call if <code>partials/header.volt</code> sets it:</p>
 <figure class="nb-code-figure" data-nb-lang="twig"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="twig" data-nb-lang="twig"><code><span class="line"><span style="color:var(--code-text)">{% </span><span style="color:var(--code-keyword)">set</span><span style="color:var(--code-text)"> title </span><span style="color:var(--code-keyword)">=</span><span style="color:var(--code-string)"> 'Invoices'</span><span style="color:var(--code-text)"> %}</span></span>
-<span class="line"><span style="color:var(--code-text)">{{ partial(</span><span style="color:var(--code-string)">'partials/header'</span><span style="color:var(--code-text)">) }}</span></span></code></pre></figure>
-<p>A partial with an array of parameters, for example <code>{{ partial('partials/header', ['page': 1]) }}</code>, does not get <code>title</code>. This is the same in v5 and v6.</p>
-<p>The templates that Phalcon v5 compiled do not have the <code>withScope()</code> call. Remove the compiled templates after the upgrade, so that the compiler makes them again.</p>
+<span class="line"><span style="color:var(--code-text)">{{ partial(</span><span style="color:var(--code-string)">'partials/header'</span><span style="color:var(--code-text)">) }}</span></span>
+<span class="line"><span style="color:var(--code-text)">{{ subtitle }}</span></span></code></pre></figure>
+<p>A partial with an array of parameters, for example <code>{{ partial('partials/header', ['page': 1]) }}</code>, does not get <code>title</code>, and the variables that it sets are not visible after the call. This is the same in v5 and v6.</p>
+<p>The templates that Phalcon v5 compiled do not have these calls. Remove the compiled templates after the upgrade, so that the compiler makes them again.</p>
 <p><strong>PHP Templates</strong></p>
-<p>A <code>.phtml</code> template needs a change in one case only: the template sets or changes a variable, and then calls <code>$this-&gt;partial()</code> for a partial that uses this variable. In this case, call <code>withScope(get_defined_vars())</code> before <code>partial()</code>:</p>
+<p>A <code>.phtml</code> template needs a change in two cases only.</p>
+<p>In the first case, the template sets or changes a variable, and then calls <code>$this-&gt;partial()</code> for a partial that uses this variable. Call <code>withScope(get_defined_vars())</code> before <code>partial()</code>:</p>
 <figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">&lt;?</span><span style="color:var(--code-constant)">php</span><span style="color:var(--code-text)"> $title </span><span style="color:var(--code-keyword)">=</span><span style="color:var(--code-string)"> 'Invoices'</span><span style="color:var(--code-text)">; </span><span style="color:var(--code-keyword)">?&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:var(--code-keyword)">&lt;!--</span><span style="color:var(--code-constant)"> v5</span><span style="color:var(--code-keyword)"> --&gt;</span></span>
@@ -240,12 +248,29 @@ offering lower resource consumption and high performance.
 <span class="line"><span style="color:var(--code-keyword)">&lt;!--</span><span style="color:var(--code-constant)"> v6</span><span style="color:var(--code-keyword)"> --&gt;</span></span>
 <span class="line"><span style="color:var(--code-keyword)">&lt;?</span><span style="color:var(--code-constant)">php</span><span style="color:var(--code-constant)"> $this</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">withScope</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-constant)">get_defined_vars</span><span style="color:var(--code-text)">())</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">partial</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-string)">'partials/header'</span><span style="color:var(--code-text)">); </span><span style="color:var(--code-keyword)">?&gt;</span></span></code></pre></figure>
 <p>Without the <code>withScope()</code> call, <code>partials/header.phtml</code> does not get <code>$title</code> in v6. If an earlier template of the same render set <code>$title</code>, the partial gets the value from that template.</p>
+<p>In the second case, the template uses a variable that the partial sets. Call <code>extract($this-&gt;getScope())</code> after <code>partial()</code>. In this example, <code>partials/totals.phtml</code> sets <code>$total</code>:</p>
+<figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">&lt;!--</span><span style="color:var(--code-constant)"> v5</span><span style="color:var(--code-keyword)"> --&gt;</span></span>
+<span class="line"><span style="color:var(--code-keyword)">&lt;?</span><span style="color:var(--code-constant)">php</span><span style="color:var(--code-constant)"> $this</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">partial</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-string)">'partials/totals'</span><span style="color:var(--code-text)">); </span><span style="color:var(--code-keyword)">?&gt;</span></span>
+<span class="line"><span style="color:var(--code-keyword)">&lt;?=</span><span style="color:var(--code-text)"> $total </span><span style="color:var(--code-keyword)">?&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--code-keyword)">&lt;!--</span><span style="color:var(--code-constant)"> v6</span><span style="color:var(--code-keyword)"> --&gt;</span></span>
+<span class="line"><span style="color:var(--code-keyword)">&lt;?</span><span style="color:var(--code-constant)">php</span></span>
+<span class="line"><span style="color:var(--code-constant)">$this</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">partial</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-string)">'partials/totals'</span><span style="color:var(--code-text)">);</span></span>
+<span class="line"><span style="color:var(--code-constant)">extract</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-constant)">$this</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">getScope</span><span style="color:var(--code-text)">());</span></span>
+<span class="line"><span style="color:var(--code-keyword)">?&gt;</span></span>
+<span class="line"><span style="color:var(--code-keyword)">&lt;?=</span><span style="color:var(--code-text)"> $total </span><span style="color:var(--code-keyword)">?&gt;</span></span></code></pre></figure>
+<p>If both cases apply, call <code>withScope()</code> before the partial and <code>extract()</code> after it:</p>
+<figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">&lt;?</span><span style="color:var(--code-constant)">php</span></span>
+<span class="line"><span style="color:var(--code-constant)">$this</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">withScope</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-constant)">get_defined_vars</span><span style="color:var(--code-text)">())</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">partial</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-string)">'partials/header'</span><span style="color:var(--code-text)">);</span></span>
+<span class="line"><span style="color:var(--code-constant)">extract</span><span style="color:var(--code-text)">(</span><span style="color:var(--code-constant)">$this</span><span style="color:var(--code-keyword)">-&gt;</span><span style="color:var(--code-function)">getScope</span><span style="color:var(--code-text)">());</span></span>
+<span class="line"><span style="color:var(--code-keyword)">?&gt;</span></span></code></pre></figure>
 <p><strong><code>withScope()</code>, <code>getScope()</code> and <code>setScope()</code></strong></p>
-<p><code>Phalcon\Mvc\View\Engine\AbstractEngine::withScope(array $scope): static</code> adds the variables in <code>$scope</code> to the set of variables of the engine. A variable in <code>$scope</code> replaces the variable with the same name in the set. The method returns the engine. Thus, you can call <code>partial()</code> on the result.</p>
+<p>The variables that the templates share are one set for each view. All the template engines of the view use this set.</p>
+<p><code>Phalcon\Mvc\View\Engine\AbstractEngine::withScope(array $scope): static</code> adds the variables in <code>$scope</code> to the set of the view. A variable in <code>$scope</code> replaces the variable with the same name in the set. The method returns the engine. Thus, you can call <code>partial()</code> on the result.</p>
 <ul>
 <li>Phalcon v5 does not have <code>withScope()</code>. On v5, a template that calls it stops with the error <code>Call to undefined method</code>.</li>
 <li><code>partial()</code> has the same signature as in v5. A class that extends <code>AbstractEngine</code> and overrides <code>partial()</code> does not need a change.</li>
-<li><code>getScope(): array</code> returns the set of variables of the engine, and <code>setScope(array $scope): static</code> replaces it. <code>Phalcon\Mvc\View</code> and <code>Phalcon\Mvc\View\Simple</code> use these methods to start a new set for each render and for each partial with an array of parameters. Phalcon v5 does not have these methods.</li>
+<li><code>getScope(): array</code> returns the set of the view, and <code>setScope(array $scope): static</code> replaces it. <code>Phalcon\Mvc\View</code> and <code>Phalcon\Mvc\View\Simple</code> use these methods to start a new set for each render and for each partial with an array of parameters. Phalcon v5 does not have these methods.</li>
 </ul>
 <hr>
 <h2 id="remove-phalcon-v5">Remove Phalcon v5</h2>
