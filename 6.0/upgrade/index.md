@@ -25,7 +25,73 @@ Phalcon v6 has the same requirements as v5. PHP 8.1 [active support][php-support
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
 
-### Remove Phalcon v5
+## Installation
+
+Remove Phalcon v5 before you install Phalcon v6. See [Remove Phalcon v5](#remove-phalcon-v5).
+
+Phalcon can be installed using composer.
+
+```
+composer require phalcon/phalcon
+```
+
+- - -
+
+## Upgrading from v5 to v6
+
+Phalcon v6 has the same classes and methods as Phalcon v5. The changes below can affect your application.
+
+### Mvc View
+
+#### Template Variables in Partials
+
+Phalcon v5 runs all the templates of a view with one set of variables. A template, its partials, its layout and the templates that the view renders after it can use each variable that one of them sets.
+
+Phalcon v6 is written in PHP, and PHP runs each template in its own scope. When a template ends, Phalcon v6 copies the variables of the template to a set of variables that all the templates share. The layout and the templates that the view renders after the template can use these variables. A partial that the template calls before it ends does not get the variables that the template set or changed before the call. To give these variables to the partial, call `withScope()` before `partial()`.
+
+In v6, a partial gets these variables without `withScope()`:
+
+- The variables that your controller sets with `setVar()` or `setVars()` of the view.
+- The variables in the `$params` array of `partial()`.
+- The variables that a template sets, in the templates that the view renders after this template ends. For example, the layout can use the variables that the view of the action sets.
+
+**Volt**
+
+Volt templates do not need a change. The [Volt][phalcon-volt] compiler adds the `withScope()` call to `partial()` and `{% include %}` where it is necessary. In this example, `partials/header.volt` can use `title`:
+
+```twig
+{% set title = 'Invoices' %}
+{{ partial('partials/header') }}
+```
+
+The templates that Phalcon v5 compiled do not have the `withScope()` call. Remove the compiled templates after the upgrade, so that the compiler makes them again.
+
+**PHP Templates**
+
+A `.phtml` template needs a change in one case only: the template sets or changes a variable, and then calls `$this->partial()` for a partial that uses this variable. In this case, call `withScope(get_defined_vars())` before `partial()`:
+
+```php
+<?php $title = 'Invoices'; ?>
+
+<!-- v5 -->
+<?php $this->partial('partials/header'); ?>
+
+<!-- v6 -->
+<?php $this->withScope(get_defined_vars())->partial('partials/header'); ?>
+```
+
+Without the `withScope()` call, `partials/header.phtml` does not get `$title` in v6. If an earlier template set `$title`, the partial gets the value from that template.
+
+**`withScope()`**
+
+`Phalcon\Mvc\View\Engine\AbstractEngine::withScope(array $scope): static` adds the variables in `$scope` to the set of variables that all the templates share. A variable in `$scope` replaces the variable with the same name in the set. The method returns the engine. Thus, you can call `partial()` on the result.
+
+- Phalcon v5 does not have `withScope()`. On v5, a template that calls it stops with the error `Call to undefined method`.
+- `partial()` has the same signature as in v5. A class that extends `AbstractEngine` and overrides `partial()` does not need a change.
+
+- - -
+
+## Remove Phalcon v5
 
 Phalcon v5 is a PHP extension that is written in C. Phalcon v6 is a Composer package that is written in PHP. The two versions use the same `Phalcon` namespace and the same class names.
 
@@ -316,16 +382,6 @@ php -r 'require "vendor/autoload.php"; echo (new Phalcon\Support\Version())->get
 ```
 
 The output must start with `6`. If it starts with `5`, PHP still loads the v5 extension.
-
-### Installation
-
-Remove Phalcon v5 before you install Phalcon v6. See [Remove Phalcon v5](#remove-phalcon-v5).
-
-Phalcon can be installed using composer.
-
-```
-composer require phalcon/phalcon
-```
 
 [phalcon-acl]: /6.0/acl/
 [phalcon-annotations]: /6.0/annotations/
