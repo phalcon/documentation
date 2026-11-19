@@ -94,6 +94,7 @@ export default [
             "label": "Devtools",
             "link": "/6.0/devtools/"
           },
+          "crest",
           "quill",
           "support-debug",
           "debug-bar",
