@@ -68,6 +68,7 @@
 - [Container](https://docs.phalcon.io/6.0/container/index.md)
 - [Contributions](https://docs.phalcon.io/6.0/contributions/index.md)
 - [Controllers](https://docs.phalcon.io/6.0/controllers/index.md)
+- [Crest](https://docs.phalcon.io/6.0/crest/index.md)
 - [Data Mapper](https://docs.phalcon.io/6.0/datamapper/index.md)
 - [Database Abstraction Layer](https://docs.phalcon.io/6.0/db-layer/index.md)
 - [Database Migrations](https://docs.phalcon.io/6.0/db-migrations/index.md)
