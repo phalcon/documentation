@@ -18,9 +18,15 @@
      trait      slate         the mixin
      final      danger        red, sealed
      protected  warning       amber, the guarded visibility
+     adr        warning       amber, the Crest flavor ADR
+     mvc        brand teal    the Crest flavor MVC
    ============================================================ */
 
 :root {
+    --crest-adr-bg: var(--nb-warning-muted);
+    --crest-adr-fg: var(--nb-warning);
+    --crest-mvc-bg: var(--nb-primary-muted);
+    --crest-mvc-fg: var(--nb-primary-hover);
     --api-abstract-bg: var(--nb-success-muted);
     --api-abstract-fg: var(--nb-success);
     --api-class-bg: var(--nb-border);
@@ -40,13 +46,14 @@
     --api-line: var(--nb-border);
 }
 
-/* Only the three that cannot come straight from a token: on the dark
+/* Only the four that cannot come straight from a token: on the dark
    theme `border` is too close to the page for a chip, and `primary-hover`
    is the darker teal, which is the light-theme direction. */
 [data-mode="dark"] {
     --api-class-bg: var(--nb-accent);
     --api-interface-fg: var(--nb-primary);
     --api-type-fg: var(--nb-primary);
+    --crest-mvc-fg: var(--nb-primary);
 }
 
 /* Class kind badges */
@@ -84,6 +91,16 @@
 .docs-content .badge--trait {
     background: var(--api-trait-bg);
     color: var(--api-trait-fg);
+}
+
+.docs-content .badge--adr {
+    background: var(--crest-adr-bg);
+    color: var(--crest-adr-fg);
+}
+
+.docs-content .badge--mvc {
+    background: var(--crest-mvc-bg);
+    color: var(--crest-mvc-fg);
 }
 
 /* Source on GitHub button */
