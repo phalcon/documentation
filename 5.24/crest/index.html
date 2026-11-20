@@ -388,7 +388,7 @@ two sections explain each way. The output is:</p>
 <h3 id="with-php-on-the-host">With PHP on the Host</h3>
 <p>Without docker, create the project with <code>crest new my-app --runtime=host</code>: the project
 Crest then runs with the PHP of the host (see <a href="#the-runtime">The Runtime</a>). With PHP and
-composer on the host, and no docker, run:</p>
+composer on the host, run:</p>
 <figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-constant)">cd</span><span style="color:var(--code-string)"> my-app</span></span>
 <span class="line"><span style="color:var(--code-parameter)">composer</span><span style="color:var(--code-string)"> install</span></span>
 <span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> serve</span></span></code></pre></figure>
@@ -410,9 +410,9 @@ of settings that docker compose reads (see <a href="#the-launcher">The Launcher<
 to read the script before it runs.</p>
 <h2 id="how-crest-works">How Crest Works</h2>
 <p>This section explains the parts of Crest that the rest of this page uses:
-<a href="#the-project-file">the project file</a>,
-<a href="#the-global-crest-and-the-project-crest">the global and the project Crest</a>,
-<a href="#the-runtime">the runtime</a>, <a href="#the-launcher">the launcher</a> and <a href="#stubs">the stubs</a>.</p>
+<a href="#the-project-file">The Project File</a>,
+<a href="#the-global-crest-and-the-project-crest">The Global Crest and the Project Crest</a>,
+<a href="#the-runtime">The Runtime</a>, <a href="#the-launcher">The Launcher</a> and <a href="#stubs">Stubs</a>.</p>
 <h3 id="the-project-file">The Project File</h3>
 <p>Each project has a <code>crest.php</code> at its root. This is the project file. <code>crest new</code> writes
 it. For an existing project, <code>crest init</code> writes it (see
@@ -436,10 +436,10 @@ same in both flavors:</p>
 <h3 id="the-global-crest-and-the-project-crest">The Global Crest and the Project Crest</h3>
 <p>The commands that work on the project, for example <code>make:controller</code>, <code>make:action</code> and
 <code>route:list</code>, need the autoloader and the Phalcon of the project. A project from
-<code>crest new</code> requires <code>phalcon/crest</code> as a dev dependency. Thus after <code>crest install</code> or
-<code>composer install</code>, it has its own Crest in <code>vendor/bin/crest</code>. A global Crest passes the
-project commands to this Crest, with the same arguments, and returns its exit status.
-This is the hand-off.</p>
+<code>crest new</code> requires <code>phalcon/crest</code> as a dev dependency. Thus after <code>crest install</code> (see
+<a href="#the-launcher">The Launcher</a>) or <code>composer install</code>, it has its own Crest in
+<code>vendor/bin/crest</code>. A global Crest passes the project commands to this Crest, with the
+same arguments, and returns its exit status. This is the hand-off.</p>
 <p><code>make:controller</code> creates an MVC controller (see
 <a href="#generating-controllers">Generating Controllers</a>). <code>make:action</code> creates an ADR action
 for a route (see <a href="#generating-actions">Generating Actions</a>). <code>route:list</code> shows each route
@@ -454,9 +454,9 @@ a global Crest passes this command to <code>vendor/bin/crest</code>:</p>
 <span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> about</span><span style="color:var(--code-comment)">                           # show the environment and version report</span></span>
 <span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> make:action</span><span style="color:var(--code-string)"> GET</span><span style="color:var(--code-string)"> /company/all</span></span></code></pre></figure></div></div></div>
 <p>Without a global Crest, run the Crest of the project: <code>vendor/bin/crest</code> in the project,
-or <code>./crest</code> on a host with docker and no PHP (see <a href="#the-launcher">The Launcher</a>). Here,
-the container is the docker compose service <code>app</code>, a container that docker compose runs
-(see <a href="#the-runtime">The Runtime</a>). In the container, there is no global Crest, so run
+or <code>./crest</code> on a host with docker and no PHP (see <a href="#the-launcher">The Launcher</a>). In this
+text, the container is the docker compose service <code>app</code>, a container that docker compose
+runs (see <a href="#the-runtime">The Runtime</a>). In the container, there is no global Crest, so run
 <code>vendor/bin/crest</code> there:</p>
 <div data-nb-tabs data-nb-sync-key="crest-flavor" class><div class="relative flex overflow-x-auto overscroll-x-contain border-b border-border [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" role="tablist" data-nb-tabs-list><span class="pointer-events-none absolute bottom-0 h-0.5 rounded-t-sm bg-primary transition-[left,width] duration-200 ease-out" data-nb-tabs-indicator aria-hidden="true"></span></div><div class="mt-3"><div role="tabpanel" data-nb-tabs-content data-nb-tab-label="MVC" class><figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">docker</span><span style="color:var(--code-string)"> compose</span><span style="color:var(--code-string)"> exec</span><span style="color:var(--code-string)"> app</span><span style="color:var(--code-string)"> vendor/bin/crest</span><span style="color:var(--code-string)"> make:controller</span><span style="color:var(--code-string)"> Hello</span></span></code></pre></figure></div><div role="tabpanel" data-nb-tabs-content data-nb-tab-label="ADR" class><figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">docker</span><span style="color:var(--code-string)"> compose</span><span style="color:var(--code-string)"> exec</span><span style="color:var(--code-string)"> app</span><span style="color:var(--code-string)"> vendor/bin/crest</span><span style="color:var(--code-string)"> make:action</span><span style="color:var(--code-string)"> GET</span><span style="color:var(--code-string)"> /hello</span></span></code></pre></figure></div></div></div>
 <p><code>new</code>, <code>init</code>, <code>up</code>, <code>down</code>, <code>install</code> and <code>--version</code> (see
@@ -464,8 +464,8 @@ the container is the docker compose service <code>app</code>, a container that d
 hand-off. <code>down</code> stops the containers (see <a href="#the-launcher">The Launcher</a>). <code>new</code>, <code>up</code>,
 <code>down</code> and <code>install</code> run before the project has a <code>vendor/</code>. Thus run them with a Crest
 outside the <code>vendor/</code> of the project, for example the global Crest (see
-<a href="#installation">Installation</a>). The launcher <code>./crest</code> also runs <code>up</code>, <code>down</code> and
-<code>install</code> without <code>vendor/</code> (see <a href="#the-launcher">The Launcher</a>).</p>
+<a href="#installation">Installation</a>) or the launcher <code>./crest</code> (see
+<a href="#the-launcher">The Launcher</a>).</p>
 <p><code>bin-dir</code> is a setting of composer (see <a href="#configuration">Configuration</a>). If the project
 has no <code>&lt;bin-dir&gt;/crest</code> (by default <code>vendor/bin/crest</code>), Crest stops, as it does without
 <code>crest.php</code>. The messages are the same in both flavors:</p>
@@ -585,7 +585,7 @@ of <code>crest.php</code> (see <a href="#configuration">Configuration</a>).</p>
 </tr>
 <tr>
 <td><code>--database=none|mariadb|mysql|pgsql|sqlite</code></td>
-<td>the database of the project; defaults to <code>none</code>. See <a href="#the-database">The database</a></td>
+<td>the database of the project; defaults to <code>none</code>. See <a href="#the-database">The Database</a></td>
 </tr>
 <tr>
 <td><code>--camel-case</code></td>
@@ -593,7 +593,7 @@ of <code>crest.php</code> (see <a href="#configuration">Configuration</a>).</p>
 </tr>
 <tr>
 <td><code>--get-set</code></td>
-<td>for MVC: protected properties with a getter and a setter (<code>models.getSet</code> of <code>crest.php</code>). See <a href="#getters-and-setters">Getters and setters</a></td>
+<td>for MVC: protected properties with a getter and a setter (<code>models.getSet</code> of <code>crest.php</code>). See <a href="#getters-and-setters">Getters and Setters</a></td>
 </tr>
 <tr>
 <td><code>--force</code></td>
@@ -662,7 +662,7 @@ compose service of <a href="#the-runtime">The Runtime</a>.</li>
 </tr>
 <tr>
 <td><code>src/Controllers/Base/</code></td>
-<td><code>CrestControllerBase</code>, the base that Crest owns (see <a href="#generated-bases">Generated bases</a>)</td>
+<td><code>CrestControllerBase</code>, the base that Crest owns (see <a href="#generated-bases">Generated Bases</a>)</td>
 </tr>
 <tr>
 <td><code>themes/default/</code></td>
@@ -671,10 +671,10 @@ compose service of <a href="#the-runtime">The Runtime</a>.</li>
 </tbody>
 </table></div>
 <p><code>crest.php</code> has <code>'flavor' =&gt; 'mvc'</code> and the paths (the folders that Crest writes into)
-<code>command</code>, <code>controller</code>, <code>form</code>, <code>model</code>, <code>module</code>, <code>provider</code> and <code>views</code> (see
-<a href="#configuration">Configuration</a>). To add a service, run <code>crest make:provider Mailer</code>. It
-writes <code>src/Providers/MailerProvider.php</code>, a provider that implements
-<code>Phalcon\Di\ServiceProviderInterface</code>. It also prints the line to add to
+<code>command</code>, <code>controller</code>, <a href="#the-form"><code>form</code></a>, <code>model</code>, <a href="#generating-modules"><code>module</code></a>,
+<code>provider</code> and <code>views</code> (see <a href="#configuration">Configuration</a>). To add a service, run
+<code>crest make:provider Mailer</code>. It writes <code>src/Providers/MailerProvider.php</code>, a provider
+that implements <code>Phalcon\Di\ServiceProviderInterface</code>. It also prints the line to add to
 <code>AppFront::providers()</code>, the list of the providers of the front controller.</p>
 <p>A URL with no controller stops in the dispatcher (“handler class cannot be loaded”).
 With <code>display_errors</code> off, PHP answers 500. With <code>display_errors</code> on, PHP shows the error
@@ -839,8 +839,9 @@ project with Phalcon v6:</p>
 <figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">curl</span><span style="color:var(--code-constant)"> -fsSL</span><span style="color:var(--code-string)"> https://phalcon.io/crest-setup</span><span style="color:var(--code-keyword)"> |</span><span style="color:var(--code-parameter)"> sh</span><span style="color:var(--code-constant)"> -s</span><span style="color:var(--code-constant)"> --</span><span style="color:var(--code-string)"> my-app</span><span style="color:var(--code-constant)"> --phalcon</span><span style="color:var(--code-string)"> v6</span></span></code></pre></figure>
 <p>In the script, <code>new</code> asks no questions: the options give the values, else the defaults
 apply. The project goes into the folder <code>&lt;name&gt;</code> in the working directory. The script
-stops with an error on <code>--directory</code>, and when the working directory is a system folder
-such as <code>/usr</code>. The <code>--help</code> option of the script shows the options of <code>new</code>.</p>
+stops with an error when you give <code>--directory</code>, and when the working directory is a
+system folder such as <code>/usr</code>. The <code>--help</code> option of the script shows the options of
+<code>new</code>.</p>
 <p>The working directory has the same path in the container. Thus the errors of <code>new</code> show
 host paths (see <a href="#the-launcher">The Launcher</a>). The script writes your user and group IDs
 into the project <code>.env</code>. Then it runs <code>./crest up</code> and <code>./crest install</code> (see
@@ -894,13 +895,12 @@ the namespace. Answer <code>none</code> for no front controller.</p>
 </li>
 <li>
 <p>A folder for each path of the flavor (the <code>paths</code> key of <code>crest.php</code>; see
-<a href="#configuration">Configuration</a>). The ADR paths are
-<code>action</code>, <code>command</code>, <code>middleware</code>, <code>provider</code> and <code>responder</code>. The MVC paths are
-<code>command</code>, <code>controller</code>, <code>form</code>, <code>model</code>, <code>module</code>, <code>provider</code> and <code>views</code>. The
-question says if the folder exists. A class folder is in the folder of the namespace.
-An answer must be a relative folder in a psr-4 folder. Its folder names must give a
-usable namespace: <code>src/my-actions</code> gives <code>App\my-actions</code>, which PHP cannot use.
-<code>init</code> removes a leading <code>./</code>.</p>
+<a href="#configuration">Configuration</a>). The MVC paths are <code>command</code>, <code>controller</code>, <code>form</code>,
+<code>model</code>, <code>module</code>, <code>provider</code> and <code>views</code>. The ADR paths are <code>action</code>, <code>command</code>,
+<code>middleware</code>, <code>provider</code> and <code>responder</code>. The question says if the folder exists. A
+class folder is in the folder of the namespace. An answer must be a relative folder in
+a psr-4 folder. Its folder names must give a usable namespace: <code>src/my-actions</code> gives
+<code>App\my-actions</code>, which PHP cannot use. <code>init</code> removes a leading <code>./</code>.</p>
 <p><code>views</code> holds no classes. It is a relative folder in the project, with no psr-4
 check. Each part of the answer must be a folder name. Thus <code>init</code> refuses an absolute
 folder, an empty part (<code>//</code>), <code>.</code> and <code>..</code>. The proposal is <code>themes/default</code>. When that
@@ -954,12 +954,12 @@ flavors:</p>
 <p>Use your port if it is not 8080.</p>
 <h2 id="commands-that-boot-the-project">Commands That Boot the Project</h2>
 <p>Four commands read objects that exist only after the application registers them.
-<code>container:list</code> reads the services and lists them, and <code>event:list</code> reads the listeners
-of the events manager and lists them (see <a href="#command-reference">Command Reference</a>).
-<code>make:model</code> and <code>make:scaffold</code> (see <a href="#generating-scaffolds">Generating Scaffolds</a>) read
-the <code>db</code> service (see <a href="#the-database">The Database</a>). Thus these commands start your
-front controller: they boot the project. Name the front controller in the <code>bootstrap</code>
-key of <code>crest.php</code>:</p>
+<a href="#command-reference"><code>container:list</code></a> reads the services and lists them, and
+<a href="#command-reference"><code>event:list</code></a> reads the listeners of the events manager and lists
+them. <code>make:model</code> and <code>make:scaffold</code> (see <a href="#generating-scaffolds">Generating Scaffolds</a>)
+read the <code>db</code> service (see <a href="#the-database">The Database</a>). Thus these commands start your
+front controller: they boot the project. Name the front controller in the <code>bootstrap</code> key
+of <code>crest.php</code>:</p>
 <div data-nb-tabs data-nb-sync-key="crest-flavor" class><div class="relative flex overflow-x-auto overscroll-x-contain border-b border-border [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden" role="tablist" data-nb-tabs-list><span class="pointer-events-none absolute bottom-0 h-0.5 rounded-t-sm bg-primary transition-[left,width] duration-200 ease-out" data-nb-tabs-indicator aria-hidden="true"></span></div><div class="mt-3"><div role="tabpanel" data-nb-tabs-content data-nb-tab-label="MVC" class><figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">return</span><span style="color:var(--code-text)"> [</span></span>
 <span class="line"><span style="color:var(--code-string)">    'bootstrap'</span><span style="color:var(--code-keyword)"> =&gt;</span><span style="color:var(--code-constant)"> App\AppFront</span><span style="color:var(--code-keyword)">::class</span><span style="color:var(--code-text)">,</span></span>
 <span class="line"><span style="color:var(--code-text)">];</span></span></code></pre></figure></div><div role="tabpanel" data-nb-tabs-content data-nb-tab-label="ADR" class><figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">return</span><span style="color:var(--code-text)"> [</span></span>
@@ -1050,7 +1050,8 @@ it extends (see <a href="#generated-bases">Generated Bases</a>):</p>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>Created src/Controllers/Base/CrestControllerBase.php</span></span>
 <span class="line"><span>Created src/Controllers/UsersController.php</span></span></code></pre></figure>
 <p>In the <code>Created</code>, <code>Updated</code> and <code>Kept</code> lines, Crest prints the full path of each
-file. The examples in this document show the path from the project root.</p>
+file or folder. The examples of these lines in this document show the path from the
+project root.</p>
 <p><code>UsersController</code> extends <code>CrestControllerBase</code>, which extends
 <code>Phalcon\Mvc\Controller</code>, and has an empty <code>indexAction()</code>. With the default
 routes of the Phalcon router, the first part of the URL names the controller.
@@ -1060,14 +1061,14 @@ Crest then prints what the dispatcher needs: its default namespace, the URL of
 <p>A project from <code>crest new --flavor=mvc</code> already has <code>CrestControllerBase</code> and
 <code>IndexController</code>, and its dispatcher has the default namespace. Thus in that
 project, <code>make:controller</code> prints no line for the base while the base is the
-same as its stub (see <a href="#generated-bases">Generated bases</a>).</p>
+same as its stub (see <a href="#generated-bases">Generated Bases</a>).</p>
 <p>The name must give a class that the dispatcher can find from a URL. Crest stops
 on <code>users</code> (the URL <code>/users</code> looks for <code>UsersController</code>), on <code>User_Profiles</code>,
 and on a name that gives the suffix two times in the class name, for example
 <code>UserControllerController</code>, or <code>Usercontroller</code> (which gives
 <code>UsercontrollerController</code>). <code>UserController</code> gives <code>UserController</code>.</p>
 <p>To write the controller into a module, add <code>--module</code> (see
-<a href="#generating-modules">Generating modules</a>):</p>
+<a href="#generating-modules">Generating Modules</a>):</p>
 <figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> make:controller</span><span style="color:var(--code-string)"> Users</span><span style="color:var(--code-constant)"> --module=admin</span></span></code></pre></figure>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>Created src/Modules/Admin/Controllers/Base/CrestControllerBase.php</span></span>
 <span class="line"><span>Created src/Modules/Admin/Controllers/UsersController.php</span></span></code></pre></figure>
@@ -1123,9 +1124,9 @@ KEY constraints (see <a href="#relations">Relations</a>):</p>
 <span class="line"><span>Created src/Models/Users.php</span></span></code></pre></figure>
 <p>Crest reads the table through the <code>db</code> service of your project. Thus it starts
 your front controller: <code>crest.php</code> must name it in <code>bootstrap</code> (see
-<a href="#commands-that-boot-the-project">Commands that boot the project</a>). A project
+<a href="#commands-that-boot-the-project">Commands That Boot the Project</a>). A project
 from <code>crest new --flavor=mvc</code> with a database has the <code>db</code> service (see
-<a href="#the-database">The database</a>). For a project without one, add a provider that
+<a href="#the-database">The Database</a>). For a project without one, add a provider that
 registers it (<code>crest make:provider Db</code>).</p>
 <p>With the <code>phalcon/phalcon</code> package (Phalcon v6), a model also needs
 <code>phalcon/phql</code>, the package for PHQL (see <a href="#the-database">The Database</a>). The
@@ -1167,6 +1168,9 @@ sets the table:</p>
 MariaDB keep a <code>BOOLEAN</code> column as <code>TINYINT(1)</code>, so it gives <code>?int</code>. On SQLite,
 Phalcon reads <code>DOUBLE</code> and <code>BOOLEAN</code> columns as <code>VARCHAR</code>, so they give
 <code>?string</code>.</p>
+<p>On SQLite, a <code>TINYINT(1)</code> column gives <code>?int</code> before cphalcon 5.24.0 and before the tag
+of <code>phalcon/phalcon</code> after <code>v6.0.0RC4</code>. From these versions, it gives <code>?bool</code>, and a
+<code>Select</code> field in a scaffold.</p>
 <p>Each property is nullable, with the default <code>null</code>, because a new model has no
 values yet. The class name comes from the table name: Crest makes the first
 letter of each part between <code>_</code> uppercase. <code>user_profiles</code> gives
@@ -1177,7 +1181,7 @@ and keeps your model:</p>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>Updated src/Models/Base/UsersBase.php</span></span>
 <span class="line"><span>No relations for users: the table has no foreign keys, and no foreign keys point to it. Relations come only from foreign keys.</span></span>
 <span class="line"><span>Kept src/Models/Users.php: it exists; pass --force to replace it</span></span></code></pre></figure>
-<p>The rules of <a href="#generated-bases">Generated bases</a> apply to the base of a model
+<p>The rules of <a href="#generated-bases">Generated Bases</a> apply to the base of a model
 too. Do not edit it. You can change only the aliases of its relations (in the
 <code>RelationAlias</code> attributes, see <a href="#relations">Relations</a>) and the names in its
 <code>PropertyName</code> attributes (see <a href="#names">Names</a>). <code>--force</code> replaces the model,
@@ -1188,7 +1192,7 @@ but never a base without the <code>Generated by crest.</code> line. If you add <
 <p><code>make:model</code> is for MVC projects. An ADR project uses repositories, not Active
 Record models, so the command stops there.</p>
 <p>To write the models into a module, add <code>--module</code> (see
-<a href="#generating-modules">Generating modules</a>):</p>
+<a href="#generating-modules">Generating Modules</a>):</p>
 <figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> make:model</span><span style="color:var(--code-string)"> users</span><span style="color:var(--code-constant)"> --module=admin</span></span></code></pre></figure>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>Created src/Modules/Admin/Models/Base/UsersBase.php</span></span>
 <span class="line"><span>No relations for users: the table has no foreign keys, and no foreign keys point to it. Relations come only from foreign keys.</span></span>
@@ -1215,11 +1219,11 @@ names:</p>
 <span class="line"><span style="color:var(--code-text)">    ],</span></span>
 <span class="line"><span style="color:var(--code-text)">];</span></span></code></pre></figure>
 <p>The <code>models</code> key has two more settings, <code>getSet</code> and <code>schema</code>, which do not
-change the names (see <a href="#getters-and-setters">Getters and setters</a> and
-<a href="#the-schema">The schema</a>).</p>
-<p>In an MVC project, <code>crest config:show</code> shows the key: the rows <code>camelCase</code>,
-<code>getSet</code> and <code>schema</code>, each with its origin, and a table with each line of
-<code>classes</code>, sorted by table:</p>
+change the names (see <a href="#getters-and-setters">Getters and Setters</a> and
+<a href="#the-schema">The Schema</a>).</p>
+<p>In an MVC project, <code>crest config:show</code> shows the key (see
+<a href="#configuration">Configuration</a>): the rows <code>camelCase</code>, <code>getSet</code> and <code>schema</code>, each with
+its origin, and a table with each line of <code>classes</code>, sorted by table:</p>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>ITEM       VALUE          ORIGIN</span></span>
 <span class="line"><span>...</span></span>
 <span class="line"><span>service    app            default</span></span>
@@ -1313,7 +1317,7 @@ table:</p>
 <span class="line"><span>Kept src/Models/Invoices.php: it exists; pass --force to replace it</span></span></code></pre></figure>
 <p>With <code>--all</code>, Crest reads all the tables in the same run, and writes again each
 base that changes. Thus it names only the tables of <code>--exclude</code> (see
-<a href="#all-the-tables">All the tables</a>). It does not name a table that fails later.
+<a href="#all-the-tables">All the Tables</a>). It does not name a table that fails later.
 The summary lists each table that failed: run <code>make:model</code> for it again after
 the fix.</p>
 <p><strong>Published stubs.</strong> <code>model-base</code> has the placeholder <code>{{ columnMap }}</code>, and the
@@ -1321,7 +1325,7 @@ fragment stub <code>fragment-model-property</code> (see <a href="#project-stubs"
 <code>{{ property }}</code>. A copy that you published before
 Crest added these placeholders does not have them. When a base needs a
 <code>columnMap()</code>, Crest stops:</p>
-<figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>crest: the published stub .../resources/stubs/mvc/model-base.stub has no {{ columnMap }}; publish it again with crest stub:publish model-base --force, and make your changes in it again</span></span></code></pre></figure>
+<figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>crest: the published stub /path/to/resources/stubs/mvc/model-base.stub has no {{ columnMap }}; publish it again with crest stub:publish model-base --force, and make your changes in it again</span></span></code></pre></figure>
 <p>Crest writes the <code>columnMap()</code> with the stub <code>fragment-model-column-map</code>, which
 has the placeholder <code>{{ pairs }}</code>. On the next run, Crest reads the old property
 names from this <code>columnMap()</code>. It reads only the form that it writes: a body
@@ -1351,7 +1355,7 @@ same, Crest writes the base again. Crest keeps the models, and <code>--force</co
 replaces them. When the database has no tables to write, Crest prints
 <code>No tables to write.</code>, and the exit status is 0.</p>
 <p>With <code>models.schema</code>, <code>--all</code> writes the tables of that schema (see
-<a href="#the-schema">The schema</a>), and the line names the schema:</p>
+<a href="#the-schema">The Schema</a>), and the line names the schema:</p>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>No tables to write in the schema 'billing'.</span></span></code></pre></figure>
 <p>PostgreSQL gives no tables for a schema that does not exist, so a schema name
 with a typo gives this line. On MySQL and MariaDB, a schema that does not exist
@@ -1499,7 +1503,7 @@ need to exist when your application runs, so an install without Crest
 alias), when an alias is not a valid name, when two attributes have the same
 key, when an alias of an attribute has the name of a property of the table or,
 with <code>models.getSet</code>, the name of a getter (see
-<a href="#getters-and-setters">Getters and setters</a>), or when two aliases of attributes
+<a href="#getters-and-setters">Getters and Setters</a>), or when two aliases of attributes
 are the same (Crest ignores the case). The message names the file and the
 line.</p>
 <p>When another table gets a new key to a table, run <code>make:model</code> again for the
@@ -1522,7 +1526,7 @@ the name of a getter (Crest ignores the case);</li>
 <li>two or more relations have the same alias (Crest ignores the case). Crest
 skips all of them, but not a relation whose alias comes from an attribute;</li>
 <li>the key points to a table of another schema: the reason is
-<code>the table customers is in another schema</code> (see <a href="#the-schema">The schema</a>).</li>
+<code>the table customers is in another schema</code> (see <a href="#the-schema">The Schema</a>).</li>
 </ul>
 <p>Crest writes the other relations. When the reason is the alias (the name of a
 property or of a getter, or two relations with the same alias), you can give
@@ -1762,11 +1766,11 @@ reserves (<code>list</code>), and <code>models.classes</code> gives it no class 
 adapter, or it cannot connect;</li>
 <li>the table does not exist (in the schema of <code>models.schema</code>, when you set it);</li>
 <li><code>models.schema</code> has a value, and the <code>db</code> service is SQLite (see
-<a href="#the-schema">The schema</a>);</li>
-<li>a column name is not a property name (<code>first name</code>), or it is the name of a
-property of <code>Phalcon\Mvc\Model</code> (<code>container</code>), and no <code>--property</code> or
-attribute gives it another name. The error gives the <code>--property</code> to use
-(see <a href="#names">Names</a>);</li>
+<a href="#the-schema">The Schema</a>);</li>
+<li>a column name cannot be a property name, and no <code>--property</code> or attribute
+gives it another name. Examples: <code>first name</code> (not a property name) and
+<code>container</code> (a property of <code>Phalcon\Mvc\Model</code>). The error gives the
+<code>--property</code> to use (see <a href="#names">Names</a>);</li>
 <li>two columns give the same property name (with <code>camelCase</code>, <code>first_name</code> and
 <code>firstName</code>): the error tells you to give one of them another name with
 <code>--property</code>;</li>
@@ -1778,13 +1782,13 @@ column that the table does not have (see <a href="#names">Names</a>);</li>
 <li>a published stub has no <code>{{ columnMap }}</code> or <code>{{ property }}</code>, and the base
 needs a <code>columnMap()</code> (see <a href="#names">Names</a>), or the published <code>model-base</code>
 has no <code>{{ schema }}</code>, and <code>models.schema</code> has a value (see
-<a href="#the-schema">The schema</a>);</li>
+<a href="#the-schema">The Schema</a>);</li>
 <li><code>models.getSet</code> is <code>true</code>, and a getter or a setter is a method of
 <code>Phalcon\Mvc\Model</code>, two properties give one method name, or a published
 stub has no <code>{{ visibility }}</code> or <code>{{ methods }}</code> (see
-<a href="#getters-and-setters">Getters and setters</a>);</li>
+<a href="#getters-and-setters">Getters and Setters</a>);</li>
 <li><code>--module</code> names a module that does not exist (see
-<a href="#generating-modules">Generating modules</a>).</li>
+<a href="#generating-modules">Generating Modules</a>).</li>
 </ul>
 <h2 id="generating-modules">Generating Modules</h2>
 <p><span class="badge badge--mvc">MVC</span> For MVC projects (see the flavor table in <a href="#overview">Overview</a>).</p>
@@ -1824,7 +1828,7 @@ each module has the same structure:</p>
 </tbody>
 </table></div>
 <p>After the <code>Created</code> lines, Crest prints the lines to add to your front
-controller and your router (see <a href="#registration-and-routes">Registration and routes</a>).</p>
+controller and your router (see <a href="#registration-and-routes">Registration and Routes</a>).</p>
 <p>The folder is the name with the first letter of each part between <code>_</code> in
 uppercase: <code>admin</code> and <code>Admin</code> give <code>Admin</code>, and <code>admin_panel</code> gives
 <code>AdminPanel</code>. The key of the module is the folder in lowercase: <code>admin</code>, or
@@ -1838,7 +1842,7 @@ replaces only <code>Module.php</code>, and the folders and their files stay. The
 config file. A module that needs settings reads them from the environment in
 <code>registerServices()</code>, as <code>DbProvider</code> does in a project with a database. With
 docker, docker compose gives the values of <code>.env</code> to the app container. PHP on
-the host does not read <code>.env</code> (see <a href="#the-database">The database</a>).</p>
+the host does not read <code>.env</code> (see <a href="#the-database">The Database</a>).</p>
 <h3 id="registration-and-routes">Registration and Routes</h3>
 <p>Crest does not change your front controller or your router. <code>run()</code> of
 <code>AppFront</code> handles the request and sends the response. Register the module in
@@ -1997,10 +2001,10 @@ Crest makes: from the table for <code>UsersBase</code> and <code>UsersFormBase</
 stub <code>controller-base</code> for <code>CrestControllerBase</code>. Thus when the table gets a new
 column, run <code>make:scaffold</code> again. Crest writes the two bases again, and the
 list and the <code>new</code> and <code>edit</code> pages show the column, because the views loop
-over the form. The rules of <a href="#generated-bases">Generated bases</a> apply to the
+over the form. The rules of <a href="#generated-bases">Generated Bases</a> apply to the
 two bases. <code>make:model --force</code> replaces the model.</p>
 <p>With <code>models.schema</code>, the pages read the table of that schema (see
-<a href="#the-schema">The schema</a>).</p>
+<a href="#the-schema">The Schema</a>).</p>
 <h3 id="the-names-of-the-pages">The Names of the Pages</h3>
 <p>All the names come from the class of the model. Thus one line of
 <code>models.classes</code> changes all of them (see <a href="#names">Names</a>):</p>
@@ -2108,7 +2112,7 @@ gives the message of the model, and the form shows again.</li>
 <li>A row that does not exist gives <code>Users was not found</code>, and the list.</li>
 </ul>
 <p>To write the pages into a module, add <code>--module</code> (see
-<a href="#generating-modules">Generating modules</a>):</p>
+<a href="#generating-modules">Generating Modules</a>):</p>
 <figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> make:scaffold</span><span style="color:var(--code-string)"> users</span><span style="color:var(--code-constant)"> --module=admin</span></span></code></pre></figure>
 <p>The model, the form and the controller go into the <code>Models</code>, <code>Forms</code> and
 <code>Controllers</code> folders of the module, in its namespace, and the views go into
@@ -2122,7 +2126,7 @@ nothing. It stops when:</p>
 <li><code>--module</code> names a module that does not exist;</li>
 <li>the table name gives no class name, and <code>models.classes</code> gives it no class;</li>
 <li>the dispatcher cannot find a controller of that class from a URL (see
-<a href="#generating-controllers">Generating controllers</a>);</li>
+<a href="#generating-controllers">Generating Controllers</a>);</li>
 <li>no psr-4 entry covers the <code>form</code>, <code>controller</code> or <code>model</code> path;</li>
 <li>the table does not exist;</li>
 <li>the table has no primary key, or its primary key has more than one column;</li>
@@ -2141,7 +2145,7 @@ gives the column another property name:</p>
 <p>Run that <code>make:model</code> command, then run <code>make:scaffold</code> again. With
 <code>models.getSet</code>, the check of <code>make:model</code> for the getters and setters comes
 first, and Crest stops with the message of
-<a href="#getters-and-setters">Getters and setters</a>.</p>
+<a href="#getters-and-setters">Getters and Setters</a>.</p>
 <h3 id="the-form">The Form</h3>
 <p>The form has one field for each column, in the order of the table:</p>
 <div class="nb-table-scroll" tabindex="0"><table>
@@ -2223,11 +2227,11 @@ first, and Crest stops with the message of
 </tbody>
 </table></div>
 <p>The column type is the type that Phalcon reads from the database (see
-<a href="#generating-models">Generating models</a>). An input that is empty or has only
+<a href="#generating-models">Generating Models</a>). An input that is empty or has only
 whitespace is null, and the model decides if the column can be null: a <code>NOT NULL</code>
 column gives the message <code>&lt;property&gt; is required</code>.</p>
 <p>The pages also work with <code>models.getSet</code>: the form and the views go through the getters
-and the setters (see <a href="#getters-and-setters">Getters and setters</a>).</p>
+and the setters (see <a href="#getters-and-setters">Getters and Setters</a>).</p>
 <h3 id="search">Search</h3>
 <p>The search form has the fields of the <code>new</code> form, and uses the rules of
 <code>Phalcon\Mvc\Model\Criteria::fromInput()</code>: <code>LIKE</code> for a <code>VARCHAR</code> column, and <code>=</code>
@@ -2259,9 +2263,30 @@ not a list of the related rows.</li>
 <p><code>make:action</code> takes an HTTP method and a route path:</p>
 <figure class="nb-code-figure" data-nb-lang="bash"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="bash" data-nb-lang="bash"><code><span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> make:action</span><span style="color:var(--code-string)"> GET</span><span style="color:var(--code-string)"> /company/all</span></span>
 <span class="line"><span style="color:var(--code-parameter)">crest</span><span style="color:var(--code-string)"> make:action</span><span style="color:var(--code-string)"> GET</span><span style="color:var(--code-string)"> /company/{id}</span></span></code></pre></figure>
-<p>The class name comes from the routing convention of the framework. Thus the file
-goes where the router looks for it. Route placeholders (the parts in braces, such as
-<code>{id}</code>) must come last: Crest stops on
+<p>Crest does not have its own rule for the class name. It gets the name from the router of
+the framework (<code>Router::classFor()</code>). Each part of the path becomes a namespace part, and
+the class name is the HTTP method followed by these parts. Placeholders are not part of
+the name.</p>
+<div class="nb-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>crest make:action GET /company/all</code></td>
+<td><code>src/Action/Company/All/GetCompanyAll.php</code></td>
+</tr>
+<tr>
+<td><code>crest make:action GET /company/{id}</code></td>
+<td><code>src/Action/Company/GetCompany.php</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Thus the file goes where the router looks for it. Route placeholders (the parts in
+braces, such as <code>{id}</code>) must come last: Crest stops on
 <code>/album/{id}/edit</code>, and tells you to write <code>/album/edit/{id}</code>.</p>
 <p><code>--responder</code> picks the responder that the action calls. The <code>json</code> responder gives a
 JSON response. The view responder renders a template with your renderer: the
@@ -2343,6 +2368,10 @@ default paths of the flavor (the paths in the examples above), and the host runt
 <code>crest new</code> writes the <code>runtime</code> key, with docker by default (see
 <a href="#creating-a-project">Creating a Project</a>). Thus the host default does not apply to a new
 project.</p>
+<p><code>crest config:show</code> shows the keys of <code>crest.php</code> with their values and their origins,
+except <code>namespaces</code> and <code>new</code>. <code>declared</code>: <code>crest.php</code> sets the key. <code>default</code>: <code>crest.php</code>
+does not set the key, or sets it to <code>null</code>, and Crest uses its default value. Each key of
+<code>paths</code> has its own origin.</p>
 <p>The <code>runtime</code> key says where the project commands run (see <a href="#the-runtime">The Runtime</a>).</p>
 <p>The <code>paths</code> key gives a folder for each kind of file that Crest writes. Crest gets the
 namespace of a path from the psr-4 map of <code>composer.json</code>. Thus a psr-4 entry must cover
@@ -2362,7 +2391,7 @@ psr-4 entry covers, give the namespace in the <code>namespaces</code> key:</p>
 <code>crest new</code> and <code>crest init</code> write the key for an MVC project, with
 <code>'camelCase' =&gt; false</code> and <code>'getSet' =&gt; false</code>. <code>crest new --camel-case</code> and
 <code>--get-set</code> give <code>true</code>. <code>crest config:show</code> shows the key. See <a href="#names">Names</a> and
-<a href="#getters-and-setters">Getters and setters</a>:</p>
+<a href="#getters-and-setters">Getters and Setters</a>:</p>
 <figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">return</span><span style="color:var(--code-text)"> [</span></span>
 <span class="line"><span style="color:var(--code-string)">    'models'</span><span style="color:var(--code-keyword)"> =&gt;</span><span style="color:var(--code-text)"> [</span></span>
 <span class="line"><span style="color:var(--code-string)">        'classes'</span><span style="color:var(--code-keyword)">   =&gt;</span><span style="color:var(--code-text)"> [</span><span style="color:var(--code-string)">'users'</span><span style="color:var(--code-keyword)"> =&gt;</span><span style="color:var(--code-string)"> 'User'</span><span style="color:var(--code-text)">],</span></span>
@@ -2372,15 +2401,14 @@ psr-4 entry covers, give the namespace in the <code>namespaces</code> key:</p>
 <span class="line"><span style="color:var(--code-text)">];</span></span></code></pre></figure>
 <p><code>models.schema</code> gives the schema of the tables: <code>make:model</code> and <code>make:scaffold</code>
 then read the tables of that schema, and each base calls <code>setSchema()</code>. See
-<a href="#the-schema">The schema</a>.</p>
+<a href="#the-schema">The Schema</a>.</p>
 <p>Crest reads <code>vendor-dir</code> and <code>bin-dir</code> as composer does. It uses
 <code>COMPOSER_VENDOR_DIR</code> and <code>COMPOSER_BIN_DIR</code> first, then <code>config</code> in <code>composer.json</code>,
 then <code>vendor</code> and <code>&lt;vendor-dir&gt;/bin</code>. The hand-off runs <code>&lt;bin-dir&gt;/crest</code>, and <code>serve</code>
 checks <code>&lt;vendor-dir&gt;/autoload.php</code>. With the docker runtime, composer runs in the
 container, so Crest reads only <code>composer.json</code>, and the two folders must be relative.
 Crest does not expand <code>~</code> or <code>$VAR</code> in these values: use a relative or an absolute
-path. A custom <code>vendor-dir</code> or <code>bin-dir</code> needs this version of Crest. It needs it both as
-the global Crest and in the project. An older Crest looks only for <code>vendor/bin/crest</code>.</p>
+path.</p>
 <h2 id="custom-stubs">Custom Stubs</h2>
 <p>A stub is a template that Crest fills in (see <a href="#stubs">Stubs</a>). To change a stub, copy
 it into <code>resources/stubs/&lt;flavor&gt;/</code> in your project. Crest then uses your copy, not the
@@ -2410,9 +2438,7 @@ project. It also leaves the fragment stubs (<code>fragment-*</code>) out. They h
 framework API and the guidance text that the generators print. A copy of a fragment does
 not get the changes of later releases. Publish a fragment by name to change it.</p>
 <p>You can change each project stub on its own. The names that the stubs and Crest must
-agree on come from placeholders: <code>{{ documentRoot }}</code>, <code>{{ router }}</code>,
-<code>{{ portVariable }}</code>, <code>{{ port }}</code>, <code>{{ front }}</code>, <code>{{ source }}</code> and
-<code>{{ autoloader }}</code>. Their values are:</p>
+agree on come from these placeholders:</p>
 <ul>
 <li><code>{{ documentRoot }}</code>: the web root folder, <code>public</code></li>
 <li><code>{{ router }}</code>: the router script, <code>.htrouter.php</code></li>
@@ -2455,11 +2481,15 @@ before.</p>
 <span class="line"><span style="color:var(--code-text)">        }</span></span>
 <span class="line"><span style="color:var(--code-text)">    }</span></span>
 <span class="line"><span style="color:var(--code-text)">}</span></span></code></pre></figure>
-<p>Crest reads this block from each installed package, and from the root project. These
-commands cannot replace a command or an alias of Crest, and the root project replaces a
-package command with the same name. <code>crest make:command</code> writes a command and prints its
-block (see <a href="#command-reference">Command Reference</a>). A package command works in both
-flavors, and <code>make:command</code> gives the same output in both.</p>
+<p>Crest reads this block from each package that is installed with the Crest that runs, and
+from its root project. In a project, the global Crest passes the listing and the project
+commands to the project Crest (see
+<a href="#the-global-crest-and-the-project-crest">The Global Crest and the Project Crest</a>). Thus
+only the packages of the project count. Outside a project, the packages of the global
+Crest count. These commands cannot replace a command or an alias of Crest, and the root
+project replaces a package command with the same name. <code>crest make:command</code> writes a
+command and prints its block (see <a href="#command-reference">Command Reference</a>). A package
+command works in both flavors, and <code>make:command</code> gives the same output in both.</p>
 <p>An unknown command gives a hint when Crest knows the package that provides its prefix:</p>
 <figure class="nb-code-figure" data-nb-lang="text"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="text" data-nb-lang="text"><code><span class="line"><span>crest: unknown command 'migration:run'; provided by phalcon/migrations</span></span></code></pre></figure>
 <p>There is no hint when a registered command has that prefix: the package is installed,
@@ -2487,7 +2517,8 @@ and only the name is wrong.</p>
 <span class="line"><span style="color:var(--code-text)">    }</span></span>
 <span class="line"><span style="color:var(--code-text)">}</span></span></code></pre></figure>
 <p>Crest makes the command with <code>new $class()</code>, so the constructor must work without
-arguments. Each command also gets the global options (<code>--config</code>, <code>--directory</code>,
+arguments. Crest skips a class that is not a <code>Command</code>, or that <code>new $class()</code> cannot
+create. Each command also gets the global options (<code>--config</code>, <code>--directory</code>,
 <code>--trace</code>, <code>--help</code>, <code>--quiet</code>, <code>--no-interaction</code>; see
 <a href="#global-options">Global Options</a>).</p>
 <p>These types are the API for a package. Each type has <code>@api</code> in its docblock:</p>
