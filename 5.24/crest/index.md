@@ -44,6 +44,7 @@ stops with an error in a project of the other flavor:
 | `make:model` | — | ✓ |
 | `make:module` | — | ✓ |
 | `make:provider` | ✓ | ✓ |
+| `make:repository` | ✓ | — |
 | `make:responder` | ✓ | — |
 | `make:scaffold` | — | ✓ |
 | `new` | ✓ | ✓ |
@@ -400,14 +401,15 @@ controller and files, and `src/Action/Get.php`, which answers `GET /`.
 
 `new` takes the options in the table below. The view engine (the `--template-engine` row)
 renders the views of an MVC project: with `phtml`, the views are PHP templates in `.phtml`
-files. `--camel-case` and `--get-set` change the models that `make:model` writes from the
+files, and with `volt`, they are Volt templates in `.volt` files (see
+[Volt](#volt)). `--camel-case` and `--get-set` change the models that `make:model` writes from the
 database tables (see [Generating Models](#generating-models)). They set the `models` key
 of `crest.php` (see [Configuration](#configuration)).
 
 | Option | Purpose |
 |---|---|
 | `--flavor=mvc\|adr` | the flavor of the project; defaults to `mvc` |
-| `--template-engine=<engine>` | the view engine of an MVC project: `phtml`, the default and the only engine for now. An ADR project has no views, so `new` stops when you give it |
+| `--template-engine=phtml\|volt\|none` | the view engine of an MVC project: `phtml`, the default, `volt` (see [Volt](#volt)), or `none` for a project with no views (see [The MVC Project](#the-mvc-project)). An ADR project has no views, so `new` stops when you give it |
 | `--namespace=<name>` | root namespace for the generated code; defaults to `App` |
 | `--php=<major.minor>` | PHP version for `composer.json` and the Dockerfile; defaults to `8.4`, and must be 8.1 or later |
 | `--phalcon=v5\|v6` | `v5` requires the C extension, 5.18 or later; `v6` the `phalcon/phalcon` package; defaults to `v5` |
@@ -421,6 +423,7 @@ of `crest.php` (see [Configuration](#configuration)).
 In a terminal, `new` asks for each value that no option gives:
 
 - the flavor
+- the view engine, for MVC
 - the namespace
 - the PHP version
 - the Phalcon version
@@ -432,8 +435,7 @@ For an MVC project with a database, `new` asks two more questions. First, it ask
 property names of the models are in camelCase. Then it asks if the properties are
 protected, with a getter and a setter.
 
-There is no question for the view engine while there is only one. An empty answer takes
-the default. `--no-interaction` (see [Global Options](#global-options)), or a run without
+An empty answer takes the default. `--no-interaction` (see [Global Options](#global-options)), or a run without
 a terminal (CI, a pipe), asks nothing and takes the defaults. The options still give
 their values, for example in CI.
 
@@ -462,7 +464,7 @@ the files that `new` writes, see [Project Stubs](#project-stubs).
 |---|---|
 | `public/index.php` | the web entry point, as in an ADR project |
 | `src/AppFront.php` | the front controller: `FactoryDefault`, the providers and `Phalcon\Mvc\Application` |
-| `src/Providers/` | `DispatcherProvider` (the default namespace of the controllers), `UrlProvider` (the base URI of the links and the redirects) and `ViewProvider` (the views folder and the phtml engine) |
+| `src/Providers/` | `DispatcherProvider` (the default namespace of the controllers), `UrlProvider` (the base URI of the links and the redirects) and `ViewProvider` (the views folder and the phtml engine, or Volt: see [Volt](#volt)) |
 | `src/Controllers/` | `IndexController`, which answers `GET /` |
 | `src/Controllers/Base/` | `CrestControllerBase`, the base that Crest owns (see [Generated Bases](#generated-bases)) |
 | `themes/default/` | the layout `index.phtml` and the view `index/index.phtml` |
@@ -474,11 +476,39 @@ the files that `new` writes, see [Project Stubs](#project-stubs).
 that implements `Phalcon\Di\ServiceProviderInterface`. It also prints the line to add to
 `AppFront::providers()`, the list of the providers of the front controller.
 
+With `--template-engine=none`, the project has no views, for example an application that
+only returns JSON. `new` writes no `ViewProvider`, no layout and no view, and `crest.php`
+has `'views' => false`. The front controller calls `useImplicitView(false)`: without it,
+`Phalcon\Mvc\Application` needs a `view` service for each request. `IndexController`
+returns its response, `{"status":"ok"}`. In this project, `make:scaffold` stops, because
+it writes views. `make:module` writes no `views` folder, and `make:controller` names no
+view.
+
 A URL with no controller stops in the dispatcher ("handler class cannot be loaded").
 With `display_errors` off, PHP answers 500. With `display_errors` on, PHP shows the error
 in the page, with status 200. Add a not-found page if your project needs one. For
 example, use a dispatcher listener (a class that gets the events of the dispatcher), such
 as the `NotFoundPlugin` of [invo][invo].
+
+### Volt
+
+With `--template-engine=volt`, the views are Volt templates:
+
+```bash
+crest new my-app --template-engine=volt
+```
+
+The project then changes in these files:
+
+| Path | Contents |
+|---|---|
+| `src/Providers/ViewProvider.php` | the views folder, and the Volt engine for `.volt` files. Volt writes the compiled views into `var/cache/volt/` |
+| `themes/default/` | the layout `index.volt` and the view `index/index.volt` |
+| `var/cache/volt/.gitignore` | keeps the compiled views out of git, and keeps the folder |
+| `crest.php` | `'templateEngine' => 'volt'` (see [Configuration](#configuration)) |
+| `composer.json` | for `--phalcon=v6`, `phalcon/volt`: the `phalcon/phalcon` package has no Volt parser. The extension (`v5`) has it |
+
+`make:scaffold` then writes Volt views (see [Generating Scaffolds](#generating-scaffolds)).
 
 ### The Database
 
@@ -500,7 +530,10 @@ With a database, `new` also writes:
 
 - `DbProvider.php` in the provider folder (`src/Providers` for MVC, `src/Provider` for
   ADR). `DbProvider` registers the `db` service: the connection to the database (see
-  [The MVC Project](#the-mvc-project) for services). The MVC front controller adds
+  [The MVC Project](#the-mvc-project) for services). In an MVC project, `db` is a
+  `Phalcon\Db` adapter, which the models use. In an ADR project, `db` is a
+  `Phalcon\DataMapper\Pdo\Connection`, which the repositories use (see
+  [Generating Repositories](#generating-repositories)). The MVC front controller adds
   `DbProvider` in `providers()`. The ADR front controller gets an override of
   `registerProviders()`, the method that registers the services. The override calls
   `DbProvider`.
@@ -563,9 +596,10 @@ crest: the service 'database' is the name of the database service; choose anothe
 ```
 
 In an ADR project with a database, the front controller already has
-`registerProviders()`. For a new provider, add only the `provide()` line that
-`crest make:provider` prints. `provide()` is the method of a provider that registers its
-services.
+`registerProviders()`. For a new provider, `crest make:provider` prints only the
+`provide()` line to add to it. `provide()` is the method of a provider that registers its
+services. Crest reads the front controller from the `bootstrap` key of `crest.php`. When
+it cannot load that class, it prints the whole override.
 
 To change the service or the `.env` lines of the database, for example the image, see
 [Project Stubs](#project-stubs).
@@ -719,7 +753,7 @@ finds in the project:
 4. A folder for each path of the flavor (the `paths` key of `crest.php`; see
    [Configuration](#configuration)). The MVC paths are `command`, `controller`, `form`,
    `model`, `module`, `provider` and `views`. The ADR paths are `action`, `command`,
-   `middleware`, `provider` and `responder`. The question says if the folder exists. A
+   `middleware`, `provider`, `repository` and `responder`. The question says if the folder exists. A
    class folder is in the folder of the namespace. An answer must be a relative folder in
    a psr-4 folder. Its folder names must give a usable namespace: `src/my-actions` gives
    `App\my-actions`, which PHP cannot use. `init` removes a leading `./`.
@@ -728,7 +762,8 @@ finds in the project:
    check. Each part of the answer must be a folder name. Thus `init` refuses an absolute
    folder, an empty part (`//`), `.` and `..`. The proposal is `themes/default`. When that
    folder does not exist and `themes/` has one folder only, `init` proposes that folder
-   (`themes/vokuro` in [vokuro][vokuro]).
+   (`themes/vokuro` in [vokuro][vokuro]). The answer `none` is a project with no views:
+   `init` writes `'views' => false` (see [The MVC Project](#the-mvc-project)).
 5. The runtime (see [The Runtime](#the-runtime)). The proposal is docker when the project
    has `compose.yaml`, `compose.yml`, `docker-compose.yaml` or `docker-compose.yml`. For
    docker, `init` also asks for the service. The proposal is `app`, or the first service.
@@ -743,6 +778,10 @@ For an MVC project, `init` also writes the `models` key of `crest.php` (see
 project keep their property names. It also writes `'getSet' => false`, so the properties
 of the models stay public. See [Names](#names) and
 [Getters and Setters](#getters-and-setters).
+
+`init` asks no question for the view engine. When the views folder, or a folder in it,
+has a `.volt` file, `init` writes `'templateEngine' => 'volt'` (see [Volt](#volt)).
+Else it writes no key, which is `phtml`.
 
 ## Running a Project
 
@@ -912,7 +951,8 @@ show the path from the project root.
 routes of the Phalcon router, the first part of the URL names the controller.
 Crest then prints what the dispatcher needs: its default namespace, the URL of
 `indexAction()` with the default routes (`GET /users`), and the name of its view
-(`users/index`). The views folder and the engine belong to your project.
+(`users/index`). The views folder and the engine belong to your project. In a project
+with no views (`'views' => false`), Crest names no view: the action returns its response.
 
 A project from `crest new --flavor=mvc` already has `CrestControllerBase` and
 `IndexController`, and its dispatcher has the default namespace. Thus in that
@@ -1317,9 +1357,18 @@ crest: the schema 'billing' cannot be read: SQLSTATE[42000]: Syntax error or acc
 ```
 
 `--all` writes no models for views, and no models for the internal tables of
-SQLite (for example, `sqlite_sequence`). For a view, run `make:model <view>`.
-This works on MySQL, MariaDB and PostgreSQL. On SQLite, `make:model <view>`
-stops with the "not found" error, because Phalcon finds only tables there.
+SQLite (for example, `sqlite_sequence`). For the views too, add `--views`:
+
+```bash
+crest make:model --all --views
+```
+
+For one view, run `make:model <view>`. This works on each database. A view has
+no keys, so its model has no relations.
+
+On MariaDB, `--all` also writes a model for each sequence. On PostgreSQL, it
+writes a model for each partition of a partitioned table, and one for the table.
+Phalcon lists them as tables. The fix is planned in Phalcon.
 
 To skip tables, give their names to one `--exclude`, separated by commas:
 
@@ -1338,8 +1387,8 @@ differs from a table only in case, the error gives the name of the table:
 crest: --exclude: the database has no table Users; did you mean users?
 ```
 
-For the name of a view or an internal SQLite table, Crest prints a note, and
-continues. A skipped table still gives its relations: with
+For the name of a view (with no `--views`) or an internal SQLite table, Crest
+prints a note, and continues. A skipped table still gives its relations: with
 `--exclude=invoices`, the base of `customers` has its `hasMany()` to
 `Invoices`.
 
@@ -1998,6 +2047,10 @@ layout of the project. Add a layout in the `views/` folder of the module. For
 one views folder for the whole application, change the `setViewsDir()` line of
 `Module.php` to the views folder of the project.
 
+In a project with no views (`'views' => false`), the module has no `views/` folder, and
+`Module.php` changes only the dispatcher. The printed registration also calls
+`useImplicitView(false)`, as the front controller of the project does.
+
 A project with no `dispatcher` or `view` service must change
 `registerServices()`.
 
@@ -2061,6 +2114,11 @@ two bases. `make:model --force` replaces the model.
 With `models.schema`, the pages read the table of that schema (see
 [The Schema](#the-schema)).
 
+In a Volt project (`'templateEngine' => 'volt'`, see [Volt](#volt)), the views are
+`index.volt`, `new.volt` and `edit.volt`. The Volt `url_encode` filter encodes a text key
+in the links, so the controller decodes it with `urldecode()`. With phtml, the views use
+`rawurlencode()` and the controller `rawurldecode()`.
+
 ### The Names of the Pages
 
 All the names come from the class of the model. Thus one line of
@@ -2119,6 +2177,8 @@ Crest does these checks before it writes a file. Thus a run that stops changes
 nothing. It stops when:
 
 - the project is not an MVC project;
+- the project has no views (`'views' => false`);
+- `templateEngine` is not `phtml` or `volt`;
 - `--module` names a module that does not exist;
 - the table name gives no class name, and `models.classes` gives it no class;
 - the dispatcher cannot find a controller of that class from a URL (see
@@ -2247,6 +2307,45 @@ A view action names a template, but Crest does not create the template.
 belong to your renderer. Crest prints the name of the template, and does not
 guess a file name.
 
+## Generating Repositories
+
+<span class="badge badge--adr">ADR</span> For ADR projects (see the flavor table in [Overview](#overview)).
+
+An ADR project reads and writes its tables through repositories, not through the
+Active Record models of `make:model`. `make:repository` reads a table through the `db`
+service of the project, a `Phalcon\DataMapper\Pdo\Connection` (see
+[The Database](#the-database)), and writes a repository for it:
+
+```bash
+crest make:repository users
+```
+
+```text
+Created src/Repository/Base/UsersRepositoryBase.php
+Created src/Repository/UsersRepository.php
+Nothing registers it: the container makes it when a class asks for it. Give
+\App\Repository\UsersRepository to the constructor of an action or a domain class.
+It needs the Phalcon\DataMapper\Pdo\Connection service, which the DbProvider
+of crest new --database registers.
+```
+
+| File | Owner | On another run |
+|---|---|---|
+| `src/Repository/Base/UsersRepositoryBase.php` | Crest | writes it again when the table changes |
+| `src/Repository/UsersRepository.php` | you | keeps it, unless `--force` |
+
+The base has the name of the table, its primary key and its columns (the constants
+`TABLE`, `PRIMARY_KEY` and `COLUMNS`). It also has four methods that use the primary
+key: `find()`, `add()`, `update()` and `delete()`. A row is an array, with the column
+names as keys. `add()` gives the id of the new row, and a `null` value writes `NULL`. Add
+the other queries of your application to `UsersRepository`, through `$this->connection`
+and `$this->queryFactory`.
+
+The class name comes from the table name, as for `make:model`: `user_profiles` gives
+`UserProfilesRepository`. The table must have a primary key with one column. Crest stops
+on a table with no primary key, on a composite primary key, and on a table that the
+database does not have.
+
 ## Configuration
 
 `crest.php` is the project file (see [The Project File](#the-project-file)). This
@@ -2296,6 +2395,7 @@ return [
         'command'    => 'src/Command',
         'middleware' => 'src/Middleware',
         'provider'   => 'src/Provider',
+        'repository' => 'src/Repository',
         'responder'  => 'src/Responder',
     ],
     'runtime'   => ['type' => 'docker', 'service' => 'app'],
@@ -2312,6 +2412,14 @@ project.
 except `namespaces` and `new`. `declared`: `crest.php` sets the key. `default`: `crest.php`
 does not set the key, or sets it to `null`, and Crest uses its default value. Each key of
 `paths` has its own origin.
+
+In an MVC project, `'views' => false` is a project with no views (see
+[The MVC Project](#the-mvc-project)). `config:show` then shows `none` for `views`.
+
+In an MVC project, `templateEngine` is the view engine: `'templateEngine' => 'volt'` for
+Volt views (see [Volt](#volt)). No key is `phtml`. `crest new --template-engine=volt`
+writes the key, and `config:show` shows it. `make:scaffold` writes the views of this
+engine.
 
 The `runtime` key says where the project commands run (see [The Runtime](#the-runtime)).
 
@@ -2437,7 +2545,14 @@ no value, `new` stops before it writes a file.
 In an MVC project, `{{ controllerNamespace }}`, `{{ controllerPath }}`,
 `{{ providerNamespace }}`, `{{ providerPath }}` and `{{ viewsPath }}` come from the
 default paths of the flavor. A stub that depends on the view engine has the engine name
-in its name: `project-phtml-provider`, `project-phtml-layout` and `project-phtml-index`.
+in its name: `project-phtml-provider`, `project-phtml-layout` and `project-phtml-index`,
+and `project-volt-provider`, `project-volt-layout` and `project-volt-index`.
+
+Volt uses `{{ }}` itself. Thus the placeholders of a Volt view stub are `[[ name ]]`, for
+example `[[ project ]]` in `project-volt-layout`, and `[[ url ]]` in the views of
+`make:scaffold` (`scaffold-volt-view-index`, `scaffold-volt-view-new` and
+`scaffold-volt-view-edit`). Crest replaces only `[[ name ]]` in a `.volt` file, and keeps
+each `{{ }}` for Volt. The other stubs, also `project-volt-provider`, use `{{ name }}`.
 
 The service of the database and the database lines of `.env` (see
 [The Database](#the-database)) come from the project stubs `project-compose-mysql`,
@@ -2469,6 +2584,18 @@ crest: the published stub /path/to/resources/stubs/shared/project-compose.stub h
 
 Without a database, and without `--camel-case` and `--get-set`, such a copy works as
 before.
+
+The MVC `project-front` also has `{{ viewUse }}`, `{{ viewProvider }}` and
+`{{ implicitView }}`, and `project-readme` has `{{ viewsRow }}`, for a project with no
+views. A copy from before them works for a project with views. For
+`--template-engine=none`, `new` stops on a copy of `project-front` with no
+`{{ implicitView }}`.
+
+`project-config` has `{{ templateEngine }}`, and `project-composer` has `{{ volt }}`, for
+a Volt project. A copy from before them works for phtml. For
+`--template-engine=volt`, `new` stops on a copy of `project-config` with no
+`{{ templateEngine }}`, and on a copy of `project-composer` with no `{{ volt }}` for
+`--phalcon=v6`.
 
 ## Adding Commands from a Package
 
@@ -2583,6 +2710,7 @@ with an error.
 | `make:model` | create an MVC model from a database table, or from each table with `--all` (relations come only from foreign keys) |
 | `make:module` | create an MVC module |
 | `make:provider` | create a service provider |
+| `make:repository` | create an ADR repository for a database table |
 | `make:responder` | create an ADR responder |
 | `make:scaffold` | create MVC CRUD pages for a database table |
 | `new` | create an ADR or MVC project |
