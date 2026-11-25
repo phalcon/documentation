@@ -35,28 +35,24 @@ If you are working on an issue, note the number of the issue down. Let us assume
 
 `#12345 - Create New Object`
 
-- Check out the `5.0.x` branch
-- Create a branch: `T12345-create-new-object`
+- Check out the development branch: `5.0.x` for [cphalcon][cphalcon], `v6.0.x` for [phalcon/phalcon][phalcon]
+- Create a branch: `CP-12345-create-new-object` for cphalcon, `T12345-create-new-object` for phalcon/phalcon
 
-The name of the branch starts with `T`, followed by the number of the issue and then the title of the issue as a slug.
+The name of the branch starts with a prefix (`CP-` or `T`), followed by the number of the issue and then the title of the issue as a slug.
 
-In your `cphalcon` folder navigate to `.git/hooks`
+In the folder of your clone, navigate to `.git/hooks`
 
 Create a new file called `commit-msg` paste the code below in it and save it:
 
 ```bash
 #!/bin/bash
-if [ -z "$BRANCHES_TO_SKIP" ]; then
-  BRANCHES_TO_SKIP=(master develop)
-fi
-BRANCH_NAME=$(git symbolic-ref --short HEAD)
+BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
 BRANCH_NAME="${BRANCH_NAME##*/}"
-BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")
-BRANCH_IN_COMMIT=$(grep -c "\[$BRANCH_NAME\]" $1)
-if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_COMMIT -ge 1 ]]; then
-  ISSUE="$(echo $BRANCH_NAME | cut -d'-' -f 1)"
-  ISSUE="${ISSUE/T/#}"
-  sed -i.bak -e "1s/^/[$ISSUE] - /" $1
+if [[ $BRANCH_NAME =~ ^[A-Za-z]+-?([0-9]+)- ]]; then
+  ISSUE="#${BASH_REMATCH[1]}"
+  if ! grep -q "^\[$ISSUE\]" "$1"; then
+    sed -i.bak -e "1s/^/[$ISSUE] - /" "$1"
+  fi
 fi
 ```
 
@@ -66,7 +62,17 @@ Ensure that the file is executable
 chmod a+x commit-msg
 ```
 
-Any commits you add now to your branch will appear tied to the `12345` issue.
+Any commits you add now to your branch will appear tied to the `12345` issue. The hook adds the issue number to the start of the commit message:
+
+```bash
+git commit -m "adding the new object"
+```
+
+```
+[#12345] - adding the new object
+```
+
+The hook does not add the issue number when the message already starts with it, for example when you use `git commit --amend`. On a branch without an issue number, such as `5.0.x`, the hook does not change the message.
 
 Doing the above allows everyone to see which commits relate to which issue.
 
