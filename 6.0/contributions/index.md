@@ -62,10 +62,10 @@ We only accept bug reports, new feature requests and pull requests in GitHub. Fo
 
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance, `v6.0.x`, and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing][env] page for more information on how to set up a test environment and how to write tests.
-- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not have to worry about coding standards. All tests (PHP code), follow the [PSR-12][psr-12] standard
+- Phalcon follows a specific coding style, based on the [PSR-12][psr-12] standard. All code, including the tests, must follow it. Run `composer cs-fixer-fix` and `composer cs` before you submit your pull request. For the rules, see the [Coding Standard][coding-standard] page.
 - More information [here][pr].
 
-Before submitting **new functionality**, please open a [NFR][nfr] as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submitting **new functionality**, please open a [NFR][nfr] as a new issue on GitHub to discuss the impact of including the functionality or changes in the framework. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
@@ -85,6 +85,7 @@ Thanks!
 
 [ai-development]: /6.0/ai-development/
 [building-php]: https://www.phpinternalsbook.com/build_system/building_php.html
+[coding-standard]: /6.0/coding-standard/
 [env]: /6.0/testing-environment/
 [gdb]: https://bugs.php.net/bugs-generating-backtrace.php
 [gdb-w32]: https://bugs.php.net/bugs-generating-backtrace-win32.php

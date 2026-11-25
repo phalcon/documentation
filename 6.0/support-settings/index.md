@@ -11,7 +11,7 @@ version: "6.0"
 
 ## Overview
 
-[Phalcon\Support\Settings][support-settings] is a PHP-userland layer for reading and overriding the Phalcon extension's `ini` settings (`orm.*`, `db.*`, `form.*`). It replaces the `globals_get()` / `globals_set()` builtins that were previously sprinkled across the framework with a single class that is safe to use from application code.
+[Phalcon\Support\Settings][support-settings] holds the framework settings (`orm.*`, `db.*`, `form.*`). Each setting has a default value. You can read and override the settings from application code.
 
 The component exposes three static methods. There is nothing to instantiate.
 
@@ -20,7 +20,7 @@ The component exposes three static methods. There is nothing to instantiate.
 
 use Phalcon\Support\Settings;
 
-Settings::get('orm.events');                  // mixed
+Settings::get('orm.events');                  // bool | int | null
 Settings::set('orm.events', false);           // void
 Settings::reset();                            // void
 ```
@@ -30,11 +30,12 @@ Settings::reset();                            // void
 `Settings::get($key)` resolves a setting in this order:
 
 1. PHP-level override stored by a prior `Settings::set($key, $value)` call.
-2. `null` if the key is not recognised.
+2. The default value of the key.
+3. `null` if the key is not recognized.
 
 `Settings::set()` stores the value in the PHP-level override array only. This keeps an override scoped to the current request (and the PHP process state) without leaking into other projects that share the same PHP worker.
 
-`Settings::reset()` clears every override that was previously stored via `set()`, restoring `get()` to return the `globals_get()` fallback for each key. It does not touch C-level configuration.
+`Settings::reset()` clears every override that was previously stored via `set()`, restoring `get()` to return the default value for each key.
 
 ## Recognised keys
 
@@ -45,6 +46,7 @@ Only the keys listed below are recognised. Calls to `set()` for any other key ar
 | `db.escape_identifiers`                 | `bool` | Escape identifiers in generated SQL                                                                                    |
 | `db.force_casting`                      | `bool` | Force bind-parameter casting in PDO                                                                                    |
 | `form.strict_entity_property_check`     | `bool` | Strict property-existence check in `Form::bind()`                                                                      |
+| `orm.cache_level`                       | `int`  | PHQL parser cache: a negative value turns it off, `0` or more caches parsed statements, `1` or more also sets IDs      |
 | `orm.call_setters_on_hydration`         | `bool` | Call model setters during ORM hydration (`find()` / `findFirst()`); `false` (default) skips them                       |
 | `orm.case_insensitive_column_map`       | `bool` | Case-insensitive lookup of column-map keys                                                                             |
 | `orm.cast_last_insert_id_to_int`        | `bool` | Cast `lastInsertId` to `int` on auto-increment columns                                                                 |
@@ -62,6 +64,7 @@ Only the keys listed below are recognised. Calls to `set()` for any other key ar
 | `orm.not_null_validations`              | `bool` | Add not-null validations automatically                                                                                 |
 | `orm.resultset_empty_left_join_model`   | `bool` | LEFT-JOIN hydration: `true` (default) returns an empty Model instance for unmatched rows; `false` returns plain `null` |
 | `orm.resultset_prefetch_records`        | `int`  | Hold a resultset in memory when it has at most this many rows (`0` = never hold one, read row by row)                  |
+| `orm.unique_cache_id`                   | `int`  | First ID that the PHQL parser gives to a cached statement                                                              |
 | `orm.update_snapshot_on_save`           | `bool` | Update the model snapshot after a successful save                                                                      |
 | `orm.virtual_foreign_keys`              | `bool` | Validate virtual foreign keys before save / delete                                                                     |
 
@@ -93,7 +96,7 @@ Settings::set('orm.events', false);
 Settings::set('orm.events', true);
 ```
 
-Restore every override to its `php.ini` fallback at once:
+Restore every setting to its default value at once:
 
 ```php
 <?php

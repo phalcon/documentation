@@ -250,7 +250,7 @@ Run a subset by passing PHPUnit arguments after `--`:
 
 ```bash
 # a single test method by name
-root@cphalcon-dev-8.1:/srv# ./vendor/bin/talon run unit -- --filter testConnect
+root@cphalcon-dev-8.1:/srv# ./vendor/bin/talon run unit -- --filter testSupportVersionGetPart
 
 # a specific directory
 root@cphalcon-dev-8.1:/srv# ./vendor/bin/talon run unit -- tests/unit/<subdirectory>

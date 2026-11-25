@@ -16,18 +16,18 @@ The Phalcon project welcomes contributions developed with the assistance of AI c
 This page describes how to use AI assistants effectively when contributing to Phalcon, the quality bar your contribution must meet, and the attribution we require.
 
 :::info[Applies to every Phalcon repository]
-This guidance is not limited to `cphalcon`. It applies to every repository in the [Phalcon organization][phalcon-org], including the PHP framework, the sample applications, the incubator, and the tooling repositories. Some examples below are specific to the [cphalcon][cphalcon] repository (Zephir source, generated C files), but the quality bar and the `Assisted-by:` attribution apply to a contribution to any Phalcon repository.
+This guidance is not limited to `cphalcon`. It applies to every repository in the [Phalcon organization][phalcon-org], including the PHP framework, the sample applications, the incubator, and the tooling repositories. Some examples below are specific to the [phalcon/phalcon][phalcon] repository (PHP source) or to the [cphalcon][cphalcon] repository (Zephir source, generated C files), but the quality bar and the `Assisted-by:` attribution apply to a contribution to any Phalcon repository.
 :::
 
 ## Recommendations for Use
 
 AI assistants work best when they are configured against the authoritative sources for the project. Before using an assistant on a Phalcon contribution, point it at the following references:
 
-- The [cphalcon][cphalcon] repository. Note that the framework is written in [Zephir][zephir]; the source files live in the `phalcon/` folder, and the generated C files live in the `ext/` folder. Pull requests must not modify generated files directly.
+- The source repository. Phalcon v6 is the [phalcon/phalcon][phalcon] repository: the framework is written in PHP, and the source files live in the `src/` folder. The Phalcon v5 C extension is the [cphalcon][cphalcon] repository: the framework is written in [Zephir][zephir], the source files live in the `phalcon/` folder, and the generated C files live in the `ext/` folder. Pull requests must not modify generated files directly.
 - The [Phalcon documentation][phalcon-documentation] (this site) for public APIs, behavior, and usage examples.
-- The [Zephir language documentation][zephir-docs] when authoring or modifying `*.zep` files.
-- The [PSR-12][psr-12] coding standard, which Phalcon follows for all PHP code (including tests).
-- The project's testing layout. Tests live under `tests/` and run through [Talon][talon], the Phalcon test runner. The `talon.php` suite map ties each suite (`unit`, `mysql`, `pgsql`, `sqlite`) to its PHPUnit configuration, so the assistant generates tests in the right place and shape and runs them with `talon run <suite>`.
+- The [Zephir language documentation][zephir-docs] when authoring or modifying `*.zep` files in cphalcon.
+- The [Phalcon coding standard][coding-standard], which is based on [PSR-12][psr-12] and applies to all PHP code (including tests).
+- The project's testing layout. Tests live under `tests/` and run through [Talon][talon], the Phalcon test runner. Talon ties each suite (`unit`, `mariadb`, `mysql`, `pgsql`, `sqlite`) to its PHPUnit configuration in `resources/`, so the assistant generates tests in the right place and shape and runs them with `talon run <suite>`.
 
 Treat the output of an AI assistant the way you would treat a patch from a stranger on the internet: review it carefully, verify any API references against the actual source, and run the tests before submitting.
 
@@ -35,7 +35,7 @@ Treat the output of an AI assistant the way you would treat a patch from a stran
 
 A contribution developed with AI assistance is held to exactly the same quality bar as any other contribution. Specifically:
 
-- Tests must be added or updated, and must pass on the relevant [Talon][talon] suites: `talon run unit`, and the database suites (`talon run mysql`, `talon run pgsql`, `talon run sqlite`) where applicable.
+- Tests must be added or updated, and must pass on the relevant [Talon][talon] suites: `talon run unit`, and the database suites (`talon run mariadb`, `talon run mysql`, `talon run pgsql`, `talon run sqlite`) where applicable.
 - Static analysis must pass: [PHPCS][psr-12] for PHP code style and [PHPStan][phpstan] where applicable.
 - No fabricated APIs, classes, methods, or behaviors. AI assistants will sometimes invent references that look plausible but do not exist. Verify every symbol against the current source before submitting.
 - The pull request guidelines in the [Contributing][contributions] page apply unchanged.
@@ -80,9 +80,11 @@ The trailer is **not** required for trivial mechanical edits, such as:
 
 When in doubt, add the trailer. Over-attribution is harmless; under-attribution is not.
 
+[coding-standard]: /6.0/coding-standard/
 [contributions]: /6.0/contributions/
 [cphalcon]: https://github.com/phalcon/cphalcon
 [kernel-ai]: https://docs.kernel.org/process/coding-assistants.html
+[phalcon]: https://github.com/phalcon/phalcon
 [phalcon-documentation]: https://github.com/phalcon/documentation
 [phalcon-org]: https://github.com/phalcon
 [phpstan]: https://phpstan.org

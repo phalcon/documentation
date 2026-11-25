@@ -253,10 +253,14 @@ $invoice->assign(
 );
 ```
 
-By default `assign` will use setters if they exist, you can disable it by using `ini_set` to directly use properties
+By default `assign` will use setters if they exist. To set the properties directly, disable the setters with `Phalcon\Support\Settings`:
 
 ```php
-ini_set('phalcon.orm.disable_assign_setters', true);
+<?php
+
+use Phalcon\Support\Settings;
+
+Settings::set('orm.disable_assign_setters', true);
 ```
 
 ```php
@@ -3548,7 +3552,7 @@ Never use a [Phalcon\Db\RawValue][db-rawvalue] to hold external or otherwise var
 ## Dynamic Updates
 
 :::warning[WARNING]
-Dynamic Update is now enabled by default, you can disable it by changing the "phalcon.orm.dynamic_update" in the php.ini or by ini_set.
+Dynamic Update is now enabled by default. To disable it, use `Phalcon\Support\Settings::set('orm.dynamic_update', false)`.
 :::
 
 If the system-wide dynamic update is disabled, the SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, only the fields that had changed are used to create the final SQL statement.
@@ -3716,12 +3720,6 @@ Phalcon\Mvc\Model::setup(
     ]
 );
 ``` 
-
-or if you prefer set this in your `php.ini`
-
-```ini
-phalcon.orm.update_snapshot_on_save = 0
-```
 
 Using this functionality will have the following effect:
 
@@ -4203,14 +4201,9 @@ class Invoices extends Model
 
 ## Model Features
 
-The ORM has several options that control specific behaviors globally. You can enable or disable these features by adding specific lines to your `php.ini` file, using the `setup` static method on the model, or using `Phalcon\Support\Settings` for a PHP-level override that does not call `ini_set()`.
+The ORM has several options that control specific behaviors globally. You can enable or disable these features by using the `setup` static method on the model, or by using `Phalcon\Support\Settings`.
 
-```ini
-phalcon.orm.column_renaming = false
-phalcon.orm.events          = false
-```
-
-or by using the `Model`:
+With the `Model`:
 
 ```php
 <?php
@@ -4240,7 +4233,7 @@ The available options are:
 | `disableAssignSetters`          | `false` | Disable setters                                                        |
 | `enableImplicitJoins`           | `true`  | Enable implicit joins                                                  |
 | `events`                        | `true`  | Callbacks, hooks, and event notifications from all the models          |
-| `exceptionOnFailedMetaDataSave` | `false` | Throw an exception when there is a failed meta-data save               |
+| `exceptionOnFailedMetaDataSave` | `true`  | Throw an exception when there is a failed meta-data save               |
 | `exceptionOnFailedSave`         | `false` | Throw an exception when there is a failed `save()`                     |
 | `forceCasting`                  | `false` | Force casting bound parameters to their native types                   |
 | `ignoreUnknownColumns`          | `false` | Ignore unknown columns on the model                                    |
@@ -4251,35 +4244,9 @@ The available options are:
 | `updateSnapshotOnSave`          | `true`  | Update snapshots on `save()`                                           |
 | `virtualForeignKeys`            | `true`  | Virtual foreign keys                                                   |
 
-`ini` options:
-
-```
-; phalcon.orm.cache_level = 3
-; phalcon.orm.case_insensitive_column_map = false
-; phalcon.orm.cast_last_insert_id_to_int = false
-; phalcon.orm.cast_on_hydrate = false
-; phalcon.orm.column_renaming = true
-; phalcon.orm.disable_assign_setters = false
-; phalcon.orm.enable_implicit_joins = true
-; phalcon.orm.enable_literals = true
-; phalcon.orm.events = true
-; phalcon.orm.exception_on_failed_metadata_save = true
-; phalcon.orm.exception_on_failed_save = false
-; phalcon.orm.force_casting = false
-; phalcon.orm.ignore_unknown_columns = false
-; phalcon.orm.late_state_binding = false
-; phalcon.orm.not_null_validations = true
-; phalcon.orm.resultset_prefetch_records = "0"
-; phalcon.orm.unique_cache_id = 3
-; phalcon.orm.update_snapshot_on_save = true
-; phalcon.orm.virtual_foreign_keys = true
-; phalcon.db.escape_identifiers = On
-; phalcon.db.force_casting = Off
-```
-
 **Using `Phalcon\Support\Settings`**
 
-`Phalcon\Support\Settings` provides PHP-level overrides for all framework settings. Unlike `ini_set()`, changes made with `Settings::set()` are stored in a static array and never modify the underlying `php.ini` configuration, which prevents settings from one project from leaking into another sharing the same PHP process.
+`Phalcon\Support\Settings` holds all framework settings. Changes made with `Settings::set()` are stored in a static array of the current PHP process. For the list of keys, see the [Settings][support-settings-page] page.
 
 ```php
 <?php
@@ -4290,24 +4257,24 @@ use Phalcon\Support\Settings;
 Settings::set('orm.column_renaming', false);
 Settings::set('orm.events', false);
 
-// Read the effective value (PHP override → php.ini → compiled default)
+// Read the effective value (PHP override → default value)
 var_dump(Settings::get('orm.events')); // bool(false)
 
-// Clear all PHP-level overrides and revert to php.ini / compiled defaults
+// Clear all PHP-level overrides and revert to the default values
 Settings::reset();
 ```
 
-The `get()` method follows this resolution order: PHP-level override → `ini_get('phalcon.<key>')` → compiled-in default.
+The `get()` method follows this resolution order: PHP-level override → default value.
 
 :::warning[WARNING]
-`Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when data arguments are passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding `phalcon.orm.disable_assign_setters = 1` to your ini file, it will use `$this->property = value`.
+`Phalcon\Mvc\Model::assign()` (which is used also when creating/updating/saving model) is always using setters if they exist when data arguments are passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior with `Settings::set('orm.disable_assign_setters', true)`, it will use `$this->property = value`.
 :::
 
 ## Integers vs. Strings
 
 If you want to get integer values back from `int` related database fields, you will need to do the following:
 
-- Make sure that the `castOnHydrate` (or set `ini_set('phalcon.orm.cast_on_hydrate', 'on')`) is enabled
+- Make sure that the `castOnHydrate` (or `Settings::set('orm.cast_on_hydrate', true)`) is enabled
 
 ```php
 <?php
@@ -4548,6 +4515,7 @@ The component raises granular subclasses of `Phalcon\Mvc\Model\Exception` so cal
 [mvc-model-validationfailed]: /6.0/api/phalcon_mvc/#mvcmodelvalidationfailed
 [mvc-modelinterface]: /6.0/api/phalcon_mvc/#mvcmodelinterface
 [pdo-statements]: https://php.net/manual/en/pdo.prepared-statements.php
+[support-settings-page]: /6.0/support-settings/
 [transactions]: #transactions
 
 Source: https://docs.phalcon.io/6.0/db-models/index.mdx

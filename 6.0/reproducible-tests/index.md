@@ -274,7 +274,7 @@ echo User::createNewUserReturnId();
 ```
 
 [gist]: https://gist.github.com/
-[issues]: https://github.com/phalcon/cphalcon/issues
+[issues]: https://github.com/phalcon/phalcon/issues
 [testing-environment]: /6.0/testing-environment/
 
 Source: https://docs.phalcon.io/6.0/reproducible-tests/index.mdx
