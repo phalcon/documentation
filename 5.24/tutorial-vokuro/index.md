@@ -50,7 +50,7 @@ There are three ways to obtain and run Vökuró. Pick the one that matches your 
 
 ### Requirements
 
-- PHP 8.1 through 8.5.
+- PHP 8.1 through 8.6.
 - The `openssl` extension. Depending on your database, one of `pdo_mysql`, `pdo_pgsql`, or `pdo_sqlite`. The `mbstring` and `intl` extensions are also used.
 - One of MySQL 8.0, PostgreSQL, or SQLite as the data store.
 - [Composer][composer].

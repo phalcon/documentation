@@ -15,7 +15,7 @@ Phalcon was originally written in C, which limited contributions because most PH
 
 ## The Challenge
 
-Building a feature-rich framework requires a development environment with many services. Validating the ORM across database adapters (`MySQL`, `PostgreSQL`, `SQLite`) requires the relevant PHP extensions and databases. Running the full test suite requires more still, such as Redis and Memcached. Add the range of supported PHP versions (8.1 through 8.5), and a local setup becomes involved.
+Building a feature-rich framework requires a development environment with many services. Validating the ORM across database adapters (`MySQL`, `PostgreSQL`, `SQLite`) requires the relevant PHP extensions and databases. Running the full test suite requires more still, such as Redis and Memcached. Add the range of supported PHP versions (8.1 through 8.6), and a local setup becomes involved.
 
 ## Solution
 
@@ -71,6 +71,7 @@ cphalcon-dev-8.2
 cphalcon-dev-8.3
 cphalcon-dev-8.4
 cphalcon-dev-8.5
+cphalcon-dev-8.6
 ```
 
 To enter the PHP 8.1 container:

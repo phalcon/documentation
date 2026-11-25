@@ -40,6 +40,7 @@ stops with an error in a project of the other flavor:
 | `make:action` | ✓ | — |
 | `make:command` | ✓ | ✓ |
 | `make:controller` | — | ✓ |
+| `make:database` | ✓ | ✓ |
 | `make:middleware` | ✓ | — |
 | `make:model` | — | ✓ |
 | `make:module` | — | ✓ |
@@ -604,6 +605,8 @@ it cannot load that class, it prints the whole override.
 To change the service or the `.env` lines of the database, for example the image, see
 [Project Stubs](#project-stubs).
 
+To add a database to a project that exists, see [Adding a Database](#adding-a-database).
+
 ### Commands after `new`
 
 `new` can run commands after it writes the files, for example `crest up` and
@@ -767,6 +770,11 @@ finds in the project:
 5. The runtime (see [The Runtime](#the-runtime)). The proposal is docker when the project
    has `compose.yaml`, `compose.yml`, `docker-compose.yaml` or `docker-compose.yml`. For
    docker, `init` also asks for the service. The proposal is `app`, or the first service.
+6. The database: `none`, `mariadb`, `mysql`, `pgsql` or `sqlite`. The proposal is `none`.
+   `--database` answers the question. For another answer, `init` adds the database after
+   it writes `crest.php`, as `make:database` does (see
+   [Adding a Database](#adding-a-database)). When the `provider` folder already has
+   `DbProvider.php`, `init` stops before it writes a file, unless `--force`.
 
 Press Enter to accept a proposal. `--no-interaction` accepts all the proposals (see
 [Global Options](#global-options)). `--force` overwrites an existing `crest.php`. If the
@@ -782,6 +790,66 @@ of the models stay public. See [Names](#names) and
 `init` asks no question for the view engine. When the views folder, or a folder in it,
 has a `.volt` file, `init` writes `'templateEngine' => 'volt'` (see [Volt](#volt)).
 Else it writes no key, which is `phtml`.
+
+## Adding a Database
+
+`crest new --database` gives a new project a database (see [The Database](#the-database)).
+For a project that exists, `make:database` does the same, in each flavor. The project
+needs `crest.php`; for a project with no `crest.php`, use `crest init --database` (see
+[Adding Crest to an Existing Project](#adding-crest-to-an-existing-project)):
+
+```bash
+crest make:database sqlite
+```
+
+Crest changes no file that exists. It writes the new files, and prints the lines to add
+to the files that exist. For SQLite, in an MVC project:
+
+```text
+Created src/Providers/DbProvider.php
+Created storage/database.sqlite
+Created storage/.gitkeep
+Nothing registers it yet. Add it to providers() in your front controller:
+
+    new \App\Providers\DbProvider($this->projectRoot),
+
+In a project with another front controller, register it with
+$di->register(new \App\Providers\DbProvider($this->projectRoot)).
+
+Add to .gitignore:
+
+    /storage/database.sqlite
+
+Add to .env:
+
+    # The database: a SQLite file, relative to the project root. PHP on the host
+    # does not read this file: there, the default in DbProvider applies.
+    DB_NAME=storage/database.sqlite
+
+Then crest make:model <table> reads it.
+```
+
+| File | What Crest does |
+|---|---|
+| `DbProvider.php` in the `provider` path | writes it, from the stub that `new` uses: for MVC a `Phalcon\Db` adapter, for ADR a DataMapper `Connection` with the alias `db` |
+| `storage/database.sqlite` and `storage/.gitkeep` (SQLite) | writes each file that does not exist. A database file that exists stays, also with `--force` |
+| the front controller | prints the line that registers `DbProvider`. In an ADR project, it prints the `registerProviders()` override, or only the line to add when the front has the override (as `make:provider` does) |
+| the compose file (server database) | prints the service `database` with its volume, and `depends_on` for the app service. When the compose file has a `database` service, Crest prints a note in place of the service |
+| the Dockerfile (server database) | prints the lines that install the PDO extension |
+| `.gitignore` (SQLite) | prints the line to add |
+| `.env` | prints the lines to add. For a server database, only when the project has a compose file |
+
+The compose file is the first of `compose.yaml`, `compose.yml`, `docker-compose.yaml` and
+`docker-compose.yml` in the project. Without one, Crest prints no compose, Dockerfile or
+`.env` lines for a server database: nothing gives `.env` to the app, and `DB_HOST` names a
+compose service. Crest prints that PHP needs the PDO extension, and that the defaults of
+`DbProvider` connect to `127.0.0.1` and the default port. When the app service of
+`crest.php` is named `database`, `make:database` stops, as `new` does.
+
+The `DB_NAME` and `DB_USERNAME` defaults of a server database come from the folder name
+of the project, as `new` uses the name of the project. When `DbProvider.php` exists,
+`make:database` stops, and writes nothing. `--force` writes `DbProvider` again.
+`make:database none` stops: there is no database to add.
 
 ## Running a Project
 
@@ -2706,6 +2774,7 @@ with an error.
 | `make:action` | create an ADR action for a route |
 | `make:command` | create a Crest command |
 | `make:controller` | create an MVC controller |
+| `make:database` | add a database to a project that exists |
 | `make:middleware` | create an ADR middleware |
 | `make:model` | create an MVC model from a database table, or from each table with `--all` (relations come only from foreign keys) |
 | `make:module` | create an MVC module |
