@@ -23,4 +23,9 @@ Please follow this guide to understand how to generate the backtrace.
 
 [https://bugs.php.net/bugs-generating-backtrace-win32.php](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 
+If you have a clone of the [cphalcon][cphalcon] repository, you can use its debug image to get the backtrace. The image has a PHP build with debug information, gdb, and valgrind. See the [Debugging][debugging] section of the testing environment page.
+
+[cphalcon]: https://github.com/phalcon/cphalcon
+[debugging]: /5.24/testing-environment/#debugging
+
 Source: https://docs.phalcon.io/5.24/generating-backtrace/index.mdx
