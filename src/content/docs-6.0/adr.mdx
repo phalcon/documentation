@@ -8,7 +8,7 @@ Action-Domain-Responder ([ADR][adr-pattern]) is a software architectural pattern
 
 Where MVC leaves the controller responsible for both invoking the business logic and preparing the response, ADR splits those concerns apart. An _Action_ drives the _Domain_ and hands its result to a _Responder_. Each route maps to a single, focused action rather than a controller with many methods.
 
-Phalcon offers the object-oriented classes necessary to implement Action-Domain-Responder in your application. As with the rest of the framework, these classes are written in Zephir, which is translated to C, offering a high-performance implementation in PHP.
+Phalcon offers the object-oriented classes necessary to implement Action-Domain-Responder in your application. As with the rest of the framework, these classes are written in PHP.
 
 ADR benefits include:
 
