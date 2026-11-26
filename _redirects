@@ -1,4 +1,4 @@
-/          /5.23/introduction  301
-/latest    /5.23/introduction  301
-/latest/   /5.23/introduction  301
-/latest/*  /5.23/:splat        301
+/          /5.24/introduction  301
+/latest    /5.24/introduction  301
+/latest/   /5.24/introduction  301
+/latest/*  /5.24/:splat        301
