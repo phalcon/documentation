@@ -57,6 +57,27 @@ composer require phalcon/phalcon
 
 Composer adds Phalcon to your `composer.json` and loads its classes through the Composer autoloader. There is no PHP extension to compile or enable.
 
+Composer installs Phalcon only if PHP has the `fileinfo`, `json`, `mbstring`, `pdo` and `xml` extensions.
+
+Composer also installs the packages that Phalcon requires. Two of them contain parsers:
+
+- `phalcon/phql`: the PHQL parser
+- `phalcon/volt`: the Volt parser
+
+:::danger[DANGER]
+The parser of the docblock annotations is in the `phalcon/annotations` package. Composer does not install this package with Phalcon. If your application reads docblock annotations, you must install it. This includes the annotations adapters (`Phalcon\Annotations\Adapter\*`), `Phalcon\Mvc\Router\Annotations` and the annotations strategy of the model metadata (`Phalcon\Mvc\Model\MetaData\Strategy\Annotations`).
+
+```bash
+composer require phalcon/annotations
+```
+
+Composer does not show an error if the package is missing. The first request that reads annotations stops with this error:
+
+```text
+Error: Class "Phalcon\Annotations\Docblock\Parser\Parser" not found
+```
+:::
+
 [composer]: https://getcomposer.org
 [curl]: https://www.php.net/manual/en/book.curl.php
 [fileinfo]: https://www.php.net/manual/en/book.fileinfo.php
