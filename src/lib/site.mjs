@@ -69,13 +69,13 @@ export function iconHead(themeColor) {
  * the "latest" tag in the picker, the others get "stable". When 6.0 is
  * released: `["6.0", "5.22"]`, and remove it from PRERELEASES.
  */
-export const STABLE_VERSIONS = ["5.24"];
+export const STABLE_VERSIONS = ["5.24", "6.0"];
 
 /** The version that `/` and `/latest/` lead to. */
 export const STABLE_VERSION = STABLE_VERSIONS[0];
 
 /** Versions that are published but not stable yet, with their tag. */
-export const PRERELEASES = { "6.0": "RC" };
+export const PRERELEASES = { };
 
 /**
  * Versions that are no longer maintained. They are kept as a reference for
