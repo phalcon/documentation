@@ -25,6 +25,18 @@ Phalcon v6 has the same requirements as v5. PHP 8.1 [active support][php-support
 
 Since Phalcon 4, we have been following the PHP releases and adjusting Phalcon accordingly to work with those releases.
 
+### PHP Extensions
+
+Phalcon v6 requires these PHP extensions:
+
+- `fileinfo`
+- `json`
+- `mbstring`
+- `pdo`
+- `xml`
+
+Composer does not install Phalcon v6 if one of these extensions is missing. Make sure that each PHP installation that runs your application has them. This includes the CLI, PHP-FPM and your Docker images.
+
 ## Installation
 
 Remove Phalcon v5 before you install Phalcon v6. See [Remove Phalcon v5](#remove-phalcon-v5).
@@ -35,11 +47,197 @@ Phalcon can be installed using composer.
 composer require phalcon/phalcon
 ```
 
+In Phalcon v5, the PHQL and Volt parsers are part of the extension. In Phalcon v6, they are Composer packages. Composer installs them with Phalcon:
+
+- `phalcon/phql`: the PHQL parser
+- `phalcon/volt`: the Volt parser
+
+:::danger[DANGER]
+The parser of the docblock annotations is in the `phalcon/annotations` package. Composer does not install this package with Phalcon. If your application reads docblock annotations, you must install it. This includes the annotations adapters (`Phalcon\Annotations\Adapter\*`), `Phalcon\Mvc\Router\Annotations` and the annotations strategy of the model metadata (`Phalcon\Mvc\Model\MetaData\Strategy\Annotations`).
+
+```bash
+composer require phalcon/annotations
+```
+
+Composer does not show an error if the package is missing. The first request that reads annotations stops with this error:
+
+```text
+Error: Class "Phalcon\Annotations\Docblock\Parser\Parser" not found
+```
+:::
+
 - - -
 
 ## Upgrading from v5 to v6
 
 Phalcon v6 has the same classes and methods as Phalcon v5. The changes below can affect your application.
+
+### INI Settings
+
+Phalcon v5 reads its settings from the INI configuration of PHP: `php.ini`, the files in `conf.d`, `.htaccess`, the PHP-FPM pool files and `ini_set()`. Phalcon v6 does not read the `phalcon.*` INI settings. PHP does not know these settings when the extension is not loaded. Thus, `ini_get()` and `ini_set()` return `false` for them. Phalcon v6 uses the default value of each setting, and it does not show an error or a warning.
+
+:::danger[DANGER]
+If you disable the PHQL literals in v5 with `phalcon.orm.enable_literals = 0`, Phalcon v6 accepts the literals again. Disable them with `Settings::set()`, as this section shows.
+:::
+
+Set each setting in the bootstrap file of your application, before the application handles the request. Use `Phalcon\Support\Settings::set()`. The name of the setting is the name of the INI setting without the `phalcon.` prefix:
+
+```ini
+; v5: php.ini
+phalcon.orm.events = 0
+phalcon.orm.enable_literals = 0
+```
+
+```php
+<?php
+
+// v6: public/index.php
+use Phalcon\Support\Settings;
+
+Settings::set('orm.events', false);
+Settings::set('orm.enable_literals', false);
+```
+
+`Settings::set()` does not save the value. Thus, the bootstrap file must set the values for each request. See [Settings][phalcon-support-settings] for the list of the settings. Phalcon v6 does not have a setting for `phalcon.warning.enable`.
+
+`Phalcon\Mvc\Model::setup()` also changes the ORM settings. It works in v5 and v6:
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+Model::setup(
+    [
+        'events'       => false,
+        'phqlLiterals' => false,
+    ]
+);
+```
+
+### Detect Phalcon
+
+Phalcon v5 is a PHP extension. Phalcon v6 is a Composer package. Thus, the functions that examine the extensions do not find Phalcon v6:
+
+| Code                                                                   | v5                                  | v6      |
+|------------------------------------------------------------------------|-------------------------------------|---------|
+| `extension_loaded('phalcon')`                                          | `true`                              | `false` |
+| `phpversion('phalcon')`                                                | The version, for example `'5.23.0'` | `false` |
+| `(new ReflectionClass(Phalcon\Support\Version::class))->isInternal()` | `true`                              | `false` |
+
+To find the version of Phalcon, use `Phalcon\Support\Version`. This code works in v5 and v6:
+
+```php
+<?php
+
+use Phalcon\Support\Version;
+
+if (class_exists(Version::class)) {
+    $major = (new Version())->getPart(Version::VERSION_MAJOR);
+
+    echo $major, PHP_EOL; // '5' or '6'
+}
+```
+
+### Typed Properties
+
+The properties of the Phalcon v5 classes do not have types. Most properties of the Phalcon v6 classes have types. If your class extends a Phalcon class and declares a Phalcon property again, your declaration must have the same type. If it does not, PHP stops with a fatal error when it loads your class.
+
+```php
+<?php
+
+namespace App\Http;
+
+use Phalcon\Http\Request as PhalconRequest;
+
+class Request extends PhalconRequest
+{
+    protected $trustedProxies = ['10.0.0.1'];
+}
+```
+
+Phalcon v5 accepts this class. Phalcon v6 stops with this error:
+
+```text
+Fatal error: Type of App\Http\Request::$trustedProxies must be array (as in class Phalcon\Http\Request)
+```
+
+Declare the property with the type of the Phalcon property:
+
+```php
+<?php
+
+namespace App\Http;
+
+use Phalcon\Http\Request as PhalconRequest;
+
+class Request extends PhalconRequest
+{
+    protected array $trustedProxies = ['10.0.0.1'];
+}
+```
+
+Phalcon v5 does not accept a type on this property (`must not be defined`). Thus, change the declaration when you move to v6.
+
+These properties do not have a type in v6, as in v5, because applications often declare them again:
+
+- `Phalcon\Di\Injectable::$container`
+- `Phalcon\Filter\Validation\AbstractValidator::$template`
+- `Phalcon\Filter\Validation\AbstractValidatorComposite::$validators`
+- `Phalcon\Forms\Element\AbstractElement::$value`
+- `Phalcon\Forms\Form::$attributes` and `$entity`
+- `Phalcon\Mvc\Model::$transaction`, `$uniqueKey` and `$uniqueParams`
+
+### Return Types
+
+Some methods do not have a return type in Phalcon v5 and have the return type `mixed` in Phalcon v6. Examples are `Phalcon\Http\Request::get()`, `Phalcon\Mvc\Dispatcher::getParam()` and `Phalcon\Session\Manager::get()`. If your class overrides one of these methods, your method must also declare `mixed`. If it does not, PHP stops with a fatal error when it loads your class.
+
+```php
+<?php
+
+namespace App\Session;
+
+use Phalcon\Session\Manager as PhalconManager;
+
+class Manager extends PhalconManager
+{
+    public function get(string $key, $defaultValue = null, bool $remove = false)
+    {
+        return parent::get($key, $defaultValue, $remove);
+    }
+}
+```
+
+Phalcon v5 accepts this class. Phalcon v6 stops with this error:
+
+```text
+Fatal error: Declaration of App\Session\Manager::get(string $key, $defaultValue = null, bool $remove = false) must be compatible with Phalcon\Session\Manager::get(string $key, mixed $defaultValue = null, bool $remove = false): mixed
+```
+
+Add the return type. This declaration works in v5 and v6:
+
+```php
+<?php
+
+namespace App\Session;
+
+use Phalcon\Session\Manager as PhalconManager;
+
+class Manager extends PhalconManager
+{
+    public function get(string $key, $defaultValue = null, bool $remove = false): mixed
+    {
+        return parent::get($key, $defaultValue, $remove);
+    }
+}
+```
+
+In Phalcon v5.23.0 and earlier, two methods declare a return type that is not correct. Phalcon v6 declares the correct type. If your class overrides one of these methods, declare the v6 type:
+
+| Method                                       | v5.23.0                               | v6                              |
+|----------------------------------------------|---------------------------------------|---------------------------------|
+| `Phalcon\Db\Dialect::checkColumnType()`      | `string`                              | `int`                           |
+| `Phalcon\Mvc\Model\Query::getCache()`        | `Phalcon\Db\Adapter\AdapterInterface` | `?Phalcon\Cache\CacheInterface` |
 
 ### Mvc View
 
@@ -130,6 +328,124 @@ The variables that the templates share are one set for each view. All the templa
 - Phalcon v5 does not have `withScope()`. On v5, a template that calls it stops with the error `Call to undefined method`.
 - `partial()` has the same signature as in v5. A class that extends `AbstractEngine` and overrides `partial()` does not need a change.
 - `getScope(): array` returns the set of the view, and `setScope(array $scope): static` replaces it. `Phalcon\Mvc\View` and `Phalcon\Mvc\View\Simple` use these methods to start a new set for each render and for each partial with an array of parameters. Phalcon v5 does not have these methods.
+
+### Values of the Wrong Type
+
+Phalcon v5 is written in Zephir. When a value does not have the expected type, Phalcon v5 often changes the value to the expected type, or it gives a notice and continues. The parameters and the properties of Phalcon v6 have types. Phalcon v6 accepts the same values as v5 in most cases, for example a numeric string for an integer option or an integer for a string option.
+
+:::warning[WARNING]
+These calls throw an error in Phalcon v6. Phalcon v5 accepts the value, or gives a notice and continues. Examine your code for them before you upgrade.
+:::
+
+| Call                                                                                                                                          | v5                                                                                   | v6                                                                             |
+|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| `null` for a parameter of type `string`, for example `$request->getHeader(null)`                                                             | Deprecation notice. The value is `''`                                                | `TypeError`                                                                    |
+| An integer sanitizer name, for example `$filter->sanitize('invoice', 1)`                                                                      | Notice `Sanitizer '1' is not registered`. The value does not change                  | `TypeError`                                                                    |
+| An integer `pattern` for `Phalcon\Filter\Validation\Validator\Regex`                                                                          | The validation fails with a message                                                  | `TypeError` when the validation runs                                           |
+| An integer `resolution` for the `File\Resolution` validators, or an integer `ratio` for `File\Resolution\AspectRatio`                         | The validation fails with a message                                                  | `TypeError` when the validation runs                                           |
+| An integer `mode` for `Phalcon\Logger\Adapter\Stream`, for example `['mode' => 1]`                                                            | The adapter writes the log                                                           | `TypeError`                                                                    |
+| A float `size` or `typeValues` for `Phalcon\Db\Column`, for example `['size' => 10.5]`                                                        | The column keeps the float                                                           | `TypeError`                                                                    |
+| An integer `TABLE_COMMENT` option for `createTable()` of `Phalcon\Db\Dialect\Postgresql`                                                      | The dialect makes the SQL statement                                                  | `TypeError`                                                                    |
+| An integer `separator` for a `list` expression in `getSqlExpression()` of a dialect                                                           | No error                                                                             | `TypeError`                                                                    |
+| HTTP methods that are not a string or an array, for example `$route->via(1)` of `Phalcon\Mvc\Router\Route`                                    | The route keeps the value. `handle()` of the router throws the exception of v6       | `Exception` with the message `The argument is not initialized or iterable()`, when you call `via()` |
+
+### Return Values
+
+Phalcon v5 does not examine the return type of a method at run time. Thus, a method of Phalcon v5 can return a value of a type that is different from its declared return type. Phalcon v6 is written in PHP, and PHP examines the return types. Thus, these methods of Phalcon v6 return a value of the declared type:
+
+| Call                                                                                                                       | v5                           | v6                             |
+|----------------------------------------------------------------------------------------------------------------------------|------------------------------|--------------------------------|
+| `$request->getServer('REQUEST_TIME')` and `$request->getHeader('REQUEST_TIME')`                                            | `1764000000` (integer)       | `'1764000000'` (string)        |
+| `getOption('autoescape')` of the Volt compiler, after `setOption('autoescape', true)`                                      | `true`                       | `'1'`                          |
+| `getAfterPosition()` and `getComment()` of `Phalcon\Db\Column`, for an integer option                                     | The integer                  | The integer as a string        |
+| `getSchemaName()`, `getReferencedSchema()`, `getOnDelete()` and `getOnUpdate()` of `Phalcon\Db\Reference`, for an integer | The integer                  | The integer as a string        |
+| `getColumns()` of `Phalcon\Mvc\Model\Criteria`, after `columns(1)`                                                         | `1`                          | `'1'`                          |
+| `isReusable()` of `Phalcon\Mvc\Model\Relation`, for the option `'reusable' => '1'`                                         | `'1'`                        | `true`                         |
+
+If your code compares these values with `===`, or gives them to a parameter of type `int` in a file with `strict_types=1`, convert them first:
+
+```php
+<?php
+
+$requestTime = (int) $request->getServer('REQUEST_TIME');
+```
+
+### PHQL Parser Settings
+
+In Phalcon v5.23.0 and earlier, the PHQL parser reads only the INI settings `phalcon.orm.enable_literals` and `phalcon.orm.cache_level`. The values that you set with `Model::setup()` (`phqlLiterals`) or with `Settings::set()` (`orm.enable_literals`, `orm.cache_level`) do not change the parser. Phalcon v6 and Phalcon v5.24.0 give these values to the parser. In v5.24.0, such a value has priority over the INI setting. Phalcon v6 does not read the INI settings (see [INI Settings](#ini-settings)).
+
+Thus, when `phqlLiterals` is `false`, a PHQL statement with a literal throws `Phalcon\Mvc\Model\Exception` with the message `Literals are disabled in PHQL statements`. In v5.23.0 and earlier, the statement runs.
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+Model::setup(['phqlLiterals' => false]);
+
+// v5.23.0: the statement runs
+// v5.24.0 and v6: Phalcon\Mvc\Model\Exception
+$invoices = $modelsManager->executeQuery(
+    'SELECT * FROM Invoices WHERE inv_status_flag = 1'
+);
+```
+
+Use bound parameters in place of the literals:
+
+```php
+<?php
+
+$invoices = $modelsManager->executeQuery(
+    'SELECT * FROM Invoices WHERE inv_status_flag = :status:',
+    [
+        'status' => 1,
+    ]
+);
+```
+
+### Security Hash Cost
+
+In Phalcon v5.23.0 and earlier, `Phalcon\Encryption\Security::hash()` uses the cost `4` when the `cost` option is empty (`null`, `0`, `'0'`, `false` or `''`). Phalcon v6 uses the work factor (`getWorkFactor()`, default `10`), the same as when the option is not set.
+
+```php
+<?php
+
+use Phalcon\Encryption\Security;
+
+$security = new Security();
+$hash     = $security->hash('s3cr3t', ['cost' => 0]);
+
+// v5.23.0: '$2y$04$...'
+// v6:      '$2y$10$...'
+```
+
+The new hashes take more time to make. `checkHash()` still verifies the hashes that v5 made, because each hash contains its cost.
+
+### Assets Filters
+
+Phalcon v5 has the filters `Phalcon\Assets\Filters\Jsmin` and `Phalcon\Assets\Filters\Cssmin`. They are deprecated, and they do not change the content. Phalcon v6 has the filters `Phalcon\Assets\Filters\JsMin` and `Phalcon\Assets\Filters\CssMin`, with a capital `M`. They minify the content.
+
+- The Composer autoloader finds a class from the name of its file. On a file system that is case-sensitive, for example on Linux, `new Jsmin()` gives the error `Class "Phalcon\Assets\Filters\Jsmin" not found`. Use `JsMin` and `CssMin`.
+- The output of the filters is now minified. Examine the pages that use these filters.
+
+```php
+<?php
+
+use Phalcon\Assets\Filters\JsMin;
+
+$assets
+    ->collection('footer')
+    ->addJs('js/invoices.js')
+    ->addFilter(new JsMin());
+```
+
+### Parsers
+
+In Phalcon v5, the Volt, PHQL and annotations parsers are C code in the extension. In Phalcon v6, they are PHP code in the `phalcon/volt`, `phalcon/phql` and `phalcon/annotations` packages. Thus, a parse takes more time in v6. Use the caches, so that Phalcon parses less:
+
+- Volt: Phalcon compiles a template one time and keeps the compiled file. Do not set the `always` option to `true` in production.
+- Annotations: use an adapter that keeps the parsed annotations between the requests, for example `Phalcon\Annotations\Adapter\Apcu` or `Phalcon\Annotations\Adapter\Stream`. `Phalcon\Annotations\Adapter\Memory` parses the annotations again in each request.
+- Model metadata: use an adapter that keeps the metadata between the requests, for example `Phalcon\Mvc\Model\MetaData\Apcu`, `Phalcon\Mvc\Model\MetaData\Redis` or `Phalcon\Mvc\Model\MetaData\Stream`. This is important when you use the annotations strategy.
 
 - - -
 
@@ -459,6 +775,7 @@ The output must start with `6`. If it starts with `5`, PHP still loads the v5 ex
 [phalcon-support-debug]: /6.0/support-debug/
 [phalcon-support-helper]: /6.0/support-helper/
 [phalcon-support-registry]: /6.0/support-registry/
+[phalcon-support-settings]: /6.0/support-settings/
 [phalcon-support-version]: /6.0/support-version/
 [phalcon-tag]: /6.0/tag/
 [phalcon-translate]: /6.0/translate/
