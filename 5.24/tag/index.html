@@ -1464,6 +1464,22 @@ offering lower resource consumption and high performance.
 <span class="line"></span>
 <span class="line"><span style="color:var(--code-comment)">// &lt;input type="text" id="framework" name="framework" </span></span>
 <span class="line"><span style="color:var(--code-comment)">//        value="&lt;h1&gt;hello&lt;/h1&gt;" /&gt;</span></span></code></pre></figure>
+<p>The helpers also accept the <code>escape</code> key in their parameters. With <code>'escape' =&gt; false</code> (or <code>null</code>), the helper does not escape the values of that call, also when automatic escaping is on:</p>
+<figure class="nb-code-figure" data-nb-lang="php"><pre class="astro-code phalcon" style="background-color:var(--code-bg);color:var(--code-text); overflow-x: auto;" tabindex="0" data-language="php" data-nb-lang="php"><code><span class="line"><span style="color:var(--code-keyword)">&lt;?</span><span style="color:var(--code-constant)">php</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--code-keyword)">use</span><span style="color:var(--code-constant)"> Phalcon\Tag</span><span style="color:var(--code-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--code-constant)">echo</span><span style="color:var(--code-constant)"> Tag</span><span style="color:var(--code-keyword)">::</span><span style="color:var(--code-function)">textField</span><span style="color:var(--code-text)">(</span></span>
+<span class="line"><span style="color:var(--code-text)">    [</span></span>
+<span class="line"><span style="color:var(--code-string)">        'framework'</span><span style="color:var(--code-text)">,</span></span>
+<span class="line"><span style="color:var(--code-string)">        'value'</span><span style="color:var(--code-keyword)">  =&gt;</span><span style="color:var(--code-string)"> '&lt;h1&gt;hello&lt;/h1&gt;'</span><span style="color:var(--code-text)">,</span></span>
+<span class="line"><span style="color:var(--code-string)">        'escape'</span><span style="color:var(--code-keyword)"> =&gt;</span><span style="color:var(--code-constant)"> false</span><span style="color:var(--code-text)">,</span></span>
+<span class="line"><span style="color:var(--code-text)">    ]</span></span>
+<span class="line"><span style="color:var(--code-text)">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--code-comment)">// &lt;input type="text" id="framework" name="framework" </span></span>
+<span class="line"><span style="color:var(--code-comment)">//        value="&lt;h1&gt;hello&lt;/h1&gt;" /&gt;</span></span></code></pre></figure>
+<aside role="note" aria-label="DANGER" class="aside-card flex items-start gap-3 rounded-lg px-4 py-3 my-4" style="--_c: var(--nb-danger); --_t: var(--nb-danger-muted);" data-astro-cid-znle5jil><span class="shrink-0 flex items-center h-[1.375em]" aria-hidden="true" data-astro-cid-znle5jil><svg width="1em" height="1em" viewBox="0 0 256 256" class="w-[1em] h-[1em]" data-astro-cid-znle5jil="true" data-icon="ph:warning-circle"><path fill="currentColor" d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m-8-80V80a8 8 0 0 1 16 0v56a8 8 0 0 1-16 0m20 36a12 12 0 1 1-12-12a12 12 0 0 1 12 12"/></svg></span><div class="flex min-w-0 flex-1 flex-col gap-0.5" data-astro-cid-znle5jil><p class="m-0 text-base font-semibold leading-snug" data-astro-cid-znle5jil>DANGER</p><div class="aside-card-body text-sm leading-normal" data-astro-cid-znle5jil><p>Do not give request data, such as <code>$_POST</code> or <code>$request-&gt;getPost()</code>, directly as the parameters of a helper. A user can then send the <code>escape</code> key with the value <code>0</code> and turn off the escaping of the output.</p></div></div></aside>
 <h2 id="dependency-injection">Dependency Injection</h2>
 <p>If you use the <a href="/5.24/api/phalcon_di#difactorydefault">Phalcon\Di\FactoryDefault</a> container, the <a href="/5.24/api/phalcon_tag">Phalcon\Tag</a> is already registered for you with the name <code>tag</code>.</p>
 <p>An example of the registration of the service as well as accessing it is below:</p>
