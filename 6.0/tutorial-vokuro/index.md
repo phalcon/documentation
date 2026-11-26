@@ -23,7 +23,7 @@ version: "6.0"
 Vökuró runs on two Phalcon distributions from the same source tree:
 
 - **Phalcon v5** minimum `5.0` - the C extension. This is the default when the extension is loaded.
-- **Phalcon v6** currently `6.0` alpha - the `phalcon/phalcon` PHP package. No extension is required.
+- **Phalcon v6** currently `6.0` - the `phalcon/phalcon` PHP package. No extension is required.
 - The two are mutually exclusive at runtime. When the v5 extension is loaded, PHP uses it and the v6 package is shadowed.
 
 :::info[NOTE]
@@ -128,7 +128,7 @@ The image installs one distribution at a time, selected by the `PHALCON_VARIANT`
 
 ```bash
 docker compose up -d --build                      # v5 (C extension, default)
-PHALCON_VARIANT=v6 docker compose up -d --build   # v6 (phalcon/phalcon, alpha)
+PHALCON_VARIANT=v6 docker compose up -d --build   # v6 (phalcon/phalcon)
 ```
 
 **Choosing the PHP version**
@@ -150,7 +150,7 @@ PHP_VERSION=8.1 PROJECT_PREFIX=vokuro81 docker compose -p vokuro81 up -d --build
 
 To run Vökuró directly on your host, follow the walkthrough in the repository's own [docs/installation.md][installation-vokuro]. The steps are:
 
-1. Install the Phalcon v5 extension with [PIE][pie]. To run on v6 instead, skip this step and require the package with `composer require phalcon/phalcon:^6.0@alpha`.
+1. Install the Phalcon v5 extension with [PIE][pie]. To run on v6 instead, skip this step and require the package with `composer require phalcon/phalcon:^6.0`.
 2. Install the PHP dependencies with `composer install`.
 3. Copy `resources/.env.example` to `.env` and point `DB_HOST` at your host (the Docker defaults use the `mysql` service name, so a local host uses `127.0.0.1`).
 4. Create and seed the database with `composer migrate` and `composer seed`.

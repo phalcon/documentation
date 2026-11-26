@@ -1315,8 +1315,8 @@ sets the table:</p>
 MariaDB keep a <code>BOOLEAN</code> column as <code>TINYINT(1)</code>, so it gives <code>?int</code>. On SQLite,
 Phalcon reads <code>DOUBLE</code> and <code>BOOLEAN</code> columns as <code>VARCHAR</code>, so they give
 <code>?string</code>.</p>
-<p>On SQLite, a <code>TINYINT(1)</code> column gives <code>?int</code> before cphalcon 5.24.0 and before the tag
-of <code>phalcon/phalcon</code> after <code>v6.0.0RC4</code>. From these versions, it gives <code>?bool</code>, and a
+<p>On SQLite, a <code>TINYINT(1)</code> column gives <code>?int</code> before cphalcon 5.24.0 and before
+<code>phalcon/phalcon</code> 6.0.0. From these versions, it gives <code>?bool</code>, and a
 <code>Select</code> field in a scaffold.</p>
 <p>Each property is nullable, with the default <code>null</code>, because a new model has no
 values yet. The class name comes from the table name: Crest makes the first
@@ -1697,7 +1697,7 @@ then run <code>make:model</code> for this table again:</p>
 <code>parent::initialize()</code>.</p>
 <p>Composite keys work on MySQL and MariaDB: the fields are arrays, for example
 <code>['order_id', 'line_no']</code>. On PostgreSQL, composite keys work from the C extension
-cphalcon 5.24.0 and from the tag of <code>phalcon/phalcon</code> after <code>v6.0.0RC4</code>. Before these
+cphalcon 5.24.0 and from <code>phalcon/phalcon</code> 6.0.0. Before these
 versions, Phalcon gives the wrong columns for a composite key on PostgreSQL. On
 SQLite, Phalcon gives one key for each column of a composite key. Thus Crest
 writes one relation for each column, and each relation uses only a part of the
@@ -1763,7 +1763,7 @@ of that table or view in the schema.</li>
 If you do not give the keys a name, PostgreSQL gives the two keys the same
 name, for example <code>invoices_customer_id_fkey</code>. Two keys with the same name can
 point to tables or columns with different names. For such keys, before
-cphalcon 5.24.0 and before the tag of <code>phalcon/phalcon</code> after <code>v6.0.0RC4</code>,
+cphalcon 5.24.0 and before <code>phalcon/phalcon</code> 6.0.0,
 Phalcon gives one key with the columns of the two keys. Crest then writes a
 relation with the column two times, or a <code>Skipped</code> line, for that key. To fix
 it, give one of the two keys another name, or use the release with the fix.</li>
@@ -1904,7 +1904,7 @@ converts, but <code>'abc'</code> for an <code>int</code> is a <code>TypeError</c
 had no types, so they accepted each value.</li>
 <li>A getter gives the typed value.</li>
 </ul>
-<p>On <code>phalcon/phalcon</code> <code>v6.0.0RC4</code> and before, a write through <code>__set()</code> or
+<p>Before <code>phalcon/phalcon</code> 6.0.0, a write through <code>__set()</code> or
 <code>assign()</code> gives a <code>TypeError</code> when the value does not have the type of the
 column, also for <code>'42'</code>.</p>
 <h3 id="when-makemodel-stops">When <code>make:model</code> Stops</h3>

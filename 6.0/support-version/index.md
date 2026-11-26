@@ -56,7 +56,7 @@ use Phalcon\Support\Version;
 $version = new Version();
 
 echo $version->get();
-// 6.0.0alpha1
+// 6.0.0
 ```
 
 ```php
