@@ -22,7 +22,7 @@ methods
 
 </ApiTree>
 
-<ApiUses>`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`</ApiUses>
+<ApiUses>`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -111,7 +111,7 @@ so connections that are built on demand also fire the DataMapper events.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\Traits\EventsAwareTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -122,22 +122,22 @@ Constructor.
 <ApiItem href="#datamapperpdoconnectionlocator-getmaster" visibility="public" name="getMaster" returnType="ConnectionInterface" params={[]}>
 Returns the default connection object.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getread" visibility="public" name="getRead" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
+<ApiItem href="#datamapperpdoconnectionlocator-getread" visibility="public" name="getRead" returnType="ConnectionInterface|null" params={[{"type":"string","name":"name","default":"\"\""}]}>
 Returns a read connection by name; if no name is given, picks a
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getwrite" visibility="public" name="getWrite" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
+<ApiItem href="#datamapperpdoconnectionlocator-getwrite" visibility="public" name="getWrite" returnType="ConnectionInterface|null" params={[{"type":"string","name":"name","default":"\"\""}]}>
 Returns a write connection by name; if no name is given, picks a
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionlocator-setmaster" visibility="public" name="setMaster" returnType="static" params={[{"type":"ConnectionInterface","name":"callableObject","default":null}]}>
 Sets the default connection factory.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-setread" visibility="public" name="setRead" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
+<ApiItem href="#datamapperpdoconnectionlocator-setread" visibility="public" name="setRead" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"callableObject","default":null}]}>
 Sets a read connection factory by name.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-setwrite" visibility="public" name="setWrite" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
+<ApiItem href="#datamapperpdoconnectionlocator-setwrite" visibility="public" name="setWrite" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"callableObject","default":null}]}>
 Sets a write connection factory by name.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocator-getconnection" visibility="protected" name="getConnection" returnType="ConnectionInterface" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":"\"\""}]}>
+<ApiItem href="#datamapperpdoconnectionlocator-getconnection" visibility="protected" name="getConnection" returnType="ConnectionInterface|null" params={[{"type":"string","name":"type","default":null},{"type":"string","name":"name","default":"\"\""}]}>
 Returns a connection by name.
 </ApiItem>
 </ApiList>
@@ -183,22 +183,24 @@ Returns the default connection object.
 <h4 id="datamapperpdoconnectionlocator-getread"><code>getRead()</code></h4>
 
 ```php
-public function getRead( string $name = "" ): ConnectionInterface;
+public function getRead( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a read connection by name; if no name is given, picks a
 random connection; if no read connections are present, returns the
-default connection.
+default connection. A factory that cannot be called gives a warning
+and null, the same as cphalcon.
 
 <h4 id="datamapperpdoconnectionlocator-getwrite"><code>getWrite()</code></h4>
 
 ```php
-public function getWrite( string $name = "" ): ConnectionInterface;
+public function getWrite( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a write connection by name; if no name is given, picks a
 random connection; if no write connections are present, returns the
-default connection.
+default connection. A factory that cannot be called gives a warning
+and null, the same as cphalcon.
 
 <h4 id="datamapperpdoconnectionlocator-setmaster"><code>setMaster()</code></h4>
 
@@ -213,7 +215,7 @@ Sets the default connection factory.
 ```php
 public function setRead(
     string $name,
-    callable $callableObject
+    mixed $callableObject
 ): static;
 ```
 
@@ -224,7 +226,7 @@ Sets a read connection factory by name.
 ```php
 public function setWrite(
     string $name,
-    callable $callableObject
+    mixed $callableObject
 ): static;
 ```
 
@@ -238,7 +240,7 @@ Sets a write connection factory by name.
 protected function getConnection(
     string $type,
     string $name = ""
-): ConnectionInterface;
+): ConnectionInterface|null;
 ```
 
 Returns a connection by name.
@@ -265,10 +267,10 @@ Locates PDO connections for default, read, and write databases.
 <ApiItem href="#datamapperpdoconnectionlocatorinterface-getmaster" visibility="public" name="getMaster" returnType="ConnectionInterface" params={[]}>
 Returns the default connection object.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-getread" visibility="public" name="getRead" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
+<ApiItem href="#datamapperpdoconnectionlocatorinterface-getread" visibility="public" name="getRead" returnType="ConnectionInterface|null" params={[{"type":"string","name":"name","default":"\"\""}]}>
 Returns a read connection by name; if no name is given, picks a
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionlocatorinterface-getwrite" visibility="public" name="getWrite" returnType="ConnectionInterface" params={[{"type":"string","name":"name","default":"\"\""}]}>
+<ApiItem href="#datamapperpdoconnectionlocatorinterface-getwrite" visibility="public" name="getWrite" returnType="ConnectionInterface|null" params={[{"type":"string","name":"name","default":"\"\""}]}>
 Returns a write connection by name; if no name is given, picks a
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionlocatorinterface-setmaster" visibility="public" name="setMaster" returnType="ConnectionLocatorInterface" params={[{"type":"ConnectionInterface","name":"callableObject","default":null}]}>
@@ -297,7 +299,7 @@ Returns the default connection object.
 <h4 id="datamapperpdoconnectionlocatorinterface-getread"><code>getRead()</code></h4>
 
 ```php
-public function getRead( string $name = "" ): ConnectionInterface;
+public function getRead( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a read connection by name; if no name is given, picks a
@@ -307,7 +309,7 @@ default connection.
 <h4 id="datamapperpdoconnectionlocatorinterface-getwrite"><code>getWrite()</code></h4>
 
 ```php
-public function getWrite( string $name = "" ): ConnectionInterface;
+public function getWrite( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a write connection by name; if no name is given, picks a
@@ -366,12 +368,12 @@ implementations of the interface keep working.
 
 </ApiTree>
 
-<ApiUses>`BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Throwable` · `stdClass`</ApiUses>
+<ApiUses>`BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable` · `stdClass`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-__call" visibility="public" name="__call" returnType="" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
+<ApiItem href="#datamapperpdoconnectionabstractconnection-__call" visibility="public" name="__call" returnType="" params={[{"type":"mixed","name":"name","default":null},{"type":"array","name":"arguments","default":null}]}>
 Proxies to PDO methods created for specific drivers; in particular,
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionabstractconnection-begintransaction" visibility="public" name="beginTransaction" returnType="bool" params={[]}>
@@ -464,10 +466,10 @@ Performs a query with bound values and returns the resulting
 <ApiItem href="#datamapperpdoconnectionabstractconnection-ping" visibility="public" name="ping" returnType="bool" params={[]}>
 Checks whether the underlying connection is still alive by issuing a
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-prepare" visibility="public" name="prepare" returnType="false|PDOStatement" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"options","default":"[]"}]}>
+<ApiItem href="#datamapperpdoconnectionabstractconnection-prepare" visibility="public" name="prepare" returnType="bool|PDOStatement" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"options","default":"[]"}]}>
 Prepares an SQL statement for execution.
 </ApiItem>
-<ApiItem href="#datamapperpdoconnectionabstractconnection-query" visibility="public" name="query" returnType="false|PDOStatement" params={[{"type":"string","name":"statement","default":null}]}>
+<ApiItem href="#datamapperpdoconnectionabstractconnection-query" visibility="public" name="query" returnType="bool|PDOStatement" params={[{"type":"string","name":"statement","default":null}]}>
 Queries the database and returns a PDOStatement. If the profiler is
 </ApiItem>
 <ApiItem href="#datamapperpdoconnectionabstractconnection-quote" visibility="public" name="quote" returnType="string" params={[{"type":"mixed","name":"value","default":null},{"type":"int","name":"type","default":"PDO::PARAM_STR"}]}>
@@ -525,7 +527,7 @@ being "in transaction".
 
 ```php
 public function __call(
-    string $name,
+    mixed $name,
     array $arguments
 );
 ```
@@ -857,7 +859,7 @@ trivial query. Returns false if there is no handle or the probe fails.
 public function prepare(
     string $statement,
     array $options = []
-): false|PDOStatement;
+): bool|PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -865,7 +867,7 @@ Prepares an SQL statement for execution.
 <h4 id="datamapperpdoconnectionabstractconnection-query"><code>query()</code></h4>
 
 ```php
-public function query( string $statement ): false|PDOStatement;
+public function query( string $statement ): bool|PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -2283,7 +2285,7 @@ Class AbstractConditions
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes`</ApiUses>
+<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2814,7 +2816,7 @@ Class Bind
 
 </ApiTree>
 
-<ApiUses>`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes`</ApiUses>
+<ApiUses>`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3024,7 +3026,7 @@ Insert Query
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`</ApiUses>
+<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3557,7 +3559,7 @@ Update Query
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`</ApiUses>
+<ApiUses>`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 

@@ -678,6 +678,10 @@ progress. Incremented on every fire entry, decremented on exit.
 Used to keep nested fire() calls from clobbering the outer
 caller's `$this->responses` accumulator.
 </ApiItem>
+<ApiItem kind="property" visibility="protected" name="fireHooks" type="bool|null" default="null">
+True when the object is a subclass of this class: fire() then calls
+the beforeFire() and afterFire() hooks. Null until the first fire.
+</ApiItem>
 <ApiItem kind="property" visibility="protected" name="halted" type="bool" default="false">
 Manager-level kill switch. When true, every fire()/fireAll()/
 fireQueue() call returns immediately (null or empty array) without

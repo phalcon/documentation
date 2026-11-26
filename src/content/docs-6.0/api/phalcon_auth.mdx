@@ -31,7 +31,7 @@ dispatches in the same request until it is replaced.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager`</ApiUses>
+<ApiUses>`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1453,7 +1453,7 @@ Config requires non-empty value
 <ApiList>
 <ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
 </ApiItem>
-<ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-assert" visibility="public" name="assert" returnType="void" params={[{"type":"string|null","name":"value","default":null},{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
+<ApiItem href="#authexceptionsconfigrequiresnonemptyvalue-assert" visibility="public" name="assert" returnType="void" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"configName","default":null},{"type":"string","name":"configKey","default":null},{"type":"string","name":"suffix","default":"\"\""}]}>
 Throws when the value is an empty string. A null value is treated as
 </ApiItem>
 </ApiList>
@@ -1476,7 +1476,7 @@ public function __construct(
 
 ```php
 public static function assert(
-    string|null $value,
+    mixed $value,
     string $configName,
     string $configKey,
     string $suffix = ""
@@ -2088,7 +2088,7 @@ Returns the guard configuration object.
 </ApiItem>
 <ApiItem href="#authguardabstractguard-setuser" visibility="public" name="setUser" returnType="static" params={[{"type":"AuthUser","name":"user","default":null}]}>
 </ApiItem>
-<ApiItem href="#authguardabstractguard-hasvalidcredentials" visibility="protected" name="hasValidCredentials" returnType="bool" params={[{"type":"AuthUser|null","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
+<ApiItem href="#authguardabstractguard-hasvalidcredentials" visibility="protected" name="hasValidCredentials" returnType="bool" params={[{"type":"mixed","name":"user","default":null},{"type":"array","name":"credentials","default":null}]}>
 user should be ?AuthUser
 </ApiItem>
 </ApiList>
@@ -2181,7 +2181,7 @@ public function setUser( AuthUser $user ): static;
 
 ```php
 protected function hasValidCredentials(
-    AuthUser|null $user,
+    mixed $user,
     array $credentials
 ): bool;
 ```
@@ -2427,7 +2427,7 @@ protected function getServices(): array;
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#authguardsession-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"RequestInterface","name":"request","default":null},{"type":"CookiesInterface","name":"cookies","default":null},{"type":"SessionManagerInterface","name":"session","default":null},{"type":"SessionGuardConfig","name":"config","default":null},{"type":"ClockInterface|null","name":"clock","default":"null"}]}>
+<ApiItem href="#authguardsession-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Adapter","name":"adapter","default":null},{"type":"RequestInterface","name":"request","default":null},{"type":"CookiesInterface","name":"cookies","default":null},{"type":"SessionManagerInterface","name":"session","default":null},{"type":"SessionGuardConfig|null","name":"config","default":"null"},{"type":"ClockInterface|null","name":"clock","default":"null"}]}>
 </ApiItem>
 <ApiItem href="#authguardsession-attempt" visibility="public" name="attempt" returnType="bool" params={[{"type":"array","name":"credentials","default":"[]"},{"type":"bool","name":"remember","default":"false"}]}>
 </ApiItem>
@@ -2496,7 +2496,7 @@ public function __construct(
     RequestInterface $request,
     CookiesInterface $cookies,
     SessionManagerInterface $session,
-    SessionGuardConfig $config,
+    SessionGuardConfig|null $config = null,
     ClockInterface|null $clock = null
 );
 ```
@@ -2752,12 +2752,12 @@ Value object representing the contents of a remember-me cookie.
 
 </ApiTree>
 
-<ApiUses>`InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode`</ApiUses>
+<ApiUses>`InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode` · `TypeError`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#authguarduserremember-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array|string","name":"payload","default":null}]}>
+<ApiItem href="#authguarduserremember-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"payload","default":null}]}>
 Accepts either the raw JSON cookie value (string) or the already
 </ApiItem>
 <ApiItem href="#authguarduserremember-getid" visibility="public" name="getId" returnType="int|string|null" params={[]}>
@@ -2786,7 +2786,7 @@ Accepts either the raw JSON cookie value (string) or the already
 <h4 id="authguarduserremember-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( array|string $payload );
+public function __construct( mixed $payload );
 ```
 
 Accepts either the raw JSON cookie value (string) or the already
@@ -3070,7 +3070,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="accessFactory" type="AccessLocator" default="">
+<ApiItem kind="property" visibility="protected" name="accessFactory" type="AccessLocator|null" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="activeAccess" type="Access|null" default="null">
 </ApiItem>

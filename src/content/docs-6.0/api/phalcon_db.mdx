@@ -63,7 +63,7 @@ try {
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Settings` · `Stringable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`</ApiUses>
 
 ### Method Summary
 
@@ -224,8 +224,11 @@ Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
 <ApiItem href="#dbadapterabstractadapter-rollbacksavepoint" visibility="public" name="rollbackSavepoint" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Rollbacks given savepoint
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-setdialect" visibility="public" name="setDialect" returnType="void" params={[{"type":"DialectInterface","name":"dialect","default":null}]}>
+<ApiItem href="#dbadapterabstractadapter-setdialect" visibility="public" name="setDialect" returnType="" params={[{"type":"DialectInterface","name":"dialect","default":null}]}>
 Sets the dialect used to produce the SQL
+</ApiItem>
+<ApiItem href="#dbadapterabstractadapter-seteventsmanager" visibility="public" name="setEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+Sets the events manager
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-setnestedtransactionswithsavepoints" visibility="public" name="setNestedTransactionsWithSavepoints" returnType="AdapterInterface" params={[{"type":"bool","name":"nestedTransactionsWithSavepoints","default":null}]}>
 Set if nested transactions should use savepoints
@@ -308,7 +311,7 @@ Type of database system the adapter is used for
 
 ### Methods
 
-<ApiGroup label="Public" count="64" />
+<ApiGroup label="Public" count="65" />
 
 <h4 id="dbadapterabstractadapter-__construct"><code>__construct()</code></h4>
 
@@ -668,6 +671,9 @@ public function fetchColumn(
 ```
 
 Returns the n'th field of first row in a SQL query result
+
+Returns false if the query returns no rows. The type of the value
+comes from the database driver.
 
 ```php
 // Getting count of invoices
@@ -1042,10 +1048,18 @@ Rollbacks given savepoint
 <h4 id="dbadapterabstractadapter-setdialect"><code>setDialect()</code></h4>
 
 ```php
-public function setDialect( DialectInterface $dialect ): void;
+public function setDialect( DialectInterface $dialect );
 ```
 
 Sets the dialect used to produce the SQL
+
+<h4 id="dbadapterabstractadapter-seteventsmanager"><code>setEventsManager()</code></h4>
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+
+Sets the events manager
 
 <h4 id="dbadapterabstractadapter-setnestedtransactionswithsavepoints"><code>setNestedTransactionsWithSavepoints()</code></h4>
 
@@ -1277,7 +1291,7 @@ Phalcon\Db\Adapter\AdapterInterface
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1378,7 +1392,7 @@ $connection = new Mysql($config);
 
 </ApiTree>
 
-<ApiUses>`PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\Exception` · `Phalcon\Support\Settings` · `Throwable`</ApiUses>
+<ApiUses>`PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\Exception` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable`</ApiUses>
 
 ### Method Summary
 
@@ -1401,7 +1415,7 @@ Commits the active transaction in the connection
 <ApiItem href="#dbadapterpdoabstractpdo-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
 This method is automatically called in \Phalcon\Db\Adapter\Pdo
 </ApiItem>
-<ApiItem href="#dbadapterpdoabstractpdo-convertboundparams" visibility="public" name="convertBoundParams" returnType="array" params={[{"type":"string","name":"sql","default":null},{"type":"array","name":"parameters","default":"[]"}]}>
+<ApiItem href="#dbadapterpdoabstractpdo-convertboundparams" visibility="public" name="convertBoundParams" returnType="array" params={[{"type":"string","name":"sql","default":null},{"type":"array","name":"params","default":"[]"}]}>
 Converts bound parameters such as :name: or ?1 into PDO bind params ?
 </ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-ensureconnection" visibility="public" name="ensureConnection" returnType="void" params={[]}>
@@ -1449,6 +1463,9 @@ Rollbacks the active transaction in the connection
 <ApiItem href="#dbadapterpdoabstractpdo-setautoreconnect" visibility="public" name="setAutoReconnect" returnType="static" params={[{"type":"bool","name":"autoReconnect","default":null}]}>
 Enables or disables transparent auto-reconnect on a lost connection.
 </ApiItem>
+<ApiItem href="#dbadapterpdoabstractpdo-buildreferences" visibility="protected" name="buildReferences" returnType="array" params={[{"type":"array","name":"records","default":null}]}>
+Builds the Phalcon\Db\Reference objects from the rows of the
+</ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-getdsndefaults" visibility="protected" name="getDsnDefaults" returnType="array" params={[]}>
 Returns PDO adapter DSN defaults as a key-value map.
 </ApiItem>
@@ -1457,6 +1474,13 @@ Recognizes whether an exception represents a lost ("gone away")
 </ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-preparerealsql" visibility="protected" name="prepareRealSql" returnType="void" params={[{"type":"string","name":"statement","default":null},{"type":"array","name":"parameters","default":null}]}>
 Constructs the SQL statement (with parameters)
+</ApiItem>
+</ApiList>
+
+### Constants
+
+<ApiList>
+<ApiItem kind="constant" name="BIND_PATTERN" type="string" default="&quot;/\\?([0-9]+)|:([a-zA-Z0-9_]+):/&quot;">
 </ApiItem>
 </ApiList>
 
@@ -1563,7 +1587,7 @@ $connection->connect();
 ```php
 public function convertBoundParams(
     string $sql,
-    array $parameters = []
+    array $params = []
 ): array;
 ```
 
@@ -1816,7 +1840,16 @@ public function setAutoReconnect( bool $autoReconnect ): static;
 
 Enables or disables transparent auto-reconnect on a lost connection.
 
-<ApiGroup label="Protected" count="3" />
+<ApiGroup label="Protected" count="4" />
+
+<h4 id="dbadapterpdoabstractpdo-buildreferences"><code>buildReferences()</code></h4>
+
+```php
+protected function buildReferences( array $records ): array;
+```
+
+Builds the Phalcon\Db\Reference objects from the rows of the
+describeReferences() SQL statement (MySQL and PostgreSQL)
 
 <h4 id="dbadapterpdoabstractpdo-getdsndefaults"><code>getDsnDefaults()</code></h4>
 
@@ -1879,16 +1912,13 @@ $connection = new Mysql($config);
 
 </ApiTree>
 
-<ApiUses>`PDO` · `PDOException` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Mysql` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`</ApiUses>
+<ApiUses>`PDO` · `PDOException` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Mysql` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#dbadapterpdomysql-addforeignkey" visibility="public" name="addForeignKey" returnType="bool" params={[{"type":"string","name":"tableName","default":null},{"type":"string","name":"schemaName","default":null},{"type":"ReferenceInterface","name":"reference","default":null}]}>
 Adds a foreign key to a table
-</ApiItem>
-<ApiItem href="#dbadapterpdomysql-connect" visibility="public" name="connect" returnType="void" params={[{"type":"array","name":"descriptor","default":"[]"}]}>
-Constructor for Phalcon\Db\Adapter\Pdo
 </ApiItem>
 <ApiItem href="#dbadapterpdomysql-describecolumns" visibility="public" name="describeColumns" returnType="array" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"}]}>
 Returns an array of Phalcon\Db\Column objects describing a table
@@ -1918,7 +1948,7 @@ Recognizes a MySQL "server has gone away" / "Lost connection" failure
 
 ### Methods
 
-<ApiGroup label="Public" count="5" />
+<ApiGroup label="Public" count="4" />
 
 <h4 id="dbadapterpdomysql-addforeignkey"><code>addForeignKey()</code></h4>
 
@@ -1931,14 +1961,6 @@ public function addForeignKey(
 ```
 
 Adds a foreign key to a table
-
-<h4 id="dbadapterpdomysql-connect"><code>connect()</code></h4>
-
-```php
-public function connect( array $descriptor = [] ): void;
-```
-
-Constructor for Phalcon\Db\Adapter\Pdo
 
 <h4 id="dbadapterpdomysql-describecolumns"><code>describeColumns()</code></h4>
 
@@ -2040,7 +2062,7 @@ $connection = new Postgresql($config);
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Throwable`</ApiUses>
 
 ### Method Summary
 
@@ -2255,7 +2277,7 @@ $connection = new Sqlite(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Sqlite` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Sqlite` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2564,7 +2586,7 @@ $connection->addColumn("co_invoices", null, $column);
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2816,6 +2838,9 @@ Varchar abstract data type
 <ApiItem kind="property" visibility="protected" name="after" type="string|null" default="null">
 Column Position
 </ApiItem>
+<ApiItem kind="property" visibility="protected" name="autoIncrement" type="bool" default="false">
+Column is autoIncrement?
+</ApiItem>
 <ApiItem kind="property" visibility="protected" name="bindType" type="int" default="2">
 Bind Type
 </ApiItem>
@@ -2824,6 +2849,9 @@ Column's comment
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="defaultValue" type="mixed|null" default="null">
 Default column value
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="first" type="bool" default="false">
+Position is first
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="generated" type="string|null" default="null">
 Generation expression for `GENERATED ALWAYS AS (...)`. Null when the
@@ -2834,33 +2862,24 @@ Whether a generated column is `STORED` (true) or `VIRTUAL` (false).
 PostgreSQL only supports `STORED` and emits it regardless of this
 flag.
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="isArray" type="bool" default="false">
-Whether the column is an array of its base type (PostgreSQL).
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isAutoIncrement" type="bool" default="false">
-Column is autoIncrement?
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isFirst" type="bool" default="false">
-Position is first
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isInvisible" type="bool" default="false">
+<ApiItem kind="property" visibility="protected" name="invisible" type="bool" default="false">
 Whether the column is declared `INVISIBLE` (MySQL 8.0.23+).
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="isNotNull" type="bool" default="true">
-Column not nullable?
-
-Default SQL definition is NOT NULL.
+<ApiItem kind="property" visibility="protected" name="isArray" type="bool" default="false">
+Whether the column is an array of its base type (PostgreSQL).
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="isNumeric" type="bool" default="false">
 The column have some numeric type?
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="isPrimary" type="bool" default="false">
-Column is part of the primary key?
-</ApiItem>
-<ApiItem kind="property" visibility="protected" name="isUnsigned" type="bool" default="false">
-Integer column unsigned?
-</ApiItem>
 <ApiItem kind="property" visibility="protected" name="name" type="string" default="">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="notNull" type="bool" default="true">
+Column not nullable?
+
+Default SQL definition is NOT NULL.
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="primary" type="bool" default="false">
+Column is part of the primary key?
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="scale" type="int" default="0">
 Integer column number scale
@@ -2876,6 +2895,9 @@ Column data type reference
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="typeValues" type="array&lt;array-key, string&gt;|int|string" default="[]">
 Column data type values
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="unsigned" type="bool" default="false">
+Integer column unsigned?
 </ApiItem>
 </ApiList>
 
@@ -3108,7 +3130,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`</ApiUses>
 
 ### Method Summary
 
@@ -3122,28 +3144,28 @@ Generate SQL to create a new savepoint
 <ApiItem href="#dbdialect-dropmaterializedview" visibility="public" name="dropMaterializedView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"ifExists","default":"true"}]}>
 Generates SQL to drop a materialized view (PostgreSQL only).
 </ApiItem>
-<ApiItem href="#dbdialect-escape" visibility="public" name="escape" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-escape" visibility="public" name="escape" returnType="string" params={[{"type":"string","name":"str","default":null},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Escape identifiers
 </ApiItem>
-<ApiItem href="#dbdialect-escapeschema" visibility="public" name="escapeSchema" returnType="string" params={[{"type":"string","name":"input","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-escapeschema" visibility="public" name="escapeSchema" returnType="string" params={[{"type":"string","name":"str","default":null},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Escape Schema
 </ApiItem>
 <ApiItem href="#dbdialect-forupdate" visibility="public" name="forUpdate" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"string","name":"modifier","default":"\"\""}]}>
 Returns a SQL modified with a FOR UPDATE clause. The optional
 </ApiItem>
-<ApiItem href="#dbdialect-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getcolumnlist" visibility="public" name="getColumnList" returnType="string" params={[{"type":"array","name":"columnList","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Gets a list of columns with escaped identifiers
 </ApiItem>
 <ApiItem href="#dbdialect-getcustomfunctions" visibility="public" name="getCustomFunctions" returnType="array" params={[]}>
 Returns registered functions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlcolumn" visibility="public" name="getSqlColumn" returnType="string" params={[{"type":"array|string","name":"column","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlcolumn" visibility="public" name="getSqlColumn" returnType="string" params={[{"type":"mixed","name":"column","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve Column expressions
 </ApiItem>
 <ApiItem href="#dbdialect-getsqlexpression" visibility="public" name="getSqlExpression" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Transforms an intermediate representation for an expression into a
 </ApiItem>
-<ApiItem href="#dbdialect-getsqltable" visibility="public" name="getSqlTable" returnType="string" params={[{"type":"array|string","name":"tableName","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-getsqltable" visibility="public" name="getSqlTable" returnType="string" params={[{"type":"mixed","name":"table","default":null},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Transform an intermediate representation of a schema/table into a
 </ApiItem>
 <ApiItem href="#dbdialect-limit" visibility="public" name="limit" returnType="string" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"number","default":null}]}>
@@ -3155,8 +3177,8 @@ Appends an `ON CONFLICT (col, ...) DO UPDATE SET col = excluded.col`
 <ApiItem href="#dbdialect-refreshmaterializedview" visibility="public" name="refreshMaterializedView" returnType="string" params={[{"type":"string","name":"viewName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"bool","name":"concurrent","default":"false"}]}>
 Generates SQL to refresh a materialized view (PostgreSQL only).
 </ApiItem>
-<ApiItem href="#dbdialect-registercustomfunction" visibility="public" name="registerCustomFunction" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"customFunction","default":null}]}>
-Registers custom SQL functions
+<ApiItem href="#dbdialect-registercustomfunction" visibility="public" name="registerCustomFunction" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"customFunction","default":null}]}>
+Registers custom SQL functions. A value that cannot be called fails
 </ApiItem>
 <ApiItem href="#dbdialect-releasesavepoint" visibility="public" name="releaseSavepoint" returnType="string" params={[{"type":"string","name":"name","default":null}]}>
 Generate SQL to release a savepoint
@@ -3215,67 +3237,67 @@ Builds the per-index parenthesized column list, honoring per-column
 <ApiItem href="#dbdialect-getlimitvalue" visibility="protected" name="getLimitValue" returnType="string" params={[{"type":"mixed","name":"value","default":null}]}>
 Renders a LIMIT/OFFSET value: a bound placeholder passes through, any
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionall" visibility="protected" name="getSqlExpressionAll" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-getsqlexpressionall" visibility="protected" name="getSqlExpressionAll" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Resolve *
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionbinaryoperations" visibility="protected" name="getSqlExpressionBinaryOperations" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionbinaryoperations" visibility="protected" name="getSqlExpressionBinaryOperations" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve binary operations expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressioncase" visibility="protected" name="getSqlExpressionCase" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressioncase" visibility="protected" name="getSqlExpressionCase" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve CASE expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressioncastvalue" visibility="protected" name="getSqlExpressionCastValue" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressioncastvalue" visibility="protected" name="getSqlExpressionCastValue" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve CAST of values
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionconvertvalue" visibility="protected" name="getSqlExpressionConvertValue" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionconvertvalue" visibility="protected" name="getSqlExpressionConvertValue" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve CONVERT of values encodings
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionfrom" visibility="protected" name="getSqlExpressionFrom" returnType="string" params={[{"type":"array|string","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-getsqlexpressionfrom" visibility="protected" name="getSqlExpressionFrom" returnType="string" params={[{"type":"mixed","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Resolve a FROM clause
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionfunctioncall" visibility="protected" name="getSqlExpressionFunctionCall" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionfunctioncall" visibility="protected" name="getSqlExpressionFunctionCall" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve function calls
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressiongroupby" visibility="protected" name="getSqlExpressionGroupBy" returnType="string" params={[{"type":"array|string","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressiongroupby" visibility="protected" name="getSqlExpressionGroupBy" returnType="string" params={[{"type":"mixed","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve a GROUP BY clause
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionhaving" visibility="protected" name="getSqlExpressionHaving" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionhaving" visibility="protected" name="getSqlExpressionHaving" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve a HAVING clause
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionjoins" visibility="protected" name="getSqlExpressionJoins" returnType="string" params={[{"type":"array|string","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionjoins" visibility="protected" name="getSqlExpressionJoins" returnType="string" params={[{"type":"mixed","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve a JOINs clause
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionlimit" visibility="protected" name="getSqlExpressionLimit" returnType="string" params={[{"type":"array|string","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionlimit" visibility="protected" name="getSqlExpressionLimit" returnType="string" params={[{"type":"mixed","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve a LIMIT clause
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionlist" visibility="protected" name="getSqlExpressionList" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionlist" visibility="protected" name="getSqlExpressionList" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve Lists
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionobject" visibility="protected" name="getSqlExpressionObject" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionobject" visibility="protected" name="getSqlExpressionObject" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve object expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionorderby" visibility="protected" name="getSqlExpressionOrderBy" returnType="string" params={[{"type":"array|string","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionorderby" visibility="protected" name="getSqlExpressionOrderBy" returnType="string" params={[{"type":"mixed","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve an ORDER BY clause
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionqualified" visibility="protected" name="getSqlExpressionQualified" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-getsqlexpressionqualified" visibility="protected" name="getSqlExpressionQualified" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Resolve qualified expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionscalar" visibility="protected" name="getSqlExpressionScalar" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionscalar" visibility="protected" name="getSqlExpressionScalar" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve Column expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionunaryoperations" visibility="protected" name="getSqlExpressionUnaryOperations" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionunaryoperations" visibility="protected" name="getSqlExpressionUnaryOperations" returnType="string" params={[{"type":"array","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve unary operations expressions
 </ApiItem>
-<ApiItem href="#dbdialect-getsqlexpressionwhere" visibility="protected" name="getSqlExpressionWhere" returnType="string" params={[{"type":"array|string","name":"expression","default":null},{"type":"string","name":"escapeChar","default":"\"\""},{"type":"array","name":"bindCounts","default":"[]"}]}>
+<ApiItem href="#dbdialect-getsqlexpressionwhere" visibility="protected" name="getSqlExpressionWhere" returnType="string" params={[{"type":"mixed","name":"expression","default":null},{"type":"string|null","name":"escapeChar","default":"null"},{"type":"array","name":"bindCounts","default":"[]"}]}>
 Resolve a WHERE clause
 </ApiItem>
-<ApiItem href="#dbdialect-preparecolumnalias" visibility="protected" name="prepareColumnAlias" returnType="string" params={[{"type":"string","name":"qualified","default":null},{"type":"string","name":"alias","default":"\"\""},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-preparecolumnalias" visibility="protected" name="prepareColumnAlias" returnType="string" params={[{"type":"string","name":"qualified","default":null},{"type":"string|null","name":"alias","default":"null"},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Prepares column for this RDBMS
 </ApiItem>
-<ApiItem href="#dbdialect-preparequalified" visibility="protected" name="prepareQualified" returnType="string" params={[{"type":"string","name":"column","default":null},{"type":"string","name":"domain","default":"\"\""},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-preparequalified" visibility="protected" name="prepareQualified" returnType="string" params={[{"type":"string","name":"column","default":null},{"type":"string|null","name":"domain","default":"null"},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Prepares qualified for this RDBMS
 </ApiItem>
-<ApiItem href="#dbdialect-preparetable" visibility="protected" name="prepareTable" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"string","name":"alias","default":"\"\""},{"type":"string","name":"escapeChar","default":"\"\""}]}>
+<ApiItem href="#dbdialect-preparetable" visibility="protected" name="prepareTable" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"},{"type":"string|null","name":"alias","default":"null"},{"type":"string|null","name":"escapeChar","default":"null"}]}>
 Prepares table for this RDBMS
 </ApiItem>
 </ApiList>
@@ -3285,7 +3307,7 @@ Prepares table for this RDBMS
 <ApiList>
 <ApiItem kind="property" visibility="protected" name="customFunctions" type="db_custom_functions" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="">
+<ApiItem kind="property" visibility="protected" name="escapeChar" type="string|null" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="guardedOperators" type="list&lt;string&gt;" default="[...]">
 Dialect-specific operators that a concrete dialect must opt into via
@@ -3338,8 +3360,8 @@ Generates SQL to drop a materialized view (PostgreSQL only).
 
 ```php
 final public function escape(
-    string $input,
-    string $escapeChar = ""
+    string $str,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3349,8 +3371,8 @@ Escape identifiers
 
 ```php
 final public function escapeSchema(
-    string $input,
-    string $escapeChar = ""
+    string $str,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3384,7 +3406,7 @@ echo $sql; // SELECT * FROM co_invoices FOR UPDATE NOWAIT
 ```php
 final public function getColumnList(
     array $columnList,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3412,8 +3434,8 @@ Returns registered functions
 
 ```php
 final public function getSqlColumn(
-    array|string $column,
-    string $escapeChar = "",
+    mixed $column,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3437,8 +3459,8 @@ database system valid expression
 
 ```php
 final public function getSqlTable(
-    array|string $tableName,
-    string $escapeChar = ""
+    mixed $table,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3502,11 +3524,12 @@ Generates SQL to refresh a materialized view (PostgreSQL only).
 ```php
 public function registerCustomFunction(
     string $name,
-    callable $customFunction
+    mixed $customFunction
 ): static;
 ```
 
-Registers custom SQL functions
+Registers custom SQL functions. A value that cannot be called fails
+when the SQL is made, the same as cphalcon.
 
 <h4 id="dbdialect-releasesavepoint"><code>releaseSavepoint()</code></h4>
 
@@ -3699,7 +3722,7 @@ other value is coerced to an integer to prevent SQL injection.
 ```php
 final protected function getSqlExpressionAll(
     array $expression,
-    string $escapeChar = ""
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3710,7 +3733,7 @@ Resolve *
 ```php
 final protected function getSqlExpressionBinaryOperations(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3722,7 +3745,7 @@ Resolve binary operations expressions
 ```php
 final protected function getSqlExpressionCase(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3734,7 +3757,7 @@ Resolve CASE expressions
 ```php
 final protected function getSqlExpressionCastValue(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3746,7 +3769,7 @@ Resolve CAST of values
 ```php
 final protected function getSqlExpressionConvertValue(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3757,8 +3780,8 @@ Resolve CONVERT of values encodings
 
 ```php
 final protected function getSqlExpressionFrom(
-    array|string $expression,
-    string $escapeChar = ""
+    mixed $expression,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3769,7 +3792,7 @@ Resolve a FROM clause
 ```php
 final protected function getSqlExpressionFunctionCall(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3780,8 +3803,8 @@ Resolve function calls
 
 ```php
 final protected function getSqlExpressionGroupBy(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3793,7 +3816,7 @@ Resolve a GROUP BY clause
 ```php
 final protected function getSqlExpressionHaving(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3804,8 +3827,8 @@ Resolve a HAVING clause
 
 ```php
 final protected function getSqlExpressionJoins(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3818,8 +3841,8 @@ Resolve a JOINs clause
 
 ```php
 final protected function getSqlExpressionLimit(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3831,7 +3854,7 @@ Resolve a LIMIT clause
 ```php
 final protected function getSqlExpressionList(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3843,7 +3866,7 @@ Resolve Lists
 ```php
 final protected function getSqlExpressionObject(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3854,8 +3877,8 @@ Resolve object expressions
 
 ```php
 final protected function getSqlExpressionOrderBy(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3867,7 +3890,7 @@ Resolve an ORDER BY clause
 ```php
 final protected function getSqlExpressionQualified(
     array $expression,
-    string $escapeChar = ""
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3878,7 +3901,7 @@ Resolve qualified expressions
 ```php
 final protected function getSqlExpressionScalar(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3890,7 +3913,7 @@ Resolve Column expressions
 ```php
 final protected function getSqlExpressionUnaryOperations(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3901,8 +3924,8 @@ Resolve unary operations expressions
 
 ```php
 final protected function getSqlExpressionWhere(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3914,8 +3937,8 @@ Resolve a WHERE clause
 ```php
 protected function prepareColumnAlias(
     string $qualified,
-    string $alias = "",
-    string $escapeChar = ""
+    string|null $alias = null,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3926,8 +3949,8 @@ Prepares column for this RDBMS
 ```php
 protected function prepareQualified(
     string $column,
-    string $domain = "",
-    string $escapeChar = ""
+    string|null $domain = null,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3937,10 +3960,10 @@ Prepares qualified for this RDBMS
 
 ```php
 protected function prepareTable(
-    string $tableName,
-    string|null $schemaName = null,
-    string $alias = "",
-    string $escapeChar = ""
+    string $table,
+    string|null $schema = null,
+    string|null $alias = null,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3978,7 +4001,7 @@ Generates database specific SQL for the MySQL RDBMS
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4078,7 +4101,7 @@ Escape a string literal for a single quoted SQL string. MySQL treats the
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="&quot;`&quot;">
+<ApiItem kind="property" visibility="protected" name="escapeChar" type="string|null" default="&quot;`&quot;">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[...]">
 </ApiItem>
@@ -4462,7 +4485,7 @@ Generates database specific SQL for the PostgreSQL RDBMS
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4572,7 +4595,7 @@ Generates SQL checking for the existence of a schema.view
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="&quot;\&quot;&quot;">
+<ApiItem kind="property" visibility="protected" name="escapeChar" type="string|null" default="&quot;\&quot;&quot;">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[...]">
 </ApiItem>
@@ -4986,7 +5009,7 @@ Generates database specific SQL for the SQLite RDBMS
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`</ApiUses>
+<ApiUses>`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5051,7 +5074,7 @@ Returns a SQL modified with a FOR UPDATE clause. For SQLite, it returns
 <ApiItem href="#dbdialectsqlite-getcolumndefinition" visibility="public" name="getColumnDefinition" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Gets the column name in SQLite
 </ApiItem>
-<ApiItem href="#dbdialectsqlite-listindexessql" visibility="public" name="listIndexesSql" returnType="string" params={[{"type":"string","name":"tableName","default":null},{"type":"string|null","name":"schemaName","default":"null"},{"type":"string|null","name":"keyName","default":"null"}]}>
+<ApiItem href="#dbdialectsqlite-listindexessql" visibility="public" name="listIndexesSql" returnType="string" params={[{"type":"string","name":"table","default":null},{"type":"string|null","name":"schema","default":"null"},{"type":"string|null","name":"keyName","default":"null"}]}>
 Generates the SQL to get query list of indexes
 </ApiItem>
 <ApiItem href="#dbdialectsqlite-listtables" visibility="public" name="listTables" returnType="string" params={[{"type":"string|null","name":"schemaName","default":"null"}]}>
@@ -5092,7 +5115,7 @@ Generates SQL checking for the existence of a schema.view
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="escapeChar" type="string" default="&quot;\&quot;&quot;">
+<ApiItem kind="property" visibility="protected" name="escapeChar" type="string|null" default="&quot;\&quot;&quot;">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="supportedOperators" type="list&lt;string&gt;" default="[...]">
 </ApiItem>
@@ -5340,8 +5363,8 @@ Gets the column name in SQLite
 
 ```php
 public function listIndexesSql(
-    string $tableName,
-    string|null $schemaName = null,
+    string $table,
+    string|null $schema = null,
     string|null $keyName = null
 ): string;
 ```
@@ -8788,10 +8811,10 @@ Return the SQL variables related to the profile
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="finalTime" type="float" default="">
+<ApiItem kind="property" visibility="protected" name="finalTime" type="float|null" default="null">
 Timestamp when the profile ended
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="initialTime" type="float" default="">
+<ApiItem kind="property" visibility="protected" name="initialTime" type="float|null" default="null">
 Timestamp when the profile started
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="sqlBindTypes" type="db_bind_types" default="">
@@ -9005,7 +9028,7 @@ $reference = new \Phalcon\Db\Reference(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -9206,12 +9229,12 @@ while ($invoice = $result->fetchArray()) {
 
 </ApiTree>
 
-<ApiUses>`PDO` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`</ApiUses>
+<ApiUses>`PDO` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#dbresultpdoresult-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterInterface","name":"connection","default":null},{"type":"PDOStatement","name":"pdoStatement","default":null},{"type":"string","name":"sqlStatement","default":"\"\""},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
+<ApiItem href="#dbresultpdoresult-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterInterface","name":"connection","default":null},{"type":"PDOStatement","name":"result","default":null},{"type":"mixed","name":"sqlStatement","default":"null"},{"type":"mixed","name":"bindParams","default":"null"},{"type":"mixed","name":"bindTypes","default":"null"}]}>
 Phalcon\Db\Result\Pdo constructor
 </ApiItem>
 <ApiItem href="#dbresultpdoresult-dataseek" visibility="public" name="dataSeek" returnType="void" params={[{"type":"int","name":"number","default":null}]}>
@@ -9223,7 +9246,7 @@ Allows to execute the statement again. Some database systems don't
 <ApiItem href="#dbresultpdoresult-fetch" visibility="public" name="fetch" returnType="mixed" params={[{"type":"int|null","name":"fetchStyle","default":"null"},{"type":"int","name":"cursorOrientation","default":"Enum::FETCH_ORI_NEXT"},{"type":"int","name":"cursorOffset","default":"0"}]}>
 Fetches an array/object of strings that corresponds to the fetched row,
 </ApiItem>
-<ApiItem href="#dbresultpdoresult-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"int","name":"mode","default":"Enum::FETCH_DEFAULT"},{"type":"mixed","name":"fetchArgument","default":"Enum::FETCH_ORI_NEXT"},{"type":"array|null","name":"constructorArgs","default":"null"}]}>
+<ApiItem href="#dbresultpdoresult-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"int","name":"mode","default":"Enum::FETCH_DEFAULT"},{"type":"mixed","name":"fetchArgument","default":"Enum::FETCH_ORI_NEXT"},{"type":"mixed","name":"constructorArgs","default":"null"}]}>
 Returns an array of arrays containing all the records in the result
 </ApiItem>
 <ApiItem href="#dbresultpdoresult-fetcharray" visibility="public" name="fetchArray" returnType="mixed" params={[]}>
@@ -9235,7 +9258,7 @@ Gets the internal PDO result object
 <ApiItem href="#dbresultpdoresult-numrows" visibility="public" name="numRows" returnType="int" params={[]}>
 Gets number of rows returned by a resultset
 </ApiItem>
-<ApiItem href="#dbresultpdoresult-setfetchmode" visibility="public" name="setFetchMode" returnType="bool" params={[{"type":"int","name":"fetchMode","default":null},{"type":"object|string|null","name":"colNoOrClassNameOrObject","default":"null"},{"type":"mixed","name":"ctorargs","default":"null"}]}>
+<ApiItem href="#dbresultpdoresult-setfetchmode" visibility="public" name="setFetchMode" returnType="bool" params={[{"type":"int","name":"fetchMode","default":null},{"type":"mixed","name":"colNoOrClassNameOrObject","default":"null"},{"type":"mixed","name":"ctorargs","default":"null"}]}>
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 </ApiItem>
 </ApiList>
@@ -9243,9 +9266,9 @@ Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="bindParams" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="bindParams" type="mixed" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="bindTypes" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="bindTypes" type="mixed" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="connection" type="AdapterInterface" default="">
 </ApiItem>
@@ -9253,12 +9276,13 @@ Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 Active fetch mode
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="pdoStatement" type="PDOStatement" default="">
+Internal resultset
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="result" type="mixed" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="rowCount" type="int|null" default="null">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="sqlStatement" type="string" default="&quot;&quot;">
+<ApiItem kind="property" visibility="protected" name="sqlStatement" type="mixed" default="null">
 </ApiItem>
 </ApiList>
 
@@ -9271,10 +9295,10 @@ Active fetch mode
 ```php
 public function __construct(
     AdapterInterface $connection,
-    PDOStatement $pdoStatement,
-    string $sqlStatement = "",
-    array $bindParams = [],
-    array $bindTypes = []
+    PDOStatement $result,
+    mixed $sqlStatement = null,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 );
 ```
 
@@ -9343,7 +9367,7 @@ while ($invoice = $result->fetch()) {
 public function fetchAll(
     int $mode = Enum::FETCH_DEFAULT,
     mixed $fetchArgument = Enum::FETCH_ORI_NEXT,
-    array|null $constructorArgs = null
+    mixed $constructorArgs = null
 ): array;
 ```
 
@@ -9410,7 +9434,7 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 ```php
 public function setFetchMode(
     int $fetchMode,
-    object|string|null $colNoOrClassNameOrObject = null,
+    mixed $colNoOrClassNameOrObject = null,
     mixed $ctorargs = null
 ): bool;
 ```

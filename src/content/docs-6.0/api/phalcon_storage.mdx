@@ -100,7 +100,7 @@ Storage AbstractAdapter
 
 </ApiTree>
 
-<ApiUses>`DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`</ApiUses>
+<ApiUses>`DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`</ApiUses>
 
 ### Method Summary
 
@@ -912,7 +912,7 @@ Capabilities:
 
 </ApiTree>
 
-<ApiUses>`DateInterval` · `Exception` · `Memcached` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`</ApiUses>
+<ApiUses>`DateInterval` · `Exception` · `Memcached` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1300,7 +1300,7 @@ Capabilities:
 
 </ApiTree>
 
-<ApiUses>`DateInterval` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Redis` · `RedisException`</ApiUses>
+<ApiUses>`DateInterval` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\WeakTypesTrait` · `Redis` · `RedisException`</ApiUses>
 
 ### Method Summary
 
@@ -1507,7 +1507,7 @@ Capabilities (in addition to Redis):
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Redis` · `RedisCluster` · `Throwable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\WeakTypesTrait` · `Redis` · `RedisCluster` · `Throwable`</ApiUses>
 
 ### Method Summary
 
@@ -1636,7 +1636,7 @@ Capabilities:
 
 </ApiTree>
 
-<ApiUses>`FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`</ApiUses>
+<ApiUses>`FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`</ApiUses>
 
 ### Method Summary
 
@@ -1862,7 +1862,7 @@ Stores data in the adapter. If the TTL is `null` (default) or not defined
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="options" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="weakList" type="array&lt;string, WeakReference&lt;object&gt;&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="weakList" type="array&lt;array-key, WeakReference&lt;object&gt;&gt;" default="[]">
 </ApiItem>
 </ApiList>
 
@@ -2715,12 +2715,12 @@ Unserializes data
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#storageserializerphp-getallowedclasses" visibility="public" name="getAllowedClasses" returnType="array|bool" params={[]}>
+<ApiItem href="#storageserializerphp-getallowedclasses" visibility="public" name="getAllowedClasses" returnType="" params={[]}>
 </ApiItem>
 <ApiItem href="#storageserializerphp-serialize" visibility="public" name="serialize" returnType="mixed" params={[]}>
 Serializes data
 </ApiItem>
-<ApiItem href="#storageserializerphp-setallowedclasses" visibility="public" name="setAllowedClasses" returnType="static" params={[{"type":"array|bool","name":"allowedClasses","default":null}]}>
+<ApiItem href="#storageserializerphp-setallowedclasses" visibility="public" name="setAllowedClasses" returnType="static" params={[{"type":"mixed","name":"allowedClasses","default":null}]}>
 Restricts the classes that unserialize() may instantiate (see the
 </ApiItem>
 <ApiItem href="#storageserializerphp-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"mixed","name":"data","default":null}]}>
@@ -2745,7 +2745,7 @@ try to build another class are rejected on read.
 <h4 id="storageserializerphp-getallowedclasses"><code>getAllowedClasses()</code></h4>
 
 ```php
-public function getAllowedClasses(): array|bool;
+public function getAllowedClasses();
 ```
 
 <h4 id="storageserializerphp-serialize"><code>serialize()</code></h4>
@@ -2759,7 +2759,7 @@ Serializes data
 <h4 id="storageserializerphp-setallowedclasses"><code>setAllowedClasses()</code></h4>
 
 ```php
-public function setAllowedClasses( array|bool $allowedClasses ): static;
+public function setAllowedClasses( mixed $allowedClasses ): static;
 ```
 
 Restricts the classes that unserialize() may instantiate (see the

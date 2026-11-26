@@ -4337,8 +4337,8 @@ Returns an instance with the specified link included.
 <ApiItem href="#htmllinkabstractlinkprovider-dowithoutlink" visibility="protected" name="doWithoutLink" returnType="static" params={[{"type":"mixed","name":"link","default":null}]}>
 Returns an instance with the specified link removed.
 </ApiItem>
-<ApiItem href="#htmllinkabstractlinkprovider-getkey" visibility="protected" name="getKey" returnType="string" params={[{"type":"mixed","name":"link","default":null}]}>
-Returns the object hash key
+<ApiItem href="#htmllinkabstractlinkprovider-getkey" visibility="protected" name="getKey" returnType="int" params={[{"type":"mixed","name":"link","default":null}]}>
+Returns the object id key
 </ApiItem>
 </ApiList>
 
@@ -4417,10 +4417,10 @@ object already in the collection.
 <h4 id="htmllinkabstractlinkprovider-getkey"><code>getKey()</code></h4>
 
 ```php
-protected function getKey( mixed $link ): string;
+protected function getKey( mixed $link ): int;
 ```
 
-Returns the object hash key
+Returns the object id key
 
 
 ## Html\Link\EvolvableLink

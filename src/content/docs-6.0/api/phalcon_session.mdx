@@ -14,19 +14,22 @@ All classes are prefixed with `Phalcon`
 
 <ApiTree>
 
-- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionIdInterface`, `\SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
     - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`</ApiUses>
+<ApiUses>`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionIdInterface` · `SessionUpdateTimestampHandlerInterface`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#sessionadapterabstractadapter-close" visibility="public" name="close" returnType="bool" params={[]}>
 Close
+</ApiItem>
+<ApiItem href="#sessionadapterabstractadapter-create_sid" visibility="public" name="create_sid" returnType="string" params={[]}>
+Create a new session id
 </ApiItem>
 <ApiItem href="#sessionadapterabstractadapter-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
 Destroy
@@ -60,7 +63,7 @@ Write
 
 ### Methods
 
-<ApiGroup label="Public" count="8" />
+<ApiGroup label="Public" count="9" />
 
 <h4 id="sessionadapterabstractadapter-close"><code>close()</code></h4>
 
@@ -69,6 +72,14 @@ public function close(): bool;
 ```
 
 Close
+
+<h4 id="sessionadapterabstractadapter-create_sid"><code>create_sid()</code></h4>
+
+```php
+public function create_sid(): string;
+```
+
+Create a new session id
 
 <h4 id="sessionadapterabstractadapter-destroy"><code>destroy()</code></h4>
 
@@ -289,18 +300,21 @@ $session->setAdapter(new Noop());
 
 <ApiTree>
 
-- **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionIdInterface`, `\SessionUpdateTimestampHandlerInterface`
     - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
 </ApiTree>
 
-<ApiUses>`SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`</ApiUses>
+<ApiUses>`SessionHandlerInterface` · `SessionIdInterface` · `SessionUpdateTimestampHandlerInterface`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#sessionadapternoop-close" visibility="public" name="close" returnType="bool" params={[]}>
 Close
+</ApiItem>
+<ApiItem href="#sessionadapternoop-create_sid" visibility="public" name="create_sid" returnType="string" params={[]}>
+Create a new session id
 </ApiItem>
 <ApiItem href="#sessionadapternoop-destroy" visibility="public" name="destroy" returnType="bool" params={[{"type":"string","name":"id","default":null}]}>
 Destroy
@@ -327,7 +341,7 @@ Write
 
 ### Methods
 
-<ApiGroup label="Public" count="8" />
+<ApiGroup label="Public" count="9" />
 
 <h4 id="sessionadapternoop-close"><code>close()</code></h4>
 
@@ -336,6 +350,14 @@ public function close(): bool;
 ```
 
 Close
+
+<h4 id="sessionadapternoop-create_sid"><code>create_sid()</code></h4>
+
+```php
+public function create_sid(): string;
+```
+
+Create a new session id
 
 <h4 id="sessionadapternoop-destroy"><code>destroy()</code></h4>
 
@@ -558,7 +580,7 @@ $session->setAdapter($files);
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1137,7 +1159,7 @@ Session manager class
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`</ApiUses>
 
 ### Method Summary
 

@@ -34,7 +34,7 @@ Resolve to a closure on a get()
 <ApiItem href="#containercontainer-callablenew" visibility="public" name="callableNew" returnType="Closure" params={[{"type":"string","name":"name","default":null}]}>
 Resolve to a closure on a new()
 </ApiItem>
-<ApiItem href="#containercontainer-extend" visibility="public" name="extend" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"callableObject","default":null}]}>
+<ApiItem href="#containercontainer-extend" visibility="public" name="extend" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"callableObject","default":null}]}>
 Extends the definition
 </ApiItem>
 <ApiItem href="#containercontainer-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
@@ -194,11 +194,14 @@ Resolve to a closure on a new()
 ```php
 public function extend(
     string $name,
-    callable $callableObject
+    mixed $callableObject
 ): void;
 ```
 
 Extends the definition
+
+A value that cannot be called fails when the service is built, the
+same as cphalcon.
 
 <h4 id="containercontainer-get"><code>get()</code></h4>
 
@@ -795,14 +798,14 @@ Process the class string
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException`</ApiUses>
+<ApiUses>`Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Support\Traits\WeakTypesTrait` · `ReflectionClass` · `ReflectionException`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#containerdefinitionservicedefinition-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"serviceName","default":null},{"type":"string","name":"type","default":null},{"type":"mixed","name":"raw","default":"null"}]}>
 </ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-addextender" visibility="public" name="addExtender" returnType="static" params={[{"type":"callable","name":"extender","default":null}]}>
+<ApiItem href="#containerdefinitionservicedefinition-addextender" visibility="public" name="addExtender" returnType="static" params={[{"type":"mixed","name":"extender","default":null}]}>
 Adds an extender
 </ApiItem>
 <ApiItem href="#containerdefinitionservicedefinition-addtag" visibility="public" name="addTag" returnType="static" params={[{"type":"string","name":"tag","default":null}]}>
@@ -868,7 +871,7 @@ Set the container
 <ApiItem href="#containerdefinitionservicedefinition-setextenders" visibility="public" name="setExtenders" returnType="static" params={[{"type":"array","name":"extenders","default":null}]}>
 Set extenders
 </ApiItem>
-<ApiItem href="#containerdefinitionservicedefinition-setfactory" visibility="public" name="setFactory" returnType="static" params={[{"type":"callable","name":"factory","default":null}]}>
+<ApiItem href="#containerdefinitionservicedefinition-setfactory" visibility="public" name="setFactory" returnType="static" params={[{"type":"mixed","name":"factory","default":null}]}>
 Set a factory
 </ApiItem>
 <ApiItem href="#containerdefinitionservicedefinition-setiscacheable" visibility="public" name="setIsCacheable" returnType="static" params={[{"type":"bool","name":"isCacheable","default":null}]}>
@@ -887,7 +890,7 @@ Unset extenders
 Unset the factory
 </ApiItem>
 <ApiItem href="#containerdefinitionservicedefinition-checkfrozen" visibility="protected" name="checkFrozen" returnType="void" params={[]}>
-Check if frozen
+Check if frozen. The setters call this method only when the
 </ApiItem>
 </ApiList>
 
@@ -939,10 +942,13 @@ public function __construct(
 <h4 id="containerdefinitionservicedefinition-addextender"><code>addExtender()</code></h4>
 
 ```php
-public function addExtender( callable $extender ): static;
+public function addExtender( mixed $extender ): static;
 ```
 
 Adds an extender
+
+A value that cannot be called fails when the service is built, the
+same as cphalcon.
 
 <h4 id="containerdefinitionservicedefinition-addtag"><code>addTag()</code></h4>
 
@@ -1118,10 +1124,13 @@ Set extenders
 <h4 id="containerdefinitionservicedefinition-setfactory"><code>setFactory()</code></h4>
 
 ```php
-public function setFactory( callable $factory ): static;
+public function setFactory( mixed $factory ): static;
 ```
 
 Set a factory
+
+A value that cannot be called fails when the service is built, the
+same as cphalcon.
 
 <h4 id="containerdefinitionservicedefinition-setiscacheable"><code>setIsCacheable()</code></h4>
 
@@ -1171,7 +1180,8 @@ Unset the factory
 protected function checkFrozen(): void;
 ```
 
-Check if frozen
+Check if frozen. The setters call this method only when the
+definition is frozen: the method call costs more than the check.
 
 
 ## Container\Definition\ServiceLifetime
@@ -1774,7 +1784,7 @@ Provider for commonly used Web applications
 </ApiItem>
 <ApiItem href="#containerresolverlazyarrayvalues-getiterator" visibility="public" name="getIterator" returnType="ArrayIterator" params={[]}>
 </ApiItem>
-<ApiItem href="#containerresolverlazyarrayvalues-merge" visibility="public" name="merge" returnType="void" params={[{"type":"iterable","name":"values","default":null}]}>
+<ApiItem href="#containerresolverlazyarrayvalues-merge" visibility="public" name="merge" returnType="void" params={[{"type":"mixed","name":"values","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazyarrayvalues-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
 </ApiItem>
@@ -1825,7 +1835,7 @@ public function getIterator(): ArrayIterator;
 <h4 id="containerresolverlazyarrayvalues-merge"><code>merge()</code></h4>
 
 ```php
-public function merge( iterable $values ): void;
+public function merge( mixed $values ): void;
 ```
 
 <h4 id="containerresolverlazyarrayvalues-offsetexists"><code>offsetExists()</code></h4>
@@ -1896,6 +1906,8 @@ protected function resolveValues(
 
 </ApiTree>
 
+<ApiUses>`Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
+
 ### Method Summary
 
 <ApiList>
@@ -1949,7 +1961,7 @@ Resolve the callable
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazycallableget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+<ApiItem href="#containerresolverlazycallableget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"id","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazycallableget-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve to a closure on a get()
@@ -1959,7 +1971,7 @@ Resolve to a closure on a get()
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="mixed" default="">
 </ApiItem>
 </ApiList>
 
@@ -1970,7 +1982,7 @@ Resolve to a closure on a get()
 <h4 id="containerresolverlazycallableget-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazycallableget-resolve"><code>resolve()</code></h4>
@@ -1999,7 +2011,7 @@ Resolve to a closure on a get()
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazycallablenew-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+<ApiItem href="#containerresolverlazycallablenew-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"id","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazycallablenew-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve to a closure on a new()
@@ -2009,7 +2021,7 @@ Resolve to a closure on a new()
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="mixed" default="">
 </ApiItem>
 </ApiList>
 
@@ -2020,7 +2032,7 @@ Resolve to a closure on a new()
 <h4 id="containerresolverlazycallablenew-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazycallablenew-resolve"><code>resolve()</code></h4>
@@ -2082,7 +2094,7 @@ Resolve the getEnv() from keys as a comma separated list
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Container\Exceptions\EnvNotDefined`</ApiUses>
+<ApiUses>`Phalcon\Container\Exceptions\EnvNotDefined` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2209,7 +2221,7 @@ Resolve an environment variable, returning the default if not defined
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2269,7 +2281,7 @@ Resolve a function
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazyget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+<ApiItem href="#containerresolverlazyget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"id","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazyget-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve a shared instance
@@ -2279,7 +2291,7 @@ Resolve a shared instance
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="mixed" default="">
 </ApiItem>
 </ApiList>
 
@@ -2290,7 +2302,7 @@ Resolve a shared instance
 <h4 id="containerresolverlazyget-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazyget-resolve"><code>resolve()</code></h4>
@@ -2314,12 +2326,12 @@ Resolve a shared instance
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazygetcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+<ApiItem href="#containerresolverlazygetcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazygetcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve a shared instance method call
@@ -2331,7 +2343,7 @@ Resolve a shared instance method call
 <ApiList>
 <ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="mixed" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="method" type="string" default="">
 </ApiItem>
@@ -2345,7 +2357,7 @@ Resolve a shared instance method call
 
 ```php
 public function __construct(
-    Lazy|string $id,
+    mixed $id,
     string $method,
     array $arguments
 );
@@ -2382,7 +2394,7 @@ Resolve a shared instance method call
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\Resolvable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2394,6 +2406,9 @@ Resolve a shared instance method call
 <ApiItem href="#containerresolverlazylazy-resolveargument" visibility="protected" name="resolveArgument" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"argument","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazylazy-resolvearguments" visibility="protected" name="resolveArguments" returnType="array" params={[{"type":"object","name":"ioc","default":null},{"type":"array","name":"arguments","default":null}]}>
+</ApiItem>
+<ApiItem href="#containerresolverlazylazy-resolveservicecall" visibility="protected" name="resolveServiceCall" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"string","name":"iocMethod","default":null},{"type":"mixed","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+Gets the service from the container with the container method
 </ApiItem>
 </ApiList>
 
@@ -2413,7 +2428,7 @@ public function __invoke( object $ioc ): mixed;
 abstract public function resolve( object $ioc ): mixed;
 ```
 
-<ApiGroup label="Protected" count="2" />
+<ApiGroup label="Protected" count="3" />
 
 <h4 id="containerresolverlazylazy-resolveargument"><code>resolveArgument()</code></h4>
 
@@ -2432,6 +2447,21 @@ protected function resolveArguments(
     array $arguments
 ): array;
 ```
+
+<h4 id="containerresolverlazylazy-resolveservicecall"><code>resolveServiceCall()</code></h4>
+
+```php
+protected function resolveServiceCall(
+    object $ioc,
+    string $iocMethod,
+    mixed $id,
+    string $method,
+    array $arguments
+): mixed;
+```
+
+Gets the service from the container with the container method
+('get' or 'new') and calls the method of the service.
 
 
 ## Container\Resolver\Lazy\LazyFactory
@@ -2452,7 +2482,8 @@ protected function resolveArguments(
 <ApiList>
 <ApiItem href="#containerresolverlazylazyfactory-arrayvalues" visibility="public" name="arrayValues" returnType="ArrayValues" params={[{"type":"array","name":"values","default":null}]}>
 </ApiItem>
-<ApiItem href="#containerresolverlazylazyfactory-call" visibility="public" name="call" returnType="Call" params={[{"type":"callable","name":"callableObject","default":null}]}>
+<ApiItem href="#containerresolverlazylazyfactory-call" visibility="public" name="call" returnType="Call" params={[{"type":"mixed","name":"callableObject","default":null}]}>
+A value that cannot be called fails when the service is resolved, the
 </ApiItem>
 <ApiItem href="#containerresolverlazylazyfactory-callableget" visibility="public" name="callableGet" returnType="CallableGet" params={[{"type":"string","name":"id","default":null}]}>
 </ApiItem>
@@ -2491,8 +2522,11 @@ public static function arrayValues( array $values ): ArrayValues;
 <h4 id="containerresolverlazylazyfactory-call"><code>call()</code></h4>
 
 ```php
-public static function call( callable $callableObject ): Call;
+public static function call( mixed $callableObject ): Call;
 ```
+
+A value that cannot be called fails when the service is resolved, the
+same as cphalcon.
 
 <h4 id="containerresolverlazylazyfactory-callableget"><code>callableGet()</code></h4>
 
@@ -2598,12 +2632,12 @@ public static function staticCall(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazynewcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+<ApiItem href="#containerresolverlazynewcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"id","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazynewcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve a new instance method call
@@ -2615,7 +2649,7 @@ Resolve a new instance method call
 <ApiList>
 <ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="mixed" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="method" type="string" default="">
 </ApiItem>
@@ -2629,7 +2663,7 @@ Resolve a new instance method call
 
 ```php
 public function __construct(
-    Lazy|string $id,
+    mixed $id,
     string $method,
     array $arguments
 );
@@ -2661,7 +2695,7 @@ Resolve a new instance method call
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazynewinstance-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"id","default":null}]}>
+<ApiItem href="#containerresolverlazynewinstance-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"id","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazynewinstance-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve a new instance
@@ -2671,7 +2705,7 @@ Resolve a new instance
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="id" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="id" type="mixed" default="">
 </ApiItem>
 </ApiList>
 
@@ -2682,7 +2716,7 @@ Resolve a new instance
 <h4 id="containerresolverlazynewinstance-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazynewinstance-resolve"><code>resolve()</code></h4>
@@ -2706,12 +2740,12 @@ Resolve a new instance
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Container\ContainerTypes`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#containerresolverlazystaticcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Lazy|string","name":"className","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
+<ApiItem href="#containerresolverlazystaticcall-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"className","default":null},{"type":"string","name":"method","default":null},{"type":"array","name":"arguments","default":null}]}>
 </ApiItem>
 <ApiItem href="#containerresolverlazystaticcall-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"object","name":"ioc","default":null}]}>
 Resolve a static method call
@@ -2723,7 +2757,7 @@ Resolve a static method call
 <ApiList>
 <ApiItem kind="property" visibility="protected" name="arguments" type="array" default="">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="className" type="Lazy|string" default="">
+<ApiItem kind="property" visibility="protected" name="className" type="mixed" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="method" type="string" default="">
 </ApiItem>
@@ -2737,7 +2771,7 @@ Resolve a static method call
 
 ```php
 public function __construct(
-    Lazy|string $className,
+    mixed $className,
     string $method,
     array $arguments
 );
@@ -2763,7 +2797,7 @@ Resolve a static method call
 
 </ApiTree>
 
-<ApiUses>`Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`</ApiUses>
+<ApiUses>`Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Support\Traits\WeakTypesTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`</ApiUses>
 
 ### Method Summary
 
@@ -2771,8 +2805,8 @@ Resolve a static method call
 <ApiItem href="#containerresolverresolver-isresolvableclass" visibility="public" name="isResolvableClass" returnType="bool" params={[{"type":"string","name":"className","default":null}]}>
 Is this a resolvable class?
 </ApiItem>
-<ApiItem href="#containerresolverresolver-resolvecall" visibility="public" name="resolveCall" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"callable","name":"callableObject","default":null},{"type":"array","name":"arguments","default":null}]}>
-Resolve a call
+<ApiItem href="#containerresolverresolver-resolvecall" visibility="public" name="resolveCall" returnType="mixed" params={[{"type":"object","name":"ioc","default":null},{"type":"mixed","name":"callableObject","default":null},{"type":"array","name":"arguments","default":null}]}>
+Resolve a call. For a value that cannot be called,
 </ApiItem>
 <ApiItem href="#containerresolverresolver-resolveclass" visibility="public" name="resolveClass" returnType="object" params={[{"type":"object","name":"ioc","default":null},{"type":"string","name":"className","default":null},{"type":"array","name":"arguments","default":null}]}>
 Resolve a class
@@ -2808,12 +2842,13 @@ Is this a resolvable class?
 ```php
 public function resolveCall(
     object $ioc,
-    callable $callableObject,
+    mixed $callableObject,
     array $arguments
 ): mixed;
 ```
 
-Resolve a call
+Resolve a call. For a value that cannot be called,
+Closure::fromCallable() throws the same TypeError as cphalcon.
 
 <h4 id="containerresolverresolver-resolveclass"><code>resolveClass()</code></h4>
 

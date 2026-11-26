@@ -455,7 +455,7 @@ Reads the latest status line and splits it into tokens.
 <ApiItem href="#queueadapterbeanstalkbeanstalkconnection-releasejob" visibility="public" name="releaseJob" returnType="bool" params={[{"type":"string","name":"id","default":null},{"type":"int","name":"priority","default":null},{"type":"int","name":"delay","default":null}]}>
 Puts a reserved job back into the ready queue.
 </ApiItem>
-<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-reserve" visibility="public" name="reserve" returnType="array|null" params={[{"type":"int|null","name":"timeout","default":"null"}]}>
+<ApiItem href="#queueadapterbeanstalkbeanstalkconnection-reserve" visibility="public" name="reserve" returnType="array|null" params={[{"type":"mixed","name":"timeout","default":"null"}]}>
 Reserves a ready job from a watched tube. A null timeout blocks until a
 </ApiItem>
 <ApiItem href="#queueadapterbeanstalkbeanstalkconnection-statstube" visibility="public" name="statsTube" returnType="array|false" params={[{"type":"string","name":"tube","default":null}]}>
@@ -599,7 +599,7 @@ Puts a reserved job back into the ready queue.
 <h4 id="queueadapterbeanstalkbeanstalkconnection-reserve"><code>reserve()</code></h4>
 
 ```php
-public function reserve( int|null $timeout = null ): array|null;
+public function reserve( mixed $timeout = null ): array|null;
 ```
 
 Reserves a ready job from a watched tube. A null timeout blocks until a
@@ -2219,7 +2219,7 @@ Options:
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2898,7 +2898,7 @@ keep just the constructor that captures their context and poll interval.
 <ApiItem href="#queueadaptertraitssubscriptionconsumertrait-consume" visibility="public" name="consume" returnType="void" params={[{"type":"int","name":"timeout","default":"0"}]}>
 Polls every subscription, dispatching each message to its callback,
 </ApiItem>
-<ApiItem href="#queueadaptertraitssubscriptionconsumertrait-subscribe" visibility="public" name="subscribe" returnType="void" params={[{"type":"ConsumerInterface","name":"consumer","default":null},{"type":"callable","name":"callback","default":null}]}>
+<ApiItem href="#queueadaptertraitssubscriptionconsumertrait-subscribe" visibility="public" name="subscribe" returnType="void" params={[{"type":"ConsumerInterface","name":"consumer","default":null},{"type":"mixed","name":"callback","default":null}]}>
 Subscribes a consumer; the callback receives each delivered message.
 </ApiItem>
 <ApiItem href="#queueadaptertraitssubscriptionconsumertrait-unsubscribe" visibility="public" name="unsubscribe" returnType="void" params={[{"type":"ConsumerInterface","name":"consumer","default":null}]}>
@@ -2939,11 +2939,13 @@ returns false).
 ```php
 public function subscribe(
     ConsumerInterface $consumer,
-    callable $callback
+    mixed $callback
 ): void;
 ```
 
 Subscribes a consumer; the callback receives each delivered message.
+A value that cannot be called fails in consume(), the same as
+cphalcon.
 
 <h4 id="queueadaptertraitssubscriptionconsumertrait-unsubscribe"><code>unsubscribe()</code></h4>
 
@@ -3290,8 +3292,8 @@ guillotine), because the stop flag is only checked between iterations.
 <ApiList>
 <ApiItem href="#queueconsumerworker-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"QueueConsumer","name":"consumer","default":null},{"type":"WorkerOptions|null","name":"options","default":"null"}]}>
 </ApiItem>
-<ApiItem href="#queueconsumerworker-handlesignal" visibility="public" name="handleSignal" returnType="void" params={[{"type":"int","name":"signal","default":null}]}>
-Signal handler: requests a graceful stop.
+<ApiItem href="#queueconsumerworker-handlesignal" visibility="public" name="handleSignal" returnType="void" params={[{"type":"int","name":"signal","default":null},{"type":"array|null","name":"info","default":"null"}]}>
+Signal handler: requests a graceful stop. PHP sends the signal
 </ApiItem>
 <ApiItem href="#queueconsumerworker-run" visibility="public" name="run" returnType="int" params={[]}>
 Runs the worker until a lifetime bound trips or a stop is requested.
@@ -3323,10 +3325,14 @@ public function __construct(
 <h4 id="queueconsumerworker-handlesignal"><code>handleSignal()</code></h4>
 
 ```php
-public function handleSignal( int $signal ): void;
+public function handleSignal(
+    int $signal,
+    array|null $info = null
+): void;
 ```
 
-Signal handler: requests a graceful stop.
+Signal handler: requests a graceful stop. PHP sends the signal
+information as the second argument. This method does not use it.
 
 <h4 id="queueconsumerworker-run"><code>run()</code></h4>
 

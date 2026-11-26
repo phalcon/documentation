@@ -1081,6 +1081,7 @@ Class for exceptions thrown by Phalcon\Annotations
     - **`Phalcon\Annotations\Exception`**
         - [`Phalcon\Annotations\Exceptions\AnnotationNotFound`](#annotationsexceptionsannotationnotfound)
         - [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
+        - [`Phalcon\Annotations\Exceptions\InvalidSourceTable`](#annotationsexceptionsinvalidsourcetable)
         - [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
 
 </ApiTree>
@@ -1181,6 +1182,39 @@ public function __construct();
 
 ```php
 public function __construct();
+```
+
+
+## Annotations\Exceptions\InvalidSourceTable
+
+<ApiBadge variant="class">Class</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Exceptions/InvalidSourceTable.zep" />
+
+<ApiTree>
+
+- `\Exception`
+    - [`Phalcon\Annotations\Exception`](#annotationsexception)
+        - **`Phalcon\Annotations\Exceptions\InvalidSourceTable`**
+
+</ApiTree>
+
+<ApiUses>`Phalcon\Annotations\Exception`</ApiUses>
+
+### Method Summary
+
+<ApiList>
+<ApiItem href="#annotationsexceptionsinvalidsourcetable-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"table","default":null}]}>
+</ApiItem>
+</ApiList>
+
+### Methods
+
+<ApiGroup label="Public" count="1" />
+
+<h4 id="annotationsexceptionsinvalidsourcetable-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( mixed $table );
 ```
 
 
@@ -1316,7 +1350,22 @@ Marks a property as part of the primary key. It is the attribute form of `@Prima
 <ApiBadge variant="class">Class</ApiBadge>
 <SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Annotations/Models/MetaData/Source.zep" />
 
-Names the table of a model. No framework code reads it today.
+Names the table of a model when the annotations service uses AttributesReader.
+An explicit setSource() takes precedence. The model manager applies its
+table prefix to the source.
+The attribute applies only to the class declaring it; it is not inherited.
+PHPDoc @Source annotations do not change the model's table.
+A Source attribute must specify a non-empty string table name.
+
+```php
+use Phalcon\Annotations\Models\MetaData\Source;
+use Phalcon\Mvc\Model;
+
+#[Source(table: "customers")]
+class Customers extends Model
+{
+}
+```
 
 <ApiTree>
 
@@ -1324,10 +1373,18 @@ Names the table of a model. No framework code reads it today.
 
 </ApiTree>
 
+<ApiUses>`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Annotation` · `Phalcon\Annotations\AttributesReader` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exceptions\InvalidSourceTable`</ApiUses>
+
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#annotationsmodelsmetadatasource-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"table","default":null}]}>
+</ApiItem>
+<ApiItem href="#annotationsmodelsmetadatasource-gettable" visibility="public" name="getTable" returnType="string|null" params={[{"type":"Collection","name":"annotations","default":null}]}>
+Returns the table from a Source annotation, or null when none is present.
+</ApiItem>
+<ApiItem href="#annotationsmodelsmetadatasource-gettablefromadapter" visibility="public" name="getTableFromAdapter" returnType="string|null" params={[{"type":"mixed","name":"adapter","default":null},{"type":"string","name":"className","default":null}]}>
+Returns the model's table when the adapter uses AttributesReader.
 </ApiItem>
 </ApiList>
 
@@ -1340,13 +1397,35 @@ Names the table of a model. No framework code reads it today.
 
 ### Methods
 
-<ApiGroup label="Public" count="1" />
+<ApiGroup label="Public" count="3" />
 
 <h4 id="annotationsmodelsmetadatasource-__construct"><code>__construct()</code></h4>
 
 ```php
 public function __construct( string $table );
 ```
+
+<h4 id="annotationsmodelsmetadatasource-gettable"><code>getTable()</code></h4>
+
+```php
+public static function getTable( Collection $annotations ): string|null;
+```
+
+Returns the table from a Source annotation, or null when none is present.
+Named arguments take precedence over positional arguments.
+
+<h4 id="annotationsmodelsmetadatasource-gettablefromadapter"><code>getTableFromAdapter()</code></h4>
+
+```php
+public static function getTableFromAdapter(
+    mixed $adapter,
+    string $className
+): string|null;
+```
+
+Returns the model's table when the adapter uses AttributesReader.
+Other readers do not opt in and are not asked to parse the class.
+A value that is not an annotations adapter does not opt in.
 
 
 ## Annotations\Reader

@@ -3291,8 +3291,8 @@ guillotine), because the stop flag is only checked between iterations.
 <ApiList>
 <ApiItem href="#queueconsumerworker-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"QueueConsumer","name":"consumer","default":null},{"type":"WorkerOptions|null","name":"options","default":"null"}]}>
 </ApiItem>
-<ApiItem href="#queueconsumerworker-handlesignal" visibility="public" name="handleSignal" returnType="void" params={[{"type":"int","name":"signal","default":null}]}>
-Signal handler: requests a graceful stop.
+<ApiItem href="#queueconsumerworker-handlesignal" visibility="public" name="handleSignal" returnType="void" params={[{"type":"int","name":"signal","default":null},{"type":"array|null","name":"info","default":"null"}]}>
+Signal handler: requests a graceful stop. PHP sends the signal
 </ApiItem>
 <ApiItem href="#queueconsumerworker-run" visibility="public" name="run" returnType="int" params={[]}>
 Runs the worker until a lifetime bound trips or a stop is requested.
@@ -3324,10 +3324,14 @@ public function __construct(
 <h4 id="queueconsumerworker-handlesignal"><code>handleSignal()</code></h4>
 
 ```php
-public function handleSignal( int $signal ): void;
+public function handleSignal(
+    int $signal,
+    array|null $info = null
+): void;
 ```
 
-Signal handler: requests a graceful stop.
+Signal handler: requests a graceful stop. PHP sends the signal
+information as the second argument. This method does not use it.
 
 <h4 id="queueconsumerworker-run"><code>run()</code></h4>
 

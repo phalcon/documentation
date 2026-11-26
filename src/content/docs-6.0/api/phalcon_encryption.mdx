@@ -1355,7 +1355,7 @@ if ($user) {
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait` · `ValueError`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\HashTrait` · `ValueError`</ApiUses>
 
 ### Method Summary
 
@@ -1885,7 +1885,7 @@ The "nbf" (not before) claim identifies the time before which the JWT
 <ApiItem href="#encryptionsecurityjwtbuilder-setsubject" visibility="public" name="setSubject" returnType="static" params={[{"type":"string","name":"subject","default":null}]}>
 The "sub" (subject) claim identifies the principal that is the
 </ApiItem>
-<ApiItem href="#encryptionsecurityjwtbuilder-setclaim" visibility="protected" name="setClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
+<ApiItem href="#encryptionsecurityjwtbuilder-setclaim" visibility="protected" name="setClaim" returnType="Builder" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
 Sets a registered claim
 </ApiItem>
 </ApiList>
@@ -2121,7 +2121,7 @@ value.  Use of this claim is OPTIONAL.
 protected function setClaim(
     string $name,
     mixed $value
-): static;
+): Builder;
 ```
 
 Sets a registered claim
@@ -2988,7 +2988,7 @@ and payload. It also calculates and returns the token string.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3140,7 +3140,7 @@ Set the token to be validated
 <ApiItem href="#encryptionsecurityjwtvalidator-validateaudience" visibility="public" name="validateAudience" returnType="static" params={[{"type":"mixed","name":"audience","default":null}]}>
 Validate the audience
 </ApiItem>
-<ApiItem href="#encryptionsecurityjwtvalidator-validateclaim" visibility="public" name="validateClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"bool|int|string","name":"value","default":null}]}>
+<ApiItem href="#encryptionsecurityjwtvalidator-validateclaim" visibility="public" name="validateClaim" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
 Validate a claim
 </ApiItem>
 <ApiItem href="#encryptionsecurityjwtvalidator-validateexpiration" visibility="public" name="validateExpiration" returnType="static" params={[{"type":"int","name":"timestamp","default":null}]}>
@@ -3230,7 +3230,7 @@ Validate the audience
 ```php
 public function validateClaim(
     string $name,
-    bool|int|string $value
+    mixed $value
 ): static;
 ```
 
@@ -3389,7 +3389,7 @@ This class partially borrows SecureRandom library from Ruby
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Traits\Php\Base64Trait`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\Base64Trait`</ApiUses>
 
 ### Method Summary
 
@@ -3418,7 +3418,7 @@ Generates a random number between 0 and $len
 <ApiItem href="#encryptionsecurityrandom-uuid" visibility="public" name="uuid" returnType="string" params={[]}>
 Generates a v4 random UUID (Universally Unique IDentifier)
 </ApiItem>
-<ApiItem href="#encryptionsecurityrandom-base" visibility="protected" name="base" returnType="string" params={[{"type":"string","name":"alphabet","default":null},{"type":"int","name":"base","default":null},{"type":"int","name":"number","default":"16"}]}>
+<ApiItem href="#encryptionsecurityrandom-base" visibility="protected" name="base" returnType="string" params={[{"type":"string","name":"alphabet","default":null},{"type":"int","name":"base","default":null},{"type":"mixed","name":"number","default":"16"}]}>
 Generates a random string based on the number ($base) of characters
 </ApiItem>
 </ApiList>
@@ -3604,7 +3604,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 protected function base(
     string $alphabet,
     int $base,
-    int $number = 16
+    mixed $number = 16
 ): string;
 ```
 
@@ -3732,7 +3732,7 @@ Shared base for all UUID version objects.
 
 </ApiTree>
 
-<ApiUses>`DateTimeImmutable`</ApiUses>
+<ApiUses>`DateTimeImmutable` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 

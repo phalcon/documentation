@@ -35,7 +35,7 @@ Set the background color of an image
 <ApiItem href="#imageadapterabstractadapter-blur" visibility="public" name="blur" returnType="AdapterInterface" params={[{"type":"int","name":"radius","default":null}]}>
 Blur image
 </ApiItem>
-<ApiItem href="#imageadapterabstractadapter-crop" visibility="public" name="crop" returnType="AdapterInterface" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"int|null","name":"offsetX","default":"null"},{"type":"int|null","name":"offsetY","default":"null"}]}>
+<ApiItem href="#imageadapterabstractadapter-crop" visibility="public" name="crop" returnType="AdapterInterface" params={[{"type":"int","name":"width","default":null},{"type":"int","name":"height","default":null},{"type":"mixed","name":"offsetX","default":"null"},{"type":"mixed","name":"offsetY","default":"null"}]}>
 Crop an image to the given size
 </ApiItem>
 <ApiItem href="#imageadapterabstractadapter-flip" visibility="public" name="flip" returnType="AdapterInterface" params={[{"type":"int","name":"direction","default":null}]}>
@@ -201,8 +201,8 @@ Blur image
 public function crop(
     int $width,
     int $height,
-    int|null $offsetX = null,
-    int|null $offsetY = null
+    mixed $offsetX = null,
+    mixed $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -1893,7 +1893,7 @@ Factory to create adapters for image manipulation
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 

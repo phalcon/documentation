@@ -88,6 +88,31 @@ Returns an array of log levels with integer to string conversion
 </ApiItem>
 </ApiList>
 
+### Constants
+
+<ApiList>
+<ApiItem kind="constant" name="ALERT" type="int" default="2">
+</ApiItem>
+<ApiItem kind="constant" name="CRITICAL" type="int" default="1">
+</ApiItem>
+<ApiItem kind="constant" name="CUSTOM" type="int" default="8">
+</ApiItem>
+<ApiItem kind="constant" name="DEBUG" type="int" default="7">
+</ApiItem>
+<ApiItem kind="constant" name="EMERGENCY" type="int" default="0">
+</ApiItem>
+<ApiItem kind="constant" name="ERROR" type="int" default="3">
+</ApiItem>
+<ApiItem kind="constant" name="INFO" type="int" default="6">
+</ApiItem>
+<ApiItem kind="constant" name="NOTICE" type="int" default="5">
+</ApiItem>
+<ApiItem kind="constant" name="TRACE" type="int" default="9">
+</ApiItem>
+<ApiItem kind="constant" name="WARNING" type="int" default="4">
+</ApiItem>
+</ApiList>
+
 ### Properties
 
 <ApiList>
@@ -848,7 +873,7 @@ Class Syslog
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1756,7 +1781,7 @@ Factory creating logger objects
 
 </ApiTree>
 
-<ApiUses>`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory`</ApiUses>
+<ApiUses>`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 

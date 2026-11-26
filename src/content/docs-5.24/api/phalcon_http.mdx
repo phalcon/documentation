@@ -3000,7 +3000,7 @@ Sets an element in the bag
 <ApiItem href="#httprequestbagabstractbag-normalizeitems" visibility="protected" name="normalizeItems" returnType="array" params={[{"type":"array","name":"items","default":null}]}>
 Normalizes the items at construction time. Identity in the base;
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-normalizekey" visibility="protected" name="normalizeKey" returnType="string" params={[{"type":"mixed","name":"key","default":null}]}>
+<ApiItem href="#httprequestbagabstractbag-normalizekey" visibility="protected" name="normalizeKey" returnType="int|string" params={[{"type":"mixed","name":"key","default":null}]}>
 Normalizes a key for lookups and writes. Identity in the base;
 </ApiItem>
 </ApiList>
@@ -3203,7 +3203,7 @@ subclasses can override it to normalize keys
 <h4 id="httprequestbagabstractbag-normalizekey"><code>normalizeKey()</code></h4>
 
 ```php
-protected function normalizeKey( mixed $key ): string;
+protected function normalizeKey( mixed $key ): int|string;
 ```
 
 Normalizes a key for lookups and writes. Identity in the base;

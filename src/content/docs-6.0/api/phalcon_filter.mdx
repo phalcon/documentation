@@ -95,7 +95,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -421,7 +421,7 @@ Sanitizes a value to an alphanumeric value
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\Sanitizer`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -454,7 +454,7 @@ Sanitizes a value to an alpha value
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\Sanitizer`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -721,7 +721,7 @@ Sanitizes a value performing preg_replace
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\Sanitizer`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -758,7 +758,7 @@ Sanitizes a value removing parts of a string
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\Sanitizer`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -794,7 +794,7 @@ Sanitizes a value replacing parts of a string
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\Sanitizer`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1169,7 +1169,7 @@ Allows to validate data using custom or built-in validators
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Di` · `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Di` · `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1239,7 +1239,7 @@ Adds labels for fields
 <ApiItem href="#filtervalidation-setvalidators" visibility="public" name="setValidators" returnType="static" params={[{"type":"array","name":"validators","default":null}]}>
 Sets the validator array
 </ApiItem>
-<ApiItem href="#filtervalidation-validate" visibility="public" name="validate" returnType="false|Messages" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
+<ApiItem href="#filtervalidation-validate" visibility="public" name="validate" returnType="bool|Messages" params={[{"type":"mixed","name":"data","default":"null"},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
 Validate a set of data according to a set of rules
 </ApiItem>
 <ApiItem href="#filtervalidation-prechecking" visibility="protected" name="preChecking" returnType="bool" params={[{"type":"mixed","name":"field","default":null},{"type":"ValidatorInterface","name":"validator","default":null}]}>
@@ -1502,7 +1502,7 @@ public function validate(
     mixed $data = null,
     mixed $entity = null,
     array $whitelist = []
-): false|Messages;
+): bool|Messages;
 ```
 
 Validate a set of data according to a set of rules
@@ -1583,13 +1583,12 @@ This is a base class for validators
     - [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
     - [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
     - [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
-    - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
-    - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+    - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
     - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist` · `Stringable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`</ApiUses>
 
 ### Method Summary
 
@@ -1632,6 +1631,12 @@ Checks if field can be empty.
 </ApiItem>
 <ApiItem href="#filtervalidationabstractvalidator-checkarray" visibility="protected" name="checkArray" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"field","default":null}]}>
 Checks if a value is an array and returns the element based on the
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-getdomainoption" visibility="protected" name="getDomainOption" returnType="array" params={[{"type":"mixed","name":"field","default":null}]}>
+Returns the list of values of the "domain" option for the field
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-getstrictoption" visibility="protected" name="getStrictOption" returnType="bool" params={[{"type":"mixed","name":"field","default":null}]}>
+Returns the "strict" option for the field. The default is false.
 </ApiItem>
 <ApiItem href="#filtervalidationabstractvalidator-preparecode" visibility="protected" name="prepareCode" returnType="int" params={[{"type":"string","name":"field","default":null}]}>
 Prepares a validation code.
@@ -1774,7 +1779,7 @@ abstract public function validate(
 
 Executes the validation
 
-<ApiGroup label="Protected" count="5" />
+<ApiGroup label="Protected" count="7" />
 
 <h4 id="filtervalidationabstractvalidator-allowempty"><code>allowEmpty()</code></h4>
 
@@ -1798,6 +1803,22 @@ protected function checkArray(
 
 Checks if a value is an array and returns the element based on the
 passed field name
+
+<h4 id="filtervalidationabstractvalidator-getdomainoption"><code>getDomainOption()</code></h4>
+
+```php
+protected function getDomainOption( mixed $field ): array;
+```
+
+Returns the list of values of the "domain" option for the field
+
+<h4 id="filtervalidationabstractvalidator-getstrictoption"><code>getStrictOption()</code></h4>
+
+```php
+protected function getStrictOption( mixed $field ): bool;
+```
+
+Returns the "strict" option for the field. The default is false.
 
 <h4 id="filtervalidationabstractvalidator-preparecode"><code>prepareCode()</code></h4>
 
@@ -2550,7 +2571,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="validators" type="array|null" default="null">
+<ApiItem kind="property" visibility="protected" name="validators" type="mixed" default="null">
 @todo Use a default [] once Zephir supports array trait defaults
 </ApiItem>
 </ApiList>
@@ -3049,7 +3070,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3065,7 +3086,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters and numbers&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must contain only letters and numbers&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3138,7 +3159,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3154,7 +3175,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must contain only letters&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must contain only letters&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3238,7 +3259,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3254,7 +3275,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be within the range of :min to :max&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be within the range of :min to :max&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3353,7 +3374,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must match the callback function&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must match the callback function&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3431,7 +3452,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3450,7 +3471,7 @@ Compare strings
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be the same as :with&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be the same as :with&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3536,7 +3557,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3552,7 +3573,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not valid for a credit card number&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field is not valid for a credit card number&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3630,7 +3651,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`DateTime` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`DateTime` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3646,7 +3667,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is not a valid date&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field is not a valid date&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3719,7 +3740,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3735,7 +3756,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be numeric&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be numeric&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3820,7 +3841,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3836,7 +3857,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be an email address&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be an email address&quot;">
 </ApiItem>
 </ApiList>
 
@@ -3936,7 +3957,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3952,7 +3973,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not be a part of list: :domain&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must not be a part of list: :domain&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4141,7 +4162,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4187,6 +4208,12 @@ Appends the "file is not valid" message for the field
 </ApiItem>
 <ApiItem href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile" visibility="protected" name="checkIsUploadedFile" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Checks if a file has been uploaded; Internal check that can be
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getdimensionsoption" visibility="protected" name="getDimensionsOption" returnType="array" params={[{"type":"mixed","name":"field","default":null},{"type":"string","name":"name","default":null}]}>
+Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getuploadedimagesize" visibility="protected" name="getUploadedImageSize" returnType="array|false" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
+Returns the size of the uploaded image, or false if the upload is not
 </ApiItem>
 </ApiList>
 
@@ -4319,7 +4346,7 @@ public function setMessageValid( string $message ): void;
 
 File is not valid
 
-<ApiGroup label="Protected" count="2" />
+<ApiGroup label="Protected" count="4" />
 
 <h4 id="filtervalidationvalidatorfileabstractfile-appendmessagevalid"><code>appendMessageValid()</code></h4>
 
@@ -4340,6 +4367,31 @@ protected function checkIsUploadedFile( string $name ): bool;
 
 Checks if a file has been uploaded; Internal check that can be
 overridden in a subclass if you do not want to check uploaded files
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getdimensionsoption"><code>getDimensionsOption()</code></h4>
+
+```php
+protected function getDimensionsOption(
+    mixed $field,
+    string $name
+): array;
+```
+
+Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+the height
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getuploadedimagesize"><code>getUploadedImageSize()</code></h4>
+
+```php
+protected function getUploadedImageSize(
+    Validation $validation,
+    mixed $field
+): array|false;
+```
+
+Returns the size of the uploaded image, or false if the upload is not
+valid or the file is not an image. If the file is not an image, appends
+the "file is not valid" message.
 
 
 ## Filter\Validation\Validator\File\MimeType
@@ -4402,7 +4454,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4415,7 +4467,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field must be of type: :types&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field must be of type: :types&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4506,7 +4558,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact aspect ratio of :ratio&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field does not have the exact aspect ratio of :ratio&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4601,7 +4653,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;The resolution of the field :field has to be equal :resolution&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;The resolution of the field :field has to be equal :resolution&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4701,7 +4753,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the maximum resolution of :resolution&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field exceeds the maximum resolution of :resolution&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4801,7 +4853,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum resolution of :resolution&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field can not have the minimum resolution of :resolution&quot;">
 </ApiItem>
 </ApiList>
 
@@ -4887,7 +4939,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -4903,7 +4955,7 @@ Executes the conditional
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field does not have the exact :size file size&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field does not have the exact :size file size&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5005,7 +5057,7 @@ Executes the conditional
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field exceeds the size of :size&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field exceeds the size of :size&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5094,7 +5146,7 @@ Executes the conditional
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;File :field can not have the minimum size of :size&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;File :field can not have the minimum size of :size&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5153,7 +5205,7 @@ $validation->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages`</ApiUses>
+<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5257,7 +5309,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5273,7 +5325,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have the expected value&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field does not have the expected value&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5351,7 +5403,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5367,7 +5419,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a part of list: :domain&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be a part of list: :domain&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5457,7 +5509,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5482,7 +5534,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a valid IP address&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be a valid IP address&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5555,7 +5607,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5571,7 +5623,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not have a valid numeric format&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field does not have a valid numeric format&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5644,7 +5696,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5660,7 +5712,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field is required&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field is required&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5738,7 +5790,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5754,7 +5806,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field does not match the required format&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field does not match the required format&quot;">
 </ApiItem>
 </ApiList>
 
@@ -5861,7 +5913,7 @@ $validation->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -5882,6 +5934,66 @@ public function __construct( array $options = [] );
 ```
 
 Constructor
+
+
+## Filter\Validation\Validator\StringLength\AbstractStringLength
+
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Filter/Validation/Validator/StringLength/AbstractStringLength.php" />
+
+Shared validation for the string length validators. The validator compares
+the length with its limit in validateLength().
+
+<ApiTree>
+
+- [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
+    - **`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`**
+        - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
+        - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+
+</ApiTree>
+
+<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+
+### Method Summary
+
+<ApiList>
+<ApiItem href="#filtervalidationvalidatorstringlengthabstractstringlength-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorstringlengthabstractstringlength-validatelength" visibility="protected" name="validateLength" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"int","name":"length","default":null}]}>
+Compares the length of the value with the limit
+</ApiItem>
+</ApiList>
+
+### Methods
+
+<ApiGroup label="Public" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validate"><code>validate()</code></h4>
+
+```php
+public function validate(
+    Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation
+
+<ApiGroup label="Protected" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validatelength"><code>validateLength()</code></h4>
+
+```php
+abstract protected function validateLength(
+    Validation $validation,
+    mixed $field,
+    int $length
+): bool;
+```
+
+Compares the length of the value with the limit
 
 
 ## Filter\Validation\Validator\StringLength\Max
@@ -5942,11 +6054,12 @@ $validation->add(
 <ApiTree>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-    - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
+    - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+        - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5954,21 +6067,21 @@ $validation->add(
 <ApiItem href="#filtervalidationvalidatorstringlengthmax-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
 Constructor
 </ApiItem>
-<ApiItem href="#filtervalidationvalidatorstringlengthmax-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
+<ApiItem href="#filtervalidationvalidatorstringlengthmax-validatelength" visibility="protected" name="validateLength" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"int","name":"length","default":null}]}>
+Compares the length of the value with the maximum
 </ApiItem>
 </ApiList>
 
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must not exceed :max characters long&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must not exceed :max characters long&quot;">
 </ApiItem>
 </ApiList>
 
 ### Methods
 
-<ApiGroup label="Public" count="2" />
+<ApiGroup label="Public" count="1" />
 
 <h4 id="filtervalidationvalidatorstringlengthmax-__construct"><code>__construct()</code></h4>
 
@@ -5978,16 +6091,19 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmax-validate"><code>validate()</code></h4>
+<ApiGroup label="Protected" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthmax-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the maximum
 
 
 ## Filter\Validation\Validator\StringLength\Min
@@ -6048,11 +6164,12 @@ $validation->add(
 <ApiTree>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-    - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
+    - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+        - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -6060,21 +6177,21 @@ $validation->add(
 <ApiItem href="#filtervalidationvalidatorstringlengthmin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
 Constructor
 </ApiItem>
-<ApiItem href="#filtervalidationvalidatorstringlengthmin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
+<ApiItem href="#filtervalidationvalidatorstringlengthmin-validatelength" visibility="protected" name="validateLength" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"int","name":"length","default":null}]}>
+Compares the length of the value with the minimum
 </ApiItem>
 </ApiList>
 
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be at least :min characters long&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be at least :min characters long&quot;">
 </ApiItem>
 </ApiList>
 
 ### Methods
 
-<ApiGroup label="Public" count="2" />
+<ApiGroup label="Public" count="1" />
 
 <h4 id="filtervalidationvalidatorstringlengthmin-__construct"><code>__construct()</code></h4>
 
@@ -6084,16 +6201,19 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmin-validate"><code>validate()</code></h4>
+<ApiGroup label="Protected" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthmin-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the minimum
 
 
 ## Filter\Validation\Validator\Uniqueness
@@ -6178,7 +6298,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Support\Settings`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -6205,7 +6325,7 @@ Uniqueness method used for model
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be unique&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be unique&quot;">
 </ApiItem>
 </ApiList>
 
@@ -6327,7 +6447,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -6343,7 +6463,7 @@ Executes the validation
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="template" type="string|null" default="&quot;Field :field must be a url&quot;">
+<ApiItem kind="property" visibility="protected" name="template" type="mixed" default="&quot;Field :field must be a url&quot;">
 </ApiItem>
 </ApiList>
 

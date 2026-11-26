@@ -22,7 +22,7 @@ Provide OO wrappers to manage a HTTP cookie.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Encryption\Crypt\Crypt` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Traits\EncryptionAwareTrait` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Stringable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Encryption\Crypt\Crypt` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Traits\EncryptionAwareTrait` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Stringable`</ApiUses>
 
 ### Method Summary
 
@@ -1045,7 +1045,7 @@ $request->getLanguages();
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait` · `stdClass`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `stdClass`</ApiUses>
 
 ### Method Summary
 
@@ -1275,7 +1275,7 @@ Check if an IP address exists in CIDR range
 <ApiItem href="#httprequest-resolveauthorizationheaders" visibility="protected" name="resolveAuthorizationHeaders" returnType="array" params={[]}>
 Resolve authorization headers.
 </ApiItem>
-<ApiItem href="#httprequest-smoothfiles" visibility="protected" name="smoothFiles" returnType="array" params={[{"type":"array","name":"names","default":null},{"type":"array","name":"types","default":null},{"type":"array","name":"tmpNames","default":null},{"type":"array","name":"sizes","default":null},{"type":"array","name":"errors","default":null},{"type":"string","name":"prefix","default":null}]}>
+<ApiItem href="#httprequest-smoothfiles" visibility="protected" name="smoothFiles" returnType="array" params={[{"type":"array","name":"names","default":null},{"type":"array","name":"types","default":null},{"type":"array","name":"tmp_names","default":null},{"type":"array","name":"sizes","default":null},{"type":"array","name":"errors","default":null},{"type":"string","name":"prefix","default":null}]}>
 Smooth out $_FILES to have plain array with all files uploaded
 </ApiItem>
 </ApiList>
@@ -2171,7 +2171,7 @@ Resolve authorization headers.
 protected function smoothFiles(
     array $names,
     array $types,
-    array $tmpNames,
+    array $tmp_names,
     array $sizes,
     array $errors,
     string $prefix
@@ -2955,28 +2955,28 @@ Removes all the elements of the bag
 <ApiItem href="#httprequestbagabstractbag-count" visibility="public" name="count" returnType="int" params={[]}>
 Returns the number of elements in the bag
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-get" visibility="public" name="get" returnType="mixed" params={[{"type":"int|string","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
+<ApiItem href="#httprequestbagabstractbag-get" visibility="public" name="get" returnType="mixed" params={[{"type":"mixed","name":"key","default":null},{"type":"mixed","name":"defaultValue","default":"null"}]}>
 Returns an element of the bag, or the default value if it is not set
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-getarray" visibility="public" name="getArray" returnType="array" params={[{"type":"int|string","name":"key","default":null},{"type":"array","name":"defaultValue","default":"[]"}]}>
+<ApiItem href="#httprequestbagabstractbag-getarray" visibility="public" name="getArray" returnType="array" params={[{"type":"mixed","name":"key","default":null},{"type":"array","name":"defaultValue","default":"[]"}]}>
 Returns an element of the bag as an array. The default value is
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-getbool" visibility="public" name="getBool" returnType="bool" params={[{"type":"int|string","name":"key","default":null},{"type":"bool","name":"defaultValue","default":"false"}]}>
+<ApiItem href="#httprequestbagabstractbag-getbool" visibility="public" name="getBool" returnType="bool" params={[{"type":"mixed","name":"key","default":null},{"type":"bool","name":"defaultValue","default":"false"}]}>
 Returns an element of the bag cast to bool, or the default value if
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-getfloat" visibility="public" name="getFloat" returnType="float" params={[{"type":"int|string","name":"key","default":null},{"type":"float","name":"defaultValue","default":"0"}]}>
+<ApiItem href="#httprequestbagabstractbag-getfloat" visibility="public" name="getFloat" returnType="float" params={[{"type":"mixed","name":"key","default":null},{"type":"float","name":"defaultValue","default":"0"}]}>
 Returns an element of the bag cast to float, or the default value if
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-getint" visibility="public" name="getInt" returnType="int" params={[{"type":"int|string","name":"key","default":null},{"type":"int","name":"defaultValue","default":"0"}]}>
+<ApiItem href="#httprequestbagabstractbag-getint" visibility="public" name="getInt" returnType="int" params={[{"type":"mixed","name":"key","default":null},{"type":"int","name":"defaultValue","default":"0"}]}>
 Returns an element of the bag cast to int, or the default value if
 </ApiItem>
 <ApiItem href="#httprequestbagabstractbag-getiterator" visibility="public" name="getIterator" returnType="Traversable" params={[]}>
 Returns the iterator of the bag
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-getstring" visibility="public" name="getString" returnType="string" params={[{"type":"int|string","name":"key","default":null},{"type":"string","name":"defaultValue","default":"\"\""}]}>
+<ApiItem href="#httprequestbagabstractbag-getstring" visibility="public" name="getString" returnType="string" params={[{"type":"mixed","name":"key","default":null},{"type":"string","name":"defaultValue","default":"\"\""}]}>
 Returns an element of the bag cast to string, or the default value if
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-has" visibility="public" name="has" returnType="bool" params={[{"type":"int|string","name":"key","default":null}]}>
+<ApiItem href="#httprequestbagabstractbag-has" visibility="public" name="has" returnType="bool" params={[{"type":"mixed","name":"key","default":null}]}>
 Checks whether an element exists in the bag
 </ApiItem>
 <ApiItem href="#httprequestbagabstractbag-offsetexists" visibility="public" name="offsetExists" returnType="bool" params={[{"type":"mixed","name":"offset","default":null}]}>
@@ -2991,17 +2991,17 @@ Offset to set
 <ApiItem href="#httprequestbagabstractbag-offsetunset" visibility="public" name="offsetUnset" returnType="void" params={[{"type":"mixed","name":"offset","default":null}]}>
 Offset to unset
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-remove" visibility="public" name="remove" returnType="void" params={[{"type":"int|string","name":"key","default":null}]}>
+<ApiItem href="#httprequestbagabstractbag-remove" visibility="public" name="remove" returnType="void" params={[{"type":"mixed","name":"key","default":null}]}>
 Removes an element from the bag
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-set" visibility="public" name="set" returnType="void" params={[{"type":"int|string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
+<ApiItem href="#httprequestbagabstractbag-set" visibility="public" name="set" returnType="void" params={[{"type":"mixed","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
 Sets an element in the bag
 </ApiItem>
 <ApiItem href="#httprequestbagabstractbag-normalizeitems" visibility="protected" name="normalizeItems" returnType="array" params={[{"type":"array","name":"items","default":null}]}>
 Normalizes the items at construction time. Identity in the base;
 </ApiItem>
-<ApiItem href="#httprequestbagabstractbag-normalizekey" visibility="protected" name="normalizeKey" returnType="int|string" params={[{"type":"int|string","name":"key","default":null}]}>
-Normalizes a key for lookups and writes. Identity in the base;
+<ApiItem href="#httprequestbagabstractbag-normalizekey" visibility="protected" name="normalizeKey" returnType="int|string" params={[{"type":"mixed","name":"key","default":null}]}>
+Normalizes a key for lookups and writes. An int or a string key stays
 </ApiItem>
 </ApiList>
 
@@ -3052,7 +3052,7 @@ Returns the number of elements in the bag
 
 ```php
 public function get(
-    int|string $key,
+    mixed $key,
     mixed $defaultValue = null
 ): mixed;
 ```
@@ -3063,7 +3063,7 @@ Returns an element of the bag, or the default value if it is not set
 
 ```php
 public function getArray(
-    int|string $key,
+    mixed $key,
     array $defaultValue = []
 ): array;
 ```
@@ -3075,7 +3075,7 @@ returned if the element is not set or is not an array
 
 ```php
 public function getBool(
-    int|string $key,
+    mixed $key,
     bool $defaultValue = false
 ): bool;
 ```
@@ -3087,7 +3087,7 @@ it is not set
 
 ```php
 public function getFloat(
-    int|string $key,
+    mixed $key,
     float $defaultValue = 0
 ): float;
 ```
@@ -3099,7 +3099,7 @@ it is not set
 
 ```php
 public function getInt(
-    int|string $key,
+    mixed $key,
     int $defaultValue = 0
 ): int;
 ```
@@ -3119,7 +3119,7 @@ Returns the iterator of the bag
 
 ```php
 public function getString(
-    int|string $key,
+    mixed $key,
     string $defaultValue = ""
 ): string;
 ```
@@ -3130,7 +3130,7 @@ it is not set
 <h4 id="httprequestbagabstractbag-has"><code>has()</code></h4>
 
 ```php
-public function has( int|string $key ): bool;
+public function has( mixed $key ): bool;
 ```
 
 Checks whether an element exists in the bag
@@ -3173,7 +3173,7 @@ Offset to unset
 <h4 id="httprequestbagabstractbag-remove"><code>remove()</code></h4>
 
 ```php
-public function remove( int|string $key ): void;
+public function remove( mixed $key ): void;
 ```
 
 Removes an element from the bag
@@ -3182,7 +3182,7 @@ Removes an element from the bag
 
 ```php
 public function set(
-    int|string $key,
+    mixed $key,
     mixed $value
 ): void;
 ```
@@ -3203,11 +3203,12 @@ subclasses can override it to normalize keys
 <h4 id="httprequestbagabstractbag-normalizekey"><code>normalizeKey()</code></h4>
 
 ```php
-protected function normalizeKey( int|string $key ): int|string;
+protected function normalizeKey( mixed $key ): int|string;
 ```
 
-Normalizes a key for lookups and writes. Identity in the base;
-subclasses can override it to change key handling
+Normalizes a key for lookups and writes. An int or a string key stays
+as it is, another value is cast to string, as in cphalcon; subclasses
+can override it to change key handling
 
 
 ## Http\Request\Bag\AttributeBag
@@ -3487,7 +3488,7 @@ class PostsController extends Controller
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`</ApiUses>
 
 ### Method Summary
 
@@ -3761,12 +3762,12 @@ $response->send();
 
 </ApiTree>
 
-<ApiUses>`DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Http\Traits\StatusPhrasesTrait` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\UrlTrait` · `Stringable`</ApiUses>
+<ApiUses>`DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Http\Traits\StatusPhrasesTrait` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\UrlTrait` · `Stringable`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#httpresponse-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"content","default":"null"},{"type":"int|null","name":"code","default":"null"},{"type":"string|null","name":"status","default":"null"}]}>
+<ApiItem href="#httpresponse-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string|null","name":"content","default":"null"},{"type":"mixed","name":"code","default":"null"},{"type":"mixed","name":"status","default":"null"}]}>
 Constructor
 </ApiItem>
 <ApiItem href="#httpresponse-appendcontent" visibility="public" name="appendContent" returnType="ResponseInterface" params={[{"type":"mixed","name":"content","default":null}]}>
@@ -3796,7 +3797,7 @@ Checks if a header exists
 <ApiItem href="#httpresponse-issent" visibility="public" name="isSent" returnType="bool" params={[]}>
 Check if the response is already sent
 </ApiItem>
-<ApiItem href="#httpresponse-redirect" visibility="public" name="redirect" returnType="ResponseInterface" params={[{"type":"string|null","name":"location","default":"null"},{"type":"bool","name":"externalRedirect","default":"false"},{"type":"int","name":"statusCode","default":"302"}]}>
+<ApiItem href="#httpresponse-redirect" visibility="public" name="redirect" returnType="ResponseInterface" params={[{"type":"mixed","name":"location","default":"null"},{"type":"bool","name":"externalRedirect","default":"false"},{"type":"int","name":"statusCode","default":"302"}]}>
 Redirect by HTTP to another action or URL
 </ApiItem>
 <ApiItem href="#httpresponse-removeheader" visibility="public" name="removeHeader" returnType="ResponseInterface" params={[{"type":"string","name":"name","default":null}]}>
@@ -3838,7 +3839,7 @@ Set a custom ETag
 <ApiItem href="#httpresponse-setexpires" visibility="public" name="setExpires" returnType="ResponseInterface" params={[{"type":"DateTime","name":"datetime","default":null}]}>
 Sets an Expires header in the response that allows to use the HTTP cache
 </ApiItem>
-<ApiItem href="#httpresponse-setfiletosend" visibility="public" name="setFileToSend" returnType="ResponseInterface" params={[{"type":"string","name":"filePath","default":null},{"type":"string|null","name":"attachmentName","default":"null"},{"type":"bool","name":"attachment","default":"true"}]}>
+<ApiItem href="#httpresponse-setfiletosend" visibility="public" name="setFileToSend" returnType="ResponseInterface" params={[{"type":"string","name":"filePath","default":null},{"type":"mixed","name":"attachmentName","default":"null"},{"type":"bool","name":"attachment","default":"true"}]}>
 Sets an attached file to be sent at the end of the request
 </ApiItem>
 <ApiItem href="#httpresponse-setheader" visibility="public" name="setHeader" returnType="ResponseInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"value","default":null}]}>
@@ -3899,8 +3900,8 @@ Sets the HTTP response code
 ```php
 public function __construct(
     string|null $content = null,
-    int|null $code = null,
-    string|null $status = null
+    mixed $code = null,
+    mixed $status = null
 );
 ```
 
@@ -3994,7 +3995,7 @@ Check if the response is already sent
 
 ```php
 public function redirect(
-    string|null $location = null,
+    mixed $location = null,
     bool $externalRedirect = false,
     int $statusCode = 302
 ): ResponseInterface;
@@ -4165,7 +4166,7 @@ $this->response->setExpires(
 ```php
 public function setFileToSend(
     string $filePath,
-    string|null $attachmentName = null,
+    mixed $attachmentName = null,
     bool $attachment = true
 ): ResponseInterface;
 ```
@@ -5093,7 +5094,7 @@ This class is a bag to manage the response headers
 
 </ApiTree>
 
-<ApiUses>`IteratorAggregate` · `Phalcon\Contracts\Http\HttpTypes` · `Traversable`</ApiUses>
+<ApiUses>`IteratorAggregate` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Traversable`</ApiUses>
 
 ### Method Summary
 

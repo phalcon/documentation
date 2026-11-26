@@ -23,7 +23,7 @@ This component allows to create CLI applications using Phalcon
 
 </ApiTree>
 
-<ApiUses>`Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`</ApiUses>
+<ApiUses>`Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait`</ApiUses>
 
 ### Method Summary
 
@@ -229,12 +229,12 @@ $handle = $dispatcher->dispatch();
 
 </ApiTree>
 
-<ApiUses>`Exception` · `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Filter\FilterInterface`</ApiUses>
+<ApiUses>`Exception` · `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Filter\FilterInterface` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#clidispatcher-callactionmethod" visibility="public" name="callActionMethod" returnType="mixed" params={[{"type":"mixed","name":"handler","default":null},{"type":"string","name":"actionMethod","default":null},{"type":"array","name":"parameters","default":"[]"}]}>
+<ApiItem href="#clidispatcher-callactionmethod" visibility="public" name="callActionMethod" returnType="mixed" params={[{"type":"mixed","name":"handler","default":null},{"type":"string","name":"actionMethod","default":null},{"type":"array","name":"params","default":"[]"}]}>
 Calls the action method.
 </ApiItem>
 <ApiItem href="#clidispatcher-getactivetask" visibility="public" name="getActiveTask" returnType="TaskInterface" params={[]}>
@@ -301,7 +301,7 @@ Throws an internal exception
 public function callActionMethod(
     mixed $handler,
     string $actionMethod,
-    array $parameters = []
+    array $params = []
 ): mixed;
 ```
 
@@ -491,7 +491,7 @@ echo $router->getTaskName();
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware`</ApiUses>
+<ApiUses>`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -571,7 +571,7 @@ Checks if the router matches any of the defined routes
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="module" type="string" default="&quot;&quot;">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="parameters" type="array" default="[]">
+<ApiItem kind="property" visibility="protected" name="params" type="array" default="[]">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="routes" type="array" default="[]">
 </ApiItem>
@@ -1184,7 +1184,7 @@ Sets the route's name
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="converters" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="protected" name="delimiter" type="string|null" default="">
+<ApiItem kind="property" visibility="protected" name="delimiter" type="string" default="">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="delimiterPath" type="string|null" default="self::DEFAULT_DELIMITER">
 </ApiItem>

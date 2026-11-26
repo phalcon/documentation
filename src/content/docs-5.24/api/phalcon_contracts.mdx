@@ -3783,7 +3783,7 @@ Sends SQL statements to the database server returning the success state.
 <ApiItem href="#contractsdbadapteradapter-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
 Dumps the complete result of a query into an array
 </ApiItem>
-<ApiItem href="#contractsdbadapteradapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="string|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
+<ApiItem href="#contractsdbadapteradapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
 Returns the n'th field of first row in a SQL query result
 </ApiItem>
 <ApiItem href="#contractsdbadapteradapter-fetchone" visibility="public" name="fetchOne" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"2"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
@@ -4202,10 +4202,13 @@ public function fetchColumn(
     string $sqlQuery,
     array $placeholders = [],
     mixed $column = 0
-): string|bool;
+): mixed;
 ```
 
 Returns the n'th field of first row in a SQL query result
+
+Returns false if the query returns no rows. The type of the value
+comes from the database driver.
 
 ```php
 // Getting count of invoices

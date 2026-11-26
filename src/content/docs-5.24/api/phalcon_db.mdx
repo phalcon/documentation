@@ -137,7 +137,7 @@ Escapes a column/table/schema name
 <ApiItem href="#dbadapterabstractadapter-fetchall" visibility="public" name="fetchAll" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"int","name":"fetchMode","default":"Enum::FETCH_ASSOC"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
 Dumps the complete result of a query into an array
 </ApiItem>
-<ApiItem href="#dbadapterabstractadapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="string|bool" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
+<ApiItem href="#dbadapterabstractadapter-fetchcolumn" visibility="public" name="fetchColumn" returnType="mixed" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"array","name":"placeholders","default":"[]"},{"type":"mixed","name":"column","default":"0"}]}>
 Returns the n'th field of first row in a SQL query result
 </ApiItem>
 <ApiItem href="#dbadapterabstractadapter-fetchone" visibility="public" name="fetchOne" returnType="array" params={[{"type":"string","name":"sqlQuery","default":null},{"type":"mixed","name":"fetchMode","default":"Enum::FETCH_ASSOC"},{"type":"array","name":"bindParams","default":"[]"},{"type":"array","name":"bindTypes","default":"[]"}]}>
@@ -673,10 +673,13 @@ public function fetchColumn(
     string $sqlQuery,
     array $placeholders = [],
     mixed $column = 0
-): string|bool;
+): mixed;
 ```
 
 Returns the n'th field of first row in a SQL query result
+
+Returns false if the query returns no rows. The type of the value
+comes from the database driver.
 
 ```php
 // Getting count of invoices
@@ -1406,7 +1409,7 @@ $connection = new Mysql($config);
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`</ApiUses>
 
 ### Method Summary
 
@@ -1476,6 +1479,9 @@ Rollbacks the active transaction in the connection
 </ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-setautoreconnect" visibility="public" name="setAutoReconnect" returnType="static" params={[{"type":"bool","name":"autoReconnect","default":null}]}>
 Enables or disables transparent auto-reconnect on a lost connection.
+</ApiItem>
+<ApiItem href="#dbadapterpdoabstractpdo-buildreferences" visibility="protected" name="buildReferences" returnType="ReferenceInterface[]" params={[{"type":"array","name":"records","default":null}]}>
+Builds the Phalcon\Db\Reference objects from the rows of the
 </ApiItem>
 <ApiItem href="#dbadapterpdoabstractpdo-getdsndefaults" visibility="protected" name="getDsnDefaults" returnType="array" params={[]}>
 Returns PDO adapter DSN defaults as a key-value map.
@@ -1851,7 +1857,16 @@ public function setAutoReconnect( bool $autoReconnect ): static;
 
 Enables or disables transparent auto-reconnect on a lost connection.
 
-<ApiGroup label="Protected" count="3" />
+<ApiGroup label="Protected" count="4" />
+
+<h4 id="dbadapterpdoabstractpdo-buildreferences"><code>buildReferences()</code></h4>
+
+```php
+protected function buildReferences( array $records ): ReferenceInterface[];
+```
+
+Builds the Phalcon\Db\Reference objects from the rows of the
+describeReferences() SQL statement (MySQL and PostgreSQL)
 
 <h4 id="dbadapterpdoabstractpdo-getdsndefaults"><code>getDsnDefaults()</code></h4>
 
@@ -1914,7 +1929,7 @@ $connection = new Mysql($config);
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`</ApiUses>
 
 ### Method Summary
 
@@ -2064,7 +2079,7 @@ $connection = new Postgresql($config);
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Throwable`</ApiUses>
 
 ### Method Summary
 
@@ -3228,7 +3243,7 @@ Checks whether the platform supports the `RETURNING` clause. MySQL
 <ApiItem href="#dbdialect-supportssavepoints" visibility="public" name="supportsSavepoints" returnType="bool" params={[]}>
 Checks whether the platform supports savepoints
 </ApiItem>
-<ApiItem href="#dbdialect-checkcolumntype" visibility="protected" name="checkColumnType" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
+<ApiItem href="#dbdialect-checkcolumntype" visibility="protected" name="checkColumnType" returnType="int" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
 Checks the column type and if not string it returns the type reference
 </ApiItem>
 <ApiItem href="#dbdialect-checkcolumntypesql" visibility="protected" name="checkColumnTypeSql" returnType="string" params={[{"type":"ColumnInterface","name":"column","default":null}]}>
@@ -3657,7 +3672,7 @@ Checks whether the platform supports savepoints
 <h4 id="dbdialect-checkcolumntype"><code>checkColumnType()</code></h4>
 
 ```php
-protected function checkColumnType( ColumnInterface $column ): string;
+protected function checkColumnType( ColumnInterface $column ): int;
 ```
 
 Checks the column type and if not string it returns the type reference

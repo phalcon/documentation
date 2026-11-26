@@ -30,7 +30,7 @@ multi-key `cache:*Multiple` events).
 
 </ApiTree>
 
-<ApiUses>`DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Redis` · `Throwable` · `Traversable`</ApiUses>
+<ApiUses>`DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Redis` · `Throwable` · `Traversable`</ApiUses>
 
 ### Method Summary
 
@@ -676,12 +676,12 @@ Creates a new Cache class
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory`</ApiUses>
+<ApiUses>`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#cachecachefactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"adapterFactory","default":null}]}>
+<ApiItem href="#cachecachefactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"AdapterFactory","name":"factory","default":null}]}>
 Constructor
 </ApiItem>
 <ApiItem href="#cachecachefactory-load" visibility="public" name="load" returnType="CacheInterface" params={[{"type":"mixed","name":"config","default":null}]}>
@@ -709,7 +709,7 @@ Returns the exception class for the factory
 <h4 id="cachecachefactory-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( AdapterFactory $adapterFactory );
+public function __construct( AdapterFactory $factory );
 ```
 
 Constructor

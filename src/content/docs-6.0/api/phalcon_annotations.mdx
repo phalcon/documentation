@@ -29,7 +29,7 @@ the same as in cphalcon.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`</ApiUses>
+<ApiUses>`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -343,7 +343,7 @@ $annotations = new Apcu();
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`</ApiUses>
+<ApiUses>`Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -492,7 +492,7 @@ $annotations = new Stream(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Annotations\Annotation` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Traits\Php\FileTrait`</ApiUses>
+<ApiUses>`Phalcon\Annotations\Annotation` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait`</ApiUses>
 
 ### Method Summary
 
@@ -568,7 +568,7 @@ Represents a single annotation in an annotations collection
 <ApiItem href="#annotationsannotation-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"reflectionData","default":null}]}>
 Phalcon\Annotations\Annotation constructor
 </ApiItem>
-<ApiItem href="#annotationsannotation-getargument" visibility="public" name="getArgument" returnType="mixed" params={[{"type":"int|string","name":"position","default":null}]}>
+<ApiItem href="#annotationsannotation-getargument" visibility="public" name="getArgument" returnType="mixed" params={[{"type":"mixed","name":"position","default":null}]}>
 Returns an argument in a specific position
 </ApiItem>
 <ApiItem href="#annotationsannotation-getarguments" visibility="public" name="getArguments" returnType="array" params={[]}>
@@ -589,7 +589,7 @@ Returns a named argument
 <ApiItem href="#annotationsannotation-getnamedparameter" visibility="public" name="getNamedParameter" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
 Returns a named parameter
 </ApiItem>
-<ApiItem href="#annotationsannotation-hasargument" visibility="public" name="hasArgument" returnType="bool" params={[{"type":"int|string","name":"position","default":null}]}>
+<ApiItem href="#annotationsannotation-hasargument" visibility="public" name="hasArgument" returnType="bool" params={[{"type":"mixed","name":"position","default":null}]}>
 Returns an argument in a specific position
 </ApiItem>
 <ApiItem href="#annotationsannotation-numberarguments" visibility="public" name="numberArguments" returnType="int" params={[]}>
@@ -641,7 +641,7 @@ Phalcon\Annotations\Annotation constructor
 <h4 id="annotationsannotation-getargument"><code>getArgument()</code></h4>
 
 ```php
-public function getArgument( int|string $position ): mixed;
+public function getArgument( mixed $position ): mixed;
 ```
 
 Returns an argument in a specific position
@@ -697,7 +697,7 @@ Returns a named parameter
 <h4 id="annotationsannotation-hasargument"><code>hasArgument()</code></h4>
 
 ```php
-public function hasArgument( int|string $position ): bool;
+public function hasArgument( mixed $position ): bool;
 ```
 
 Returns an argument in a specific position
@@ -726,7 +726,7 @@ Factory to create annotations components
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Factory\AbstractFactory`</ApiUses>
+<ApiUses>`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -734,7 +734,7 @@ Factory to create annotations components
 <ApiItem href="#annotationsannotationsfactory-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"services","default":"[]"}]}>
 AdapterFactory constructor.
 </ApiItem>
-<ApiItem href="#annotationsannotationsfactory-load" visibility="public" name="load" returnType="AdapterInterface" params={[{"type":"mixed","name":"config","default":null}]}>
+<ApiItem href="#annotationsannotationsfactory-load" visibility="public" name="load" returnType="" params={[{"type":"mixed","name":"config","default":null}]}>
 Factory to create an instance from a Config object
 </ApiItem>
 <ApiItem href="#annotationsannotationsfactory-newinstance" visibility="public" name="newInstance" returnType="AdapterInterface" params={[{"type":"string","name":"name","default":null},{"type":"array","name":"options","default":"[]"}]}>
@@ -762,7 +762,7 @@ AdapterFactory constructor.
 <h4 id="annotationsannotationsfactory-load"><code>load()</code></h4>
 
 ```php
-public function load( mixed $config ): AdapterInterface;
+public function load( mixed $config );
 ```
 
 Factory to create an instance from a Config object
@@ -1592,7 +1592,7 @@ Marks a method as a CONNECT route. It is the attribute form of `@Connect`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterconnect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterconnect-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1608,7 +1608,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1632,7 +1632,7 @@ Marks a method as a DELETE route. It is the attribute form of `@Delete`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterdelete-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterdelete-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1648,7 +1648,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1672,7 +1672,7 @@ Marks a method as a GET route. It is the attribute form of `@Get`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterget-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1688,7 +1688,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1712,7 +1712,7 @@ Marks a method as a HEAD route. It is the attribute form of `@Head`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterhead-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterhead-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1728,7 +1728,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1752,7 +1752,7 @@ Marks a method as a OPTIONS route. It is the attribute form of `@Options`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouteroptions-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouteroptions-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1768,7 +1768,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1792,7 +1792,7 @@ Marks a method as a PATCH route. It is the attribute form of `@Patch`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterpatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterpatch-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1808,7 +1808,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1832,7 +1832,7 @@ Marks a method as a POST route. It is the attribute form of `@Post`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterpost-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterpost-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1848,7 +1848,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1872,7 +1872,7 @@ Marks a method as a PURGE route. It is the attribute form of `@Purge`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterpurge-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterpurge-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1888,7 +1888,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1912,7 +1912,7 @@ Marks a method as a PUT route. It is the attribute form of `@Put`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterput-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterput-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -1928,7 +1928,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1965,18 +1965,18 @@ name, the targets and the signature that an IDE and a static analyzer read.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsrouterroute-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"array|string|null","name":"methods","default":"null"},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsrouterroute-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"mixed","name":"methods","default":"null"},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="public" name="beforeMatch" type="array|string|null" default="null">
+<ApiItem kind="property" visibility="public" name="beforeMatch" type="mixed" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="public" name="converters" type="array" default="[]">
 </ApiItem>
-<ApiItem kind="property" visibility="public" name="methods" type="array|string|null" default="null">
+<ApiItem kind="property" visibility="public" name="methods" type="mixed" default="null">
 </ApiItem>
 <ApiItem kind="property" visibility="public" name="name" type="string|null" default="null">
 </ApiItem>
@@ -1995,11 +1995,11 @@ name, the targets and the signature that an IDE and a static analyzer read.
 ```php
 public function __construct(
     string $route,
-    array|string|null $methods = null,
+    mixed $methods = null,
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -2064,7 +2064,7 @@ Marks a method as a TRACE route. It is the attribute form of `@Trace`.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#annotationsroutertrace-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"array|string|null","name":"beforeMatch","default":"null"}]}>
+<ApiItem href="#annotationsroutertrace-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"route","default":null},{"type":"string|null","name":"name","default":"null"},{"type":"array","name":"paths","default":"[]"},{"type":"array","name":"converters","default":"[]"},{"type":"mixed","name":"beforeMatch","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2080,6 +2080,6 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```

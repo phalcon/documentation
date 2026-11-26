@@ -1586,13 +1586,12 @@ This is a base class for validators
     - [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
     - [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
     - [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
-    - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
-    - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+    - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
     - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -1635,6 +1634,12 @@ Checks if field can be empty.
 </ApiItem>
 <ApiItem href="#filtervalidationabstractvalidator-checkarray" visibility="protected" name="checkArray" returnType="mixed" params={[{"type":"mixed","name":"value","default":null},{"type":"string","name":"field","default":null}]}>
 Checks if a value is an array and returns the element based on the
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-getdomainoption" visibility="protected" name="getDomainOption" returnType="array" params={[{"type":"mixed","name":"field","default":null}]}>
+Returns the list of values of the "domain" option for the field
+</ApiItem>
+<ApiItem href="#filtervalidationabstractvalidator-getstrictoption" visibility="protected" name="getStrictOption" returnType="bool" params={[{"type":"mixed","name":"field","default":null}]}>
+Returns the "strict" option for the field. The default is false.
 </ApiItem>
 <ApiItem href="#filtervalidationabstractvalidator-preparecode" visibility="protected" name="prepareCode" returnType="int" params={[{"type":"string","name":"field","default":null}]}>
 Prepares a validation code.
@@ -1777,7 +1782,7 @@ abstract public function validate(
 
 Executes the validation
 
-<ApiGroup label="Protected" count="5" />
+<ApiGroup label="Protected" count="7" />
 
 <h4 id="filtervalidationabstractvalidator-allowempty"><code>allowEmpty()</code></h4>
 
@@ -1801,6 +1806,22 @@ protected function checkArray(
 
 Checks if a value is an array and returns the element based on the
 passed field name
+
+<h4 id="filtervalidationabstractvalidator-getdomainoption"><code>getDomainOption()</code></h4>
+
+```php
+protected function getDomainOption( mixed $field ): array;
+```
+
+Returns the list of values of the "domain" option for the field
+
+<h4 id="filtervalidationabstractvalidator-getstrictoption"><code>getStrictOption()</code></h4>
+
+```php
+protected function getStrictOption( mixed $field ): bool;
+```
+
+Returns the "strict" option for the field. The default is false.
 
 <h4 id="filtervalidationabstractvalidator-preparecode"><code>prepareCode()</code></h4>
 
@@ -3939,7 +3960,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -4191,6 +4212,12 @@ Appends the "file is not valid" message for the field
 <ApiItem href="#filtervalidationvalidatorfileabstractfile-checkisuploadedfile" visibility="protected" name="checkIsUploadedFile" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Checks if a file has been uploaded; Internal check that can be
 </ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getdimensionsoption" visibility="protected" name="getDimensionsOption" returnType="array" params={[{"type":"mixed","name":"field","default":null},{"type":"string","name":"name","default":null}]}>
+Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorfileabstractfile-getuploadedimagesize" visibility="protected" name="getUploadedImageSize" returnType="array|bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
+Returns the size of the uploaded image, or false if the upload is not
+</ApiItem>
 </ApiList>
 
 ### Properties
@@ -4322,7 +4349,7 @@ public function setMessageValid( string $message ): void;
 
 File is not valid
 
-<ApiGroup label="Protected" count="2" />
+<ApiGroup label="Protected" count="4" />
 
 <h4 id="filtervalidationvalidatorfileabstractfile-appendmessagevalid"><code>appendMessageValid()</code></h4>
 
@@ -4343,6 +4370,31 @@ protected function checkIsUploadedFile( string $name ): bool;
 
 Checks if a file has been uploaded; Internal check that can be
 overridden in a subclass if you do not want to check uploaded files
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getdimensionsoption"><code>getDimensionsOption()</code></h4>
+
+```php
+protected function getDimensionsOption(
+    mixed $field,
+    string $name
+): array;
+```
+
+Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+the height
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getuploadedimagesize"><code>getUploadedImageSize()</code></h4>
+
+```php
+protected function getUploadedImageSize(
+    Validation $validation,
+    mixed $field
+): array|bool;
+```
+
+Returns the size of the uploaded image, or false if the upload is not
+valid or the file is not an image. If the file is not an image, appends
+the "file is not valid" message.
 
 
 ## Filter\Validation\Validator\File\MimeType
@@ -5354,7 +5406,7 @@ $validator->add(
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5887,6 +5939,66 @@ public function __construct( array $options = [] );
 Constructor
 
 
+## Filter\Validation\Validator\StringLength\AbstractStringLength
+
+<ApiBadge variant="abstract">Abstract</ApiBadge>
+<SourceLink href="https://github.com/phalcon/cphalcon/blob/5.0.x/phalcon/Filter/Validation/Validator/StringLength/AbstractStringLength.zep" />
+
+Shared validation for the string length validators. The validator compares
+the length with its limit in validateLength().
+
+<ApiTree>
+
+- [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
+    - **`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`**
+        - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
+        - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+
+</ApiTree>
+
+<ApiUses>`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+
+### Method Summary
+
+<ApiList>
+<ApiItem href="#filtervalidationvalidatorstringlengthabstractstringlength-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
+Executes the validation
+</ApiItem>
+<ApiItem href="#filtervalidationvalidatorstringlengthabstractstringlength-validatelength" visibility="protected" name="validateLength" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"int","name":"length","default":null}]}>
+Compares the length of the value with the limit
+</ApiItem>
+</ApiList>
+
+### Methods
+
+<ApiGroup label="Public" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validate"><code>validate()</code></h4>
+
+```php
+public function validate(
+    Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation
+
+<ApiGroup label="Protected" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validatelength"><code>validateLength()</code></h4>
+
+```php
+abstract protected function validateLength(
+    Validation $validation,
+    mixed $field,
+    int $length
+): bool;
+```
+
+Compares the length of the value with the limit
+
+
 ## Filter\Validation\Validator\StringLength\Max
 
 <ApiBadge variant="class">Class</ApiBadge>
@@ -5945,11 +6057,12 @@ $validation->add(
 <ApiTree>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-    - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
+    - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+        - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -5957,8 +6070,8 @@ $validation->add(
 <ApiItem href="#filtervalidationvalidatorstringlengthmax-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
 Constructor
 </ApiItem>
-<ApiItem href="#filtervalidationvalidatorstringlengthmax-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
+<ApiItem href="#filtervalidationvalidatorstringlengthmax-validatelength" visibility="protected" name="validateLength" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"int","name":"length","default":null}]}>
+Compares the length of the value with the maximum
 </ApiItem>
 </ApiList>
 
@@ -5971,7 +6084,7 @@ Executes the validation
 
 ### Methods
 
-<ApiGroup label="Public" count="2" />
+<ApiGroup label="Public" count="1" />
 
 <h4 id="filtervalidationvalidatorstringlengthmax-__construct"><code>__construct()</code></h4>
 
@@ -5981,16 +6094,19 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmax-validate"><code>validate()</code></h4>
+<ApiGroup label="Protected" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthmax-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the maximum
 
 
 ## Filter\Validation\Validator\StringLength\Min
@@ -6051,11 +6167,12 @@ $validation->add(
 <ApiTree>
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-    - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
+    - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+        - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`</ApiUses>
 
 ### Method Summary
 
@@ -6063,8 +6180,8 @@ $validation->add(
 <ApiItem href="#filtervalidationvalidatorstringlengthmin-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"options","default":"[]"}]}>
 Constructor
 </ApiItem>
-<ApiItem href="#filtervalidationvalidatorstringlengthmin-validate" visibility="public" name="validate" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null}]}>
-Executes the validation
+<ApiItem href="#filtervalidationvalidatorstringlengthmin-validatelength" visibility="protected" name="validateLength" returnType="bool" params={[{"type":"Validation","name":"validation","default":null},{"type":"mixed","name":"field","default":null},{"type":"int","name":"length","default":null}]}>
+Compares the length of the value with the minimum
 </ApiItem>
 </ApiList>
 
@@ -6077,7 +6194,7 @@ Executes the validation
 
 ### Methods
 
-<ApiGroup label="Public" count="2" />
+<ApiGroup label="Public" count="1" />
 
 <h4 id="filtervalidationvalidatorstringlengthmin-__construct"><code>__construct()</code></h4>
 
@@ -6087,16 +6204,19 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmin-validate"><code>validate()</code></h4>
+<ApiGroup label="Protected" count="1" />
+
+<h4 id="filtervalidationvalidatorstringlengthmin-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the minimum
 
 
 ## Filter\Validation\Validator\Uniqueness

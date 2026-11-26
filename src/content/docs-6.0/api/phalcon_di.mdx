@@ -125,7 +125,7 @@ $request = $di->getRequest();
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Events\ManagerInterface` · `stdClass`</ApiUses>
+<ApiUses>`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `stdClass`</ApiUses>
 
 ### Method Summary
 
@@ -202,13 +202,13 @@ Resets the internal default DI
 <ApiItem href="#didi-set" visibility="public" name="set" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"definition","default":null},{"type":"bool","name":"shared","default":"false"}]}>
 Registers a service in the services container
 </ApiItem>
-<ApiItem href="#didi-setalias" visibility="public" name="setAlias" returnType="self" params={[{"type":"string","name":"name","default":null},{"type":"array|string","name":"aliases","default":null}]}>
+<ApiItem href="#didi-setalias" visibility="public" name="setAlias" returnType="self" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"aliases","default":null}]}>
 Sets one or more aliases to the given name.
 </ApiItem>
 <ApiItem href="#didi-setdefault" visibility="public" name="setDefault" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
 Set a default dependency injection container to be obtained into static
 </ApiItem>
-<ApiItem href="#didi-setinternaleventsmanager" visibility="public" name="setInternalEventsManager" returnType="void" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
+<ApiItem href="#didi-setinternaleventsmanager" visibility="public" name="setInternalEventsManager" returnType="" params={[{"type":"ManagerInterface","name":"eventsManager","default":null}]}>
 Sets the internal event manager
 </ApiItem>
 <ApiItem href="#didi-setservice" visibility="public" name="setService" returnType="ServiceInterface" params={[{"type":"string","name":"name","default":null},{"type":"ServiceInterface","name":"rawDefinition","default":null}]}>
@@ -561,7 +561,7 @@ Registers a service in the services container
 ```php
 public function setAlias(
     string $name,
-    array|string $aliases
+    mixed $aliases
 ): self;
 ```
 
@@ -579,7 +579,7 @@ methods
 <h4 id="didi-setinternaleventsmanager"><code>setInternalEventsManager()</code></h4>
 
 ```php
-public function setInternalEventsManager( ManagerInterface $eventsManager ): void;
+public function setInternalEventsManager( ManagerInterface $eventsManager );
 ```
 
 Sets the internal event manager
@@ -1654,7 +1654,7 @@ full stack framework
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`</ApiUses>
+<ApiUses>`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`</ApiUses>
 
 ### Method Summary
 
@@ -1698,7 +1698,7 @@ This class is specially suitable for CLI applications
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`</ApiUses>
+<ApiUses>`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`</ApiUses>
 
 ### Method Summary
 
@@ -1936,7 +1936,7 @@ $request = service->resolve();
 
 </ApiTree>
 
-<ApiUses>`Closure` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`</ApiUses>
+<ApiUses>`Closure` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1956,7 +1956,7 @@ Returns true if the service was resolved
 <ApiItem href="#diservice-isshared" visibility="public" name="isShared" returnType="bool" params={[]}>
 Check whether the service is shared or not
 </ApiItem>
-<ApiItem href="#diservice-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"array|null","name":"parameters","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
+<ApiItem href="#diservice-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
 Resolves the service
 </ApiItem>
 <ApiItem href="#diservice-setdefinition" visibility="public" name="setDefinition" returnType="void" params={[{"type":"mixed","name":"definition","default":null}]}>
@@ -2037,7 +2037,7 @@ Check whether the service is shared or not
 
 ```php
 public function resolve(
-    array|null $parameters = null,
+    mixed $parameters = null,
     DiInterface|null $container = null
 ): mixed;
 ```
@@ -2110,7 +2110,7 @@ Returns true if the service was resolved
 <ApiItem href="#diserviceinterface-isshared" visibility="public" name="isShared" returnType="bool" params={[]}>
 Check whether the service is shared or not
 </ApiItem>
-<ApiItem href="#diserviceinterface-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"array|null","name":"parameters","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
+<ApiItem href="#diserviceinterface-resolve" visibility="public" name="resolve" returnType="mixed" params={[{"type":"mixed","name":"parameters","default":"null"},{"type":"DiInterface|null","name":"container","default":"null"}]}>
 Resolves the service
 </ApiItem>
 <ApiItem href="#diserviceinterface-setdefinition" visibility="public" name="setDefinition" returnType="" params={[{"type":"mixed","name":"definition","default":null}]}>
@@ -2164,7 +2164,7 @@ Check whether the service is shared or not
 
 ```php
 public function resolve(
-    array|null $parameters = null,
+    mixed $parameters = null,
     DiInterface|null $container = null
 ): mixed;
 ```
@@ -2236,7 +2236,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#diserviceproviderinterface-register" visibility="public" name="register" returnType="void" params={[{"type":"DiInterface","name":"container","default":null}]}>
+<ApiItem href="#diserviceproviderinterface-register" visibility="public" name="register" returnType="void" params={[{"type":"DiInterface","name":"di","default":null}]}>
 Registers a service provider.
 </ApiItem>
 </ApiList>
@@ -2248,7 +2248,7 @@ Registers a service provider.
 <h4 id="diserviceproviderinterface-register"><code>register()</code></h4>
 
 ```php
-public function register( DiInterface $container ): void;
+public function register( DiInterface $di ): void;
 ```
 
 Registers a service provider.
@@ -2269,12 +2269,12 @@ This class builds instances based on complex definitions
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType` · `Phalcon\Support\Traits\WeakTypesTrait` · `RuntimeException`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#diservicebuilder-build" visibility="public" name="build" returnType="" params={[{"type":"DiInterface","name":"container","default":null},{"type":"array","name":"definition","default":null},{"type":"array|null","name":"parameters","default":"null"}]}>
+<ApiItem href="#diservicebuilder-build" visibility="public" name="build" returnType="" params={[{"type":"DiInterface","name":"container","default":null},{"type":"array","name":"definition","default":null},{"type":"mixed","name":"parameters","default":"null"}]}>
 Builds a service using a complex service definition
 </ApiItem>
 </ApiList>
@@ -2289,7 +2289,7 @@ Builds a service using a complex service definition
 public function build(
     DiInterface $container,
     array $definition,
-    array|null $parameters = null
+    mixed $parameters = null
 );
 ```
 

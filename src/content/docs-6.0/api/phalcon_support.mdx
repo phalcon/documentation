@@ -28,12 +28,12 @@ from a DI container, with support for both legacy Di and new Container.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable` · `TypeError`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supportabstractlocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"Collection|DiInterface","name":"container","default":null},{"type":"array","name":"services","default":"[]"}]}>
+<ApiItem href="#supportabstractlocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"mixed","name":"container","default":null},{"type":"array","name":"services","default":"[]"}]}>
 </ApiItem>
 <ApiItem href="#supportabstractlocator-getall" visibility="public" name="getAll" returnType="array" params={[]}>
 Returns the full registered service map (defaults plus any added via
@@ -81,7 +81,7 @@ Get the default services for this locator.
 
 ```php
 public function __construct(
-    Collection|DiInterface $container,
+    mixed $container,
     array $services = []
 );
 ```
@@ -206,7 +206,7 @@ etc.
 
 </ApiTree>
 
-<ApiUses>`ArrayIterator` · `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Collection\Traits\ArrayAccessTrait` · `Phalcon\Support\Collection\Traits\GetSetHasTrait` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`</ApiUses>
+<ApiUses>`ArrayIterator` · `Countable` · `InvalidArgumentException` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Collection\Traits\ArrayAccessTrait` · `Phalcon\Support\Collection\Traits\GetSetHasTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Traversable`</ApiUses>
 
 ### Method Summary
 
@@ -229,10 +229,10 @@ Returns the values from a single property/method extracted from every
 <ApiItem href="#supportcollection-count" visibility="public" name="count" returnType="int" params={[]}>
 Count elements of an object
 </ApiItem>
-<ApiItem href="#supportcollection-each" visibility="public" name="each" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+<ApiItem href="#supportcollection-each" visibility="public" name="each" returnType="static" params={[{"type":"mixed","name":"callback","default":null}]}>
 Invokes the callback for every item in the collection. Returns the
 </ApiItem>
-<ApiItem href="#supportcollection-filter" visibility="public" name="filter" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+<ApiItem href="#supportcollection-filter" visibility="public" name="filter" returnType="static" params={[{"type":"mixed","name":"callback","default":null}]}>
 Returns a new collection of items for which the callback returns true.
 </ApiItem>
 <ApiItem href="#supportcollection-first" visibility="public" name="first" returnType="mixed" params={[]}>
@@ -271,10 +271,10 @@ Returns the keys (insensitive or not) of the collection.
 <ApiItem href="#supportcollection-last" visibility="public" name="last" returnType="mixed" params={[]}>
 Returns the last value in the collection, or null if empty.
 </ApiItem>
-<ApiItem href="#supportcollection-map" visibility="public" name="map" returnType="static" params={[{"type":"callable","name":"callback","default":null}]}>
+<ApiItem href="#supportcollection-map" visibility="public" name="map" returnType="static" params={[{"type":"mixed","name":"callback","default":null}]}>
 Returns a new collection with the callback applied to every value.
 </ApiItem>
-<ApiItem href="#supportcollection-reduce" visibility="public" name="reduce" returnType="mixed" params={[{"type":"callable","name":"callback","default":null},{"type":"mixed","name":"initial","default":"null"}]}>
+<ApiItem href="#supportcollection-reduce" visibility="public" name="reduce" returnType="mixed" params={[{"type":"mixed","name":"callback","default":null},{"type":"mixed","name":"initial","default":"null"}]}>
 Reduces the collection to a single value using the callback. The
 </ApiItem>
 <ApiItem href="#supportcollection-remove" visibility="public" name="remove" returnType="void" params={[{"type":"string","name":"element","default":null}]}>
@@ -289,7 +289,7 @@ BC - delegate to __serialize()
 <ApiItem href="#supportcollection-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"element","default":null},{"type":"mixed","name":"value","default":null}]}>
 Set an element in the collection
 </ApiItem>
-<ApiItem href="#supportcollection-sort" visibility="public" name="sort" returnType="static" params={[{"type":"callable|null","name":"callback","default":"null"},{"type":"int","name":"order","default":"SORT_ASC"}]}>
+<ApiItem href="#supportcollection-sort" visibility="public" name="sort" returnType="static" params={[{"type":"mixed","name":"callback","default":"null"},{"type":"int","name":"order","default":"SORT_ASC"}]}>
 Returns a new collection sorted by value. Keys are preserved. When a
 </ApiItem>
 <ApiItem href="#supportcollection-toarray" visibility="public" name="toArray" returnType="array" params={[]}>
@@ -405,7 +405,7 @@ Count elements of an object
 <h4 id="supportcollection-each"><code>each()</code></h4>
 
 ```php
-public function each( callable $callback ): static;
+public function each( mixed $callback ): static;
 ```
 
 Invokes the callback for every item in the collection. Returns the
@@ -414,7 +414,7 @@ collection itself to allow chaining.
 <h4 id="supportcollection-filter"><code>filter()</code></h4>
 
 ```php
-public function filter( callable $callback ): static;
+public function filter( mixed $callback ): static;
 ```
 
 Returns a new collection of items for which the callback returns true.
@@ -523,7 +523,7 @@ Returns the last value in the collection, or null if empty.
 <h4 id="supportcollection-map"><code>map()</code></h4>
 
 ```php
-public function map( callable $callback ): static;
+public function map( mixed $callback ): static;
 ```
 
 Returns a new collection with the callback applied to every value.
@@ -533,7 +533,7 @@ Keys are preserved.
 
 ```php
 public function reduce(
-    callable $callback,
+    mixed $callback,
     mixed $initial = null
 ): mixed;
 ```
@@ -580,7 +580,7 @@ Set an element in the collection
 
 ```php
 public function sort(
-    callable|null $callback = null,
+    mixed $callback = null,
     int $order = SORT_ASC
 ): static;
 ```
@@ -1179,7 +1179,7 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`</ApiUses>
 
 ### Method Summary
 
@@ -1187,7 +1187,7 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 <ApiItem href="#supportdebug-__construct" visibility="public" name="__construct" returnType="" params={[]}>
 </ApiItem>
 <ApiItem href="#supportdebug-clearvars" visibility="public" name="clearVars" returnType="static" params={[]}>
-Clears are variables added previously
+Clears the variables added previously
 </ApiItem>
 <ApiItem href="#supportdebug-debugvar" visibility="public" name="debugVar" returnType="static" params={[{"type":"mixed","name":"variable","default":null}]}>
 Adds a variable to the debug output
@@ -1226,7 +1226,7 @@ Throws an exception when a notice or warning is raised
 Render exception to html format.
 </ApiItem>
 <ApiItem href="#supportdebug-setblacklist" visibility="public" name="setBlacklist" returnType="static" params={[{"type":"array","name":"blacklist","default":null}]}>
-Sets if files the exception's backtrace must be showed
+Sets the keys to remove from the request and the server data. The
 </ApiItem>
 <ApiItem href="#supportdebug-setrenderer" visibility="public" name="setRenderer" returnType="static" params={[{"type":"Renderer","name":"renderer","default":null}]}>
 Sets the renderer used to produce the output
@@ -1255,6 +1255,8 @@ Change the base URI for static resources
 <ApiItem kind="property" visibility="protected" name="hideDocumentRoot" type="bool" default="false">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="isActive" type="bool" default="false">
+</ApiItem>
+<ApiItem kind="property" visibility="protected" name="outputLevel" type="int" default="0">
 </ApiItem>
 <ApiItem kind="property" visibility="protected" name="renderer" type="Renderer" default="">
 </ApiItem>
@@ -1286,7 +1288,7 @@ public function __construct();
 public function clearVars(): static;
 ```
 
-Clears are variables added previously
+Clears the variables added previously
 
 <h4 id="supportdebug-debugvar"><code>debugVar()</code></h4>
 
@@ -1398,7 +1400,9 @@ Render exception to html format.
 public function setBlacklist( array $blacklist ): static;
 ```
 
-Sets if files the exception's backtrace must be showed
+Sets the keys to remove from the request and the server data. The
+array has a request and a server list of keys. A key matches at every
+depth.
 
 <h4 id="supportdebug-setrenderer"><code>setRenderer()</code></h4>
 
@@ -1469,7 +1473,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 </ApiTree>
 
-<ApiUses>`InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`</ApiUses>
+<ApiUses>`InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`</ApiUses>
 
 ### Method Summary
 
@@ -1741,7 +1745,7 @@ external debug.css / debug.js assets.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `ReflectionMethod`</ApiUses>
 
 ### Method Summary
 
@@ -1849,7 +1853,7 @@ logic.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Version` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`</ApiUses>
 
 ### Method Summary
 
@@ -1895,7 +1899,7 @@ Represents a single resolved frame of an exception backtrace.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supportdebugreportbacktraceitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"functionName","default":null},{"type":"string|null","name":"type","default":"null"},{"type":"string|null","name":"className","default":"null"},{"type":"string|null","name":"classLink","default":"null"},{"type":"string|null","name":"functionLink","default":"null"},{"type":"bool","name":"hasArgs","default":"false"},{"type":"array","name":"args","default":"[]"},{"type":"string|null","name":"file","default":"null"},{"type":"int|null","name":"line","default":"null"},{"type":"array|null","name":"fragment","default":"null"}]}>
+<ApiItem href="#supportdebugreportbacktraceitem-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"string","name":"functionName","default":null},{"type":"string|null","name":"type","default":"null"},{"type":"string|null","name":"className","default":"null"},{"type":"string|null","name":"classLink","default":"null"},{"type":"string|null","name":"functionLink","default":"null"},{"type":"bool","name":"hasArgs","default":"false"},{"type":"array","name":"args","default":"[]"},{"type":"string|null","name":"file","default":"null"},{"type":"int|null","name":"line","default":"null"},{"type":"mixed","name":"fragment","default":"null"}]}>
 </ApiItem>
 <ApiItem href="#supportdebugreportbacktraceitem-getargs" visibility="public" name="getArgs" returnType="array" params={[]}>
 </ApiItem>
@@ -1936,7 +1940,7 @@ public function __construct(
     array $args = [],
     string|null $file = null,
     int|null $line = null,
-    array|null $fragment = null
+    mixed $fragment = null
 );
 ```
 
@@ -2038,6 +2042,9 @@ presentation logic.
 </ApiItem>
 <ApiItem href="#supportdebugreportexceptionreport-getpeakmemoryusage" visibility="public" name="getPeakMemoryUsage" returnType="int" params={[]}>
 </ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-getpreviousexceptions" visibility="public" name="getPreviousExceptions" returnType="array" params={[]}>
+The previous exceptions of the exception, from the nearest to the first.
+</ApiItem>
 <ApiItem href="#supportdebugreportexceptionreport-getrequest" visibility="public" name="getRequest" returnType="array" params={[]}>
 </ApiItem>
 <ApiItem href="#supportdebugreportexceptionreport-getserver" visibility="public" name="getServer" returnType="array" params={[]}>
@@ -2058,6 +2065,8 @@ presentation logic.
 </ApiItem>
 <ApiItem href="#supportdebugreportexceptionreport-setpeakmemoryusage" visibility="public" name="setPeakMemoryUsage" returnType="static" params={[{"type":"int","name":"peakMemoryUsage","default":null}]}>
 </ApiItem>
+<ApiItem href="#supportdebugreportexceptionreport-setpreviousexceptions" visibility="public" name="setPreviousExceptions" returnType="static" params={[{"type":"array","name":"previousExceptions","default":null}]}>
+</ApiItem>
 <ApiItem href="#supportdebugreportexceptionreport-setrequest" visibility="public" name="setRequest" returnType="static" params={[{"type":"array","name":"request","default":null}]}>
 </ApiItem>
 <ApiItem href="#supportdebugreportexceptionreport-setserver" visibility="public" name="setServer" returnType="static" params={[{"type":"array","name":"server","default":null}]}>
@@ -2068,7 +2077,7 @@ presentation logic.
 
 ### Methods
 
-<ApiGroup label="Public" count="22" />
+<ApiGroup label="Public" count="24" />
 
 <h4 id="supportdebugreportexceptionreport-__construct"><code>__construct()</code></h4>
 
@@ -2131,6 +2140,14 @@ public function getMessage(): string;
 public function getPeakMemoryUsage(): int;
 ```
 
+<h4 id="supportdebugreportexceptionreport-getpreviousexceptions"><code>getPreviousExceptions()</code></h4>
+
+```php
+public function getPreviousExceptions(): array;
+```
+
+The previous exceptions of the exception, from the nearest to the first.
+
 <h4 id="supportdebugreportexceptionreport-getrequest"><code>getRequest()</code></h4>
 
 ```php
@@ -2189,6 +2206,12 @@ public function setMemoryUsage( int $memoryUsage ): static;
 
 ```php
 public function setPeakMemoryUsage( int $peakMemoryUsage ): static;
+```
+
+<h4 id="supportdebugreportexceptionreport-setpreviousexceptions"><code>setPreviousExceptions()</code></h4>
+
+```php
+public function setPreviousExceptions( array $previousExceptions ): static;
 ```
 
 <h4 id="supportdebugreportexceptionreport-setrequest"><code>setRequest()</code></h4>
@@ -2373,7 +2396,7 @@ ServiceLocator implementation for helpers
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
@@ -2554,7 +2577,7 @@ used.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrfilter-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"callable|null","name":"method","default":"null"}]}>
+<ApiItem href="#supporthelperarrfilter-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2567,7 +2590,7 @@ used.
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
+    mixed $method = null
 ): mixed;
 ```
 
@@ -2590,7 +2613,7 @@ element returned is the first that validates true
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrfirst-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"callable|null","name":"method","default":"null"}]}>
+<ApiItem href="#supporthelperarrfirst-__invoke" visibility="public" name="__invoke" returnType="mixed" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2603,7 +2626,7 @@ element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
+    mixed $method = null
 ): mixed;
 ```
 
@@ -2626,7 +2649,7 @@ is passed, the element returned is the first that validates true
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrfirstkey-__invoke" visibility="public" name="__invoke" returnType="int|string|null" params={[{"type":"array","name":"collection","default":null},{"type":"callable|null","name":"method","default":"null"}]}>
+<ApiItem href="#supporthelperarrfirstkey-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2639,8 +2662,8 @@ is passed, the element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
-): int|string|null;
+    mixed $method = null
+);
 ```
 
 
@@ -2732,12 +2755,12 @@ Groups the elements of an array based on the passed callable
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Traits\Php\InfoTrait`</ApiUses>
+<ApiUses>`Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrgroup-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"callable|string","name":"method","default":null}]}>
+<ApiItem href="#supporthelperarrgroup-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
 </ApiItem>
 </ApiList>
 
@@ -2750,7 +2773,7 @@ Groups the elements of an array based on the passed callable
 ```php
 public function __invoke(
     array $collection,
-    callable|string $method
+    mixed $method
 ): array;
 ```
 
@@ -2842,7 +2865,7 @@ element returned is the first that validates true
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrlast-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array","name":"collection","default":null},{"type":"callable|null","name":"method","default":"null"}]}>
+<ApiItem href="#supporthelperarrlast-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2855,7 +2878,7 @@ element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
+    mixed $method = null
 );
 ```
 
@@ -2878,7 +2901,7 @@ passed, the element returned is the first that validates true
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrlastkey-__invoke" visibility="public" name="__invoke" returnType="int|string|null" params={[{"type":"array","name":"collection","default":null},{"type":"callable|null","name":"method","default":"null"}]}>
+<ApiItem href="#supporthelperarrlastkey-__invoke" visibility="public" name="__invoke" returnType="" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2891,8 +2914,8 @@ passed, the element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
-): int|string|null;
+    mixed $method = null
+);
 ```
 
 
@@ -2911,10 +2934,12 @@ the ones used by `ksort` and `krsort`
 
 </ApiTree>
 
+<ApiUses>`Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
+
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrorder-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"string","name":"attribute","default":null},{"type":"int","name":"order","default":"self::ORDER_ASC"},{"type":"int","name":"flags","default":"SORT_REGULAR"}]}>
+<ApiItem href="#supporthelperarrorder-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"attribute","default":null},{"type":"int","name":"order","default":"self::ORDER_ASC"},{"type":"int","name":"flags","default":"SORT_REGULAR"}]}>
 </ApiItem>
 </ApiList>
 
@@ -2936,7 +2961,7 @@ the ones used by `ksort` and `krsort`
 ```php
 public function __invoke(
     array $collection,
-    string $attribute,
+    mixed $attribute,
     int $order = self::ORDER_ASC,
     int $flags = SORT_REGULAR
 ): array;
@@ -2993,7 +3018,7 @@ Sets an array element. Using a key is optional
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrset-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"value","default":null},{"type":"int|string|null","name":"index","default":"null"}]}>
+<ApiItem href="#supporthelperarrset-__invoke" visibility="public" name="__invoke" returnType="array" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"value","default":null},{"type":"mixed","name":"index","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -3007,7 +3032,7 @@ Sets an array element. Using a key is optional
 public function __invoke(
     array $collection,
     mixed $value,
-    int|string|null $index = null
+    mixed $index = null
 ): array;
 ```
 
@@ -3161,7 +3186,7 @@ the collection, `false` otherwise.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrvalidateall-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"callable","name":"method","default":null}]}>
+<ApiItem href="#supporthelperarrvalidateall-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
 </ApiItem>
 </ApiList>
 
@@ -3174,7 +3199,7 @@ the collection, `false` otherwise.
 ```php
 public function __invoke(
     array $collection,
-    callable $method
+    mixed $method
 ): bool;
 ```
 
@@ -3197,7 +3222,7 @@ element of the collection, `false` otherwise.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperarrvalidateany-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"callable","name":"method","default":null}]}>
+<ApiItem href="#supporthelperarrvalidateany-__invoke" visibility="public" name="__invoke" returnType="bool" params={[{"type":"array","name":"collection","default":null},{"type":"mixed","name":"method","default":null}]}>
 </ApiItem>
 </ApiList>
 
@@ -3210,7 +3235,7 @@ element of the collection, `false` otherwise.
 ```php
 public function __invoke(
     array $collection,
-    callable $method
+    mixed $method
 ): bool;
 ```
 
@@ -3992,7 +4017,7 @@ is passed, it will also be used to replace those characters with a space.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supporthelperstrfriendly-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"array|string|null","name":"replace","default":"null"}]}>
+<ApiItem href="#supporthelperstrfriendly-__invoke" visibility="public" name="__invoke" returnType="string" params={[{"type":"string","name":"text","default":null},{"type":"string","name":"separator","default":"\"-\""},{"type":"bool","name":"lowercase","default":"true"},{"type":"mixed","name":"replace","default":"null"}]}>
 </ApiItem>
 </ApiList>
 
@@ -4007,7 +4032,7 @@ public function __invoke(
     string $text,
     string $separator = "-",
     bool $lowercase = true,
-    array|string|null $replace = null
+    mixed $replace = null
 ): string;
 ```
 
@@ -4822,7 +4847,7 @@ space. By storing the value in a registry, the same object is always
 available throughout your application.
 
 ```php
-$registry = new \Phalcon\Registry();
+$registry = new \Phalcon\Support\Registry();
 
 // Set value
 $registry->something = "something";
@@ -4845,24 +4870,13 @@ unset($registry->something);
 unset($registry["something"]);
 ```
 
-In addition to ArrayAccess, Phalcon\Registry also implements Countable
-(count($registry) will return the number of elements in the registry),
-Serializable and Iterator (you can iterate over the registry using a foreach
-loop) interfaces. For PHP 5.4 and higher, JsonSerializable interface is
-implemented.
+Phalcon\Support\Registry extends Phalcon\Support\Collection. It implements
+ArrayAccess, Countable, IteratorAggregate and JsonSerializable. Use
+count($registry) to get the number of elements, and use foreach to iterate
+over the registry.
 
-Phalcon\Registry is very fast (it is typically faster than any userspace
-implementation of the registry); however, this comes at a price:
-Phalcon\Registry is a final class and cannot be inherited from.
-
-Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc,
-it is not recommended to invoke them manually (these methods exist mainly to
-match the interfaces the registry implements): $registry->__get("property")
-is several times slower than $registry->property.
-
-Internally all the magic methods (and interfaces except JsonSerializable)
-are implemented using object handlers or similar techniques: this allows to
-bypass relatively slow method calls.
+The keys are not case-sensitive. Phalcon\Support\Registry is a final class.
+You cannot extend it.
 
 @extends Collection&lt;mixed>
 
@@ -4941,7 +4955,7 @@ Returns the object in an array format
 <ApiItem href="#supportregistry-tojson" visibility="public" name="toJson" returnType="string" params={[{"type":"int","name":"options","default":null}]}>
 Returns the object in a JSON format
 </ApiItem>
-<ApiItem href="#supportregistry-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"serialized","default":null}]}>
+<ApiItem href="#supportregistry-unserialize" visibility="public" name="unserialize" returnType="void" params={[{"type":"string","name":"data","default":null}]}>
 Unserializes the object
 </ApiItem>
 </ApiList>
@@ -5139,7 +5153,7 @@ JSON_UNESCAPED_SLASHES, JSON_THROW_ON_ERROR
 <h4 id="supportregistry-unserialize"><code>unserialize()</code></h4>
 
 ```php
-final public function unserialize( string $serialized ): void;
+final public function unserialize( string $data ): void;
 ```
 
 Unserializes the object
@@ -5177,13 +5191,13 @@ those keys to their ini_get() fallback values.
 ### Method Summary
 
 <ApiList>
-<ApiItem href="#supportsettings-get" visibility="public" name="get" returnType="bool|int|null" params={[{"type":"string","name":"key","default":null}]}>
+<ApiItem href="#supportsettings-get" visibility="public" name="get" returnType="mixed" params={[{"type":"string","name":"key","default":null}]}>
 Returns the value of a known setting.
 </ApiItem>
 <ApiItem href="#supportsettings-reset" visibility="public" name="reset" returnType="void" params={[]}>
 Clears all PHP-level overrides, restoring get() to return ini_get()
 </ApiItem>
-<ApiItem href="#supportsettings-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"bool|int","name":"value","default":null}]}>
+<ApiItem href="#supportsettings-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"key","default":null},{"type":"mixed","name":"value","default":null}]}>
 Overrides a setting at the PHP level.
 </ApiItem>
 </ApiList>
@@ -5191,7 +5205,7 @@ Overrides a setting at the PHP level.
 ### Properties
 
 <ApiList>
-<ApiItem kind="property" visibility="protected" name="overrides" type="array&lt;string, bool|int&gt;" default="[]">
+<ApiItem kind="property" visibility="protected" name="overrides" type="array&lt;string, mixed&gt;" default="[]">
 PHP-level overrides. Keys stored here take priority over ini_get().
 </ApiItem>
 </ApiList>
@@ -5203,7 +5217,7 @@ PHP-level overrides. Keys stored here take priority over ini_get().
 <h4 id="supportsettings-get"><code>get()</code></h4>
 
 ```php
-public static function get( string $key ): bool|int|null;
+public static function get( string $key ): mixed;
 ```
 
 Returns the value of a known setting.
@@ -5229,7 +5243,7 @@ fallback values (as configured in php.ini or .htaccess).
 ```php
 public static function set(
     string $key,
-    bool|int $value
+    mixed $value
 ): void;
 ```
 
@@ -5336,6 +5350,30 @@ public function prepareVirtualPath(
     string $separator = "_"
 ): string;
 ```
+
+
+## Support\Traits\WeakTypesTrait
+
+<ApiBadge variant="trait">Trait</ApiBadge>
+<SourceLink href="https://github.com/phalcon/phalcon/blob/v6.0.x/src/Support/Traits/WeakTypesTrait.php" />
+
+Calls a setter or writes a property with the PHP weak type rules.
+
+This file has no declare(strict_types=1). Do not add it. PHP checks a call
+or a property write in the mode of the file that holds the calling code.
+cphalcon is compiled C, so PHP checks its setter calls and property writes
+in weak mode. These methods give the same checks to the PHP code. The
+WeakModeTypesTest tests fail if the declare is added.
+
+<ApiTree>
+
+- **`Phalcon\Support\Traits\WeakTypesTrait`**
+
+</ApiTree>
+
+<ApiUses>`Error`</ApiUses>
+
+<ApiUsedBy>[`Phalcon\ADR\Dispatcher`](/6.0/api/phalcon_adr/#adrdispatcher) · [`Phalcon\ADR\ErrorResponder`](/6.0/api/phalcon_adr/#adrerrorresponder) · [`Phalcon\ADR\Router\AttributeFilter`](/6.0/api/phalcon_adr/#adrrouterattributefilter) · [`Phalcon\ADR\Router\Router`](/6.0/api/phalcon_adr/#adrrouterrouter) · [`Phalcon\Acl\Adapter\Memory`](/6.0/api/phalcon_acl/#acladaptermemory) · [`Phalcon\Acl\Adapter\Storage`](/6.0/api/phalcon_acl/#acladapterstorage) · [`Phalcon\Annotations\Adapter\AbstractAdapter`](/6.0/api/phalcon_annotations/#annotationsadapterabstractadapter) · [`Phalcon\Annotations\Adapter\Apcu`](/6.0/api/phalcon_annotations/#annotationsadapterapcu) · [`Phalcon\Annotations\Adapter\Stream`](/6.0/api/phalcon_annotations/#annotationsadapterstream) · [`Phalcon\Annotations\AnnotationsFactory`](/6.0/api/phalcon_annotations/#annotationsannotationsfactory) · [`Phalcon\Assets\Manager`](/6.0/api/phalcon_assets/#assetsmanager) · [`Phalcon\Auth\AbstractAuthDispatcherListener`](/6.0/api/phalcon_auth/#authabstractauthdispatcherlistener) · [`Phalcon\Autoload\Loader`](/6.0/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/6.0/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cache\CacheFactory`](/6.0/api/phalcon_cache/#cachecachefactory) · [`Phalcon\Cli\Console`](/6.0/api/phalcon_cli/#cliconsole) · [`Phalcon\Cli\Dispatcher`](/6.0/api/phalcon_cli/#clidispatcher) · [`Phalcon\Cli\Router`](/6.0/api/phalcon_cli/#clirouter) · [`Phalcon\Config\ConfigFactory`](/6.0/api/phalcon_config/#configconfigfactory) · [`Phalcon\Container\Definition\ServiceDefinition`](/6.0/api/phalcon_container/#containerdefinitionservicedefinition) · [`Phalcon\Container\Resolver\Lazy\Call`](/6.0/api/phalcon_container/#containerresolverlazycall) · [`Phalcon\Container\Resolver\Lazy\Env`](/6.0/api/phalcon_container/#containerresolverlazyenv) · [`Phalcon\Container\Resolver\Lazy\FunctionCall`](/6.0/api/phalcon_container/#containerresolverlazyfunctioncall) · [`Phalcon\Container\Resolver\Lazy\Lazy`](/6.0/api/phalcon_container/#containerresolverlazylazy) · [`Phalcon\Container\Resolver\Lazy\StaticCall`](/6.0/api/phalcon_container/#containerresolverlazystaticcall) · [`Phalcon\Container\Resolver\Resolver`](/6.0/api/phalcon_container/#containerresolverresolver) · [`Phalcon\DataMapper\Pdo\Connection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnection) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\DataMapper\Query\AbstractConditions`](/6.0/api/phalcon_datamapper/#datamapperqueryabstractconditions) · [`Phalcon\DataMapper\Query\Bind`](/6.0/api/phalcon_datamapper/#datamapperquerybind) · [`Phalcon\DataMapper\Query\Insert`](/6.0/api/phalcon_datamapper/#datamapperqueryinsert) · [`Phalcon\DataMapper\Query\Update`](/6.0/api/phalcon_datamapper/#datamapperqueryupdate) · [`Phalcon\Db\Adapter\AbstractAdapter`](/6.0/api/phalcon_db/#dbadapterabstractadapter) · [`Phalcon\Db\Adapter\PdoFactory`](/6.0/api/phalcon_db/#dbadapterpdofactory) · [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](/6.0/api/phalcon_db/#dbadapterpdoabstractpdo) · [`Phalcon\Db\Adapter\Pdo\Mysql`](/6.0/api/phalcon_db/#dbadapterpdomysql) · [`Phalcon\Db\Adapter\Pdo\Sqlite`](/6.0/api/phalcon_db/#dbadapterpdosqlite) · [`Phalcon\Db\Column`](/6.0/api/phalcon_db/#dbcolumn) · [`Phalcon\Db\Dialect`](/6.0/api/phalcon_db/#dbdialect) · [`Phalcon\Db\Dialect\Mysql`](/6.0/api/phalcon_db/#dbdialectmysql) · [`Phalcon\Db\Dialect\Postgresql`](/6.0/api/phalcon_db/#dbdialectpostgresql) · [`Phalcon\Db\Dialect\Sqlite`](/6.0/api/phalcon_db/#dbdialectsqlite) · [`Phalcon\Db\Reference`](/6.0/api/phalcon_db/#dbreference) · [`Phalcon\Db\Result\PdoResult`](/6.0/api/phalcon_db/#dbresultpdoresult) · [`Phalcon\Di\Di`](/6.0/api/phalcon_di/#didi) · [`Phalcon\Di\Service`](/6.0/api/phalcon_di/#diservice) · [`Phalcon\Di\Service\Builder`](/6.0/api/phalcon_di/#diservicebuilder) · [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Encryption\Security`](/6.0/api/phalcon_encryption/#encryptionsecurity) · [`Phalcon\Encryption\Security\JWT\Token\Token`](/6.0/api/phalcon_encryption/#encryptionsecurityjwttokentoken) · [`Phalcon\Encryption\Security\Random`](/6.0/api/phalcon_encryption/#encryptionsecurityrandom) · [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](/6.0/api/phalcon_encryption/#encryptionsecurityuuidabstractuuid) · [`Phalcon\Events\Manager`](/6.0/api/phalcon_events/#eventsmanager) · [`Phalcon\Filter\Filter`](/6.0/api/phalcon_filter/#filterfilter) · [`Phalcon\Filter\Sanitize\Alnum`](/6.0/api/phalcon_filter/#filtersanitizealnum) · [`Phalcon\Filter\Sanitize\Alpha`](/6.0/api/phalcon_filter/#filtersanitizealpha) · [`Phalcon\Filter\Sanitize\Regex`](/6.0/api/phalcon_filter/#filtersanitizeregex) · [`Phalcon\Filter\Sanitize\Remove`](/6.0/api/phalcon_filter/#filtersanitizeremove) · [`Phalcon\Filter\Sanitize\Replace`](/6.0/api/phalcon_filter/#filtersanitizereplace) · [`Phalcon\Filter\Validation`](/6.0/api/phalcon_filter/#filtervalidation) · [`Phalcon\Filter\Validation\AbstractValidator`](/6.0/api/phalcon_filter/#filtervalidationabstractvalidator) · [`Phalcon\Filter\Validation\Validator\Alnum`](/6.0/api/phalcon_filter/#filtervalidationvalidatoralnum) · [`Phalcon\Filter\Validation\Validator\Alpha`](/6.0/api/phalcon_filter/#filtervalidationvalidatoralpha) · [`Phalcon\Filter\Validation\Validator\Between`](/6.0/api/phalcon_filter/#filtervalidationvalidatorbetween) · [`Phalcon\Filter\Validation\Validator\Confirmation`](/6.0/api/phalcon_filter/#filtervalidationvalidatorconfirmation) · [`Phalcon\Filter\Validation\Validator\CreditCard`](/6.0/api/phalcon_filter/#filtervalidationvalidatorcreditcard) · [`Phalcon\Filter\Validation\Validator\Date`](/6.0/api/phalcon_filter/#filtervalidationvalidatordate) · [`Phalcon\Filter\Validation\Validator\Digit`](/6.0/api/phalcon_filter/#filtervalidationvalidatordigit) · [`Phalcon\Filter\Validation\Validator\Email`](/6.0/api/phalcon_filter/#filtervalidationvalidatoremail) · [`Phalcon\Filter\Validation\Validator\ExclusionIn`](/6.0/api/phalcon_filter/#filtervalidationvalidatorexclusionin) · [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfileabstractfile) · [`Phalcon\Filter\Validation\Validator\File\MimeType`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfilemimetype) · [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfilesizeequal) · [`Phalcon\Filter\Validation\Validator\Files`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfiles) · [`Phalcon\Filter\Validation\Validator\Identical`](/6.0/api/phalcon_filter/#filtervalidationvalidatoridentical) · [`Phalcon\Filter\Validation\Validator\InclusionIn`](/6.0/api/phalcon_filter/#filtervalidationvalidatorinclusionin) · [`Phalcon\Filter\Validation\Validator\Ip`](/6.0/api/phalcon_filter/#filtervalidationvalidatorip) · [`Phalcon\Filter\Validation\Validator\Numericality`](/6.0/api/phalcon_filter/#filtervalidationvalidatornumericality) · [`Phalcon\Filter\Validation\Validator\PresenceOf`](/6.0/api/phalcon_filter/#filtervalidationvalidatorpresenceof) · [`Phalcon\Filter\Validation\Validator\Regex`](/6.0/api/phalcon_filter/#filtervalidationvalidatorregex) · [`Phalcon\Filter\Validation\Validator\StringLength`](/6.0/api/phalcon_filter/#filtervalidationvalidatorstringlength) · [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](/6.0/api/phalcon_filter/#filtervalidationvalidatorstringlengthabstractstringlength) · [`Phalcon\Filter\Validation\Validator\Uniqueness`](/6.0/api/phalcon_filter/#filtervalidationvalidatoruniqueness) · [`Phalcon\Filter\Validation\Validator\Url`](/6.0/api/phalcon_filter/#filtervalidationvalidatorurl) · [`Phalcon\Flash\AbstractFlash`](/6.0/api/phalcon_flash/#flashabstractflash) · [`Phalcon\Flash\Session`](/6.0/api/phalcon_flash/#flashsession) · [`Phalcon\Forms\Form`](/6.0/api/phalcon_forms/#formsform) · [`Phalcon\Forms\FormsLocator`](/6.0/api/phalcon_forms/#formsformslocator) · [`Phalcon\Html\Escaper\AttributeEscaper`](/6.0/api/phalcon_html/#htmlescaperattributeescaper) · [`Phalcon\Html\Helper\Input\Select\ResultsetData`](/6.0/api/phalcon_html/#htmlhelperinputselectresultsetdata) · [`Phalcon\Html\Helper\Input\Textarea`](/6.0/api/phalcon_html/#htmlhelperinputtextarea) · [`Phalcon\Html\Link\EvolvableLink`](/6.0/api/phalcon_html/#htmllinkevolvablelink) · [`Phalcon\Html\Link\LinkProvider`](/6.0/api/phalcon_html/#htmllinklinkprovider) · [`Phalcon\Html\TagFactory`](/6.0/api/phalcon_html/#htmltagfactory) · [`Phalcon\Http\Cookie`](/6.0/api/phalcon_http/#httpcookie) · [`Phalcon\Http\Request`](/6.0/api/phalcon_http/#httprequest) · [`Phalcon\Http\Request\File`](/6.0/api/phalcon_http/#httprequestfile) · [`Phalcon\Http\Response`](/6.0/api/phalcon_http/#httpresponse) · [`Phalcon\Http\Response\Headers`](/6.0/api/phalcon_http/#httpresponseheaders) · [`Phalcon\Image\ImageFactory`](/6.0/api/phalcon_image/#imageimagefactory) · [`Phalcon\Logger\Adapter\Syslog`](/6.0/api/phalcon_logger/#loggeradaptersyslog) · [`Phalcon\Logger\LoggerFactory`](/6.0/api/phalcon_logger/#loggerloggerfactory) · [`Phalcon\Messages\Messages`](/6.0/api/phalcon_messages/#messagesmessages) · [`Phalcon\Mvc\Application`](/6.0/api/phalcon_mvc/#mvcapplication) · [`Phalcon\Mvc\Micro`](/6.0/api/phalcon_mvc/#mvcmicro) · [`Phalcon\Mvc\Micro\LazyLoader`](/6.0/api/phalcon_mvc/#mvcmicrolazyloader) · [`Phalcon\Mvc\Model`](/6.0/api/phalcon_mvc/#mvcmodel) · [`Phalcon\Mvc\Model\Behavior\Timestampable`](/6.0/api/phalcon_mvc/#mvcmodelbehaviortimestampable) · [`Phalcon\Mvc\Model\Binder`](/6.0/api/phalcon_mvc/#mvcmodelbinder) · [`Phalcon\Mvc\Model\Criteria`](/6.0/api/phalcon_mvc/#mvcmodelcriteria) · [`Phalcon\Mvc\Model\Eager\Loader`](/6.0/api/phalcon_mvc/#mvcmodeleagerloader) · [`Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap`](/6.0/api/phalcon_mvc/#mvcmodelhydrationcaseinsensitivecolumnmap) · [`Phalcon\Mvc\Model\Hydration\CloneResult`](/6.0/api/phalcon_mvc/#mvcmodelhydrationcloneresult) · [`Phalcon\Mvc\Model\MetaData`](/6.0/api/phalcon_mvc/#mvcmodelmetadata) · [`Phalcon\Mvc\Model\MetaData\Stream`](/6.0/api/phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\Model\Query`](/6.0/api/phalcon_mvc/#mvcmodelquery) · [`Phalcon\Mvc\Model\Query\Builder`](/6.0/api/phalcon_mvc/#mvcmodelquerybuilder) · [`Phalcon\Mvc\Model\Relation`](/6.0/api/phalcon_mvc/#mvcmodelrelation) · [`Phalcon\Mvc\Router`](/6.0/api/phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\Router\Annotations`](/6.0/api/phalcon_mvc/#mvcrouterannotations) · [`Phalcon\Mvc\Router\Group`](/6.0/api/phalcon_mvc/#mvcroutergroup) · [`Phalcon\Mvc\Url`](/6.0/api/phalcon_mvc/#mvcurl) · [`Phalcon\Mvc\View`](/6.0/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\Php`](/6.0/api/phalcon_mvc/#mvcviewenginephp) · [`Phalcon\Mvc\View\Engine\Volt`](/6.0/api/phalcon_mvc/#mvcviewenginevolt) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Paginator\Adapter\AbstractAdapter`](/6.0/api/phalcon_paginator/#paginatoradapterabstractadapter) · [`Phalcon\Paginator\PaginatorFactory`](/6.0/api/phalcon_paginator/#paginatorpaginatorfactory) · [`Phalcon\Queue\Adapter\Stream\StreamConnectionFactory`](/6.0/api/phalcon_queue/#queueadapterstreamstreamconnectionfactory) · [`Phalcon\Session\Adapter\Stream`](/6.0/api/phalcon_session/#sessionadapterstream) · [`Phalcon\Session\Manager`](/6.0/api/phalcon_session/#sessionmanager) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter) · [`Phalcon\Storage\Adapter\Libmemcached`](/6.0/api/phalcon_storage/#storageadapterlibmemcached) · [`Phalcon\Storage\Adapter\Redis`](/6.0/api/phalcon_storage/#storageadapterredis) · [`Phalcon\Storage\Adapter\RedisCluster`](/6.0/api/phalcon_storage/#storageadapterrediscluster) · [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream) · [`Phalcon\Support\AbstractLocator`](#supportabstractlocator) · [`Phalcon\Support\Collection`](#supportcollection) · [`Phalcon\Support\Debug`](#supportdebug) · [`Phalcon\Support\Debug\Dump`](#supportdebugdump) · [`Phalcon\Support\HelperFactory`](#supporthelperfactory) · [`Phalcon\Support\Helper\Arr\Group`](#supporthelperarrgroup) · [`Phalcon\Support\Helper\Arr\Order`](#supporthelperarrorder) · [`Phalcon\Tag`](/6.0/api/phalcon_tag/#tag) · [`Phalcon\Tag\Select`](/6.0/api/phalcon_tag/#tagselect) · [`Phalcon\Translate\Adapter\AbstractAdapter`](/6.0/api/phalcon_translate/#translateadapterabstractadapter) · [`Phalcon\Translate\Adapter\Csv`](/6.0/api/phalcon_translate/#translateadaptercsv) · [`Phalcon\Translate\Adapter\Gettext`](/6.0/api/phalcon_translate/#translateadaptergettext) · [`Phalcon\Translate\Adapter\NativeArray`](/6.0/api/phalcon_translate/#translateadapternativearray)</ApiUsedBy>
 
 
 ## Support\Version

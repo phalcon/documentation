@@ -69,7 +69,7 @@ Returns the default attributes for the element
 <ApiItem href="#formselementabstractelement-getdefault" visibility="public" name="getDefault" returnType="mixed" params={[]}>
 Returns the default value assigned to the element
 </ApiItem>
-<ApiItem href="#formselementabstractelement-getfilters" visibility="public" name="getFilters" returnType="array" params={[]}>
+<ApiItem href="#formselementabstractelement-getfilters" visibility="public" name="getFilters" returnType="" params={[]}>
 Returns the element filters
 </ApiItem>
 <ApiItem href="#formselementabstractelement-getform" visibility="public" name="getForm" returnType="Form|null" params={[]}>
@@ -117,7 +117,7 @@ Sets default attributes for the element
 <ApiItem href="#formselementabstractelement-setdefault" visibility="public" name="setDefault" returnType="ElementInterface" params={[{"type":"mixed","name":"value","default":null}]}>
 Sets a default value in case the form does not use an entity
 </ApiItem>
-<ApiItem href="#formselementabstractelement-setfilters" visibility="public" name="setFilters" returnType="ElementInterface" params={[{"type":"array|string","name":"filters","default":null}]}>
+<ApiItem href="#formselementabstractelement-setfilters" visibility="public" name="setFilters" returnType="ElementInterface" params={[{"type":"mixed","name":"filters","default":null}]}>
 Sets the element filters
 </ApiItem>
 <ApiItem href="#formselementabstractelement-setform" visibility="public" name="setForm" returnType="ElementInterface" params={[{"type":"Form","name":"form","default":null}]}>
@@ -269,7 +269,7 @@ Returns the default value assigned to the element
 <h4 id="formselementabstractelement-getfilters"><code>getFilters()</code></h4>
 
 ```php
-public function getFilters(): array;
+public function getFilters();
 ```
 
 Returns the element filters
@@ -405,7 +405,7 @@ or there is no value available for the element in _POST
 <h4 id="formselementabstractelement-setfilters"><code>setFilters()</code></h4>
 
 ```php
-public function setFilters( array|string $filters ): ElementInterface;
+public function setFilters( mixed $filters ): ElementInterface;
 ```
 
 Sets the element filters
@@ -705,7 +705,7 @@ Returns the default attributes for the element
 <ApiItem href="#formselementelementinterface-getdefault" visibility="public" name="getDefault" returnType="mixed" params={[]}>
 Returns the default value assigned to the element
 </ApiItem>
-<ApiItem href="#formselementelementinterface-getfilters" visibility="public" name="getFilters" returnType="array" params={[]}>
+<ApiItem href="#formselementelementinterface-getfilters" visibility="public" name="getFilters" returnType="" params={[]}>
 Returns the element's filters
 </ApiItem>
 <ApiItem href="#formselementelementinterface-getform" visibility="public" name="getForm" returnType="Form|null" params={[]}>
@@ -750,7 +750,7 @@ Sets default attributes for the element
 <ApiItem href="#formselementelementinterface-setdefault" visibility="public" name="setDefault" returnType="ElementInterface" params={[{"type":"mixed","name":"value","default":null}]}>
 Sets a default value in case the form does not use an entity
 </ApiItem>
-<ApiItem href="#formselementelementinterface-setfilters" visibility="public" name="setFilters" returnType="ElementInterface" params={[{"type":"array|string","name":"filters","default":null}]}>
+<ApiItem href="#formselementelementinterface-setfilters" visibility="public" name="setFilters" returnType="ElementInterface" params={[{"type":"mixed","name":"filters","default":null}]}>
 Sets the element's filters
 </ApiItem>
 <ApiItem href="#formselementelementinterface-setform" visibility="public" name="setForm" returnType="ElementInterface" params={[{"type":"Form","name":"form","default":null}]}>
@@ -850,7 +850,7 @@ Returns the default value assigned to the element
 <h4 id="formselementelementinterface-getfilters"><code>getFilters()</code></h4>
 
 ```php
-public function getFilters(): array;
+public function getFilters();
 ```
 
 Returns the element's filters
@@ -978,7 +978,7 @@ or there is no value available for the element in _POST
 <h4 id="formselementelementinterface-setfilters"><code>setFilters()</code></h4>
 
 ```php
-public function setFilters( array|string $filters ): ElementInterface;
+public function setFilters( mixed $filters ): ElementInterface;
 ```
 
 Sets the element's filters
@@ -1284,7 +1284,7 @@ Returns the choices' options
 <ApiItem href="#formselementselect-render" visibility="public" name="render" returnType="string" params={[{"type":"array","name":"attributes","default":"[]"}]}>
 Renders the element widget returning HTML
 </ApiItem>
-<ApiItem href="#formselementselect-setoptions" visibility="public" name="setOptions" returnType="ElementInterface" params={[{"type":"array|object","name":"options","default":null}]}>
+<ApiItem href="#formselementselect-setoptions" visibility="public" name="setOptions" returnType="ElementInterface" params={[{"type":"mixed","name":"options","default":null}]}>
 Set the choice's options
 </ApiItem>
 <ApiItem href="#formselementselect-prepareattributes" visibility="protected" name="prepareAttributes" returnType="array" params={[{"type":"array","name":"attributes","default":"[]"}]}>
@@ -1342,7 +1342,7 @@ Renders the element widget returning HTML
 <h4 id="formselementselect-setoptions"><code>setOptions()</code></h4>
 
 ```php
-public function setOptions( array|object $options ): ElementInterface;
+public function setOptions( mixed $options ): ElementInterface;
 ```
 
 Set the choice's options
@@ -1952,7 +1952,7 @@ This component allows to build forms using an object-oriented interface
 
 </ApiTree>
 
-<ApiUses>`Countable` · `Iterator` · `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`</ApiUses>
+<ApiUses>`Countable` · `Error` · `Iterator` · `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`</ApiUses>
 
 ### Method Summary
 
@@ -1963,10 +1963,10 @@ Phalcon\Forms\Form constructor
 <ApiItem href="#formsform-add" visibility="public" name="add" returnType="static" params={[{"type":"ElementInterface","name":"element","default":null},{"type":"string|null","name":"position","default":"null"},{"type":"bool|null","name":"type","default":"null"}]}>
 Adds an element to the form
 </ApiItem>
-<ApiItem href="#formsform-bind" visibility="public" name="bind" returnType="static" params={[{"type":"array","name":"data","default":null},{"type":"object|null","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
+<ApiItem href="#formsform-bind" visibility="public" name="bind" returnType="static" params={[{"type":"array","name":"data","default":null},{"type":"mixed","name":"entity","default":"null"},{"type":"array","name":"whitelist","default":"[]"}]}>
 Binds data to the entity
 </ApiItem>
-<ApiItem href="#formsform-clear" visibility="public" name="clear" returnType="static" params={[{"type":"array|string|null","name":"fields","default":"null"}]}>
+<ApiItem href="#formsform-clear" visibility="public" name="clear" returnType="static" params={[{"type":"mixed","name":"fields","default":"null"}]}>
 Clears every element in the form to its default value
 </ApiItem>
 <ApiItem href="#formsform-count" visibility="public" name="count" returnType="int" params={[]}>
@@ -1987,7 +1987,7 @@ Get Form attributes collection
 <ApiItem href="#formsform-getelements" visibility="public" name="getElements" returnType="array" params={[]}>
 Returns the form elements added to the form
 </ApiItem>
-<ApiItem href="#formsform-getentity" visibility="public" name="getEntity" returnType="object|null" params={[]}>
+<ApiItem href="#formsform-getentity" visibility="public" name="getEntity" returnType="" params={[]}>
 Returns the entity related to the model
 </ApiItem>
 <ApiItem href="#formsform-getfilteredvalue" visibility="public" name="getFilteredValue" returnType="mixed" params={[{"type":"string","name":"name","default":null}]}>
@@ -2139,7 +2139,7 @@ Adds an element to the form
 ```php
 public function bind(
     array $data,
-    object|null $entity = null,
+    mixed $entity = null,
     array $whitelist = []
 ): static;
 ```
@@ -2149,7 +2149,7 @@ Binds data to the entity
 <h4 id="formsform-clear"><code>clear()</code></h4>
 
 ```php
-public function clear( array|string|null $fields = null ): static;
+public function clear( mixed $fields = null ): static;
 ```
 
 Clears every element in the form to its default value
@@ -2205,7 +2205,7 @@ Returns the form elements added to the form
 <h4 id="formsform-getentity"><code>getEntity()</code></h4>
 
 ```php
-public function getEntity(): object|null;
+public function getEntity();
 ```
 
 Returns the entity related to the model
@@ -2497,17 +2497,17 @@ types with `setElement()`.
 
 </ApiTree>
 
-<ApiUses>`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`</ApiUses>
+<ApiUses>`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType` · `Phalcon\Support\Traits\WeakTypesTrait`</ApiUses>
 
 ### Method Summary
 
 <ApiList>
 <ApiItem href="#formsformslocator-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"array","name":"definitions","default":"[]"}]}>
 </ApiItem>
-<ApiItem href="#formsformslocator-get" visibility="public" name="get" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"object|null","name":"entity","default":"null"}]}>
+<ApiItem href="#formsformslocator-get" visibility="public" name="get" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"entity","default":"null"}]}>
 Returns the named form.
 </ApiItem>
-<ApiItem href="#formsformslocator-getelement" visibility="public" name="getElement" returnType="callable" params={[{"type":"string","name":"type","default":null}]}>
+<ApiItem href="#formsformslocator-getelement" visibility="public" name="getElement" returnType="mixed" params={[{"type":"string","name":"type","default":null}]}>
 Returns the factory callable for the given element type.
 </ApiItem>
 <ApiItem href="#formsformslocator-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
@@ -2516,10 +2516,10 @@ Checks whether a named form factory is registered.
 <ApiItem href="#formsformslocator-haselement" visibility="public" name="hasElement" returnType="bool" params={[{"type":"string","name":"type","default":null}]}>
 Checks whether an element type is registered.
 </ApiItem>
-<ApiItem href="#formsformslocator-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"callable","name":"factory","default":null}]}>
+<ApiItem href="#formsformslocator-set" visibility="public" name="set" returnType="void" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"factory","default":null}]}>
 Registers or replaces a named form factory.
 </ApiItem>
-<ApiItem href="#formsformslocator-setelement" visibility="public" name="setElement" returnType="void" params={[{"type":"string","name":"type","default":null},{"type":"callable","name":"factory","default":null}]}>
+<ApiItem href="#formsformslocator-setelement" visibility="public" name="setElement" returnType="void" params={[{"type":"string","name":"type","default":null},{"type":"mixed","name":"factory","default":null}]}>
 Registers or replaces an element type factory.
 </ApiItem>
 <ApiItem href="#formsformslocator-getdefaultservices" visibility="protected" name="getDefaultServices" returnType="array" params={[]}>
@@ -2542,7 +2542,7 @@ public function __construct( array $definitions = [] );
 ```php
 public function get(
     string $name,
-    object|null $entity = null
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2551,10 +2551,12 @@ Returns the named form.
 Without an entity the result is lazily created and cached.
 With an entity a fresh form is always produced.
 
+A factory that cannot be called throws Error, the same as cphalcon.
+
 <h4 id="formsformslocator-getelement"><code>getElement()</code></h4>
 
 ```php
-public function getElement( string $type ): callable;
+public function getElement( string $type ): mixed;
 ```
 
 Returns the factory callable for the given element type.
@@ -2580,7 +2582,7 @@ Checks whether an element type is registered.
 ```php
 public function set(
     string $name,
-    callable $factory
+    mixed $factory
 ): void;
 ```
 
@@ -2595,7 +2597,7 @@ the next get() call rebuilds from the new factory.
 ```php
 public function setElement(
     string $type,
-    callable $factory
+    mixed $factory
 ): void;
 ```
 
@@ -2803,7 +2805,7 @@ Forms Manager
 <ApiItem href="#formsmanager-__construct" visibility="public" name="__construct" returnType="" params={[{"type":"FormsLocator|null","name":"locator","default":"null"}]}>
 Manager constructor.
 </ApiItem>
-<ApiItem href="#formsmanager-create" visibility="public" name="create" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"object|null","name":"entity","default":"null"}]}>
+<ApiItem href="#formsmanager-create" visibility="public" name="create" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"mixed","name":"entity","default":"null"}]}>
 Creates a form registering it in the forms manager
 </ApiItem>
 <ApiItem href="#formsmanager-get" visibility="public" name="get" returnType="Form" params={[{"type":"string","name":"name","default":null}]}>
@@ -2815,7 +2817,7 @@ Returns the FormsLocator instance.
 <ApiItem href="#formsmanager-has" visibility="public" name="has" returnType="bool" params={[{"type":"string","name":"name","default":null}]}>
 Checks if a form is registered in the forms manager
 </ApiItem>
-<ApiItem href="#formsmanager-loadform" visibility="public" name="loadForm" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"Schema","name":"schema","default":null},{"type":"object|null","name":"entity","default":"null"}]}>
+<ApiItem href="#formsmanager-loadform" visibility="public" name="loadForm" returnType="Form" params={[{"type":"string","name":"name","default":null},{"type":"Schema","name":"schema","default":null},{"type":"mixed","name":"entity","default":"null"}]}>
 Creates a form from a Schema source, registers it in the manager,
 </ApiItem>
 <ApiItem href="#formsmanager-set" visibility="public" name="set" returnType="static" params={[{"type":"string","name":"name","default":null},{"type":"Form","name":"form","default":null}]}>
@@ -2849,7 +2851,7 @@ Manager constructor.
 ```php
 public function create(
     string $name,
-    object|null $entity = null
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2885,7 +2887,7 @@ Checks if a form is registered in the forms manager
 public function loadForm(
     string $name,
     Schema $schema,
-    object|null $entity = null
+    mixed $entity = null
 ): Form;
 ```
 
