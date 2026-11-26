@@ -196,6 +196,10 @@ $manager->logout();
 
 ## Guards
 
+:::warning[WARNING]
+A guard keeps the user that it finds for the life of the guard object. With PHP-FPM, each request builds a new manager with new guards. In a long-running worker (for example Swoole, RoadRunner or the FrankenPHP worker mode), build the manager for each request. If you keep one manager for many requests, a guard gives the user of an earlier request. The token guard also clears its user when you call `setRequest()` with the new request.
+:::
+
 ### Session Guard
 
 `Phalcon\Auth\Guard\Session` keeps the authenticated identifier in the session manager and supports remember-me cookies and HTTP Basic. It implements `GuardStateful` and `BasicAuth`.

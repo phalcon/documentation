@@ -1732,6 +1732,29 @@ echo Tag::textField(
 //        value="<h1>hello</h1>" />
 ```
 
+The helpers also accept the `escape` key in their parameters. With `'escape' => false` (or `null`), the helper does not escape the values of that call, also when automatic escaping is on:
+
+```php
+<?php
+
+use Phalcon\Tag;
+
+echo Tag::textField(
+    [
+        'framework',
+        'value'  => '<h1>hello</h1>',
+        'escape' => false,
+    ]
+);
+
+// <input type="text" id="framework" name="framework" 
+//        value="<h1>hello</h1>" />
+```
+
+:::danger[DANGER]
+Do not give request data, such as `$_POST` or `$request->getPost()`, directly as the parameters of a helper. A user can then send the `escape` key with the value `0` and turn off the escaping of the output.
+:::
+
 ## Dependency Injection
 
 If you use the [Phalcon\Di\FactoryDefault][factorydefault] container, the [Phalcon\Tag][tag] is already registered for you with the name `tag`.

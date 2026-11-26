@@ -64,6 +64,10 @@ compared to:
 <?php } ?>
 ```
 
+:::danger[DANGER]
+Volt compiles a template to PHP code, and the compiled file runs with the permissions of your application. Volt has no sandbox: the text outside the Volt tags goes into the compiled file as it is, PHP tags included. Compile only templates that you trust, such as the templates of your application. Do not compile a template that a user can send or change.
+:::
+
 ## Constructor
 
 ```php
