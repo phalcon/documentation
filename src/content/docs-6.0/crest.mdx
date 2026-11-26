@@ -1162,8 +1162,8 @@ MariaDB keep a `BOOLEAN` column as `TINYINT(1)`, so it gives `?int`. On SQLite,
 Phalcon reads `DOUBLE` and `BOOLEAN` columns as `VARCHAR`, so they give
 `?string`.
 
-On SQLite, a `TINYINT(1)` column gives `?int` before cphalcon 5.24.0 and before the tag
-of `phalcon/phalcon` after `v6.0.0RC4`. From these versions, it gives `?bool`, and a
+On SQLite, a `TINYINT(1)` column gives `?int` before cphalcon 5.24.0 and before
+`phalcon/phalcon` 6.0.0. From these versions, it gives `?bool`, and a
 `Select` field in a scaffold.
 
 Each property is nullable, with the default `null`, because a new model has no
@@ -1708,7 +1708,7 @@ You can also add a skipped relation in your model, in `initialize()` after
 
 Composite keys work on MySQL and MariaDB: the fields are arrays, for example
 `['order_id', 'line_no']`. On PostgreSQL, composite keys work from the C extension
-cphalcon 5.24.0 and from the tag of `phalcon/phalcon` after `v6.0.0RC4`. Before these
+cphalcon 5.24.0 and from `phalcon/phalcon` 6.0.0. Before these
 versions, Phalcon gives the wrong columns for a composite key on PostgreSQL. On
 SQLite, Phalcon gives one key for each column of a composite key. Thus Crest
 writes one relation for each column, and each relation uses only a part of the
@@ -1802,7 +1802,7 @@ The limits:
   If you do not give the keys a name, PostgreSQL gives the two keys the same
   name, for example `invoices_customer_id_fkey`. Two keys with the same name can
   point to tables or columns with different names. For such keys, before
-  cphalcon 5.24.0 and before the tag of `phalcon/phalcon` after `v6.0.0RC4`,
+  cphalcon 5.24.0 and before `phalcon/phalcon` 6.0.0,
   Phalcon gives one key with the columns of the two keys. Crest then writes a
   relation with the column two times, or a `Skipped` line, for that key. To fix
   it, give one of the two keys another name, or use the release with the fix.
@@ -1971,7 +1971,7 @@ can chain the setters. There are two differences:
   had no types, so they accepted each value.
 - A getter gives the typed value.
 
-On `phalcon/phalcon` `v6.0.0RC4` and before, a write through `__set()` or
+Before `phalcon/phalcon` 6.0.0, a write through `__set()` or
 `assign()` gives a `TypeError` when the value does not have the type of the
 column, also for `'42'`.
 
