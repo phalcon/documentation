@@ -1085,7 +1085,7 @@ if ($user) {
   - [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
     - **`Phalcon\Encryption\Security`** - implements [`Phalcon\Contracts\Encryption\Security\Security`](/6.0/api/phalcon_contracts/#contractsencryptionsecuritysecurity)
 
-`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Php\HashTrait` · `ValueError`
+`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Contracts\Encryption\Security\Security` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Encryption\Security\Exception` · `Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm` · `Phalcon\Encryption\Security\Random` · `Phalcon\Http\RequestInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\HashTrait` · `ValueError`
 
 ### Method Summary
 
@@ -1536,7 +1536,7 @@ JWT Builder
 
 - `public setSubject(string $subject): static` — The "sub" (subject) claim identifies the principal that is the
 
-- `protected setClaim(string $name, mixed $value): static` — Sets a registered claim
+- `protected setClaim(string $name, mixed $value): Builder` — Sets a registered claim
 
 ### Methods
 
@@ -1765,7 +1765,7 @@ value.  Use of this claim is OPTIONAL.
 protected function setClaim(
     string $name,
     mixed $value
-): static;
+): Builder;
 ```
 
 Sets a registered claim
@@ -2405,7 +2405,7 @@ and payload. It also calculates and returns the token string.
 
 - **`Phalcon\Encryption\Security\JWT\Token\Token`**
 
-`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator`
+`Phalcon\Contracts\Encryption\EncryptionTypes` · `Phalcon\Encryption\Security\JWT\Signer\SignerInterface` · `Phalcon\Encryption\Security\JWT\Validator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2532,7 +2532,7 @@ Class Validator
 
 - `public validateAudience(mixed $audience): static` — Validate the audience
 
-- `public validateClaim(string $name, bool|int|string $value): static` — Validate a claim
+- `public validateClaim(string $name, mixed $value): static` — Validate a claim
 
 - `public validateExpiration(int $timestamp): static` — Validate the expiration time of the token
 
@@ -2610,7 +2610,7 @@ Validate the audience
 ```php
 public function validateClaim(
     string $name,
-    bool|int|string $value
+    mixed $value
 ): static;
 ```
 
@@ -2764,7 +2764,7 @@ This class partially borrows SecureRandom library from Ruby
 
 - **`Phalcon\Encryption\Security\Random`**
 
-`Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Traits\Php\Base64Trait`
+`Exception` · `Phalcon\Encryption\Security\Exceptions\InvalidRandomInput` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\Base64Trait`
 
 ### Method Summary
 
@@ -2784,7 +2784,7 @@ This class partially borrows SecureRandom library from Ruby
 
 - `public uuid(): string` — Generates a v4 random UUID (Universally Unique IDentifier)
 
-- `protected base(string $alphabet, int $base, int $number = 16): string` — Generates a random string based on the number (\$base) of characters
+- `protected base(string $alphabet, int $base, mixed $number = 16): string` — Generates a random string based on the number (\$base) of characters
 
 ### Methods
 
@@ -2963,7 +2963,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 protected function base(
     string $alphabet,
     int $base,
-    int $number = 16
+    mixed $number = 16
 ): string;
 ```
 
@@ -3070,7 +3070,7 @@ Shared base for all UUID version objects.
   - [`Phalcon\Encryption\Security\Uuid\Version6`](#encryptionsecurityuuidversion6)
   - [`Phalcon\Encryption\Security\Uuid\Version7`](#encryptionsecurityuuidversion7)
 
-`DateTimeImmutable`
+`DateTimeImmutable` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

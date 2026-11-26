@@ -3528,7 +3528,7 @@ Abstract
 
 - `protected doWithoutLink(mixed $link): static` — Returns an instance with the specified link removed.
 
-- `protected getKey(mixed $link): string` — Returns the object hash key
+- `protected getKey(mixed $link): int` — Returns the object id key
 
 ### Properties
 
@@ -3598,10 +3598,10 @@ object already in the collection.
 <h4 id="htmllinkabstractlinkprovider-getkey"><code>getKey()</code></h4>
 
 ```php
-protected function getKey( mixed $link ): string;
+protected function getKey( mixed $link ): int;
 ```
 
-Returns the object hash key
+Returns the object id key
 
 
 ## Html\Link\EvolvableLink

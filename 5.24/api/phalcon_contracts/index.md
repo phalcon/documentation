@@ -3128,7 +3128,7 @@ until then the tags below record what they provide.
 
 - `public fetchAll(string $sqlQuery, int $fetchMode = 2, array $bindParams = [], array $bindTypes = []): array` — Dumps the complete result of a query into an array
 
-- `public fetchColumn(string $sqlQuery, array $placeholders = [], mixed $column = 0): string|bool` — Returns the n'th field of first row in a SQL query result
+- `public fetchColumn(string $sqlQuery, array $placeholders = [], mixed $column = 0): mixed` — Returns the n'th field of first row in a SQL query result
 
 - `public fetchOne(string $sqlQuery, int $fetchMode = 2, array $bindParams = [], array $bindTypes = []): array` — Returns the first row in a SQL query result
 
@@ -3502,10 +3502,13 @@ public function fetchColumn(
     string $sqlQuery,
     array $placeholders = [],
     mixed $column = 0
-): string|bool;
+): mixed;
 ```
 
 Returns the n'th field of first row in a SQL query result
+
+Returns false if the query returns no rows. The type of the value
+comes from the database driver.
 
 ```php
 // Getting count of invoices

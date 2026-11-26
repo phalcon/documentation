@@ -1248,11 +1248,10 @@ This is a base class for validators
   - [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
   - [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
   - [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
-  - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
-  - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+  - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
   - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
@@ -1281,6 +1280,10 @@ This is a base class for validators
 - `protected allowEmpty(mixed $field, mixed $value): bool` — Checks if field can be empty.
 
 - `protected checkArray(mixed $value, string $field): mixed` — Checks if a value is an array and returns the element based on the
+
+- `protected getDomainOption(mixed $field): array` — Returns the list of values of the "domain" option for the field
+
+- `protected getStrictOption(mixed $field): bool` — Returns the "strict" option for the field. The default is false.
 
 - `protected prepareCode(string $field): int` — Prepares a validation code.
 
@@ -1432,6 +1435,22 @@ protected function checkArray(
 
 Checks if a value is an array and returns the element based on the
 passed field name
+
+<h4 id="filtervalidationabstractvalidator-getdomainoption"><code>getDomainOption()</code></h4>
+
+```php
+protected function getDomainOption( mixed $field ): array;
+```
+
+Returns the list of values of the "domain" option for the field
+
+<h4 id="filtervalidationabstractvalidator-getstrictoption"><code>getStrictOption()</code></h4>
+
+```php
+protected function getStrictOption( mixed $field ): bool;
+```
+
+Returns the "strict" option for the field. The default is false.
 
 <h4 id="filtervalidationabstractvalidator-preparecode"><code>prepareCode()</code></h4>
 
@@ -3139,7 +3158,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
@@ -3350,6 +3369,10 @@ $validator->add(
 
 - `protected checkIsUploadedFile(string $name): bool` — Checks if a file has been uploaded; Internal check that can be
 
+- `protected getDimensionsOption(mixed $field, string $name): array` — Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+
+- `protected getUploadedImageSize(Validation $validation, mixed $field): array|bool` — Returns the size of the uploaded image, or false if the upload is not
+
 ### Properties
 
 - `protected string $messageFileEmpty = "Field :field must not be empty"` — Empty is empty
@@ -3490,6 +3513,31 @@ protected function checkIsUploadedFile( string $name ): bool;
 
 Checks if a file has been uploaded; Internal check that can be
 overridden in a subclass if you do not want to check uploaded files
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getdimensionsoption"><code>getDimensionsOption()</code></h4>
+
+```php
+protected function getDimensionsOption(
+    mixed $field,
+    string $name
+): array;
+```
+
+Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+the height
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getuploadedimagesize"><code>getUploadedImageSize()</code></h4>
+
+```php
+protected function getUploadedImageSize(
+    Validation $validation,
+    mixed $field
+): array|bool;
+```
+
+Returns the size of the uploaded image, or false if the upload is not
+valid or the file is not an image. If the file is not an image, appends
+the "file is not valid" message.
 
 
 ## Filter\Validation\Validator\File\MimeType
@@ -4347,7 +4395,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\InclusionIn`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
@@ -4796,6 +4844,52 @@ public function __construct( array $options = [] );
 Constructor
 
 
+## Filter\Validation\Validator\StringLength\AbstractStringLength
+
+Abstract
+
+Shared validation for the string length validators. The validator compares
+the length with its limit in validateLength().
+
+- [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
+  - **`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`**
+    - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
+    - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Traits\Php\InfoTrait`
+
+### Method Summary
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+
+- `protected validateLength(Validation $validation, mixed $field, int $length): bool` — Compares the length of the value with the limit
+
+### Methods
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validate"><code>validate()</code></h4>
+
+```php
+public function validate(
+    Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validatelength"><code>validateLength()</code></h4>
+
+```php
+abstract protected function validateLength(
+    Validation $validation,
+    mixed $field,
+    int $length
+): bool;
+```
+
+Compares the length of the value with the limit
+
+
 ## Filter\Validation\Validator\StringLength\Max
 
 Class
@@ -4851,15 +4945,16 @@ $validation->add(
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-  - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
+  - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+    - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
 - `public __construct(array $options = [])` — Constructor
 
-- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+- `protected validateLength(Validation $validation, mixed $field, int $length): bool` — Compares the length of the value with the maximum
 
 ### Properties
 
@@ -4875,16 +4970,17 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmax-validate"><code>validate()</code></h4>
+<h4 id="filtervalidationvalidatorstringlengthmax-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the maximum
 
 
 ## Filter\Validation\Validator\StringLength\Min
@@ -4942,15 +5038,16 @@ $validation->add(
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-  - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
+  - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+    - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
 - `public __construct(array $options = [])` — Constructor
 
-- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+- `protected validateLength(Validation $validation, mixed $field, int $length): bool` — Compares the length of the value with the minimum
 
 ### Properties
 
@@ -4966,16 +5063,17 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmin-validate"><code>validate()</code></h4>
+<h4 id="filtervalidationvalidatorstringlengthmin-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the minimum
 
 
 ## Filter\Validation\Validator\Uniqueness

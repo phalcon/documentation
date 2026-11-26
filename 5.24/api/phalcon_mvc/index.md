@@ -7944,7 +7944,7 @@ $invoice = new Invoices($di);
 
 - **`Phalcon\Mvc\Model\Manager`** - implements [`Phalcon\Mvc\Model\ManagerInterface`](#mvcmodelmanagerinterface), [`Phalcon\Di\InjectionAwareInterface`](/5.24/api/phalcon_di/#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](/5.24/api/phalcon_events/#eventseventsawareinterface)
 
-`Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty`
+`Phalcon\Annotations\Exceptions\InvalidSourceTable` · `Phalcon\Annotations\Models\MetaData\Source` · `Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Exception` · `Phalcon\Events\ManagerInterface` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\Exceptions\InvalidConnectionService` · `Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable` · `Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad` · `Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch` · `Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString` · `Phalcon\Mvc\Model\Exceptions\UnknownRelationType` · `Phalcon\Mvc\Model\Query\Builder` · `Phalcon\Mvc\Model\Query\BuilderInterface` · `Phalcon\Mvc\Model\Query\StatusInterface` · `Phalcon\Support\Settings` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty`
 
 ### Method Summary
 
@@ -8016,7 +8016,7 @@ $invoice = new Invoices($di);
 
 - `public getModelSchema(ModelInterface $model): string|null` — Returns the mapped schema for a model
 
-- `public getModelSource(ModelInterface $model): string` — Returns the mapped source for a model
+- `public getModelSource(ModelInterface $model): string` — Returns the mapped source for a model. An explicit source takes
 
 - `public getReadConnection(ModelInterface $model): AdapterInterface` — Returns the connection to read data related to a model
 
@@ -8550,7 +8550,9 @@ Returns the mapped schema for a model
 public function getModelSource( ModelInterface $model ): string;
 ```
 
-Returns the mapped source for a model
+Returns the mapped source for a model. An explicit source takes
+precedence over a class-level Source attribute when AttributesReader
+is configured, followed by the uncamelized class name.
 
 <h4 id="mvcmodelmanager-getreadconnection"><code>getReadConnection()</code></h4>
 
@@ -11506,7 +11508,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 - `public cache(array $cacheOptions): QueryInterface` — Sets the cache parameters of the query
 
-- `public clean(): void` — Destroys the internal PHQL cache
+- `public clean(): void` — Destroys the internal PHQL cache, and the parsed statements it is keyed
 
 - `public execute(array $bindParams = [], array $bindTypes = [])` — Executes a parsed PHQL statement
 
@@ -11514,7 +11516,7 @@ $resultWithOutEntries = $queryWithTransaction->execute();
 
 - `public getBindTypes(): array` — Returns default bind types
 
-- `public getCache(): AdapterInterface` — Returns the current cache backend instance
+- `public getCache(): CacheInterface|null` — Returns the current cache backend instance
 
 - `public getCacheOptions(): array` — Returns the current cache options
 
@@ -11701,7 +11703,8 @@ Sets the cache parameters of the query
 public static function clean(): void;
 ```
 
-Destroys the internal PHQL cache
+Destroys the internal PHQL cache, and the parsed statements it is keyed
+by
 
 <h4 id="mvcmodelquery-execute"><code>execute()</code></h4>
 
@@ -11733,7 +11736,7 @@ Returns default bind types
 <h4 id="mvcmodelquery-getcache"><code>getCache()</code></h4>
 
 ```php
-public function getCache(): AdapterInterface;
+public function getCache(): CacheInterface|null;
 ```
 
 Returns the current cache backend instance
@@ -15259,6 +15262,8 @@ $intermediate = Lang::parsePHQL(
 ```
 
 - **`Phalcon\Mvc\Model\Query\Lang`**
+
+`Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -20165,6 +20170,8 @@ This class represents every route added to the router
 
 - `public getHttpMethods(): array|string|null` — Returns the HTTP methods that constraint matching the route
 
+- `public getIndexData(): array` — Returns the data that the router needs for its method index, with
+
 - `public getMatch(): callable|null` — Returns the 'match' callback if any
 
 - `public getName(): string|null` — Returns the route's name
@@ -20356,6 +20363,18 @@ public function getHttpMethods(): array|string|null;
 ```
 
 Returns the HTTP methods that constraint matching the route
+
+<h4 id="mvcrouterroute-getindexdata"><code>getIndexData()</code></h4>
+
+```php
+public function getIndexData(): array;
+```
+
+Returns the data that the router needs for its method index, with
+one call: the HTTP methods, the compiled pattern, the host name, the
+compiled host name, the beforeMatch callback and the route id, in
+this order. A route with no host name has no compiled host name, so
+there is no getCompiledHostName() call for it.
 
 <h4 id="mvcrouterroute-getmatch"><code>getMatch()</code></h4>
 
@@ -22716,7 +22735,7 @@ require $compiler->getCompiledTemplatePath();
 
 - **`Phalcon\Mvc\View\Engine\Volt\Compiler`** - implements [`Phalcon\Di\InjectionAwareInterface`](/5.24/api/phalcon_di/#diinjectionawareinterface)
 
-`Closure` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Tag` · `Phalcon\Traits\Php\FileTrait`
+`Closure` · `Phalcon\Contracts\Mvc\MvcTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Mvc\ViewBaseInterface` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CallNotSupported` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement` · `Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable` · `Phalcon\Tag` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -22853,6 +22872,8 @@ require $compiler->getCompiledTemplatePath();
 - `protected string $prefix = ""`
 
 - `protected ViewBaseInterface|null $view`
+
+- `protected array $virtualPaths = []` — The virtual path of each template path (see compile())
 
 ### Methods
 
@@ -23362,6 +23383,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 - `\Exception`
   - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
     - **`Phalcon\Mvc\View\Engine\Volt\Exception`**
+      - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CallNotSupported`](#mvcviewenginevoltexceptionscallnotsupported)
       - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile`](#mvcviewenginevoltexceptionscannotopencompiledfile)
       - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement`](#mvcviewenginevoltexceptionscorruptedstatement)
       - [`Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData`](#mvcviewenginevoltexceptionscorruptedstatementwithdata)
@@ -23419,6 +23441,33 @@ public function getStatement(): array;
 ```
 
 Gets currently parsed statement (if any).
+
+
+## Mvc\View\Engine\Volt\Exceptions\CallNotSupported
+
+Class
+
+- `\Exception`
+  - [`Phalcon\Mvc\View\Exception`](#mvcviewexception)
+    - [`Phalcon\Mvc\View\Engine\Volt\Exception`](#mvcviewenginevoltexception)
+      - **`Phalcon\Mvc\View\Engine\Volt\Exceptions\CallNotSupported`**
+
+`Phalcon\Mvc\View\Engine\Volt\Exception`
+
+### Method Summary
+
+- `public __construct(string $file, int $line)`
+
+### Methods
+
+<h4 id="mvcviewenginevoltexceptionscallnotsupported-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct(
+    string $file,
+    int $line
+);
+```
 
 
 ## Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile

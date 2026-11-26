@@ -24,7 +24,7 @@ Provide OO wrappers to manage a HTTP cookie.
   - [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
     - **`Phalcon\Http\Cookie`** - implements [`Phalcon\Http\Cookie\CookieInterface`](#httpcookiecookieinterface), `\Stringable`
 
-`Phalcon\Contracts\Encryption\Crypt\Crypt` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Traits\EncryptionAwareTrait` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Stringable`
+`Phalcon\Contracts\Encryption\Crypt\Crypt` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Cookie\CookieInterface` · `Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort` · `Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired` · `Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable` · `Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Traits\EncryptionAwareTrait` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Stringable`
 
 ### Method Summary
 
@@ -918,7 +918,7 @@ $request->getLanguages();
   - [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
     - **`Phalcon\Http\Request`** - implements [`Phalcon\Http\RequestInterface`](#httprequestinterface), [`Phalcon\Http\Message\RequestMethodInterface`](#httpmessagerequestmethodinterface), [`Phalcon\Contracts\Http\AttributeRequest`](/6.0/api/phalcon_contracts/#contractshttpattributerequest)
 
-`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Traits\Php\FileTrait` · `stdClass`
+`Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterInterface` · `Phalcon\Http\Message\RequestMethodInterface` · `Phalcon\Http\Request\Bag\AttributeBag` · `Phalcon\Http\Request\Exceptions\FilterServiceUnavailable` · `Phalcon\Http\Request\Exceptions\InvalidHost` · `Phalcon\Http\Request\Exceptions\InvalidHttpMethod` · `Phalcon\Http\Request\Exceptions\MissingFilters` · `Phalcon\Http\Request\Exceptions\SanitizerNotFound` · `Phalcon\Http\Request\File` · `Phalcon\Http\Request\FileInterface` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `stdClass`
 
 ### Method Summary
 
@@ -1072,7 +1072,7 @@ $request->getLanguages();
 
 - `protected resolveAuthorizationHeaders(): array` — Resolve authorization headers.
 
-- `protected smoothFiles(array $names, array $types, array $tmpNames, array $sizes, array $errors, string $prefix): array` — Smooth out $\_FILES to have plain array with all files uploaded
+- `protected smoothFiles(array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix): array` — Smooth out $\_FILES to have plain array with all files uploaded
 
 ### Properties
 
@@ -1958,7 +1958,7 @@ Resolve authorization headers.
 protected function smoothFiles(
     array $names,
     array $types,
-    array $tmpNames,
+    array $tmp_names,
     array $sizes,
     array $errors,
     string $prefix
@@ -2672,21 +2672,21 @@ could never be addressed by the caller.
 
 - `public count(): int` — Returns the number of elements in the bag
 
-- `public get(int|string $key, mixed $defaultValue = null): mixed` — Returns an element of the bag, or the default value if it is not set
+- `public get(mixed $key, mixed $defaultValue = null): mixed` — Returns an element of the bag, or the default value if it is not set
 
-- `public getArray(int|string $key, array $defaultValue = []): array` — Returns an element of the bag as an array. The default value is
+- `public getArray(mixed $key, array $defaultValue = []): array` — Returns an element of the bag as an array. The default value is
 
-- `public getBool(int|string $key, bool $defaultValue = false): bool` — Returns an element of the bag cast to bool, or the default value if
+- `public getBool(mixed $key, bool $defaultValue = false): bool` — Returns an element of the bag cast to bool, or the default value if
 
-- `public getFloat(int|string $key, float $defaultValue = 0): float` — Returns an element of the bag cast to float, or the default value if
+- `public getFloat(mixed $key, float $defaultValue = 0): float` — Returns an element of the bag cast to float, or the default value if
 
-- `public getInt(int|string $key, int $defaultValue = 0): int` — Returns an element of the bag cast to int, or the default value if
+- `public getInt(mixed $key, int $defaultValue = 0): int` — Returns an element of the bag cast to int, or the default value if
 
 - `public getIterator(): Traversable` — Returns the iterator of the bag
 
-- `public getString(int|string $key, string $defaultValue = ""): string` — Returns an element of the bag cast to string, or the default value if
+- `public getString(mixed $key, string $defaultValue = ""): string` — Returns an element of the bag cast to string, or the default value if
 
-- `public has(int|string $key): bool` — Checks whether an element exists in the bag
+- `public has(mixed $key): bool` — Checks whether an element exists in the bag
 
 - `public offsetExists(mixed $offset): bool` — Whether an offset exists
 
@@ -2696,13 +2696,13 @@ could never be addressed by the caller.
 
 - `public offsetUnset(mixed $offset): void` — Offset to unset
 
-- `public remove(int|string $key): void` — Removes an element from the bag
+- `public remove(mixed $key): void` — Removes an element from the bag
 
-- `public set(int|string $key, mixed $value): void` — Sets an element in the bag
+- `public set(mixed $key, mixed $value): void` — Sets an element in the bag
 
 - `protected normalizeItems(array $items): array` — Normalizes the items at construction time. Identity in the base;
 
-- `protected normalizeKey(int|string $key): int|string` — Normalizes a key for lookups and writes. Identity in the base;
+- `protected normalizeKey(mixed $key): int|string` — Normalizes a key for lookups and writes. An int or a string key stays
 
 ### Properties
 
@@ -2746,7 +2746,7 @@ Returns the number of elements in the bag
 
 ```php
 public function get(
-    int|string $key,
+    mixed $key,
     mixed $defaultValue = null
 ): mixed;
 ```
@@ -2757,7 +2757,7 @@ Returns an element of the bag, or the default value if it is not set
 
 ```php
 public function getArray(
-    int|string $key,
+    mixed $key,
     array $defaultValue = []
 ): array;
 ```
@@ -2769,7 +2769,7 @@ returned if the element is not set or is not an array
 
 ```php
 public function getBool(
-    int|string $key,
+    mixed $key,
     bool $defaultValue = false
 ): bool;
 ```
@@ -2781,7 +2781,7 @@ it is not set
 
 ```php
 public function getFloat(
-    int|string $key,
+    mixed $key,
     float $defaultValue = 0
 ): float;
 ```
@@ -2793,7 +2793,7 @@ it is not set
 
 ```php
 public function getInt(
-    int|string $key,
+    mixed $key,
     int $defaultValue = 0
 ): int;
 ```
@@ -2813,7 +2813,7 @@ Returns the iterator of the bag
 
 ```php
 public function getString(
-    int|string $key,
+    mixed $key,
     string $defaultValue = ""
 ): string;
 ```
@@ -2824,7 +2824,7 @@ it is not set
 <h4 id="httprequestbagabstractbag-has"><code>has()</code></h4>
 
 ```php
-public function has( int|string $key ): bool;
+public function has( mixed $key ): bool;
 ```
 
 Checks whether an element exists in the bag
@@ -2867,7 +2867,7 @@ Offset to unset
 <h4 id="httprequestbagabstractbag-remove"><code>remove()</code></h4>
 
 ```php
-public function remove( int|string $key ): void;
+public function remove( mixed $key ): void;
 ```
 
 Removes an element from the bag
@@ -2876,7 +2876,7 @@ Removes an element from the bag
 
 ```php
 public function set(
-    int|string $key,
+    mixed $key,
     mixed $value
 ): void;
 ```
@@ -2895,11 +2895,12 @@ subclasses can override it to normalize keys
 <h4 id="httprequestbagabstractbag-normalizekey"><code>normalizeKey()</code></h4>
 
 ```php
-protected function normalizeKey( int|string $key ): int|string;
+protected function normalizeKey( mixed $key ): int|string;
 ```
 
-Normalizes a key for lookups and writes. Identity in the base;
-subclasses can override it to change key handling
+Normalizes a key for lookups and writes. An int or a string key stays
+as it is, another value is cast to string, as in cphalcon; subclasses
+can override it to change key handling
 
 
 ## Http\Request\Bag\AttributeBag
@@ -3104,7 +3105,7 @@ class PostsController extends Controller
 
 - **`Phalcon\Http\Request\File`** - implements [`Phalcon\Http\Request\FileInterface`](#httprequestfileinterface)
 
-`Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
@@ -3340,11 +3341,11 @@ $response->send();
 
 - **`Phalcon\Http\Response`** - implements [`Phalcon\Http\ResponseInterface`](#httpresponseinterface), [`Phalcon\Di\InjectionAwareInterface`](/6.0/api/phalcon_di/#diinjectionawareinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface), [`Phalcon\Http\Message\ResponseStatusCodeInterface`](#httpmessageresponsestatuscodeinterface)
 
-`DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Http\Traits\StatusPhrasesTrait` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\UrlTrait` · `Stringable`
+`DateTime` · `DateTimeZone` · `Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Http\Message\ResponseStatusCodeInterface` · `Phalcon\Http\Response\CookiesInterface` · `Phalcon\Http\Response\Exception` · `Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage` · `Phalcon\Http\Response\Exceptions\ResponseAlreadySent` · `Phalcon\Http\Response\Exceptions\UrlServiceUnavailable` · `Phalcon\Http\Response\Headers` · `Phalcon\Http\Response\HeadersInterface` · `Phalcon\Http\Traits\StatusPhrasesTrait` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Mvc\ViewInterface` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Php\UrlTrait` · `Stringable`
 
 ### Method Summary
 
-- `public __construct(string|null $content = null, int|null $code = null, string|null $status = null)` — Constructor
+- `public __construct(string|null $content = null, mixed $code = null, mixed $status = null)` — Constructor
 
 - `public appendContent(mixed $content): ResponseInterface` — Appends a string to the HTTP response body
 
@@ -3364,7 +3365,7 @@ $response->send();
 
 - `public isSent(): bool` — Check if the response is already sent
 
-- `public redirect(string|null $location = null, bool $externalRedirect = false, int $statusCode = 302): ResponseInterface` — Redirect by HTTP to another action or URL
+- `public redirect(mixed $location = null, bool $externalRedirect = false, int $statusCode = 302): ResponseInterface` — Redirect by HTTP to another action or URL
 
 - `public removeHeader(string $name): ResponseInterface` — Remove a header in the response
 
@@ -3392,7 +3393,7 @@ $response->send();
 
 - `public setExpires(DateTime $datetime): ResponseInterface` — Sets an Expires header in the response that allows to use the HTTP cache
 
-- `public setFileToSend(string $filePath, string|null $attachmentName = null, bool $attachment = true): ResponseInterface` — Sets an attached file to be sent at the end of the request
+- `public setFileToSend(string $filePath, mixed $attachmentName = null, bool $attachment = true): ResponseInterface` — Sets an attached file to be sent at the end of the request
 
 - `public setHeader(string $name, mixed $value): ResponseInterface` — Overwrites a header in the response
 
@@ -3435,8 +3436,8 @@ $response->send();
 ```php
 public function __construct(
     string|null $content = null,
-    int|null $code = null,
-    string|null $status = null
+    mixed $code = null,
+    mixed $status = null
 );
 ```
 
@@ -3530,7 +3531,7 @@ Check if the response is already sent
 
 ```php
 public function redirect(
-    string|null $location = null,
+    mixed $location = null,
     bool $externalRedirect = false,
     int $statusCode = 302
 ): ResponseInterface;
@@ -3701,7 +3702,7 @@ $this->response->setExpires(
 ```php
 public function setFileToSend(
     string $filePath,
-    string|null $attachmentName = null,
+    mixed $attachmentName = null,
     bool $attachment = true
 ): ResponseInterface;
 ```
@@ -4505,7 +4506,7 @@ This class is a bag to manage the response headers
 
 - **`Phalcon\Http\Response\Headers`** - implements [`Phalcon\Http\Response\HeadersInterface`](#httpresponseheadersinterface), `\IteratorAggregate`
 
-`IteratorAggregate` · `Phalcon\Contracts\Http\HttpTypes` · `Traversable`
+`IteratorAggregate` · `Phalcon\Contracts\Http\HttpTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Traversable`
 
 ### Method Summary
 

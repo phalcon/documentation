@@ -111,7 +111,7 @@ $request = $di->getRequest();
   - **`Phalcon\Di\Di`** - implements [`Phalcon\Di\DiInterface`](#didiinterface)
     - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
 
-`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Events\ManagerInterface` · `stdClass`
+`Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\AliasAlreadyInUse` · `Phalcon\Di\Exceptions\AliasNameMustBeString` · `Phalcon\Di\Exceptions\CircularAliasReference` · `Phalcon\Di\Exceptions\ServiceCannotBeResolved` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `stdClass`
 
 ### Method Summary
 
@@ -163,11 +163,11 @@ $request = $di->getRequest();
 
 - `public set(string $name, mixed $definition, bool $shared = false): ServiceInterface` — Registers a service in the services container
 
-- `public setAlias(string $name, array|string $aliases): self` — Sets one or more aliases to the given name.
+- `public setAlias(string $name, mixed $aliases): self` — Sets one or more aliases to the given name.
 
 - `public setDefault(DiInterface $container): void` — Set a default dependency injection container to be obtained into static
 
-- `public setInternalEventsManager(ManagerInterface $eventsManager): void` — Sets the internal event manager
+- `public setInternalEventsManager(ManagerInterface $eventsManager)` — Sets the internal event manager
 
 - `public setService(string $name, ServiceInterface $rawDefinition): ServiceInterface` — Sets a service using a raw Phalcon\Di\Service definition
 
@@ -504,7 +504,7 @@ Registers a service in the services container
 ```php
 public function setAlias(
     string $name,
-    array|string $aliases
+    mixed $aliases
 ): self;
 ```
 
@@ -522,7 +522,7 @@ methods
 <h4 id="didi-setinternaleventsmanager"><code>setInternalEventsManager()</code></h4>
 
 ```php
-public function setInternalEventsManager( ManagerInterface $eventsManager ): void;
+public function setInternalEventsManager( ManagerInterface $eventsManager );
 ```
 
 Sets the internal event manager
@@ -1349,7 +1349,7 @@ full stack framework
     - **`Phalcon\Di\FactoryDefault`**
       - [`Phalcon\Di\FactoryDefault\Cli`](#difactorydefaultcli)
 
-`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Filter\FilterFactory` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Assets\Manager` · `Phalcon\Encryption\Crypt` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Flash\Direct` · `Phalcon\Flash\Session` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Http\Request` · `Phalcon\Http\Response` · `Phalcon\Http\Response\Cookies` · `Phalcon\Mvc\Dispatcher` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Mvc\Router` · `Phalcon\Mvc\Url` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1382,7 +1382,7 @@ This class is specially suitable for CLI applications
     - [`Phalcon\Di\FactoryDefault`](#difactorydefault)
       - **`Phalcon\Di\FactoryDefault\Cli`**
 
-`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\FilterFactory` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
+`Phalcon\Annotations\Adapter\Memory` · `Phalcon\Cli\Dispatcher` · `Phalcon\Cli\Router` · `Phalcon\Di\FactoryDefault` · `Phalcon\Di\Service` · `Phalcon\Encryption\Security` · `Phalcon\Events\Manager` · `Phalcon\Filter\Filter` · `Phalcon\Html\Escaper` · `Phalcon\Html\TagFactory` · `Phalcon\Mvc\Model\Manager` · `Phalcon\Mvc\Model\MetaData\Memory` · `Phalcon\Mvc\Model\Transaction\Manager` · `Phalcon\Queue\QueueFactory` · `Phalcon\Support\HelperFactory` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1569,7 +1569,7 @@ $request = service->resolve();
 
 - **`Phalcon\Di\Service`** - implements [`Phalcon\Di\ServiceInterface`](#diserviceinterface)
 
-`Closure` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder`
+`Closure` · `Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\Exception\ServiceResolutionException` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead` · `Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate` · `Phalcon\Di\Service\Builder` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1583,7 +1583,7 @@ $request = service->resolve();
 
 - `public isShared(): bool` — Check whether the service is shared or not
 
-- `public resolve(array|null $parameters = null, DiInterface|null $container = null): mixed` — Resolves the service
+- `public resolve(mixed $parameters = null, DiInterface|null $container = null): mixed` — Resolves the service
 
 - `public setDefinition(mixed $definition): void` — Set the service definition
 
@@ -1652,7 +1652,7 @@ Check whether the service is shared or not
 
 ```php
 public function resolve(
-    array|null $parameters = null,
+    mixed $parameters = null,
     DiInterface|null $container = null
 ): mixed;
 ```
@@ -1715,7 +1715,7 @@ Represents a service in the services container
 
 - `public isShared(): bool` — Check whether the service is shared or not
 
-- `public resolve(array|null $parameters = null, DiInterface|null $container = null): mixed` — Resolves the service
+- `public resolve(mixed $parameters = null, DiInterface|null $container = null): mixed` — Resolves the service
 
 - `public setDefinition(mixed $definition)` — Set the service definition
 
@@ -1761,7 +1761,7 @@ Check whether the service is shared or not
 
 ```php
 public function resolve(
-    array|null $parameters = null,
+    mixed $parameters = null,
     DiInterface|null $container = null
 ): mixed;
 ```
@@ -1827,14 +1827,14 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 ### Method Summary
 
-- `public register(DiInterface $container): void` — Registers a service provider.
+- `public register(DiInterface $di): void` — Registers a service provider.
 
 ### Methods
 
 <h4 id="diserviceproviderinterface-register"><code>register()</code></h4>
 
 ```php
-public function register( DiInterface $container ): void;
+public function register( DiInterface $di ): void;
 ```
 
 Registers a service provider.
@@ -1850,11 +1850,11 @@ This class builds instances based on complex definitions
 
 - **`Phalcon\Di\Service\Builder`**
 
-`Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType`
+`Phalcon\Contracts\Di\DiTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Exception` · `Phalcon\Di\Exceptions\ArgumentTypeRequired` · `Phalcon\Di\Exceptions\CallArgumentsMustBeArray` · `Phalcon\Di\Exceptions\MethodCallMustBeArray` · `Phalcon\Di\Exceptions\MethodNameRequired` · `Phalcon\Di\Exceptions\MissingClassNameParameter` · `Phalcon\Di\Exceptions\MissingParameterKey` · `Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance` · `Phalcon\Di\Exceptions\PropertyMustBeArray` · `Phalcon\Di\Exceptions\PropertyNameRequired` · `Phalcon\Di\Exceptions\PropertyValueRequired` · `Phalcon\Di\Exceptions\SetterInjectionRequiresInstance` · `Phalcon\Di\Exceptions\SetterParametersMustBeArray` · `Phalcon\Di\Exceptions\UnknownServiceType` · `Phalcon\Support\Traits\WeakTypesTrait` · `RuntimeException`
 
 ### Method Summary
 
-- `public build(DiInterface $container, array $definition, array|null $parameters = null)` — Builds a service using a complex service definition
+- `public build(DiInterface $container, array $definition, mixed $parameters = null)` — Builds a service using a complex service definition
 
 ### Methods
 
@@ -1864,7 +1864,7 @@ This class builds instances based on complex definitions
 public function build(
     DiInterface $container,
     array $definition,
-    array|null $parameters = null
+    mixed $parameters = null
 );
 ```
 

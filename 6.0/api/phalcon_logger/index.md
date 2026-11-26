@@ -71,6 +71,28 @@ files (see Phalcon\Config\Config object).
 
 - `protected getLevels(): array` — Returns an array of log levels with integer to string conversion
 
+### Constants
+
+- `const int ALERT = 2`
+
+- `const int CRITICAL = 1`
+
+- `const int CUSTOM = 8`
+
+- `const int DEBUG = 7`
+
+- `const int EMERGENCY = 0`
+
+- `const int ERROR = 3`
+
+- `const int INFO = 6`
+
+- `const int NOTICE = 5`
+
+- `const int TRACE = 9`
+
+- `const int WARNING = 4`
+
 ### Properties
 
 - `protected array $adapters = []` — The adapter stack
@@ -702,7 +724,7 @@ Class Syslog
 - [`Phalcon\Logger\Adapter\AbstractAdapter`](#loggeradapterabstractadapter)
   - **`Phalcon\Logger\Adapter\Syslog`**
 
-`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item`
+`Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed` · `Phalcon\Logger\Enum` · `Phalcon\Logger\Item` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1430,7 +1452,7 @@ Factory creating logger objects
 - [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
   - **`Phalcon\Logger\LoggerFactory`**
 
-`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory`
+`DateTimeZone` · `Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Logger\LoggerTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

@@ -18,15 +18,17 @@ All classes are prefixed with `Phalcon`
 
 Abstract
 
-- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionIdInterface`, `\SessionUpdateTimestampHandlerInterface`
   - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
   - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
-`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionIdInterface` · `SessionUpdateTimestampHandlerInterface`
 
 ### Method Summary
 
 - `public close(): bool` — Close
+
+- `public create_sid(): string` — Create a new session id
 
 - `public destroy(string $id): bool` — Destroy
 
@@ -55,6 +57,14 @@ public function close(): bool;
 ```
 
 Close
+
+<h4 id="sessionadapterabstractadapter-create_sid"><code>create_sid()</code></h4>
+
+```php
+public function create_sid(): string;
+```
+
+Create a new session id
 
 <h4 id="sessionadapterabstractadapter-destroy"><code>destroy()</code></h4>
 
@@ -236,14 +246,16 @@ $session = new Manager();
 $session->setAdapter(new Noop());
 ```
 
-- **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionIdInterface`, `\SessionUpdateTimestampHandlerInterface`
   - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
-`SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+`SessionHandlerInterface` · `SessionIdInterface` · `SessionUpdateTimestampHandlerInterface`
 
 ### Method Summary
 
 - `public close(): bool` — Close
+
+- `public create_sid(): string` — Create a new session id
 
 - `public destroy(string $id): bool` — Destroy
 
@@ -268,6 +280,14 @@ public function close(): bool;
 ```
 
 Close
+
+<h4 id="sessionadapternoop-create_sid"><code>create_sid()</code></h4>
+
+```php
+public function create_sid(): string;
+```
+
+Create a new session id
 
 <h4 id="sessionadapternoop-destroy"><code>destroy()</code></h4>
 

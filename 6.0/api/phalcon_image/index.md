@@ -34,7 +34,7 @@ All image adapters must use this class
 
 - `public blur(int $radius): AdapterInterface` — Blur image
 
-- `public crop(int $width, int $height, int|null $offsetX = null, int|null $offsetY = null): AdapterInterface` — Crop an image to the given size
+- `public crop(int $width, int $height, mixed $offsetX = null, mixed $offsetY = null): AdapterInterface` — Crop an image to the given size
 
 - `public flip(int $direction): AdapterInterface` — Flip the image along the horizontal or vertical axis
 
@@ -158,8 +158,8 @@ Blur image
 public function crop(
     int $width,
     int $height,
-    int|null $offsetX = null,
-    int|null $offsetY = null
+    mixed $offsetX = null,
+    mixed $offsetY = null
 ): AdapterInterface;
 ```
 
@@ -1627,7 +1627,7 @@ Factory to create adapters for image manipulation
   - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
     - **`Phalcon\Image\ImageFactory`**
 
-`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Image\ImageTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Image\Adapter\AdapterInterface` · `Phalcon\Image\Adapter\Gd` · `Phalcon\Image\Adapter\Imagick` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

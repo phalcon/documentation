@@ -367,7 +367,7 @@ must take part in iteration.
 
 - **`Phalcon\Messages\Messages`** - implements [`Phalcon\Contracts\Messages\Messages`](/6.0/api/phalcon_contracts/#contractsmessagesmessages), `\JsonSerializable`
 
-`Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Traversable`
+`Iterator` · `JsonSerializable` · `Phalcon\Contracts\Messages\Messages` · `Phalcon\Contracts\Messages\MessagesTypes` · `Phalcon\Messages\Exceptions\MessagesNotIterable` · `Phalcon\Messages\Traits\MessagesHelperTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Traversable`
 
 ### Method Summary
 

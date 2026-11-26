@@ -906,7 +906,7 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 
 - `public __construct()`
 
-- `public clearVars(): static` — Clears are variables added previously
+- `public clearVars(): static` — Clears the variables added previously
 
 - `public debugVar(mixed $variable): static` — Adds a variable to the debug output
 
@@ -932,7 +932,7 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 
 - `public renderHtml(\Throwable $exception): string` — Render exception to html format.
 
-- `public setBlacklist(array $blacklist): static` — Sets if files the exception's backtrace must be showed
+- `public setBlacklist(array $blacklist): static` — Sets the keys to remove from the request and the server data. The
 
 - `public setRenderer(Renderer $renderer): static` — Sets the renderer used to produce the output
 
@@ -953,6 +953,8 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 - `protected bool $hideDocumentRoot = false`
 
 - `protected bool $isActive = false`
+
+- `protected int $outputLevel = 0`
 
 - `protected Renderer $renderer`
 
@@ -980,7 +982,7 @@ public function __construct();
 public function clearVars(): static;
 ```
 
-Clears are variables added previously
+Clears the variables added previously
 
 <h4 id="supportdebug-debugvar"><code>debugVar()</code></h4>
 
@@ -1092,7 +1094,9 @@ Render exception to html format.
 public function setBlacklist( array $blacklist ): static;
 ```
 
-Sets if files the exception's backtrace must be showed
+Sets the keys to remove from the request and the server data. The
+array has a request and a server list of keys. A key matches at every
+depth.
 
 <h4 id="supportdebug-setrenderer"><code>setRenderer()</code></h4>
 
@@ -1385,7 +1389,7 @@ external debug.css / debug.js assets.
 
 - **`Phalcon\Support\Debug\Renderer\HtmlRenderer`** - implements [`Phalcon\Contracts\Support\Debug\Renderer`](/5.24/api/phalcon_contracts/#contractssupportdebugrenderer)
 
-`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `ReflectionMethod`
 
 ### Method Summary
 
@@ -1477,7 +1481,7 @@ logic.
 
 - **`Phalcon\Support\Debug\ReportBuilder`**
 
-`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Version` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
 
 ### Method Summary
 
@@ -1645,6 +1649,8 @@ presentation logic.
 
 - `public getPeakMemoryUsage(): int`
 
+- `public getPreviousExceptions(): array` — The previous exceptions of the exception, from the nearest to the first.
+
 - `public getRequest(): array`
 
 - `public getServer(): array`
@@ -1664,6 +1670,8 @@ presentation logic.
 - `public setMemoryUsage(int $memoryUsage): static`
 
 - `public setPeakMemoryUsage(int $peakMemoryUsage): static`
+
+- `public setPreviousExceptions(array $previousExceptions): static`
 
 - `public setRequest(array $request): static`
 
@@ -1734,6 +1742,14 @@ public function getMessage(): string;
 public function getPeakMemoryUsage(): int;
 ```
 
+<h4 id="supportdebugreportexceptionreport-getpreviousexceptions"><code>getPreviousExceptions()</code></h4>
+
+```php
+public function getPreviousExceptions(): array;
+```
+
+The previous exceptions of the exception, from the nearest to the first.
+
 <h4 id="supportdebugreportexceptionreport-getrequest"><code>getRequest()</code></h4>
 
 ```php
@@ -1792,6 +1808,12 @@ public function setMemoryUsage( int $memoryUsage ): static;
 
 ```php
 public function setPeakMemoryUsage( int $peakMemoryUsage ): static;
+```
+
+<h4 id="supportdebugreportexceptionreport-setpreviousexceptions"><code>setPreviousExceptions()</code></h4>
+
+```php
+public function setPreviousExceptions( array $previousExceptions ): static;
 ```
 
 <h4 id="supportdebugreportexceptionreport-setrequest"><code>setRequest()</code></h4>
@@ -3730,7 +3752,7 @@ space. By storing the value in a registry, the same object is always
 available throughout your application.
 
 ```php
-$registry = new \Phalcon\Registry();
+$registry = new \Phalcon\Support\Registry();
 
 // Set value
 $registry->something = "something";
@@ -3753,24 +3775,13 @@ unset($registry->something);
 unset($registry["something"]);
 ```
 
-In addition to ArrayAccess, Phalcon\Registry also implements Countable
-(count($registry) will return the number of elements in the registry),
-Serializable and Iterator (you can iterate over the registry using a foreach
-loop) interfaces. For PHP 5.4 and higher, JsonSerializable interface is
-implemented.
+Phalcon\Support\Registry extends Phalcon\Support\Collection. It implements
+ArrayAccess, Countable, IteratorAggregate and JsonSerializable. Use
+count($registry) to get the number of elements, and use foreach to iterate
+over the registry.
 
-Phalcon\Registry is very fast (it is typically faster than any userspace
-implementation of the registry); however, this comes at a price:
-Phalcon\Registry is a final class and cannot be inherited from.
-
-Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc,
-it is not recommended to invoke them manually (these methods exist mainly to
-match the interfaces the registry implements): $registry->__get("property")
-is several times slower than $registry->property.
-
-Internally all the magic methods (and interfaces except JsonSerializable)
-are implemented using object handlers or similar techniques: this allows to
-bypass relatively slow method calls.
+The keys are not case-sensitive. Phalcon\Support\Registry is a final class.
+You cannot extend it.
 
 @extends Collection&lt;mixed>
 

@@ -729,7 +729,7 @@ Class
 
 - `public unsetFactory(): static` — Unset the factory
 
-- `protected checkFrozen(): void` — Check if frozen
+- `protected checkFrozen(): void` — Check if frozen. The setters call this method only when the
 
 ### Properties
 
@@ -1004,7 +1004,8 @@ Unset the factory
 protected function checkFrozen(): void;
 ```
 
-Check if frozen
+Check if frozen. The setters call this method only when the
+definition is frozen: the method call costs more than the check.
 
 
 ## Container\Definition\ServiceLifetime

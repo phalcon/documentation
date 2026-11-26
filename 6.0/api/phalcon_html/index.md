@@ -627,7 +627,7 @@ of attribute pairs. Boolean `true` becomes a bare key (e.g. `disabled`);
 - [`Phalcon\Html\Escaper\AbstractEscaper`](#htmlescaperabstractescaper)
   - **`Phalcon\Html\Escaper\AttributeEscaper`**
 
-`Phalcon\Contracts\Html\HtmlTypes`
+`Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1875,6 +1875,8 @@ Creates Doctype tags
 
 ### Method Summary
 
+- `public __construct()`
+
 - `public __invoke(int $type = self::HTML5, string $delimiter = "
 "): static` — Produce a `<doctype>` tag
 
@@ -1907,6 +1909,12 @@ Creates Doctype tags
 - `const int XHTML5 = 11`
 
 ### Methods
+
+<h4 id="htmlhelperdoctype-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct();
+```
 
 <h4 id="htmlhelperdoctype-__invoke"><code>__invoke()</code></h4>
 
@@ -2655,7 +2663,7 @@ Class
 
 - **`Phalcon\Html\Helper\Input\Select\ResultsetData`** - implements [`Phalcon\Contracts\Html\Helper\Input\SelectData`](/6.0/api/phalcon_contracts/#contractshtmlhelperinputselectdata)
 
-`Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exceptions\InvalidResultsetValue` · `Phalcon\Html\Exceptions\UsingRequiresTwoValues` · `Phalcon\Mvc\Model\ResultsetInterface`
+`Phalcon\Contracts\Html\Helper\Input\SelectData` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Exceptions\InvalidResultsetValue` · `Phalcon\Html\Exceptions\UsingRequiresTwoValues` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2740,6 +2748,8 @@ Class Textarea
 - [`Phalcon\Html\Helper\AbstractHelper`](#htmlhelperabstracthelper)
   - [`Phalcon\Html\Helper\Input\AbstractInput`](#htmlhelperinputabstractinput)
     - **`Phalcon\Html\Helper\Input\Textarea`**
+
+`Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3538,7 +3548,7 @@ Abstract
 
 - `protected doWithoutLink(mixed $link): static` — Returns an instance with the specified link removed.
 
-- `protected getKey(mixed $link): string` — Returns the object hash key
+- `protected getKey(mixed $link): int` — Returns the object id key
 
 ### Properties
 
@@ -3608,10 +3618,10 @@ object already in the collection.
 <h4 id="htmllinkabstractlinkprovider-getkey"><code>getKey()</code></h4>
 
 ```php
-protected function getKey( mixed $link ): string;
+protected function getKey( mixed $link ): int;
 ```
 
-Returns the object hash key
+Returns the object id key
 
 
 ## Html\Link\EvolvableLink
@@ -3624,7 +3634,7 @@ Class Phalcon\Html\Link\EvolvableLink
   - [`Phalcon\Html\Link\Link`](#htmllinklink)
     - **`Phalcon\Html\Link\EvolvableLink`** - implements [`Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`](#htmllinkinterfacesevolvablelinkinterface)
 
-`Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface`
+`Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\EvolvableLinkInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4056,7 +4066,7 @@ Class
   - **`Phalcon\Html\Link\LinkProvider`** - implements [`Phalcon\Html\Link\Interfaces\LinkProviderInterface`](#htmllinkinterfaceslinkproviderinterface)
     - [`Phalcon\Html\Link\EvolvableLinkProvider`](#htmllinkevolvablelinkprovider)
 
-`Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkProviderInterface`
+`Phalcon\Contracts\Html\Link\LinkTypes` · `Phalcon\Html\Link\Interfaces\LinkProviderInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4213,7 +4223,7 @@ so each entry in the @method block below describes the result of calling
 
 - **`Phalcon\Html\TagFactory`**
 
-`Closure` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exceptions\ServiceNotRegistered` · `Phalcon\Html\Helper\Anchor` · `Phalcon\Html\Helper\Base` · `Phalcon\Html\Helper\Body` · `Phalcon\Html\Helper\Breadcrumbs` · `Phalcon\Html\Helper\Button` · `Phalcon\Html\Helper\Close` · `Phalcon\Html\Helper\Doctype` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Form` · `Phalcon\Html\Helper\FriendlyTitle` · `Phalcon\Html\Helper\Img` · `Phalcon\Html\Helper\Input\Checkbox` · `Phalcon\Html\Helper\Input\CheckboxGroup` · `Phalcon\Html\Helper\Input\Generic` · `Phalcon\Html\Helper\Input\Radio` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\Helper\Input\Select` · `Phalcon\Html\Helper\Input\Textarea` · `Phalcon\Html\Helper\Label` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Meta` · `Phalcon\Html\Helper\Ol` · `Phalcon\Html\Helper\Preload` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\Helper\Style` · `Phalcon\Html\Helper\Tag` · `Phalcon\Html\Helper\Title` · `Phalcon\Html\Helper\Ul` · `Phalcon\Html\Helper\VoidTag` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url\UrlInterface`
+`Closure` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Exceptions\ServiceNotRegistered` · `Phalcon\Html\Helper\Anchor` · `Phalcon\Html\Helper\Base` · `Phalcon\Html\Helper\Body` · `Phalcon\Html\Helper\Breadcrumbs` · `Phalcon\Html\Helper\Button` · `Phalcon\Html\Helper\Close` · `Phalcon\Html\Helper\Doctype` · `Phalcon\Html\Helper\Element` · `Phalcon\Html\Helper\Form` · `Phalcon\Html\Helper\FriendlyTitle` · `Phalcon\Html\Helper\Img` · `Phalcon\Html\Helper\Input\Checkbox` · `Phalcon\Html\Helper\Input\CheckboxGroup` · `Phalcon\Html\Helper\Input\Generic` · `Phalcon\Html\Helper\Input\Radio` · `Phalcon\Html\Helper\Input\RadioGroup` · `Phalcon\Html\Helper\Input\Select` · `Phalcon\Html\Helper\Input\Textarea` · `Phalcon\Html\Helper\Label` · `Phalcon\Html\Helper\Link` · `Phalcon\Html\Helper\Meta` · `Phalcon\Html\Helper\Ol` · `Phalcon\Html\Helper\Preload` · `Phalcon\Html\Helper\Script` · `Phalcon\Html\Helper\Style` · `Phalcon\Html\Helper\Tag` · `Phalcon\Html\Helper\Title` · `Phalcon\Html\Helper\Ul` · `Phalcon\Html\Helper\VoidTag` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4223,7 +4233,7 @@ so each entry in the @method block below describes the result of calling
 
 - `public has(string $name): bool`
 
-- `public newInstance(string $name): object` — Create or return a cached instance of the helper.
+- `public newInstance(string $name): mixed` — Create or return a cached instance of the helper. The value of the
 
 - `public set(string $name, Closure $definition): void` — Register a helper via a zero-argument Closure. The Closure is invoked on
 
@@ -4273,10 +4283,12 @@ public function has( string $name ): bool;
 <h4 id="htmltagfactory-newinstance"><code>newInstance()</code></h4>
 
 ```php
-public function newInstance( string $name ): object;
+public function newInstance( string $name ): mixed;
 ```
 
-Create or return a cached instance of the helper.
+Create or return a cached instance of the helper. The value of the
+factory is returned as it is, also when it is not an object, the same
+as cphalcon.
 
 <h4 id="htmltagfactory-set"><code>set()</code></h4>
 

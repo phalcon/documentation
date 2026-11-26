@@ -31,7 +31,7 @@ the same as in cphalcon.
   - [`Phalcon\Annotations\Adapter\Memory`](#annotationsadaptermemory)
   - [`Phalcon\Annotations\Adapter\Stream`](#annotationsadapterstream)
 
-`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
+`Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exception` · `Phalcon\Annotations\Reader` · `Phalcon\Annotations\ReaderInterface` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -301,7 +301,7 @@ $annotations = new Apcu();
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
   - **`Phalcon\Annotations\Adapter\Apcu`**
 
-`Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes`
+`Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -418,7 +418,7 @@ $annotations = new Stream(
 - [`Phalcon\Annotations\Adapter\AbstractAdapter`](#annotationsadapterabstractadapter)
   - **`Phalcon\Annotations\Adapter\Stream`**
 
-`Phalcon\Annotations\Annotation` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Traits\Php\FileTrait`
+`Phalcon\Annotations\Annotation` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable` · `Phalcon\Annotations\Exceptions\CannotReadAnnotationData` · `Phalcon\Annotations\Reflection` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -476,7 +476,7 @@ Represents a single annotation in an annotations collection
 
 - `public __construct(array $reflectionData)` — Phalcon\Annotations\Annotation constructor
 
-- `public getArgument(int|string $position): mixed` — Returns an argument in a specific position
+- `public getArgument(mixed $position): mixed` — Returns an argument in a specific position
 
 - `public getArguments(): array` — Returns the expression arguments
 
@@ -490,7 +490,7 @@ Represents a single annotation in an annotations collection
 
 - `public getNamedParameter(string $name): mixed` — Returns a named parameter
 
-- `public hasArgument(int|string $position): bool` — Returns an argument in a specific position
+- `public hasArgument(mixed $position): bool` — Returns an argument in a specific position
 
 - `public numberArguments(): int` — Returns the number of arguments that the annotation has
 
@@ -526,7 +526,7 @@ Phalcon\Annotations\Annotation constructor
 <h4 id="annotationsannotation-getargument"><code>getArgument()</code></h4>
 
 ```php
-public function getArgument( int|string $position ): mixed;
+public function getArgument( mixed $position ): mixed;
 ```
 
 Returns an argument in a specific position
@@ -582,7 +582,7 @@ Returns a named parameter
 <h4 id="annotationsannotation-hasargument"><code>hasArgument()</code></h4>
 
 ```php
-public function hasArgument( int|string $position ): bool;
+public function hasArgument( mixed $position ): bool;
 ```
 
 Returns an argument in a specific position
@@ -606,13 +606,13 @@ Factory to create annotations components
   - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
     - **`Phalcon\Annotations\AnnotationsFactory`**
 
-`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Factory\AbstractFactory`
+`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Adapter\Apcu` · `Phalcon\Annotations\Adapter\Memory` · `Phalcon\Annotations\Adapter\Stream` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Annotations\AnnotationsTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
 - `public __construct(array $services = [])` — AdapterFactory constructor.
 
-- `public load(mixed $config): AdapterInterface` — Factory to create an instance from a Config object
+- `public load(mixed $config)` — Factory to create an instance from a Config object
 
 - `public newInstance(string $name, array $options = []): AdapterInterface` — Create a new instance of the adapter
 
@@ -633,7 +633,7 @@ AdapterFactory constructor.
 <h4 id="annotationsannotationsfactory-load"><code>load()</code></h4>
 
 ```php
-public function load( mixed $config ): AdapterInterface;
+public function load( mixed $config );
 ```
 
 Factory to create an instance from a Config object
@@ -1289,7 +1289,7 @@ Marks a method as a CONNECT route. It is the attribute form of `@Connect`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1301,7 +1301,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1319,7 +1319,7 @@ Marks a method as a DELETE route. It is the attribute form of `@Delete`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1331,7 +1331,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1349,7 +1349,7 @@ Marks a method as a GET route. It is the attribute form of `@Get`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1361,7 +1361,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1379,7 +1379,7 @@ Marks a method as a HEAD route. It is the attribute form of `@Head`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1391,7 +1391,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1409,7 +1409,7 @@ Marks a method as a OPTIONS route. It is the attribute form of `@Options`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1421,7 +1421,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1439,7 +1439,7 @@ Marks a method as a PATCH route. It is the attribute form of `@Patch`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1451,7 +1451,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1469,7 +1469,7 @@ Marks a method as a POST route. It is the attribute form of `@Post`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1481,7 +1481,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1499,7 +1499,7 @@ Marks a method as a PURGE route. It is the attribute form of `@Purge`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1511,7 +1511,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1529,7 +1529,7 @@ Marks a method as a PUT route. It is the attribute form of `@Put`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1541,7 +1541,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1572,15 +1572,15 @@ name, the targets and the signature that an IDE and a static analyzer read.
 
 ### Method Summary
 
-- `public __construct(string $route, array|string|null $methods = null, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, mixed $methods = null, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Properties
 
-- `public array|string|null $beforeMatch = null`
+- `public mixed $beforeMatch = null`
 
 - `public array $converters = []`
 
-- `public array|string|null $methods = null`
+- `public mixed $methods = null`
 
 - `public string|null $name = null`
 
@@ -1595,11 +1595,11 @@ name, the targets and the signature that an IDE and a static analyzer read.
 ```php
 public function __construct(
     string $route,
-    array|string|null $methods = null,
+    mixed $methods = null,
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 
@@ -1645,7 +1645,7 @@ Marks a method as a TRACE route. It is the attribute form of `@Trace`.
 
 ### Method Summary
 
-- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], array|string|null $beforeMatch = null)`
+- `public __construct(string $route, string|null $name = null, array $paths = [], array $converters = [], mixed $beforeMatch = null)`
 
 ### Methods
 
@@ -1657,7 +1657,7 @@ public function __construct(
     string|null $name = null,
     array $paths = [],
     array $converters = [],
-    array|string|null $beforeMatch = null
+    mixed $beforeMatch = null
 );
 ```
 

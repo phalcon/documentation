@@ -2698,7 +2698,7 @@ guillotine), because the stop flag is only checked between iterations.
 
 - `public __construct(QueueConsumer $consumer, WorkerOptions|null $options = null)`
 
-- `public handleSignal(int $signal): void` — Signal handler: requests a graceful stop.
+- `public handleSignal(int $signal, array|null $info = null): void` — Signal handler: requests a graceful stop. PHP sends the signal
 
 - `public run(): int` — Runs the worker until a lifetime bound trips or a stop is requested.
 
@@ -2722,10 +2722,14 @@ public function __construct(
 <h4 id="queueconsumerworker-handlesignal"><code>handleSignal()</code></h4>
 
 ```php
-public function handleSignal( int $signal ): void;
+public function handleSignal(
+    int $signal,
+    array|null $info = null
+): void;
 ```
 
-Signal handler: requests a graceful stop.
+Signal handler: requests a graceful stop. PHP sends the signal
+information as the second argument. This method does not use it.
 
 <h4 id="queueconsumerworker-run"><code>run()</code></h4>
 

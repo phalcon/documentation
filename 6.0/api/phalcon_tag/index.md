@@ -24,39 +24,39 @@ This component is a class that you can extend to add more helpers.
 
 - **`Phalcon\Tag`**
 
-`Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
+`Phalcon\Di\Di` · `Phalcon\Di\DiInterface` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Html\Link\Link` · `Phalcon\Html\Link\Serializer\Header` · `Phalcon\Http\ResponseInterface` · `Phalcon\Mvc\Url` · `Phalcon\Mvc\Url\UrlInterface` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Tag\Exception` · `Phalcon\Tag\Select` · `Stringable`
 
 ### Method Summary
 
-- `public appendTitle(array|string $title): void` — Appends a text to current document title
+- `public appendTitle(mixed $title): void` — Appends a text to current document title
 
-- `public checkField(array|string $parameters): string` — Builds an HTML input\[type="check"] tag
+- `public checkField(mixed $parameters): string` — Builds an HTML input\[type="check"] tag
 
-- `public colorField(array|string $parameters): string` — Builds an HTML input\[type="color"] tag
+- `public colorField(mixed $parameters): string` — Builds an HTML input\[type="color"] tag
 
-- `public dateField(array|string $parameters): string` — Builds an HTML input\[type="date"] tag
+- `public dateField(mixed $parameters): string` — Builds an HTML input\[type="date"] tag
 
-- `public dateTimeField(array|string $parameters): string` — Builds an HTML input\[type="datetime"] tag
+- `public dateTimeField(mixed $parameters): string` — Builds an HTML input\[type="datetime"] tag
 
-- `public dateTimeLocalField(array|string $parameters): string` — Builds an HTML input\[type="datetime-local"] tag
+- `public dateTimeLocalField(mixed $parameters): string` — Builds an HTML input\[type="datetime-local"] tag
 
 - `public displayTo(string $id, mixed $value): void` — Alias of Phalcon\Tag::setDefault()
 
-- `public emailField(array|string $parameters): string` — Builds an HTML input\[type="email"] tag
+- `public emailField(mixed $parameters): string` — Builds an HTML input\[type="email"] tag
 
 - `public endForm(): string` — Builds an HTML close FORM tag
 
-- `public fileField(array|string $parameters): string` — Builds an HTML input\[type="file"] tag
+- `public fileField(mixed $parameters): string` — Builds an HTML input\[type="file"] tag
 
-- `public formLegacy(array|string $parameters): string` — Builds an HTML FORM tag
+- `public formLegacy(mixed $parameters): string` — Builds an HTML FORM tag
 
-- `public friendlyTitle(string $text, string $separator = "-", bool $lowercase = true, array|string $replace = []): string` — Converts texts into URL-friendly titles
+- `public friendlyTitle(string $text, string $separator = "-", bool $lowercase = true, mixed $replace = null): string` — Converts texts into URL-friendly titles
 
 - `public getDI(): DiInterface` — Internally gets the request dispatcher
 
 - `public getDocType(): string` — Get the document type declaration of content
 
-- `public getEscaper(array $parameters): EscaperInterface|null` — Obtains the 'escaper' service if required
+- `public getEscaper(array $params): EscaperInterface|null` — Obtains the 'escaper' service if required
 
 - `public getEscaperService(): EscaperInterface` — Returns an Escaper service from the default DI
 
@@ -66,33 +66,33 @@ This component is a class that you can extend to add more helpers.
 
 - `public getUrlService(): UrlInterface` — Returns a URL service from the default DI
 
-- `public getValue(int|string $name, array $parameters = []): mixed` — Every helper calls this function to check whether a component has a
+- `public getValue(mixed $name, array $params = []): mixed` — Every helper calls this function to check whether a component has a
 
-- `public hasValue(int|string $name): bool` — Check if a helper has a default value set using Phalcon\Tag::setDefault()
+- `public hasValue(mixed $name): bool` — Check if a helper has a default value set using Phalcon\Tag::setDefault()
 
-- `public hiddenField(array|string $parameters): string` — Builds a HTML input\[type="hidden"] tag
+- `public hiddenField(mixed $parameters): string` — Builds a HTML input\[type="hidden"] tag
 
-- `public image(array|string $parameters = [], bool $local = true): string` — Builds HTML IMG tags
+- `public image(mixed $parameters = null, bool $local = true): string` — Builds HTML IMG tags
 
-- `public imageInput(array|string $parameters): string` — Builds an HTML input\[type="image"] tag
+- `public imageInput(mixed $parameters): string` — Builds an HTML input\[type="image"] tag
 
-- `public javascriptInclude(array|string $parameters = [], bool $local = true): string` — Builds a SCRIPT\[type="javascript"] tag
+- `public javascriptInclude(mixed $parameters = null, bool $local = true): string` — Builds a SCRIPT\[type="javascript"] tag
 
-- `public linkTo(array|string $parameters, string|null $text = null, bool $local = true): string` — Builds an HTML A tag using framework conventions
+- `public linkTo(mixed $parameters, mixed $text = null, mixed $local = true): string` — Builds an HTML A tag using framework conventions
 
-- `public monthField(array|string $parameters): string` — Builds an HTML input\[type="month"] tag
+- `public monthField(mixed $parameters): string` — Builds an HTML input\[type="month"] tag
 
-- `public numericField(array|string $parameters): string` — Builds an HTML input\[type="number"] tag
+- `public numericField(mixed $parameters): string` — Builds an HTML input\[type="number"] tag
 
-- `public passwordField(array|string $parameters): string` — Builds a HTML input\[type="password"] tag
+- `public passwordField(mixed $parameters): string` — Builds a HTML input\[type="password"] tag
 
-- `public preload(array|string $parameters): string` — Parses the preload element passed and sets the necessary link headers
+- `public preload(mixed $parameters): string` — Parses the preload element passed and sets the necessary link headers
 
-- `public prependTitle(array|string $title): void` — Prepends a text to current document title
+- `public prependTitle(mixed $title): void` — Prepends a text to current document title
 
-- `public radioField(array|string $parameters): string` — Builds an HTML input\[type="radio"] tag
+- `public radioField(mixed $parameters): string` — Builds an HTML input\[type="radio"] tag
 
-- `public rangeField(array|string $parameters): string` — Builds an HTML input\[type="range"] tag
+- `public rangeField(mixed $parameters): string` — Builds an HTML input\[type="range"] tag
 
 - `public renderAttributes(string $code, array $attributes): string` — Renders parameters keeping order in their HTML attributes
 
@@ -100,11 +100,11 @@ This component is a class that you can extend to add more helpers.
 
 - `public resetInput(): void` — Resets the request and internal values to avoid those fields will have
 
-- `public searchField(array|string $parameters): string` — Builds a HTML input\[type="search"] tag
+- `public searchField(mixed $parameters): string` — Builds a HTML input\[type="search"] tag
 
-- `public select(array|string $parameters, mixed $data = null): string` — Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
+- `public select(mixed $parameters, mixed $data = null): string` — Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
 
-- `public selectStatic(array|string $parameters, mixed $data = null): string` — Builds an HTML SELECT tag using a PHP array for options
+- `public selectStatic(mixed $parameters, mixed $data = null): string` — Builds an HTML SELECT tag using a PHP array for options
 
 - `public setAutoescape(bool $autoescape): void` — Set autoescape mode in generated HTML
 
@@ -120,31 +120,31 @@ This component is a class that you can extend to add more helpers.
 
 - `public setTitleSeparator(string $titleSeparator): void` — Set the title separator of view content
 
-- `public stylesheetLink(array|string|null $parameters = null, bool $local = true): string` — Builds a LINK\[rel="stylesheet"] tag
+- `public stylesheetLink(mixed $parameters = null, bool $local = true): string` — Builds a LINK\[rel="stylesheet"] tag
 
-- `public submitButton(array|string $parameters): string` — Builds an HTML input\[type="submit"] tag
+- `public submitButton(mixed $parameters): string` — Builds an HTML input\[type="submit"] tag
 
-- `public tagHtml(string $tagName, array|string $parameters = [], bool $selfClose = false, bool $onlyStart = false, bool $useEol = false): string` — Builds a HTML tag
+- `public tagHtml(string $tagName, mixed $parameters = null, bool $selfClose = false, bool $onlyStart = false, bool $useEol = false): string` — Builds a HTML tag
 
 - `public tagHtmlClose(string $tagName, bool $useEol = false): string` — Builds a HTML tag closing tag
 
-- `public telField(array|string $parameters): string` — Builds an HTML input\[type="tel"] tag
+- `public telField(mixed $parameters): string` — Builds an HTML input\[type="tel"] tag
 
-- `public textArea(array|string $parameters): string` — Builds an HTML TEXTAREA tag
+- `public textArea(mixed $parameters): string` — Builds an HTML TEXTAREA tag
 
-- `public textField(array|string $parameters): string` — Builds an HTML input\[type="text"] tag
+- `public textField(mixed $parameters): string` — Builds an HTML input\[type="text"] tag
 
-- `public timeField(array|string $parameters): string` — Builds an HTML input\[type="time"] tag
+- `public timeField(mixed $parameters): string` — Builds an HTML input\[type="time"] tag
 
-- `public urlField(array|string $parameters): string` — Builds an HTML input\[type="url"] tag
+- `public urlField(mixed $parameters): string` — Builds an HTML input\[type="url"] tag
 
-- `public weekField(array|string $parameters): string` — Builds an HTML input\[type="week"] tag
+- `public weekField(mixed $parameters): string` — Builds an HTML input\[type="week"] tag
 
 - `protected getStaticUrl(mixed $uri): string` — Resolves a static (asset) URL through the `url` service.
 
-- `protected inputField(string $type, array|string $parameters, bool $asValue = false): string` — Builds generic INPUT tags
+- `protected inputField(string $type, mixed $parameters, bool $asValue = false): string` — Builds generic INPUT tags
 
-- `protected inputFieldChecked(string $type, array|string $parameters): string` — Builds INPUT tags that implements the checked attribute
+- `protected inputFieldChecked(string $type, mixed $parameters): string` — Builds INPUT tags that implements the checked attribute
 
 - `protected toStringValue(mixed $value): string` — Reduces an arbitrary helper value to the string a tag attribute, id or
 
@@ -199,7 +199,7 @@ This component is a class that you can extend to add more helpers.
 <h4 id="tag-appendtitle"><code>appendTitle()</code></h4>
 
 ```php
-public static function appendTitle( array|string $title ): void;
+public static function appendTitle( mixed $title ): void;
 ```
 
 Appends a text to current document title
@@ -207,7 +207,7 @@ Appends a text to current document title
 <h4 id="tag-checkfield"><code>checkField()</code></h4>
 
 ```php
-public static function checkField( array|string $parameters ): string;
+public static function checkField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="check"] tag
@@ -215,7 +215,7 @@ Builds an HTML input[type="check"] tag
 <h4 id="tag-colorfield"><code>colorField()</code></h4>
 
 ```php
-public static function colorField( array|string $parameters ): string;
+public static function colorField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="color"] tag
@@ -223,7 +223,7 @@ Builds an HTML input[type="color"] tag
 <h4 id="tag-datefield"><code>dateField()</code></h4>
 
 ```php
-public static function dateField( array|string $parameters ): string;
+public static function dateField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="date"] tag
@@ -231,7 +231,7 @@ Builds an HTML input[type="date"] tag
 <h4 id="tag-datetimefield"><code>dateTimeField()</code></h4>
 
 ```php
-public static function dateTimeField( array|string $parameters ): string;
+public static function dateTimeField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="datetime"] tag
@@ -239,7 +239,7 @@ Builds an HTML input[type="datetime"] tag
 <h4 id="tag-datetimelocalfield"><code>dateTimeLocalField()</code></h4>
 
 ```php
-public static function dateTimeLocalField( array|string $parameters ): string;
+public static function dateTimeLocalField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="datetime-local"] tag
@@ -258,7 +258,7 @@ Alias of Phalcon\Tag::setDefault()
 <h4 id="tag-emailfield"><code>emailField()</code></h4>
 
 ```php
-public static function emailField( array|string $parameters ): string;
+public static function emailField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="email"] tag
@@ -274,7 +274,7 @@ Builds an HTML close FORM tag
 <h4 id="tag-filefield"><code>fileField()</code></h4>
 
 ```php
-public static function fileField( array|string $parameters ): string;
+public static function fileField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="file"] tag
@@ -282,7 +282,7 @@ Builds an HTML input[type="file"] tag
 <h4 id="tag-formlegacy"><code>formLegacy()</code></h4>
 
 ```php
-public static function formLegacy( array|string $parameters ): string;
+public static function formLegacy( mixed $parameters ): string;
 ```
 
 Builds an HTML FORM tag
@@ -294,7 +294,7 @@ public static function friendlyTitle(
     string $text,
     string $separator = "-",
     bool $lowercase = true,
-    array|string $replace = []
+    mixed $replace = null
 ): string;
 ```
 
@@ -319,7 +319,7 @@ Get the document type declaration of content
 <h4 id="tag-getescaper"><code>getEscaper()</code></h4>
 
 ```php
-public static function getEscaper( array $parameters ): EscaperInterface|null;
+public static function getEscaper( array $params ): EscaperInterface|null;
 ```
 
 Obtains the 'escaper' service if required
@@ -363,8 +363,8 @@ Returns a URL service from the default DI
 
 ```php
 public static function getValue(
-    int|string $name,
-    array $parameters = []
+    mixed $name,
+    array $params = []
 ): mixed;
 ```
 
@@ -374,7 +374,7 @@ predefined value using Phalcon\Tag::setDefault() or value from $_POST
 <h4 id="tag-hasvalue"><code>hasValue()</code></h4>
 
 ```php
-public static function hasValue( int|string $name ): bool;
+public static function hasValue( mixed $name ): bool;
 ```
 
 Check if a helper has a default value set using Phalcon\Tag::setDefault()
@@ -383,7 +383,7 @@ or value from $_POST
 <h4 id="tag-hiddenfield"><code>hiddenField()</code></h4>
 
 ```php
-public static function hiddenField( array|string $parameters ): string;
+public static function hiddenField( mixed $parameters ): string;
 ```
 
 Builds a HTML input[type="hidden"] tag
@@ -392,7 +392,7 @@ Builds a HTML input[type="hidden"] tag
 
 ```php
 public static function image(
-    array|string $parameters = [],
+    mixed $parameters = null,
     bool $local = true
 ): string;
 ```
@@ -402,7 +402,7 @@ Builds HTML IMG tags
 <h4 id="tag-imageinput"><code>imageInput()</code></h4>
 
 ```php
-public static function imageInput( array|string $parameters ): string;
+public static function imageInput( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="image"] tag
@@ -411,7 +411,7 @@ Builds an HTML input[type="image"] tag
 
 ```php
 public static function javascriptInclude(
-    array|string $parameters = [],
+    mixed $parameters = null,
     bool $local = true
 ): string;
 ```
@@ -422,9 +422,9 @@ Builds a SCRIPT[type="javascript"] tag
 
 ```php
 public static function linkTo(
-    array|string $parameters,
-    string|null $text = null,
-    bool $local = true
+    mixed $parameters,
+    mixed $text = null,
+    mixed $local = true
 ): string;
 ```
 
@@ -433,7 +433,7 @@ Builds an HTML A tag using framework conventions
 <h4 id="tag-monthfield"><code>monthField()</code></h4>
 
 ```php
-public static function monthField( array|string $parameters ): string;
+public static function monthField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="month"] tag
@@ -441,7 +441,7 @@ Builds an HTML input[type="month"] tag
 <h4 id="tag-numericfield"><code>numericField()</code></h4>
 
 ```php
-public static function numericField( array|string $parameters ): string;
+public static function numericField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="number"] tag
@@ -449,7 +449,7 @@ Builds an HTML input[type="number"] tag
 <h4 id="tag-passwordfield"><code>passwordField()</code></h4>
 
 ```php
-public static function passwordField( array|string $parameters ): string;
+public static function passwordField( mixed $parameters ): string;
 ```
 
 Builds a HTML input[type="password"] tag
@@ -457,7 +457,7 @@ Builds a HTML input[type="password"] tag
 <h4 id="tag-preload"><code>preload()</code></h4>
 
 ```php
-public static function preload( array|string $parameters ): string;
+public static function preload( mixed $parameters ): string;
 ```
 
 Parses the preload element passed and sets the necessary link headers
@@ -465,7 +465,7 @@ Parses the preload element passed and sets the necessary link headers
 <h4 id="tag-prependtitle"><code>prependTitle()</code></h4>
 
 ```php
-public static function prependTitle( array|string $title ): void;
+public static function prependTitle( mixed $title ): void;
 ```
 
 Prepends a text to current document title
@@ -473,7 +473,7 @@ Prepends a text to current document title
 <h4 id="tag-radiofield"><code>radioField()</code></h4>
 
 ```php
-public static function radioField( array|string $parameters ): string;
+public static function radioField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="radio"] tag
@@ -481,7 +481,7 @@ Builds an HTML input[type="radio"] tag
 <h4 id="tag-rangefield"><code>rangeField()</code></h4>
 
 ```php
-public static function rangeField( array|string $parameters ): string;
+public static function rangeField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="range"] tag
@@ -520,7 +520,7 @@ any default value.
 <h4 id="tag-searchfield"><code>searchField()</code></h4>
 
 ```php
-public static function searchField( array|string $parameters ): string;
+public static function searchField( mixed $parameters ): string;
 ```
 
 Builds a HTML input[type="search"] tag
@@ -529,7 +529,7 @@ Builds a HTML input[type="search"] tag
 
 ```php
 public static function select(
-    array|string $parameters,
+    mixed $parameters,
     mixed $data = null
 ): string;
 ```
@@ -540,7 +540,7 @@ Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
 
 ```php
 public static function selectStatic(
-    array|string $parameters,
+    mixed $parameters,
     mixed $data = null
 ): string;
 ```
@@ -613,7 +613,7 @@ Set the title separator of view content
 
 ```php
 public static function stylesheetLink(
-    array|string|null $parameters = null,
+    mixed $parameters = null,
     bool $local = true
 ): string;
 ```
@@ -623,7 +623,7 @@ Builds a LINK[rel="stylesheet"] tag
 <h4 id="tag-submitbutton"><code>submitButton()</code></h4>
 
 ```php
-public static function submitButton( array|string $parameters ): string;
+public static function submitButton( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="submit"] tag
@@ -633,7 +633,7 @@ Builds an HTML input[type="submit"] tag
 ```php
 public static function tagHtml(
     string $tagName,
-    array|string $parameters = [],
+    mixed $parameters = null,
     bool $selfClose = false,
     bool $onlyStart = false,
     bool $useEol = false
@@ -656,7 +656,7 @@ Builds a HTML tag closing tag
 <h4 id="tag-telfield"><code>telField()</code></h4>
 
 ```php
-public static function telField( array|string $parameters ): string;
+public static function telField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="tel"] tag
@@ -664,7 +664,7 @@ Builds an HTML input[type="tel"] tag
 <h4 id="tag-textarea"><code>textArea()</code></h4>
 
 ```php
-public static function textArea( array|string $parameters ): string;
+public static function textArea( mixed $parameters ): string;
 ```
 
 Builds an HTML TEXTAREA tag
@@ -672,7 +672,7 @@ Builds an HTML TEXTAREA tag
 <h4 id="tag-textfield"><code>textField()</code></h4>
 
 ```php
-public static function textField( array|string $parameters ): string;
+public static function textField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="text"] tag
@@ -680,7 +680,7 @@ Builds an HTML input[type="text"] tag
 <h4 id="tag-timefield"><code>timeField()</code></h4>
 
 ```php
-public static function timeField( array|string $parameters ): string;
+public static function timeField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="time"] tag
@@ -688,7 +688,7 @@ Builds an HTML input[type="time"] tag
 <h4 id="tag-urlfield"><code>urlField()</code></h4>
 
 ```php
-public static function urlField( array|string $parameters ): string;
+public static function urlField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="url"] tag
@@ -696,7 +696,7 @@ Builds an HTML input[type="url"] tag
 <h4 id="tag-weekfield"><code>weekField()</code></h4>
 
 ```php
-public static function weekField( array|string $parameters ): string;
+public static function weekField( mixed $parameters ): string;
 ```
 
 Builds an HTML input[type="week"] tag
@@ -719,7 +719,7 @@ rather than aborting the helper.
 ```php
 final protected static function inputField(
     string $type,
-    array|string $parameters,
+    mixed $parameters,
     bool $asValue = false
 ): string;
 ```
@@ -731,7 +731,7 @@ Builds generic INPUT tags
 ```php
 final protected static function inputFieldChecked(
     string $type,
-    array|string $parameters
+    mixed $parameters
 ): string;
 ```
 
@@ -770,11 +770,11 @@ Phalcon\Mvc\Model resultset
 
 - **`Phalcon\Tag\Select`**
 
-`Closure` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Tag` · `Stringable`
+`Closure` · `Phalcon\Mvc\Model\ResultsetInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Tag` · `Stringable`
 
 ### Method Summary
 
-- `public selectField(array|string $parameters, mixed $data = null): string` — Generates a SELECT tag
+- `public selectField(mixed $parameters, mixed $data = null): string` — Generates a SELECT tag
 
 - `protected echoOption(string $value, bool $selected = false): string`
 
@@ -792,7 +792,7 @@ Phalcon\Mvc\Model resultset
 
 ```php
 public static function selectField(
-    array|string $parameters,
+    mixed $parameters,
     mixed $data = null
 ): string;
 ```

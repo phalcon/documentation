@@ -230,7 +230,7 @@ adapter. Everything else is constructor-injected.
 
 - **`Phalcon\ADR\Dispatcher`** - implements [`Phalcon\Contracts\ADR\Dispatcher`](/6.0/api/phalcon_contracts/#contractsadrdispatcher)
 
-`Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface`
+`Phalcon\ADR\Events\Event` · `Phalcon\ADR\Exceptions\NotAnAction` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Action` · `Phalcon\Contracts\ADR\Dispatcher` · `Phalcon\Contracts\ADR\Middleware` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Events\Manager` · `Phalcon\Contracts\Http\AttributeRequest` · `Phalcon\Http\ResponseInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -325,7 +325,7 @@ ancestor chain, so map ordering never matters.
 
 - **`Phalcon\ADR\ErrorResponder`**
 
-`Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Throwable`
+`Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\ADR\Payload\Payload` · `Phalcon\ADR\Payload\Status` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Responder\Responder` · `Phalcon\Contracts\Logger\Logger` · `Phalcon\Http\RequestInterface` · `Phalcon\Http\ResponseInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable`
 
 ### Method Summary
 
@@ -2179,7 +2179,7 @@ segments pass through under their positional keys. An Action without
 
 - **`Phalcon\ADR\Router\AttributeFilter`** - implements [`Phalcon\Contracts\ADR\Router\AttributeFilter`](/6.0/api/phalcon_contracts/#contractsadrrouterattributefilter)
 
-`Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\AttributeFilter`
+`Phalcon\ADR\Exceptions\RouteNotFound` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\AttributeFilter` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2265,7 +2265,7 @@ RFC 9110 both leave path structure entirely to the origin server.
 
 - **`Phalcon\ADR\Router\Router`** - implements [`Phalcon\Contracts\ADR\Router\Router`](/6.0/api/phalcon_contracts/#contractsadrrouterrouter)
 
-`Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface` · `ReflectionClass`
+`Phalcon\ADR\Exceptions\ActionDirectoryNotSet` · `Phalcon\ADR\Exceptions\MethodNotAllowed` · `Phalcon\Contracts\ADR\ADRTypes` · `Phalcon\Contracts\ADR\Router\Router` · `Phalcon\Contracts\ADR\Router\RouterMatch` · `Phalcon\Http\RequestInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `ReflectionClass`
 
 ### Method Summary
 

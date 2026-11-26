@@ -525,6 +525,9 @@ conditional execution and much more.
   Used to keep nested fire() calls from clobbering the outer
   caller's `$this->responses` accumulator.
 
+- `protected bool|null $fireHooks = null` — True when the object is a subclass of this class: fire() then calls
+  the beforeFire() and afterFire() hooks. Null until the first fire.
+
 - `protected bool $halted = false` — Manager-level kill switch. When true, every fire()/fireAll()/
   fireQueue() call returns immediately (null or empty array) without
   dispatching. Cleared by resume(). Survives across fire() calls,

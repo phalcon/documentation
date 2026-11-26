@@ -30,11 +30,11 @@ from a DI container, with support for both legacy Di and new Container.
   - [`Phalcon\Auth\Adapter\AdapterLocator`](/6.0/api/phalcon_auth/#authadapteradapterlocator)
   - [`Phalcon\Auth\Guard\GuardLocator`](/6.0/api/phalcon_auth/#authguardguardlocator)
 
-`Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Throwable`
+`Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable` · `TypeError`
 
 ### Method Summary
 
-- `public __construct(Collection|DiInterface $container, array $services = [])`
+- `public __construct(mixed $container, array $services = [])`
 
 - `public getAll(): array` — Returns the full registered service map (defaults plus any added via
 
@@ -66,7 +66,7 @@ from a DI container, with support for both legacy Di and new Container.
 
 ```php
 public function __construct(
-    Collection|DiInterface $container,
+    mixed $container,
     array $services = []
 );
 ```
@@ -184,7 +184,7 @@ etc.
   - [`Phalcon\Support\Collection\ReadOnlyCollection`](#supportcollectionreadonlycollection)
   - [`Phalcon\Support\Registry`](#supportregistry)
 
-`ArrayIterator` · `Countable` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Collection\Traits\ArrayAccessTrait` · `Phalcon\Support\Collection\Traits\GetSetHasTrait` · `Phalcon\Support\Helper\Json\Encode` · `Traversable`
+`ArrayIterator` · `Countable` · `InvalidArgumentException` · `JsonSerializable` · `Phalcon\Support\Collection\CollectionInterface` · `Phalcon\Support\Collection\Exceptions\InvalidValueType` · `Phalcon\Support\Collection\Traits\ArrayAccessTrait` · `Phalcon\Support\Collection\Traits\GetSetHasTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Traversable`
 
 ### Method Summary
 
@@ -200,9 +200,9 @@ etc.
 
 - `public count(): int` — Count elements of an object
 
-- `public each(callable $callback): static` — Invokes the callback for every item in the collection. Returns the
+- `public each(mixed $callback): static` — Invokes the callback for every item in the collection. Returns the
 
-- `public filter(callable $callback): static` — Returns a new collection of items for which the callback returns true.
+- `public filter(mixed $callback): static` — Returns a new collection of items for which the callback returns true.
 
 - `public first(): mixed` — Returns the first value in the collection, or null if empty.
 
@@ -228,9 +228,9 @@ etc.
 
 - `public last(): mixed` — Returns the last value in the collection, or null if empty.
 
-- `public map(callable $callback): static` — Returns a new collection with the callback applied to every value.
+- `public map(mixed $callback): static` — Returns a new collection with the callback applied to every value.
 
-- `public reduce(callable $callback, mixed $initial = null): mixed` — Reduces the collection to a single value using the callback. The
+- `public reduce(mixed $callback, mixed $initial = null): mixed` — Reduces the collection to a single value using the callback. The
 
 - `public remove(string $element): void` — Delete the element from the collection
 
@@ -240,7 +240,7 @@ etc.
 
 - `public set(string $element, mixed $value): void` — Set an element in the collection
 
-- `public sort(callable|null $callback = null, int $order = SORT_ASC): static` — Returns a new collection sorted by value. Keys are preserved. When a
+- `public sort(mixed $callback = null, int $order = SORT_ASC): static` — Returns a new collection sorted by value. Keys are preserved. When a
 
 - `public toArray(): array` — Returns the object in an array format
 
@@ -337,7 +337,7 @@ Count elements of an object
 <h4 id="supportcollection-each"><code>each()</code></h4>
 
 ```php
-public function each( callable $callback ): static;
+public function each( mixed $callback ): static;
 ```
 
 Invokes the callback for every item in the collection. Returns the
@@ -346,7 +346,7 @@ collection itself to allow chaining.
 <h4 id="supportcollection-filter"><code>filter()</code></h4>
 
 ```php
-public function filter( callable $callback ): static;
+public function filter( mixed $callback ): static;
 ```
 
 Returns a new collection of items for which the callback returns true.
@@ -455,7 +455,7 @@ Returns the last value in the collection, or null if empty.
 <h4 id="supportcollection-map"><code>map()</code></h4>
 
 ```php
-public function map( callable $callback ): static;
+public function map( mixed $callback ): static;
 ```
 
 Returns a new collection with the callback applied to every value.
@@ -465,7 +465,7 @@ Keys are preserved.
 
 ```php
 public function reduce(
-    callable $callback,
+    mixed $callback,
     mixed $initial = null
 ): mixed;
 ```
@@ -512,7 +512,7 @@ Set an element in the collection
 
 ```php
 public function sort(
-    callable|null $callback = null,
+    mixed $callback = null,
     int $order = SORT_ASC
 ): static;
 ```
@@ -1020,13 +1020,13 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 
 - **`Phalcon\Support\Debug`**
 
-`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
+`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Exceptions\RequestHalted` · `Phalcon\Support\Debug\Exceptions\RuntimeWarning` · `Phalcon\Support\Debug\Renderer\HtmlRenderer` · `Phalcon\Support\Debug\ReportBuilder` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionException` · `Throwable`
 
 ### Method Summary
 
 - `public __construct()`
 
-- `public clearVars(): static` — Clears are variables added previously
+- `public clearVars(): static` — Clears the variables added previously
 
 - `public debugVar(mixed $variable): static` — Adds a variable to the debug output
 
@@ -1052,7 +1052,7 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 
 - `public renderHtml(Throwable $exception): string` — Render exception to html format.
 
-- `public setBlacklist(array $blacklist): static` — Sets if files the exception's backtrace must be showed
+- `public setBlacklist(array $blacklist): static` — Sets the keys to remove from the request and the server data. The
 
 - `public setRenderer(Renderer $renderer): static` — Sets the renderer used to produce the output
 
@@ -1073,6 +1073,8 @@ delegating data collection to ReportBuilder and presentation to a Renderer.
 - `protected bool $hideDocumentRoot = false`
 
 - `protected bool $isActive = false`
+
+- `protected int $outputLevel = 0`
 
 - `protected Renderer $renderer`
 
@@ -1100,7 +1102,7 @@ public function __construct();
 public function clearVars(): static;
 ```
 
-Clears are variables added previously
+Clears the variables added previously
 
 <h4 id="supportdebug-debugvar"><code>debugVar()</code></h4>
 
@@ -1212,7 +1214,9 @@ Render exception to html format.
 public function setBlacklist( array $blacklist ): static;
 ```
 
-Sets if files the exception's backtrace must be showed
+Sets the keys to remove from the request and the server data. The
+array has a request and a server list of keys. A key matches at every
+depth.
 
 <h4 id="supportdebug-setrenderer"><code>setRenderer()</code></h4>
 
@@ -1278,7 +1282,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 - **`Phalcon\Support\Debug\Dump`** - implements [`Phalcon\Contracts\Support\Debug\TemplateAware`](/6.0/api/phalcon_contracts/#contractssupportdebugtemplateaware)
 
-`InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
+`InvalidArgumentException` · `JsonException` · `Phalcon\Container\Container` · `Phalcon\Contracts\Support\Debug\TemplateAware` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `Reflection` · `ReflectionClass` · `ReflectionException` · `ReflectionProperty` · `stdClass`
 
 ### Method Summary
 
@@ -1505,7 +1509,7 @@ external debug.css / debug.js assets.
 
 - **`Phalcon\Support\Debug\Renderer\HtmlRenderer`** - implements [`Phalcon\Contracts\Support\Debug\Renderer`](/6.0/api/phalcon_contracts/#contractssupportdebugrenderer)
 
-`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`Phalcon\Contracts\Support\Debug\Renderer` · `Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Debug\Traits\TemplateAwareTrait` · `Phalcon\Support\Version` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait` · `ReflectionMethod`
 
 ### Method Summary
 
@@ -1597,7 +1601,7 @@ logic.
 
 - **`Phalcon\Support\Debug\ReportBuilder`**
 
-`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
+`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Support\Debug\Report\BacktraceItem` · `Phalcon\Support\Debug\Report\ExceptionReport` · `Phalcon\Support\Version` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `Throwable`
 
 ### Method Summary
 
@@ -1632,7 +1636,7 @@ Represents a single resolved frame of an exception backtrace.
 
 ### Method Summary
 
-- `public __construct(string $functionName, string|null $type = null, string|null $className = null, string|null $classLink = null, string|null $functionLink = null, bool $hasArgs = false, array $args = [], string|null $file = null, int|null $line = null, array|null $fragment = null)`
+- `public __construct(string $functionName, string|null $type = null, string|null $className = null, string|null $classLink = null, string|null $functionLink = null, bool $hasArgs = false, array $args = [], string|null $file = null, int|null $line = null, mixed $fragment = null)`
 
 - `public getArgs(): array`
 
@@ -1669,7 +1673,7 @@ public function __construct(
     array $args = [],
     string|null $file = null,
     int|null $line = null,
-    array|null $fragment = null
+    mixed $fragment = null
 );
 ```
 
@@ -1765,6 +1769,8 @@ presentation logic.
 
 - `public getPeakMemoryUsage(): int`
 
+- `public getPreviousExceptions(): array` — The previous exceptions of the exception, from the nearest to the first.
+
 - `public getRequest(): array`
 
 - `public getServer(): array`
@@ -1784,6 +1790,8 @@ presentation logic.
 - `public setMemoryUsage(int $memoryUsage): static`
 
 - `public setPeakMemoryUsage(int $peakMemoryUsage): static`
+
+- `public setPreviousExceptions(array $previousExceptions): static`
 
 - `public setRequest(array $request): static`
 
@@ -1854,6 +1862,14 @@ public function getMessage(): string;
 public function getPeakMemoryUsage(): int;
 ```
 
+<h4 id="supportdebugreportexceptionreport-getpreviousexceptions"><code>getPreviousExceptions()</code></h4>
+
+```php
+public function getPreviousExceptions(): array;
+```
+
+The previous exceptions of the exception, from the nearest to the first.
+
 <h4 id="supportdebugreportexceptionreport-getrequest"><code>getRequest()</code></h4>
 
 ```php
@@ -1912,6 +1928,12 @@ public function setMemoryUsage( int $memoryUsage ): static;
 
 ```php
 public function setPeakMemoryUsage( int $peakMemoryUsage ): static;
+```
+
+<h4 id="supportdebugreportexceptionreport-setpreviousexceptions"><code>setPreviousExceptions()</code></h4>
+
+```php
+public function setPreviousExceptions( array $previousExceptions ): static;
 ```
 
 <h4 id="supportdebugreportexceptionreport-setrequest"><code>setRequest()</code></h4>
@@ -2070,7 +2092,7 @@ ServiceLocator implementation for helpers
   - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
     - **`Phalcon\Support\HelperFactory`**
 
-`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper`
+`Phalcon\Contracts\Support\SupportTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Helper\Arr\Blacklist` · `Phalcon\Support\Helper\Arr\Chunk` · `Phalcon\Support\Helper\Arr\Filter` · `Phalcon\Support\Helper\Arr\First` · `Phalcon\Support\Helper\Arr\FirstKey` · `Phalcon\Support\Helper\Arr\Flatten` · `Phalcon\Support\Helper\Arr\Get` · `Phalcon\Support\Helper\Arr\Group` · `Phalcon\Support\Helper\Arr\Has` · `Phalcon\Support\Helper\Arr\IsUnique` · `Phalcon\Support\Helper\Arr\Last` · `Phalcon\Support\Helper\Arr\LastKey` · `Phalcon\Support\Helper\Arr\Order` · `Phalcon\Support\Helper\Arr\Pluck` · `Phalcon\Support\Helper\Arr\Set` · `Phalcon\Support\Helper\Arr\SliceLeft` · `Phalcon\Support\Helper\Arr\SliceRight` · `Phalcon\Support\Helper\Arr\Split` · `Phalcon\Support\Helper\Arr\ToObject` · `Phalcon\Support\Helper\Arr\ValidateAll` · `Phalcon\Support\Helper\Arr\ValidateAny` · `Phalcon\Support\Helper\Arr\Whitelist` · `Phalcon\Support\Helper\File\Basename` · `Phalcon\Support\Helper\Json\Decode` · `Phalcon\Support\Helper\Json\Encode` · `Phalcon\Support\Helper\Number\IsBetween` · `Phalcon\Support\Helper\Str\Camelize` · `Phalcon\Support\Helper\Str\Concat` · `Phalcon\Support\Helper\Str\CountVowels` · `Phalcon\Support\Helper\Str\Decapitalize` · `Phalcon\Support\Helper\Str\Decrement` · `Phalcon\Support\Helper\Str\DirFromFile` · `Phalcon\Support\Helper\Str\DirSeparator` · `Phalcon\Support\Helper\Str\Dynamic` · `Phalcon\Support\Helper\Str\EndsWith` · `Phalcon\Support\Helper\Str\FirstBetween` · `Phalcon\Support\Helper\Str\Friendly` · `Phalcon\Support\Helper\Str\Humanize` · `Phalcon\Support\Helper\Str\Includes` · `Phalcon\Support\Helper\Str\Increment` · `Phalcon\Support\Helper\Str\Interpolate` · `Phalcon\Support\Helper\Str\IsAnagram` · `Phalcon\Support\Helper\Str\IsLower` · `Phalcon\Support\Helper\Str\IsPalindrome` · `Phalcon\Support\Helper\Str\IsUpper` · `Phalcon\Support\Helper\Str\KebabCase` · `Phalcon\Support\Helper\Str\Len` · `Phalcon\Support\Helper\Str\Lower` · `Phalcon\Support\Helper\Str\PascalCase` · `Phalcon\Support\Helper\Str\Prefix` · `Phalcon\Support\Helper\Str\Random` · `Phalcon\Support\Helper\Str\ReduceSlashes` · `Phalcon\Support\Helper\Str\SnakeCase` · `Phalcon\Support\Helper\Str\StartsWith` · `Phalcon\Support\Helper\Str\Suffix` · `Phalcon\Support\Helper\Str\Ucwords` · `Phalcon\Support\Helper\Str\Uncamelize` · `Phalcon\Support\Helper\Str\Underscore` · `Phalcon\Support\Helper\Str\Upper` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2211,7 +2233,7 @@ used.
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable|null $method = null): mixed`
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2220,7 +2242,7 @@ used.
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
+    mixed $method = null
 ): mixed;
 ```
 
@@ -2237,7 +2259,7 @@ element returned is the first that validates true
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable|null $method = null): mixed`
+- `public __invoke(array $collection, mixed $method = null): mixed`
 
 ### Methods
 
@@ -2246,7 +2268,7 @@ element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
+    mixed $method = null
 ): mixed;
 ```
 
@@ -2263,7 +2285,7 @@ is passed, the element returned is the first that validates true
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable|null $method = null): int|string|null`
+- `public __invoke(array $collection, mixed $method = null)`
 
 ### Methods
 
@@ -2272,8 +2294,8 @@ is passed, the element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
-): int|string|null;
+    mixed $method = null
+);
 ```
 
 
@@ -2340,11 +2362,11 @@ Groups the elements of an array based on the passed callable
 
 - **`Phalcon\Support\Helper\Arr\Group`**
 
-`Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable|string $method): array`
+- `public __invoke(array $collection, mixed $method): array`
 
 ### Methods
 
@@ -2353,7 +2375,7 @@ Groups the elements of an array based on the passed callable
 ```php
 public function __invoke(
     array $collection,
-    callable|string $method
+    mixed $method
 ): array;
 ```
 
@@ -2419,7 +2441,7 @@ element returned is the first that validates true
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable|null $method = null)`
+- `public __invoke(array $collection, mixed $method = null)`
 
 ### Methods
 
@@ -2428,7 +2450,7 @@ element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
+    mixed $method = null
 );
 ```
 
@@ -2445,7 +2467,7 @@ passed, the element returned is the first that validates true
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable|null $method = null): int|string|null`
+- `public __invoke(array $collection, mixed $method = null)`
 
 ### Methods
 
@@ -2454,8 +2476,8 @@ passed, the element returned is the first that validates true
 ```php
 public function __invoke(
     array $collection,
-    callable|null $method = null
-): int|string|null;
+    mixed $method = null
+);
 ```
 
 
@@ -2469,9 +2491,11 @@ the ones used by `ksort` and `krsort`
 
 - **`Phalcon\Support\Helper\Arr\Order`**
 
+`Phalcon\Support\Traits\WeakTypesTrait`
+
 ### Method Summary
 
-- `public __invoke(array $collection, string $attribute, int $order = self::ORDER_ASC, int $flags = SORT_REGULAR): array`
+- `public __invoke(array $collection, mixed $attribute, int $order = self::ORDER_ASC, int $flags = SORT_REGULAR): array`
 
 ### Constants
 
@@ -2486,7 +2510,7 @@ the ones used by `ksort` and `krsort`
 ```php
 public function __invoke(
     array $collection,
-    string $attribute,
+    mixed $attribute,
     int $order = self::ORDER_ASC,
     int $flags = SORT_REGULAR
 ): array;
@@ -2527,7 +2551,7 @@ Sets an array element. Using a key is optional
 
 ### Method Summary
 
-- `public __invoke(array $collection, mixed $value, int|string|null $index = null): array`
+- `public __invoke(array $collection, mixed $value, mixed $index = null): array`
 
 ### Methods
 
@@ -2537,7 +2561,7 @@ Sets an array element. Using a key is optional
 public function __invoke(
     array $collection,
     mixed $value,
-    int|string|null $index = null
+    mixed $index = null
 ): array;
 ```
 
@@ -2645,7 +2669,7 @@ the collection, `false` otherwise.
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable $method): bool`
+- `public __invoke(array $collection, mixed $method): bool`
 
 ### Methods
 
@@ -2654,7 +2678,7 @@ the collection, `false` otherwise.
 ```php
 public function __invoke(
     array $collection,
-    callable $method
+    mixed $method
 ): bool;
 ```
 
@@ -2671,7 +2695,7 @@ element of the collection, `false` otherwise.
 
 ### Method Summary
 
-- `public __invoke(array $collection, callable $method): bool`
+- `public __invoke(array $collection, mixed $method): bool`
 
 ### Methods
 
@@ -2680,7 +2704,7 @@ element of the collection, `false` otherwise.
 ```php
 public function __invoke(
     array $collection,
-    callable $method
+    mixed $method
 ): bool;
 ```
 
@@ -3255,7 +3279,7 @@ is passed, it will also be used to replace those characters with a space.
 
 ### Method Summary
 
-- `public __invoke(string $text, string $separator = "-", bool $lowercase = true, array|string|null $replace = null): string`
+- `public __invoke(string $text, string $separator = "-", bool $lowercase = true, mixed $replace = null): string`
 
 ### Methods
 
@@ -3266,7 +3290,7 @@ public function __invoke(
     string $text,
     string $separator = "-",
     bool $lowercase = true,
-    array|string|null $replace = null
+    mixed $replace = null
 ): string;
 ```
 
@@ -3849,7 +3873,7 @@ space. By storing the value in a registry, the same object is always
 available throughout your application.
 
 ```php
-$registry = new \Phalcon\Registry();
+$registry = new \Phalcon\Support\Registry();
 
 // Set value
 $registry->something = "something";
@@ -3872,24 +3896,13 @@ unset($registry->something);
 unset($registry["something"]);
 ```
 
-In addition to ArrayAccess, Phalcon\Registry also implements Countable
-(count($registry) will return the number of elements in the registry),
-Serializable and Iterator (you can iterate over the registry using a foreach
-loop) interfaces. For PHP 5.4 and higher, JsonSerializable interface is
-implemented.
+Phalcon\Support\Registry extends Phalcon\Support\Collection. It implements
+ArrayAccess, Countable, IteratorAggregate and JsonSerializable. Use
+count($registry) to get the number of elements, and use foreach to iterate
+over the registry.
 
-Phalcon\Registry is very fast (it is typically faster than any userspace
-implementation of the registry); however, this comes at a price:
-Phalcon\Registry is a final class and cannot be inherited from.
-
-Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc,
-it is not recommended to invoke them manually (these methods exist mainly to
-match the interfaces the registry implements): $registry->__get("property")
-is several times slower than $registry->property.
-
-Internally all the magic methods (and interfaces except JsonSerializable)
-are implemented using object handlers or similar techniques: this allows to
-bypass relatively slow method calls.
+The keys are not case-sensitive. Phalcon\Support\Registry is a final class.
+You cannot extend it.
 
 @extends Collection&lt;mixed>
 
@@ -3942,7 +3955,7 @@ bypass relatively slow method calls.
 
 - `public toJson(int $options): string` — Returns the object in a JSON format
 
-- `public unserialize(string $serialized): void` — Unserializes the object
+- `public unserialize(string $data): void` — Unserializes the object
 
 ### Methods
 
@@ -4135,7 +4148,7 @@ JSON_UNESCAPED_SLASHES, JSON_THROW_ON_ERROR
 <h4 id="supportregistry-unserialize"><code>unserialize()</code></h4>
 
 ```php
-final public function unserialize( string $serialized ): void;
+final public function unserialize( string $data ): void;
 ```
 
 Unserializes the object
@@ -4167,22 +4180,22 @@ those keys to their ini_get() fallback values.
 
 ### Method Summary
 
-- `public get(string $key): bool|int|null` — Returns the value of a known setting.
+- `public get(string $key): mixed` — Returns the value of a known setting.
 
 - `public reset(): void` — Clears all PHP-level overrides, restoring get() to return ini_get()
 
-- `public set(string $key, bool|int $value): void` — Overrides a setting at the PHP level.
+- `public set(string $key, mixed $value): void` — Overrides a setting at the PHP level.
 
 ### Properties
 
-- `protected array<string, bool|int> $overrides = []` — PHP-level overrides. Keys stored here take priority over ini_get().
+- `protected array<string, mixed> $overrides = []` — PHP-level overrides. Keys stored here take priority over ini_get().
 
 ### Methods
 
 <h4 id="supportsettings-get"><code>get()</code></h4>
 
 ```php
-public static function get( string $key ): bool|int|null;
+public static function get( string $key ): mixed;
 ```
 
 Returns the value of a known setting.
@@ -4208,7 +4221,7 @@ fallback values (as configured in php.ini or .htaccess).
 ```php
 public static function set(
     string $key,
-    bool|int $value
+    mixed $value
 ): void;
 ```
 
@@ -4292,6 +4305,25 @@ public function prepareVirtualPath(
     string $separator = "_"
 ): string;
 ```
+
+
+## Support\Traits\WeakTypesTrait
+
+Trait
+
+Calls a setter or writes a property with the PHP weak type rules.
+
+This file has no declare(strict_types=1). Do not add it. PHP checks a call
+or a property write in the mode of the file that holds the calling code.
+cphalcon is compiled C, so PHP checks its setter calls and property writes
+in weak mode. These methods give the same checks to the PHP code. The
+WeakModeTypesTest tests fail if the declare is added.
+
+- **`Phalcon\Support\Traits\WeakTypesTrait`**
+
+`Error`
+
+[`Phalcon\ADR\Dispatcher`](/6.0/api/phalcon_adr/#adrdispatcher) · [`Phalcon\ADR\ErrorResponder`](/6.0/api/phalcon_adr/#adrerrorresponder) · [`Phalcon\ADR\Router\AttributeFilter`](/6.0/api/phalcon_adr/#adrrouterattributefilter) · [`Phalcon\ADR\Router\Router`](/6.0/api/phalcon_adr/#adrrouterrouter) · [`Phalcon\Acl\Adapter\Memory`](/6.0/api/phalcon_acl/#acladaptermemory) · [`Phalcon\Acl\Adapter\Storage`](/6.0/api/phalcon_acl/#acladapterstorage) · [`Phalcon\Annotations\Adapter\AbstractAdapter`](/6.0/api/phalcon_annotations/#annotationsadapterabstractadapter) · [`Phalcon\Annotations\Adapter\Apcu`](/6.0/api/phalcon_annotations/#annotationsadapterapcu) · [`Phalcon\Annotations\Adapter\Stream`](/6.0/api/phalcon_annotations/#annotationsadapterstream) · [`Phalcon\Annotations\AnnotationsFactory`](/6.0/api/phalcon_annotations/#annotationsannotationsfactory) · [`Phalcon\Assets\Manager`](/6.0/api/phalcon_assets/#assetsmanager) · [`Phalcon\Auth\AbstractAuthDispatcherListener`](/6.0/api/phalcon_auth/#authabstractauthdispatcherlistener) · [`Phalcon\Autoload\Loader`](/6.0/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/6.0/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cache\CacheFactory`](/6.0/api/phalcon_cache/#cachecachefactory) · [`Phalcon\Cli\Console`](/6.0/api/phalcon_cli/#cliconsole) · [`Phalcon\Cli\Dispatcher`](/6.0/api/phalcon_cli/#clidispatcher) · [`Phalcon\Cli\Router`](/6.0/api/phalcon_cli/#clirouter) · [`Phalcon\Config\ConfigFactory`](/6.0/api/phalcon_config/#configconfigfactory) · [`Phalcon\Container\Definition\ServiceDefinition`](/6.0/api/phalcon_container/#containerdefinitionservicedefinition) · [`Phalcon\Container\Resolver\Lazy\Call`](/6.0/api/phalcon_container/#containerresolverlazycall) · [`Phalcon\Container\Resolver\Lazy\Env`](/6.0/api/phalcon_container/#containerresolverlazyenv) · [`Phalcon\Container\Resolver\Lazy\FunctionCall`](/6.0/api/phalcon_container/#containerresolverlazyfunctioncall) · [`Phalcon\Container\Resolver\Lazy\Lazy`](/6.0/api/phalcon_container/#containerresolverlazylazy) · [`Phalcon\Container\Resolver\Lazy\StaticCall`](/6.0/api/phalcon_container/#containerresolverlazystaticcall) · [`Phalcon\Container\Resolver\Resolver`](/6.0/api/phalcon_container/#containerresolverresolver) · [`Phalcon\DataMapper\Pdo\Connection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnection) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\DataMapper\Query\AbstractConditions`](/6.0/api/phalcon_datamapper/#datamapperqueryabstractconditions) · [`Phalcon\DataMapper\Query\Bind`](/6.0/api/phalcon_datamapper/#datamapperquerybind) · [`Phalcon\DataMapper\Query\Insert`](/6.0/api/phalcon_datamapper/#datamapperqueryinsert) · [`Phalcon\DataMapper\Query\Update`](/6.0/api/phalcon_datamapper/#datamapperqueryupdate) · [`Phalcon\Db\Adapter\AbstractAdapter`](/6.0/api/phalcon_db/#dbadapterabstractadapter) · [`Phalcon\Db\Adapter\PdoFactory`](/6.0/api/phalcon_db/#dbadapterpdofactory) · [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](/6.0/api/phalcon_db/#dbadapterpdoabstractpdo) · [`Phalcon\Db\Adapter\Pdo\Mysql`](/6.0/api/phalcon_db/#dbadapterpdomysql) · [`Phalcon\Db\Adapter\Pdo\Sqlite`](/6.0/api/phalcon_db/#dbadapterpdosqlite) · [`Phalcon\Db\Column`](/6.0/api/phalcon_db/#dbcolumn) · [`Phalcon\Db\Dialect`](/6.0/api/phalcon_db/#dbdialect) · [`Phalcon\Db\Dialect\Mysql`](/6.0/api/phalcon_db/#dbdialectmysql) · [`Phalcon\Db\Dialect\Postgresql`](/6.0/api/phalcon_db/#dbdialectpostgresql) · [`Phalcon\Db\Dialect\Sqlite`](/6.0/api/phalcon_db/#dbdialectsqlite) · [`Phalcon\Db\Reference`](/6.0/api/phalcon_db/#dbreference) · [`Phalcon\Db\Result\PdoResult`](/6.0/api/phalcon_db/#dbresultpdoresult) · [`Phalcon\Di\Di`](/6.0/api/phalcon_di/#didi) · [`Phalcon\Di\Service`](/6.0/api/phalcon_di/#diservice) · [`Phalcon\Di\Service\Builder`](/6.0/api/phalcon_di/#diservicebuilder) · [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Encryption\Security`](/6.0/api/phalcon_encryption/#encryptionsecurity) · [`Phalcon\Encryption\Security\JWT\Token\Token`](/6.0/api/phalcon_encryption/#encryptionsecurityjwttokentoken) · [`Phalcon\Encryption\Security\Random`](/6.0/api/phalcon_encryption/#encryptionsecurityrandom) · [`Phalcon\Encryption\Security\Uuid\AbstractUuid`](/6.0/api/phalcon_encryption/#encryptionsecurityuuidabstractuuid) · [`Phalcon\Events\Manager`](/6.0/api/phalcon_events/#eventsmanager) · [`Phalcon\Filter\Filter`](/6.0/api/phalcon_filter/#filterfilter) · [`Phalcon\Filter\Sanitize\Alnum`](/6.0/api/phalcon_filter/#filtersanitizealnum) · [`Phalcon\Filter\Sanitize\Alpha`](/6.0/api/phalcon_filter/#filtersanitizealpha) · [`Phalcon\Filter\Sanitize\Regex`](/6.0/api/phalcon_filter/#filtersanitizeregex) · [`Phalcon\Filter\Sanitize\Remove`](/6.0/api/phalcon_filter/#filtersanitizeremove) · [`Phalcon\Filter\Sanitize\Replace`](/6.0/api/phalcon_filter/#filtersanitizereplace) · [`Phalcon\Filter\Validation`](/6.0/api/phalcon_filter/#filtervalidation) · [`Phalcon\Filter\Validation\AbstractValidator`](/6.0/api/phalcon_filter/#filtervalidationabstractvalidator) · [`Phalcon\Filter\Validation\Validator\Alnum`](/6.0/api/phalcon_filter/#filtervalidationvalidatoralnum) · [`Phalcon\Filter\Validation\Validator\Alpha`](/6.0/api/phalcon_filter/#filtervalidationvalidatoralpha) · [`Phalcon\Filter\Validation\Validator\Between`](/6.0/api/phalcon_filter/#filtervalidationvalidatorbetween) · [`Phalcon\Filter\Validation\Validator\Confirmation`](/6.0/api/phalcon_filter/#filtervalidationvalidatorconfirmation) · [`Phalcon\Filter\Validation\Validator\CreditCard`](/6.0/api/phalcon_filter/#filtervalidationvalidatorcreditcard) · [`Phalcon\Filter\Validation\Validator\Date`](/6.0/api/phalcon_filter/#filtervalidationvalidatordate) · [`Phalcon\Filter\Validation\Validator\Digit`](/6.0/api/phalcon_filter/#filtervalidationvalidatordigit) · [`Phalcon\Filter\Validation\Validator\Email`](/6.0/api/phalcon_filter/#filtervalidationvalidatoremail) · [`Phalcon\Filter\Validation\Validator\ExclusionIn`](/6.0/api/phalcon_filter/#filtervalidationvalidatorexclusionin) · [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfileabstractfile) · [`Phalcon\Filter\Validation\Validator\File\MimeType`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfilemimetype) · [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfilesizeequal) · [`Phalcon\Filter\Validation\Validator\Files`](/6.0/api/phalcon_filter/#filtervalidationvalidatorfiles) · [`Phalcon\Filter\Validation\Validator\Identical`](/6.0/api/phalcon_filter/#filtervalidationvalidatoridentical) · [`Phalcon\Filter\Validation\Validator\InclusionIn`](/6.0/api/phalcon_filter/#filtervalidationvalidatorinclusionin) · [`Phalcon\Filter\Validation\Validator\Ip`](/6.0/api/phalcon_filter/#filtervalidationvalidatorip) · [`Phalcon\Filter\Validation\Validator\Numericality`](/6.0/api/phalcon_filter/#filtervalidationvalidatornumericality) · [`Phalcon\Filter\Validation\Validator\PresenceOf`](/6.0/api/phalcon_filter/#filtervalidationvalidatorpresenceof) · [`Phalcon\Filter\Validation\Validator\Regex`](/6.0/api/phalcon_filter/#filtervalidationvalidatorregex) · [`Phalcon\Filter\Validation\Validator\StringLength`](/6.0/api/phalcon_filter/#filtervalidationvalidatorstringlength) · [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](/6.0/api/phalcon_filter/#filtervalidationvalidatorstringlengthabstractstringlength) · [`Phalcon\Filter\Validation\Validator\Uniqueness`](/6.0/api/phalcon_filter/#filtervalidationvalidatoruniqueness) · [`Phalcon\Filter\Validation\Validator\Url`](/6.0/api/phalcon_filter/#filtervalidationvalidatorurl) · [`Phalcon\Flash\AbstractFlash`](/6.0/api/phalcon_flash/#flashabstractflash) · [`Phalcon\Flash\Session`](/6.0/api/phalcon_flash/#flashsession) · [`Phalcon\Forms\Form`](/6.0/api/phalcon_forms/#formsform) · [`Phalcon\Forms\FormsLocator`](/6.0/api/phalcon_forms/#formsformslocator) · [`Phalcon\Html\Escaper\AttributeEscaper`](/6.0/api/phalcon_html/#htmlescaperattributeescaper) · [`Phalcon\Html\Helper\Input\Select\ResultsetData`](/6.0/api/phalcon_html/#htmlhelperinputselectresultsetdata) · [`Phalcon\Html\Helper\Input\Textarea`](/6.0/api/phalcon_html/#htmlhelperinputtextarea) · [`Phalcon\Html\Link\EvolvableLink`](/6.0/api/phalcon_html/#htmllinkevolvablelink) · [`Phalcon\Html\Link\LinkProvider`](/6.0/api/phalcon_html/#htmllinklinkprovider) · [`Phalcon\Html\TagFactory`](/6.0/api/phalcon_html/#htmltagfactory) · [`Phalcon\Http\Cookie`](/6.0/api/phalcon_http/#httpcookie) · [`Phalcon\Http\Request`](/6.0/api/phalcon_http/#httprequest) · [`Phalcon\Http\Request\File`](/6.0/api/phalcon_http/#httprequestfile) · [`Phalcon\Http\Response`](/6.0/api/phalcon_http/#httpresponse) · [`Phalcon\Http\Response\Headers`](/6.0/api/phalcon_http/#httpresponseheaders) · [`Phalcon\Image\ImageFactory`](/6.0/api/phalcon_image/#imageimagefactory) · [`Phalcon\Logger\Adapter\Syslog`](/6.0/api/phalcon_logger/#loggeradaptersyslog) · [`Phalcon\Logger\LoggerFactory`](/6.0/api/phalcon_logger/#loggerloggerfactory) · [`Phalcon\Messages\Messages`](/6.0/api/phalcon_messages/#messagesmessages) · [`Phalcon\Mvc\Application`](/6.0/api/phalcon_mvc/#mvcapplication) · [`Phalcon\Mvc\Micro`](/6.0/api/phalcon_mvc/#mvcmicro) · [`Phalcon\Mvc\Micro\LazyLoader`](/6.0/api/phalcon_mvc/#mvcmicrolazyloader) · [`Phalcon\Mvc\Model`](/6.0/api/phalcon_mvc/#mvcmodel) · [`Phalcon\Mvc\Model\Behavior\Timestampable`](/6.0/api/phalcon_mvc/#mvcmodelbehaviortimestampable) · [`Phalcon\Mvc\Model\Binder`](/6.0/api/phalcon_mvc/#mvcmodelbinder) · [`Phalcon\Mvc\Model\Criteria`](/6.0/api/phalcon_mvc/#mvcmodelcriteria) · [`Phalcon\Mvc\Model\Eager\Loader`](/6.0/api/phalcon_mvc/#mvcmodeleagerloader) · [`Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap`](/6.0/api/phalcon_mvc/#mvcmodelhydrationcaseinsensitivecolumnmap) · [`Phalcon\Mvc\Model\Hydration\CloneResult`](/6.0/api/phalcon_mvc/#mvcmodelhydrationcloneresult) · [`Phalcon\Mvc\Model\MetaData`](/6.0/api/phalcon_mvc/#mvcmodelmetadata) · [`Phalcon\Mvc\Model\MetaData\Stream`](/6.0/api/phalcon_mvc/#mvcmodelmetadatastream) · [`Phalcon\Mvc\Model\Query`](/6.0/api/phalcon_mvc/#mvcmodelquery) · [`Phalcon\Mvc\Model\Query\Builder`](/6.0/api/phalcon_mvc/#mvcmodelquerybuilder) · [`Phalcon\Mvc\Model\Relation`](/6.0/api/phalcon_mvc/#mvcmodelrelation) · [`Phalcon\Mvc\Router`](/6.0/api/phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\Router\Annotations`](/6.0/api/phalcon_mvc/#mvcrouterannotations) · [`Phalcon\Mvc\Router\Group`](/6.0/api/phalcon_mvc/#mvcroutergroup) · [`Phalcon\Mvc\Url`](/6.0/api/phalcon_mvc/#mvcurl) · [`Phalcon\Mvc\View`](/6.0/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\Php`](/6.0/api/phalcon_mvc/#mvcviewenginephp) · [`Phalcon\Mvc\View\Engine\Volt`](/6.0/api/phalcon_mvc/#mvcviewenginevolt) · [`Phalcon\Mvc\View\Engine\Volt\Compiler`](/6.0/api/phalcon_mvc/#mvcviewenginevoltcompiler) · [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Paginator\Adapter\AbstractAdapter`](/6.0/api/phalcon_paginator/#paginatoradapterabstractadapter) · [`Phalcon\Paginator\PaginatorFactory`](/6.0/api/phalcon_paginator/#paginatorpaginatorfactory) · [`Phalcon\Queue\Adapter\Stream\StreamConnectionFactory`](/6.0/api/phalcon_queue/#queueadapterstreamstreamconnectionfactory) · [`Phalcon\Session\Adapter\Stream`](/6.0/api/phalcon_session/#sessionadapterstream) · [`Phalcon\Session\Manager`](/6.0/api/phalcon_session/#sessionmanager) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter) · [`Phalcon\Storage\Adapter\Libmemcached`](/6.0/api/phalcon_storage/#storageadapterlibmemcached) · [`Phalcon\Storage\Adapter\Redis`](/6.0/api/phalcon_storage/#storageadapterredis) · [`Phalcon\Storage\Adapter\RedisCluster`](/6.0/api/phalcon_storage/#storageadapterrediscluster) · [`Phalcon\Storage\Adapter\Stream`](/6.0/api/phalcon_storage/#storageadapterstream) · [`Phalcon\Support\AbstractLocator`](#supportabstractlocator) · [`Phalcon\Support\Collection`](#supportcollection) · [`Phalcon\Support\Debug`](#supportdebug) · [`Phalcon\Support\Debug\Dump`](#supportdebugdump) · [`Phalcon\Support\HelperFactory`](#supporthelperfactory) · [`Phalcon\Support\Helper\Arr\Group`](#supporthelperarrgroup) · [`Phalcon\Support\Helper\Arr\Order`](#supporthelperarrorder) · [`Phalcon\Tag`](/6.0/api/phalcon_tag/#tag) · [`Phalcon\Tag\Select`](/6.0/api/phalcon_tag/#tagselect) · [`Phalcon\Translate\Adapter\AbstractAdapter`](/6.0/api/phalcon_translate/#translateadapterabstractadapter) · [`Phalcon\Translate\Adapter\Csv`](/6.0/api/phalcon_translate/#translateadaptercsv) · [`Phalcon\Translate\Adapter\Gettext`](/6.0/api/phalcon_translate/#translateadaptergettext) · [`Phalcon\Translate\Adapter\NativeArray`](/6.0/api/phalcon_translate/#translateadapternativearray)
 
 
 ## Support\Version

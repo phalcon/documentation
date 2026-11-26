@@ -82,7 +82,7 @@ allowing the user to autoload files with different extensions than .php.
 
 - **`Phalcon\Autoload\Loader`**
 
-`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Contracts\Autoload\AutoloadTypes` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
+`Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray` · `Phalcon\Autoload\Exceptions\LoaderMethodNotCallable` · `Phalcon\Contracts\Autoload\AutoloadTypes` · `Phalcon\Events\Exception` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\StartsWithTrait`
 
 ### Method Summary
 

@@ -82,7 +82,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 - **`Phalcon\Filter\Filter`** - implements [`Phalcon\Filter\FilterInterface`](#filterfilterinterface)
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Filter\Exceptions\FilterNotRegistered` · `Phalcon\Filter\Sanitize\AbsInt` · `Phalcon\Filter\Sanitize\Alnum` · `Phalcon\Filter\Sanitize\Alpha` · `Phalcon\Filter\Sanitize\BoolVal` · `Phalcon\Filter\Sanitize\Email` · `Phalcon\Filter\Sanitize\FloatVal` · `Phalcon\Filter\Sanitize\IntVal` · `Phalcon\Filter\Sanitize\Ip` · `Phalcon\Filter\Sanitize\Lower` · `Phalcon\Filter\Sanitize\LowerFirst` · `Phalcon\Filter\Sanitize\Regex` · `Phalcon\Filter\Sanitize\Remove` · `Phalcon\Filter\Sanitize\Replace` · `Phalcon\Filter\Sanitize\Special` · `Phalcon\Filter\Sanitize\SpecialFull` · `Phalcon\Filter\Sanitize\StringVal` · `Phalcon\Filter\Sanitize\StringValLegacy` · `Phalcon\Filter\Sanitize\Striptags` · `Phalcon\Filter\Sanitize\Trim` · `Phalcon\Filter\Sanitize\Upper` · `Phalcon\Filter\Sanitize\UpperFirst` · `Phalcon\Filter\Sanitize\UpperWords` · `Phalcon\Filter\Sanitize\Url` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -347,7 +347,7 @@ Sanitizes a value to an alphanumeric value
 
 - **`Phalcon\Filter\Sanitize\Alnum`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
 
-`Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -370,7 +370,7 @@ Sanitizes a value to an alpha value
 
 - **`Phalcon\Filter\Sanitize\Alpha`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
 
-`Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -557,7 +557,7 @@ Sanitizes a value performing preg_replace
 
 - **`Phalcon\Filter\Sanitize\Regex`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
 
-`Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -584,7 +584,7 @@ Sanitizes a value removing parts of a string
 
 - **`Phalcon\Filter\Sanitize\Remove`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
 
-`Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -610,7 +610,7 @@ Sanitizes a value replacing parts of a string
 
 - **`Phalcon\Filter\Sanitize\Replace`** - implements [`Phalcon\Contracts\Filter\Sanitizer`](/6.0/api/phalcon_contracts/#contractsfiltersanitizer)
 
-`Phalcon\Contracts\Filter\Sanitizer`
+`Phalcon\Contracts\Filter\Sanitizer` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -875,7 +875,7 @@ Allows to validate data using custom or built-in validators
   - [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
     - **`Phalcon\Filter\Validation`** - implements [`Phalcon\Filter\Validation\ValidationInterface`](#filtervalidationvalidationinterface)
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Di` · `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\Di` · `Phalcon\Di\Exception` · `Phalcon\Di\Injectable` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exception` · `Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable` · `Phalcon\Filter\Validation\Exceptions\InvalidFieldType` · `Phalcon\Filter\Validation\Exceptions\InvalidFilterService` · `Phalcon\Filter\Validation\Exceptions\InvalidValidationData` · `Phalcon\Filter\Validation\Exceptions\InvalidValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope` · `Phalcon\Filter\Validation\Exceptions\NoDataToValidate` · `Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Filter\Validation\ValidatorInterface` · `Phalcon\Messages\MessageInterface` · `Phalcon\Messages\Messages` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 
 ### Method Summary
 
@@ -923,7 +923,7 @@ Allows to validate data using custom or built-in validators
 
 - `public setValidators(array $validators): static` — Sets the validator array
 
-- `public validate(mixed $data = null, mixed $entity = null, array $whitelist = []): false|Messages` — Validate a set of data according to a set of rules
+- `public validate(mixed $data = null, mixed $entity = null, array $whitelist = []): bool|Messages` — Validate a set of data according to a set of rules
 
 - `protected preChecking(mixed $field, ValidatorInterface $validator): bool` — Internal validations, if it returns true, then skip the current validator
 
@@ -1174,7 +1174,7 @@ public function validate(
     mixed $data = null,
     mixed $entity = null,
     array $whitelist = []
-): false|Messages;
+): bool|Messages;
 ```
 
 Validate a set of data according to a set of rules
@@ -1245,11 +1245,10 @@ This is a base class for validators
   - [`Phalcon\Filter\Validation\Validator\Numericality`](#filtervalidationvalidatornumericality)
   - [`Phalcon\Filter\Validation\Validator\PresenceOf`](#filtervalidationvalidatorpresenceof)
   - [`Phalcon\Filter\Validation\Validator\Regex`](#filtervalidationvalidatorregex)
-  - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
-  - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+  - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
   - [`Phalcon\Filter\Validation\Validator\Url`](#filtervalidationvalidatorurl)
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Messages\Message` · `Phalcon\Support\Helper\Arr\Whitelist` · `Stringable`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\FieldNotPrintable` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`
 
 ### Method Summary
 
@@ -1278,6 +1277,10 @@ This is a base class for validators
 - `protected allowEmpty(mixed $field, mixed $value): bool` — Checks if field can be empty.
 
 - `protected checkArray(mixed $value, string $field): mixed` — Checks if a value is an array and returns the element based on the
+
+- `protected getDomainOption(mixed $field): array` — Returns the list of values of the "domain" option for the field
+
+- `protected getStrictOption(mixed $field): bool` — Returns the "strict" option for the field. The default is false.
 
 - `protected prepareCode(string $field): int` — Prepares a validation code.
 
@@ -1429,6 +1432,22 @@ protected function checkArray(
 
 Checks if a value is an array and returns the element based on the
 passed field name
+
+<h4 id="filtervalidationabstractvalidator-getdomainoption"><code>getDomainOption()</code></h4>
+
+```php
+protected function getDomainOption( mixed $field ): array;
+```
+
+Returns the list of values of the "domain" option for the field
+
+<h4 id="filtervalidationabstractvalidator-getstrictoption"><code>getStrictOption()</code></h4>
+
+```php
+protected function getStrictOption( mixed $field ): bool;
+```
+
+Returns the "strict" option for the field. The default is false.
 
 <h4 id="filtervalidationabstractvalidator-preparecode"><code>prepareCode()</code></h4>
 
@@ -1971,7 +1990,7 @@ validators.
 
 ### Properties
 
-- `protected array|null $validators = null` — @todo Use a default \[] once Zephir supports array trait defaults
+- `protected mixed $validators = null` — @todo Use a default \[] once Zephir supports array trait defaults
 
 ### Methods
 
@@ -2392,7 +2411,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Alnum`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2402,7 +2421,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must contain only letters and numbers"`
+- `protected mixed $template = "Field :field must contain only letters and numbers"`
 
 ### Methods
 
@@ -2466,7 +2485,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Alpha`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2476,7 +2495,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must contain only letters"`
+- `protected mixed $template = "Field :field must contain only letters"`
 
 ### Methods
 
@@ -2551,7 +2570,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Between`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2561,7 +2580,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be within the range of :min to :max"`
+- `protected mixed $template = "Field :field must be within the range of :min to :max"`
 
 ### Methods
 
@@ -2645,7 +2664,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must match the callback function"`
+- `protected mixed $template = "Field :field must match the callback function"`
 
 ### Methods
 
@@ -2714,7 +2733,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Confirmation`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\MissingMbstring` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
@@ -2726,7 +2745,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be the same as :with"`
+- `protected mixed $template = "Field :field must be the same as :with"`
 
 ### Methods
 
@@ -2801,7 +2820,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\CreditCard`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2811,7 +2830,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field is not valid for a credit card number"`
+- `protected mixed $template = "Field :field is not valid for a credit card number"`
 
 ### Methods
 
@@ -2880,7 +2899,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Date`**
 
-`DateTime` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`DateTime` · `Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2890,7 +2909,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field is not a valid date"`
+- `protected mixed $template = "Field :field is not a valid date"`
 
 ### Methods
 
@@ -2954,7 +2973,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Digit`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2964,7 +2983,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be numeric"`
+- `protected mixed $template = "Field :field must be numeric"`
 
 ### Methods
 
@@ -3040,7 +3059,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Email`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3050,7 +3069,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be an email address"`
+- `protected mixed $template = "Field :field must be an email address"`
 
 ### Methods
 
@@ -3136,7 +3155,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\ExclusionIn`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3146,7 +3165,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must not be a part of list: :domain"`
+- `protected mixed $template = "Field :field must not be a part of list: :domain"`
 
 ### Methods
 
@@ -3315,7 +3334,7 @@ $validator->add(
     - [`Phalcon\Filter\Validation\Validator\File\Resolution\Min`](#filtervalidationvalidatorfileresolutionmin)
     - [`Phalcon\Filter\Validation\Validator\File\Size\Equal`](#filtervalidationvalidatorfilesizeequal)
 
-`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3346,6 +3365,10 @@ $validator->add(
 - `protected appendMessageValid(Validation $validation, string $field): void` — Appends the "file is not valid" message for the field
 
 - `protected checkIsUploadedFile(string $name): bool` — Checks if a file has been uploaded; Internal check that can be
+
+- `protected getDimensionsOption(mixed $field, string $name): array` — Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+
+- `protected getUploadedImageSize(Validation $validation, mixed $field): array|false` — Returns the size of the uploaded image, or false if the upload is not
 
 ### Properties
 
@@ -3488,6 +3511,31 @@ protected function checkIsUploadedFile( string $name ): bool;
 Checks if a file has been uploaded; Internal check that can be
 overridden in a subclass if you do not want to check uploaded files
 
+<h4 id="filtervalidationvalidatorfileabstractfile-getdimensionsoption"><code>getDimensionsOption()</code></h4>
+
+```php
+protected function getDimensionsOption(
+    mixed $field,
+    string $name
+): array;
+```
+
+Returns the option value ("WIDTHxHEIGHT") of the field, the width and
+the height
+
+<h4 id="filtervalidationvalidatorfileabstractfile-getuploadedimagesize"><code>getUploadedImageSize()</code></h4>
+
+```php
+protected function getUploadedImageSize(
+    Validation $validation,
+    mixed $field
+): array|false;
+```
+
+Returns the size of the uploaded image, or false if the upload is not
+valid or the file is not an image. If the file is not an image, appends
+the "file is not valid" message.
+
 
 ## Filter\Validation\Validator\File\MimeType
 
@@ -3544,7 +3592,7 @@ $validator->add(
   - [`Phalcon\Filter\Validation\Validator\File\AbstractFile`](#filtervalidationvalidatorfileabstractfile)
     - **`Phalcon\Filter\Validation\Validator\File\MimeType`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`
 
 ### Method Summary
 
@@ -3552,7 +3600,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field must be of type: :types"`
+- `protected mixed $template = "File :field must be of type: :types"`
 
 ### Methods
 
@@ -3628,7 +3676,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field does not have the exact aspect ratio of :ratio"`
+- `protected mixed $template = "File :field does not have the exact aspect ratio of :ratio"`
 
 ### Methods
 
@@ -3708,7 +3756,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "The resolution of the field :field has to be equal :resolution"`
+- `protected mixed $template = "The resolution of the field :field has to be equal :resolution"`
 
 ### Methods
 
@@ -3793,7 +3841,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field exceeds the maximum resolution of :resolution"`
+- `protected mixed $template = "File :field exceeds the maximum resolution of :resolution"`
 
 ### Methods
 
@@ -3878,7 +3926,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field can not have the minimum resolution of :resolution"`
+- `protected mixed $template = "File :field can not have the minimum resolution of :resolution"`
 
 ### Methods
 
@@ -3955,7 +4003,7 @@ $validator->add(
       - [`Phalcon\Filter\Validation\Validator\File\Size\Max`](#filtervalidationvalidatorfilesizemax)
       - [`Phalcon\Filter\Validation\Validator\File\Size\Min`](#filtervalidationvalidatorfilesizemin)
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\Validator\File\AbstractFile` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3965,7 +4013,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field does not have the exact :size file size"`
+- `protected mixed $template = "File :field does not have the exact :size file size"`
 
 ### Methods
 
@@ -4051,7 +4099,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field exceeds the size of :size"`
+- `protected mixed $template = "File :field exceeds the size of :size"`
 
 ### Methods
 
@@ -4126,7 +4174,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "File :field can not have the minimum size of :size"`
+- `protected mixed $template = "File :field can not have the minimum size of :size"`
 
 ### Methods
 
@@ -4176,7 +4224,7 @@ $validation->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Files`**
 
-`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages`
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Messages` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4265,7 +4313,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Identical`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4275,7 +4323,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field does not have the expected value"`
+- `protected mixed $template = "Field :field does not have the expected value"`
 
 ### Methods
 
@@ -4344,7 +4392,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\InclusionIn`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Filter\Validation\Exceptions\InvalidDomainOption` · `Phalcon\Filter\Validation\Exceptions\InvalidStrictOption` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4354,7 +4402,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be a part of list: :domain"`
+- `protected mixed $template = "Field :field must be a part of list: :domain"`
 
 ### Methods
 
@@ -4435,7 +4483,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Ip`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4451,7 +4499,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be a valid IP address"`
+- `protected mixed $template = "Field :field must be a valid IP address"`
 
 ### Methods
 
@@ -4515,7 +4563,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Numericality`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4525,7 +4573,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field does not have a valid numeric format"`
+- `protected mixed $template = "Field :field does not have a valid numeric format"`
 
 ### Methods
 
@@ -4589,7 +4637,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\PresenceOf`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4599,7 +4647,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field is required"`
+- `protected mixed $template = "Field :field is required"`
 
 ### Methods
 
@@ -4668,7 +4716,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Regex`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4678,7 +4726,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field does not match the required format"`
+- `protected mixed $template = "Field :field does not match the required format"`
 
 ### Methods
 
@@ -4776,7 +4824,7 @@ $validation->add(
   - [`Phalcon\Filter\Validation\AbstractValidatorComposite`](#filtervalidationabstractvalidatorcomposite)
     - **`Phalcon\Filter\Validation\Validator\StringLength`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation\AbstractValidatorComposite` · `Phalcon\Filter\Validation\Validator\StringLength\Max` · `Phalcon\Filter\Validation\Validator\StringLength\Min` · `Phalcon\Messages\Message` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4791,6 +4839,52 @@ public function __construct( array $options = [] );
 ```
 
 Constructor
+
+
+## Filter\Validation\Validator\StringLength\AbstractStringLength
+
+Abstract
+
+Shared validation for the string length validators. The validator compares
+the length with its limit in validateLength().
+
+- [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
+  - **`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`**
+    - [`Phalcon\Filter\Validation\Validator\StringLength\Max`](#filtervalidationvalidatorstringlengthmax)
+    - [`Phalcon\Filter\Validation\Validator\StringLength\Min`](#filtervalidationvalidatorstringlengthmin)
+
+`Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait`
+
+### Method Summary
+
+- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+
+- `protected validateLength(Validation $validation, mixed $field, int $length): bool` — Compares the length of the value with the limit
+
+### Methods
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validate"><code>validate()</code></h4>
+
+```php
+public function validate(
+    Validation $validation,
+    mixed $field
+): bool;
+```
+
+Executes the validation
+
+<h4 id="filtervalidationvalidatorstringlengthabstractstringlength-validatelength"><code>validateLength()</code></h4>
+
+```php
+abstract protected function validateLength(
+    Validation $validation,
+    mixed $field,
+    int $length
+): bool;
+```
+
+Compares the length of the value with the limit
 
 
 ## Filter\Validation\Validator\StringLength\Max
@@ -4848,19 +4942,20 @@ $validation->add(
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-  - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
+  - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+    - **`Phalcon\Filter\Validation\Validator\StringLength\Max`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
 - `public __construct(array $options = [])` — Constructor
 
-- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+- `protected validateLength(Validation $validation, mixed $field, int $length): bool` — Compares the length of the value with the maximum
 
 ### Properties
 
-- `protected string|null $template = "Field :field must not exceed :max characters long"`
+- `protected mixed $template = "Field :field must not exceed :max characters long"`
 
 ### Methods
 
@@ -4872,16 +4967,17 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmax-validate"><code>validate()</code></h4>
+<h4 id="filtervalidationvalidatorstringlengthmax-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the maximum
 
 
 ## Filter\Validation\Validator\StringLength\Min
@@ -4939,19 +5035,20 @@ $validation->add(
 ```
 
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
-  - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
+  - [`Phalcon\Filter\Validation\Validator\StringLength\AbstractStringLength`](#filtervalidationvalidatorstringlengthabstractstringlength)
+    - **`Phalcon\Filter\Validation\Validator\StringLength\Min`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Messages\Message` · `Phalcon\Traits\Php\InfoTrait`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Messages\Message`
 
 ### Method Summary
 
 - `public __construct(array $options = [])` — Constructor
 
-- `public validate(Validation $validation, mixed $field): bool` — Executes the validation
+- `protected validateLength(Validation $validation, mixed $field, int $length): bool` — Compares the length of the value with the minimum
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be at least :min characters long"`
+- `protected mixed $template = "Field :field must be at least :min characters long"`
 
 ### Methods
 
@@ -4963,16 +5060,17 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h4 id="filtervalidationvalidatorstringlengthmin-validate"><code>validate()</code></h4>
+<h4 id="filtervalidationvalidatorstringlengthmin-validatelength"><code>validateLength()</code></h4>
 
 ```php
-public function validate(
+protected function validateLength(
     Validation $validation,
-    mixed $field
+    mixed $field,
+    int $length
 ): bool;
 ```
 
-Executes the validation
+Compares the length of the value with the minimum
 
 
 ## Filter\Validation\Validator\Uniqueness
@@ -5052,7 +5150,7 @@ $validator->add(
   - [`Phalcon\Filter\Validation\AbstractCombinedFieldsValidator`](#filtervalidationabstractcombinedfieldsvalidator)
     - **`Phalcon\Filter\Validation\Validator\Uniqueness`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\InjectionAwareInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractCombinedFieldsValidator` · `Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray` · `Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired` · `Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel` · `Phalcon\Messages\Message` · `Phalcon\Mvc\EntityInterface` · `Phalcon\Mvc\Model` · `Phalcon\Mvc\ModelInterface` · `Phalcon\Mvc\Model\MetaDataInterface` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -5070,7 +5168,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be unique"`
+- `protected mixed $template = "Field :field must be unique"`
 
 ### Methods
 
@@ -5181,7 +5279,7 @@ $validator->add(
 - [`Phalcon\Filter\Validation\AbstractValidator`](#filtervalidationabstractvalidator)
   - **`Phalcon\Filter\Validation\Validator\Url`**
 
-`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator`
+`Phalcon\Contracts\Filter\FilterTypes` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\AbstractValidator` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -5191,7 +5289,7 @@ $validator->add(
 
 ### Properties
 
-- `protected string|null $template = "Field :field must be a url"`
+- `protected mixed $template = "Field :field must be a url"`
 
 ### Methods
 

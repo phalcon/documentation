@@ -377,7 +377,7 @@ from the original Phalcon\Queue\Beanstalk transport.
 
 - `public releaseJob(string $id, int $priority, int $delay): bool` — Puts a reserved job back into the ready queue.
 
-- `public reserve(int|null $timeout = null): array|null` — Reserves a ready job from a watched tube. A null timeout blocks until a
+- `public reserve(mixed $timeout = null): array|null` — Reserves a ready job from a watched tube. A null timeout blocks until a
 
 - `public statsTube(string $tube): array|false` — Returns the Beanstalkd statistics for a tube as an associative array, or
 
@@ -505,7 +505,7 @@ Puts a reserved job back into the ready queue.
 <h4 id="queueadapterbeanstalkbeanstalkconnection-reserve"><code>reserve()</code></h4>
 
 ```php
-public function reserve( int|null $timeout = null ): array|null;
+public function reserve( mixed $timeout = null ): array|null;
 ```
 
 Reserves a ready job from a watched tube. A null timeout blocks until a
@@ -1810,7 +1810,7 @@ Options:
 
 - **`Phalcon\Queue\Adapter\Stream\StreamConnectionFactory`** - implements [`Phalcon\Contracts\Queue\ConnectionFactory`](/6.0/api/phalcon_contracts/#contractsqueueconnectionfactory)
 
-`Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes`
+`Phalcon\Contracts\Queue\ConnectionFactory` · `Phalcon\Contracts\Queue\Context` · `Phalcon\Contracts\Queue\QueueTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2378,7 +2378,7 @@ keep just the constructor that captures their context and poll interval.
 
 - `public consume(int $timeout = 0): void` — Polls every subscription, dispatching each message to its callback,
 
-- `public subscribe(ConsumerInterface $consumer, callable $callback): void` — Subscribes a consumer; the callback receives each delivered message.
+- `public subscribe(ConsumerInterface $consumer, mixed $callback): void` — Subscribes a consumer; the callback receives each delivered message.
 
 - `public unsubscribe(ConsumerInterface $consumer): void` — Removes a previously subscribed consumer.
 
@@ -2407,11 +2407,13 @@ returns false).
 ```php
 public function subscribe(
     ConsumerInterface $consumer,
-    callable $callback
+    mixed $callback
 ): void;
 ```
 
 Subscribes a consumer; the callback receives each delivered message.
+A value that cannot be called fails in consume(), the same as
+cphalcon.
 
 <h4 id="queueadaptertraitssubscriptionconsumertrait-unsubscribe"><code>unsubscribe()</code></h4>
 
@@ -2698,7 +2700,7 @@ guillotine), because the stop flag is only checked between iterations.
 
 - `public __construct(QueueConsumer $consumer, WorkerOptions|null $options = null)`
 
-- `public handleSignal(int $signal): void` — Signal handler: requests a graceful stop.
+- `public handleSignal(int $signal, array|null $info = null): void` — Signal handler: requests a graceful stop. PHP sends the signal
 
 - `public run(): int` — Runs the worker until a lifetime bound trips or a stop is requested.
 
@@ -2722,10 +2724,14 @@ public function __construct(
 <h4 id="queueconsumerworker-handlesignal"><code>handleSignal()</code></h4>
 
 ```php
-public function handleSignal( int $signal ): void;
+public function handleSignal(
+    int $signal,
+    array|null $info = null
+): void;
 ```
 
-Signal handler: requests a graceful stop.
+Signal handler: requests a graceful stop. PHP sends the signal
+information as the second argument. This method does not use it.
 
 <h4 id="queueconsumerworker-run"><code>run()</code></h4>
 

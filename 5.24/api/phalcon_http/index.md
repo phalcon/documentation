@@ -2702,7 +2702,7 @@ could never be addressed by the caller.
 
 - `protected normalizeItems(array $items): array` — Normalizes the items at construction time. Identity in the base;
 
-- `protected normalizeKey(mixed $key): string` — Normalizes a key for lookups and writes. Identity in the base;
+- `protected normalizeKey(mixed $key): int|string` — Normalizes a key for lookups and writes. Identity in the base;
 
 ### Properties
 
@@ -2895,7 +2895,7 @@ subclasses can override it to normalize keys
 <h4 id="httprequestbagabstractbag-normalizekey"><code>normalizeKey()</code></h4>
 
 ```php
-protected function normalizeKey( mixed $key ): string;
+protected function normalizeKey( mixed $key ): int|string;
 ```
 
 Normalizes a key for lookups and writes. Identity in the base;

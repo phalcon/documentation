@@ -564,7 +564,7 @@ $config = (new ConfigFactory())->load($options);
   - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
     - **`Phalcon\Config\ConfigFactory`**
 
-`Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Factory\AbstractFactory`
+`Exception` · `Phalcon\Config\Adapter\Grouped` · `Phalcon\Config\Adapter\Ini` · `Phalcon\Config\Adapter\Json` · `Phalcon\Config\Adapter\Php` · `Phalcon\Config\Adapter\Yaml` · `Phalcon\Config\Exceptions\ConfigNotArrayOrObject` · `Phalcon\Config\Exceptions\MissingConfigOption` · `Phalcon\Config\Exceptions\MissingFileExtension` · `Phalcon\Contracts\Config\ConfigTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

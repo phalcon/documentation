@@ -32,7 +32,7 @@ multi-key `cache:*Multiple` events).
 - **`Phalcon\Cache\AbstractCache`** - implements [`Phalcon\Cache\CacheInterface`](#cachecacheinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
   - [`Phalcon\Cache\Cache`](#cachecache)
 
-`DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Redis` · `Throwable` · `Traversable`
+`DateInterval` · `Phalcon\Cache\Adapter\AdapterInterface` · `Phalcon\Cache\Adapter\Redis` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Redis` · `Throwable` · `Traversable`
 
 ### Method Summary
 
@@ -541,11 +541,11 @@ Creates a new Cache class
 - [`Phalcon\Factory\AbstractConfigFactory`](/6.0/api/phalcon_factory/#factoryabstractconfigfactory)
   - **`Phalcon\Cache\CacheFactory`**
 
-`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory`
+`Phalcon\Cache\Exception\Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Factory\AbstractConfigFactory` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
-- `public __construct(AdapterFactory $adapterFactory)` — Constructor
+- `public __construct(AdapterFactory $factory)` — Constructor
 
 - `public load(mixed $config): CacheInterface` — Factory to create an instance from a Config object
 
@@ -562,7 +562,7 @@ Creates a new Cache class
 <h4 id="cachecachefactory-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( AdapterFactory $adapterFactory );
+public function __construct( AdapterFactory $factory );
 ```
 
 Constructor

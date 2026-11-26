@@ -24,7 +24,7 @@ methods
 - [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](#datamapperpdoconnectionabstractconnection)
   - **`Phalcon\DataMapper\Pdo\Connection`**
 
-`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface`
+`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection\AbstractConnection` · `Phalcon\DataMapper\Pdo\Exception\DriverNotSupported` · `Phalcon\DataMapper\Pdo\Profiler\Profiler` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -96,7 +96,7 @@ so connections that are built on demand also fire the DataMapper events.
 
 - **`Phalcon\DataMapper\Pdo\ConnectionLocator`** - implements [`Phalcon\DataMapper\Pdo\ConnectionLocatorInterface`](#datamapperpdoconnectionlocatorinterface), [`Phalcon\Contracts\Events\EventsAware`](/6.0/api/phalcon_contracts/#contractseventseventsaware)
 
-`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\Traits\EventsAwareTrait`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Connection\ConnectionInterface` · `Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -104,17 +104,17 @@ so connections that are built on demand also fire the DataMapper events.
 
 - `public getMaster(): ConnectionInterface` — Returns the default connection object.
 
-- `public getRead(string $name = ""): ConnectionInterface` — Returns a read connection by name; if no name is given, picks a
+- `public getRead(string $name = ""): ConnectionInterface|null` — Returns a read connection by name; if no name is given, picks a
 
-- `public getWrite(string $name = ""): ConnectionInterface` — Returns a write connection by name; if no name is given, picks a
+- `public getWrite(string $name = ""): ConnectionInterface|null` — Returns a write connection by name; if no name is given, picks a
 
 - `public setMaster(ConnectionInterface $callableObject): static` — Sets the default connection factory.
 
-- `public setRead(string $name, callable $callableObject): static` — Sets a read connection factory by name.
+- `public setRead(string $name, mixed $callableObject): static` — Sets a read connection factory by name.
 
-- `public setWrite(string $name, callable $callableObject): static` — Sets a write connection factory by name.
+- `public setWrite(string $name, mixed $callableObject): static` — Sets a write connection factory by name.
 
-- `protected getConnection(string $type, string $name = ""): ConnectionInterface` — Returns a connection by name.
+- `protected getConnection(string $type, string $name = ""): ConnectionInterface|null` — Returns a connection by name.
 
 ### Properties
 
@@ -149,22 +149,24 @@ Returns the default connection object.
 <h4 id="datamapperpdoconnectionlocator-getread"><code>getRead()</code></h4>
 
 ```php
-public function getRead( string $name = "" ): ConnectionInterface;
+public function getRead( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a read connection by name; if no name is given, picks a
 random connection; if no read connections are present, returns the
-default connection.
+default connection. A factory that cannot be called gives a warning
+and null, the same as cphalcon.
 
 <h4 id="datamapperpdoconnectionlocator-getwrite"><code>getWrite()</code></h4>
 
 ```php
-public function getWrite( string $name = "" ): ConnectionInterface;
+public function getWrite( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a write connection by name; if no name is given, picks a
 random connection; if no write connections are present, returns the
-default connection.
+default connection. A factory that cannot be called gives a warning
+and null, the same as cphalcon.
 
 <h4 id="datamapperpdoconnectionlocator-setmaster"><code>setMaster()</code></h4>
 
@@ -179,7 +181,7 @@ Sets the default connection factory.
 ```php
 public function setRead(
     string $name,
-    callable $callableObject
+    mixed $callableObject
 ): static;
 ```
 
@@ -190,7 +192,7 @@ Sets a read connection factory by name.
 ```php
 public function setWrite(
     string $name,
-    callable $callableObject
+    mixed $callableObject
 ): static;
 ```
 
@@ -202,7 +204,7 @@ Sets a write connection factory by name.
 protected function getConnection(
     string $type,
     string $name = ""
-): ConnectionInterface;
+): ConnectionInterface|null;
 ```
 
 Returns a connection by name.
@@ -222,9 +224,9 @@ Locates PDO connections for default, read, and write databases.
 
 - `public getMaster(): ConnectionInterface` — Returns the default connection object.
 
-- `public getRead(string $name = ""): ConnectionInterface` — Returns a read connection by name; if no name is given, picks a
+- `public getRead(string $name = ""): ConnectionInterface|null` — Returns a read connection by name; if no name is given, picks a
 
-- `public getWrite(string $name = ""): ConnectionInterface` — Returns a write connection by name; if no name is given, picks a
+- `public getWrite(string $name = ""): ConnectionInterface|null` — Returns a write connection by name; if no name is given, picks a
 
 - `public setMaster(ConnectionInterface $callableObject): ConnectionLocatorInterface` — Sets the default connection registry entry.
 
@@ -245,7 +247,7 @@ Returns the default connection object.
 <h4 id="datamapperpdoconnectionlocatorinterface-getread"><code>getRead()</code></h4>
 
 ```php
-public function getRead( string $name = "" ): ConnectionInterface;
+public function getRead( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a read connection by name; if no name is given, picks a
@@ -255,7 +257,7 @@ default connection.
 <h4 id="datamapperpdoconnectionlocatorinterface-getwrite"><code>getWrite()</code></h4>
 
 ```php
-public function getWrite( string $name = "" ): ConnectionInterface;
+public function getWrite( string $name = "" ): ConnectionInterface|null;
 ```
 
 Returns a write connection by name; if no name is given, picks a
@@ -309,11 +311,11 @@ implementations of the interface keep working.
   - [`Phalcon\DataMapper\Pdo\Connection`](#datamapperpdoconnection)
   - [`Phalcon\DataMapper\Pdo\Connection\Decorated`](#datamapperpdoconnectiondecorated)
 
-`BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Throwable` · `stdClass`
+`BadMethodCallException` · `PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Contracts\Events\EventsAware` · `Phalcon\DataMapper\Pdo\Events` · `Phalcon\DataMapper\Pdo\Exception\OperationCancelled` · `Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod` · `Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable` · `stdClass`
 
 ### Method Summary
 
-- `public __call(string $name, array $arguments)` — Proxies to PDO methods created for specific drivers; in particular,
+- `public __call(mixed $name, array $arguments)` — Proxies to PDO methods created for specific drivers; in particular,
 
 - `public beginTransaction(): bool` — Begins a transaction. If the profiler is enabled, the operation will
 
@@ -375,9 +377,9 @@ implementations of the interface keep working.
 
 - `public ping(): bool` — Checks whether the underlying connection is still alive by issuing a
 
-- `public prepare(string $statement, array $options = []): false|PDOStatement` — Prepares an SQL statement for execution.
+- `public prepare(string $statement, array $options = []): bool|PDOStatement` — Prepares an SQL statement for execution.
 
-- `public query(string $statement): false|PDOStatement` — Queries the database and returns a PDOStatement. If the profiler is
+- `public query(string $statement): bool|PDOStatement` — Queries the database and returns a PDOStatement. If the profiler is
 
 - `public quote(mixed $value, int $type = PDO::PARAM_STR): string` — Quotes a value for use in an SQL statement. This differs from
 
@@ -416,7 +418,7 @@ implementations of the interface keep working.
 
 ```php
 public function __call(
-    string $name,
+    mixed $name,
     array $arguments
 );
 ```
@@ -748,7 +750,7 @@ trivial query. Returns false if there is no handle or the probe fails.
 public function prepare(
     string $statement,
     array $options = []
-): false|PDOStatement;
+): bool|PDOStatement;
 ```
 
 Prepares an SQL statement for execution.
@@ -756,7 +758,7 @@ Prepares an SQL statement for execution.
 <h4 id="datamapperpdoconnectionabstractconnection-query"><code>query()</code></h4>
 
 ```php
-public function query( string $statement ): false|PDOStatement;
+public function query( string $statement ): bool|PDOStatement;
 ```
 
 Queries the database and returns a PDOStatement. If the profiler is
@@ -1979,7 +1981,7 @@ Class AbstractConditions
     - [`Phalcon\DataMapper\Query\Select`](#datamapperqueryselect)
     - [`Phalcon\DataMapper\Query\Update`](#datamapperqueryupdate)
 
-`Phalcon\Contracts\DataMapper\DataMapperTypes`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2446,7 +2448,7 @@ Class Bind
 
 - **`Phalcon\DataMapper\Query\Bind`**
 
-`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes`
+`PDO` · `Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2621,7 +2623,7 @@ Insert Query
 - [`Phalcon\DataMapper\Query\AbstractQuery`](#datamapperqueryabstractquery)
   - **`Phalcon\DataMapper\Query\Insert`**
 
-`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3080,7 +3082,7 @@ Update Query
   - [`Phalcon\DataMapper\Query\AbstractConditions`](#datamapperqueryabstractconditions)
     - **`Phalcon\DataMapper\Query\Update`**
 
-`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection`
+`Phalcon\Contracts\DataMapper\DataMapperTypes` · `Phalcon\DataMapper\Pdo\Connection` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

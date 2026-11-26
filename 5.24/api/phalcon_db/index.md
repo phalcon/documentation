@@ -115,7 +115,7 @@ try {
 
 - `public fetchAll(string $sqlQuery, int $fetchMode = Enum::FETCH_ASSOC, array $bindParams = [], array $bindTypes = []): array` — Dumps the complete result of a query into an array
 
-- `public fetchColumn(string $sqlQuery, array $placeholders = [], mixed $column = 0): string|bool` — Returns the n'th field of first row in a SQL query result
+- `public fetchColumn(string $sqlQuery, array $placeholders = [], mixed $column = 0): mixed` — Returns the n'th field of first row in a SQL query result
 
 - `public fetchOne(string $sqlQuery, mixed $fetchMode = Enum::FETCH_ASSOC, array $bindParams = [], array $bindTypes = []): array` — Returns the first row in a SQL query result
 
@@ -587,10 +587,13 @@ public function fetchColumn(
     string $sqlQuery,
     array $placeholders = [],
     mixed $column = 0
-): string|bool;
+): mixed;
 ```
 
 Returns the n'th field of first row in a SQL query result
+
+Returns false if the query returns no rows. The type of the value
+comes from the database driver.
 
 ```php
 // Getting count of invoices
@@ -1292,7 +1295,7 @@ $connection = new Mysql($config);
     - [`Phalcon\Db\Adapter\Pdo\Postgresql`](#dbadapterpdopostgresql)
     - [`Phalcon\Db\Adapter\Pdo\Sqlite`](#dbadapterpdosqlite)
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\ManagerInterface` · `Phalcon\Support\Settings`
 
 ### Method Summary
 
@@ -1339,6 +1342,8 @@ $connection = new Mysql($config);
 - `public rollback(bool $nesting = true): bool` — Rollbacks the active transaction in the connection
 
 - `public setAutoReconnect(bool $autoReconnect): static` — Enables or disables transparent auto-reconnect on a lost connection.
+
+- `protected buildReferences(array $records): ReferenceInterface[]` — Builds the Phalcon\Db\Reference objects from the rows of the
 
 - `protected getDsnDefaults(): array` — Returns PDO adapter DSN defaults as a key-value map.
 
@@ -1698,6 +1703,15 @@ public function setAutoReconnect( bool $autoReconnect ): static;
 
 Enables or disables transparent auto-reconnect on a lost connection.
 
+<h4 id="dbadapterpdoabstractpdo-buildreferences"><code>buildReferences()</code></h4>
+
+```php
+protected function buildReferences( array $records ): ReferenceInterface[];
+```
+
+Builds the Phalcon\Db\Reference objects from the rows of the
+describeReferences() SQL statement (MySQL and PostgreSQL)
+
 <h4 id="dbadapterpdoabstractpdo-getdsndefaults"><code>getDsnDefaults()</code></h4>
 
 ```php
@@ -1754,7 +1768,7 @@ $connection = new Mysql($config);
   - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
     - **`Phalcon\Db\Adapter\Pdo\Mysql`**
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
 
 ### Method Summary
 
@@ -1883,7 +1897,7 @@ $connection = new Postgresql($config);
   - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
     - **`Phalcon\Db\Adapter\Pdo\Postgresql`**
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Throwable`
 
 ### Method Summary
 
@@ -2829,7 +2843,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 - `public supportsSavepoints(): bool` — Checks whether the platform supports savepoints
 
-- `protected checkColumnType(ColumnInterface $column): string` — Checks the column type and if not string it returns the type reference
+- `protected checkColumnType(ColumnInterface $column): int` — Checks the column type and if not string it returns the type reference
 
 - `protected checkColumnTypeSql(ColumnInterface $column): string` — Checks the column type and returns the updated SQL statement
 
@@ -3217,7 +3231,7 @@ Checks whether the platform supports savepoints
 <h4 id="dbdialect-checkcolumntype"><code>checkColumnType()</code></h4>
 
 ```php
-protected function checkColumnType( ColumnInterface $column ): string;
+protected function checkColumnType( ColumnInterface $column ): int;
 ```
 
 Checks the column type and if not string it returns the type reference

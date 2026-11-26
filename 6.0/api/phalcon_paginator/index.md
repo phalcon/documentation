@@ -26,7 +26,7 @@ Phalcon\Paginator\Adapter\AbstractAdapter
   - [`Phalcon\Paginator\Adapter\QueryBuilder`](#paginatoradapterquerybuilder)
   - [`Phalcon\Paginator\Adapter\QueryBuilderCursor`](#paginatoradapterquerybuildercursor)
 
-`Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface`
+`Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Paginator\Exception` · `Phalcon\Paginator\Exceptions\InvalidLimit` · `Phalcon\Paginator\Exceptions\MissingRequiredParameter` · `Phalcon\Paginator\Repository` · `Phalcon\Paginator\RepositoryInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -694,7 +694,7 @@ Class
   - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
     - **`Phalcon\Paginator\PaginatorFactory`**
 
-`Phalcon\Config\Config` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor`
+`Phalcon\Config\Config` · `Phalcon\Contracts\Paginator\PaginatorTypes` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Paginator\Adapter\AdapterInterface` · `Phalcon\Paginator\Adapter\Model` · `Phalcon\Paginator\Adapter\NativeArray` · `Phalcon\Paginator\Adapter\QueryBuilder` · `Phalcon\Paginator\Adapter\QueryBuilderCursor` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

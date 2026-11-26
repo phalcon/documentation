@@ -25,7 +25,7 @@ Abstract
   - [`Phalcon\Translate\Adapter\Gettext`](#translateadaptergettext)
   - [`Phalcon\Translate\Adapter\NativeArray`](#translateadapternativearray)
 
-`ArrayAccess` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
+`ArrayAccess` · `Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\ImmutableObject` · `Phalcon\Translate\Exceptions\KeyNotFound` · `Phalcon\Translate\InterpolatorFactory` · `Phalcon\Translate\Interpolator\InterpolatorInterface`
 
 ### Method Summary
 
@@ -216,7 +216,7 @@ Class
 - [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
   - **`Phalcon\Translate\Adapter\Csv`**
 
-`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\FileOpenError` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 
 ### Method Summary
 
@@ -307,7 +307,7 @@ Allows translations using gettext
 - [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
   - **`Phalcon\Translate\Adapter\Gettext`**
 
-`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
+`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\InfoTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\MissingGettextExtension` · `Phalcon\Translate\Exceptions\MissingRequiredParameter` · `Phalcon\Translate\InterpolatorFactory`
 
 ### Method Summary
 
@@ -534,7 +534,7 @@ Defines translation lists using PHP arrays
 - [`Phalcon\Translate\Adapter\AbstractAdapter`](#translateadapterabstractadapter)
   - **`Phalcon\Translate\Adapter\NativeArray`**
 
-`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
+`Phalcon\Contracts\Translate\TranslateTypes` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Translate\Exception` · `Phalcon\Translate\Exceptions\InvalidDataType` · `Phalcon\Translate\Exceptions\MissingContent` · `Phalcon\Translate\InterpolatorFactory`
 
 ### Method Summary
 

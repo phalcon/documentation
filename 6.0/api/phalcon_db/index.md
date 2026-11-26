@@ -65,7 +65,7 @@ try {
 - **`Phalcon\Db\Adapter\AbstractAdapter`** - implements [`Phalcon\Db\Adapter\AdapterInterface`](#dbadapteradapterinterface), [`Phalcon\Events\EventsAwareInterface`](/6.0/api/phalcon_events/#eventseventsawareinterface)
   - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Settings` · `Stringable`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\DialectInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotInsertWithoutData` · `Phalcon\Db\Exceptions\IncompleteBindTypes` · `Phalcon\Db\Exceptions\InvalidDialectClass` · `Phalcon\Db\Exceptions\InvalidWhereConditions` · `Phalcon\Db\Exceptions\NestedTransactionChangeBlocked` · `Phalcon\Db\Exceptions\SavepointsNotSupported` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\Exceptions\UpdateFieldCountMismatch` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\ManagerInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`
 
 ### Method Summary
 
@@ -173,7 +173,9 @@ try {
 
 - `public rollbackSavepoint(string $name): bool` — Rollbacks given savepoint
 
-- `public setDialect(DialectInterface $dialect): void` — Sets the dialect used to produce the SQL
+- `public setDialect(DialectInterface $dialect)` — Sets the dialect used to produce the SQL
+
+- `public setEventsManager(ManagerInterface $eventsManager): void` — Sets the events manager
 
 - `public setNestedTransactionsWithSavepoints(bool $nestedTransactionsWithSavepoints): AdapterInterface` — Set if nested transactions should use savepoints
 
@@ -586,6 +588,9 @@ public function fetchColumn(
 
 Returns the n'th field of first row in a SQL query result
 
+Returns false if the query returns no rows. The type of the value
+comes from the database driver.
+
 ```php
 // Getting count of invoices
 $invoicesCount = $connection->fetchColumn("SELECT count(*) FROM co_invoices");
@@ -959,10 +964,18 @@ Rollbacks given savepoint
 <h4 id="dbadapterabstractadapter-setdialect"><code>setDialect()</code></h4>
 
 ```php
-public function setDialect( DialectInterface $dialect ): void;
+public function setDialect( DialectInterface $dialect );
 ```
 
 Sets the dialect used to produce the SQL
+
+<h4 id="dbadapterabstractadapter-seteventsmanager"><code>setEventsManager()</code></h4>
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+
+Sets the events manager
 
 <h4 id="dbadapterabstractadapter-setnestedtransactionswithsavepoints"><code>setNestedTransactionsWithSavepoints()</code></h4>
 
@@ -1182,7 +1195,7 @@ Class
   - [`Phalcon\Factory\AbstractFactory`](/6.0/api/phalcon_factory/#factoryabstractfactory)
     - **`Phalcon\Db\Adapter\PdoFactory`**
 
-`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception`
+`Exception` · `Phalcon\Config\ConfigInterface` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\Mysql` · `Phalcon\Db\Adapter\Pdo\Postgresql` · `Phalcon\Db\Adapter\Pdo\Sqlite` · `Phalcon\Db\Exception` · `Phalcon\Factory\AbstractFactory` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1267,7 +1280,7 @@ $connection = new Mysql($config);
     - [`Phalcon\Db\Adapter\Pdo\Postgresql`](#dbadapterpdopostgresql)
     - [`Phalcon\Db\Adapter\Pdo\Sqlite`](#dbadapterpdosqlite)
 
-`PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\Exception` · `Phalcon\Support\Settings` · `Throwable`
+`PDO` · `PDOException` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AbstractAdapter` · `Phalcon\Db\Column` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\CannotPrepareStatement` · `Phalcon\Db\Exceptions\InvalidBindParameter` · `Phalcon\Db\Exceptions\MatchedParameterNotFound` · `Phalcon\Db\Exceptions\NoActiveTransaction` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Db\ResultInterface` · `Phalcon\Db\Result\PdoResult` · `Phalcon\Events\Exception` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable`
 
 ### Method Summary
 
@@ -1283,7 +1296,7 @@ $connection = new Mysql($config);
 
 - `public connect(array $descriptor = []): void` — This method is automatically called in \Phalcon\Db\Adapter\Pdo
 
-- `public convertBoundParams(string $sql, array $parameters = []): array` — Converts bound parameters such as :name: or ?1 into PDO bind params ?
+- `public convertBoundParams(string $sql, array $params = []): array` — Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 - `public ensureConnection(): void` — Ensures the connection is alive, reconnecting in place if it is not.
 
@@ -1315,11 +1328,17 @@ $connection = new Mysql($config);
 
 - `public setAutoReconnect(bool $autoReconnect): static` — Enables or disables transparent auto-reconnect on a lost connection.
 
+- `protected buildReferences(array $records): array` — Builds the Phalcon\Db\Reference objects from the rows of the
+
 - `protected getDsnDefaults(): array` — Returns PDO adapter DSN defaults as a key-value map.
 
 - `protected isConnectionError(Throwable $exception): bool` — Recognizes whether an exception represents a lost ("gone away")
 
 - `protected prepareRealSql(string $statement, array $parameters): void` — Constructs the SQL statement (with parameters)
+
+### Constants
+
+- `const string BIND_PATTERN = "/\\?([0-9]+)|:([a-zA-Z0-9_]+):/"`
 
 ### Properties
 
@@ -1416,7 +1435,7 @@ $connection->connect();
 ```php
 public function convertBoundParams(
     string $sql,
-    array $parameters = []
+    array $params = []
 ): array;
 ```
 
@@ -1669,6 +1688,15 @@ public function setAutoReconnect( bool $autoReconnect ): static;
 
 Enables or disables transparent auto-reconnect on a lost connection.
 
+<h4 id="dbadapterpdoabstractpdo-buildreferences"><code>buildReferences()</code></h4>
+
+```php
+protected function buildReferences( array $records ): array;
+```
+
+Builds the Phalcon\Db\Reference objects from the rows of the
+describeReferences() SQL statement (MySQL and PostgreSQL)
+
 <h4 id="dbadapterpdoabstractpdo-getdsndefaults"><code>getDsnDefaults()</code></h4>
 
 ```php
@@ -1725,13 +1753,11 @@ $connection = new Mysql($config);
   - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
     - **`Phalcon\Db\Adapter\Pdo\Mysql`**
 
-`PDO` · `PDOException` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Mysql` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+`PDO` · `PDOException` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Mysql` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingForeignKeyChecks` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable`
 
 ### Method Summary
 
 - `public addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): bool` — Adds a foreign key to a table
-
-- `public connect(array $descriptor = []): void` — Constructor for Phalcon\Db\Adapter\Pdo
 
 - `public describeColumns(string $table, string|null $schema = null): array` — Returns an array of Phalcon\Db\Column objects describing a table
 
@@ -1762,14 +1788,6 @@ public function addForeignKey(
 ```
 
 Adds a foreign key to a table
-
-<h4 id="dbadapterpdomysql-connect"><code>connect()</code></h4>
-
-```php
-public function connect( array $descriptor = [] ): void;
-```
-
-Constructor for Phalcon\Db\Adapter\Pdo
 
 <h4 id="dbadapterpdomysql-describecolumns"><code>describeColumns()</code></h4>
 
@@ -1864,7 +1882,7 @@ $connection = new Postgresql($config);
   - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
     - **`Phalcon\Db\Adapter\Pdo\Postgresql`**
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Throwable`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\TableMustHaveColumn` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Throwable`
 
 ### Method Summary
 
@@ -2054,7 +2072,7 @@ $connection = new Sqlite(
   - [`Phalcon\Db\Adapter\Pdo\AbstractPdo`](#dbadapterpdoabstractpdo)
     - **`Phalcon\Db\Adapter\Pdo\Sqlite`**
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Sqlite` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\Pdo\AbstractPdo` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect\Sqlite` · `Phalcon\Db\Enum` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingSqliteDatabase` · `Phalcon\Db\Index` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\Reference` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2316,7 +2334,7 @@ $connection->addColumn("co_invoices", null, $column);
 
 - **`Phalcon\Db\Column`** - implements [`Phalcon\Db\ColumnInterface`](#dbcolumninterface)
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement` · `Phalcon\Db\Exceptions\ColumnTypeRejectsScale` · `Phalcon\Db\Exceptions\ColumnTypeRequired` · `Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict` · `Phalcon\Db\Exceptions\GeneratedDefaultConflict` · `Phalcon\Db\Exceptions\InvalidGenerationExpression` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -2482,11 +2500,15 @@ $connection->addColumn("co_invoices", null, $column);
 
 - `protected string|null $after = null` — Column Position
 
+- `protected bool $autoIncrement = false` — Column is autoIncrement?
+
 - `protected int $bindType = 2` — Bind Type
 
 - `protected string|null $comment = null` — Column's comment
 
 - `protected mixed|null $defaultValue = null` — Default column value
+
+- `protected bool $first = false` — Position is first
 
 - `protected string|null $generated = null` — Generation expression for `GENERATED ALWAYS AS (...)`. Null when the
   column is not generated.
@@ -2495,25 +2517,19 @@ $connection->addColumn("co_invoices", null, $column);
   PostgreSQL only supports `STORED` and emits it regardless of this
   flag.
 
+- `protected bool $invisible = false` — Whether the column is declared `INVISIBLE` (MySQL 8.0.23+).
+
 - `protected bool $isArray = false` — Whether the column is an array of its base type (PostgreSQL).
-
-- `protected bool $isAutoIncrement = false` — Column is autoIncrement?
-
-- `protected bool $isFirst = false` — Position is first
-
-- `protected bool $isInvisible = false` — Whether the column is declared `INVISIBLE` (MySQL 8.0.23+).
-
-- `protected bool $isNotNull = true` — Column not nullable?
-
-  Default SQL definition is NOT NULL.
 
 - `protected bool $isNumeric = false` — The column have some numeric type?
 
-- `protected bool $isPrimary = false` — Column is part of the primary key?
-
-- `protected bool $isUnsigned = false` — Integer column unsigned?
-
 - `protected string $name`
+
+- `protected bool $notNull = true` — Column not nullable?
+
+  Default SQL definition is NOT NULL.
+
+- `protected bool $primary = false` — Column is part of the primary key?
 
 - `protected int $scale = 0` — Integer column number scale
 
@@ -2524,6 +2540,8 @@ $connection->addColumn("co_invoices", null, $column);
 - `protected int $typeReference = -1` — Column data type reference
 
 - `protected array<array-key, string>|int|string $typeValues = []` — Column data type values
+
+- `protected bool $unsigned = false` — Integer column unsigned?
 
 ### Methods
 
@@ -2742,7 +2760,7 @@ common methods to transform intermediate code into its RDBMS related syntax
   - [`Phalcon\Db\Dialect\Postgresql`](#dbdialectpostgresql)
   - [`Phalcon\Db\Dialect\Sqlite`](#dbdialectsqlite)
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ConflictTargetColumnRequired` · `Phalcon\Db\Exceptions\ConflictUpdateColumnRequired` · `Phalcon\Db\Exceptions\InvalidGroupByExpression` · `Phalcon\Db\Exceptions\InvalidListExpression` · `Phalcon\Db\Exceptions\InvalidOrderByExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpression` · `Phalcon\Db\Exceptions\InvalidSqlExpressionType` · `Phalcon\Db\Exceptions\InvalidUnaryExpression` · `Phalcon\Db\Exceptions\MaterializedViewsNotSupported` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningNotSupported` · `Phalcon\Db\Exceptions\UnsupportedOperator` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`
 
 ### Method Summary
 
@@ -2752,21 +2770,21 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 - `public dropMaterializedView(string $viewName, string|null $schemaName = null, bool $ifExists = true): string` — Generates SQL to drop a materialized view (PostgreSQL only).
 
-- `public escape(string $input, string $escapeChar = ""): string` — Escape identifiers
+- `public escape(string $str, string|null $escapeChar = null): string` — Escape identifiers
 
-- `public escapeSchema(string $input, string $escapeChar = ""): string` — Escape Schema
+- `public escapeSchema(string $str, string|null $escapeChar = null): string` — Escape Schema
 
 - `public forUpdate(string $sqlQuery, string $modifier = ""): string` — Returns a SQL modified with a FOR UPDATE clause. The optional
 
-- `public getColumnList(array $columnList, string $escapeChar = "", array $bindCounts = []): string` — Gets a list of columns with escaped identifiers
+- `public getColumnList(array $columnList, string|null $escapeChar = null, array $bindCounts = []): string` — Gets a list of columns with escaped identifiers
 
 - `public getCustomFunctions(): array` — Returns registered functions
 
-- `public getSqlColumn(array|string $column, string $escapeChar = "", array $bindCounts = []): string` — Resolve Column expressions
+- `public getSqlColumn(mixed $column, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve Column expressions
 
 - `public getSqlExpression(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Transforms an intermediate representation for an expression into a
 
-- `public getSqlTable(array|string $tableName, string $escapeChar = ""): string` — Transform an intermediate representation of a schema/table into a
+- `public getSqlTable(mixed $table, string|null $escapeChar = null): string` — Transform an intermediate representation of a schema/table into a
 
 - `public limit(string $sqlQuery, mixed $number): string` — Generates the SQL for LIMIT clause
 
@@ -2774,7 +2792,7 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 - `public refreshMaterializedView(string $viewName, string|null $schemaName = null, bool $concurrent = false): string` — Generates SQL to refresh a materialized view (PostgreSQL only).
 
-- `public registerCustomFunction(string $name, callable $customFunction): static` — Registers custom SQL functions
+- `public registerCustomFunction(string $name, mixed $customFunction): static` — Registers custom SQL functions. A value that cannot be called fails
 
 - `public releaseSavepoint(string $name): string` — Generate SQL to release a savepoint
 
@@ -2814,53 +2832,53 @@ common methods to transform intermediate code into its RDBMS related syntax
 
 - `protected getLimitValue(mixed $value): string` — Renders a LIMIT/OFFSET value: a bound placeholder passes through, any
 
-- `protected getSqlExpressionAll(array $expression, string $escapeChar = ""): string` — Resolve \*
+- `protected getSqlExpressionAll(array $expression, string|null $escapeChar = null): string` — Resolve \*
 
-- `protected getSqlExpressionBinaryOperations(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve binary operations expressions
+- `protected getSqlExpressionBinaryOperations(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve binary operations expressions
 
-- `protected getSqlExpressionCase(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve CASE expressions
+- `protected getSqlExpressionCase(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve CASE expressions
 
-- `protected getSqlExpressionCastValue(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve CAST of values
+- `protected getSqlExpressionCastValue(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve CAST of values
 
-- `protected getSqlExpressionConvertValue(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve CONVERT of values encodings
+- `protected getSqlExpressionConvertValue(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve CONVERT of values encodings
 
-- `protected getSqlExpressionFrom(array|string $expression, string $escapeChar = ""): string` — Resolve a FROM clause
+- `protected getSqlExpressionFrom(mixed $expression, string|null $escapeChar = null): string` — Resolve a FROM clause
 
-- `protected getSqlExpressionFunctionCall(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve function calls
+- `protected getSqlExpressionFunctionCall(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve function calls
 
-- `protected getSqlExpressionGroupBy(array|string $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve a GROUP BY clause
+- `protected getSqlExpressionGroupBy(mixed $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve a GROUP BY clause
 
-- `protected getSqlExpressionHaving(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve a HAVING clause
+- `protected getSqlExpressionHaving(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve a HAVING clause
 
-- `protected getSqlExpressionJoins(array|string $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve a JOINs clause
+- `protected getSqlExpressionJoins(mixed $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve a JOINs clause
 
-- `protected getSqlExpressionLimit(array|string $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve a LIMIT clause
+- `protected getSqlExpressionLimit(mixed $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve a LIMIT clause
 
-- `protected getSqlExpressionList(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve Lists
+- `protected getSqlExpressionList(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve Lists
 
-- `protected getSqlExpressionObject(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve object expressions
+- `protected getSqlExpressionObject(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve object expressions
 
-- `protected getSqlExpressionOrderBy(array|string $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve an ORDER BY clause
+- `protected getSqlExpressionOrderBy(mixed $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve an ORDER BY clause
 
-- `protected getSqlExpressionQualified(array $expression, string $escapeChar = ""): string` — Resolve qualified expressions
+- `protected getSqlExpressionQualified(array $expression, string|null $escapeChar = null): string` — Resolve qualified expressions
 
-- `protected getSqlExpressionScalar(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve Column expressions
+- `protected getSqlExpressionScalar(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve Column expressions
 
-- `protected getSqlExpressionUnaryOperations(array $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve unary operations expressions
+- `protected getSqlExpressionUnaryOperations(array $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve unary operations expressions
 
-- `protected getSqlExpressionWhere(array|string $expression, string $escapeChar = "", array $bindCounts = []): string` — Resolve a WHERE clause
+- `protected getSqlExpressionWhere(mixed $expression, string|null $escapeChar = null, array $bindCounts = []): string` — Resolve a WHERE clause
 
-- `protected prepareColumnAlias(string $qualified, string $alias = "", string $escapeChar = ""): string` — Prepares column for this RDBMS
+- `protected prepareColumnAlias(string $qualified, string|null $alias = null, string|null $escapeChar = null): string` — Prepares column for this RDBMS
 
-- `protected prepareQualified(string $column, string $domain = "", string $escapeChar = ""): string` — Prepares qualified for this RDBMS
+- `protected prepareQualified(string $column, string|null $domain = null, string|null $escapeChar = null): string` — Prepares qualified for this RDBMS
 
-- `protected prepareTable(string $tableName, string|null $schemaName = null, string $alias = "", string $escapeChar = ""): string` — Prepares table for this RDBMS
+- `protected prepareTable(string $table, string|null $schema = null, string|null $alias = null, string|null $escapeChar = null): string` — Prepares table for this RDBMS
 
 ### Properties
 
 - `protected db_custom_functions $customFunctions = []`
 
-- `protected string $escapeChar`
+- `protected string|null $escapeChar = null`
 
 - `protected list<string> $guardedOperators = [...]` — Dialect-specific operators that a concrete dialect must opt into via
   \$supportedOperators; using one elsewhere throws.
@@ -2907,8 +2925,8 @@ Generates SQL to drop a materialized view (PostgreSQL only).
 
 ```php
 final public function escape(
-    string $input,
-    string $escapeChar = ""
+    string $str,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -2918,8 +2936,8 @@ Escape identifiers
 
 ```php
 final public function escapeSchema(
-    string $input,
-    string $escapeChar = ""
+    string $str,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -2953,7 +2971,7 @@ echo $sql; // SELECT * FROM co_invoices FOR UPDATE NOWAIT
 ```php
 final public function getColumnList(
     array $columnList,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -2981,8 +2999,8 @@ Returns registered functions
 
 ```php
 final public function getSqlColumn(
-    array|string $column,
-    string $escapeChar = "",
+    mixed $column,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3006,8 +3024,8 @@ database system valid expression
 
 ```php
 final public function getSqlTable(
-    array|string $tableName,
-    string $escapeChar = ""
+    mixed $table,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3071,11 +3089,12 @@ Generates SQL to refresh a materialized view (PostgreSQL only).
 ```php
 public function registerCustomFunction(
     string $name,
-    callable $customFunction
+    mixed $customFunction
 ): static;
 ```
 
-Registers custom SQL functions
+Registers custom SQL functions. A value that cannot be called fails
+when the SQL is made, the same as cphalcon.
 
 <h4 id="dbdialect-releasesavepoint"><code>releaseSavepoint()</code></h4>
 
@@ -3266,7 +3285,7 @@ other value is coerced to an integer to prevent SQL injection.
 ```php
 final protected function getSqlExpressionAll(
     array $expression,
-    string $escapeChar = ""
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3277,7 +3296,7 @@ Resolve *
 ```php
 final protected function getSqlExpressionBinaryOperations(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3289,7 +3308,7 @@ Resolve binary operations expressions
 ```php
 final protected function getSqlExpressionCase(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3301,7 +3320,7 @@ Resolve CASE expressions
 ```php
 final protected function getSqlExpressionCastValue(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3313,7 +3332,7 @@ Resolve CAST of values
 ```php
 final protected function getSqlExpressionConvertValue(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3324,8 +3343,8 @@ Resolve CONVERT of values encodings
 
 ```php
 final protected function getSqlExpressionFrom(
-    array|string $expression,
-    string $escapeChar = ""
+    mixed $expression,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3336,7 +3355,7 @@ Resolve a FROM clause
 ```php
 final protected function getSqlExpressionFunctionCall(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3347,8 +3366,8 @@ Resolve function calls
 
 ```php
 final protected function getSqlExpressionGroupBy(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3360,7 +3379,7 @@ Resolve a GROUP BY clause
 ```php
 final protected function getSqlExpressionHaving(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3371,8 +3390,8 @@ Resolve a HAVING clause
 
 ```php
 final protected function getSqlExpressionJoins(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3385,8 +3404,8 @@ Resolve a JOINs clause
 
 ```php
 final protected function getSqlExpressionLimit(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3398,7 +3417,7 @@ Resolve a LIMIT clause
 ```php
 final protected function getSqlExpressionList(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3410,7 +3429,7 @@ Resolve Lists
 ```php
 final protected function getSqlExpressionObject(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3421,8 +3440,8 @@ Resolve object expressions
 
 ```php
 final protected function getSqlExpressionOrderBy(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3434,7 +3453,7 @@ Resolve an ORDER BY clause
 ```php
 final protected function getSqlExpressionQualified(
     array $expression,
-    string $escapeChar = ""
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3445,7 +3464,7 @@ Resolve qualified expressions
 ```php
 final protected function getSqlExpressionScalar(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3457,7 +3476,7 @@ Resolve Column expressions
 ```php
 final protected function getSqlExpressionUnaryOperations(
     array $expression,
-    string $escapeChar = "",
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3468,8 +3487,8 @@ Resolve unary operations expressions
 
 ```php
 final protected function getSqlExpressionWhere(
-    array|string $expression,
-    string $escapeChar = "",
+    mixed $expression,
+    string|null $escapeChar = null,
     array $bindCounts = []
 ): string;
 ```
@@ -3481,8 +3500,8 @@ Resolve a WHERE clause
 ```php
 protected function prepareColumnAlias(
     string $qualified,
-    string $alias = "",
-    string $escapeChar = ""
+    string|null $alias = null,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3493,8 +3512,8 @@ Prepares column for this RDBMS
 ```php
 protected function prepareQualified(
     string $column,
-    string $domain = "",
-    string $escapeChar = ""
+    string|null $domain = null,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3504,10 +3523,10 @@ Prepares qualified for this RDBMS
 
 ```php
 protected function prepareTable(
-    string $tableName,
-    string|null $schemaName = null,
-    string $alias = "",
-    string $escapeChar = ""
+    string $table,
+    string|null $schema = null,
+    string|null $alias = null,
+    string|null $escapeChar = null
 ): string;
 ```
 
@@ -3535,7 +3554,7 @@ Generates database specific SQL for the MySQL RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
   - **`Phalcon\Db\Dialect\Mysql`**
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\MysqlOnConflictNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -3601,7 +3620,7 @@ Generates database specific SQL for the MySQL RDBMS
 
 ### Properties
 
-- ``protected string $escapeChar = "`"``
+- ``protected string|null $escapeChar = "`"``
 
 - `protected list<string> $supportedOperators = [...]`
 
@@ -3974,7 +3993,7 @@ Generates database specific SQL for the PostgreSQL RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
   - **`Phalcon\Db\Dialect\Postgresql`**
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4048,7 +4067,7 @@ Generates database specific SQL for the PostgreSQL RDBMS
 
 ### Properties
 
-- `protected string $escapeChar = "\""`
+- `protected string|null $escapeChar = "\""`
 
 - `protected list<string> $supportedOperators = [...]`
 
@@ -4451,7 +4470,7 @@ Generates database specific SQL for the SQLite RDBMS
 - [`Phalcon\Db\Dialect`](#dbdialect)
   - **`Phalcon\Db\Dialect\Sqlite`**
 
-`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface`
+`Phalcon\Db\CheckInterface` · `Phalcon\Db\Column` · `Phalcon\Db\ColumnInterface` · `Phalcon\Db\Dialect` · `Phalcon\Db\Dialect\Traits\TextTrait` · `Phalcon\Db\Exception` · `Phalcon\Db\Exceptions\MissingDefinitionKey` · `Phalcon\Db\Exceptions\ReturningRequiresColumn` · `Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropCheckNotSupported` · `Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported` · `Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported` · `Phalcon\Db\Exceptions\UnrecognizedDataType` · `Phalcon\Db\IndexInterface` · `Phalcon\Db\RawValue` · `Phalcon\Db\ReferenceInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -4495,7 +4514,7 @@ Generates database specific SQL for the SQLite RDBMS
 
 - `public getColumnDefinition(ColumnInterface $column): string` — Gets the column name in SQLite
 
-- `public listIndexesSql(string $tableName, string|null $schemaName = null, string|null $keyName = null): string` — Generates the SQL to get query list of indexes
+- `public listIndexesSql(string $table, string|null $schema = null, string|null $keyName = null): string` — Generates the SQL to get query list of indexes
 
 - `public listTables(string|null $schemaName = null): string` — List all tables in database
 
@@ -4521,7 +4540,7 @@ Generates database specific SQL for the SQLite RDBMS
 
 ### Properties
 
-- `protected string $escapeChar = "\""`
+- `protected string|null $escapeChar = "\""`
 
 - `protected list<string> $supportedOperators = [...]`
 
@@ -4765,8 +4784,8 @@ Gets the column name in SQLite
 
 ```php
 public function listIndexesSql(
-    string $tableName,
-    string|null $schemaName = null,
+    string $table,
+    string|null $schema = null,
     string|null $keyName = null
 ): string;
 ```
@@ -7462,9 +7481,9 @@ This class identifies each profile in a Phalcon\Db\Profiler
 
 ### Properties
 
-- `protected float $finalTime` — Timestamp when the profile ended
+- `protected float|null $finalTime = null` — Timestamp when the profile ended
 
-- `protected float $initialTime` — Timestamp when the profile started
+- `protected float|null $initialTime = null` — Timestamp when the profile started
 
 - `protected db_bind_types $sqlBindTypes` — SQL bind types related to the profile
 
@@ -7650,7 +7669,7 @@ $reference = new \Phalcon\Db\Reference(
 
 - **`Phalcon\Db\Reference`** - implements [`Phalcon\Db\ReferenceInterface`](#dbreferenceinterface)
 
-`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired`
+`Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Exceptions\ForeignKeyColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedColumnCountMismatch` · `Phalcon\Db\Exceptions\ReferencedColumnsRequired` · `Phalcon\Db\Exceptions\ReferencedTableRequired` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -7812,11 +7831,11 @@ while ($invoice = $result->fetchArray()) {
 
 - **`Phalcon\Db\Result\PdoResult`** - implements [`Phalcon\Db\ResultInterface`](#dbresultinterface)
 
-`PDO` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface`
+`PDO` · `PDOStatement` · `Phalcon\Contracts\Db\DbTypes` · `Phalcon\Db\Adapter\AdapterInterface` · `Phalcon\Db\Enum` · `Phalcon\Db\ResultInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Stringable`
 
 ### Method Summary
 
-- `public __construct(AdapterInterface $connection, PDOStatement $pdoStatement, string $sqlStatement = "", array $bindParams = [], array $bindTypes = [])` — Phalcon\Db\Result\Pdo constructor
+- `public __construct(AdapterInterface $connection, PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null)` — Phalcon\Db\Result\Pdo constructor
 
 - `public dataSeek(int $number): void` — Moves internal resultset cursor to another position letting us to fetch a
 
@@ -7824,7 +7843,7 @@ while ($invoice = $result->fetchArray()) {
 
 - `public fetch(int|null $fetchStyle = null, int $cursorOrientation = Enum::FETCH_ORI_NEXT, int $cursorOffset = 0): mixed` — Fetches an array/object of strings that corresponds to the fetched row,
 
-- `public fetchAll(int $mode = Enum::FETCH_DEFAULT, mixed $fetchArgument = Enum::FETCH_ORI_NEXT, array|null $constructorArgs = null): array` — Returns an array of arrays containing all the records in the result
+- `public fetchAll(int $mode = Enum::FETCH_DEFAULT, mixed $fetchArgument = Enum::FETCH_ORI_NEXT, mixed $constructorArgs = null): array` — Returns an array of arrays containing all the records in the result
 
 - `public fetchArray(): mixed` — Returns an array of strings that corresponds to the fetched row, or FALSE
 
@@ -7832,25 +7851,25 @@ while ($invoice = $result->fetchArray()) {
 
 - `public numRows(): int` — Gets number of rows returned by a resultset
 
-- `public setFetchMode(int $fetchMode, object|string|null $colNoOrClassNameOrObject = null, mixed $ctorargs = null): bool` — Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
+- `public setFetchMode(int $fetchMode, mixed $colNoOrClassNameOrObject = null, mixed $ctorargs = null): bool` — Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
 ### Properties
 
-- `protected array $bindParams = []`
+- `protected mixed $bindParams = null`
 
-- `protected array $bindTypes = []`
+- `protected mixed $bindTypes = null`
 
 - `protected AdapterInterface $connection`
 
 - `protected int $fetchMode = Enum::FETCH_DEFAULT` — Active fetch mode
 
-- `protected PDOStatement $pdoStatement`
+- `protected PDOStatement $pdoStatement` — Internal resultset
 
 - `protected mixed $result`
 
 - `protected int|null $rowCount = null`
 
-- `protected string $sqlStatement = ""`
+- `protected mixed $sqlStatement = null`
 
 ### Methods
 
@@ -7859,10 +7878,10 @@ while ($invoice = $result->fetchArray()) {
 ```php
 public function __construct(
     AdapterInterface $connection,
-    PDOStatement $pdoStatement,
-    string $sqlStatement = "",
-    array $bindParams = [],
-    array $bindTypes = []
+    PDOStatement $result,
+    mixed $sqlStatement = null,
+    mixed $bindParams = null,
+    mixed $bindTypes = null
 );
 ```
 
@@ -7931,7 +7950,7 @@ while ($invoice = $result->fetch()) {
 public function fetchAll(
     int $mode = Enum::FETCH_DEFAULT,
     mixed $fetchArgument = Enum::FETCH_ORI_NEXT,
-    array|null $constructorArgs = null
+    mixed $constructorArgs = null
 ): array;
 ```
 
@@ -7998,7 +8017,7 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 ```php
 public function setFetchMode(
     int $fetchMode,
-    object|string|null $colNoOrClassNameOrObject = null,
+    mixed $colNoOrClassNameOrObject = null,
     mixed $ctorargs = null
 ): bool;
 ```

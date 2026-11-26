@@ -87,7 +87,7 @@ Storage AbstractAdapter
   - [`Phalcon\Storage\Adapter\Stream`](#storageadapterstream)
   - [`Phalcon\Storage\Adapter\Weak`](#storageadapterweak)
 
-`DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
+`DateInterval` · `DateTime` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Events\EventsAwareInterface` · `Phalcon\Events\Traits\EventsAwareTrait` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Storage\Serializer\SerializerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait`
 
 ### Method Summary
 
@@ -804,7 +804,7 @@ Capabilities:
   - **`Phalcon\Storage\Adapter\Libmemcached`**
     - [`Phalcon\Cache\Adapter\Libmemcached`](/6.0/api/phalcon_cache/#cacheadapterlibmemcached)
 
-`DateInterval` · `Exception` · `Memcached` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception`
+`DateInterval` · `Exception` · `Memcached` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1139,7 +1139,7 @@ Capabilities:
     - [`Phalcon\Cache\Adapter\Redis`](/6.0/api/phalcon_cache/#cacheadapterredis)
     - [`Phalcon\Storage\Adapter\RedisCluster`](#storageadapterrediscluster)
 
-`DateInterval` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Redis` · `RedisException`
+`DateInterval` · `Exception` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exception` · `Phalcon\Storage\Exceptions\AuthenticationFailed` · `Phalcon\Storage\Exceptions\ConnectionFailed` · `Phalcon\Storage\Exceptions\DatabaseSelectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\WeakTypesTrait` · `Redis` · `RedisException`
 
 ### Method Summary
 
@@ -1319,7 +1319,7 @@ Capabilities (in addition to Redis):
     - **`Phalcon\Storage\Adapter\RedisCluster`**
       - [`Phalcon\Cache\Adapter\RedisCluster`](/6.0/api/phalcon_cache/#cacheadapterrediscluster)
 
-`Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Redis` · `RedisCluster` · `Throwable`
+`Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\ClusterConnectionFailed` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Exception` · `Phalcon\Support\Traits\WeakTypesTrait` · `Redis` · `RedisCluster` · `Throwable`
 
 ### Method Summary
 
@@ -1429,7 +1429,7 @@ Capabilities:
   - **`Phalcon\Storage\Adapter\Stream`**
     - [`Phalcon\Cache\Adapter\Stream`](/6.0/api/phalcon_cache/#cacheadapterstream)
 
-`FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`
+`FilesystemIterator` · `Iterator` · `Phalcon\Contracts\Storage\StorageTypes` · `Phalcon\Storage\Exceptions\InvalidConfiguration` · `Phalcon\Storage\SerializerFactory` · `Phalcon\Support\Traits\FilePathTrait` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Support\Helper\Str\DirFromFileTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait` · `RecursiveDirectoryIterator` · `RecursiveIteratorIterator` · `SplFileInfo`
 
 ### Method Summary
 
@@ -1615,7 +1615,7 @@ Capabilities:
 
 - `protected array $options = []`
 
-- `protected array<string, WeakReference<object>> $weakList = []`
+- `protected array<array-key, WeakReference<object>> $weakList = []`
 
 ### Methods
 
@@ -2278,11 +2278,11 @@ Class
 
 ### Method Summary
 
-- `public getAllowedClasses(): array|bool`
+- `public getAllowedClasses()`
 
 - `public serialize(): mixed` — Serializes data
 
-- `public setAllowedClasses(array|bool $allowedClasses): static` — Restricts the classes that unserialize() may instantiate (see the
+- `public setAllowedClasses(mixed $allowedClasses): static` — Restricts the classes that unserialize() may instantiate (see the
 
 - `public unserialize(mixed $data): void` — Unserializes data
 
@@ -2297,7 +2297,7 @@ Class
 <h4 id="storageserializerphp-getallowedclasses"><code>getAllowedClasses()</code></h4>
 
 ```php
-public function getAllowedClasses(): array|bool;
+public function getAllowedClasses();
 ```
 
 <h4 id="storageserializerphp-serialize"><code>serialize()</code></h4>
@@ -2311,7 +2311,7 @@ Serializes data
 <h4 id="storageserializerphp-setallowedclasses"><code>setAllowedClasses()</code></h4>
 
 ```php
-public function setAllowedClasses( array|bool $allowedClasses ): static;
+public function setAllowedClasses( mixed $allowedClasses ): static;
 ```
 
 Restricts the classes that unserialize() may instantiate (see the

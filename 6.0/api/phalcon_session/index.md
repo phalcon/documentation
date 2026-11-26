@@ -18,15 +18,17 @@ All classes are prefixed with `Phalcon`
 
 Abstract
 
-- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\AbstractAdapter`** - implements `\SessionHandlerInterface`, `\SessionIdInterface`, `\SessionUpdateTimestampHandlerInterface`
   - [`Phalcon\Session\Adapter\Libmemcached`](#sessionadapterlibmemcached)
   - [`Phalcon\Session\Adapter\Redis`](#sessionadapterredis)
 
-`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+`Phalcon\Storage\Adapter\AdapterInterface` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface` · `SessionIdInterface` · `SessionUpdateTimestampHandlerInterface`
 
 ### Method Summary
 
 - `public close(): bool` — Close
+
+- `public create_sid(): string` — Create a new session id
 
 - `public destroy(string $id): bool` — Destroy
 
@@ -55,6 +57,14 @@ public function close(): bool;
 ```
 
 Close
+
+<h4 id="sessionadapterabstractadapter-create_sid"><code>create_sid()</code></h4>
+
+```php
+public function create_sid(): string;
+```
+
+Create a new session id
 
 <h4 id="sessionadapterabstractadapter-destroy"><code>destroy()</code></h4>
 
@@ -236,14 +246,16 @@ $session = new Manager();
 $session->setAdapter(new Noop());
 ```
 
-- **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionUpdateTimestampHandlerInterface`
+- **`Phalcon\Session\Adapter\Noop`** - implements `\SessionHandlerInterface`, `\SessionIdInterface`, `\SessionUpdateTimestampHandlerInterface`
   - [`Phalcon\Session\Adapter\Stream`](#sessionadapterstream)
 
-`SessionHandlerInterface` · `SessionUpdateTimestampHandlerInterface`
+`SessionHandlerInterface` · `SessionIdInterface` · `SessionUpdateTimestampHandlerInterface`
 
 ### Method Summary
 
 - `public close(): bool` — Close
+
+- `public create_sid(): string` — Create a new session id
 
 - `public destroy(string $id): bool` — Destroy
 
@@ -268,6 +280,14 @@ public function close(): bool;
 ```
 
 Close
+
+<h4 id="sessionadapternoop-create_sid"><code>create_sid()</code></h4>
+
+```php
+public function create_sid(): string;
+```
+
+Create a new session id
 
 <h4 id="sessionadapternoop-destroy"><code>destroy()</code></h4>
 
@@ -463,7 +483,7 @@ $session->setAdapter($files);
 - [`Phalcon\Session\Adapter\Noop`](#sessionadapternoop)
   - **`Phalcon\Session\Adapter\Stream`**
 
-`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
+`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError` · `Phalcon\Session\Adapter\Exceptions\InvalidSavePath` · `Phalcon\Session\Adapter\Exceptions\SavePathUnavailable` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait` · `Phalcon\Traits\Php\IniTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait`
 
 ### Method Summary
 
@@ -936,7 +956,7 @@ Session manager class
   - [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
     - **`Phalcon\Session\Manager`** - implements [`Phalcon\Session\ManagerInterface`](#sessionmanagerinterface)
 
-`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
+`Phalcon\Contracts\Session\SessionTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Session\Exceptions\InvalidSessionAdapter` · `Phalcon\Session\Exceptions\InvalidSessionId` · `Phalcon\Session\Exceptions\InvalidSessionName` · `Phalcon\Session\Exceptions\SessionAlreadyStarted` · `Phalcon\Session\Exceptions\SessionModificationDenied` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\HeaderTrait` · `Phalcon\Traits\Support\Helper\Arr\GetTrait` · `SessionHandlerInterface`
 
 ### Method Summary
 

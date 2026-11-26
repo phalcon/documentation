@@ -25,7 +25,7 @@ This component allows to create CLI applications using Phalcon
     - [`Phalcon\Application\AbstractApplication`](/6.0/api/phalcon_application/#applicationabstractapplication)
       - **`Phalcon\Cli\Console`**
 
-`Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Traits\Php\FileTrait`
+`Closure` · `Phalcon\Application\AbstractApplication` · `Phalcon\Cli\Console\Exceptions\ContainerRequired` · `Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition` · `Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound` · `Phalcon\Cli\Router\Route` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Mvc\ModuleDefinitionInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Php\FileTrait`
 
 ### Method Summary
 
@@ -181,11 +181,11 @@ $handle = $dispatcher->dispatch();
     - [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher)
       - **`Phalcon\Cli\Dispatcher`** - implements [`Phalcon\Cli\DispatcherInterface`](#clidispatcherinterface)
 
-`Exception` · `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Filter\FilterInterface`
+`Exception` · `Phalcon\Cli\Dispatcher\Exception` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Dispatcher\AbstractDispatcher` · `Phalcon\Filter\FilterInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
-- `public callActionMethod(mixed $handler, string $actionMethod, array $parameters = []): mixed` — Calls the action method.
+- `public callActionMethod(mixed $handler, string $actionMethod, array $params = []): mixed` — Calls the action method.
 
 - `public getActiveTask(): TaskInterface` — Returns the active task in the dispatcher
 
@@ -231,7 +231,7 @@ $handle = $dispatcher->dispatch();
 public function callActionMethod(
     mixed $handler,
     string $actionMethod,
-    array $parameters = []
+    array $params = []
 ): mixed;
 ```
 
@@ -404,7 +404,7 @@ echo $router->getTaskName();
   - [`Phalcon\Di\AbstractInjectionAware`](/6.0/api/phalcon_di/#diabstractinjectionaware)
     - **`Phalcon\Cli\Router`** - implements [`Phalcon\Cli\RouterInterface`](#clirouterinterface)
 
-`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware`
+`Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable` · `Phalcon\Cli\Router\Exceptions\RouterArgumentsInvalidType` · `Phalcon\Cli\Router\Route` · `Phalcon\Cli\Router\RouteInterface` · `Phalcon\Contracts\Cli\CliTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -462,7 +462,7 @@ echo $router->getTaskName();
 
 - `protected string $module = ""`
 
-- `protected array $parameters = []`
+- `protected array $params = []`
 
 - `protected array $routes = []`
 
@@ -977,7 +977,7 @@ This class represents every route added to the router
 
 - `protected array $converters = []`
 
-- `protected string|null $delimiter`
+- `protected string $delimiter`
 
 - `protected string|null $delimiterPath = self::DEFAULT_DELIMITER`
 

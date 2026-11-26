@@ -32,7 +32,7 @@ $flash->error("Cannot open the file");
       - [`Phalcon\Flash\Direct`](#flashdirect)
       - [`Phalcon\Flash\Session`](#flashsession)
 
-`Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
+`Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Di\AbstractInjectionAware` · `Phalcon\Flash\Exceptions\EscaperServiceUnavailable` · `Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\InterpolateTrait`
 
 ### Method Summary
 
@@ -459,7 +459,7 @@ Class Session
     - [`Phalcon\Flash\AbstractFlash`](#flashabstractflash)
       - **`Phalcon\Flash\Session`**
 
-`Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface`
+`Phalcon\Contracts\Flash\FlashTypes` · `Phalcon\Flash\Exceptions\SessionServiceUnavailable` · `Phalcon\Html\Escaper\EscaperInterface` · `Phalcon\Session\ManagerInterface` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 

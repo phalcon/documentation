@@ -33,7 +33,7 @@ dispatches in the same request until it is replaced.
   - [`Phalcon\Auth\Micro\AuthMicroListener`](#authmicroauthmicrolistener)
   - [`Phalcon\Auth\Mvc\AuthDispatcherListener`](#authmvcauthdispatcherlistener)
 
-`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager`
+`Phalcon\Auth\Exceptions\AccessDenied` · `Phalcon\Contracts\Auth\Access\Access` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Contracts\Auth\Manager` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1159,7 +1159,7 @@ Config requires non-empty value
 
 - `public __construct(string $configName, string $configKey, string $suffix = "")`
 
-- `public assert(string|null $value, string $configName, string $configKey, string $suffix = ""): void` — Throws when the value is an empty string. A null value is treated as
+- `public assert(mixed $value, string $configName, string $configKey, string $suffix = ""): void` — Throws when the value is an empty string. A null value is treated as
 
 ### Methods
 
@@ -1177,7 +1177,7 @@ public function __construct(
 
 ```php
 public static function assert(
-    string|null $value,
+    mixed $value,
     string $configName,
     string $configKey,
     string $suffix = ""
@@ -1631,7 +1631,7 @@ Abstract
 
 - `public setUser(AuthUser $user): static`
 
-- `protected hasValidCredentials(AuthUser|null $user, array $credentials): bool` — user should be ?AuthUser
+- `protected hasValidCredentials(mixed $user, array $credentials): bool` — user should be ?AuthUser
 
 ### Properties
 
@@ -1714,7 +1714,7 @@ public function setUser( AuthUser $user ): static;
 
 ```php
 protected function hasValidCredentials(
-    AuthUser|null $user,
+    mixed $user,
     array $credentials
 ): bool;
 ```
@@ -1911,7 +1911,7 @@ Class
 
 ### Method Summary
 
-- `public __construct(Adapter $adapter, RequestInterface $request, CookiesInterface $cookies, SessionManagerInterface $session, SessionGuardConfig $config, ClockInterface|null $clock = null)`
+- `public __construct(Adapter $adapter, RequestInterface $request, CookiesInterface $cookies, SessionManagerInterface $session, SessionGuardConfig|null $config = null, ClockInterface|null $clock = null)`
 
 - `public attempt(array $credentials = [], bool $remember = false): bool`
 
@@ -1973,7 +1973,7 @@ public function __construct(
     RequestInterface $request,
     CookiesInterface $cookies,
     SessionManagerInterface $session,
-    SessionGuardConfig $config,
+    SessionGuardConfig|null $config = null,
     ClockInterface|null $clock = null
 );
 ```
@@ -2208,11 +2208,11 @@ Value object representing the contents of a remember-me cookie.
 
 - **`Phalcon\Auth\Guard\UserRemember`**
 
-`InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode`
+`InvalidArgumentException` · `Phalcon\Contracts\Auth\AuthTypes` · `Phalcon\Support\Helper\Json\Decode` · `TypeError`
 
 ### Method Summary
 
-- `public __construct(array|string $payload)` — Accepts either the raw JSON cookie value (string) or the already
+- `public __construct(mixed $payload)` — Accepts either the raw JSON cookie value (string) or the already
 
 - `public getId(): int|string|null`
 
@@ -2233,7 +2233,7 @@ Value object representing the contents of a remember-me cookie.
 <h4 id="authguarduserremember-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( array|string $payload );
+public function __construct( mixed $payload );
 ```
 
 Accepts either the raw JSON cookie value (string) or the already
@@ -2483,7 +2483,7 @@ relevant capability interface (GuardStateful, BasicAuth, etc.).
 
 ### Properties
 
-- `protected AccessLocator $accessFactory`
+- `protected AccessLocator|null $accessFactory`
 
 - `protected Access|null $activeAccess = null`
 

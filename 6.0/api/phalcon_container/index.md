@@ -32,7 +32,7 @@ Class
 
 - `public callableNew(string $name): Closure` — Resolve to a closure on a new()
 
-- `public extend(string $name, callable $callableObject): void` — Extends the definition
+- `public extend(string $name, mixed $callableObject): void` — Extends the definition
 
 - `public get(string $name): mixed` — Resolve and return an element registerd in the container
 
@@ -154,11 +154,14 @@ Resolve to a closure on a new()
 ```php
 public function extend(
     string $name,
-    callable $callableObject
+    mixed $callableObject
 ): void;
 ```
 
 Extends the definition
+
+A value that cannot be called fails when the service is built, the
+same as cphalcon.
 
 <h4 id="containercontainer-get"><code>get()</code></h4>
 
@@ -667,13 +670,13 @@ Class
 
 - **`Phalcon\Container\Definition\ServiceDefinition`**
 
-`Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException`
+`Phalcon\Container\Exceptions\FrozenDefinition` · `Phalcon\Container\Exceptions\InvalidExtender` · `Phalcon\Container\Exceptions\NoClassSet` · `Phalcon\Container\Exceptions\NoFactorySet` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Ioc\IocContainer` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Support\Traits\WeakTypesTrait` · `ReflectionClass` · `ReflectionException`
 
 ### Method Summary
 
 - `public __construct(string $serviceName, string $type, mixed $raw = null)`
 
-- `public addExtender(callable $extender): static` — Adds an extender
+- `public addExtender(mixed $extender): static` — Adds an extender
 
 - `public addTag(string $tag): static` — Adds a tag
 
@@ -717,7 +720,7 @@ Class
 
 - `public setExtenders(array $extenders): static` — Set extenders
 
-- `public setFactory(callable $factory): static` — Set a factory
+- `public setFactory(mixed $factory): static` — Set a factory
 
 - `public setIsCacheable(bool $isCacheable): static` — Set cachable
 
@@ -729,7 +732,7 @@ Class
 
 - `public unsetFactory(): static` — Unset the factory
 
-- `protected checkFrozen(): void` — Check if frozen
+- `protected checkFrozen(): void` — Check if frozen. The setters call this method only when the
 
 ### Properties
 
@@ -774,10 +777,13 @@ public function __construct(
 <h4 id="containerdefinitionservicedefinition-addextender"><code>addExtender()</code></h4>
 
 ```php
-public function addExtender( callable $extender ): static;
+public function addExtender( mixed $extender ): static;
 ```
 
 Adds an extender
+
+A value that cannot be called fails when the service is built, the
+same as cphalcon.
 
 <h4 id="containerdefinitionservicedefinition-addtag"><code>addTag()</code></h4>
 
@@ -953,10 +959,13 @@ Set extenders
 <h4 id="containerdefinitionservicedefinition-setfactory"><code>setFactory()</code></h4>
 
 ```php
-public function setFactory( callable $factory ): static;
+public function setFactory( mixed $factory ): static;
 ```
 
 Set a factory
+
+A value that cannot be called fails when the service is built, the
+same as cphalcon.
 
 <h4 id="containerdefinitionservicedefinition-setiscacheable"><code>setIsCacheable()</code></h4>
 
@@ -1004,7 +1013,8 @@ Unset the factory
 protected function checkFrozen(): void;
 ```
 
-Check if frozen
+Check if frozen. The setters call this method only when the
+definition is frozen: the method call costs more than the check.
 
 
 ## Container\Definition\ServiceLifetime
@@ -1421,7 +1431,7 @@ Class
 
 - `public getIterator(): ArrayIterator`
 
-- `public merge(iterable $values): void`
+- `public merge(mixed $values): void`
 
 - `public offsetExists(mixed $offset): bool`
 
@@ -1464,7 +1474,7 @@ public function getIterator(): ArrayIterator;
 <h4 id="containerresolverlazyarrayvalues-merge"><code>merge()</code></h4>
 
 ```php
-public function merge( iterable $values ): void;
+public function merge( mixed $values ): void;
 ```
 
 <h4 id="containerresolverlazyarrayvalues-offsetexists"><code>offsetExists()</code></h4>
@@ -1528,6 +1538,8 @@ Class
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
   - **`Phalcon\Container\Resolver\Lazy\Call`**
 
+`Phalcon\Support\Traits\WeakTypesTrait`
+
 ### Method Summary
 
 - `public __construct(mixed $callableObject)`
@@ -1566,20 +1578,20 @@ Class
 
 ### Method Summary
 
-- `public __construct(Lazy|string $id)`
+- `public __construct(mixed $id)`
 
 - `public resolve(object $ioc): mixed` — Resolve to a closure on a get()
 
 ### Properties
 
-- `protected Lazy|string $id`
+- `protected mixed $id`
 
 ### Methods
 
 <h4 id="containerresolverlazycallableget-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazycallableget-resolve"><code>resolve()</code></h4>
@@ -1602,20 +1614,20 @@ Class
 
 ### Method Summary
 
-- `public __construct(Lazy|string $id)`
+- `public __construct(mixed $id)`
 
 - `public resolve(object $ioc): mixed` — Resolve to a closure on a new()
 
 ### Properties
 
-- `protected Lazy|string $id`
+- `protected mixed $id`
 
 ### Methods
 
 <h4 id="containerresolverlazycallablenew-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazycallablenew-resolve"><code>resolve()</code></h4>
@@ -1661,7 +1673,7 @@ Class
     - [`Phalcon\Container\Resolver\Lazy\CsEnv`](#containerresolverlazycsenv)
     - [`Phalcon\Container\Resolver\Lazy\EnvDefault`](#containerresolverlazyenvdefault)
 
-`Phalcon\Container\Exceptions\EnvNotDefined`
+`Phalcon\Container\Exceptions\EnvNotDefined` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1759,7 +1771,7 @@ Class
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
   - **`Phalcon\Container\Resolver\Lazy\FunctionCall`**
 
-`Phalcon\Contracts\Container\ContainerTypes`
+`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1804,20 +1816,20 @@ Class
 
 ### Method Summary
 
-- `public __construct(Lazy|string $id)`
+- `public __construct(mixed $id)`
 
 - `public resolve(object $ioc): mixed` — Resolve a shared instance
 
 ### Properties
 
-- `protected Lazy|string $id`
+- `protected mixed $id`
 
 ### Methods
 
 <h4 id="containerresolverlazyget-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazyget-resolve"><code>resolve()</code></h4>
@@ -1836,11 +1848,11 @@ Class
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
   - **`Phalcon\Container\Resolver\Lazy\GetCall`**
 
-`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`
+`Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-- `public __construct(Lazy|string $id, string $method, array $arguments)`
+- `public __construct(mixed $id, string $method, array $arguments)`
 
 - `public resolve(object $ioc): mixed` — Resolve a shared instance method call
 
@@ -1848,7 +1860,7 @@ Class
 
 - `protected array $arguments`
 
-- `protected Lazy|string $id`
+- `protected mixed $id`
 
 - `protected string $method`
 
@@ -1858,7 +1870,7 @@ Class
 
 ```php
 public function __construct(
-    Lazy|string $id,
+    mixed $id,
     string $method,
     array $arguments
 );
@@ -1890,7 +1902,7 @@ Abstract
   - [`Phalcon\Container\Resolver\Lazy\NewInstance`](#containerresolverlazynewinstance)
   - [`Phalcon\Container\Resolver\Lazy\StaticCall`](#containerresolverlazystaticcall)
 
-`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\Resolvable`
+`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\Resolvable` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
@@ -1901,6 +1913,8 @@ Abstract
 - `protected resolveArgument(object $ioc, mixed $argument): mixed`
 
 - `protected resolveArguments(object $ioc, array $arguments): array`
+
+- `protected resolveServiceCall(object $ioc, string $iocMethod, mixed $id, string $method, array $arguments): mixed` — Gets the service from the container with the container method
 
 ### Methods
 
@@ -1934,6 +1948,21 @@ protected function resolveArguments(
 ): array;
 ```
 
+<h4 id="containerresolverlazylazy-resolveservicecall"><code>resolveServiceCall()</code></h4>
+
+```php
+protected function resolveServiceCall(
+    object $ioc,
+    string $iocMethod,
+    mixed $id,
+    string $method,
+    array $arguments
+): mixed;
+```
+
+Gets the service from the container with the container method
+('get' or 'new') and calls the method of the service.
+
 
 ## Container\Resolver\Lazy\LazyFactory
 
@@ -1947,7 +1976,7 @@ Class
 
 - `public arrayValues(array $values): ArrayValues`
 
-- `public call(callable $callableObject): Call`
+- `public call(mixed $callableObject): Call` — A value that cannot be called fails when the service is resolved, the
 
 - `public callableGet(string $id): CallableGet`
 
@@ -1982,8 +2011,11 @@ public static function arrayValues( array $values ): ArrayValues;
 <h4 id="containerresolverlazylazyfactory-call"><code>call()</code></h4>
 
 ```php
-public static function call( callable $callableObject ): Call;
+public static function call( mixed $callableObject ): Call;
 ```
+
+A value that cannot be called fails when the service is resolved, the
+same as cphalcon.
 
 <h4 id="containerresolverlazylazyfactory-callableget"><code>callableGet()</code></h4>
 
@@ -2084,11 +2116,11 @@ Class
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
   - **`Phalcon\Container\Resolver\Lazy\NewCall`**
 
-`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Service\Collection`
+`Phalcon\Contracts\Container\ContainerTypes`
 
 ### Method Summary
 
-- `public __construct(Lazy|string $id, string $method, array $arguments)`
+- `public __construct(mixed $id, string $method, array $arguments)`
 
 - `public resolve(object $ioc): mixed` — Resolve a new instance method call
 
@@ -2096,7 +2128,7 @@ Class
 
 - `protected array $arguments`
 
-- `protected Lazy|string $id`
+- `protected mixed $id`
 
 - `protected string $method`
 
@@ -2106,7 +2138,7 @@ Class
 
 ```php
 public function __construct(
-    Lazy|string $id,
+    mixed $id,
     string $method,
     array $arguments
 );
@@ -2132,20 +2164,20 @@ Class
 
 ### Method Summary
 
-- `public __construct(Lazy|string $id)`
+- `public __construct(mixed $id)`
 
 - `public resolve(object $ioc): mixed` — Resolve a new instance
 
 ### Properties
 
-- `protected Lazy|string $id`
+- `protected mixed $id`
 
 ### Methods
 
 <h4 id="containerresolverlazynewinstance-__construct"><code>__construct()</code></h4>
 
 ```php
-public function __construct( Lazy|string $id );
+public function __construct( mixed $id );
 ```
 
 <h4 id="containerresolverlazynewinstance-resolve"><code>resolve()</code></h4>
@@ -2164,11 +2196,11 @@ Class
 - [`Phalcon\Container\Resolver\Lazy\Lazy`](#containerresolverlazylazy)
   - **`Phalcon\Container\Resolver\Lazy\StaticCall`**
 
-`Phalcon\Contracts\Container\ContainerTypes`
+`Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
-- `public __construct(Lazy|string $className, string $method, array $arguments)`
+- `public __construct(mixed $className, string $method, array $arguments)`
 
 - `public resolve(object $ioc): mixed` — Resolve a static method call
 
@@ -2176,7 +2208,7 @@ Class
 
 - `protected array $arguments`
 
-- `protected Lazy|string $className`
+- `protected mixed $className`
 
 - `protected string $method`
 
@@ -2186,7 +2218,7 @@ Class
 
 ```php
 public function __construct(
-    Lazy|string $className,
+    mixed $className,
     string $method,
     array $arguments
 );
@@ -2207,13 +2239,13 @@ Class
 
 - **`Phalcon\Container\Resolver\Resolver`** - implements [`Phalcon\Contracts\Container\Resolver\ResolverService`](/6.0/api/phalcon_contracts/#contractscontainerresolverresolverservice)
 
-`Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `Phalcon\Contracts\Container\Service\Collection` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`
+`Closure` · `Phalcon\Container\Exceptions\CannotResolveParameter` · `Phalcon\Container\Resolver\Lazy\Lazy` · `Phalcon\Contracts\Container\ContainerTypes` · `Phalcon\Contracts\Container\Resolver\ResolverService` · `Phalcon\Contracts\Container\Service\Collection` · `Phalcon\Support\Traits\WeakTypesTrait` · `ReflectionClass` · `ReflectionException` · `ReflectionFunction` · `ReflectionMethod` · `ReflectionNamedType` · `ReflectionParameter` · `ReflectionType`
 
 ### Method Summary
 
 - `public isResolvableClass(string $className): bool` — Is this a resolvable class?
 
-- `public resolveCall(object $ioc, callable $callableObject, array $arguments): mixed` — Resolve a call
+- `public resolveCall(object $ioc, mixed $callableObject, array $arguments): mixed` — Resolve a call. For a value that cannot be called,
 
 - `public resolveClass(object $ioc, string $className, array $arguments): object` — Resolve a class
 
@@ -2240,12 +2272,13 @@ Is this a resolvable class?
 ```php
 public function resolveCall(
     object $ioc,
-    callable $callableObject,
+    mixed $callableObject,
     array $arguments
 ): mixed;
 ```
 
-Resolve a call
+Resolve a call. For a value that cannot be called,
+Closure::fromCallable() throws the same TypeError as cphalcon.
 
 <h4 id="containerresolverresolver-resolveclass"><code>resolveClass()</code></h4>
 

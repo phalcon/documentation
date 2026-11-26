@@ -903,6 +903,7 @@ Class for exceptions thrown by Phalcon\Annotations
   - **`Phalcon\Annotations\Exception`**
     - [`Phalcon\Annotations\Exceptions\AnnotationNotFound`](#annotationsexceptionsannotationnotfound)
     - [`Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable`](#annotationsexceptionsannotationsdirectorynotwritable)
+    - [`Phalcon\Annotations\Exceptions\InvalidSourceTable`](#annotationsexceptionsinvalidsourcetable)
     - [`Phalcon\Annotations\Exceptions\UnknownAnnotationExpression`](#annotationsexceptionsunknownannotationexpression)
 
 
@@ -971,6 +972,29 @@ Class
 
 ```php
 public function __construct();
+```
+
+
+## Annotations\Exceptions\InvalidSourceTable
+
+Class
+
+- `\Exception`
+  - [`Phalcon\Annotations\Exception`](#annotationsexception)
+    - **`Phalcon\Annotations\Exceptions\InvalidSourceTable`**
+
+`Phalcon\Annotations\Exception`
+
+### Method Summary
+
+- `public __construct(mixed $table)`
+
+### Methods
+
+<h4 id="annotationsexceptionsinvalidsourcetable-__construct"><code>__construct()</code></h4>
+
+```php
+public function __construct( mixed $table );
 ```
 
 
@@ -1072,13 +1096,34 @@ Marks a property as part of the primary key. It is the attribute form of `@Prima
 
 Class
 
-Names the table of a model. No framework code reads it today.
+Names the table of a model when the annotations service uses AttributesReader.
+An explicit setSource() takes precedence. The model manager applies its
+table prefix to the source.
+The attribute applies only to the class declaring it; it is not inherited.
+PHPDoc @Source annotations do not change the model's table.
+A Source attribute must specify a non-empty string table name.
+
+```php
+use Phalcon\Annotations\Models\MetaData\Source;
+use Phalcon\Mvc\Model;
+
+#[Source(table: "customers")]
+class Customers extends Model
+{
+}
+```
 
 - **`Phalcon\Annotations\Models\MetaData\Source`**
+
+`Phalcon\Annotations\Adapter\AdapterInterface` · `Phalcon\Annotations\Annotation` · `Phalcon\Annotations\AttributesReader` · `Phalcon\Annotations\Collection` · `Phalcon\Annotations\Exceptions\InvalidSourceTable`
 
 ### Method Summary
 
 - `public __construct(string $table)`
+
+- `public getTable(Collection $annotations): string|null` — Returns the table from a Source annotation, or null when none is present.
+
+- `public getTableFromAdapter(mixed $adapter, string $className): string|null` — Returns the model's table when the adapter uses AttributesReader.
 
 ### Properties
 
@@ -1091,6 +1136,28 @@ Names the table of a model. No framework code reads it today.
 ```php
 public function __construct( string $table );
 ```
+
+<h4 id="annotationsmodelsmetadatasource-gettable"><code>getTable()</code></h4>
+
+```php
+public static function getTable( Collection $annotations ): string|null;
+```
+
+Returns the table from a Source annotation, or null when none is present.
+Named arguments take precedence over positional arguments.
+
+<h4 id="annotationsmodelsmetadatasource-gettablefromadapter"><code>getTableFromAdapter()</code></h4>
+
+```php
+public static function getTableFromAdapter(
+    mixed $adapter,
+    string $className
+): string|null;
+```
+
+Returns the model's table when the adapter uses AttributesReader.
+Other readers do not opt in and are not asked to parse the class.
+A value that is not an annotations adapter does not opt in.
 
 
 ## Annotations\Reader

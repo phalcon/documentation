@@ -411,7 +411,7 @@ conditional execution and much more.
 
 - **`Phalcon\Events\Manager`** - implements [`Phalcon\Events\ManagerInterface`](#eventsmanagerinterface), [`Phalcon\Contracts\Events\Enumerable`](/6.0/api/phalcon_contracts/#contractseventsenumerable)
 
-`Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\EventsTypes` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent` · `Throwable`
+`Closure` · `Phalcon\Contracts\Events\Enumerable` · `Phalcon\Contracts\Events\EventsTypes` · `Phalcon\Contracts\Events\Stoppable` · `Phalcon\Contracts\Events\Subscriber` · `Phalcon\Events\Exceptions\InvalidEventHandler` · `Phalcon\Events\Exceptions\InvalidEventType` · `Phalcon\Events\Exceptions\InvalidSubscriberConfiguration` · `Phalcon\Events\Exceptions\NoListenersForEvent` · `Phalcon\Support\Traits\WeakTypesTrait` · `Throwable`
 
 ### Method Summary
 
@@ -524,6 +524,9 @@ conditional execution and much more.
   progress. Incremented on every fire entry, decremented on exit.
   Used to keep nested fire() calls from clobbering the outer
   caller's `$this->responses` accumulator.
+
+- `protected bool|null $fireHooks = null` — True when the object is a subclass of this class: fire() then calls
+  the beforeFire() and afterFire() hooks. Null until the first fire.
 
 - `protected bool $halted = false` — Manager-level kill switch. When true, every fire()/fireAll()/
   fireQueue() call returns immediately (null or empty array) without
@@ -949,7 +952,7 @@ Trait
 
 `Phalcon\Events\Exception` · `Phalcon\Events\Manager` · `Phalcon\Events\ManagerInterface`
 
-[`Phalcon\Application\AbstractApplication`](/6.0/api/phalcon_application/#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](/6.0/api/phalcon_auth/#authguardabstractguard) · [`Phalcon\Autoload\Loader`](/6.0/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/6.0/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cli\Task`](/6.0/api/phalcon_cli/#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\Db\Adapter\AbstractAdapter`](/6.0/api/phalcon_db/#dbadapterabstractadapter) · [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](/6.0/api/phalcon_http/#httprequest) · [`Phalcon\Http\Response`](/6.0/api/phalcon_http/#httpresponse) · [`Phalcon\Mvc\Controller`](/6.0/api/phalcon_mvc/#mvccontroller) · [`Phalcon\Mvc\Dispatcher`](/6.0/api/phalcon_mvc/#mvcdispatcher) · [`Phalcon\Mvc\Micro`](/6.0/api/phalcon_mvc/#mvcmicro) · [`Phalcon\Mvc\Model\Manager`](/6.0/api/phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Router`](/6.0/api/phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\View`](/6.0/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\AbstractEngine`](/6.0/api/phalcon_mvc/#mvcviewengineabstractengine) · [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
+[`Phalcon\Application\AbstractApplication`](/6.0/api/phalcon_application/#applicationabstractapplication) · [`Phalcon\Auth\Guard\AbstractGuard`](/6.0/api/phalcon_auth/#authguardabstractguard) · [`Phalcon\Autoload\Loader`](/6.0/api/phalcon_autoload/#autoloadloader) · [`Phalcon\Cache\AbstractCache`](/6.0/api/phalcon_cache/#cacheabstractcache) · [`Phalcon\Cli\Task`](/6.0/api/phalcon_cli/#clitask) · [`Phalcon\DataMapper\Pdo\ConnectionLocator`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionlocator) · [`Phalcon\DataMapper\Pdo\Connection\AbstractConnection`](/6.0/api/phalcon_datamapper/#datamapperpdoconnectionabstractconnection) · [`Phalcon\Db\Adapter\AbstractAdapter`](/6.0/api/phalcon_db/#dbadapterabstractadapter) · [`Phalcon\Dispatcher\AbstractDispatcher`](/6.0/api/phalcon_dispatcher/#dispatcherabstractdispatcher) · [`Phalcon\Http\Request`](/6.0/api/phalcon_http/#httprequest) · [`Phalcon\Http\Response`](/6.0/api/phalcon_http/#httpresponse) · [`Phalcon\Mvc\Dispatcher`](/6.0/api/phalcon_mvc/#mvcdispatcher) · [`Phalcon\Mvc\Micro`](/6.0/api/phalcon_mvc/#mvcmicro) · [`Phalcon\Mvc\Model\Manager`](/6.0/api/phalcon_mvc/#mvcmodelmanager) · [`Phalcon\Mvc\Router`](/6.0/api/phalcon_mvc/#mvcrouter) · [`Phalcon\Mvc\View`](/6.0/api/phalcon_mvc/#mvcview) · [`Phalcon\Mvc\View\Engine\AbstractEngine`](/6.0/api/phalcon_mvc/#mvcviewengineabstractengine) · [`Phalcon\Mvc\View\Simple`](/6.0/api/phalcon_mvc/#mvcviewsimple) · [`Phalcon\Storage\Adapter\AbstractAdapter`](/6.0/api/phalcon_storage/#storageadapterabstractadapter)
 
 ### Method Summary
 

@@ -60,7 +60,7 @@ This is a base class for form elements
 
 - `public getDefault(): mixed` — Returns the default value assigned to the element
 
-- `public getFilters(): array` — Returns the element filters
+- `public getFilters()` — Returns the element filters
 
 - `public getForm(): Form|null` — Returns the parent form to the element
 
@@ -92,7 +92,7 @@ This is a base class for form elements
 
 - `public setDefault(mixed $value): ElementInterface` — Sets a default value in case the form does not use an entity
 
-- `public setFilters(array|string $filters): ElementInterface` — Sets the element filters
+- `public setFilters(mixed $filters): ElementInterface` — Sets the element filters
 
 - `public setForm(Form $form): ElementInterface` — Sets the parent form to the element
 
@@ -228,7 +228,7 @@ Returns the default value assigned to the element
 <h4 id="formselementabstractelement-getfilters"><code>getFilters()</code></h4>
 
 ```php
-public function getFilters(): array;
+public function getFilters();
 ```
 
 Returns the element filters
@@ -364,7 +364,7 @@ or there is no value available for the element in _POST
 <h4 id="formselementabstractelement-setfilters"><code>setFilters()</code></h4>
 
 ```php
-public function setFilters( array|string $filters ): ElementInterface;
+public function setFilters( mixed $filters ): ElementInterface;
 ```
 
 Sets the element filters
@@ -607,7 +607,7 @@ Interface for Phalcon\Forms\Element classes
 
 - `public getDefault(): mixed` — Returns the default value assigned to the element
 
-- `public getFilters(): array` — Returns the element's filters
+- `public getFilters()` — Returns the element's filters
 
 - `public getForm(): Form|null` — Returns the parent form to the element
 
@@ -637,7 +637,7 @@ Interface for Phalcon\Forms\Element classes
 
 - `public setDefault(mixed $value): ElementInterface` — Sets a default value in case the form does not use an entity
 
-- `public setFilters(array|string $filters): ElementInterface` — Sets the element's filters
+- `public setFilters(mixed $filters): ElementInterface` — Sets the element's filters
 
 - `public setForm(Form $form): ElementInterface` — Sets the parent form to the element
 
@@ -726,7 +726,7 @@ Returns the default value assigned to the element
 <h4 id="formselementelementinterface-getfilters"><code>getFilters()</code></h4>
 
 ```php
-public function getFilters(): array;
+public function getFilters();
 ```
 
 Returns the element's filters
@@ -854,7 +854,7 @@ or there is no value available for the element in _POST
 <h4 id="formselementelementinterface-setfilters"><code>setFilters()</code></h4>
 
 ```php
-public function setFilters( array|string $filters ): ElementInterface;
+public function setFilters( mixed $filters ): ElementInterface;
 ```
 
 Sets the element's filters
@@ -1085,7 +1085,7 @@ Component SELECT (choice) for forms
 
 - `public render(array $attributes = []): string` — Renders the element widget returning HTML
 
-- `public setOptions(array|object $options): ElementInterface` — Set the choice's options
+- `public setOptions(mixed $options): ElementInterface` — Set the choice's options
 
 - `protected prepareAttributes(array $attributes = []): array` — Returns an array of prepared attributes for Phalcon\Html\TagFactory
 
@@ -1134,7 +1134,7 @@ Renders the element widget returning HTML
 <h4 id="formselementselect-setoptions"><code>setOptions()</code></h4>
 
 ```php
-public function setOptions( array|object $options ): ElementInterface;
+public function setOptions( mixed $options ): ElementInterface;
 ```
 
 Set the choice's options
@@ -1566,7 +1566,7 @@ This component allows to build forms using an object-oriented interface
   - [`Phalcon\Di\Injectable`](/6.0/api/phalcon_di/#diinjectable)
     - **`Phalcon\Forms\Form`** - implements `\Countable`, `\Iterator`, [`Phalcon\Html\Attributes\AttributesInterface`](/6.0/api/phalcon_html/#htmlattributesattributesinterface)
 
-`Countable` · `Iterator` · `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
+`Countable` · `Error` · `Iterator` · `Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Contracts\Forms\Schema` · `Phalcon\Contracts\Html\HtmlTypes` · `Phalcon\Di\DiInterface` · `Phalcon\Di\Injectable` · `Phalcon\Filter\FilterInterface` · `Phalcon\Filter\Validation` · `Phalcon\Filter\Validation\ValidationInterface` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Exceptions\ElementNotInForm` · `Phalcon\Forms\Exceptions\InvalidEntity` · `Phalcon\Forms\Exceptions\NoFormElements` · `Phalcon\Html\Attributes` · `Phalcon\Html\Attributes\AttributesInterface` · `Phalcon\Html\TagFactory` · `Phalcon\Messages\Messages` · `Phalcon\Support\Settings` · `Phalcon\Support\Traits\WeakTypesTrait` · `Phalcon\Traits\Support\Helper\Str\CamelizeTrait`
 
 ### Method Summary
 
@@ -1574,9 +1574,9 @@ This component allows to build forms using an object-oriented interface
 
 - `public add(ElementInterface $element, string|null $position = null, bool|null $type = null): static` — Adds an element to the form
 
-- `public bind(array $data, object|null $entity = null, array $whitelist = []): static` — Binds data to the entity
+- `public bind(array $data, mixed $entity = null, array $whitelist = []): static` — Binds data to the entity
 
-- `public clear(array|string|null $fields = null): static` — Clears every element in the form to its default value
+- `public clear(mixed $fields = null): static` — Clears every element in the form to its default value
 
 - `public count(): int` — Returns the number of elements in the form
 
@@ -1590,7 +1590,7 @@ This component allows to build forms using an object-oriented interface
 
 - `public getElements(): array` — Returns the form elements added to the form
 
-- `public getEntity(): object|null` — Returns the entity related to the model
+- `public getEntity()` — Returns the entity related to the model
 
 - `public getFilteredValue(string $name): mixed` — Gets a value from the internal filtered data or calls getValue(name)
 
@@ -1706,7 +1706,7 @@ Adds an element to the form
 ```php
 public function bind(
     array $data,
-    object|null $entity = null,
+    mixed $entity = null,
     array $whitelist = []
 ): static;
 ```
@@ -1716,7 +1716,7 @@ Binds data to the entity
 <h4 id="formsform-clear"><code>clear()</code></h4>
 
 ```php
-public function clear( array|string|null $fields = null ): static;
+public function clear( mixed $fields = null ): static;
 ```
 
 Clears every element in the form to its default value
@@ -1772,7 +1772,7 @@ Returns the form elements added to the form
 <h4 id="formsform-getentity"><code>getEntity()</code></h4>
 
 ```php
-public function getEntity(): object|null;
+public function getEntity();
 ```
 
 Returns the entity related to the model
@@ -2059,23 +2059,23 @@ types with `setElement()`.
 
 - **`Phalcon\Forms\FormsLocator`**
 
-`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType`
+`Phalcon\Contracts\Forms\FormsTypes` · `Phalcon\Forms\Element\Check` · `Phalcon\Forms\Element\CheckGroup` · `Phalcon\Forms\Element\Date` · `Phalcon\Forms\Element\ElementInterface` · `Phalcon\Forms\Element\Email` · `Phalcon\Forms\Element\File` · `Phalcon\Forms\Element\Hidden` · `Phalcon\Forms\Element\Numeric` · `Phalcon\Forms\Element\Password` · `Phalcon\Forms\Element\Radio` · `Phalcon\Forms\Element\RadioGroup` · `Phalcon\Forms\Element\Select` · `Phalcon\Forms\Element\Submit` · `Phalcon\Forms\Element\Text` · `Phalcon\Forms\Element\TextArea` · `Phalcon\Forms\Exceptions\FormNotInLocator` · `Phalcon\Forms\Exceptions\UnknownFormElementType` · `Phalcon\Support\Traits\WeakTypesTrait`
 
 ### Method Summary
 
 - `public __construct(array $definitions = [])`
 
-- `public get(string $name, object|null $entity = null): Form` — Returns the named form.
+- `public get(string $name, mixed $entity = null): Form` — Returns the named form.
 
-- `public getElement(string $type): callable` — Returns the factory callable for the given element type.
+- `public getElement(string $type): mixed` — Returns the factory callable for the given element type.
 
 - `public has(string $name): bool` — Checks whether a named form factory is registered.
 
 - `public hasElement(string $type): bool` — Checks whether an element type is registered.
 
-- `public set(string $name, callable $factory): void` — Registers or replaces a named form factory.
+- `public set(string $name, mixed $factory): void` — Registers or replaces a named form factory.
 
-- `public setElement(string $type, callable $factory): void` — Registers or replaces an element type factory.
+- `public setElement(string $type, mixed $factory): void` — Registers or replaces an element type factory.
 
 - `protected getDefaultServices(): array` — Returns the built-in element type factories.
 
@@ -2092,7 +2092,7 @@ public function __construct( array $definitions = [] );
 ```php
 public function get(
     string $name,
-    object|null $entity = null
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2101,10 +2101,12 @@ Returns the named form.
 Without an entity the result is lazily created and cached.
 With an entity a fresh form is always produced.
 
+A factory that cannot be called throws Error, the same as cphalcon.
+
 <h4 id="formsformslocator-getelement"><code>getElement()</code></h4>
 
 ```php
-public function getElement( string $type ): callable;
+public function getElement( string $type ): mixed;
 ```
 
 Returns the factory callable for the given element type.
@@ -2130,7 +2132,7 @@ Checks whether an element type is registered.
 ```php
 public function set(
     string $name,
-    callable $factory
+    mixed $factory
 ): void;
 ```
 
@@ -2145,7 +2147,7 @@ the next get() call rebuilds from the new factory.
 ```php
 public function setElement(
     string $type,
-    callable $factory
+    mixed $factory
 ): void;
 ```
 
@@ -2303,7 +2305,7 @@ Forms Manager
 
 - `public __construct(FormsLocator|null $locator = null)` — Manager constructor.
 
-- `public create(string $name, object|null $entity = null): Form` — Creates a form registering it in the forms manager
+- `public create(string $name, mixed $entity = null): Form` — Creates a form registering it in the forms manager
 
 - `public get(string $name): Form` — Returns a form by its name
 
@@ -2311,7 +2313,7 @@ Forms Manager
 
 - `public has(string $name): bool` — Checks if a form is registered in the forms manager
 
-- `public loadForm(string $name, Schema $schema, object|null $entity = null): Form` — Creates a form from a Schema source, registers it in the manager,
+- `public loadForm(string $name, Schema $schema, mixed $entity = null): Form` — Creates a form from a Schema source, registers it in the manager,
 
 - `public set(string $name, Form $form): static` — Registers a form in the Forms Manager
 
@@ -2336,7 +2338,7 @@ Manager constructor.
 ```php
 public function create(
     string $name,
-    object|null $entity = null
+    mixed $entity = null
 ): Form;
 ```
 
@@ -2372,7 +2374,7 @@ Checks if a form is registered in the forms manager
 public function loadForm(
     string $name,
     Schema $schema,
-    object|null $entity = null
+    mixed $entity = null
 ): Form;
 ```
 
