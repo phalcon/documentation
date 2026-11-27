@@ -12,7 +12,7 @@ version: "5.24"
 # Upgrading to V5
 
 :::info[Upgrading from a previous v5 version?]
-[Click here](#upgrading-from-v520-to-v521) for the changes from v5.20 to v5.21+.
+[Click here](#upgrading-from-v523-to-v524) for the changes from v5.23 to v5.24.
 :::
 
 So you have decided to upgrade to v5! **Congratulations**!!
@@ -89,6 +89,266 @@ If you use the above method you will need to add the `extension=phalcon.so` in y
 :::warning[Zephir]
 Unless you are making changes to your local copy of the framework and wish to compile those changes, you do not need to use Zephir. However, if you want to, you will have to issue `zephir fullclean` and then `zephir build` with a released `zephir.phar`. `zephir fullclean` deletes the bundled C sources in `ext/`, and regenerates it. The changelog lists which version of Zephir was used to compile Phalcon, so you can download that particular phar file and compile the extension that way.
 :::
+
+- - -
+
+## Upgrading from v5.23 to v5.24
+
+Phalcon v5.24 supports PHP 8.6, fixes many bugs and makes some components faster. The changes below can affect your application. Most of them affect only a class in your application that extends a Phalcon class and overrides a method.
+
+### Callbacks
+
+A callback that Phalcon cannot call now throws the PHP `TypeError` of `call_user_func()` or `call_user_func_array()`. Examples are a function or a method that does not exist, a method that is not public, and an object with no `__invoke()` method. In v5.23, Phalcon gave a warning and returned `null`. This change comes from Zephir 1.9.0. It applies, for example, to:
+
+- The service definitions and the `calls` of `Phalcon\Di`.
+- The sanitizers of `Phalcon\Filter\Filter`.
+- The helpers of `Phalcon\Html\TagFactory` and `Phalcon\Support\HelperFactory`.
+- The dispatcher actions.
+- The handlers of `Phalcon\Mvc\Micro`.
+- The converters of the router.
+- The callback of `Phalcon\Mvc\Model\Resultset::filter()`.
+
+If your code checks for the warning or for `null`, catch `TypeError`.
+
+### Acl
+
+#### Names With the Delimiter
+
+`Phalcon\Acl\Adapter\Memory::addRole()` and `addComponent()` throw `Phalcon\Acl\Exceptions\ForbiddenDelimiter` when the name of a custom `RoleInterface` or `ComponentInterface` object contains `!`. The `Role` and `Component` classes already throw this exception. In v5.23, the adapter accepted the name. Thus, a role, a component and an access could share the access key of another role, component and access.
+
+#### Callbacks That Cannot Be Called
+
+`Phalcon\Acl\Adapter\Memory::isAllowed()` denies the access when the rule has a callback that the ACL cannot call. Examples are a function that does not exist and a method that is not public. In v5.23, the ACL ignored the callback and used only the rule. Make sure that each rule callback is a closure, a public method or a function that exists.
+
+#### Access Check Events
+
+`Phalcon\Acl\Adapter\Memory::isAllowed()` fires `acl:afterCheckAccess` also for a role that does not exist. The `granted` value of the event is the result of the default action. A listener of this event now also gets these checks.
+
+`isAllowed()` calls `fireManagerEvent()` for the `acl:afterCheckAccess` event only when an events manager is set. A subclass that overrides the protected `fireManagerEvent()` method no longer gets this call when no events manager is set. The `acl:beforeCheckAccess` event does not change.
+
+### Annotations
+
+#### Cache Files That Do Not Hold Annotations
+
+`Phalcon\Annotations\Adapter\Stream::read()` returns `false` when the cache file does not hold a `Phalcon\Annotations\Reflection` object. Examples are an object of a class that is not allowed, an array, a string, an integer and `null`. In v5.23, `read()` returned that value. `get()` now parses the class again and writes a new cache file, the same as for a missing cache file.
+
+#### Cache File Header
+
+`Phalcon\Annotations\Adapter\Stream::write()` puts `<?php __halt_compiler();` (`Stream::FILE_HEADER`) at the start of each cache file, and `read()` removes it. PHP stops at this header, so a web request that runs a cache file shows nothing. `read()` also reads the cache files of v5.23, which have no header.
+
+v5.23 and earlier versions cannot read the new cache files. If you go back to an earlier version, clear the `annotationsDir` folder.
+
+### Auth
+
+`Phalcon\Auth\Manager::access()` throws `Phalcon\Container\Exceptions\Exception` when the access gate is registered in `Phalcon\Di\Di` as a built object with `set()`. It already threw this exception for `setShared()`. Register the class name or a closure, so that each activation gets a new gate.
+
+### Cache and Storage
+
+`Phalcon\Cache\AbstractCache` and `Phalcon\Storage\Adapter\AbstractAdapter` call `fireManagerEvent()` only when an events manager is set. A subclass that overrides the protected `fireManagerEvent()` method no longer gets these calls when no events manager is set. With an events manager, nothing changes.
+
+### Config
+
+`Phalcon\Config\Config::path()` no longer calls `has()` for each key of the path. It calls `has()` for the full path. It calls `has()` for the last key only when `get()` returns `null` and the default value is not `null`. A subclass of `Config` or of its adapters that overrides `has()` no longer controls the key walk. The result of `path()` does not change. A path through a value that is not a collection still throws an `Error`. The message of the error now names `get()` instead of `has()`.
+
+`Phalcon\Config\Config::setData()` calls `validateType()` only when the config has a type. A subclass of `Config` or of its adapters that overrides the protected `validateType()` method no longer gets this call when the config has no type. With a type, nothing changes.
+
+### Container Definitions
+
+The factory closure that `Phalcon\Container\Definition\Processor\ObjectProcessor::process()` sets now declares one optional parameter, the container. `Phalcon\Container\Definition\ServiceDefinition::buildService()` already calls the factory with the container. A call with no arguments still works, and the returned object does not change.
+
+### Db References
+
+#### SQLite Composite Keys
+
+`Phalcon\Db\Adapter\Pdo\Sqlite::describeReferences()` gives one reference for each foreign key. A composite key is one reference with all its columns, in the order of the key. In v5.23, it gave one reference for each column of the key.
+
+The name of each reference comes from the `id` of `PRAGMA foreign_key_list` (`foreign_key_<id>`), not from the row number. For a table with only single-column keys, the names do not change. For a table with a composite key, the names of the keys that come after it in `PRAGMA foreign_key_list` change, because there are fewer references.
+
+```sql
+CREATE TABLE orders (
+    id      INTEGER PRIMARY KEY,
+    user_id INT REFERENCES users (id),
+    ca      INT,
+    cb      INT,
+    FOREIGN KEY (ca, cb) REFERENCES customers (a, b)
+);
+```
+
+| Reference       | v5.23                   | v5.24                                      |
+|-----------------|-------------------------|--------------------------------------------|
+| `foreign_key_0` | `ca` to `customers.a`   | `['ca', 'cb']` to `customers` `['a', 'b']` |
+| `foreign_key_1` | `cb` to `customers.b`   | `['user_id']` to `users` `['id']`          |
+| `foreign_key_2` | `user_id` to `users.id` | -                                          |
+
+#### PostgreSQL Referenced Schema
+
+`Phalcon\Db\Dialect\Postgresql::describeReferences()` gives the schema of the referenced table as `REFERENCED_TABLE_SCHEMA`, and `Phalcon\Db\Adapter\Pdo\Postgresql::describeReferences()` gives it in `Reference::getReferencedSchema()`, for example `public`. In v5.23, both gave the name of the database. If your code compares `getReferencedSchema()` with the name of the database, compare it with the name of the schema.
+
+```php
+<?php
+
+// billing.invoices has a foreign key to public.customers
+$references = $connection->describeReferences('invoices', 'billing');
+
+foreach ($references as $reference) {
+    // v5.23: the name of the database
+    // v5.24: 'public'
+    echo $reference->getReferencedSchema(), PHP_EOL;
+}
+```
+
+### Flash
+
+`Phalcon\Flash\AbstractFlash` returns the default message template as a constant, and it does not call `toInterpolate()` for the template. A subclass of `Phalcon\Flash\Direct` or `Phalcon\Flash\Session` that overrides the protected static `toInterpolate()` method gets one call for each message with automatic HTML, instead of two. The output does not change.
+
+### Html Link
+
+`Phalcon\Html\Link\LinkProvider::getLinks()` and `Phalcon\Html\Link\EvolvableLinkProvider::getLinks()` return arrays with `spl_object_id()` keys (integers). In v5.23, the keys came from `spl_object_hash()` (strings). If your code makes or finds these keys with `spl_object_hash()`, use `spl_object_id()`. `getLinksByRel()` does not change.
+
+### Mvc Model
+
+#### Source Attribute
+
+`Phalcon\Mvc\Model\Manager::getModelSource()` reads the `Phalcon\Annotations\Models\MetaData\Source` attribute of a model class when the `annotations` service uses `Phalcon\Annotations\AttributesReader`. A model with `#[Source('x')]` and no `setSource()` call now uses the table `x`, with the model prefix. In v5.23, it used the name of its class. A `Source` attribute with a table that is missing, empty or not a string throws `Phalcon\Mvc\Model\Exception`. With the default docblock reader, nothing changes.
+
+#### Resultset Cache
+
+`Phalcon\Mvc\Model\Resultset\Simple` and `Phalcon\Mvc\Model\Resultset\Complex` no longer put their cache in the serialized data (`serialize()` and `__serialize()`). A resultset that comes from the models cache, or from `unserialize()`, returns `null` from `getCache()`. In v5.23, it returned a copy of the cache with no connection. If your code needs the cache, get the `modelsCache` service from the container. In data that an earlier version serialized, Phalcon ignores the cache entry.
+
+### Mvc Router
+
+`Phalcon\Mvc\Router\Route::getIndexData()` calls `getCompiledHostName()` only when the route has a host name. For a route with no host name, `getIndexData()[3]` is `null`, also when a subclass overrides `getCompiledHostName()`. Routing does not change.
+
+### Paginator
+
+`Phalcon\Paginator\Adapter\AbstractAdapter` creates the repository in its constructor. A custom adapter that overrides `__construct()` must call `parent::__construct()`. If it does not, `getRepository()` throws an `Error`.
+
+```php
+<?php
+
+namespace App\Paginator;
+
+use Phalcon\Paginator\Adapter\AbstractAdapter;
+
+class Invoices extends AbstractAdapter
+{
+    public function __construct(array $config)
+    {
+        parent::__construct($config);
+
+        // ...
+    }
+}
+```
+
+### PHQL Settings
+
+The PHQL parser reads `orm.enable_literals` and `orm.cache_level` from `Phalcon\Support\Settings`. A value that you set with `Phalcon\Mvc\Model::setup()` (`phqlLiterals`) or with `Settings::set()` has priority over the INI value. In v5.23, the parser used only the INI value.
+
+Thus, when `phqlLiterals` is `false`, a PHQL statement with a literal throws `Phalcon\Mvc\Model\Exception`. In v5.23, the statement runs.
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+Model::setup(['phqlLiterals' => false]);
+
+// v5.23: the statement runs
+// v5.24: Phalcon\Mvc\Model\Exception
+$invoices = $modelsManager->executeQuery(
+    'SELECT * FROM Invoices WHERE inv_status_flag = 1'
+);
+```
+
+Use bound parameters in place of the literals:
+
+```php
+<?php
+
+$invoices = $modelsManager->executeQuery(
+    'SELECT * FROM Invoices WHERE inv_status_flag = :status:',
+    [
+        'status' => 1,
+    ]
+);
+```
+
+### Queue
+
+`Phalcon\Queue\Consumer\Worker::handleSignal()` has a second optional parameter. A subclass that overrides this method must declare the same parameters. If it does not, PHP stops with a fatal error when it loads the class.
+
+```php
+<?php
+
+namespace App\Queue;
+
+use Phalcon\Queue\Consumer\Worker as PhalconWorker;
+
+class Worker extends PhalconWorker
+{
+    public function handleSignal(int $signal, ?array $info = null): void
+    {
+        parent::handleSignal($signal, $info);
+    }
+}
+```
+
+### Return Types
+
+Some methods declare a different return type in v5.24. The returned values do not change.
+
+| Method                                                 | v5.23                                 | v5.24                           |
+|--------------------------------------------------------|---------------------------------------|---------------------------------|
+| `Phalcon\Contracts\Db\Adapter\Adapter::fetchColumn()`  | `string\|bool`                        | `mixed`                         |
+| `Phalcon\Db\Adapter\AbstractAdapter::fetchColumn()`    | `string\|bool`                        | `mixed`                         |
+| `Phalcon\Db\Dialect::checkColumnType()`                | `string`                              | `int`                           |
+| `Phalcon\Http\Request\Bag\AbstractBag::normalizeKey()` | `string`                              | `int\|string`                   |
+| `Phalcon\Mvc\Model\Query::getCache()`                  | `Phalcon\Db\Adapter\AdapterInterface` | `?Phalcon\Cache\CacheInterface` |
+
+- `fetchColumn()` returns the value from the database driver, for example an `int`, a `float`, a `string` or `null`, or `false` when the query returns no rows. A class that overrides it can keep the `string|bool` return type.
+- `normalizeKey()` returns an `int` key as an `int`. A class that overrides it can keep the `string` return type.
+- A class that overrides `checkColumnType()` or `getCache()` must declare a compatible return type: `int` for `checkColumnType()`, and `?Phalcon\Cache\CacheInterface` or `Phalcon\Cache\CacheInterface` for `getCache()`. If it does not, PHP stops with a fatal error when it loads the class.
+
+### Security
+
+`Phalcon\Encryption\Security::hash()` uses the work factor (`getWorkFactor()`, default `10`) when the `cost` option is empty (`null`, `0`, `'0'`, `false` or `''`), the same as when the option is not set. In v5.23, it used the cost `4`. The new hashes take more time to make. `checkHash()` still verifies the earlier hashes, because each hash contains its cost.
+
+```php
+<?php
+
+use Phalcon\Encryption\Security;
+
+$security = new Security();
+$hash     = $security->hash('s3cr3t', ['cost' => 0]);
+
+// v5.23: '$2y$04$...'
+// v5.24: '$2y$10$...'
+```
+
+`hash()` also changes a numeric string `cost` option to an integer. A fractional value, for example `'5.7'`, becomes `5`. In v5.23, the `CRYPT_BLOWFISH_A` and `CRYPT_BLOWFISH_X` algorithms put the string in the salt (`$2a$5.7$`), and `crypt()` returned the failure string `*0`. Integer costs and integer strings, for example `'5'`, give the same hashes as before.
+
+### Session
+
+`Phalcon\Session\Adapter\AbstractAdapter` and `Phalcon\Session\Adapter\Noop` implement `SessionIdInterface` with `create_sid(): string`. This removes a PHP 8.6 deprecation.
+
+- A subclass that overrides `create_sid()` must declare the `string` return type.
+- The adapter makes the new session IDs, as 32 hex characters. Thus, `session.sid_length` and `session.sid_bits_per_character` no longer apply to these adapters.
+- A custom handler that implements `SessionHandlerInterface` directly must add `create_sid()` and `validateId()`, to prevent the PHP 8.6 deprecation.
+
+### Support Collection
+
+`Phalcon\Support\Collection::remove()` no longer calls `has()`, and it calls the protected `processKey()` method one time instead of two. A subclass that overrides `has()` no longer controls what `remove()`, `__unset()` and `offsetUnset()` do.
+
+`Phalcon\Support\Collection::setData()` calls `validateType()` only when the collection has a type. A subclass that overrides the protected `validateType()` method no longer gets this call when the collection has no type. This is also true for the calls from the constructor, `init()`, `set()`, `offsetSet()` and `__set()`. With a type, nothing changes.
+
+### Support Debug
+
+`Phalcon\Support\Debug` records the output buffer level when you create it. `onUncaughtException()` discards all the output buffers that start after that point. It keeps the buffers that started before it, for example from `output_buffering` or `zlib.output_compression` in `php.ini`. In v5.23, it discarded only the top buffer, also when that buffer started before `Debug` was created. To discard the output of your own buffers, create `Debug` before you start them.
+
+### Volt
+
+The [Volt][phalcon-volt] parser no longer has the `{% cache %}` and `{% endcache %}` tags. A template with these tags gives a syntax error. Remove the tags from your templates.
 
 - - -
 
