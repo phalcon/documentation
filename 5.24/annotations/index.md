@@ -480,7 +480,7 @@ $adapter = new Stream(
 ```
 
 :::danger[Keep the cache directory outside the document root]
-The adapter writes one file per class, named after the class, containing the serialized annotation data. The files have a `.php` extension but no PHP opening tag, so a web server that can reach the directory returns their content verbatim. Point `annotationsDir` to a directory outside the document root (for example `/app/storage/cache/annotations`), never to `./` or a public path, and do not make it writable by other users.
+The adapter writes one file per class, named after the class, containing the serialized annotation data. Each file starts with `<?php __halt_compiler();` (`Stream::FILE_HEADER`). PHP stops at this header, so a web request that runs the file with PHP returns an empty page. A web server that does not run PHP in the directory returns the content verbatim. Point `annotationsDir` to a directory outside the document root (for example `/app/storage/cache/annotations`), never to `./` or a public path, and do not make it writable by other users.
 :::
 
 If there is a problem with storing the data in the folder due to permissions or any other reason, a [Phalcon\Annotations\Exception][annotations-exception] will be thrown.
